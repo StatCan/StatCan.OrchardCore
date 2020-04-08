@@ -1,0 +1,17 @@
+{
+  "devDependencies": {
+    "cypress": "4.1.0",
+    "rimraf": "3.0.2"
+  },
+  "dependencies": {},
+  "scripts": {
+    "build": "node -e \"require('./run_cypress').build('../src/StatCan.OrchardCore.Cms.Web')\"",
+    "clean": "node -e \"require('./run_cypress').clean('../src/StatCan.OrchardCore.Cms.Web')\"",
+    "host": "node -e \"require('./run_cypress').host('../src/StatCan.OrchardCore.Cms.Web', 'StatCan.OrchardCore.Cms.Web.dll')\"",
+    "test": "node -e \"require('./run_cypress').e2e('../src/StatCan.OrchardCore.Cms.Web', 'StatCan.OrchardCore.Cms.Web.dll')\"",
+    "test:clean": "node -e \"require('./run_cypress').e2e('../src/StatCan.OrchardCore.Cms.Web', 'StatCan.OrchardCore.Cms.Web.dll', true)\"",
+    "test:clean-build": "node -e \"require('./run_cypress').e2e('../src/StatCan.OrchardCore.Cms.Web', 'StatCan.OrchardCore.Cms.Web.dll', true, true)\"",
+    "cypress:run": "cypress run --config video=false",
+    "cypress": "cypress open"
+  }
+}

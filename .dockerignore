@@ -1,0 +1,6 @@
+#ignore all files
+*/*
+
+#except release
+!/src/StatCan.OrchardCore.Cms.Web/.build/release/*
+!docker_run.sh

@@ -1,0 +1,150 @@
+{
+  "name": "ValidateUserTaskTest",
+  "displayName": "Validate User Task Test",
+  "description": "Validate User Task Test workflow",
+  "author": "Digital Innovation Team",
+  "website": "https://digital.statcan.gc.ca",
+  "version": "1.0",
+  "issetuprecipe": false,
+  "categories": [ "Testing" ],
+  "tags": [ "StatCan","Testing" ],
+  "steps": [
+    {
+      "name": "WorkflowType",
+      "data": [
+        {
+          "WorkflowTypeId": "4kn6w4s0jm67659pqkv71y61mq",
+          "Name": "Validate User Test",
+          "IsEnabled": true,
+          "IsSingleton": false,
+          "DeleteFinishedWorkflows": false,
+          "Activities": [
+            {
+              "ActivityId": "4ma9w6g03wnka3xn4qb76403nz",
+              "Name": "ValidateUserTask",
+              "X": 250,
+              "Y": 80,
+              "IsStart": false,
+              "Properties": {
+                "RoleName": "Contributor",
+                "SetUser": true,
+                "ActivityMetadata": {
+                  "Title": null
+                },
+                "RoleNames": "Authenticated"
+              }
+            },
+            {
+              "ActivityId": "4zheb07wjh83a084qfmexg5vw6",
+              "Name": "HttpResponseTask",
+              "X": 940,
+              "Y": 80,
+              "IsStart": false,
+              "Properties": {
+                "ActivityMetadata": {
+                  "Title": "200"
+                },
+                "HttpStatusCode": 200,
+                "Content": {
+                  "Expression": "{\r\n\"Success\": \"True\"\r\n\"User\": \"{{ Workflow.Properties[\"User\"] }}\"\r\n}"
+                },
+                "ContentType": {
+                  "Expression": "application/json"
+                },
+                "Headers": {
+                  "Expression": null
+                }
+              }
+            },
+            {
+              "ActivityId": "4bbg6nvz518n23sca3atrasjmh",
+              "Name": "HttpResponseTask",
+              "X": 1020,
+              "Y": 220,
+              "IsStart": false,
+              "Properties": {
+                "ActivityMetadata": {
+                  "Title": "404"
+                },
+                "HttpStatusCode": 404,
+                "Content": {
+                  "Expression": "{\r\n\"error\":\"true\"\r\n}"
+                },
+                "ContentType": {
+                  "Expression": "application/json"
+                },
+                "Headers": {
+                  "Expression": null
+                }
+              }
+            },
+            {
+              "ActivityId": "4jk04xfqxby71xd1b94s914qc9",
+              "Name": "HttpRequestEvent",
+              "X": 30,
+              "Y": 80,
+              "IsStart": true,
+              "Properties": {
+                "ActivityMetadata": {
+                  "Title": "MyRequest"
+                },
+                "HttpMethod": "GET",
+                "Url": "/cd1/workflows/Invoke?token=CfDJ8JWx3r8nmq5AtMujRpLG4xZtiWjMeq6hqrztjDWmImtbb8voo8m1FG6iu0x3PEYDilzvc1KTnTAib535trVDj0NUIiJ990i2mBUEhmKSoGXriwhDtnA7iQgNBjXD2d1nkULWJfqVWUSejfSl7vsyWAumK5Suyla5uUOyu_9H1E91pGwwSWQ7c0jpHdCQBnT2xXYpXKJ8UBXDcEx3C1gifl5HRHPxkMGksKTagz6_7-cb",
+                "ValidateAntiforgeryToken": true,
+                "TokenLifeSpan": 0
+              }
+            },
+            {
+              "ActivityId": "4exkaz141t8mxtr1baxe5tqt5g",
+              "Name": "HttpResponseTask",
+              "X": 690,
+              "Y": 0,
+              "IsStart": false,
+              "Properties": {
+                "ActivityMetadata": {
+                  "Title": "inrole"
+                },
+                "HttpStatusCode": 200,
+                "Content": {
+                  "Expression": "{\r\n\"inrole\":\"true\"\r\n\"User\": \"{{ Workflow.Properties[\"User\"] }}\"\r\n}"
+                },
+                "ContentType": {
+                  "Expression": "application/json"
+                },
+                "Headers": {
+                  "Expression": null
+                }
+              }
+            }
+          ],
+          "Transitions": [
+            {
+              "Id": 0,
+              "SourceActivityId": "4ma9w6g03wnka3xn4qb76403nz",
+              "SourceOutcomeName": "Authenticated",
+              "DestinationActivityId": "4zheb07wjh83a084qfmexg5vw6"
+            },
+            {
+              "Id": 0,
+              "SourceActivityId": "4ma9w6g03wnka3xn4qb76403nz",
+              "SourceOutcomeName": "Anonymous",
+              "DestinationActivityId": "4bbg6nvz518n23sca3atrasjmh"
+            },
+            {
+              "Id": 0,
+              "SourceActivityId": "4jk04xfqxby71xd1b94s914qc9",
+              "SourceOutcomeName": "Done",
+              "DestinationActivityId": "4ma9w6g03wnka3xn4qb76403nz"
+            },
+            {
+              "Id": 0,
+              "SourceActivityId": "4ma9w6g03wnka3xn4qb76403nz",
+              "SourceOutcomeName": "Authenticated_InRole",
+              "DestinationActivityId": "4exkaz141t8mxtr1baxe5tqt5g"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

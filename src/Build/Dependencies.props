@@ -1,0 +1,14 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <AspNetCoreVersion>3.1.1</AspNetCoreVersion>
+    <AspNetCoreTargetFramework>netcoreapp3.1</AspNetCoreTargetFramework>
+    <OrchardCoreVersion>1.0.0-rc1-12666</OrchardCoreVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NetEscapades.AspNetCore.SecurityHeaders" Version="0.11.0" />
+    <PackageReference Include="HtmlSanitizer" Version="4.0.217" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="{{ Culture.Name }}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    {% render_section "HeadMeta", required: false %}
+    <title>{% page_title Site.SiteName %}</title>
+    {% resources type: "Meta" %}
+
+    <!-- Customized Bootstrap CSS -->
+    {% style name:"covidtheme-stc-bootstrap", version:"1" %}
+
+    <!-- Custom fonts for this template -->
+    {% style name:"covidtheme-vendor-font-awesome", version:"5" %}
+
+    <!-- Bootstrap core JavaScript (includes jQuery and popper.js) -->
+    {% script name:"covidtheme-vendor-bootstrap", at:"Foot" %}
+    
+    {% resources type: "HeadScript" %}
+    {% resources type: "HeadLink" %}
+    {% resources type: "Stylesheet" %}
+
+</head>
+<body id="page-top" dir="{{ Culture.Dir }}">
+  <main id="bootstrap-main" class="d-flex flex-fill">
+    <section class="flex-fill container-fluid d-flex align-self-center align-items-center">
+      <div class="container">
+        <div class="row align-items-center justify-content-center">
+          <div class="col-lg-6 col-md-8 col-12">
+            {% render_section "Content" %}
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  {% render_section "Footer", required: false %}
+  {% resources type: "FootScript" %}
+</body>
+</html>
