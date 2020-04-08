@@ -1,4 +1,4 @@
-name: Build & Push docker images
+name: Build
 on: [push, pull_request]
 jobs:
 
@@ -6,7 +6,7 @@ jobs:
     env:
       DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
       DOTNET_CLI_TELEMETRY_OPTOUT: 1
-    name: Build & Push
+    name: Build
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
@@ -14,22 +14,8 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1.201
-    - name: Generate build number
-      uses: einaregilsson/build-number@v2 
-      with:
-        token: ${{secrets.github_token}}
-    - name: Upload build number
-      uses: actions/upload-artifact@v1
-      with:
-        name: BUILD_NUMBER
-        path: BUILD_NUMBER
     - name: Dotnet build
-      env:
-        BuildNumber: ${{ env.BUILD_NUMBER }}
       run: | 
            cd src/StatCan.OrchardCore.Cms.Web
            dotnet build --configuration Release
            dotnet publish -c Release -o ./.build/release
-    - name: Docker build
-      run: |
-        docker build .
