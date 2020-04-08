@@ -27,6 +27,7 @@ jobs:
       env:
         BuildNumber: ${{ env.BUILD_NUMBER }}
       run: | 
+           cd src/StatCan.OrchardCore.Cms.Web
            dotnet build --configuration Release
            dotnet publish -c Release -o ./.build/release
     - name: Docker build
