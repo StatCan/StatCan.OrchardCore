@@ -32,6 +32,7 @@ jobs:
            cd src/StatCan.OrchardCore.Cms.Web
            dotnet build --configuration Release
            dotnet publish -c Release -o ./.build/release
+    # Connect to Azure Container registry (ACR)
     - uses: azure/docker-login@v1
       with:
         login-server: ${{ env.REGISTRY_NAME }}.azurecr.io
