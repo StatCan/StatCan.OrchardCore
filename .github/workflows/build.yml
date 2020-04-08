@@ -1,0 +1,34 @@
+name: Build & Push docker images
+on: [push, pull_request]
+jobs:
+
+  build:
+    env:
+      DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
+      DOTNET_CLI_TELEMETRY_OPTOUT: 1
+    name: Build & Push
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Setup .NET Core SDK
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.201
+    - name: Generate build number
+      uses: einaregilsson/build-number@v2 
+      with:
+        token: ${{secrets.github_token}}
+    - name: Upload build number
+        uses: actions/upload-artifact@v1
+        with:
+          name: BUILD_NUMBER
+          path: BUILD_NUMBER
+    - name: Dotnet build
+      env:
+        BuildNumber: ${{ env.BUILD_NUMBER }}
+      run: | 
+           dotnet build --configuration Release
+           dotnet publish -c Release -o ./.build/release
+    - name: Docker build
+      run: |
+        docker build .
