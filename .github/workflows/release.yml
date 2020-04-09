@@ -88,8 +88,8 @@ jobs:
           global:
             postgresql:
               postgresqlUsername: "${{ secrets.POSTGRESQL_USER }}"
-              postgresqlDatabase: "${{ secrets.POSTGRESQL_DATABASE }}
-              postgresqlPassword: "${{ secrets.POSTGRESQL_PASSWORD }}
+              postgresqlDatabase: "${{ secrets.POSTGRESQL_DATABASE }}"
+              postgresqlPassword: "${{ secrets.POSTGRESQL_PASSWORD }}"
             imagePullSecrets:
               - "${{ env.REGISTRY_NAME }}-registry-connection"
           postgresql:
