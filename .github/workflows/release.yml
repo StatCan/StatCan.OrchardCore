@@ -1,7 +1,7 @@
 name: Build, push and deploy to k8s
 on:
   release:
-    types: [published, created, edited]
+    types: [published]
 
 env:
   REGISTRY_NAME: k8scc01covidacr
