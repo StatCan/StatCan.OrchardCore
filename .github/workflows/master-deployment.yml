@@ -1,8 +1,8 @@
-name: Production release
+name: Development release (master branch)
 on:
-  release:
-    types: [published]
-
+  push:
+    branches:
+      - master
 env:
   REGISTRY_NAME: k8scc01covidacr
   CLUSTER_NAME: k8s-cancentral-01-covid-aks
@@ -66,7 +66,7 @@ jobs:
       env:
         KUBECONFIG: /github/home/KUBECONFIG
       with:
-        release: 'oc-prod'
+        release: 'oc-dev'
         namespace: 'web'
         tiller-namespace: 'web'
         chart: './charts/stable/orchard-cms'
@@ -75,7 +75,7 @@ jobs:
           ingress:
             enabled: true
             hosts:
-              - oc.covid.cloud.statcan.ca
+              - oc-dev.covid.cloud.statcan.ca
             annotations: 
               kubernetes.io/ingress.class: "istio"
           image:
@@ -87,9 +87,9 @@ jobs:
             repository: "${{ env.REGISTRY_NAME }}.azurecr.io/statcan-orchardcore"
           global:
             postgresql:
-              postgresqlUsername: "${{ secrets.POSTGRESQL_USER }}"
-              postgresqlDatabase: "${{ secrets.POSTGRESQL_DATABASE }}"
-              postgresqlPassword: "${{ secrets.POSTGRESQL_PASSWORD }}"
+              postgresqlUsername: "${{ secrets.DEV_POSTGRESQL_USER }}"
+              postgresqlDatabase: "${{ secrets.DEV_POSTGRESQL_DATABASE }}"
+              postgresqlPassword: "${{ secrets.DEV_POSTGRESQL_PASSWORD }}"
             imagePullSecrets:
               - "${{ env.REGISTRY_NAME }}-registry-connection"
           postgresql:
