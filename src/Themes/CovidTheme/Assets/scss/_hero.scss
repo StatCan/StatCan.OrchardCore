@@ -1,14 +1,17 @@
 #hero-section {
   height: 100vh;
   background-image: radial-gradient(
-    circle at bottom center,
-    transparentize(darken($secondary, 25%), 0.5) 40%,
-    transparentize(darken($secondary, 40%), 0.5) 70%
-  );
+      circle at 50% 80%,
+      transparentize($secondary, 0.45) 40%,
+      transparentize($secondary, 0.9) 70%
+    ),
+    url("../images/grid.svg");
+  background-position: center;
 }
 #hero-section-top {
-  height: 6rem;
+  height: 5.5rem;
   width: 100vw;
+  background-image: url("../images/oval.svg");
   background-position: center bottom;
   background-repeat: no-repeat;
   background-size: cover;
@@ -16,6 +19,7 @@
 #hero-section-bottom {
   height: 7rem;
   width: 100vw;
+  background-image: url("../images/oval.svg");
   background-position: center top;
   background-repeat: no-repeat;
   background-size: cover;
