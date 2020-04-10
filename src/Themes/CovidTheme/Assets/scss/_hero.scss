@@ -1,5 +1,6 @@
 #hero-section {
   height: 100vh;
+  min-height: 700px;
   background-image: radial-gradient(
       circle at 50% 80%,
       transparentize($secondary, 0.45) 40%,
@@ -7,6 +8,10 @@
     ),
     url("../images/grid.svg");
   background-position: center;
+  text-align: center;
+  i {
+    @include rfs(256);
+  }
 }
 #hero-section-top {
   height: 5.5rem;
