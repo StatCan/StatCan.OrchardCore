@@ -2,8 +2,8 @@
   height: 100vh;
   background-image: radial-gradient(
     circle at bottom center,
-    transparentize(darken($primary, 25%), 0.5) 40%,
-    transparentize(darken($primary, 40%), 0.5) 70%
+    transparentize(darken($secondary, 25%), 0.5) 40%,
+    transparentize(darken($secondary, 40%), 0.5) 70%
   );
 }
 #hero-section-top {
@@ -23,12 +23,15 @@
 #hero-section ul {
   perspective: 300px;
 }
-#hero-section li:first-child > .btn {
-  transform: rotate3d(0, 1, 0, 20deg);
+@include media-breakpoint-up(lg) {
+  #hero-section li:first-child > .btn {
+    transform: rotate3d(0, 1, 0, 20deg);
+  }
+  #hero-section li:last-child > .btn {
+    transform: rotate3d(0, 1, 0, -20deg);
+  }
 }
-#hero-section li:last-child > .btn {
-  transform: rotate3d(0, 1, 0, -20deg);
-}
+
 #hero-section .btn {
   box-shadow: 0 29px 30px rgba(0, 0, 0, 0.3);
 }
