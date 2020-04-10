@@ -1,0 +1,45 @@
+#hero-section {
+  height: 100vh;
+  background-image: radial-gradient(
+    circle at bottom center,
+    transparentize(darken($primary, 25%), 0.5) 40%,
+    transparentize(darken($primary, 40%), 0.5) 70%
+  );
+}
+#hero-section-top {
+  height: 6rem;
+  width: 100vw;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+#hero-section-bottom {
+  height: 7rem;
+  width: 100vw;
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+#hero-section ul {
+  perspective: 300px;
+}
+#hero-section li:first-child > .btn {
+  transform: rotate3d(0, 1, 0, 20deg);
+}
+#hero-section li:last-child > .btn {
+  transform: rotate3d(0, 1, 0, -20deg);
+}
+#hero-section .btn {
+  box-shadow: 0 29px 30px rgba(0, 0, 0, 0.3);
+}
+.sig-wht {
+  height: 1.25rem;
+  margin: 1.5rem;
+}
+.canada {
+  height: 1.75rem;
+  margin: 1.5rem;
+}
+.fip-spacer {
+  width: 25vw;
+}

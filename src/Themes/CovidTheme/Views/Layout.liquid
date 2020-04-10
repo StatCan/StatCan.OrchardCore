@@ -12,31 +12,19 @@
 
     <!-- Custom fonts for this template -->
     {% style name:"covidtheme-vendor-font-awesome", version:"5" %}
-
+    {% style src:"https://fonts.googleapis.com/css2?family=Fira+Sans:wght@200;300;400;500&display=swap" %}
     <!-- Bootstrap core JavaScript (includes jQuery and popper.js) -->
     {% script name:"covidtheme-vendor-bootstrap", at:"Foot" %}
-    
+
     {% resources type: "HeadScript" %}
     {% resources type: "HeadLink" %}
     {% resources type: "Stylesheet" %}
-
 </head>
 <body id="page-top" dir="{{ Culture.Dir }}">
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
-        <div class="container">
-            <a class="navbar-brand js-scroll-trigger" href="{{ '~/#page-top' | href }}">{{ Site.SiteName }}</a>
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                Menu 
-                <i class="fas fa-bars"></i>
-            </button>
-            {% shape "menu", alias: "alias:main-menu", cache_id: "main-menu", cache_tag: "alias:main-menu" %}
-        </div>
-    </nav>
+
     {% render_section "Header", required: false %}
-    <div class="container" id="main">
-		  {% render_section "Messages", required: false %}
-      {% render_section "Content" %}
-    </div>
+    {% render_section "Messages", required: false %}
+    {% render_section "Content" %}
     {% render_section "Footer", required: false %}
     {% resources type: "FootScript" %}
 </body>
