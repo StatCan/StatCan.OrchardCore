@@ -1,0 +1,11 @@
+[
+  {
+    "generateSourceMaps": false,
+    "inputs": ["Assets/ajax-forms.scss"],
+    "output": "wwwroot/ajax-forms.css"
+  },
+  {
+    "inputs": [ "Assets/ajax-forms.js" ],
+    "output": "wwwroot/ajax-forms.js"
+  }
+]

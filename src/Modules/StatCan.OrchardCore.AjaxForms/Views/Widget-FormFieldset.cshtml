@@ -1,0 +1,11 @@
+@{
+    if(Model.Classes.Count == 0) 
+    {
+      Model.Classes.Add("form-group");
+    }
+}
+
+<fieldset class="@string.Join(" ", Model.Classes)">
+  <legend>@Model.ContentItem.DisplayText</legend>
+  @await DisplayAsync(Model.Content.Named("FlowPart"))
+</fieldset>

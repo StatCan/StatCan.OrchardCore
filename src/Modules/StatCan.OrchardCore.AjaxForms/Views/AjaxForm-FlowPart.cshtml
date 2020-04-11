@@ -1,0 +1,40 @@
+@using OrchardCore.ContentManagement
+@using OrchardCore.Flows.Models
+@using OrchardCore.Flows.ViewModels
+@using StatCan.OrchardCore.AjaxForms.Models
+@using OrchardCore.Mvc.Utilities;
+
+@inject OrchardCore.ContentManagement.Display.IContentItemDisplayManager ContentItemDisplayManager
+
+@model FlowPartViewModel
+
+@{
+  var formPart = ((ContentItem) Model.FlowPart.ContentItem).As<AjaxForm>();
+}
+<form class="ajax-form needs-validation"
+      asp-action="Submit" asp-controller="AjaxForm" asp-area="StatCan.OrchardCore.AjaxForms" 
+      asp-route-formId="@Model.FlowPart.ContentItem.ContentItemId"
+      method="post"
+      novalidate
+      data-debug-values="@formPart.DebugValues.Value"
+>
+  @Html.AntiForgeryToken()
+  @foreach (var widget in Model.FlowPart.Widgets)
+    {
+        var widgetContent = await ContentItemDisplayManager.BuildDisplayAsync(widget, Model.BuildPartDisplayContext.Updater, Model.BuildPartDisplayContext.DisplayType, Model.BuildPartDisplayContext.GroupId);
+        var flowMetadata = widget.As<FlowMetadata>();
+
+        if (flowMetadata != null)
+        {
+            widgetContent.Classes.Add("widget");
+            widgetContent.Classes.Add("widget-" + widget.ContentItem.ContentType.HtmlClassify());
+            widgetContent.Classes.Add("widget-align-" + flowMetadata.Alignment.ToString().ToLowerInvariant());
+            widgetContent.Classes.Add("widget-size-" + flowMetadata.Size);
+        }
+
+        @await DisplayAsync(widgetContent)
+    }
+</form>
+
+<script asp-src="~/StatCan.OrchardCore.AjaxForms/ajax-forms.min.js" debug-src="~/StatCan.OrchardCore.AjaxForms/ajax-forms.js" depends-on="jQuery" asp-name="ajax-forms" at="Foot"></script>
+<style asp-src="~/StatCan.OrchardCore.AjaxForms/ajax-forms.min.css" debug-src="~/StatCan.OrchardCore.AjaxForms/ajax-forms.css"></style>

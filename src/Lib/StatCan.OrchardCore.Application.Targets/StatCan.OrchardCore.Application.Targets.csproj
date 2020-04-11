@@ -13,9 +13,11 @@
 
     <!-- Libs -->
     <ProjectReference Include="..\StatCan.OrchardCore.Security\StatCan.OrchardCore.Security.csproj" PrivateAssets="none" />
+    <ProjectReference Include="..\StatCan.OrchardCore.ContentsExtensions\StatCan.OrchardCore.ContentsExtensions.csproj" PrivateAssets="none" />
     
     <!-- Modules -->
     <ProjectReference Include="..\..\Modules\Etch.OrchardCore.ContentPermissions\Etch.OrchardCore.ContentPermissions.csproj" PrivateAssets="none" />
+    <ProjectReference Include="..\..\Modules\StatCan.OrchardCore.AjaxForms\StatCan.OrchardCore.AjaxForms.csproj" PrivateAssets="none" />
     <ProjectReference Include="..\..\Modules\StatCan.OrchardCore.DisplayHelpers\StatCan.OrchardCore.DisplayHelpers.csproj" PrivateAssets="none" />
     <ProjectReference Include="..\..\Modules\StatCan.OrchardCore.ContentFields\StatCan.OrchardCore.ContentFields.csproj" PrivateAssets="none" />
     <ProjectReference Include="..\..\Modules\StatCan.OrchardCore.GCCollab\StatCan.OrchardCore.GCCollab.csproj" PrivateAssets="none" />

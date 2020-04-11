@@ -1,0 +1,22 @@
+.ajax-form {
+  .form-check-inline > .form-check {
+    padding-left: 0;
+  }
+  .form-control-wrapper.required > label:before {
+    content: "* ";
+    color: red;
+  }
+  &.was-validated {
+    .form-control-wrapper.valid {
+      .valid-feedback {
+        display: block;
+      }
+    }
+
+    .form-control-wrapper.invalid {
+      .invalid-feedback {
+        display: block;
+      }
+    }
+  }
+}
