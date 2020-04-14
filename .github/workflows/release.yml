@@ -78,6 +78,9 @@ jobs:
               - oc.covid.cloud.statcan.ca
             annotations: 
               kubernetes.io/ingress.class: "istio"
+          disableMutualTls: true
+          podAnnotations:
+            sidecar.istio.io/inject: 'false'
           image:
             tag: "${{ env.BUILD_NUMBER }}"
             pullPolicy: IfNotPresent
@@ -97,6 +100,9 @@ jobs:
               tag: 11.5.0-debian-9-r1
               pullPolicy: IfNotPresent
               debug: false
+              master: 
+                podAnnotations:
+                  sidecar.istio.io/inject: 'false' 
             persistence:
               enabled: true
               size: 1Gi
