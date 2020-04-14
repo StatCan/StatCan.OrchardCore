@@ -1,11 +1,13 @@
 .section-panel {
   background-image: radial-gradient(
-    circle at 50% 15%,
-    transparentize($secondary, 0.7) 10%,
+    circle at center top,
+    transparentize($white, 0.97) 10%,
     transparent
   );
+
   border-radius: 2px;
   padding: 2rem;
+
   .section-panel-link-icon {
     align-items: center;
     display: flex;
@@ -16,7 +18,7 @@
   li:hover {
     background-image: radial-gradient(
       circle at 15% 15%,
-      transparentize($secondary, 0.7) 10%,
+      transparentize($white, 0.97) 10%,
       transparent
     );
     border-radius: 2px;

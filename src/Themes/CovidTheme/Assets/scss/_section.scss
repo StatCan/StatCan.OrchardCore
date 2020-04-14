@@ -1,0 +1,49 @@
+.content-section {
+  background-image: url("../images/Hero Bottom Curve.svg"),
+    url("../images/Page Grid BG.svg");
+  background-position: center -5.5rem, center bottom;
+  background-size: contain, cover;
+  background-repeat: no-repeat;
+  padding-top: 8rem;
+  padding-bottom: 8rem;
+}
+
+.section-panel {
+  background-image: radial-gradient(
+    circle at 50% 15%,
+    transparentize($white, 0.97) 10%,
+    transparent
+  );
+
+  border-radius: 2px;
+  padding: 2rem;
+  // margin: -2rem;
+  // &:hover {
+  //   background-image: radial-gradient(
+  //     circle at 50% 15%,
+  //     transparentize($secondary, 0.6) 10%,
+  //     transparent
+  //   );
+  // }
+  .section-panel-link-icon {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    max-height: 3rem;
+    min-width: 5rem;
+  }
+  li:hover {
+    background-image: radial-gradient(
+      circle at 15% 15%,
+      transparentize($secondary, 0.15) 10%,
+      transparent
+    );
+    border-radius: 2px;
+  }
+  a {
+    color: $white;
+  }
+  a:hover {
+    text-decoration: none;
+  }
+}

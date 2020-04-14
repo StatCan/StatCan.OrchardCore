@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="31.345" height="48" viewBox="0 0 31.345 48">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.5" y1="1" x2="0.5" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#2e294e"/>
+      <stop offset="0.242" stop-color="#2e2c50"/>
+      <stop offset="0.412" stop-color="#2e3556"/>
+      <stop offset="0.559" stop-color="#2e4560"/>
+      <stop offset="0.694" stop-color="#2d5a6e"/>
+      <stop offset="0.821" stop-color="#2d7781"/>
+      <stop offset="0.939" stop-color="#2c9997"/>
+      <stop offset="1" stop-color="#2caea5"/>
+    </linearGradient>
+    <radialGradient id="radial-gradient" cx="0.5" cy="0.5" r="1.452" gradientTransform="translate(0.327 0.338) scale(0.346 0.323)" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#c8ea61"/>
+      <stop offset="0.35" stop-color="#c9e860"/>
+      <stop offset="0.513" stop-color="#cce05e"/>
+      <stop offset="0.637" stop-color="#d0d45b"/>
+      <stop offset="0.741" stop-color="#d7c155"/>
+      <stop offset="0.833" stop-color="#e0aa4e"/>
+      <stop offset="0.916" stop-color="#eb8c46"/>
+      <stop offset="0.991" stop-color="#f76a3c"/>
+      <stop offset="1" stop-color="#f9663b"/>
+    </radialGradient>
+    <radialGradient id="radial-gradient-2" cx="0.5" cy="0.5" r="0.5" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#c8ea61"/>
+      <stop offset="0.425" stop-color="#c9e860"/>
+      <stop offset="0.579" stop-color="#cbe15f"/>
+      <stop offset="0.688" stop-color="#d0d65b"/>
+      <stop offset="0.776" stop-color="#d6c556"/>
+      <stop offset="0.852" stop-color="#deaf50"/>
+      <stop offset="0.919" stop-color="#e89348"/>
+      <stop offset="0.978" stop-color="#f4743f"/>
+      <stop offset="1" stop-color="#f9663b"/>
+    </radialGradient>
+    <linearGradient id="linear-gradient-2" x1="0.5" y1="1" x2="0.5" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#2caea5"/>
+      <stop offset="0.061" stop-color="#2c9997"/>
+      <stop offset="0.179" stop-color="#2d7781"/>
+      <stop offset="0.306" stop-color="#2d5a6e"/>
+      <stop offset="0.441" stop-color="#2e4560"/>
+      <stop offset="0.588" stop-color="#2e3556"/>
+      <stop offset="0.758" stop-color="#2e2c50"/>
+      <stop offset="1" stop-color="#2e294e"/>
+    </linearGradient>
+    <radialGradient id="radial-gradient-3" cx="0.523" cy="0.471" fx="1.0111403465270996" fy="0.48039570450782776" r="0.994" gradientTransform="matrix(-0.599, 0, 0, 1, 0.827, 0)" xlink:href="#radial-gradient-2"/>
+    <radialGradient id="radial-gradient-4" cx="0.477" cy="0.471" fx="0.9652059674263" fy="0.48039570450782776" r="0.994" gradientTransform="translate(0.2) scale(0.599 1)" xlink:href="#radial-gradient-2"/>
+  </defs>
+  <g id="DI_Logo" data-name="DI Logo" transform="translate(0 -0.8)">
+    <path id="base_6_" d="M69.5,187.009l-3.4,21.634L77.458,215.2l11.351-6.556L85.4,187.009l3.409-4.591L77.458,178.5l-11.313,3.917Z" transform="translate(-61.897 -166.4)" fill="url(#linear-gradient)"/>
+    <path id="summit_6_" d="M78.113,178.5,66.8,182.417l11.313,3.924,11.351-3.924Z" transform="translate(-62.552 -166.4)" fill="url(#radial-gradient)"/>
+    <path id="light_6_" d="M186.121,119.361a4.261,4.261,0,1,1-4.261-4.261A4.261,4.261,0,0,1,186.121,119.361Z" transform="translate(-166.306 -107.031)" fill="url(#radial-gradient-2)"/>
+    <path id="cap_6_" d="M78.669,10.721l11.269-3.9S83.845.8,78.669.8,67.4,6.822,67.4,6.822Z" transform="translate(-63.114)" fill="url(#linear-gradient-2)"/>
+    <g id="beams_7_" transform="translate(0 8.52)">
+      <g id="right_6_" transform="translate(21.462 0)">
+        <path id="Path_177" data-name="Path 177" d="M0,125.1,9.076,122.2s.808-.083.808,2.918-.808,3-.808,3Z" transform="translate(0 -122.196)" fill="url(#radial-gradient-3)"/>
+      </g>
+      <g id="left_6_" transform="translate(0 0)">
+        <path id="Path_177-2" data-name="Path 177" d="M9.882,125.1.808,122.2S0,122.114,0,125.116s.808,3,.808,3Z" transform="translate(0 -122.196)" fill="url(#radial-gradient-4)"/>
+      </g>
+    </g>
+  </g>
+</svg>

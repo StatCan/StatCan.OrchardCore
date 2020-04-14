@@ -1,5 +1,5 @@
 body {
-  background-color: #171717;
+  background-color: $background;
   color: $white;
   font-family: "Fira Sans", sans-serif;
 }
@@ -25,4 +25,9 @@ h3,
 p {
   @include rfs(16);
   font-weight: 300;
+}
+
+.btn-lg.di-btn {
+  border-radius: 1.5rem;
+  text-transform: uppercase;
 }
