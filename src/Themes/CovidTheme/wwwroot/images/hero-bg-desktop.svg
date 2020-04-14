@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 24.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Hero_BG" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 1366 699" style="enable-background:new 0 0 1366 699;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:url(#Shape_1_);}
+</style>
+<radialGradient id="Shape_1_" cx="-211.3741" cy="889.9936" r="0.469" gradientTransform="matrix(1366 0 0 -1350.4681 289420 1202554.625)" gradientUnits="userSpaceOnUse">
+	<stop  offset="0" style="stop-color:#2CAEA5;stop-opacity:0.62"/>
+	<stop  offset="1" style="stop-color:#2CAEA5;stop-opacity:0.031"/>
+</radialGradient>
+<path id="Shape" class="st0" d="M1192.82,24.14c-116.29,22.74-299.98,49.85-514.69,49.85c-214.8,0-395.74-27.13-509.71-49.89
+	C121.6,14.75,86.59,6.6,60.97,0H0v699c3.05-1.04,44.11-17.45,168.42-42.27c113.96-22.76,294.91-49.89,509.71-49.89
+	c214.71,0,398.41,27.11,514.69,49.85c126.71,24.78,170.03,40.27,173.18,41.31V0h-61.7C1277.8,6.49,1241.46,14.63,1192.82,24.14z"/>
+</svg>

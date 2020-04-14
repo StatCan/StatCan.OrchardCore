@@ -1,32 +1,20 @@
 #hero-section {
   height: 100vh;
   min-height: 700px;
-  background-image: radial-gradient(
-    circle at 50% 80%,
-    transparentize($secondary, 0.3),
-    transparentize($secondary, 0.99) 70%
-  );
-  background-position: center;
+  background-image: url("../images/hero-bg-desktop.svg");
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
   text-align: center;
   i {
     @include rfs(256);
   }
 }
-#hero-section-top {
-  height: 6rem;
-  background-image: url("../images/oval.svg");
-  background-position: center bottom;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
+
 #hero-section-bottom {
   height: 6.5rem;
-  background-image: url("../images/oval.svg");
-  background-position: center top;
-  background-repeat: no-repeat;
-  background-size: cover;
 }
-#hero-section ul {
+#hero-section ul li {
   perspective: 300px;
 }
 @include media-breakpoint-up(lg) {
