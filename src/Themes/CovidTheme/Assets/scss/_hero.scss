@@ -31,10 +31,10 @@
 }
 @include media-breakpoint-up(lg) {
   #hero-section li:first-child > .btn {
-    transform: rotate3d(0, 1, 0, 20deg);
+    transform: rotate3d(0, 1, 0, 10deg);
   }
   #hero-section li:last-child > .btn {
-    transform: rotate3d(0, 1, 0, -20deg);
+    transform: rotate3d(0, 1, 0, -10deg);
   }
 }
 
