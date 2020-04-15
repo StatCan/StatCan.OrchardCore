@@ -1,7 +1,14 @@
 [
   {
     "inputs": ["Assets/scss/portal-bootstrap.scss"],
-    "watch": [],
+    "watch": [
+      "Assets/scss/_bootstrap.scss",
+      "Assets/scss/_footer.scss",
+      "Assets/scss/_global.scss",
+      "Assets/scss/_hero.scss",
+      "Assets/scss/_section-panel.scss",
+      "Assets/scss/_section.scss"
+    ],
     "output": "wwwroot/css/portal-bootstrap.css"
   },
   {

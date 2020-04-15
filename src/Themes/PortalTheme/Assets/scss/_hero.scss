@@ -1,4 +1,5 @@
 #hero-section {
+  position: relative;
   height: 100vh;
   min-height: 700px;
   background-image: url("../images/hero-bg-desktop.svg");
@@ -10,9 +11,29 @@
     @include rfs(256);
   }
 }
-
-#hero-section-bottom {
+.hero-header {
+  display: flex;
+  position: absolute;
+  right: 3rem;
+  top: 1rem;
+  span {
+    margin-right: 1rem;
+    &:nth-child(1) {
+      margin-top: 3rem;
+    }
+    &:nth-child(2) {
+      margin-top: 2.5rem;
+    }
+    &:nth-child(2) {
+      margin-top: 2rem;
+    }
+  }
+}
+.hero-footer {
+  align-items: flex-end;
+  display: flex;
   height: 6.5rem;
+  justify-content: center;
 }
 #hero-section .navbar ul li {
   perspective: 300px;
