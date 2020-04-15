@@ -4,10 +4,10 @@ on:
     types: [published]
 
 env:
-  REGISTRY_NAME: k8scc01portalacr
-  CLUSTER_NAME: k8s-cancentral-01-portal-aks
-  CLUSTER_RESOURCE_GROUP: k8s-cancentral-01-portal-aks
-  STORAGE_ACCOUNT_NAME: k8sportal
+  REGISTRY_NAME: k8scc01covidacr
+  CLUSTER_NAME: k8s-cancentral-01-covid-aks
+  CLUSTER_RESOURCE_GROUP: k8s-cancentral-01-covid-aks
+  STORAGE_ACCOUNT_NAME: k8scovid
   NAMESPACE: web
   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
   DOTNET_CLI_TELEMETRY_OPTOUT: 1
@@ -75,7 +75,7 @@ jobs:
             ingress:
               enabled: true
               hosts:
-                - oc.portal.cloud.statcan.ca
+                - oc.covid.cloud.statcan.ca
               annotations: 
                 kubernetes.io/ingress.class: "istio"
             disableMutualTls: true
