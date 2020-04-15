@@ -6,34 +6,3 @@
   padding-top: 6rem;
   padding-bottom: 10rem;
 }
-
-.section-panel {
-  background-image: radial-gradient(
-    circle at 50% 15%,
-    transparentize($white, 0.97) 10%,
-    transparent
-  );
-  border-radius: 2px;
-  padding: 2rem;
-  .section-panel-link-icon {
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    max-height: 3rem;
-    min-width: 5rem;
-  }
-  li:hover {
-    background-image: radial-gradient(
-      circle at 15% 15%,
-      transparentize($secondary, 0.15) 10%,
-      transparent
-    );
-    border-radius: 2px;
-  }
-  a {
-    color: $white;
-  }
-  a:hover {
-    text-decoration: none;
-  }
-}
