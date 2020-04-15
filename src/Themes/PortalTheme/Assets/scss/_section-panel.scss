@@ -1,8 +1,9 @@
 .section-panel {
+  background-color: transparentize($background, 0.28);
   background-image: radial-gradient(
     circle at center top,
-    transparentize($white, 0.97) 10%,
-    transparent
+    transparentize(#aeaeae, 0.92) 10%,
+    transparentize(#aeaeae, 1)
   );
 
   border-radius: 2px;
