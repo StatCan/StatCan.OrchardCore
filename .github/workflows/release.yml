@@ -75,7 +75,7 @@ jobs:
             ingress:
               enabled: true
               hosts:
-                - oc.covid.cloud.statcan.ca
+                - portal.covid.cloud.statcan.ca
               annotations: 
                 kubernetes.io/ingress.class: "istio"
             disableMutualTls: true
