@@ -8,7 +8,7 @@
   background-size: cover;
   text-align: center;
   .icon {
-    @include rfs(256);
+    @include rfs(192);
   }
 }
 .hero-header {
