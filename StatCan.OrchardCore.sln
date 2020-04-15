@@ -23,7 +23,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StatCan.OrchardCore.Cms.Web
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Themes", "Themes", "{F0F2F6E0-792F-11EA-A2A9-59BF4ACC057A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CovidTheme", "src\Themes\CovidTheme\CovidTheme.csproj", "{3203E5AC-45AC-4E88-84B7-B1596C82A917}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PortalTheme", "src\Themes\PortalTheme\PortalTheme.csproj", "{3203E5AC-45AC-4E88-84B7-B1596C82A917}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

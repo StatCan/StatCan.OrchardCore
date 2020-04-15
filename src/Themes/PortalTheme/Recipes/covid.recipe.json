@@ -1,6 +1,6 @@
 {
-  "name": "covid-recipe",
-  "displayName": "Covid Theme recipe",
+  "name": "portal-recipe",
+  "displayName": "Portal Theme recipe",
   "description": "Enables the features required to work with this theme",
   "author": "Digital Innovation Team",
   "website": "https://digital.statcan.gc.ca",
@@ -54,7 +54,7 @@
         "OrchardCore.Templates",
         "OrchardCore.Widgets",
         "OrchardCore.Email",
-        "CovidTheme",
+        "PortalTheme",
         "TheAdmin",
         "SafeMode"
       ]
@@ -80,7 +80,7 @@
     {
       "name": "themes",
       "admin": "TheAdmin",
-      "site": "CovidTheme"
+      "site": "PortalTheme"
     }
   ]
 }

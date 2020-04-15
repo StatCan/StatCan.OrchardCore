@@ -6,7 +6,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   text-align: center;
-  i {
+  .icon {
     @include rfs(256);
   }
 }
@@ -14,14 +14,14 @@
 #hero-section-bottom {
   height: 6.5rem;
 }
-#hero-section ul li {
+#hero-section .navbar ul li {
   perspective: 300px;
 }
 @include media-breakpoint-up(lg) {
-  #hero-section li:first-child > .btn {
+  #hero-section .navbar li:first-child > .btn {
     transform: rotate3d(0, 1, 0, 10deg);
   }
-  #hero-section li:last-child > .btn {
+  #hero-section .navbar li:last-child > .btn {
     transform: rotate3d(0, 1, 0, -10deg);
   }
 }

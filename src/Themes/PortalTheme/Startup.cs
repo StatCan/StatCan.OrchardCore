@@ -3,7 +3,7 @@ using Microsoft.Extensions.Options;
 using OrchardCore.Modules;
 using OrchardCore.ResourceManagement;
 
-namespace StatCan.Themes.CovidTheme
+namespace StatCan.Themes.PortalTheme
 {
     public class Startup : StartupBase
     {

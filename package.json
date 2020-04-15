@@ -15,7 +15,7 @@
     "rebuild": "gulp rebuild",
     "help": "gulp help",
     "watch": " gulp watch",
-    "postinstall": "cd src/Themes/CovidTheme && npm i"
+    "postinstall": "cd src/Themes/PortalTheme && npm i"
   },
   "devDependencies": {
     "@babel/core": "7.9.0",

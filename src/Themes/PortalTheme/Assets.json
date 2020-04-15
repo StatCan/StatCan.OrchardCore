@@ -1,0 +1,34 @@
+[
+  {
+    "inputs": ["Assets/scss/portal-bootstrap.scss"],
+    "watch": [],
+    "output": "wwwroot/css/portal-bootstrap.css"
+  },
+  {
+    "inputs": ["node_modules/jquery/dist/jquery.js"],
+    "output": "wwwroot/Scripts/jquery.js"
+  },
+  {
+    "inputs": ["node_modules/bootstrap/dist/js/bootstrap.js"],
+    "output": "wwwroot/Scripts/bootstrap.js"
+  },
+  {
+    "inputs": ["node_modules/popper.js/dist/umd/popper.js"],
+    "output": "wwwroot/Scripts/popper.js"
+  },
+  {
+    "copy": true,
+    "inputs": ["node_modules/@fortawesome/fontawesome-free/css/*"],
+    "output": "wwwroot/Vendor/fontawesome-free/css/@"
+  },
+  {
+    "copy": true,
+    "inputs": ["node_modules/@fortawesome/fontawesome-free/js/*"],
+    "output": "wwwroot/Vendor/fontawesome-free/js/@"
+  },
+  {
+    "copy": true,
+    "inputs": ["node_modules/@fortawesome/fontawesome-free/webfonts/*"],
+    "output": "wwwroot/Vendor/fontawesome-free/webfonts/@"
+  }
+]

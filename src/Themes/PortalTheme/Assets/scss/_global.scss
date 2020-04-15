@@ -27,7 +27,14 @@ p {
   font-weight: 300;
 }
 
-.btn-lg.di-btn {
-  border-radius: 1.5rem;
-  text-transform: uppercase;
+.btn-lg {
+  &.di-btn {
+    border-radius: 1.5rem;
+    text-transform: uppercase;
+  }
+  &.circle {
+    padding: 0.5rem 0;
+    text-align: center;
+    width: 3rem;
+  }
 }
