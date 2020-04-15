@@ -3,8 +3,8 @@
   background-position: center bottom;
   background-size: cover;
   background-repeat: no-repeat;
-  padding-top: 8rem;
-  padding-bottom: 8rem;
+  padding-top: 6rem;
+  padding-bottom: 10rem;
 }
 
 .section-panel {
@@ -13,17 +13,8 @@
     transparentize($white, 0.97) 10%,
     transparent
   );
-
   border-radius: 2px;
   padding: 2rem;
-  // margin: -2rem;
-  // &:hover {
-  //   background-image: radial-gradient(
-  //     circle at 50% 15%,
-  //     transparentize($secondary, 0.6) 10%,
-  //     transparent
-  //   );
-  // }
   .section-panel-link-icon {
     align-items: center;
     display: flex;

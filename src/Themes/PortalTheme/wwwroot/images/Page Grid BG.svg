@@ -1,10 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1366" height="2066" viewBox="0 0 1366 2066">
   <defs>
     <clipPath id="clip-path">
-      <rect id="Mask" width="1366" height="2066" transform="translate(0 116)" fill="#fff"/>
+      <rect id="Mask" width="1366" height="2066" transform="translate(0 -158)" fill="#fff"/>
     </clipPath>
   </defs>
-  <g id="Page_Grid_BG" data-name="Page Grid BG" transform="translate(0 -116)">
+  <g id="Page_Grid_BG" data-name="Page Grid BG" transform="translate(0 158)">
     <g id="Grid_Mask_Group" data-name="Grid Mask Group" clip-path="url(#clip-path)">
       <path id="Bottom_Grid_Edge" data-name="Bottom Grid Edge" d="M1,1400.6l2424.9,1400,2424.841-1400L2425.843.6Z" transform="translate(-1743 -921.6)" fill="none" stroke="#171717" stroke-miterlimit="10" stroke-width="25"/>
       <g id="GRID" transform="translate(-1742 -935.266)">
