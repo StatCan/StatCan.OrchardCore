@@ -15,13 +15,27 @@
   height: 6.5rem;
   justify-content: flex-end;
   nav {
-    padding: 1rem;
-    @include media-breakpoint-up(md) {
-      padding-top: calc(1rem + 10vh);
+    div {
+      position: relative;
     }
-  }
-  .btn {
-    margin-top: 1rem;
+    div > a:nth-child(1).is-circle {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      @include media-breakpoint-up(md) {
+        top: calc(0.5rem + 11vh);
+        right: 5rem;
+      }
+    }
+    div > a:nth-child(2).is-circle {
+      position: absolute;
+      top: calc(11vh);
+      right: 1rem;
+    }
+    div > a.btn {
+      font-weight: 500;
+      @include rfs(19);
+    }
   }
 }
 .hero-footer {

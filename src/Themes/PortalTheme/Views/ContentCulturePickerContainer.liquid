@@ -1,7 +1,19 @@
+{% comment %} Assumption that we only support two cultures: EN and FR {% endcomment %}
+{% for culture in Model.SupportedCultures %}
+    {% if culture.Name != Model.CurrentCulture.Name %}
+        {% capture targetCultureName %}
+            {{ culture.Name }}
+        {% endcapture %}
+        {% capture targetCultureUrl %}
+            {{ culture | switch_culture_url}}
+        {% endcapture %}
+    {% endif %}
+{% endfor %} 
+
 <nav>
-    <ul class="list-unstyled d-block d-md-none">
-        <li class="nav-item dropdown">
-            <a class="nav-link btn btn-lg btn-primary di-btn circle" href="#" id="oc-culture-picker" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-bars"></i></a>
+    <div class="d-block d-md-none">
+        <div class="nav-item dropdown">
+            <a class="btn btn-primary is-circle" href="#" id="oc-culture-picker" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-bars"></i></a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="oc-culture-picker">
                 {% for culture in Model.SupportedCultures %}
                     {% if culture.Name != Model.CurrentCulture.Name %}
@@ -11,27 +23,12 @@
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="login">Login</a>
             </div>
-        </li>
-    </ul>
-    <ul class="list-inline d-none d-md-inline">
-        <li class="list-inline-item">
-            <a href="login" class="btn btn-lg btn-primary di-btn circle"><i class="fa-1x fas fa-sign-in-alt"></i></a>
-        </li>
-        <li class="list-inline-item">
-            <ul class="list-unstyled d-none d-md-block">
-                <li class="nav-item dropdown">
-                    <a class="nav-link btn btn-lg btn-primary di-btn circle" href="#" id="oc-culture-picker" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ Model.CurrentCulture.Name }}</a>
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="oc-culture-picker">
-                    {% for culture in Model.SupportedCultures %}
-                        {% if culture.Name != Model.CurrentCulture.Name %}
-                        <a class="dropdown-item" href="{{ culture.Name | switch_culture_url }}">{{culture.DisplayName}}</a>
-                        {% endif %}
-                    {% endfor %}
-                    </div>
-                </li>
-            </ul>
-        </li>
-    </ul>
+        </div>
+    </div>
+    <div class="d-none d-md-block">
+        <a href="login" class="btn btn-primary is-circle"><i class="fa-1x fas fa-sign-in-alt"></i></a>
+        <a href="{{ targetCultureUrl }}" class="btn btn-primary is-circle">{{ targetCultureName }}</a>
+    </div>
 </nav>
 
 

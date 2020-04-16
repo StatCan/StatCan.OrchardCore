@@ -28,14 +28,22 @@ p {
   font-weight: 300;
 }
 
+.btn {
+  &.is-circle {
+    align-items: center;
+    border-radius: 1.3rem;
+    display: flex;
+    justify-content: center;
+    padding: 0.3rem 0;
+    text-transform: uppercase;
+    width: 2.6rem;
+    height: 2.6rem;
+  }
+}
+
 .btn-lg {
   &.di-btn {
     border-radius: 1.5rem;
     text-transform: uppercase;
-  }
-  &.circle {
-    padding: 0.5rem 0;
-    text-align: center;
-    width: 3rem;
   }
 }

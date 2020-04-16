@@ -1,5 +1,3 @@
-$enable-responsive-font-sizes: true;
-
 $primary: #e33445;
 $secondary: #2caea5;
 $background: #151515;
@@ -11,3 +9,5 @@ $background: #151515;
 @import "section";
 @import "section-panel";
 @import "footer";
+
+$enable-responsive-font-sizes: true;
