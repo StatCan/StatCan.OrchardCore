@@ -1,5 +1,4 @@
 #hero-section {
-  position: relative;
   height: 100vh;
   min-height: 700px;
   background-image: url("../images/hero-bg-desktop.svg");
@@ -13,20 +12,16 @@
 }
 .hero-header {
   display: flex;
-  position: absolute;
-  right: 3rem;
-  top: 1rem;
-  span {
-    margin-right: 1rem;
-    &:nth-child(1) {
-      margin-top: 3rem;
+  height: 6.5rem;
+  justify-content: flex-end;
+  nav {
+    padding: 1rem;
+    @include media-breakpoint-up(md) {
+      padding-top: calc(1rem + 10vh);
     }
-    &:nth-child(2) {
-      margin-top: 2.5rem;
-    }
-    &:nth-child(2) {
-      margin-top: 2rem;
-    }
+  }
+  .btn {
+    margin-top: 1rem;
   }
 }
 .hero-footer {
@@ -47,7 +42,7 @@
   }
 }
 
-#hero-section .btn {
+#hero-section .nav-item .btn {
   box-shadow: 0 29px 30px rgba(0, 0, 0, 0.3);
 }
 
