@@ -13,10 +13,5 @@
     <PackageReference Include="OrchardCore.ContentFields" Version="$(OrchardCoreVersion)" />
     <PackageReference Include="OrchardCore.ContentManagement.Abstractions" Version="$(OrchardCoreVersion)" />
   </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="NetEscapades.AspNetCore.SecurityHeaders" />
-  </ItemGroup>
   
-
 </Project>
