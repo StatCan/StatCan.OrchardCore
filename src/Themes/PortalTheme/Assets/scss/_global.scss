@@ -19,6 +19,7 @@ h3,
   @include rfs(24);
   font-weight: 300;
 }
+h4,
 .h4 {
   font-weight: 200;
 }
@@ -26,6 +27,29 @@ p {
   @include rfs(17);
   line-height: 1.25rem;
   font-weight: 300;
+}
+
+.sig-wht {
+  height: 1rem;
+  margin: 1.5rem;
+}
+.canada {
+  height: 1.5rem;
+  margin: 1.5rem;
+}
+.fip-spacer {
+  width: 15vw;
+}
+
+@include media-breakpoint-up(lg) {
+  .sig-wht {
+    height: 1.75rem;
+    margin: 1.5rem;
+  }
+  .canada {
+    height: 2.25rem;
+    margin: 1.5rem;
+  }
 }
 
 .btn {
@@ -42,8 +66,10 @@ p {
 }
 
 .btn-lg {
-  &.di-btn {
+  &.is-rounded {
     border-radius: 1.5rem;
+    padding-left: 3rem !important;
+    padding-right: 3rem !important;
     text-transform: uppercase;
   }
 }

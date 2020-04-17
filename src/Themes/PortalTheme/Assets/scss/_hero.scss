@@ -1,6 +1,74 @@
-#hero-section {
-  height: 100vh;
-  min-height: 700px;
+.hero {
+  &.is-fullheight {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      flex-shrink: 0;
+    }
+    .hero-body {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      flex-shrink: 0;
+
+      .nav-item .btn {
+        box-shadow: 0 29px 30px rgba(0, 0, 0, 0.3);
+      }
+
+      .navbar ul li {
+        perspective: 300px;
+      }
+      @include media-breakpoint-up(lg) {
+        .navbar li:first-child > .btn {
+          transform: rotate3d(0, 1, 0, 10deg);
+        }
+        .navbar li:last-child > .btn {
+          transform: rotate3d(0, 1, 0, -10deg);
+        }
+      }
+    }
+    .hero-header {
+      display: flex;
+      height: 6.5rem;
+      justify-content: flex-end;
+      nav {
+        div {
+          position: relative;
+        }
+        div > a:nth-child(1).is-circle {
+          position: absolute;
+          top: 1rem;
+          right: 1rem;
+          @include media-breakpoint-up(md) {
+            top: calc(0.5rem + 11vh);
+            right: 5rem;
+          }
+        }
+        div > a:nth-child(2).is-circle {
+          position: absolute;
+          top: calc(11vh);
+          right: 1rem;
+        }
+        div > a.btn {
+          font-weight: 500;
+          @include rfs(19);
+        }
+      }
+    }
+    .hero-footer {
+      align-items: flex-end;
+      display: flex;
+      height: 6.5rem;
+      justify-content: center;
+    }
+  }
+}
+.portal-hud {
   background-image: url("../images/hero-bg-desktop.svg");
   background-position: center bottom;
   background-repeat: no-repeat;
@@ -9,55 +77,6 @@
   .icon {
     @include rfs(192);
   }
-}
-.hero-header {
-  display: flex;
-  height: 6.5rem;
-  justify-content: flex-end;
-  nav {
-    div {
-      position: relative;
-    }
-    div > a:nth-child(1).is-circle {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      @include media-breakpoint-up(md) {
-        top: calc(0.5rem + 11vh);
-        right: 5rem;
-      }
-    }
-    div > a:nth-child(2).is-circle {
-      position: absolute;
-      top: calc(11vh);
-      right: 1rem;
-    }
-    div > a.btn {
-      font-weight: 500;
-      @include rfs(19);
-    }
-  }
-}
-.hero-footer {
-  align-items: flex-end;
-  display: flex;
-  height: 6.5rem;
-  justify-content: center;
-}
-#hero-section .navbar ul li {
-  perspective: 300px;
-}
-@include media-breakpoint-up(lg) {
-  #hero-section .navbar li:first-child > .btn {
-    transform: rotate3d(0, 1, 0, 10deg);
-  }
-  #hero-section .navbar li:last-child > .btn {
-    transform: rotate3d(0, 1, 0, -10deg);
-  }
-}
-
-#hero-section .nav-item .btn {
-  box-shadow: 0 29px 30px rgba(0, 0, 0, 0.3);
 }
 
 .sig-wht {
