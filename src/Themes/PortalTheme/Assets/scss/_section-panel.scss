@@ -37,9 +37,14 @@
     align-items: center;
     display: flex;
     justify-content: center;
-    min-height: 4rem;
+    max-height: 4rem;
     min-width: 5rem;
+    img {
+      height: 2.5rem;
+      width: 2.5rem;
+    }
   }
+
   li:hover {
     background-image: radial-gradient(
       circle at 15% 15%,

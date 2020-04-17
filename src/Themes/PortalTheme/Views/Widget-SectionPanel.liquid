@@ -10,7 +10,11 @@
           <a href="{{ item.SectionPanelLink.Url.Text }}">
             <div>
               <div class="section-panel-link-icon text-primary">
+                {% if item.SectionPanelLink.Image.Paths.first != null %}
+                <img src="{{ item.SectionPanelLink.Image.Paths.first | asset_url }}" style="height: 2.5rem; width: 2.5rem"/>
+                {% else %}
                 <i class="fa-2x {{ item.SectionPanelLink.Icon.Text }}"></i>
+                {% endif %}
               </div>
               <div>
                 <h3>{{ item.SectionPanelLink.Name.Text }}</h3>
