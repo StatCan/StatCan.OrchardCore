@@ -1,0 +1,9 @@
+<section class="content-section">
+  <div class="container">
+    <div class="row">
+      {% for item in Model.ContentItem.Content.SectionPanels.ContentItems %}
+      {{ item | shape_build_display | shape_render }}
+      {% endfor %}
+    </div>
+  </div>
+</section>

@@ -17,7 +17,7 @@
       flex-shrink: 0;
 
       .nav-item .btn {
-        box-shadow: 0 29px 30px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 29px 30px rgba(17, 15, 15, 0.3);
       }
 
       .navbar ul li {
@@ -76,28 +76,5 @@
   text-align: center;
   .icon {
     @include rfs(192);
-  }
-}
-
-.sig-wht {
-  height: 1rem;
-  margin: 1.5rem;
-}
-.canada {
-  height: 1.5rem;
-  margin: 1.5rem;
-}
-.fip-spacer {
-  width: 15vw;
-}
-
-@include media-breakpoint-up(lg) {
-  .sig-wht {
-    height: 1.75rem;
-    margin: 1.5rem;
-  }
-  .canada {
-    height: 2.25rem;
-    margin: 1.5rem;
   }
 }

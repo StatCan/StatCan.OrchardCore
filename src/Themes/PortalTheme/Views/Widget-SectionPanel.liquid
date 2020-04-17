@@ -1,0 +1,26 @@
+<article class="col-lg-6 col-12 my-3">
+  <div class="section-panel d-flex flex-column align-items-center">
+    <i class="m-2 fa-3x {{ Model.ContentItem.Content.SectionPanel.Icon.Text }}"></i>
+    <h2 class="text-center">{{ Model.ContentItem.Content.SectionPanel.Title.Text }}</h2>
+    <p class="text-center mb-5">{{ Model.ContentItem.Content.SectionPanel.Description.Text }}</p>
+    <nav class="row">
+      <ul class="list-unstyled {{ Model.ContentItem.Content.SectionPanel.ListDirection.Text }}">
+      {% for item in Model.ContentItem.Content.Links.ContentItems %}
+        <li class="p-2">
+          <a href="{{ item.SectionPanelLink.Url.Text }}">
+            <div class="d-flex {{ Model.ContentItem.Content.SectionPanel.ListDirection.Text }}">
+              <div class="section-panel-link-icon text-primary">
+                <i class="fa-2x {{ item.SectionPanelLink.Icon.Text }}"></i>
+              </div>
+              <div>
+                <h3>{{ item.SectionPanelLink.Name.Text }}</h3>
+                <p class="text-secondary">{{ item.SectionPanelLink.Description.Text }}</p>
+              </div>
+            </div>
+          </a>
+        </li>
+      {% endfor %}
+      </ul>
+    </nav>
+  </div>
+</article>
