@@ -5,15 +5,39 @@
     transparentize(#aeaeae, 0.92) 0,
     transparentize(#aeaeae, 1) 17rem
   );
-
   border-radius: 2px;
   padding: 2rem;
+
+  .is-vertical-list {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    list-style-type: none;
+    padding-left: 0;
+    li > a > div {
+      display: flex;
+      flex-direction: row;
+    }
+  }
+
+  .is-horizontal-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    list-style-type: none;
+    padding-left: 0;
+    li > a > div {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+    }
+  }
 
   .section-panel-link-icon {
     align-items: center;
     display: flex;
     justify-content: center;
-    max-height: 3rem;
+    min-height: 4rem;
     min-width: 5rem;
   }
   li:hover {

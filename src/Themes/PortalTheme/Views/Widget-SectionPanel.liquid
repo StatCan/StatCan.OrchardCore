@@ -3,12 +3,12 @@
     <i class="m-2 fa-3x {{ Model.ContentItem.Content.SectionPanel.Icon.Text }}"></i>
     <h2 class="text-center">{{ Model.ContentItem.Content.SectionPanel.Title.Text }}</h2>
     <p class="text-center mb-5">{{ Model.ContentItem.Content.SectionPanel.Description.Text }}</p>
-    <nav class="row">
-      <ul class="list-unstyled {{ Model.ContentItem.Content.SectionPanel.ListDirection.Text }}">
+    <nav>
+      <ul class="{{ Model.ContentItem.Content.SectionPanel.ListDirection.Text }}">
       {% for item in Model.ContentItem.Content.Links.ContentItems %}
-        <li class="p-2">
+        <li class="{% if Model.ContentItem.Content.SectionPanel.ListDirection.Text == 'is-vertical-list' %}d-block{% else %}col-4{% endif %}">
           <a href="{{ item.SectionPanelLink.Url.Text }}">
-            <div class="d-flex {{ Model.ContentItem.Content.SectionPanel.ListDirection.Text }}">
+            <div>
               <div class="section-panel-link-icon text-primary">
                 <i class="fa-2x {{ item.SectionPanelLink.Icon.Text }}"></i>
               </div>
