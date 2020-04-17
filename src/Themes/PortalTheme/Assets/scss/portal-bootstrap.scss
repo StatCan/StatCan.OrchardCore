@@ -2,6 +2,8 @@ $primary: #e33445;
 $secondary: #2caea5;
 $background: #151515;
 
+$enable-responsive-font-sizes: true;
+
 /*Bootstrap partial that include what we need for bs*/
 @import "bootstrap";
 @import "global";
@@ -9,5 +11,3 @@ $background: #151515;
 @import "section";
 @import "section-panel";
 @import "footer";
-
-$enable-responsive-font-sizes: true;
