@@ -26,7 +26,9 @@
         </div>
     </div>
     <div class="d-none d-md-block">
+        {% unless User.Identity.IsAuthenticated %}
         <a href="login" class="btn btn-primary is-circle"><i class="fa-1x fas fa-sign-in-alt"></i></a>
+        {% endunless %}
         <a href="{{ targetCultureUrl }}" class="btn btn-primary is-circle">{{ targetCultureName }}</a>
     </div>
 </nav>
