@@ -1,4 +1,4 @@
-<article class="{{ Model.ContentItem.Content.SectionPanel.Size.Text }} my-3">
+<article id="{{ Model.ContentItem | display_text | slugify }}" class="{{ Model.ContentItem.Content.SectionPanel.Size.Text }} my-3">
   <div class="section-panel d-flex flex-column align-items-center">
     <i class="m-2 fa-3x {{ Model.ContentItem.Content.SectionPanel.Icon.Text }}"></i>
     <h2 class="text-center">{{ Model.ContentItem.Content.SectionPanel.Title.Text }}</h2>
