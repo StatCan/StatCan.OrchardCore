@@ -77,3 +77,11 @@ p {
     text-transform: uppercase;
   }
 }
+
+.input-validation-error {
+  border: 1px solid #e33445; /*red, not primary cuz it's error. full red is gross */
+}
+
+hr {
+  border-top: 1px solid #2caea5;
+}
