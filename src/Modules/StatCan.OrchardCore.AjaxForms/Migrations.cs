@@ -44,7 +44,7 @@ namespace StatCan.OrchardCore.AjaxForms
                 .Stereotype("Widget"));
 
             // Text Input
-            _contentDefinitionManager.AlterPartDefinition("FormTextInput", p => p
+            _contentDefinitionManager.AlterPartDefinition("FormInput", p => p
                 .WithTextField("Name", "Name", "0", new TextFieldSettings(){ Required = true })
                 .WithField("Type", f => f
                     .OfType(nameof(TextField))
@@ -89,25 +89,25 @@ namespace StatCan.OrchardCore.AjaxForms
                     Hint = "(optional) CSS class applied to the input element. 'form-group' by default"
                 })
                 // validation
-                .WithTextField("ValidText", "Valid Message", "8", new TextFieldSettings(){
-                    Hint = "(optional) Message displayed when the input is valid."
-                })
-                .WithTextField("InvalidText", "Invalid Message", "9", new TextFieldSettings(){
-                    Hint = "(optional) Message displayed when the input is invalid."
-                })
+               
                 .WithBooleanField("Required","Required", "10",
                     new BooleanFieldSettings(){
                         Hint = "Is this input required?"}
+
                 )
+                .WithTextField("RequiredText", "Required Error Message", "8", new TextFieldSettings()
+                {
+                    Hint = "(optional) Message displayed when the input is required and is not filled"
+                })
             );
-             _contentDefinitionManager.AlterTypeDefinition("FormTextInput", type => type
+             _contentDefinitionManager.AlterTypeDefinition("FormInput", type => type
                 .WithPart(nameof(TitlePart), p => p
                     .WithPosition("0")
                     .WithSettings(new TitlePartSettings() {
                         Options = TitlePartOptions.GeneratedHidden,
-                        Pattern = "{{ ContentItem.Content.FromTextInput.Name.Text }}" })
+                        Pattern = "{{ ContentItem.Content.FromInput.Name.Text }}" })
                 )
-                .WithPart("FormTextInput")
+                .WithPart("FromInput")
                 .Stereotype("Widget"));
 
             // Button

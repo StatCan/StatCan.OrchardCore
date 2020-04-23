@@ -10,8 +10,6 @@
   content: "* ";
   color: red; }
 
-.ajax-form.was-validated .form-control-wrapper.valid .valid-feedback {
-  display: block; }
-
-.ajax-form.was-validated .form-control-wrapper.invalid .invalid-feedback {
-  display: block; }
+.ajax-form .field-validation-error {
+  color: red;
+  font-size: smaller; }

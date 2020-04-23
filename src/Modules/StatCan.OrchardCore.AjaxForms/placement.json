@@ -1,30 +1,26 @@
 {
   "TextField_Edit": [
     {
-      "differentiator": "FormTextInput-WrapperClass",
+      "differentiator": "FormInput-WrapperClass",
       "place": "Parts#Styles:0"
     },
     {
-      "differentiator": "FormTextInput-LabelClass",
+      "differentiator": "FormInput-LabelClass",
       "place": "Parts#Styles:1"
     },
     {
-      "differentiator": "FormTextInput-InputClass",
+      "differentiator": "FormInput-InputClass",
       "place": "Parts#Styles:2"
     },
     {
-      "differentiator": "FormTextInput-ValidText",
-      "place": "Parts#Validation:0"
-    },
-    {
-      "differentiator":  "FormTextInput-InvalidText",
+      "differentiator": "FormInput-RequiredText",
       "place": "Parts#Validation:1"
     }
   ],
   "BooleanField_Edit": [
     {
-      "differentiator": "FormTextInput-Required",
-      "place": "Parts#Validation:2"
+      "differentiator": "FormInput-Required",
+      "place": "Parts#Validation:0"
     }
   ]
 }

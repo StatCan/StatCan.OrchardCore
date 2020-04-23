@@ -1,0 +1,48 @@
+@using StatCan.OrchardCore.AjaxForms.Models
+@{
+    var part = ((ContentItem)Model.ContentItem).As<FormInput>();
+
+    var name = part.Name.Text;
+    var fieldId = !string.IsNullOrEmpty(name) ? Html.GenerateIdFromName(name) : default(string);
+    var type = part.Type.Text;
+    var value = "";
+
+    var label = part.Name.Text;
+    var placeholder = part.Placeholder.Text;
+    var helptext = part.HelpText.Text;
+
+    // classes
+    var wrapperClass = part.WrapperClass?.Text ?? "form-group";;
+    var labelClass = part.LabelClass?.Text;
+    var inputClass = part.InputClass?.Text ?? "form-control";
+
+    if(!string.IsNullOrEmpty(wrapperClass))
+    {
+      Model.Classes.Add(wrapperClass);
+    }
+
+    if (part.Required.Value)
+    {
+      Model.Classes.Add("required");
+    }
+    if (ViewData.ModelState.TryGetValue(name, out var fieldEntry))
+    {
+      value = fieldEntry.AttemptedValue;
+      if (fieldEntry.Errors.Count > 0)
+      {
+        inputClass += " is-invalid";
+      }
+    }
+}
+  <div class="form-control-wrapper @string.Join(" ", Model.Classes)" asp-validation-class-for="@name">
+    <label class="@labelClass" asp-for="@name">@label</label>
+    <input id="@fieldId" name="@name" type="@type" value="@value" class="@inputClass" placeholder="@placeholder" aria-describedby="@fieldId-described-by" form-input-validation="@part"/>
+
+    <div id="@fieldId-described-by">
+      @if (!string.IsNullOrWhiteSpace(helptext))
+      {
+        <small class="form-text">@helptext</small>
+      }
+    </div>
+    @Html.ValidationMessage(fieldId)
+  </div>

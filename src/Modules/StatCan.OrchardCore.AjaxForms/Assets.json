@@ -5,7 +5,7 @@
     "output": "wwwroot/ajax-forms.css"
   },
   {
-    "inputs": [ "Assets/ajax-forms.js" ],
+    "inputs": ["Assets/jquery-validation-unobtrusive.js", "Assets/ajax-forms.js" ],
     "output": "wwwroot/ajax-forms.js"
   }
 ]
