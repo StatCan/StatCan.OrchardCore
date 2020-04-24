@@ -28,6 +28,7 @@ namespace StatCan.OrchardCore.Security
                 builder.AddStyleSrc().UnsafeInline().Self()
                 .From("cdn.jsdelivr.net")
                 .From("fonts.googleapis.com")
+                .From("code.jquery.com")
                 .From("unpkg.com")
                 .From("cdnjs.cloudflare.com")
                 .From("stackpath.bootstrapcdn.com")
