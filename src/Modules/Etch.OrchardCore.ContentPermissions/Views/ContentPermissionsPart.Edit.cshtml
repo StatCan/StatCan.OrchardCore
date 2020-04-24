@@ -1,0 +1,61 @@
+﻿@using Etch.OrchardCore.ContentPermissions.ViewModels
+
+@model ContentPermissionsPartEditViewModel
+
+<h5>
+    @T["Content Permissions"] <span class="hint"> @T["— Define security for who can view content."]</span>
+</h5>
+
+<div class="form-group mt-3 mb-3">
+    <div class="row">
+        <div class="col">
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" asp-for="Enabled">
+                <label class="custom-control-label" asp-for="Enabled">@T["Enable content item access control"]</label>
+            </div>
+
+            <span class="hint">@T["Check to define which roles can access this content item."]</span>
+        </div>
+    </div>
+</div>
+
+<div id="@Html.IdFor(m => m.Roles)" class="form-group" asp-validation-class-for="Roles">
+    <span class="hint">@T["Select which roles are able to access content item."]</span>
+
+    <div class="row">
+        @for (var i = 0; i < Model.PossibleRoles.Length; i++)
+        {
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="@(Html.IdFor(m => m.Roles) + "_" + i)" name="@Html.NameFor(m => m.Roles)" value="@Model.PossibleRoles[i]" @(Model.Roles.Contains(Model.PossibleRoles[i]) ? "checked=\"checked\"" : "")>
+                    <label class="custom-control-label" for="@(Html.IdFor(m => m.Roles) + "_" + i)">@Model.PossibleRoles[i]</label>
+                </div>
+            </div>
+        }
+    </div>
+
+    <span asp-validation-for="Roles"></span>
+</div>
+
+<script at="Foot">
+    (function () {
+        var $enabled = document.getElementById('@Html.IdFor(m => m.Enabled)'),
+            $rolesSection = document.getElementById('@Html.IdFor(m => m.Roles)');
+
+        var updateState = function () {
+            console.log($enabled);
+
+            if ($enabled.checked) {
+                $rolesSection.classList.remove('d-none');
+                $rolesSection.classList.add('d-block');
+                return;
+            }
+
+            $rolesSection.classList.remove('d-block');
+            $rolesSection.classList.add('d-none');
+        }
+
+        $enabled.addEventListener('change', updateState);
+        updateState();
+    })();
+</script>

@@ -1,0 +1,23 @@
+@using Etch.OrchardCore.ContentPermissions.ViewModels
+
+@model ContentPermissionsPartSettingsViewModel
+
+<div class="form-group mt-3 mb-3">
+  <div class="row">
+    <div class="col">
+      <div class="custom-control custom-checkbox">
+        <input type="checkbox" class="custom-control-input" asp-for="DisableRedirect">
+        <label class="custom-control-label" asp-for="DisableRedirect">@T["Disable redirect"]</label>
+      </div>
+
+      <span class="hint">@T["Check to disable the automatic redirect. Useful to implement display rules for widgets"]</span>
+    </div>
+  </div>
+</div>
+<div class="row mb-3">
+    <div class="col-lg">
+        <label asp-for="RedirectUrl">@T["Redirect URL"]</label>
+        <input type="text" asp-for="RedirectUrl" class="form-control" />
+        <span class="hint">@T["User will be redirected to this URL when unable to access content item. Default will redirect user to /Error/403."]</span>
+    </div>
+</div>

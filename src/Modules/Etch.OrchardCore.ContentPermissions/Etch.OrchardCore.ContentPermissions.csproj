@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+  <PropertyGroup>
+    <TargetFramework>$(AspNetCoreTargetFramework)</TargetFramework>
+    <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
+    <CodeAnalysisRuleSet>..\..\..\roslynator.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="OrchardCore.ContentManagement" Version="$(OrchardCoreVersion)" />
+    <PackageReference Include="OrchardCore.ContentManagement.Display" Version="$(OrchardCoreVersion)" />
+    <PackageReference Include="OrchardCore.ContentTypes" Version="$(OrchardCoreVersion)" />
+    <PackageReference Include="OrchardCore.DisplayManagement" Version="$(OrchardCoreVersion)" />
+    <PackageReference Include="OrchardCore.ResourceManagement" Version="$(OrchardCoreVersion)" />
+    <PackageReference Include="OrchardCore.Module.Targets" Version="$(OrchardCoreVersion)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+</Project>
