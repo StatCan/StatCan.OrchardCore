@@ -4,10 +4,10 @@
     <PropertyGroup>
       <_IsEmptyAssembly Condition=" '@(Compile)' == '' and  '@(EmbeddedResource)' == '' ">true</_IsEmptyAssembly>
     </PropertyGroup>
-    
-    <Warning Condition=" '$(_IsEmptyAssembly)' == 'true' and '$(IncludeBuildOutput)' != 'false' " 
+
+    <Warning Condition=" '$(_IsEmptyAssembly)' == 'true' and '$(IncludeBuildOutput)' != 'false' "
              Code="OC2001"
-             Text="Project contains no 'Compile' or 'EmbeddedResource' items. Set &lt;IncludeBuildOutput&gt;false&lt;/IncludeBuildOutput&gt; in $(MSBuildProjectFile)." 
+             Text="Project contains no 'Compile' or 'EmbeddedResource' items. Set &lt;IncludeBuildOutput&gt;false&lt;/IncludeBuildOutput&gt; in $(MSBuildProjectFile)."
              File="$(MSBuildProjectFullPath)" />
   </Target>
 
@@ -20,7 +20,7 @@
     </PropertyGroup>
     <Warning Condition=" '%(PackageReference.Identity)' == '$(_PackageManagementIdentity)' and '%(PackageReference.Version)' == '$(_PackageManagementVersion)' "
              Code="OC2002"
-             Text="PackageReference %(PackageReference.Identity)@%(PackageReference.Version) Version attribute is not needed" 
+             Text="PackageReference %(PackageReference.Identity)@%(PackageReference.Version) Version attribute is not needed"
              File="$(MSBuildProjectFullPath)" />
     <ItemGroup>
       <PackageReference Condition=" '%(Identity)' == '$(_PackageManagementIdentity)' " Version="$(_PackageManagementVersion)" ManagedVersion="true" />
@@ -34,6 +34,16 @@
   <Target Name="AfterPackageManagement" AfterTargets="ApplyPackageManagement">
     <Message Text="AfterPackageManagement: %(PackageReference.Identity)@%(PackageReference.Version)" Importance="low" />
 
+    <ItemGroup>
+      <UnmanagedPackageReference Include="@(PackageReference)" />
+      <UnmanagedPackageReference Remove="@(UnmanagedPackageReference)" Condition=" '%(UnmanagedPackageReference.ManagedVersion)' == 'true' " />
+      <UnmanagedPackageReference Remove="@(UnmanagedPackageReference)" Condition=" '%(UnmanagedPackageReference.IsImplicitlyDefined)' == 'true' " />
+      <UnmanagedPackageReference Remove="@(UnmanagedPackageReference)" Condition=" $([System.String]::Copy('%(Identity)').StartsWith('System.')) " />
+    </ItemGroup>
+    <Warning Condition=" '@(UnmanagedPackageReference)' != '' and '%(Identity)' != 'Microsoft.AspNetCore.App' "
+             Code="OC2003"
+             Text="%(UnmanagedPackageReference.Identity)@%(UnmanagedPackageReference.Version) is an unmanaged PackageReference"
+             File="$(MSBuildProjectFullPath)" />
   </Target>
 
 </Project>
