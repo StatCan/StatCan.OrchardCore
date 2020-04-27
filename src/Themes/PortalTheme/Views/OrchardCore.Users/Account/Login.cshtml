@@ -18,9 +18,10 @@
     <h1 class="text-center">@T["Log In"]</h1>
     <p class="text-center h4">@(Site.SiteName)</p>
     <div class="row justify-content-around mt-5">
-        @if (loginProviders.Count > 0)    
-        {        
-        <div class="flex-fill col-lg-4 col-md-5 col-12 @(disableLocalLogin ? "offset-md-3" : String.Empty)">
+        @if (loginProviders.Count > 0 || userCanRegister)    
+        {
+        <div class="flex-fill @(loginProviders.Count > 0 ? "col-lg-5 col-md-6 col-12" : "col-12") @(disableLocalLogin ? "offset-md-3" : String.Empty)">
+            @if (loginProviders.Count > 0) {     
             <section class="section-panel">
                 <h2 class="text-center">@T["Log in with"]</h2>
                 <p class="text-center">@T["Linked accounts must have a verified @canada.ca email"]</p>
@@ -38,12 +39,20 @@
                     </div>
                 </form>
             </section>
+            }
+            @if (userCanRegister)
+            {
+            <section class="d-flex justify-content-center">
+                <a class="h4" asp-controller="Registration" asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]">@T["Register as a new user"]</a>
+            </section>
+            }
         </div>
         }
         @if (!disableLocalLogin)
         {
-        <div class="flex-fill col-lg-4 col-md-5 col-12 @(disableLocalLogin ? "offset-md-3" : String.Empty)">
+        <div class="flex-fill col-lg-5 col-md-6 col-12 @(disableLocalLogin ? "offset-md-3" : String.Empty)">
             <section class="section-panel">
+                <h2 class="text-center">@T["vLab account"]</h2>
                 <form asp-controller="Account" asp-action="Login" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="auth-form">
                     <div asp-validation-summary="All" class="text-danger"></div>
                     <div class="form-group d-flex flex-column align-items-center justify-content-center">
@@ -76,10 +85,5 @@
         </div>
         }
     </div>
-    <div class="col-12 d-flex justify-content-center">
-        @if (userCanRegister)
-        {
-        <a class="h4" asp-controller="Registration" asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]">@T["Register as a new user"]</a>
-        }
-    </div>
+
 </div>
