@@ -6,6 +6,7 @@ body {
   background-color: $background;
   color: $white;
   font-family: "Fira Sans", sans-serif;
+  height: 100vh;
 }
 
 h1,
@@ -31,6 +32,10 @@ p {
   @include rfs(17);
   line-height: 1.25rem;
   font-weight: 300;
+}
+
+label {
+  font-weight: 200;
 }
 
 .sig-wht {
@@ -84,4 +89,18 @@ p {
 
 hr {
   border-top: 1px solid #2caea5;
+}
+
+.form-control {
+  background: transparentize($white, 0.95);
+  border-color: transparentize($white, 0.95);
+  color: $white;
+  &:focus {
+    background: transparentize($white, 0.95);
+    border-color: transparentize($white, 0.95);
+    color: $white;
+  }
+  &.input-validation-error {
+    border-color: #e33445;
+  }
 }

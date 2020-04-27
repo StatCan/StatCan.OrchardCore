@@ -1,12 +1,13 @@
 $primary: #e33445;
 $secondary: #2caea5;
-$background: #151515;
+$background: #101010;
 
 $enable-responsive-font-sizes: true;
 
 /*Bootstrap partial that include what we need for bs*/
 @import "bootstrap";
 @import "global";
+@import "login";
 @import "hero";
 @import "section";
 @import "section-panel";

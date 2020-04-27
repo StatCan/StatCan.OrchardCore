@@ -1,4 +1,4 @@
-<section id="hero-section" class="hero is-fullheight portal-hud">
+<section class="hero is-fullheight portal-hud">
   <div class="container">
   	<div class="hero-header">
   	  {% shape "ContentCulturePicker" %}
@@ -8,12 +8,16 @@
       <h1>{{  Model.ContentItem.Content.Hero.Title.Text }}</h1>
       <p class="h3 m-2">{{  Model.ContentItem.Content.Hero.Subtitle.Text }}</p>
       <nav class="navbar navbar-expand-lg" role="navigation">
-        <ul class="navbar-nav mr-auto"> 
+        <ul class="navbar-nav mr-auto">
+          {% if Model.ContentItem | user_can_view %}
           {% for item in Model.ContentItem.Content.Links.ContentItems %}
           <li class="nav-item m-2">
             {{ item | shape_build_display | shape_render }}
           </li>
           {% endfor %}
+          {% else %}
+            <a href="login" class="btn btn-lg btn-primary is-rounded nav-link">Login</a>
+          {% endif %}
         </ul>
       </nav>
       <span class="text-secondary d-block d-md-none h2 mt-4"><i class="fas fa-chevron-down"></i></span>
