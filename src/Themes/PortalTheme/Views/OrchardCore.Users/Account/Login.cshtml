@@ -15,22 +15,21 @@
     var loginProviders = (await SignInManager.GetExternalAuthenticationSchemesAsync()).ToList();
     var disableLocalLogin = (await SiteService.GetSiteSettingsAsync()).As<LoginSettings>().DisableLocalLogin;
 }
-    <h1 class="text-center">@T["Log In"]</h1>
+    <h1 class="text-center pt-3">@T["Log In"]</h1>
     <p class="text-center h4">@(Site.SiteName)</p>
     <div class="row justify-content-around mt-5">
         @if (loginProviders.Count > 0 || userCanRegister)    
         {
-        <div class="flex-fill @(loginProviders.Count > 0 ? "col-lg-5 col-md-6 col-12" : "col-12") @(disableLocalLogin ? "offset-md-3" : String.Empty)">
+        <div class="flex-fill @(loginProviders.Count > 0 ? "col-lg-5 col-md-6 col-12" : "col-12")">
             @if (loginProviders.Count > 0) {     
             <section class="section-panel">
                 <h2 class="text-center">@T["Log in with"]</h2>
                 <p class="text-center">@T["Linked accounts must have a verified @canada.ca email"]</p>
-
                 <form asp-controller="Account" asp-action="ExternalLogin" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="d-flex justify-content-center">
                     <div class="d-flex flex-column justify-content-center">
                         @foreach (var provider in loginProviders)
                         {
-                            <button type="submit" class="btn btn-lg btn-primary m-2 nav-link is-rounded @(disableLocalLogin ? "w-100" : String.Empty)" name="provider" value="@provider.Name" title="@provider.DisplayName">@if (provider.DisplayName == "GitHub") { <i class="fab fa-github mr-2"></i> } @if (provider.DisplayName == "Azure") { <i class="fab fa-microsoft mr-2"></i> } @provider.DisplayName</button>
+                        <button type="submit" class="btn btn-lg btn-primary m-2 nav-link is-rounded" name="provider" value="@provider.Name" title="@provider.DisplayName">@if (provider.DisplayName == "GitHub") { <i class="fab fa-github mr-2"></i> } @if (provider.DisplayName == "Azure") { <i class="fab fa-microsoft mr-2"></i> } @provider.DisplayName</button>
                             @if (disableLocalLogin)
                             {
                                 <br />
@@ -50,7 +49,7 @@
         }
         @if (!disableLocalLogin)
         {
-        <div class="flex-fill col-lg-5 col-md-6 col-12 @(disableLocalLogin ? "offset-md-3" : String.Empty)">
+        <div class="flex-fill col-lg-5 col-md-6 col-12">
             <section class="section-panel">
                 <h2 class="text-center">@T["vLab account"]</h2>
                 <form asp-controller="Account" asp-action="Login" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="auth-form">
@@ -66,14 +65,13 @@
                         <span id="Password-described-by" asp-validation-for="Password" class="text-danger"></span>
                     </div>
                     <div class="form-group custom-control custom-checkbox d-flex justify-content-center">
-                        <input asp-for="RememberMe" class="custom-control-input" >
+                        <input asp-for="RememberMe" class="custom-control-input" />
                         <label asp-for="RememberMe" class="custom-control-label">@T["Remember me"]</label>
                     </div>
                     @await RenderSectionAsync("AfterLogin", required: false)
                     <div class="d-flex justify-content-center">
                         <button type="submit" class="btn btn-lg btn-primary is-rounded"><span>@T["Login"]</span></button>
                     </div>
-                    
                     @if (allowResetPassword)
                     {
                     <div class="mt-3">
@@ -85,5 +83,3 @@
         </div>
         }
     </div>
-
-</div>

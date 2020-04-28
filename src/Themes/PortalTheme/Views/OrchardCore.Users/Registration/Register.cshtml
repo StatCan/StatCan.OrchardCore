@@ -11,41 +11,53 @@
      var disableLocalLogin = (await SiteService.GetSiteSettingsAsync()).As<LoginSettings>().DisableLocalLogin;
 }
 
-<h1>@T["Create a new account"]</h1>
-<form asp-controller="Registration" asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal">
-    <hr />
-    <div asp-validation-summary="All" class="text-danger"></div>
-    <div class="form-group">
-        <label asp-for="UserName" class="control-label asterix">@T["Username"]</label>
-        <input asp-for="UserName" class="form-control" aria-describedby="UserName-described-by" />
-        <span id="UserName-described-by" asp-validation-for="UserName" class="text-danger"></span>
+<h1 class="text-center pt-3">@T["Create a new account"]</h1>
+<p class="text-center h4">@(Site.SiteName)</p>
+<div class="row justify-content-center mt-5">
+    <div class="section-panel col-xl-4 col-lg-5 col-md-8 col-sm-10 col-12">
+        <form asp-controller="Registration" asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="UserName" class="control-label asterix">@T["Username"]</label>
+                <input asp-for="UserName" class="form-control" aria-describedby="UserName-described-by" />
+                <span id="UserName-described-by" asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label asterix">@T["Email"]</label>
+                <input asp-for="Email" class="form-control" aria-describedby="Email-described-by" />
+                <span id="Email-described-by" asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                <div class="form-group">
+                    <label asp-for="Password" class="control-label asterix">@T["Password"]</label>
+                    <div class="d-flex">
+                        <input asp-for="Password" class="form-control" aria-describedby="Password-described-by" />
+                    </div>
+                    <div id="Password-described-by">
+                    <span  asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ConfirmPassword" class="control-label asterix">@T["Confirm password"]</label>
+                    <input asp-for="ConfirmPassword" class="form-control" aria-describedby="ConfirmPassword-described-by" />
+                    <span id="ConfirmPassword-described-by" asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                </div>
+                </div>
+                <div class="col-6 d-flex align-items-center">
+                    <small class="form-text text-muted">@T["The password must contain at least:<br>• 8 characters<br>• one uppercase letter<br>• one lowercase letter<br>• one number<br>• one special character"]</small>
+                </div>
+            </div>
+            @await RenderSectionAsync("AfterRegister", required: false)
+            <div class="form-group mt-4 d-flex justify-content-center">
+                <button type="submit" class="btn btn-lg btn-primary is-rounded"><span>@T["Create a new account"]</span></button>
+            </div>
+        </form>
+        @if (!disableLocalLogin)
+        {
+            <div class="mt-4 d-flex justify-content-center">
+            <a asp-route-area="OrchardCore.Users" asp-controller="Account" asp-action="Login">@T["Already have an account? Login"]</a>
+            </div>
+        }
     </div>
-    <div class="form-group">
-        <label asp-for="Email" class="control-label asterix">@T["Email"]</label>
-        <input asp-for="Email" class="form-control" aria-describedby="Email-described-by" />
-        <span id="Email-described-by" asp-validation-for="Email" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="Password" class="control-label asterix">@T["Password"]</label>
-        <input asp-for="Password" class="form-control" aria-describedby="Password-described-by" />
-        <div id="Password-described-by">
-          <span  asp-validation-for="Password" class="text-danger"></span>
-          <small class="form-text text-muted">@T["Your password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, a number and a special character"]</small>
-        </div>
-    </div>
-    <div class="form-group">
-        <label asp-for="ConfirmPassword" class="control-label asterix">@T["Confirm password"]</label>
-        <input asp-for="ConfirmPassword" class="form-control" aria-describedby="ConfirmPassword-described-by" />
-        <span id="ConfirmPassword-described-by" asp-validation-for="ConfirmPassword" class="text-danger"></span>
-    </div>
-    @await RenderSectionAsync("AfterRegister", required: false)
-    <div class="form-group mt-4">
-        <button type="submit" class="btn btn-primary"><span>@T["Create a new account"]</span></button>
-    </div>
-</form>
- @if (!disableLocalLogin)
-  {
-    <div class="mt-4">
-      <a asp-route-area="OrchardCore.Users" asp-controller="Account" asp-action="Login">@T["Already have an account? Login"]</a>
-    </div>
-  }
+</div>

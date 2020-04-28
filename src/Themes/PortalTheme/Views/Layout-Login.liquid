@@ -24,7 +24,9 @@
   <main id="bootstrap-main">
     <section class="hero is-fullheight">
       <div class="container">
-        {% render_section "Content" %}
+        <div class="flex-fill">
+          {% render_section "Content" %}
+        </div>
         <div class="hero-footer">
           <img class="sig-wht" src="{{ 'sig-wht-eng.svg' | asset_url }}" />
           <div class="fip-spacer"></div>

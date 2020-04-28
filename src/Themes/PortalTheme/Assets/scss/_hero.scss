@@ -40,7 +40,7 @@
         div {
           position: relative;
         }
-        div > a:nth-child(1).is-circle {
+        div > *:nth-child(1) {
           position: absolute;
           top: 1rem;
           right: 1rem;
@@ -49,12 +49,12 @@
             right: 5rem;
           }
         }
-        div > a:nth-child(2).is-circle {
+        div > *:nth-child(2) {
           position: absolute;
           top: calc(11vh);
           right: 1rem;
         }
-        div > a.btn {
+        div > *.btn {
           font-weight: 500;
           @include rfs(19);
         }

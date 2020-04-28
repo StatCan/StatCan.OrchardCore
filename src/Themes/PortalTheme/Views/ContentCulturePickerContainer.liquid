@@ -27,9 +27,11 @@
     </div>
     <div class="d-none d-md-block">
         {% if User.Identity.IsAuthenticated %}
-        <a class="btn btn-primary is-circle"><i class="fas fa-user"></i></a>
+            {% form asp_route_area:"OrchardCore.Users", asp_controller:"Account",asp_action:"LogOff", method: "post" %}
+                <button type="submit" class="btn btn-primary is-circle"><i class="fas fa-user"></i></button>
+            {% endform %}
         {% else %}
-        <a href="login" class="btn btn-primary is-circle"><i class="fas fa-sign-in-alt"></i></a>
+        <a href="{{ '~/login' | href }}" class="btn btn-primary is-circle"><i class="fas fa-sign-in-alt"></i></a>
         {% endif %}
         <a href="{{ targetCultureUrl }}" class="btn btn-primary is-circle">{{ targetCultureName }}</a>
     </div>
