@@ -37,10 +37,10 @@
       height: 6.5rem;
       justify-content: flex-end;
       nav {
-        div {
+        .nav-buttons {
           position: relative;
         }
-        div > *:nth-child(1) {
+        .nav-buttons > *:nth-child(1) {
           position: absolute;
           top: 1rem;
           right: 1rem;
@@ -49,12 +49,12 @@
             right: 5rem;
           }
         }
-        div > *:nth-child(2) {
+        .nav-buttons > *:nth-child(2) {
           position: absolute;
           top: calc(11vh);
           right: 1rem;
         }
-        div > *.btn {
+        .nav-buttons > .language-toggle {
           font-weight: 500;
           @include rfs(19);
         }

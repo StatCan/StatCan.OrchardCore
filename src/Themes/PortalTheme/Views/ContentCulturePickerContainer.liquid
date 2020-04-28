@@ -11,7 +11,7 @@
 {% endfor %} 
 
 <nav>
-    <div class="d-block d-md-none">
+    <div class="nav-buttons d-block d-md-none">
         <div class="nav-item dropdown">
             <a class="btn btn-primary is-circle" href="#" id="oc-culture-picker" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-bars"></i></a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="oc-culture-picker">
@@ -21,11 +21,17 @@
                     {% endif %}
                 {% endfor %}
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="login">Login</a>
+                {% if User.Identity.IsAuthenticated %}
+                    {% form asp_route_area:"OrchardCore.Users", asp_controller:"Account",asp_action:"LogOff", method: "post" %}
+                        <button type="submit" class="dropdown-item">Logout</button>
+                    {% endform %}
+                {% else %}
+                <a class="dropdown-item" href="{{ '~/login' | href }}">Login</a>
+                {% endif %}
             </div>
         </div>
     </div>
-    <div class="d-none d-md-block">
+    <div class="nav-buttons d-none d-md-block">
         {% if User.Identity.IsAuthenticated %}
             {% form asp_route_area:"OrchardCore.Users", asp_controller:"Account",asp_action:"LogOff", method: "post" %}
                 <button type="submit" class="btn btn-primary is-circle"><i class="fas fa-user"></i></button>
@@ -33,7 +39,7 @@
         {% else %}
         <a href="{{ '~/login' | href }}" class="btn btn-primary is-circle"><i class="fas fa-sign-in-alt"></i></a>
         {% endif %}
-        <a href="{{ targetCultureUrl }}" class="btn btn-primary is-circle">{{ targetCultureName }}</a>
+        <a href="{{ targetCultureUrl }}" class="btn btn-primary is-circle language-toggle">{{ targetCultureName }}</a>
     </div>
 </nav>
 
