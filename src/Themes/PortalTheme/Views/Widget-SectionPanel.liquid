@@ -12,7 +12,7 @@
             <div>
               <div class="section-panel-link-icon text-primary">
                 {% if item.SectionPanelLink.Image.Paths.first != null %}
-                <img src="{{ item.SectionPanelLink.Image.Paths.first | asset_url }}" style="height: 2.5rem; width: 2.5rem"/>
+                <img src="{{ item.SectionPanelLink.Image.Paths.first | asset_url }}" aria-hidden="true" />
                 {% else %}
                 <i class="fa-2x {{ item.SectionPanelLink.Icon.Text }}"></i>
                 {% endif %}

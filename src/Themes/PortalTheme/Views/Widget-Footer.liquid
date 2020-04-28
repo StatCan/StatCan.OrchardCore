@@ -1,18 +1,17 @@
 <section id="footer-section">
-  <a href="digital.statcan.gc.ca">
+  <a href="https://digital.statcan.gc.ca">
     <div class="d-flex justify-content-center">
-      <a href="#" class="btn btn-lg btn-primary is-rounded">More Virtual Labs</a>
+      <a href="#" class="btn btn-lg btn-primary is-rounded">{{ "More Virtual Labs" | t }}</a>
     </div>
     <div class="text-center pb-5">
-      <div class="powered-by-di">Powered by</div>
-      <img src="{{ 'DI Logo.svg' | asset_url }}" />
+      <div class="powered-by-di" >{{ "Powered by" | t }}</div>
+      <img src="{{ 'DI Logo.svg' | asset_url }}" alt="{{ 'Powered by Digital Innovation' | t }}" />
     </div>
   </a>
-  
   <div class="container pt-5">
     <div class="d-flex align-items-end justify-content-between">
-      <img class="sig-wht" src="{{ 'sig-wht-eng.svg' | asset_url }}" />
-      <img class="canada" src="{{ 'Canada.svg' | asset_url }}" />
+      <img class="sig-wht" alt="{{ 'Statistics Canada' | t }}" aria-label="{{ 'Statistics Canada' | t }}"  src="{{ 'sig-wht-eng.svg' | asset_url }}" />
+      <img class="canada" alt="{{ 'Government of Canada' | t }}" aria-label="{{ 'Government of Canada' | t }}" src="{{ 'Canada.svg' | asset_url }}" />
     </div>
   </div>  
 </section>

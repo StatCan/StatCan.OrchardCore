@@ -32,7 +32,7 @@
                             <button type="submit" class="btn btn-lg btn-primary m-2 nav-link is-rounded" name="provider" value="@provider.Name" title="@provider.DisplayName">
                                 @if (provider.DisplayName == "GitHub") { <i class="fab fa-github mr-2"></i> } 
                                 @if (provider.DisplayName == "Azure") { 
-                                    <i class="mr-2">
+                                    <i class="mr-2" aria-hidden="true">
                                         <svg width="24px" height="24px" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
                                             <path d="M26.23,4.85L12.07,17.12L0,38.79L10.89,38.79L26.23,4.85ZM28.11,7.72L22.07,24.74L33.65,39.29L11.19,43.15L48,43.15L28.11,7.72Z" style="fill:white;fill-rule:nonzero;"/>
                                         </svg>
@@ -65,12 +65,12 @@
                     <div asp-validation-summary="All" class="text-danger"></div>
                     <div class="form-group d-flex flex-column align-items-center justify-content-center">
                         <label class="asterix" asp-for="UserName">@T["Username"]</label>
-                        <input asp-for="UserName" class="form-control" aria-describedby="UserName-described-by" />
+                        <input asp-for="UserName" class="form-control" aria-describedby="UserName-described-by" autocomplete="username" />
                         <span id="UserName-described-by" asp-validation-for="UserName" class="text-danger"></span>
                     </div>
                     <div class="form-group d-flex flex-column align-items-center justify-content-center">
                         <label class="asterix" asp-for="Password">@T["Password"]</label>
-                        <input asp-for="Password" class="form-control" aria-describedby="Password-described-by" />
+                        <input asp-for="Password" class="form-control" aria-describedby="Password-described-by" autocomplete="current-password"  />
                         <span id="Password-described-by" asp-validation-for="Password" class="text-danger"></span>
                     </div>
                     <div class="form-group custom-control custom-checkbox d-flex justify-content-center">
