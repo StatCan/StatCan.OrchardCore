@@ -1,20 +1,9 @@
-.login {
-  &.is-fullheight {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-
-    .container {
-      display: flex;
-      flex-direction: column;
-      flex-grow: 1;
-      flex-shrink: 0;
-    }
-    .login-body {
-      display: flex;
-      flex-direction: column;
-      flex-grow: 1;
-      flex-shrink: 0;
-    }
-  }
+h1.login {
+  margin-top: calc(5vh * 1.618);
+}
+.h4.login {
+  margin-top: clamp(0.5rem, 3vh, 1rem);
+}
+.row.login {
+  margin-top: calc(8vh * 1.381);
 }

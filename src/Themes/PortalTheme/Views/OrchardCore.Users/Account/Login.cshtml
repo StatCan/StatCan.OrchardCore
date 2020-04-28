@@ -15,9 +15,9 @@
     var loginProviders = (await SignInManager.GetExternalAuthenticationSchemesAsync()).ToList();
     var disableLocalLogin = (await SiteService.GetSiteSettingsAsync()).As<LoginSettings>().DisableLocalLogin;
 }
-    <h1 class="text-center pt-3">@T["Log In"]</h1>
-    <p class="text-center h4">@(Site.SiteName)</p>
-    <div class="row justify-content-center mt-5">
+    <h1 class="login text-center">@T["Log In"]</h1>
+    <p class="login text-center h4">@(Site.SiteName)</p>
+    <div class="login row justify-content-center">
         @if (loginProviders.Count > 0 || userCanRegister)    
         {
         <div class="flex-fill @(loginProviders.Count > 0 ? "col-lg-4 col-md-6 col-12" : "col-12")">
