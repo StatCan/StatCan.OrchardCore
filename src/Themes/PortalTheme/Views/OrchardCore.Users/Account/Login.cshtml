@@ -17,10 +17,10 @@
 }
     <h1 class="text-center pt-3">@T["Log In"]</h1>
     <p class="text-center h4">@(Site.SiteName)</p>
-    <div class="row justify-content-around mt-5">
+    <div class="row justify-content-center mt-5">
         @if (loginProviders.Count > 0 || userCanRegister)    
         {
-        <div class="flex-fill @(loginProviders.Count > 0 ? "col-lg-5 col-md-6 col-12" : "col-12")">
+        <div class="flex-fill @(loginProviders.Count > 0 ? "col-lg-4 col-md-6 col-12" : "col-12")">
             @if (loginProviders.Count > 0) {     
             <section class="section-panel">
                 <h2 class="text-center">@T["Log in with"]</h2>
@@ -49,7 +49,7 @@
         }
         @if (!disableLocalLogin)
         {
-        <div class="flex-fill col-lg-5 col-md-6 col-12">
+        <div class="flex-fill col-lg-4 col-md-6 col-12">
             <section class="section-panel">
                 <h2 class="text-center">@T["vLab account"]</h2>
                 <form asp-controller="Account" asp-action="Login" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="auth-form">

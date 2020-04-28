@@ -11,8 +11,8 @@
      var disableLocalLogin = (await SiteService.GetSiteSettingsAsync()).As<LoginSettings>().DisableLocalLogin;
 }
 
-<h1 class="text-center pt-3">@T["Create a new account"]</h1>
-<p class="text-center h4">@(Site.SiteName)</p>
+<h1 class="text-center pt-3">@T["Create account"]</h1>
+<p class="text-center h4">vLab Digital Passport</p>
 <div class="row justify-content-center mt-5">
     <div class="section-panel col-xl-4 col-lg-5 col-md-8 col-sm-10 col-12">
         <form asp-controller="Registration" asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal">
@@ -45,12 +45,12 @@
                 </div>
                 </div>
                 <div class="col-6 d-flex align-items-center">
-                    <small class="form-text text-muted">@T["The password must contain at least:<br>• 8 characters<br>• one uppercase letter<br>• one lowercase letter<br>• one number<br>• one special character"]</small>
+                    <small class="form-text text-muted">@T["Passwords must have:<br>• 8 characters or more<br>• an uppercase letter<br>• a lowercase letter<br>• a number<br>• a special character"]</small>
                 </div>
             </div>
             @await RenderSectionAsync("AfterRegister", required: false)
             <div class="form-group mt-4 d-flex justify-content-center">
-                <button type="submit" class="btn btn-lg btn-primary is-rounded"><span>@T["Create a new account"]</span></button>
+                <button type="submit" class="btn btn-lg btn-primary is-rounded"><span>@T["Create account"]</span></button>
             </div>
         </form>
         @if (!disableLocalLogin)
