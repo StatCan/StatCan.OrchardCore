@@ -8,7 +8,7 @@
 @inject ISiteService SiteService
 @{ 
     ViewLayout = "Layout__Login";
-     var disableLocalLogin = (await SiteService.GetSiteSettingsAsync()).As<LoginSettings>().DisableLocalLogin;
+    var disableLocalLogin = (await SiteService.GetSiteSettingsAsync()).As<LoginSettings>().DisableLocalLogin;
 }
 
 <h1 class="login text-center">@T["Create account"]</h1>

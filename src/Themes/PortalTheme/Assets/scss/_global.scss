@@ -26,6 +26,17 @@ h3,
 }
 h4,
 .h4 {
+  @include rfs(20);
+  font-weight: 200;
+}
+h5,
+.h5 {
+  @include rfs(18);
+  font-weight: 200;
+}
+h6,
+.h6 {
+  @include rfs(16);
   font-weight: 200;
 }
 p {

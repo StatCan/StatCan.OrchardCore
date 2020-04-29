@@ -1,10 +1,13 @@
 using Fluid;
 using Microsoft.Extensions.DependencyInjection;
+using OrchardCore.Liquid;
 using OrchardCore.Modules;
 using OrchardCore.Workflows.Helpers;
+using StatCan.OrchardCore.Workflows;
 using StatCan.OrchardCore.Workflows.Drivers;
 using StatCan.OrchardCore.Workflows.Tasks;
 using StatCan.OrchardCore.Workflows.ViewModels;
+
 
 namespace StatCan.OrchardCore.Workflows
 {
@@ -17,7 +20,7 @@ namespace StatCan.OrchardCore.Workflows
 
         public override void ConfigureServices(IServiceCollection services)
         {
-           services.AddActivity<ValidateUserTask, ValidateUserTaskDisplay>();
+            services.AddActivity<ValidateUserTask, ValidateUserTaskDisplay>();
         }
     }
 }
