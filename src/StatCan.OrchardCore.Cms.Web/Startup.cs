@@ -31,17 +31,6 @@ namespace web
             {
                Configuration.GetSection("IdentityOptions").Bind(options);
             });
-            services.Configure<CookiePolicyOptions>(options =>
-            {
-                options.OnAppendCookie = cookieContext =>
-                {
-                    // Disabling same-site is required for external login provider support to properly set the user on the auth redirect
-                    if (cookieContext.CookieName.StartsWith("orchauth_"))
-                    {
-                        cookieContext.CookieOptions.SameSite = SameSiteMode.None;
-                    }
-                };
-            });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
