@@ -63,22 +63,22 @@
                 <h2 class="text-center">@T["vLab account"]</h2>
                 <form asp-controller="Account" asp-action="Login" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="auth-form">
                     <div asp-validation-summary="All" class="text-danger"></div>
-                    <div class="form-group d-flex flex-column align-items-center justify-content-center">
+                    <div class="form-group d-flex flex-column align-items-center justify-content-center py-2">
                         <label class="asterix" asp-for="UserName">@T["Username"]</label>
                         <input asp-for="UserName" class="form-control" aria-describedby="UserName-described-by" autocomplete="username" />
                         <span id="UserName-described-by" asp-validation-for="UserName" class="text-danger"></span>
                     </div>
-                    <div class="form-group d-flex flex-column align-items-center justify-content-center">
+                    <div class="form-group d-flex flex-column align-items-center justify-content-center py-2">
                         <label class="asterix" asp-for="Password">@T["Password"]</label>
                         <input asp-for="Password" class="form-control" aria-describedby="Password-described-by" autocomplete="current-password"  />
                         <span id="Password-described-by" asp-validation-for="Password" class="text-danger"></span>
                     </div>
-                    <div class="form-group custom-control custom-checkbox d-flex justify-content-center">
+                    <div class="form-group custom-control custom-checkbox d-flex justify-content-center py-2">
                         <input asp-for="RememberMe" class="custom-control-input" />
                         <label asp-for="RememberMe" class="custom-control-label">@T["Remember me"]</label>
                     </div>
                     @await RenderSectionAsync("AfterLogin", required: false)
-                    <div class="d-flex justify-content-center">
+                    <div class="d-flex justify-content-center py-2">
                         <button type="submit" class="btn btn-lg btn-primary is-rounded"><span>@T["Login"]</span></button>
                     </div>
                     @if (allowResetPassword)

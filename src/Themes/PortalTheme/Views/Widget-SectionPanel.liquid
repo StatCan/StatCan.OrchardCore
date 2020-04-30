@@ -7,9 +7,9 @@
     <nav>
       <ul class="{{ Model.ContentItem.Content.SectionPanel.ListDirection.Text }}">
       {% for item in Model.ContentItem.Content.Links.ContentItems %}
-        <li class="{% if Model.ContentItem.Content.SectionPanel.ListDirection.Text == 'is-vertical-list' %}d-block{% else %}col-4{% endif %}">
-          <a href="{{ item.SectionPanelLink.Url.Text }}">
-            <div>
+        <li class="d-flex {% if Model.ContentItem.Content.SectionPanel.ListDirection.Text == 'is-vertical-list' %}d-block{% else %}col-4{% endif %}">
+          <a href="{{ item.SectionPanelLink.Url.Text }}" target="_blank">
+            <div class="section-panel-link">
               <div class="section-panel-link-icon text-primary">
                 {% if item.SectionPanelLink.Image.Paths.first != null %}
                 <img src="{{ item.SectionPanelLink.Image.Paths.first | asset_url }}" aria-hidden="true" />
@@ -23,6 +23,18 @@
               </div>
             </div>
           </a>
+          {% if item.Actions.ContentItems != null %}
+          <div class="nav-item dropdown">
+            <a class="btn btn-sm btn-link" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fas fa-ellipsis-v"></i>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right">
+              {% for action in item.Actions.ContentItems %}
+                <a class="dropdown-item" href="{{ action.LinkMenuItemPart.Url }}" target="_blank">{{ action.LinkMenuItemPart.Name }}</a>
+              {% endfor %}
+            </div>
+          </div>
+          {% endif %}
         </li>
       {% endfor %}
       </ul>

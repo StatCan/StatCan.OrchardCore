@@ -33,6 +33,19 @@
     }
   }
 
+  .section-panel-link {
+    padding: 0.45rem 0;
+    &:hover,
+    &:focus {
+      background-image: radial-gradient(
+        circle at 15% 15%,
+        transparentize($white, 0.97) 10%,
+        transparent
+      );
+      border-radius: 2px;
+    }
+  }
+
   .section-panel-link-icon {
     align-items: center;
     display: flex;
@@ -46,17 +59,19 @@
   }
 
   li {
-    padding-top: 1rem;
+    padding: 0.5rem 0;
+    .btn-link {
+      color: $white;
+      font-size: 20px;
+      &:hover,
+      &:focus {
+        text-decoration: none;
+        color: $red;
+      }
+    }
   }
-  li:hover {
-    background-image: radial-gradient(
-      circle at 15% 15%,
-      transparentize($white, 0.97) 10%,
-      transparent
-    );
-    border-radius: 2px;
-  }
-  a {
+
+  a h3 {
     color: $white;
   }
   a:hover {

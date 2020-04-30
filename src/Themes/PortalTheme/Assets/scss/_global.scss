@@ -85,6 +85,15 @@ label {
   }
 }
 
+.btn-sm {
+  &.is-circle {
+    border-radius: 1rem;
+    padding: 0.22rem 0;
+    width: 2rem;
+    height: 2rem;
+  }
+}
+
 .btn-lg {
   &.is-rounded {
     border-radius: 1.5rem;
@@ -100,6 +109,23 @@ label {
 
 hr {
   border-top: 1px solid #2caea5;
+}
+
+.dropdown-menu {
+  background-color: lighten($background, 5%);
+  border: 1px solid transparentize($primary, 0.62);
+  box-shadow: 0 0.25rem 0.5rem 0.5rem $background;
+  .dropdown-divider {
+    border-top: 1px solid transparentize($primary, 0.81);
+  }
+  .dropdown-item {
+    color: $white;
+    font-weight: 300;
+    &:hover,
+    &:focus {
+      background-color: transparentize($primary, 0.38);
+    }
+  }
 }
 
 .form-control {
