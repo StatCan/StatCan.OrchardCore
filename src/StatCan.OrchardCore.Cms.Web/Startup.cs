@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Identity;
 using StatCan.OrchardCore.Security;
 using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.Http;
 
 namespace web
 {
@@ -29,6 +30,17 @@ namespace web
             services.Configure<IdentityOptions>(options =>
             {
                Configuration.GetSection("IdentityOptions").Bind(options);
+            });
+            services.Configure<CookiePolicyOptions>(options =>
+            {
+                options.OnAppendCookie = cookieContext =>
+                {
+                    // Disabling same-site is required for external login provider support to properly set the user on the auth redirect
+                    if (cookieContext.CookieName.StartsWith("orchauth_"))
+                    {
+                        cookieContext.CookieOptions.SameSite = SameSiteMode.None;
+                    }
+                };
             });
         }
 
