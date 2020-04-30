@@ -15,8 +15,7 @@ namespace Etch.OrchardCore.ContentPermissions
     {
         public override void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<IContentPartDisplayDriver, ContentPermissionsDisplay>();
-            services.AddContentPart<ContentPermissionsPart>();
+            services.AddContentPart<ContentPermissionsPart>().UseDisplayDriver<ContentPermissionsDisplay>();
 
             services.AddScoped<IContentTypePartDefinitionDisplayDriver, ContentPermissionsPartSettingsDisplayDriver>();
 
