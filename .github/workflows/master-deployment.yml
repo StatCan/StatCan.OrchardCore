@@ -5,7 +5,7 @@ on:
       - master
 env:
   REGISTRY_NAME: k8scc01covidacr
-  CLUSTER_NAME: k8s-cancentral-01-covid-aks
+  CLUSTER_NAME: k8s-cancentral-02-covid-aks
   CLUSTER_RESOURCE_GROUP: k8s-cancentral-01-covid-aks
   STORAGE_ACCOUNT_NAME: k8scovid
   NAMESPACE: web
