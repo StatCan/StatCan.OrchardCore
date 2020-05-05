@@ -92,6 +92,11 @@ label {
     width: 2rem;
     height: 2rem;
   }
+  &.is-rounded {
+    border-radius: 1rem;
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+  }
 }
 
 .btn-lg {

@@ -22,7 +22,7 @@
                 {% endfor %}
                 <div class="dropdown-divider"></div>
                 {% if User.Identity.IsAuthenticated %}
-                    <button class="dropdown-item d-block d-md-none" data-toggle="modal" data-target="#profileModal">{{ "Account" | t }}</button>
+                    <button class="dropdown-item d-block d-md-none" data-toggle="modal" data-target="#profile-modal">{{ "Account" | t }}</button>
                 {% else %}
                     <a class="dropdown-item" href="{{ '~/login' | href }}">{{ "Login" | t }}</a>
                 {% endif %}
@@ -31,7 +31,7 @@
     </div>
     <div class="nav-buttons d-none d-md-block">
         {% if User.Identity.IsAuthenticated %}
-            <button class="btn btn-primary is-circle" data-toggle="modal" data-target="#profileModal"><i class="fas fa-user"></i></button>
+            <button class="btn btn-primary is-circle" data-toggle="modal" data-target="#profile-modal"><i class="fas fa-user"></i></button>
         {% else %}
             <a href="{{ '~/login' | href }}" class="btn btn-primary is-circle"><i class="fas fa-sign-in-alt"></i></a>
         {% endif %}
@@ -40,7 +40,7 @@
 </nav>
 
 <!-- Modal -->
-<div class="modal fade" id="profileModal" tabindex="-1" role="dialog" aria-hidden="true">
+<div id="profile-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered profile" role="document">
     <div class="modal-content section-panel profile">
       <div class="modal-header profile">
