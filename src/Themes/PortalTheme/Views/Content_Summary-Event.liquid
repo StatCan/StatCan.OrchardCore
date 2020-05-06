@@ -1,8 +1,0 @@
-<a href="{{ '~/Contents/ContentItems/' | append: Model.ContentItem.ContentItemId | href }}">
-  <div class="date-header">
-    {{ Model.ContentItem.Content.Event.StartDate.Value | date: "%b %d, %Y" }}
-  </div>
-  <div class="h5">
-    {{ Model.ContentItem | display_text }}
-  </div>
-</a>

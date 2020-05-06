@@ -1,7 +1,0 @@
-{% assign link = Model.ContentItem.Content.LinkMenuItemPart %}
-
-{% comment %} {% if Model.HasItems %}
-    <a href="{{ link.Url | href }}" class="nav-link dropdown-toggle">{{ link.Name }}<b class="caret"></b></a>
-{% else %} {% endcomment %}
-    <a href="{{ link.Url | href }}" class="">{{ link.Name }}</a>
-{% comment %} {% endif %} {% endcomment %}

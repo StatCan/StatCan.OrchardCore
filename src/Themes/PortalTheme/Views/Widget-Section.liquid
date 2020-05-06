@@ -1,11 +1,9 @@
 <section class="content-section">
-  <header></header>
   <div class="container">
     <div class="row justify-content-center">
       {% for item in Model.ContentItem.Content.SectionPanels.ContentItems %}
-        {{ item | shape_build_display | shape_render }}
+      {{ item | shape_build_display | shape_render }}
       {% endfor %}
     </div>
   </div>
-  <footer></footer>
 </section>
