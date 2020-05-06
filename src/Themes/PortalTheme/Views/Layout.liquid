@@ -15,6 +15,12 @@
     <!-- Bootstrap core JavaScript (includes jQuery and popper.js) -->
     {% script name:"portaltheme-vendor-bootstrap", at:"Foot" %}
 
+    <!-- Bootstrap Tables -->
+    {% style src:"https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.css" %}
+    {% script src:"https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.js", at:"Foot" %}
+    {% script src:"https://unpkg.com/tableexport.jquery.plugin/tableExport.min.js", at:"Foot" %}
+    {% script src:"https://unpkg.com/bootstrap-table@1.16.0/dist/extensions/export/bootstrap-table-export.min.js", at:"Foot" %}
+
     {% resources type: "HeadScript" %}
     {% resources type: "HeadLink" %}
     {% resources type: "Stylesheet" %}

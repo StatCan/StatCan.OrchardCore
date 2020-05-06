@@ -1,0 +1,27 @@
+{% assign contentitems = Queries.GetLatestOfType | query: type: Model.ContentItem.Content.RadarTile.ContentType.Text, limit: 5 %}
+
+<div class="{{ Model.ContentItem.Content.RadarTile.Size.Text }} my-3 d-flex flex-grow-1">
+  <div class="tile">
+    <div class="tile-header">
+      <div class="icon">
+        <i class="{{ Model.ContentItem.Content.RadarTile.Icon.Text }} fa-3x"></i>
+      </div>
+      <div>
+        <h3 class="h4 text-white">{{ Model.ContentItem.Content.RadarTile.Title.Text }}</h3>
+        <div>{{ Model.ContentItem.Content.RadarTile.Description.Text }}</div>
+      </div>
+    </div>
+    <div class="tile-body">
+      <ul class="list-unstyled py-3 offset-2">
+      {% for contentitem in contentitems %}
+        <li>
+          {{ contentitem | shape_build_display: 'Summary' | clone_properties: Model | shape_render  }}
+        </li>
+      {% endfor %}
+      </ul>
+    </div>
+    <div class="tile-footer">
+      <a href="{{ '~/' | append: Model.ContentItem | href }}" class="btn btn-light text-uppercase">All {{ Model.ContentItem.Content.RadarTile.Title.Text | downcase }}</a>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,40 @@
+<div class="appbar">
+  <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-dark no-gutters">
+      <a class="navbar-brand" href="{{ '~/' | href }}"><i class="fab fa-pagelines"></i> {{ "Radar" | t }}</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      {% shape "menu", alias: "alias:main-menu", cache_id: "main-menu", cache_fixed_duration: "00:00:01", cache_tag: "alias:main-menu" %}
+      {% comment %} <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              {{ "Activities" | t }}
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="{{ '~/Experiments' | href }}">{{ "Experiments" | t }}</a>
+              <a class="dropdown-item" href="{{ '~/Events' | href }}">{{ "Events" | t }}</a>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              {{ "Data" | t }}
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="{{ '~/Technologies' | href }}">{{ "Technologies" | t }}</a>
+              <a class="dropdown-item" href="{{ '~/Topics' | href }}">{{ "Topics" | t }}</a>
+            </div>
+          </li>
+            {% if User.Identity.IsAuthenticated %}
+                <a class="nav-link d-lg-none d-block" data-toggle="modal" data-target="#profile-modal" href="#">{{ "Account" | t }}</a>
+                <button class="btn btn-secondary is-circle d-lg-block d-none" data-toggle="modal" data-target="#profile-modal"><i class="fas fa-user"></i></button>
+            {% else %}
+                <a href="{{ '~/login' | href }}" class="nav-link d-lg-none d-block" >{{ "Sign In" | t }}</a>
+                <a href="{{ '~/login' | href }}" class="btn btn-secondary is-circle d-lg-block d-none"><i class="fas fa-sign-in-alt"></i></a>
+            {% endif %}
+        </ul>
+      </div> {% endcomment %}
+    </nav>
+  </div>
+</div>
