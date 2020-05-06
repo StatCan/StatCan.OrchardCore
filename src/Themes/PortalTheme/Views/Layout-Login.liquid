@@ -27,10 +27,10 @@
         <div class="flex-fill">
           {% render_section "Content" %}
         </div>
+        {% render_section "Footer", required: false %}
       </div>
     </section>
   </main>
-  {% render_section "Footer", required: false %}
   {% resources type: "FootScript" %}
 </body>
 </html>
