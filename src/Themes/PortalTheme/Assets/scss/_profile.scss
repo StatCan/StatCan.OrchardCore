@@ -33,9 +33,9 @@
   &.modal-body {
     display: flex;
     flex-wrap: wrap;
-    icon {
+    .icon {
       color: $primary;
-      font-size: 192px;
+      @include rfs(192);
       padding: 1rem;
     }
   }

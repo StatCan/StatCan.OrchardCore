@@ -1,8 +1,8 @@
 <section class="hero is-fullheight portal-hud">
   <div class="container">
-  	<div class="hero-header">
-  	  {% shape "ContentCulturePicker" %}
-    </div>
+  	<header class="hero-header">
+  	  {% shape "menu", alias: "alias:main-menu", cache_id: "main-menu", cache_fixed_duration: "00:00:01", cache_tag: "alias:main-menu" %}
+    </header>
     <div class="hero-body justify-content-center align-items-center">
       <i class="icon {{ Model.ContentItem.Content.Hero.Icon.Text }}"></i>
       <h1>{{  Model.ContentItem.Content.Hero.Title.Text }}</h1>
@@ -24,10 +24,10 @@
       </nav>
       <span class="text-secondary d-block d-md-none h2 mt-4"><i class="fas fa-chevron-down"></i></span>
     </div>
-    <div class="hero-footer">
+    <footer class="hero-footer">
         <img class="sig-wht" alt="{{ 'Statistics Canada' | t }}" src="{{ 'sig-wht-eng.svg' | asset_url }}" />
         <div class="fip-spacer"></div>
         <img class="canada" alt="{{ 'Government of Canada' | t }}" src="{{ 'Canada.svg' | asset_url }}" />
-    </div> 
+    </footer> 
   </div>
 </section>

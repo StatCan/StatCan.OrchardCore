@@ -1,0 +1,22 @@
+<nav>
+    <div class="nav-buttons">
+        <ul class="list-unstyled d-lg-block d-none">
+        {% for item in Model.Items %}
+            {{ item | shape_render }}
+        {% endfor %}
+        </ul>
+        <a class="btn btn-primary is-circle d-lg-none d-flex" href="#" id="oc-culture-picker" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-bars"></i></a>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="oc-culture-picker">
+            {% for item in Model.Items %}
+                {{ item | shape_render }}
+            {% endfor %}
+        </div>
+    </div>
+</nav>
+{% comment %} <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav ml-auto">
+        {% for item in Model.Items %}
+        {{ item | shape_render }}
+        {% endfor %}
+    </ul>
+</div> {% endcomment %}

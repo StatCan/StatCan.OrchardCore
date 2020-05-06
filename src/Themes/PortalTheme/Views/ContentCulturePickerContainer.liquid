@@ -10,63 +10,10 @@
     {% endif %}
 {% endfor %} 
 
-<nav>
-    <div class="nav-buttons d-block d-md-none">
-        <div class="nav-item dropdown">
-            <a class="btn btn-primary is-circle" href="#" id="oc-culture-picker" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-bars"></i></a>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="oc-culture-picker">
-                {% for culture in Model.SupportedCultures %}
-                    {% if culture.Name != Model.CurrentCulture.Name %}
-                        <a class="dropdown-item d-block d-md-none" href="{{ culture.Name | switch_culture_url }}">{{ culture.DisplayName }}</a>
-                    {% endif %}
-                {% endfor %}
-                <div class="dropdown-divider"></div>
-                {% if User.Identity.IsAuthenticated %}
-                    <button class="dropdown-item d-block d-md-none" data-toggle="modal" data-target="#profile-modal">{{ "Account" | t }}</button>
-                {% else %}
-                    <a class="dropdown-item" href="{{ '~/login' | href }}">{{ "Login" | t }}</a>
-                {% endif %}
-            </div>
-        </div>
-    </div>
-    <div class="nav-buttons d-none d-md-block">
-        {% if User.Identity.IsAuthenticated %}
-            <button class="btn btn-primary is-circle" data-toggle="modal" data-target="#profile-modal"><i class="fas fa-user"></i></button>
-        {% else %}
-            <a href="{{ '~/login' | href }}" class="btn btn-primary is-circle"><i class="fas fa-sign-in-alt"></i></a>
-        {% endif %}
-        <a href="{{ targetCultureUrl }}" class="btn btn-primary is-circle language-toggle">{{ targetCultureName }}</a>
-    </div>
-</nav>
+{% for culture in Model.SupportedCultures %}
+    {% if culture.Name != Model.CurrentCulture.Name %}
+        <a class="dropdown-item d-lg-none d-flex" href="{{ culture.Name | switch_culture_url }}">{{ culture.DisplayName }}</a>
+    {% endif %}
+{% endfor %}
 
-<!-- Modal -->
-<div id="profile-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered profile" role="document">
-    <div class="modal-content section-panel profile">
-      <div class="modal-header profile">
-        <h1 class="modal-title">{{ "account" | t }}</h1>
-        <button type="button" class="btn btn-primary is-circle" data-dismiss="modal" aria-label="{{ 'Close' | t }}">
-          <span aria-hidden="true"><i class="fas fa-times"></i></span>
-        </button>
-      </div>
-      <div class="modal-body profile">
-        <div class="col-md-3 col-12 d-flex align-items-center justify-content-center">
-            <span class="icon p-4">
-                <i class="fas fa-user text-primary"></i>
-            </span>
-        </div>
-        <div class="col-md-9 col-12 d-flex flex-column align-items-md-start align-items-center justify-content-center">
-            <p class="h4">{{ User | get_claim: 'email' }}</p>
-            <p class="h6 text-secondary mb-4">{{ "Email address" | t }}</p>
-            <p class="h4">{{ User.Identity.Name }}</p>
-            <p class="h6 text-secondary">{{ "Username" | t }}</p>
-        </div>
-      </div>
-      <div class="modal-footer profile">
-        {% form asp_route_area:"OrchardCore.Users", asp_controller:"Account",asp_action:"LogOff", method: "post" %}
-            <button type="submit" class="btn btn-lg btn-primary is-rounded">{{ "Log out" | t }}</button>
-        {% endform %}
-      </div>
-    </div>
-  </div>
-</div>
+<a href="{{ targetCultureUrl }}" class="btn btn-primary is-circle language-toggle d-lg-flex d-none">{{ targetCultureName }}</a>
