@@ -1,0 +1,68 @@
+@model StatCan.OrchardCore.GitHub.ViewModels.CommitFileTaskViewModel
+
+<div class="form-group" asp-validation-class-for="Owner">
+  <label asp-for="Owner">@T["Owner"]</label>
+  <input type="text" asp-for="Owner" class="form-control code" />
+  <span asp-validation-for="Owner"></span>
+  <span class="hint">@T["The owner (or organization) of the repository. With Liquid support."]</span>
+</div>
+
+<div class="form-group" asp-validation-class-for="Repo">
+  <label asp-for="Repo">@T["Repository"]</label>
+  <input type="text" asp-for="Repo" class="form-control code" />
+  <span asp-validation-for="Repo"></span>
+  <span class="hint">@T["The name of the repository. With Liquid support."]</span>
+</div>
+
+<div class="form-group" asp-validation-class-for="BranchName">
+  <label asp-for="BranchName">@T["Branch Name"]</label>
+  <input type="text" asp-for="BranchName" class="form-control code" />
+  <span asp-validation-for="BranchName"></span>
+  <span class="hint">@T["The name of the branch to commit to. With Liquid support."]</span>
+</div>
+
+<div class="form-group" asp-validation-class-for="FileName">
+  <label asp-for="FileName">@T["File Name"]</label>
+  <input type="text" asp-for="FileName" class="form-control code" />
+  <span asp-validation-for="FileName"></span>
+  <span class="hint">@T["The name of the file to create / update. With Liquid support."]</span>
+</div>
+
+<div class="form-group" asp-validation-class-for="FileContents">
+  <label asp-for="FileContents">@T["File Contents"]</label>
+  <textarea asp-for="FileContents"></textarea>
+  <span asp-validation-for="FileContents"></span>
+  <span class="hint">@T["The content of the file to commit. If updating an existing file, this will overwrite it. With Liquid support."]</span>
+</div>
+
+<div class="form-group" asp-validation-class-for="CommitMessage">
+  <label asp-for="CommitMessage">@T["Commit message"]</label>
+  <textarea asp-for="CommitMessage"></textarea>
+  <span asp-validation-for="CommitMessage"></span>
+  <span class="hint">@T["The git commit message. With Liquid support."]</span>
+</div>
+
+
+<script asp-name="codemirror" depends-on="admin" at="Foot"></script>
+<script asp-name="codemirror-mode-javascript" at="Foot"></script>
+<script asp-name="codemirror-addon-display-autorefresh" at="Foot"></script>
+<script asp-name="codemirror-addon-mode-simple" at="Foot"></script>
+<script asp-name="codemirror-addon-mode-multiplex" at="Foot"></script>
+<script asp-name="codemirror-mode-xml" at="Foot"></script>
+
+<script asp-src="~/OrchardCore.Liquid/codemirror/liquid.js" at="Foot"></script>
+
+<script at="Foot">
+    $(function () {
+        var codeMirrorOptions = {
+            autoRefresh: true,
+            lineNumbers: true,
+            styleActiveLine: true,
+            matchBrackets: true,
+            mode: { name: "liquid" },
+        };
+        CodeMirror.fromTextArea(document.getElementById('@Html.IdFor(x => x.FileContents)'), codeMirrorOptions);
+        CodeMirror.fromTextArea(document.getElementById('@Html.IdFor(x => x.CommitMessage)'), codeMirrorOptions);
+});
+</script>
+

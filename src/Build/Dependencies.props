@@ -9,6 +9,7 @@
   <ItemGroup>
     <PackageManagement Include="NetEscapades.AspNetCore.SecurityHeaders" Version="0.11.0" />
     <PackageManagement Include="HtmlSanitizer" Version="4.0.217" />
+    <PackageManagement Include="Octokit" Version="0.47.0" />
   </ItemGroup>
 
 </Project>

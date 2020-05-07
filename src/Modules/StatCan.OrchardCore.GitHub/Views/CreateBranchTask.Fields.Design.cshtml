@@ -1,0 +1,5 @@
+@model ActivityViewModel<CreateBranchTask>
+<header>
+    <h4><i class="fas fa-code-branch"></i>@Model.Activity.GetTitleOrDefault(() => T["Create Branch"])</h4>
+</header>
+<span>@T["<em>{0} -> {1}</em>", Model.Activity.ReferenceName, Model.Activity.TargetBranchName]</span>

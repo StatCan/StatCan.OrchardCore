@@ -1,0 +1,12 @@
+@model StatCan.OrchardCore.GitHub.ViewModels.GitHubApiSettingsViewModel
+
+<h3>@T["GitHub Api Settings"]</h3>
+
+<div class="form-group row" asp-validation-class-for="ApiToken">
+    <div class="col-lg">
+        <label asp-for="ApiToken">@T["GitHub Api Token"]</label>
+        <input asp-for="ApiToken" class="form-control" type="password" value="@Model.ApiToken" autocomplete="off" />
+        <span asp-validation-for="ApiToken"></span>
+        <span class="hint">@T["The GitHub api token used to interact with the GitHub api"]</span>
+    </div>
+</div>
