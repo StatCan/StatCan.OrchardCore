@@ -1,0 +1,29 @@
+@model StatCan.OrchardCore.GitHub.ViewModels.CreateBranchTaskViewModel
+
+<div class="form-group" asp-validation-class-for="Owner">
+    <label asp-for="Owner">@T["Owner"]</label>
+    <input type="text" asp-for="Owner" class="form-control code" />
+    <span asp-validation-for="Owner"></span>
+    <span class="hint">@T["The owner (or organization) of the repository. With Liquid support."]</span>
+</div>
+
+<div class="form-group" asp-validation-class-for="Repo">
+  <label asp-for="Repo">@T["Repository"]</label>
+  <input type="text" asp-for="Repo" class="form-control code" />
+  <span asp-validation-for="Repo"></span>
+  <span class="hint">@T["The name of the repository. With Liquid support."]</span>
+</div>
+
+<div class="form-group" asp-validation-class-for="ReferenceName">
+  <label asp-for="ReferenceName">@T["Reference name"]</label>
+  <input type="text" asp-for="ReferenceName" class="form-control code" />
+  <span asp-validation-for="ReferenceName"></span>
+  <span class="hint">@T["The name of the reference to create a branch from. To select the tip of the master branch, use heads/master for example. With Liquid support."]</span>
+</div>
+
+<div class="form-group" asp-validation-class-for="TargetBranchName">
+  <label asp-for="TargetBranchName">@T["Target branch name"]</label>
+  <input type="text" asp-for="TargetBranchName" class="form-control code" />
+  <span asp-validation-for="TargetBranchName"></span>
+  <span class="hint">@T["The name of the branch to create. With Liquid support."]</span>
+</div>

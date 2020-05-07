@@ -1,0 +1,67 @@
+@model StatCan.OrchardCore.GitHub.ViewModels.CreatePullRequestTaskViewModel
+
+<div class="form-group" asp-validation-class-for="Owner">
+  <label asp-for="Owner">@T["Owner"]</label>
+  <input type="text" asp-for="Owner" class="form-control code" />
+  <span asp-validation-for="Owner"></span>
+  <span class="hint">@T["The owner (or organization) of the repository. With Liquid support."]</span>
+</div>
+
+<div class="form-group" asp-validation-class-for="Repo">
+  <label asp-for="Repo">@T["Repository"]</label>
+  <input type="text" asp-for="Repo" class="form-control code" />
+  <span asp-validation-for="Repo"></span>
+  <span class="hint">@T["The name of the repository. With Liquid support."]</span>
+</div>
+
+<div class="form-group" asp-validation-class-for="SourceBranch">
+  <label asp-for="SourceBranch">@T["Source branch"]</label>
+  <input type="text" asp-for="SourceBranch" class="form-control code" />
+  <span asp-validation-for="SourceBranch"></span>
+  <span class="hint">@T["The branch to use as the pull request source. With Liquid support."]</span>
+</div>
+
+<div class="form-group" asp-validation-class-for="TargetBranch">
+  <label asp-for="TargetBranch">@T["Target branch"]</label>
+  <input type="text" asp-for="TargetBranch" class="form-control code" />
+  <span asp-validation-for="TargetBranch"></span>
+  <span class="hint">@T["The branch to use as the pull request target. With Liquid support."]</span>
+</div>
+
+<div class="form-group" asp-validation-class-for="Title">
+  <label asp-for="Title">@T["Title"]</label>
+  <input type="text" asp-for="Title" class="form-control code" />
+  <span asp-validation-for="Title"></span>
+  <span class="hint">@T["The title of the pull request. With Liquid support."]</span>
+</div>
+
+<div class="form-group" asp-validation-class-for="Description">
+  <label asp-for="Description">@T["Description"]</label>
+  <textarea asp-for="Description"></textarea>
+  <span asp-validation-for="Description"></span>
+  <span class="hint">@T["Pull request description supports GitHub flavored markdown. With Liquid support."]</span>
+</div>
+
+
+<script asp-name="codemirror" depends-on="admin" at="Foot"></script>
+<script asp-name="codemirror-mode-javascript" at="Foot"></script>
+<script asp-name="codemirror-addon-display-autorefresh" at="Foot"></script>
+<script asp-name="codemirror-addon-mode-simple" at="Foot"></script>
+<script asp-name="codemirror-addon-mode-multiplex" at="Foot"></script>
+<script asp-name="codemirror-mode-xml" at="Foot"></script>
+
+<script asp-src="~/OrchardCore.Liquid/codemirror/liquid.js" at="Foot"></script>
+
+<script at="Foot">
+    $(function () {
+        var codeMirrorOptions = {
+            autoRefresh: true,
+            lineNumbers: true,
+            styleActiveLine: true,
+            matchBrackets: true,
+            mode: { name: "liquid" },
+        };
+        CodeMirror.fromTextArea(document.getElementById('@Html.IdFor(x => x.Description)'), codeMirrorOptions);
+});
+</script>
+
