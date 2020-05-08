@@ -7,13 +7,17 @@
     <title>{% page_title Site.SiteName %}</title>
     {% resources type: "Meta" %}
 
-    <!-- Customized Bootstrap CSS -->
+    <!-- Includes customized Bootstrap CSS -->
     {% style name:"portaltheme-stc-bootstrap", version:"1" %}
+
     <!-- Custom fonts for this template -->
-    {% style name:"portaltheme-vendor-font-awesome", version:"5" %}
+    {% style name:"font-awesome", version:"5" %}
     {% style src:"https://fonts.googleapis.com/css2?family=Fira+Sans:wght@200;300;400;500&display=swap" %}
+
     <!-- Bootstrap core JavaScript (includes jQuery and popper.js) -->
-    {% script name:"portaltheme-vendor-bootstrap", at:"Foot" %}
+    {% script name:"jQuery", at:"Foot", version:"3.5.1" %}
+    {% script name:"popper", at:"Foot", version:"1.16.1" %}
+    {% script name:"bootstrap", at:"Foot", version:"4.4.1" %}
 
     {% resources type: "HeadScript" %}
     {% resources type: "HeadLink" %}
