@@ -47,32 +47,5 @@
 </article>
 {% endif %}
 
-<!-- Action Modal -->
-<div id="bonus-action-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered profile" role="document">
-    <form class="modal-content section-panel profile" action="{{ '~/workflows/Invoke?token=CfDJ8Ap2crNbaMNNvxt9cWvhLfeiBdc8wQ700SR-all7grDbQ_zu8hti-lhHD_EuZ5tbxdn57n4LkuyFAPlFKXHj9pANkRS39q5AA7gBKHUoqk4unsQOS0rD13brGE01uuFkez0lDjIKrHBSUmGpeq3LZQWy1PKD2Je0Jlax29tTM9npWLgUv4xxp2oLcnT_WiIlB-c2DX3iAi3e7ikVUltK08EM2XBIFh1WNJrydLjAGmvj' | href }}" method="POST">
-      <div class="modal-header profile">
-        <h2 class="h2 modal-title">{{ "Request a Kubeflow namespace" | t }}</h2>
-        <button type="button" class="btn btn-primary is-circle" data-dismiss="modal" aria-label="{{ 'Close' | t }}">
-          <span aria-hidden="true"><i class="fas fa-times"></i></span>
-        </button>
-      </div>
-      <div class="modal-body profile flex-column align-items-center justifyc-content-center text-center">
-       
-        <div class="col-lg-4 col-md-6 col-sm-8 col-12 form-group d-flex flex-column align-items-center justify-content-center py-2">
-          <label class="asterix">{{ "Namespace name" | t }}</label>
-          <input name="Namespace" class="form-control" aria-describedby="Namespace-described-by" />
-          <span id="Namespace-described-by" class="text-danger"></span>
-        </div>
-
-        <p class="text-secondary">An admin will follow up with you at {{ User | get_claim: 'email' }} with questions or updates.</p>
-
-        <input name="User" type="hidden" value="{{ User.Identity.Name }}" />
-        <input name="Email" type="hidden" value="{{ User | get_claim: 'email' }}" />
-      </div>
-      <div class="modal-footer profile">
-        <button type="submit" class="btn btn-lg btn-primary is-rounded">{{ "Send request" | t }}</button>
-      </div>
-    </form>
-  </div>
-</div>
+{% assign bonus_action_modal = "BonusActionModal" | shape_new %}
+{{ bonus_action_modal | shape_render }}
