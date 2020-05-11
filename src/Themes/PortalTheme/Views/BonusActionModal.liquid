@@ -1,6 +1,7 @@
+{% assign return_url = '~/' | href %}
 <div id="bonus-action-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered profile" role="document">
-    <form class="modal-content section-panel profile" action="{{ '~/workflows/Invoke?token=CfDJ8CepS_9HXUdDrZrLyYbiB_fsJiA1YP5cc3HNq5VTS2ryDD3-45azIz-gOWqQQ9xSAXTFMcrS3x2eA5wRgix-nyX8D4MNrkh2rpSVBFVrlTDEqUmfsjI0r3Li6dXsHYjPLCEqRF0mOqcklDT4lOWAgcJ1-2uUXyuIz1zJsaCD8J7ln2akxHdLCgjjdgvUtlMMzq2OX5uqUxB9CD6L8rabietz2xAETYNkgY6QmenB8EGn' | href }}" method="POST">
+    <form class="modal-content section-panel profile" action="{{ '~/workflows/Invoke?token=CfDJ8CepS_9HXUdDrZrLyYbiB_fsJiA1YP5cc3HNq5VTS2ryDD3-45azIz-gOWqQQ9xSAXTFMcrS3x2eA5wRgix-nyX8D4MNrkh2rpSVBFVrlTDEqUmfsjI0r3Li6dXsHYjPLCEqRF0mOqcklDT4lOWAgcJ1-2uUXyuIz1zJsaCD8J7ln2akxHdLCgjjdgvUtlMMzq2OX5uqUxB9CD6L8rabietz2xAETYNkgY6QmenB8EGn?returnurl=' | append: '~/' | href }}" method="POST">
       <div class="modal-header profile">
         <h2 class="h2 modal-title">{{ "Request a Kubeflow namespace" | t }}</h2>
         <button type="button" class="btn btn-primary is-circle" data-dismiss="modal" aria-label="{{ 'Close' | t }}">
@@ -15,10 +16,11 @@
           <span id="Namespace-described-by" class="text-danger"></span>
         </div>
 
-        <p class="text-secondary">An admin will follow up with you at {{ User | get_claim: 'email' }} with questions or updates.</p>
+        <p class="text-secondary">{{ "An admin will follow up with you at" | t }} {{ User | get_claim: 'email' }} {{ "with questions or updates." | t }}</p>
 
         <input name="User" type="hidden" value="{{ User.Identity.Name }}" />
         <input name="Email" type="hidden" value="{{ User | get_claim: 'email' }}" />
+        {% antiforgerytoken %}
       </div>
       <div class="modal-footer profile">
         <button type="submit" class="btn btn-lg btn-primary is-rounded">{{ "Send request" | t }}</button>
