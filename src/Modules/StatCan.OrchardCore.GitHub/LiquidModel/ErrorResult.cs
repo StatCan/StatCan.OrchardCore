@@ -1,6 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace StatCan.OrchardCore.GitHub.LiquidModel
 {
@@ -8,6 +6,5 @@ namespace StatCan.OrchardCore.GitHub.LiquidModel
     {
         public string Message { get; set; }
         public Exception Exception { get; set; }
-
     }
 }

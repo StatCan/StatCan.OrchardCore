@@ -7,6 +7,7 @@ using StatCan.OrchardCore.GitHub;
     Website = "https://innovation.statcan.gc.ca",
     Version = "1.0.0",
     Description = "Workflow tasks to interact with the github api.",
-    Category = "GitHub"
+    Category = "GitHub",
+    Dependencies = new string[] {"OrchardCore.Workflows"}
 )]
 
