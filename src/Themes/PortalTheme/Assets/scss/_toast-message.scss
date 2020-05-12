@@ -1,4 +1,8 @@
 .message {
+  align-items: center;
+  display: flex;
+  @include rfs(16);
+  font-weight: 200;
   max-width: 70vw;
   padding: 0.5rem 1rem;
   position: absolute;
@@ -23,6 +27,7 @@
     color: inherit;
     content: "\f058";
     font-family: "Font Awesome 5 Free";
+    font-size: 2rem;
     font-weight: 900;
     margin-right: 1rem;
   }
@@ -42,6 +47,7 @@
     color: inherit;
     content: "\f057";
     font-family: "Font Awesome 5 Free";
+    font-size: 2rem;
     font-weight: 900;
     margin-right: 1rem;
   }
@@ -61,6 +67,7 @@
     color: inherit;
     content: "\f071";
     font-family: "Font Awesome 5 Free";
+    font-size: 2rem;
     font-weight: 900;
     margin-right: 1rem;
   }
@@ -80,6 +87,7 @@
     color: inherit;
     content: "\f05a";
     font-family: "Font Awesome 5 Free";
+    font-size: 2rem;
     font-weight: 900;
     margin-right: 1rem;
   }
