@@ -40,6 +40,7 @@ Returns the `Issue` object for the specified issue number.
 
 ```liquid
 {{ 123 | github_issue: "owner", "repo" }}
+```
 
 ### github_comments filter
 
