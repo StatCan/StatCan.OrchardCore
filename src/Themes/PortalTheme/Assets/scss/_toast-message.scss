@@ -1,8 +1,13 @@
+.messages-wrapper {
+  position: relative;
+}
+
 .message {
   align-items: center;
+  box-shadow: 3px 0 9px transparentize($background, 0.52);
   display: flex;
-  @include rfs(16);
-  font-weight: 200;
+  @include rfs(20);
+  font-weight: 300;
   max-width: 70vw;
   padding: 0.5rem 1rem;
   position: absolute;
@@ -16,13 +21,13 @@
 .message-success {
   background-color: transparentize($background, 0.28);
   background-image: radial-gradient(
-    circle at center 1rem,
-    transparentize($success, 0.82) 0,
-    transparentize($success, 1) 12rem
+    circle at left center,
+    transparentize($secondary, 0.82) 0,
+    transparentize($secondary, 1) 12rem
   );
   border-radius: 2px;
-  border: solid 1px transparentize($success, 0.52);
-  box-shadow: 0 0 5px transparentize($success, 0.52);
+  border: solid 1px transparentize($secondary, 0.52);
+  box-shadow: 0 0 5px transparentize($secondary, 0.52);
   &:before {
     color: inherit;
     content: "\f058";
