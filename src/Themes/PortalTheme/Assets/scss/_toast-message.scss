@@ -1,8 +1,13 @@
 .message {
+  max-width: 70vw;
   padding: 0.5rem 1rem;
   position: absolute;
-  left: 2rem;
-  top: 10vh;
+  left: 1rem;
+  top: 1rem;
+  @include media-breakpoint-up(sm) {
+    left: 2rem;
+    top: 10vh;
+  }
 }
 .message-success {
   background-color: transparentize($background, 0.28);
