@@ -47,5 +47,5 @@ Returns the `Issue` object for the specified issue number.
 Returns a list of `IssueComment` for the specified issue / pull request number.
 
 ```liquid
-{{ 123 | github_issue_comments: "owner", "repo" }}
+{{ 123 | github_comments: "owner", "repo" }}
 ```
