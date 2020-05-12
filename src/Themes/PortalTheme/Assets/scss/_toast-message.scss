@@ -1,0 +1,53 @@
+.message {
+  padding: 0.5rem 1rem;
+  position: absolute;
+  left: 2rem;
+  top: 10vh;
+}
+.message-success {
+  background-color: transparentize($background, 0.28);
+  background-image: radial-gradient(
+    circle at center 1rem,
+    transparentize($success, 0.82) 0,
+    transparentize($success, 1) 12rem
+  );
+  border-radius: 2px;
+  border: solid 1px transparentize($success, 0.52);
+  box-shadow: 0 0 5px transparentize($success, 0.52);
+}
+
+.message-error {
+  background-color: transparentize($background, 0.28);
+  background-image: radial-gradient(
+    circle at center 1rem,
+    transparentize($danger, 0.82) 0,
+    transparentize($danger, 1) 12rem
+  );
+  border-radius: 2px;
+  border: solid 1px transparentize($danger, 0.52);
+  box-shadow: 0 0 5px transparentize($danger, 0.52);
+}
+
+.message-warning {
+  background-color: transparentize($background, 0.28);
+  background-image: radial-gradient(
+    circle at center 1rem,
+    transparentize($warning, 0.82) 0,
+    transparentize($warning, 1) 12rem
+  );
+  border-radius: 2px;
+  border: solid 1px transparentize($warning, 0.52);
+  box-shadow: 0 0 5px transparentize($warning, 0.52);
+}
+
+.message-info {
+  background-color: transparentize($background, 0.28);
+  background-image: radial-gradient(
+    circle at center 1rem,
+    transparentize($info, 0.82) 0,
+    transparentize($info, 1) 12rem
+  );
+  border-radius: 2px;
+  border: solid 1px transparentize($info, 0.52);
+  box-shadow: 0 0 5px transparentize($info, 0.52);
+}

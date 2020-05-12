@@ -25,7 +25,7 @@
 </head>
 <body id="page-top" dir="{{ Culture.Dir }}">
     {% render_section "Header", required: false %}
-    {% render_section "Messages", required: false %}
+    <div class="container bg-primary text-white">{% render_section "Messages", required: false %}</div>
     {% render_section "Content" %}
     {% render_section "Footer", required: false %}
 

@@ -1,7 +1,7 @@
 {% assign return_url = '~/' | href %}
 <div id="bonus-action-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered profile" role="document">
-    <form class="modal-content section-panel profile" action="{{ '~/workflows/Invoke?token=CfDJ8CepS_9HXUdDrZrLyYbiB_fsJiA1YP5cc3HNq5VTS2ryDD3-45azIz-gOWqQQ9xSAXTFMcrS3x2eA5wRgix-nyX8D4MNrkh2rpSVBFVrlTDEqUmfsjI0r3Li6dXsHYjPLCEqRF0mOqcklDT4lOWAgcJ1-2uUXyuIz1zJsaCD8J7ln2akxHdLCgjjdgvUtlMMzq2OX5uqUxB9CD6L8rabietz2xAETYNkgY6QmenB8EGn&returnurl=/' | href }}" method="POST">
+    <form class="modal-content section-panel profile" action="{{ '~/workflows/Invoke?token=CfDJ8CepS_9HXUdDrZrLyYbiB_fsJiA1YP5cc3HNq5VTS2ryDD3-45azIz-gOWqQQ9xSAXTFMcrS3x2eA5wRgix-nyX8D4MNrkh2rpSVBFVrlTDEqUmfsjI0r3Li6dXsHYjPLCEqRF0mOqcklDT4lOWAgcJ1-2uUXyuIz1zJsaCD8J7ln2akxHdLCgjjdgvUtlMMzq2OX5uqUxB9CD6L8rabietz2xAETYNkgY6QmenB8EGn' | href }}" method="POST">
       <div class="modal-header profile">
         <h2 class="h2 modal-title">{{ "Request a Kubeflow namespace" | t }}</h2>
         <button type="button" class="btn btn-primary is-circle" data-dismiss="modal" aria-label="{{ 'Close' | t }}">
@@ -12,7 +12,7 @@
        
         <div class="col-lg-4 col-md-6 col-sm-8 col-12 form-group d-flex flex-column align-items-center justify-content-center py-2">
           <label class="asterix">{{ "Namespace name" | t }}</label>
-          <input name="Namespace" class="form-control" pattern="[^a-zA-Z]+" aria-describedby="Namespace-described-by" />
+          <input name="Namespace" class="form-control" type="text" pattern="[a-zA-Z]+" aria-describedby="Namespace-described-by" />
           <span id="Namespace-described-by" class="text-danger"></span>
         </div>
 
