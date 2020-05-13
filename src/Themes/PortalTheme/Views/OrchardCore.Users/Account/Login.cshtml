@@ -3,6 +3,7 @@
 @using OrchardCore.Settings
 @using OrchardCore.Users
 @using OrchardCore.Users.Models
+@using OrchardCore.DisplayManagement.Razor
 @model OrchardCore.Users.ViewModels.LoginViewModel
 @inject SignInManager<IUser> SignInManager
 @inject ISiteService SiteService
@@ -16,15 +17,14 @@
     var disableLocalLogin = (await SiteService.GetSiteSettingsAsync()).As<LoginSettings>().DisableLocalLogin;
 }
     <h1 class="login">@T["Log In"]</h1>
-    <p class="login h4">@(Site.SiteName)</p>
-    <div class="login row">
+    <p class="login h4"><a href="{{ '~/' | href }}"><i class="icon fas fa-cubes mr-2"></i>@(Site.SiteName)</a></p>
+    <div class="login row"> 
         @if (loginProviders.Count > 0 || userCanRegister)    
         {
         <div class="flex-fill col-lg-4 col-md-6 col-12">
             @if (loginProviders.Count > 0) {     
             <section class="section-panel">
                 <h2 class="text-center">@T["Log in with"]</h2>
-                <p class="text-center">@T["Linked accounts must have a verified @canada.ca email"]</p>
                 <form asp-controller="Account" asp-action="ExternalLogin" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="d-flex justify-content-center">
                     <div class="d-flex flex-column justify-content-center">
                         @foreach (var provider in loginProviders)

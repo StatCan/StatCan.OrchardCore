@@ -1,7 +1,7 @@
-{% layout "Layout__Login" %}
-<h1 class="login">{{ "Email confirmed" | t }}</h1>
-<p class="login h4"><a href="{{ '~/' | href }}"><i class="icon {{ Site.Properties.SiteIcon.SiteIcon.Icon.Text }} mr-2"></i>{{ Site.SiteName }}</a></p>
-<div class="login">
-    <p>{{ "Thank you for confirming your email." | t }}</p>
+{% assign title = "Email confirmed" | t %}
+{{ "SharedLoginHeader" | shape_new | shape_properties: title: title | shape_render }}
+<div class="d-flex justify-content-center">
+    <p class="text-center">{{ "Thank you for confirming your email." | t }}</p>
     <a href="{{ '~/' | href }}" class="btn btn-lg btn-primary is-rounded">{{ "Home" | t }}</a>
 </div>
+{{ "SharedLoginFooter" | shape_new | shape_render }}

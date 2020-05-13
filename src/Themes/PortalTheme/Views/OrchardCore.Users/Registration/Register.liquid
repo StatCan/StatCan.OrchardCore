@@ -1,46 +1,42 @@
-{% layout "Layout__Login" %}
 {% assign disable_local_login = Site.Properties.LoginSettings.DisableLocalLogin %}
-<h1 class="login">{{ "Create account" | t }}</h1>
-<p class="login h4"><a href="{{ '~/' | href }}"><i class="icon {{ Site.Properties.SiteIcon.SiteIcon.Icon.Text }} mr-2"></i>{{ Site.SiteName }}</a></p>
-<div class="login">
-    <div class="section-panel col-xl-4 col-lg-5 col-md-8 col-sm-10 col-12">
-        {% form asp_controller:"Registration", asp_action:"Register", asp_route_returnurl:Request.Query["returnurl"], method:"post" %}
-            <div class="form-group">
-                {% block "label", asp_for:"UserName", class:"control-label asterix" %}{{ "Username" | t }}{% endblock %}
-                {% helper "input", asp_for:"UserName", class:"form-control", aria_describedby:"UserName-described-by", autocomplete:"username" %}
-                {% helper "span", id:"UserName-described-by", asp_validation_for:"UserName", class:"text-danger" %}
-            </div>
-            <div class="form-group">
-                {% block "label", asp_for:"Email", class:"control-label asterix" %}{{ "Email" | t }}{% endblock %}
-                {% helper "input", asp_for:"Email", class:"form-control", aria_describedby:"Email-described-by" %}
-                {% helper "span", id:"Email-described-by", asp_validation_for:"Email", class:"text-danger" %}
-            </div>
-            <div class="row">
-                <div class="col-6">
-                <div class="form-group">
-                    {% block "label", asp_for:"Password", class:"control-label asterix" %}{{ "Password" | t }}{% endblock %}
-                    {% helper "input", asp_for:"Password", class:"form-control", type: "password", aria_describedby:"Password-described-by", autocomplete:"new-password" %}
-                    {% helper "span", asp_validation_for:"Password", class:"text-danger", aria_describedby:"Password-described-by" %}
-                </div>
-                <div class="form-group">
-                    {% block "label", asp_for:"ConfirmPassword", class:"control-label asterix" %}{{ "Confirm password" | t }}{% endblock %}
-                    {% helper "input", asp_for:"ConfirmPassword", class:"form-control", type: "password", aria_describedby:"ConfirmPassword-described-by", autocomplete:"new-password" %}
-                    {% helper "span", id:"ConfirmPassword-described-by", asp_validation_for:"ConfirmPassword", class:"text-danger" %}
-                </div>
-                </div>
-                <div class="col-6 d-flex align-items-center">
-                    <small class="form-text text-muted">{{ "Passwords must have:<br>• 8 characters or more<br>• an uppercase letter<br>• a lowercase letter<br>• a number<br>• a special character" | t | raw }}</small>
-                </div>
-            </div>
-            {% render_section "AfterRegister", required: false %}
-            <div class="form-group mt-4 d-flex justify-content-center">
-                <button type="submit" class="btn btn-lg btn-primary is-rounded"><span>{{ "Create account" | t }}</span></button>
-            </div>
-        {% endform %}
-        {% unless disable_local_login %}
-            <div class="mt-4 d-flex justify-content-center">
-                {% a asp_route_area:"OrchardCore.Users", asp_controller:"Account", asp_action:"Login" %}{{ "Already have an account? Login" | t }}{% enda %}
-            </div>
-        {% endunless %}
+{% assign title = "Create account" | t %}
+{{ "SharedLoginHeader" | shape_new | shape_properties: title: title | shape_render }}
+{% form asp_controller:"Registration", asp_action:"Register", asp_route_returnurl:Request.Query["returnurl"], method:"post" %}
+    <div class="form-group">
+        {% block "label", asp_for:"UserName", class:"control-label asterix" %}{{ "Username" | t }}{% endblock %}
+        {% helper "input", asp_for:"UserName", class:"form-control", aria_describedby:"UserName-described-by", autocomplete:"username" %}
+        {% helper "span", id:"UserName-described-by", asp_validation_for:"UserName", class:"text-danger" %}
     </div>
-</div>
+    <div class="form-group">
+        {% block "label", asp_for:"Email", class:"control-label asterix" %}{{ "Email" | t }}{% endblock %}
+        {% helper "input", asp_for:"Email", class:"form-control", aria_describedby:"Email-described-by" %}
+        {% helper "span", id:"Email-described-by", asp_validation_for:"Email", class:"text-danger" %}
+    </div>
+    <div class="row">
+        <div class="col-6">
+        <div class="form-group">
+            {% block "label", asp_for:"Password", class:"control-label asterix" %}{{ "Password" | t }}{% endblock %}
+            {% helper "input", asp_for:"Password", class:"form-control", type: "password", aria_describedby:"Password-described-by", autocomplete:"new-password" %}
+            {% helper "span", asp_validation_for:"Password", class:"text-danger", aria_describedby:"Password-described-by" %}
+        </div>
+        <div class="form-group">
+            {% block "label", asp_for:"ConfirmPassword", class:"control-label asterix" %}{{ "Confirm password" | t }}{% endblock %}
+            {% helper "input", asp_for:"ConfirmPassword", class:"form-control", type: "password", aria_describedby:"ConfirmPassword-described-by", autocomplete:"new-password" %}
+            {% helper "span", id:"ConfirmPassword-described-by", asp_validation_for:"ConfirmPassword", class:"text-danger" %}
+        </div>
+        </div>
+        <div class="col-6 d-flex align-items-center">
+            <small class="form-text text-muted">{{ "Passwords must have:<br>• 8 characters or more<br>• an uppercase letter<br>• a lowercase letter<br>• a number<br>• a special character" | t | raw }}</small>
+        </div>
+    </div>
+    {% render_section "AfterRegister", required: false %}
+    <div class="form-group mt-4 d-flex justify-content-center">
+        <button type="submit" class="btn btn-lg btn-primary is-rounded"><span>{{ "Create account" | t }}</span></button>
+    </div>
+{% endform %}
+{% unless disable_local_login %}
+    <div class="mt-4 d-flex justify-content-center">
+        {% a asp_route_area:"OrchardCore.Users", asp_controller:"Account", asp_action:"Login" %}{{ "Already have an account? Login" | t }}{% enda %}
+    </div>
+{% endunless %}
+{{ "SharedLoginFooter" | shape_new | shape_render }}
