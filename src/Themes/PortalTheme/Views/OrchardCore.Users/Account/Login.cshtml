@@ -17,14 +17,14 @@
     var disableLocalLogin = (await SiteService.GetSiteSettingsAsync()).As<LoginSettings>().DisableLocalLogin;
 }
     <h1 class="login">@T["Log In"]</h1>
-    <p class="login h4"><a href="{{ '~/' | href }}"><i class="icon fas fa-cubes mr-2"></i>@(Site.SiteName)</a></p>
-    <div class="login row"> 
+    <p class="login h4"><a href="@Url.Content("~/")"><i class="icon fas fa-cubes mr-2"></i>@(Site.SiteName)</a></p>
+    <div class="login row">
         @if (loginProviders.Count > 0 || userCanRegister)    
         {
         <div class="flex-fill col-lg-4 col-md-6 col-12">
             @if (loginProviders.Count > 0) {     
-            <section class="section-panel">
-                <h2 class="text-center">@T["Log in with"]</h2>
+            <section class="section-panel mb-4">
+                <h2 class="text-center mb-3">@T["Log in with"]</h2>
                 <form asp-controller="Account" asp-action="ExternalLogin" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="d-flex justify-content-center">
                     <div class="d-flex flex-column justify-content-center">
                         @foreach (var provider in loginProviders)
@@ -48,12 +48,6 @@
                 </form>
             </section>
             }
-            @if (userCanRegister)
-            {
-            <section class="d-flex justify-content-center my-4">
-                <a class="h4" asp-controller="Registration" asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]">@T["Register as a new user"]</a>
-            </section>
-            }
         </div>
         }
         @if (!disableLocalLogin)
@@ -61,7 +55,9 @@
         <div class="flex-fill col-lg-4 col-md-6 col-12">
             <section class="section-panel">
                 <h2 class="text-center">@T["vLab account"]</h2>
+                <p class="text-secondary text-center mb-4">@T["Your digital passport for innovation"]</p>
                 <form asp-controller="Account" asp-action="Login" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="auth-form">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="form-group d-flex flex-column align-items-center justify-content-center py-2">
                         <label class="asterix" asp-for="UserName">@T["Username"]</label>
                         <input asp-for="UserName" class="form-control" aria-describedby="UserName-described-by" autocomplete="username" />
@@ -72,7 +68,7 @@
                         <input asp-for="Password" class="form-control" aria-describedby="Password-described-by" autocomplete="current-password"  />
                         <span id="Password-described-by" asp-validation-for="Password" class="text-danger"></span>
                     </div>
-                    <div class="form-group custom-control custom-checkbox d-flex justify-content-center py-2">
+                    <div class="form-group custom-control custom-checkbox d-flex justify-content-center mt-4 mb-1">
                         <input asp-for="RememberMe" class="custom-control-input" />
                         <label asp-for="RememberMe" class="custom-control-label">@T["Remember me"]</label>
                     </div>
@@ -82,11 +78,21 @@
                     </div>
                     @if (allowResetPassword)
                     {
-                    <div class="d-flex justify-content-center mt-3">
+                    <div class="d-flex justify-content-center mt-4">
                         <a class="h4" asp-controller="ResetPassword" asp-action="ForgotPassword" class="label-link">@T["Forgot your password?"]</a>
                     </div>
                     }
                 </form>
+            </section>
+        </div>
+        }
+    </div>
+    <div class="login row mt-4">
+        @if (userCanRegister)
+        {
+        <div class="flex-fill col-lg-8 col-md-12 col-12">
+            <section class="section-panel d-flex justify-content-center py-4">
+                <a class="btn btn-lg btn-outline-primary is-rounded" asp-controller="Registration" asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]">@T["Create an account"]</a>
             </section>
         </div>
         }

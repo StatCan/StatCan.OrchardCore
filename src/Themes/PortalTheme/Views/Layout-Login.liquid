@@ -24,16 +24,14 @@
     {% resources type: "Stylesheet" %}
 
 </head>
-<body id="page-top" dir="{{ Culture.Dir }}">
-  <main id="bootstrap-main">
-    <section class="hero is-fullheight">
+<body id="page-top" class="d-flex" dir="{{ Culture.Dir }}">
+  <main id="bootstrap-main" class="d-flex flex-column flex-fill account-page">
+    <section class="flex-fill">
       <div class="container">
-        <div class="flex-fill">
-          {% render_section "Content" %}
-        </div>
-        {% render_section "Footer", required: false %}
+        {% render_section "Content" %}
       </div>
     </section>
+    {% render_section "Footer", required: false %}
   </main>
   {% resources type: "FootScript" %}
 </body>
