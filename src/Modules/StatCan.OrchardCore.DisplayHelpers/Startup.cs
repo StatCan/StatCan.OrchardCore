@@ -28,7 +28,6 @@ namespace StatCan.OrchardCore.DisplayHelpers
             services.AddLiquidFilter<UserEmailFilter>("user_email");
             services.AddLiquidFilter<IsCurrentUrlFilter>("is_current_url");
             services.AddLiquidFilter<GetClaimLiquidFilter>("get_claim");
-            services.AddLiquidFilter<JsonIndentedFilter>("json_indented");
             services.AddTagHelpers<SetHttpContextItemsTagHelper>();
             services.AddScoped<ILiquidTemplateEventHandler, HttpContextItemsEventHandler>();
         }
