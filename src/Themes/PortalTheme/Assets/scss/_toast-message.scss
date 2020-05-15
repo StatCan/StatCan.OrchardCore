@@ -23,7 +23,7 @@
   background-image: radial-gradient(
     circle at left center,
     transparentize($secondary, 0.82) 0,
-    transparentize($secondary, 1) 12rem
+    transparentize($secondary, 1) 40rem
   );
   border-radius: 2px;
   border: solid 1px transparentize($secondary, 0.52);
@@ -41,9 +41,9 @@
 .message-error {
   background-color: transparentize($background, 0.28);
   background-image: radial-gradient(
-    circle at center 1rem,
+    circle at left center,
     transparentize($danger, 0.82) 0,
-    transparentize($danger, 1) 12rem
+    transparentize($danger, 1) 40rem
   );
   border-radius: 2px;
   border: solid 1px transparentize($danger, 0.52);
@@ -61,9 +61,9 @@
 .message-warning {
   background-color: transparentize($background, 0.28);
   background-image: radial-gradient(
-    circle at center 1rem,
+    circle at left center,
     transparentize($warning, 0.82) 0,
-    transparentize($warning, 1) 12rem
+    transparentize($warning, 1) 40rem
   );
   border-radius: 2px;
   border: solid 1px transparentize($warning, 0.52);
@@ -81,9 +81,9 @@
 .message-info {
   background-color: transparentize($background, 0.28);
   background-image: radial-gradient(
-    circle at center 1rem,
+    circle at left center,
     transparentize($info, 0.82) 0,
-    transparentize($info, 1) 12rem
+    transparentize($info, 1) 40rem
   );
   border-radius: 2px;
   border: solid 1px transparentize($info, 0.52);

@@ -1,10 +1,8 @@
-{% assign title = "Just one last step" | t %}
-{{ "SharedLoginHeader" | shape_new | shape_properties: title: title | shape_render }}
+{% assign title = "One last thing" | t %}
+{% assign prompt = "You've successfully authenticated. Now we'll create your vLab digital passport that can be used for other vLabs. You'll be able to attach other Single-Sign-On services to this passport." | t %}
+{{ "SharedLoginHeader" | shape_new | shape_properties: title: title, prompt: prompt | shape_render }}
 {% form asp_controller:"Account", asp_action:"RegisterExternalLogin", asp_route_returnurl:Request.Query["ReturnUrl"], method:"post", class:"form-horizontal" %}
     {% comment %} <h4>{{ "Create a new account." | t }}</h4> {% endcomment %}
-    {% comment %} <p class="text-info">
-        {{ "You've successfully authenticated. Please fill the form below and click the Register button to complete the registration." | t }} 
-    </p> {% endcomment %}
     {% comment %} <hr /> {% endcomment %}
     {% helper "div", asp_validation_summary:"ModelOnly", class:"text-danger" %}
 

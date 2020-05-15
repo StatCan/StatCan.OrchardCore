@@ -1,20 +1,23 @@
+{% assign list_direction = Model.ContentItem.Content.SectionPanel.ListDirection.Text %}
 {% if Model.ContentItem | user_can_view %}
-<article id="{{ Model.ContentItem | display_text | slugify }}" class="{{ Model.ContentItem.Content.SectionPanel.Size.Text }} my-3">
-  <div class="section-panel d-flex flex-column align-items-center">
-    <i class="m-2 fa-3x {{ Model.ContentItem.Content.SectionPanel.Icon.Text }}"></i>
-    <h2 class="text-center">{{ Model.ContentItem.Content.SectionPanel.Title.Text }}</h2>
-    <p class="text-center mb-5">{{ Model.ContentItem.Content.SectionPanel.Description.Text }}</p>
+<article id="{{ Model.ContentItem | display_text | slugify }}" class="{{ Model.ContentItem.Content.SectionPanel.Size.Text }} my-3 d-flex flex-column flex-fill">
+  <div class="section-panel">
+    <header class="d-flex flex-column justify-content-center text-center mb-5">
+      <i class="m-2 fa-3x {{ Model.ContentItem.Content.SectionPanel.Icon.Text }}"></i>
+      <h2>{{ Model.ContentItem.Content.SectionPanel.Title.Text }}</h2>
+      <p>{{ Model.ContentItem.Content.SectionPanel.Description.Text }}</p>
+    </header>
     <nav>
-      <ul class="{{ Model.ContentItem.Content.SectionPanel.ListDirection.Text }} justify-content-between">
+      <ul class="{{ list_direction }} flex-fill {% unless list_direction == 'is-vertical-list' %}justify-content-around{% endunless %}">
       {% for item in Model.ContentItem.Content.Links.ContentItems %}
-        <li class="d-flex {% if Model.ContentItem.Content.SectionPanel.ListDirection.Text == 'is-vertical-list' %}d-block{% else %}col-4{% endif %}">
-          <a href="{{ item.SectionPanelLink.Url.Text }}" target="_blank">
+        <li class="d-flex {% if list_direction == 'is-vertical-list' %}d-block{% else %}col-4{% endif %}">
+          <a href="{{ item.SectionPanelLink.Url.Text }}" class="flex-grow-1" target="_blank">
             <div class="section-panel-link">
               <div class="section-panel-link-icon text-primary">
                 {% if item.SectionPanelLink.Image.Paths.first != null %}
-                <img src="{{ item.SectionPanelLink.Image.Paths.first | asset_url }}" aria-hidden="true" />
+                  <img src="{{ item.SectionPanelLink.Image.Paths.first | asset_url }}" aria-hidden="true" />
                 {% else %}
-                <i class="fa-2x {{ item.SectionPanelLink.Icon.Text }}"></i>
+                  <i class="fa-2x {{ item.SectionPanelLink.Icon.Text }}"></i>
                 {% endif %}
               </div>
               <div>
@@ -24,20 +27,20 @@
             </div>
           </a>
           {% if item.Actions.ContentItems != null %}
-          <div class="nav-item dropdown">
-            <a class="btn btn-sm btn-link" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i class="fas fa-ellipsis-v"></i>
-            </a>
-            <div class="dropdown-menu dropdown-menu-right">
-              {% for action in item.Actions.ContentItems %}
-                {% if action.LinkMenuItemPart.Name == "Request a Kubeflow namespace" %}
-                  <button class="dropdown-item" data-toggle="modal" data-target="#bonus-action-modal">{{ "Request a Kubeflow namespace" | t }}</button>
-                {% else %}
-                  <a class="dropdown-item" href="{{ action.LinkMenuItemPart.Url }}" target="_blank">{{ action.LinkMenuItemPart.Name }}</a>
-                {% endif %}
-              {% endfor %}
+            <div class="nav-item dropdown">
+              <a class="btn btn-sm btn-link" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-ellipsis-v"></i>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right">
+                {% for action in item.Actions.ContentItems %}
+                  {% if action.LinkMenuItemPart.Name == "Request a Kubeflow namespace" %}
+                    <button class="dropdown-item" data-toggle="modal" data-target="#bonus-action-modal">{{ "Request a Kubeflow namespace" | t }}</button>
+                  {% else %}
+                    <a class="dropdown-item" href="{{ action.LinkMenuItemPart.Url }}" target="_blank">{{ action.LinkMenuItemPart.Name }}</a>
+                  {% endif %}
+                {% endfor %}
+              </div>
             </div>
-          </div>
           {% endif %}
         </li>
       {% endfor %}
@@ -46,6 +49,4 @@
   </div>
 </article>
 {% endif %}
-
-{% assign bonus_action_modal = "BonusActionModal" | shape_new %}
-{{ bonus_action_modal | shape_render }}
+{{ "BonusActionModal" | shape_new | shape_render }}

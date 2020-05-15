@@ -6,8 +6,10 @@
     transparentize(#aeaeae, 1) 17rem
   );
   border-radius: 2px;
-  padding: 2rem;
+  display: flex;
   flex: 1 1 auto;
+  flex-direction: column;
+  padding: 2rem;
 
   .is-vertical-list {
     display: flex;

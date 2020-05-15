@@ -5,6 +5,9 @@ html {
 body {
   background-color: $background;
   color: $white;
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
   font-family: "Fira Sans", sans-serif;
   min-height: 100vh;
 }

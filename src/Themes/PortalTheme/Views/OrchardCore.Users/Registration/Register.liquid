@@ -1,7 +1,7 @@
 {% assign disable_local_login = Site.Properties.LoginSettings.DisableLocalLogin %}
 {% assign title = "Create account" | t %}
 {% assign subtitle = "vLab account" | t %}
-{% assign prompt = "Your digital passport for innovation" | t %}
+{% assign prompt = "One account for all virtual labs" | t %}
 {{ "SharedLoginHeader" | shape_new | shape_properties: title: title, subtitle: subtitle, prompt: prompt | shape_render }}
 {% form asp_controller:"Registration", asp_action:"Register", asp_route_returnurl:Request.Query["returnurl"], method:"post" %}
     <div class="form-group">
