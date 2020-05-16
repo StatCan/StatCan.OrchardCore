@@ -11,9 +11,9 @@
         <ul class="navbar-nav mr-auto">
           {% if User.Identity.IsAuthenticated and Model.ContentItem | user_can_view %}
             {% for item in Model.ContentItem.Content.Links.ContentItems %}
-            <li class="nav-item m-2">
-              {{ item | shape_build_display | shape_render }}
-            </li>
+              <li class="nav-item m-2">
+                {{ item | shape_build_display | shape_render }}
+              </li>
             {% endfor %}
           {% else %}
             {% unless User.Identity.IsAuthenticated %}
@@ -22,7 +22,7 @@
           {% endif %}
         </ul>
       </nav>
-      <span class="text-secondary d-block d-md-none h2 mt-4"><i class="fas fa-chevron-down"></i></span>
+      {% comment %} <span class="text-secondary d-block d-md-none h2 mt-4"><i class="fas fa-chevron-down"></i></span> {% endcomment %}
     </div>
     <footer class="hero-footer">
       {{ "SymbolStatisticsCanada" | shape_new | shape_render }}
