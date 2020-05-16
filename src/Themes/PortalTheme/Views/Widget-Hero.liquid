@@ -17,12 +17,14 @@
             {% endfor %}
           {% else %}
             {% unless User.Identity.IsAuthenticated %}
-            <a href="{{ '~/login' | href }}" class="btn btn-lg btn-primary is-rounded nav-link">Login</a>
+            <a href="{{ '~/login' | href }}" class="btn btn-lg btn-primary is-rounded nav-link mt-5">{{ "Log in" | t }}</a>
             {% endunless %}
           {% endif %}
         </ul>
       </nav>
-      {% comment %} <span class="text-secondary d-block d-md-none h2 mt-4"><i class="fas fa-chevron-down"></i></span> {% endcomment %}
+      <div role="i" class="d-block d-md-none h2 mt-4" aria-label="{{ 'Down arrow' | t }}">
+        <svg id="down-arrow" enable-background="new 0 0 551.13 551.13" height="2rem" viewBox="0 0 551.13 551.13" width="2rem" xmlns="http://www.w3.org/2000/svg"><path d="m275.565 361.679-223.897-223.896h-51.668l275.565 275.565 275.565-275.565h-51.668z"/></svg>
+      </div>
     </div>
     <footer class="hero-footer">
       {{ "SymbolStatisticsCanada" | shape_new | shape_render }}

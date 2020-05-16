@@ -13,7 +13,7 @@
         <li class="d-flex {% if list_direction == 'is-vertical-list' %}d-block{% else %}col-4{% endif %}">
           <a href="{{ item.SectionPanelLink.Url.Text }}" class="flex-grow-1" target="_blank">
             <div class="section-panel-link">
-              <div class="section-panel-link-icon text-primary">
+              <div class="section-panel-link-icon text-primary mb-2">
                 {% if item.SectionPanelLink.Image.Paths.first != null %}
                   <img src="{{ item.SectionPanelLink.Image.Paths.first | asset_url }}" aria-hidden="true" />
                 {% else %}
