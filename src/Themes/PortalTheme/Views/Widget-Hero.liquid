@@ -25,9 +25,9 @@
       <span class="text-secondary d-block d-md-none h2 mt-4"><i class="fas fa-chevron-down"></i></span>
     </div>
     <footer class="hero-footer">
-        <img class="sig-wht" alt="{{ 'Statistics Canada' | t }}" src="{{ 'sig-wht-eng.svg' | asset_url }}" />
-        <div class="fip-spacer"></div>
-        <img class="canada" alt="{{ 'Government of Canada' | t }}" src="{{ 'Canada.svg' | asset_url }}" />
+      {{ "SymbolStatisticsCanada" | shape_new | shape_render }}
+      <div class="fip-spacer"></div>
+      {{ "SymbolCanada" | shape_new | shape_render }}
     </footer> 
   </div>
 </section>

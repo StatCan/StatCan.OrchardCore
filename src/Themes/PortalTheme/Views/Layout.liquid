@@ -24,8 +24,11 @@
     {% resources type: "Stylesheet" %}
 </head>
 <body id="page-top" dir="{{ Culture.Dir }}">
+    <a class="skip-navigation text-center" href="#content">{{ "Skip to main content" | t }}</a>
     {% render_section "Header", required: false %}
-    <div class="container messages-wrapper">{% render_section "Messages", required: false %}</div>
+    <div class="container messages-wrapper">
+        {% render_section "Messages", required: false %}
+    </div>
     {% render_section "Content" %}
     {% render_section "Footer", required: false %}
 

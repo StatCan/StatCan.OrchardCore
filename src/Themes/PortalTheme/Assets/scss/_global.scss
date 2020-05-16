@@ -12,6 +12,11 @@ body {
   min-height: 100vh;
 }
 
+.skip-navigation {
+  @include sr-only;
+  @include sr-only-focusable;
+}
+
 h1,
 .h1 {
   @include rfs(64);
@@ -52,27 +57,38 @@ label {
   font-weight: 200;
 }
 
-.sig-wht {
-  height: 1rem;
+.fip-footer {
+  max-height: 2.5rem;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
   margin: 1.5rem;
+  svg {
+    vertical-align: bottom;
+  }
 }
-.canada {
+
+.sig-wht > svg {
+  height: 1rem;
+}
+.canada > svg {
   height: 1.5rem;
-  margin: 1.5rem;
 }
 .fip-spacer {
   width: 15vw;
 }
 
 @include media-breakpoint-up(lg) {
-  .sig-wht {
+  .sig-wht > svg {
     height: 1.5rem;
-    margin: 1.5rem;
   }
-  .canada {
+  .canada > svg {
     height: 2.25rem;
-    margin: 1.5rem;
   }
+}
+
+#content {
+  flex: 1 1 auto;
 }
 
 .btn {
