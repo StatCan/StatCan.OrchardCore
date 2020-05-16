@@ -65,5 +65,11 @@
     </div>
 
     {% resources type: "FootScript" %}
+    {% block "script", at:'Foot' %}
+        window.addEvenetListener('resize', () => {
+            let vh = window.innerHeight * 0.01;
+            document.documentElement.style.setProperty('--vh', `${vh}px`);
+        })
+    {% endblock %}
 </body>
 </html>
