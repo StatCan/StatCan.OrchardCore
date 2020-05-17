@@ -1,0 +1,55 @@
+.fip {
+  align-items: flex-end;
+  display: flex;
+  justify-content: space-between;
+  margin: 1.5rem;
+  #flag {
+    fill: #e33445;
+  }
+  #text {
+    fill: $black;
+  }
+  &.mono {
+    #flag {
+      fill: $black;
+    }
+  }
+  &.dark {
+    #flag {
+      fill: #e33445;
+    }
+    #text {
+      fill: $white;
+    }
+    &.mono {
+      #flag {
+        fill: $white;
+      }
+    }
+  }
+  svg {
+    vertical-align: bottom;
+  }
+}
+
+.sig-wht > svg {
+  height: 1rem;
+  @include media-breakpoint-up(md) {
+    height: 1.3rem;
+  }
+  @include media-breakpoint-up(lg) {
+    height: 1.25rem;
+  }
+}
+.canada > svg {
+  height: 1.5rem;
+  @include media-breakpoint-up(md) {
+    height: 1.875rem;
+  }
+  @include media-breakpoint-up(lg) {
+    height: 2.25rem;
+  }
+}
+.fip-spacer {
+  width: 15vw;
+}

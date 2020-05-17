@@ -7,6 +7,7 @@ $enable-responsive-font-sizes: true;
 /*Bootstrap partial that include what we need for bs*/
 @import "bootstrap";
 @import "global";
+@import "fip";
 @import "toast-message";
 @import "login";
 @import "hero";

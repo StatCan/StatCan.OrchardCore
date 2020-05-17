@@ -58,36 +58,6 @@ label {
   font-weight: 200;
 }
 
-.fip-footer {
-  max-height: 2.5rem;
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  margin: 1.5rem;
-  svg {
-    vertical-align: bottom;
-  }
-}
-
-.sig-wht > svg {
-  height: 1rem;
-}
-.canada > svg {
-  height: 1.5rem;
-}
-.fip-spacer {
-  width: 15vw;
-}
-
-@include media-breakpoint-up(lg) {
-  .sig-wht > svg {
-    height: 1.5rem;
-  }
-  .canada > svg {
-    height: 2.25rem;
-  }
-}
-
 #content {
   flex: 1 1 auto;
 }
