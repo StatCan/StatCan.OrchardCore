@@ -37,7 +37,7 @@
     <div class="modal-dialog modal-dialog-centered profile" role="document">
         <div class="modal-content section-panel profile">
         <div class="modal-header profile">
-            <h1 class="modal-title">{{ "account" | t }}</h1>
+            <h2 class="h1 modal-title">{{ "account" | t }}</h2>
             <button type="button" class="btn btn-primary is-circle" data-dismiss="modal" aria-label="{{ 'Close' | t }}">
             <span aria-hidden="true"><i class="fas fa-times"></i></span>
             </button>
@@ -63,7 +63,7 @@
         </div>
     </div>
     </div>
-{% block "script", at:"Foot" %}
+    {% block "script", at:"Foot" %}
         $( document ).ready(function() {
             let vh = window.innerHeight * 0.01;
             document.documentElement.style.setProperty('--vh', `${vh}px`);
