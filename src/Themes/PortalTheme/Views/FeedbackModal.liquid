@@ -1,0 +1,33 @@
+<div id="feedback-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered profile" role="document">
+    <form class="modal-content section-panel profile" action="{{ '~/workflows/Invoke?token=CfDJ8Ap2crNbaMNNvxt9cWvhLfdDw4rEW_kBVALHm3I5vhP8Rh1vbrjEn86w_SwEFlN7N-knsbdnqqEVCueSRDAgZ7RlKfma1V3qCUDy0FIDNW9T3Ci1ddmFZTV6NhRfVq51RbSuR66EH9U3NSyLDQqY8UH-PcSWj0CGUFRLHD49bImwmiP5U3AjZ-aOieDygdA2JhEaFixDrkTcTyiL-u_at6E6QYAQcgY8chubjunZpX2_' | href }}" method="POST">
+      <div class="modal-header profile">
+        <h2 class="h2 modal-title">{{ "What's on your mind?" | t }}</h2>
+        <button type="button" class="btn btn-primary is-circle" data-dismiss="modal" aria-label="{{ 'Close' | t }}">
+          <span aria-hidden="true"><i class="fas fa-times"></i></span>
+        </button>
+      </div>
+      <div class="modal-body profile flex-column align-items-center justifyc-content-center text-center">
+       
+        <div class="col-lg-4 col-md-6 col-sm-8 col-12 form-group d-flex flex-column align-items-center justify-content-center py-2">
+          {% comment %} <label class="asterix">{{ "Namespace name" | t }}</label> {% endcomment %}
+          <textarea id="field-message" name="Message" class="form-control" type="text" cols="100" aria-describedby="Message-described-by"></textarea>
+          <span id="Message-described-by" class="text-danger"></span>
+        </div>
+
+        <input name="User" type="hidden" value="{{ User.Identity.Name }}" />
+        <input name="Email" type="hidden" value="{{ User | get_claim: 'email' }}" />
+        {% antiforgerytoken %}
+      </div>
+      <div class="modal-footer profile">
+        <button type="submit" class="btn btn-lg btn-primary is-rounded">{{ "Send feedback" | t }}</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+{% block "script", at:"Foot" %}
+  $('#feedback-modal').on('shown.bs.modal', function () {
+    $('#field-message').focus()
+  })
+{% endblock %}

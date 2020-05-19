@@ -54,6 +54,11 @@
             top: calc(0.5rem + 11vh);
             right: 5rem;
           }
+          ul > *:nth-child(3) {
+            position: absolute;
+            top: calc(0.9rem + 11vh);
+            right: 9rem;
+          }
           ul > .language-toggle {
             font-weight: 500;
             @include rfs(19);
