@@ -12,7 +12,7 @@
 
 {% for culture in Model.SupportedCultures %}
     {% if culture.Name != Model.CurrentCulture.Name %}
-        <a class="dropdown-item d-lg-none d-flex" href="{{ culture.Name | switch_culture_url }}">{{ culture.DisplayName }}</a>
+        <a class="dropdown-item d-lg-none d-flex text-uppercase" href="{{ culture.Name | switch_culture_url }}">{{ targetCultureName }}</a>
     {% endif %}
 {% endfor %}
 
