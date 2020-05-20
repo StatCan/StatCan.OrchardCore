@@ -3,11 +3,11 @@
   	<header class="hero-header">
   	  {% shape "menu", alias: "alias:main-menu", cache_id: "main-menu", cache_fixed_duration: "00:00:01", cache_tag: "alias:main-menu" %}
     </header>
-    <div class="hero-body justify-content-center align-items-center">
+    <div class="hero-body justify-content-center">
       <i class="icon {{ Model.ContentItem.Content.Hero.Icon.Text }}"></i>
-      <h1>{{  Model.ContentItem.Content.Hero.Title.Text }}</h1>
+      <h1>{{ Model.ContentItem.Content.Hero.Title.Text }}</h1>
       <p class="h3 m-2">{{  Model.ContentItem.Content.Hero.Subtitle.Text }}</p>
-      <nav class="navbar navbar-expand-lg" role="navigation">
+      <nav class="navbar navbar-expand-lg align-self-center" role="navigation">
         <ul class="navbar-nav mr-auto">
           {% if User.Identity.IsAuthenticated and Model.ContentItem | user_can_view %}
             {% for item in Model.ContentItem.Content.Links.ContentItems %}
