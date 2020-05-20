@@ -2,24 +2,26 @@
   <div class="modal-dialog modal-dialog-centered profile" role="document">
     <form class="modal-content section-panel profile" action="{{ '~/workflows/Invoke?token=CfDJ8CepS_9HXUdDrZrLyYbiB_dRdV-SzdsT-Kmxy0ny9E0o144-RdT5_5FL-da6_dkQy2Yf068lMk7E5u3D5iWehka7VIWZ1Fr5wPDU3UoMACLiH4J29yPFjlXn2sYtFgOkRgTzjKlBwDddO1eBqQZctBfzQLgF6D1zJURSriY9QkdYxvnvZwgGu_J7PnqiPyx0gxICgjVSg1CkTUbhuyTK9Ga5dkuuX6mhYKx-fBq49daI' | href }}" method="POST">
       <div class="modal-header profile">
-        <h2 class="h2 modal-title">{{ "What's on your mind?" | t }}</h2>
+        <h2 class="h2 modal-title">{{ "what's on your mind?" | t }}</h2>
         <button type="button" class="btn btn-primary is-circle" data-dismiss="modal" aria-label="{{ 'Close' | t }}">
           <span aria-hidden="true"><i class="fas fa-times"></i></span>
         </button>
       </div>
-      <div class="modal-body profile flex-column align-items-center justifyc-content-center text-center">
-       
-        <div class="col-lg-4 col-md-6 col-sm-8 col-12 form-group d-flex flex-column align-items-center justify-content-center py-2">
-          {% comment %} <label class="asterix">{{ "Namespace name" | t }}</label> {% endcomment %}
-          <textarea id="field-message" name="Message" class="form-control" type="text" cols="100" aria-describedby="Message-described-by"></textarea>
-          <span id="Message-described-by" class="text-danger"></span>
+      <div class="modal-body profile">
+        <div class="col-12 d-flex align-items-center justify-content-center text-center">
+          <div class="col-lg-4 col-md-6 col-sm-8 col-12 py-2">
+            <div class="form-group">
+              {% comment %} <label class="asterix">{{ "Namespace name" | t }}</label> {% endcomment %}
+              <textarea id="field-message" name="Message" class="form-control" type="text" rows="6" aria-describedby="Message-described-by"></textarea>
+              <span id="Message-described-by" class="text-danger"></span>
+            </div>
+          </div>
         </div>
-
+      </div>
+      <div class="modal-footer profile">
         <input name="User" type="hidden" value="{{ User.Identity.Name }}" />
         <input name="Email" type="hidden" value="{{ User | get_claim: 'email' }}" />
         {% antiforgerytoken %}
-      </div>
-      <div class="modal-footer profile">
         <button type="submit" class="btn btn-lg btn-primary is-rounded">{{ "Send feedback" | t }}</button>
       </div>
     </form>

@@ -8,11 +8,11 @@
       <p>{{ Model.ContentItem.Content.SectionPanel.Description.Text }}</p>
     </header>
     <nav>
-      <ul class="{{ list_direction }} flex-fill {% unless list_direction == 'is-vertical-list' %}justify-content-around{% endunless %}">
+      <ul class="{{ list_direction }} flex-fill{% unless list_direction == 'is-vertical-list' %} justify-content-around{% endunless %}">
       {% for item in Model.ContentItem.Content.Links.ContentItems %}
-        <li class="d-flex {% if list_direction == 'is-vertical-list' %}d-block{% else %}col-4{% endif %}">
-          <a href="{{ item.SectionPanelLink.Url.Text }}" class="flex-grow-1" target="_blank">
-            <div class="section-panel-link">
+        <li class="{% if list_direction == 'is-vertical-list' %}d-flex{% else %}col-4{% endif %}">
+          <a href="{{ item.SectionPanelLink.Url.Text }}" class="d-flex flex-grow-1" target="_blank">
+            <div class="section-panel-link d-flex">
               <div class="section-panel-link-icon text-primary mb-2">
                 {% if item.SectionPanelLink.Image.Paths.first != null %}
                   <img src="{{ item.SectionPanelLink.Image.Paths.first | asset_url }}" aria-hidden="true" />

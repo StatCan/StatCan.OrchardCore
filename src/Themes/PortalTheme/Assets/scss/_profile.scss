@@ -22,12 +22,14 @@
     padding: 0;
     position: relative;
     .modal-title {
+      flex: 1 1 auto;
       line-height: 1;
       text-align: center;
+      margin: 0 0 0 2.6rem;
     }
     .btn {
-      position: absolute;
-      right: 0;
+      min-width: 2.6rem;
+      min-height: 2.6rem;
     }
   }
   &.modal-body {

@@ -17,10 +17,6 @@
     flex-wrap: wrap;
     list-style-type: none;
     padding-left: 0;
-    li > a > div {
-      display: flex;
-      flex-direction: row;
-    }
   }
 
   .is-horizontal-list {
@@ -31,6 +27,7 @@
     padding-left: 0;
     li > a > div {
       display: flex;
+      justify-content: center;
       flex-direction: column;
       text-align: center;
     }
