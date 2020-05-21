@@ -59,8 +59,8 @@
             top: calc(1.1rem + 11vh);
             right: 8rem;
           }
-          ul > .language-toggle {
-            font-weight: 500;
+          ul > li > .language-toggle {
+            font-weight: 500 !important;
             @include rfs(19);
           }
         }

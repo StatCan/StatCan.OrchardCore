@@ -1,15 +1,78 @@
 <div id="feedback-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered profile" role="document">
-    <form class="modal-content section-panel profile" action="{{ '~/workflows/Invoke?token=CfDJ8CepS_9HXUdDrZrLyYbiB_dRdV-SzdsT-Kmxy0ny9E0o144-RdT5_5FL-da6_dkQy2Yf068lMk7E5u3D5iWehka7VIWZ1Fr5wPDU3UoMACLiH4J29yPFjlXn2sYtFgOkRgTzjKlBwDddO1eBqQZctBfzQLgF6D1zJURSriY9QkdYxvnvZwgGu_J7PnqiPyx0gxICgjVSg1CkTUbhuyTK9Ga5dkuuX6mhYKx-fBq49daI' | href }}" method="POST">
-      <div class="modal-header profile">
-        <h2 class="h2 modal-title">{{ "what's on your mind?" | t }}</h2>
+    <form class="modal-content section-panel profile" action="{{ '~/workflows/Invoke?token=CfDJ8Ap2crNbaMNNvxt9cWvhLfdDw4rEW_kBVALHm3I5vhP8Rh1vbrjEn86w_SwEFlN7N-knsbdnqqEVCueSRDAgZ7RlKfma1V3qCUDy0FIDNW9T3Ci1ddmFZTV6NhRfVq51RbSuR66EH9U3NSyLDQqY8UH-PcSWj0CGUFRLHD49bImwmiP5U3AjZ-aOieDygdA2JhEaFixDrkTcTyiL-u_at6E6QYAQcgY8chubjunZpX2_' | href }}" method="POST">
+      <div class="modal-header profile align-items-start mb-4">
+        <div class="modal-title">
+          <h2 class="h2">{{ "Instant feedback" | t }}</h2>
+          <p class="modal-prompt text-secondary">{{ "How are you feeling, and what could be improved?" | t }}</p>
+        </div>
         <button type="button" class="btn btn-primary is-circle" data-dismiss="modal" aria-label="{{ 'Close' | t }}">
           <span aria-hidden="true"><i class="fas fa-times"></i></span>
-        </button>
+        </button>        
       </div>
       <div class="modal-body profile">
         <div class="col-12 d-flex align-items-center justify-content-center text-center">
-          <div class="col-lg-4 col-md-6 col-sm-8 col-12 py-2">
+          <div class="col-lg-10 col-md-12 col-sm-12 col-12">
+            <div class="btn-group btn-group-toggle mb-3" data-toggle="buttons">
+              <label class="btn feedback-mood-happy">
+                <input type="radio" name="Mood" value="happy" id="happy" aria-label="{{ 'Happy mood' | t }}" autocomplete="off">
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                    viewBox="0 0 128 128" xml:space="preserve" width="48" height="48">
+                  <g id="Happy" fill="#fff">
+                    <g>
+                      <path d="M64,0C28.71,0,0,28.71,0,64s28.71,64,64,64s64-28.71,64-64S99.29,0,64,0z M64,121.08c-15.68,0-29.9-6.36-40.23-16.62
+                        c-4.12-4.1-7.62-8.83-10.35-14.02c-4.15-7.91-6.5-16.9-6.5-26.44C6.92,32.53,32.53,6.92,64,6.92c14.93,0,28.54,5.76,38.72,15.18
+                        c5.28,4.88,9.64,10.74,12.78,17.3c3.58,7.45,5.58,15.8,5.58,24.61C121.08,95.47,95.47,121.08,64,121.08z"/>
+                      <path d="M42.12,49.47c3.72,0,6.74,2.85,6.74,6.74h6.92c0-7.78-6.13-13.66-13.66-13.66s-13.66,5.88-13.66,13.66h6.92
+                        C35.38,52.32,38.41,49.47,42.12,49.47z"/>
+                      <path d="M85.88,49.47c3.72,0,6.74,2.85,6.74,6.74h6.92c0-7.78-6.13-13.66-13.66-13.66c-7.53,0-13.66,5.88-13.66,13.66h6.92
+                        C79.13,52.32,82.16,49.47,85.88,49.47z"/>
+                      <path d="M63.88,99.46c13.39,0,26.21-6.85,33.56-18.21l-5.81-3.76c-6.74,10.44-19.09,16.26-31.44,14.84
+                        c-9.63-1.11-18.53-6.66-23.82-14.84l-5.81,3.76c6.4,9.9,17.17,16.61,28.83,17.95C60.89,99.37,62.39,99.46,63.88,99.46z"/>
+                    </g>
+                  </g>
+                </svg>
+              </label>
+              <label class="btn feedback-mood-neutral">
+                <input type="radio" name="Mood" value="neutral" id="neutral" aria-label="{{ 'Neutral mood' | t }}" autocomplete="off">
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                    viewBox="0 0 128 128" xml:space="preserve" width="48" height="48">
+                  <g id="Neutral" fill="#fff">
+                    <g>
+                      <path d="M64,0C28.71,0,0,28.71,0,64s28.71,64,64,64s64-28.71,64-64S99.29,0,64,0z M64,121.08c-15.68,0-29.9-6.36-40.23-16.62
+                        c-4.12-4.1-7.62-8.83-10.35-14.02c-4.15-7.91-6.5-16.9-6.5-26.44C6.92,32.53,32.53,6.92,64,6.92c14.93,0,28.54,5.76,38.72,15.18
+                        c5.28,4.88,9.64,10.74,12.78,17.3c3.58,7.45,5.58,15.8,5.58,24.61C121.08,95.47,95.47,121.08,64,121.08z"/>
+                      <g>
+                        <g>
+                          <rect x="31" y="85.61" width="66" height="6.78"/>
+                        </g>
+                      </g>
+                      <circle cx="42" cy="49" r="6"/>
+                      <circle cx="86" cy="49" r="6"/>
+                    </g>
+                  </g>
+                </svg>
+              </label>
+              <label class="btn feedback-mood-sad">
+                <input type="radio" name="Mood" value="sad" id="sad" aria-label="{{ 'Sad mood' | t }}" autocomplete="off">
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                    viewBox="0 0 128 128" xml:space="preserve" width="48" height="48">
+                  <g id="Sad" fill="#fff">
+                    <g>
+                      <path d="M64,0C28.71,0,0,28.71,0,64s28.71,64,64,64s64-28.71,64-64S99.29,0,64,0z M64,121.08c-15.68,0-29.9-6.36-40.23-16.62
+                        c-4.12-4.1-7.62-8.83-10.35-14.02c-4.15-7.91-6.5-16.9-6.5-26.44C6.92,32.53,32.53,6.92,64,6.92c14.93,0,28.54,5.76,38.72,15.18
+                        c5.28,4.88,9.64,10.74,12.78,17.3c3.58,7.45,5.58,15.8,5.58,24.61C121.08,95.47,95.47,121.08,64,121.08z"/>
+                      <path d="M35.38,42.55h-6.92c0,7.78,6.13,13.66,13.66,13.66s13.66-5.88,13.66-13.66h-6.92c0,3.89-3.03,6.74-6.74,6.74
+                        C38.41,49.3,35.38,46.44,35.38,42.55z"/>
+                      <path d="M79.13,42.55h-6.92c0,7.78,6.13,13.66,13.66,13.66s13.66-5.88,13.66-13.66h-6.92c0,3.89-3.03,6.74-6.74,6.74
+                        S79.13,46.44,79.13,42.55z"/>
+                      <path d="M59.4,77.75c-11.66,1.34-22.44,8.06-28.83,17.95l5.81,3.76c5.29-8.18,14.19-13.73,23.82-14.84
+                        c12.35-1.43,24.69,4.4,31.44,14.84l5.81-3.76c-7.34-11.37-20.17-18.21-33.56-18.21C62.39,77.49,60.89,77.58,59.4,77.75z"/>
+                    </g>
+                  </g>
+                </svg>
+              </label>
+            </div>
             <div class="form-group">
               {% comment %} <label class="asterix">{{ "Namespace name" | t }}</label> {% endcomment %}
               <textarea id="field-message" name="Message" class="form-control" type="text" rows="6" aria-describedby="Message-described-by"></textarea>
