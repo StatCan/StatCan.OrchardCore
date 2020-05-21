@@ -34,7 +34,6 @@
     {% render_section "Footer", required: false %}
 
     {{ "ModalProfile" | shape_new | shape_render }}
-    {{ "ModalFeedback" | shape_new | shape_render }}
 
     {% block "script", at:"Foot" %}
         $( document ).ready(function() {

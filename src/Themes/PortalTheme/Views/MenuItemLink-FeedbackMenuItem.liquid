@@ -6,3 +6,5 @@
         C18,0.81,17.19,0,16.2,0z M9.9,10.8H8.1V9h1.8L9.9,10.8z M9.9,7.2H8.1V3.6h1.8L9.9,7.2z"/>
     </svg>
 </a>
+
+{{ "ModalFeedback" | shape_new | shape_properties: endpoint: Model.ContentItem.Content.FeedbackMenuItem.FormEndpoint.Text | shape_render }}

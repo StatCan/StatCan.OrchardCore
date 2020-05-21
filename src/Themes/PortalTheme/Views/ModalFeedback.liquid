@@ -1,6 +1,7 @@
+{% assign endpoint = Model.Endpoint | href %}
 <div id="feedback-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered profile" role="document">
-    <form class="modal-content section-panel profile" action="{{ '~/workflows/Invoke?token=CfDJ8Ap2crNbaMNNvxt9cWvhLfdDw4rEW_kBVALHm3I5vhP8Rh1vbrjEn86w_SwEFlN7N-knsbdnqqEVCueSRDAgZ7RlKfma1V3qCUDy0FIDNW9T3Ci1ddmFZTV6NhRfVq51RbSuR66EH9U3NSyLDQqY8UH-PcSWj0CGUFRLHD49bImwmiP5U3AjZ-aOieDygdA2JhEaFixDrkTcTyiL-u_at6E6QYAQcgY8chubjunZpX2_' | href }}" method="POST">
+    <form class="modal-content section-panel profile" action="{{ endpoint }}" method="POST">
       <div class="modal-header profile align-items-start mb-4">
         <div class="modal-title">
           <h2 class="h2">{{ "Instant feedback" | t }}</h2>
