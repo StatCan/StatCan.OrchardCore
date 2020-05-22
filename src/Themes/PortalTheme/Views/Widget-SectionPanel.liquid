@@ -35,7 +35,9 @@
                 {% for action in item.Actions.ContentItems %}
                   {% if action.LinkMenuItemPart.Name == "Request a Kubeflow namespace" %}
                     <button class="dropdown-item" data-toggle="modal" data-target="#bonus-action-modal">{{ "Request a Kubeflow namespace" | t }}</button>
-                    {% assign endpoint = action.LinkMenuItemPart.Url %}
+                    {% zone "Modal" %}
+                      {{ "ModalBonusAction" | shape_new | shape_properties: endpoint: action.LinkMenuItemPart.Url | shape_render }}
+                    {% endzone %}
                   {% else %}
                     <a class="dropdown-item" href="{{ action.LinkMenuItemPart.Url }}" target="_blank">{{ action.LinkMenuItemPart.Name }}</a>
                   {% endif %}
@@ -50,4 +52,3 @@
   </div>
 </article>
 {% endif %}
-{{ "ModalBonusAction" | shape_new | shape_properties: endpoint: endpoint | shape_render }}

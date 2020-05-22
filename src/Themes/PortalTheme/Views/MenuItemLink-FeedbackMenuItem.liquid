@@ -7,4 +7,6 @@
     </svg>
 </a>
 
-{{ "ModalFeedback" | shape_new | shape_properties: endpoint: Model.ContentItem.Content.FeedbackMenuItem.FormEndpoint.Text | shape_render }}
+{% zone "Modal" %}
+    {{ "ModalFeedback" | shape_new | shape_properties: endpoint: Model.ContentItem.Content.FeedbackMenuItem.FormEndpoint.Text | shape_render }}
+{% endzone %}
