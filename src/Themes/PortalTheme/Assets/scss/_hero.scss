@@ -30,6 +30,23 @@
         .navbar li:last-child > .btn {
           transform: rotate3d(0, 1, 0, -10deg);
         }
+        .navbar li:first-child:last-child > .btn {
+          transform: rotate3d(0, 0, 0, 0);
+        }
+        .navbar li:nth-child(1):nth-last-child(5) > .btn {
+          transform: rotate3d(0, 1, 0, 20deg) translateZ(3rem)
+            translateX(-1.5rem);
+        }
+        .navbar li:nth-child(2):nth-last-child(4) > .btn {
+          transform: rotate3d(0, 1, 0, 10deg);
+        }
+        .navbar li:nth-child(4):nth-last-child(2) > .btn {
+          transform: rotate3d(0, 1, 0, -10deg);
+        }
+        .navbar li:nth-child(5):nth-last-child(1) > .btn {
+          transform: rotate3d(0, 1, 0, -20deg) translateZ(3rem)
+            translateX(1.5rem);
+        }
       }
     }
     .hero-header {

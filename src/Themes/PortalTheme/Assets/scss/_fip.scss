@@ -3,26 +3,26 @@
   display: flex;
   justify-content: space-between;
   margin: 1.5rem;
-  #flag {
+  .fip-flag {
     fill: #e33445;
   }
-  #text {
+  .fip-text {
     fill: $black;
   }
   &.mono {
-    #flag {
+    .fip-flag {
       fill: $black;
     }
   }
   &.dark {
-    #flag {
+    .fip-flag {
       fill: #e33445;
     }
-    #text {
+    .fip-text {
       fill: $white;
     }
     &.mono {
-      #flag {
+      .fip-flag {
         fill: $white;
       }
     }
