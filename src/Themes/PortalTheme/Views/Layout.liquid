@@ -3,7 +3,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="page description">    
+    <meta name="description" content="page description"> 
+    <meta property="og:title" content="{{ Site.SiteName }}" />
+    <meta property="og:url" content="{{ Site.BaseUrl }}" />
     {% render_section "HeadMeta", required: false %}
     <title>{% page_title Site.SiteName %}</title>
     {% resources type: "Meta" %}
