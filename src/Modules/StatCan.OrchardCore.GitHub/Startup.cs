@@ -30,6 +30,7 @@ namespace StatCan.OrchardCore.GitHub
             services.AddActivity<CreateBranchTask, CreateBranchTaskDisplayDriver>();
             services.AddActivity<CommitFileTask, CommitFileTaskDisplayDriver>();
             services.AddActivity<CreatePullRequestTask, CreatePullRequestTaskDisplayDriver>();
+            services.AddActivity<CreateIssueTask, CreateIssueTaskDisplayDriver>();
 
         }
     }
