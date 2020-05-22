@@ -33,7 +33,7 @@ namespace StatCan.OrchardCore.GitHub.Activities
             _logger = logger;
         }
 
-        public override string Name => nameof(CreatePullRequestTask);
+        public override string Name => nameof(CreateIssueTask);
 
         public override LocalizedString DisplayText => S["GitHub - Create Issue"];
 
