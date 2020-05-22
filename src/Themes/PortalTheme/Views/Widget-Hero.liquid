@@ -9,10 +9,10 @@
       <p class="h3 m-2">{{  Model.ContentItem.Content.Hero.Subtitle.Text }}</p>
       <nav class="navbar navbar-expand-lg align-self-center mt-3" role="navigation">
         {% if User.Identity.IsAuthenticated and Model.ContentItem | user_can_view %}
-          <ul id="hero-highlights" class="navbar-nav mr-auto"></ul>
+          <ul id="hero-highlights" class="navbar-nav"></ul>
         {% else %}
           {% unless User.Identity.IsAuthenticated %}
-            <ul>
+            <ul class="navbar-nav">
               <a href="{{ '~/login' | href }}" class="btn btn-lg btn-primary is-rounded nav-link mt-5">{{ "Log in" | t }}</a>
             </ul>
           {% endunless %}
