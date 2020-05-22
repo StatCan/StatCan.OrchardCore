@@ -1,19 +1,15 @@
 {% comment %} Assumption that we only support two cultures: EN and FR {% endcomment %}
 {% for culture in Model.SupportedCultures %}
     {% if culture.Name != Model.CurrentCulture.Name %}
-        {% capture targetCultureName %}
-            {{ culture.Name }}
-        {% endcapture %}
-        {% capture targetCultureUrl %}
-            {{ culture | switch_culture_url}}
-        {% endcapture %}
+        {% capture targetCultureName %}{{culture.Name}}{% endcapture %}
+        {% capture targetCultureUrl %}{{ culture | switch_culture_url}}{% endcapture %}
     {% endif %}
 {% endfor %} 
 
 {% for culture in Model.SupportedCultures %}
     {% if culture.Name != Model.CurrentCulture.Name %}
-        <a class="dropdown-item d-lg-none d-flex text-uppercase" href="{{ culture.Name | switch_culture_url }}">{{ targetCultureName }}</a>
+        <a class="dropdown-item d-lg-none d-flex text-uppercase" href="{{ culture.Name | switch_culture_url }}" aria-label="{% if targetCultureName contains 'fr' %}Français{% else %}English{% endif %}">{{ targetCultureName }}</a>
     {% endif %}
 {% endfor %}
 
-<a href="{{ targetCultureUrl }}" class="btn btn-primary is-circle language-toggle d-lg-flex d-none">{{ targetCultureName }}</a>
+<a href="{{ targetCultureUrl }}" class="btn btn-primary is-circle language-toggle d-lg-flex d-none" aria-label="{% if targetCultureName contains 'fr' %}Français{% else %}English{% endif %}">{{ targetCultureName }}</a>

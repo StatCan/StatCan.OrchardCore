@@ -15,11 +15,11 @@
   top: 1rem;
   @include media-breakpoint-up(sm) {
     left: 2rem;
-    top: 10vh;
+    top: 13vh;
   }
 }
 .message-success {
-  background-color: transparentize($background, 0.28);
+  background-color: $background;
   background-image: radial-gradient(
     circle at left center,
     transparentize($secondary, 0.82) 0,
@@ -39,7 +39,7 @@
 }
 
 .message-error {
-  background-color: transparentize($background, 0.28);
+  background-color: $background;
   background-image: radial-gradient(
     circle at left center,
     transparentize($danger, 0.82) 0,
@@ -59,7 +59,7 @@
 }
 
 .message-warning {
-  background-color: transparentize($background, 0.28);
+  background-color: $background;
   background-image: radial-gradient(
     circle at left center,
     transparentize($warning, 0.82) 0,
@@ -79,7 +79,7 @@
 }
 
 .message-info {
-  background-color: transparentize($background, 0.28);
+  background-color: $background;
   background-image: radial-gradient(
     circle at left center,
     transparentize($info, 0.82) 0,

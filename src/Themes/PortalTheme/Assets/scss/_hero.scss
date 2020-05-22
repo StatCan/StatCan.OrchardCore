@@ -17,7 +17,21 @@
       flex-shrink: 0;
 
       .nav-item .btn {
-        box-shadow: 0 30px 20px rgba(17, 15, 15, 0.25);
+        &.btn-primary {
+          transition-property: all;
+          transition-duration: 300ms;
+          transition-timing-function: ease-out;
+          box-shadow: 0 30px 20px rgba(17, 15, 15, 0.25);
+          &:hover {
+            box-shadow: 0 40px 25px rgba(17, 15, 15, 0.25);
+            transform: translateY(-5px);
+          }
+          &:focus {
+            box-shadow: 0 40px 25px rgba(17, 15, 15, 0.25),
+              0 0 0 0.2rem transparentize($primary, 0.5);
+            transform: translateY(-5px);
+          }
+        }
       }
 
       .navbar ul li {
@@ -26,26 +40,51 @@
       @include media-breakpoint-up(lg) {
         .navbar li:first-child > .btn {
           transform: rotate3d(0, 1, 0, 10deg);
+          &:hover {
+            box-shadow: 0 40px 25px rgba(17, 15, 15, 0.25);
+            transform: rotate3d(0, 1, 0, 10deg) translateY(-5px);
+          }
+          &:focus {
+            box-shadow: 0 40px 25px rgba(17, 15, 15, 0.25),
+              0 0 0 0.2rem transparentize($primary, 0.5);
+            transform: rotate3d(0, 1, 0, 10deg) translateY(-5px);
+          }
         }
         .navbar li:last-child > .btn {
           transform: rotate3d(0, 1, 0, -10deg);
+          &:hover {
+            box-shadow: 0 40px 25px rgba(17, 15, 15, 0.25);
+            transform: rotate3d(0, 1, 0, -10deg) translateY(-5px);
+          }
+          &:focus {
+            box-shadow: 0 40px 25px rgba(17, 15, 15, 0.25),
+              0 0 0 0.2rem transparentize($primary, 0.5);
+            transform: rotate3d(0, 1, 0, -10deg) translateY(-5px);
+          }
         }
         .navbar li:first-child:last-child > .btn {
           transform: rotate3d(0, 0, 0, 0);
+          &:hover {
+            box-shadow: 0 40px 25px rgba(17, 15, 15, 0.25);
+            transform: rotate3d(0, 0, 0, 0) translateY(-5px);
+          }
+          &:focus {
+            box-shadow: 0 40px 25px rgba(17, 15, 15, 0.25),
+              0 0 0 0.2rem transparentize($primary, 0.5);
+            transform: rotate3d(0, 0, 0, 0) translateY(-5px);
+          }
         }
-        .navbar li:nth-child(1):nth-last-child(5) > .btn {
-          transform: rotate3d(0, 1, 0, 20deg) translateZ(3rem)
-            translateX(-1.5rem);
-        }
-        .navbar li:nth-child(2):nth-last-child(4) > .btn {
-          transform: rotate3d(0, 1, 0, 10deg);
-        }
-        .navbar li:nth-child(4):nth-last-child(2) > .btn {
-          transform: rotate3d(0, 1, 0, -10deg);
-        }
-        .navbar li:nth-child(5):nth-last-child(1) > .btn {
-          transform: rotate3d(0, 1, 0, -20deg) translateZ(3rem)
-            translateX(1.5rem);
+        .navbar li:nth-child(2):nth-last-child(2) > .btn {
+          transform: rotate3d(0, 0, 0, 0);
+          &:hover {
+            box-shadow: 0 40px 25px rgba(17, 15, 15, 0.25);
+            transform: rotate3d(0, 0, 0, 0) translateY(-5px);
+          }
+          &:focus {
+            box-shadow: 0 40px 25px rgba(17, 15, 15, 0.25),
+              0 0 0 0.2rem transparentize($primary, 0.5);
+            transform: rotate3d(0, 0, 0, 0) translateY(-5px);
+          }
         }
       }
     }

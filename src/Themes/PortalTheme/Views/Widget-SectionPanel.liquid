@@ -12,15 +12,14 @@
       {% for item in Model.ContentItem.Content.Links.ContentItems %}
         {% if item.SectionPanelLink.HeroHighlight.Value == "true" %}
           {% block "script", at:"Foot" %}
-              $("#hero-highlights").append('<li id="{{ item.SectionPanelLink.Name.Text | slugify }}-link" class="nav-item m-2"><a class="btn btn-lg btn-primary is-rounded nav-link" href="#{{ Model.ContentItem | display_text | slugify }}">{{ item.SectionPanelLink.Name.Text }}</a></li>');
-              {% comment %} $("#{{ item.SectionPanelLink.Name.Text | slugify }}-link").click(function() { 
-                console.log("{{ item.SectionPanelLink.Name.Text | slugify }}");
-                $("#{{ item.SectionPanelLink.Name.Text | slugify }}").focus();
-              }); {% endcomment %}
+              $("#hero-highlights").append('<li id="{{ item.SectionPanelLink.Name.Text | slugify }}-link" class="nav-item m-2"><a class="btn btn-lg btn-primary is-rounded" href="#{{ Model.ContentItem | display_text | slugify }}">{{ item.SectionPanelLink.Name.Text }}</a></li>');
+              $("#{{ item.SectionPanelLink.Name.Text | slugify }}-link").click(function() { 
+                setTimeout(function() { $("#{{ item.SectionPanelLink.Name.Text | slugify }}").focus(); }, 100);
+              });
           {% endblock %}
         {% endif %}
         <li class="{% if list_direction == 'is-vertical-list' %}d-flex{% else %}col-4{% endif %}">
-          <a id="{{ item.SectionPanelLink.Name.Text | slugify }}" href="{{ item.SectionPanelLink.Url.Text }}" class="d-flex flex-grow-1 {% if list_direction == 'is-horizontal-list' %}justify-content-center{% endif %}" target="_blank">
+          <a id="{{ item.SectionPanelLink.Name.Text | slugify }}" {% if item.SectionPanelLink.ModalID.Text %}data-toggle="modal" data-target="#{{item.SectionPanelLink.ModalID.Text}}" href="#"{% else %}href="{{ item.SectionPanelLink.Url.Text }}" target="_blank"{% endif %} class="d-flex flex-grow-1 {% if list_direction == 'is-horizontal-list' %}justify-content-center{% endif %}">
             <div class="section-panel-link d-flex">
               <div class="section-panel-link-icon text-primary mb-2">
                 {% if item.SectionPanelLink.Image.Paths.first != null %}

@@ -2,11 +2,16 @@
 <div id="bonus-action-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered profile" role="document">
     <form class="modal-content section-panel profile" action="{{ endpoint }}" method="POST">
-      <div class="modal-header profile">
-        <h2 class="h2 modal-title">{{ "Request a Kubeflow namespace" | t }}</h2>
+      <div class="modal-header profile align-items-start mb-4">
+        <div class="modal-title">
+          <h2 class="h2">{{ "Request a Kubeflow namespace" | t }}</h2>
+          <!-- TODO: update BS font-weight- classes so the variants use the proper weight -->
+          <!-- TODO: add utility classes for letter-spacing, instead of inline stuff like dis... sorry! -->
+          <p class="modal-prompt text-secondary">{{ "An admin will follow up with you at " | t }}<span class="font-weight-bold" style="letter-spacing: 0.5px;">{{ User | get_claim: 'email' }}</span>{{ " with questions or updates." | t }}</p>
+        </div>
         <button type="button" class="btn btn-primary is-circle" data-dismiss="modal" aria-label="{{ 'Close' | t }}">
           <span aria-hidden="true"><i class="fas fa-times"></i></span>
-        </button>
+        </button>        
       </div>
       <div class="modal-body profile">
         <div class="container">
@@ -18,7 +23,6 @@
                 <span id="Namespace-described-by" class="text-danger"></span>
               </div>
             </div>
-            <p class="col-12 text-secondary">{{ "An admin will follow up with you at" | t }} {{ User | get_claim: 'email' }} {{ "with questions or updates." | t }}</p>
           </div>
         </div>
       </div>
@@ -38,6 +42,9 @@
   })
 
   $('#field-namespace').keypress(function (e) {
+    if (e.which == 13 ) {
+      return true;
+    }
     var regex = new RegExp("^[a-zA-Z-]+");
     var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
     if (regex.test(str)) {
