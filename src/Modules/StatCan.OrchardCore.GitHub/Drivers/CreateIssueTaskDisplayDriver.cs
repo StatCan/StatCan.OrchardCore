@@ -22,7 +22,7 @@ namespace StatCan.OrchardCore.GitHub.Drivers
             activity.Repo = new WorkflowExpression<string>(model.Repo?.Trim());
             activity.Title = new WorkflowExpression<string>(model.Title?.Trim());
             activity.Description = new WorkflowExpression<string>(model.Description);
-            activity.Labels = new WorkflowExpression<string>(model.Labels.Trim());
+            activity.Labels = new WorkflowExpression<string>(model.Labels?.Trim());
         }
     }
 }

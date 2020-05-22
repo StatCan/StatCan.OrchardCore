@@ -29,7 +29,7 @@
 </div>
 
 <div class="form-group" asp-validation-class-for="Labels">
-  <label asp-for="Labels">@T["Source branch"]</label>
+  <label asp-for="Labels">@T["Labels"]</label>
   <input type="text" asp-for="Labels" class="form-control code" />
   <span asp-validation-for="Labels"></span>
   <span class="hint">@T["A comma seperated list of issue labels. These labels must exist on the repository or an error will be thrown. With Liquid support."]</span>
