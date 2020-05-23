@@ -9,7 +9,10 @@
   display: flex;
   flex: 1 1 auto;
   flex-direction: column;
-  padding: 2rem;
+  padding: 2rem 1rem;
+  @include media-breakpoint-up(md) {
+    padding: 2rem;
+  }
 
   .is-vertical-list {
     display: flex;
