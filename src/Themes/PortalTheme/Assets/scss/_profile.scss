@@ -32,6 +32,9 @@
       line-height: 1;
       text-align: center;
       margin: 0;
+      > span {
+        letter-spacing: 0.5px;
+      }
     }
     .btn {
       min-width: 2.6rem;
@@ -43,7 +46,7 @@
     flex-wrap: wrap;
     .icon {
       color: $primary;
-      @include rfs(192);
+      @include rfs(128);
       padding: 1rem;
     }
   }

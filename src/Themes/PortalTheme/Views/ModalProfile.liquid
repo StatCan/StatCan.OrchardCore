@@ -15,11 +15,12 @@
                               <i class="fas fa-user text-primary"></i>
                           </span>
                       </div>
-                      <div class="col-md-9 col-12 d-flex flex-column align-items-md-start align-items-center justify-content-center pl-4">
-                          <p class="h4">{{ User | get_claim: 'email' }}</p>
-                          <p class="h6 text-secondary">{{ "Email address" | t }}</p>
-                          <!--<p class="h4">{{ User.Identity.Name }}</p>
-                          <p class="h6 text-secondary">{{ "Username" | t }}</p>-->
+                      <div class="col-md-9 col-12 d-flex flex-column align-items-md-start align-items-center justify-content-center">
+                          <p class="h5 text-secondary">{{ "Contact email" | t }}</p>
+                          <p class="h4 mb-5">{{ User | get_claim: 'email' }}</p>
+                          <!-- TODO: This is actually username, so fix this later... sorry! -->
+                          <p class="h5 text-secondary">{{ "Azure account" | t }}</p>
+                          <p class="h4">{{ User.Identity.Name }}</p>
                       </div>
                   </div>
               </div>

@@ -6,8 +6,10 @@
         <div class="modal-title">
           <h2 class="h2">{{ "Request a Kubeflow namespace" | t }}</h2>
           <!-- TODO: update BS font-weight- classes so the variants use the proper weight -->
-          <!-- TODO: add utility classes for letter-spacing, instead of inline stuff like dis... sorry! -->
-          <p class="modal-prompt text-secondary">{{ "An admin will follow up with you at " | t }}<span class="font-weight-bold" style="letter-spacing: 0.5px;">{{ User | get_claim: 'email' }}</span>{{ " with questions or updates." | t }}</p>
+          <!-- TODO: add utility classes for letter-spacing -->
+          <p class="modal-prompt text-secondary">{{ "An admin will follow up with you at" | t }}</p>
+          <p class="modal-prompt text-secondary"><span class="font-weight-bold">{{ User | get_claim: 'email' }}</span></p>
+          <p class="modal-prompt text-secondary">{{ "with questions or updates." | t }}</p>
         </div>
         <button type="button" class="btn btn-primary is-circle" data-dismiss="modal" aria-label="{{ 'Close' | t }}">
           <span aria-hidden="true"><i class="fas fa-times"></i></span>
