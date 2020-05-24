@@ -1,9 +1,9 @@
 <section id="footer-section">
   <div class="d-flex justify-content-center">
-    <a href="https://digital.statcan.gc.ca" class="btn btn-sm btn-primary is-rounded">{{ "More Virtual Labs" | t }}</a>
+    <a href="{{ Model.ContentItem.Content.FatFooter.HubLink.Url }}" class="btn btn-sm btn-primary is-rounded">{{ Model.ContentItem.Content.FatFooter.HubLink.Text }}</a>
   </div>
   <div class="text-center pb-5">
-    <div class="powered-by-di" >{{ "digital@statcan" | t }}</div>
+    <div class="powered-by-di">{{ Model.ContentItem.Content.FatFooter.DigitalLink.Text }}</div>
     <div aria-label="{{ 'Digital Innovation logo' | t }}">
       {{ "DigitalInnovationLogo" | shape_new | shape_render }}
     </div>
