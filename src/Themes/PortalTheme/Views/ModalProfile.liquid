@@ -1,9 +1,9 @@
-  <div id="profile-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered profile" role="document">
-          <div class="modal-content section-panel profile">
+<div id="profile-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered profile" role="document">
+        <div class="modal-content section-panel profile">
           <div class="modal-header profile d-flex">
               <h2 class="h1 modal-title">{{ "account" | t }}</h2>
-              <button type="button" class="btn btn-primary is-circle" data-dismiss="modal" aria-label="{{ 'Close' | t }}">
+              <button type="button" class="btn btn-primary is-circle" data-dismiss="modal" aria-label="{{ "Close" | t }}">
                   <span aria-hidden="true"><i class="fas fa-times"></i></span>
               </button>
           </div>
@@ -17,8 +17,8 @@
                       </div>
                       <div class="col-md-9 col-12 d-flex flex-column align-items-md-start align-items-center justify-content-center">
                           <p class="h5 text-secondary">{{ "Contact email" | t }}</p>
-                          <p class="h4 mb-4">{{ User | get_claim: 'email' }}</p>
-                          <!-- TODO: This is actually username, so fix this later... sorry! -->
+                          <p class="h4 mb-4">{{ User | get_claim: "email" }}</p>
+               
                           <p class="h5 text-secondary">{{ "Azure account" | t }}</p>
                           <p class="h4">{{ User.Identity.Name }}</p>
                       </div>
@@ -30,6 +30,6 @@
                   <button type="submit" class="btn btn-lg btn-primary is-rounded">{{ "Log out" | t }}</button>
               {% endform %}
           </div>
-          </div>
-      </div>
-  </div>
+        </div>
+    </div>
+</div>

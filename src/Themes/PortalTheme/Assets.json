@@ -1,6 +1,6 @@
 [
   {
-    "inputs": ["Assets/scss/portal-bootstrap.scss"],
+    "inputs": [ "Assets/scss/portal-bootstrap.scss" ],
     "watch": [
       "Assets/scss/_bootstrap.scss",
       "Assets/scss/_footer.scss",
@@ -12,30 +12,34 @@
     "output": "wwwroot/css/portal-bootstrap.css"
   },
   {
-    "inputs": ["node_modules/jquery/dist/jquery.js"],
+    "inputs": [ "node_modules/jquery/dist/jquery.js" ],
     "output": "wwwroot/Scripts/jquery.js"
   },
   {
-    "inputs": ["node_modules/bootstrap/dist/js/bootstrap.js"],
+    "inputs": [ "node_modules/bootstrap/dist/js/bootstrap.js" ],
     "output": "wwwroot/Scripts/bootstrap.js"
   },
   {
-    "inputs": ["node_modules/popper.js/dist/umd/popper.js"],
+    "inputs": [ "node_modules/popper.js/dist/umd/popper.js" ],
     "output": "wwwroot/Scripts/popper.js"
   },
   {
     "copy": true,
-    "inputs": ["node_modules/@fortawesome/fontawesome-free/css/*"],
+    "inputs": [ "node_modules/@fortawesome/fontawesome-free/css/*" ],
     "output": "wwwroot/Vendor/fontawesome-free/css/@"
   },
   {
     "copy": true,
-    "inputs": ["node_modules/@fortawesome/fontawesome-free/js/*"],
+    "inputs": [ "node_modules/@fortawesome/fontawesome-free/js/*" ],
     "output": "wwwroot/Vendor/fontawesome-free/js/@"
   },
   {
     "copy": true,
-    "inputs": ["node_modules/@fortawesome/fontawesome-free/webfonts/*"],
+    "inputs": [ "node_modules/@fortawesome/fontawesome-free/webfonts/*" ],
     "output": "wwwroot/Vendor/fontawesome-free/webfonts/@"
+  },
+  {
+    "inputs": [ "Assets/js/setCookie.js" ],
+    "output": "wwwroot/Scripts/setCookie.js"
   }
 ]
