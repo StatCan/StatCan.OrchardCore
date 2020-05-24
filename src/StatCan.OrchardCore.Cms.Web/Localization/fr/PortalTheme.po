@@ -1,0 +1,430 @@
+msgid ""
+msgstr "Content-Type: text/plain\n"
+
+#: PortalTheme\Views\OrchardCore.Users\Account\Login.cshtml:19
+#: PortalTheme\Views\OrchardCore.Users\Account\Login.cshtml:77
+#. <h1 class="login">@T["Log in"]</h1>
+#. <button type="submit" class="btn btn-lg btn-primary is-rounded"><span>@T["Log in"]</span></button>
+msgctxt "PortalTheme.Views.OrchardCore.Users.Account.Login"
+msgid "Log in"
+msgstr "S'identifier"
+
+#: PortalTheme\Views\OrchardCore.Users\Account\Login.cshtml:27
+#. <h2 class="text-center mb-3">@T["Log in with"]</h2>
+msgctxt "PortalTheme.Views.OrchardCore.Users.Account.Login"
+msgid "Log in with"
+msgstr "Connectez-vous avec"
+
+#: PortalTheme\Views\OrchardCore.Users\Account\Login.cshtml:57
+#. <h2 class="text-center">@T["vLab account"]</h2>
+msgctxt "PortalTheme.Views.OrchardCore.Users.Account.Login"
+msgid "vLab account"
+msgstr "compte vLab"
+
+#: PortalTheme\Views\OrchardCore.Users\Account\Login.cshtml:58
+#. <p class="text-secondary text-center mb-4">@T["Your virtual passport"]</p>
+msgctxt "PortalTheme.Views.OrchardCore.Users.Account.Login"
+msgid "Your virtual passport"
+msgstr "Votre passeport virtuel"
+
+#: PortalTheme\Views\OrchardCore.Users\Account\Login.cshtml:62
+#. <label class="asterix" asp-for="UserName">@T["Username"]</label>
+msgctxt "PortalTheme.Views.OrchardCore.Users.Account.Login"
+msgid "Username"
+msgstr "Nom d'utilisateur"
+
+#: PortalTheme\Views\OrchardCore.Users\Account\Login.cshtml:67
+#. <label class="asterix" asp-for="Password">@T["Password"]</label>
+msgctxt "PortalTheme.Views.OrchardCore.Users.Account.Login"
+msgid "Password"
+msgstr "Mot de passe"
+
+#: PortalTheme\Views\OrchardCore.Users\Account\Login.cshtml:73
+#. <label asp-for="RememberMe" class="custom-control-label">@T["Remember me"]</label>
+msgctxt "PortalTheme.Views.OrchardCore.Users.Account.Login"
+msgid "Remember me"
+msgstr "Souviens-toi de moi"
+
+#: PortalTheme\Views\OrchardCore.Users\Account\Login.cshtml:82
+#. <a class="h4" asp-controller="ResetPassword" asp-action="ForgotPassword" class="label-link">@T["Forgot your password?"]</a>
+msgctxt "PortalTheme.Views.OrchardCore.Users.Account.Login"
+msgid "Forgot your password?"
+msgstr "Mot de passe oublié?"
+
+#: PortalTheme\Views\OrchardCore.Users\Account\Login.cshtml:95
+#. <a class="btn btn-lg btn-outline-primary is-rounded" asp-controller="Registration" asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]">@T["Create an account"]</a>
+msgctxt "PortalTheme.Views.OrchardCore.Users.Account.Login"
+msgid "Create an account"
+msgstr "Créer un compte"
+
+#: PortalTheme\Views\Layout.liquid:0
+msgctxt "PortalTheme.Views.Layout"
+msgid "Skip to main content"
+msgstr "Passer au contenu principal"
+
+#: PortalTheme\Views\MenuItemLink-FeedbackMenuItem.liquid:0
+msgctxt "PortalTheme.Views.MenuItemLink-FeedbackMenuItem"
+msgid "Send feedback"
+msgstr "Envoyer des commentaires"
+
+#: PortalTheme\Views\MenuItemLink-LoginMenuItem.liquid:0
+#: PortalTheme\Views\MenuItemLink-LoginMenuItem.liquid:0
+msgctxt "PortalTheme.Views.MenuItemLink-LoginMenuItem"
+msgid "Account"
+msgstr "Compte"
+
+#: PortalTheme\Views\MenuItemLink-LoginMenuItem.liquid:0
+#: PortalTheme\Views\MenuItemLink-LoginMenuItem.liquid:0
+msgctxt "PortalTheme.Views.MenuItemLink-LoginMenuItem"
+msgid "Log in"
+msgstr "S'identifier"
+
+#: PortalTheme\Views\ModalBonusAction.liquid:0
+msgctxt "PortalTheme.Views.ModalBonusAction"
+msgid "Request a Kubeflow namespace"
+msgstr "Demander un espace de noms Kubeflow"
+
+#: PortalTheme\Views\ModalBonusAction.liquid:0
+msgctxt "PortalTheme.Views.ModalBonusAction"
+msgid "An admin will follow up with you at"
+msgstr "Un administrateur vous contactera à l'adresse"
+
+#: PortalTheme\Views\ModalBonusAction.liquid:0
+msgctxt "PortalTheme.Views.ModalBonusAction"
+msgid "with questions or updates."
+msgstr "avec des questions ou des mises à jour."
+
+#: PortalTheme\Views\ModalBonusAction.liquid:0
+msgctxt "PortalTheme.Views.ModalBonusAction"
+msgid "Close"
+msgstr "proche"
+
+#: PortalTheme\Views\ModalBonusAction.liquid:0
+msgctxt "PortalTheme.Views.ModalBonusAction"
+msgid "Namespace name"
+msgstr "Nom de l'espace de noms"
+
+#: PortalTheme\Views\ModalBonusAction.liquid:0
+msgctxt "PortalTheme.Views.ModalBonusAction"
+msgid "Send request"
+msgstr "Envoyer une demande"
+
+#: PortalTheme\Views\ModalFeedback.liquid:0
+msgctxt "PortalTheme.Views.ModalFeedback"
+msgid "Instant feedback"
+msgstr "Rétroaction instantanée"
+
+#: PortalTheme\Views\ModalFeedback.liquid:0
+msgctxt "PortalTheme.Views.ModalFeedback"
+msgid "How was your experience?"
+msgstr "Quelle a été votre expérience?"
+
+#: PortalTheme\Views\ModalFeedback.liquid:0
+msgctxt "PortalTheme.Views.ModalFeedback"
+msgid "Close"
+msgstr "proche"
+
+#: PortalTheme\Views\ModalFeedback.liquid:0
+msgctxt "PortalTheme.Views.ModalFeedback"
+msgid "Happy mood"
+msgstr "Bonne humeur"
+
+#: PortalTheme\Views\ModalFeedback.liquid:0
+msgctxt "PortalTheme.Views.ModalFeedback"
+msgid "Neutral mood"
+msgstr "Humeur neutre"
+
+#: PortalTheme\Views\ModalFeedback.liquid:0
+msgctxt "PortalTheme.Views.ModalFeedback"
+msgid "Sad mood"
+msgstr "Humeur triste"
+
+#: PortalTheme\Views\ModalFeedback.liquid:0
+msgctxt "PortalTheme.Views.ModalFeedback"
+msgid "Feedback message"
+msgstr "Message de rétroaction"
+
+#: PortalTheme\Views\ModalFeedback.liquid:0
+msgctxt "PortalTheme.Views.ModalFeedback"
+msgid "Send feedback"
+msgstr "Envoyer des commentaires"
+
+#: PortalTheme\Views\ModalProfile.liquid:0
+msgctxt "PortalTheme.Views.ModalProfile"
+msgid "account"
+msgstr "Compte"
+
+#: PortalTheme\Views\ModalProfile.liquid:0
+msgctxt "PortalTheme.Views.ModalProfile"
+msgid "Close"
+msgstr "proche"
+
+#: PortalTheme\Views\ModalProfile.liquid:0
+msgctxt "PortalTheme.Views.ModalProfile"
+msgid "Contact email"
+msgstr "Email du contact"
+
+#: PortalTheme\Views\ModalProfile.liquid:0
+msgctxt "PortalTheme.Views.ModalProfile"
+msgid "Azure account"
+msgstr "Compte Azure"
+
+#: PortalTheme\Views\ModalProfile.liquid:0
+msgctxt "PortalTheme.Views.ModalProfile"
+msgid "Log out"
+msgstr "Se déconnecter"
+
+#: PortalTheme\Views\SharedPasswordRequirementText.liquid:0
+msgctxt "PortalTheme.Views.SharedPasswordRequirementText"
+msgid ""
+"Passwords must have:<br>• 8 characters or more<br>• an uppercase "
+"letter<br>• a lowercase letter<br>• a number<br>• a special character"
+msgstr ""
+"Les mots de passe doivent avoir: <br> • 8 caractères ou plus <br> • une "
+"lettre majuscule <br> • une lettre minuscule <br> • un numéro <br> • un "
+"caractère spécial"
+
+#: PortalTheme\Views\SymbolCanada.liquid:0
+msgctxt "PortalTheme.Views.SymbolCanada"
+msgid "Symbol of the Government of Canada"
+msgstr "Symbole du gouvernement du Canada"
+
+#: PortalTheme\Views\SymbolStatisticsCanada.liquid:0
+#: PortalTheme\Views\SymbolStatisticsCanada.liquid:0
+msgctxt "PortalTheme.Views.SymbolStatisticsCanada"
+msgid "Statistics Canada"
+msgstr "Statistique Canada"
+
+#: PortalTheme\Views\Widget-FatFooter.liquid:0
+msgctxt "PortalTheme.Views.Widget-FatFooter"
+msgid "More Virtual Labs"
+msgstr "Plus de laboratoires virtuels"
+
+#: PortalTheme\Views\Widget-FatFooter.liquid:0
+msgctxt "PortalTheme.Views.Widget-FatFooter"
+msgid "digital@statcan"
+msgstr "digital @ statcan"
+
+#: PortalTheme\Views\Widget-FatFooter.liquid:0
+msgctxt "PortalTheme.Views.Widget-FatFooter"
+msgid "Digital Innovation logo"
+msgstr "Logo de l'innovation numérique"
+
+#: PortalTheme\Views\Widget-Hero.liquid:0
+msgctxt "PortalTheme.Views.Widget-Hero"
+msgid "Log in"
+msgstr "S'identifier"
+
+#: PortalTheme\Views\Widget-Hero.liquid:0
+msgctxt "PortalTheme.Views.Widget-Hero"
+msgid "Down arrow"
+msgstr "Flèche vers le bas"
+
+#: PortalTheme\Views\Widget-SectionPanel.liquid:0
+msgctxt "PortalTheme.Views.Widget-SectionPanel"
+msgid "Request a Kubeflow namespace"
+msgstr "Demander un espace de noms Kubeflow"
+
+#: PortalTheme\Views\Shared\NotFound.liquid:0
+msgctxt "PortalTheme.Views.Shared.NotFound"
+msgid "We couldn't find what you're looking for"
+msgstr "Nous n'avons pas trouvé ce que vous cherchiez"
+
+#: PortalTheme\Views\OrchardCore.Users\Account\ChangePassword.liquid:0
+#: PortalTheme\Views\OrchardCore.Users\Account\ChangePassword.liquid:0
+msgctxt "PortalTheme.Views.OrchardCore.Users.Account.ChangePassword"
+msgid "Change password"
+msgstr "Changer le mot de passe"
+
+#: PortalTheme\Views\OrchardCore.Users\Account\ChangePassword.liquid:0
+msgctxt "PortalTheme.Views.OrchardCore.Users.Account.ChangePassword"
+msgid "vLab account security"
+msgstr "Sécurité du compte vLab"
+
+#: PortalTheme\Views\OrchardCore.Users\Account\ChangePassword.liquid:0
+msgctxt "PortalTheme.Views.OrchardCore.Users.Account.ChangePassword"
+msgid "New password, new beginning"
+msgstr "Nouveau mot de passe, nouveau départ"
+
+#: PortalTheme\Views\OrchardCore.Users\Account\ChangePasswordConfirmation.liquid:0
+msgctxt "PortalTheme.Views.OrchardCore.Users.Account.ChangePasswordConfirmation"
+msgid "Password changed"
+msgstr "Mot de passe changé"
+
+#: PortalTheme\Views\OrchardCore.Users\Account\ChangePasswordConfirmation.liquid:0
+msgctxt "PortalTheme.Views.OrchardCore.Users.Account.ChangePasswordConfirmation"
+msgid "Your password has been changed successfully."
+msgstr "Votre mot de passe a été changé avec succès."
+
+#: PortalTheme\Views\OrchardCore.Users\Account\Login (still buggy).liquid:0
+msgctxt "PortalTheme.Views.OrchardCore.Users.Account.Login (still buggy)"
+msgid "Log In"
+msgstr "S'identifier"
+
+#: PortalTheme\Views\OrchardCore.Users\Account\Login (still buggy).liquid:0
+msgctxt "PortalTheme.Views.OrchardCore.Users.Account.Login (still buggy)"
+msgid "Log in with"
+msgstr "Connectez-vous avec"
+
+#: PortalTheme\Views\OrchardCore.Users\Account\Login (still buggy).liquid:0
+msgctxt "PortalTheme.Views.OrchardCore.Users.Account.Login (still buggy)"
+msgid "Linked accounts must have a verified @canada.ca email"
+msgstr "Les comptes associés doivent avoir un courriel vérifié @ canada.ca"
+
+#: PortalTheme\Views\OrchardCore.Users\Account\Login (still buggy).liquid:0
+msgctxt "PortalTheme.Views.OrchardCore.Users.Account.Login (still buggy)"
+msgid "Register as a new user"
+msgstr "S'inscrire en tant que nouvel utilisateur"
+
+#: PortalTheme\Views\OrchardCore.Users\Account\Login (still buggy).liquid:0
+msgctxt "PortalTheme.Views.OrchardCore.Users.Account.Login (still buggy)"
+msgid "vLab account"
+msgstr "compte vLab"
+
+#: PortalTheme\Views\OrchardCore.Users\Account\Login (still buggy).liquid:0
+msgctxt "PortalTheme.Views.OrchardCore.Users.Account.Login (still buggy)"
+msgid "Login"
+msgstr "S'identifier"
+
+#: PortalTheme\Views\OrchardCore.Users\Account\Login (still buggy).liquid:0
+msgctxt "PortalTheme.Views.OrchardCore.Users.Account.Login (still buggy)"
+msgid "Forgot your password?"
+msgstr "Mot de passe oublié?"
+
+#: PortalTheme\Views\OrchardCore.Users\Account\RegisterExternalLogin.liquid:0
+msgctxt "PortalTheme.Views.OrchardCore.Users.Account.RegisterExternalLogin"
+msgid "Finish registration"
+msgstr "Terminer l'inscription"
+
+#: PortalTheme\Views\OrchardCore.Users\Account\RegisterExternalLogin.liquid:0
+msgctxt "PortalTheme.Views.OrchardCore.Users.Account.RegisterExternalLogin"
+msgid "One last thing"
+msgstr "Une dernière chose"
+
+#: PortalTheme\Views\OrchardCore.Users\Account\RegisterExternalLogin.liquid:0
+msgctxt "PortalTheme.Views.OrchardCore.Users.Account.RegisterExternalLogin"
+msgid ""
+"Your Azure account has been linked! Enter an email address to receive "
+"updates for namespace requests."
+msgstr ""
+"Votre compte Azure a été lié! Saisissez une adresse e-mail pour recevoir "
+"les mises à jour des demandes d'espace de noms."
+
+#: PortalTheme\Views\OrchardCore.Users\Account\RegisterExternalLogin.liquid:0
+msgctxt "PortalTheme.Views.OrchardCore.Users.Account.RegisterExternalLogin"
+msgid "Create account"
+msgstr "Créer un compte"
+
+#: PortalTheme\Views\OrchardCore.Users\Registration\ConfirmEmail.liquid:0
+msgctxt "PortalTheme.Views.OrchardCore.Users.Registration.ConfirmEmail"
+msgid "Email confirmed"
+msgstr "E-mail confirmé"
+
+#: PortalTheme\Views\OrchardCore.Users\Registration\ConfirmEmail.liquid:0
+msgctxt "PortalTheme.Views.OrchardCore.Users.Registration.ConfirmEmail"
+msgid "Thank you for confirming your email."
+msgstr "Merci d'avoir confirmé votre email."
+
+#: PortalTheme\Views\OrchardCore.Users\Registration\ConfirmEmail.liquid:0
+msgctxt "PortalTheme.Views.OrchardCore.Users.Registration.ConfirmEmail"
+msgid "Home"
+msgstr "Accueil"
+
+#: PortalTheme\Views\OrchardCore.Users\Registration\Register.liquid:0
+#: PortalTheme\Views\OrchardCore.Users\Registration\Register.liquid:0
+msgctxt "PortalTheme.Views.OrchardCore.Users.Registration.Register"
+msgid "Create account"
+msgstr "Créer un compte"
+
+#: PortalTheme\Views\OrchardCore.Users\Registration\Register.liquid:0
+msgctxt "PortalTheme.Views.OrchardCore.Users.Registration.Register"
+msgid "vLab account"
+msgstr "compte vLab"
+
+#: PortalTheme\Views\OrchardCore.Users\Registration\Register.liquid:0
+msgctxt "PortalTheme.Views.OrchardCore.Users.Registration.Register"
+msgid "One account for all virtual labs"
+msgstr "Un seul compte pour tous les laboratoires virtuels"
+
+#: PortalTheme\Views\OrchardCore.Users\Registration\Register.liquid:0
+msgctxt "PortalTheme.Views.OrchardCore.Users.Registration.Register"
+msgid ""
+"Passwords must have:<br>• 8 characters or more<br>• an uppercase "
+"letter<br>• a lowercase letter<br>• a number<br>• a special character"
+msgstr ""
+"Les mots de passe doivent avoir: <br> • 8 caractères ou plus <br> • une "
+"lettre majuscule <br> • une lettre minuscule <br> • un numéro <br> • un "
+"caractère spécial"
+
+#: PortalTheme\Views\OrchardCore.Users\ResetPassword\ForgotPassword.liquid:0
+msgctxt "PortalTheme.Views.OrchardCore.Users.ResetPassword.ForgotPassword"
+msgid "Forgot password"
+msgstr "Mot de passe oublié"
+
+#: PortalTheme\Views\OrchardCore.Users\ResetPassword\ForgotPassword.liquid:0
+msgctxt "PortalTheme.Views.OrchardCore.Users.ResetPassword.ForgotPassword"
+msgid "Recover vLab account"
+msgstr "Récupérer un compte vLab"
+
+#: PortalTheme\Views\OrchardCore.Users\ResetPassword\ForgotPassword.liquid:0
+msgctxt "PortalTheme.Views.OrchardCore.Users.ResetPassword.ForgotPassword"
+msgid "Things happen, it's ok"
+msgstr "Les choses arrivent, c'est ok"
+
+#: PortalTheme\Views\OrchardCore.Users\ResetPassword\ForgotPassword.liquid:0
+msgctxt "PortalTheme.Views.OrchardCore.Users.ResetPassword.ForgotPassword"
+msgid "The recovery link will be sent to the email address of your vLab account."
+msgstr "Le lien de récupération sera envoyé à l'adresse e-mail de votre compte vLab."
+
+#: PortalTheme\Views\OrchardCore.Users\ResetPassword\ForgotPassword.liquid:0
+msgctxt "PortalTheme.Views.OrchardCore.Users.ResetPassword.ForgotPassword"
+msgid "Send recovery email"
+msgstr "Envoyer un e-mail de récupération"
+
+#: PortalTheme\Views\OrchardCore.Users\ResetPassword\ForgotPassword.liquid:0
+msgctxt "PortalTheme.Views.OrchardCore.Users.ResetPassword.ForgotPassword"
+msgid "If you can no longer access the inbox, see if we can help."
+msgstr ""
+"Si vous ne pouvez plus accéder à la boîte de réception, voyez si nous "
+"pouvons vous aider."
+
+#: PortalTheme\Views\OrchardCore.Users\ResetPassword\ForgotPasswordConfirmation.liquid:0
+msgctxt "PortalTheme.Views.OrchardCore.Users.ResetPassword.ForgotPasswordConfirmation"
+msgid "Check your email"
+msgstr "Vérifiez votre email"
+
+#: PortalTheme\Views\OrchardCore.Users\ResetPassword\ForgotPasswordConfirmation.liquid:0
+msgctxt "PortalTheme.Views.OrchardCore.Users.ResetPassword.ForgotPasswordConfirmation"
+msgid "Please check your email to reset your password."
+msgstr "Veuillez vérifier votre e-mail pour réinitialiser votre mot de passe."
+
+#: PortalTheme\Views\OrchardCore.Users\ResetPassword\ResetPassword.liquid:0
+#: PortalTheme\Views\OrchardCore.Users\ResetPassword\ResetPassword.liquid:0
+msgctxt "PortalTheme.Views.OrchardCore.Users.ResetPassword.ResetPassword"
+msgid "Reset password"
+msgstr "Réinitialiser le mot de passe"
+
+#: PortalTheme\Views\OrchardCore.Users\ResetPassword\ResetPassword.liquid:0
+msgctxt "PortalTheme.Views.OrchardCore.Users.ResetPassword.ResetPassword"
+msgid "vLab account security"
+msgstr "Sécurité du compte vLab"
+
+#: PortalTheme\Views\OrchardCore.Users\ResetPassword\ResetPassword.liquid:0
+msgctxt "PortalTheme.Views.OrchardCore.Users.ResetPassword.ResetPassword"
+msgid "New password, new beginning"
+msgstr "Nouveau mot de passe, nouveau départ"
+
+#: PortalTheme\Views\OrchardCore.Users\ResetPassword\ResetPasswordConfirmation.liquid:0
+msgctxt "PortalTheme.Views.OrchardCore.Users.ResetPassword.ResetPasswordConfirmation"
+msgid "Password reset"
+msgstr "Réinitialisation du mot de passe"
+
+#: PortalTheme\Views\OrchardCore.Users\ResetPassword\ResetPasswordConfirmation.liquid:0
+msgctxt "PortalTheme.Views.OrchardCore.Users.ResetPassword.ResetPasswordConfirmation"
+msgid "Your password has been reset."
+msgstr "Votre mot de passe a été réinitialisé."
+
+#: PortalTheme\Views\OrchardCore.Users\ResetPassword\ResetPasswordConfirmation.liquid:0
+msgctxt "PortalTheme.Views.OrchardCore.Users.ResetPassword.ResetPasswordConfirmation"
+msgid "Login"
+msgstr "S'identifier"

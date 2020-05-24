@@ -1,0 +1,72 @@
+msgid ""
+msgstr "Content-Type: text/plain\n"
+
+#: StatCan.OrchardCore.Workflows\Tasks\ValidateUserTask.cs:29
+#. public override LocalizedString Category => T["User"];
+msgctxt "StatCan.OrchardCore.Workflows.Tasks.ValidateUserTask"
+msgid "User"
+msgstr "Utilisateur"
+
+#: StatCan.OrchardCore.Workflows\Tasks\ValidateUserTask.cs:43
+#. public override LocalizedString DisplayText => T["Validate User Task"];
+msgctxt "StatCan.OrchardCore.Workflows.Tasks.ValidateUserTask"
+msgid "Validate User Task"
+msgstr "Valider la tâche utilisateur"
+
+#: StatCan.OrchardCore.Workflows\Tasks\ValidateUserTask.cs:47
+#. return Outcomes(T["Authenticated_InRole"], T["Authenticated"], T["Anonymous"]);
+msgctxt "StatCan.OrchardCore.Workflows.Tasks.ValidateUserTask"
+msgid "Authenticated_InRole"
+msgstr "Authenticated_InRole"
+
+#: StatCan.OrchardCore.Workflows\Tasks\ValidateUserTask.cs:47
+#. return Outcomes(T["Authenticated_InRole"], T["Authenticated"], T["Anonymous"]);
+msgctxt "StatCan.OrchardCore.Workflows.Tasks.ValidateUserTask"
+msgid "Authenticated"
+msgstr "Authentifié"
+
+#: StatCan.OrchardCore.Workflows\Tasks\ValidateUserTask.cs:47
+#. return Outcomes(T["Authenticated_InRole"], T["Authenticated"], T["Anonymous"]);
+msgctxt "StatCan.OrchardCore.Workflows.Tasks.ValidateUserTask"
+msgid "Anonymous"
+msgstr "Anonyme"
+
+#: StatCan.OrchardCore.Workflows\Views\Items\ValidateUserTask.Fields.Design.cshtml:4
+#. <h4><i class="fa fa-user"></i>@Model.Activity.GetTitleOrDefault(() => T["Validate User"])</h4>
+msgctxt "StatCan.OrchardCore.Workflows.Views.Items.ValidateUserTask.Fields.Design"
+msgid "Validate User"
+msgstr "Valider l'utilisateur"
+
+#: StatCan.OrchardCore.Workflows\Views\Items\ValidateUserTask.Fields.Edit.cshtml:6
+#. <label asp-for="SetUser" class="form-check-label">@T["Set the User property"]</label>
+msgctxt "StatCan.OrchardCore.Workflows.Views.Items.ValidateUserTask.Fields.Edit"
+msgid "Set the User property"
+msgstr "Définissez la propriété Utilisateur"
+
+#: StatCan.OrchardCore.Workflows\Views\Items\ValidateUserTask.Fields.Edit.cshtml:10
+#. <label asp-for="RoleNames">@T["Role(s) to validate"]</label>
+msgctxt "StatCan.OrchardCore.Workflows.Views.Items.ValidateUserTask.Fields.Edit"
+msgid "Role(s) to validate"
+msgstr "Rôle (s) à valider"
+
+#: StatCan.OrchardCore.Workflows\Views\Items\ValidateUserTask.Fields.Edit.cshtml:13
+#. <span class="hint">@T["Comma seperated list of roles to validate"]</span>
+msgctxt "StatCan.OrchardCore.Workflows.Views.Items.ValidateUserTask.Fields.Edit"
+msgid "Comma seperated list of roles to validate"
+msgstr "Liste séparée par des virgules des rôles à valider"
+
+#: StatCan.OrchardCore.Workflows\Views\Items\ValidateUserTask.Fields.Thumbnail.cshtml:1
+#. <h4 class="card-title"><i class="fa fa-user"></i>@T["Validate User"]</h4>
+msgctxt "StatCan.OrchardCore.Workflows.Views.Items.ValidateUserTask.Fields.Thumbnail"
+msgid "Validate User"
+msgstr "Valider l'utilisateur"
+
+#: StatCan.OrchardCore.Workflows\Views\Items\ValidateUserTask.Fields.Thumbnail.cshtml:2
+#. <p>@T["Check if the user exists on the http request. Can also validate if the user has a role."]</p>
+msgctxt "StatCan.OrchardCore.Workflows.Views.Items.ValidateUserTask.Fields.Thumbnail"
+msgid ""
+"Check if the user exists on the http request. Can also validate if the user "
+"has a role."
+msgstr ""
+"Vérifiez si l'utilisateur existe sur la demande http. Peut également "
+"valider si l'utilisateur a un rôle."

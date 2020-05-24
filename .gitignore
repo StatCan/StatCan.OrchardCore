@@ -193,4 +193,5 @@ wwwroot
 !src/Themes/**/wwwroot
 !src/Modules/**/Localization/**/*.po
 !src/Themes/**/Localization/**/*.po
+!src/StatCan.OrchardCore.Cms.Web/Localization/fr/*.po
 
