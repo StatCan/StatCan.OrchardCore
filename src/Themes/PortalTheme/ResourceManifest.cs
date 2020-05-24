@@ -28,9 +28,9 @@ namespace StatCan.Themes.PortalTheme
             manifest
                 .DefineScript("jQuery")
                 .SetUrl("~/PortalTheme/Scripts/jquery.min.js", "~/PortalTheme/Scripts/jquery.js")
-                .SetCdn("https://code.jquery.com/jquery-3.5.1.min.js", "https://code.jquery.com/jquery-3.5.1.js")
-                .SetCdnIntegrity("sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2", "sha384-/LjQZzcpTzaYn7qWqRIWYC5l8FWEZ2bIHIz0D73Uzba4pShEcdLdZyZkI4Kv676E")
-                .SetVersion("3.5.1");
+              .SetCdn("https://code.jquery.com/jquery-3.4.1.min.js", "https://code.jquery.com/jquery-3.4.1.js")
+              .SetCdnIntegrity("sha384-vk5WoKIaW/vJyUAd9n/wmopsmNhiy+L2Z+SBxGYnUkunIxVxAv/UtMOhba/xskxh", "sha384-mlceH9HlqLp7GMKHrj5Ara1+LvdTZVMx4S1U43/NxCvAkzIo8WJ0FE7duLel3wVo")
+              .SetVersion("3.4.1");
             manifest
                 .DefineScript("popper")
                 .SetUrl("~/PortalTheme/Scripts/popper.min.js", "~/PortalTheme/Scripts/popper.js")
