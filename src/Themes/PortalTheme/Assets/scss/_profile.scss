@@ -19,7 +19,10 @@
     align-items: center;
     border-bottom: none;
     justify-content: center;
-    padding: 0;
+    padding: 0 2rem;
+    @include media-breakpoint-up(md) {
+      padding: 0;
+    }
     position: relative;
     .modal-title {
       flex: 1 1 auto;

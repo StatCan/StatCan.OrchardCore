@@ -7,7 +7,7 @@ msgstr "Content-Type: text/plain\n"
 #. <button type="submit" class="btn btn-lg btn-primary is-rounded"><span>@T["Log in"]</span></button>
 msgctxt "PortalTheme.Views.OrchardCore.Users.Account.Login"
 msgid "Log in"
-msgstr "S'identifier"
+msgstr "Connexion"
 
 #: PortalTheme\Views\OrchardCore.Users\Account\Login.cshtml:27
 #. <h2 class="text-center mb-3">@T["Log in with"]</h2>
@@ -62,10 +62,15 @@ msgctxt "PortalTheme.Views.Layout"
 msgid "Skip to main content"
 msgstr "Passer au contenu principal"
 
+#: PortalTheme\Views\Layout.liquid:0
+msgctxt "PortalTheme.Views.Layout"
+msgid "Welcome to AAW"
+msgstr "Bienvenue à l'espace de travaille d'analyses avancées!"
+
 #: PortalTheme\Views\MenuItemLink-FeedbackMenuItem.liquid:0
 msgctxt "PortalTheme.Views.MenuItemLink-FeedbackMenuItem"
 msgid "Send feedback"
-msgstr "Envoyer des commentaires"
+msgstr "Envoyer vos impressions"
 
 #: PortalTheme\Views\MenuItemLink-LoginMenuItem.liquid:0
 #: PortalTheme\Views\MenuItemLink-LoginMenuItem.liquid:0
@@ -77,7 +82,7 @@ msgstr "Compte"
 #: PortalTheme\Views\MenuItemLink-LoginMenuItem.liquid:0
 msgctxt "PortalTheme.Views.MenuItemLink-LoginMenuItem"
 msgid "Log in"
-msgstr "S'identifier"
+msgstr "Connexion"
 
 #: PortalTheme\Views\ModalBonusAction.liquid:0
 msgctxt "PortalTheme.Views.ModalBonusAction"
@@ -97,7 +102,7 @@ msgstr "avec des questions ou des mises à jour."
 #: PortalTheme\Views\ModalBonusAction.liquid:0
 msgctxt "PortalTheme.Views.ModalBonusAction"
 msgid "Close"
-msgstr "proche"
+msgstr "Fermer"
 
 #: PortalTheme\Views\ModalBonusAction.liquid:0
 msgctxt "PortalTheme.Views.ModalBonusAction"
@@ -112,7 +117,7 @@ msgstr "Envoyer une demande"
 #: PortalTheme\Views\ModalFeedback.liquid:0
 msgctxt "PortalTheme.Views.ModalFeedback"
 msgid "Instant feedback"
-msgstr "Rétroaction instantanée"
+msgstr "Impression instantanée"
 
 #: PortalTheme\Views\ModalFeedback.liquid:0
 msgctxt "PortalTheme.Views.ModalFeedback"
@@ -122,7 +127,7 @@ msgstr "Quelle a été votre expérience?"
 #: PortalTheme\Views\ModalFeedback.liquid:0
 msgctxt "PortalTheme.Views.ModalFeedback"
 msgid "Close"
-msgstr "proche"
+msgstr "Fermer"
 
 #: PortalTheme\Views\ModalFeedback.liquid:0
 msgctxt "PortalTheme.Views.ModalFeedback"
@@ -142,27 +147,27 @@ msgstr "Humeur triste"
 #: PortalTheme\Views\ModalFeedback.liquid:0
 msgctxt "PortalTheme.Views.ModalFeedback"
 msgid "Feedback message"
-msgstr "Message de rétroaction"
+msgstr "Votre impression"
 
 #: PortalTheme\Views\ModalFeedback.liquid:0
 msgctxt "PortalTheme.Views.ModalFeedback"
 msgid "Send feedback"
-msgstr "Envoyer des commentaires"
+msgstr "Envoyer vos impressions"
 
 #: PortalTheme\Views\ModalProfile.liquid:0
 msgctxt "PortalTheme.Views.ModalProfile"
 msgid "account"
-msgstr "Compte"
+msgstr "compte"
 
 #: PortalTheme\Views\ModalProfile.liquid:0
 msgctxt "PortalTheme.Views.ModalProfile"
 msgid "Close"
-msgstr "proche"
+msgstr "Fermer"
 
 #: PortalTheme\Views\ModalProfile.liquid:0
 msgctxt "PortalTheme.Views.ModalProfile"
 msgid "Contact email"
-msgstr "Email du contact"
+msgstr "Votre courriel"
 
 #: PortalTheme\Views\ModalProfile.liquid:0
 msgctxt "PortalTheme.Views.ModalProfile"
@@ -213,7 +218,7 @@ msgstr "Logo de l'innovation numérique"
 #: PortalTheme\Views\Widget-Hero.liquid:0
 msgctxt "PortalTheme.Views.Widget-Hero"
 msgid "Log in"
-msgstr "S'identifier"
+msgstr "Connexion"
 
 #: PortalTheme\Views\Widget-Hero.liquid:0
 msgctxt "PortalTheme.Views.Widget-Hero"
@@ -259,7 +264,7 @@ msgstr "Votre mot de passe a été changé avec succès."
 #: PortalTheme\Views\OrchardCore.Users\Account\Login (still buggy).liquid:0
 msgctxt "PortalTheme.Views.OrchardCore.Users.Account.Login (still buggy)"
 msgid "Log In"
-msgstr "S'identifier"
+msgstr "Connexion"
 
 #: PortalTheme\Views\OrchardCore.Users\Account\Login (still buggy).liquid:0
 msgctxt "PortalTheme.Views.OrchardCore.Users.Account.Login (still buggy)"
@@ -279,12 +284,12 @@ msgstr "S'inscrire en tant que nouvel utilisateur"
 #: PortalTheme\Views\OrchardCore.Users\Account\Login (still buggy).liquid:0
 msgctxt "PortalTheme.Views.OrchardCore.Users.Account.Login (still buggy)"
 msgid "vLab account"
-msgstr "compte vLab"
+msgstr "Compte vLab"
 
 #: PortalTheme\Views\OrchardCore.Users\Account\Login (still buggy).liquid:0
 msgctxt "PortalTheme.Views.OrchardCore.Users.Account.Login (still buggy)"
 msgid "Login"
-msgstr "S'identifier"
+msgstr "Connexion"
 
 #: PortalTheme\Views\OrchardCore.Users\Account\Login (still buggy).liquid:0
 msgctxt "PortalTheme.Views.OrchardCore.Users.Account.Login (still buggy)"
@@ -307,7 +312,7 @@ msgid ""
 "Your Azure account has been linked! Enter an email address to receive "
 "updates for namespace requests."
 msgstr ""
-"Votre compte Azure a été lié! Saisissez une adresse e-mail pour recevoir "
+"Votre compte Azure a été lié! Saisissez une adresse courriel pour recevoir "
 "les mises à jour des demandes d'espace de noms."
 
 #: PortalTheme\Views\OrchardCore.Users\Account\RegisterExternalLogin.liquid:0
@@ -318,12 +323,12 @@ msgstr "Créer un compte"
 #: PortalTheme\Views\OrchardCore.Users\Registration\ConfirmEmail.liquid:0
 msgctxt "PortalTheme.Views.OrchardCore.Users.Registration.ConfirmEmail"
 msgid "Email confirmed"
-msgstr "E-mail confirmé"
+msgstr "Courriel confirmé"
 
 #: PortalTheme\Views\OrchardCore.Users\Registration\ConfirmEmail.liquid:0
 msgctxt "PortalTheme.Views.OrchardCore.Users.Registration.ConfirmEmail"
 msgid "Thank you for confirming your email."
-msgstr "Merci d'avoir confirmé votre email."
+msgstr "Merci d'avoir confirmé votre courriel."
 
 #: PortalTheme\Views\OrchardCore.Users\Registration\ConfirmEmail.liquid:0
 msgctxt "PortalTheme.Views.OrchardCore.Users.Registration.ConfirmEmail"
@@ -339,7 +344,7 @@ msgstr "Créer un compte"
 #: PortalTheme\Views\OrchardCore.Users\Registration\Register.liquid:0
 msgctxt "PortalTheme.Views.OrchardCore.Users.Registration.Register"
 msgid "vLab account"
-msgstr "compte vLab"
+msgstr "Compte vLab"
 
 #: PortalTheme\Views\OrchardCore.Users\Registration\Register.liquid:0
 msgctxt "PortalTheme.Views.OrchardCore.Users.Registration.Register"
@@ -364,22 +369,22 @@ msgstr "Mot de passe oublié"
 #: PortalTheme\Views\OrchardCore.Users\ResetPassword\ForgotPassword.liquid:0
 msgctxt "PortalTheme.Views.OrchardCore.Users.ResetPassword.ForgotPassword"
 msgid "Recover vLab account"
-msgstr "Récupérer un compte vLab"
+msgstr "Récupérer votre compte vLab"
 
 #: PortalTheme\Views\OrchardCore.Users\ResetPassword\ForgotPassword.liquid:0
 msgctxt "PortalTheme.Views.OrchardCore.Users.ResetPassword.ForgotPassword"
 msgid "Things happen, it's ok"
-msgstr "Les choses arrivent, c'est ok"
+msgstr "Ça arrive d'oublier, pas de problème"
 
 #: PortalTheme\Views\OrchardCore.Users\ResetPassword\ForgotPassword.liquid:0
 msgctxt "PortalTheme.Views.OrchardCore.Users.ResetPassword.ForgotPassword"
 msgid "The recovery link will be sent to the email address of your vLab account."
-msgstr "Le lien de récupération sera envoyé à l'adresse e-mail de votre compte vLab."
+msgstr "Le lien de récupération sera envoyé à l'adresse courriel de votre compte vLab."
 
 #: PortalTheme\Views\OrchardCore.Users\ResetPassword\ForgotPassword.liquid:0
 msgctxt "PortalTheme.Views.OrchardCore.Users.ResetPassword.ForgotPassword"
 msgid "Send recovery email"
-msgstr "Envoyer un e-mail de récupération"
+msgstr "Envoyer un courriel de récupération"
 
 #: PortalTheme\Views\OrchardCore.Users\ResetPassword\ForgotPassword.liquid:0
 msgctxt "PortalTheme.Views.OrchardCore.Users.ResetPassword.ForgotPassword"
@@ -391,12 +396,12 @@ msgstr ""
 #: PortalTheme\Views\OrchardCore.Users\ResetPassword\ForgotPasswordConfirmation.liquid:0
 msgctxt "PortalTheme.Views.OrchardCore.Users.ResetPassword.ForgotPasswordConfirmation"
 msgid "Check your email"
-msgstr "Vérifiez votre email"
+msgstr "Vérifiez votre courriel"
 
 #: PortalTheme\Views\OrchardCore.Users\ResetPassword\ForgotPasswordConfirmation.liquid:0
 msgctxt "PortalTheme.Views.OrchardCore.Users.ResetPassword.ForgotPasswordConfirmation"
 msgid "Please check your email to reset your password."
-msgstr "Veuillez vérifier votre e-mail pour réinitialiser votre mot de passe."
+msgstr "Veuillez vérifier votre courriel pour réinitialiser votre mot de passe."
 
 #: PortalTheme\Views\OrchardCore.Users\ResetPassword\ResetPassword.liquid:0
 #: PortalTheme\Views\OrchardCore.Users\ResetPassword\ResetPassword.liquid:0
@@ -427,4 +432,4 @@ msgstr "Votre mot de passe a été réinitialisé."
 #: PortalTheme\Views\OrchardCore.Users\ResetPassword\ResetPasswordConfirmation.liquid:0
 msgctxt "PortalTheme.Views.OrchardCore.Users.ResetPassword.ResetPasswordConfirmation"
 msgid "Login"
-msgstr "S'identifier"
+msgstr "Connexion"
