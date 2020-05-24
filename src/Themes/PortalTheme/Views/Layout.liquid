@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     {% render_section "HeadMeta", required: false %}
     <title>{% page_title Site.SiteName %}</title>
+    {% link src:"/PortalTheme/favicon-32x32.png", rel:"icon", sizes:"32x32", type:"image/png" %}
+    {% link src:"/PortalTheme/favicon-16x16.png", rel:"icon", sizes:"16x16", type:"image/png" %}
+    {% link src:"/apple-touch-icon.png", rel:"apple-touch-icon", sizes:"180x180" %}
+    {% link src:"/favicon-194x194.png", rel:"icon", type:"image/png", sizes:"194x194" %}
+    {% link src:"/android-chrome-192x192.png", rel:"icon", type:"image/png", sizes:"192x192" %}
+    {% link src:"/safari-pinned-tab.svg", rel:"mask-icon", color:"#101010" %}
+
     {% resources type: "Meta" %}
 
     <!-- Includes customized Bootstrap CSS -->
