@@ -3,7 +3,7 @@
   <PropertyGroup>
     <AspNetCoreVersion>3.1.1</AspNetCoreVersion>
     <AspNetCoreTargetFramework>netcoreapp3.1</AspNetCoreTargetFramework>
-    <OrchardCoreVersion>1.0.0-rc1-13247</OrchardCoreVersion>
+    <OrchardCoreVersion>1.0.0-rc1-13292</OrchardCoreVersion>
   </PropertyGroup>
 
   <ItemGroup>
