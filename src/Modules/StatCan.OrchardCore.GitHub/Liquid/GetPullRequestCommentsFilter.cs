@@ -22,11 +22,12 @@ namespace StatCan.OrchardCore.GitHub.Liquid
 
             var owner = arguments["owner"].Or(arguments.At(0)).ToStringValue();
             var repo = arguments["repository"].Or(arguments.At(1)).ToStringValue();
+            var tokenName = arguments["tokenName"].Or(arguments.At(2)).ToStringValue();
             var prNumber = input.ToStringValue();
 
             if (string.IsNullOrEmpty(owner) || string.IsNullOrEmpty(repo))
             {
-                throw new ArgumentException("Missing owner, repository while invoking 'github_pullrequest'");
+                throw new ArgumentException("Missing owner, repository or tokenName while invoking 'github_pullrequest'");
             }
 
             if (!int.TryParse(prNumber, out var parsedNumber))
@@ -36,7 +37,7 @@ namespace StatCan.OrchardCore.GitHub.Liquid
 
             try
             {
-                var client = await gitHubApiService.GetGitHubClient();
+                var client = await gitHubApiService.GetGitHubClient(tokenName);
 
                 return FluidValue.Create(await client.PullRequest.ReviewComment.GetAll(owner, repo, parsedNumber));
             }

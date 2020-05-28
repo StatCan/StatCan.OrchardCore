@@ -39,6 +39,11 @@ namespace StatCan.OrchardCore.GitHub.Activities
 
         public override LocalizedString Category => S["GitHub"];
 
+        public string TokenName
+        {
+            get => GetProperty<string>();
+            set => SetProperty(value);
+        }
         public WorkflowExpression<string> Owner
         {
             get => GetProperty(() => new WorkflowExpression<string>());
@@ -82,7 +87,7 @@ namespace StatCan.OrchardCore.GitHub.Activities
         {
             try
             {
-                var client = await _gitHubApiService.GetGitHubClient();
+                var client = await _gitHubApiService.GetGitHubClient(TokenName);
 
                 var owner = await _expressionEvaluator.EvaluateAsync(Owner, workflowContext);
                 var repo = await _expressionEvaluator.EvaluateAsync(Repo, workflowContext);

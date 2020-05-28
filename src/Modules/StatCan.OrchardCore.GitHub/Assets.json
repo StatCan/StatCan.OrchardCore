@@ -1,0 +1,7 @@
+[
+  {
+    "inputs": [ "Assets/tokensEditor.js" ],
+   
+    "output": "wwwroot/tokensEditor.js"
+  }
+]

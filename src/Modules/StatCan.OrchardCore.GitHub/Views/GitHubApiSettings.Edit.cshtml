@@ -2,11 +2,48 @@
 
 <h3>@T["GitHub Api Settings"]</h3>
 
-<div class="form-group row" asp-validation-class-for="ApiToken">
-    <div class="col-lg">
-        <label asp-for="ApiToken">@T["GitHub Api Token"]</label>
-        <input asp-for="ApiToken" class="form-control" type="password" value="@Model.ApiToken" autocomplete="off" />
-        <span asp-validation-for="ApiToken"></span>
-        <span class="hint">@T["The GitHub api token used to interact with the GitHub api"]</span>
-    </div>
+<script asp-src="~/StatCan.OrchardCore.Github/tokensEditor.min.js" debug-src="~/StatCan.OrchardCore.Github/tokensEditor.js" asp-name="optionsEditor" at="Foot" depends-on="vuejs, vuedraggable"></script>
+
+<script at="Foot">
+    initializeTokensEditor(document.getElementById('@Html.IdFor(m => m)'), @Html.Raw(Model.ApiTokens));
+</script>
+
+<script type="text/x-template" id="tokens-table">
+  <table class="table table-bordered table-sm tokens-table">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">@T["Token name"]</th>
+        <th scope="col">@T["Value"]</th>
+      </tr>
+    </thead>
+      <tr v-for="(token, index) in data.tokens" :key="index">
+        <td>
+          <input type="text" class="form-control" v-model="token.name" placeholder="Enter a name" />
+        </td>
+        <td>
+          <input type="text" class="form-control courrier" v-model="token.value" placeholder="Enter a value" />
+        </td>
+        <td class="text-center">
+          <a v-on:click="remove(index)" href="javascript:void(0)" title="@T["Remove token from the list"]" class="btn">
+            <i class="fas fa-times"></i>
+          </a>
+        </td>
+        <td class="text-center"><div class="btn cursor-move"><i class="fas fa-arrows-alt"></i></div></td>
+      </tr>
+    <tfoot>
+      <tr>
+        <td class="col-sm-12 text-center" colspan="5">
+          <a v-on:click="add()" class="btn btn-light w-100 btn-sm"><i class="fas fa-plus small"></i> @T["Add an token"]</a>
+          <input class="form-control" id="@Html.IdFor(m => m.ApiTokens)" name="@Html.NameFor(m => m.ApiTokens)" type="hidden" v-bind:value="getTokensFormattedList()" />
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+</script>
+
+<div class="form-group row" asp-validation-class-for="ApiTokens">
+  <div class="col-sm-6">
+    <label asp-for="ApiTokens">@T["Tokens"]</label>
+    <options-table :data="sharedState"></options-table>
+  </div>
 </div>

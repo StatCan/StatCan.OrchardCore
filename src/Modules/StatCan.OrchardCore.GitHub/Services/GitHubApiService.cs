@@ -2,9 +2,11 @@ using Microsoft.AspNetCore.DataProtection;
 using Octokit;
 using OrchardCore.Entities;
 using OrchardCore.Settings;
+using Org.BouncyCastle.Math.EC.Rfc7748;
 using StatCan.OrchardCore.GitHub.Settings;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -20,9 +22,9 @@ namespace StatCan.OrchardCore.GitHub.Services
             _dataProtectionProvider = dataProtectionProvider;
             _siteService = siteService;
         }
-        public async Task<GitHubClient> GetGitHubClient()
+        public async Task<GitHubClient> GetGitHubClient(string name)
         {
-            var encToken = (await _siteService.GetSiteSettingsAsync()).As<GitHubApiSettings>().ApiToken;
+            var encToken = (await _siteService.GetSiteSettingsAsync()).As<GitHubApiSettings>()?.ApiTokens?.FirstOrDefault(t=>t.Name == name)?.Value;
 
             if (string.IsNullOrEmpty(encToken))
             {

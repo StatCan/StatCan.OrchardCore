@@ -1,12 +1,11 @@
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Text;
 
 namespace StatCan.OrchardCore.GitHub.ViewModels
 {
     public class CreatePullRequestTaskViewModel
     {
+        [Required]
+        public string TokenName { get; set; }
         [Required]
         public string Owner { get; set; }
         [Required]
