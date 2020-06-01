@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Irony.Parsing;
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 using Octokit;
