@@ -1,11 +1,10 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
-
 namespace StatCan.OrchardCore.GitHub.ViewModels
 {
     public class GitHubApiSettingsViewModel
     {
-        public string ApiToken { get; set; }
+        /// <summary>
+        /// Json array of ApiToken objects
+        /// </summary>
+        public string ApiTokens { get; set; }
     }
 }

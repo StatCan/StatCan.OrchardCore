@@ -9,6 +9,7 @@ namespace StatCan.OrchardCore.GitHub.Drivers
     {
         protected override void EditActivity(CreateBranchTask activity, CreateBranchTaskViewModel model)
         {
+            model.TokenName = activity.TokenName;
             model.Owner = activity.Owner.Expression;
             model.Repo = activity.Repo.Expression;
             model.ReferenceName = activity.ReferenceName.Expression;
@@ -17,6 +18,7 @@ namespace StatCan.OrchardCore.GitHub.Drivers
 
         protected override void UpdateActivity(CreateBranchTaskViewModel model, CreateBranchTask activity)
         {
+            activity.TokenName = model.TokenName?.Trim();
             activity.Owner = new WorkflowExpression<string>(model.Owner?.Trim());
             activity.Repo = new WorkflowExpression<string>(model.Repo?.Trim());
             activity.ReferenceName = new WorkflowExpression<string>(model.ReferenceName?.Trim());

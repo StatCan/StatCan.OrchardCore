@@ -9,6 +9,7 @@ namespace StatCan.OrchardCore.GitHub.Drivers
     {
         protected override void EditActivity(CreatePullRequestTask activity, CreatePullRequestTaskViewModel model)
         {
+            model.TokenName = activity.TokenName;
             model.Owner = activity.Owner.Expression;
             model.Repo = activity.Repo.Expression;
             model.SourceBranch = activity.SourceBranch.Expression;
@@ -19,6 +20,7 @@ namespace StatCan.OrchardCore.GitHub.Drivers
 
         protected override void UpdateActivity(CreatePullRequestTaskViewModel model, CreatePullRequestTask activity)
         {
+            activity.TokenName = model.TokenName?.Trim();
             activity.Owner = new WorkflowExpression<string>(model.Owner?.Trim());
             activity.Repo = new WorkflowExpression<string>(model.Repo?.Trim());
             activity.SourceBranch = new WorkflowExpression<string>(model.SourceBranch?.Trim());

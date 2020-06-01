@@ -1,5 +1,11 @@
 @model StatCan.OrchardCore.GitHub.ViewModels.CreateBranchTaskViewModel
 
+<div class="form-group" asp-validation-class-for="TokenName">
+  @await Component.InvokeAsync("SelectToken", new { htmlName = Html.NameFor(m => m.TokenName), selectedTokenName = Model.TokenName })
+  <span asp-validation-for="TokenName"></span>
+  <span class="hint">@T["The token to use when interacting with the github api"]</span>
+</div>
+
 <div class="form-group" asp-validation-class-for="Owner">
     <label asp-for="Owner">@T["Owner"]</label>
     <input type="text" asp-for="Owner" class="form-control code" />

@@ -9,6 +9,7 @@ namespace StatCan.OrchardCore.GitHub.Drivers
     {
         protected override void EditActivity(CreateIssueTask activity, CreateIssueTaskViewModel model)
         {
+            model.TokenName = activity.TokenName;
             model.Owner = activity.Owner.Expression;
             model.Repo = activity.Repo.Expression;
             model.Title = activity.Title.Expression;
@@ -18,6 +19,7 @@ namespace StatCan.OrchardCore.GitHub.Drivers
 
         protected override void UpdateActivity(CreateIssueTaskViewModel model, CreateIssueTask activity)
         {
+            activity.TokenName = model.TokenName?.Trim();
             activity.Owner = new WorkflowExpression<string>(model.Owner?.Trim());
             activity.Repo = new WorkflowExpression<string>(model.Repo?.Trim());
             activity.Title = new WorkflowExpression<string>(model.Title?.Trim());

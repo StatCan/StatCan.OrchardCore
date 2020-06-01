@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Mvc.ActionConstraints;
 using OrchardCore.Workflows.Display;
 using OrchardCore.Workflows.Models;
 using StatCan.OrchardCore.GitHub.Activities;
@@ -9,6 +10,7 @@ namespace StatCan.OrchardCore.GitHub.Drivers
     {
         protected override void EditActivity(CommitFileTask activity, CommitFileTaskViewModel model)
         {
+            model.TokenName = activity.TokenName;
             model.Owner = activity.Owner.Expression;
             model.Repo = activity.Repo.Expression;
             model.BranchName = activity.BranchName.Expression;
@@ -19,6 +21,7 @@ namespace StatCan.OrchardCore.GitHub.Drivers
 
         protected override void UpdateActivity(CommitFileTaskViewModel model, CommitFileTask activity)
         {
+            activity.TokenName = model.TokenName?.Trim();
             activity.Owner = new WorkflowExpression<string>(model.Owner?.Trim());
             activity.Repo = new WorkflowExpression<string>(model.Repo?.Trim());
             activity.BranchName = new WorkflowExpression<string>(model.BranchName?.Trim());
