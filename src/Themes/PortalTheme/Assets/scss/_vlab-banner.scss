@@ -1,0 +1,30 @@
+.vLab-banner {
+  background: radial-gradient(
+      ellipse at top,
+      $background 70%,
+      transparentize($secondary, 0.8) 72%,
+      transparent 73%
+    ),
+    radial-gradient(
+      ellipse at bottom,
+      $background 70%,
+      transparentize($secondary, 0.8) 72%,
+      transparent 73%
+    ),
+    radial-gradient(
+      circle at bottom,
+      transparentize($secondary, 0.5) 20%,
+      transparentize($secondary, 0.65) 40%,
+      transparentize($secondary, 0.97) 70%
+    );
+  background-position: center -1.3rem, center bottom -1.55rem, center;
+  background-repeat: no-repeat;
+  background-size: 100% 2.5rem, 110% 3.5rem, cover;
+  border-left: 2px solid transparentize($secondary, 0.8);
+  border-right: 2px solid transparentize($secondary, 0.8);
+  padding: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}

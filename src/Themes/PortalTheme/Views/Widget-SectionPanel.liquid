@@ -47,7 +47,7 @@
                       {{ "ModalBonusAction" | shape_new | shape_properties: endpoint: action.LinkMenuItemPart.Url | shape_render }}
                     {% endzone %}
                   {% else %}
-                    <a class="dropdown-item" href="{{ action.LinkMenuItemPart.Url }}" target="_blank">{{ action.LinkMenuItemPart.Name }}</a>
+                    <a class="dropdown-item" href="{{ action.LinkMenuItemPart.Url }}" target="_blank" rel="noopener noreferrer">{{ action.LinkMenuItemPart.Name }}</a>
                   {% endif %}
                 {% endfor %}
               </div>
