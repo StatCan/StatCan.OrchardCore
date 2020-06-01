@@ -4,7 +4,7 @@ namespace StatCan.OrchardCore.GitHub.Settings
 {
     public class GitHubApiSettings
     {
-        public ApiToken[] ApiTokens { get; set; }
+        public ApiToken[] ApiTokens { get; set; } = new ApiToken[0];
     }
 
     public class ApiToken

@@ -38,5 +38,9 @@ namespace StatCan.OrchardCore.GitHub.Services
                 Credentials = new Credentials(protector.Unprotect(encToken))
             };
         }
+        public async Task<ApiToken[]> GetTokens()
+        {
+            return (await _siteService.GetSiteSettingsAsync()).As<GitHubApiSettings>()?.ApiTokens;
+        }
     }
 }

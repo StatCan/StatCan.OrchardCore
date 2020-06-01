@@ -1,0 +1,3 @@
+@model StatCan.OrchardCore.GitHub.ViewComponents.SelectTokenViewModel
+<label for="@Html.Id(Model.HtmlName)">@T["Token Name"]</label>
+<select id="@Html.Id(Model.HtmlName)" class="form-control" name="@Model.HtmlName" asp-items="@Model.Tokens"></select>

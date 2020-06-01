@@ -1,5 +1,6 @@
-function initializeOptionsEditor(elem, data) {
+function initializeTokensEditor(elem, data) {
 
+  console.log(data)
     var store = {
         debug: false,
         state: {
@@ -28,7 +29,7 @@ function initializeOptionsEditor(elem, data) {
           },
           getTokensFormattedList: function () {
             if (this.debug) { console.log('getTokensFormattedList triggered') };
-            return JSON.stringify(this.state.tokens.filter(function (x) { return !IsNullOrWhiteSpace(x.name) }));
+            return JSON.stringify(store.state.tokens.filter(function (x) { return !IsNullOrWhiteSpace(x.name) }));
           }
         }
     };

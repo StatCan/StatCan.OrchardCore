@@ -93,9 +93,9 @@ namespace StatCan.OrchardCore.GitHub.Drivers
                                 if (token.Value.StartsWith(MagicString))
                                 {
                                     // get the previous name from the magic string
-                                    var prevName = token.Value.Substring(MagicString.Length - 1);
+                                    var prevName = token.Value.Substring(MagicString.Length);
                                     // set the value of the token to the value stored in the db. It should already be encrypted
-                                    token.Value = settings.ApiTokens.FirstOrDefault(t => t.Name == prevName).Value;
+                                    token.Value = settings.ApiTokens.FirstOrDefault(t => t.Name == prevName)?.Value;
                                 }
                                 else
                                 {
