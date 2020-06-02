@@ -16,24 +16,6 @@
       flex-grow: 1;
       flex-shrink: 0;
 
-      .nav-item .btn {
-        &.btn-primary {
-          transition-property: all;
-          transition-duration: 300ms;
-          transition-timing-function: ease-out;
-          box-shadow: 0 30px 20px rgba(17, 15, 15, 0.25);
-          &:hover {
-            box-shadow: 0 40px 25px rgba(17, 15, 15, 0.25);
-            transform: translateY(-5px);
-          }
-          &:focus {
-            box-shadow: 0 40px 25px rgba(17, 15, 15, 0.25),
-              0 0 0 0.2rem transparentize($primary, 0.5);
-            transform: translateY(-5px);
-          }
-        }
-      }
-
       .navbar ul li {
         perspective: 300px;
       }
