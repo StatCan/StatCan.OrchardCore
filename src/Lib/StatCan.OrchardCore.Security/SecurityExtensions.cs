@@ -23,7 +23,7 @@ namespace StatCan.OrchardCore.Security
                 builder.AddFormAction().Self().From("github.com").From("account.gccollab.ca").From("login.microsoftonline.com");
                 builder.AddFrameAncestors().Self();
                 builder.AddDefaultSrc().Self();
-                builder.AddImgSrc().Self().Data();
+                builder.AddImgSrc().Self().Data().From("*.statcan.ca").From("*.statcan.gc.ca");
                 builder.AddFontSrc().Self().Data().From("cdn.jsdelivr.net").From("fonts.googleapis.com").From("fonts.gstatic.com");
                 builder.AddStyleSrc().UnsafeInline().Self()
                 .From("cdn.jsdelivr.net")
@@ -42,6 +42,8 @@ namespace StatCan.OrchardCore.Security
                .From("vuejs.org")
                .From("unpkg.com")
                .From("stackpath.bootstrapcdn.com")
+               .From("*.statcan.ca")
+               .From("*.statcan.gc.ca")
                ;
             });
 

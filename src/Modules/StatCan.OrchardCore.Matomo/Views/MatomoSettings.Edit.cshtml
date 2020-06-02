@@ -1,0 +1,20 @@
+@model StatCan.OrchardCore.Matomo.ViewModels.MatomoSettingsViewModel;
+
+<h3>@T["Matomo Settings"]</h3>
+
+<div class="form-group row" asp-validation-class-for="SiteID">
+  <div class="col-lg">
+    <label asp-for="SiteID">@T["Site ID"]</label>
+    <input asp-for="SiteID" class="form-control" autocomplete="off" />
+    <span asp-validation-for="SiteID"></span>
+    <span class="hint">@T["The Site ID defined in your matomo admin panel."]</span>
+  </div>
+</div>
+<div class="form-group row" asp-validation-class-for="ServerUri">
+  <div class="col-lg">
+    <label asp-for="ServerUri">@T["Server Uri"]</label>
+    <input asp-for="ServerUri" class="form-control" autocomplete="off" />
+    <span asp-validation-for="ServerUri"></span>
+    <span class="hint">@T["The Uri of the matomo server, without the scheme."]</span>
+  </div>
+</div>
