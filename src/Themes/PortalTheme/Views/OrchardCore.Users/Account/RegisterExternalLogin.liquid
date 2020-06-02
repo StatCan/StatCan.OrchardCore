@@ -16,7 +16,7 @@
     {% unless Model.NoEmail %}
         <div class="form-group">
             {% block "label", asp_for:"Email", class:"d-flex justify-content-center control-label" %}{{ "Email" | t }}{% endblock %}
-            {% helper "input", asp_for:"Email", class:"form-control", asp-is-disabled:Model.NoEmail %}
+            {% helper "input", asp_for:"Email", class:"form-control", type:"email", asp_is_disabled:Model.NoEmail %}
             {% helper "span", asp_validation_for:"Email", class:"text-danger" %}
         </div>
     {% endunless %}
