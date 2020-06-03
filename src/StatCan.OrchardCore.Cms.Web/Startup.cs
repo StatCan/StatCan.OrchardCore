@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Identity;
 using StatCan.OrchardCore.Security;
 using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.ResponseCompression;
 
 namespace web
 {
@@ -29,7 +30,29 @@ namespace web
             services.AddOrchardCms();
             services.Configure<IdentityOptions>(options =>
             {
-               Configuration.GetSection("IdentityOptions").Bind(options);
+                Configuration.GetSection("IdentityOptions").Bind(options);
+            });
+            services.Configure<GzipCompressionProviderOptions>(options => options.Level = System.IO.Compression.CompressionLevel.Optimal);
+            services.AddResponseCompression(options =>
+            {
+                options.MimeTypes = new[]
+                {
+                    // General
+                    "text/plain",
+                    // Static files
+                    "text/css",
+                    "application/javascript",
+                    // MVC
+                    "text/html",
+                    "application/xml",
+                    "text/xml",
+                    "application/json",
+                    "text/json",
+                    // WebAssembly
+                    "application/wasm",
+                    // Custom
+                    "image/svg+xml"
+                };
             });
         }
 
@@ -39,7 +62,7 @@ namespace web
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            app.UseResponseCompression();
             app.UseStatCanSecurityHeaders()
                 .UseStaticFiles()
                 .UseOrchardCore(builder=>builder
