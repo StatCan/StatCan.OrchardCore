@@ -41,6 +41,7 @@ namespace web
                     "text/plain",
                     // Static files
                     "text/css",
+                    "text/javascript",
                     "application/javascript",
                     // MVC
                     "text/html",
@@ -48,6 +49,13 @@ namespace web
                     "text/xml",
                     "application/json",
                     "text/json",
+                    // Fonts
+                    "font/otf",
+                    "font/ttf",
+                    "application/x-font",
+                    "application/x-font-opentype",
+                    "application/x-font-truetype",
+                    "application/x-font-ttf",
                     // WebAssembly
                     "application/wasm",
                     // Custom
@@ -65,7 +73,7 @@ namespace web
             app.UseResponseCompression();
             app.UseStatCanSecurityHeaders()
                 .UseStaticFiles()
-                .UseOrchardCore(builder=>builder
+                .UseOrchardCore(builder => builder
                     .UseStatCanCookiePolicy());
         }
     }
