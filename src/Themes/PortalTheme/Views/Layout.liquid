@@ -40,17 +40,6 @@
     {% render_section "Content" %}
     {% render_section "Footer", required: false %}
     {% render_section "Modal", required: false %}
-
-    {% block "script", at:"Foot" %}
-        $( document ).ready(function() {
-            let vh = window.innerHeight * 0.01;
-            document.documentElement.style.setProperty('--vh', `${vh}px`);
-        });
-        $( window ).on('resize', function() {
-            let vh = window.innerHeight * 0.01;
-            document.documentElement.style.setProperty('--vh', `${vh}px`);
-        });
-    {% endblock %}
     {% resources type: "FootScript" %}
     
 </body>

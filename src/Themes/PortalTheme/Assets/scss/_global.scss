@@ -9,8 +9,8 @@ body {
   flex: 1 1 auto;
   flex-direction: column;
   font-family: "Fira Sans", sans-serif;
+  min-height: -webkit-fill-available;
   min-height: 100vh;
-  min-height: calc(var(--vh, 1vh) * 100);
 }
 
 .skip-navigation {
@@ -186,17 +186,13 @@ hr {
 @include media-breakpoint-up(lg) {
   .btn {
     &.btn-primary {
-      transition-property: all;
+      transition-property: transform;
       transition-duration: 300ms;
       transition-timing-function: ease-out;
-      box-shadow: 0 30px 20px rgba(17, 15, 15, 0.25);
       &:hover {
-        box-shadow: 0 40px 25px rgba(17, 15, 15, 0.25);
         transform: translateY(-5px);
       }
       &:focus {
-        box-shadow: 0 40px 25px rgba(17, 15, 15, 0.25),
-          0 0 0 0.2rem transparentize($primary, 0.5);
         transform: translateY(-5px);
       }
     }
