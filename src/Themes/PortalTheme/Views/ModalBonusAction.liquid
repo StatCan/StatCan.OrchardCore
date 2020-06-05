@@ -1,4 +1,5 @@
-{% assign endpoint = Model.Endpoint | href %}
+{% zone "Modal" %}
+ {% assign endpoint = Model.Endpoint | href %}
 <div id="bonus-action-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered di-modal" role="document">
     <form class="modal-content section-panel di-modal" action="{{ endpoint }}" method="POST">
@@ -37,6 +38,7 @@
     </form>
   </div>
 </div>
+{% endzone %}
 
 {% block "script", at:"Foot" %}
   $('#bonus-action-modal').on('shown.bs.modal', function () {

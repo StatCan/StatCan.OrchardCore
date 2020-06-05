@@ -1,3 +1,4 @@
+{% zone "Modal" %}
 {% assign endpoint = Model.Endpoint | href %}
 <div id="feedback-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered di-modal" role="document">
@@ -93,7 +94,7 @@
     </form>
   </div>
 </div>
-
+{% endzone %}
 {% block "script", at:"Foot" %}
   $('#feedback-modal').on('shown.bs.modal', function () {
     $('#field-message').focus()
