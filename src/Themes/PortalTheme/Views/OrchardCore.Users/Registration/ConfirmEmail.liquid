@@ -1,5 +1,5 @@
 {% assign title = "Email confirmed" | t %}
-{{ "SharedLoginHeader" | shape_new | shape_properties: title: title | shape_render }}
+{{ "SharedLoginHeader" | shape_new: title: title | shape_render }}
 <div class="d-flex justify-content-center">
     <p class="text-center">{{ "Thank you for confirming your email." | t }}</p>
     <a href="{{ '~/' | href }}" class="btn btn-lg btn-primary is-rounded">{{ "Home" | t }}</a>

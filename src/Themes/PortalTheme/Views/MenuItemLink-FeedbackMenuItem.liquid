@@ -8,5 +8,5 @@
 </a>
 
 {% zone "Modal" %}
-    {{ "ModalFeedback" | shape_new | shape_properties: endpoint: Model.ContentItem.Content.FeedbackMenuItem.FormEndpoint.Text | shape_render }}
+    {{ "ModalFeedback" | shape_new: endpoint: Model.ContentItem.Content.FeedbackMenuItem.FormEndpoint.Text | shape_render }}
 {% endzone %}

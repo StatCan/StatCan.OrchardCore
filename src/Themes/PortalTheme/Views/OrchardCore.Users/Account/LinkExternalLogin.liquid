@@ -1,5 +1,5 @@
 {% assign title = "Link account" | t %}
-{{ "SharedLoginHeader" | shape_new | shape_properties: title: title | shape_render }}
+{{ "SharedLoginHeader" | shape_new: title: title | shape_render }}
 {% form asp_controller:"Account", asp_action:"LinkExternalLogin", asp_route_returnurl:Request.Query["ReturnUrl"], method:"post", class:"form-horizontal" %}
     <h4>{{ "Link your account." | t }}</h4>
     <p class="text-info">
