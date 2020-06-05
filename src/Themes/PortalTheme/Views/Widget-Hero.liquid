@@ -4,9 +4,9 @@
   	  {% shape "menu", alias: "alias:main-menu", cache_id: "main-menu", cache_fixed_duration: "00:00:01", cache_tag: "alias:main-menu" %}
     </header>
     <div class="hero-body justify-content-center">
-      <i class="icon {{ Model.ContentItem.Content.Hero.Icon.Text }}"></i>
+      {% comment %} <i class="icon {{ Model.ContentItem.Content.Hero.Icon.Text }}"></i>
       <h1>{{ Model.ContentItem.Content.Hero.Title.Text }}</h1>
-      <p class="h3 m-2">{{  Model.ContentItem.Content.Hero.Subtitle.Text }}</p>
+      <p class="h3 m-2">{{  Model.ContentItem.Content.Hero.Subtitle.Text }}</p> {% endcomment %}
       <nav class="navbar navbar-expand-lg align-self-center mt-3" role="navigation">
         {% if User.Identity.IsAuthenticated and Model.ContentItem | user_can_view %}
           <ul id="hero-highlights" class="navbar-nav"></ul>
