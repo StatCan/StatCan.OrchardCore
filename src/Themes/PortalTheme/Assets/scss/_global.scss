@@ -10,10 +10,11 @@ body {
   flex-direction: column;
   font-family: "Fira Sans", sans-serif;
   min-height: 100vh;
-  @include browser(iPhone) {
-    min-height: -webkit-fill-available;
+  min-height: -webkit-fill-available;
+  @include browser(Google) {
+    min-height: 100vh;
   }
-  @include browser(Android) {
+  @include browser(Mobile) {
     min-height: 92vh;
   }
 }

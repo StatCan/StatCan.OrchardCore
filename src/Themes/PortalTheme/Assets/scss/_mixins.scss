@@ -1,4 +1,4 @@
-@mixin browser($browsers: Mozilla) {
+@mixin browser($browsers) {
   @each $browser in $browsers {
     html[data-browser*="#{$browser}"] & {
       @content;
