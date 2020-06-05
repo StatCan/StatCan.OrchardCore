@@ -10,9 +10,10 @@ body {
   flex-direction: column;
   font-family: "Fira Sans", sans-serif;
   min-height: 100vh;
-  min-height: -moz-available;
   min-height: -webkit-fill-available;
-  min-height: stretch;
+  @include browser(Android) {
+    min-height: 92vh;
+  }
 }
 
 .skip-navigation {

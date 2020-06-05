@@ -3,9 +3,10 @@
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    min-height: -moz-available;
     min-height: -webkit-fill-available;
-    min-height: stretch;
+    @include browser(Android) {
+      min-height: 92vh;
+    }
 
     .container {
       display: flex;

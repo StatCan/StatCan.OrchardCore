@@ -6,6 +6,7 @@ $enable-responsive-font-sizes: true;
 
 /*Bootstrap partial that include what we need for bs*/
 @import "bootstrap";
+@import "mixins";
 @import "global";
 @import "fip";
 @import "feedback";
