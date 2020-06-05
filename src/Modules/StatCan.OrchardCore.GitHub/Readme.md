@@ -17,12 +17,14 @@ The following activities are available
 
 ## Liquid Filters
 
+tokenName refers to the name of the token you added to the github settings.
+
 ### github_pr filter
 
 Returns the `PullRequest` object for the specified pull request number.
 
 ```liquid
-{{ 123 | github_pullrequest: "owner", "repo" }}
+{{ 123 | github_pullrequest: "owner", "repo", "tokenName" }}
 ```
 
 ### github_pr_reviewcomments filter
@@ -31,7 +33,7 @@ Returns a list of `PullRequestReviewComment` object for the specified pull reque
 This returns the comments related to PR reviews. Use the `github_comments` filter to get pr discussions.
 
 ```liquid
-{{ 123 | github_pullrequest_comments: "owner", "repo" }}
+{{ 123 | github_pullrequest_comments: "owner", "repo", "tokenName" }}
 ```
 
 ### github_issue filter
@@ -39,7 +41,7 @@ This returns the comments related to PR reviews. Use the `github_comments` filte
 Returns the `Issue` object for the specified issue number.
 
 ```liquid
-{{ 123 | github_issue: "owner", "repo" }}
+{{ 123 | github_issue: "owner", "repo", "tokenName" }}
 ```
 
 ### github_comments filter
@@ -47,5 +49,5 @@ Returns the `Issue` object for the specified issue number.
 Returns a list of `IssueComment` for the specified issue / pull request number.
 
 ```liquid
-{{ 123 | github_comments: "owner", "repo" }}
+{{ 123 | github_comments: "owner", "repo", "tokenName" }}
 ```
