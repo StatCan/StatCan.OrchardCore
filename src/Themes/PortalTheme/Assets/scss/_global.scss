@@ -11,10 +11,7 @@ body {
   font-family: "Fira Sans", sans-serif;
   min-height: 100vh;
   min-height: -webkit-fill-available;
-  @include browser(Google) {
-    min-height: 100vh;
-  }
-  @include browser(Mobile) {
+  @include browser(Android) {
     min-height: 92vh;
   }
 }
