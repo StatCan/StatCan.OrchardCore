@@ -9,8 +9,10 @@ body {
   flex: 1 1 auto;
   flex-direction: column;
   font-family: "Fira Sans", sans-serif;
-  min-height: -webkit-fill-available;
   min-height: 100vh;
+  min-height: -moz-available;
+  min-height: -webkit-fill-available;
+  min-height: fill-available;
 }
 
 .skip-navigation {

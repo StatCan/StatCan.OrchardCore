@@ -2,8 +2,10 @@
   &.is-fullheight {
     display: flex;
     flex-direction: column;
-    min-height: -webkit-fill-available;
     min-height: 100vh;
+    min-height: -moz-available;
+    min-height: -webkit-fill-available;
+    min-height: fill-available;
 
     .container {
       display: flex;
@@ -19,7 +21,7 @@
 
       .btn {
         &.btn-primary {
-          transition-property: all;
+          transition-property: transform, box-shadow;
           transition-duration: 300ms;
           transition-timing-function: ease-out;
           box-shadow: 0 30px 20px rgba(17, 15, 15, 0.25);
