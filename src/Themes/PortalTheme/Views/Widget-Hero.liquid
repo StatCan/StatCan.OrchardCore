@@ -1,3 +1,5 @@
+{% comment %}page_url must be set on the Page content{% endcomment %}
+{% assign return_url = '~/login?returnUrl=' | append: page_url | href %}
 <section class="hero is-fullheight portal-hud">
   <div class="container">
   	<header class="hero-header">
@@ -13,7 +15,7 @@
         {% else %}
           {% unless User.Identity.IsAuthenticated %}
             <ul class="navbar-nav">
-              <a href="{{ '~/login' | href }}" class="btn btn-lg btn-primary is-rounded nav-link mt-5">{{ "Log in" | t }}</a>
+              <a href="{{ return_url }}" class="btn btn-lg btn-primary is-rounded nav-link mt-5">{{ "Log in" | t }}</a>
             </ul>
           {% endunless %}
         {% endif %}

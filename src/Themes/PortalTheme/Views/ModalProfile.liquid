@@ -1,4 +1,6 @@
 {% zone "Modal" %}
+{% comment %}page_url must be set on the Page content{% endcomment %}
+{% assign return_url = '~/login?returnUrl=' | append: page_url | href %}
 <div id="profile-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered di-modal" role="document">
         <div class="modal-content section-panel di-modal">
@@ -27,7 +29,7 @@
               </div>
           </div>
           <div class="modal-footer di-modal">
-              {% form asp_route_area:"OrchardCore.Users", asp_controller:"Account",asp_action:"LogOff", method: "post" %}
+              {% form asp_route_area:"OrchardCore.Users", asp_controller:"Account", asp_action:"LogOff", asp_returnUrl:return_url, method: "post" %}
                   <button type="submit" class="btn btn-lg btn-primary is-rounded">{{ "Log out" | t }}</button>
               {% endform %}
           </div>
