@@ -40,6 +40,7 @@ jobs:
           password: ${{ secrets.REGISTRY_PASSWORD }}
       # Container build and push to a Azure Container registry (ACR)
       - run: |
+          cd src/StatCan.OrchardCore.Cms.Web
           docker build -f Dockerfile -t ${{ env.REGISTRY_NAME }}.azurecr.io/statcan-orchardcore:${{ env.BUILD_NUMBER }} .
           docker push ${{ env.REGISTRY_NAME }}.azurecr.io/statcan-orchardcore:${{ env.BUILD_NUMBER }}
       # Set the target Azure Kubernetes Service (AKS) cluster.
