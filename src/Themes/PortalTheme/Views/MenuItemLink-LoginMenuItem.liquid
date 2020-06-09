@@ -1,9 +1,7 @@
-{% comment %}page_url must be set on the Page content{% endcomment %}
-{% assign return_url = '~/login?returnUrl=' | append: page_url | href %}
 {% if User.Identity.IsAuthenticated %}
     <a href="#" class="dropdown-item d-lg-none d-flex" data-toggle="modal" data-target="#profile-modal" >{{ "Account" | t }}</a>
     <a href="#" class="btn btn-primary is-circle d-lg-flex d-none" data-toggle="modal" data-target="#profile-modal" aria-label="{{ 'Account' | t }}"><i class="fas fa-user"></i></a>
 {% else %}
-    <a href="{{ return_url }}" class="dropdown-item d-lg-none d-flex">{{ "Log in" | t }}</a>
-    <a href="{{ return_url }}" class="btn btn-primary is-circle d-lg-flex d-none" aria-label="{{ 'Log in' | t }}"><i class="fas fa-sign-in-alt"></i></a>
+    <a href="{{ '~/login' | return_url }}" class="dropdown-item d-lg-none d-flex">{{ "Log in" | t }}</a>
+    <a href="{{ '~/login' | return_url }}" class="btn btn-primary is-circle d-lg-flex d-none" aria-label="{{ 'Log in' | t }}"><i class="fas fa-sign-in-alt"></i></a>
 {% endif %}

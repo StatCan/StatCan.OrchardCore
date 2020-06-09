@@ -88,6 +88,7 @@
       <div class="modal-footer di-modal">
         <input name="User" type="hidden" value="{{ User.Identity.Name }}" />
         <input name="Email" type="hidden" value="{{ User | get_claim: 'email' }}" />
+        <input name="ReturnUrl" type="hidden" value="{{ '' | return_url }}" />
         {% antiforgerytoken %}
         <button type="submit" class="btn btn-lg btn-primary is-rounded">{{ "Send feedback" | t }}</button>
       </div>
