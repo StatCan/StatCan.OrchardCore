@@ -50,7 +50,7 @@
     if (e.which == 13 ) {
       return true;
     }
-    var regex = new RegExp("^[a-zA-Z-]+");
+    var regex = new RegExp("^[-a-zA-Z0-9]+");
     var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
     if (regex.test(str)) {
         return true;
