@@ -4,6 +4,6 @@ EXPOSE 80
 WORKDIR /app
 COPY ./docker_run.sh ./docker_run.sh
 RUN chmod +x docker_run.sh
-COPY ./src/StatCan.OrchardCore.Cms.Web/.build/release .
+COPY ./.build/release .
 
 ENTRYPOINT ["./docker_run.sh"]
