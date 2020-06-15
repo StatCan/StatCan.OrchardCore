@@ -23,6 +23,7 @@
     <ProjectReference Include="..\..\Modules\StatCan.OrchardCore.Workflows\StatCan.OrchardCore.Workflows.csproj" PrivateAssets="none" />
 
     <!-- Themes -->
+    <ProjectReference Include="..\..\Themes\DigitalAdmin\DigitalAdmin.csproj" PrivateAssets="none" />
     <ProjectReference Include="..\..\Themes\PortalTheme\PortalTheme.csproj" PrivateAssets="none" />
 
   </ItemGroup>

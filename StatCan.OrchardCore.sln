@@ -51,6 +51,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StatCan.OrchardCore.GitHub"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StatCan.OrchardCore.Matomo", "src\Modules\StatCan.OrchardCore.Matomo\StatCan.OrchardCore.Matomo.csproj", "{F1700546-6CB2-4623-AA82-5C4A369CFD00}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DigitalAdmin", "src\Themes\DigitalAdmin\DigitalAdmin.csproj", "{3DD47728-546B-4CFD-9290-7877F404394B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -181,6 +183,18 @@ Global
 		{F1700546-6CB2-4623-AA82-5C4A369CFD00}.Release|x64.Build.0 = Release|Any CPU
 		{F1700546-6CB2-4623-AA82-5C4A369CFD00}.Release|x86.ActiveCfg = Release|Any CPU
 		{F1700546-6CB2-4623-AA82-5C4A369CFD00}.Release|x86.Build.0 = Release|Any CPU
+		{3DD47728-546B-4CFD-9290-7877F404394B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3DD47728-546B-4CFD-9290-7877F404394B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3DD47728-546B-4CFD-9290-7877F404394B}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{3DD47728-546B-4CFD-9290-7877F404394B}.Debug|x64.Build.0 = Debug|Any CPU
+		{3DD47728-546B-4CFD-9290-7877F404394B}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{3DD47728-546B-4CFD-9290-7877F404394B}.Debug|x86.Build.0 = Debug|Any CPU
+		{3DD47728-546B-4CFD-9290-7877F404394B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3DD47728-546B-4CFD-9290-7877F404394B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3DD47728-546B-4CFD-9290-7877F404394B}.Release|x64.ActiveCfg = Release|Any CPU
+		{3DD47728-546B-4CFD-9290-7877F404394B}.Release|x64.Build.0 = Release|Any CPU
+		{3DD47728-546B-4CFD-9290-7877F404394B}.Release|x86.ActiveCfg = Release|Any CPU
+		{3DD47728-546B-4CFD-9290-7877F404394B}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -200,6 +214,7 @@ Global
 		{AA70636F-EC9C-409C-A956-977F98EB1364} = {8BEC45F6-4F23-4994-9959-50C1DB93ABC3}
 		{7B043B49-A25D-43CF-9B38-178780258A8A} = {8BEC45F6-4F23-4994-9959-50C1DB93ABC3}
 		{F1700546-6CB2-4623-AA82-5C4A369CFD00} = {8BEC45F6-4F23-4994-9959-50C1DB93ABC3}
+		{3DD47728-546B-4CFD-9290-7877F404394B} = {F0F2F6E0-792F-11EA-A2A9-59BF4ACC057A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8FF197F3-C3E2-4D83-80AC-D59BE36DD4AF}

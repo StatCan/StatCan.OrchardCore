@@ -1,0 +1,9 @@
+{
+  "name": "statcan.orchardcore.digitaladmin",
+  "private": true,
+  "version": "1.0.0",
+  "dependencies": {
+    "bootstrap": "4.4.1",
+    "popper.js": "1.16.0"
+  }
+}

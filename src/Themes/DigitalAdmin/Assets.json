@@ -1,0 +1,27 @@
+[
+  {
+    "generateSourceMaps": false,
+    "generateRTL": false,
+    "inputs": [
+      "Assets/scss/DigitalAdmin.scss",
+      "Assets/scss/perfect-scrollbar.css"
+    ],
+    "output": "wwwroot/Styles/DigitalAdmin.css"
+  },
+  {
+    "generateSourceMaps": false,
+    "inputs": [
+      "node_modules/popper.js/dist/umd/popper.js",
+      "node_modules/bootstrap/dist/js/bootstrap.js",
+      "Assets/js/*.js"
+    ],
+    "output": "wwwroot/Scripts/DigitalAdmin.js"
+  },
+  {
+    "generateSourceMaps": false,
+    "inputs": [
+      "Assets/js/userPreferencesLoader/userPreferencesLoader.js"
+    ],
+    "output": "wwwroot/Scripts/userPreferencesLoader.js"
+  }
+]
