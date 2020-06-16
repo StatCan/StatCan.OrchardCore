@@ -7,6 +7,6 @@ using OrchardCore.Modules.Manifest;
     Website = "https://innovation.statcan.gc.ca",
     Version = "1.0.0",
     Description = "A custom admin theme.",
-    Tags = new [] { ManifestConstants.AdminTag },
+    Tags = new [] { "Admin" },
     BaseTheme = "TheAdmin"
 )]
