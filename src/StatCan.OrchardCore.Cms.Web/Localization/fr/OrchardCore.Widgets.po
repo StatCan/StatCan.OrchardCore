@@ -1,37 +1,47 @@
 msgid ""
 msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: crowdin.com\n"
 "X-Crowdin-Project: orchard-core\n"
 "X-Crowdin-Language: fr\n"
 "X-Crowdin-File: /dev/Localization/OrchardCore.Widgets.pot\n"
 "Project-Id-Version: orchard-core\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Last-Translator: Antoine Griffard (agriffard)\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
-"PO-Revision-Date: 2019-09-21 09:22\n"
+"PO-Revision-Date: 2020-03-31 14:10\n"
 
-#. <button type="button" title="@T["Insert Widget"]" class="btn btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-#: OrchardCore.Widgets\Views\Widget-List.Edit.cshtml:16
-msgctxt "OrchardCore.Widgets.Views.Widget-List.Edit"
+#. <button type="button" title="@T["Insert Widget"]" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+#: OrchardCore.Widgets\Views\ContentCard-WidgetsListPart.Edit.cshtml:22
+msgctxt "OrchardCore.Widgets.Views.ContentCard-WidgetsListPart.Edit"
 msgid "Insert Widget"
 msgstr "Insérer un widget"
 
-#. <button type="button" class="btn btn-secondary widget-list-delete" data-title="@T["Delete"]" data-message="@T["Are you sure you want to remove this item?"]"><i class="fa fa-trash" aria-hidden="true"></i></button>
-#: OrchardCore.Widgets\Views\Widget-List.Edit.cshtml:34
-msgctxt "OrchardCore.Widgets.Views.Widget-List.Edit"
+#. <button type="button" class="btn btn-danger widget-list-delete" data-title="@T["Delete"]" data-message="@T["Are you sure you want to remove this item?"]"><i class="fa fa-trash" aria-hidden="true"></i></button>
+#: OrchardCore.Widgets\Views\ContentCard-WidgetsListPart.Edit.cshtml:46
+msgctxt "OrchardCore.Widgets.Views.ContentCard-WidgetsListPart.Edit"
 msgid "Delete"
 msgstr "Supprimer"
 
-#. <button type="button" class="btn btn-secondary widget-list-delete" data-title="@T["Delete"]" data-message="@T["Are you sure you want to remove this item?"]"><i class="fa fa-trash" aria-hidden="true"></i></button>
-#: OrchardCore.Widgets\Views\Widget-List.Edit.cshtml:34
-msgctxt "OrchardCore.Widgets.Views.Widget-List.Edit"
+#. <button type="button" class="btn btn-danger widget-list-delete" data-title="@T["Delete"]" data-message="@T["Are you sure you want to remove this item?"]"><i class="fa fa-trash" aria-hidden="true"></i></button>
+#: OrchardCore.Widgets\Views\ContentCard-WidgetsListPart.Edit.cshtml:46
+msgctxt "OrchardCore.Widgets.Views.ContentCard-WidgetsListPart.Edit"
 msgid "Are you sure you want to remove this item?"
-msgstr "Êtes-vous sûr de vouloir supprimer cet élément?"
+msgstr "Êtes-vous sûr de vouloir supprimer cet élément ?"
 
-#. @T["Add Widget"]
-#: OrchardCore.Widgets\Views\WidgetsListPart.Edit.cshtml:60
+#. <span data-content-type-display-text="@contentTypeDisplayText" class="widget-editor-header-text">@T["{0} {1}", contentItemDisplayText, contentTypeDisplayText]</span>
+#: OrchardCore.Widgets\Views\ContentCard.Preview.cshtml:16
+msgctxt "OrchardCore.Widgets.Views.ContentCard.Preview"
+msgid "{0} {1}"
+msgstr "{0} {1}"
+
+#. <a admin-for="@contentItem" asp-route-returnUrl="@FullRequestPath" /> - <small class="text-muted">@T["Widget"]</small>
+#: OrchardCore.Widgets\Views\Widget.SummaryAdmin.cshtml:13
+msgctxt "OrchardCore.Widgets.Views.Widget.SummaryAdmin"
+msgid "Widget"
+msgstr "Widget"
+
+#. <button type="button" title="@T["Add Widget"]" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+#: OrchardCore.Widgets\Views\WidgetsListPart.Edit.cshtml:129
 msgctxt "OrchardCore.Widgets.Views.WidgetsListPart.Edit"
 msgid "Add Widget"
 msgstr "Ajouter un Widget"

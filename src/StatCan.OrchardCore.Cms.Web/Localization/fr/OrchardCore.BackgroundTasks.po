@@ -1,39 +1,41 @@
 msgid ""
 msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: crowdin.com\n"
 "X-Crowdin-Project: orchard-core\n"
 "X-Crowdin-Language: fr\n"
 "X-Crowdin-File: /dev/Localization/OrchardCore.BackgroundTasks.pot\n"
 "Project-Id-Version: orchard-core\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Last-Translator: Antoine Griffard (agriffard)\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
-"PO-Revision-Date: 2019-09-04 19:38\n"
+"PO-Revision-Date: 2020-05-10 20:37\n"
 
-#. .Add(T["Configuration"], configuration => configuration
+#. .Add(S["Configuration"], configuration => configuration
 #: OrchardCore.BackgroundTasks\AdminMenu.cs:25
 msgctxt "OrchardCore.BackgroundTasks.AdminMenu"
 msgid "Configuration"
 msgstr "Configuration"
 
-#. .Add(T["Tasks"], "10", tasks => tasks
+#. .Add(S["Tasks"], S["Tasks"].PrefixPosition(), tasks => tasks
+#. .Add(S["Tasks"], S["Tasks"].PrefixPosition(), tasks => tasks
+#: OrchardCore.BackgroundTasks\AdminMenu.cs:26
 #: OrchardCore.BackgroundTasks\AdminMenu.cs:26
 msgctxt "OrchardCore.BackgroundTasks.AdminMenu"
 msgid "Tasks"
 msgstr "Tâches"
 
-#. .Add(T["Background Tasks"], "10", backgroundTasks => backgroundTasks
+#. .Add(S["Background Tasks"], S["Background Tasks"].PrefixPosition(), backgroundTasks => backgroundTasks
+#. .Add(S["Background Tasks"], S["Background Tasks"].PrefixPosition(), backgroundTasks => backgroundTasks
+#: OrchardCore.BackgroundTasks\AdminMenu.cs:27
 #: OrchardCore.BackgroundTasks\AdminMenu.cs:27
 msgctxt "OrchardCore.BackgroundTasks.AdminMenu"
 msgid "Background Tasks"
 msgstr "Tâches d'arrière-plan"
 
-#. ModelState.AddModelError(nameof(BackgroundTaskViewModel.Name), T["The name is mandatory."]);
-#. ModelState.AddModelError(nameof(BackgroundTaskViewModel.Name), T["The name is mandatory."]);
-#: OrchardCore.BackgroundTasks\Controllers\BackgroundTaskController.cs:130
-#: OrchardCore.BackgroundTasks\Controllers\BackgroundTaskController.cs:194
+#. ModelState.AddModelError(nameof(BackgroundTaskViewModel.Name), S["The name is mandatory."]);
+#. ModelState.AddModelError(nameof(BackgroundTaskViewModel.Name), S["The name is mandatory."]);
+#: OrchardCore.BackgroundTasks\Controllers\BackgroundTaskController.cs:123
+#: OrchardCore.BackgroundTasks\Controllers\BackgroundTaskController.cs:187
 msgctxt "OrchardCore.BackgroundTasks.Controllers.BackgroundTaskController"
 msgid "The name is mandatory."
 msgstr "Le nom est obligatoire."
@@ -164,14 +166,8 @@ msgctxt "OrchardCore.BackgroundTasks.Views.BackgroundTask.Index"
 msgid "Settings"
 msgstr "Paramètres"
 
-#. <span class="hint">@T["— {0}", settings.Description]</span>
-#: OrchardCore.BackgroundTasks\Views\BackgroundTask\Index.cshtml:29
-msgctxt "OrchardCore.BackgroundTasks.Views.BackgroundTask.Index"
-msgid "— {0}"
-msgstr "— {0}"
-
 #. @T["<strong>Nothing here!</strong> There are no background task for the moment."]
-#: OrchardCore.BackgroundTasks\Views\BackgroundTask\Index.cshtml:39
+#: OrchardCore.BackgroundTasks\Views\BackgroundTask\Index.cshtml:38
 msgctxt "OrchardCore.BackgroundTasks.Views.BackgroundTask.Index"
 msgid "<strong>Nothing here!</strong> There are no background task for the moment."
 msgstr "<strong>Rien ici !</strong> Il n'y a pas de tâche de fond pour le moment."

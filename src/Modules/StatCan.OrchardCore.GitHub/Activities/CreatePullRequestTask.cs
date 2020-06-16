@@ -95,12 +95,12 @@ namespace StatCan.OrchardCore.GitHub.Activities
             {
                 var client = await _gitHubApiService.GetGitHubClient(TokenName);
 
-                var owner = await _expressionEvaluator.EvaluateAsync(Owner, workflowContext);
-                var repo = await _expressionEvaluator.EvaluateAsync(Repo, workflowContext);
-                var sourceBranch = await _expressionEvaluator.EvaluateAsync(SourceBranch, workflowContext);
-                var targetBranch = await _expressionEvaluator.EvaluateAsync(TargetBranch, workflowContext);
-                var title = await _expressionEvaluator.EvaluateAsync(Title, workflowContext);
-                var description = await _expressionEvaluator.EvaluateAsync(Description, workflowContext);
+                var owner = await _expressionEvaluator.EvaluateAsync(Owner, workflowContext, null);
+                var repo = await _expressionEvaluator.EvaluateAsync(Repo, workflowContext, null);
+                var sourceBranch = await _expressionEvaluator.EvaluateAsync(SourceBranch, workflowContext, null);
+                var targetBranch = await _expressionEvaluator.EvaluateAsync(TargetBranch, workflowContext, null);
+                var title = await _expressionEvaluator.EvaluateAsync(Title, workflowContext, null);
+                var description = await _expressionEvaluator.EvaluateAsync(Description, workflowContext, null);
 
 
                 var pr = await client.PullRequest.Create(owner, repo, new NewPullRequest(title, sourceBranch, targetBranch) { Body = description });

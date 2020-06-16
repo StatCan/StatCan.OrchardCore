@@ -89,11 +89,11 @@ namespace StatCan.OrchardCore.GitHub.Activities
             {
                 var client = await _gitHubApiService.GetGitHubClient(TokenName);
 
-                var owner = await _expressionEvaluator.EvaluateAsync(Owner, workflowContext);
-                var repo = await _expressionEvaluator.EvaluateAsync(Repo, workflowContext);
-                var title = await _expressionEvaluator.EvaluateAsync(Title, workflowContext);
-                var description = await _expressionEvaluator.EvaluateAsync(Description, workflowContext);
-                var labels = await _expressionEvaluator.EvaluateAsync(Labels, workflowContext);
+                var owner = await _expressionEvaluator.EvaluateAsync(Owner, workflowContext, null);
+                var repo = await _expressionEvaluator.EvaluateAsync(Repo, workflowContext, null);
+                var title = await _expressionEvaluator.EvaluateAsync(Title, workflowContext, null);
+                var description = await _expressionEvaluator.EvaluateAsync(Description, workflowContext, null);
+                var labels = await _expressionEvaluator.EvaluateAsync(Labels, workflowContext, null);
 
                 var newIssue = new NewIssue(title) { Body = description };
 

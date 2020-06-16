@@ -85,10 +85,10 @@ namespace StatCan.OrchardCore.GitHub.Activities
             {
                 var client = await _gitHubApiService.GetGitHubClient(TokenName);
 
-                var owner = await _expressionEvaluator.EvaluateAsync(Owner, workflowContext);
-                var repo = await _expressionEvaluator.EvaluateAsync(Repo, workflowContext);
-                var referenceName = await _expressionEvaluator.EvaluateAsync(ReferenceName, workflowContext);
-                var targetBranchName = await _expressionEvaluator.EvaluateAsync(TargetBranchName, workflowContext);
+                var owner = await _expressionEvaluator.EvaluateAsync(Owner, workflowContext, null);
+                var repo = await _expressionEvaluator.EvaluateAsync(Repo, workflowContext, null);
+                var referenceName = await _expressionEvaluator.EvaluateAsync(ReferenceName, workflowContext, null);
+                var targetBranchName = await _expressionEvaluator.EvaluateAsync(TargetBranchName, workflowContext, null);
 
                 // get the latest commit of the reference branch as a reference object
                 var branchReference = await client.Git.Reference.Get(owner, repo, $"{referenceName}");

@@ -2,7 +2,7 @@
 
   <Import Project="..\Build\StatCan.OrchardCore.Commons.targets" />
   <ItemGroup>
-    <PackageReference Include="OrchardCore.Module.Targets" Version="1.0.0-rc1-*" />
+    <PackageReference Include="OrchardCore.Module.Targets" Version="$(OrchardCoreVersion)" />
   </ItemGroup>
 
   <PropertyGroup>

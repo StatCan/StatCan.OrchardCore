@@ -96,12 +96,12 @@ namespace StatCan.OrchardCore.GitHub.Activities
             {
                 var client = await _gitHubApiService.GetGitHubClient(TokenName);
 
-                var owner = await _expressionEvaluator.EvaluateAsync(Owner, workflowContext);
-                var repo = await _expressionEvaluator.EvaluateAsync(Repo, workflowContext);
-                var branchName = await _expressionEvaluator.EvaluateAsync(BranchName, workflowContext);
-                var fileName = await _expressionEvaluator.EvaluateAsync(FileName, workflowContext);
-                var fileContents = await _expressionEvaluator.EvaluateAsync(FileContents, workflowContext);
-                var commitMessage = await _expressionEvaluator.EvaluateAsync(CommitMessage, workflowContext);
+                var owner = await _expressionEvaluator.EvaluateAsync(Owner, workflowContext, null);
+                var repo = await _expressionEvaluator.EvaluateAsync(Repo, workflowContext, null);
+                var branchName = await _expressionEvaluator.EvaluateAsync(BranchName, workflowContext, null);
+                var fileName = await _expressionEvaluator.EvaluateAsync(FileName, workflowContext, null);
+                var fileContents = await _expressionEvaluator.EvaluateAsync(FileContents, workflowContext, null);
+                var commitMessage = await _expressionEvaluator.EvaluateAsync(CommitMessage, workflowContext, null);
 
                 RepositoryContentChangeSet changeSet;
                 try
