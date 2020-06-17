@@ -113,9 +113,11 @@ namespace StatCan.OrchardCore.AjaxForms.Controllers
                 if (formInput != null)
                 {
                     var value = Request.Form[formInput.Name.Text];
-                    if(formInput.Required.Value && string.IsNullOrWhiteSpace(value))
+                    var requiredValidation = widget.As<FormRequiredValidation>();
+                    if (requiredValidation.Required.Value && string.IsNullOrWhiteSpace(value))
                     {
-                        modelUpdater.ModelState.TryAddModelError(formInput.Name.Text, formInput.RequiredText.Text ?? "This field is required");
+                        //todo: localize
+                        modelUpdater.ModelState.TryAddModelError(formInput.Name.Text, requiredValidation.RequiredText.Text ?? "This field is required");
                     }
                 }
             }

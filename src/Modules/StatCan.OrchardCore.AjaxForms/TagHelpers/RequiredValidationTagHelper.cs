@@ -7,26 +7,26 @@ namespace StatCan.OrchardCore.AjaxForms
 {
     
     [HtmlTargetElement("input", Attributes = AttributeName, TagStructure = TagStructure.WithoutEndTag)]
-    public class ValidationTagHelper: TagHelper
+    public class RequiredValidationTagHelper: TagHelper
     {
-        private const string AttributeName = "form-input-validation";
+        private const string AttributeName = "form-required-val";
 
-        private readonly IStringLocalizer<ValidationTagHelper> _localizer;
+        private readonly IStringLocalizer S;
 
         [HtmlAttributeName(AttributeName)]
-        public FormInput FormInput { get; set; }
+        public FormRequiredValidation RequiredValidation { get; set; }
 
-        public ValidationTagHelper(IStringLocalizer<ValidationTagHelper> localizer)
+        public RequiredValidationTagHelper(IStringLocalizer<RequiredValidationTagHelper> localizer)
         {
-            this._localizer = localizer;
+            S = localizer;
         }
 
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
-            if(FormInput.Required.Value)
+            if(RequiredValidation?.Required?.Value == true)
             {
                 output.Attributes.Add(new TagHelperAttribute("data-val", "true"));
-                output.Attributes.Add(new TagHelperAttribute("data-val-required", "Some validation text"));
+                output.Attributes.Add(new TagHelperAttribute("data-val-required",  RequiredValidation.RequiredText?.Text ?? S["This field is required"]));
             }
 
         }

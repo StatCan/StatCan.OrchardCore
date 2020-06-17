@@ -31,12 +31,15 @@ namespace StatCan.OrchardCore.AjaxForms
             //        viewOptions.ClientModelValidatorProviders.Insert(0, new FormClientModelValidationProvider());
             //    }
             //});
-            services.AddScoped<IDataMigration, Migrations>();
-            services.AddScoped<INavigationProvider, AdminMenu>();
 
             services.AddContentPart<AjaxForm>();
             services.AddContentPart<FormInput>();
+            services.AddContentPart<FormInputStyle>();
+            services.AddContentPart<FormRequiredValidation>();
             services.AddContentPart<FormButton>();
+
+            services.AddScoped<INavigationProvider, AdminMenu>();
+            services.AddScoped<IDataMigration, Migrations>();
         }
          public override void Configure(IApplicationBuilder app, IEndpointRouteBuilder routes, IServiceProvider serviceProvider)
         {

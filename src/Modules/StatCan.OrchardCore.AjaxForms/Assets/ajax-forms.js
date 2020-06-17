@@ -23,7 +23,7 @@
   function initForm(form) {
 
     let $form = $(form);
-    // parse the form unobtrusive 
+    // parse the form with unobtrusive library 
     $.validator.unobtrusive.parse($form);
     const formId = $form.attr("id");
 
@@ -47,6 +47,7 @@
             dataType: "json",
             success: function (data) {
 
+              // todo: handle error 
               console.log("Success", data.html);
 
               $form.replaceWith(data.html);
