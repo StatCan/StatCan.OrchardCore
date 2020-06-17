@@ -1,0 +1,50 @@
+@using OrchardCore.ContentFields.Settings
+@using OrchardCore.ContentFields.Fields
+@using OrchardCore.ContentFields.ViewModels
+@using OrchardCore.ContentManagement.Display.ContentDisplay
+@using OrchardCore.ContentManagement.Display.Models
+@using OrchardCore.ContentManagement.Metadata.Models
+@using StatCan.OrchardCore.ContentFields.Settings
+
+@model OrchardCore.ContentFields.ViewModels.EditTextFieldViewModel
+
+@{
+    var settings = Model.PartFieldDefinition.GetSettings<TextFieldSettings>();
+    var listSettings = Model.PartFieldDefinition.GetSettings<TextFieldPredefinedGroupEditorSettings>();
+
+    var options = new List<SelectListItem>();
+    var selectedValue = String.IsNullOrEmpty(Model.Text) ? listSettings.DefaultValue : Model.Text;
+
+    foreach (var option in listSettings.Options)
+    {
+        var isSelected = option.Value == selectedValue
+            || (String.IsNullOrEmpty(option.Value) && String.IsNullOrEmpty(selectedValue));
+
+        options.Add(new SelectListItem { Text = option.Name, Value = option.Value, Selected = isSelected });
+    }
+}
+
+<div class="form-group">
+    <div asp-for="Text">@Model.PartFieldDefinition.DisplayName()</div>
+
+    @if (listSettings.Editor == StatCan.OrchardCore.ContentFields.Settings.EditorOption.ButtonGroup)
+    {
+        var i = 0;
+        <div class="btn-group btn-group-toggle mb-3" data-toggle="buttons">
+            @foreach (var option in options)
+            {
+                <label class="btn btn-outline-primary" asp-for="Text">
+                    @Html.RadioButton("Text", option.Value, option.Selected, new { @class = "custom-control-input content-preview-text", id = Html.IdFor(m => m.Text) + "_" + i })
+                    @Html.Raw(@option.Text)
+                </label>
+                i++;
+            }
+        </div>
+    }
+
+    @if (!String.IsNullOrEmpty(settings.Hint))
+    {
+        <span class="hint">— @settings.Hint</span>
+    }
+</div>
+
