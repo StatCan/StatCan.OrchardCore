@@ -1,5 +1,6 @@
 <section class="content-section">
   <div class="{{ Model.ContentItem.Content.Section.Section.Text }}">
+    <h2 class="{{ Model.ContentItem.Content.Section.TitleLayout.Text }}">{{ Model.ContentItem | display_text }}</h2>
     <div class="row {{ Model.ContentItem.Content.Section.ColumnLayout.Text }} {{ Model.ContentItem.Content.Section.JustifyContent.Text }}">
       {% for item in Model.ContentItem.Content.SectionPanels.ContentItems %}
       {{ item | shape_build_display | shape_render }}
