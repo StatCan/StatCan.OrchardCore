@@ -29,7 +29,7 @@
                 {% endif %}
               </div>
               <div>
-                <h3>{{ item.SectionPanelLink.Name.Text }}</h3>
+                <h3>{{ item.SectionPanelLink.Name.Text }} {% if item.SectionPanelLink.HeroHighlight.Value == true %}<i class="fas fa-star ml-1"></i>{% endif %}</h3>
                 <p class="text-secondary">{{ item.SectionPanelLink.Description.Text }}</p>
               </div>
             </div>
