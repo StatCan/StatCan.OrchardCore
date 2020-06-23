@@ -13,7 +13,9 @@
         {% else %}
           {% unless User.Identity.IsAuthenticated %}
             <ul class="navbar-nav">
-              <a href="{{ '~/login' | return_url }}" class="btn btn-lg btn-primary is-rounded nav-link mt-5">{{ "Log in" | t }}</a>
+              <li class="nav-item">
+                <a class="btn btn-lg btn-primary is-rounded" href="{{ '~/login' | return_url }}" class="btn btn-lg btn-primary is-rounded nav-link mt-5">{{ "Log in" | t }}</a>
+              </li>
             </ul>
           {% endunless %}
         {% endif %}

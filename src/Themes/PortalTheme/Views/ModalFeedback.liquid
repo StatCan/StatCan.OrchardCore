@@ -16,7 +16,12 @@
         <div class="col-12 d-flex align-items-center justify-content-center text-center">
           <div class="col-lg-10 col-md-12 col-sm-12 col-12">
             <div class="form-group">
-              <div class="btn-group btn-group-toggle mb-3" data-toggle="buttons">
+              {% comment %} <label class="asterix">{{ "Namespace name" | t }}</label> {% endcomment %}
+              <textarea id="field-message" name="Message" class="form-control" type="text" rows="6" aria-label="{{ 'Enter your feedback' | t }}" required></textarea>
+              <span id="Message-described-by" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-4">
+              <div class="btn-group btn-group-toggle" data-toggle="buttons">
                 <label class="btn feedback-mood-happy">
                   <input type="radio" name="Mood" value="happy" id="happy" aria-label="{{ 'Happy mood' | t }}" autocomplete="off">
                   <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -76,11 +81,6 @@
                   </svg>
                 </label>
               </div>
-            </div>
-            <div class="form-group">
-              {% comment %} <label class="asterix">{{ "Namespace name" | t }}</label> {% endcomment %}
-              <textarea id="field-message" name="Message" class="form-control" type="text" rows="6" aria-label="{{ 'Feedback message' | t }}" required></textarea>
-              <span id="Message-described-by" class="text-danger"></span>
             </div>
           </div>
         </div>
