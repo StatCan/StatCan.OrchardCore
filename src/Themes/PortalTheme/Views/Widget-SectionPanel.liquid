@@ -8,7 +8,7 @@
       <p>{{ Model.ContentItem.Content.SectionPanel.Description.Text }}</p>
     </header>
     <nav>
-      <ul class="{{ list_direction }} flex-fill{% unless list_direction == 'is-vertical-list' %} justify-content-around{% endunless %}">
+      <ul class="row {{ list_direction }} flex-fill{% unless list_direction == 'is-vertical-list' %} justify-content-around{% endunless %}">
       {% for item in Model.ContentItem.Content.Links.ContentItems %}
         {% if item.SectionPanelLink.HeroHighlight.Value == "true" %}
           {% block "script", at:"Foot" %}
@@ -19,7 +19,7 @@
           {% endblock %}
         {% endif %}
         <li class="{% if list_direction == 'is-vertical-list' %}d-flex{% else %}col-4{% endif %}">
-          <a id="{{ item.SectionPanelLink.Name.Text | slugify }}" {% if item.SectionPanelLink.ModalID.Text %}data-toggle="modal" data-target="#{{item.SectionPanelLink.ModalID.Text}}" href="#"{% else %}href="{{ item.SectionPanelLink.Url.Text }}" target="_blank"{% endif %} class="d-flex flex-grow-1 {% if list_direction == 'is-horizontal-list' %}justify-content-center{% endif %}">
+          <a id="{{ item.SectionPanelLink.Name.Text | slugify }}" {% if item.SectionPanelLink.ModalID.Text %}data-toggle="modal" data-target="#{{item.SectionPanelLink.ModalID.Text}}" href="#"{% else %}href="{{ item.SectionPanelLink.Url.Text }}" target="_blank" aria-label="{{ 'Open' | t }} {{ item.SectionPanelLink.Name.Text }} {{ 'in a new tab' | t }}"{% endif %} aria-label="{{ item.SectionPanelLink.Name.Text }}" class="d-flex flex-grow-1 {% if list_direction == 'is-horizontal-list' %}justify-content-center{% endif %}">
             <div class="section-panel-link d-flex {% if list_direction == 'is-horizontal-list' %}px-2{% endif %}">
               <div class="section-panel-link-icon text-primary mb-2">
                 {% if item.SectionPanelLink.Image.Paths.first != null %}
