@@ -6,6 +6,8 @@
   padding-top: 6rem;
   padding-bottom: 10rem;
   .row > .column {
+    position: relative;
+    width: 100%;
     padding-right: 15px;
     padding-left: 15px;
   }
