@@ -2,13 +2,13 @@ using OrchardCore.Modules.Manifest;
 using StatCan.OrchardCore.ContentFields;
 
 [assembly: Module(
-    Name = "statCan ContentFields",
+    Name = "StatCan ContentFields",
     Author = "Digital Innovation Team",
     Website = "https://digital.statcan.gc.ca",
     Version = "1.0.0",
     Description = "Additional content fields",
     Category = "Content",
-    Dependencies = new[] { "OrchardCore.Liquid" }
+    Dependencies = new[] { "OrchardCore.Liquid", "OrchardCore.ContentFields" }
 )]
 
 [assembly: Feature(
