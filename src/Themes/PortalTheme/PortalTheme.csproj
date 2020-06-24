@@ -9,7 +9,7 @@
   <ItemGroup>
     <PackageReference Include="OrchardCore.Theme.Targets" Version="$(OrchardCoreVersion)" />
     <PackageReference Include="OrchardCore.DisplayManagement" Version="$(OrchardCoreVersion)" />
-    <PackageReference Include="OrchardCore.ResourceManagement.Abstractions" Version="$(OrchardCoreVersion)" />
+    <PackageReference Include="OrchardCore.ResourceManagement" Version="$(OrchardCoreVersion)" />
     <PackageReference Include="OrchardCore.Users.Abstractions" Version="$(OrchardCoreVersion)" />
     <PackageReference Include="OrchardCore.Users" Version="$(OrchardCoreVersion)" />
   </ItemGroup>
