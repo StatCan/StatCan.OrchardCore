@@ -19,6 +19,7 @@
     <ProjectReference Include="..\..\Modules\StatCan.OrchardCore.DisplayHelpers\StatCan.OrchardCore.DisplayHelpers.csproj" PrivateAssets="none" />
     <ProjectReference Include="..\..\Modules\StatCan.OrchardCore.ContentFields\StatCan.OrchardCore.ContentFields.csproj" PrivateAssets="none" />
     <ProjectReference Include="..\..\Modules\StatCan.OrchardCore.GitHub\StatCan.OrchardCore.GitHub.csproj" PrivateAssets="none" />
+    <ProjectReference Include="..\..\Modules\StatCan.OrchardCore.Hackathon\StatCan.OrchardCore.Hackathon.csproj" PrivateAssets="none" />
     <ProjectReference Include="..\..\Modules\StatCan.OrchardCore.Matomo\StatCan.OrchardCore.Matomo.csproj" PrivateAssets="none" />
     <ProjectReference Include="..\..\Modules\StatCan.OrchardCore.Scripting\StatCan.OrchardCore.Scripting.csproj" PrivateAssets="none" />
     <ProjectReference Include="..\..\Modules\StatCan.OrchardCore.Workflows\StatCan.OrchardCore.Workflows.csproj" PrivateAssets="none" />
