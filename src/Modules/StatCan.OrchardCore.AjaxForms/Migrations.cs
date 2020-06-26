@@ -26,14 +26,25 @@ namespace StatCan.OrchardCore.AjaxForms
                         Hint = "The form accepts submissions if is enabled"
                     }
                 )
-                .WithBooleanField("DebugValues", "Debug form values", "2",
-                    new BooleanFieldSettings()
-                    {
-                        Hint = "Displays json to be submitted to the forms controller in the frontend."
-                    }
+                .Attachable()
+                .WithDescription("Turns your content items into an ajax form."));
+
+            _contentDefinitionManager.AlterPartDefinition("AjaxFormScripts", part => part
+                .WithField("ValidationScript", f => f
+                    .OfType(nameof(TextField))
+                    .WithDisplayName("ValidationScript")
+                    .WithSettings(new TextFieldSettings() { Hint = "(Optional)Script that run's server side to validate your form"})
+                    .WithPosition("1")
+                    .WithEditor("CodeMirrorJS")
+                )
+                .WithField("OnChangeScript", f => f
+                    .OfType(nameof(TextField))
+                    .WithDisplayName("OnChangeScript")
+                    .WithPosition("2")
+                    .WithEditor("CodeMirrorJS")
                 )
                 .Attachable()
-                .WithDescription("Turns your content item into an ajax form."));
+                .WithDescription("Script fields for AjaxForm"));
 
             _contentDefinitionManager.AlterTypeDefinition("AjaxForm", type => type
                 .Draftable().Versionable()
