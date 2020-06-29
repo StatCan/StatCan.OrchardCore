@@ -80,7 +80,7 @@ namespace StatCan.OrchardCore.GCCollab.Drivers
                     var protector = _dataProtectionProvider.CreateProtector(GCCollabConstants.Features.GCCollabAuthentication);
 
                     settings.ClientID = model.ClientID;
-                    if(!(model.ClientSecret == MagicString))
+                    if(model.ClientSecret != MagicString && !string.IsNullOrWhiteSpace(model.ClientSecret))
                     {
                         settings.ClientSecret = protector.Protect(model.ClientSecret);
                     }
