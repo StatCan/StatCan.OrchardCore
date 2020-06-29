@@ -14,6 +14,7 @@ namespace StatCan.OrchardCore.GCCollab.Drivers
 {
     public class GCCollabAuthenticationSettingsDisplayDriver : SectionDisplayDriver<ISite, GCCollabAuthenticationSettings>
     {
+        private static string MagicString = "<filled-token>";
         private readonly IAuthorizationService _authorizationService;
         private readonly IDataProtectionProvider _dataProtectionProvider;
         private readonly IHttpContextAccessor _httpContextAccessor;
@@ -47,8 +48,8 @@ namespace StatCan.OrchardCore.GCCollab.Drivers
                 model.ClientID = settings.ClientID;
                 if (!string.IsNullOrWhiteSpace(settings.ClientSecret))
                 {
-                    var protector = _dataProtectionProvider.CreateProtector(GCCollabConstants.Features.GCCollabAuthentication);
-                    model.ClientSecret = protector.Unprotect(settings.ClientSecret);
+                    //map to a magic string so the api key is not leaked in the html
+                    model.ClientSecret = MagicString;
                 }
                 else
                 {
@@ -79,7 +80,10 @@ namespace StatCan.OrchardCore.GCCollab.Drivers
                     var protector = _dataProtectionProvider.CreateProtector(GCCollabConstants.Features.GCCollabAuthentication);
 
                     settings.ClientID = model.ClientID;
-                    settings.ClientSecret = protector.Protect(model.ClientSecret);
+                    if(!(model.ClientSecret == MagicString))
+                    {
+                        settings.ClientSecret = protector.Protect(model.ClientSecret);
+                    }
                     settings.CallbackPath = model.CallbackUrl;
                     await _shellHost.ReloadShellContextAsync(_shellSettings);
                 }
