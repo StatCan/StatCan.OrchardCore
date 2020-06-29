@@ -33,6 +33,7 @@ namespace StatCan.OrchardCore.AjaxForms
             //});
 
             services.AddContentPart<AjaxForm>();
+            services.AddContentPart<AjaxFormScripts>();
             services.AddContentPart<FormInput>();
             services.AddContentPart<FormInputStyle>();
             services.AddContentPart<FormRequiredValidation>();

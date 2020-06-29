@@ -50,7 +50,8 @@ namespace StatCan.OrchardCore.AjaxForms
                 .Draftable().Versionable()
                 .WithPart("TitlePart", p => p.WithPosition("0"))
                 .WithPart("AjaxForm", p => p.WithPosition("1"))
-                .WithPart("FlowPart", p => p.WithPosition("2")));
+                .WithPart("FlowPart", p => p.WithPosition("2"))
+                .WithPart("AjaxFormScripts", p => p.WithPosition("3")));
 
             // Fieldset
             _contentDefinitionManager.AlterTypeDefinition("FormFieldset", type => type
