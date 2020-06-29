@@ -77,11 +77,10 @@ namespace StatCan.OrchardCore.GCCollab.Drivers
 
                 if (context.Updater.ModelState.IsValid)
                 {
-                    var protector = _dataProtectionProvider.CreateProtector(GCCollabConstants.Features.GCCollabAuthentication);
-
                     settings.ClientID = model.ClientID;
                     if(model.ClientSecret != MagicString && !string.IsNullOrWhiteSpace(model.ClientSecret))
                     {
+                        var protector = _dataProtectionProvider.CreateProtector(GCCollabConstants.Features.GCCollabAuthentication);
                         settings.ClientSecret = protector.Protect(model.ClientSecret);
                     }
                     settings.CallbackPath = model.CallbackUrl;
