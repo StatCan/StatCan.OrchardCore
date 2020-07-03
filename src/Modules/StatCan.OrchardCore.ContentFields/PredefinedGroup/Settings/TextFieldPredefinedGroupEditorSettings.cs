@@ -1,6 +1,6 @@
 using Newtonsoft.Json;
 
-namespace StatCan.OrchardCore.ContentFields.Settings
+namespace StatCan.OrchardCore.ContentFields.PredefinedGroup.Settings
 {
     public class TextFieldPredefinedGroupEditorSettings
     {

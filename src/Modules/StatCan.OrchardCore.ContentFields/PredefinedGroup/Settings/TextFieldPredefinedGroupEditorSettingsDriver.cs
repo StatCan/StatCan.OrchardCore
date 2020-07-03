@@ -5,9 +5,9 @@ using OrchardCore.ContentFields.Fields;
 using OrchardCore.ContentManagement.Metadata.Models;
 using OrchardCore.ContentTypes.Editors;
 using OrchardCore.DisplayManagement.Views;
-using StatCan.OrchardCore.ContentFields.ViewModels;
+using StatCan.OrchardCore.ContentFields.PredefinedGroup.ViewModels;
 
-namespace StatCan.OrchardCore.ContentFields.Settings
+namespace StatCan.OrchardCore.ContentFields.PredefinedGroup.Settings
 {
     public class TextFieldPredefinedGroupEditorSettingsDriver : ContentPartFieldDefinitionDisplayDriver<TextField>
     {
