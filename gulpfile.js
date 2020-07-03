@@ -378,7 +378,7 @@ function buildJsPipeline(assetGroup, doConcat, doRebuild) {
             noImplicitAny: true,
             noEmitOnError: true,
             lib: ["dom", "es5", "scripthost", "es2015.iterable"],
-            target: "es5"
+            target: "es6",
           })
         )
       )
