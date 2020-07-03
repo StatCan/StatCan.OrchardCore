@@ -23,7 +23,8 @@ namespace StatCan.OrchardCore.Security
                 builder.AddFormAction().Self().From("github.com").From("account.gccollab.ca").From("login.microsoftonline.com");
                 builder.AddFrameAncestors().Self();
                 builder.AddDefaultSrc().Self();
-                builder.AddImgSrc().Self().Data().From("*.statcan.ca").From("*.statcan.gc.ca");
+                builder.AddImgSrc().Self().Data().From("*.statcan.ca").From("*.statcan.gc.ca")
+                .From("cm.everesttech.net"); // adobe analytics
                 builder.AddFontSrc().Self().Data().From("cdn.jsdelivr.net").From("fonts.googleapis.com").From("fonts.gstatic.com");
                 builder.AddStyleSrc().UnsafeInline().Self()
                 .From("cdn.jsdelivr.net")
@@ -33,10 +34,10 @@ namespace StatCan.OrchardCore.Security
                 .From("cdnjs.cloudflare.com")
                 .From("stackpath.bootstrapcdn.com")
                 ;
-                builder.AddConnectSrc().From("dpm.demdex.net").From("canada.sc.omtrdc.net");
+                builder.AddConnectSrc().From("dpm.demdex.net").From("canada.sc.omtrdc.net"); // adobe analytics
                 // unsafe-eval needed for vue.js runtime templates
                 builder.AddScriptSrc().UnsafeEval().UnsafeInline().Self()
-                .From("assets.adobedtm.com")
+                .From("assets.adobedtm.com") // adobe analytics
                 .From("cdn.jsdelivr.net")
                 .From("code.jquery.com")
                 .From("ajax.googleapis.com")
@@ -47,6 +48,7 @@ namespace StatCan.OrchardCore.Security
                 .From("*.statcan.ca")
                 .From("*.statcan.gc.ca")
                ;
+                builder.AddFrameSource().From("canada.demdex.net"); // adobe analytics
             });
 
             if (!env.IsDevelopment())
