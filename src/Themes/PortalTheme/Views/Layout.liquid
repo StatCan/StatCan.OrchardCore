@@ -21,15 +21,15 @@
     {% style name:"font-awesome", version:"5" %}
     {% style src:"https://fonts.googleapis.com/css2?family=Fira+Sans:wght@200;300;400;500;700;800&display=swap" %}
 
-    <!-- Bootstrap core JavaScript (includes jQuery and popper.js) -->
+    {% resources type: "HeadScript" %}
+    {% resources type: "HeadLink" %}
+    {% resources type: "Stylesheet" %}
+
     {% script name:"jQuery", at:"Foot", version:"3.4.1" %}
     {% script name:"popper", at:"Foot", version:"1.16.1" %}
     {% script name:"bootstrap", at:"Foot", version:"4.4.1" %}
     {% script src:"~/PortalTheme/Scripts/setCookie.min.js", debug_src:"~/PortalTheme/Scripts/setCookie.js", at:"Foot" %}
 
-    {% resources type: "HeadScript" %}
-    {% resources type: "HeadLink" %}
-    {% resources type: "Stylesheet" %}
 </head>
 <body id="page-top" dir="{{ Culture.Dir }}">
     <a class="skip-navigation text-center" href="#content">{{ "Skip to main content" | t }}</a>

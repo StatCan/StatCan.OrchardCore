@@ -35,15 +35,16 @@ namespace StatCan.OrchardCore.Security
                 ;
                 // unsafe-eval needed for vue.js runtime templates
                 builder.AddScriptSrc().UnsafeEval().UnsafeInline().Self()
-               .From("cdn.jsdelivr.net")
-               .From("code.jquery.com")
-               .From("ajax.googleapis.com")
-               .From("cdnjs.cloudflare.com")
-               .From("vuejs.org")
-               .From("unpkg.com")
-               .From("stackpath.bootstrapcdn.com")
-               .From("*.statcan.ca")
-               .From("*.statcan.gc.ca")
+                .From("assets.adobedtm.com")
+                .From("cdn.jsdelivr.net")
+                .From("code.jquery.com")
+                .From("ajax.googleapis.com")
+                .From("cdnjs.cloudflare.com")
+                .From("vuejs.org")
+                .From("unpkg.com")
+                .From("stackpath.bootstrapcdn.com")
+                .From("*.statcan.ca")
+                .From("*.statcan.gc.ca")
                ;
             });
 
