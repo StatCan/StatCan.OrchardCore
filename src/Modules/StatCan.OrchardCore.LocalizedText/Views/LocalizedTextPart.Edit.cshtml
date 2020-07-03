@@ -1,0 +1,48 @@
+@model StatCan.OrchardCore.LocalizedText.ViewModels.EditLocalizedTextFieldViewModel
+
+@using OrchardCore.ContentManagement.Metadata.Models
+
+
+<script asp-src="~/StatCan.OrchardCore.LocalizedText/localizedTextEditor.js" asp-name="LocalizedText" depends-on="jQuery, vuejs, sortable, vuedraggable"
+        at="Foot"></script>
+<script at="Foot">
+  initializeLocalizedTextEditor(document.getElementById('@Html.IdFor(m => m)'), {title: "@T["Remove"]", message: "@T["Are you sure you want to remove this entry?"]"});
+</script>
+
+<fieldset class="form-group autoexpand-listener">
+    <label asp-for="Data">@T["Localized Text"]</label>
+    <span class="hint">@T["Use the 'localize' liquid filter to reference these strings"]</span>
+
+    <div id="@Html.IdFor(m => m)" data-for="@Html.IdFor(m => m.Data)" asp-validation-class-for="Data" data-init="@Model.Data" data-cultures="@Model.SupportedCultures">
+      <input type="hidden" asp-for="Data" :value="value" data-init="@Model.Data">
+      <draggable tag="ul" class="list-group" v-model="entries" handle=".handle">
+        <li v-for="(entry, index) in entries" class="row mb-3">
+          
+          <div class="col-3">
+            <div class="d-flex">
+              <button type="button" class="btn btn-light handle"><i class="fa fa-align-justify"></i></button>
+  
+                <input class="form-control d-inline-block mx-1  content-preview-text" asp-validation-class-for="Data" placeholder="@T["Name"]" type="text" v-model="entry.name" />
+         
+              <button v-on:click="remove(index)" class="btn btn-danger" type="button">
+                <i class="fa fa-trash-alt">&nbsp;</i>
+              </button>
+            </div>
+            
+          </div>
+          <div class="col">
+            <div class="input-group mb-2"  v-for="(item, idk2) in entry.localizedItems">
+              <div class="input-group-prepend">
+                <label :for="'value-' + index + idk2" class="input-group-text text-uppercase font-weight-bold" style="width:4.5rem">{{item.culture}}</label>
+              </div>
+              <textarea :id="'value-' + index + idk2" class="form-control overflow-hidden" rows="1" asp-validation-class-for="Data" placeholder="@T["Value"]" type="text" v-model="item.value" > </textarea>
+            </div>
+          </div>
+          
+        </li>
+      </draggable>
+        <p v-if="!hasEntries" class="hint">@T["No entries yet, add one below"]</p>
+
+        <button v-on:click="add" class="btn btn-primary" type="button"><i class="fa fa-plus"></i> @T["Add"]</button>
+</div>
+</fieldset>

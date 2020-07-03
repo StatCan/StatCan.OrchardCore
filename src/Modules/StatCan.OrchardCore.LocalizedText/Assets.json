@@ -1,0 +1,8 @@
+[
+  {
+    "inputs": [
+      "Assets/localizedTextEditor.js"
+    ],
+    "output": "wwwroot/localizedTextEditor.js"
+  }  
+]
