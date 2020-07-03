@@ -1,6 +1,6 @@
-using StatCan.OrchardCore.ContentFields.Settings;
+using StatCan.OrchardCore.ContentFields.PredefinedGroup.Settings;
 
-namespace StatCan.OrchardCore.ContentFields.ViewModels
+namespace StatCan.OrchardCore.ContentFields.PredefinedGroup.ViewModels
 {
     public class PredefinedGroupSettingsViewModel
     {
