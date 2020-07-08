@@ -10,6 +10,8 @@ using OrchardCore.Data.Migration;
 using OrchardCore.Liquid;
 using StatCan.OrchardCore.LocalizedText.Liquid;
 using OrchardCore.ContentManagement.Handlers;
+using OrchardCore.Scripting;
+using StatCan.OrchardCore.LocalizedText.Scripting;
 
 namespace StatCan.OrchardCore.LocalizedText
 {
@@ -28,6 +30,8 @@ namespace StatCan.OrchardCore.LocalizedText
 
             services.AddContentPart<LocalizedTextPart>()
                 .UseDisplayDriver<LocalizedTextPartDisplayDriver>();
+
+            services.AddSingleton<IGlobalMethodProvider, GlobalMethodProvider>();
         }
     }
 

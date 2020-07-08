@@ -3,7 +3,7 @@ using OrchardCore.ContentManagement;
 
 namespace StatCan.OrchardCore.AjaxForms.Models
 {
-    public class FormInput : ContentPart
+    public class FormInput: ContentPart
     {
         public TextField Name { get; set; }
         public TextField Type { get; set; }

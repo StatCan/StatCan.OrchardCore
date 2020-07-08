@@ -1,7 +1,5 @@
-using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
 
 using Microsoft.AspNetCore.Mvc;
@@ -12,10 +10,14 @@ using Microsoft.Extensions.Logging;
 using OrchardCore.ContentManagement;
 using OrchardCore.ContentManagement.Display;
 using OrchardCore.ContentManagement.Metadata;
-using OrchardCore.DisplayManagement;
 using OrchardCore.DisplayManagement.ModelBinding;
 using OrchardCore.Flows.Models;
+using OrchardCore.Scripting;
+using OrchardCore.Workflows.Http;
+using OrchardCore.Workflows.Scripting;
+using OrchardCore.Workflows.Services;
 using StatCan.OrchardCore.AjaxForms.Models;
+using StatCan.OrchardCore.ContentsExtensions;
 
 namespace StatCan.OrchardCore.AjaxForms.Controllers
 {
@@ -63,19 +65,25 @@ namespace StatCan.OrchardCore.AjaxForms.Controllers
         private readonly IContentDefinitionManager _contentDefinitionManager;
         private readonly IContentItemDisplayManager _contentItemDisplayManager;
         private readonly IUpdateModelAccessor _updateModelAccessor;
+        private readonly IScriptingManager _scriptingManager;
+        private readonly IWorkflowManager _workflowManager;
 
         public AjaxFormController(
             ILogger<AjaxFormController> logger,
             IContentManager contentManager,
             IContentDefinitionManager contentDefinitionManager,
             IContentItemDisplayManager contentItemDisplayManager,
-           IUpdateModelAccessor updateModelAccessor)
+            IUpdateModelAccessor updateModelAccessor,
+            IScriptingManager scriptingManager,
+            IWorkflowManager workflowManager)
         {
             _logger = logger;
             _contentManager = contentManager;
             _contentDefinitionManager = contentDefinitionManager;
             _contentItemDisplayManager = contentItemDisplayManager;
             _updateModelAccessor = updateModelAccessor;
+            _scriptingManager = scriptingManager;
+            _workflowManager = workflowManager;
         }
 
 
@@ -91,13 +99,12 @@ namespace StatCan.OrchardCore.AjaxForms.Controllers
 
             var formPart = form.As<AjaxForm>();
 
-            var modelUpdater = _updateModelAccessor.ModelUpdater;
-
             // Verify if the form is enabled
-            //if(!formPart.Enabled.Value)
-            //{
-            //    return NotFound();
-            //}
+            if (!formPart.Enabled.Value)
+            {
+                return NotFound();
+            }
+            var modelUpdater = _updateModelAccessor.ModelUpdater;
             // bind form values to model state for if validation errors occur
             foreach (var item in Request.Form)
             {
@@ -106,8 +113,56 @@ namespace StatCan.OrchardCore.AjaxForms.Controllers
 
             // form validation
             var flow = form.As<FlowPart>();
+            ValidateWidgets(flow.Widgets);
 
-            foreach (var widget in flow.Widgets)
+            // form validation script
+            var script = form.As<AjaxFormScripts>();
+            var scriptingProvider = new AjaxFormMethodsProvider(form, modelUpdater);
+            if (!string.IsNullOrEmpty(script?.OnValidationScript?.Text))
+            {
+                _scriptingManager.EvaluateJs(script.OnValidationScript.Text, scriptingProvider);
+            }
+
+            var isValid = ModelState.ErrorCount == 0;
+
+            if (!isValid)
+            {
+                var model = await _contentItemDisplayManager.BuildDisplayAsync(form, modelUpdater);
+                var formHtml = await this.RenderViewAsync("Display", model, true);
+                return Json(new { error = true, html = formHtml });
+            }
+
+            if (!string.IsNullOrEmpty(script?.OnSubmittedScript?.Text))
+            {
+                _scriptingManager.EvaluateJs(script.OnSubmittedScript.Text, scriptingProvider);
+            }
+
+            if (formPart.TriggerWorkflow.Value == true)
+            {
+                await _workflowManager.TriggerEventAsync("CHANGE_ME_TO_PROPER_WORKFLOW_EVENT",
+                    input: new { ContentItem = form },
+                    correlationId: form.ContentItemId
+                );
+            }
+
+            // if the Workflow or script returned a HttpResult,
+            // we may need to modify this to the format required by our form client 
+            if (HttpContext.Items.ContainsKey(WorkflowHttpResult.Instance))
+            {
+                return new EmptyResult();
+            }
+
+            // TODO: Change to proper return value.
+            // We will need to handle the case where the workflow returns a Result, especially with ajax.
+            // We may need to trigger a redirect on the next request ? Or modify it into the proper request.
+            // Will also need to handle the _notifier (custom messages).
+            // The messages are lost after the first request as those are stored in a cookie for the next request
+            return Accepted();
+        }
+        private void ValidateWidgets(IEnumerable<ContentItem> widgets)
+        {
+            var modelUpdater = _updateModelAccessor.ModelUpdater;
+            foreach (var widget in widgets)
             {
                 var formInput = widget.As<FormInput>();
                 if (formInput != null)
@@ -120,15 +175,12 @@ namespace StatCan.OrchardCore.AjaxForms.Controllers
                         modelUpdater.ModelState.TryAddModelError(formInput.Name.Text, requiredValidation.RequiredText.Text ?? "This field is required");
                     }
                 }
+                var flow = widget.As<FlowPart>();
+                if(flow != null)
+                {
+                    ValidateWidgets(flow.Widgets);
+                }
             }
-
-            var isValid = ModelState.ErrorCount == 0;
-
-            var model = await _contentItemDisplayManager.BuildDisplayAsync(form, modelUpdater);
-
-            var formHtml = await this.RenderViewAsync("Display", model, true);
-
-            return Json(new { error = !isValid, html = formHtml });            
         }
     }
 }
