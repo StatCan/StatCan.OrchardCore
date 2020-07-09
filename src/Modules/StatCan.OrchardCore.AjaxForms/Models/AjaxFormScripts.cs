@@ -8,15 +8,15 @@ namespace StatCan.OrchardCore.AjaxForms.Models
         /// <summary>
         /// Script that runs everytime the form is submitted, to validate the values.
         /// </summary>
-        public TextField OnValidationScript { get; set; }
+        public TextField OnValidation { get; set; }
         /// <summary>
         /// TODO: Implement Client side onChange script
         /// </summary>
-        public TextField OnChangeScript { get; set; }
+        //public TextField OnChange { get; set; }
 
         /// <summary>
         /// Script that runs after validation. you can
         /// </summary>
-        public TextField OnSubmittedScript { get; set; }
+        public TextField OnSubmitted { get; set; }
     }
 }

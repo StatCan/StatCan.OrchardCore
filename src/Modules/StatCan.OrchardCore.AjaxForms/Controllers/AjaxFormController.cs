@@ -1,11 +1,7 @@
 using System.Collections.Generic;
-using System.IO;
 using System.Threading.Tasks;
 
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.AspNetCore.Mvc.ViewEngines;
-using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.Extensions.Logging;
 using OrchardCore.ContentManagement;
 using OrchardCore.ContentManagement.Display;
@@ -21,43 +17,6 @@ using StatCan.OrchardCore.ContentsExtensions;
 
 namespace StatCan.OrchardCore.AjaxForms.Controllers
 {
-    // todo: move this into it's own assembly.
-    public static class ControllerExtensions
-    {
-        public static async Task<string> RenderViewAsync<TModel>(this Controller controller, string viewName, TModel model, bool partial = false)
-        {
-            if (string.IsNullOrEmpty(viewName))
-            {
-                viewName = controller.ControllerContext.ActionDescriptor.ActionName;
-            }
-
-            controller.ViewData.Model = model;
-
-            using (var writer = new StringWriter())
-            {
-                var viewEngine = controller.HttpContext.RequestServices.GetService(typeof(ICompositeViewEngine)) as ICompositeViewEngine;
-                ViewEngineResult viewResult = viewEngine.FindView(controller.ControllerContext, viewName, !partial);
-
-                if (viewResult.Success == false)
-                {
-                    return $"A view with the name {viewName} could not be found";
-                }
-
-                ViewContext viewContext = new ViewContext(
-                    controller.ControllerContext,
-                    viewResult.View,
-                    controller.ViewData,
-                    controller.TempData,
-                    writer,
-                    new HtmlHelperOptions()
-                );
-
-                await viewResult.View.RenderAsync(viewContext);
-
-                return writer.GetStringBuilder().ToString();
-            }
-        }
-    }
     public class AjaxFormController : Controller
     {
         private readonly ILogger _logger;
@@ -111,16 +70,16 @@ namespace StatCan.OrchardCore.AjaxForms.Controllers
                 modelUpdater.ModelState.SetModelValue(item.Key, item.Value, item.Value);
             }
 
-            // form validation
+            // form validation widgets
             var flow = form.As<FlowPart>();
             ValidateWidgets(flow.Widgets);
 
             // form validation script
             var script = form.As<AjaxFormScripts>();
             var scriptingProvider = new AjaxFormMethodsProvider(form, modelUpdater);
-            if (!string.IsNullOrEmpty(script?.OnValidationScript?.Text))
+            if (!string.IsNullOrEmpty(script?.OnValidation?.Text))
             {
-                _scriptingManager.EvaluateJs(script.OnValidationScript.Text, scriptingProvider);
+                _scriptingManager.EvaluateJs(script.OnValidation.Text, scriptingProvider);
             }
 
             var isValid = ModelState.ErrorCount == 0;
@@ -132,31 +91,30 @@ namespace StatCan.OrchardCore.AjaxForms.Controllers
                 return Json(new { error = true, html = formHtml });
             }
 
-            if (!string.IsNullOrEmpty(script?.OnSubmittedScript?.Text))
+            if (!string.IsNullOrEmpty(script?.OnSubmitted?.Text))
             {
-                _scriptingManager.EvaluateJs(script.OnSubmittedScript.Text, scriptingProvider);
+                _scriptingManager.EvaluateJs(script.OnSubmitted.Text, scriptingProvider);
             }
 
-            if (formPart.TriggerWorkflow.Value == true)
-            {
-                await _workflowManager.TriggerEventAsync("CHANGE_ME_TO_PROPER_WORKFLOW_EVENT",
-                    input: new { ContentItem = form },
-                    correlationId: form.ContentItemId
-                );
-            }
+            await _workflowManager.TriggerEventAsync("CHANGE_ME_TO_PROPER_WORKFLOW_EVENT",
+                input: new { AjaxForm = form },
+                correlationId: form.ContentItemId
+            );
+            
 
-            // if the Workflow or script returned a HttpResult,
-            // we may need to modify this to the format required by our form client 
+            // TODO: Change to proper return value
+            // we may need to modify this to the format required by our form client
+            // We may need to trigger a redirect on the next request ? Or modify it into the proper request
+            // Will also need to handle the _notifier (custom messages)
+            // The messages are lost after the first request as those are stored in a cookie for the next request
+
             if (HttpContext.Items.ContainsKey(WorkflowHttpResult.Instance))
             {
+                //if the Workflow or script returned a HttpResult, use it
                 return new EmptyResult();
             }
 
-            // TODO: Change to proper return value.
-            // We will need to handle the case where the workflow returns a Result, especially with ajax.
-            // We may need to trigger a redirect on the next request ? Or modify it into the proper request.
-            // Will also need to handle the _notifier (custom messages).
-            // The messages are lost after the first request as those are stored in a cookie for the next request
+            
             return Accepted();
         }
         private void ValidateWidgets(IEnumerable<ContentItem> widgets)
@@ -178,6 +136,7 @@ namespace StatCan.OrchardCore.AjaxForms.Controllers
                 var flow = widget.As<FlowPart>();
                 if(flow != null)
                 {
+                    // recurse
                     ValidateWidgets(flow.Widgets);
                 }
             }

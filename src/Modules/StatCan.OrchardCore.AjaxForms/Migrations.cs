@@ -26,21 +26,35 @@ namespace StatCan.OrchardCore.AjaxForms
                         Hint = "The form accepts submissions if is enabled"
                     }
                 )
+                .WithBooleanField("TriggerWorkflow", "Trigger workflow", "2",
+                    new BooleanFieldSettings()
+                    {
+                        Hint = "Successfull validation will trigger the FormSubmitted workflow event"
+                    }
+                )
                 .Attachable()
                 .WithDescription("Turns your content items into an ajax form."));
 
             _contentDefinitionManager.AlterPartDefinition("AjaxFormScripts", part => part
-                .WithField("ValidationScript", f => f
+                .WithField("OnValidation", f => f
                     .OfType(nameof(TextField))
-                    .WithDisplayName("ValidationScript")
-                    .WithSettings(new TextFieldSettings() { Hint = "(Optional)Script that run's server side to validate your form"})
+                    .WithDisplayName("OnValidation")
+                    .WithSettings(new TextFieldSettings() { Hint = "(Optional)Script that runs server side to validate your form"})
                     .WithPosition("1")
                     .WithEditor("CodeMirrorJS")
                 )
-                .WithField("OnChangeScript", f => f
+                .WithField("OnChange", f => f
                     .OfType(nameof(TextField))
-                    .WithDisplayName("OnChangeScript")
+                    .WithDisplayName("OnChange")
+                    .WithSettings(new TextFieldSettings() { Hint = "(Optional)Script that runs client side when fields change" })
                     .WithPosition("2")
+                    .WithEditor("CodeMirrorJS")
+                )
+                 .WithField("OnSubmitted", f => f
+                    .OfType(nameof(TextField))
+                    .WithDisplayName("OnSubmitted")
+                    .WithSettings(new TextFieldSettings() { Hint = "(Optional)Script that runs server side after when the form is valid, before the workflow." })
+                    .WithPosition("3")
                     .WithEditor("CodeMirrorJS")
                 )
                 .Attachable()

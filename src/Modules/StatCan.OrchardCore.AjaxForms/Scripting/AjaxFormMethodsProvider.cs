@@ -51,11 +51,7 @@ namespace OrchardCore.Workflows.Scripting
             _getFormContentItem = new GlobalMethod
             {
                 Name = "getFormContentItem",
-                Method = serviceProvider => (Func<ContentItem>)(() =>
-                {
-                    return form;
-                }
-                )
+                Method = serviceProvider => (Func<ContentItem>)(() => form)
             };
 
         }

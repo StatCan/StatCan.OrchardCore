@@ -10,6 +10,8 @@ using OrchardCore.ContentManagement;
 using StatCan.OrchardCore.AjaxForms.Models;
 using OrchardCore.Navigation;
 using System.Linq;
+using OrchardCore.Workflows.Helpers;
+using StatCan.OrchardCore.AjaxForms.Workflows;
 
 namespace StatCan.OrchardCore.AjaxForms
 {
@@ -17,21 +19,6 @@ namespace StatCan.OrchardCore.AjaxForms
     {
         public override void ConfigureServices(IServiceCollection services)
         {
-            //services.AddMvc().AddMvcOptions(options =>
-            //{
-            //    if (!options.ModelValidatorProviders.Any(x => x is FormModelValidationProvider))
-            //    {
-            //        options.ModelValidatorProviders.Insert(0, new FormModelValidationProvider());
-            //    }
-            //}).AddViewOptions(viewOptions =>
-            //{
-                
-            //    if (!viewOptions.ClientModelValidatorProviders.Any(x => x is FormClientModelValidationProvider))
-            //    {
-            //        viewOptions.ClientModelValidatorProviders.Insert(0, new FormClientModelValidationProvider());
-            //    }
-            //});
-
             services.AddContentPart<AjaxForm>();
             services.AddContentPart<AjaxFormScripts>();
             services.AddContentPart<FormInput>();
@@ -39,7 +26,6 @@ namespace StatCan.OrchardCore.AjaxForms
             services.AddContentPart<FormRequiredValidation>();
             services.AddContentPart<FormButton>();
 
-            services.AddScoped<INavigationProvider, AdminMenu>();
             services.AddScoped<IDataMigration, Migrations>();
         }
          public override void Configure(IApplicationBuilder app, IEndpointRouteBuilder routes, IServiceProvider serviceProvider)
@@ -50,6 +36,23 @@ namespace StatCan.OrchardCore.AjaxForms
                 pattern: "ajaxforms/submit/{formId}",
                 defaults: new { controller = "AjaxForm", action = "Submit" }
             );
+        }
+    }
+
+    [RequireFeatures("OrchardCore.AdminMenu")]
+    public class MenuStartup: StartupBase
+    {
+        public override void ConfigureServices(IServiceCollection services)
+        {
+            services.AddScoped<INavigationProvider, AdminMenu>();
+        }
+    }
+    [RequireFeatures("OrchardCore.Workflows")]
+    public class WorkflowsStartup : StartupBase
+    {
+        public override void ConfigureServices(IServiceCollection services)
+        {
+            services.AddActivity<AjaxFormSubmittedEvent, AjaxFormSubmittedEventDisplayDriver>();
         }
     }
 }

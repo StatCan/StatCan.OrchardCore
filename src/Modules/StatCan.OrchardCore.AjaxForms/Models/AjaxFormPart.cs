@@ -8,8 +8,8 @@ namespace StatCan.OrchardCore.AjaxForms.Models
         public BooleanField Enabled { get; set; }
 
         // todo: feature that helps debug forms in the admin ui
-        public BooleanField DebugValues { get; set; }
-        public BooleanField TriggerWorkflow { get; set; }
+       // public BooleanField DebugValues { get; set; }
+        //public BooleanField TriggerWorkflow { get; set; }
 
     }
 }
