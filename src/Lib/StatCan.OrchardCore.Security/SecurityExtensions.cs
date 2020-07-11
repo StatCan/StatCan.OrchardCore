@@ -34,7 +34,7 @@ namespace StatCan.OrchardCore.Security
                 .From("cdnjs.cloudflare.com")
                 .From("stackpath.bootstrapcdn.com")
                 ;
-                builder.AddConnectSrc().From("dpm.demdex.net").From("canada.sc.omtrdc.net"); // adobe analytics
+                builder.AddConnectSrc().Self().From("dpm.demdex.net").From("canada.sc.omtrdc.net"); // adobe analytics
                 // unsafe-eval needed for vue.js runtime templates
                 builder.AddScriptSrc().UnsafeEval().UnsafeInline().Self()
                 .From("assets.adobedtm.com") // adobe analytics
@@ -48,7 +48,7 @@ namespace StatCan.OrchardCore.Security
                 .From("*.statcan.ca")
                 .From("*.statcan.gc.ca")
                ;
-                builder.AddFrameSource().From("canada.demdex.net"); // adobe analytics
+                builder.AddFrameSource().Self().From("canada.demdex.net"); // adobe analytics
             });
 
             if (!env.IsDevelopment())
