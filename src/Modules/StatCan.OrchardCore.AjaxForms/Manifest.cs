@@ -10,7 +10,7 @@ using OrchardCore.Modules.Manifest;
     {
         "OrchardCore.Contents",
         "OrchardCore.Title",
-        "OrchardCore.Fields"
+        "StatCan.OrchardCore.ContentFields"
     },
     Category = "Form"
 )]

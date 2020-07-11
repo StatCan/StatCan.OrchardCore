@@ -3,14 +3,14 @@
 import { creds } from "../../support/objects";
 
 export const blank = {
-  name: "AjaxForm3",
-  prefix: "ajaxform3",
+  name: "af5",
+  prefix: "af5",
   setupRecipe: "Blank",
   ...creds
 };
 
 describe("Blank setup", function() {
-  it("Setup AjaxForms test tenant", function() {
+  it.only("Setup AjaxForms test tenant", function() {
     cy.login();
     cy.createTenant(blank);
     cy.gotoTenantSetup(blank);
@@ -18,4 +18,8 @@ describe("Blank setup", function() {
     cy.login(blank);
     cy.enableFeature(blank, "AjaxForms");
   });
+  it("Create a simple form"), function() {
+    cy.login(blank);
+
+  }
 });

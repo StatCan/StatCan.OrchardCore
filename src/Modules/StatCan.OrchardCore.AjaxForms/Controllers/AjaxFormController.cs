@@ -13,6 +13,7 @@ using OrchardCore.Workflows.Http;
 using OrchardCore.Workflows.Scripting;
 using OrchardCore.Workflows.Services;
 using StatCan.OrchardCore.AjaxForms.Models;
+using StatCan.OrchardCore.AjaxForms.Workflows;
 using StatCan.OrchardCore.ContentsExtensions;
 
 namespace StatCan.OrchardCore.AjaxForms.Controllers
@@ -96,7 +97,7 @@ namespace StatCan.OrchardCore.AjaxForms.Controllers
                 _scriptingManager.EvaluateJs(script.OnSubmitted.Text, scriptingProvider);
             }
 
-            await _workflowManager.TriggerEventAsync("CHANGE_ME_TO_PROPER_WORKFLOW_EVENT",
+            await _workflowManager.TriggerEventAsync(nameof(AjaxFormSubmittedEvent),
                 input: new { AjaxForm = form },
                 correlationId: form.ContentItemId
             );
@@ -139,6 +140,7 @@ namespace StatCan.OrchardCore.AjaxForms.Controllers
                     // recurse
                     ValidateWidgets(flow.Widgets);
                 }
+                // todo: check if we need to recurse on bag items as well
             }
         }
     }

@@ -26,12 +26,12 @@ namespace StatCan.OrchardCore.AjaxForms
                         Hint = "The form accepts submissions if is enabled"
                     }
                 )
-                .WithBooleanField("TriggerWorkflow", "Trigger workflow", "2",
-                    new BooleanFieldSettings()
-                    {
-                        Hint = "Successfull validation will trigger the FormSubmitted workflow event"
-                    }
-                )
+                //.WithBooleanField("TriggerWorkflow", "Trigger workflow", "2",
+                //    new BooleanFieldSettings()
+                //    {
+                //        Hint = "Successfull validation will trigger the FormSubmitted workflow event"
+                //    }
+                //)
                 .Attachable()
                 .WithDescription("Turns your content items into an ajax form."));
 
@@ -43,13 +43,13 @@ namespace StatCan.OrchardCore.AjaxForms
                     .WithPosition("1")
                     .WithEditor("CodeMirrorJS")
                 )
-                .WithField("OnChange", f => f
-                    .OfType(nameof(TextField))
-                    .WithDisplayName("OnChange")
-                    .WithSettings(new TextFieldSettings() { Hint = "(Optional)Script that runs client side when fields change" })
-                    .WithPosition("2")
-                    .WithEditor("CodeMirrorJS")
-                )
+                //.WithField("OnChange", f => f
+                //    .OfType(nameof(TextField))
+                //    .WithDisplayName("OnChange")
+                //    .WithSettings(new TextFieldSettings() { Hint = "(Optional)Script that runs client side when fields change" })
+                //    .WithPosition("2")
+                //    .WithEditor("CodeMirrorJS")
+                //)
                  .WithField("OnSubmitted", f => f
                     .OfType(nameof(TextField))
                     .WithDisplayName("OnSubmitted")
@@ -115,6 +115,10 @@ namespace StatCan.OrchardCore.AjaxForms
                 .WithDescription("Basic fields for form input")
             );
             _contentDefinitionManager.AlterPartDefinition("FormInputStyle", p => p
+                .WithTextField("WrapperClass", "WrapperClass", "0", new TextFieldSettings()
+                {
+                    Hint = "(optional) CSS class applied to the wrapper div. 'form-group' by default"
+                })
                 .WithTextField("LabelClass", "LabelClass", "1", new TextFieldSettings()
                 {
                     Hint = "(optional) CSS class applied to the label element. Blank by default"
@@ -122,10 +126,6 @@ namespace StatCan.OrchardCore.AjaxForms
                 .WithTextField("InputClass", "InputClass", "2", new TextFieldSettings()
                 {
                     Hint = "(optional) CSS class applied to the input element. 'form-control' by default"
-                })
-                .WithTextField("WrapperClass", "WrapperClass", "3", new TextFieldSettings()
-                {
-                    Hint = "(optional) CSS class applied to the wrapper div. 'form-group' by default"
                 })
                 .Attachable()
                 .WithDescription("Wrapper, Label and Input class fields for form inputs")

@@ -27,6 +27,7 @@ namespace StatCan.OrchardCore.AjaxForms
             services.AddContentPart<FormButton>();
 
             services.AddScoped<IDataMigration, Migrations>();
+            services.AddScoped<INavigationProvider, AdminMenu>();
         }
          public override void Configure(IApplicationBuilder app, IEndpointRouteBuilder routes, IServiceProvider serviceProvider)
         {
@@ -39,14 +40,6 @@ namespace StatCan.OrchardCore.AjaxForms
         }
     }
 
-    [RequireFeatures("OrchardCore.AdminMenu")]
-    public class MenuStartup: StartupBase
-    {
-        public override void ConfigureServices(IServiceCollection services)
-        {
-            services.AddScoped<INavigationProvider, AdminMenu>();
-        }
-    }
     [RequireFeatures("OrchardCore.Workflows")]
     public class WorkflowsStartup : StartupBase
     {
