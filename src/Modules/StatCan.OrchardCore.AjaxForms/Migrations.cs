@@ -61,7 +61,7 @@ namespace StatCan.OrchardCore.AjaxForms
                 .WithDescription("Script fields for AjaxForm"));
 
             _contentDefinitionManager.AlterTypeDefinition("AjaxForm", type => type
-                .Draftable().Versionable()
+                .Draftable()
                 .WithPart("TitlePart", p => p.WithPosition("0"))
                 .WithPart("AjaxForm", p => p.WithPosition("1"))
                 .WithPart("FlowPart", p => p.WithPosition("2"))

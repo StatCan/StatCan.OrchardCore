@@ -2,7 +2,7 @@
 @model StatCan.OrchardCore.AjaxForms.Workflows.AjaxFormSubmittedEventViewModel
 
 <header>
-  <h4><i class="fa fa-bolt"></i>@Model.Activity.GetTitleOrDefault(() => T["Content Created"])</h4>
+  <h4><i class="fa fa-bolt"></i>@Model.Activity.GetTitleOrDefault(() => T["Ajax Form submitted"])</h4>
 </header>
 <em>
   @if (Model.ExecuteForAllForms == true)

@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json.Linq;
 using OrchardCore.ContentManagement;
 using OrchardCore.DisplayManagement.ModelBinding;
+using OrchardCore.Infrastructure.Html;
 using OrchardCore.Scripting;
 
 namespace OrchardCore.Workflows.Scripting
@@ -21,7 +22,7 @@ namespace OrchardCore.Workflows.Scripting
         {
             _setModelError = new GlobalMethod
             {
-                Name = "setModelError",
+                Name = "addModelError",
                 Method = serviceProvider =>
                     (Func<string, string, bool>)((name, text) =>
                         modelUpdater.ModelState.TryAddModelError(name, text))
@@ -33,7 +34,7 @@ namespace OrchardCore.Workflows.Scripting
                 Method = serviceProvider => (Func<JObject>)(() =>
                 {
                     var httpContextAccessor = serviceProvider.GetRequiredService<IHttpContextAccessor>();
-                    var sanitizer = serviceProvider.GetRequiredService<IHtmlSanitizer>();
+                    var sanitizer = serviceProvider.GetRequiredService<IHtmlSanitizerService>();
                     return new JObject(httpContextAccessor.HttpContext.Request.Form.Select(
                       field =>
                       {

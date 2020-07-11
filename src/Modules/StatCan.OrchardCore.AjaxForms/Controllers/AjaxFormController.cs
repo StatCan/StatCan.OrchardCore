@@ -1,12 +1,15 @@
 using System.Collections.Generic;
+using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
-
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using OrchardCore.ContentManagement;
 using OrchardCore.ContentManagement.Display;
 using OrchardCore.ContentManagement.Metadata;
 using OrchardCore.DisplayManagement.ModelBinding;
+using OrchardCore.Environment.Shell.Descriptor.Models;
 using OrchardCore.Flows.Models;
 using OrchardCore.Scripting;
 using OrchardCore.Workflows.Http;
@@ -35,7 +38,8 @@ namespace StatCan.OrchardCore.AjaxForms.Controllers
             IContentItemDisplayManager contentItemDisplayManager,
             IUpdateModelAccessor updateModelAccessor,
             IScriptingManager scriptingManager,
-            IWorkflowManager workflowManager)
+            IWorkflowManager workflowManager = null
+            )
         {
             _logger = logger;
             _contentManager = contentManager;
@@ -46,7 +50,7 @@ namespace StatCan.OrchardCore.AjaxForms.Controllers
             _workflowManager = workflowManager;
         }
 
-
+        [ValidateAntiForgeryToken]
         [HttpPost]
         public async Task<IActionResult> Submit(string formId)
         {
@@ -97,10 +101,14 @@ namespace StatCan.OrchardCore.AjaxForms.Controllers
                 _scriptingManager.EvaluateJs(script.OnSubmitted.Text, scriptingProvider);
             }
 
-            await _workflowManager.TriggerEventAsync(nameof(AjaxFormSubmittedEvent),
-                input: new { AjaxForm = form },
-                correlationId: form.ContentItemId
-            );
+            // _workflow manager is null if workflow feature is not enabled
+            if (_workflowManager != null)
+            {
+                await _workflowManager.TriggerEventAsync(nameof(AjaxFormSubmittedEvent),
+                    input: new { AjaxForm = form },
+                    correlationId: form.ContentItemId
+                );
+            }
             
 
             // TODO: Change to proper return value
@@ -111,12 +119,17 @@ namespace StatCan.OrchardCore.AjaxForms.Controllers
 
             if (HttpContext.Items.ContainsKey(WorkflowHttpResult.Instance))
             {
-                //if the Workflow or script returned a HttpResult, use it
-                return new EmptyResult();
+                if(HttpContext.Response.StatusCode == 301 || HttpContext.Response.StatusCode == 302)
+                {
+                    var returnValue = new { redirect = WebUtility.UrlDecode(HttpContext.Response.Headers["Location"])};
+                    HttpContext.Response.Clear();
+                    return Json(returnValue);
+                }
             }
+            // we may need to intercept 
 
-            
-            return Accepted();
+
+            return Json(new { error = false });
         }
         private void ValidateWidgets(IEnumerable<ContentItem> widgets)
         {

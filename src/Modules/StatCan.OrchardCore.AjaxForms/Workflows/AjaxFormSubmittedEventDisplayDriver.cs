@@ -19,6 +19,16 @@ namespace StatCan.OrchardCore.AjaxForms.Workflows
         {
             _session = session;
         }
+        protected async override ValueTask EditActivityAsync(AjaxFormSubmittedEvent activity, AjaxFormSubmittedEventViewModel model)
+        {
+            model.ExecuteForAllForms = activity.ExecuteForAllForms;
+            model.AllItems = await GetForms(activity);
+        }
+        protected override void UpdateActivity(AjaxFormSubmittedEventViewModel model, AjaxFormSubmittedEvent activity)
+        {
+            activity.ExecuteForAllForms = model.ExecuteForAllForms;
+            activity.AjaxFormIds = model.SelectedFormIds;
+        }
         public override IDisplayResult Display(AjaxFormSubmittedEvent activity)
         {
             return Combine(
@@ -29,10 +39,17 @@ namespace StatCan.OrchardCore.AjaxForms.Workflows
 
                    var shape = new AjaxFormSubmittedEventViewModel(activity);
                    shape.ExecuteForAllForms = activity.ExecuteForAllForms;
-                   shape.AllItems = forms.Select(f => new SelectListItem(f.DisplayText, f.ContentItemId, activity.AjaxFormIds.Contains(f.ContentItemId))).ToList();
+
+                   shape.AllItems = await GetForms(activity);
                    return shape;
                }).Location("Design", "Content")
            );
+        }
+
+        private async Task<IList<SelectListItem>> GetForms(AjaxFormSubmittedEvent activity)
+        {
+            var forms = await _session.QueryIndex<ContentItemIndex>(q => q.ContentType == "AjaxForm" && q.Latest).ListAsync();
+            return forms.Select(f => new SelectListItem(f.DisplayText, f.ContentItemId, activity.AjaxFormIds.Contains(f.ContentItemId))).ToList();
         }
     }
 }

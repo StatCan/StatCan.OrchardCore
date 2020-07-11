@@ -47,15 +47,20 @@
             dataType: "json",
             success: function (data) {
 
-              // todo: handle error 
-              console.log("Success", data.html);
 
-              $form.replaceWith(data.html);
-              // need to reparse the form
-              initForm(document.getElementById(formId));
+              if (data.error) {
+                // Server side validation can occur, form is re-rendered
+                $form.replaceWith(data.html);
+                // need to reparse the form
+                initForm(document.getElementById(formId));
+                //TODO: focus on first error or validation summary
+              }
+              // if the server sends a redirect, reload the window
+              if (data.redirect) {
+                window.location.href = data.redirect;
+              }
 
-              // todo: handle redirect ?
-
+              //TODO: Handle default success case, maybe show some
 
             },
             error: function (xhr) {

@@ -14,7 +14,7 @@ namespace StatCan.OrchardCore.AjaxForms.Workflows
         public const string InputKey = "AjaxForm";
         private readonly IStringLocalizer S;
 
-        public AjaxFormSubmittedEvent(IStringLocalizer localizer)
+        public AjaxFormSubmittedEvent(IStringLocalizer<AjaxFormSubmittedEvent> localizer)
         {
             S = localizer;
         }
