@@ -1,0 +1,10 @@
+<a href="#" class="dropdown-item d-lg-none d-flex" data-toggle="modal" data-target="#feedback-modal" aria-label="{{ 'Send feedback' | t }}">{{ "Send feedback" | t }}</a>
+<a href="#" class="btn btn-primary is-circle d-lg-flex d-none" data-toggle="modal" data-target="#feedback-modal" aria-label="{{ 'Send feedback' | t }}" title="{{ 'Send feedback' | t }}">
+    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+        viewBox="0 0 18 18" xml:space="preserve" height="16" width="16">
+        <path fill="#fff" d="M16.2,0H1.8C0.81,0,0.01,0.81,0.01,1.8L0,18l3.6-3.6h12.6c0.99,0,1.8-0.81,1.8-1.8V1.8
+        C18,0.81,17.19,0,16.2,0z M9.9,10.8H8.1V9h1.8L9.9,10.8z M9.9,7.2H8.1V3.6h1.8L9.9,7.2z"/>
+    </svg>
+</a>
+
+{{ "ModalFeedback" | shape_new: endpoint: Model.ContentItem.Content.FeedbackMenuItem.FormEndpoint.Text | shape_render }}

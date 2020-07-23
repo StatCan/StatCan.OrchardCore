@@ -1,0 +1,172 @@
+.hero {
+  &.is-fullheight {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      flex-shrink: 0;
+    }
+    .hero-body {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      flex-shrink: 0;
+
+      .btn {
+        &.btn-primary {
+          transition-property: transform, box-shadow;
+          transition-duration: 300ms;
+          transition-timing-function: ease-out;
+          box-shadow: 0 30px 20px rgba(17, 15, 15, 0.25);
+          &:hover {
+            box-shadow: 0 40px 25px rgba(17, 15, 15, 0.25);
+            transform: translateY(-5px);
+          }
+          &:focus {
+            box-shadow: 0 40px 25px rgba(17, 15, 15, 0.25),
+              0 0 0 0.2rem transparentize($primary, 0.5);
+            transform: translateY(-5px);
+          }
+        }
+      }
+
+      .navbar ul li {
+        perspective: 300px;
+      }
+      @include media-breakpoint-up(lg) {
+        .navbar li:first-child > .btn {
+          transform: rotate3d(0, 1, 0, 10deg);
+          &:hover {
+            box-shadow: 0 40px 25px rgba(17, 15, 15, 0.25);
+            transform: rotate3d(0, 1, 0, 10deg) translateY(-5px);
+          }
+          &:focus {
+            box-shadow: 0 40px 25px rgba(17, 15, 15, 0.25),
+              0 0 0 0.2rem transparentize($primary, 0.5);
+            transform: rotate3d(0, 1, 0, 10deg) translateY(-5px);
+          }
+        }
+        .navbar li:last-child > .btn {
+          transform: rotate3d(0, 1, 0, -10deg);
+          &:hover {
+            box-shadow: 0 40px 25px rgba(17, 15, 15, 0.25);
+            transform: rotate3d(0, 1, 0, -10deg) translateY(-5px);
+          }
+          &:focus {
+            box-shadow: 0 40px 25px rgba(17, 15, 15, 0.25),
+              0 0 0 0.2rem transparentize($primary, 0.5);
+            transform: rotate3d(0, 1, 0, -10deg) translateY(-5px);
+          }
+        }
+        .navbar li:first-child:last-child > .btn {
+          transform: rotate3d(0, 0, 0, 0);
+          &:hover {
+            box-shadow: 0 40px 25px rgba(17, 15, 15, 0.25);
+            transform: rotate3d(0, 0, 0, 0) translateY(-5px);
+          }
+          &:focus {
+            box-shadow: 0 40px 25px rgba(17, 15, 15, 0.25),
+              0 0 0 0.2rem transparentize($primary, 0.5);
+            transform: rotate3d(0, 0, 0, 0) translateY(-5px);
+          }
+        }
+        .navbar li:nth-child(2):nth-last-child(2) > .btn {
+          transform: rotate3d(0, 0, 0, 0);
+          &:hover {
+            box-shadow: 0 40px 25px rgba(17, 15, 15, 0.25);
+            transform: rotate3d(0, 0, 0, 0) translateY(-5px);
+          }
+          &:focus {
+            box-shadow: 0 40px 25px rgba(17, 15, 15, 0.25),
+              0 0 0 0.2rem transparentize($primary, 0.5);
+            transform: rotate3d(0, 0, 0, 0) translateY(-5px);
+          }
+        }
+      }
+    }
+    .hero-header {
+      display: flex;
+      height: 6.5rem;
+      justify-content: flex-end;
+      nav {
+        .nav-buttons {
+          position: relative;
+          #hamburger-menu {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+          }
+          ul > *:nth-child(1) {
+            position: absolute;
+            top: calc(11vh);
+            right: 1rem;
+          }
+          ul > *:nth-child(2) {
+            position: absolute;
+            top: calc(0.6rem + 11vh);
+            right: 4.5rem;
+          }
+          ul > *:nth-child(3) {
+            position: absolute;
+            top: calc(1.1rem + 11vh);
+            right: 8rem;
+          }
+          ul > li > .language-toggle {
+            font-weight: 500 !important;
+            @include rfs(19);
+          }
+        }
+      }
+    }
+    .hero-footer {
+      height: 6.5rem;
+      justify-content: center;
+    }
+  }
+  #down-arrow {
+    fill: $secondary;
+  }
+}
+.portal-hud {
+  background: radial-gradient(
+      ellipse at top,
+      $background 70%,
+      transparentize($secondary, 0.8) 71%,
+      transparent 71.5%
+    ),
+    radial-gradient(
+      ellipse at bottom,
+      $background 70%,
+      transparentize($secondary, 0.8) 71%,
+      transparent 71.5%
+    ),
+    radial-gradient(
+      circle at bottom,
+      transparentize($secondary, 0.5) 20%,
+      transparentize($secondary, 0.65) 40%,
+      transparentize($secondary, 0.97) 70%
+    );
+  background-position: center -0.5vh, center bottom -0.5vh, center;
+  background-repeat: no-repeat;
+  background-size: 230vw 5.5rem, 280vw 6.5rem, cover;
+  @include media-breakpoint-up(sm) {
+    background-position: center -3.5vh, center bottom -3vh, center;
+    background-size: 160vw 15vh, 190vw 17.5vh, cover;
+  }
+  @include media-breakpoint-up(md) {
+    background-position: center -3.5vh, center bottom -2.5vh, center;
+    background-size: 130vw 15vh, 145vw 17.5vh, cover;
+  }
+  @include media-breakpoint-up(lg) {
+    background-position: center -6vh, center bottom -5vh, center;
+    background-size: 110vw 15vh, 120vw 17.5vh, cover;
+  }
+  text-align: center;
+  .icon {
+    @include rfs(192);
+  }
+}

@@ -1,0 +1,19 @@
+$primary: #010101;
+$secondary: #454545;
+$background: #fefefe;
+
+$enable-responsive-font-sizes: true;
+
+/*Bootstrap partial that include what we need for bs*/
+@import "bootstrap";
+@import "mixins";
+@import "global";
+@import "fip";
+@import "feedback";
+@import "toast-message";
+@import "login";
+@import "hero";
+@import "modal";
+@import "section";
+@import "section-panel";
+@import "footer";

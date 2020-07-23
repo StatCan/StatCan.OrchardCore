@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="{{ Culture.Name }}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    {% render_section "HeadMeta", required: false %}
+    <title>{% page_title Site.SiteName %}</title>
+    {% link src:"/DigitalTheme/favicon-32x32.png", rel:"icon", sizes:"32x32", type:"image/png" %}
+    {% link src:"/DigitalTheme/favicon-16x16.png", rel:"icon", sizes:"16x16", type:"image/png" %}
+    {% link src:"/apple-touch-icon.png", rel:"apple-touch-icon", sizes:"180x180" %}
+    {% link src:"/favicon-194x194.png", rel:"icon", type:"image/png", sizes:"194x194" %}
+    {% link src:"/android-chrome-192x192.png", rel:"icon", type:"image/png", sizes:"192x192" %}
+    {% link src:"/safari-pinned-tab.svg", rel:"mask-icon", color:"#101010" %}
+
+    {% resources type: "Meta" %}
+
+    <!-- Includes customized Bootstrap CSS -->
+    {% style name:"digitaltheme-stc-bootstrap", version:"1" %}
+
+    <!-- Custom fonts for this template -->
+    {% style name:"font-awesome", version:"5" %}
+    {% style src:"https://fonts.googleapis.com/css2?family=Fira+Sans:wght@200;300;400;500;700;800&display=swap" %}
+
+    {% resources type: "HeadScript" %}
+    {% resources type: "HeadLink" %}
+    {% resources type: "Stylesheet" %}
+
+    {% script name:"jQuery", at:"Foot", version:"3.4.1" %}
+    {% script name:"popper", at:"Foot", version:"1.16.1" %}
+    {% script name:"bootstrap", at:"Foot", version:"4.4.1" %}
+    {% script src:"~/DigitalTheme/Scripts/setCookie.min.js", debug_src:"~/DigitalTheme/Scripts/setCookie.js", at:"Foot" %}
+
+</head>
+<body id="page-top" dir="{{ Culture.Dir }}">
+    <a class="skip-navigation text-center" href="#content">{{ "Skip to main content" | t }}</a>
+    {% render_section "Header", required: false %}
+    <div class="container messages-wrapper">
+        {% render_section "Messages", required: false %}
+    </div>
+    {% render_section "Content" %}
+    {% render_section "Footer", required: false %}
+    {% render_section "Modal", required: false %}
+    {% resources type: "FootScript" %}
+</body>
+</html>

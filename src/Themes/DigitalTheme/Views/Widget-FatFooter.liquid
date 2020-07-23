@@ -1,0 +1,17 @@
+<section id="footer-section">
+  <div class="d-flex justify-content-center">
+    <a href="{{ Model.ContentItem.Content.FatFooter.HubLink.Url }}" class="btn btn-sm btn-primary is-rounded">{{ Model.ContentItem.Content.FatFooter.HubLink.Text }}</a>
+  </div>
+  <div class="text-center pb-5">
+    <div class="powered-by-di">{{ Model.ContentItem.Content.FatFooter.DigitalLink.Text }}</div>
+    <div aria-label="{{ 'Digital Innovation logo' | t }}">
+      {{ "DigitalInnovationLogo" | shape_new | shape_render }}
+    </div>
+  </div>
+  <div class="container pt-5">
+    <div class="fip-footer dark fip">
+      {{ "SymbolStatisticsCanada" | shape_new | shape_render }}
+      {{ "SymbolCanada" | shape_new | shape_render }}
+    </div>
+  </div>  
+</section>
