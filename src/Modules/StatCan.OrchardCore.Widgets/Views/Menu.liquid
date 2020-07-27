@@ -1,0 +1,24 @@
+<nav>
+    <div class="nav-buttons d-lg-block d-none">
+        <ul class="list-unstyled">
+        {% for item in Model.Items %}
+            {{ item | shape_render }}
+        {% endfor %}
+        </ul>
+    </div>
+    <div class="nav-buttons d-lg-none d-flex">
+        <a class="btn btn-primary is-circle" href="#" id="hamburger-menu" aria-label="{{ 'Menu' | t }}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-bars"></i></a>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="hamburger-menu">
+            {% for item in Model.Items %}
+                {{ item | shape_render }}
+            {% endfor %}
+        </div>
+    </div>
+</nav>
+{% comment %} <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav ml-auto">
+        {% for item in Model.Items %}
+        {{ item | shape_render }}
+        {% endfor %}
+    </ul>
+</div> {% endcomment %}
