@@ -1,0 +1,469 @@
+{
+  "steps": [
+    {
+      "name": "ContentDefinition",
+      "ContentTypes": [
+        {
+          "Name": "Section",
+          "DisplayName": "Section",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Listable": true,
+              "Draftable": true,
+              "Versionable": true,
+              "Stereotype": "Widget"
+            },
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "Section",
+              "Name": "Section",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                }
+              }
+            },
+            {
+              "PartName": "TitlePart",
+              "Name": "TitlePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            },
+            {
+              "PartName": "BagPart",
+              "Name": "SectionPanels",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "DisplayName": "Section Panels",
+                  "Description": "Provides a collection behavior for your content item.",
+                  "Position": "2"
+                },
+                "BagPartSettings": {
+                  "ContainedContentTypes": ["SectionPanel"]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "SectionPanel",
+          "DisplayName": "Section Panel",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Stereotype": "Widget"
+            },
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "SectionPanel",
+              "Name": "SectionPanel",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                }
+              }
+            },
+            {
+              "PartName": "TitlePart",
+              "Name": "TitlePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                },
+                "TitlePartSettings": {
+                  "Options": 2,
+                  "Pattern": "{{ ContentItem.Content.SectionPanel.Title.Text | sluggify }}"
+                }
+              }
+            },
+            {
+              "PartName": "BagPart",
+              "Name": "Links",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "DisplayName": "Links",
+                  "Description": "Bag of links.",
+                  "Position": "2"
+                },
+                "BagPartSettings": {
+                  "ContainedContentTypes": ["SectionPanelLink"]
+                }
+              }
+            },
+            {
+              "PartName": "ContentPermissionsPart",
+              "Name": "ContentPermissionsPart",
+              "Settings": {
+                "ContentTypePartSettings": {},
+                "ContentPermissionsPartSettings": {
+                  "DisableRedirect": true
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "SectionPanelLink",
+          "DisplayName": "Section Panel Link",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Stereotype": "Widget"
+            },
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "SectionPanelLink",
+              "Name": "SectionPanelLink",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                }
+              }
+            },
+            {
+              "PartName": "TitlePart",
+              "Name": "TitlePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                },
+                "TitlePartSettings": {
+                  "Options": 2,
+                  "Pattern": "{{ ContentItem.Content.SectionPanelLink.Name.Text }}"
+                }
+              }
+            },
+            {
+              "PartName": "BagPart",
+              "Name": "Actions",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "DisplayName": "Actions",
+                  "Description": "Extra actions related to this item.",
+                  "Position": "2"
+                },
+                "BagPartSettings": {
+                  "ContainedContentTypes": ["LinkMenuItem"]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "SectionPanel",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "TextField",
+              "Name": "Title",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Title",
+                  "Position": "3"
+                },
+                "TextFieldSettings": {
+                  "Required": true
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "Icon",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Icon",
+                  "Editor": "IconPicker",
+                  "Position": "1"
+                },
+                "TextFieldSettings": {
+                  "Required": true
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "Description",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Description",
+                  "Position": "4"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "ListDirection",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "List Direction",
+                  "Editor": "PredefinedGroup",
+                  "Position": "6"
+                },
+                "TextFieldSettings": {},
+                "TextFieldPredefinedListEditorSettings": {
+                  "Options": [
+                    {
+                      "name": "Horizontal",
+                      "value": "is-horizontal-list"
+                    },
+                    {
+                      "name": "Vertical",
+                      "value": "is-vertical-list"
+                    }
+                  ],
+                  "Editor": 1
+                },
+                "TextFieldPredefinedGroupEditorSettings": {
+                  "Options": [
+                    {
+                      "name": "<svg width=\"80\" height=\"60\" viewBox=\"0 0 800 600\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xml:space=\"preserve\" xmlns:serif=\"http://www.serif.com/\" style=\"fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;\">\n    <g transform=\"matrix(1.28652,0,0,1.19424,-5.55908,-2.22669)\">\n        <path d=\"M626.156,26.985C626.156,13.121 615.707,1.865 602.837,1.865L27.64,1.865C14.77,1.865 4.321,13.121 4.321,26.985L4.321,479.156C4.321,493.021 14.77,504.277 27.64,504.277L602.837,504.277C615.707,504.277 626.156,493.021 626.156,479.156L626.156,26.985Z\" style=\"fill:rgb(210,222,240);\"/>\n    </g>\n    <g transform=\"matrix(0.292796,0,0,1.51434,37.0443,56.3379)\">\n        <path d=\"M727.317,94.867C727.317,76.645 650.799,61.85 556.55,61.85L215.015,61.85C120.766,61.85 44.248,76.645 44.248,94.867L44.248,193.92C44.248,212.143 120.766,226.938 215.015,226.938L556.55,226.938C650.799,226.938 727.317,212.143 727.317,193.92L727.317,94.867Z\" style=\"fill:rgb(153,189,227);\"/>\n    </g>\n    <g transform=\"matrix(0.292796,0,0,1.51434,287.044,56.3379)\">\n        <path d=\"M727.317,94.867C727.317,76.645 650.799,61.85 556.55,61.85L215.015,61.85C120.766,61.85 44.248,76.645 44.248,94.867L44.248,193.92C44.248,212.143 120.766,226.938 215.015,226.938L556.55,226.938C650.799,226.938 727.317,212.143 727.317,193.92L727.317,94.867Z\" style=\"fill:rgb(153,189,227);\"/>\n    </g>\n    <g transform=\"matrix(0.292796,0,0,1.51434,537.044,56.3379)\">\n        <path d=\"M727.317,94.867C727.317,76.645 650.799,61.85 556.55,61.85L215.015,61.85C120.766,61.85 44.248,76.645 44.248,94.867L44.248,193.92C44.248,212.143 120.766,226.938 215.015,226.938L556.55,226.938C650.799,226.938 727.317,212.143 727.317,193.92L727.317,94.867Z\" style=\"fill:rgb(153,189,227);\"/>\n    </g>\n</svg>\n",
+                      "value": "is-horizontal-list"
+                    },
+                    {
+                      "name": "<svg width=\"80\" height=\"60\" viewBox=\"0 0 800 600\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xml:space=\"preserve\" xmlns:serif=\"http://www.serif.com/\" style=\"fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;\">\n    <g transform=\"matrix(1.28652,0,0,1.19424,-5.55908,-2.22669)\">\n        <path d=\"M626.156,26.985C626.156,13.121 615.707,1.865 602.837,1.865L27.64,1.865C14.77,1.865 4.321,13.121 4.321,26.985L4.321,479.156C4.321,493.021 14.77,504.277 27.64,504.277L602.837,504.277C615.707,504.277 626.156,493.021 626.156,479.156L626.156,26.985Z\" style=\"fill:rgb(210,222,240);\"/>\n    </g>\n    <g transform=\"matrix(1.02479,0,0,0.805631,4.6552,183.172)\">\n        <path d=\"M727.317,103.122C727.317,80.343 712.779,61.85 694.871,61.85L76.694,61.85C58.787,61.85 44.248,80.343 44.248,103.122L44.248,185.666C44.248,208.444 58.787,226.938 76.694,226.938L694.871,226.938C712.779,226.938 727.317,208.444 727.317,185.666L727.317,103.122Z\" style=\"fill:rgb(153,189,227);\"/>\n    </g>\n    <g transform=\"matrix(1.02479,0,0,0.805631,4.75565,366.172)\">\n        <path d=\"M727.317,103.122C727.317,80.343 712.779,61.85 694.871,61.85L76.694,61.85C58.787,61.85 44.248,80.343 44.248,103.122L44.248,185.666C44.248,208.444 58.787,226.938 76.694,226.938L694.871,226.938C712.779,226.938 727.317,208.444 727.317,185.666L727.317,103.122Z\" style=\"fill:rgb(153,189,227);\"/>\n    </g>\n    <g transform=\"matrix(1.02479,0,0,0.805631,4.6552,0.171783)\">\n        <path d=\"M727.317,103.122C727.317,80.343 712.779,61.85 694.871,61.85L76.694,61.85C58.787,61.85 44.248,80.343 44.248,103.122L44.248,185.666C44.248,208.444 58.787,226.938 76.694,226.938L694.871,226.938C712.779,226.938 727.317,208.444 727.317,185.666L727.317,103.122Z\" style=\"fill:rgb(153,189,227);\"/>\n    </g>\n</svg>\n",
+                      "value": "is-vertical-list"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "FieldName": "MediaField",
+              "Name": "Image",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Image",
+                  "Position": "2"
+                },
+                "MediaFieldSettings": {
+                  "Hint": "The image will override the icon.",
+                  "Multiple": false
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "Size",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Size",
+                  "Editor": "PredefinedList",
+                  "Position": "5"
+                },
+                "TextFieldSettings": {},
+                "TextFieldPredefinedListEditorSettings": {
+                  "Options": [
+                    {
+                      "name": "None (Section Column Layout decides)",
+                      "value": ""
+                    },
+                    {
+                      "name": "4 Columns (1/3 width)",
+                      "value": "col-md-4 col-12"
+                    },
+                    {
+                      "name": "6 Columns (1/2 width)",
+                      "value": "col-md-6 col-12"
+                    },
+                    {
+                      "name": "8 Columns (2/3 width)",
+                      "value": "col-md-8 col-12"
+                    }
+                  ],
+                  "Editor": 1
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "SectionPanelLink",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "TextField",
+              "Name": "Name",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Name",
+                  "Position": "2"
+                },
+                "TextFieldSettings": {
+                  "Required": true
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "Description",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Description",
+                  "Position": "3"
+                },
+                "TextFieldSettings": {
+                  "Required": true
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "Icon",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Icon",
+                  "Editor": "IconPicker",
+                  "Position": "1"
+                },
+                "TextFieldSettings": {}
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "Url",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Url",
+                  "Position": "4"
+                },
+                "TextFieldSettings": {
+                  "Required": true
+                }
+              }
+            },
+            {
+              "FieldName": "MediaField",
+              "Name": "Image",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Image",
+                  "Position": "0"
+                },
+                "MediaFieldSettings": {
+                  "Multiple": false
+                }
+              }
+            },
+            {
+              "FieldName": "BooleanField",
+              "Name": "HeroHighlight",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Hero Highlight",
+                  "Position": "5"
+                },
+                "BooleanFieldSettings": {
+                  "Hint": "Display this link in the hero. The suggested limit of displayed links in the hero is 3.",
+                  "Label": "Display in hero"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "ModalID",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Modal ID",
+                  "Position": "6"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "Section",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "TextField",
+              "Name": "Section",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Section",
+                  "Editor": "PredefinedGroup"
+                },
+                "TextFieldSettings": {},
+                "TextFieldPredefinedGroupEditorSettings": {
+                  "Options": [
+                    {
+                      "name": "<svg width=\"61.44\" height=\"36\" viewBox=\"0 0 1024 600\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xml:space=\"preserve\" xmlns:serif=\"http://www.serif.com/\" style=\"fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;\">\n                <g transform=\"matrix(2.69463,0,0,1.0616,-39.5648,-16.0489)\">\n                    <path d=\"M394.697,72.987C394.697,41.048 384.482,15.118 371.899,15.118L37.481,15.118C24.899,15.118 14.683,41.048 14.683,72.987L14.683,522.431C14.683,554.37 24.899,580.3 37.481,580.3L371.899,580.3C384.482,580.3 394.697,554.37 394.697,522.431L394.697,72.987Z\" fill=\"#D0DEF2\"></path>\n                </g>\n                <g transform=\"matrix(1.64204,0,0,0.920057,175.89,26.091)\">\n                    <path d=\"M394.697,72.987C394.697,41.048 380.168,15.118 362.273,15.118L47.108,15.118C29.212,15.118 14.683,41.048 14.683,72.987L14.683,522.431C14.683,554.37 29.212,580.3 47.108,580.3L362.273,580.3C380.168,580.3 394.697,554.37 394.697,522.431L394.697,72.987Z\" fill=\"#8FBEE7\"></path>\n                </g>\n            </svg>",
+                      "value": "container"
+                    }
+                  ],
+                  "DefaultValue": "container"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "ColumnLayout",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Column Layout",
+                  "Editor": "PredefinedGroup"
+                },
+                "TextFieldSettings": {},
+                "TextFieldPredefinedGroupEditorSettings": {
+                  "Options": [
+                    {
+                      "name": "<svg width=\"48\" height=\"36\" viewBox=\"0 0 800 600\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xml:space=\"preserve\" xmlns:serif=\"http://www.serif.com/\" style=\"fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;\">\n                <g transform=\"matrix(0.999962,0,0,1.0616,-14.6823,-16.0489)\">\n                    <path d=\"M394.697,31.576C394.697,22.492 386.868,15.118 377.224,15.118L32.156,15.118C22.512,15.118 14.683,22.492 14.683,31.576L14.683,563.841C14.683,572.925 22.512,580.3 32.156,580.3L377.224,580.3C386.868,580.3 394.697,572.925 394.697,563.841L394.697,31.576Z\" fill=\"#8FBEE7\"></path>\n                </g>\n                <g transform=\"matrix(0.999962,0,0,1.0616,405.318,-16.0489)\">\n                    <path d=\"M394.697,31.576C394.697,22.492 386.868,15.118 377.224,15.118L32.156,15.118C22.512,15.118 14.683,22.492 14.683,31.576L14.683,563.841C14.683,572.925 22.512,580.3 32.156,580.3L377.224,580.3C386.868,580.3 394.697,572.925 394.697,563.841L394.697,31.576Z\" fill=\"#8FBEE7\"></path>\n                </g>\n            </svg>",
+                      "value": "half-half"
+                    }
+                  ],
+                  "DefaultValue": "half-half"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "JustifyContent",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Justify Content",
+                  "Editor": "PredefinedGroup"
+                },
+                "TextFieldSettings": {},
+                "TextFieldPredefinedGroupEditorSettings": {
+                  "Options": [
+                    {
+                      "name": "<svg width=\"48\" height=\"36\" viewBox=\"0 0 800 600\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xml:space=\"preserve\" xmlns:serif=\"http://www.serif.com/\" style=\"fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;\">\n                <g transform=\"matrix(2.10518,0,0,1.0616,-30.91,-16.0489)\">\n                    <path d=\"M394.697,43.377C394.697,27.78 388.312,15.118 380.447,15.118L28.933,15.118C21.068,15.118 14.683,27.78 14.683,43.377L14.683,552.041C14.683,567.638 21.068,580.3 28.933,580.3L380.447,580.3C388.312,580.3 394.697,567.638 394.697,552.041L394.697,43.377Z\" fill=\"#D0DEF2\"></path>\n                </g>\n                <g transform=\"matrix(0.578925,0,0,0.973137,404,10.2885)\">\n                    <path d=\"M394.697,37.725C394.697,25.248 377.669,15.118 356.696,15.118L52.684,15.118C31.711,15.118 14.683,25.248 14.683,37.725L14.683,557.693C14.683,570.17 31.711,580.3 52.684,580.3L356.696,580.3C377.669,580.3 394.697,570.17 394.697,557.693L394.697,37.725Z\" fill=\"#8FBEE7\"></path>\n                </g>\n                <g transform=\"matrix(0.578925,0,0,0.973137,159,10.2885)\">\n                    <path d=\"M394.697,37.725C394.697,25.248 377.669,15.118 356.696,15.118L52.684,15.118C31.711,15.118 14.683,25.248 14.683,37.725L14.683,557.693C14.683,570.17 31.711,580.3 52.684,580.3L356.696,580.3C377.669,580.3 394.697,570.17 394.697,557.693L394.697,37.725Z\" fill=\"#8FBEE7\"></path>\n                </g>\n            </svg>",
+                      "value": "justify-content-center"
+                    }
+                  ],
+                  "DefaultValue": "justify-content-center"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "TitleLayout",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Title Layout",
+                  "Editor": "PredefinedGroup"
+                },
+                "TextFieldSettings": {},
+                "TextFieldPredefinedGroupEditorSettings": {
+                  "Options": [
+                    {
+                      "name": "<i class=\"fas fa-eye-slash\"></i>",
+                      "value": "d-none"
+                    }
+                  ],
+                  "DefaultValue": "d-none"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
