@@ -7,7 +7,7 @@ This repository houses a collection of custom Orchard Core resources, modules an
 
 ### How to Contribute
 
-* Report a bug, share new ideas for a new feature, or ask a questions [Create a new issue](https://github.com/StatCan/StatCan.OrchardCore/issues/new)
+* Report a bug, share new ideas for a new feature, or ask a question by [creating a new issue](https://github.com/StatCan/StatCan.OrchardCore/issues/new)
 * Help with documentation or code? Create a Pull Request
 
 ### Security
