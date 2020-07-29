@@ -1,0 +1,40 @@
+site_name: StatCan Orchard Core Documentation
+site_url: https://digital-innovation.pages.cloud.statcan.ca/docs/developers
+repo_url: https://github.com/statcan/statcan.orchardcore
+repo_name: StatCan/StatCan.OrchardCore
+docs_dir: '../docs/en'
+
+theme:
+    name: "material"
+    lanaguge: en
+    features:
+        - tabs
+    palette:
+        primary: deep purple
+# Page tree
+nav:
+    - Home: index.md
+    - Development: 
+        - Getting Started: development/getting-started.md
+        - Module Development: 
+             - Localization: development/localization.md
+             - Committing: development/committing.md
+    - Reference: 
+        - Modules:
+             - ContentFields: reference/modules/ContentFields.md
+             - ContentPermissions: reference/modules/ContentPermissions.md
+             - DisplayHelpers: reference/modules/DisplayHelpers.md
+             - GCCollab: reference/modules/GCCollab.md
+             - GitHub: reference/modules/GitHub.md
+             - LocalizedText: reference/modules/LocalizedText.md
+             - Matomo: reference/modules/Matomo.md
+             - Scripting: reference/modules/Scripting.md
+             - Workflows: reference/modules/Workflows.md
+        - Themes:
+             - DigitalAdmin: reference/themes/DigitalAdmin.md
+             - PortalTheme: reference/themes/PortalTheme.md
+    - Support:
+        - Contact: contact.md
+
+copyright: 'Copyright &copy Her Majesty the Queen in Right of Canada, as represented by the Minister of Statistics Canada, 2020'
+
