@@ -9,11 +9,12 @@ using OrchardCore.Data.Migration;
 
 namespace StatCan.OrchardCore.Widgets
 {
-    public class StatCanWidgetsStartup : StartupBase
+    [Feature(Constants.Features.Section)]
+    public class SectionStartup : StartupBase
     {
         public override void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<IDataMigration, WidgetsMigrations>();
+            services.AddScoped<IDataMigration, SectionMigration>();
         }
     }
 }
