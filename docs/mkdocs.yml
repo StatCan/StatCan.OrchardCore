@@ -1,5 +1,5 @@
 site_name: StatCan Orchard Core Documentation
-site_url: https://digital-innovation.pages.cloud.statcan.ca/docs/developers
+site_url: https://statcan.github.io/statcan.orchardcore
 repo_url: https://github.com/statcan/statcan.orchardcore
 repo_name: StatCan/StatCan.OrchardCore
 docs_dir: '../docs/en'
