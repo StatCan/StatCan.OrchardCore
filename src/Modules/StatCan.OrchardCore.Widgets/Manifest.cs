@@ -12,11 +12,11 @@ using StatCan.OrchardCore.Widgets;
     Id = Constants.Features.Widgets,
     Name = "StatCan Widgets",
     Description = "A collection of common website Widgets",
+    Category = "Widget",
     Dependencies = new[]
     {
         "OrchardCore.Liquid",
-    },
-    Category = "Widget"
+    }
 )]
 
 [assembly: Feature(
@@ -24,7 +24,9 @@ using StatCan.OrchardCore.Widgets;
     Name = "Page",
     Description = "A container for Heroes and Sections widgets.",
     Category = "Widget",
-    Dependencies = new[] { Constants.Features.Widgets }
+    Dependencies = new[] {
+        Constants.Features.Widgets
+    }
 )]
 
 [assembly: Feature(
@@ -32,7 +34,9 @@ using StatCan.OrchardCore.Widgets;
     Name = "Hero",
     Description = "A hero section",
     Category = "Widget",
-    Dependencies = new[] { Constants.Features.Widgets }
+    Dependencies = new[] {
+        Constants.Features.Widgets
+    }
 )]
 
 [assembly: Feature(
@@ -40,7 +44,9 @@ using StatCan.OrchardCore.Widgets;
     Name = "Section",
     Description = "Layout widgets to build a website",
     Category = "Widget",
-    Dependencies = new[] { Constants.Features.Widgets }
+    Dependencies = new[] {
+        Constants.Features.Widgets
+    }
 )]
 
 [assembly: Feature(
@@ -48,5 +54,7 @@ using StatCan.OrchardCore.Widgets;
     Name = "Fat Footer",
     Description = "A footer widget that ties into the nav menu",
     Category = "Widget",
-    Dependencies = new[] { Constants.Features.Widgets }
+    Dependencies = new[] {
+        Constants.Features.Widgets
+    }
 )]
