@@ -10,6 +10,6 @@
     <text>@T["All Forms"]</text> }
   else
   { 
-    @(Model.AllItems.Any() ? (object)string.Join(", ", Model.AllItems.Select(x => x.Text)): "")
+    @(Model.AllItems.Any() ? (object)string.Join(", ", Model.AllItems.Where(i=>i.Selected == true).Select(x => x.Text)): "")
   }
 </em>

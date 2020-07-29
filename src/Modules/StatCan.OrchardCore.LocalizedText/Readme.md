@@ -127,3 +127,7 @@ Output
 
 <span>Some English Value</span>
 ```
+
+## Scripting
+
+You can get 

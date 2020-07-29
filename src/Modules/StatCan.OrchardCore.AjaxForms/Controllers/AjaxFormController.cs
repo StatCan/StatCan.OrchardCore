@@ -93,7 +93,7 @@ namespace StatCan.OrchardCore.AjaxForms.Controllers
             {
                 var model = await _contentItemDisplayManager.BuildDisplayAsync(form, modelUpdater);
                 var formHtml = await this.RenderViewAsync("Display", model, true);
-                return Json(new { error = true, html = formHtml });
+                return Json(new { validationError = true, html = formHtml });
             }
 
             if (!string.IsNullOrEmpty(script?.OnSubmitted?.Text))
@@ -117,18 +117,14 @@ namespace StatCan.OrchardCore.AjaxForms.Controllers
             // Will also need to handle the _notifier (custom messages)
             // The messages are lost after the first request as those are stored in a cookie for the next request
 
-            if (HttpContext.Items.ContainsKey(WorkflowHttpResult.Instance))
+            // 302 are equivalent to 301 in this case. No permanent redirect 
+            if(HttpContext.Response.StatusCode == 301 || HttpContext.Response.StatusCode == 302)
             {
-                if(HttpContext.Response.StatusCode == 301 || HttpContext.Response.StatusCode == 302)
-                {
-                    var returnValue = new { redirect = WebUtility.UrlDecode(HttpContext.Response.Headers["Location"])};
-                    HttpContext.Response.Clear();
-                    return Json(returnValue);
-                }
+                var returnValue = new { redirect = WebUtility.UrlDecode(HttpContext.Response.Headers["Location"])};
+                HttpContext.Response.Clear();
+                return Json(returnValue);
             }
-            // we may need to intercept 
-
-
+            // we may need to send a success message
             return Json(new { error = false });
         }
         private void ValidateWidgets(IEnumerable<ContentItem> widgets)

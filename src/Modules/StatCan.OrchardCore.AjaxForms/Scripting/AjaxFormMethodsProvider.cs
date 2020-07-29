@@ -35,6 +35,7 @@ namespace OrchardCore.Workflows.Scripting
                 {
                     var httpContextAccessor = serviceProvider.GetRequiredService<IHttpContextAccessor>();
                     var sanitizer = serviceProvider.GetRequiredService<IHtmlSanitizerService>();
+
                     return new JObject(httpContextAccessor.HttpContext.Request.Form.Select(
                       field =>
                       {

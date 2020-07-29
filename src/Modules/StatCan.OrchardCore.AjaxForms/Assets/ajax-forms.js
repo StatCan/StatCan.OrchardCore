@@ -3,9 +3,11 @@
 
   // set valid / error classes for the input to be bs4 classes
   var settings = {
-    validClass: "is-valid",
-    errorClass: "is-invalid"
-
+    //validClass: "is-valid", //This is disabled, we do not want to highlight valid inputs.
+    errorClass: "is-invalid",
+    onkeyup: false,
+    onfocusout: false,
+    onclick: false
   };
   $.validator.setDefaults(settings);
   $.validator.unobtrusive.options = settings;
@@ -48,7 +50,7 @@
             success: function (data) {
 
 
-              if (data.error) {
+              if (data.validationError) {
                 // Server side validation can occur, form is re-rendered
                 $form.replaceWith(data.html);
                 // need to reparse the form

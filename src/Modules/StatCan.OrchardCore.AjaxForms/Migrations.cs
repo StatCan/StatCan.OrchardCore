@@ -26,35 +26,37 @@ namespace StatCan.OrchardCore.AjaxForms
                         Hint = "The form accepts submissions if is enabled"
                     }
                 )
-                //.WithBooleanField("TriggerWorkflow", "Trigger workflow", "2",
-                //    new BooleanFieldSettings()
-                //    {
-                //        Hint = "Successfull validation will trigger the FormSubmitted workflow event"
-                //    }
-                //)
+                .WithTextField("SuccessMessage", "Success Message", "2", new TextFieldSettings()
+                {
+                    Hint = "(optional) The message returned to the client if validation passed and no redirect has been set. With liquid support."
+                })
+                .WithTextField("ErrorMessage", "Error Message", "3", new TextFieldSettings()
+                {
+                    Hint = "(optional) The message to display if a server error occured in the ajax request. With liquid support."
+                })
                 .Attachable()
                 .WithDescription("Turns your content items into an ajax form."));
 
             _contentDefinitionManager.AlterPartDefinition("AjaxFormScripts", part => part
-                .WithField("OnValidation", f => f
-                    .OfType(nameof(TextField))
-                    .WithDisplayName("OnValidation")
-                    .WithSettings(new TextFieldSettings() { Hint = "(Optional)Script that runs server side to validate your form"})
-                    .WithPosition("1")
-                    .WithEditor("CodeMirrorJS")
-                )
                 //.WithField("OnChange", f => f
                 //    .OfType(nameof(TextField))
                 //    .WithDisplayName("OnChange")
                 //    .WithSettings(new TextFieldSettings() { Hint = "(Optional)Script that runs client side when fields change" })
-                //    .WithPosition("2")
+                //    .WithPosition("0")
                 //    .WithEditor("CodeMirrorJS")
                 //)
-                 .WithField("OnSubmitted", f => f
+                .WithField("OnValidation", f => f
+                    .OfType(nameof(TextField))
+                    .WithDisplayName("OnValidation")
+                    .WithSettings(new TextFieldSettings() { Hint = "(Optional) Script that runs server side to validate your form"})
+                    .WithPosition("1")
+                    .WithEditor("CodeMirrorJS")
+                )
+                .WithField("OnSubmitted", f => f
                     .OfType(nameof(TextField))
                     .WithDisplayName("OnSubmitted")
-                    .WithSettings(new TextFieldSettings() { Hint = "(Optional)Script that runs server side after when the form is valid, before the workflow." })
-                    .WithPosition("3")
+                    .WithSettings(new TextFieldSettings() { Hint = "(Optional) Script that runs server side after when the form is valid, before the workflow event is triggerred." })
+                    .WithPosition("2")
                     .WithEditor("CodeMirrorJS")
                 )
                 .Attachable()
@@ -101,11 +103,11 @@ namespace StatCan.OrchardCore.AjaxForms
                 .WithTextField("Label", "Label", "2", new TextFieldSettings()
                 {
                     Required = true,
-                    Hint = "(required) Input label"
+                    Hint = "(required) Input label. With liquid support."
                 })
                 .WithTextField("Placeholder", "Placeholder", "3", new TextFieldSettings()
                 {
-                    Hint = "(optional) Input placeholder"
+                    Hint = "(optional) Input placeholder. With liquid support."
                 })
                 .WithTextField("HelpText", "Help Text", "4", new TextFieldSettings()
                 {
@@ -131,18 +133,18 @@ namespace StatCan.OrchardCore.AjaxForms
                 .WithDescription("Wrapper, Label and Input class fields for form inputs")
             );
             _contentDefinitionManager.AlterPartDefinition("FormRequiredValidation", p => p
-                .WithBooleanField("Required", "Required", "1",
+                .WithBooleanField("Required", "Required", "0",
                     new BooleanFieldSettings()
                     {
                         Hint = "Is this input required?"
                     }
                 )
-                .WithTextField("RequiredText", "Required Error Message", "2", new TextFieldSettings()
+                .WithTextField("RequiredText", "Required Error Message", "1", new TextFieldSettings()
                 {
-                    Hint = "(optional) Message displayed when the input is required and is not filled"
+                    Hint = "(optional) Message displayed when the input is required and is not filled. With liquid support. With liquid support."
                 })
                 .Attachable()
-                .WithDescription("Required validation boolean box")
+                .WithDescription("AjaxForm, required validation fields")
             );
             _contentDefinitionManager.AlterTypeDefinition("FormInput", type => type
                .WithPart(nameof(TitlePart), p => p
@@ -180,7 +182,7 @@ namespace StatCan.OrchardCore.AjaxForms
                 .WithTextField("Label", "Label", "2", new TextFieldSettings()
                 {
                     Required = true,
-                    Hint = "(required) Button text"
+                    Hint = "(required) Button text. With liquid support."
                 })
                 .WithTextField("CssClass", "Css Class", "3", new TextFieldSettings()
                 {

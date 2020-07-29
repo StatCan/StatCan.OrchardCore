@@ -12,41 +12,11 @@ namespace StatCan.OrchardCore.Scripting
 {
     public class GlobalMethodsProvider : IGlobalMethodProvider
     {
-        private readonly GlobalMethod _formAsJsonObject;
-        private readonly GlobalMethod _formFieldAsJsonObject;
         private readonly GlobalMethod _contentByLocalizationSet;
         private readonly GlobalMethod _contentByItemId;
 
         public GlobalMethodsProvider(IHttpContextAccessor httpContextAccessor)
         {
-            _formAsJsonObject = new GlobalMethod
-            {
-                Name = "requestFormAsJsonObject",
-                Method = serviceProvider => (Func<JObject>)(() =>
-                    new JObject(httpContextAccessor.HttpContext.Request.Form.Select(
-                      field =>
-                      {
-                          var arr = field.Value.ToArray();
-                          if (arr.Length == 1)
-                          {
-                              return new JProperty(field.Key, field.Value[0]);
-                          }
-                          return new JProperty(field.Key, JArray.FromObject(arr));
-                      }
-                    ).ToArray())
-                  )
-
-            };
-            _formFieldAsJsonObject = new GlobalMethod
-            {
-                Name = "requestFormFieldAsJsonObject",
-                Method = serviceProvider => (Func<string,JObject>)((fieldName) => {
-                    var obj = JObject.Parse(httpContextAccessor.HttpContext.Request.Form.FirstOrDefault(f => f.Key.Equals(fieldName)).Value);
-                    return obj;
-                    }
-                  )
-
-            };
             _contentByLocalizationSet = new GlobalMethod
             {
                 Name = "contentByLocalizationSet",
@@ -71,7 +41,7 @@ namespace StatCan.OrchardCore.Scripting
 
         public IEnumerable<GlobalMethod> GetMethods()
         {
-            return new[] { _formAsJsonObject, _formFieldAsJsonObject, _contentByLocalizationSet, _contentByItemId };
+            return new[] { _contentByLocalizationSet, _contentByItemId };
         }
     }
 }
