@@ -3,7 +3,7 @@
 This repository houses a collection of custom Orchard Core resources, modules and themes that support various web applications and software-as-a-service (SaaS) products. Built on top of [Orchard Core CMS](https://orchardcore.readthedocs.io/en/dev), developers have a suite of web application features out of the box (e.g. content management, authentication, forms, themes etc) by customizing the selection and configuration of components. Extensibility of the framework allow new features and components to be added easily.
 
 ### Documentation
-* See https://statcan.github.io/statcan.orchardcore
+* See https://statcan.github.io/StatCan.OrchardCore/
 
 ### How to Contribute
 
