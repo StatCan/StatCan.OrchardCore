@@ -61,7 +61,7 @@ In linux, this file is located `~/.nuget/NuGet/NuGet.Config`
 
 - Omnisharp (C#)
 - Liquid Language Support
-- Bracked pair colorizer
+- Bracket pair colorizer
 - vscode-icons
 - GitLens
 - EditorConfig
@@ -125,7 +125,7 @@ Don't forget to restart your powershell session to load the changes.
 
 ## Quickstart 
 
-- Run this ese commands in powershell:
+- Run these commands in powershell:
   - From anywhere `ir` if you have the above powershell setup or
   - From the root of the project `dotnet run --project src/Inno.Web/Inno.Web.csproj` if you don't
 - Visit [https://localhost:5001](https://localhost:5001) for Orchard dev site
@@ -156,7 +156,7 @@ Supported types: SaSS, ts, js, and Less.
 
 The framework used to test the innovation website is Cypress.
 
-Note: Running the tests assume a clean environment and may fail if you run them on an existing instance.
+Note: The tests assume a clean environment and may fail if you run them on an existing instance.
 
 To run tests:
 
@@ -165,7 +165,7 @@ To run tests:
 
 ## Debugging
 
-We include a vscode `launch.json` / `tasks.json` files to help debug your code.
+We include `launch.json` / `tasks.json` files to help debug your code.
 
 To launch the site with debugging, open the Debug (ctrl+shift+D) vscode window.
 Select the .NET Core Launch(web) if the project is not running, or
