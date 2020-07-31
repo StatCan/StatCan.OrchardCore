@@ -1,6 +1,6 @@
 <nav>
     <div class="nav-buttons d-lg-block d-none">
-        <ul class="list-unstyled">
+        <ul class="list-unstyled d-flex align-items-center">
         {% for item in Model.Items %}
             {{ item | shape_render }}
         {% endfor %}

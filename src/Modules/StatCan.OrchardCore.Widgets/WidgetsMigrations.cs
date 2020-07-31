@@ -4,6 +4,22 @@ using OrchardCore.Recipes.Services;
 
 namespace StatCan.OrchardCore.Widgets
 {
+    public class FatFooterMigration : DataMigration
+    {
+        private readonly IRecipeMigrator _recipeMigrator;
+
+
+        public FatFooterMigration(IRecipeMigrator recipeMigrator)
+        {
+            _recipeMigrator = recipeMigrator;
+        }
+
+        public async Task<int> CreateAsync()
+        {
+            await _recipeMigrator.ExecuteAsync("FatFooter.recipe.json", this);
+            return 1;
+        }
+    }
     public class HeroMigration : DataMigration
     {
         private readonly IRecipeMigrator _recipeMigrator;

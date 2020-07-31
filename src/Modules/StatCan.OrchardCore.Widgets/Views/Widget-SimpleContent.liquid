@@ -1,0 +1,7 @@
+<div class="row justify-content-center">
+  <div class="col-9">
+    <h2>{{ Model.ContentItem | display_text }}</h2>
+    {{ Model.ContentItem.Content.SimpleContent.Content.Html | sanitize | raw }}
+    <a class="btn btn-primary" href="{{ Model.ContentItem.Content.SimpleContent.Link.Url }}">{{ Model.ContentItem.Content.SimpleContent.Link.Text }}</a>
+  </div>
+</div>

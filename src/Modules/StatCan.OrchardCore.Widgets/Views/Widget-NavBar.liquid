@@ -1,0 +1,6 @@
+<nav class="navbar">
+    <div class="container">
+        <img id="hero-right" src="{{ Model.ContentItem.Content.NavBar.Logo.Paths | asset_url | resize_url: height: 160, width: 160, mode: 'stretch' }}" style="height: 3.5rem; margin-left: 8rem; margin-bottom: 1rem;" />
+        {% shape "menu", alias: "alias:main-menu" %}
+    </div>
+</nav>

@@ -18,13 +18,3 @@ using StatCan.OrchardCore.Widgets;
         "OrchardCore.Liquid",
     }
 )]
-
-[assembly: Feature(
-    Id = Constants.Features.PageLayout,
-    Name = "Page",
-    Description = "A container for Heroes and Sections widgets.",
-    Category = "Widget",
-    Dependencies = new[] {
-        Constants.Features.Widgets
-    }
-)]

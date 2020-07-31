@@ -9,10 +9,10 @@ namespace StatCan.OrchardCore.Widgets
     {
         public override void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<IDataMigration, PageMigration>();
+            services.AddScoped<IDataMigration, FatFooterMigration>();
             services.AddScoped<IDataMigration, HeroMigration>();
+            services.AddScoped<IDataMigration, PageMigration>();
             services.AddScoped<IDataMigration, SectionMigration>();
-
         }
     }
 }
