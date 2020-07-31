@@ -20,39 +20,9 @@ using StatCan.OrchardCore.Widgets;
 )]
 
 [assembly: Feature(
-    Id = Constants.Features.Page,
+    Id = Constants.Features.PageLayout,
     Name = "Page",
     Description = "A container for Heroes and Sections widgets.",
-    Category = "Widget",
-    Dependencies = new[] {
-        Constants.Features.Widgets
-    }
-)]
-
-[assembly: Feature(
-    Id = Constants.Features.Hero,
-    Name = "Hero",
-    Description = "A hero section",
-    Category = "Widget",
-    Dependencies = new[] {
-        Constants.Features.Widgets
-    }
-)]
-
-[assembly: Feature(
-    Id = Constants.Features.Section,
-    Name = "Section",
-    Description = "Layout widgets to build a website",
-    Category = "Widget",
-    Dependencies = new[] {
-        Constants.Features.Widgets
-    }
-)]
-
-[assembly: Feature(
-    Id = Constants.Features.FatFooter,
-    Name = "Fat Footer",
-    Description = "A footer widget that ties into the nav menu",
     Category = "Widget",
     Dependencies = new[] {
         Constants.Features.Widgets

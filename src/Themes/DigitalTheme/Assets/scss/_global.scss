@@ -4,7 +4,7 @@ html {
 
 body {
   background-color: $background;
-  color: $white;
+  color: $black;
   display: flex;
   flex: 1 1 auto;
   flex-direction: column;
@@ -66,6 +66,8 @@ label {
 }
 
 .btn {
+  border: none;
+  border-radius: 0;
   &.is-circle {
     align-items: center;
     border-radius: 1.3rem;
@@ -81,7 +83,6 @@ label {
 .btn-primary:hover {
   color: #fff;
   background-color: #a81723;
-  border-color: #be1828;
 }
 
 .btn-sm {

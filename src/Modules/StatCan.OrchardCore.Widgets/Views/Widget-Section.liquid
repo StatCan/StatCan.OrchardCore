@@ -2,8 +2,10 @@
   <div class="{{ Model.ContentItem.Content.Section.Section.Text | default: 'd-none' }}">
     <h2 class="{{ Model.ContentItem.Content.Section.TitleLayout.Text }}">{{ Model.ContentItem | display_text }}</h2>
     <div class="row {{ Model.ContentItem.Content.Section.ColumnLayout.Text }} {{ Model.ContentItem.Content.Section.JustifyContent.Text }}">
-      {% for item in Model.ContentItem.Content.SectionPanels.ContentItems %}
-      {{ item | shape_build_display | shape_render }}
+      {% for item in Model.ContentItem.Content.FlowPart.Widgets %}
+        <div class="column">
+        {{ item | shape_build_display | shape_render }}
+        </div>
       {% endfor %}
     </div>
   </div>
