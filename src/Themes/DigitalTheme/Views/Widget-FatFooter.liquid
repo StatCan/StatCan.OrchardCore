@@ -1,15 +1,13 @@
 <section id="footer-section">
   <div class="container pt-5">
-    <div class="d-flex">
-      <div class="w-75">
+    <div class="row pb-5">
+      <div class="col-md-8 col-12 d-flex justify-content-center">
         {% shape "menu", alias: "alias:footer-navigation" %}
       </div>
-      <div class="w-25">
-        <div class="text-center pb-5">
+      <div class="col-md-4 col-12 d-flex align-items-end">
+        <div aria-label="{{ 'Digital Innovation logo' | t }}" class="d-flex align-items-center">
+          {{ "DigitalInnovationLogo" | shape_new | shape_render }}
           <div class="powered-by-di">{{ Model.ContentItem.Content.FatFooter.DigitalLink.Text }}</div>
-          <div aria-label="{{ 'Digital Innovation logo' | t }}">
-            {{ "DigitalInnovationLogo" | shape_new | shape_render }}
-          </div>
         </div>
       </div>
     </div>

@@ -5,3 +5,10 @@
   background-repeat: no-repeat;
   height: 7rem;
 }
+
+.di-logo {
+  fill: $black;
+  &.dark {
+    fill: $white;
+  }
+}
