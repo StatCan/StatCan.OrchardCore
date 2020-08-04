@@ -1,0 +1,16 @@
+<li class="{% if Model.HasItems %}w-25{% endif %}">
+    {% shape_clear_alternates Model %}
+    {% shape_type Model "MenuItemLink" %}
+    {% if Model.HasItems %}
+        <h3>
+            {{ Model.ContentItem.Content.LinkMenuItemPart.Name }}
+        </h3>
+        <ul class="list-unstyled">
+            {% for item in Model.Items %}
+                {{ item | shape_render }}
+            {% endfor %}
+        </ul>
+    {% else %}
+        {{ Model | shape_render }}
+    {% endif %}
+</li>

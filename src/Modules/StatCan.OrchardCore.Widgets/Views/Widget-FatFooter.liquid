@@ -1,8 +1,14 @@
 <section id="footer-section">
-  <div class="text-center pb-5">
-    <div class="powered-by-di">{{ Model.ContentItem.Content.FatFooter.DigitalLink.Text }}</div>
-    <div aria-label="{{ 'Digital Innovation logo' | t }}">
-      {{ "DigitalInnovationLogo" | shape_new | shape_render }}
+  
+  <div class="row">
+    <div class="col-8">
+      {% shape "menu", alias: "alias:main-menu" %}
+    </div>
+    <div class="text-center pb-5">
+      <div class="powered-by-di">{{ Model.ContentItem.Content.FatFooter.DigitalLink.Text }}</div>
+      <div aria-label="{{ 'Digital Innovation logo' | t }}">
+        {{ "DigitalInnovationLogo" | shape_new | shape_render }}
+      </div>
     </div>
   </div>
   <div class="container pt-5">

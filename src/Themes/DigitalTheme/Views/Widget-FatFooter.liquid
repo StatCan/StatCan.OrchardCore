@@ -1,14 +1,21 @@
 <section id="footer-section">
-  <div class="text-center pb-5">
-    <div class="powered-by-di">{{ Model.ContentItem.Content.FatFooter.DigitalLink.Text }}</div>
-    <div aria-label="{{ 'Digital Innovation logo' | t }}">
-      {{ "DigitalInnovationLogo" | shape_new | shape_render }}
-    </div>
-  </div>
   <div class="container pt-5">
-    <div class="fip-footer light mono fip">
+    <div class="d-flex">
+      <div class="w-75">
+        {% shape "menu", alias: "alias:footer-navigation" %}
+      </div>
+      <div class="w-25">
+        <div class="text-center pb-5">
+          <div class="powered-by-di">{{ Model.ContentItem.Content.FatFooter.DigitalLink.Text }}</div>
+          <div aria-label="{{ 'Digital Innovation logo' | t }}">
+            {{ "DigitalInnovationLogo" | shape_new | shape_render }}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="light mono fip">
       {{ "SymbolStatisticsCanada" | shape_new | shape_render }}
       {{ "SymbolCanada" | shape_new | shape_render }}
     </div>
-  </div>  
+  </div>
 </section>
