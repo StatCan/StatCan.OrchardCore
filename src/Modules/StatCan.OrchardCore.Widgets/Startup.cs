@@ -15,4 +15,13 @@ namespace StatCan.OrchardCore.Widgets
             services.AddScoped<IDataMigration, SectionMigration>();
         }
     }
+
+    [Feature(Constants.Features.MenuItemParts)]
+    public class MenuItemPartsStartup : StartupBase
+    {
+        public override void ConfigureServices(IServiceCollection services)
+        {
+            services.AddScoped<IDataMigration, MenuItemPartsMigration>();
+        }
+    }
 }

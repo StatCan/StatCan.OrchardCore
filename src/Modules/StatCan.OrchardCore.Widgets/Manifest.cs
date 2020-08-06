@@ -18,3 +18,14 @@ using StatCan.OrchardCore.Widgets;
         "OrchardCore.Liquid",
     }
 )]
+
+[assembly: Feature(
+    Id = Constants.Features.MenuItemParts,
+    Name = "StatCan MenuParts",
+    Description = "A collection of common menu item parts",
+    Category = "MenuItemPart",
+    Dependencies = new[]
+    {
+        "OrchardCore.Liquid",
+    }
+)]

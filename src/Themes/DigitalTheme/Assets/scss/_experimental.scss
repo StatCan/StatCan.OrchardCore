@@ -1,9 +1,18 @@
 .navbar {
   background-image: url("../images/NavBarBG.svg");
-  background-position: center;
+  background-position: right center;
   background-size: cover;
   background-repeat: no-repeat;
   height: 7rem;
+  @include media-breakpoint-up(md) {
+    background-position: left -25rem center;
+  }
+  @include media-breakpoint-up(lg) {
+    background-position: right center;
+  }
+  @include media-breakpoint-up(xl) {
+    background-position: center;
+  }
 }
 
 .di-logo {

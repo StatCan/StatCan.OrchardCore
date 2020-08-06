@@ -68,4 +68,21 @@ namespace StatCan.OrchardCore.Widgets
             return 1;
         }
     }
+
+    public class MenuItemPartsMigration : DataMigration
+    {
+        private readonly IRecipeMigrator _recipeMigrator;
+
+
+        public MenuItemPartsMigration(IRecipeMigrator recipeMigrator)
+        {
+            _recipeMigrator = recipeMigrator;
+        }
+
+        public async Task<int> CreateAsync()
+        {
+            await _recipeMigrator.ExecuteAsync("MenuItemParts.recipe.json", this);
+            return 1;
+        }
+    }
 }
