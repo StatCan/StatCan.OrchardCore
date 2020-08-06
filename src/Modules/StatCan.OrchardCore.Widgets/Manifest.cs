@@ -9,10 +9,21 @@ using StatCan.OrchardCore.Widgets;
 )]
 
 [assembly: Feature(
-    Id = Constants.Features.Widgets,
-    Name = "StatCan Widgets",
-    Description = "A collection of common website Widgets",
+    Id = Constants.Features.PageLayout,
+    Name = "StatCan Page Layout",
+    Description = "A collection of common website layout components",
     Category = "Widget",
+    Dependencies = new[]
+    {
+        "OrchardCore.Liquid",
+    }
+)]
+
+[assembly: Feature(
+    Id = Constants.Features.ContentLayout,
+    Name = "StatCan Content Layout",
+    Description = "A collection of common content layout components",
+    Category = "MenuItemPart",
     Dependencies = new[]
     {
         "OrchardCore.Liquid",

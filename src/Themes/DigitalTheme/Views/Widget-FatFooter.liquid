@@ -1,10 +1,7 @@
 <section id="footer-section">
   <div class="container py-3">
     <div class="row pb-5">
-      <div class="col-md-8 col-12 d-flex justify-content-center">
-        {% shape "menu", alias: "alias:footer-navigation" %}
-      </div>
-      <div class="col-md-4 col-12 d-flex align-items-end">
+      <div class="col-12 d-flex align-items-end justify-content-center">
         <div aria-label="{{ 'Digital Innovation logo' | t }}" class="d-flex align-items-center">
           {{ "DigitalInnovationLogo" | shape_new | shape_render }}
           <div class="powered-by-di">{{ Model.ContentItem.Content.FatFooter.DigitalLink.Text }}</div>

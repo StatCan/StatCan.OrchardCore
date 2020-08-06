@@ -10,6 +10,7 @@ namespace StatCan.OrchardCore.Widgets
         {
             public const string Widgets = "StatCan.OrchardCore.Widgets";
             public const string PageLayout = "StatCan.OrchardCore.Widgets.PageLayout";
+            public const string ContentLayout = "StatCan.OrchardCore.Widgets.ContentLayout";
             public const string MenuItemParts = "StatCan.OrchardCore.Widgets.MenuItemParts";
         }
     }

@@ -69,6 +69,23 @@ namespace StatCan.OrchardCore.Widgets
         }
     }
 
+    public class ShowcaseBlurbMigration : DataMigration
+    {
+        private readonly IRecipeMigrator _recipeMigrator;
+
+
+        public ShowcaseBlurbMigration(IRecipeMigrator recipeMigrator)
+        {
+            _recipeMigrator = recipeMigrator;
+        }
+
+        public async Task<int> CreateAsync()
+        {
+            await _recipeMigrator.ExecuteAsync("ShowcaseBlurb.recipe.json", this);
+            return 1;
+        }
+    }
+
     public class MenuItemPartsMigration : DataMigration
     {
         private readonly IRecipeMigrator _recipeMigrator;
