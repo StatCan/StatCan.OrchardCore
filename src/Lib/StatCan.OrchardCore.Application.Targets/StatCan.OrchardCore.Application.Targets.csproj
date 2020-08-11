@@ -27,6 +27,7 @@
     <!-- Themes -->
     <ProjectReference Include="..\..\Themes\DigitalAdmin\DigitalAdmin.csproj" PrivateAssets="none" />
     <ProjectReference Include="..\..\Themes\PortalTheme\PortalTheme.csproj" PrivateAssets="none" />
+    <ProjectReference Include="..\..\Themes\HackathonTheme\HackathonTheme.csproj" PrivateAssets="none" />
 
   </ItemGroup>
 

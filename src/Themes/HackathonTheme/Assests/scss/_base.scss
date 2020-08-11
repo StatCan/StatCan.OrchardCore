@@ -1,0 +1,542 @@
+$logoHeight: 20px;
+
+body {
+  background-color: #151426;
+  color: $white;
+  font-family: "Fira Sans";
+  font-weight: 400;
+  min-height: 100vh;
+  @include rfs(20);
+  scroll-behavior: smooth;
+}
+
+a {
+  color: #ff2a41;
+  font-weight: 600;
+  &:hover{
+    color: #ff3648;
+  }
+}
+
+
+h1,
+.h1-sub,
+h2,
+h4,
+h5,
+h6 {
+  color: $white;
+}
+
+h1 { 
+  @include rfs(48);
+}
+
+.h1-sub {
+  font-weight: 200;
+  @include rfs(32);
+}
+h2 {
+  @include rfs(32);
+}
+
+h3 {
+  font-weight: 600;
+  @include rfs(24);
+}
+
+p {
+  font-weight: 300;
+  line-height: 130%;
+  @include rfs(22);
+}
+
+header,
+footer {
+  z-index: 1000;
+}
+
+footer {
+  background: linear-gradient(
+    0deg,
+    rgba(21, 20, 38, 1),
+    rgba(21, 20, 38, 1),
+    rgba(21, 20, 38, 1),
+    rgba(21, 20, 38, 0)
+  );
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  padding-top: $logoHeight * 4.5;
+  padding-bottom: 150px;
+  min-height: 100vh;
+}
+
+body {
+  background-image: url("../images/candev_bg.jpg");
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.vg-header {
+  background: linear-gradient(
+    90deg,
+    rgba(89, 21, 27, 0.38),
+    rgba(89, 21, 27, 0)
+  );
+  border-left: 2px solid #e33445;
+  box-shadow: -6px 0 5px -5px #e33445;
+  padding: 0.5rem 1.5rem;
+  transform: skew(-20deg, 0);
+  h2 {
+    color: white;
+    font-family: "Fira Sans", sans-serif;
+    font-weight: 200;
+    padding-bottom: 0;
+    margin-bottom: 0;
+    @include rfs(48);
+    transform: skew(20deg, 0);
+  }
+}
+
+.vg-content {
+  padding: 1rem;
+}
+
+.icon-col {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 4rem;
+  i {
+    color: $red;
+    @include rfs(56);
+  }
+  @media screen and (max-width: 640px) {
+    width: 2.5rem;
+    &:empty {
+      display: none !important;
+    }
+  }
+}
+
+.icon-sm-col {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  width: 2.5rem;
+  i {
+    color: $red;
+    @include rfs(28);
+  }
+
+  @media screen and (min-width: 640px) {
+    width: 4rem;
+  }
+}
+
+.btn {
+  border-radius: 0.25rem;
+  border-width: 2px;
+  padding-left: 6vw;
+  padding-right: 6vw;
+  font-weight: 700;
+  @include rfs(16);
+  *:first-child {
+    text-transform: uppercase;
+  }
+  @media screen and (min-width: 768px) {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+.score-left {
+  background: transparent;
+  border: 2px solid $primary ;
+  border-right: none;
+  border-radius: 0.25rem 0 0 0.25rem;
+  padding: 0.375rem 4vw;
+  font-weight: 700;
+  @include rfs(16);
+  @media screen and (min-width: 768px) {
+    padding: 0.375rem 2rem;
+  }
+}
+
+.score-right {
+  background: transparent;
+  border: 2px solid $secondary ;
+  border-left: none;
+  border-radius: 0 0.25rem 0.25rem 0;
+  padding: 0.375rem 4vw;
+  font-weight: 700;
+  @include rfs(16);
+  @media screen and (min-width: 768px) {
+    padding: 0.375rem 2rem;
+  }
+}
+
+.btn-checkbox {
+  align-items: center;
+  background: none;
+  border: none;
+  color: $primary;
+  display: flex;
+  margin: 0;
+  padding: 0;
+  transform: skew(0deg);
+  i {
+    margin: -3px 0 -4px 0;
+  }
+}
+.btn-checkbox:hover {
+  color: $primary;
+}
+
+.logo {
+  height: 35px;
+  max-width: auto;
+}
+
+@include media-breakpoint-up(sm) {
+  .logo {
+    height: 45px;
+    max-width: auto;
+  }
+}
+
+@include media-breakpoint-up(md) {
+  .logo {
+    height: 55px;
+    max-width: auto;
+  }
+}
+
+.di-title {
+  color: $white;
+  font-family: "Fira Sans Condensed", sans-serif;
+  @include rfs(46);
+}
+
+nav a {
+  color: $white;
+  font-weight: 300;
+  @include rfs(20);
+  :hover {
+    color: $white;
+    text-decoration: none;
+  }
+}
+nav .btn-link {
+  @include rfs(20);
+}
+
+.input-group-append {
+  margin-left: -10px;
+  z-index: 50;
+}
+
+.inno-form-container {
+  margin-bottom: $logoHeight + 20px;
+}
+
+.calendar {
+  .card {
+    border: solid;
+    border-color: $primary;
+    border-radius: 0.9rem;
+    color: $white;
+    width: 8rem;
+    height: 8rem;
+  }
+  .card-header {
+    background-color: rgba(0, 0, 0, 0.38);
+    border-radius: 0.9rem 0.9rem 0 0;
+    padding: 1rem;
+  }
+  .card-body {
+    background: $primary;
+    border-color: $primary;
+    border-radius: 0 0 0.5rem 0.5rem;
+    color: $white;
+    padding: 0;
+    height: 1rem;
+  }
+  .year {
+    font-weight: 400;
+    @include rfs(14);
+  }
+  .month {
+    font-weight: 400;
+    @include rfs(18);
+    text-transform: uppercase;
+  }
+  .day {
+    @include rfs(30);
+  }
+}
+
+.section a {
+  color: #c8ea61;
+  text-decoration: none !important;
+}
+
+#registrationForm .container {
+  padding: 0;
+}
+
+.choices__item {
+  color: black;
+}
+
+#team-id {
+  width: 4rem;
+  overflow: hidden;
+  text-align: end;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+@include media-breakpoint-up(md) {
+  #team-id {
+    width: 6rem;
+  }
+}
+
+@include media-breakpoint-up(xl) {
+  #team-id {
+    width: auto;
+  }
+}
+
+.team-clipboard {
+  border: none;
+  background: transparent;
+  color: $white;
+  transition: all 0.15s ease-in-out;
+}
+
+.team-clipboard:hover {
+  color: $red;
+  transform: scale(1.05);
+}
+
+.team-clipboard:active {
+  color: $red;
+  transform: scale(1.1);
+}
+
+@mixin glitchCopy {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.glitch {
+  position: relative;
+  @include rfs(90);
+  /* Animation provies a slight random skew. Check bottom of doc
+for more information on how to random skew. */
+  animation: glitch-skew 1s infinite linear alternate-reverse;
+
+  // Creates a copy before our text.
+  &::before {
+    // Duplicates our text with the mixin.
+    @include glitchCopy;
+    // Scoots text slightly to the left for the color offset.
+    left: 2px;
+    // Creates the color 'shadow' that happens on the glitch.
+    text-shadow: -2px 0 #ff00c1;
+    /* Creates an initial clip for our glitch. This works in
+  a typical top,right,bottom,left fashion and creates a mask
+  to only show a certain part of the glitch at a time. */
+    clip: rect(44px, 450px, 56px, 0);
+    /* Runs our glitch-anim defined below to run in a 5s loop, infinitely,
+  with an alternating animation to keep things fresh. */
+    animation: glitch-anim 5s infinite linear alternate-reverse;
+  }
+
+  // Creates a copy after our text. Note comments from ::before.
+  &::after {
+    @include glitchCopy;
+    left: -2px;
+    text-shadow: -2px 0 #00fff9, 2px 2px #ff00c1;
+    animation: glitch-anim2 1s infinite linear alternate-reverse;
+  }
+}
+
+/* Creates an animation with 20 steaps. For each step, it calculates 
+a percentage for the specific step. It then generates a random clip
+box to be used for the random glitch effect. Also adds a very subtle
+skew to change the 'thickness' of the glitch.*/
+@keyframes glitch-anim {
+  $steps: 20;
+  @for $i from 0 through $steps {
+    #{percentage($i*(1/$steps))} {
+      clip: rect(random(100) + px, 9999px, random(100) + px, 0);
+      transform: skew((random(100) / 100) + deg);
+    }
+  }
+}
+
+// Same deal, just duplicated for ultra randomness.
+@keyframes glitch-anim2 {
+  $steps: 20;
+  @for $i from 0 through $steps {
+    #{percentage($i*(1/$steps))} {
+      clip: rect(random(100) + px, 9999px, random(100) + px, 0);
+      transform: skew((random(100) / 100) + deg);
+    }
+  }
+}
+
+// Does the same deal as before, but now only skews. Used for main text.
+@keyframes glitch-skew {
+  $steps: 10;
+  @for $i from 0 through $steps {
+    #{percentage($i*(1/$steps))} {
+      transform: skew((random(5) - 2) + deg);
+    }
+  }
+}
+
+.address-link {
+  color: inherit;
+  &:hover {
+    text-decoration: none;
+    color: inherit;
+  }
+}
+
+.nav.tabs{
+  margin-bottom: 5px;
+}
+
+.tabs > .tab {
+  background: transparent;
+  border-right: 0.25rem solid transparent;
+  border-bottom: none;
+  max-width: 100%;
+  padding: 0.75rem 0.75rem;
+  text-align: right;
+  @media screen and (max-width: 767px) {
+    border-right: none;
+    border-bottom: 0.25rem solid transparent;
+  }
+  a {
+    color: $white;
+    opacity: 0.7; 
+    @include rfs(32);
+    &:hover {
+      color: $white;
+      opacity: 0.9;
+      text-decoration: none;
+    }
+  }
+}
+.tabs > .active-tab {
+  border-right: 0.25rem solid $primary;
+  border-bottom: none;
+  font-weight: 600;
+  opacity: 1;
+  pointer-events: none;
+  @media screen and (max-width: 767px) {
+    border-right: none;
+    border-bottom: 0.25rem solid $primary;
+  }
+  a {
+    color: $white;
+    opacity: 1;
+    &:hover {
+      background: rgba(89, 21, 27, 0.38);
+      color: $white;
+      opacity: 1;
+      text-decoration: none;
+    }
+  }
+}
+
+.custom-control-lg .custom-control-label::before,
+.custom-control-lg .custom-control-label::after {
+    top: 0.1rem !important;
+    left: -2rem !important;
+    width: 1.25rem !important;
+    height: 1.25rem !important;
+}
+
+.custom-control-lg .custom-control-label {
+    margin-left: 0.5rem !important;
+    font-size: 1.1rem !important;
+}
+
+.btn-score {
+  flex-direction: row;
+  @include media-breakpoint-down(md) {
+    flex-direction: column-reverse;
+    .btn {
+      &:first-child {
+        border-top-right-radius: 0 !important;
+        border-top-left-radius: 0 !important;
+        border-bottom-left-radius: 0.3rem !important;
+        border-bottom-right-radius: 0.3rem !important;
+      }
+
+      &:last-child {
+        border-top-right-radius: 0.3rem !important;
+        border-top-left-radius: 0.3rem !important;
+        border-bottom-left-radius: 0 !important;
+        border-bottom-right-radius: 0 !important;
+      }
+    }
+  }
+}
+
+.score-board {
+  .row {
+    &:not(:last-child) {
+      border-bottom: 1px dotted rgba(227,52,69,0.5);
+    }
+    &:first-child {
+      border-bottom: 2px solid rgba(227,52,69,1);
+    }
+    &:hover:not(:last-child):not(:first-child) {
+      background: rgba(255, 255, 255, 0.15);
+    }
+  }
+  .col-top {
+    border-radius: 0.75rem 0.75rem 0 0;
+    border-left: 2px solid transparent;
+    border-right: 2px solid transparent;
+    &.primary {
+      background: rgba(227,52,69,0.15);
+    }
+    &.secondary {
+      background: rgba(200,234,97,0.15);
+    }
+  }
+  .col-middle {
+    &.primary {
+      background: rgba(227,52,69,0.3);
+    }
+    &.secondary {
+      background: rgba(200,234,97,0.3);
+    }
+  }
+  .col-bottom {
+    border-radius: 0 0 0.75rem 0.75rem;
+    height: 46px;
+    &.primary {
+      background: rgba(227,52,69,0.15);
+    }
+    &.secondary {
+      background: rgba(200,234,97,0.15);
+    }
+  }
+}

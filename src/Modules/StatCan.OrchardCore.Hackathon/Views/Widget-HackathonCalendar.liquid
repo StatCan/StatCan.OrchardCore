@@ -1,0 +1,30 @@
+<div {%if Model.Id != null%}id="{{ Model.Id }}"{%endif%} class="{{ Model.Classes | join: ' ' }}">
+  <div class="calendar d-flex flex-column">
+    <div class="d-flex align-items-center">
+      <div class="card bg-transparent mb-3 font-weight-bold text-center">
+        <div class="card-header">
+          <div class="month">{{ Site.Properties.HackathonCustomSettings.HackathonCustomSettings.StartDate.Value | local | date:"%b" }}</div>
+          <div class="day">{{ Site.Properties.HackathonCustomSettings.HackathonCustomSettings.StartDate.Value | local | date:"%e" }}</div>
+        </div>
+        <div class="card-body year">
+          {{ Site.Properties.HackathonCustomSettings.HackathonCustomSettings.StartDate.Value | local | date:"%Y" }}
+        </div>
+      </div>
+      <div class="mb-3 mx-3">
+        <span class="h3 text-primary"><i class="fas fa-chevron-right"></i></span>
+      </div>
+      <div class="card bg-transparent mb-3 font-weight-bold text-center">
+        <div class="card-header">
+          <div class="month">{{ Site.Properties.HackathonCustomSettings.HackathonCustomSettings.EndDate.Value | local | date:"%b" }}</div>
+          <div class="day">{{ Site.Properties.HackathonCustomSettings.HackathonCustomSettings.EndDate.Value | local | date:"%e" }}</div>
+        </div>
+        <div class="card-body year">
+          {{ Site.Properties.HackathonCustomSettings.HackathonCustomSettings.EndDate.Value | local | date:"%Y" }}
+        </div>
+      </div>
+    </div>
+    <span class="h4 text-white">
+      <i class="fas fa-map-marker-alt mx-2 text-primary"></i><a class="address-link" href="https://www.google.com/maps/search/?api=1&query={{Model.Hackathon.Content.Hackathon.Where.Text}}">{{Model.Hackathon.Content.Hackathon.Where.Text}}</a>
+    </span>
+  </div>
+</div>  

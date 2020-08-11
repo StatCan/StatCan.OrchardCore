@@ -1,0 +1,18 @@
+{% assign hackLocSet = Model.ContentItem.Content.HackathonPage.LocalizationSets | first %}
+{% assign hackathon = hackLocSet | localization_set | first %}
+{% assign participant = hackLocSet | current_participant %}
+
+{%comment%}Injects the Page, Hackathon and Participant to all children{%endcomment%}
+<section>
+  {{ "HackathonHeader" | shape_new: ContentItem: Model.ContentItem | shape_render }}
+  <div class="row flex-fill">   
+    <div class="col-lg-9 col-md-8 flex-column align-items-center">
+      {% render_section "Messages", required: false %}
+    </div>
+  </div>
+  <div class="row">
+    <div class="mt-5 offset-lg-3 offset-md-4 col-lg-9 col-md-8">
+     {{ "HackathonMessages" | shape_new: messages: hackathon.Content.PublicMessages.ContentItems | shape_render }}
+    </div>
+  </div>
+</section>
