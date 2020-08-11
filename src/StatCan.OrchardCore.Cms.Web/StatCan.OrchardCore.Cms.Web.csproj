@@ -9,6 +9,7 @@
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
     <PreserveCompilationReferences>true</PreserveCompilationReferences>
     <CodeAnalysisRuleSet>..\..\roslynator.ruleset</CodeAnalysisRuleSet>
+    <StartupObject>web.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Folder Include="wwwroot\" />
@@ -23,8 +24,8 @@
 
   <ItemGroup>
    <ProjectReference Include="..\Lib\StatCan.OrchardCore.Application.Targets\StatCan.OrchardCore.Application.Targets.csproj" />
-   <PackageReference Include="OrchardCore.Application.Cms.Targets" Version="$(OrchardCoreVersion)"/>
-   <PackageReference Include="OrchardCore.Logging.NLog" Version="$(OrchardCoreVersion)"/>
+   <PackageReference Include="OrchardCore.Application.Cms.Targets" Version="$(OrchardCoreVersion)" />
+   <PackageReference Include="OrchardCore.Logging.NLog" Version="$(OrchardCoreVersion)" />
   </ItemGroup>
 
 </Project>
