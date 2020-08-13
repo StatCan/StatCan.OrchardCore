@@ -1,8 +1,8 @@
 using OrchardCore.Modules.Manifest;
-using StatCan.OrchardCore.Widgets;
+using StatCan.OrchardCore.WebpageCore;
 
 [assembly: Module(
-    Name = "StatCan Widgets",
+    Name = "StatCan WebpageCore",
     Author = "Digital Innovation Team",
     Website = "https://digital.statcan.gc.ca",
     Version = "1.0.0"
@@ -12,7 +12,7 @@ using StatCan.OrchardCore.Widgets;
     Id = Constants.Features.PageLayout,
     Name = "StatCan Page Layout",
     Description = "A collection of common website layout components",
-    Category = "Widget",
+    Category = "StatCan.OrchardCore.WebpageCore",
     Dependencies = new[]
     {
         "OrchardCore.Liquid",
@@ -23,7 +23,7 @@ using StatCan.OrchardCore.Widgets;
     Id = Constants.Features.ContentLayout,
     Name = "StatCan Content Layout",
     Description = "A collection of common content layout components",
-    Category = "MenuItemPart",
+    Category = "StatCan.OrchardCore.WebpageCore",
     Dependencies = new[]
     {
         "OrchardCore.Liquid",
@@ -34,7 +34,7 @@ using StatCan.OrchardCore.Widgets;
     Id = Constants.Features.MenuItemParts,
     Name = "StatCan MenuParts",
     Description = "A collection of common menu item parts",
-    Category = "MenuItemPart",
+    Category = "StatCan.OrchardCore.WebpageCore",
     Dependencies = new[]
     {
         "OrchardCore.Liquid",

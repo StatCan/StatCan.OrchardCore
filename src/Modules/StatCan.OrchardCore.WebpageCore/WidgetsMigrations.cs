@@ -2,7 +2,7 @@ using System.Threading.Tasks;
 using OrchardCore.Data.Migration;
 using OrchardCore.Recipes.Services;
 
-namespace StatCan.OrchardCore.Widgets
+namespace StatCan.OrchardCore.WebpageCore
 {
     public class FatFooterMigration : DataMigration
     {

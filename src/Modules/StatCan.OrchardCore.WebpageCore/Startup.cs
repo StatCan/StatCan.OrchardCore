@@ -2,7 +2,7 @@ using Microsoft.Extensions.DependencyInjection;
 using OrchardCore.Modules;
 using OrchardCore.Data.Migration;
 
-namespace StatCan.OrchardCore.Widgets
+namespace StatCan.OrchardCore.WebpageCore
 {
     [Feature(Constants.Features.PageLayout)]
     public class PageLayoutStartup : StartupBase
