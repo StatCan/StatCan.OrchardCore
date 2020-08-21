@@ -27,6 +27,31 @@ h1,
   line-height: 5.75rem;
   font-weight: 800;
 }
+@media (max-width: 1200px) {
+  h1,
+  .h1 {
+    line-height: 5.75rem;
+  }
+}
+@media (max-width: 992px) {
+  h1,
+  .h1 {
+    line-height: 4.75rem;
+  }
+}
+@media (max-width: 768px) {
+  h1,
+  .h1 {
+    line-height: 3.75rem;
+  }
+}
+@media (max-width: 576px) {
+  h1,
+  .h1 {
+    line-height: 2.75rem;
+  }
+}
+
 h2,
 .h2 {
   @include rfs(42);
