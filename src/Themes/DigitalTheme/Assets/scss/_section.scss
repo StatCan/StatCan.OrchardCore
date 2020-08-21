@@ -2,9 +2,9 @@
   &:nth-of-type(1) {
     background: #e0e3e6 url("../images/DigitalHeroBG.svg");
     background-position: center;
-    background-size: contain;
+    background-size: auto;
     background-repeat: no-repeat;
-    height: 30rem;
+    min-height: 60vh;
   }
   &:nth-of-type(2) {
     background-image: url("../images/CircuitL.svg"),
@@ -14,6 +14,8 @@
       center bottom;
     background-size: 20rem, 20rem, contain, contain;
     background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
+    padding-top: 7rem;
+    padding-bottom: 7rem;
   }
   &:nth-of-type(3) {
     background: $background2;
@@ -24,9 +26,11 @@
     background-position: center top, center bottom;
     background-size: contain, contain;
     background-repeat: no-repeat, no-repeat;
+    padding-top: 7rem;
+    padding-bottom: 7rem;
   }
-  padding-top: 6rem;
-  padding-bottom: 10rem;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
   .row > .column {
     position: relative;
     width: 100%;

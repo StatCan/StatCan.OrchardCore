@@ -1,16 +1,51 @@
 .navbar {
-  background-image: url("../images/NavBarBG.svg");
-  background-position: right center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  height: 7rem;
+  background-image: url("../images/NavBarLeft.svg"),
+    url("../images/NavBarRight.svg");
+  background-position: right calc(100vw + 1rem) top,
+    left calc(100vw + 1rem) bottom;
+  background-size: auto 3rem, auto 1.3rem;
+  background-repeat: no-repeat, no-repeat;
+  height: 4.55rem;
+  padding: 0 1rem;
+  .container {
+    background-image: url("../images/NavBarCenter.svg");
+    background-position: left top;
+    background-repeat: no-repeat;
+    @include media-breakpoint-up(sm) {
+      height: 5rem;
+    }
+    @include media-breakpoint-up(md) {
+      height: 6.8rem;
+    }
+    @include media-breakpoint-up(lg) {
+      height: 7.5rem;
+    }
+    @include media-breakpoint-up(xl) {
+      height: 10rem;
+    }
+  }
+  @include media-breakpoint-up(sm) {
+    background-position: right calc((100vw + 530px) / 2) top,
+      left calc((100vw + 530px) / 2) bottom;
+    background-size: auto 3.73rem, auto 1.4rem;
+    height: 4.6rem;
+  }
   @include media-breakpoint-up(md) {
-    background-position: left -25rem center;
+    background-position: right calc((100vw + 720px) / 2) top,
+      left calc((100vw + 710px) / 2) bottom;
+    background-size: auto 4.95rem, auto 1.9rem;
+    height: 6.1rem;
   }
   @include media-breakpoint-up(lg) {
-    background-position: right center;
+    background-position: right calc((100vw + 960px) / 2) top,
+      left calc((100vw + 800px) / 2) bottom;
+    background-size: auto 6.05rem, auto 2.35rem;
+    height: 7.5rem;
   }
   @include media-breakpoint-up(xl) {
-    background-position: center;
+    background-position: right calc((100vw + 1140px) / 2) top,
+      left calc((100vw + 1140px) / 2) bottom;
+    background-size: auto 7.8rem, auto 3rem;
+    height: 9.65rem;
   }
 }

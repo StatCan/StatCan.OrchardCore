@@ -8,7 +8,7 @@ body {
   display: flex;
   flex: 1 1 auto;
   flex-direction: column;
-  font-family: "Fira Sans", sans-serif;
+  font-family: "Encode Sans", sans-serif;
   min-height: 100vh;
   min-height: -webkit-fill-available;
   @include browser(Android) {
@@ -23,18 +23,23 @@ body {
 
 h1,
 .h1 {
-  @include rfs(64);
-  font-weight: 200;
+  @include rfs(89);
+  line-height: 5.75rem;
+  font-weight: 800;
 }
 h2,
 .h2 {
-  @include rfs(32);
-  font-weight: 200;
+  @include rfs(42);
+  line-height: 3.25rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
 }
 h3,
 .h3 {
-  @include rfs(24);
-  font-weight: 300;
+  @include rfs(26);
+  line-height: 1.875rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
 }
 h4,
 .h4 {
@@ -51,10 +56,15 @@ h6,
   @include rfs(16);
   font-weight: 200;
 }
-p {
-  @include rfs(17);
-  line-height: 1.25rem;
-  font-weight: 300;
+p,
+li {
+  @include rfs(22);
+  font-weight: normal;
+  line-height: 1.75rem;
+}
+
+li {
+  margin-bottom: 0.5rem;
 }
 
 label {

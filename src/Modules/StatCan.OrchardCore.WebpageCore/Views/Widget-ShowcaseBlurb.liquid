@@ -1,6 +1,13 @@
-<div class="column d-flex flex-column text-center justify-content-center">
-    <img src="{{ Model.ContentItem.Content.ShowcaseBlurb.Image.Paths | asset_url | resize_url: height: 160, width: 160, mode: 'stretch' }}" />
+<div class="column d-flex flex-column text-center justify-content-center align-self-start">
+    {% if Model.ContentItem.Content.ShowcaseBlurb.Image.Paths %}
+        <img class="p-5" src="{{ Model.ContentItem.Content.ShowcaseBlurb.Image.Paths | asset_url | resize_url: height: 160, width: 160, mode: 'stretch' }}" />
+    {% endif %}
     <h3>{{ Model.ContentItem | display_text }}</h3>
-    <p>{{ Model.ContentItem.Content.ShowcaseBlurb.PrimaryText.Text }}</p>
-    <p>{{ Model.ContentItem.Content.ShowcaseBlurb.SecondaryText.Text }}</p>
+    {% if Model.ContentItem.Content.ShowcaseBlurb.SecondaryText.Text %}
+        <p style="font-size: 1.25rem; line-height: 1.5rem;" class="font-weight-bold">{{ Model.ContentItem.Content.ShowcaseBlurb.PrimaryText.Text }}</p>
+    {% endif %}
+    {% if Model.ContentItem.Content.ShowcaseBlurb.SecondaryText.Text %}
+        <i class="fas fa-chevron-down pb-3"></i>
+        <p>{{ Model.ContentItem.Content.ShowcaseBlurb.SecondaryText.Text }}</p>
+    {% endif %}
 </div>
