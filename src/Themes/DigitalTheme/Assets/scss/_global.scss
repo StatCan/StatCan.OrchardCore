@@ -30,16 +30,16 @@ h1,
 h2,
 .h2 {
   @include rfs(42);
-  line-height: 3.25rem;
+  line-height: 2.25rem;
   font-weight: 700;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
 }
 h3,
 .h3 {
   @include rfs(26);
   line-height: 1.875rem;
   font-weight: 600;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
 }
 h4,
 .h4 {
@@ -60,11 +60,11 @@ p,
 li {
   @include rfs(22);
   font-weight: normal;
-  line-height: 1.75rem;
+  line-height: 1.6rem;
 }
 
 li {
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
 }
 
 label {

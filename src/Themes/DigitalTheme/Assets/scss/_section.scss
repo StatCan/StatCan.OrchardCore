@@ -4,7 +4,7 @@
     background-position: center;
     background-size: auto;
     background-repeat: no-repeat;
-    min-height: 60vh;
+    min-height: 35rem;
   }
   &:nth-of-type(2) {
     background-image: url("../images/CircuitL.svg"),
@@ -12,25 +12,26 @@
       url("../images/BG1StepUp.svg");
     background-position: right 85vw top 0, left 85vw top -4rem, center top,
       center bottom;
-    background-size: 20rem, 20rem, contain, contain;
+    /* background-size: 20rem, 20rem, auto, auto; BB: We can remove this I think, it doesn't need to scale */
     background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
-    padding-top: 7rem;
-    padding-bottom: 7rem;
+    padding-top: 10rem;
+    padding-bottom: 10rem;
   }
   &:nth-of-type(3) {
     background: $background2;
+    padding-top: 7rem;
+    padding-bottom: 7rem;
   }
   &:nth-of-type(4) {
     background-image: url("../images/BG1StepDown.svg"),
       url("../images/FooterStepDown.svg");
     background-position: center top, center bottom;
-    background-size: contain, contain;
+    background-size: auto, auto;
     background-repeat: no-repeat, no-repeat;
-    padding-top: 7rem;
-    padding-bottom: 7rem;
+    padding-top: 10rem;
+    padding-bottom: 10rem;
   }
-  padding-top: 3rem;
-  padding-bottom: 3rem;
+
   .row > .column {
     position: relative;
     width: 100%;
