@@ -5,24 +5,39 @@
     left calc(100vw + 1rem) bottom;
   background-size: auto 3rem, auto 1.3rem;
   background-repeat: no-repeat, no-repeat;
-  height: 4.55rem;
+  min-height: 4.55rem;
   padding: 0 1rem;
   .container {
     background-image: url("../images/NavBarCenter.svg");
+
     background-position: left top;
     background-repeat: no-repeat;
+    @include media-breakpoint-up(xs) {
+      background-size: cover;
+      height: 4.55rem;
+    }
     @include media-breakpoint-up(sm) {
+      background-size: auto;
       height: 5rem;
     }
     @include media-breakpoint-up(md) {
+      background-size: auto;
       height: 6.8rem;
     }
     @include media-breakpoint-up(lg) {
+      background-size: auto;
       height: 7.5rem;
     }
     @include media-breakpoint-up(xl) {
+      background-size: auto;
       height: 10rem;
     }
+  }
+  @include media-breakpoint-up(xs) {
+    background-position: right calc(100vw - 1.2rem) top,
+      left calc(100vw - 1.2rem) bottom;
+    background-size: auto 3.7rem, auto 1.41rem;
+    height: 4.55rem;
   }
   @include media-breakpoint-up(sm) {
     background-position: right calc((100vw + 530px) / 2) top,
