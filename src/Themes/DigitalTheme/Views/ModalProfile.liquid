@@ -1,0 +1,38 @@
+{% zone "Modal" %}
+{% assign return_url = '' | return_url %}
+<div id="profile-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered di-modal" role="document">
+        <div class="modal-content section-panel di-modal">
+          <div class="modal-header di-modal d-flex">
+              <h2 class="h1 modal-title">{{ "account" | t }}</h2>
+              <button type="button" class="btn btn-primary is-circle" data-dismiss="modal" aria-label="{{ "Close" | t }}">
+                  <span aria-hidden="true"><i class="fas fa-times"></i></span>
+              </button>
+          </div>
+          <div class="modal-body di-modal">
+              <div class="container">
+                  <div class="row">
+                      <div class="col-md-3 col-12 d-flex align-items-center justify-content-center pr-4">
+                          <span class="icon">
+                              <i class="fas fa-user text-primary"></i>
+                          </span>
+                      </div>
+                      <div class="col-md-9 col-12 d-flex flex-column align-items-md-start align-items-center justify-content-center">
+                          <p class="h4 text-secondary">{{ "Contact email" | t }}</p>
+                          <p class="h3 mb-4">{{ User | get_claim: "email" }}</p>
+               
+                          <p class="h4 text-secondary">{{ "Azure account" | t }}</p>
+                          <p class="h3">{{ User.Identity.Name }}</p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="modal-footer di-modal">
+              {% form asp_route_area:"OrchardCore.Users", asp_controller:"Account", asp_action:"LogOff", method: "post" %}
+                  <button type="submit" class="btn btn-lg btn-primary is-rounded">{{ "Log out" | t }}</button>
+              {% endform %}
+          </div>
+        </div>
+    </div>
+</div>
+{% endzone %}

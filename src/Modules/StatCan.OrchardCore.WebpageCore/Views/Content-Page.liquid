@@ -1,0 +1,3 @@
+{% for item in Model.ContentItem.Content.FlowPart.Widgets %}
+    {{ item | shape_build_display | shape_render }}
+{% endfor %}

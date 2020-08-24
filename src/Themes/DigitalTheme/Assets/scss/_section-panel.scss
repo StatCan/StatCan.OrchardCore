@@ -1,0 +1,87 @@
+.section-panel {
+  background-color: transparentize($background, 0.28);
+  background-image: radial-gradient(
+    circle at center 4rem,
+    transparentize(#aeaeae, 0.92) 0,
+    transparentize(#aeaeae, 1) 17rem
+  );
+  border-radius: 2px;
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  padding: 2rem 0;
+  @include media-breakpoint-up(md) {
+    padding: 2rem 2rem;
+  }
+
+  .is-vertical-list {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    list-style-type: none;
+    padding-left: 0;
+  }
+
+  .is-horizontal-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    list-style-type: none;
+    padding-left: 0;
+    li > a > div {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+
+  .section-panel-link {
+    padding: 0.45rem 0;
+    width: 100%;
+    &:hover,
+    &:focus {
+      background-image: radial-gradient(
+        circle at 15% 15%,
+        transparentize($white, 0.97) 10%,
+        transparent
+      );
+      border-radius: 2px;
+    }
+  }
+
+  .section-panel-link-icon {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    max-height: 4rem;
+    min-width: 5rem;
+    i {
+      font-size: 2.5rem;
+    }
+    img {
+      height: 2.5rem;
+      width: 2.5rem;
+    }
+  }
+
+  li {
+    padding: 0.5rem 0;
+    .btn-link {
+      color: $white;
+      font-size: 20px;
+      &:hover,
+      &:focus {
+        text-decoration: none;
+        color: $red;
+      }
+    }
+  }
+
+  a h3 {
+    color: $white;
+  }
+  a:hover {
+    text-decoration: none;
+  }
+}

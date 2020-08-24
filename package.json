@@ -15,7 +15,7 @@
     "rebuild": "gulp rebuild",
     "help": "gulp help",
     "watch": " gulp watch",
-    "postinstall": "cd src/Themes/PortalTheme && npm i"
+    "postinstall": "cd src/Themes/PortalTheme && npm i && cd src/Themes/DigitalTheme && npm i"
   },
   "devDependencies": {
     "@babel/core": "7.9.0",

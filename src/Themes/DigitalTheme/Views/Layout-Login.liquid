@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="{{ Culture.Name }}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    {% render_section "HeadMeta", required: false %}
+    <title>{% page_title Site.SiteName %}</title>
+    {% resources type: "Meta" %}
+
+    <!-- Includes customized Bootstrap CSS -->
+    {% style name:"digitaltheme-stc-bootstrap", version:"1" %}
+
+    <!-- Custom fonts for this template -->
+    {% style src:"https://fonts.googleapis.com/css2?family=Encode+Sans:wght@200;300;400;500;600;700;800&display=swap" %}
+    {% style name:"font-awesome", version:"5" %}
+
+    <!-- Bootstrap core JavaScript (includes jQuery and popper.js) -->
+    {% script name:"jQuery", at:"Foot", version:"3.4.1" %}
+    {% script name:"popper", at:"Foot", version:"1.16.1" %}
+    {% script name:"bootstrap", at:"Foot", version:"4.4.1" %}
+    {% script src:"~/DigitalTheme/Scripts/setCookie.min.js", debug_src:"~/DigitalTheme/Scripts/setCookie.js", at:"Foot" %}
+    
+    {% resources type: "HeadScript" %}
+    {% resources type: "HeadLink" %}
+    {% resources type: "Stylesheet" %}
+
+</head>
+<body id="page-top" class="d-flex" dir="{{ Culture.Dir }}">
+  <main id="bootstrap-main" class="d-flex flex-column flex-fill account-page">
+    <section class="flex-fill">
+      <div class="container">
+        {% render_section "Content" %}
+      </div>
+    </section>
+    {% render_section "Footer", required: false %}
+  </main>
+  {% resources type: "FootScript" %}
+</body>
+</html>
