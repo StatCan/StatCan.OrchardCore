@@ -111,12 +111,6 @@ namespace StatCan.OrchardCore.AjaxForms.Controllers
             }
             
 
-            // TODO: Change to proper return value
-            // we may need to modify this to the format required by our form client
-            // We may need to trigger a redirect on the next request ? Or modify it into the proper request
-            // Will also need to handle the _notifier (custom messages)
-            // The messages are lost after the first request as those are stored in a cookie for the next request
-
             // 302 are equivalent to 301 in this case. No permanent redirect 
             if(HttpContext.Response.StatusCode == 301 || HttpContext.Response.StatusCode == 302)
             {
