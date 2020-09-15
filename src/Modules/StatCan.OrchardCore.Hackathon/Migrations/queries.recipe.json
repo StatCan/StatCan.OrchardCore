@@ -1,0 +1,23 @@
+{
+  "steps": [
+    {
+      "name": "Queries",
+      "Queries": [
+        {
+          "Name": "GetItemsForHackathon",
+          "ReturnDocuments": true,
+          "Schema": null,
+          "Source": "Sql",
+          "Template": "SELECT DocumentId FROM HackathonItemsIndex where ContentType ='{{type}}'"
+        },
+        {
+          "Name": "TeamHackerCount",
+          "ReturnDocuments": true,
+          "Schema": null,
+          "Source": "Sql",
+          "Template": "SELECT DocumentId FROM HackathonItemsIndex where ContentType ='{{type}}'"
+        }
+      ]
+    }
+  ]
+}

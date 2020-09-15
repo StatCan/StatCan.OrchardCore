@@ -1,0 +1,42 @@
+{
+    "TextField_Edit" : [
+        {
+            "place" : "Parts:0#Content",
+            "contentType": [
+                "HackathonCustomSettings"
+            ]
+        }
+    ],
+    "MediaField_Edit" : [
+        {
+            "place" : "Parts:1#Content",
+            "contentType": [
+                "HackathonCustomSettings"
+            ]
+        }
+    ],
+    "TextField_Edit" : [
+        {
+            "place" : "Parts:2#Content",
+            "contentType": [
+                "HackathonCustomSettings"
+            ]
+        }
+    ],
+    "NumericField_Edit" : [
+        {
+            "place" : "Parts:0#Team;1",
+            "contentType": [
+                "HackathonCustomSettings"
+            ]
+        }
+    ],
+    "BooleanField_Edit" : [
+        {
+            "place" : "Parts:1#Team;1",
+            "contentType": [
+                "HackathonCustomSettings"
+            ]
+        }
+    ]
+}
