@@ -1,0 +1,17 @@
+{
+  "steps": [
+    {
+      "name": "roles",
+      "Roles": [
+        {
+          "Name": "Hacker",
+          "Permissions": []
+        },
+        {
+          "Name": "Volunteer",
+          "Permissions": []
+        }
+      ]
+    }
+  ]
+}
