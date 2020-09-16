@@ -8,6 +8,7 @@ namespace StatCan.OrchardCore.ContentFields
     {
         public static class Features
         {
+            public const string ContentFields = "StatCan.OrchardCore.ContentFields";
             public const string PredefinedGroup = "StatCan.OrchardCore.ContentFields.PredefinedGroup";
         }
     }
