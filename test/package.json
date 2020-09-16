@@ -1,6 +1,6 @@
 {
   "devDependencies": {
-    "cypress": "4.8.0",
+    "cypress": "5.2.0",
     "rimraf": "3.0.2"
   },
   "dependencies": {},

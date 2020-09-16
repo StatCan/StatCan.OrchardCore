@@ -25,4 +25,3 @@ using StatCan.OrchardCore.ContentFields;
     Category = "Content",
     Dependencies = new[] { "OrchardCore.ContentFields" }
 )]
-

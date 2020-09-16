@@ -1,0 +1,62 @@
+.di-modal {
+  &.section-panel {
+    background-color: $background;
+    border: 1px solid transparentize($secondary, 0.5);
+  }
+  &.modal-dialog {
+    max-width: 100vw;
+    @include media-breakpoint-up(sm) {
+      max-width: 90vw;
+    }
+    @include media-breakpoint-up(md) {
+      max-width: 80vw;
+    }
+    @include media-breakpoint-up(lg) {
+      max-width: 900px;
+    }
+  }
+  &.modal-header {
+    align-items: center;
+    border-bottom: none;
+    justify-content: center;
+    padding: 0 2rem;
+    @include media-breakpoint-up(md) {
+      padding: 0;
+    }
+    position: relative;
+    .modal-title {
+      flex: 1 1 auto;
+      line-height: 1;
+      text-align: center;
+      margin: 0 0 0 2.6rem;
+    }
+    .modal-prompt {
+      flex: 1 1 auto;
+      line-height: 1;
+      text-align: center;
+      margin: 0;
+      > span {
+        letter-spacing: 0.5px;
+      }
+    }
+    .btn {
+      min-width: 2.6rem;
+      min-height: 2.6rem;
+    }
+  }
+  &.modal-body {
+    display: flex;
+    flex-wrap: wrap;
+    .icon {
+      color: $primary;
+      @include rfs(128);
+      padding: 1rem;
+    }
+  }
+  &.modal-footer {
+    border-top: none;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+  }
+}

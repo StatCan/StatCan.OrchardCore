@@ -1,0 +1,33 @@
+{% assign title = "Link account" | t %}
+{{ "SharedLoginHeader" | shape_new: title: title | shape_render }}
+{% form asp_controller:"Account", asp_action:"LinkExternalLogin", asp_route_returnurl:Request.Query["ReturnUrl"], method:"post", class:"form-horizontal" %}
+    <h4>{{ "Link your account." | t }}</h4>
+    <p class="text-info">
+        {{ "You've successfully authenticated with <strong>{0}</strong>. You already have an account with this email address. Enter your local account password and click the Register button to link the accounts and finish logging in.", ViewData["LoginProvider"]]
+    </p>
+    <hr />
+    {% helped "div", asp_validation_summary:"ModelOnly", class:"text-danger" %}
+
+    <div class="form-group">
+         {% block "label", for:"UserName", class:"control-label" %}{{ "Username" | t }}{% endblock %}
+        <input id="UserName" value="{{ Request.Query['UserName'] }}" class="form-control" disabled />
+    </div>
+
+    <div class="form-group">
+         {% block "label", for:"Email", class:"control-label" %}{{ "Email" | t }}{% endblock %}
+        <input id="Email" value="{{ Request.Query['Email'] }}" class="form-control" disabled />
+    </div>
+
+    <div class="form-group">
+        {% block "label", asp_for:"Password", class:"control-label" %}{{ "Password" | t }}{% endblock %}
+        {% helper "input", asp_for:"Password", class:"form-control", autofocus:"true" />
+        {% helper "span", asp_validation_for:"Password", class:"text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <div class="d-flex justify-content-center">
+            <button type="submit" class="btn btn-lg btn-primary is-rounded">{{ "Register" | t }}</button>
+        </div>
+    </div>
+{% endform %}
+{{ "SharedLoginHFooter" | shape_new | shape_render }}

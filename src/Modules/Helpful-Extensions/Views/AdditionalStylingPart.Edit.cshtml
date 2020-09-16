@@ -1,0 +1,18 @@
+﻿@using Lombiq.HelpfulExtensions.Extensions.Flows.Models
+@model AdditionalStylingPart
+
+<div class="btn-group">
+    <button type="button" title="@T["Settings"]" class="btn btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="fa fa-cog" aria-hidden="true"></i>
+    </button>
+    <div class="dropdown-menu dropdown-menu-right" style="padding:8px 10px;">
+        <div class="form-group">
+            <label asp-for="CustomClasses" class="form-check-label">@T["Custom classes"]</label>
+            <input class="form-control form-control-sm" asp-for="CustomClasses" type="text" value="@Model.CustomClasses" />
+        </div>
+        <div class="form-check">
+            <input type="checkbox" class="form-check-input" asp-for="RemoveGridExtensionClasses" />
+            <label class="form-check-label" asp-for="RemoveGridExtensionClasses">@T["Remove grid extension classes"]</label>
+        </div>
+    </div>
+</div>

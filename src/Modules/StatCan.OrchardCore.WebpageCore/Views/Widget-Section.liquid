@@ -1,0 +1,10 @@
+<section class="content-section d-flex align-items-center">
+  <div class="{{ Model.ContentItem.Content.Section.Section.Text | default: 'd-none' }}">
+    <h2 class="{{ Model.ContentItem.Content.Section.TitleLayout.Text }}">{{ Model.ContentItem | display_text }}</h2>
+    <div class="row {{ Model.ContentItem.Content.Section.ColumnLayout.Text }} {{ Model.ContentItem.Content.Section.JustifyContent.Text }}">
+      {% for item in Model.ContentItem.Content.FlowPart.Widgets %}
+        {{ item | shape_build_display | shape_render }}
+      {% endfor %}
+    </div>
+  </div>
+</section>

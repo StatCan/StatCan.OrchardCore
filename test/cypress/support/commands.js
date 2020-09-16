@@ -3,8 +3,6 @@ import { creds } from "./objects";
 // ***********************************************
 // https://on.cypress.io/custom-commands
 // ***********************************************
-
-
 Cypress.Commands.add("login", function({ prefix = "" } = {}) {
   cy.visit(`${prefix}/login`);
   cy.get("#UserName").type(creds.username);
@@ -57,7 +55,7 @@ Cypress.Commands.add("createTenant", ({ name, prefix }) => {
 
 Cypress.Commands.add("runRecipe", ({ prefix }, filterValue) => {
   cy.visit(`${prefix}/Admin/Recipes`);
-  cy.get(`[data-filter-value="${filterValue}"]`)
+  cy.get(`[data-filter-value*="${filterValue}"]`)
     .find('a:contains("Run")')
     .click();
   cy.get("#modalOkButton").click();

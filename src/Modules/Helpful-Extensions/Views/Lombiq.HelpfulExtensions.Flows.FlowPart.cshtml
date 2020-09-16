@@ -1,0 +1,38 @@
+﻿@using Lombiq.HelpfulExtensions.Extensions.Flows.Models
+@using OrchardCore.ContentManagement
+@using OrchardCore.Flows.Models
+@using OrchardCore.Flows.ViewModels
+@using OrchardCore.Mvc.Utilities
+
+@model FlowPartViewModel
+@inject OrchardCore.ContentManagement.Display.IContentItemDisplayManager ContentItemDisplayManager
+
+<section class="flow">
+    @foreach (var widget in Model.FlowPart.Widgets)
+    {
+        var widgetContent = await ContentItemDisplayManager.BuildDisplayAsync(
+            widget, Model.BuildPartDisplayContext.Updater, Model.BuildPartDisplayContext.DisplayType, Model.BuildPartDisplayContext.GroupId);
+        var additionalStyling = widget.As<AdditionalStylingPart>();
+
+        if (additionalStyling != null)
+        {
+            var flowMetadata = widget.As<FlowMetadata>();
+
+            if (!string.IsNullOrEmpty(additionalStyling.CustomClasses))
+            {
+                widgetContent.Classes.Add(additionalStyling.CustomClasses?.Trim());
+            }
+
+            if (!additionalStyling.RemoveGridExtensionClasses && flowMetadata != null)
+            {
+                widgetContent.Classes.Add("widget-align-" + flowMetadata.Alignment.ToString().ToLowerInvariant());
+                widgetContent.Classes.Add("widget-size-" + flowMetadata.Size);
+            }
+        }
+
+        widgetContent.Classes.Add("widget");
+        widgetContent.Classes.Add("widget-" + widget.ContentItem.ContentType.HtmlClassify());
+
+        @await DisplayAsync(widgetContent)
+    }
+</section>

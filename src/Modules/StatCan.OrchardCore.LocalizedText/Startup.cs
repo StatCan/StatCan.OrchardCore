@@ -1,16 +1,16 @@
 using Fluid;
 using Microsoft.Extensions.DependencyInjection;
-using StatCan.OrchardCore.LocalizedText.Drivers;
-using StatCan.OrchardCore.LocalizedText.Fields;
 using OrchardCore.ContentManagement;
 using OrchardCore.ContentManagement.Display.ContentDisplay;
 using OrchardCore.Modules;
-using StatCan.OrchardCore.LocalizedText.Models;
 using OrchardCore.Data.Migration;
 using OrchardCore.Liquid;
-using StatCan.OrchardCore.LocalizedText.Liquid;
 using OrchardCore.ContentManagement.Handlers;
 using OrchardCore.Scripting;
+using StatCan.OrchardCore.LocalizedText.Drivers;
+using StatCan.OrchardCore.LocalizedText.Fields;
+using StatCan.OrchardCore.LocalizedText.Models;
+using StatCan.OrchardCore.LocalizedText.Liquid;
 using StatCan.OrchardCore.LocalizedText.Scripting;
 
 namespace StatCan.OrchardCore.LocalizedText
@@ -32,6 +32,7 @@ namespace StatCan.OrchardCore.LocalizedText
                 .UseDisplayDriver<LocalizedTextPartDisplayDriver>();
 
             services.AddSingleton<IGlobalMethodProvider, GlobalMethodProvider>();
+
         }
     }
 
