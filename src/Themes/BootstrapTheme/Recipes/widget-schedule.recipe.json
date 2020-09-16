@@ -1,0 +1,141 @@
+{
+  "name": "widget-schedule",
+  "displayName": "widget-schedule",
+  "description": "A widget that displays a list of events",
+  "author": "Digital Innovation Team",
+  "website": "https://digital.statcan.gc.ca",
+  "version": "1.0",
+  "issetuprecipe": false,
+  "categories": ["Bootstrap"],
+  "tags": ["Base", "Bootstrap", "Innovation" ],
+  "steps": [
+    {
+      "name": "ContentDefinition",
+      "ContentTypes": [
+        {
+          "Name": "ScheduleListWidget",
+          "DisplayName": "Schedule List Widget",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Creatable": false,
+              "Listable": true,
+              "Draftable": false,
+              "Versionable": false,
+              "Stereotype": "Widget",
+              "Securable": false
+            },
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "ScheduleListWidget",
+              "Name": "ScheduleListWidget",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "2"
+                }
+              }
+            },
+            {
+              "PartName": "TitlePart",
+              "Name": "TitlePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            },
+            {
+              "PartName": "BagPart",
+              "Name": "Events",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "DisplayName": "Events",
+                  "Description": "Bag of scheduled events.",
+                  "Position": "1"
+                },
+                "BagPartSettings": {
+                  "ContainedContentTypes": [
+                    "ScheduleEvent"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "ScheduleEvent",
+          "DisplayName": "Schedule Event",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Creatable": false,
+              "Listable": true,
+              "Draftable": false,
+              "Versionable": false,
+              "Stereotype": "Widget",
+              "Securable": false
+            },
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "ScheduleEvent",
+              "Name": "ScheduleEvent",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                }
+              }
+            },
+            {
+              "PartName": "MarkdownBodyPart",
+              "Name": "MarkdownBodyPart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "2"
+                }
+              }
+            },
+            {
+              "PartName": "TitlePart",
+              "Name": "TitlePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "ContentParts": [
+        {
+          "Name": "ScheduleEvent",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "TextField",
+              "Name": "Time",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Time",
+                  "Position": "0"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "Location",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Location",
+                  "Position": "1"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

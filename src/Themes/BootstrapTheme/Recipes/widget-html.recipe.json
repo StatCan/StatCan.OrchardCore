@@ -1,0 +1,60 @@
+{
+  "name": "widget-html",
+  "displayName": "widget-html",
+  "description": "Widget that renders a html body",
+  "author": "Digital Innovation Team",
+  "website": "https://digital.statcan.gc.ca",
+  "version": "1.0",
+  "issetuprecipe": false,
+  "categories": ["Bootstrap"],
+  "tags": ["Base", "Bootstrap", "Innovation"],
+  "steps": [
+    {
+      "name": "ContentDefinition",
+      "ContentTypes": [
+        {
+          "Name": "HtmlWidget",
+          "DisplayName": "HtmlWidget",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Stereotype": "Widget"
+            }
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "HtmlWidget",
+              "Name": "HtmlWidget",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "2"
+                }
+              }
+            },
+            {
+              "PartName": "HtmlBodyPart",
+              "Name": "HtmlBodyPart",
+              "Settings": {
+                "HtmlBodyPartSettings": {},
+                "ContentIndexSettings": {},
+                "ContentTypePartSettings": {
+                  "Position": "1",
+                  "Editor": "Wysiwyg"
+                }
+              }
+            },
+            {
+              "PartName": "TitlePart",
+              "Name": "TitlePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "ContentParts": []
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+<div class="article-summary">
+    {% a display_for:Model.ContentItem %}
+    <h2 class="article-title">
+        {{ Model.ContentItem.DisplayText }}
+    </h2>
+    <h3 class="article-subtitle">
+        {{ Model.ContentItem.Content.Article.Subtitle.Text }}
+    </h3>
+    {% enda %}
+    <p class="article-meta">
+        {% assign format = "MMMM dd, yyyy" | t %}
+        {% assign dateTime = "DateTime" | shape_new: utc: Model.ContentItem.CreatedUtc, format: format | shape_stringify %}
+        {{ "Posted by" | t }}
+        <a href="#">{{ Model.ContentItem.Owner }}</a>
+        {{ "on {0}" | t: dateTime | raw }}
+    </p>
+</div>
+<hr/>

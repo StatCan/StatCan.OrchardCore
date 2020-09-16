@@ -1,0 +1,54 @@
+{
+  "name": "widget-md",
+  "displayName": "widget-md",
+  "description": "Widget that renders markdown -> html",
+  "author": "Digital Innovation Team",
+  "website": "https://digital.statcan.gc.ca",
+  "version": "1.0",
+  "issetuprecipe": false,
+  "categories": ["Bootstrap"],
+  "tags": ["Base", "Bootstrap", "Innovation"],
+  "steps": [
+    {
+      "name": "ContentDefinition",
+      "ContentTypes": [
+        {
+          "Name": "Md",
+          "DisplayName": "Md",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Stereotype": "Widget"
+            },
+            "FullTextAspectSettings": {
+              "IncludeBodyAspect": false,
+              "IncludeDisplayText": false
+            }
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "Md",
+              "Name": "Md",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            },
+            {
+              "PartName": "MarkdownBodyPart",
+              "Name": "MarkdownBodyPart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1",
+                  "Editor": "Wysiwyg"
+                },
+                "MarkdownBodyPartSettings": {}
+              }
+            }
+          ]
+        }
+      ],
+      "ContentParts": []
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "name": "widget-container",
+  "displayName": "widget-container",
+  "description": "A generic container to allow wrapping shapes",
+  "author": "Digital Innovation Team",
+  "website": "https://digital.statcan.gc.ca",
+  "version": "1.0",
+  "issetuprecipe": false,
+  "categories": ["Bootstrap"],
+  "tags": ["Base", "Bootstrap", "Innovation" ],
+  "steps": [
+    {
+      "name": "ContentDefinition",
+      "ContentTypes": [
+        {
+          "Name": "ContainerWidget",
+          "DisplayName": "ContainerWidget",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Stereotype": "Widget"
+            },
+            "FullTextAspectSettings": {
+              "IncludeBodyAspect": false,
+              "IncludeDisplayText": false
+            }
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "ContainerWidget",
+              "Name": "ContainerWidget",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                }
+              }
+            },
+            {
+              "PartName": "FlowPart",
+              "Name": "FlowPart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "2"
+                }
+              }
+            },
+            {
+              "PartName": "TitlePart",
+              "Name": "TitlePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "ContentParts": []
+    }
+  ]
+}
