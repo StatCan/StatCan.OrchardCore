@@ -13,6 +13,7 @@
 
     <!-- Libs -->
     <ProjectReference Include="..\StatCan.OrchardCore.Security\StatCan.OrchardCore.Security.csproj" PrivateAssets="none" />
+    <ProjectReference Include="..\StatCan.OrchardCore.Extensions\StatCan.OrchardCore.Extensions.csproj" PrivateAssets="none" />
     
     <!-- Modules -->
     <ProjectReference Include="..\..\Modules\Etch.OrchardCore.ContentPermissions\Etch.OrchardCore.ContentPermissions.csproj" PrivateAssets="none" />
