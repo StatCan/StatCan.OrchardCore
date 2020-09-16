@@ -1,12 +1,9 @@
-<section class="hero is-fullheight">
+<section class="hero-section">
   <div class="container">
-  	<header class="hero-header">
-  	  {% shape "menu", alias: "alias:main-menu" %}
-    </header>
-    <div class="hero-body justify-content-center">
-      <h1>{{ Model.ContentItem.Content.Hero.Title.Text }}</h1>
+    <div class="row flex-1 align-items-center" style="min-height: 22rem">
+      <div class="col-6">
+        <h1>{{ Model.ContentItem.Content.TitlePart.Title }}</h1>
+      </div>
     </div>
-    <footer class="hero-footer fip">
-    </footer> 
   </div>
 </section>
