@@ -1,0 +1,29 @@
+@model Lombiq.HelpfulExtensions.Extensions.CodeGeneration.ContentTypeMigrationsViewModel
+
+<script asp-name="codemirror" depends-on="admin" at="Foot"></script>
+<script asp-name="codemirror-mode-javascript" at="Foot"></script>
+
+<div class="form-group">
+    <button class="btn btn-info collapse-toggle" type="button" data-toggle="collapse" data-target="#generated-migration-code-container" aria-expanded="false" aria-controls="generated-migration-code-container">
+        @T["Toggle showing generated migration code"]
+    </button>
+
+    <div id="generated-migration-code-container" class="collapse">
+        <textarea id="generated-migration-code" type="text" class="form-control">@Model.MigrationCode</textarea>
+    </div>
+</div>
+
+<script at="Foot" depends-on="jquery">
+    (function ($) {
+        $(function () {
+            CodeMirror.fromTextArea(document.getElementById('generated-migration-code'), {
+                autoRefresh: true,
+                lineNumbers: true,
+                matchBrackets: true,
+                @* It's not JavaScript but close enough. This way we don't need to include another CodeMirror add-on. *@
+                mode: { name: "javascript" },
+                readOnly: true
+            });
+        });
+    })(jQuery);
+</script>
