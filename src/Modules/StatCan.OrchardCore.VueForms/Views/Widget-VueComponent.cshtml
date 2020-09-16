@@ -1,0 +1,19 @@
+@using StatCan.OrchardCore.VueForms.Models
+@using Newtonsoft.Json.Linq; 
+@{
+    var contentItem = ((ContentItem)Model.ContentItem);
+
+    var vueComponent = contentItem.As<VueComponent>();
+    // todo: pass the object required for loading initial data here
+    var script = await Orchard.LiquidAsync(vueComponent.Script.Text, (ContentItem)Model.ContentItem);
+    var template = await Orchard.LiquidAsync(vueComponent.Template.Text, (ContentItem)Model.ContentItem);
+
+}
+
+
+<div data-vf-name="component-one" data-vf-script="@Orchard.B64Encode(script)">
+  <component-one inline-template v-bind:obs-invalid="invalid" v-bind:obs-reset="reset" v-bind:obs-validated="validated" v-bind:obs-validate="validate" v-bind:obs-handle-submit="handleSubmit">
+    @Html.Raw(template)
+  </component-one>
+</div>
+

@@ -2,24 +2,24 @@
 
 import { creds } from "../../support/objects";
 
-export const blank = {
-  name: "af5",
-  prefix: "af5",
-  setupRecipe: "Blank",
+export const bootstrap = {
+  name: "vueform7",
+  prefix: "vueform7",
+  setupRecipe: "bootstrap-setup-recipe",
   ...creds
 };
 
-describe("Blank setup", function() {
-  it.only("Setup AjaxForms test tenant", function() {
+describe("VueForm setup", function() {
+  it.only("Setup VueForm test tenant", function() {
     cy.login();
-    cy.createTenant(blank);
-    cy.gotoTenantSetup(blank);
-    cy.setupSite(blank);
-    cy.login(blank);
-    cy.enableFeature(blank, "AjaxForms");
+    cy.createTenant(bootstrap);
+    cy.gotoTenantSetup(bootstrap);
+    cy.setupSite(bootstrap);
+    cy.login(bootstrap);
+    cy.enableFeature(bootstrap, "VueForm");
   });
   it("Create a simple form"), function() {
-    cy.login(blank);
+    cy.login(bootstrap);
 
   }
 });

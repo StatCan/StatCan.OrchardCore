@@ -1,0 +1,11 @@
+[
+  {
+    "generateSourceMaps": false,
+    "inputs": ["Assets/vue-forms.scss"],
+    "output": "wwwroot/vue-forms.css"
+  },
+  {
+    "inputs": ["Assets/vue-forms.js" ],
+    "output": "wwwroot/vue-forms.js"
+  }
+]
