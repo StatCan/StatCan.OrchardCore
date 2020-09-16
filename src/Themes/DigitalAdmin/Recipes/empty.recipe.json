@@ -1,13 +1,19 @@
 {
-  "name": "digital-recipe",
-  "displayName": "Digital Theme recipe",
-  "description": "Enables the features required to work with this theme",
-  "author": "Digital Innovation Team",
-  "website": "https://digital.statcan.gc.ca",
-  "version": "1.0",
+  "name": "Blank",
+  "displayName": "Blank site",
+  "description": "Creates a blank site with content management features.",
+  "author": "The Orchard Core Team",
+  "website": "https://orchardcore.net",
+  "version": "1.0.0-rc2",
   "issetuprecipe": true,
-  "categories": ["innovation"],
-  "tags": ["innovation", "inno"],
+  "categories": [ "default" ],
+  "tags": [ "blank" ],
+
+  // The variables are evaluated the first time they are accessed, and reused across steps
+  "variables": {
+    // "now": "[js: new Date().toISOString()]"
+  },
+
   "steps": [
     {
       "name": "feature",
@@ -32,18 +38,18 @@
         "OrchardCore.Autoroute",
         "OrchardCore.Html",
         "OrchardCore.ContentFields",
-        "OrchardCore.ContentLocalization",
-        "OrchardCore.ContentLocalization.ContentCulturePicker",
         "OrchardCore.ContentPreview",
         "OrchardCore.Contents",
+        "OrchardCore.Contents.FileContentDefinition",
         "OrchardCore.ContentTypes",
         "OrchardCore.CustomSettings",
         "OrchardCore.Deployment",
+        "OrchardCore.Deployment.Remote",
         "OrchardCore.Feeds",
         "OrchardCore.Flows",
         "OrchardCore.Indexing",
         "OrchardCore.Layers",
-        "OrchardCore.Localization",
+        "OrchardCore.Lucene",
         "OrchardCore.Lists",
         "OrchardCore.Markdown",
         "OrchardCore.Media",
@@ -53,34 +59,15 @@
         "OrchardCore.Title",
         "OrchardCore.Templates",
         "OrchardCore.Widgets",
-        "OrchardCore.Email",
-        "DigitalTheme",
-        "TheAdmin",
-        "SafeMode"
+
+        // Themes
+        "TheAdmin"
       ]
-    },
-    {
-      "name": "Settings",
-      "TimeZoneId": "America/Toronto",
-      "AppendVersion": true,
-      "LocalizationSettings": {
-        "DefaultCulture": "en",
-        "SupportedCultures": ["fr", "en"]
-      },
-      "LoginSettings": {
-        "UseSiteTheme": true
-      },
-      "ResetPasswordSettings": {
-        "UseSiteTheme": true
-      },
-      "RegistrationSettings": {
-        "UseSiteTheme": true
-      }
     },
     {
       "name": "themes",
       "admin": "TheAdmin",
-      "site": "DigitalTheme"
+      "site": ""
     }
   ]
 }

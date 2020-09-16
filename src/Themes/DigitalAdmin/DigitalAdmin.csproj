@@ -7,18 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="OrchardCore.Theme.Targets" Version="$(OrchardCoreVersion)" />
-    <PackageReference Include="OrchardCore.ContentManagement" Version="$(OrchardCoreVersion)" />
-    <PackageReference Include="OrchardCore.DisplayManagement" Version="$(OrchardCoreVersion)" />
-    <PackageReference Include="OrchardCore.ResourceManagement" Version="$(OrchardCoreVersion)" />
-    <PackageReference Include="OrchardCore.Users.Abstractions" Version="$(OrchardCoreVersion)" />
-    <PackageReference Include="OrchardCore.Users" Version="$(OrchardCoreVersion)" />
-    <PackageReference Include="OrchardCore.Admin" Version="$(OrchardCoreVersion)" />
-    <PackageReference Include="OrchardCore.Infrastructure" Version="$(OrchardCoreVersion)" />
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
   </ItemGroup>
 
   <ItemGroup>
-    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="OrchardCore.Theme.Targets" Version="$(OrchardCoreVersion)" />
+    <PackageReference Include="OrchardCore.DisplayManagement" Version="$(OrchardCoreVersion)" />
+    <PackageReference Include="OrchardCore.ResourceManagement" Version="$(OrchardCoreVersion)" />
+    <PackageReference Include="OrchardCore.Admin" Version="$(OrchardCoreVersion)" />
+    <PackageReference Include="OrchardCore.ContentLocalization.Abstractions" Version="$(OrchardCoreVersion)" />
   </ItemGroup>
 
 </Project>

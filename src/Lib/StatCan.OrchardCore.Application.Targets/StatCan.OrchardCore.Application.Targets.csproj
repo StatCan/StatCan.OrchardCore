@@ -31,6 +31,7 @@
     <ProjectReference Include="..\..\Themes\BootstrapTheme\BootstrapTheme.csproj" PrivateAssets="none" />
     <ProjectReference Include="..\..\Themes\PortalTheme\PortalTheme.csproj" PrivateAssets="none" />
     <ProjectReference Include="..\..\Themes\DigitalTheme\DigitalTheme.csproj" PrivateAssets="none" />
+    <ProjectReference Include="..\..\Themes\DigitalAdmin\DigitalAdmin.csproj" PrivateAssets="none" />
 
   </ItemGroup>
 

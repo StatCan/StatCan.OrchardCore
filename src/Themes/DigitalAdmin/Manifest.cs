@@ -1,9 +1,12 @@
 using OrchardCore.DisplayManagement.Manifest;
+using OrchardCore.Modules.Manifest;
 
 [assembly: Theme(
-    Name = "PortalTheme",
+    Name = "Digtal Admin Theme",
     Author = "Digital Innovation Team",
     Website = "https://digital.statcan.gc.ca",
     Version = "1.0.0",
-    Description = "Theme of the Labs portal"
+    Description = "A custom admin theme.",
+    Tags = new [] { "Admin" },
+    BaseTheme = "TheAdmin"
 )]
