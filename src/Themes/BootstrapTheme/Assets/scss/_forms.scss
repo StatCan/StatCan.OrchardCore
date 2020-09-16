@@ -1,0 +1,11 @@
+/*Fix alignment of x button in kendo-combobox */
+.k-clear-value, k-i-close {
+  top: 7px !important;
+}
+
+.asterix{
+  &:before {
+    content: "* ";
+    color: red;
+  }
+}

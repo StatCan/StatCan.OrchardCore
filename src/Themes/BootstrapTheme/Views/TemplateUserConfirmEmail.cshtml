@@ -1,0 +1,18 @@
+@model ConfirmEmailViewModel
+@{
+  Layout = "";
+}
+
+<p>Le français suit.</p>
+
+<p>@T["Hello {0},", Model.User.UserName]</p>
+
+<p>@T["Please <a href=\"{0}\">click here</a> to confirm your new account.", Model.ConfirmEmailUrl]</p>
+
+<p>@T["Thank you"]</p>
+
+<p>@T["Bonjour {0},", Model.User.UserName]</p>
+
+<p>@T["Veuillez <a href=\"{0}\">cliquer ici</a> afin de confirmer votre nouveau compte.", Model.ConfirmEmailUrl]</p>
+
+<p>@T["Merci"]</p>

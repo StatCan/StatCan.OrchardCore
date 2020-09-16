@@ -1,0 +1,13 @@
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="fa-2x fas fa-hamburger text-primary"></span>
+</button>
+<div class="order-lg-last">
+    {% shape "ContentCulturePicker" %}
+</div>
+<div class="collapse navbar-collapse justify-content-end px-3" id="navbarNav">
+    <ul class="navbar-nav">
+        {% for item in Model.Items %}
+        {{ item | shape_render }}
+        {% endfor %}
+    </ul>
+</div>

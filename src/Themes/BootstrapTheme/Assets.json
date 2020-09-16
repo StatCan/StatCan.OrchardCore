@@ -1,0 +1,55 @@
+[
+  {
+    "inputs": ["Assets/scss/inno-bootstrap.scss"],
+    "watch": [
+      "Assets/scss/_404.scss",
+      "Assets/scss/_base.scss",
+      "Assets/scss/_bootstrap.scss",
+      "Assets/scss/_font-sizes.scss",
+      "Assets/scss/_layout.scss",
+      "Assets/scss/_messages.scss",
+      "Assets/scss/_mixin-override.scss",
+      "Assets/scss/_mixins.scss",
+      "Assets/scss/_variables.scss",
+      "Assets/scss/_partials.scss",
+      "Assets/scss/_forms.scss"
+
+    ],
+    "output": "wwwroot/css/inno-bootstrap.css"
+  },
+  {
+    "inputs": ["Assets/js/header.js"],
+    "output": "wwwroot/js/header.js"
+  },
+  {
+    "inputs": [ "node_modules/jquery/dist/jquery.js" ],
+    "output": "wwwroot/Scripts/jquery.js"
+  },
+  {
+    "inputs": [ "node_modules/bootstrap/dist/js/bootstrap.js" ],
+    "output": "wwwroot/Scripts/bootstrap.js"
+  },
+  {
+    "inputs": [ "node_modules/popper.js/dist/umd/popper.js" ],
+    "output": "wwwroot/Scripts/popper.js"
+  },
+  {
+    "copy": true,
+    "inputs": [ "node_modules/@fortawesome/fontawesome-free/css/*" ],
+    "output": "wwwroot/Vendor/fontawesome-free/css/@"
+  },
+  {
+    "copy": true,
+    "inputs": [ "node_modules/@fortawesome/fontawesome-free/js/*" ],
+    "output": "wwwroot/Vendor/fontawesome-free/js/@"
+  },
+  {
+    "copy": true,
+    "inputs": [ "node_modules/@fortawesome/fontawesome-free/webfonts/*" ],
+    "output": "wwwroot/Vendor/fontawesome-free/webfonts/@"
+  },
+  {
+    "inputs": [ "Assets/js/setCookie.js" ],
+    "output": "wwwroot/Scripts/setCookie.js"
+  }
+]
