@@ -1,10 +1,14 @@
+.hero-section {
+  background: #e0e3e6 url("../images/DigitalHeroBG.svg");
+  background-position: center;
+  background-size: auto;
+  background-repeat: no-repeat;
+  min-height: 35rem;
+}
+
 .content-section {
   &:nth-of-type(1) {
-    background: #e0e3e6 url("../images/DigitalHeroBG.svg");
-    background-position: center;
-    background-size: auto;
-    background-repeat: no-repeat;
-    min-height: 35rem;
+    background: #e0e3e6;
   }
   &:nth-of-type(2) {
     background-image: url("../images/CircuitL.svg"),
