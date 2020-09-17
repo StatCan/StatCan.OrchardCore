@@ -73,7 +73,7 @@ VeeValidate.localize({
 
 function initForm(app) {
   // run the vue-form init script provided in the OC admin ui
-  var appScript = app.dataset.initScript;
+  var appScript = app.dataset.script;
 
   if (appScript) {
     var initFn = new Function(atob(appScript));
@@ -89,7 +89,7 @@ function initForm(app) {
 
     if (encodedScript) {
       var script = atob(encodedScript);
-      var getVueObject = new Function("\n        var component = ".concat(script, ";\n        Object.assign(component, {name: '").concat(name, "' ,template: '#").concat(name, "-tmpl', props: \n          ['obs-valid', \n          'obs-invalid',\n          'obs-reset',\n          'obs-validated',\n          'obs-validate',\n          'form-handle-submit',\n          'form-success-message',\n          'form-error-message',\n          'form-ajax-error-status',\n          'form-ajax-error-text']\n        });\n        return Vue.component('").concat(name, "', component);\n        "));
+      var getVueObject = new Function("\n        var component = ".concat(script, ";\n        Object.assign(component, {name: '").concat(name, "', props: \n          ['obs-valid',\n          'obs-invalid',\n          'obs-reset',\n          'obs-validated',\n          'obs-validate',\n          'form-handle-submit',\n          'form-success-message',\n          'form-error-message',\n          'form-ajax-error-status',\n          'form-ajax-error-text']\n        });\n        return Vue.component('").concat(name, "', component);\n        "));
       components[name] = getVueObject();
     }
   }); // instanciate the top level vue component

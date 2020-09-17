@@ -48,4 +48,13 @@ namespace StatCan.OrchardCore.VueForms
             services.AddActivity<VueFormSubmittedEvent, VueFormSubmittedEventDisplayDriver>();
         }
     }
+
+    [Feature(Constants.Features.Localized)]
+    public class LocalizedStartup : StartupBase
+    {
+        public override void ConfigureServices(IServiceCollection services)
+        {
+            services.AddScoped<IDataMigration, LocalizationMigrations>();
+        }
+    }
 }

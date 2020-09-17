@@ -75,7 +75,7 @@ namespace StatCan.OrchardCore.VueForms
                .WithField("Template", f => f
                    .OfType(nameof(TextField))
                    .WithDisplayName("Template")
-                   .WithSettings(new TextFieldSettings() { Required= true, Hint = "VueJS Component template. Need to return a single node. <a target=\"_blank\" href=\"https://vuetifyjs.com/en/components/forms\" >Vuetify</a> and <a target=\"_blank\" href=\"https://logaretm.github.io/vee-validate/guide/basics.html\" >VeeValidate</a> librairies are loaded by default. " })
+                   .WithSettings(new TextFieldSettings() { Required= true, Hint = "VueJS Component template. Need to return a single node. Vuetify(https://vuetifyjs.com/en/components/forms) and  VeeValidate(https://logaretm.github.io/vee-validate/guide/basics.html) librairies are loaded by default." })
                    .WithPosition("1")
                    .WithEditor("CodeMirrorLiquid")
                )
@@ -97,7 +97,6 @@ namespace StatCan.OrchardCore.VueForms
         }
     }
 
-    [Feature(Constants.Features.Localized)]
     public class LocalizationMigrations : DataMigration
     {
         private readonly IContentDefinitionManager _contentDefinitionManager;

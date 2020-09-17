@@ -73,7 +73,7 @@ function initForm(app) {
 
   // run the vue-form init script provided in the OC admin ui
  
-  let appScript = app.dataset.initScript;
+  let appScript = app.dataset.script;
   if (appScript) {
     const initFn = new Function(atob(appScript));
     initFn();
@@ -91,8 +91,8 @@ function initForm(app) {
       const getVueObject = new Function(
         `
         var component = ${script};
-        Object.assign(component, {name: '${name}' ,template: '#${name}-tmpl', props: 
-          ['obs-valid', 
+        Object.assign(component, {name: '${name}', props: 
+          ['obs-valid',
           'obs-invalid',
           'obs-reset',
           'obs-validated',
@@ -175,6 +175,3 @@ function initForm(app) {
 
 // look for all vue forms when this script is loaded and initialize them
 document.querySelectorAll(".vue-form").forEach(initForm);
-
-
-
