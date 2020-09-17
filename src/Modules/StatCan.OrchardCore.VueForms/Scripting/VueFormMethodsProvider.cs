@@ -18,7 +18,6 @@ namespace StatCan.OrchardCore.VueForms.Scripting
         private readonly GlobalMethod _setModelError;
         private readonly GlobalMethod _formAsJsonObject;
         private readonly GlobalMethod _getFormContentItem;
-        private readonly GlobalMethod _debugger;
 
         public VueFormMethodsProvider(ContentItem form, IDictionary<string, List<string>> errors)
         {
@@ -40,17 +39,6 @@ namespace StatCan.OrchardCore.VueForms.Scripting
                             }
                            
                         }
-                    )
-            };
-
-            _debugger = new GlobalMethod
-            {
-                Name = "debugCode",
-                Method = serviceProvider =>
-                    (Func<object, object>)(( obj) =>
-                    {
-                        return obj;
-                    }
                     )
             };
 
@@ -86,7 +74,7 @@ namespace StatCan.OrchardCore.VueForms.Scripting
 
         public IEnumerable<GlobalMethod> GetMethods()
         {
-            return new[] { _setModelError, _formAsJsonObject, _getFormContentItem, _debugger };
+            return new[] { _setModelError, _formAsJsonObject, _getFormContentItem };
         }
     }
 }

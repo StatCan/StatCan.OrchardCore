@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<module type="RIDER_MODULE" version="4">
-  <component name="NewModuleRootManager">
-    <content url="file://$USER_HOME$/.nuget/packages/orchardcore.module.targets/1.0.0-rc1-12806/build/netcoreapp3.1/Package.Build.props" />
-    <content url="file://$MODULE_DIR$/../.." />
-    <orderEntry type="sourceFolder" forTests="false" />
-  </component>
-</module>

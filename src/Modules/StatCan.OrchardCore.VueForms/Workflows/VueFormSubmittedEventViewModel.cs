@@ -1,8 +1,6 @@
 using Microsoft.AspNetCore.Mvc.Rendering;
-using OrchardCore.Workflows.ViewModels;
-using System;
 using System.Collections.Generic;
-using System.Text;
+using OrchardCore.Workflows.ViewModels;
 
 namespace StatCan.OrchardCore.VueForms.Workflows
 {
@@ -21,6 +19,5 @@ namespace StatCan.OrchardCore.VueForms.Workflows
 
         public IList<SelectListItem> AllItems { get; set; } = new List<SelectListItem>();
         public IList<string> SelectedFormIds { get; set; } = new List<string>();
-
     }
 }

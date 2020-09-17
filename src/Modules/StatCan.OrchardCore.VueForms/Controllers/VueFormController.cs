@@ -12,7 +12,7 @@ using OrchardCore.Scripting;
 using OrchardCore.Workflows.Services;
 using StatCan.OrchardCore.VueForms.Models;
 using StatCan.OrchardCore.VueForms.Workflows;
-using StatCan.OrchardCore.ContentsExtensions;
+using StatCan.OrchardCore.Extensions;
 using StatCan.OrchardCore.VueForms.Scripting;
 
 namespace StatCan.OrchardCore.VueForms.Controllers
@@ -88,7 +88,6 @@ namespace StatCan.OrchardCore.VueForms.Controllers
             if (errorsDictionary.Count > 0)
             {
                 var model = await _contentItemDisplayManager.BuildDisplayAsync(form, modelUpdater);
-                var formHtml = await this.RenderViewAsync("Display", model, true);
                 return Json(new { validationError = true, errors = errorsDictionary});
             }
 

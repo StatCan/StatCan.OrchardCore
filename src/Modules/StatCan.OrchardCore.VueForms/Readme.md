@@ -1,4 +1,4 @@
-# AjaxForms (`StatCan.OrchardCore.VueForms`)
+# VueForms (`StatCan.OrchardCore.VueForms`)
 
 
 ## Parts

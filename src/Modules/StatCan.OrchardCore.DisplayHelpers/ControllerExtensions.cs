@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.ViewEngines;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 
-namespace StatCan.OrchardCore.VueForms
+namespace StatCan.OrchardCore.DisplayHelpers
 {
     // todo: move this into it's own assembly.
     public static class ControllerExtensions

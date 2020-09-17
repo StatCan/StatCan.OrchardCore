@@ -9,9 +9,7 @@ using OrchardCore.Modules.Manifest;
     Dependencies = new[]
     {
         "OrchardCore.Contents",
-        "OrchardCore.Title",
-        "OrchardCore.Flows",
-        "StatCan.OrchardCore.ContentFields"
+        "OrchardCore.Liquid",
     },
     Category = "Form"
 )]

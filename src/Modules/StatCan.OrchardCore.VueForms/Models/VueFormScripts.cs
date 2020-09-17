@@ -5,7 +5,6 @@ namespace StatCan.OrchardCore.VueForms.Models
 {
     public class VueFormScripts: ContentPart
     {
-
         public TextField ClientInitScript { get; set; }
         /// <summary>
         /// Script that runs everytime the form is submitted, to validate the values.
