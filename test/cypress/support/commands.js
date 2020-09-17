@@ -57,6 +57,7 @@ Cypress.Commands.add("runRecipe", ({ prefix }, filterValue) => {
   cy.visit(`${prefix}/Admin/Recipes`);
   cy.get(`[data-filter-value*="${filterValue}"]`)
     .find('a:contains("Run")')
+    .first()
     .click();
   cy.get("#modalOkButton").click();
 });
@@ -65,5 +66,6 @@ Cypress.Commands.add("enableFeature", ({ prefix }, filterValue) => {
   cy.visit(`${prefix}/Admin/Features`);
   cy.get(`[data-filter-value*="${filterValue}"]`)
     .find('a:contains("Enable")')
+    .first()
     .click();
 });
