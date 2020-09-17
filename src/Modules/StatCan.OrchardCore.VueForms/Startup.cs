@@ -12,6 +12,7 @@ using OrchardCore.Navigation;
 using System.Linq;
 using OrchardCore.Workflows.Helpers;
 using StatCan.OrchardCore.VueForms.Workflows;
+using OrchardCore.ResourceManagement;
 
 namespace StatCan.OrchardCore.VueForms
 {
@@ -22,13 +23,11 @@ namespace StatCan.OrchardCore.VueForms
             services.AddContentPart<VueForm>();
             services.AddContentPart<VueFormScripts>();
             services.AddContentPart<VueComponent>();
-            //services.AddContentPart<FormInput>();
-            //services.AddContentPart<FormInputStyle>();
-            //services.AddContentPart<FormRequiredValidation>();
-            //services.AddContentPart<FormButton>();
 
             services.AddScoped<IDataMigration, Migrations>();
             services.AddScoped<INavigationProvider, AdminMenu>();
+
+            services.AddScoped<IResourceManifestProvider, ResourceManifest>();
         }
          public override void Configure(IApplicationBuilder app, IEndpointRouteBuilder routes, IServiceProvider serviceProvider)
         {

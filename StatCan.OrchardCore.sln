@@ -41,6 +41,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{8F9F4565
 	ProjectSection(SolutionItems) = preProject
 		src\Build\Dependencies.props = src\Build\Dependencies.props
 		nuget.config = nuget.config
+		package.json = package.json
 		src\Build\StatCan.OrchardCore.Commons.props = src\Build\StatCan.OrchardCore.Commons.props
 		src\Build\StatCan.OrchardCore.Commons.targets = src\Build\StatCan.OrchardCore.Commons.targets
 	EndProjectSection

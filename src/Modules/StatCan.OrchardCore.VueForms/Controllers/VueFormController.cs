@@ -64,16 +64,6 @@ namespace StatCan.OrchardCore.VueForms.Controllers
             {
                 return NotFound();
             }
-            var modelUpdater = _updateModelAccessor.ModelUpdater;
-            // bind form values to model state for if validation errors occur
-            foreach (var item in Request.Form)
-            {
-                modelUpdater.ModelState.SetModelValue(item.Key, item.Value, item.Value);
-            }
-
-            // form validation widgets
-           // var flow = form.As<FlowPart>();
-            //ValidateWidgets(flow.Widgets);
 
             // form validation server side script
             var errorsDictionary = new Dictionary<string, List<string>>();
@@ -87,8 +77,7 @@ namespace StatCan.OrchardCore.VueForms.Controllers
 
             if (errorsDictionary.Count > 0)
             {
-                var model = await _contentItemDisplayManager.BuildDisplayAsync(form, modelUpdater);
-                return Json(new { validationError = true, errors = errorsDictionary});
+                return Json(new { validationError = true, errors = errorsDictionary, errorMessage = formPart.ErrorMessage.Text });
             }
 
             if (!string.IsNullOrEmpty(script?.OnSubmitted?.Text))
@@ -113,33 +102,8 @@ namespace StatCan.OrchardCore.VueForms.Controllers
                 HttpContext.Response.Clear();
                 return Json(returnValue);
             }
-            // we may need to send a success message
-            return Json(new { success = true, successMessage = formPart.SuccessMessage});
+            // everything worked fine. send the success signal to the client
+            return Json(new { success = true, successMessage = formPart.SuccessMessage.Text });
         }
-        //private void ValidateWidgets(IEnumerable<ContentItem> widgets)
-        //{
-        //    var modelUpdater = _updateModelAccessor.ModelUpdater;
-        //    foreach (var widget in widgets)
-        //    {
-        //        var formInput = widget.As<FormInput>();
-        //        if (formInput != null)
-        //        {
-        //            var value = Request.Form[formInput.Name.Text];
-        //            var requiredValidation = widget.As<FormRequiredValidation>();
-        //            if (requiredValidation.Required.Value && string.IsNullOrWhiteSpace(value))
-        //            {
-        //                //todo: localize
-        //                modelUpdater.ModelState.TryAddModelError(formInput.Name.Text, requiredValidation.RequiredText.Text ?? "This field is required");
-        //            }
-        //        }
-        //        var flow = widget.As<FlowPart>();
-        //        if(flow != null)
-        //        {
-        //            // recurse
-        //            ValidateWidgets(flow.Widgets);
-        //        }
-        //        // todo: check if we need to recurse on bag items as well
-        //    }
-        //}
     }
 }

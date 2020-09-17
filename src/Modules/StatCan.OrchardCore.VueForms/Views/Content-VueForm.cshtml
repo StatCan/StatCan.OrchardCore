@@ -1,4 +1,21 @@
-<style asp-name="vuetify" version="2.3.10"></style>
+@using OrchardCore.ContentManagement
+@using OrchardCore.Flows.Models
+@using StatCan.OrchardCore.VueForms.Models
+@inject OrchardCore.ContentManagement.Display.IContentItemDisplayManager ContentItemDisplayManager
+@inject OrchardCore.DisplayManagement.ModelBinding.IUpdateModelAccessor updateModelAccessor
+
+@{ 
+  var contentItem = ((ContentItem)Model.ContentItem);
+  var formPart = contentItem.As<VueForm>();
+  var flowPart = contentItem.As<FlowPart>();
+
+
+  var scripts = contentItem.As<VueFormScripts>();
+
+  var script = await Orchard.LiquidAsync(scripts.ClientInitScript?.Text, contentItem);
+}
+
+<style asp-name="vuetify"></style>
 <style asp-name="vue-forms"></style>
 
 <script asp-name="vuejs" at="Foot"></script>
@@ -6,4 +23,31 @@
 <script asp-name="vee-validate" at="Foot"></script>
 <script asp-name="vue-forms" at="Foot"></script>
 
-@await DisplayAsync(Model.Content.Named("FlowPart"))
+<div class="vue-form" script="@Orchard.B64Encode(script)">
+  <v-app>
+    <validation-observer ref="obs" slim v-slot="{ valid, invalid, validated, handleSubmit, validate, setErrors, reset }">
+      <v-form ref="form"
+              id="@formPart.ContentItem.ContentItemId"
+              v-on:submit.prevent="formSubmit"
+              action="@Url.Action("Submit","VueForm", new {area="StatCan.OrchardCore.VueForms" , formId=contentItem.ContentItemId })"
+              method="post"
+              novalidate>
+        @Html.AntiForgeryToken()
+        @foreach (var widget in flowPart.Widgets)
+        {
+          var widgetContent = await ContentItemDisplayManager.BuildDisplayAsync(widget, updateModelAccessor.ModelUpdater);
+          // Properties come from the widget that displays the forms. 
+          // This allows a page where the form is rendered to pass a value down to the form so it can be dynamically preloaded with data
+          foreach (var prop in ((IShape)Model).Properties)
+          {
+            if (!widgetContent.Properties.ContainsKey(prop.Key))
+            {
+              widgetContent.Properties.Add(prop.Key, prop.Value);
+            }
+          }
+          @await DisplayAsync(widgetContent)
+        }
+        <v-form>
+    </validation-observer>
+  </v-app>
+</div>

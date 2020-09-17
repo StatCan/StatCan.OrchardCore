@@ -3,6 +3,7 @@ using OrchardCore.ContentFields.Settings;
 using OrchardCore.ContentManagement.Metadata;
 using OrchardCore.ContentManagement.Metadata.Settings;
 using OrchardCore.Data.Migration;
+using OrchardCore.Modules;
 using StatCan.OrchardCore.Extensions;
 
 namespace StatCan.OrchardCore.VueForms
@@ -65,9 +66,9 @@ namespace StatCan.OrchardCore.VueForms
             _contentDefinitionManager.AlterTypeDefinition("VueForm", type => type
                 .Draftable()
                 .WithPart("TitlePart", p => p.WithPosition("0"))
-                .WithPart("VueForm", p => p.WithPosition("1"))
-                .WithPart("FlowPart", p => p.WithPosition("2"))
-                .WithPart("VueFormScripts", p => p.WithPosition("3")));
+                .WithPart("VueForm", p => p.WithPosition("2"))
+                .WithPart("FlowPart", p => p.WithPosition("3"))
+                .WithPart("VueFormScripts", p => p.WithPosition("4")));
 
             // Vue component
             _contentDefinitionManager.AlterPartDefinition("VueComponent", part => part
@@ -87,10 +88,30 @@ namespace StatCan.OrchardCore.VueForms
                ));
 
             _contentDefinitionManager.AlterTypeDefinition("VueComponent", type => type
-               .WithPart("VueComponent", p => p.WithPosition("0"))
-               .Stereotype("Widget"));
+                .WithPart("TitlePart", p => p.WithPosition("0"))
+                .WithPart("VueComponent", p => p.WithPosition("1"))
+                .Stereotype("Widget"));
 
 
+            return 1;
+        }
+    }
+
+    [Feature(Constants.Features.Localized)]
+    public class LocalizationMigrations : DataMigration
+    {
+        private readonly IContentDefinitionManager _contentDefinitionManager;
+        public LocalizationMigrations(IContentDefinitionManager contentDefinitionManager)
+        {
+            _contentDefinitionManager = contentDefinitionManager;
+        }
+
+        public int Create()
+        {
+            // Weld the LocalizedText part 
+            _contentDefinitionManager.AlterTypeDefinition("VueForm", type => type
+                 .WithPart("LocalizedText", p => p.WithPosition("1"))
+            );
             return 1;
         }
     }

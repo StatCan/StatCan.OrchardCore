@@ -1,6 +1,6 @@
 using OrchardCore.ResourceManagement;
 
-namespace StatCan.Themes.BootstrapTheme
+namespace StatCan.OrchardCore.VueForms
 {
     public class ResourceManifest : IResourceManifestProvider
     {

@@ -89,23 +89,34 @@ function initForm(app) {
 
     if (encodedScript) {
       var script = atob(encodedScript);
-      var getVueObject = new Function("\n        var component = ".concat(script, ";\n        Object.assign(component, {name: '").concat(name, "' ,template: '#").concat(name, "-tmpl', props: ['obs-invalid', 'obs-validated', 'obs-handle-submit', 'obs-validate']});\n        return Vue.component('").concat(name, "', component);\n        "));
+      var getVueObject = new Function("\n        var component = ".concat(script, ";\n        Object.assign(component, {name: '").concat(name, "' ,template: '#").concat(name, "-tmpl', props: \n          ['obs-valid', \n          'obs-invalid',\n          'obs-reset',\n          'obs-validated',\n          'obs-validate',\n          'form-handle-submit',\n          'form-success-message',\n          'form-error-message',\n          'form-ajax-error-status',\n          'form-ajax-error-text']\n        });\n        return Vue.component('").concat(name, "', component);\n        "));
       components[name] = getVueObject();
     }
-  }); // register the vue app
+  }); // instanciate the top level vue component
 
   new Vue({
     el: app,
     vuetify: new Vuetify({}),
+    data: function data() {
+      return {
+        ajaxErrorStatus: undefined,
+        ajaxErrorText: undefined,
+        successMessage: undefined,
+        errorMessage: undefined
+      };
+    },
     methods: {
-      handleSubmit: function handleSubmit() {
+      formHandleSubmit: function formHandleSubmit() {
+        // cleanup any error / server success message
+        Object.assign(this.$data, this.$options.data.apply(this)); // keep a reference to the VeeValidate observer
+
         var observer = this.$refs.obs;
         var valid = observer.validate();
 
         if (valid) {
+          var vm = this;
           var action = this.$refs.form.$attrs.action;
           var serializedForm = $("#" + this.$refs.form.$attrs.id).serialize();
-          console.log(serializedForm);
           $.ajax({
             type: "POST",
             url: action,
@@ -115,69 +126,37 @@ function initForm(app) {
             success: function success(data) {
               // if there are validation errors on the form, display them.
               if (data.validationError) {
-                var errors = data.errors;
-                console.log(errors);
-                observer.setErrors(errors);
+                vm.errorMessage = data.errorMessage;
+                observer.setErrors(data.errors);
+                return;
               } // if the server sends a redirect, reload the window
 
 
               if (data.redirect) {
                 window.location.href = data.redirect;
-              } //TODO: Handle default success case, maybe show some
+                return;
+              } //success, set the form success message
 
+
+              if (data.success) {
+                vm.successMessage = data.successMessage;
+                return;
+              } // something went wrong, dev issue
+
+
+              vm.errorMessage = "Something wen't wrong. Please report this to your site administrators. Error code: `VueForms.AjaxHandler`";
             },
-            error: function error(xhr) {
-              // todo: handle this case gracefully, usually in the case of server error and not validation error
-              var data = xhr.responseJSON;
-              console.log("error", data);
+            error: function error(xhr, status, errorThrown) {
+              // this might be dependent on the server side and might need some tweaking
+              vm.ajaxErrorStatus = xhr.status;
+              vm.ajaxErrorText = xhr.errorThrown;
             }
           });
         }
       }
     }
-  }); //let $form = $(form);
-  //// parse the form with unobtrusive library 
-  //$.validator.unobtrusive.parse($form);
-  //$form.submit(function (event) {        
-  //    if ($form.valid()) {
-  //      // form has been validated by jQuery validation
-  //      event.preventDefault();
-  //      event.stopPropagation();
-  //      // disable elements that have the data-disable-submit attribute
-  //      const toDisable = form.querySelectorAll("[data-disable-submit='true']");
-  //      toDisable.forEach(x => x.setAttribute('disabled', true));
-  //      const serializedForm = $form.serialize();
-  //      // Post to the form controller
-  //      $.ajax({
-  //        type: "POST",
-  //        url: form.action,
-  //        data: serializedForm, 
-  //        cache: false,
-  //        dataType: "json",
-  //        success: function (data) {
-  //          if (data.validationError) {
-  //            // Server side validation can occur, form is re-rendered
-  //            $form.replaceWith(data.html);
-  //            // need to reparse the form
-  //            initForm(document.getElementById(formId));
-  //            //TODO: focus on first error or validation summary
-  //          }
-  //          // if the server sends a redirect, reload the window
-  //          if (data.redirect) {
-  //            window.location.href = data.redirect;
-  //          }
-  //          //TODO: Handle default success case, maybe show some
-  //        },
-  //        error: function (xhr) {
-  //          // todo: handle this case gracefully, usually in the case of server error.
-  //          const data = xhr.responseJSON;
-  //          console.log("error", data);
-  //        }
-  //      });
-  //    }
-  //  }
-  //);
-} // look for all ajax forms on load and initialize them
+  });
+} // look for all vue forms when this script is loaded and initialize them
 
 
 document.querySelectorAll(".vue-form").forEach(initForm);
