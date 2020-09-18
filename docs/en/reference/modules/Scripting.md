@@ -1,1 +1,0 @@
-# Scripting (`StatCan.OrchardCore.Scripting`)

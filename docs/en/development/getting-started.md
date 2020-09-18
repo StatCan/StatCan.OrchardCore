@@ -10,53 +10,6 @@ Hello fellow developer, Get started here !
 - node 10+
 - Yarn 1.17+
 
-### Nuget packages
-
-We use an in-house build of Orchard that we update periodically. This build is deployed to artifactory 
-and currently has a deployed version number `1.0.0-in1`. In this case, `in` stands for innovation.
-
-To be able to run the `dotnet restore` command, you will need to add your artifactory credentials
-to the nuget.config file on your computer. 
-
-On windows, this file is located under `%appdata%\NuGet\NuGet.config`
-
-Edit the file and input your Artifactory Encrypted password under the "cleartextpassword" value.
-
-```xml
-<?xml version="1.0" encoding="utf-8"?>
-<configuration>
-  <packageSources>
-    <clear />
-    <add key="ArtifactoryNuGetV3" value="https://artifactory.cloud.statcan.ca/artifactory/api/nuget/v3/nuget" protocolVersion="3" />
-  </packageSources>
-<packageSourceCredentials>
-    <ArtifactoryNuGetV3>
-      <add key="username" value="jp.tissot"/>
-      <add key="cleartextpassword" value="<artifactory encrypted password>" />
-    </ArtifactoryNuGetV3>
-  </packageSourceCredentials>
-</configuration>
-
-```
-
-#### Setting up your nuget feed globally
-
-This is not required since we include a `nuget.config` file at the root of the repository.
-If you want to use the development version of OrchardCore, you need to add a nuget
-package source to your nuget configuration file.
-In linux, this file is located `~/.nuget/NuGet/NuGet.Config`
-
-```xml
-<?xml version="1.0" encoding="utf-8"?>
-<configuration>
-  <packageSources>
-    <add key="nuget.org" value="https://api.nuget.org/v3/index.json" protocolVersion="3" />
-    <add key="OrchardPreview" value="https://www.myget.org/F/orchardcore-preview/api/v3/index.json" protocolVersion="3" />
-  </packageSources>
-</configuration>
-```
-
-
 ### Recommended VSCode extensions
 
 - Omnisharp (C#)
@@ -86,40 +39,51 @@ code $profile
 Adding these functions can save a lot of keystrokes:
 
 ```powershell
-$innoGitRepo = "<path-to>\innovation-website"
+$innoGitRepo = "<path-to>\StatCan.OrchardCore"
 
 # Navigate to directory
 function in { set-location $innoGitRepo }
+# Run the clean script from the test folder. Warning: this deletes your App_Data
+function iac {
+  set-location "$($innoGitRepo)\test"
+  npm run clean
+}
 # Open cypress
 function it {
   set-location "$($innoGitRepo)\test"
   npm run cypress
 }
+# Run css watcher
+function iw {
+  set-location "$($innoGitRepo)"
+  npm run watch
+}
 # Build
 function ib { 
-  set-location "$($innoGitRepo)\src\Inno.Web"
+  set-location "$($innoGitRepo)src\StatCan.OrchardCore.Cms.Web"
   dotnet build
 }
 # Clean
 function ic { 
-  set-location "$($innoGitRepo)\src\Inno.Web"
+  set-location "$($innoGitRepo)src\StatCan.OrchardCore.Cms.Web"
   dotnet clean
 }
 # Run
 function ir {
-  set-location "$($innoGitRepo)\src\Inno.Web"
+  set-location "$($innoGitRepo)src\StatCan.OrchardCore.Cms.Web"
   dotnet run
 }
 # Run (Production)
 function ip {
-  set-location "$($innoGitRepo)\src\Inno.Web"
-  dotnet .\bin\Debug\netcoreapp3.0\Inno.Web.dll
+  set-location "$($innoGitRepo)src\StatCan.OrchardCore.Cms.Web"
+  dotnet .\bin\Debug\netcoreapp3.0\StatCan.OrchardCore.Cms.Web.dll
 }
 # Build & Run (Production)
 function ibp { 
   ib
-  dotnet .\bin\Debug\netcoreapp3.0\Inno.Web.dll
+  dotnet .\bin\Debug\netcoreapp3.1\StatCan.OrchardCore.Cms.Web.dll
 }
+
 ```
 Don't forget to restart your powershell session to load the changes.
 
@@ -127,7 +91,7 @@ Don't forget to restart your powershell session to load the changes.
 
 - Run these commands in powershell:
   - From anywhere `ir` if you have the above powershell setup or
-  - From the root of the project `dotnet run --project src/Inno.Web/Inno.Web.csproj` if you don't
+  - From the root of the project `dotnet run --project src/StatCan.OrchardCore.Cms.Web/StatCan.OrchardCore.Cms.Web.csproj` if you don't
 - Visit [https://localhost:5001](https://localhost:5001) for Orchard dev site
 - When presented with the orchard setup screen,
   - Select the the recipe you want to try. I suggest using the `Software as a Service` recipe
@@ -137,18 +101,18 @@ Don't forget to restart your powershell session to load the changes.
 
 ## Starting fresh
 
-To cleanup the environment and start fresh, you need to delete the `src/Inno.Web/App_Data` folder. 
+To cleanup the environment and start fresh, you need to delete the `src/StatCan.OrchardCore.Cms.Web/App_Data` folder. 
 This deletes all configuration and databases (if you are using SQLite).
 
-You can also delete tenants individually by deleting the data in `src/Inno.Web/App_Data/Sites/{TenantName}` and 
-removing the entry in `src/Inno.Web/App_Data/tenants.json`
+You can also delete tenants individually by deleting the data in `src/StatCan.OrchardCore.Cms.Web/App_Data/Sites/{TenantName}` and 
+removing the entry in `src/StatCan.OrchardCore.Cms.Web/App_Data/tenants.json`
 
 ## Updating assets
 
-When updating assets, you need to run gulp to copy the assets into the wwwroot folder. To install gulp, run `yarn install`
-Simply run `yarn run build` which will build the css and copy the css and js files to the `wwwroot/` folder of each module.
+When updating assets, you need to run gulp to copy the assets into the wwwroot folder. To install gulp, run `npm install`
+Simply run `npm run build` which will build the css and copy the css and js files to the `wwwroot/` folder of each module.
 
-You can also run `yarn run watch` to rebuild assets when changes are detected.
+You can also run `npm run watch` to rebuild assets when changes are detected.
 
 Supported types: SaSS, ts, js, and Less.
 
@@ -160,8 +124,8 @@ Note: The tests assume a clean environment and may fail if you run them on an ex
 
 To run tests:
 
-- From the `test` folder of the project, run `yarn install` (if you have yarn installed) or `npm install`
-- From the same folder, you can run `yarn cypress` to open cypress and start running tests
+- From the `test` folder of the project, run `npm install`.
+- From the same folder, you can run `npm run cypress` to open cypress and start running tests
 
 ## Debugging
 
