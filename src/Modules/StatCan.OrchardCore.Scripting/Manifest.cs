@@ -7,6 +7,6 @@ using OrchardCore.Modules.Manifest;
     Version = "1.0.0",
     Description = "Scripting methods",
     Category = "StatCan",
-    Dependencies = new[] { "OrchardCore.Contents", "OrchardCore.ContentLocalization" }
+    Dependencies = new[] { "OrchardCore.Scripting" }
 
 )]
