@@ -1,19 +1,6 @@
-# LocalizedText (`StatCan.OrchardCore.LocalizedText`)
+# Liquid
 
-This module adds a **LocalizedText Part** that stores `[{ name, [{ culture, value}]}]` objects. 
-
-
-## LocalizedTextPart
-
-Attach this part to your content items to have the ability to add `name -> value` pairs that vary by culture.
-
-### Usages
-
-This part is meant to be used in cases where a Single ContentItem needs to hold localized values. 
-As a "best practice" this should only be used when most of the data is non localizable and some is localizable.
-
-
-## `localize` liquid filter
+## LocalizedText (`StatCan.OrchardCore.LocalizedText`) 
 
 Use the `localize` liquid filter to reference and output a value that matches the current culture and name provided. 
 
@@ -127,10 +114,42 @@ Output
 
 <span>Some English Value</span>
 ```
-## Scripting
 
-You can get the values stored in the LocalizedTextPart inside a script.
+## GitHub (`StatCan.OrchardCore.GitHub`)
 
-| Function | Description 
-| -------- | ----------- |
-| `getLocalizedTextValues(contentItem: ContentItem): JObject` | Returns a JObject representation of the LocalizedTextPart data for the current thread culture |
+Here are some liquid filters provided by the GitHub module.
+
+`tokenName` refers to the name of the token you added to the github settings.
+
+### github_pr filter
+
+Returns the `PullRequest` object for the specified pull request number.
+
+```liquid
+{{ 123 | github_pullrequest: "owner", "repo", "tokenName" }}
+```
+
+### github_pr_reviewcomments filter
+
+Returns a list of `PullRequestReviewComment` object for the specified pull request number.
+This returns the comments related to PR reviews. Use the `github_comments` filter to get pr discussions.
+
+```liquid
+{{ 123 | github_pullrequest_comments: "owner", "repo", "tokenName" }}
+```
+
+### github_issue filter
+
+Returns the `Issue` object for the specified issue number.
+
+```liquid
+{{ 123 | github_issue: "owner", "repo", "tokenName" }}
+```
+
+### github_comments filter
+
+Returns a list of `IssueComment` for the specified issue / pull request number.
+
+```liquid
+{{ 123 | github_comments: "owner", "repo", "tokenName" }}
+```

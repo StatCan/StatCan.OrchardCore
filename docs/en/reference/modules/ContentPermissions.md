@@ -1,1 +1,0 @@
-# ContentPermissions (`StatCan.OrchardCore.ContentPermissions`)

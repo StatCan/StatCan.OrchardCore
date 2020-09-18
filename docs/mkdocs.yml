@@ -20,16 +20,17 @@ nav:
              - Localization: development/localization.md
              - Committing: development/committing.md
     - Reference: 
+        - Liquid: reference/Liquid.md
+        - Scripting: reference/Scripting.md
+        - Workflows: reference/Workflows.md
         - Modules:
              - ContentFields: reference/modules/ContentFields.md
-             - ContentPermissions: reference/modules/ContentPermissions.md
              - DisplayHelpers: reference/modules/DisplayHelpers.md
              - GCCollab: reference/modules/GCCollab.md
              - GitHub: reference/modules/GitHub.md
              - LocalizedText: reference/modules/LocalizedText.md
              - Matomo: reference/modules/Matomo.md
-             - Scripting: reference/modules/Scripting.md
-             - Workflows: reference/modules/Workflows.md
+             - WebpageCore: reference/modules/WebpageCore.md
         - Themes:
              - DigitalAdmin: reference/themes/DigitalAdmin.md
              - PortalTheme: reference/themes/PortalTheme.md
