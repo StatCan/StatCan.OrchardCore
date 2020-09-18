@@ -32,6 +32,13 @@
   {
     "copy": true,
     "inputs": [
+      "node_modules/vuetify/dist/vuetify.js.map"
+    ],
+    "output": "wwwroot/Scripts/vuetify.js.map"
+  },
+  {
+    "copy": true,
+    "inputs": [
       "node_modules/vuetify/dist/vuetify.min.js"
     ],
     "output": "wwwroot/Scripts/vuetify.min.js"
@@ -42,6 +49,13 @@
       "node_modules/vuetify/dist/vuetify.css"
     ],
     "output": "wwwroot/Styles/vuetify.css"
+  },
+  {
+    "copy": true,
+    "inputs": [
+      "node_modules/vuetify/dist/vuetify.css.map"
+    ],
+    "output": "wwwroot/Styles/vuetify.css.map"
   },
   {
     "copy": true,
