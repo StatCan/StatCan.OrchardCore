@@ -16,4 +16,4 @@ In order to use Google Translate API you need to setup a project in your Google 
 
 Feel free to fork the project and submit enhancements and fixes!
 
-Proudly developed by [Diego Imbriani]([https:/](https://diegoimbriani.me/)) ([GreenTreeLabs](https://www.greentreelabs.net)) 💪
+Proudly developed by [Diego Imbriani]([https:/](https://diegoimbriani.me/)) ([GreenTreeLabs](https://www.greentreelabs.net)) 💪 and adapted by [Jean-Philippe Tissot](https://github.com/jptissot)
