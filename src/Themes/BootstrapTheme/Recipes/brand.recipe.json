@@ -1,0 +1,130 @@
+{
+  "name": "bootstrap-brand",
+  "displayName": "Site branding",
+  "description": "Site branding content",
+  "author": "Digital Innovation Team",
+  "website": "https://digital.statcan.gc.ca",
+  "version": "1.0",
+  "issetuprecipe": false,
+  "categories": ["Bootstrap"],
+  "tags": ["Base", "Bootstrap", "Innovation" ],
+  "steps": [
+    {
+      "name": "ContentDefinition",
+      "ContentTypes": [
+        {
+          "Name": "Brand",
+          "DisplayName": "Brand",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Creatable": true,
+              "Listable": true,
+              "Draftable": true,
+              "Securable": true
+            }
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "Brand",
+              "Name": "Brand",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "2"
+                }
+              }
+            },
+            {
+              "PartName": "TitlePart",
+              "Name": "TitlePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            },
+            {
+              "PartName": "AliasPart",
+              "Name": "AliasPart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "ContentParts": [
+        {
+          "Name": "Brand",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "MediaField",
+              "Name": "Logo",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Logo",
+                  "Position": "0"
+                },
+                "ContentIndexSettings": {},
+                "MediaFieldSettings": {
+                  "Multiple": false
+                }
+              }
+            },
+            {
+              "FieldName": "LinkField",
+              "Name": "Link",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Link",
+                  "Position": "1"
+                },
+                "LinkFieldSettings": {},
+                "ContentIndexSettings": {}
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "deployment",
+      "Plans": [
+        {
+          "Name": "Brand",
+          "Steps": [
+            {
+              "Type": "ContentDefinitionDeploymentStep",
+              "Step": {
+                "IncludeAll": false,
+                "ContentTypes": ["Brand"],
+                "ContentParts": ["Brand"],
+                "Id": "be16ac7dac244832b538a6d573cff251",
+                "Name": "ContentDefinition"
+              }
+            },
+            {
+              "Type": "ContentDeploymentStep",
+              "Step": {
+                "ContentTypes": ["Brand"],
+                "Id": "8a7976c3c4af48f782133a6a9585f46f",
+                "Name": "ContentDeploymentStep"
+              }
+            },
+            {
+              "Type": "DeploymentPlanDeploymentStep",
+              "Step": {
+                "IncludeAll": false,
+                "DeploymentPlanNames": ["Brand"],
+                "Id": "78d9b05829ec433db45a6839f3012f8c",
+                "Name": "DeploymentPlan"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

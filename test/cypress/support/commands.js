@@ -9,23 +9,6 @@ import { creds } from "./objects";
 // commands please read more here:
 // https://on.cypress.io/custom-commands
 // ***********************************************
-//
-//
-// -- This is a parent command --
-// Cypress.Commands.add("login", (email, password) => { ... })
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add("drag", { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add("dismiss", { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This is will overwrite an existing command --
-// Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
-
 Cypress.Commands.add("login", function({ prefix = "" } = {}) {
   cy.visit(`${prefix}/login`);
   cy.get("#UserName").type(creds.username);
@@ -78,7 +61,7 @@ Cypress.Commands.add("createTenant", ({ name, prefix }) => {
 
 Cypress.Commands.add("runRecipe", ({ prefix }, filterValue) => {
   cy.visit(`${prefix}/Admin/Recipes`);
-  cy.get(`[data-filter-value="${filterValue}"]`)
+  cy.get(`[data-filter-value*="${filterValue}"]`)
     .find('a:contains("Run")')
     .click();
   cy.get("#modalOkButton").click();

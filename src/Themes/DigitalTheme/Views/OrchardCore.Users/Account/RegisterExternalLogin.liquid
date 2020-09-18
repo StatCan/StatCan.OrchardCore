@@ -1,0 +1,48 @@
+{% assign title = "Finish registration" | t %}
+{% assign subtitle = "One last thing" | t %}
+{% assign prompt = "Your Azure account has been linked! Enter an email address to receive updates for namespace requests." | t %}
+{{ "SharedLoginHeader" | shape_new: title: title, subtitle: subtitle, prompt: prompt | shape_render }}
+{% form asp_controller:"Account", asp_action:"RegisterExternalLogin", asp_route_returnurl:Request.Query["ReturnUrl"], method:"post", class:"form-horizontal" %}
+    {% helper "div", asp_validation_summary:"ModelOnly", class:"text-danger" %}
+
+    {% unless Model.NoUsername %}
+        <div class="form-group">
+            {% block "label", asp_for:"UserName", class:"d-flex justify-content-center control-label" %}{{ "Username" | t }}{% endblock %}
+            {% helper "input", asp_for:"UserName", class:"form-control", autofocus:"true" %}
+            {% helper "span", asp_validation_for:"UserName", class:"text-danger" %}
+        </div>
+    {% endunless %}
+
+    {% unless Model.NoEmail %}
+        <div class="form-group">
+            {% block "label", asp_for:"Email", class:"d-flex justify-content-center control-label" %}{{ "Email" | t }}{% endblock %}
+            {% helper "input", asp_for:"Email", class:"form-control", type:"email", asp_is_disabled:Model.NoEmail %}
+            {% helper "span", asp_validation_for:"Email", class:"text-danger" %}
+        </div>
+    {% endunless %}
+
+    {% unless Model.NoPassword %}
+        <div class="row">
+            <div class="col-6">
+                <div class="form-group">
+                    {% block "label", asp_for:"Password", class:"control-label" %}{{ "Password" | t }}{% endblock %}
+                    {% helper "input", asp_for:"Password", class:"form-control" %}
+                    {% helper "span", asp_validation_for:"Password", class:"text-danger" %}
+                </div>
+                <div class="form-group">
+                    {% block "label", asp_for:"ConfirmPassword", class:"control-label" %}{{ "Confirm password" | t }}{% endblock %}
+                    {% helper "input", asp_for:"ConfirmPassword", class:"form-control" %}
+                    {% helper "span", asp_validation_for:"ConfirmPassword", class:"text-danger" %}
+                </div>
+            </div>
+            <div class="col-6 d-flex align-items-center">
+                {{ "SharedPasswordRequirementText" | shape_new | shape_render }}
+            </div>
+        </div>
+    {% endunless %}
+    {% render_section "AfterRegister", required: false %}
+    <div class="form-group d-flex justify-content-center mt-5">
+        <button type="submit" class="btn btn-lg btn-primary is-rounded">{{ "Create account" | t }}</button>
+    </div>
+{% endform %}
+{{ "SharedLoginFooter" | shape_new | shape_render }}

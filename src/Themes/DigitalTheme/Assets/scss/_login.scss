@@ -1,0 +1,13 @@
+h1.login {
+  margin-top: calc(5vh * 1.618);
+  text-align: center;
+}
+.h4.login {
+  margin-top: clamp(0.5rem, 3vh, 1rem);
+  text-align: center;
+}
+div.login {
+  display: flex;
+  justify-content: center;
+  margin-top: calc(8vh * 1.381);
+}

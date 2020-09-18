@@ -127,3 +127,11 @@ Output
 
 <span>Some English Value</span>
 ```
+## Scripting
+
+You can get the values stored in the LocalizedTextPart inside a script.
+
+| Function | Description 
+| -------- | ----------- |
+| `getLocalizedTextValues(contentItem: ContentItem): JObject` | Returns a JObject representation of the LocalizedTextPart data for the current thread culture |
+

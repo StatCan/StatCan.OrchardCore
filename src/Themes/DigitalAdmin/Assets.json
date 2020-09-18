@@ -1,12 +1,12 @@
 [
   {
     "generateSourceMaps": false,
-    "generateRTL": false,
+    "generateRTL": true,
     "inputs": [
-      "Assets/scss/DigitalAdmin.scss",
+      "Assets/scss/TheAdmin.scss",
       "Assets/scss/perfect-scrollbar.css"
     ],
-    "output": "wwwroot/Styles/DigitalAdmin.css"
+    "output": "wwwroot/Styles/TheAdmin.css"
   },
   {
     "generateSourceMaps": false,
@@ -15,7 +15,7 @@
       "node_modules/bootstrap/dist/js/bootstrap.js",
       "Assets/js/*.js"
     ],
-    "output": "wwwroot/Scripts/DigitalAdmin.js"
+    "output": "wwwroot/Scripts/TheAdmin.js"
   },
   {
     "generateSourceMaps": false,

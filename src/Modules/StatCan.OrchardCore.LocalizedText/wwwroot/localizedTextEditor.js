@@ -86,7 +86,7 @@ function initializeLocalizedTextEditor(element, confirmModalOptions) {
       remove: function remove(index) {
         // use the admin confirm dialog before deleting
         var that = this;
-        confirmDialog(_objectSpread({}, confirmModalOptions, {
+        confirmDialog(_objectSpread(_objectSpread({}, confirmModalOptions), {}, {
           callback: function callback(resp) {
             if (resp) {
               that.entries.splice(index, 1);

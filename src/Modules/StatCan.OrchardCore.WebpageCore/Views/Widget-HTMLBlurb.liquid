@@ -1,0 +1,3 @@
+<div class="{% if Model.ContentItem.Content.HTMLBlurb.FluidWidth.Value == true %}col-12{% else %}column{% endif %}">
+  {{ Model.ContentItem.Content.HtmlBodyPart.Html | sanitize | raw }}
+</div>

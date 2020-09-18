@@ -1,0 +1,14 @@
+{% assign menu = "alias:menu-" | append: Culture.Name %}
+{% assign brand = "alias:brand-" | append: Culture.Name %}
+<header id="mainHeader" >
+    <div class="container fluid-section px-0">
+        <a class="sr-only sr-only-focusable fixed-top position-absolute text-center" href="#bootstrap-main">{{ "Skip to content" | t }}</a>
+        <nav class="navbar main-nav navbar-expand-lg">
+            {% shape "Brand", Type:"ContentItem", alias: brand, display-type: "Detail" %}
+            {% shape "Menu", alias: menu %}
+            <!-- <div class="justify-content-end mx-2" id="navbarNav">
+                {% shape "LoginMenu" %}
+            </div> -->
+        </nav>
+    </div>
+</header>

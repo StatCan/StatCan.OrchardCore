@@ -3,12 +3,12 @@
   <PropertyGroup>
     <AspNetCoreVersion>3.1.1</AspNetCoreVersion>
     <AspNetCoreTargetFramework>netcoreapp3.1</AspNetCoreTargetFramework>
-    <OrchardCoreVersion>1.0.0-rc2-13450</OrchardCoreVersion>
+    <OrchardCoreVersion>1.0.0-rc2-14344</OrchardCoreVersion>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageManagement Include="NetEscapades.AspNetCore.SecurityHeaders" Version="0.11.0" />
-    <PackageManagement Include="HtmlSanitizer" Version="4.0.217" />
+    <PackageManagement Include="HtmlSanitizer" Version="5.0.343" />
     <PackageManagement Include="Octokit" Version="0.48.0" />
   </ItemGroup>
 

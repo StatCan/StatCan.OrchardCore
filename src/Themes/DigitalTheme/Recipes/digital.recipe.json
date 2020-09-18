@@ -1,0 +1,86 @@
+{
+  "name": "digital-recipe",
+  "displayName": "Digital Theme recipe",
+  "description": "Enables the features required to work with this theme",
+  "author": "Digital Innovation Team",
+  "website": "https://digital.statcan.gc.ca",
+  "version": "1.0",
+  "issetuprecipe": true,
+  "categories": ["innovation"],
+  "tags": ["innovation", "inno"],
+  "steps": [
+    {
+      "name": "feature",
+      "disable": [],
+      "enable": [
+        // SaaS
+        "OrchardCore.HomeRoute",
+        "OrchardCore.Admin",
+        "OrchardCore.Diagnostics",
+        "OrchardCore.DynamicCache",
+        "OrchardCore.Features",
+        "OrchardCore.Navigation",
+        "OrchardCore.Recipes",
+        "OrchardCore.Resources",
+        "OrchardCore.Roles",
+        "OrchardCore.Settings",
+        "OrchardCore.Themes",
+        "OrchardCore.Users",
+
+        // Content Management
+        "OrchardCore.Alias",
+        "OrchardCore.Autoroute",
+        "OrchardCore.Html",
+        "OrchardCore.ContentFields",
+        "OrchardCore.ContentLocalization",
+        "OrchardCore.ContentLocalization.ContentCulturePicker",
+        "OrchardCore.ContentPreview",
+        "OrchardCore.Contents",
+        "OrchardCore.ContentTypes",
+        "OrchardCore.CustomSettings",
+        "OrchardCore.Deployment",
+        "OrchardCore.Feeds",
+        "OrchardCore.Flows",
+        "OrchardCore.Indexing",
+        "OrchardCore.Layers",
+        "OrchardCore.Localization",
+        "OrchardCore.Lists",
+        "OrchardCore.Markdown",
+        "OrchardCore.Media",
+        "OrchardCore.Menu",
+        "OrchardCore.Queries",
+        "OrchardCore.Shortcodes.Templates",
+        "OrchardCore.Title",
+        "OrchardCore.Templates",
+        "OrchardCore.Widgets",
+        "OrchardCore.Email",
+        "DigitalTheme",
+        "TheAdmin",
+        "SafeMode"
+      ]
+    },
+    {
+      "name": "Settings",
+      "TimeZoneId": "America/Toronto",
+      "AppendVersion": true,
+      "LocalizationSettings": {
+        "DefaultCulture": "en",
+        "SupportedCultures": ["fr", "en"]
+      },
+      "LoginSettings": {
+        "UseSiteTheme": true
+      },
+      "ResetPasswordSettings": {
+        "UseSiteTheme": true
+      },
+      "RegistrationSettings": {
+        "UseSiteTheme": true
+      }
+    },
+    {
+      "name": "themes",
+      "admin": "TheAdmin",
+      "site": "DigitalTheme"
+    }
+  ]
+}

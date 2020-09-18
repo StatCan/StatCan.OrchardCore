@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>$(AspNetCoreTargetFramework)</TargetFramework>
     <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
-	<CodeAnalysisRuleSet>..\..\..\roslynator.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet>..\..\..\roslynator.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
 
   <ItemGroup>
@@ -12,17 +12,10 @@
 
   <ItemGroup>
     <PackageReference Include="OrchardCore.Theme.Targets" Version="$(OrchardCoreVersion)" />
-    <PackageReference Include="OrchardCore.Users.Abstractions" Version="$(OrchardCoreVersion)" />
-    <PackageReference Include="OrchardCore.Html" Version="$(OrchardCoreVersion)" />
-    <PackageReference Include="OrchardCore.ContentLocalization.Abstractions" Version="$(OrchardCoreVersion)" />
     <PackageReference Include="OrchardCore.DisplayManagement" Version="$(OrchardCoreVersion)" />
     <PackageReference Include="OrchardCore.ResourceManagement" Version="$(OrchardCoreVersion)" />
     <PackageReference Include="OrchardCore.Admin" Version="$(OrchardCoreVersion)" />
-	
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="wwwroot\Scripts\" />
+    <PackageReference Include="OrchardCore.ContentLocalization.Abstractions" Version="$(OrchardCoreVersion)" />
   </ItemGroup>
 
 </Project>

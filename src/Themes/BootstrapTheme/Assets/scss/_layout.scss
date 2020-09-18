@@ -1,0 +1,56 @@
+// FIP in header
+// Canada Footer
+#goc-footer {
+  border-top: 4px solid $secondary;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  background-color: #0a0a0a;
+}
+
+.goc-footer--links {
+  ul {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+
+    @include media-breakpoint-up(md) {
+      text-align: left;
+    }
+  }
+
+  li {
+    list-style: none;
+    display: inline-block;
+    padding: 0.7em 0 0.7em 0.7em;
+
+    &::after {
+      content: "\2022";
+      margin-left: 0.7em;
+      color: $dark-grey;
+    }
+
+    &:last-child {
+      &::after {
+        content: "";
+        margin-left: 0;
+      }
+    }
+  }
+}
+
+.goc-footer--logo {
+  text-align: center;
+
+  @include media-breakpoint-up(md) {
+    text-align: right;
+  }
+
+  .logo {
+    height: 40px;
+  }
+}
+
+#language {
+  border-radius: 1rem;
+  box-shadow: 0 0 0.75rem rgba(0, 0, 0, 0.5);
+}

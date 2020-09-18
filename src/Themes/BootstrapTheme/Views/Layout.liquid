@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="{{ Culture.Name }}">
+
+  {% assign brand = "alias:brand-" | append: Culture.Name %}
+  {% assign header = "ThemeHeader" | shape_new %}
+  {% assign footer = "ThemeFooter" | shape_new %}
+
+  <head>
+    {{ "ThemeResources" | shape_new | shape_render }}
+    {% resources type: "Meta" %}
+    <title>{{Content[brand]}}</title>
+    {% resources type: "HeadLink" %}    
+    {% resources type: "Stylesheet" %}
+    {% resources type: "HeadScript" %}
+  </head>
+
+  <body id="page-top">
+    {{ header | shape_render }}
+    <main class="flex-fill" id="bootstrap-main">
+      {% render_body %}
+      {% render_section "Footer", required: false %}
+      {% render_section "Modal", required: false %}
+      {{ footer | shape_render }}
+    {% resources type: "FootScript" %}
+  </body>
+</html>

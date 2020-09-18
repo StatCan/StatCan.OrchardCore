@@ -1,0 +1,5 @@
+<ul class="row list-unstyled justify-content-center">
+    {% for item in Model.Items %}
+        {{ item | shape_render }}
+    {% endfor %}
+</ul>
