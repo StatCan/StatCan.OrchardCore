@@ -21,11 +21,13 @@ namespace StatCan.OrchardCore.VueForms.Workflows
             model.ExecuteForAllForms = activity.ExecuteForAllForms;
             model.AllItems = await GetForms(activity);
         }
+
         protected override void UpdateActivity(VueFormSubmittedEventViewModel model, VueFormSubmittedEvent activity)
         {
             activity.ExecuteForAllForms = model.ExecuteForAllForms;
             activity.VueFormIds = model.SelectedFormIds;
         }
+
         public override IDisplayResult Display(VueFormSubmittedEvent activity)
         {
             return Combine(
@@ -38,6 +40,7 @@ namespace StatCan.OrchardCore.VueForms.Workflows
                    shape.ExecuteForAllForms = activity.ExecuteForAllForms;
 
                    shape.AllItems = await GetForms(activity);
+
                    return shape;
                }).Location("Design", "Content")
            );

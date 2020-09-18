@@ -1,14 +1,12 @@
 using System.IO;
 using System.Threading.Tasks;
-
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.ViewEngines;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 
-namespace StatCan.OrchardCore.DisplayHelpers
+namespace StatCan.OrchardCore.Extensions
 {
-    // todo: move this into it's own assembly.
     public static class ControllerExtensions
     {
         public static async Task<string> RenderViewAsync<TModel>(this Controller controller, string viewName, TModel model, bool partial = false)

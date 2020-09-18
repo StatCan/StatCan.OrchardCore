@@ -10,7 +10,6 @@ namespace StatCan.OrchardCore.VueForms.Models
         /// Script that runs everytime the form is submitted, to validate the values.
         /// </summary>
         public TextField OnValidation { get; set; }
-
         /// <summary>
         /// Script that runs after validation. you can
         /// </summary>

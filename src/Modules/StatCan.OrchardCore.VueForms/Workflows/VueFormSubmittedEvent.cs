@@ -18,6 +18,7 @@ namespace StatCan.OrchardCore.VueForms.Workflows
         {
             S = localizer;
         }
+
         public override string Name => nameof(VueFormSubmittedEvent);
 
         public override LocalizedString DisplayText => S["VueForm Submitted Event"];
@@ -35,7 +36,7 @@ namespace StatCan.OrchardCore.VueForms.Workflows
             set => SetProperty(value);
         }
 
-        // List of ContentItemId's of forms that can trigger this event
+        // List of ContentItemId's of forms that trigger this event
         public IList<string> VueFormIds
         {
             get => GetProperty<IList<string>>(defaultValue: () => new List<string>());

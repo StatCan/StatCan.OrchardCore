@@ -4,7 +4,6 @@ using OrchardCore.Scripting;
 
 namespace StatCan.OrchardCore.Scripting
 {
-
     public class Startup : StartupBase
     {
         public override void ConfigureServices(IServiceCollection services)

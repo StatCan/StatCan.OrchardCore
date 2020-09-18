@@ -8,5 +8,4 @@ using OrchardCore.Modules.Manifest;
     Description = "Scripting methods",
     Category = "StatCan",
     Dependencies = new[] { "OrchardCore.Scripting" }
-
 )]

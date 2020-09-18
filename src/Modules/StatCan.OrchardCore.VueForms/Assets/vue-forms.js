@@ -4,7 +4,7 @@
 Vue.component('validation-provider', VeeValidate.ValidationProvider);
 Vue.component('validation-observer', VeeValidate.ValidationObserver); 
 
-// include default french translations. The english translations are already included in the bundle
+// include default english and french translations.
 VeeValidate.localize({
   en:{
     "code": "en",
@@ -72,21 +72,22 @@ VeeValidate.localize({
 function initForm(app) {
 
   // run the vue-form init script provided in the OC admin ui
- 
   let appScript = app.dataset.script;
+  console.log(appScript);
   if (appScript) {
     const initFn = new Function(atob(appScript));
     initFn();
   }
   
   // register all vue components coming from the admin ui
-  const components = {};
   const vueComponentsElements = app.querySelectorAll("[data-vf-name]");
   vueComponentsElements.forEach(x => {
+
     let name = x.dataset.vfName;
     let encodedScript = x.dataset.vfScript;
     
     if (encodedScript) {
+
       let script = atob(encodedScript);
       const getVueObject = new Function(
         `
@@ -106,9 +107,10 @@ function initForm(app) {
         return Vue.component('${name}', component);
         `
       );
-      components[name] = getVueObject();
+      getVueObject();
     }
   });
+
   // instanciate the top level vue component
   new Vue({
     el: app,
@@ -125,6 +127,7 @@ function initForm(app) {
       formHandleSubmit() {
         // cleanup any error / server success message
         Object.assign(this.$data, this.$options.data.apply(this))
+
         // keep a reference to the VeeValidate observer
         const observer = this.$refs.obs;
         const valid = observer.validate();
@@ -133,6 +136,7 @@ function initForm(app) {
           const vm = this;
           const action = this.$refs.form.$attrs.action;
           const serializedForm = $("#" + this.$refs.form.$attrs.id).serialize();
+
           $.ajax({
             type: "POST",
             url: action,
@@ -140,26 +144,27 @@ function initForm(app) {
             cache: false,
             dataType: "json",
             success: function (data) {
-
               // if there are validation errors on the form, display them.
               if (data.validationError) {
                 vm.errorMessage = data.errorMessage
                 observer.setErrors(data.errors);
                 return;
               }
+
               // if the server sends a redirect, reload the window
               if (data.redirect) {
                 window.location.href = data.redirect;
                 return;
               }
+
               //success, set the form success message
               if (data.success) {
                 vm.successMessage = data.successMessage
                 return;
               }
+
               // something went wrong, dev issue
               vm.errorMessage = "Something wen't wrong. Please report this to your site administrators. Error code: `VueForms.AjaxHandler`";
-
             },
             error: function (xhr, status, errorThrown) {
               // this might be dependent on the server side and might need some tweaking

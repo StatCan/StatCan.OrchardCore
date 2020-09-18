@@ -3,7 +3,6 @@ using OrchardCore.ContentFields.Settings;
 using OrchardCore.ContentManagement.Metadata;
 using OrchardCore.ContentManagement.Metadata.Settings;
 using OrchardCore.Data.Migration;
-using OrchardCore.Modules;
 using StatCan.OrchardCore.Extensions;
 
 namespace StatCan.OrchardCore.VueForms
@@ -59,7 +58,6 @@ namespace StatCan.OrchardCore.VueForms
                     .WithPosition("2")
                     .WithEditor("CodeMirrorJS")
                 )
-
                 .Attachable()
                 .WithDescription("Script fields for AjaxForm"));
 
@@ -92,7 +90,6 @@ namespace StatCan.OrchardCore.VueForms
                 .WithPart("VueComponent", p => p.WithPosition("1"))
                 .Stereotype("Widget"));
 
-
             return 1;
         }
     }
@@ -100,6 +97,7 @@ namespace StatCan.OrchardCore.VueForms
     public class LocalizationMigrations : DataMigration
     {
         private readonly IContentDefinitionManager _contentDefinitionManager;
+
         public LocalizationMigrations(IContentDefinitionManager contentDefinitionManager)
         {
             _contentDefinitionManager = contentDefinitionManager;
@@ -111,6 +109,7 @@ namespace StatCan.OrchardCore.VueForms
             _contentDefinitionManager.AlterTypeDefinition("VueForm", type => type
                  .WithPart("LocalizedText", p => p.WithPosition("1"))
             );
+
             return 1;
         }
     }

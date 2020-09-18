@@ -19,6 +19,7 @@ using StatCan.OrchardCore.VueForms;
     {
         "OrchardCore.Contents",
         "OrchardCore.Liquid",
+        "StatCan.OrchardCore.Scripting"
     }
 )]
 

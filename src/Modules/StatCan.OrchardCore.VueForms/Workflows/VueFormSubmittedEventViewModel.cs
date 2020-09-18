@@ -8,8 +8,8 @@ namespace StatCan.OrchardCore.VueForms.Workflows
     {
         public VueFormSubmittedEventViewModel()
         {
-
         }
+
         public VueFormSubmittedEventViewModel(VueFormSubmittedEvent activity)
         {
             Activity = activity;
@@ -18,6 +18,7 @@ namespace StatCan.OrchardCore.VueForms.Workflows
         public bool ExecuteForAllForms { get; set; }
 
         public IList<SelectListItem> AllItems { get; set; } = new List<SelectListItem>();
+
         public IList<string> SelectedFormIds { get; set; } = new List<string>();
     }
 }

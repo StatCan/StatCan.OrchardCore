@@ -6,7 +6,7 @@
 "use strict"; // register VeeValidate components globally
 
 Vue.component('validation-provider', VeeValidate.ValidationProvider);
-Vue.component('validation-observer', VeeValidate.ValidationObserver); // include default french translations. The english translations are already included in the bundle
+Vue.component('validation-observer', VeeValidate.ValidationObserver); // include default english and french translations.
 
 VeeValidate.localize({
   en: {
@@ -74,6 +74,7 @@ VeeValidate.localize({
 function initForm(app) {
   // run the vue-form init script provided in the OC admin ui
   var appScript = app.dataset.script;
+  console.log(appScript);
 
   if (appScript) {
     var initFn = new Function(atob(appScript));
@@ -81,7 +82,6 @@ function initForm(app) {
   } // register all vue components coming from the admin ui
 
 
-  var components = {};
   var vueComponentsElements = app.querySelectorAll("[data-vf-name]");
   vueComponentsElements.forEach(function (x) {
     var name = x.dataset.vfName;
@@ -90,7 +90,7 @@ function initForm(app) {
     if (encodedScript) {
       var script = atob(encodedScript);
       var getVueObject = new Function("\n        var component = ".concat(script, ";\n        Object.assign(component, {name: '").concat(name, "', props: \n          ['obs-valid',\n          'obs-invalid',\n          'obs-reset',\n          'obs-validated',\n          'obs-validate',\n          'form-handle-submit',\n          'form-success-message',\n          'form-error-message',\n          'form-ajax-error-status',\n          'form-ajax-error-text']\n        });\n        return Vue.component('").concat(name, "', component);\n        "));
-      components[name] = getVueObject();
+      getVueObject();
     }
   }); // instanciate the top level vue component
 

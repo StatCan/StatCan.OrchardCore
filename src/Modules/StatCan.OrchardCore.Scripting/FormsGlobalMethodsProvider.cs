@@ -9,7 +9,6 @@ using OrchardCore.Scripting;
 
 namespace StatCan.OrchardCore.Scripting
 {
-
     public class FormsGlobalMethodsProvider : IGlobalMethodProvider
     {
         private readonly GlobalMethod _formAsJsonObject;
