@@ -12,7 +12,7 @@
 
   var scripts = contentItem.As<VueFormScripts>();
 
-  var script = await Orchard.LiquidAsync(scripts.ClientInitScript?.Text, contentItem);
+  var script = await Orchard.LiquidAsync(scripts.ClientInit?.Text, contentItem);
 }
 
 <style asp-name="vuetify"></style>
@@ -23,7 +23,7 @@
 <script asp-name="vee-validate" at="Foot"></script>
 <script asp-name="vue-forms" at="Foot"></script>
 
-<div class="vue-form" script="@Orchard.B64Encode(script)">
+<div class="vue-form" data-script="@Orchard.B64Encode(script)">
   <v-app>
     <validation-observer ref="obs" slim v-slot="{ valid, invalid, validated, handleSubmit, validate, setErrors, reset }">
       <v-form ref="form"
