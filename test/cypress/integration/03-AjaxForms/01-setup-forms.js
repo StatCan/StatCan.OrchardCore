@@ -17,9 +17,6 @@ describe("VueForm setup", function() {
     cy.setupSite(bootstrap);
     cy.login(bootstrap);
     cy.enableFeature(bootstrap, "VueForm");
+    cy.enableFeature(bootstrap, "VueForms Localized");
   });
-  it("Create a simple form"), function() {
-    cy.login(bootstrap);
-
-  }
 });

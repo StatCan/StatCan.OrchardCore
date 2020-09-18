@@ -1,8 +1,10 @@
-import { blank } from './01-setup-forms';
+/// <reference types="Cypress" />
 
-describe("Create simple form", function() {
-  it("Create a simple form"), function() {
-    cy.login(blank);
+import { bootstrap } from './01-setup-forms';
 
+describe("VueForm Tests", function() {
+  it("Creates form"), function() {
+    cy.login(bootstrap);
+    
   }
 });
