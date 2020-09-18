@@ -25,11 +25,18 @@ namespace StatCan.OrchardCore.VueForms
                         Hint = "The form accepts submissions if is enabled"
                     }
                 )
-                .WithTextField("SuccessMessage", "Success Message", "2", new TextFieldSettings()
+                .WithField("DisabledHtml", f => f
+                    .OfType(nameof(HtmlField))
+                    .WithDisplayName("Disabled Html")
+                    .WithSettings(new HtmlFieldSettings() { Hint = "Html displayed when someone tries to render a disabled form.", SanitizeHtml = true})
+                    .WithPosition("2")
+                    .WithEditor("Trumbowyg")
+                )
+                .WithTextField("SuccessMessage", "Success Message", "3", new TextFieldSettings()
                 {
                     Hint = "(optional) The message returned to the client if validation passed and no redirect has been set. With liquid support."
                 })
-                .WithTextField("ErrorMessage", "Error Message", "3", new TextFieldSettings()
+                .WithTextField("ErrorMessage", "Error Message", "4", new TextFieldSettings()
                 {
                     Hint = "(optional) The message to display if a server error occured in the ajax request. With liquid support."
                 })

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Net;
+using System.Text.Encodings.Web;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -8,6 +9,7 @@ using OrchardCore.ContentManagement;
 using OrchardCore.ContentManagement.Display;
 using OrchardCore.ContentManagement.Metadata;
 using OrchardCore.DisplayManagement.ModelBinding;
+using OrchardCore.Liquid;
 using OrchardCore.Scripting;
 using OrchardCore.Workflows.Services;
 using StatCan.OrchardCore.VueForms.Models;
@@ -25,6 +27,8 @@ namespace StatCan.OrchardCore.VueForms.Controllers
         private readonly IContentItemDisplayManager _contentItemDisplayManager;
         private readonly IUpdateModelAccessor _updateModelAccessor;
         private readonly IScriptingManager _scriptingManager;
+        private readonly ILiquidTemplateManager _liquidTemplateManager;
+        private readonly HtmlEncoder _htmlEncoder;
         private readonly IWorkflowManager _workflowManager;
 
         public VueFormController(
@@ -34,6 +38,8 @@ namespace StatCan.OrchardCore.VueForms.Controllers
             IContentItemDisplayManager contentItemDisplayManager,
             IUpdateModelAccessor updateModelAccessor,
             IScriptingManager scriptingManager,
+            ILiquidTemplateManager liquidTemplateManager,
+            HtmlEncoder htmlEncoder,
             IWorkflowManager workflowManager = null
             )
         {
@@ -43,6 +49,8 @@ namespace StatCan.OrchardCore.VueForms.Controllers
             _contentItemDisplayManager = contentItemDisplayManager;
             _updateModelAccessor = updateModelAccessor;
             _scriptingManager = scriptingManager;
+            this._liquidTemplateManager = liquidTemplateManager;
+            this._htmlEncoder = htmlEncoder;
             _workflowManager = workflowManager;
         }
 
@@ -78,7 +86,8 @@ namespace StatCan.OrchardCore.VueForms.Controllers
 
             if (errorsDictionary.Count > 0)
             {
-                return Json(new { validationError = true, errors = errorsDictionary, errorMessage = formPart.ErrorMessage.Text });
+                var formErrorMessage = await _liquidTemplateManager.RenderAsync(formPart.ErrorMessage?.Text, _htmlEncoder);
+                return Json(new { validationError = true, errors = errorsDictionary, errorMessage = formErrorMessage });
             }
 
             if (!string.IsNullOrEmpty(script?.OnSubmitted?.Text))
@@ -103,8 +112,9 @@ namespace StatCan.OrchardCore.VueForms.Controllers
                 HttpContext.Response.Clear();
                 return Json(returnValue);
             }
+            var formSuccessMessage = _liquidTemplateManager.RenderAsync(formPart.SuccessMessage?.Text, _htmlEncoder);
             // everything worked fine. send the success signal to the client
-            return Json(new { success = true, successMessage = formPart.SuccessMessage.Text });
+            return Json(new { success = true, successMessage = formSuccessMessage });
         }
     }
 }

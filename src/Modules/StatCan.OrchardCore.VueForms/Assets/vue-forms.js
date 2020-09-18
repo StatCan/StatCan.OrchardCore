@@ -68,6 +68,8 @@ VeeValidate.localize({
   },
 });
 
+var vuetify = new Vuetify();
+
 // run init script
 function initForm(app) {
 
@@ -113,7 +115,7 @@ function initForm(app) {
   // instanciate the top level vue component
   new Vue({
     el: app,
-    vuetify: new Vuetify({}),
+    vuetify: vuetify,
     data: function () { 
       return {
         ajaxErrorStatus: undefined,

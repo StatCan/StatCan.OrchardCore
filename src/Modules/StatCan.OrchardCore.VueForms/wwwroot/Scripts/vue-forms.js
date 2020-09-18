@@ -69,7 +69,8 @@ VeeValidate.localize({
       "size": "Le champ {_field_} doit avoir un poids inférieur à {size}KB"
     }
   }
-}); // run init script
+});
+var vuetify = new Vuetify(); // run init script
 
 function initForm(app) {
   // run the vue-form init script provided in the OC admin ui
@@ -95,7 +96,7 @@ function initForm(app) {
 
   new Vue({
     el: app,
-    vuetify: new Vuetify({}),
+    vuetify: vuetify,
     data: function data() {
       return {
         ajaxErrorStatus: undefined,
