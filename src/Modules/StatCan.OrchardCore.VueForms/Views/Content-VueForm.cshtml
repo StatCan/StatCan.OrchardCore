@@ -26,7 +26,8 @@
 <div class="vue-form" data-script="@Orchard.B64Encode(script)">
   <v-app>
     <validation-observer ref="obs" slim v-slot="{ valid, invalid, validated, handleSubmit, validate, setErrors, reset }">
-      <v-form ref="form"
+      <v-form v-cloak
+              ref="form"
               id="@formPart.ContentItem.ContentItemId"
               v-on:submit.prevent="formSubmit"
               action="@Url.Action("Submit","VueForm", new {area="StatCan.OrchardCore.VueForms" , formId=contentItem.ContentItemId })"

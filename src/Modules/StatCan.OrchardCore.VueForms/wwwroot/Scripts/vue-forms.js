@@ -74,7 +74,6 @@ VeeValidate.localize({
 function initForm(app) {
   // run the vue-form init script provided in the OC admin ui
   var appScript = app.dataset.script;
-  console.log(appScript);
 
   if (appScript) {
     var initFn = new Function(atob(appScript));

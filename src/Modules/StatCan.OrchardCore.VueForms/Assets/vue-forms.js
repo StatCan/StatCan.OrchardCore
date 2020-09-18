@@ -73,7 +73,6 @@ function initForm(app) {
 
   // run the vue-form init script provided in the OC admin ui
   let appScript = app.dataset.script;
-  console.log(appScript);
   if (appScript) {
     const initFn = new Function(atob(appScript));
     initFn();
