@@ -11,9 +11,9 @@ Attach this part to your content items to have the ability to add `name -> value
 This part is meant to be used in cases where a Single ContentItem needs to hold localized values. 
 As a "best practice" this should only be used when most of the data is non localizable and some is localizable.
 
-
 ## Liquid
 
+Please see the [liquid](../Liquid.md) documentation for liquid filters.
 
 ## Scripting
 
