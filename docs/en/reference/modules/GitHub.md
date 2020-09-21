@@ -6,7 +6,7 @@ Your GitHub api token(s) must be set throught the _Configuration -> Settings -> 
 
 ## Workflow
 
-Please see the [workflow](../Workflow.md) documentation for activities.
+Please see the [workflow](../Workflows.md) documentation for activities.
 
 ## Liquid
 
