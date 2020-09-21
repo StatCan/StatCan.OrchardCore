@@ -1,0 +1,11 @@
+{
+  "name": "vue-forms",
+  "private": true,
+  "version": "1.0.0",
+  "license": "ISC",
+  "dependencies": {
+    "vue": "^2.6.12",
+    "vuetify": "^2.3.10",
+    "vee-validate": "^3.3.11"
+  }
+}

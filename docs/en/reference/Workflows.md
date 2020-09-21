@@ -13,3 +13,9 @@ The following activities are available with the GitHub module
 | Create Branch | Task | Creates a branch from a git reference |
 | Create Pull Request | Task | Creates a pull request |
 
+
+## VueForms (`StatCan.OrchardCore.VueForms`)
+
+| Activity | Type | Description |
+| -------- | ---- | ----------- |
+| VueForm Submitted | Event | Triggerred when a VueForm is valid. Runs for all selected VueForms in the Event options. |

@@ -1,12 +1,6 @@
 import { creds } from "./objects";
 
 // ***********************************************
-// This example commands.js shows you how to
-// create various custom commands and overwrite
-// existing commands.
-//
-// For more comprehensive examples of custom
-// commands please read more here:
 // https://on.cypress.io/custom-commands
 // ***********************************************
 Cypress.Commands.add("login", function({ prefix = "" } = {}) {
@@ -63,13 +57,15 @@ Cypress.Commands.add("runRecipe", ({ prefix }, filterValue) => {
   cy.visit(`${prefix}/Admin/Recipes`);
   cy.get(`[data-filter-value*="${filterValue}"]`)
     .find('a:contains("Run")')
+    .first()
     .click();
   cy.get("#modalOkButton").click();
 });
 
 Cypress.Commands.add("enableFeature", ({ prefix }, filterValue) => {
   cy.visit(`${prefix}/Admin/Features`);
-  cy.get(`[data-filter-value="${filterValue}"]`)
+  cy.get(`[data-filter-value*="${filterValue}"]`)
     .find('a:contains("Enable")')
+    .first()
     .click();
 });

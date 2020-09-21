@@ -1,0 +1,82 @@
+[
+  {
+    "generateSourceMaps": false,
+    "inputs": [ "Assets/vue-forms.scss" ],
+    "output": "wwwroot/Styles/vue-forms.css"
+  },
+  {
+    "inputs": [ "Assets/vue-forms.js" ],
+    "output": "wwwroot/Scripts/vue-forms.js"
+  },
+  {
+    "copy": true,
+    "inputs": [
+      "node_modules/vue/dist/vue.js"
+    ],
+    "output": "wwwroot/Scripts/vue.js"
+  },
+  {
+    "copy": true,
+    "inputs": [
+      "node_modules/vue/dist/vue.min.js"
+    ],
+    "output": "wwwroot/Scripts/vue.min.js"
+  },
+  {
+    "copy": true,
+    "inputs": [
+      "node_modules/vuetify/dist/vuetify.js"
+    ],
+    "output": "wwwroot/Scripts/vuetify.js"
+  },
+  {
+    "copy": true,
+    "inputs": [
+      "node_modules/vuetify/dist/vuetify.js.map"
+    ],
+    "output": "wwwroot/Scripts/vuetify.js.map"
+  },
+  {
+    "copy": true,
+    "inputs": [
+      "node_modules/vuetify/dist/vuetify.min.js"
+    ],
+    "output": "wwwroot/Scripts/vuetify.min.js"
+  },
+  {
+    "copy": true,
+    "inputs": [
+      "node_modules/vuetify/dist/vuetify.css"
+    ],
+    "output": "wwwroot/Styles/vuetify.css"
+  },
+  {
+    "copy": true,
+    "inputs": [
+      "node_modules/vuetify/dist/vuetify.css.map"
+    ],
+    "output": "wwwroot/Styles/vuetify.css.map"
+  },
+  {
+    "copy": true,
+    "inputs": [
+      "node_modules/vuetify/dist/vuetify.min.css"
+    ],
+    "output": "wwwroot/Styles/vuetify.min.css"
+  },
+  {
+    "copy": true,
+    "inputs": [
+      "node_modules/vee-validate/dist/vee-validate.full.js"
+    ],
+    "output": "wwwroot/Scripts/vee-validate.full.js"
+  },
+  {
+    "copy": true,
+    "inputs": [
+      "node_modules/vee-validate/dist/vee-validate.full.min.js"
+    ],
+    "output": "wwwroot/Scripts/vee-validate.full.min.js"
+  }
+
+]

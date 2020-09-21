@@ -1,0 +1,61 @@
+@using OrchardCore.ContentManagement
+@using OrchardCore.Flows.Models
+@using System.Globalization
+@using StatCan.OrchardCore.VueForms.Models
+@inject OrchardCore.ContentManagement.Display.IContentItemDisplayManager ContentItemDisplayManager
+@inject OrchardCore.DisplayManagement.ModelBinding.IUpdateModelAccessor updateModelAccessor
+
+@{
+  var contentItem = ((ContentItem)Model.ContentItem);
+ var formPart = contentItem.As<VueForm>();
+ var flowPart = contentItem.As<FlowPart>();
+
+ var scripts = contentItem.As<VueFormScripts>();
+
+ var script = await Orchard.LiquidAsync(scripts.ClientInit?.Text, contentItem);
+}
+
+@if (formPart.Enabled?.Value == true)
+{
+  <style asp-name="vuetify"></style>
+  <style asp-name="vue-forms"></style>
+
+  <script asp-name="vuejs" at="Foot"></script>
+  <script asp-name="vuetify" at="Foot"></script>
+  <script asp-name="vee-validate" at="Foot"></script>
+  <script asp-name="vue-forms" at="Foot"></script>
+
+  <div class="vue-form" data-script="@Orchard.B64Encode(script)" data-lang="@CultureInfo.CurrentUICulture.TwoLetterISOLanguageName">
+    <v-app>
+      <validation-observer ref="obs" slim v-slot="{ valid, invalid, handleSubmit, validate, setErrors, reset }">
+        <v-form v-cloak
+                ref="form"
+                id="@formPart.ContentItem.ContentItemId"
+                v-on:submit.prevent="formSubmit"
+                action="@Url.Action("Submit","VueForm", new {area="StatCan.OrchardCore.VueForms" , formId=contentItem.ContentItemId })"
+                method="post"
+                novalidate>
+          @Html.AntiForgeryToken()
+          @foreach (var widget in flowPart.Widgets)
+          {
+            var widgetContent = await ContentItemDisplayManager.BuildDisplayAsync(widget, updateModelAccessor.ModelUpdater);
+            // Properties come from the widget that displays the forms.
+            // This allows a page where the form is rendered to pass a value down to the form so it can be dynamically preloaded with data
+            foreach (var prop in ((IShape)Model).Properties)
+            {
+              if (!widgetContent.Properties.ContainsKey(prop.Key))
+              {
+                widgetContent.Properties.Add(prop.Key, prop.Value);
+              }
+            }
+            @await DisplayAsync(widgetContent)
+          }
+          <v-form>
+      </validation-observer>
+    </v-app>
+  </div>
+}
+else
+{
+  @await DisplayAsync(Model.Content.Named("VueForm-DisabledHtml"))
+}
