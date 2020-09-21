@@ -68,16 +68,23 @@ VeeValidate.localize({
   },
 });
 
-var vuetify = new Vuetify();
+
 
 // run init script
 function initForm(app) {
 
+  var vuetify;
+  var initScriptResult = null;
   // run the vue-form init script provided in the OC admin ui
   let appScript = app.dataset.script;
   if (appScript) {
     const initFn = new Function(atob(appScript));
-    initFn();
+    initScriptResult = initFn();
+  }
+  if (initScriptResult) {
+    vuetify = initScriptResult;
+  } else {
+    vuetify = new Vuetify();
   }
   
   // register all vue components coming from the admin ui
@@ -97,7 +104,6 @@ function initForm(app) {
           ['obs-valid',
           'obs-invalid',
           'obs-reset',
-          'obs-validated',
           'obs-validate',
           'form-handle-submit',
           'form-success-message',
@@ -131,49 +137,49 @@ function initForm(app) {
 
         // keep a reference to the VeeValidate observer
         const observer = this.$refs.obs;
-        const valid = observer.validate();
-        
-        if (valid) {
-          const vm = this;
-          const action = this.$refs.form.$attrs.action;
-          const serializedForm = $("#" + this.$refs.form.$attrs.id).serialize();
+        observer.validate().then((valid) => {
+          if (valid) {
+            const vm = this;
+            const action = this.$refs.form.$attrs.action;
+            const serializedForm = $("#" + this.$refs.form.$attrs.id).serialize();
 
-          $.ajax({
-            type: "POST",
-            url: action,
-            data: serializedForm,
-            cache: false,
-            dataType: "json",
-            success: function (data) {
-              // if there are validation errors on the form, display them.
-              if (data.validationError) {
-                vm.errorMessage = data.errorMessage
-                observer.setErrors(data.errors);
-                return;
+            $.ajax({
+              type: "POST",
+              url: action,
+              data: serializedForm,
+              cache: false,
+              dataType: "json",
+              success: function (data) {
+                // if there are validation errors on the form, display them.
+                if (data.validationError) {
+                  vm.errorMessage = data.errorMessage
+                  observer.setErrors(data.errors);
+                  return;
+                }
+
+                // if the server sends a redirect, reload the window
+                if (data.redirect) {
+                  window.location.href = data.redirect;
+                  return;
+                }
+
+                //success, set the form success message
+                if (data.success) {
+                  vm.successMessage = data.successMessage
+                  return;
+                }
+
+                // something went wrong, dev issue
+                vm.errorMessage = "Something wen't wrong. Please report this to your site administrators. Error code: `VueForms.AjaxHandler`";
+              },
+              error: function (xhr, status, errorThrown) {
+                // this might be dependent on the server side and might need some tweaking
+                vm.ajaxErrorStatus = xhr.status;
+                vm.ajaxErrorText = xhr.errorThrown;
               }
-
-              // if the server sends a redirect, reload the window
-              if (data.redirect) {
-                window.location.href = data.redirect;
-                return;
-              }
-
-              //success, set the form success message
-              if (data.success) {
-                vm.successMessage = data.successMessage
-                return;
-              }
-
-              // something went wrong, dev issue
-              vm.errorMessage = "Something wen't wrong. Please report this to your site administrators. Error code: `VueForms.AjaxHandler`";
-            },
-            error: function (xhr, status, errorThrown) {
-              // this might be dependent on the server side and might need some tweaking
-              vm.ajaxErrorStatus = xhr.status;
-              vm.ajaxErrorText = xhr.errorThrown;
-            }
-          });
-        }
+            });
+          }
+        });
       }
     }
   })

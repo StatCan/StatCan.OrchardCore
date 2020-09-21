@@ -13,8 +13,8 @@ As a "best practice" this should only be used when most of the data is non local
 
 ## Liquid
 
-Please see the [liquid](../Liquid.md) documentation for liquid filters.
+Please see the [liquid](../Liquid.md#localizedtext-statcanorchardcorelocalizedtext) documentation for liquid filters.
 
 ## Scripting
 
-Please see the [scripting](../Scripting.md) documentation
+Please see the [scripting](../Scripting.md#localizedtext-module-statcanorchardcorelocalizedtext) documentation

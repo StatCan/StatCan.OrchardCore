@@ -69,16 +69,23 @@ VeeValidate.localize({
       "size": "Le champ {_field_} doit avoir un poids inférieur à {size}KB"
     }
   }
-});
-var vuetify = new Vuetify(); // run init script
+}); // run init script
 
 function initForm(app) {
-  // run the vue-form init script provided in the OC admin ui
+  var vuetify;
+  var initScriptResult = null; // run the vue-form init script provided in the OC admin ui
+
   var appScript = app.dataset.script;
 
   if (appScript) {
     var initFn = new Function(atob(appScript));
-    initFn();
+    initScriptResult = initFn();
+  }
+
+  if (initScriptResult) {
+    vuetify = initScriptResult;
+  } else {
+    vuetify = new Vuetify();
   } // register all vue components coming from the admin ui
 
 
@@ -89,7 +96,7 @@ function initForm(app) {
 
     if (encodedScript) {
       var script = atob(encodedScript);
-      var getVueObject = new Function("\n        var component = ".concat(script, ";\n        Object.assign(component, {name: '").concat(name, "', props: \n          ['obs-valid',\n          'obs-invalid',\n          'obs-reset',\n          'obs-validated',\n          'obs-validate',\n          'form-handle-submit',\n          'form-success-message',\n          'form-error-message',\n          'form-ajax-error-status',\n          'form-ajax-error-text']\n        });\n        return Vue.component('").concat(name, "', component);\n        "));
+      var getVueObject = new Function("\n        var component = ".concat(script, ";\n        Object.assign(component, {name: '").concat(name, "', props: \n          ['obs-valid',\n          'obs-invalid',\n          'obs-reset',\n          'obs-validate',\n          'form-handle-submit',\n          'form-success-message',\n          'form-error-message',\n          'form-ajax-error-status',\n          'form-ajax-error-text']\n        });\n        return Vue.component('").concat(name, "', component);\n        "));
       getVueObject();
     }
   }); // instanciate the top level vue component
@@ -107,52 +114,54 @@ function initForm(app) {
     },
     methods: {
       formHandleSubmit: function formHandleSubmit() {
+        var _this = this;
+
         // cleanup any error / server success message
         Object.assign(this.$data, this.$options.data.apply(this)); // keep a reference to the VeeValidate observer
 
         var observer = this.$refs.obs;
-        var valid = observer.validate();
-
-        if (valid) {
-          var vm = this;
-          var action = this.$refs.form.$attrs.action;
-          var serializedForm = $("#" + this.$refs.form.$attrs.id).serialize();
-          $.ajax({
-            type: "POST",
-            url: action,
-            data: serializedForm,
-            cache: false,
-            dataType: "json",
-            success: function success(data) {
-              // if there are validation errors on the form, display them.
-              if (data.validationError) {
-                vm.errorMessage = data.errorMessage;
-                observer.setErrors(data.errors);
-                return;
-              } // if the server sends a redirect, reload the window
-
-
-              if (data.redirect) {
-                window.location.href = data.redirect;
-                return;
-              } //success, set the form success message
+        observer.validate().then(function (valid) {
+          if (valid) {
+            var vm = _this;
+            var action = _this.$refs.form.$attrs.action;
+            var serializedForm = $("#" + _this.$refs.form.$attrs.id).serialize();
+            $.ajax({
+              type: "POST",
+              url: action,
+              data: serializedForm,
+              cache: false,
+              dataType: "json",
+              success: function success(data) {
+                // if there are validation errors on the form, display them.
+                if (data.validationError) {
+                  vm.errorMessage = data.errorMessage;
+                  observer.setErrors(data.errors);
+                  return;
+                } // if the server sends a redirect, reload the window
 
 
-              if (data.success) {
-                vm.successMessage = data.successMessage;
-                return;
-              } // something went wrong, dev issue
+                if (data.redirect) {
+                  window.location.href = data.redirect;
+                  return;
+                } //success, set the form success message
 
 
-              vm.errorMessage = "Something wen't wrong. Please report this to your site administrators. Error code: `VueForms.AjaxHandler`";
-            },
-            error: function error(xhr, status, errorThrown) {
-              // this might be dependent on the server side and might need some tweaking
-              vm.ajaxErrorStatus = xhr.status;
-              vm.ajaxErrorText = xhr.errorThrown;
-            }
-          });
-        }
+                if (data.success) {
+                  vm.successMessage = data.successMessage;
+                  return;
+                } // something went wrong, dev issue
+
+
+                vm.errorMessage = "Something wen't wrong. Please report this to your site administrators. Error code: `VueForms.AjaxHandler`";
+              },
+              error: function error(xhr, status, errorThrown) {
+                // this might be dependent on the server side and might need some tweaking
+                vm.ajaxErrorStatus = xhr.status;
+                vm.ajaxErrorText = xhr.errorThrown;
+              }
+            });
+          }
+        });
       }
     }
   });

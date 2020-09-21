@@ -6,8 +6,8 @@ Your GitHub api token(s) must be set throught the _Configuration -> Settings -> 
 
 ## Workflow
 
-Please see the [workflow](../Workflows.md) documentation for activities.
+Please see the [workflow](../Workflows.md#github-statcanorchardcoregithub) documentation for activities.
 
 ## Liquid
 
-Please see the [liquid](../Liquid.md) documentation for liquid filters.
+Please see the [liquid](../Liquid.md#github-statcanorchardcoregithub) documentation for liquid filters.
