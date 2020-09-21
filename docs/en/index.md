@@ -1,6 +1,6 @@
 # Statistics Canada OrchardCore Documentation
 
-This is build using the RC version of the OrchardCore CMS.
+This is build using the `1.0.0-rc2-14344` version of the OrchardCore CMS.
 
 See the [Orchard Core documentation](https://orchardcore.readthedocs.io/en/dev) and the [Orchard Core Github repository](https://github.com/OrchardCMS/OrchardCore).
 
