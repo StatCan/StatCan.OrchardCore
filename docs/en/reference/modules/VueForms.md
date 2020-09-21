@@ -13,7 +13,7 @@ The form submission is handled via an ajax call to a generic controller that ret
 
 | Field  | Definition |
 |--------|------------|
-| Enabled | If disabled, the VueFormController will return a 404 for form submissions. |
+| Enabled | If disabled, the DisplayHtml field value will be displayed and the VueFormController will return a 404 for form submissions. |
 | DisabledHtml | Html displayed when the form is disabled. |
 | SuccessMessage | The success message returned to the client when the form is valid and no redirect is specified after submission. With Liquid support. |
 | ErrorMessage | The error message returned to the client when the form is invalid. With Liquid support. |
@@ -36,12 +36,12 @@ This was added to support hooking into some global options for VeeValidate.
 For example, setting the [VeeValidate.setInteractionMode('passive')](https://logaretm.github.io/vee-validate/guide/interaction-and-ux.html) option 
 or the [Localization](https://logaretm.github.io/vee-validate/guide/localization.html) option.
 
-It is also possible to modify the vuetify [global-config](https://vuetifyjs.com/en/customization/global-config/) or [presets](https://vuetifyjs.com/en/customization/presets/).
+It is also possible to modify the vuetify [global-config](https://vuetifyjs.com/en/customization/global-config/) or [presets](https://vuetifyjs.com/en/customization/presets/). TODO: Document how
 
 
 #### OnValidation script
 
-The OnValidation script is meant to be used to specify the server side valiadtion script.
+The OnValidation script is used to specify the server side valiadtion script. We are planning to implement components with integrated validation in the future.
 This module adds some [scripting methods](../Scripting.md) to facilitate handling form data and errors. 
 
 Here is an example OnValidation script that validates that the name is required.
