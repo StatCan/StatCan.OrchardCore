@@ -3,8 +3,8 @@
 import { creds } from "../../support/objects";
 
 export const bootstrap = {
-  name: "vueform7",
-  prefix: "vueform7",
+  name: "vueforms",
+  prefix: "vueforms",
   setupRecipe: "bootstrap-setup-recipe",
   ...creds
 };

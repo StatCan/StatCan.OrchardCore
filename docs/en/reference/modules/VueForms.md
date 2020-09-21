@@ -145,12 +145,12 @@ Important implementation notes:
       </v-alert>
       <validation-provider name="name" rules="" v-slot="{ errors, valid }">
         <v-text-field
-			name="name"
-			v-model="name"
+			      name="name"
+			      v-model="name"
             :counter="10"
             :error-messages="errors"
             label="name"
-                      ></v-text-field>
+        ></v-text-field>
       </validation-provider>
       <validation-provider name="email" rules="required|email"  v-slot="{ errors, valid }">
         <v-text-field
@@ -160,12 +160,11 @@ Important implementation notes:
             :success="valid"
             label="E-mail"
             required
-		></v-text-field>
+		    ></v-text-field>
       </validation-provider>
-
       <validation-provider name="gender" rules="required" v-slot="{ errors, valid }">
         <v-select
-			name="gender"
+			      name="gender"
             :items="items"
             v-model="select"
             :error-messages="errors"

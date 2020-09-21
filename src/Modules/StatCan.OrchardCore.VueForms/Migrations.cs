@@ -30,7 +30,6 @@ namespace StatCan.OrchardCore.VueForms
                     .WithDisplayName("Disabled Html")
                     .WithSettings(new HtmlFieldSettings() { Hint = "Html displayed when someone tries to render a disabled form.", SanitizeHtml = true})
                     .WithPosition("2")
-                    .WithEditor("Trumbowyg")
                 )
                 .WithTextField("SuccessMessage", "Success Message", "3", new TextFieldSettings()
                 {

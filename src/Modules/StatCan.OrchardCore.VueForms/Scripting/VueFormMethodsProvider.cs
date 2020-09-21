@@ -6,6 +6,9 @@ using OrchardCore.Scripting;
 
 namespace StatCan.OrchardCore.VueForms.Scripting
 {
+    /// <summary>
+    /// This does not need to be registered in the DI as these methods are only used in the VueFormController
+    /// </summary>
     public class VueFormMethodsProvider : IGlobalMethodProvider
     {
         private readonly GlobalMethod _setModelError;

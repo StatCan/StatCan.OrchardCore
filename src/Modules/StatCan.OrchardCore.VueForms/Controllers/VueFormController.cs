@@ -73,7 +73,6 @@ namespace StatCan.OrchardCore.VueForms.Controllers
                 return NotFound();
             }
 
-    
             // form validation server side script
             var errorsDictionary = new Dictionary<string, List<string>>();
             var scriptingProvider = new VueFormMethodsProvider(form, errorsDictionary);

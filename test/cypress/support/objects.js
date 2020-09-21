@@ -1,5 +1,5 @@
 export const creds = {
-  username: "admin",
+  username: "inno",
   email: "admin@orchard.com",
   password: "in",
   passwordConfirmation: "in"

@@ -12,7 +12,7 @@ using StatCan.OrchardCore.ContentFields;
 
 [assembly: Feature(
     Id = Constants.Features.ContentFields,
-    Name = "Additional ContentFields",
+    Name = "StatCan additional ContentFields",
     Description = "Adds editors to existing content fields",
     Category = "Content",
     Dependencies = new[] { "OrchardCore.ContentFields" }
@@ -20,7 +20,7 @@ using StatCan.OrchardCore.ContentFields;
 
 [assembly: Feature(
     Id = Constants.Features.PredefinedGroup,
-    Name = "PredefinedGroup Field",
+    Name = "StatCan PredefinedGroup Field",
     Description = "TextField 'Predefined List' editor that allows using svg's or html as names.",
     Category = "Content",
     Dependencies = new[] { "OrchardCore.ContentFields" }

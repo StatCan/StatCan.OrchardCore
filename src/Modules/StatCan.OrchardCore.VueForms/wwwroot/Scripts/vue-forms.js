@@ -73,7 +73,9 @@ VeeValidate.localize({
 
 function initForm(app) {
   var vuetify;
-  var initScriptResult = null; // run the vue-form init script provided in the OC admin ui
+  var initScriptResult = null; // Set VeeValidate language based on the lang parameter
+
+  VeeValidate.localize(app.dataset.lang); // run the vue-form init script provided in the OC admin ui
 
   var appScript = app.dataset.script;
 
