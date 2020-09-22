@@ -127,8 +127,8 @@ The title of the VueComponent widget is used as the VueJS Component name when ge
 The template is where you write the VueJS component template.
 
 Important implementation notes:
-- This field should return a **single** vue / html node.
-- Make sure you add a name to all your inputs. The name should match the v-model name as we use this to map the server side errors to your inputs.
+  * This field should return a **single** vue / html node.
+  * Make sure you add a name to all your inputs. The name should match the v-model name as we use this to map the server side errors to your inputs.
 
 ```html
 <v-container style="max-width: 800px">

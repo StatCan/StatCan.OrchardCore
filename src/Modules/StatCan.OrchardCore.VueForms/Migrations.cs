@@ -70,9 +70,9 @@ namespace StatCan.OrchardCore.VueForms
             _contentDefinitionManager.AlterTypeDefinition("VueForm", type => type
                 .Draftable()
                 .WithPart("TitlePart", p => p.WithPosition("0"))
-                .WithPart("VueForm", p => p.WithPosition("2"))
-                .WithPart("FlowPart", p => p.WithPosition("3"))
-                .WithPart("VueFormScripts", p => p.WithPosition("4")));
+                .WithPart("VueForm", p => p.WithPosition("1"))
+                .WithPart("FlowPart", p => p.WithPosition("2"))
+                .WithPart("VueFormScripts", p => p.WithPosition("3")));
 
             // Vue component
             _contentDefinitionManager.AlterPartDefinition("VueComponent", part => part
@@ -113,7 +113,7 @@ namespace StatCan.OrchardCore.VueForms
         {
             // Weld the LocalizedText part 
             _contentDefinitionManager.AlterTypeDefinition("VueForm", type => type
-                 .WithPart("LocalizedText", p => p.WithPosition("1"))
+                 .WithPart("LocalizedTextPart", p => p.WithPosition("4"))
             );
 
             return 1;
