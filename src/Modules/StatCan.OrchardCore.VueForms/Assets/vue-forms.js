@@ -135,7 +135,8 @@ function initForm(app) {
       };
     },
     methods: {
-      formHandleSubmit() {
+      formHandleSubmit(e) {
+        e.preventDefault();
         // cleanup any error / server success message
         Object.assign(this.$data, this.$options.data.apply(this))
 
@@ -184,6 +185,7 @@ function initForm(app) {
             });
           }
         });
+        return false;
       }
     }
   })

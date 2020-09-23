@@ -31,7 +31,7 @@
         <v-form v-cloak
                 ref="form"
                 id="@formPart.ContentItem.ContentItemId"
-                v-on:submit.prevent="formSubmit"
+                v-on:submit.prevent="formHandleSubmit"
                 action="@Url.Action("Submit","VueForm", new {area="StatCan.OrchardCore.VueForms" , formId=contentItem.ContentItemId })"
                 method="post"
                 novalidate>

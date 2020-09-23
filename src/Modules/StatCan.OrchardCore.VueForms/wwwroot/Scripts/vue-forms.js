@@ -115,10 +115,11 @@ function initForm(app) {
       };
     },
     methods: {
-      formHandleSubmit: function formHandleSubmit() {
+      formHandleSubmit: function formHandleSubmit(e) {
         var _this = this;
 
-        // cleanup any error / server success message
+        e.preventDefault(); // cleanup any error / server success message
+
         Object.assign(this.$data, this.$options.data.apply(this)); // keep a reference to the VeeValidate observer
 
         var observer = this.$refs.obs;
@@ -164,6 +165,7 @@ function initForm(app) {
             });
           }
         });
+        return false;
       }
     }
   });

@@ -32,7 +32,6 @@ namespace StatCan.OrchardCore.VueForms.Scripting
                             {
                                 errors.Add(name, errorKey);
                             }
-                           
                         }
                     )
             };
