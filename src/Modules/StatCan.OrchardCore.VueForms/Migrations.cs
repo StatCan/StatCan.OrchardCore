@@ -46,7 +46,7 @@ namespace StatCan.OrchardCore.VueForms
                 .WithField("ClientInit", f => f
                     .OfType(nameof(TextField))
                     .WithDisplayName("ClientInit")
-                    .WithSettings(new TextFieldSettings() { Hint = "(Optional) Script that runs client side to set various options for your form (such as setup the VeeValidate locales)" })
+                    .WithSettings(new TextFieldSettings() { Hint = "(Optional) Script that runs client side to set various options for your form (such as setup the VeeValidate locales). With liquid support." })
                     .WithPosition("0")
                     .WithEditor("CodeMirrorJS")
                 )
@@ -79,14 +79,14 @@ namespace StatCan.OrchardCore.VueForms
                .WithField("Template", f => f
                    .OfType(nameof(TextField))
                    .WithDisplayName("Template")
-                   .WithSettings(new TextFieldSettings() { Required= true, Hint = "VueJS Component template. Need to return a single node. Vuetify(https://vuetifyjs.com/en/components/forms) and  VeeValidate(https://logaretm.github.io/vee-validate/guide/basics.html) librairies are loaded by default." })
+                   .WithSettings(new TextFieldSettings() { Required = true, Hint = "VueJS Component template. Need to return a single node. Vuetify(https://vuetifyjs.com/en/components/forms) and  VeeValidate(https://logaretm.github.io/vee-validate/guide/basics.html) librairies are loaded by default. With liquid support." })
                    .WithPosition("1")
                    .WithEditor("CodeMirrorLiquid")
                )
                .WithField("Script", f => f
                    .OfType(nameof(TextField))
                    .WithDisplayName("Script")
-                   .WithSettings(new TextFieldSettings() { Hint = "VueJS Component script. Write the JS object that represents the script part of the vue component without a return statement." })
+                   .WithSettings(new TextFieldSettings() {  Required = true, Hint = "VueJS Component script. Write the JS object that represents the script part of the vue component without a return statement. With liquid support." })
                    .WithPosition("2")
                    .WithEditor("CodeMirrorLiquid")
                ));
@@ -111,7 +111,7 @@ namespace StatCan.OrchardCore.VueForms
 
         public int Create()
         {
-            // Weld the LocalizedText part 
+            // Weld the LocalizedText part
             _contentDefinitionManager.AlterTypeDefinition("VueForm", type => type
                  .WithPart("LocalizedTextPart", p => p.WithPosition("4"))
             );
