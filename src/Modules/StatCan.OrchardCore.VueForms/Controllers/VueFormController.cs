@@ -111,7 +111,7 @@ namespace StatCan.OrchardCore.VueForms.Controllers
                 HttpContext.Response.Clear();
                 return Json(returnValue);
             }
-            var formSuccessMessage = _liquidTemplateManager.RenderAsync(formPart.SuccessMessage?.Text, _htmlEncoder);
+            var formSuccessMessage = await _liquidTemplateManager.RenderAsync(formPart.SuccessMessage?.Text, _htmlEncoder);
             // everything worked fine. send the success signal to the client
             return Json(new { success = true, successMessage = formSuccessMessage });
         }
