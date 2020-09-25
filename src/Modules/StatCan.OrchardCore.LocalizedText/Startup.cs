@@ -12,27 +12,24 @@ using StatCan.OrchardCore.LocalizedText.Fields;
 using StatCan.OrchardCore.LocalizedText.Models;
 using StatCan.OrchardCore.LocalizedText.Liquid;
 using StatCan.OrchardCore.LocalizedText.Scripting;
+using OrchardCore.DisplayManagement.Implementation;
 
 namespace StatCan.OrchardCore.LocalizedText
 {
     [Feature(Constants.Features.LocalizedText)]
     public class Startup : StartupBase
     {
-        public Startup()
-        {
-        }
-
         public override void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<IDataMigration, Migrations>();
-            services.AddScoped<IContentItemAccessor, ContentItemAccessor>();
-            services.AddScoped<IContentHandler, ContentItemAccessor>(sp => (ContentItemAccessor)sp.GetRequiredService<IContentItemAccessor>());
+
+            services.AddScoped<ILocalizedTextAccessor, LocalizedTextDisplayEvents>();
+            services.AddScoped<IShapeDisplayEvents, LocalizedTextDisplayEvents>(sp => (LocalizedTextDisplayEvents)sp.GetRequiredService<ILocalizedTextAccessor>());
 
             services.AddContentPart<LocalizedTextPart>()
                 .UseDisplayDriver<LocalizedTextPartDisplayDriver>();
 
             services.AddSingleton<IGlobalMethodProvider, GlobalMethodProvider>();
-
         }
     }
 

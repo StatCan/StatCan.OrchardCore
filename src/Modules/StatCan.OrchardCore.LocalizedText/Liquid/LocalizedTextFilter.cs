@@ -12,9 +12,9 @@ namespace StatCan.OrchardCore.LocalizedText.Liquid
 {
     public class LocalizedTextFilter : ILiquidFilter
     {
-        private readonly IContentItemAccessor _accessor;
+        private readonly ILocalizedTextAccessor _accessor;
 
-        public LocalizedTextFilter(IContentItemAccessor accessor)
+        public LocalizedTextFilter(ILocalizedTextAccessor accessor)
         {
             _accessor = accessor;
         }
@@ -37,7 +37,7 @@ namespace StatCan.OrchardCore.LocalizedText.Liquid
                 contentItem = _accessor.Item;
                 stringKey = input.ToStringValue();
             }
-            
+
             if (contentItem == null)
             {
                 return new ValueTask<FluidValue>(input);
