@@ -69,3 +69,39 @@ Cypress.Commands.add("enableFeature", ({ prefix }, filterValue) => {
     .first()
     .click();
 });
+Cypress.Commands.add("uploadRecipeJson", ({ prefix }, fixturePath) => {
+  cy.fixture(fixturePath).then((data) => {
+    cy.visit(`${prefix}/Admin/DeploymentPlan/Import/Json`);
+    cy.get('#Json').invoke('val', JSON.stringify(data)).trigger('input',{force: true});
+    cy.get('.ta-content > form').submit();
+    // make sure the message-success alert is displayed
+    cy.get('.message-success').should('contain', "Recipe imported");
+  }); 
+});
+
+Cypress.Commands.add("visitContent", ({ prefix }, contentItemId) => {
+  cy.visit(`${prefix}/Contents/ContentItems/${contentItemId}`);
+});
+
+export function byCy(id, exact) {
+  if (exact) {
+    return `[data-cy="${id}"]`;
+  }
+  return `[data-cy^="${id}"]`;
+}
+
+
+Cypress.Commands.add('getByCy', (selector, exact = false) => {
+  return cy.get(byCy(selector, exact));
+});
+
+Cypress.Commands.add(
+  'findByCy',
+  {prevSubject: 'optional'},
+  (subject, selector, exact = false) => {
+    return subject
+      ? cy.wrap(subject).find(byCy(selector, exact))
+      : cy.find(byCy(selector, exact));
+  },
+);
+
