@@ -41,7 +41,7 @@ namespace StatCan.OrchardCore.VueForms.Controllers
             ILiquidTemplateManager liquidTemplateManager,
             HtmlEncoder htmlEncoder,
             IWorkflowManager workflowManager = null
-            )
+        )
         {
             _logger = logger;
             _contentManager = contentManager;
@@ -49,8 +49,8 @@ namespace StatCan.OrchardCore.VueForms.Controllers
             _contentItemDisplayManager = contentItemDisplayManager;
             _updateModelAccessor = updateModelAccessor;
             _scriptingManager = scriptingManager;
-            this._liquidTemplateManager = liquidTemplateManager;
-            this._htmlEncoder = htmlEncoder;
+            _liquidTemplateManager = liquidTemplateManager;
+            _htmlEncoder = htmlEncoder;
             _workflowManager = workflowManager;
         }
 

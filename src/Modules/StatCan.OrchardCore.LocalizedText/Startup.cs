@@ -26,6 +26,7 @@ namespace StatCan.OrchardCore.LocalizedText
             services.AddScoped<IDataMigration, Migrations>();
 
             services.AddScoped<ILocalizedTextAccessor, LocalizedTextAccessor>();
+             services.AddScoped<IContentHandler, LocalizedTextHandler>();
 
             services.AddContentPart<LocalizedTextPart>()
                 .UseDisplayDriver<LocalizedTextPartDisplayDriver>();
