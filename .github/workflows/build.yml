@@ -1,4 +1,4 @@
-name: Build
+name: Build and Test
 on: 
   push:
     branches:
@@ -29,4 +29,5 @@ jobs:
     - name: Test
       run: |
            cd test/cypress
+           npm install
            npm run test
