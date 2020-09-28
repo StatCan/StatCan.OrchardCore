@@ -13,6 +13,9 @@ jobs:
       DOTNET_CLI_TELEMETRY_OPTOUT: 1
     name: Build
     runs-on: ubuntu-latest
+    container:
+      container: cypress/browsers:node12.13.0-chrome78-ff70
+      options: --user 1001
     steps:
     - uses: actions/checkout@v1
     - name: Setup .NET Core SDK
@@ -23,12 +26,8 @@ jobs:
       run: | 
            cd src/StatCan.OrchardCore.Cms.Web
            dotnet build --configuration Release
-    - name: Host
+    - name: Test
       run: |
            cd test/cypress
-           npm i
-           npm run host       
-    - name: Test
-      uses: cypress-io/github-action@v2
-      with:
-        project: test/cypress
+           npm install
+           npm run test

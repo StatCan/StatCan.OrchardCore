@@ -11,7 +11,7 @@
     "test": "node -e \"require('./run_cypress').e2e('../src/StatCan.OrchardCore.Cms.Web', 'StatCan.OrchardCore.Cms.Web.dll')\"",
     "test:clean": "node -e \"require('./run_cypress').e2e('../src/StatCan.OrchardCore.Cms.Web', 'StatCan.OrchardCore.Cms.Web.dll', true)\"",
     "test:clean-build": "node -e \"require('./run_cypress').e2e('../src/StatCan.OrchardCore.Cms.Web', 'StatCan.OrchardCore.Cms.Web.dll', true, true)\"",
-    "cypress:run": "cypress run --config video=false",
+    "cypress:run": "cypress run",
     "cypress": "cypress open"
   }
 }
