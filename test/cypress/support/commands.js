@@ -35,13 +35,20 @@ Cypress.Commands.add(
     cy.get("#SubmitButton").click();
   }
 );
+Cypress.Commands.add('newTenant', function(tenantInfo) {
+  cy.login();
+  cy.createTenant(tenantInfo);
+  cy.gotoTenantSetup(tenantInfo);
+  cy.setupSite(tenantInfo);
+});
+
 Cypress.Commands.add("createTenant", ({ name, prefix }) => {
   // We create tenants on the SaaS tenant
   cy.visit("/Admin/Tenants");
   // weak selector. CreateTenant
   cy.get('form > .row > .form-group > .btn-group > .btn').click()
-  cy.get("#Name").type(name);
-  cy.get("#RequestUrlPrefix").type(prefix);
+  cy.get("#Name").type(name, {force:true});
+  cy.get("#RequestUrlPrefix").type(prefix, {force:true});
 
   cy.get("body").then($body => {
     const elem = $body.find("#TablePrefix");
@@ -105,3 +112,20 @@ Cypress.Commands.add(
   },
 );
 
+Cypress.Commands.add("setPageSize", ({ prefix = '' }, size) => {
+  cy.visit(`${prefix}/Admin/Settings/general`);
+  cy.get('#ISite_PageSize')
+    .clear()
+    .type(size);
+  cy.get('#ISite_PageSize').parents('form').submit();
+  // wait until the success message is displayed
+  cy.get('.message-success');
+});
+
+
+Cypress.Commands.add('visitAdmin', ({ prefix }) => {
+  cy.visit(`${prefix}/Admin`);
+});
+Cypress.Commands.add('visitTenantPage', ({ prefix }, url) => {
+  cy.visit(`${prefix}/${url}`);
+});

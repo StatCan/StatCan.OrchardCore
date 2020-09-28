@@ -18,9 +18,16 @@ jobs:
     - name: Setup .NET Core SDK
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 3.1.201
+        dotnet-version: 3.1.402
     - name: Dotnet build
       run: | 
            cd src/StatCan.OrchardCore.Cms.Web
            dotnet build --configuration Release
-           dotnet publish -c Release -o ./.build/release
+    - name: Test
+      uses: cypress-io/github-action@v2
+      container:
+        image: cypress/browsers:node12.16.1-chrome80-ff73
+        options: --user 1001
+      run: |
+           cd test/cypress
+           npm run test

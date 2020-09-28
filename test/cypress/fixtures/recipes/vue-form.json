@@ -1,6 +1,82 @@
 {
   "steps": [
     {
+      "name": "feature",
+      "disable": [],
+      "enable": [
+        "StatCan.OrchardCore.VueForms.Localized",
+        "OrchardCore.Workflows.Http"
+      ]
+    },
+    {
+      "name": "ContentDefinition",
+      "ContentTypes": [
+        {
+          "Name": "PersonInfo",
+          "DisplayName": "PersonInfo",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Creatable": true,
+              "Listable": true
+            },
+            "FullTextAspectSettings": {
+              "IncludeBodyAspect": false,
+              "IncludeDisplayText": false
+            }
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "PersonInfo",
+              "Name": "PersonInfo",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "ContentParts": [
+        {
+          "Name": "PersonInfo",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "TextField",
+              "Name": "Name",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Name",
+                  "Position": "0"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "Email",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Email",
+                  "Position": "1"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "Gender",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Gender",
+                  "Position": "2"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
       "name": "content",
       "data": [
         {
@@ -10,8 +86,8 @@
           "DisplayText": "TestForm",
           "Latest": true,
           "Published": true,
-          "ModifiedUtc": "2020-09-22T18:49:33.5549472Z",
-          "PublishedUtc": "2020-09-22T18:49:33.5957492Z",
+          "ModifiedUtc": "2020-09-28T13:45:47.2733338Z",
+          "PublishedUtc": "2020-09-28T13:45:47.2839578Z",
           "CreatedUtc": "2020-09-17T13:34:50.436266Z",
           "Owner": "admin",
           "Author": "admin",
@@ -29,7 +105,7 @@
               "Text": "{{ \"formErrorMessage\" | localize }}"
             },
             "DisabledHtml": {
-              "Html": null
+              "Html": ""
             }
           },
           "FlowPart": {
@@ -41,7 +117,7 @@
                 "DisplayText": "My Component",
                 "Latest": false,
                 "Published": false,
-                "ModifiedUtc": "2020-09-22T18:49:33.5761946Z",
+                "ModifiedUtc": "2020-09-28T13:45:47.277737Z",
                 "PublishedUtc": null,
                 "CreatedUtc": null,
                 "Owner": "",
@@ -51,7 +127,7 @@
                 },
                 "VueComponent": {
                   "Template": {
-                    "Text": "<v-container style=\"max-width: 800px\" data-cy=\"form-container\">\r\n  <v-card class=\"elevation-24\">\r\n    <v-toolbar dark color=\"primary\">\r\n      <v-toolbar-title>My Form</v-toolbar-title>\r\n    </v-toolbar>\r\n    <v-card-text>\r\n      <v-alert type=\"success\" v-if=\"formSuccessMessage\" data-cy=\"form-successmessage\">\r\n        {% raw %}{{formSuccessMessage}}{% endraw %}\r\n      </v-alert>\r\n      <v-alert type=\"error\" v-if=\"formErrorMessage\" data-cy=\"form-errormessage\">\r\n        {% raw %}{{formErrorMessage}}{% endraw %}\r\n      </v-alert>\r\n      <validation-provider name=\"name\" v-slot=\"{ errors, valid }\">\r\n        <v-text-field\r\n\t\t\tname=\"name\"\r\n\t\t\tv-model=\"name\"\r\n            :counter=\"10\"\r\n            :error-messages=\"errors\"\r\n            label=\"name\"\r\n\t\t\tdata-cy=\"form-field-name\"\r\n        ></v-text-field>\r\n      </validation-provider>\r\n      <validation-provider name=\"email\" rules=\"required|email\"  v-slot=\"{ errors, valid }\">\r\n        <v-text-field\r\n            name=\"email\"\r\n            v-model=\"email\"\r\n            :error-messages=\"errors\"\r\n            :success=\"valid\"\r\n            label=\"E-mail\"\r\n            required\r\n\t\t\tdata-cy=\"form-field-email\"\r\n\t\t></v-text-field>\r\n      </validation-provider>\r\n\r\n      <validation-provider name=\"gender\" rules=\"required\" v-slot=\"{ errors, valid }\">\r\n        <v-select\r\n\t\t\tname=\"gender\"\r\n            :items=\"items\"\r\n            v-model=\"gender\"\r\n            :error-messages=\"errors\"\r\n            :success=\"valid\"\r\n            label=\"Gender\"\r\n            required\r\n\t\t\tdata-cy=\"form-field-gender\"\r\n        ></v-select>\r\n      </validation-provider>\r\n    </v-card-text>\r\n    <v-card-actions>\r\n      <v-btn @click=\"obsReset\" data-cy=\"form-button-clear\">Clear</v-btn>\r\n      <v-spacer></v-spacer>\r\n      <v-btn @click=\"obsValidate()\" data-cy=\"form-button-validate\">Validate</v-btn>\r\n      <v-btn color=\"primary\" @click=\"formHandleSubmit\" data-cy=\"form-button-submit\">Sign Up</v-btn>\r\n    </v-card-actions>\r\n  </v-card>\r\n</v-container>"
+                    "Text": "<v-container style=\"max-width: 800px\" data-cy=\"form-container\">\r\n  <v-card class=\"elevation-24\">\r\n    <v-toolbar dark color=\"primary\">\r\n      <v-toolbar-title>My Form</v-toolbar-title>\r\n    </v-toolbar>\r\n    <v-card-text>\r\n      <v-alert type=\"success\" v-if=\"formSuccessMessage\" data-cy=\"form-successmessage\">\r\n        {% raw %}{{formSuccessMessage}}{% endraw %}\r\n      </v-alert>\r\n      <v-alert type=\"error\" v-if=\"formErrorMessage\" data-cy=\"form-errormessage\">\r\n        {% raw %}{{formErrorMessage}}{% endraw %}\r\n      </v-alert>\r\n      <validation-provider name=\"name\" v-slot=\"{ errors, valid }\">\r\n        <v-text-field\r\n\t\t\tname=\"name\"\r\n\t\t\tv-model=\"name\"\r\n            :counter=\"10\"\r\n            :error-messages=\"errors\"\r\n            label=\"{{'name' | localize}}\"\r\n\t\t\tdata-cy=\"form-field-name\"\r\n        ></v-text-field>\r\n      </validation-provider>\r\n      <validation-provider name=\"email\" rules=\"required|email\"  v-slot=\"{ errors, valid }\">\r\n        <v-text-field\r\n            name=\"email\"\r\n            v-model=\"email\"\r\n            :error-messages=\"errors\"\r\n            :success=\"valid\"\r\n            label=\"E-mail\"\r\n            required\r\n\t\t\tdata-cy=\"form-field-email\"\r\n\t\t></v-text-field>\r\n      </validation-provider>\r\n\r\n      <validation-provider name=\"gender\" rules=\"required\" v-slot=\"{ errors, valid }\">\r\n        <v-select\r\n\t\t\tname=\"gender\"\r\n            :items=\"items\"\r\n            v-model=\"gender\"\r\n            :error-messages=\"errors\"\r\n            :success=\"valid\"\r\n            label=\"Gender\"\r\n            required\r\n\t\t\tdata-cy=\"form-field-gender\"\r\n        ></v-select>\r\n      </validation-provider>\r\n    </v-card-text>\r\n    <v-card-actions>\r\n      <v-btn @click=\"obsReset\" data-cy=\"form-button-clear\">Clear</v-btn>\r\n      <v-spacer></v-spacer>\r\n      <v-btn color=\"primary\" @click=\"formHandleSubmit\" data-cy=\"form-button-submit\">Sign Up</v-btn>\r\n    </v-card-actions>\r\n  </v-card>\r\n</v-container>"
                   },
                   "Script": {
                     "Text": "{\r\n  data: () => ({\r\n    items: [\"Female\", \"Male\", \"Other\"],\r\n    name: \"\",\r\n    email: \"\",\r\n    gender: undefined\r\n  })\r\n}"
@@ -66,13 +142,13 @@
           },
           "VueFormScripts": {
             "ClientInit": {
-              "Text": "VeeValidate.setInteractionMode('passive');\r\n\r\nreturn new Vuetify({\r\n  theme: {\r\n    dark: true,\r\n  },\r\n});"
+              "Text": "return new Vuetify({});"
             },
             "OnValidation": {
               "Text": "var data = requestFormAsJsonObject();\r\nvar strings = getLocalizedTextValues(getFormContentItem());\r\n\r\nif(data.name == \"\") {\r\n addError('name', strings.nameVal); \r\n}\r\n"
             },
             "OnSubmitted": {
-              "Text": "var data = requestFormAsJsonObject();\r\n\r\ncreateContentItem(\"PersonInfo\", true, {\r\n  \"PersonInfo\": {\r\n    \"Name\": {\r\n      \"Text\": data.name\r\n    },\r\n    \"Email\": {\r\n      \"Text\": data.email\r\n    },\r\n    \"Gender\": {\r\n      \"Text\": data.gender\r\n    }\r\n  }\r\n});\r\n\r\nhttpContext().Response.Redirect('/success')\r\n"
+              "Text": "var data = requestFormAsJsonObject();\r\n\r\ncreateContentItem(\"PersonInfo\", true, {\r\n  \"PersonInfo\": {\r\n    \"Name\": {\r\n      \"Text\": data.name\r\n    },\r\n    \"Email\": {\r\n      \"Text\": data.email\r\n    },\r\n    \"Gender\": {\r\n      \"Text\": data.gender\r\n    }\r\n  }\r\n});\r\n"
             }
           },
           "LocalizedTextPart": {
@@ -128,17 +204,133 @@
                     "Value": "The name is required"
                   }
                 ]
-              },
+              }
+            ]
+          }
+        },
+        {
+          "ContentItemId": "44w9hn15s953d23n4pak4fm3n4",
+          "ContentItemVersionId": "4jd12aettny07tvp5nxt466an5",
+          "ContentType": "VueForm",
+          "DisplayText": "TestForm - Create PersonInfo",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": "2020-09-28T15:47:00.737167Z",
+          "PublishedUtc": "2020-09-28T15:47:00.7564053Z",
+          "CreatedUtc": "2020-09-28T15:45:51.7658301Z",
+          "Owner": "admin",
+          "Author": "admin",
+          "TitlePart": {
+            "Title": "TestForm - Create PersonInfo"
+          },
+          "VueForm": {
+            "Enabled": {
+              "Value": true
+            },
+            "SuccessMessage": {
+              "Text": "{{ \"formSuccessMessage\" | localize }}"
+            },
+            "ErrorMessage": {
+              "Text": "{{ \"formErrorMessage\" | localize }}"
+            },
+            "DisabledHtml": {
+              "Html": ""
+            }
+          },
+          "FlowPart": {
+            "Widgets": [
               {
-                "Name": "select",
+                "ContentItemId": "4k1r8zkrjhf9j3wz4mm1bd62da",
+                "ContentItemVersionId": null,
+                "ContentType": "VueComponent",
+                "DisplayText": "My Component",
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": "2020-09-28T15:47:00.7456392Z",
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": "",
+                "Author": "admin",
+                "TitlePart": {
+                  "Title": "My Component"
+                },
+                "VueComponent": {
+                  "Template": {
+                    "Text": "<v-container style=\"max-width: 800px\" data-cy=\"form-container\">\r\n  <v-card class=\"elevation-24\">\r\n    <v-toolbar dark color=\"primary\">\r\n      <v-toolbar-title>My Form</v-toolbar-title>\r\n    </v-toolbar>\r\n    <v-card-text>\r\n      <v-alert type=\"success\" v-if=\"formSuccessMessage\" data-cy=\"form-successmessage\">\r\n        {% raw %}{{formSuccessMessage}}{% endraw %}\r\n      </v-alert>\r\n      <v-alert type=\"error\" v-if=\"formErrorMessage\" data-cy=\"form-errormessage\">\r\n        {% raw %}{{formErrorMessage}}{% endraw %}\r\n      </v-alert>\r\n      <validation-provider name=\"name\" v-slot=\"{ errors, valid }\">\r\n        <v-text-field\r\n\t\t\tname=\"name\"\r\n\t\t\tv-model=\"name\"\r\n            :counter=\"10\"\r\n            :error-messages=\"errors\"\r\n            label=\"{{'name' | localize}}\"\r\n\t\t\tdata-cy=\"form-field-name\"\r\n        ></v-text-field>\r\n      </validation-provider>\r\n      <validation-provider name=\"email\" rules=\"required|email\"  v-slot=\"{ errors, valid }\">\r\n        <v-text-field\r\n            name=\"email\"\r\n            v-model=\"email\"\r\n            :error-messages=\"errors\"\r\n            :success=\"valid\"\r\n            label=\"E-mail\"\r\n            required\r\n\t\t\tdata-cy=\"form-field-email\"\r\n\t\t></v-text-field>\r\n      </validation-provider>\r\n\r\n      <validation-provider name=\"gender\" rules=\"required\" v-slot=\"{ errors, valid }\">\r\n        <v-select\r\n\t\t\tname=\"gender\"\r\n            :items=\"items\"\r\n            v-model=\"gender\"\r\n            :error-messages=\"errors\"\r\n            :success=\"valid\"\r\n            label=\"Gender\"\r\n            required\r\n\t\t\tdata-cy=\"form-field-gender\"\r\n        ></v-select>\r\n      </validation-provider>\r\n    </v-card-text>\r\n    <v-card-actions>\r\n      <v-btn @click=\"obsReset()\" data-cy=\"form-button-clear\">Clear</v-btn>\r\n      <v-spacer></v-spacer>\r\n      <v-btn color=\"primary\" @click=\"formHandleSubmit\" data-cy=\"form-button-submit\">Sign Up</v-btn>\r\n    </v-card-actions>\r\n  </v-card>\r\n</v-container>"
+                  },
+                  "Script": {
+                    "Text": "{\r\n  data: () => ({\r\n    items: [\"Female\", \"Male\", \"Other\"],\r\n    name: \"\",\r\n    email: \"\",\r\n    gender: undefined\r\n  })\r\n}"
+                  }
+                },
+                "FlowMetadata": {
+                  "Alignment": 3,
+                  "Size": 100
+                }
+              }
+            ]
+          },
+          "VueFormScripts": {
+            "ClientInit": {
+              "Text": "return new Vuetify({});"
+            },
+            "OnValidation": {
+              "Text": "var data = requestFormAsJsonObject();\r\nvar strings = getLocalizedTextValues(getFormContentItem());\r\n\r\nif(data.name == \"\") {\r\n addError('name', strings.nameVal); \r\n}\r\n"
+            },
+            "OnSubmitted": {
+              "Text": "var data = requestFormAsJsonObject();\r\n\r\nvar item = createContentItem(\"PersonInfo\", true, {\r\n  \"PersonInfo\": {\r\n    \"Name\": {\r\n      \"Text\": data.name\r\n    },\r\n    \"Email\": {\r\n      \"Text\": data.email\r\n    },\r\n    \"Gender\": {\r\n      \"Text\": data.gender\r\n    }\r\n  }\r\n});\r\n\r\nhttpRedirect('Contents/ContentItems/' + item.ContentItemId);\r\n"
+            }
+          },
+          "LocalizedTextPart": {
+            "Data": [
+              {
+                "Name": "formSuccessMessage",
                 "LocalizedItems": [
                   {
                     "Culture": "fr",
-                    "Value": "[\"Foo FR\", \"Bar FR\", \"cat FR\"]"
+                    "Value": "La soumission de votre formulaire est un succès."
                   },
                   {
                     "Culture": "en",
-                    "Value": "[\"Foo\", \"Bar\", \"Cat\"]"
+                    "Value": "Your form was submitted successfully."
+                  }
+                ]
+              },
+              {
+                "Name": "formErrorMessage",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Une erreure est survenue lors de la soumission du formulaire."
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "An error occurred while submitting your form."
+                  }
+                ]
+              },
+              {
+                "Name": "name",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Nom"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Name"
+                  }
+                ]
+              },
+              {
+                "Name": "nameVal",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Le nom est requis"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "The name is required"
                   }
                 ]
               }
