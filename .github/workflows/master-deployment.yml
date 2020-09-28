@@ -13,10 +13,7 @@ env:
   DOTNET_CLI_TELEMETRY_OPTOUT: 1
 jobs:
   test:
-    env:
-      DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
-      DOTNET_CLI_TELEMETRY_OPTOUT: 1
-    name: Build
+    name: Test
     runs-on: ubuntu-latest
     container:
       image: cypress/browsers:node12.13.0-chrome78-ff70
@@ -37,7 +34,7 @@ jobs:
            npm run test
   build:
     needs: test
-    name: Build & Push
+    name: Build and Deploy
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
