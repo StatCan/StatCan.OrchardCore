@@ -19,12 +19,13 @@ namespace StatCan.OrchardCore.LocalizedText
     [Feature(Constants.Features.LocalizedText)]
     public class Startup : StartupBase
     {
+        // Making sure the driver runs before other drivers for the LocalizedTextAccessor to work properly
+        public override int Order => -1000;
         public override void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<IDataMigration, Migrations>();
 
-            services.AddScoped<ILocalizedTextAccessor, LocalizedTextDisplayEvents>();
-            services.AddScoped<IShapeDisplayEvents, LocalizedTextDisplayEvents>(sp => (LocalizedTextDisplayEvents)sp.GetRequiredService<ILocalizedTextAccessor>());
+            services.AddScoped<ILocalizedTextAccessor, LocalizedTextAccessor>();
 
             services.AddContentPart<LocalizedTextPart>()
                 .UseDisplayDriver<LocalizedTextPartDisplayDriver>();
