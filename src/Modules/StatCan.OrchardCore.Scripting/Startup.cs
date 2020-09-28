@@ -9,6 +9,7 @@ namespace StatCan.OrchardCore.Scripting
         public override void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton<IGlobalMethodProvider, FormsGlobalMethodsProvider>();
+            services.AddSingleton<IGlobalMethodProvider, HttpGlobalMethodsProvider>();
         }
     }
     [RequireFeatures("OrchardCore.Contents")]
