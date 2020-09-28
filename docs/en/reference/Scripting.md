@@ -6,6 +6,12 @@ The following methods are available in addition to the OrchardCore [scripting me
 
 ## Scripting module (`StatCan.OrchardCore.Scripting`)
 
+### Http
+
+| Function | Description 
+| -------- | ----------- |
+|`httpRedirect(url: String): void`| Calls the `HttpContext.Response.Redirect()` method, prefixing the passed url with the tenant pathBase |
+
 ### Forms
 
 | Function | Description 
