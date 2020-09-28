@@ -26,6 +26,7 @@ jobs:
     - name: Host
       run: |
            cd test/cypress
+           npm i
            npm run host       
     - name: Test
       uses: cypress-io/github-action@v2
