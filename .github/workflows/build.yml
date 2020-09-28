@@ -24,7 +24,6 @@ jobs:
            cd src/StatCan.OrchardCore.Cms.Web
            dotnet build --configuration Release
     - name: Test
-      uses: cypress-io/github-action@v2
       container:
         image: cypress/browsers:node12.16.1-chrome80-ff73
         options: --user 1001
