@@ -1,0 +1,98 @@
+{% if User | is_in_role: "Hacker" %}
+
+  {% assign team = Model.Participant.Content.Hacker.Team.ContentItemIds | content_item_id | first %}
+  {% assign teamMembers = Queries.GetParticipantsForTeam | query: teamContentItemId: team.ContentItemId %}
+  <div {%if Model.Id != null%}id="{{ Model.Id }}"{%endif%} class="{{ Model.Classes | join: ' ' }}">
+    {% if team != null %}
+      <div class="d-flex align-items-center">
+        <div class="icon-col">
+        <i class="fas fa-users"></i>
+        </div>
+        <div class="col d-flex align-items-center justify-content-between">
+          <span class="h1-sub">{{ "Team" | t }}</span>
+          {% if Model.Hackathon.Content.Hackathon.TeamEditable.Value == true %}
+          <button class="team-clipboard" tabindex="0" onclick="select_all_and_copy(document.getElementById('team-id'));$('#clipboard-icon').addClass('fa-clipboard fa-clipboard-check');">
+            <span class="d-flex align-items-center">{{ "ID:" | t }}
+            <span id="team-id" class="mx-1">{{ team.ContentItemId }}</span>
+            <i id="clipboard-icon" class="fas fa-clipboard mx-1" aria-label="{{ "Copy team identification" | t }}"></i>
+            </span>
+          </button>
+          {% endif %}
+        </div>
+      </div>
+      {% if Model.Hackathon.Content.Hackathon.TeamEditable.Value == true %}
+        <div class="d-flex">
+          <div class="icon-col"></div>
+          <div class="col">
+            {{ Model.ContentItem.Content.TeamDashboardWidget.TeamMessage.Html | liquid | sanitize_html | raw }}
+          </div>
+        </div>
+      {% endif %}
+      <div class="d-flex">
+        <ul class="list-unstyled">
+        {% for teamMember in teamMembers %}
+          <li class="d-flex">
+            <div class="icon-sm-col">
+              <i class="fas fa-user-circle small"></i>
+            </div>
+            <div class="col">
+              {{teamMember.Content.ParticipantPart.FirstName.Text}} {{teamMember.Content.ParticipantPart.LastName.Text}}
+            </div>
+          </li>
+        {% endfor %}
+        </ul>
+      </div>
+      {% if Model.Hackathon.Content.Hackathon.TeamEditable.Value == true %}
+      <div class="d-flex">
+        <div class="icon-col"></div>
+        <div class="col d-flex justify-content-md-start justify-content-end">
+        <form class="my-2" method="post" action="{{"~/team/leave" | href}}">
+          {% antiforgerytoken%}
+          <input type="hidden" name="hackathonLocalizationSet" value="{{ Model.Hackathon.Content.LocalizationPart.LocalizationSet }}">
+          <input type="hidden" name="returnUrl" value="{{ Model.Dashboard.Content.AutoroutePart.Path }}">
+          <button type="submit" class="btn btn-primary btn-sm"><span>{{ "Leave team" | t }}</span></button>
+        </form>
+        </div>
+      </div>
+      {% endif %}
+    {% else %}
+      <div class="d-flex align-items-center">
+        <div class="icon-col">
+          <i class="fas fa-user"></i>
+        </div>
+        <div class="col">
+          <div class="h1-sub">{{ "Solo" | t }}</div>
+        </div>
+      </div>
+      <div class="d-flex mb-4">
+        <div class="icon-col"></div>
+        <div class="col">
+          {{ Model.ContentItem.Content.TeamDashboardWidget.SoloMessage.Html | liquid | sanitize_html | raw }}
+        </div>
+      </div>
+      {% if Model.Hackathon.Content.Hackathon.TeamEditable.Value == true %}
+        <div class="d-flex align-items-baseline mt-4">
+          <form class="my-2" method="post" action="{{"~/team/create" | href}}">
+            {% antiforgerytoken%}
+            <input type="hidden" name="hackathonLocalizationSet" value="{{ Model.Hackathon.Content.LocalizationPart.LocalizationSet }}">
+            <input type="hidden" name="returnUrl" value="{{ Model.Dashboard.Content.AutoroutePart.Path }}">
+            <button class="btn btn-primary btn-sm" type="submit"><span>{{ "Create team" | t }}</span></button>
+          </form>
+          <span class="mx-3">{{ "or" | t }}</span>
+          <form class="my-2" method="post" action="{{"~/team/join" | href}}">
+            {% antiforgerytoken%}
+            <div class="input-group">
+              <input id="teamId" type="text" name="teamContentItemId" class="form-control" placeholder="{{ "Team ID" | t }}" aria-label="{{ "Team  identification" | t }}" aria-describedby="team-submit">
+              <input type="hidden" name="hackathonLocalizationSet" value="{{ Model.Hackathon.Content.LocalizationPart.LocalizationSet }}">
+              <input type="hidden" name="returnUrl" value="{{ Model.Dashboard.Content.AutoroutePart.Path }}">
+              <div class="input-group-append">
+                <button class="btn btn-primary btn-sm" type="submit" id="team-submit-addon"><span>{{ "Join" | t }}</span></button>
+              </div>
+            </div>
+          </form>
+        </div>
+      {% endif %}
+    {% endif %}
+  </div>
+  {% script src:'~/OrchardCore.Workflows/Scripts/crossbrowserclipboardcopy.min.js', debug_src:'~/OrchardCore.Workflows/Scripts/crossbrowserclipboardcopy.js', at:"Foot" %}
+{% endif %}
