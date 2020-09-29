@@ -31,8 +31,8 @@
             
           </div>
           <div class="col">
-            <div class="input-group mb-2"  v-for="(item, idk2) in entry.localizedItems">
-              <div class="input-group-prepend">
+            <div class="input-group mb-2" :class="item.isCurrent ? '' : 'd-none'"  v-for="(item, idk2) in entry.localizedItems">
+              <div class="input-group-prepend"> 
                 <label :for="'value-' + index + idk2" class="input-group-text text-uppercase font-weight-bold" style="width:4.5rem">{{item.culture}}</label>
               </div>
               <textarea :id="'value-' + index + idk2" class="form-control overflow-hidden" rows="1" asp-validation-class-for="Data" placeholder="@T["Value"]" type="text" v-model="item.value" > </textarea>
