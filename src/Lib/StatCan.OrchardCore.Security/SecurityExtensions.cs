@@ -34,7 +34,7 @@ namespace StatCan.OrchardCore.Security
                 .From("cdnjs.cloudflare.com")
                 .From("stackpath.bootstrapcdn.com")
                 ;
-                builder.AddConnectSrc().Self().From("dpm.demdex.net").From("canada.sc.omtrdc.net"); // adobe analytics
+                builder.AddConnectSrc().Self().From("cdn.jsdelivr.net").From("dpm.demdex.net").From("canada.sc.omtrdc.net"); // adobe analytics
                 // unsafe-eval needed for vue.js runtime templates
                 builder.AddScriptSrc().UnsafeEval().UnsafeInline().Self()
                 .From("assets.adobedtm.com") // adobe analytics
