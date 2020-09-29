@@ -11,7 +11,7 @@ using OrchardCore.Modules.Manifest;
     Id = "StatCan.OrchardCore.Hackathon",
     Name = "Hackathon",
     Description = "Manages types and templates for hackathon support",
-    Dependencies = new[] { "OrchardCore.Contents" },
+    Dependencies = new[] { "OrchardCore.Contents", "OrchardCore.Workflows", "OrchardCore.Workflows.Http", "OrchardCore.Autoroute", "OrchardCore.Queries.Sql" },
     Category = "Innovation"
 )]
 

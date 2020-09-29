@@ -95,7 +95,7 @@ namespace StatCan.OrchardCore.Hackathon
                     AllowCustomPath = true,
                     ShowHomepageOption = true
                 }))
-
+                .WithPart(nameof(FlowPart), p => p.WithPosition("4"))
             );
         }
 

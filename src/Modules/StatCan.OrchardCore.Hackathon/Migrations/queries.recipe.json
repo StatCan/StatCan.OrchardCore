@@ -4,6 +4,13 @@
       "name": "Queries",
       "Queries": [
         {
+          "Name": "GetOwner",
+          "ReturnDocuments": false,
+          "Schema": null,
+          "Source": "Sql",
+          "Template": "SELECT * FROM HackathonItemsIndex where Owner = '{{owner}}'"
+        },
+        {
           "Name": "GetItemsForHackathon",
           "ReturnDocuments": true,
           "Schema": null,
@@ -11,11 +18,18 @@
           "Template": "SELECT DocumentId FROM HackathonItemsIndex where ContentType ='{{type}}'"
         },
         {
-          "Name": "TeamHackerCount",
+          "Name": "GetHacker",
+          "ReturnDocuments": false,
+          "Schema": null,
+          "Source": "Sql",
+          "Template": "SELECT * FROM HackathonItemsIndex where ContentType ='Hacker' and Published = true and Owner = '{{owner}}'"
+        },
+        {
+          "Name": "GetHackersForTeam",
           "ReturnDocuments": true,
           "Schema": null,
           "Source": "Sql",
-          "Template": "SELECT DocumentId FROM HackathonItemsIndex where ContentType ='{{type}}'"
+          "Template": "SELECT DocumentId FROM HackathonItemsIndex where ContentType ='Hacker' and TeamContentItemId = '{{teamContentItemId}}'"
         }
       ]
     }

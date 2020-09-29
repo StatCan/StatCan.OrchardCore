@@ -72,6 +72,12 @@ namespace StatCan.OrchardCore.Hackathon.Indexes
                         indexValue.Culture = locPart.Culture?.Value;
                     }
 
+                    if (contentItem.ContentType == "Case")
+                    {
+                        indexValue.CaseLocalizationSet = (string)contentItem.Content.LocalizationPart.LocalizationSet?.Value;
+                        return indexValue;
+                    }
+
                     // Lazy initialization because of ISession cyclic dependency
                     _contentDefinitionManager ??= _serviceProvider.GetRequiredService<IContentDefinitionManager>();
                     // Gets the list of field definition that have a Hackathon LocalizedContentPickerField
@@ -82,10 +88,10 @@ namespace StatCan.OrchardCore.Hackathon.Indexes
                         .ToArray();
 
                     // only index ContentTypes that are linked to a hackathon
-                    if (hackathonElementsFields.Length == 0)
+                   /* if (hackathonElementsFields.Length == 0)
                     {
                         return null;
-                    }
+                    }*/
 
                     var caseElementsFields = _contentDefinitionManager
                         .GetTypeDefinition(contentItem.ContentType)

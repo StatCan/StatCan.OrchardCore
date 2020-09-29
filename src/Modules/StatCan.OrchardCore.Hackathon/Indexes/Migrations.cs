@@ -25,7 +25,7 @@ namespace StatCan.OrchardCore.Hackathon.Indexes
                 .Column<string>("Email", c => c.Nullable().WithLength(255))
                 .Column<string>("TeamContentItemId", c => c.Nullable().WithLength(26))
                 .Column<string>("CaseLocalizationSet", c => c.Nullable().WithLength(26)),
-                nameof(HackathonItemsIndex)
+                null
             );
 
             SchemaBuilder.AlterTable(nameof(HackathonItemsIndex), table => table
@@ -47,15 +47,6 @@ namespace StatCan.OrchardCore.Hackathon.Indexes
             );
 
             return 6;
-        }
-
-        public int UpdateFrom3()
-        {
-            SchemaBuilder.AlterTable(nameof(HackathonItemsIndex), table => {
-                table.AddColumn<string>("LocalizationSet", c => c.WithLength(26));
-                table.AddColumn<string>("Culture", c => c.WithLength(8));
-            });
-            return 4;
         }
     }
 }

@@ -1,6 +1,7 @@
+{% assign hacker = Queries.GetHacker | query: owner: User.Identity.Name | first %}
+
 {% if User | is_in_role: "Hacker" %}
-  <h1>user role in hacker</h1>
-  {% if Site.Properties.HackathonCustomSettings.HackathonCustomSettings.TeamEditable.Value == true and Model.Participant.Content.Hacker.Team == null  %}
+  {% if Site.Properties.HackathonCustomSettings.TeamCustomSettings.TeamEditable.Value == true and hacker.TeamContentItemId == null  %}
     {% assign teams = Queries.GetItemsForHackathon | query: type: "Team" %}
     <div {%if Model.Id != null%}id="{{ Model.Id }}"{%endif%} class="{{ Model.Classes | join: ' ' }}">
       <div class="vg-header">
@@ -9,8 +10,8 @@
       <div class="join-team-max-vh-40 overflow-auto join-team-scroller vg-content">
         <ul class="list-group list-group-flush">
         {% for team in teams %}
-          {% assign h = Queries.TeamHackerCount | query: teamContentItemId: team.ContentItemId | first %}
-          {% if h.hackerCount < Site.Properties.HackathonCustomSettings.HackathonCustomSettings.TeamSize.Value %}
+          {% assign h = Queries.GetHackersForTeam | query: teamContentItemId: team.ContentItemId %}
+          {% if h.size < Site.Properties.HackathonCustomSettings.TeamCustomSettings.TeamSize.Value %}
           <li class="list-group-item bg-transparent border-white">
             <div class="row">
               <div class="col flex-start">{{team | display_text}}</div>
@@ -24,7 +25,7 @@
                 </div>
               </div>
               <div class="row">
-                <div class="flex-start">{{h.hackerCount}}/{{ Site.Properties.HackathonCustomSettings.HackathonCustomSettings.TeamSize.Value }}</div>
+                <div class="flex-start">{{h.size}}/{{ Site.Properties.HackathonCustomSettings.TeamCustomSettings.TeamSize.Value }}</div>
               </div>
             </li>
             {%endif%}
