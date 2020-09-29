@@ -17,23 +17,32 @@ namespace StatCan.OrchardCore.LocalizedText.Drivers
     {
         public IStringLocalizer T { get; set; }
         private readonly ILocalizationService _localizationService;
+        private readonly ILocalizedTextAccessor _accessor;
 
-        public LocalizedTextPartDisplayDriver(IStringLocalizer<LocalizedTextPartDisplayDriver> localizer, ILocalizationService localizationService )
+        public LocalizedTextPartDisplayDriver(IStringLocalizer<LocalizedTextPartDisplayDriver> localizer,
+            ILocalizationService localizationService,
+            ILocalizedTextAccessor accessor
+        )
         {
             T = localizer;
             _localizationService = localizationService;
+            _accessor = accessor;
+        }
+        public override IDisplayResult Display(LocalizedTextPart part, BuildPartDisplayContext context)
+        {
+            _accessor.AddLocalizedItem(part);
+            return base.Display(part, context);
         }
 
         public async override Task<IDisplayResult> EditAsync(LocalizedTextPart part, BuildPartEditorContext context)
         {
-            var cultures = (await _localizationService.GetSupportedCulturesAsync());
+            var cultures = await _localizationService.GetSupportedCulturesAsync();
 
             return Initialize<EditLocalizedTextFieldViewModel>(GetEditorShapeType(context), model =>
             {
                 model.Part = part;
                 model.SupportedCultures = JsonConvert.SerializeObject(cultures);
-                model.Data = JsonConvert.SerializeObject(part.Data == null ? new List<LocalizedTextEntry>(): part.Data);
-
+                model.Data = JsonConvert.SerializeObject(part.Data ?? new List<LocalizedTextEntry>(), Formatting.None);
             });
         }
 
@@ -47,6 +56,5 @@ namespace StatCan.OrchardCore.LocalizedText.Drivers
 
             return Edit(part, context);
         }
-
     }
 }
