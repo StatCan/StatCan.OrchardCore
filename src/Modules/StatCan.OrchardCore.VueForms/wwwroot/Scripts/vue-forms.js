@@ -119,9 +119,8 @@ function initForm(app) {
       formHandleSubmit: function formHandleSubmit(e) {
         var _this = this;
 
-        e.preventDefault(); // cleanup any error / server success message
-      
-        // keep a reference to the VeeValidate observer
+        e.preventDefault(); // keep a reference to the VeeValidate observer
+
         var observer = this.$refs.obs;
         observer.validate().then(function (valid) {
           if (valid) {
