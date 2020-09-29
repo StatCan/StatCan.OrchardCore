@@ -1,0 +1,80 @@
+site_name: StatCan Orchard Core Documentation
+site_url: https://statcan.github.io/statcan.orchardcore
+repo_url: https://github.com/statcan/statcan.orchardcore
+edit_uri: edit/master/docs/en/
+repo_name: StatCan/StatCan.OrchardCore
+docs_dir: 'docs/en'
+
+theme:
+    name: "material"
+    lanaguge: en
+    features:
+        - instant
+        - tabs
+    palette:
+        primary: deep purple
+
+
+markdown_extensions:
+  - markdown.extensions.admonition
+  - markdown.extensions.codehilite
+  - markdown.extensions.def_list
+  - markdown.extensions.footnotes
+  - markdown.extensions.meta
+  - mdx_truly_sane_lists:
+      nested_indent: 2
+      truly_sane: True
+  - pymdownx.b64
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.emoji
+  - pymdownx.magiclink
+  - pymdownx.smartsymbols
+  - pymdownx.snippets:
+      check_paths: true
+  - pymdownx.superfences
+  - pymdownx.tabbed
+  - pymdownx.tasklist
+  - pymdownx.tilde
+  - toc:
+      permalink: true
+#  - markdown.extensions.nl2br
+
+plugins:
+  - search
+  - git-revision-date-localized
+  - exclude:
+      glob:
+        # Excluding the large node folder with all its MD files. We can't exclude everything apart from docs because there are links to e.g. C# files too.
+        - "*node_modules*"
+        
+# Page tree
+nav:
+    - Home: index.md
+    - Development: 
+        - Getting Started: development/getting-started.md
+        - Module Development: 
+             - Localization: development/localization.md
+             - Committing: development/committing.md
+             - Testing: development/testing.md
+    - Reference: 
+        - Liquid: reference/Liquid.md
+        - Scripting: reference/Scripting.md
+        - Workflows: reference/Workflows.md
+        - Modules:
+             - ContentFields: reference/modules/ContentFields.md
+             - DisplayHelpers: reference/modules/DisplayHelpers.md
+             - GCCollab: reference/modules/GCCollab.md
+             - GitHub: reference/modules/GitHub.md
+             - LocalizedText: reference/modules/LocalizedText.md
+             - Matomo: reference/modules/Matomo.md
+             - VueForms: reference/modules/VueForms.md
+             - WebpageCore: reference/modules/WebpageCore.md
+        - Themes:
+             - DigitalAdmin: reference/themes/DigitalAdmin.md
+             - PortalTheme: reference/themes/PortalTheme.md
+    - Support:
+        - Contact: contact.md
+
+copyright: 'Copyright &copy Her Majesty the Queen in Right of Canada, as represented by the Minister of Statistics Canada, 2020'
+
