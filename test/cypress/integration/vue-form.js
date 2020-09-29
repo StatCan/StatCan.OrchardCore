@@ -80,4 +80,15 @@ describe("VueForm Tests", function() {
     cy.get('#navbar-toggle-button').click();
     cy.getByCy('form-field-name').closest('.v-input').find('.v-label').should('contain', "Nom");
   })
+
+  it("Using Submit state to disable the button", function(){
+    cy.visitContent(tenant, contentId);
+
+    cy.getByCy('form-field-name').type('Jean-Philippe Tissot', {force:true});
+    cy.getByCy('form-field-email').type('jp@email.com', {force:true});
+    cy.getByCy('form-field-gender').click({force:true}).type('{downarrow}{downarrow}{enter}', {force:true});
+    cy.getByCy('form-button-submit').click();
+    cy.getByCy('form-button-submit').should('be.disabled');
+    cy.getByCy('form-successmessage').contains('Your form was submitted successfully.');
+  })
 });

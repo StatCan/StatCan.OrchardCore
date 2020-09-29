@@ -113,10 +113,11 @@ Then accessing these properties in your template / script. You need to change th
 | obs-reset | A method that resets validation state for all providers. `() => void` |
 | obs-validate | A method that triggers validation for all providers. Mutates child providers state unless silent is true. `() => Promise<boolean>` |
 | form-handle-submit | A method that calls the `validate()` method and then, if valid, sends an ajax request to our controller `() => void` |
+| form-submitting | Set to true when the form is being submitted. |
+| form-submit-success | Set to true when no redirect is specified and the submission was a success. |
 | form-success-message | The success message returned from the server as specified in the [VueForm](#vueform-part) |
-| form-error-message | The error message returned from the server as specified in the [VueForm](#vueform-part) |
-| form-ajax-error-status | Returns an unsigned short with the status of the response of the request. |
-| form-ajax-error-text | Returns a DOMString containing the response string returned by the HTTP server. This includes the entire text of the response message ("200 OK", for example). |
+| form-submit-error | Set to true when a validation error or ajax error occurs. |
+| form-error-message | The error message returned from the server as specified in the [VueForm](#vueform-part) or the ajax error status code and text |
 
 #### Title 
 

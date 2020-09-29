@@ -87,7 +87,7 @@ function initForm(app) {
   if (initScriptResult) {
     vuetify = initScriptResult;
   } else {
-    vuetify = new Vuetify();
+    vuetify = new Vuetify(); // I wonder if there is a way to avoid having this dependency here
   } // register all vue components coming from the admin ui
 
 
@@ -98,7 +98,7 @@ function initForm(app) {
 
     if (encodedScript) {
       var script = atob(encodedScript);
-      var getVueObject = new Function("\n        var component = ".concat(script, ";\n        Object.assign(component, {name: '").concat(name, "', props: \n          ['obs-valid',\n          'obs-invalid',\n          'obs-reset',\n          'obs-validate',\n          'form-handle-submit',\n          'form-success-message',\n          'form-error-message',\n          'form-ajax-error-status',\n          'form-ajax-error-text']\n        });\n        return Vue.component('").concat(name, "', component);\n        "));
+      var getVueObject = new Function("\n        var component = ".concat(script, ";\n        Object.assign(component, {name: '").concat(name, "', props: \n          ['obs-valid',\n          'obs-invalid',\n          'obs-reset',\n          'obs-validate',\n          'form-handle-submit',\n          'form-submitting',\n          'form-submit-success',\n          'form-success-message',\n          'form-submit-error',\n          'form-error-message']\n        });\n        return Vue.component('").concat(name, "', component);\n        "));
       getVueObject();
     }
   }); // instanciate the top level vue component
@@ -108,9 +108,10 @@ function initForm(app) {
     vuetify: vuetify,
     data: function data() {
       return {
-        ajaxErrorStatus: undefined,
-        ajaxErrorText: undefined,
+        submitting: false,
+        submitSuccess: false,
         successMessage: undefined,
+        submitError: false,
         errorMessage: undefined
       };
     },
@@ -119,15 +120,15 @@ function initForm(app) {
         var _this = this;
 
         e.preventDefault(); // cleanup any error / server success message
-
-        Object.assign(this.$data, this.$options.data.apply(this)); // keep a reference to the VeeValidate observer
-
+      
+        // keep a reference to the VeeValidate observer
         var observer = this.$refs.obs;
         observer.validate().then(function (valid) {
           if (valid) {
             var vm = _this;
-            var action = _this.$refs.form.$attrs.action;
-            var serializedForm = $("#" + _this.$refs.form.$attrs.id).serialize();
+            var action = vm.$refs.form.$attrs.action;
+            var serializedForm = $("#" + vm.$refs.form.$attrs.id).serialize();
+            vm.$data.submitting = true;
             $.ajax({
               type: "POST",
               url: action,
@@ -135,8 +136,10 @@ function initForm(app) {
               cache: false,
               dataType: "json",
               success: function success(data) {
-                // if there are validation errors on the form, display them.
+                Object.assign(vm.$data, vm.$options.data.apply(this)); // if there are validation errors on the form, display them.
+
                 if (data.validationError) {
+                  vm.submitError = true;
                   vm.errorMessage = data.errorMessage;
                   observer.setErrors(data.errors);
                   return;
@@ -146,21 +149,23 @@ function initForm(app) {
                 if (data.redirect) {
                   window.location.href = data.redirect;
                   return;
-                } //success, set the form success message
+                } //success, set the form success message 
 
 
                 if (data.success) {
+                  vm.submitSuccess = true;
                   vm.successMessage = data.successMessage;
                   return;
-                } // something went wrong, dev issue
+                }
 
+                vm.submitError = true; // something went wrong, dev issue
 
                 vm.errorMessage = "Something wen't wrong. Please report this to your site administrators. Error code: `VueForms.AjaxHandler`";
               },
-              error: function error(xhr, status, errorThrown) {
-                // this might be dependent on the server side and might need some tweaking
-                vm.ajaxErrorStatus = xhr.status;
-                vm.ajaxErrorText = xhr.errorThrown;
+              error: function error(xhr, statusText) {
+                Object.assign(vm.$data, vm.$options.data.apply(this));
+                vm.submitError = true;
+                vm.errorMessage = "".concat(xhr.status, " ").concat(statusText);
               }
             });
           }

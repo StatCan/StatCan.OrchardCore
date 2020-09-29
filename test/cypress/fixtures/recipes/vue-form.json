@@ -86,8 +86,8 @@
           "DisplayText": "TestForm",
           "Latest": true,
           "Published": true,
-          "ModifiedUtc": "2020-09-28T13:45:47.2733338Z",
-          "PublishedUtc": "2020-09-28T13:45:47.2839578Z",
+          "ModifiedUtc": "2020-09-29T14:39:35.5324525Z",
+          "PublishedUtc": "2020-09-29T14:39:35.5702057Z",
           "CreatedUtc": "2020-09-17T13:34:50.436266Z",
           "Owner": "admin",
           "Author": "admin",
@@ -117,7 +117,7 @@
                 "DisplayText": "My Component",
                 "Latest": false,
                 "Published": false,
-                "ModifiedUtc": "2020-09-28T13:45:47.277737Z",
+                "ModifiedUtc": "2020-09-29T14:39:35.5515148Z",
                 "PublishedUtc": null,
                 "CreatedUtc": null,
                 "Owner": "",
@@ -127,7 +127,7 @@
                 },
                 "VueComponent": {
                   "Template": {
-                    "Text": "<v-container style=\"max-width: 800px\" data-cy=\"form-container\">\r\n  <v-card class=\"elevation-24\">\r\n    <v-toolbar dark color=\"primary\">\r\n      <v-toolbar-title>My Form</v-toolbar-title>\r\n    </v-toolbar>\r\n    <v-card-text>\r\n      <v-alert type=\"success\" v-if=\"formSuccessMessage\" data-cy=\"form-successmessage\">\r\n        {% raw %}{{formSuccessMessage}}{% endraw %}\r\n      </v-alert>\r\n      <v-alert type=\"error\" v-if=\"formErrorMessage\" data-cy=\"form-errormessage\">\r\n        {% raw %}{{formErrorMessage}}{% endraw %}\r\n      </v-alert>\r\n      <validation-provider name=\"name\" v-slot=\"{ errors, valid }\">\r\n        <v-text-field\r\n\t\t\tname=\"name\"\r\n\t\t\tv-model=\"name\"\r\n            :counter=\"10\"\r\n            :error-messages=\"errors\"\r\n            label=\"{{'name' | localize}}\"\r\n\t\t\tdata-cy=\"form-field-name\"\r\n        ></v-text-field>\r\n      </validation-provider>\r\n      <validation-provider name=\"email\" rules=\"required|email\"  v-slot=\"{ errors, valid }\">\r\n        <v-text-field\r\n            name=\"email\"\r\n            v-model=\"email\"\r\n            :error-messages=\"errors\"\r\n            :success=\"valid\"\r\n            label=\"E-mail\"\r\n            required\r\n\t\t\tdata-cy=\"form-field-email\"\r\n\t\t></v-text-field>\r\n      </validation-provider>\r\n\r\n      <validation-provider name=\"gender\" rules=\"required\" v-slot=\"{ errors, valid }\">\r\n        <v-select\r\n\t\t\tname=\"gender\"\r\n            :items=\"items\"\r\n            v-model=\"gender\"\r\n            :error-messages=\"errors\"\r\n            :success=\"valid\"\r\n            label=\"Gender\"\r\n            required\r\n\t\t\tdata-cy=\"form-field-gender\"\r\n        ></v-select>\r\n      </validation-provider>\r\n    </v-card-text>\r\n    <v-card-actions>\r\n      <v-btn @click=\"obsReset\" data-cy=\"form-button-clear\">Clear</v-btn>\r\n      <v-spacer></v-spacer>\r\n      <v-btn color=\"primary\" @click=\"formHandleSubmit\" data-cy=\"form-button-submit\">Sign Up</v-btn>\r\n    </v-card-actions>\r\n  </v-card>\r\n</v-container>"
+                    "Text": "<v-container style=\"max-width: 800px\" data-cy=\"form-container\">\r\n  <v-card class=\"elevation-24\">\r\n    <v-toolbar dark color=\"primary\">\r\n      <v-toolbar-title>My Form</v-toolbar-title>\r\n    </v-toolbar>\r\n    <v-card-text>\r\n      <v-alert type=\"success\" v-if=\"formSuccessMessage\" data-cy=\"form-successmessage\">\r\n        {% raw %}{{formSuccessMessage}}{% endraw %}\r\n      </v-alert>\r\n      <v-alert type=\"error\" v-if=\"formErrorMessage\" data-cy=\"form-errormessage\">\r\n        {% raw %}{{formErrorMessage}}{% endraw %}\r\n      </v-alert>\r\n      <validation-provider name=\"name\" v-slot=\"{ errors, valid }\">\r\n        <v-text-field\r\n\t\t\tname=\"name\"\r\n\t\t\tv-model=\"name\"\r\n            :counter=\"10\"\r\n            :error-messages=\"errors\"\r\n            label=\"{{'name' | localize}}\"\r\n\t\t\tdata-cy=\"form-field-name\"\r\n        ></v-text-field>\r\n      </validation-provider>\r\n      <validation-provider name=\"email\" rules=\"required|email\"  v-slot=\"{ errors, valid }\">\r\n        <v-text-field\r\n            name=\"email\"\r\n            v-model=\"email\"\r\n            :error-messages=\"errors\"\r\n            :success=\"valid\"\r\n            label=\"E-mail\"\r\n            required\r\n\t\t\tdata-cy=\"form-field-email\"\r\n\t\t></v-text-field>\r\n      </validation-provider>\r\n\r\n      <validation-provider name=\"gender\" rules=\"required\" v-slot=\"{ errors, valid }\">\r\n        <v-select\r\n\t\t\tname=\"gender\"\r\n            :items=\"items\"\r\n            v-model=\"gender\"\r\n            :error-messages=\"errors\"\r\n            :success=\"valid\"\r\n            label=\"Gender\"\r\n            required\r\n\t\t\tdata-cy=\"form-field-gender\"\r\n        ></v-select>\r\n      </validation-provider>\r\n    </v-card-text>\r\n    <v-card-actions>\r\n      <v-btn @click=\"obsReset\" data-cy=\"form-button-clear\">Clear</v-btn>\r\n      <v-spacer></v-spacer>\r\n      <v-btn color=\"primary\" @click=\"formHandleSubmit\" :disabled=\"formSubmitting || formSubmitSuccess\" data-cy=\"form-button-submit\" :disabled>Sign Up</v-btn>\r\n    </v-card-actions>\r\n  </v-card>\r\n</v-container>"
                   },
                   "Script": {
                     "Text": "{\r\n  data: () => ({\r\n    items: [\"Female\", \"Male\", \"Other\"],\r\n    name: \"\",\r\n    email: \"\",\r\n    gender: undefined\r\n  })\r\n}"
@@ -148,7 +148,7 @@
               "Text": "var data = requestFormAsJsonObject();\r\nvar strings = getLocalizedTextValues(getFormContentItem());\r\n\r\nif(data.name == \"\") {\r\n addError('name', strings.nameVal); \r\n}\r\n"
             },
             "OnSubmitted": {
-              "Text": "var data = requestFormAsJsonObject();\r\n\r\ncreateContentItem(\"PersonInfo\", true, {\r\n  \"PersonInfo\": {\r\n    \"Name\": {\r\n      \"Text\": data.name\r\n    },\r\n    \"Email\": {\r\n      \"Text\": data.email\r\n    },\r\n    \"Gender\": {\r\n      \"Text\": data.gender\r\n    }\r\n  }\r\n});\r\n"
+              "Text": null
             }
           },
           "LocalizedTextPart": {
@@ -215,8 +215,8 @@
           "DisplayText": "TestForm - Create PersonInfo",
           "Latest": true,
           "Published": true,
-          "ModifiedUtc": "2020-09-28T15:47:00.737167Z",
-          "PublishedUtc": "2020-09-28T15:47:00.7564053Z",
+          "ModifiedUtc": "2020-09-29T14:04:48.1774087Z",
+          "PublishedUtc": "2020-09-29T14:04:48.7266487Z",
           "CreatedUtc": "2020-09-28T15:45:51.7658301Z",
           "Owner": "admin",
           "Author": "admin",
@@ -246,7 +246,7 @@
                 "DisplayText": "My Component",
                 "Latest": false,
                 "Published": false,
-                "ModifiedUtc": "2020-09-28T15:47:00.7456392Z",
+                "ModifiedUtc": "2020-09-29T14:04:48.6897184Z",
                 "PublishedUtc": null,
                 "CreatedUtc": null,
                 "Owner": "",
@@ -256,7 +256,7 @@
                 },
                 "VueComponent": {
                   "Template": {
-                    "Text": "<v-container style=\"max-width: 800px\" data-cy=\"form-container\">\r\n  <v-card class=\"elevation-24\">\r\n    <v-toolbar dark color=\"primary\">\r\n      <v-toolbar-title>My Form</v-toolbar-title>\r\n    </v-toolbar>\r\n    <v-card-text>\r\n      <v-alert type=\"success\" v-if=\"formSuccessMessage\" data-cy=\"form-successmessage\">\r\n        {% raw %}{{formSuccessMessage}}{% endraw %}\r\n      </v-alert>\r\n      <v-alert type=\"error\" v-if=\"formErrorMessage\" data-cy=\"form-errormessage\">\r\n        {% raw %}{{formErrorMessage}}{% endraw %}\r\n      </v-alert>\r\n      <validation-provider name=\"name\" v-slot=\"{ errors, valid }\">\r\n        <v-text-field\r\n\t\t\tname=\"name\"\r\n\t\t\tv-model=\"name\"\r\n            :counter=\"10\"\r\n            :error-messages=\"errors\"\r\n            label=\"{{'name' | localize}}\"\r\n\t\t\tdata-cy=\"form-field-name\"\r\n        ></v-text-field>\r\n      </validation-provider>\r\n      <validation-provider name=\"email\" rules=\"required|email\"  v-slot=\"{ errors, valid }\">\r\n        <v-text-field\r\n            name=\"email\"\r\n            v-model=\"email\"\r\n            :error-messages=\"errors\"\r\n            :success=\"valid\"\r\n            label=\"E-mail\"\r\n            required\r\n\t\t\tdata-cy=\"form-field-email\"\r\n\t\t></v-text-field>\r\n      </validation-provider>\r\n\r\n      <validation-provider name=\"gender\" rules=\"required\" v-slot=\"{ errors, valid }\">\r\n        <v-select\r\n\t\t\tname=\"gender\"\r\n            :items=\"items\"\r\n            v-model=\"gender\"\r\n            :error-messages=\"errors\"\r\n            :success=\"valid\"\r\n            label=\"Gender\"\r\n            required\r\n\t\t\tdata-cy=\"form-field-gender\"\r\n        ></v-select>\r\n      </validation-provider>\r\n    </v-card-text>\r\n    <v-card-actions>\r\n      <v-btn @click=\"obsReset()\" data-cy=\"form-button-clear\">Clear</v-btn>\r\n      <v-spacer></v-spacer>\r\n      <v-btn color=\"primary\" @click=\"formHandleSubmit\" data-cy=\"form-button-submit\">Sign Up</v-btn>\r\n    </v-card-actions>\r\n  </v-card>\r\n</v-container>"
+                    "Text": "<v-container style=\"max-width: 800px\" data-cy=\"form-container\">\r\n  <v-card class=\"elevation-24\">\r\n    <v-toolbar dark color=\"primary\">\r\n      <v-toolbar-title>My Form</v-toolbar-title>\r\n    </v-toolbar>\r\n    <v-card-text>\r\n      <v-alert type=\"success\" v-if=\"formSuccessMessage\" data-cy=\"form-successmessage\">\r\n        {% raw %}{{formSuccessMessage}}{% endraw %}\r\n      </v-alert>\r\n      <v-alert type=\"error\" v-if=\"formErrorMessage\" data-cy=\"form-errormessage\">\r\n        {% raw %}{{formErrorMessage}}{% endraw %}\r\n      </v-alert>\r\n      <validation-provider name=\"name\" v-slot=\"{ errors, valid }\">\r\n        <v-text-field\r\n\t\t\tname=\"name\"\r\n\t\t\tv-model=\"name\"\r\n            :counter=\"10\"\r\n            :error-messages=\"errors\"\r\n            label=\"{{'name' | localize}}\"\r\n\t\t\tdata-cy=\"form-field-name\"\r\n        ></v-text-field>\r\n      </validation-provider>\r\n      <validation-provider name=\"email\" rules=\"required|email\"  v-slot=\"{ errors, valid }\">\r\n        <v-text-field\r\n            name=\"email\"\r\n            v-model=\"email\"\r\n            :error-messages=\"errors\"\r\n            :success=\"valid\"\r\n            label=\"E-mail\"\r\n            required\r\n\t\t\tdata-cy=\"form-field-email\"\r\n\t\t></v-text-field>\r\n      </validation-provider>\r\n\r\n      <validation-provider name=\"gender\" rules=\"required\" v-slot=\"{ errors, valid }\">\r\n        <v-select\r\n\t\t\tname=\"gender\"\r\n            :items=\"items\"\r\n            v-model=\"gender\"\r\n            :error-messages=\"errors\"\r\n            :success=\"valid\"\r\n            label=\"Gender\"\r\n            required\r\n\t\t\tdata-cy=\"form-field-gender\"\r\n        ></v-select>\r\n      </validation-provider>\r\n    </v-card-text>\r\n    <v-card-actions>\r\n      <v-btn @click=\"obsReset()\" data-cy=\"form-button-clear\">Clear</v-btn>\r\n      <v-spacer></v-spacer>\r\n      <v-btn color=\"primary\" @click=\"formHandleSubmit\" :disabled=\"formSubmitting || formSubmitSuccess\" data-cy=\"form-button-submit\">Sign Up</v-btn>\r\n    </v-card-actions>\r\n  </v-card>\r\n</v-container>"
                   },
                   "Script": {
                     "Text": "{\r\n  data: () => ({\r\n    items: [\"Female\", \"Male\", \"Other\"],\r\n    name: \"\",\r\n    email: \"\",\r\n    gender: undefined\r\n  })\r\n}"
