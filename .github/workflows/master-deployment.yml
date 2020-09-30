@@ -2,13 +2,8 @@ name: Development release (master branch)
 on:
   push:
     branches:
-      - master
-env:
-  REGISTRY_NAME: k8scc01covidacr
-  CLUSTER_NAME: k8s-cancentral-02-covid-aks
-  CLUSTER_RESOURCE_GROUP: k8s-cancentral-01-covid-aks
-  STORAGE_ACCOUNT_NAME: k8scovid
-  NAMESPACE: web
+      - *
+env: 
   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
   DOTNET_CLI_TELEMETRY_OPTOUT: 1
 jobs:
@@ -34,7 +29,7 @@ jobs:
            npm run test
   build:
     needs: test
-    name: Build and Deploy
+    name: Build and Publish
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
@@ -49,88 +44,15 @@ jobs:
       - name: Dotnet build
         env:
           BuildNumber: ${{ env.BUILD_NUMBER }}
-        run: |
-          cd src/StatCan.OrchardCore.Cms.Web
-          dotnet build --configuration Release
-          dotnet publish -c Release -o ./.build/release
-      # Connect to Azure Container registry (ACR)
-      - uses: azure/docker-login@v1
-        with:
-          login-server: ${{ env.REGISTRY_NAME }}.azurecr.io
-          username: ${{ secrets.REGISTRY_USERNAME }}
-          password: ${{ secrets.REGISTRY_PASSWORD }}
-      # Container build and push to a Azure Container registry (ACR)
-      - run: |
-          cd src/StatCan.OrchardCore.Cms.Web
-          docker build -f Dockerfile -t ${{ env.REGISTRY_NAME }}.azurecr.io/statcan-orchardcore:${{ env.BUILD_NUMBER }} .
-          docker push ${{ env.REGISTRY_NAME }}.azurecr.io/statcan-orchardcore:${{ env.BUILD_NUMBER }}
-      # Set the target Azure Kubernetes Service (AKS) cluster.
-      - uses: azure/aks-set-context@v1
-        with:
-          creds: "${{ secrets.AZURE_CREDENTIALS }}"
-          cluster-name: ${{ env.CLUSTER_NAME }}
-          resource-group: ${{ env.CLUSTER_RESOURCE_GROUP }}
-      # Create imagepullsecret for Azure Container registry (ACR)
-      - uses: azure/k8s-create-secret@v1
-        with:
-          container-registry-url: ${{ env.REGISTRY_NAME }}.azurecr.io
-          container-registry-username: ${{ secrets.REGISTRY_USERNAME }}
-          container-registry-password: ${{ secrets.REGISTRY_PASSWORD }}
-          secret-name: ${{ env.REGISTRY_NAME }}-registry-connection
-          namespace: ${{ env.NAMESPACE }}
-      # Clone the Helm chart
-      - run: |
-          git clone https://github.com/statcan/charts.git
-          mkdir -p /home/runner/work/_temp/_github_home/
-          cp $KUBECONFIG /home/runner/work/_temp/_github_home/KUBECONFIG
-      # Deploy Helm chart
-      - uses: "sylus/helm@master"
+        run: dotnet build --configuration Release
+      - name: Pack
         env:
-          KUBECONFIG: /github/home/KUBECONFIG
-        with:
-          release: "oc-dev"
-          namespace: "web"
-          tiller-namespace: "web"
-          chart: "./charts/stable/orchard-cms"
-          token: "${{ github.token }}"
-          values: |
-            ingress:
-              enabled: true
-              hosts:
-                - oc-dev.covid.cloud.statcan.ca
-              annotations: 
-                kubernetes.io/ingress.class: "istio"
-            disableMutualTls: true
-            podAnnotations:
-              sidecar.istio.io/inject: 'false'
-            image:
-              tag: "${{ env.BUILD_NUMBER }}"
-              pullPolicy: IfNotPresent
-              environmentVariables:
-                - name: ASPNETCORE_ENVIRONMENT
-                  value: production
-              repository: "${{ env.REGISTRY_NAME }}.azurecr.io/statcan-orchardcore"
-            global:
-              postgresql:
-                postgresqlUsername: "${{ secrets.DEV_POSTGRESQL_USER }}"
-                postgresqlDatabase: "${{ secrets.DEV_POSTGRESQL_DATABASE }}"
-                postgresqlPassword: "${{ secrets.DEV_POSTGRESQL_PASSWORD }}"
-              imagePullSecrets:
-                - "${{ env.REGISTRY_NAME }}-registry-connection"
-            postgresql:
-              image:
-                tag: 11.5.0-debian-9-r1
-                pullPolicy: IfNotPresent
-                debug: false
-              master: 
-                podAnnotations:
-                  sidecar.istio.io/inject: 'false' 
-              persistence:
-                enabled: true
-                size: 1Gi
-            volumeClaim:
-              enabled: true
-              accessModes:
-                - ReadWriteOnce
-              size: 1Gi
-              storageClass: default
+          BuildNumber: ${{ env.BUILD_NUMBER }}
+        run: dotnet pack --configuration Release -o build-output --no-build
+      - name: Publish nuget
+        run: |
+              for f in ./build-output/*.nupkg
+              do
+                curl -vX PUT -u "${{ secrets.GH_USERNAME }}:${{ secrets.GITHUB_TOKEN }}" -F package=@$f ${{ secrets.GPR_URL }}
+              done
+        shell: bash
