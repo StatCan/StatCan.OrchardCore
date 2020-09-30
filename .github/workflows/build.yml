@@ -2,16 +2,16 @@ name: Build and Test
 on: 
   push:
     branches:
-      - '*'         # matches every branch
-      - '*/*'       # matches every branch containing a single '/'
-      - '!master'   # excludes master
+      # - '*'         # matches every branch
+      # - '*/*'       # matches every branch containing a single '/'
+      - 'master'   # excludes master
 
 jobs:
   build:
     env:
       DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
       DOTNET_CLI_TELEMETRY_OPTOUT: 1
-    name: Build
+    name: Build and Test
     runs-on: ubuntu-latest
     container:
       image: cypress/browsers:node12.13.0-chrome78-ff70
