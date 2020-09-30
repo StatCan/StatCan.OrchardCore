@@ -48,7 +48,7 @@ jobs:
       - name: Pack
         env:
           BuildNumber: ${{ env.BUILD_NUMBER }}
-        run: dotnet pack -c Release -o build-output --no-build
+        run: dotnet pack StatCan.OrchardCore.sln -c Release -o build-output --no-build
       - name: Publish nuget
         run: |
               for f in ./build-output/*.nupkg
