@@ -37,9 +37,6 @@ jobs:
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: 3.1.402
-          source-url: https://nuget.pkg.github.com/StatCan/index.json
-        env:
-          NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}     
       - name: Generate build number
         uses: einaregilsson/build-number@v2
         with:
@@ -53,4 +50,9 @@ jobs:
           BuildNumber: ${{ env.BUILD_NUMBER }}
         run: dotnet pack StatCan.OrchardCore.sln -c Release -o build-output --no-build
       - name: Publish nuget
-        run: dotnet nuget push ./build-output/*.nupkg --skip-duplicate --no-symbols true
+        run: |
+             for f in ./build-output/*.nupkg
+             do
+               curl -vX PUT -u "StatCan:${{ secrets.GITHUB_TOKEN }}" -F package=@$f https://nuget.pkg.github.com/StatCan/
+             done
+        shell: bash
