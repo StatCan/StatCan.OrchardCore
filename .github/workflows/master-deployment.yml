@@ -44,7 +44,7 @@ jobs:
       - name: Dotnet build 
         env:
           BuildNumber: ${{ env.BUILD_NUMBER }}
-        run: dotnet build .\StatCan.OrchardCore.sln -c Release
+        run: dotnet build StatCan.OrchardCore.sln -c Release
       - name: Pack
         env:
           BuildNumber: ${{ env.BUILD_NUMBER }}
