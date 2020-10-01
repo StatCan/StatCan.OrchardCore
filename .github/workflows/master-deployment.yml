@@ -1,4 +1,4 @@
-name: Development release (master branch)
+name: Nightly build
 on:
   push:
     branches:
@@ -39,11 +39,11 @@ jobs:
           dotnet-version: 3.1.402
       - name: Dotnet build 
         env:
-          BuildNumber: ${GITHUB_RUN_NUMBER}
+          BuildNumber: ${{ github.run_number }}
         run: dotnet build StatCan.OrchardCore.sln -c Release
       - name: Pack
         env:
-          BuildNumber: ${GITHUB_RUN_NUMBER}
+          BuildNumber: ${{ github.run_number }}
         run: dotnet pack StatCan.OrchardCore.sln -c Release -o build-output --no-build
       - name: Publish nuget
         run: dotnet nuget push './build-output/*.nupkg' -k ${{secrets.NUGET_APIKEY}} -n true -s https://nuget.cloudsmith.io/statcan-digitalinnovation/statcan-orchardcore/v3/index.json  --skip-duplicate
