@@ -33,9 +33,7 @@
     <ProjectReference Include="..\..\Themes\PortalTheme\PortalTheme.csproj" PrivateAssets="none" />
     <ProjectReference Include="..\..\Themes\DigitalTheme\DigitalTheme.csproj" PrivateAssets="none" />
     <ProjectReference Include="..\..\Themes\DigitalAdmin\DigitalAdmin.csproj" PrivateAssets="none" />
-    <!-- OrchardCore Themes -->
-    <PackageReference Include="TheTheme" Version="$(OrchardCoreVersion)"/>
-    <PackageReference Include="SafeMode" Version="$(OrchardCoreVersion)"/>
+
 
   </ItemGroup>
 
