@@ -1,22 +1,20 @@
-# StatCan OrchardCore Site Boilerplate
+# Code Generation Templates
 
-Use this template to easily setup your OrchardCore developper environment for a new project
+We provide a `dotnet new` template for creating new websites pre-configured to use the packages available in the StatCan.OrchardCore repository.
+More information about `dotnet new` can be found [here](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-new)
 
 This template is referencing the nightly build of Orchard Core [`1.0.0-rc2-14344`](https://cloudsmith.io/~orchardcore/repos/preview/packages/detail/nuget/OrchardCore.Application.Cms.Targets/1.0.0-rc2-14344/) StatCan.OrchardCore [`1.0.0-rc2-2`](https://cloudsmith.io/~statcan-digitalinnovation/repos/statcan-orchardcore/packages/detail/nuget/StatCan.OrchardCore.Application.Targets/1.0.0-rc2-2/)
 
-## Prerequisities
+## Installing the StatCan Site boilerplate
 
-- [.NET Core](https://docs.microsoft.com/en-us/dotnet/core/). Download the latest version from [here](https://www.microsoft.com/net/download/core).
+To create a new site using this boilerplate you'll first need to install the template, which is hosted on CloudSmith.
 
-### Getting Started
-
-To create a new site using this boilerplate use the `dotnet new` command. First you'll need to install the template, which is hosted on NuGet.
-
-```
-dotnet new -i StatCan.OrchardCore.SiteBoilerplate --nuget-source https://api.nuget.org/v3/index.json
+```CMD
+dotnet new -i StatCan.OrchardCore.SiteBoilerplate --nuget-source https://nuget.cloudsmith.io/statcan-digitalinnovation/statcan-orchardcore/v3/index.json
 ```
 
-Once the installation is complete run this command to create your boilerplate.
+## Create a new website
+Once the installation is complete run this command to create your project boilerplate
 
 ```
 dotnet new stc-oc-siteboilerplate -n Project.StatCan.OrchardCore -o Project.StatCan.OrchardCore -p "Name" -pd "Desciption"
@@ -24,11 +22,8 @@ dotnet new stc-oc-siteboilerplate -n Project.StatCan.OrchardCore -o Project.Stat
 
 ### Parameters
 
-The dotnet new parameters are 
-
 - `-n` `--name`: Namespace and name of the .Net project e.g. Project.OrchardCore
 - `-o` `--output`: Location to place the generated output.
 - `-p` `--pname`: Project name displayed in the read me.
 - `-pd` `--pdescription`: Project description displayed in the read me.
-
 
