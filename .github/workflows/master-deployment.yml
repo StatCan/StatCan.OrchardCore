@@ -50,9 +50,5 @@ jobs:
           BuildNumber: ${{ env.BUILD_NUMBER }}
         run: dotnet pack StatCan.OrchardCore.sln -c Release -o build-output --no-build
       - name: Publish nuget
-        run: |
-             for f in ./build-output/*.nupkg
-             do
-               curl -vX PUT -u "StatCan:${{ secrets.GITHUB_TOKEN }}" -F package=@$f https://nuget.pkg.github.com/StatCan/
-             done
+        run: dotnet nuget push ./build-output/*.nupkg -k ${{secrets.NUGET_APIKEY}} -n true
         shell: bash
