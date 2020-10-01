@@ -37,17 +37,13 @@ jobs:
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: 3.1.402
-      - name: Generate build number
-        uses: einaregilsson/build-number@v2
-        with:
-          token: ${{secrets.github_token}}
       - name: Dotnet build 
         env:
-          BuildNumber: ${{ env.BUILD_NUMBER }}
+          BuildNumber: ${{ env.GITHUB_RUN_NUMBER }}
         run: dotnet build StatCan.OrchardCore.sln -c Release
       - name: Pack
         env:
-          BuildNumber: ${{ env.BUILD_NUMBER }}
+          BuildNumber: ${{ env.GITHUB_RUN_NUMBER }}
         run: dotnet pack StatCan.OrchardCore.sln -c Release -o build-output --no-build
       - name: Publish nuget
         run: dotnet nuget push './build-output/*.nupkg' -k ${{secrets.NUGET_APIKEY}} -n true -s https://nuget.cloudsmith.io/statcan-digitalinnovation/statcan-orchardcore/v3/index.json
