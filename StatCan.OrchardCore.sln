@@ -44,7 +44,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{8F9F4565
 		src\Build\StatCan.OrchardCore.Commons.targets = src\Build\StatCan.OrchardCore.Commons.targets
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Etch.OrchardCore.ContentPermissions", "src\Modules\Etch.OrchardCore.ContentPermissions\Etch.OrchardCore.ContentPermissions.csproj", "{AA70636F-EC9C-409C-A956-977F98EB1364}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StatCan.OrchardCore.ContentPermissions", "src\Modules\StatCan.OrchardCore.ContentPermissions\StatCan.OrchardCore.ContentPermissions.csproj", "{AA70636F-EC9C-409C-A956-977F98EB1364}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StatCan.OrchardCore.GitHub", "src\Modules\StatCan.OrchardCore.GitHub\StatCan.OrchardCore.GitHub.csproj", "{7B043B49-A25D-43CF-9B38-178780258A8A}"
 EndProject
@@ -66,7 +66,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DigitalAdmin", "src\Themes\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StatCan.OrchardCore.Extensions", "src\Lib\StatCan.OrchardCore.Extensions\StatCan.OrchardCore.Extensions.csproj", "{A01AB222-D827-46FC-903D-83A6F4E8DC7D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lombiq.HelpfulExtensions", "src\Modules\Helpful-Extensions\Lombiq.HelpfulExtensions.csproj", "{C6F5B64D-91C6-48AC-8AEE-D6000C6088ED}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StatCan.OrchardCore.HelpfulExtensions", "src\Modules\StatCan.OrchardCore.Helpful-Extensions\StatCan.OrchardCore.HelpfulExtensions.csproj", "{C6F5B64D-91C6-48AC-8AEE-D6000C6088ED}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StatCan.OrchardCore.VueForms", "src\Modules\StatCan.OrchardCore.VueForms\StatCan.OrchardCore.VueForms.csproj", "{EB6CFDE7-A16A-41BD-94EC-89091771B191}"
 EndProject

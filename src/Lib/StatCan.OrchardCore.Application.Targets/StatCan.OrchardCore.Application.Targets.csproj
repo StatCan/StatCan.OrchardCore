@@ -2,9 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>$(AspNetCoreTargetFramework)</TargetFramework>
-    <IncludeBuildOutput>false</IncludeBuildOutput>
   </PropertyGroup>
-
 
   <ItemGroup>
     <!-- 
@@ -27,14 +25,17 @@
     <ProjectReference Include="..\..\Modules\StatCan.OrchardCore.VueForms\StatCan.OrchardCore.VueForms.csproj" PrivateAssets="none" />
 
     <!-- Included OpenSource Extensions -->
-    <ProjectReference Include="..\..\Modules\Helpful-Extensions\Lombiq.HelpfulExtensions.csproj" PrivateAssets="none" />
-    <ProjectReference Include="..\..\Modules\Etch.OrchardCore.ContentPermissions\Etch.OrchardCore.ContentPermissions.csproj" PrivateAssets="none" />
+    <ProjectReference Include="..\..\Modules\StatCan.OrchardCore.Helpful-Extensions\StatCan.OrchardCore.HelpfulExtensions.csproj" PrivateAssets="none" />
+    <ProjectReference Include="..\..\Modules\StatCan.OrchardCore.ContentPermissions\StatCan.OrchardCore.ContentPermissions.csproj" PrivateAssets="none" />
     
     <!-- Themes -->
     <ProjectReference Include="..\..\Themes\BootstrapTheme\BootstrapTheme.csproj" PrivateAssets="none" />
     <ProjectReference Include="..\..\Themes\PortalTheme\PortalTheme.csproj" PrivateAssets="none" />
     <ProjectReference Include="..\..\Themes\DigitalTheme\DigitalTheme.csproj" PrivateAssets="none" />
     <ProjectReference Include="..\..\Themes\DigitalAdmin\DigitalAdmin.csproj" PrivateAssets="none" />
+    <!-- OrchardCore Themes -->
+    <PackageReference Include="TheTheme" Version="$(OrchardCoreVersion)"/>
+    <PackageReference Include="SafeMode" Version="$(OrchardCoreVersion)"/>
 
   </ItemGroup>
 
