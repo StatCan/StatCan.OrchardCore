@@ -50,4 +50,4 @@ jobs:
           BuildNumber: ${{ env.BUILD_NUMBER }}
         run: dotnet pack StatCan.OrchardCore.sln -c Release -o build-output --no-build
       - name: Publish nuget
-        run: dotnet nuget push ./build-output/*.nupkg -k ${{secrets.NUGET_APIKEY}} -n true -s https://nuget.cloudsmith.io/statcan-digitalinnovation/statcan-orchardcore/v3/index.json
+        run: dotnet nuget push 'build-output/*.nupkg' -k ${{secrets.NUGET_APIKEY}} -n true -s https://nuget.cloudsmith.io/statcan-digitalinnovation/statcan-orchardcore/v3/index.json
