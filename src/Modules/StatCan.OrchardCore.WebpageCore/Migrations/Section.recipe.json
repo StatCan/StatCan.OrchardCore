@@ -150,6 +150,16 @@
             },
             {
               "FieldName": "TextField",
+              "Name": "Style",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Style",
+                  "Position": "3"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
               "Name": "TitleLayout",
               "Settings": {
                 "ContentPartFieldSettings": {
