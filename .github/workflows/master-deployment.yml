@@ -28,7 +28,7 @@ jobs:
            npm install
            npm run test
   build:
-    # needs: test
+    needs: test
     name: Build and Publish
     runs-on: ubuntu-latest
     steps:
