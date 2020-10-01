@@ -1,6 +1,6 @@
 .di-modal {
   &.section-panel {
-    background-color: $background;
+    background-color: $bgPrimary;
     border: 1px solid transparentize($secondary, 0.5);
   }
   &.modal-dialog {

@@ -3,7 +3,7 @@ html {
 }
 
 body {
-  background-color: $background;
+  background-color: $bgPrimary;
   color: $black;
   display: flex;
   flex: 1 1 auto;
@@ -159,9 +159,9 @@ hr {
 }
 
 .dropdown-menu {
-  background-color: lighten($background, 5%);
+  background-color: lighten($bgPrimary, 5%);
   border: 1px solid transparentize($primary, 0.62);
-  box-shadow: 0 0.25rem 0.5rem 0.5rem $background;
+  box-shadow: 0 0.25rem 0.5rem 0.5rem $bgPrimary;
   .dropdown-divider {
     border-top: 1px solid transparentize($primary, 0.81);
   }

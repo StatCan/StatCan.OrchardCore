@@ -3,7 +3,7 @@
     {% if culture.Name != Model.CurrentCulture.Name %}
         {% capture targetCultureLongName %}{% if culture.Name contains 'fr' %}Français{% else %}English{% endif %}{% endcapture %}
         {% capture targetCultureUrl %}{{ culture.Name | switch_culture_url }}{% endcapture %}
-        <a class="dropdown-item d-lg-none d-flex" href="{{targetCultureUrl}}" lang="{{culture.Name}}" aria-label="{{targetCultureLongName}}">{{targetCultureLongName}}</a>
+        <a class="nav-item d-lg-none d-flex" href="{{targetCultureUrl}}" lang="{{culture.Name}}" aria-label="{{targetCultureLongName}}">{{targetCultureLongName}}</a>
         <a href="{{ targetCultureUrl }}" class="btn btn-primary is-circle language-toggle d-lg-flex d-none" lang="{{culture.Name}}" aria-label="{{targetCultureLongName}}" title="{{targetCultureLongName}}">{{ culture.Name }}</a>
     {% endif %}
 {% endfor %}

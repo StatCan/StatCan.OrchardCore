@@ -1,0 +1,47 @@
+.hero-section {
+  background: #e0e3e6;
+  background-image: url("../images/DigitalHeroBG.svg"),
+    url("../images/DigitalHeroStepUp.svg");
+  background-position: center, center top;
+  background-size: auto, auto;
+  background-repeat: no-repeat, no-repeat;
+  min-height: 35rem;
+}
+
+.content-section {
+  &.bg-vanilla {
+    &.primary {
+      background: $bgPrimary;
+    }
+    &.secondary {
+      background: $bgSecondary;
+    }
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+  }
+
+  &.bg-circuit {
+    &.primary {
+      background-image: url("../images/CircuitL.svg"),
+        url("../images/CircuitR.svg"), url("../images/DigitalHeroStepDown.svg"),
+        url("../images/BG1StepUp.svg");
+    }
+    background-position: right 85vw top 0, left 85vw top -4rem, center top,
+      center bottom;
+    background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
+    padding-top: 10rem;
+    padding-bottom: 10rem;
+  }
+
+  &.bg-steps {
+    &.primary {
+      background-image: url("../images/BG1StepDown.svg"),
+        url("../images/FooterStepDown.svg");
+    }
+    background-position: center top, center bottom;
+    background-size: auto, auto;
+    background-repeat: no-repeat, no-repeat;
+    padding-top: 9rem;
+    padding-bottom: 9rem;
+  }
+}
