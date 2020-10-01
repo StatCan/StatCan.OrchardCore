@@ -37,6 +37,11 @@ jobs:
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: 3.1.402
+      - name: Setup Nuget
+        uses: nuget/setup-nuget@v1
+          with:
+            nuget-api-key: ${{ secrets.NUGET_APIKEY }}
+            nuget-version: '5.x'
       - name: Dotnet build 
         env:
           BuildNumber: ${{ github.run_number }}
@@ -45,5 +50,7 @@ jobs:
         env:
           BuildNumber: ${{ github.run_number }}
         run: dotnet pack StatCan.OrchardCore.sln -c Release -o build-output --no-build
+      - name: Pack Template
+        run: nuget pack .\template\StatCan.OrchardCore.SiteBoilerplate.nuspec -NoDefaultExcludes -OutputDirectory build-output -Version 1.0.0-rc2-${{ github. run_number }}
       - name: Publish nuget
         run: dotnet nuget push './build-output/*.nupkg' -k ${{secrets.NUGET_APIKEY}} -n true -s https://nuget.cloudsmith.io/statcan-digitalinnovation/statcan-orchardcore/v3/index.json  --skip-duplicate

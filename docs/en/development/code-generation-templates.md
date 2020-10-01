@@ -10,7 +10,7 @@ This template is referencing the nightly build of Orchard Core [`1.0.0-rc2-14344
 To create a new site using this boilerplate you'll first need to install the template, which is hosted on CloudSmith.
 
 ```CMD
-dotnet new -i StatCan.OrchardCore.SiteBoilerplate --nuget-source https://nuget.cloudsmith.io/statcan-digitalinnovation/statcan-orchardcore/v3/index.json
+dotnet new -i StatCan.OrchardCore.SiteBoilerplate::1.0.0-rc2-* --nuget-source https://nuget.cloudsmith.io/statcan-digitalinnovation/statcan-orchardcore/v3/index.json
 ```
 
 ## Create a new website
