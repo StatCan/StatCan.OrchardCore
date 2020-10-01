@@ -1,5 +1,7 @@
 # StatCan Orchard Core
 
+This repository houses a collection of custom Orchard Core resources, modules and themes that support various web applications and software-as-a-service (SaaS) products. Built on top of [Orchard Core CMS](https://orchardcore.readthedocs.io/en/dev), developers have a suite of web application features out of the box (e.g. content management, authentication, forms, themes etc) by customizing the selection and configuration of components. Extensibility of the framework allow new features and components to be added easily.
+
 ## Build Status
 
 Nightly (master):
@@ -7,8 +9,6 @@ Nightly (master):
 ![Nightly build](https://github.com/StatCan/StatCan.OrchardCore/workflows/Nightly%20build/badge.svg)
 [![Latest Version @ Cloudsmith](https://api-prd.cloudsmith.io/badges/version/statcan-digitalinnovation/statcan-orchardcore/nuget/StatCan.OrchardCore.Application.Targets/latest/x/?render=true&badge_token=gAAAAABfdTkiD8DUJL42d8gEhb_mjaY49p20SVPPRyxCHiD1Q1iCuL7tw8w21BLIvRBrakf4iviJ6ysvMD-xf8B-zXljVD86sLuhvwbM9px_HOj_lhnHAaI%3D)](https://cloudsmith.io/~statcan-digitalinnovation/repos/statcan-orchardcore/packages/detail/nuget/StatCan.OrchardCore.Application.Targets/latest/)
 
-
-This repository houses a collection of custom Orchard Core resources, modules and themes that support various web applications and software-as-a-service (SaaS) products. Built on top of [Orchard Core CMS](https://orchardcore.readthedocs.io/en/dev), developers have a suite of web application features out of the box (e.g. content management, authentication, forms, themes etc) by customizing the selection and configuration of components. Extensibility of the framework allow new features and components to be added easily.
 
 ### Documentation
 * See https://statcan.github.io/StatCan.OrchardCore/
