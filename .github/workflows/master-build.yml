@@ -39,9 +39,9 @@ jobs:
           dotnet-version: 3.1.402
       - name: Setup Nuget
         uses: nuget/setup-nuget@v1
-          with:
-            nuget-api-key: ${{ secrets.NUGET_APIKEY }}
-            nuget-version: '5.x'
+        with:
+          nuget-api-key: ${{ secrets.NUGET_APIKEY }}
+          nuget-version: '5.x'
       - name: Dotnet build 
         env:
           BuildNumber: ${{ github.run_number }}
