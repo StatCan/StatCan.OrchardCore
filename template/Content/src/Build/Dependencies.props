@@ -1,0 +1,17 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <AspNetCoreVersion>3.1.1</AspNetCoreVersion>
+    <AspNetCoreTargetFramework>netcoreapp3.1</AspNetCoreTargetFramework>
+    <!--Change the version numbers here when upgrading Orchard / StatCan package reference versions.-->
+    <OrchardCoreVersion>1.0.0-rc2-14344</OrchardCoreVersion>
+    <StatCanOrchardCoreVersion>1.0.0-rc2-2</StatCanOrchardCoreVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+  <!-- You can add dependent packages in this file, specifying the version here so all projects in your solution will share this version. 
+       The version tag can then be omitted in the .csproj files -->
+    <!-- <PackageManagement Include="HtmlSanitizer" Version="5.0.343" /> -->
+  </ItemGroup>
+
+</Project>

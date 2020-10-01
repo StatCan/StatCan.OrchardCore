@@ -6,7 +6,7 @@
 *.user
 *.sln.docstates
 *.sln.ide/
-*.nupkg
+
 # Build results
 
 [Dd]ebug/

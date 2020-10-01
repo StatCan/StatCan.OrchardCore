@@ -1,0 +1,41 @@
+﻿<Project ToolsVersion="15.0" Sdk="Microsoft.NET.Sdk.Web">
+
+  <Import Project="..\Build\Dependencies.props" />
+
+  <PropertyGroup>
+    <TargetFramework>$(AspNetCoreTargetFramework)</TargetFramework>
+    <TieredCompilation>true</TieredCompilation>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+    <PreserveCompilationReferences>true</PreserveCompilationReferences>
+    <CodeAnalysisRuleSet>..\..\roslynator.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+    <Folder Include="Localization\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="NLog.config">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- This reference includes the entire set of Modules and Themes available from our StatCan.OrchardCore repository -->
+    <PackageReference Include="StatCan.OrchardCore.Application.Targets" Version="$(StatCanOrchardCoreVersion)"/>
+    <!-- This reference includes all the CMS Core modules of OrchardCore -->
+    <PackageReference Include="OrchardCore.Application.Cms.Core.Targets" Version="$(OrchardCoreVersion)"/>
+    <PackageReference Include="OrchardCore.Logging.NLog" Version="$(OrchardCoreVersion)"/>
+    
+    <!-- OrchardCore Themes - these are not included in the Cms.Core application targets and are important -->
+    <PackageReference Include="TheTheme" Version="$(OrchardCoreVersion)"/>
+    <PackageReference Include="SafeMode" Version="$(OrchardCoreVersion)"/>
+
+    <!-- Custom Modules project references-->
+
+    <!-- Custom Themes project references-->
+    
+  </ItemGroup>
+
+</Project>
