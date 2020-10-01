@@ -2,9 +2,9 @@ name: Build and Test
 on: 
   push:
     branches:
-      # - '*'         # matches every branch
-      # - '*/*'       # matches every branch containing a single '/'
-      - 'master'   # excludes master
+      - '*'         # matches every branch
+      - '*/*'       # matches every branch containing a single '/'
+      - '!master'   # excludes master
 
 jobs:
   build:
