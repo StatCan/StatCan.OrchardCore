@@ -39,7 +39,7 @@ jobs:
           dotnet-version: 3.1.402
       - name: Build and Pack
         run: |
-              export BuildNumber = "${{GITHUB_BUILD_NUMBER}}"
+              export BuildNumber = "${{ env.GITHUB_RUN_NUMBER }}"
               dotnet build StatCan.OrchardCore.sln -c Release
               dotnet pack StatCan.OrchardCore.sln -c Release -o build-output --no-build    
       - name: Publish to Cloudsmith
