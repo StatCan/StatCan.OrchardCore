@@ -1,5 +1,7 @@
 # Etch.OrchardCore.ContentPermissions
 
+This module was renamed to allow us to deploy our version to nuget. Credit goes to Etchuk for this module.
+
 Module for Orchard Core to enable configuring access at a content item level.
 
 ## Build Status

@@ -25,8 +25,8 @@
     <ProjectReference Include="..\..\Modules\StatCan.OrchardCore.VueForms\StatCan.OrchardCore.VueForms.csproj" PrivateAssets="none" />
 
     <!-- Included OpenSource Extensions -->
-    <ProjectReference Include="..\..\Modules\Helpful-Extensions\Lombiq.HelpfulExtensions.csproj" PrivateAssets="none" />
-    <ProjectReference Include="..\..\Modules\Etch.OrchardCore.ContentPermissions\Etch.OrchardCore.ContentPermissions.csproj" PrivateAssets="none" />
+    <ProjectReference Include="..\..\Modules\StatCan.OrchardCore.Helpful-Extensions\StatCan.OrchardCore.HelpfulExtensions.csproj" PrivateAssets="none" />
+    <ProjectReference Include="..\..\Modules\StatCan.OrchardCore.ContentPermissions\StatCan.OrchardCore.ContentPermissions.csproj" PrivateAssets="none" />
     
     <!-- Themes -->
     <ProjectReference Include="..\..\Themes\BootstrapTheme\BootstrapTheme.csproj" PrivateAssets="none" />
