@@ -6,9 +6,9 @@ Hello fellow developer, Get started here !
 
 ### Dependencies
 
-- dotnet core 3.1
-- node 10+
-- Yarn 1.17+
+- [Dotnet Core 3.1](https://dotnet.microsoft.com/download/dotnet-core/3.1)
+- [NodeJS 12+](https://nodejs.org/en/download/)
+- [VSCode](https://code.visualstudio.com/) or [Visual Studio 2019](https://visualstudio.microsoft.com/vs/)
 
 ### Recommended VSCode extensions
 
@@ -21,6 +21,8 @@ Hello fellow developer, Get started here !
 - vscode-solution-explorer
 
 ### Recommended powershell setup
+
+This step is recommended for VSCode users. This creates aliases 
 
 Run these commands to setup your powershell profile script:
 
@@ -36,7 +38,7 @@ new-item -path $profile -itemtype file -force
 code $profile
 ```
 
-Adding these functions can save a lot of keystrokes:
+Copy and modify this in your powershell profile
 
 ```powershell
 $innoGitRepo = "<path-to>\StatCan.OrchardCore"
@@ -92,10 +94,10 @@ Don't forget to restart your powershell session to load the changes.
 - Run these commands in powershell:
   - From anywhere `ir` if you have the above powershell setup or
   - From the root of the project `dotnet run --project src/StatCan.OrchardCore.Cms.Web/StatCan.OrchardCore.Cms.Web.csproj` if you don't
-- Visit [https://localhost:5001](https://localhost:5001) for Orchard dev site
+- Visit [https://localhost:5001](https://localhost:5001) to load your Orchard Website
 - When presented with the orchard setup screen,
   - Select the the recipe you want to try. I suggest using the `Software as a Service` recipe
-    and then use Orchard's Tenant feature to test different sites.
+    and then use Orchard's Tenant feature to test different sites / recipes
   - Use sqlite as a database to keep things simple
 - Visit [https://localhost:5001/admin](https://localhost:5001/admin) to use the admin interface of Orchard.
 
@@ -106,15 +108,6 @@ This deletes all configuration and databases (if you are using SQLite).
 
 You can also delete tenants individually by deleting the data in `src/StatCan.OrchardCore.Cms.Web/App_Data/Sites/{TenantName}` and 
 removing the entry in `src/StatCan.OrchardCore.Cms.Web/App_Data/tenants.json`
-
-## Updating assets
-
-When updating assets, you need to run gulp to copy the assets into the wwwroot folder. To install gulp, run `npm install`
-Simply run `npm run build` which will build the css and copy the css and js files to the `wwwroot/` folder of each module.
-
-You can also run `npm run watch` to rebuild assets when changes are detected.
-
-Supported types: SaSS, ts, js, and Less.
 
 ## Testing
 
