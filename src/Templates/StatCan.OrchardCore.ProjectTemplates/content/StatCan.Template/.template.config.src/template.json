@@ -1,0 +1,40 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "StatCan Digital Innovation team",
+  "classifications": ["OrchardCore", "Web"],
+  "name": "StatCan Orchard Core Site Boilerplate",
+  "identity": "StatCan.OrchardCore.SiteBoilerplate",
+  "shortName": "stc-oc-siteboilerplate",
+  "sourceName": "StatCan.Template",
+  "preferNameDirectory": true,
+  "symbols": {
+    "pname": {
+      "type": "parameter",
+      "defaultValue": "StatCan Orchard Core Site Boilerplate",
+      "replaces": "StatCan Orchard Core Site Boilerplate"
+    },
+    "pdescription": {
+      "type": "parameter",
+      "defaultValue": "A project using StatCan.OrchardCore Site boilerplate",
+      "replaces": "This is a short description of the project."
+    },
+    "OrchardVersion": {
+      "type": "parameter",
+      "datatype": "string",
+      "description": "Specifies which version of Orchard Core packages to use.",
+      "replaces": "$(TemplateOrchardPackageVersion)",
+      "defaultValue": "${TemplateOrchardVersion}"
+    },
+    "StatCanOrchardVersion": {
+      "type": "parameter",
+      "datatype": "string",
+      "description": "Specifies which version of StatCanOrchard Core packages to use.",
+      "replaces": "$(TemplateStatCanOrchardPackageVersion)",
+      "defaultValue": "${TemplateStatCanOrchardVersion}"
+    }
+  },
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  }
+}
