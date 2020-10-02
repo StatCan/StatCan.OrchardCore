@@ -53,7 +53,7 @@ nav:
     - Home: index.md
     - Development: 
         - Getting Started: development/getting-started.md
-        - Code Generation Templates: development/code-generation-templates.md
+        - Solution Templates: development/solution-templates.md
         - Localization: development/localization.md
         - Assets: development/assets.md
         - Contributing: 
