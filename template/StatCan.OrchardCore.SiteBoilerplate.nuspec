@@ -13,7 +13,7 @@
     <packageTypes>
       <packageType name="Template" />
     </packageTypes>
-    <tags>orchardcore;StatCan</tags>
+    <tags>orchardcore StatCan boileplate</tags>
   </metadata>
   <files>
     <file src="*\**" target="\" exclude="Content\.vs\**\*;Content\src\StatCan.Template.Cms.Web\bin\**\*;Content\src\StatCan.Template.Cms.Web\obj\**\*;Content\src\StatCan.Template.Cms.Web\App_Data\**\*" />
