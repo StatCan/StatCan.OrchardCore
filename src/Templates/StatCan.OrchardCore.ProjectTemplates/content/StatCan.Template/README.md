@@ -2,7 +2,7 @@
 
 This is a short description of the project.
 
-This template is referencing the nightly build of Orchard Core [`1.0.0-rc2-14344`](https://cloudsmith.io/~orchardcore/repos/preview/packages/detail/nuget/OrchardCore.Application.Cms.Targets/1.0.0-rc2-14344/) StatCan.OrchardCore [`1.0.0-rc2-2`](https://cloudsmith.io/~statcan-digitalinnovation/repos/statcan-orchardcore/packages/detail/nuget/StatCan.OrchardCore.Application.Targets/1.0.0-rc2-2/)
+This template is referencing the nightly build of Orchard Core [`$(TemplateOrchardPackageVersion)`](https://cloudsmith.io/~orchardcore/repos/preview/packages/detail/nuget/OrchardCore.Application.Cms.Targets/$(TemplateOrchardPackageVersion)/) StatCan.OrchardCore [`$(TemplateStatCanOrchardPackageVersion)`](https://cloudsmith.io/~statcan-digitalinnovation/repos/statcan-orchardcore/packages/detail/nuget/StatCan.OrchardCore.Application.Targets/$(TemplateStatCanOrchardPackageVersion)/)
 
 ## Prerequisities
 
