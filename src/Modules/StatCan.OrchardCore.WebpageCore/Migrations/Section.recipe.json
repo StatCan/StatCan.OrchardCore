@@ -8,9 +8,6 @@
           "DisplayName": "Section",
           "Settings": {
             "ContentTypeSettings": {
-              "Listable": true,
-              "Draftable": true,
-              "Versionable": true,
               "Stereotype": "Widget"
             },
             "FullTextAspectSettings": {}
