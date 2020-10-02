@@ -110,8 +110,9 @@ Then accessing these properties in your template / script. You need to change th
 |--------------- |------------|
 | obs-valid | True if all fields are valid. |
 | obs-invalid| True if at least one field is invalid. |
-| obs-reset | A method that resets validation state for all providers. `() => void` |
+| obs-reset | A method that resets the **validation state** for all providers. `() => void` |
 | obs-validate | A method that triggers validation for all providers. Mutates child providers state unless silent is true. `() => Promise<boolean>` |
+| form-reset | A method that resets the form-* properties to the initial state. Does not reset your component's data. `() => void` |
 | form-handle-submit | A method that calls the `validate()` method and then, if valid, sends an ajax request to our controller `() => void` |
 | form-submitting | Set to true when the form is being submitted. |
 | form-submit-success | Set to true when no redirect is specified and the submission was a success. |

@@ -98,7 +98,7 @@ function initForm(app) {
 
     if (encodedScript) {
       var script = atob(encodedScript);
-      var getVueObject = new Function("\n        var component = ".concat(script, ";\n        Object.assign(component, {name: '").concat(name, "', props: \n          ['obs-valid',\n          'obs-invalid',\n          'obs-reset',\n          'obs-validate',\n          'form-handle-submit',\n          'form-submitting',\n          'form-submit-success',\n          'form-success-message',\n          'form-submit-error',\n          'form-error-message']\n        });\n        return Vue.component('").concat(name, "', component);\n        "));
+      var getVueObject = new Function("\n        var component = ".concat(script, ";\n        Object.assign(component, {name: '").concat(name, "', props: \n          ['obs-valid',\n          'obs-invalid',\n          'obs-reset',\n          'obs-validate',\n          'form-handle-submit',\n          'form-reset',\n          'form-submitting',\n          'form-submit-success',\n          'form-success-message',\n          'form-submit-error',\n          'form-error-message']\n        });\n        return Vue.component('").concat(name, "', component);\n        "));
       getVueObject();
     }
   }); // instanciate the top level vue component
@@ -116,15 +116,18 @@ function initForm(app) {
       };
     },
     methods: {
+      formReset: function formReset() {
+        Object.assign(this.$data, this.$options.data.apply(this)); // also reset the VeeValidate observer
+
+        this.$refs.obs.reset();
+      },
       formHandleSubmit: function formHandleSubmit(e) {
-        var _this = this;
+        e.preventDefault();
+        var vm = this; // keep a reference to the VeeValidate observer
 
-        e.preventDefault(); // keep a reference to the VeeValidate observer
-
-        var observer = this.$refs.obs;
+        var observer = vm.$refs.obs;
         observer.validate().then(function (valid) {
           if (valid) {
-            var vm = _this;
             var action = vm.$refs.form.$attrs.action;
             var serializedForm = $("#" + vm.$refs.form.$attrs.id).serialize();
             vm.$data.submitting = true;
