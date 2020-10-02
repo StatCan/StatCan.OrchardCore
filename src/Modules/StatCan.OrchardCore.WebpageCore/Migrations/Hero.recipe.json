@@ -8,8 +8,6 @@
           "DisplayName": "Hero",
           "Settings": {
             "ContentTypeSettings": {
-              "Draftable": true,
-              "Versionable": true,
               "Stereotype": "Widget"
             },
             "FullTextAspectSettings": {}

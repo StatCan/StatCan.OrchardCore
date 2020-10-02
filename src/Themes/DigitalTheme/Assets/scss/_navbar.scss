@@ -10,4 +10,9 @@
       margin: 0 0.5rem;
     }
   }
+  .language-toggle {
+    font-weight: 500 !important;
+    text-indent: 0;
+    @include rfs(19);
+  }
 }
