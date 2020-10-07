@@ -9,10 +9,7 @@ namespace StatCan.OrchardCore.WebpageCore
     {
         public override void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<IDataMigration, FatFooterMigration>();
-            services.AddScoped<IDataMigration, HeroMigration>();
-            services.AddScoped<IDataMigration, PageMigration>();
-            services.AddScoped<IDataMigration, SectionMigration>();
+            services.AddScoped<IDataMigration, PageLayoutMigration>();
         }
     }
 
@@ -21,7 +18,7 @@ namespace StatCan.OrchardCore.WebpageCore
     {
         public override void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<IDataMigration, ShowcaseBlurbMigration>();
+            services.AddScoped<IDataMigration, ContentLayoutMigration>();
         }
     }
 
