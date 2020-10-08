@@ -1,0 +1,9 @@
+{% for culture in Model.SupportedCultures %}
+  {% if culture.Name != Model.CurrentCulture.Name  %}
+   <a id="navbar-toggle-button"
+     href="{{culture.Name | switch_culture_url}}"
+     class="btn btn-primary btn-sm text-uppercase font-weight-bold">
+    {{culture.Name}}
+  </a> 
+  {% endif %}
+{% endfor %}

@@ -11,61 +11,84 @@
   "steps": [
     {
       "name": "feature",
-      "disable": [],
       "enable": [
-        // SaaS
-        "OrchardCore.HomeRoute",
-        "OrchardCore.Admin",
-        "OrchardCore.Diagnostics",
-        "OrchardCore.DynamicCache",
-        "OrchardCore.Features",
-        "OrchardCore.Navigation",
-        "OrchardCore.Recipes",
+        "Application.Default",
+        "StatCan.OrchardCore.Cms.Web",
         "OrchardCore.Resources",
-        "OrchardCore.Roles",
+        "OrchardCore.Liquid",
         "OrchardCore.Settings",
-        "OrchardCore.Themes",
-        "OrchardCore.Users",
-
-        // Content Management
-        "OrchardCore.Alias",
+        "OrchardCore.Contents",
+        "OrchardCore.ContentTypes",
         "OrchardCore.Autoroute",
+        "OrchardCore.Widgets",
+        "OrchardCore.Flows",
+        "OrchardCore.Title",
+        "OrchardCore.Shortcodes",
         "OrchardCore.Html",
+        "OrchardCore.Admin",
+        "OrchardCore.Templates",
+        "OrchardCore.Alias",
         "OrchardCore.ContentFields",
+        "OrchardCore.Localization",
         "OrchardCore.ContentLocalization",
         "OrchardCore.ContentLocalization.ContentCulturePicker",
         "OrchardCore.ContentPreview",
-        "OrchardCore.Contents",
-        "OrchardCore.ContentTypes",
-        "OrchardCore.CustomSettings",
         "OrchardCore.Deployment",
+        "OrchardCore.Contents.Deployment.Download",
+        "OrchardCore.CustomSettings",
+        "OrchardCore.Diagnostics",
+        "OrchardCore.DynamicCache",
+        "OrchardCore.Email",
+        "OrchardCore.Features",
         "OrchardCore.Feeds",
-        "OrchardCore.Flows",
+        "OrchardCore.HomeRoute",
         "OrchardCore.Indexing",
+        "OrchardCore.Scripting",
         "OrchardCore.Layers",
-        "OrchardCore.Localization",
         "OrchardCore.Lists",
+        "OrchardCore.Lucene",
         "OrchardCore.Markdown",
         "OrchardCore.Media",
         "OrchardCore.Menu",
+        "OrchardCore.Navigation",
         "OrchardCore.Queries",
+        "OrchardCore.Users",
+        "OrchardCore.Recipes",
+        "OrchardCore.Roles",
         "OrchardCore.Shortcodes.Templates",
-        "OrchardCore.Title",
-        "OrchardCore.Templates",
-        "OrchardCore.Widgets",
-        "OrchardCore.Email",
-        "StatCan.OrchardCore.WebpageCore.PageLayout",
-        "StatCan.OrchardCore.WebpageCore.ContentLayout",
-        "StatCan.OrchardCore.WebpageCore.MenuItemParts",
-        "DigitalTheme",
+        "OrchardCore.Themes",
+        "OrchardCore.Workflows",
+        "OrchardCore.Workflows.Http",
+        "StatCan.OrchardCore.ContentFields",
+        "StatCan.OrchardCore.ContentFields.PredefinedGroup",
+        "StatCan.OrchardCore.LocalizedText",
+        "StatCan.OrchardCore.Scripting",
+        "StatCan.OrchardCore.VueForms",
+        "StatCan.OrchardCore.VueForms.Localized",
         "TheAdmin",
+        "DigitalAdmin",
+        "DigitalTheme",
         "SafeMode"
+      ],
+      "disable": []
+    },
+    {
+      "name": "Layers",
+      "Layers": [
+        {
+          "Name": "Everywhere",
+          "Rule": "true",
+          "Description": "Widgets on this layer are displayed everywhere."
+        }
       ]
     },
     {
       "name": "Settings",
       "TimeZoneId": "America/Toronto",
       "AppendVersion": true,
+      "AdminSettings": {
+        "DisplayMenuFilter": true
+      },
       "LocalizationSettings": {
         "DefaultCulture": "en",
         "SupportedCultures": ["fr", "en"]
@@ -78,12 +101,810 @@
       },
       "RegistrationSettings": {
         "UseSiteTheme": true
+      },
+      "LayerSettings": {
+        "Zones": [
+          "Header",
+          "Footer"
+        ]
       }
     },
     {
       "name": "themes",
-      "admin": "TheAdmin",
+      "admin": "DigitalAdmin",
       "site": "DigitalTheme"
+    },
+    {
+      "name": "ContentDefinition",
+      "ContentTypes": [
+        {
+          "Name": "ShowcaseBlurb",
+          "DisplayName": "Showcase Blurb",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Listable": true,
+              "Draftable": true,
+              "Versionable": true,
+              "Stereotype": "Widget"
+            },
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "ShowcaseBlurb",
+              "Name": "ShowcaseBlurb",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                }
+              }
+            },
+            {
+              "PartName": "TitlePart",
+              "Name": "TitlePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "LoginMenuItem",
+          "DisplayName": "Login Menu Item",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Stereotype": "MenuItem"
+            },
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "LoginMenuItem",
+              "Name": "LoginMenuItem",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            },
+            {
+              "PartName": "LinkMenuItemPart",
+              "Name": "LinkMenuItemPart",
+              "Settings": {}
+            }
+          ]
+        },
+        {
+          "Name": "CultureMenuItem",
+          "DisplayName": "Culture Menu Item",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Stereotype": "MenuItem"
+            },
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "CultureMenuItem",
+              "Name": "CultureMenuItem",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            },
+            {
+              "PartName": "LinkMenuItemPart",
+              "Name": "LinkMenuItemPart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "FeedbackMenuItem",
+          "DisplayName": "Feedback Menu Item",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Stereotype": "MenuItem"
+            },
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "FeedbackMenuItem",
+              "Name": "FeedbackMenuItem",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "FatFooter",
+          "DisplayName": "Fat Footer",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Listable": true,
+              "Stereotype": "Widget"
+            },
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "FatFooter",
+              "Name": "FatFooter",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "Hero",
+          "DisplayName": "Hero",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Draftable": true,
+              "Versionable": true,
+              "Stereotype": "Widget"
+            },
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "Hero",
+              "Name": "Hero",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                }
+              }
+            },
+            {
+              "PartName": "TitlePart",
+              "Name": "TitlePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "Page",
+          "DisplayName": "Page",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Creatable": true,
+              "Listable": true,
+              "Draftable": true,
+              "Versionable": true,
+              "Securable": true
+            },
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "Page",
+              "Name": "Page",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "2"
+                }
+              }
+            },
+            {
+              "PartName": "LocalizationPart",
+              "Name": "LocalizationPart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "3"
+                }
+              }
+            },
+            {
+              "PartName": "TitlePart",
+              "Name": "TitlePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            },
+            {
+              "PartName": "AutoroutePart",
+              "Name": "AutoroutePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                },
+                "AutoroutePartSettings": {
+                  "AllowCustomPath": true,
+                  "ShowHomepageOption": true
+                }
+              }
+            },
+            {
+              "PartName": "FlowPart",
+              "Name": "FlowPart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "4"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "Section",
+          "DisplayName": "Section",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Stereotype": "Widget"
+            },
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "Section",
+              "Name": "Section",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            },
+            {
+              "PartName": "TitlePart",
+              "Name": "TitlePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                }
+              }
+            },
+            {
+              "PartName": "FlowPart",
+              "Name": "FlowPart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "3"
+                },
+                "FlowPartSettings": {
+                  "ContainedContentTypes": [
+                    "ContentPickerSection",
+                    "HTMLBlurb",
+                    "ShowcaseBlurb"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "SimpleContent",
+          "DisplayName": "SimpleContent",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Listable": true,
+              "Draftable": true,
+              "Versionable": true,
+              "Stereotype": "Widget"
+            },
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "SimpleContent",
+              "Name": "SimpleContent",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                }
+              }
+            },
+            {
+              "PartName": "TitlePart",
+              "Name": "TitlePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "NavBar",
+          "DisplayName": "NavBar",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Stereotype": "Widget"
+            },
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "NavBar",
+              "Name": "NavBar",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "HTMLBlurb",
+          "DisplayName": "HTML Blurb",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Listable": true,
+              "Draftable": true,
+              "Versionable": true,
+              "Stereotype": "Widget"
+            },
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "HTMLBlurb",
+              "Name": "HTMLBlurb",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            },
+            {
+              "PartName": "HtmlBodyPart",
+              "Name": "HtmlBodyPart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "HTML",
+          "DisplayName": "HTML",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Creatable": true,
+              "Listable": true,
+              "Draftable": true,
+              "Versionable": true,
+              "Securable": true
+            }
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "HTML",
+              "Name": "HTML",
+              "Settings": {}
+            },
+            {
+              "PartName": "HtmlBodyPart",
+              "Name": "HtmlBodyPart",
+              "Settings": {}
+            }
+          ]
+        },
+        {
+          "Name": "ContentPickerSection",
+          "DisplayName": "ContentPickerSection",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Stereotype": "Widget"
+            },
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "ContentPickerSection",
+              "Name": "ContentPickerSection",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                }
+              }
+            },
+            {
+              "PartName": "TitlePart",
+              "Name": "TitlePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                },
+                "ContentIndexSettings": {}
+              }
+            }
+          ]
+        },
+        {
+          "Name": "FormContainer",
+          "DisplayName": "Form Container",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Listable": true,
+              "Draftable": true,
+              "Versionable": true,
+              "Stereotype": "Widget"
+            },
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "FormContainer",
+              "Name": "FormContainer",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            }
+          ]
+        },
+      ],
+      "ContentParts": [
+        {
+          "Name": "ShowcaseBlurb",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "MediaField",
+              "Name": "Image",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Image",
+                  "Position": "0"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "PrimaryText",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Primary Text",
+                  "Position": "1"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "SecondaryText",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Secondary Text",
+                  "Position": "2"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "FeedbackMenuItem",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "TextField",
+              "Name": "FormEndpoint",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Form Endpoint"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "FatFooter",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "LinkField",
+              "Name": "HubLink",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Hub Link",
+                  "Position": "0"
+                }
+              }
+            },
+            {
+              "FieldName": "LinkField",
+              "Name": "DigitalLink",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Digital Link",
+                  "Position": "1"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "Section",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "TextField",
+              "Name": "Section",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Section",
+                  "Editor": "PredefinedGroup",
+                  "Position": "0"
+                },
+                "TextFieldSettings": {},
+                "TextFieldPredefinedGroupEditorSettings": {
+                  "Options": [
+                    {
+                      "name": "<svg width=\"61.44\" height=\"36\" viewBox=\"0 0 1024 600\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xml:space=\"preserve\" xmlns:serif=\"http://www.serif.com/\" style=\"fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;\">\n                <g transform=\"matrix(2.69463,0,0,1.0616,-39.5648,-16.0489)\">\n                    <path d=\"M394.697,72.987C394.697,41.048 384.482,15.118 371.899,15.118L37.481,15.118C24.899,15.118 14.683,41.048 14.683,72.987L14.683,522.431C14.683,554.37 24.899,580.3 37.481,580.3L371.899,580.3C384.482,580.3 394.697,554.37 394.697,522.431L394.697,72.987Z\" fill=\"#D0DEF2\"></path>\n                </g>\n                <g transform=\"matrix(1.64204,0,0,0.920057,175.89,26.091)\">\n                    <path d=\"M394.697,72.987C394.697,41.048 380.168,15.118 362.273,15.118L47.108,15.118C29.212,15.118 14.683,41.048 14.683,72.987L14.683,522.431C14.683,554.37 29.212,580.3 47.108,580.3L362.273,580.3C380.168,580.3 394.697,554.37 394.697,522.431L394.697,72.987Z\" fill=\"#8FBEE7\"></path>\n                </g>\n            </svg>",
+                      "value": "container"
+                    },
+                    {
+                      "name": "<svg width=\"61.44\" height=\"36\" viewBox=\"0 0 1024 600\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xml:space=\"preserve\" xmlns:serif=\"http://www.serif.com/\" style=\"fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;\">\n                <g transform=\"matrix(2.69463,0,0,1.0616,-39.5648,-16.0489)\">\n                    <path d=\"M394.697,72.987C394.697,41.048 384.482,15.118 371.899,15.118L37.481,15.118C24.899,15.118 14.683,41.048 14.683,72.987L14.683,522.431C14.683,554.37 24.899,580.3 37.481,580.3L371.899,580.3C384.482,580.3 394.697,554.37 394.697,522.431L394.697,72.987Z\" fill=\"#D0DEF2\"></path>\n                </g>\n                <g transform=\"matrix(2.56306,0,0,0.920057,-12.633,26.091)\">\n                    <path d=\"M394.697,72.987C394.697,41.048 385.389,15.118 373.924,15.118L35.456,15.118C23.991,15.118 14.683,41.048 14.683,72.987L14.683,522.431C14.683,554.37 23.991,580.3 35.456,580.3L373.924,580.3C385.389,580.3 394.697,554.37 394.697,522.431L394.697,72.987Z\" fill=\"#8FBEE7\"></path>\n                </g>\n            </svg>",
+                      "value": "container-fluid"
+                    }
+                  ],
+                  "DefaultValue": "container"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "ColumnLayout",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Column Layout",
+                  "Editor": "PredefinedGroup",
+                  "Position": "2"
+                },
+                "TextFieldSettings": {},
+                "TextFieldPredefinedGroupEditorSettings": {
+                  "Options": [
+                    {
+                      "name": "<svg width=\"48\" height=\"36\" viewBox=\"0 0 800 600\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xml:space=\"preserve\" xmlns:serif=\"http://www.serif.com/\" style=\"fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;\">\n                <g transform=\"matrix(2.10518,0,0,1.0616,-30.91,-16.0489)\">\n                    <path d=\"M394.697,41.105C394.697,26.762 388.825,15.118 381.592,15.118L27.788,15.118C20.555,15.118 14.683,26.762 14.683,41.105L14.683,554.313C14.683,568.656 20.555,580.3 27.788,580.3L381.592,580.3C388.825,580.3 394.697,568.656 394.697,554.313L394.697,41.105Z\" fill=\"#8FBEE7\"></path>\n                </g>\n            </svg>",
+                      "value": "full"
+                    },
+                    {
+                      "name": "<svg width=\"48\" height=\"36\" viewBox=\"0 0 800 600\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xml:space=\"preserve\" xmlns:serif=\"http://www.serif.com/\" style=\"fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;\">\n                <g transform=\"matrix(0.999962,0,0,1.0616,-14.6823,-16.0489)\">\n                    <path d=\"M394.697,31.576C394.697,22.492 386.868,15.118 377.224,15.118L32.156,15.118C22.512,15.118 14.683,22.492 14.683,31.576L14.683,563.841C14.683,572.925 22.512,580.3 32.156,580.3L377.224,580.3C386.868,580.3 394.697,572.925 394.697,563.841L394.697,31.576Z\" fill=\"#8FBEE7\"></path>\n                </g>\n                <g transform=\"matrix(0.999962,0,0,1.0616,405.318,-16.0489)\">\n                    <path d=\"M394.697,31.576C394.697,22.492 386.868,15.118 377.224,15.118L32.156,15.118C22.512,15.118 14.683,22.492 14.683,31.576L14.683,563.841C14.683,572.925 22.512,580.3 32.156,580.3L377.224,580.3C386.868,580.3 394.697,572.925 394.697,563.841L394.697,31.576Z\" fill=\"#8FBEE7\"></path>\n                </g>\n            </svg>",
+                      "value": "half-half"
+                    },
+                    {
+                      "name": "<svg width=\"48\" height=\"36\" viewBox=\"0 0 800 600\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xml:space=\"preserve\" xmlns:serif=\"http://www.serif.com/\" style=\"fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;\">\n                <g transform=\"matrix(0.631555,0,0,1.0616,-9.27301,-16.0489)\">\n                    <path d=\"M394.697,37.725C394.697,25.248 377.669,15.118 356.696,15.118L52.684,15.118C31.711,15.118 14.683,25.248 14.683,37.725L14.683,557.693C14.683,570.17 31.711,580.3 52.684,580.3L356.696,580.3C377.669,580.3 394.697,570.17 394.697,557.693L394.697,37.725Z\" fill=\"#8FBEE7\"></path>\n                </g>\n                <g transform=\"matrix(0.631555,0,0,1.0616,270.727,-16.0489)\">\n                    <path d=\"M394.697,37.725C394.697,25.248 377.669,15.118 356.696,15.118L52.684,15.118C31.711,15.118 14.683,25.248 14.683,37.725L14.683,557.693C14.683,570.17 31.711,580.3 52.684,580.3L356.696,580.3C377.669,580.3 394.697,570.17 394.697,557.693L394.697,37.725Z\" fill=\"#8FBEE7\"></path>\n                </g>\n                <g transform=\"matrix(0.631555,0,0,1.0616,550.727,-16.0489)\">\n                    <path d=\"M394.697,37.725C394.697,25.248 377.669,15.118 356.696,15.118L52.684,15.118C31.711,15.118 14.683,25.248 14.683,37.725L14.683,557.693C14.683,570.17 31.711,580.3 52.684,580.3L356.696,580.3C377.669,580.3 394.697,570.17 394.697,557.693L394.697,37.725Z\" fill=\"#8FBEE7\"></path>\n                </g>\n            </svg>",
+                      "value": "third-third-third"
+                    },
+                    {
+                      "name": "<svg width=\"48\" height=\"36\" viewBox=\"0 0 800 600\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xml:space=\"preserve\" xmlns:serif=\"http://www.serif.com/\" style=\"fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;\">\n                <g transform=\"matrix(0.447351,0,0,1.0616,-6.56838,-16.0489)\">\n                    <path d=\"M394.697,31.131C394.697,22.293 377.669,15.118 356.696,15.118L52.684,15.118C31.711,15.118 14.683,22.293 14.683,31.131L14.683,564.287C14.683,573.125 31.711,580.3 52.684,580.3L356.696,580.3C377.669,580.3 394.697,573.125 394.697,564.287L394.697,31.131Z\" fill=\"#8FBEE7\"></path>\n                </g>\n                <g transform=\"matrix(0.447351,0,0,1.0616,203.432,-16.0489)\">\n                    <path d=\"M394.697,31.131C394.697,22.293 377.669,15.118 356.696,15.118L52.684,15.118C31.711,15.118 14.683,22.293 14.683,31.131L14.683,564.287C14.683,573.125 31.711,580.3 52.684,580.3L356.696,580.3C377.669,580.3 394.697,573.125 394.697,564.287L394.697,31.131Z\" fill=\"#8FBEE7\"></path>\n                </g>\n                <g transform=\"matrix(0.447351,0,0,1.0616,413.432,-16.0489)\">\n                    <path d=\"M394.697,31.131C394.697,22.293 377.669,15.118 356.696,15.118L52.684,15.118C31.711,15.118 14.683,22.293 14.683,31.131L14.683,564.287C14.683,573.125 31.711,580.3 52.684,580.3L356.696,580.3C377.669,580.3 394.697,573.125 394.697,564.287L394.697,31.131Z\" fill=\"#8FBEE7\"></path>\n                </g>\n                <g transform=\"matrix(0.447351,0,0,1.0616,623.432,-16.0489)\">\n                    <path d=\"M394.697,31.131C394.697,22.293 377.669,15.118 356.696,15.118L52.684,15.118C31.711,15.118 14.683,22.293 14.683,31.131L14.683,564.287C14.683,573.125 31.711,580.3 52.684,580.3L356.696,580.3C377.669,580.3 394.697,573.125 394.697,564.287L394.697,31.131Z\" fill=\"#8FBEE7\"></path>\n                </g>\n            </svg>",
+                      "value": "quarter-quarter-quarter-quarter"
+                    }
+                  ],
+                  "DefaultValue": "half-half"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "JustifyContent",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Justify Content",
+                  "Editor": "PredefinedGroup",
+                  "Position": "3"
+                },
+                "TextFieldSettings": {},
+                "TextFieldPredefinedGroupEditorSettings": {
+                  "Options": [
+                    {
+                      "name": "<svg width=\"48\" height=\"36\" viewBox=\"0 0 800 600\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xml:space=\"preserve\" xmlns:serif=\"http://www.serif.com/\" style=\"fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;\">\n                <g transform=\"matrix(2.10518,0,0,1.0616,-30.91,-16.0489)\">\n                    <path d=\"M394.697,43.377C394.697,27.78 388.312,15.118 380.447,15.118L28.933,15.118C21.068,15.118 14.683,27.78 14.683,43.377L14.683,552.041C14.683,567.638 21.068,580.3 28.933,580.3L380.447,580.3C388.312,580.3 394.697,567.638 394.697,552.041L394.697,43.377Z\" fill=\"#D0DEF2\"></path>\n                </g>\n                <g transform=\"matrix(0.578925,0,0,0.973137,16.4997,10.2885)\">\n                    <path d=\"M394.697,37.725C394.697,25.248 377.669,15.118 356.696,15.118L52.684,15.118C31.711,15.118 14.683,25.248 14.683,37.725L14.683,557.693C14.683,570.17 31.711,580.3 52.684,580.3L356.696,580.3C377.669,580.3 394.697,570.17 394.697,557.693L394.697,37.725Z\" fill=\"#8FBEE7\"></path>\n                </g>\n                <g transform=\"matrix(0.578925,0,0,0.973137,261.5,10.2885)\">\n                    <path d=\"M394.697,37.725C394.697,25.248 377.669,15.118 356.696,15.118L52.684,15.118C31.711,15.118 14.683,25.248 14.683,37.725L14.683,557.693C14.683,570.17 31.711,580.3 52.684,580.3L356.696,580.3C377.669,580.3 394.697,570.17 394.697,557.693L394.697,37.725Z\" fill=\"#8FBEE7\"></path>\n                </g>\n            </svg>",
+                      "value": "justify-content-start"
+                    },
+                    {
+                      "name": "<svg width=\"48\" height=\"36\" viewBox=\"0 0 800 600\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xml:space=\"preserve\" xmlns:serif=\"http://www.serif.com/\" style=\"fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;\">\n                <g transform=\"matrix(2.10518,0,0,1.0616,-30.91,-16.0489)\">\n                    <path d=\"M394.697,43.377C394.697,27.78 388.312,15.118 380.447,15.118L28.933,15.118C21.068,15.118 14.683,27.78 14.683,43.377L14.683,552.041C14.683,567.638 21.068,580.3 28.933,580.3L380.447,580.3C388.312,580.3 394.697,567.638 394.697,552.041L394.697,43.377Z\" fill=\"#D0DEF2\"></path>\n                </g>\n                <g transform=\"matrix(0.578925,0,0,0.973137,546.5,10.2885)\">\n                    <path d=\"M394.697,37.725C394.697,25.248 377.669,15.118 356.696,15.118L52.684,15.118C31.711,15.118 14.683,25.248 14.683,37.725L14.683,557.693C14.683,570.17 31.711,580.3 52.684,580.3L356.696,580.3C377.669,580.3 394.697,570.17 394.697,557.693L394.697,37.725Z\" fill=\"#8FBEE7\"></path>\n                </g>\n                <g transform=\"matrix(0.578925,0,0,0.973137,301.5,10.2885)\">\n                    <path d=\"M394.697,37.725C394.697,25.248 377.669,15.118 356.696,15.118L52.684,15.118C31.711,15.118 14.683,25.248 14.683,37.725L14.683,557.693C14.683,570.17 31.711,580.3 52.684,580.3L356.696,580.3C377.669,580.3 394.697,570.17 394.697,557.693L394.697,37.725Z\" fill=\"#8FBEE7\"></path>\n                </g>\n            </svg>",
+                      "value": "justify-content-end"
+                    },
+                    {
+                      "name": "<svg width=\"48\" height=\"36\" viewBox=\"0 0 800 600\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xml:space=\"preserve\" xmlns:serif=\"http://www.serif.com/\" style=\"fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;\">\n                <g transform=\"matrix(2.10518,0,0,1.0616,-30.91,-16.0489)\">\n                    <path d=\"M394.697,43.377C394.697,27.78 388.312,15.118 380.447,15.118L28.933,15.118C21.068,15.118 14.683,27.78 14.683,43.377L14.683,552.041C14.683,567.638 21.068,580.3 28.933,580.3L380.447,580.3C388.312,580.3 394.697,567.638 394.697,552.041L394.697,43.377Z\" fill=\"#D0DEF2\"></path>\n                </g>\n                <g transform=\"matrix(0.578925,0,0,0.973137,404,10.2885)\">\n                    <path d=\"M394.697,37.725C394.697,25.248 377.669,15.118 356.696,15.118L52.684,15.118C31.711,15.118 14.683,25.248 14.683,37.725L14.683,557.693C14.683,570.17 31.711,580.3 52.684,580.3L356.696,580.3C377.669,580.3 394.697,570.17 394.697,557.693L394.697,37.725Z\" fill=\"#8FBEE7\"></path>\n                </g>\n                <g transform=\"matrix(0.578925,0,0,0.973137,159,10.2885)\">\n                    <path d=\"M394.697,37.725C394.697,25.248 377.669,15.118 356.696,15.118L52.684,15.118C31.711,15.118 14.683,25.248 14.683,37.725L14.683,557.693C14.683,570.17 31.711,580.3 52.684,580.3L356.696,580.3C377.669,580.3 394.697,570.17 394.697,557.693L394.697,37.725Z\" fill=\"#8FBEE7\"></path>\n                </g>\n            </svg>",
+                      "value": "justify-content-center"
+                    },
+                    {
+                      "name": "<svg width=\"48\" height=\"36\" viewBox=\"0 0 800 600\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xml:space=\"preserve\" xmlns:serif=\"http://www.serif.com/\" style=\"fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;\">\n                <g transform=\"matrix(2.10518,0,0,1.0616,-30.91,-16.0489)\">\n                    <path d=\"M394.697,43.377C394.697,27.78 388.312,15.118 380.447,15.118L28.933,15.118C21.068,15.118 14.683,27.78 14.683,43.377L14.683,552.041C14.683,567.638 21.068,580.3 28.933,580.3L380.447,580.3C388.312,580.3 394.697,567.638 394.697,552.041L394.697,43.377Z\" fill=\"#D0DEF2\"></path>\n                </g>\n                <g transform=\"matrix(0.578925,0,0,0.973137,546.5,10.2885)\">\n                    <path d=\"M394.697,37.725C394.697,25.248 377.669,15.118 356.696,15.118L52.684,15.118C31.711,15.118 14.683,25.248 14.683,37.725L14.683,557.693C14.683,570.17 31.711,580.3 52.684,580.3L356.696,580.3C377.669,580.3 394.697,570.17 394.697,557.693L394.697,37.725Z\" fill=\"#8FBEE7\"></path>\n                </g>\n                <g transform=\"matrix(0.578925,0,0,0.973137,16.4997,10.2885)\">\n                    <path d=\"M394.697,37.725C394.697,25.248 377.669,15.118 356.696,15.118L52.684,15.118C31.711,15.118 14.683,25.248 14.683,37.725L14.683,557.693C14.683,570.17 31.711,580.3 52.684,580.3L356.696,580.3C377.669,580.3 394.697,570.17 394.697,557.693L394.697,37.725Z\" fill=\"#8FBEE7\"></path>\n                </g>\n            </svg>",
+                      "value": "justify-content-between"
+                    },
+                    {
+                      "name": "<svg width=\"48\" height=\"36\" viewBox=\"0 0 800 600\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xml:space=\"preserve\" xmlns:serif=\"http://www.serif.com/\" style=\"fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;\">\n                <g transform=\"matrix(2.10518,0,0,1.0616,-30.91,-16.0489)\">\n                    <path d=\"M394.697,43.377C394.697,27.78 388.312,15.118 380.447,15.118L28.933,15.118C21.068,15.118 14.683,27.78 14.683,43.377L14.683,552.041C14.683,567.638 21.068,580.3 28.933,580.3L380.447,580.3C388.312,580.3 394.697,567.638 394.697,552.041L394.697,43.377Z\" fill=\"#D0DEF2\"></path>\n                </g>\n                <g transform=\"matrix(0.578925,0,0,0.973137,451.5,10.2885)\">\n                    <path d=\"M394.697,37.725C394.697,25.248 377.669,15.118 356.696,15.118L52.684,15.118C31.711,15.118 14.683,25.248 14.683,37.725L14.683,557.693C14.683,570.17 31.711,580.3 52.684,580.3L356.696,580.3C377.669,580.3 394.697,570.17 394.697,557.693L394.697,37.725Z\" fill=\"#8FBEE7\"></path>\n                </g>\n                <g transform=\"matrix(0.578925,0,0,0.973137,101.5,10.2885)\">\n                    <path d=\"M394.697,37.725C394.697,25.248 377.669,15.118 356.696,15.118L52.684,15.118C31.711,15.118 14.683,25.248 14.683,37.725L14.683,557.693C14.683,570.17 31.711,580.3 52.684,580.3L356.696,580.3C377.669,580.3 394.697,570.17 394.697,557.693L394.697,37.725Z\" fill=\"#8FBEE7\"></path>\n                </g>\n            </svg>",
+                      "value": "justify-content-around"
+                    }
+                  ],
+                  "DefaultValue": "justify-content-start"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "TitleLayout",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Title Layout",
+                  "Editor": "PredefinedGroup",
+                  "Position": "1"
+                },
+                "TextFieldSettings": {},
+                "TextFieldPredefinedGroupEditorSettings": {
+                  "Options": [
+                    {
+                      "name": "<i class=\"fas fa-eye-slash\"></i>",
+                      "value": "d-none"
+                    },
+                    {
+                      "name": "<i class=\"fas fa-align-left\"></i>",
+                      "value": "text-left"
+                    },
+                    {
+                      "name": "<i class=\"fas fa-align-center\"></i>",
+                      "value": "text-center"
+                    },
+                    {
+                      "name": "<i class=\"fas fa-align-right\"></i>",
+                      "value": "text-right"
+                    }
+                  ],
+                  "DefaultValue": "d-none"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "Style",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Style",
+                  "Position": "4"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "SimpleContent",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "LinkField",
+              "Name": "Link",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Link",
+                  "Position": "1"
+                }
+              }
+            },
+            {
+              "FieldName": "HtmlField",
+              "Name": "Content",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Content",
+                  "Position": "0"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "NavBar",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "MediaField",
+              "Name": "Logo",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Logo",
+                  "Position": "1"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "BrandName",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Brand Name",
+                  "Position": "0"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "HTMLBlurb",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "BooleanField",
+              "Name": "FluidWidth",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Fluid Width",
+                  "Editor": "Switch",
+                  "Position": "0"
+                },
+                "BooleanFieldSettings": {
+                  "Hint": "Instead of respecting the Section layout, uses the full width of the container.",
+                  "Label": "Fluid Width"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "ContentPickerSection",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "TextField",
+              "Name": "Subtitle",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Subtitle",
+                  "Position": "0"
+                }
+              }
+            },
+            {
+              "FieldName": "ContentPickerField",
+              "Name": "ContentReference",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "ContentReference",
+                  "Position": "1"
+                },
+                "ContentPickerFieldSettings": {
+                  "Required": true,
+                  "DisplayedContentTypes": [
+                    "VueForm"
+                  ]
+                },
+                "ContentIndexSettings": {}
+              }
+            }
+          ]
+        },
+        {
+          "Name": "FormContainer",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "ContentPickerField",
+              "Name": "Form",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Form",
+                  "Position": "0"
+                }
+              }
+            }
+          ]
+        }
+      ]
     }
   ]
 }
