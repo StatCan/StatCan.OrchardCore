@@ -4,18 +4,18 @@
     "watch": [
       "Assets/scss/_bootstrap.scss",
       "Assets/scss/_branding.scss",
-      "Assets/scss/_custom-section.scss",
       "Assets/scss/_feedback.scss",
       "Assets/scss/_fip.scss",
       "Assets/scss/_footer.scss",
       "Assets/scss/_global.scss",
-      "Assets/scss/_hero.scss",
       "Assets/scss/_login.scss",
       "Assets/scss/_mixins.scss",
       "Assets/scss/_modal.scss",
       "Assets/scss/_navbar.scss",
-      "Assets/scss/_section.scss",
-      "Assets/scss/_toast-message.scss"
+      "Assets/scss/_toast-message.scss",
+      "Assets/scss/_widget-hero.scss",
+      "Assets/scss/_widget-page-header.scss",
+      "Assets/scss/_widget-section.scss"
     ],
     "output": "wwwroot/css/digital-bootstrap.css"
   },
