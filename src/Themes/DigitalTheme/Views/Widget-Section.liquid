@@ -1,6 +1,6 @@
-<section class="widget-section d-flex align-items-center {{ Model.ContentItem.Content.Section.Style.Text }}">
+<section id="section-{{ Model.ContentItem.DisplayText | slugify }}" class="widget-section d-flex align-items-center {{ Model.ContentItem.Content.Section.Style.Text }}">
   <div class="{{ Model.ContentItem.Content.Section.Section.Text | default: 'd-none' }}">
-    <h2 class="{{ Model.ContentItem.Content.Section.TitleLayout.Text }}">{{ Model.ContentItem | display_text }}</h2>
+    <h2 class="{{ Model.ContentItem.Content.Section.TitleLayout.Text }}">{{ Model.ContentItem.DisplayText }}</h2>
     <div class="row {{ Model.ContentItem.Content.Section.ColumnLayout.Text }} {{ Model.ContentItem.Content.Section.JustifyContent.Text }}">
       {% for item in Model.ContentItem.Content.FlowPart.Widgets %}
         {{ item | shape_build_display | shape_render }}
