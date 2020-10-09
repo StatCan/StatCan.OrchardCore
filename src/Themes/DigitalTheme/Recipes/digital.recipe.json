@@ -73,16 +73,6 @@
       "disable": []
     },
     {
-      "name": "Layers",
-      "Layers": [
-        {
-          "Name": "Everywhere",
-          "Rule": "true",
-          "Description": "Widgets on this layer are displayed everywhere."
-        }
-      ]
-    },
-    {
       "name": "Settings",
       "TimeZoneId": "America/Toronto",
       "AppendVersion": true,
@@ -113,6 +103,142 @@
       "name": "themes",
       "admin": "DigitalAdmin",
       "site": "DigitalTheme"
+    },
+    {
+      "name": "Layers",
+      "Layers": [
+        {
+          "Name": "Everywhere",
+          "Rule": "true",
+          "Description": "Widgets on this layer are displayed everywhere."
+        },
+        {
+          "Name": "French",
+          "Rule": "culture(\"fr\")",
+          "Description": "French culture"
+        },
+        {
+          "Name": "English",
+          "Rule": "culture(\"en\")",
+          "Description": "English culture"
+        }
+      ]
+    },
+    {
+      "name": "content",
+      "data": [
+        {
+          "ContentItemId": "4q26we23s7a71303anmrhys0x2",
+          "ContentItemVersionId": "4t3w78zjphbrtsbag35460dem9",
+          "ContentType": "NavBar",
+          "DisplayText": "Site Navbar - English",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": "2020-10-09T14:05:10.2512535Z",
+          "PublishedUtc": "2020-10-09T14:05:10.2604948Z",
+          "CreatedUtc": "2020-10-08T18:39:40.2899865Z",
+          "Owner": "admin",
+          "Author": "admin",
+          "NavBar": {
+            "Logo": {
+              "Paths": [
+                "di-2020-logo_en.svg"
+              ]
+            },
+            "BrandName": {
+              "Text": null
+            },
+            "LogoSize": {
+              "Value": 3.5
+            },
+            "MenuAlias": {
+              "Text": "site-menu-en"
+            }
+          },
+          "LayerMetadata": {
+            "Position": 1.0,
+            "Zone": "Header",
+            "Layer": "English",
+            "RenderTitle": false
+          }
+        },
+        {
+          "ContentItemId": "4ywyy13zx80cptghch5cbpvtd3",
+          "ContentItemVersionId": "4e7hq8wq66ew2srhmft1t7pwms",
+          "ContentType": "NavBar",
+          "DisplayText": "Site Navbar - French",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": "2020-10-09T14:05:40.1100351Z",
+          "PublishedUtc": "2020-10-09T14:05:40.1137361Z",
+          "CreatedUtc": "2020-10-09T14:05:40.1100351Z",
+          "Owner": "admin",
+          "Author": "admin",
+          "NavBar": {
+            "Logo": {
+              "Paths": [
+                "di-2020-logo_fr.svg"
+              ]
+            },
+            "BrandName": {
+              "Text": null
+            },
+            "LogoSize": {
+              "Value": 3.5
+            },
+            "MenuAlias": {
+              "Text": "site-menu-fr"
+            }
+          },
+          "LayerMetadata": {
+            "Position": 2.0,
+            "Zone": "Header",
+            "Layer": "French"
+          }
+        },
+        {
+          "ContentItemId": "4657cvtjt84mp48qhqbhr5v8me",
+          "ContentItemVersionId": "42tqkcx7tz0n2s27wrb6zhpbmm",
+          "ContentType": "FatFooter",
+          "DisplayText": "Site Footer",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": "2020-10-09T14:10:31.0841515Z",
+          "PublishedUtc": "2020-10-09T14:10:31.0939975Z",
+          "CreatedUtc": "2020-10-09T13:59:53.1246811Z",
+          "Owner": "admin",
+          "Author": "admin",
+          "FatFooter": {
+            "HubLink": {
+              "Url": null,
+              "Text": null
+            },
+            "DigitalLink": {
+              "Url": "https://digital.statcan.gc.ca",
+              "Text": "digital@statcan"
+            }
+          },
+          "LayerMetadata": {
+            "Position": 1.0,
+            "Zone": "Footer",
+            "Layer": "Everywhere",
+            "RenderTitle": false
+          }
+        }
+      ]
+    },
+    {
+      "name": "media",
+      "Files": [
+        {
+          "SourcePath": "assets/di-2020-logo_en.svg",
+          "TargetPath": "di-2020-logo_en.svg"
+        },
+        {
+          "SourcePath": "assets/di-2020-logo_fr.svg",
+          "TargetPath": "di-2020-logo_fr.svg"
+        }
+      ]
     }
   ]
 }
