@@ -1,6 +1,0 @@
-<div class="col-9">
-    {% assign contentItems = Model.ContentItem.Content.ContentPickerSection.ContentReference.ContentItemIds | content_item_id %}
-    {% for contentItem in contentItems %}
-        {{ contentItem | shape_build_display | shape_render }}
-    {% endfor %}
-</div>
