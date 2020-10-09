@@ -3,6 +3,7 @@ using OrchardCore.ContentFields.Settings;
 using OrchardCore.ContentManagement.Metadata;
 using OrchardCore.ContentManagement.Metadata.Settings;
 using OrchardCore.Data.Migration;
+using OrchardCore.Title.Models;
 using StatCan.OrchardCore.Extensions;
 
 namespace StatCan.OrchardCore.VueForms
@@ -96,7 +97,45 @@ namespace StatCan.OrchardCore.VueForms
                 .WithPart("VueComponent", p => p.WithPosition("1"))
                 .Stereotype("Widget"));
 
-            return 1;
+            AddVueFormReference();
+
+            return 2;
+        }
+
+        public int UpdateFrom1()
+        {
+            AddVueFormReference();
+
+            return 2;
+        }
+
+        public void AddVueFormReference()
+        {
+             // VueFormReference is a widget meant
+            _contentDefinitionManager.AlterTypeDefinition("VueFormReference", type => type
+                .DisplayedAs("Vue Form Reference")
+                .Stereotype("Widget")
+                .WithPart("VueFormReference", part => part
+                    .WithPosition("1")
+                )
+                .WithPart("TitlePart", part => part
+                    .WithPosition("0")
+                    .WithSettings(new TitlePartSettings
+                    {
+                        RenderTitle = false
+                    })
+                )
+            );
+            _contentDefinitionManager.AlterPartDefinition("VueFormReference", part => part
+                .WithField("FormReference", field => field
+                    .OfType("ContentPickerField")
+                    .WithDisplayName("FormReference")
+                    .WithSettings(new ContentPickerFieldSettings
+                    {
+                        DisplayedContentTypes = new[] { "VueForm" }
+                    })
+                )
+            );
         }
     }
 
