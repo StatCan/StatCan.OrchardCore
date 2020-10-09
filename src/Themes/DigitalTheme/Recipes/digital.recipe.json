@@ -224,6 +224,68 @@
             "Layer": "Everywhere",
             "RenderTitle": false
           }
+        },
+        {
+          "ContentItemId": "4vemmbc4m47whtqjqxmbwfscmy",
+          "ContentItemVersionId": "4m11y48a7kym634fn5g7fnq2n6",
+          "ContentType": "Menu",
+          "DisplayText": "Site Menu - French",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": "2020-10-09T14:09:20.4388764Z",
+          "PublishedUtc": "2020-10-09T14:09:20.4444086Z",
+          "CreatedUtc": "2020-10-09T14:07:50.8024562Z",
+          "Owner": "admin",
+          "Author": "admin",
+          "TitlePart": {
+            "Title": "Site Menu - French"
+          },
+          "AliasPart": {
+            "Alias": "site-menu-fr"
+          },
+          "MenuPart": {},
+          "MenuItemsListPart": {
+            "MenuItems": []
+          },
+          "@WeldedPartSettings": {
+            "MenuPart": {
+              "Position": "3"
+            },
+            "MenuItemsListPart": {
+              "Position": "4"
+            }
+          }
+        },
+        {
+          "ContentItemId": "4htq1w44evs08r8x9p33pc43w6",
+          "ContentItemVersionId": "4rne6adyy09zr763v0ffqf27ww",
+          "ContentType": "Menu",
+          "DisplayText": "Site Menu - English",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": "2020-10-09T14:09:56.269567Z",
+          "PublishedUtc": "2020-10-09T14:09:56.2762402Z",
+          "CreatedUtc": "2020-10-09T13:01:52.7664943Z",
+          "Owner": "admin",
+          "Author": "admin",
+          "TitlePart": {
+            "Title": "Site Menu - English"
+          },
+          "AliasPart": {
+            "Alias": "site-menu-en"
+          },
+          "MenuPart": {},
+          "MenuItemsListPart": {
+            "MenuItems": []
+          },
+          "@WeldedPartSettings": {
+            "MenuPart": {
+              "Position": "3"
+            },
+            "MenuItemsListPart": {
+              "Position": "4"
+            }
+          }
         }
       ]
     },
