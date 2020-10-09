@@ -1,0 +1,13 @@
+<section class="widget-page-header d-flex">
+  <div class="container">
+    <div class="row flex-1">
+      <div class="col-8">
+        <h1 class="h2">{{ Model.ContentItem.DisplayText }}</h1>
+        <p>{{ Model.ContentItem.Content.PageHeader.Subtitle.Text }}</p>
+      </div>
+      <div class="col-4">
+        <img class="d-inline-block align-top" src="{{ Model.ContentItem.Content.PageHeader.Image.Paths | asset_url | resize  }}" />
+      </div>
+    </div>
+  </div>
+</section>
