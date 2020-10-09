@@ -183,10 +183,6 @@ namespace StatCan.Themes.DigitalTheme
             )
             .WithPart("FlowPart", part => part
                 .WithPosition("3")
-                .WithSettings(new FlowPartSettings
-                {
-                    ContainedContentTypes = new[] { "ContentPickerSection", "HTMLBlurb", "ShowcaseBlurb" }
-                })
             )
         );
 
@@ -372,7 +368,7 @@ namespace StatCan.Themes.DigitalTheme
             _contentDefinitionManager.AlterTypeDefinition("HtmlBlurb", type => type
                 .DisplayedAs("HTML Blurb")
                 .Stereotype("Widget")
-                .WithPart("HTMLBlurb", part => part
+                .WithPart("HtmlBlurb", part => part
                     .WithPosition("0")
                 )
                 .WithPart("HtmlBodyPart", part => part
