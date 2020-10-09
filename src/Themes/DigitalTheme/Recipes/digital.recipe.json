@@ -818,7 +818,7 @@
               "Settings": {
                 "ContentPartFieldSettings": {
                   "DisplayName": "Logo",
-                  "Position": "1"
+                  "Position": "2"
                 }
               }
             },
@@ -829,7 +829,43 @@
                 "ContentPartFieldSettings": {
                   "DisplayName": "Brand Name",
                   "Position": "0"
-                }
+                },
+                "TextFieldSettings": {
+                  "Hint": "(optional) The brand name to display beside the logo."
+                },
+                "ContentIndexSettings": {}
+              }
+            },
+            {
+              "FieldName": "NumericField",
+              "Name": "LogoSize",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Logo Size",
+                  "Position": "1"
+                },
+                "NumericFieldSettings": {
+                  "Required": true,
+                  "Scale": 1,
+                  "Minimum": 0.0,
+                  "Maximum": 10.0,
+                  "DefaultValue": "4"
+                },
+                "ContentIndexSettings": {}
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "MenuAlias",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Menu Alias",
+                  "Position": "3"
+                },
+                "TextFieldSettings": {
+                  "Hint": "(optional) The alias of the menu to render if it's present"
+                },
+                "ContentIndexSettings": {}
               }
             }
           ]
