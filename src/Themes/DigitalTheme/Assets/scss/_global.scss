@@ -64,7 +64,8 @@ h3,
   @include rfs(26);
   line-height: 1.875rem;
   font-weight: 600;
-  margin-bottom: 1rem;
+  margin-top: 3rem;
+  margin-bottom: 1rem;  
 }
 h4,
 .h4 {
@@ -231,3 +232,8 @@ hr {
 //     }
 //   }
 // }
+
+code{
+  color: black !important;
+  font-weight: 800;
+}

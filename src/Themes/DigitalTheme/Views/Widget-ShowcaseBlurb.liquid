@@ -1,6 +1,6 @@
 <div class="column d-flex flex-column text-center justify-content-center align-self-start">
     {% if Model.ContentItem.Content.ShowcaseBlurb.Image.Paths %}
-        <img class="p-5" src="{{ Model.ContentItem.Content.ShowcaseBlurb.Image.Paths | asset_url | resize_url: height: 160, width: 160, mode: 'stretch' }}" />
+        <img class="pt-5 px-5" src="{{ Model.ContentItem.Content.ShowcaseBlurb.Image.Paths | asset_url | resize_url: height: 160, width: 160, mode: 'stretch' }}" />
     {% endif %}
     <h3>{{ Model.ContentItem | display_text }}</h3>
     {% if Model.ContentItem.Content.ShowcaseBlurb.SecondaryText.Text %}

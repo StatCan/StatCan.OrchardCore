@@ -1,9 +1,9 @@
 .widget-page-header {
-  background: #e0e3e6;
-  background-image: url("../images/DigitalHeroBG.svg"),
-    url("../images/DigitalHeroStepUp.svg");
-  background-position: center, center top;  
-  background-size: auto, auto;
-  background-repeat: no-repeat, no-repeat;
-  min-height: 20rem;
+  background-color: #e0e3e6;
+  background-image: url("../images/DigitalPageHeader.svg");
+  background-position: center top;  
+  background-size: auto;
+  background-repeat: no-repeat;
+  min-height: 12rem;
+  padding-top: 2rem;
 }
