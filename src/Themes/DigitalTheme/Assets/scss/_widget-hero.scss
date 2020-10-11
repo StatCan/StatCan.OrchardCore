@@ -1,4 +1,5 @@
 .widget-hero {
-  background: url("../images/DigitalHeroBG.svg") center 5.5rem/auto 80% no-repeat, #e0e3e6 url("../images/DigitalHeroStepUp.svg") center top/auto no-repeat; // bman: this should be coming from a variable
+  background: url("../images/DigitalHeroBG.svg") center 5.5rem no-repeat, #e0e3e6 url("../images/DigitalHeroStepUp.svg") center top no-repeat; // bman: this should be coming from a variable
+  background-size: auto 80%, auto;
   min-height: 35rem;
 }
