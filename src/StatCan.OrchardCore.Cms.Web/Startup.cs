@@ -27,7 +27,11 @@ namespace web
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddOrchardCms();
+            services.AddOrchardCms().ConfigureServices( tenantServices => {
+                tenantServices.ConfigureHtmlSanitizer(sanitizer => {
+                    sanitizer.AllowedSchemes.Add("mailto");
+                });
+            });
             services.Configure<IdentityOptions>(options =>
             {
                 Configuration.GetSection("IdentityOptions").Bind(options);
