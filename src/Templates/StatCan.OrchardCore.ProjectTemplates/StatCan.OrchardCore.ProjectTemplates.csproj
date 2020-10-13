@@ -1,8 +1,9 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <Import Project="..\..\Build\StatCan.OrchardCore.Commons.props" />
   <PropertyGroup>
     <TargetFramework>$(AspNetCoreTargetFramework)</TargetFramework>
     <IncludeBuildOutput>False</IncludeBuildOutput>
+    <NoDefaultExcludes>true</NoDefaultExcludes>
     <IncludeSource>False</IncludeSource>
     <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
     <EnableDefaultItems>False</EnableDefaultItems>
@@ -12,10 +13,17 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="content\**" Exclude="**\.template.config.src\**" Pack="true">
+    <None Include="content\**" Exclude="**\.template.config.src\**;**\.vs\**\*;**\bin\**\*;**\obj\**\*;**\node_modules\**\*;**\App_Data\**\*;**\LICENSE;**\Dockerfile" Pack="true">
       <PackagePath>content\%(RecursiveDir)%(FileName)%(Extension)</PackagePath>
     </None>
+    <None Include="content\**\LICENSE" Pack="true" >
+      <PackagePath>content\</PackagePath>
+    </None>
+    <None Include="content\**\Dockerfile" Pack="true" >
+      <PackagePath>content\</PackagePath>
+    </None>
   </ItemGroup>
+
 
   <ItemGroup>
     <PackageReference Include="RoslynCodeTaskFactory" Version="2.0.7" />

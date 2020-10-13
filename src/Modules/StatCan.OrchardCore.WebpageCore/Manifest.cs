@@ -16,6 +16,8 @@ using StatCan.OrchardCore.WebpageCore;
     Dependencies = new[]
     {
         "OrchardCore.Liquid",
+        "OrchardCore.Widgets",
+        "StatCan.OrchardCore.ContentFields.PredefinedGroup",
     }
 )]
 
@@ -27,6 +29,7 @@ using StatCan.OrchardCore.WebpageCore;
     Dependencies = new[]
     {
         "OrchardCore.Liquid",
+        "OrchardCore.Widgets",
     }
 )]
 
@@ -37,6 +40,7 @@ using StatCan.OrchardCore.WebpageCore;
     Category = "StatCan.OrchardCore.WebpageCore",
     Dependencies = new[]
     {
+        "OrchardCore.Widgets",
         "OrchardCore.Liquid",
     }
 )]
