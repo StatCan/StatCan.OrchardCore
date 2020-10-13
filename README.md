@@ -15,8 +15,9 @@ Nightly (master):
 
 ### How to Contribute
 
-* Report a bug, share new ideas for a new feature, or ask a question by [creating a new issue](https://github.com/StatCan/StatCan.OrchardCore/issues/new)
-* Help with documentation or code? Create a Pull Request
+* Report a bug in the code or our docs by [creating a new issue](https://github.com/StatCan/StatCan.OrchardCore/issues/new)
+* Need help? Have questions, platform ideas, or just want to share your work? [join the community and start new discussion](https://github.com/StatCan/StatCan.OrchardCore/discussions)
+* Think you can help fix something? Browse the list of [issues](https://github.com/StatCan/StatCan.OrchardCore/issues/) (newcomers welcome! try one of the [`good-first-issue`](https://github.com/StatCan/StatCan.OrchardCore/issues?q=is%3Aissue+is%3Aopen+label%3Agood-first-issue)) and submit a Pull Request
 
 ### Security
 

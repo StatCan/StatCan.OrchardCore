@@ -1,15 +1,15 @@
 # Statistics Canada OrchardCore Documentation
 
-This is build using the `1.0.0-rc2-14344` version of the OrchardCore CMS.
+Welcome to the `StatCan.OrchardCore` documentation. Learn how to use our collection of application and SaaS modules and components, and Themes for building your project.
 
-See the [Orchard Core documentation](https://docs.orchardcore.net) and the [Orchard Core Github repository](https://github.com/OrchardCMS/OrchardCore).
+## OrchardCore CMS
 
-## Introduction
-
-The Orchard Core Framework enables a modular environment that allows different teams to work on separate parts of an application and make components reusable across projects.
+The project is built on OrchardCore CMS version `1.0.0-rc2-14344`. To learn more about the underlying framework, take a look through the [Orchard Core CMS documentation](https://docs.orchardcore.net) and the [Orchard Core Github repository](https://github.com/OrchardCMS/OrchardCore).
 
 
-**Developing and Contributing**: See the [Getting Started](development/getting-started/) guide for setting up your environment.
+## Where to Start?
 
-**Starting your own site**: See the [Code Generation Templates](development/code-generation-templates) documentation to setup a new site.
+I want to:
+* Help contribute to the underlying platform: See the [Getting Started](development/getting-started/) guide 
+* Set up a solution (e.g. website) quickly for my project and modify how it looks: Follow the [Solution Templates](development/solution-templates) guide
 
