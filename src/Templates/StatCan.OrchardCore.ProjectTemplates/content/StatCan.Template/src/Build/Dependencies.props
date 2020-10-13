@@ -11,7 +11,7 @@
   <ItemGroup>
   <!-- You can add dependent packages in this file, specifying the version here so all projects in your solution will share this version. 
        The version tag can then be omitted in the .csproj files -->
-    <!-- <PackageManagement Include="HtmlSanitizer" Version="5.0.343" /> -->
+    <!-- <PackageManagement Include="HtmlSanitizer" Version="5.0.353" /> -->
   </ItemGroup>
 
 </Project>
