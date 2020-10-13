@@ -77,7 +77,14 @@ namespace Lombiq.HelpfulExtensions.Extensions.CodeGeneration
                             for (int i = 0; i < properties.Length; i++)
                             {
                                 var property = properties[i];
-                                codeBuilder.AppendLine($"{indentation}    {property.Name} = {ConvertJToken(property.Value)}{(i != properties.Length - 1 ? "," : string.Empty)}");
+
+                                var propertyValue = ConvertJToken(property.Value);
+                                if (propertyValue.Contains(Environment.NewLine, StringComparison.OrdinalIgnoreCase))
+                                {
+                                    propertyValue = "@" + propertyValue;
+                                }
+
+                                codeBuilder.AppendLine($"{indentation}    {property.Name} = {propertyValue},");
                             }
 
                             codeBuilder.AppendLine(indentation + "})");
