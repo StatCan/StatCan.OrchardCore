@@ -6,8 +6,9 @@
 name: "CodeQL"
 
 on:
-  push:
-    branches: [master]
+  schedule:
+    #Scan the default branch at 15h every Sunday
+    - cron: '0 15 * * 0'
 
 jobs:
   analyze:
