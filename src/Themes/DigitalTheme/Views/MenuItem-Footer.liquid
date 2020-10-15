@@ -5,11 +5,11 @@
         <ul class="list-unstyled">
             <li>
                 {% if Model.ContentItem.Content.LinkMenuItemPart.Url %}
-                    <a class="h3 font-weight-bold text-uppercase" href="{{ Model.ContentItem.Content.LinkMenuItemPart.Url }}">
+                    <a class="h4 font-weight-bold text-uppercase" href="{{ Model.ContentItem.Content.LinkMenuItemPart.Url }}">
                         {{ Model.ContentItem.Content.LinkMenuItemPart.Name }}
                     </a>
                 {% else %}
-                    <span class="h3 font-weight-bold text-uppercase">
+                    <span class="h4 font-weight-bold text-uppercase">
                         {{ Model.ContentItem.Content.LinkMenuItemPart.Name }}
                     </span>
                 {% endif %}
