@@ -1,17 +1,8 @@
 {% assign externalLink = Model.ContentItem.Content.LinkMenuItemPart %}
 {% assign internalLink = Model.ContentItem.Content.ContentMenuItemPart %}
-
-{% if Model.HasItems %}
-    {% if link.Url %}
-        <a href="{{ link.Url | href }}" class="nav-link dropdown-toggle">{{ link.Name }}<b class="caret"></b></a>
-    {% else %}
-        <span>{{ link.Name }}</span>
-    {% endif %}
-{% else %}
-    {% if externalLink %}
-        <a href="{{ externalLink.Url | href }}" target="_blank">{{ externalLink.Name }}</a>
-    {% endif %}
-    {% if internalLink %}
-        <a href="{{ '~/' | append: internalLink.Url | href }}">{{ internalLink.Name }}</a>
-    {% endif %}
+{% if externalLink %}
+    <a href="{{ externalLink.Url | href }}" target="_blank">{{ externalLink.Name }}</a>
+{% endif %}
+{% if internalLink %}
+    <a href="{{ '~/' | append: internalLink.Url | href }}">{{ internalLink.Name }}</a>
 {% endif %}
