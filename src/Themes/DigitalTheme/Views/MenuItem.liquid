@@ -5,7 +5,7 @@
         <a class="nav-item dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             {{ Model.ContentItem.Content.LinkMenuItemPart.Name }}
         </a>
-        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+        <ul class="dropdown-menu dropdown-menu-right text-right" aria-labelledby="navbarDropdownMenuLink">
             {% for item in Model.Items %}
                 {{ item | shape_render }}
             {% endfor %}
