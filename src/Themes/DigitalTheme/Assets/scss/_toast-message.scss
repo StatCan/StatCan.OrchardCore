@@ -4,7 +4,7 @@
 
 .message {
   align-items: center;
-  box-shadow: 3px 0 9px transparentize($background, 0.52);
+  box-shadow: 3px 0 9px transparentize($bgPrimary, 0.52);
   display: flex;
   @include rfs(20);
   font-weight: 300;
@@ -20,7 +20,7 @@
 }
 
 .message-success {
-  background-color: $background;
+  background-color: $bgPrimary;
   background-image: radial-gradient(
     circle at left center,
     transparentize($secondary, 0.82) 0,
@@ -40,7 +40,7 @@
 }
 
 .message-error {
-  background-color: $background;
+  background-color: $bgPrimary;
   background-image: radial-gradient(
     circle at left center,
     transparentize($danger, 0.82) 0,
@@ -60,7 +60,7 @@
 }
 
 .message-warning {
-  background-color: $background;
+  background-color: $bgPrimary;
   background-image: radial-gradient(
     circle at left center,
     transparentize($warning, 0.82) 0,
@@ -80,7 +80,7 @@
 }
 
 .message-info {
-  background-color: $background;
+  background-color: $bgPrimary;
   background-image: radial-gradient(
     circle at left center,
     transparentize($info, 0.82) 0,

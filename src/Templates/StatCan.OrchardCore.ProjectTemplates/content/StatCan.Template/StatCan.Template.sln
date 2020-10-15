@@ -1,0 +1,53 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29324.140
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Themes", "Themes", "{A2CEBE77-E664-4836-939B-1DF8EAC03997}"
+	ProjectSection(SolutionItems) = preProject
+		src\Themes\Directory.Build.props = src\Themes\Directory.Build.props
+		src\Themes\Directory.Build.targets = src\Themes\Directory.Build.targets
+		src\Themes\README.md = src\Themes\README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{AF36DFC0-62EB-4CB2-9A16-65F701493A99}"
+	ProjectSection(SolutionItems) = preProject
+		src\Modules\Directory.Build.props = src\Modules\Directory.Build.props
+		src\Modules\Directory.Build.targets = src\Modules\Directory.Build.targets
+		src\Modules\README.md = src\Modules\README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lib", "Lib", "{3F356EFD-E2BB-437F-896D-C3FD69E0B670}"
+	ProjectSection(SolutionItems) = preProject
+		src\Lib\Directory.Build.props = src\Lib\Directory.Build.props
+		src\Lib\Directory.Build.targets = src\Lib\Directory.Build.targets
+		src\Lib\Readme.md = src\Lib\Readme.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{8FBECC59-61C5-4B6A-B14D-83928CB7423E}"
+	ProjectSection(SolutionItems) = preProject
+		src\Build\Dependencies.props = src\Build\Dependencies.props
+		src\Build\StatCan.Template.Commons.props = src\Build\StatCan.Template.Commons.props
+		src\Build\StatCan.Template.Commons.targets = src\Build\StatCan.Template.Commons.targets
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StatCan.Template.Cms.Web", "src\StatCan.Template.Cms.Web\StatCan.Template.Cms.Web.csproj", "{288B2682-FCA2-4875-B29E-017661BF6875}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{288B2682-FCA2-4875-B29E-017661BF6875}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{288B2682-FCA2-4875-B29E-017661BF6875}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{288B2682-FCA2-4875-B29E-017661BF6875}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{288B2682-FCA2-4875-B29E-017661BF6875}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D77BCA7C-DEED-4924-8394-21E21A1F50C8}
+	EndGlobalSection
+EndGlobal

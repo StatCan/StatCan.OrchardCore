@@ -8,9 +8,6 @@
           "DisplayName": "Section",
           "Settings": {
             "ContentTypeSettings": {
-              "Listable": true,
-              "Draftable": true,
-              "Versionable": true,
               "Stereotype": "Widget"
             },
             "FullTextAspectSettings": {}
@@ -145,6 +142,16 @@
                     }
                   ],
                   "DefaultValue": "justify-content-start"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "Style",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Style",
+                  "Position": "3"
                 }
               }
             },

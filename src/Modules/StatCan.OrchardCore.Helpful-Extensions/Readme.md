@@ -1,7 +1,7 @@
 # Lombiq Helpful Extensions for Orchard Core
 
-*NOTE*: This code was copied here until OC hits a stable version.
-This was copied from commit https://github.com/Lombiq/Helpful-Extensions/tree/27bddfeeba1b0c0975025d4e5e60e42e86df86ae
+*NOTE*: This code was copied in this repository until OC hits a stable version.
+This was copied from commit https://github.com/Lombiq/Helpful-Extensions/tree/f8163b8445c12beab095550480173504258bb222
 
 ## About
 

@@ -8,7 +8,7 @@ describe("VueForm Tests", function() {
 
   before(() => {
       // generate a tenant for all tests below
-      tenant = generateTenantInfo("bootstrap-setup-recipe")
+      tenant = generateTenantInfo("bootstrap-theme-setup")
       cy.newTenant(tenant);
       cy.login(tenant);
       cy.uploadRecipeJson(tenant, "recipes/vue-form.json");
@@ -90,5 +90,25 @@ describe("VueForm Tests", function() {
     cy.getByCy('form-button-submit').click();
     cy.getByCy('form-button-submit').should('be.disabled');
     cy.getByCy('form-successmessage').contains('Your form was submitted successfully.');
+  })
+
+  
+  it("Clearing the form state works", function() {
+    
+    cy.visitContent(tenant, contentId);
+
+    cy.getByCy('form-field-email').type('email@email.com', {force:true});
+    cy.getByCy('form-field-gender').click({force:true}).type('{downarrow}{enter}', {force:true});
+
+    cy.getByCy('form-button-submit').click();
+    cy.getByCy('form-field-name').closest('.v-input').find('.v-messages__message').should('contain', 'The name is required');
+    cy.getByCy('form-errormessage').contains('An error occurred while submitting your form.');
+
+    cy.getByCy('form-button-formClear').click();
+    cy.getByCy('form-field-gender').should('be.empty');
+    cy.getByCy('form-field-email').should('be.empty');
+    // todo: investigate why these assertions work in headfull mode but not headless
+    // cy.getByCy('form-field-name').closest('.v-input').find('.v-messages__message').should('not.exist');
+    // cy.getByCy('form-errormessage').should('not.exist');
   })
 });

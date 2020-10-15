@@ -17,7 +17,9 @@ using StatCan.OrchardCore.VueForms;
     Category = "Form",
     Dependencies = new[]
     {
+        "OrchardCore.Title",
         "OrchardCore.Contents",
+        "OrchardCore.Flows",
         "OrchardCore.Liquid",
         "StatCan.OrchardCore.Scripting",
         "StatCan.OrchardCore.ContentFields"

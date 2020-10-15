@@ -4,7 +4,7 @@ We use the Cypress JS testing framework to run E2E tests for this application.
 
 ## Useful commands
 
-From the `/test` folder in the solution, you can run the following commands to simplify testing the application.
+From the `/test` folder in this solution, you can run the following commands to simplify testing the application.
 
 - `npm run host` hosts a version of OC running in production mode (faster).
 - `npm run build` builds the application.

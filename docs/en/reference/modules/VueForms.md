@@ -110,8 +110,9 @@ Then accessing these properties in your template / script. You need to change th
 |--------------- |------------|
 | obs-valid | True if all fields are valid. |
 | obs-invalid| True if at least one field is invalid. |
-| obs-reset | A method that resets validation state for all providers. `() => void` |
+| obs-reset | A method that resets the **validation state** for all providers. `() => void` |
 | obs-validate | A method that triggers validation for all providers. Mutates child providers state unless silent is true. `() => Promise<boolean>` |
+| form-reset | A method that resets the form-* properties to the initial state. Does not reset your component's data. `() => void` |
 | form-handle-submit | A method that calls the `validate()` method and then, if valid, sends an ajax request to our controller `() => void` |
 | form-submitting | Set to true when the form is being submitted. |
 | form-submit-success | Set to true when no redirect is specified and the submission was a success. |
@@ -126,10 +127,6 @@ The title of the VueComponent widget is used as the VueJS Component name when ge
 #### Template
 
 The template is where you write the VueJS component template.
-
-Important implementation notes:
-  * This field should return a **single** vue / html node.
-  * Make sure you add a name to all your inputs. The name should match the v-model name as we use this to map the server side errors to your inputs.
 
 ```html
 <v-container style="max-width: 800px">
@@ -179,11 +176,15 @@ Important implementation notes:
       <v-btn @click="obsReset">Clear</v-btn>
       <v-spacer></v-spacer>
       <v-btn @click="obsValidate()">Validate</v-btn>
-      <v-btn color="primary" @click="formHandleSubmit">Sign Up</v-btn>
+      <v-btn color="primary" @click="formHandleSubmit" :disabled="formSubmitting">Sign Up</v-btn>
     </v-card-actions>
   </v-card>
 </v-container>
 ```
+**Important implementation notes:**
+- This field should return a **single** vue / html node.
+- Make sure you add a name to all your inputs. The name should match the v-model name as we use this to map the server side errors to your inputs.
+
 
 #### Script
 
@@ -213,3 +214,9 @@ Please see the [workflow](../Workflows.md#vueforms-statcanorchardcorevueforms) d
 ## Localization (`StatCan.OrchardCore.VueForms.Localized`)
 
 While you can use Orchard's [LocalizationPart](https://docs.orchardcore.net/en/dev/docs/reference/modules/ContentLocalization/#localizationpart) to localize your forms. We suggest you use the [LocalizedText](LocalizedText.md) feature to implement i18n in your forms. This part is what we weld to your VueForm content type when you enable this feature.
+
+## Examples
+
+The following example forms are provided with the VueForms module as recipes:
+
+- Contact Form

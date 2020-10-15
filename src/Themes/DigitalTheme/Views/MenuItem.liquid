@@ -2,12 +2,12 @@
     {% shape_clear_alternates Model %}
     {% shape_type Model "MenuItemLink" %}
     {% if Model.HasItems %}
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-item dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             {{ Model.ContentItem.Content.LinkMenuItemPart.Name }}
         </a>
         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             {% for item in Model.Items %}
-            {{ item | shape_render }}
+                {{ item | shape_render }}
             {% endfor %}
         </ul>
     {% else %}

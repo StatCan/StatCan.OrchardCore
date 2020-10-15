@@ -110,6 +110,7 @@ function initForm(app) {
           'obs-reset',
           'obs-validate',
           'form-handle-submit',
+          'form-reset',
           'form-submitting',
           'form-submit-success',
           'form-success-message',
@@ -137,16 +138,19 @@ function initForm(app) {
       };
     },
     methods: {
+      formReset() {
+        Object.assign(this.$data, this.$options.data.apply(this));
+        // also reset the VeeValidate observer
+        this.$refs.obs.reset();
+      },
       formHandleSubmit(e) {
         e.preventDefault();
-        // cleanup any error / server success message
-        Object.assign(this.$data, this.$options.data.apply(this))
-
+        const vm = this;
         // keep a reference to the VeeValidate observer
-        const observer = this.$refs.obs;
+        const observer = vm.$refs.obs;
         observer.validate().then((valid) => {
           if (valid) {
-            const vm = this;
+           
             const action = vm.$refs.form.$attrs.action;
             const serializedForm = $("#" + vm.$refs.form.$attrs.id).serialize();
             vm.$data.submitting = true;

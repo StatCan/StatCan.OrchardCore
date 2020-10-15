@@ -1,5 +1,5 @@
 site_name: StatCan Orchard Core Documentation
-site_url: https://statcan.github.io/statcan.orchardcore
+site_url: https://statcan.github.io/StatCan.OrchardCore/
 repo_url: https://github.com/statcan/statcan.orchardcore
 edit_uri: edit/master/docs/en/
 repo_name: StatCan/StatCan.OrchardCore
@@ -9,8 +9,8 @@ theme:
     name: "material"
     lanaguge: en
     features:
-        - instant
-        - tabs
+      - navigation.instant
+      - navigation.tabs
     palette:
         primary: deep purple
 
@@ -53,8 +53,10 @@ nav:
     - Home: index.md
     - Development: 
         - Getting Started: development/getting-started.md
-        - Module Development: 
-             - Localization: development/localization.md
+        - Solution Templates: development/solution-templates.md
+        - Localization: development/localization.md
+        - Assets: development/assets.md
+        - Contributing: 
              - Committing: development/committing.md
              - Testing: development/testing.md
     - Reference: 
