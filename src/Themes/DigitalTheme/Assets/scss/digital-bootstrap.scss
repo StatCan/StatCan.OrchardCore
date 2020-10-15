@@ -2,6 +2,7 @@ $primary: #010101;
 $secondary: #454545;
 $bgPrimary: #fefefe;
 $bgSecondary: rgba(224, 227, 230, 0.38);
+$bgHero: #e0e3e6;
 
 $enable-responsive-font-sizes: true;
 
@@ -14,7 +15,7 @@ $enable-responsive-font-sizes: true;
 @import "toast-message";
 @import "login";
 @import "modal";
-@import "footer";
+@import "widget-fatfooter";
 @import "navbar";
 @import "branding";
 @import "widget-hero";
