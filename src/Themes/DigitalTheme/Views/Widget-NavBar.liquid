@@ -1,8 +1,8 @@
 <nav class="navbar">
   <div class="container">
     <a class="navbar-brand" href="{{'~/' | href }}">
-      <img class="d-inline-block align-top" style="height: {{ Model.ContentItem.Content.NavBar.LogoSize.Value }}rem;" src="{{ Model.ContentItem.Content.NavBar.Logo.Paths | asset_url  }}" />
-      {{Model.ContentItem.Content.NavBar.BrandName.Text}}
+      <img class="d-inline-block align-top" style="height: {{ Model.ContentItem.Content.NavBar.LogoSize.Value | raw }}rem;" src="{{ Model.ContentItem.Content.NavBar.Logo.Paths | asset_url }}" />
+      {{ Model.ContentItem.Content.NavBar.BrandName.Text }} 
     </a>
     {% if Model.ContentItem.Content.NavBar.MenuAlias.Text != null %}
       {% assign menuAlias = "alias:" | append: Model.ContentItem.Content.NavBar.MenuAlias.Text %}

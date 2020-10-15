@@ -1,7 +1,7 @@
 {% assign externalLink = Model.ContentItem.Content.LinkMenuItemPart %}
 {% assign internalLink = Model.ContentItem.Content.ContentMenuItemPart %}
 {% if externalLink %}
-    <a href="{{ externalLink.Url | href }}" target="_blank">{{ externalLink.Name }}</a>
+    <a href="{{ externalLink.Url | href }}" target="_blank" rel="noopener noreferrer" aria-label="{{ externalLink.Name }} {{ 'in a new tab' | t }}">{{ externalLink.Name }}</a>
 {% endif %}
 {% if internalLink %}
     <a href="{{ '~/' | append: internalLink.Url | href }}">{{ internalLink.Name }}</a>

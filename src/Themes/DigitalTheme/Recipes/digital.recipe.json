@@ -93,10 +93,7 @@
         "UseSiteTheme": true
       },
       "LayerSettings": {
-        "Zones": [
-          "Header",
-          "Footer"
-        ]
+        "Zones": ["Header", "Footer"]
       }
     },
     {
@@ -141,9 +138,7 @@
           "Author": "admin",
           "NavBar": {
             "Logo": {
-              "Paths": [
-                "di-2020-logo_en.svg"
-              ]
+              "Paths": ["di-2020-logo_en.svg"]
             },
             "BrandName": {
               "Text": null
@@ -176,9 +171,7 @@
           "Author": "admin",
           "NavBar": {
             "Logo": {
-              "Paths": [
-                "di-2020-logo_fr.svg"
-              ]
+              "Paths": ["di-2020-logo_fr.svg"]
             },
             "BrandName": {
               "Text": null
@@ -194,35 +187,6 @@
             "Position": 2.0,
             "Zone": "Header",
             "Layer": "French"
-          }
-        },
-        {
-          "ContentItemId": "4657cvtjt84mp48qhqbhr5v8me",
-          "ContentItemVersionId": "42tqkcx7tz0n2s27wrb6zhpbmm",
-          "ContentType": "FatFooter",
-          "DisplayText": "Site Footer",
-          "Latest": true,
-          "Published": true,
-          "ModifiedUtc": "2020-10-09T14:10:31.0841515Z",
-          "PublishedUtc": "2020-10-09T14:10:31.0939975Z",
-          "CreatedUtc": "2020-10-09T13:59:53.1246811Z",
-          "Owner": "admin",
-          "Author": "admin",
-          "FatFooter": {
-            "HubLink": {
-              "Url": null,
-              "Text": null
-            },
-            "DigitalLink": {
-              "Url": "https://digital.statcan.gc.ca",
-              "Text": "digital@statcan"
-            }
-          },
-          "LayerMetadata": {
-            "Position": 1.0,
-            "Zone": "Footer",
-            "Layer": "Everywhere",
-            "RenderTitle": false
           }
         },
         {
@@ -285,6 +249,132 @@
             "MenuItemsListPart": {
               "Position": "4"
             }
+          }
+        },
+        {
+          "ContentItemId": "4154yw3e3htmmx0ghjk4xf2156",
+          "ContentItemVersionId": "4s31c2bjy39phr60wfky4h00nz",
+          "ContentType": "Menu",
+          "DisplayText": "Footer Navigation - English",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": "2020-10-15T17:04:24.721187Z",
+          "PublishedUtc": "2020-10-15T17:04:24.726245Z",
+          "CreatedUtc": "2020-10-15T17:04:02.751182Z",
+          "Owner": "inno",
+          "Author": "inno",
+          "TitlePart": {
+            "Title": "Footer Navigation - English"
+          },
+          "AliasPart": {
+            "Alias": "footer-menu-en"
+          },
+          "MenuPart": {},
+          "MenuItemsListPart": {
+            "MenuItems": []
+          },
+          "@WeldedPartSettings": {
+            "MenuPart": {
+              "Position": "3"
+            },
+            "MenuItemsListPart": {
+              "Position": "4"
+            }
+          }
+        },
+        {
+          "ContentItemId": "4vr0w9b4v3s3gwm21qr5vmqwc9",
+          "ContentItemVersionId": "4k60qtdvhveqj0zqbye164hvd8",
+          "ContentType": "Menu",
+          "DisplayText": "Footer Navigation - French",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": "2020-10-15T17:04:41.513328Z",
+          "PublishedUtc": "2020-10-15T17:04:41.519832Z",
+          "CreatedUtc": "2020-10-15T17:04:40.042512Z",
+          "Owner": "inno",
+          "Author": "inno",
+          "TitlePart": {
+            "Title": "Footer Navigation - French"
+          },
+          "AliasPart": {
+            "Alias": "footer-menu-fr"
+          },
+          "MenuPart": {},
+          "MenuItemsListPart": {
+            "MenuItems": []
+          },
+          "@WeldedPartSettings": {
+            "MenuPart": {
+              "Position": "3"
+            },
+            "MenuItemsListPart": {
+              "Position": "4"
+            }
+          }
+        },
+        {
+          "ContentItemId": "4657cvtjt84mp48qhqbhr5v8me",
+          "ContentItemVersionId": "42tqkcx7tz0n2s27wrb6zhpbmm",
+          "ContentType": "FatFooter",
+          "DisplayText": "Site Footer - English",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": "2020-10-15T17:05:38.997308Z",
+          "PublishedUtc": "2020-10-15T17:05:39.020229Z",
+          "CreatedUtc": "2020-10-09T13:59:53.1246811Z",
+          "Owner": "admin",
+          "Author": "inno",
+          "FatFooter": {
+            "HubLink": {
+              "Url": null,
+              "Text": null
+            },
+            "DigitalLink": {
+              "Url": "https://digital.statcan.gc.ca",
+              "Text": "digital@statcan"
+            },
+            "MenuAlias": {
+              "Text": "footer-menu-en"
+            }
+          },
+          "LayerMetadata": {
+            "Position": 1.0,
+            "Zone": "Footer",
+            "Layer": "English",
+            "RenderTitle": false
+          }
+        },
+        {
+          "ContentItemId": "48xy9bzrmbtev3124crzskngdq",
+          "ContentItemVersionId": "4tesk9aqvra7q5h1wfv8szytn1",
+          "ContentType": "FatFooter",
+          "DisplayText": "Site Footer - French",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": "2020-10-15T17:06:48.821141Z",
+          "PublishedUtc": "2020-10-15T17:06:48.826731Z",
+          "CreatedUtc": "2020-10-15T17:06:27.96613Z",
+          "Owner": "inno",
+          "Author": "inno",
+          "FatFooter": {
+            "HubLink": {
+              "Url": null,
+              "Text": null
+            },
+            "DigitalLink": {
+              "Url": "https://numerique.statcan.gc.ca",
+              "Text": "numérique@statcan"
+            },
+            "MenuAlias": {
+              "Text": "footer-menu-fr"
+            }
+          },
+          "LayerMetadata": {
+            "Position": 2.0,
+            "Zone": "Footer",
+            "Layer": "French",
+            "RenderTitle": false
           }
         }
       ]
