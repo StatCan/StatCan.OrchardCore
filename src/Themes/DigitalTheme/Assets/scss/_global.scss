@@ -3,7 +3,7 @@ html {
 }
 
 body {
-  background-color: $background;
+  background-color: $bgPrimary;
   color: $black;
   display: flex;
   flex: 1 1 auto;
@@ -57,7 +57,7 @@ h2,
   @include rfs(42);
   line-height: 2.25rem;
   font-weight: 700;
-  margin-bottom: 1rem;
+  margin-bottom: 1.3rem;
 }
 h3,
 .h3 {
@@ -85,11 +85,32 @@ p,
 li {
   @include rfs(22);
   font-weight: normal;
-  line-height: 1.6rem;
+  line-height: 1.75rem;
 }
 
 li {
   margin-bottom: 1rem;
+}
+
+.content-section {
+  a:not(.btn) {
+    text-decoration: none;
+    background-color: #dddddd;
+    border-bottom: 1px solid #444444;
+    padding: 0 0.25rem 0.1rem 0.25rem;
+    &:hover {
+      text-decoration: none;
+      background-color: #cccccc;
+      border-bottom: 1px solid #333333;
+    }
+  }
+
+  a[target="_blank"]:after {
+    content: " \f35d";
+    color: $primary;
+    font-family: "Font Awesome 5 Free";
+    font-size: 1rem;
+  }
 }
 
 label {
@@ -117,7 +138,7 @@ label {
 
 .btn-primary:hover {
   color: #fff;
-  background-color: #a81723;
+  background-color: #444444;
 }
 
 .btn-sm {
@@ -159,9 +180,9 @@ hr {
 }
 
 .dropdown-menu {
-  background-color: lighten($background, 5%);
+  background-color: lighten($bgPrimary, 5%);
   border: 1px solid transparentize($primary, 0.62);
-  box-shadow: 0 0.25rem 0.5rem 0.5rem $background;
+  box-shadow: 0 0.25rem 0.5rem 0.5rem $bgPrimary;
   .dropdown-divider {
     border-top: 1px solid transparentize($primary, 0.81);
   }
@@ -190,12 +211,6 @@ hr {
   }
 }
 
-.powered-by-di {
-  padding-top: 1rem;
-  padding-bottom: 0.25rem;
-  font-weight: 300;
-}
-
 .account-page {
   /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#000000+0,000000+100&0+0,0.62+38,0.62+62,0+100 */
   background: -moz-linear-gradient(
@@ -222,18 +237,18 @@ hr {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */
 }
 
-@include media-breakpoint-up(lg) {
-  .btn {
-    &.btn-primary {
-      transition-property: transform;
-      transition-duration: 300ms;
-      transition-timing-function: ease-out;
-      &:hover {
-        transform: translateY(-5px);
-      }
-      &:focus {
-        transform: translateY(-5px);
-      }
-    }
-  }
-}
+// @include media-breakpoint-up(lg) {
+//   .btn {
+//     &.btn-primary {
+//       transition-property: transform;
+//       transition-duration: 300ms;
+//       transition-timing-function: ease-out;
+//       &:hover {
+//         transform: translateY(-5px);
+//       }
+//       &:focus {
+//         transform: translateY(-5px);
+//       }
+//     }
+//   }
+// }

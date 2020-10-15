@@ -2,9 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>$(AspNetCoreTargetFramework)</TargetFramework>
-    <IncludeBuildOutput>false</IncludeBuildOutput>
   </PropertyGroup>
-
 
   <ItemGroup>
     <!-- 
@@ -23,12 +21,12 @@
     <ProjectReference Include="..\..\Modules\StatCan.OrchardCore.Hackathon\StatCan.OrchardCore.Hackathon.csproj" PrivateAssets="none" />
     <ProjectReference Include="..\..\Modules\StatCan.OrchardCore.Matomo\StatCan.OrchardCore.Matomo.csproj" PrivateAssets="none" />
     <ProjectReference Include="..\..\Modules\StatCan.OrchardCore.Scripting\StatCan.OrchardCore.Scripting.csproj" PrivateAssets="none" />
-    <ProjectReference Include="..\..\Modules\StatCan.OrchardCore.Workflows\StatCan.OrchardCore.Workflows.csproj" PrivateAssets="none" />
     <ProjectReference Include="..\..\Modules\StatCan.OrchardCore.WebpageCore\StatCan.OrchardCore.WebpageCore.csproj" PrivateAssets="none" />
+    <ProjectReference Include="..\..\Modules\StatCan.OrchardCore.VueForms\StatCan.OrchardCore.VueForms.csproj" PrivateAssets="none" />
 
     <!-- Included OpenSource Extensions -->
-    <ProjectReference Include="..\..\Modules\Helpful-Extensions\Lombiq.HelpfulExtensions.csproj" PrivateAssets="none" />
-    <ProjectReference Include="..\..\Modules\Etch.OrchardCore.ContentPermissions\Etch.OrchardCore.ContentPermissions.csproj" PrivateAssets="none" />
+    <ProjectReference Include="..\..\Modules\StatCan.OrchardCore.Helpful-Extensions\StatCan.OrchardCore.HelpfulExtensions.csproj" PrivateAssets="none" />
+    <ProjectReference Include="..\..\Modules\StatCan.OrchardCore.ContentPermissions\StatCan.OrchardCore.ContentPermissions.csproj" PrivateAssets="none" />
     
     <!-- Themes -->
     <ProjectReference Include="..\..\Themes\BootstrapTheme\BootstrapTheme.csproj" PrivateAssets="none" />
@@ -36,6 +34,7 @@
     <ProjectReference Include="..\..\Themes\DigitalTheme\DigitalTheme.csproj" PrivateAssets="none" />
     <ProjectReference Include="..\..\Themes\DigitalAdmin\DigitalAdmin.csproj" PrivateAssets="none" />
     <ProjectReference Include="..\..\Themes\HackathonTheme\HackathonTheme.csproj" PrivateAssets="none" />
+
 
   </ItemGroup>
 

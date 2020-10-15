@@ -1,5 +1,10 @@
 #footer-section {
-  background-color: $background2;
+  background-color: $bgSecondary;
   min-height: 12.5rem;
   padding-top: 3rem;
+
+  .powered-by-di {
+    margin-top: 0.25rem;
+    font-weight: 500;
+  }
 }

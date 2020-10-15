@@ -1,6 +1,6 @@
 {
-  "name": "digital-recipe",
-  "displayName": "Digital Theme recipe",
+  "name": "digital-theme-setup",
+  "displayName": "Digital Theme Setup",
   "description": "Enables the features required to work with this theme",
   "author": "Digital Innovation Team",
   "website": "https://digital.statcan.gc.ca",
@@ -54,6 +54,9 @@
         "OrchardCore.Templates",
         "OrchardCore.Widgets",
         "OrchardCore.Email",
+        "StatCan.OrchardCore.WebpageCore.PageLayout",
+        "StatCan.OrchardCore.WebpageCore.ContentLayout",
+        "StatCan.OrchardCore.WebpageCore.MenuItemParts",
         "DigitalTheme",
         "TheAdmin",
         "SafeMode"

@@ -1,3 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="31" viewBox="0 0 1920 31">
-  <path id="BG" d="M1920,906H0V875H930l30,30h960Z" transform="translate(0 -875)" fill="#e0e3e6"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="3840" height="30" viewBox="0 0 3840 30">
+  <g id="HERO" transform="translate(1 1)">
+    <path id="BG" d="M0,876H3840v30H1950l-30-30Z" transform="translate(-1 -877)" fill="#fff"/>
+  </g>
 </svg>
