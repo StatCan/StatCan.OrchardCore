@@ -23,7 +23,7 @@ namespace StatCan.OrchardCore.Security
                 builder.AddFormAction().Self().From("github.com").From("account.gccollab.ca").From("login.microsoftonline.com");
                 builder.AddFrameAncestors().Self();
                 builder.AddDefaultSrc().Self();
-                builder.AddImgSrc().Self().Data().From("*.statcan.ca").From("*.statcan.gc.ca")
+                builder.AddImgSrc().Self().Data().From("*.statcan.ca").From("*.statcan.gc.ca").From("*.omtrdc.net").From("*.demdex.net")
                 .From("cm.everesttech.net"); // adobe analytics
                 builder.AddFontSrc().Self().Data().From("cdn.jsdelivr.net").From("fonts.googleapis.com").From("fonts.gstatic.com");
                 builder.AddStyleSrc().UnsafeInline().Self()
@@ -47,6 +47,13 @@ namespace StatCan.OrchardCore.Security
                 .From("stackpath.bootstrapcdn.com")
                 .From("*.statcan.ca")
                 .From("*.statcan.gc.ca")
+                .From("*.2o7.net")
+                .From("*.omtrdc.net")
+                .From("*.tt.omtrdc.net")
+                .From("assets.adobedtm.com")
+                .From("*.demdex.net")
+                .From("cm.everesttech.net")
+                .From("*.adobe.com")
                ;
                 builder.AddFrameSource().Self().From("canada.demdex.net"); // adobe analytics
             });
