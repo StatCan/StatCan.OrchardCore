@@ -1,5 +1,5 @@
 /// <reference types="Cypress" />
-import { generateTenantInfo } from '../support/objects';
+import { generateTenantInfo } from 'cypress-orchardcore/utils';
 
 describe("ContactForm Test", function() {    
   it("Create ContactForm tenant ", function() {
