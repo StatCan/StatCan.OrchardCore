@@ -1,4 +1,39 @@
 .widget-section {
+  position: relative;
+
+  .widget-section-divider {
+    position: absolute;
+    height: 100%;
+    width: 100vw;
+    z-index: -1;
+    &.divider-steps-1 {
+      background-image: url("../images/divider-steps-1.svg");
+    }
+    &.divider-steps-2 {
+      background-image: url("../images/divider-steps-2.svg");
+    }
+    background-position: top center;
+    background-size: auto;
+    &.top {
+      transform: scaleY(1);
+      &.mirrorX {
+        transform: scaleX(-1) scaleY(1);
+      }
+      &.mirrorY {
+        transform: scaleX(-1) scaleY(-1);
+      }
+    }
+    &.bottom {
+      transform: scaleY(-1);
+      &.mirrorX {
+        transform: scaleX(-1) scaleY(-1);
+      }
+      &.mirrorY {
+        transform: scaleX(1) scaleY(1);
+      }
+    }
+  }
+
   &.bg-vanilla {
     &.primary {
       background: $bgPrimary;
