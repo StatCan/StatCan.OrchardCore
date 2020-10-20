@@ -24,30 +24,37 @@ namespace StatCan.OrchardCore.Security
                 builder.AddFrameAncestors().Self();
                 builder.AddDefaultSrc().Self();
                 builder.AddImgSrc().Self().Data().From("*.statcan.ca").From("*.statcan.gc.ca")
-                .From("cm.everesttech.net"); // adobe analytics
+                    .From("*.omtrdc.net").From("*.demdex.net").From("cm.everesttech.net"); // adobe analytics
                 builder.AddFontSrc().Self().Data().From("cdn.jsdelivr.net").From("fonts.googleapis.com").From("fonts.gstatic.com");
                 builder.AddStyleSrc().UnsafeInline().Self()
-                .From("cdn.jsdelivr.net")
-                .From("fonts.googleapis.com")
-                .From("code.jquery.com")
-                .From("unpkg.com")
-                .From("cdnjs.cloudflare.com")
-                .From("stackpath.bootstrapcdn.com")
-                ;
+                    .From("cdn.jsdelivr.net")
+                    .From("fonts.googleapis.com")
+                    .From("code.jquery.com")
+                    .From("unpkg.com")
+                    .From("cdnjs.cloudflare.com")
+                    .From("stackpath.bootstrapcdn.com");
                 builder.AddConnectSrc().Self().From("cdn.jsdelivr.net").From("dpm.demdex.net").From("canada.sc.omtrdc.net"); // adobe analytics
-                // unsafe-eval needed for vue.js runtime templates
-                builder.AddScriptSrc().UnsafeEval().UnsafeInline().Self()
-                .From("assets.adobedtm.com") // adobe analytics
-                .From("cdn.jsdelivr.net")
-                .From("code.jquery.com")
-                .From("ajax.googleapis.com")
-                .From("cdnjs.cloudflare.com")
-                .From("vuejs.org")
-                .From("unpkg.com")
-                .From("stackpath.bootstrapcdn.com")
-                .From("*.statcan.ca")
-                .From("*.statcan.gc.ca")
-               ;
+
+                builder.AddScriptSrc()
+                    .UnsafeEval() // for vue-js in oc admin
+                    .UnsafeInline() // for oc admin
+                    .Self()
+                    .From("cdn.jsdelivr.net")
+                    .From("code.jquery.com")
+                    .From("ajax.googleapis.com")
+                    .From("cdnjs.cloudflare.com")
+                    .From("vuejs.org")
+                    .From("unpkg.com")
+                    .From("stackpath.bootstrapcdn.com")
+                    .From("*.statcan.ca")
+                    .From("*.statcan.gc.ca")
+                    .From("*.2o7.net") // adobe analytics
+                    .From("*.omtrdc.net") // adobe analytics
+                    .From("*.tt.omtrdc.net") // adobe analytics
+                    .From("assets.adobedtm.com") // adobe analytics
+                    .From("*.demdex.net") // adobe analytics
+                    .From("cm.everesttech.net") // adobe analytics
+                    .From("*.adobe.com"); // adobe analytics
                 builder.AddFrameSource().Self().From("canada.demdex.net"); // adobe analytics
             });
 
