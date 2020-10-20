@@ -7,4 +7,10 @@
       {% endfor %}
     </div>
   </div>
+  {% if Model.ContentItem.Content.Section.TopDivider.Text %}
+    <div class="widget-section-divider top {{ Model.ContentItem.Content.Section.TopDivider.Text }}"></div>
+  {% endif %}
+  {% if Model.ContentItem.Content.Section.BottomDivider.Text %}
+    <div class="widget-section-divider bottom {{ Model.ContentItem.Content.Section.BottomDivider.Text }}"></div>
+  {% endif %}
 </section>

@@ -7,7 +7,7 @@
           {% shape "menu", alias: menuAlias, cache_id: "footer", cache_fixed_duration: "00:00:01", cache_tag: menuAlias %}
         </div>
       {% endif %}
-      <div class="{% if Model.ContentItem.Content.FatFooter.MenuAlias.Text != null %}col-md-4 col-12{% else %}col-12{% endif %} d-flex align-items-top justify-content-md-end justify-content-center">
+      <div class="{% if Model.ContentItem.Content.FatFooter.MenuAlias.Text != null %}col-md-4 col-12 justify-content-md-end{% else %}col-12 justify-content-md-center{% endif %} d-flex align-items-top  justify-content-center">
         <a aria-label="{{ 'Digital Innovation logo' | t }}" class="d-flex flex-column align-items-center" href="{{ Model.ContentItem.Content.FatFooter.DigitalLink.Url }}">
           {{ "DigitalInnovationLogo" | shape_new | shape_render }}
           <span class="powered-by-di">{{ Model.ContentItem.Content.FatFooter.DigitalLink.Text }}</span>
