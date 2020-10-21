@@ -80,7 +80,7 @@
     },
     {
       "name": "themes",
-      "admin": "TheAdmin",
+      "admin": "DigitalAdmin",
       "site": "PortalTheme"
     }
   ]
