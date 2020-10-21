@@ -1,0 +1,18 @@
+#footer-section {
+  background: $bgHero url("../images/DigitalHeroStepUp.svg") center top
+    no-repeat;
+  min-height: 12.5rem;
+  padding-top: 3rem;
+  border-top: 3rem solid $bgPrimary;
+  .powered-by-di {
+    margin-top: 0.25rem;
+    font-weight: 500;
+  }
+
+  a[target="_blank"]:after {
+    content: " \f35d";
+    color: $primary;
+    font-family: "Font Awesome 5 Free";
+    font-size: 1rem;
+  }
+}

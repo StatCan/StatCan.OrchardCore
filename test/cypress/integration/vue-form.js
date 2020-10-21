@@ -1,5 +1,5 @@
 /// <reference types="Cypress" />
-import { generateTenantInfo } from '../support/objects';
+import { generateTenantInfo } from 'cypress-orchardcore/utils';
 
 const contentId = "45kdfafn7sv6racbrhaarghjma"
 

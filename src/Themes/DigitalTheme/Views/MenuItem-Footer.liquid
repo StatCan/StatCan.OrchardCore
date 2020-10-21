@@ -1,0 +1,24 @@
+<li>
+    {% shape_clear_alternates Model %}
+    {% shape_type Model "MenuItemLink" %}
+    {% if Model.HasItems %}
+        <ul class="list-unstyled">
+            <li>
+                {% if Model.ContentItem.Content.LinkMenuItemPart.Url %}
+                    <a class="font-weight-bold small text-uppercase" href="{{ Model.ContentItem.Content.LinkMenuItemPart.Url }}">
+                        {{ Model.ContentItem.Content.LinkMenuItemPart.Name }}
+                    </a>
+                {% else %}
+                    <span class="font-weight-bold small text-uppercase">
+                        {{ Model.ContentItem.Content.LinkMenuItemPart.Name }}
+                    </span>
+                {% endif %}
+            </li>
+            {% for item in Model.Items %}
+                {{ item | shape_render }}
+            {% endfor %}
+        </ul>
+    {% else %}
+        {{ Model | shape_render }}
+    {% endif %}
+</li>

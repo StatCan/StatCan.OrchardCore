@@ -42,13 +42,13 @@ h1,
 @media (max-width: 768px) {
   h1,
   .h1 {
-    line-height: 3.75rem;
+    line-height: 4.75rem;
   }
 }
 @media (max-width: 576px) {
   h1,
   .h1 {
-    line-height: 2.75rem;
+    line-height: 3.75rem;
   }
 }
 
@@ -64,6 +64,7 @@ h3,
   @include rfs(26);
   line-height: 1.875rem;
   font-weight: 600;
+  margin-top: 3rem;
   margin-bottom: 1rem;
 }
 h4,
@@ -90,27 +91,6 @@ li {
 
 li {
   margin-bottom: 1rem;
-}
-
-.content-section {
-  a:not(.btn) {
-    text-decoration: none;
-    background-color: #dddddd;
-    border-bottom: 1px solid #444444;
-    padding: 0 0.25rem 0.1rem 0.25rem;
-    &:hover {
-      text-decoration: none;
-      background-color: #cccccc;
-      border-bottom: 1px solid #333333;
-    }
-  }
-
-  a[target="_blank"]:after {
-    content: " \f35d";
-    color: $primary;
-    font-family: "Font Awesome 5 Free";
-    font-size: 1rem;
-  }
 }
 
 label {
@@ -252,3 +232,8 @@ hr {
 //     }
 //   }
 // }
+
+code {
+  color: black !important;
+  font-weight: 800;
+}

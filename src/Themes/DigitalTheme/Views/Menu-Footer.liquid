@@ -1,0 +1,10 @@
+{% assign count = Model.ContentItem.Content.MenuItemsListPart.MenuItems | size %}
+<nav>
+    <div class="row list-unstyled text-sm-left text-center">
+        {% for item in Model.Items %}
+            <div class="pb-5 col-lg-{{ 12 | divided_by: count }} col-sm-6 col-12">
+                {{ item | shape_render }}
+            </div>
+        {% endfor %}
+    </div>
+</nav>

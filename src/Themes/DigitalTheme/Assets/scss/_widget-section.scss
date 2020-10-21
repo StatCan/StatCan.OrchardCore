@@ -1,0 +1,151 @@
+.widget-section {
+  position: relative;
+
+  .widget-section-divider {
+    position: absolute;
+    height: 100%;
+    width: 100vw;
+    z-index: -1;
+    &.divider-steps-1 {
+      background-image: url("../images/divider-steps-1.svg");
+    }
+    &.divider-steps-2 {
+      background-image: url("../images/divider-steps-2.svg");
+    }
+    background-position: top center;
+    background-size: auto;
+    &.top {
+      transform: scaleY(1);
+      &.mirrorX {
+        transform: scaleX(-1) scaleY(1);
+      }
+      &.mirrorY {
+        transform: scaleX(-1) scaleY(-1);
+      }
+    }
+    &.bottom {
+      transform: scaleY(-1);
+      &.mirrorX {
+        transform: scaleX(-1) scaleY(-1);
+      }
+      &.mirrorY {
+        transform: scaleX(1) scaleY(1);
+      }
+    }
+  }
+
+  &.bg-vanilla {
+    &.primary {
+      background: $bgPrimary;
+    }
+    &.secondary {
+      background: $bgSecondary;
+    }
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+  }
+
+  &.bg-circuit {
+    &.primary {
+      background-image: url("../images/CircuitL.svg"),
+        url("../images/CircuitR.svg"), url("../images/DigitalHeroStepDown.svg"),
+        url("../images/BG1StepUp.svg");
+    }
+    background-position: right 85vw top 0, left 85vw top -4rem, center top,
+      center bottom;
+    background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
+    padding-top: 10rem;
+    padding-bottom: 10rem;
+  }
+
+  &.bg-steps {
+    &.primary {
+      background-image: url("../images/BG1StepDown.svg"),
+        url("../images/FooterStepDown.svg");
+    }
+    background-position: center top, center bottom;
+    background-size: auto, auto;
+    background-repeat: no-repeat, no-repeat;
+    padding-top: 9rem;
+    padding-bottom: 9rem;
+  }
+  a:not(.btn) {
+    text-decoration: none;
+    background-color: #dddddd;
+    border-bottom: 1px solid #444444;
+    padding: 0 0.25rem 0.1rem 0.25rem;
+    &:hover {
+      text-decoration: none;
+      background-color: #cccccc;
+      border-bottom: 1px solid #333333;
+    }
+  }
+
+  a[target="_blank"]:after {
+    content: " \f35d";
+    color: $primary;
+    font-family: "Font Awesome 5 Free";
+    font-size: 1rem;
+  }
+
+  .row > .column {
+    position: relative;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+  .row.full > .column {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  .row.half-half > .column {
+    flex: 0 0 100%;
+    max-width: 100%;
+    @include media-breakpoint-up(lg) {
+      flex: 0 0 50%;
+      max-width: 50%;
+    }
+  }
+  .row.quarter-quarter-half {
+    > .column:nth-child(3n + 1) {
+      flex: 0 0 50%;
+      max-width: 50%;
+      @include media-breakpoint-up(lg) {
+        flex: 0 0 25%;
+        max-width: 25%;
+      }
+    }
+    > .column:nth-child(3n + 2) {
+      flex: 0 0 50%;
+      max-width: 50%;
+      @include media-breakpoint-up(lg) {
+        flex: 0 0 25%;
+        max-width: 25%;
+      }
+    }
+    > .column:nth-child(3n + 3) {
+      flex: 0 0 100%;
+      max-width: 100%;
+      @include media-breakpoint-up(lg) {
+        flex: 0 0 50%;
+        max-width: 50%;
+      }
+    }
+  }
+  .row.third-third-third > .column {
+    flex: 0 0 100%;
+    max-width: 100%;
+    @include media-breakpoint-up(lg) {
+      flex: 0 0 33.3333%;
+      max-width: 33.3333%;
+    }
+  }
+  .row.quarter-quarter-quarter-quarter > .column {
+    flex: 0 0 100%;
+    max-width: 100%;
+    @include media-breakpoint-up(lg) {
+      flex: 0 0 25%;
+      max-width: 25%;
+    }
+  }
+}

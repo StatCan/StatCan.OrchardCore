@@ -1,11 +1,8 @@
 /// <reference types="Cypress" />
 
-import { creds } from "../support/objects";
-
 const sassCreds = {
   name: "Testing SaaS",
   setupRecipe: "SaaS",
-  ...creds
 }
 
 describe("SaaS site setup", function() {

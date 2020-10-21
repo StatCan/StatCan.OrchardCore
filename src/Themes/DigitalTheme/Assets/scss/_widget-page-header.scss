@@ -1,0 +1,14 @@
+.widget-page-header {
+  background-color: $bgHero;
+  background: $bgHero url("../images/DigitalHeroStepUp.svg") center top
+    no-repeat;
+  background-position: center top;
+  background-size: auto;
+  background-repeat: no-repeat;
+  min-height: 12rem;
+  padding-top: 2rem;
+  img {
+    position: relative;
+    top: 1rem;
+  }
+}

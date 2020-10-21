@@ -1,0 +1,27 @@
+.widget-hero {
+  background: url("../images/DigitalHeroBG.svg") center 5.5rem no-repeat,
+    $bgHero url("../images/DigitalHeroStepUp.svg") center top no-repeat;
+  background-size: auto 80%, auto;
+  min-height: 35rem;
+}
+@media (max-width: 992px) {
+  .widget-hero {
+    background: url("../images/DigitalHeroBG.svg") center 4.5rem no-repeat,
+      $bgHero url("../images/DigitalHeroStepUp.svg") center top no-repeat;
+    min-height: 30rem;
+  }
+}
+@media (max-width: 768px) {
+  .widget-hero {
+    background: url("../images/DigitalHeroBG.svg") center 4.2rem no-repeat,
+      $bgHero url("../images/DigitalHeroStepUp.svg") center top no-repeat;
+    min-height: 27rem;
+  }
+}
+@media (max-width: 576px) {
+  .widget-hero {
+    background: url("../images/DigitalHeroBG.svg") center 4rem no-repeat,
+      $bgHero url("../images/DigitalHeroStepUp.svg") center top no-repeat;
+    min-height: 23rem;
+  }
+}

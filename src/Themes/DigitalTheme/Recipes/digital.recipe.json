@@ -11,61 +11,74 @@
   "steps": [
     {
       "name": "feature",
-      "disable": [],
       "enable": [
-        // SaaS
-        "OrchardCore.HomeRoute",
-        "OrchardCore.Admin",
-        "OrchardCore.Diagnostics",
-        "OrchardCore.DynamicCache",
-        "OrchardCore.Features",
-        "OrchardCore.Navigation",
-        "OrchardCore.Recipes",
+        "Application.Default",
+        "StatCan.OrchardCore.Cms.Web",
         "OrchardCore.Resources",
-        "OrchardCore.Roles",
+        "OrchardCore.Liquid",
         "OrchardCore.Settings",
-        "OrchardCore.Themes",
-        "OrchardCore.Users",
-
-        // Content Management
-        "OrchardCore.Alias",
+        "OrchardCore.Contents",
+        "OrchardCore.ContentTypes",
         "OrchardCore.Autoroute",
+        "OrchardCore.Widgets",
+        "OrchardCore.Flows",
+        "OrchardCore.Title",
+        "OrchardCore.Shortcodes",
         "OrchardCore.Html",
+        "OrchardCore.Admin",
+        "OrchardCore.Templates",
+        "OrchardCore.Alias",
         "OrchardCore.ContentFields",
+        "OrchardCore.Localization",
         "OrchardCore.ContentLocalization",
         "OrchardCore.ContentLocalization.ContentCulturePicker",
         "OrchardCore.ContentPreview",
-        "OrchardCore.Contents",
-        "OrchardCore.ContentTypes",
-        "OrchardCore.CustomSettings",
         "OrchardCore.Deployment",
+        "OrchardCore.Contents.Deployment.Download",
+        "OrchardCore.CustomSettings",
+        "OrchardCore.Diagnostics",
+        "OrchardCore.DynamicCache",
+        "OrchardCore.Email",
+        "OrchardCore.Features",
         "OrchardCore.Feeds",
-        "OrchardCore.Flows",
+        "OrchardCore.HomeRoute",
         "OrchardCore.Indexing",
+        "OrchardCore.Scripting",
         "OrchardCore.Layers",
-        "OrchardCore.Localization",
         "OrchardCore.Lists",
+        "OrchardCore.Lucene",
         "OrchardCore.Markdown",
         "OrchardCore.Media",
         "OrchardCore.Menu",
+        "OrchardCore.Navigation",
         "OrchardCore.Queries",
+        "OrchardCore.Users",
+        "OrchardCore.Recipes",
+        "OrchardCore.Roles",
         "OrchardCore.Shortcodes.Templates",
-        "OrchardCore.Title",
-        "OrchardCore.Templates",
-        "OrchardCore.Widgets",
-        "OrchardCore.Email",
-        "StatCan.OrchardCore.WebpageCore.PageLayout",
-        "StatCan.OrchardCore.WebpageCore.ContentLayout",
-        "StatCan.OrchardCore.WebpageCore.MenuItemParts",
-        "DigitalTheme",
+        "OrchardCore.Themes",
+        "OrchardCore.Workflows",
+        "OrchardCore.Workflows.Http",
+        "StatCan.OrchardCore.ContentFields",
+        "StatCan.OrchardCore.ContentFields.PredefinedGroup",
+        "StatCan.OrchardCore.LocalizedText",
+        "StatCan.OrchardCore.Scripting",
+        "StatCan.OrchardCore.VueForms",
+        "StatCan.OrchardCore.VueForms.Localized",
         "TheAdmin",
+        "DigitalAdmin",
+        "DigitalTheme",
         "SafeMode"
-      ]
+      ],
+      "disable": []
     },
     {
       "name": "Settings",
       "TimeZoneId": "America/Toronto",
       "AppendVersion": true,
+      "AdminSettings": {
+        "DisplayMenuFilter": true
+      },
       "LocalizationSettings": {
         "DefaultCulture": "en",
         "SupportedCultures": ["fr", "en"]
@@ -78,12 +91,306 @@
       },
       "RegistrationSettings": {
         "UseSiteTheme": true
+      },
+      "LayerSettings": {
+        "Zones": ["Header", "Footer"]
       }
     },
     {
       "name": "themes",
-      "admin": "TheAdmin",
+      "admin": "DigitalAdmin",
       "site": "DigitalTheme"
+    },
+    {
+      "name": "Layers",
+      "Layers": [
+        {
+          "Name": "Everywhere",
+          "Rule": "true",
+          "Description": "Widgets on this layer are displayed everywhere."
+        },
+        {
+          "Name": "French",
+          "Rule": "culture(\"fr\")",
+          "Description": "French culture"
+        },
+        {
+          "Name": "English",
+          "Rule": "culture(\"en\")",
+          "Description": "English culture"
+        }
+      ]
+    },
+    {
+      "name": "content",
+      "data": [
+        {
+          "ContentItemId": "4q26we23s7a71303anmrhys0x2",
+          "ContentItemVersionId": "4t3w78zjphbrtsbag35460dem9",
+          "ContentType": "NavBar",
+          "DisplayText": "Site Navbar - English",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": "2020-10-09T14:05:10.2512535Z",
+          "PublishedUtc": "2020-10-09T14:05:10.2604948Z",
+          "CreatedUtc": "2020-10-08T18:39:40.2899865Z",
+          "Owner": "admin",
+          "Author": "admin",
+          "NavBar": {
+            "Logo": {
+              "Paths": ["di-2020-logo_en.svg"]
+            },
+            "BrandName": {
+              "Text": null
+            },
+            "LogoSize": {
+              "Value": 3.5
+            },
+            "MenuAlias": {
+              "Text": "site-menu-en"
+            }
+          },
+          "LayerMetadata": {
+            "Position": 1.0,
+            "Zone": "Header",
+            "Layer": "English",
+            "RenderTitle": false
+          }
+        },
+        {
+          "ContentItemId": "4ywyy13zx80cptghch5cbpvtd3",
+          "ContentItemVersionId": "4e7hq8wq66ew2srhmft1t7pwms",
+          "ContentType": "NavBar",
+          "DisplayText": "Site Navbar - French",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": "2020-10-09T14:05:40.1100351Z",
+          "PublishedUtc": "2020-10-09T14:05:40.1137361Z",
+          "CreatedUtc": "2020-10-09T14:05:40.1100351Z",
+          "Owner": "admin",
+          "Author": "admin",
+          "NavBar": {
+            "Logo": {
+              "Paths": ["di-2020-logo_fr.svg"]
+            },
+            "BrandName": {
+              "Text": null
+            },
+            "LogoSize": {
+              "Value": 3.5
+            },
+            "MenuAlias": {
+              "Text": "site-menu-fr"
+            }
+          },
+          "LayerMetadata": {
+            "Position": 2.0,
+            "Zone": "Header",
+            "Layer": "French"
+          }
+        },
+        {
+          "ContentItemId": "4vemmbc4m47whtqjqxmbwfscmy",
+          "ContentItemVersionId": "4m11y48a7kym634fn5g7fnq2n6",
+          "ContentType": "Menu",
+          "DisplayText": "Site Menu - French",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": "2020-10-09T14:09:20.4388764Z",
+          "PublishedUtc": "2020-10-09T14:09:20.4444086Z",
+          "CreatedUtc": "2020-10-09T14:07:50.8024562Z",
+          "Owner": "admin",
+          "Author": "admin",
+          "TitlePart": {
+            "Title": "Site Menu - French"
+          },
+          "AliasPart": {
+            "Alias": "site-menu-fr"
+          },
+          "MenuPart": {},
+          "MenuItemsListPart": {
+            "MenuItems": []
+          },
+          "@WeldedPartSettings": {
+            "MenuPart": {
+              "Position": "3"
+            },
+            "MenuItemsListPart": {
+              "Position": "4"
+            }
+          }
+        },
+        {
+          "ContentItemId": "4htq1w44evs08r8x9p33pc43w6",
+          "ContentItemVersionId": "4rne6adyy09zr763v0ffqf27ww",
+          "ContentType": "Menu",
+          "DisplayText": "Site Menu - English",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": "2020-10-09T14:09:56.269567Z",
+          "PublishedUtc": "2020-10-09T14:09:56.2762402Z",
+          "CreatedUtc": "2020-10-09T13:01:52.7664943Z",
+          "Owner": "admin",
+          "Author": "admin",
+          "TitlePart": {
+            "Title": "Site Menu - English"
+          },
+          "AliasPart": {
+            "Alias": "site-menu-en"
+          },
+          "MenuPart": {},
+          "MenuItemsListPart": {
+            "MenuItems": []
+          },
+          "@WeldedPartSettings": {
+            "MenuPart": {
+              "Position": "3"
+            },
+            "MenuItemsListPart": {
+              "Position": "4"
+            }
+          }
+        },
+        {
+          "ContentItemId": "4154yw3e3htmmx0ghjk4xf2156",
+          "ContentItemVersionId": "4s31c2bjy39phr60wfky4h00nz",
+          "ContentType": "Menu",
+          "DisplayText": "Footer Navigation - English",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": "2020-10-15T17:04:24.721187Z",
+          "PublishedUtc": "2020-10-15T17:04:24.726245Z",
+          "CreatedUtc": "2020-10-15T17:04:02.751182Z",
+          "Owner": "inno",
+          "Author": "inno",
+          "TitlePart": {
+            "Title": "Footer Navigation - English"
+          },
+          "AliasPart": {
+            "Alias": "footer-menu-en"
+          },
+          "MenuPart": {},
+          "MenuItemsListPart": {
+            "MenuItems": []
+          },
+          "@WeldedPartSettings": {
+            "MenuPart": {
+              "Position": "3"
+            },
+            "MenuItemsListPart": {
+              "Position": "4"
+            }
+          }
+        },
+        {
+          "ContentItemId": "4vr0w9b4v3s3gwm21qr5vmqwc9",
+          "ContentItemVersionId": "4k60qtdvhveqj0zqbye164hvd8",
+          "ContentType": "Menu",
+          "DisplayText": "Footer Navigation - French",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": "2020-10-15T17:04:41.513328Z",
+          "PublishedUtc": "2020-10-15T17:04:41.519832Z",
+          "CreatedUtc": "2020-10-15T17:04:40.042512Z",
+          "Owner": "inno",
+          "Author": "inno",
+          "TitlePart": {
+            "Title": "Footer Navigation - French"
+          },
+          "AliasPart": {
+            "Alias": "footer-menu-fr"
+          },
+          "MenuPart": {},
+          "MenuItemsListPart": {
+            "MenuItems": []
+          },
+          "@WeldedPartSettings": {
+            "MenuPart": {
+              "Position": "3"
+            },
+            "MenuItemsListPart": {
+              "Position": "4"
+            }
+          }
+        },
+        {
+          "ContentItemId": "4657cvtjt84mp48qhqbhr5v8me",
+          "ContentItemVersionId": "42tqkcx7tz0n2s27wrb6zhpbmm",
+          "ContentType": "FatFooter",
+          "DisplayText": "Site Footer - English",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": "2020-10-15T17:05:38.997308Z",
+          "PublishedUtc": "2020-10-15T17:05:39.020229Z",
+          "CreatedUtc": "2020-10-09T13:59:53.1246811Z",
+          "Owner": "admin",
+          "Author": "inno",
+          "FatFooter": {
+            "HubLink": {
+              "Url": null,
+              "Text": null
+            },
+            "DigitalLink": {
+              "Url": "https://digital.statcan.gc.ca",
+              "Text": "digital@statcan"
+            },
+            "MenuAlias": {
+              "Text": "footer-menu-en"
+            }
+          },
+          "LayerMetadata": {
+            "Position": 1.0,
+            "Zone": "Footer",
+            "Layer": "English",
+            "RenderTitle": false
+          }
+        },
+        {
+          "ContentItemId": "48xy9bzrmbtev3124crzskngdq",
+          "ContentItemVersionId": "4tesk9aqvra7q5h1wfv8szytn1",
+          "ContentType": "FatFooter",
+          "DisplayText": "Site Footer - French",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": "2020-10-15T17:06:48.821141Z",
+          "PublishedUtc": "2020-10-15T17:06:48.826731Z",
+          "CreatedUtc": "2020-10-15T17:06:27.96613Z",
+          "Owner": "inno",
+          "Author": "inno",
+          "FatFooter": {
+            "HubLink": {
+              "Url": null,
+              "Text": null
+            },
+            "DigitalLink": {
+              "Url": "https://numerique.statcan.gc.ca",
+              "Text": "numérique@statcan"
+            },
+            "MenuAlias": {
+              "Text": "footer-menu-fr"
+            }
+          },
+          "LayerMetadata": {
+            "Position": 2.0,
+            "Zone": "Footer",
+            "Layer": "French",
+            "RenderTitle": false
+          }
+        }
+      ]
+    },
+    {
+      "name": "media",
+      "Files": [
+        {
+          "SourcePath": "assets/di-2020-logo_en.svg",
+          "TargetPath": "di-2020-logo_en.svg"
+        },
+        {
+          "SourcePath": "assets/di-2020-logo_fr.svg",
+          "TargetPath": "di-2020-logo_fr.svg"
+        }
+      ]
     }
   ]
 }
