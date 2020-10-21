@@ -1,6 +1,6 @@
 {
-  "name": "hackathon-recipe",
-  "displayName": "Hackathon Theme recipe",
+  "name": "hackathon-setup-recipe",
+  "displayName": "Hackathon Theme Setup",
   "description": "Enables the features required to work with this theme",
   "author": "Digital Innovation Team",
   "website": "https://digital.statcan.gc.ca",
@@ -54,8 +54,9 @@
         "OrchardCore.Templates",
         "OrchardCore.Widgets",
         "OrchardCore.Email",
+        "StatCan.OrchardCore.Hackathon",
         "HackathonTheme",
-        "TheAdmin",
+        "DigitalAdmin",
         "SafeMode"
       ]
     },
@@ -79,7 +80,7 @@
     },
     {
       "name": "themes",
-      "admin": "TheAdmin",
+      "admin": "DigitalAdmin",
       "site": "HackathonTheme"
     }
   ]
