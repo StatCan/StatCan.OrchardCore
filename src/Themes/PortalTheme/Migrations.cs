@@ -5,11 +5,13 @@ using OrchardCore.ContentManagement.Metadata.Settings;
 using OrchardCore.Contents.Models;
 using OrchardCore.Data.Migration;
 using OrchardCore.Flows.Models;
+using OrchardCore.Media.Settings;
 using OrchardCore.Title.Models;
 using StatCan.OrchardCore.ContentFields.PredefinedGroup.Settings;
+using RegularListValueOption = OrchardCore.ContentFields.Settings.ListValueOption;
 using ListValueOption = StatCan.OrchardCore.ContentFields.PredefinedGroup.Settings.ListValueOption;
 
-namespace StatCan.Themes.DigitalTheme
+namespace StatCan.Themes.PortalTheme
 {
     public class Migrations : DataMigration
     {
@@ -27,6 +29,9 @@ namespace StatCan.Themes.DigitalTheme
             Hero();
             Page();
             Section();
+            SectionPanel();
+            SectionPanelLink();
+            LinkButton();
             SimpleContent();
             NavBar();
             HtmlBlurb();
@@ -139,11 +144,32 @@ namespace StatCan.Themes.DigitalTheme
         {
             _contentDefinitionManager.AlterTypeDefinition("Hero", type => type
                 .DisplayedAs("Hero")
+                .Draftable()
+                .Versionable()
                 .Stereotype("Widget")
                 .WithPart("Hero", part => part
                     .WithPosition("1")
                 )
                 .WithPart("TitlePart", part => part
+                    .WithPosition("0")
+                )
+            );
+
+            _contentDefinitionManager.AlterPartDefinition("Hero", part => part
+                .WithField("Title", field => field
+                    .OfType("TextField")
+                    .WithDisplayName("Title")
+                    .WithPosition("1")
+                )
+                .WithField("Subtitle", field => field
+                    .OfType("TextField")
+                    .WithDisplayName("Subtitle")
+                    .WithPosition("2")
+                )
+                .WithField("Icon", field => field
+                    .OfType("TextField")
+                    .WithDisplayName("Icon")
+                    .WithEditor("IconPicker")
                     .WithPosition("0")
                 )
             );
@@ -245,21 +271,21 @@ namespace StatCan.Themes.DigitalTheme
                     {
                         DefaultValue = "justify-content-start",
                         Options = new[] { new ListValueOption()  {
-                            Name = "<svg width=\"48\" height=\"36\" viewBox=\"0 0 800 600\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xml:space=\"preserve\" xmlns:serif=\"http://www.serif.com/\" style=\"fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;\">\n                <g transform=\"matrix(2.10518,0,0,1.0616,-30.91,-16.0489)\">\n                    <path d=\"M394.697,43.377C394.697,27.78 388.312,15.118 380.447,15.118L28.933,15.118C21.068,15.118 14.683,27.78 14.683,43.377L14.683,552.041C14.683,567.638 21.068,580.3 28.933,580.3L380.447,580.3C388.312,580.3 394.697,567.638 394.697,552.041L394.697,43.377Z\" fill=\"#D0DEF2\"></path>\n                </g>\n                <g transform=\"matrix(0.578925,0,0,0.973137,16.4997,10.2885)\">\n                    <path d=\"M394.697,37.725C394.697,25.248 377.669,15.118 356.696,15.118L52.684,15.118C31.711,15.118 14.683,25.248 14.683,37.725L14.683,557.693C14.683,570.17 31.711,580.3 52.684,580.3L356.696,580.3C377.669,580.3 394.697,570.17 394.697,557.693L394.697,37.725Z\" fill=\"#8FBEE7\"></path>\n                </g>\n                <g transform=\"matrix(0.578925,0,0,0.973137,261.5,10.2885)\">\n                    <path d=\"M394.697,37.725C394.697,25.248 377.669,15.118 356.696,15.118L52.684,15.118C31.711,15.118 14.683,25.248 14.683,37.725L14.683,557.693C14.683,570.17 31.711,580.3 52.684,580.3L356.696,580.3C377.669,580.3 394.697,570.17 394.697,557.693L394.697,37.725Z\" fill=\"#8FBEE7\"></path>\n                </g>\n            </svg>",
-                            Value = "justify-content-start"
-                            }, new ListValueOption()  {
-                            Name = "<svg width=\"48\" height=\"36\" viewBox=\"0 0 800 600\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xml:space=\"preserve\" xmlns:serif=\"http://www.serif.com/\" style=\"fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;\">\n                <g transform=\"matrix(2.10518,0,0,1.0616,-30.91,-16.0489)\">\n                    <path d=\"M394.697,43.377C394.697,27.78 388.312,15.118 380.447,15.118L28.933,15.118C21.068,15.118 14.683,27.78 14.683,43.377L14.683,552.041C14.683,567.638 21.068,580.3 28.933,580.3L380.447,580.3C388.312,580.3 394.697,567.638 394.697,552.041L394.697,43.377Z\" fill=\"#D0DEF2\"></path>\n                </g>\n                <g transform=\"matrix(0.578925,0,0,0.973137,546.5,10.2885)\">\n                    <path d=\"M394.697,37.725C394.697,25.248 377.669,15.118 356.696,15.118L52.684,15.118C31.711,15.118 14.683,25.248 14.683,37.725L14.683,557.693C14.683,570.17 31.711,580.3 52.684,580.3L356.696,580.3C377.669,580.3 394.697,570.17 394.697,557.693L394.697,37.725Z\" fill=\"#8FBEE7\"></path>\n                </g>\n                <g transform=\"matrix(0.578925,0,0,0.973137,301.5,10.2885)\">\n                    <path d=\"M394.697,37.725C394.697,25.248 377.669,15.118 356.696,15.118L52.684,15.118C31.711,15.118 14.683,25.248 14.683,37.725L14.683,557.693C14.683,570.17 31.711,580.3 52.684,580.3L356.696,580.3C377.669,580.3 394.697,570.17 394.697,557.693L394.697,37.725Z\" fill=\"#8FBEE7\"></path>\n                </g>\n            </svg>",
-                            Value = "justify-content-end"
-                            }, new ListValueOption()  {
-                            Name = "<svg width=\"48\" height=\"36\" viewBox=\"0 0 800 600\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xml:space=\"preserve\" xmlns:serif=\"http://www.serif.com/\" style=\"fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;\">\n                <g transform=\"matrix(2.10518,0,0,1.0616,-30.91,-16.0489)\">\n                    <path d=\"M394.697,43.377C394.697,27.78 388.312,15.118 380.447,15.118L28.933,15.118C21.068,15.118 14.683,27.78 14.683,43.377L14.683,552.041C14.683,567.638 21.068,580.3 28.933,580.3L380.447,580.3C388.312,580.3 394.697,567.638 394.697,552.041L394.697,43.377Z\" fill=\"#D0DEF2\"></path>\n                </g>\n                <g transform=\"matrix(0.578925,0,0,0.973137,404,10.2885)\">\n                    <path d=\"M394.697,37.725C394.697,25.248 377.669,15.118 356.696,15.118L52.684,15.118C31.711,15.118 14.683,25.248 14.683,37.725L14.683,557.693C14.683,570.17 31.711,580.3 52.684,580.3L356.696,580.3C377.669,580.3 394.697,570.17 394.697,557.693L394.697,37.725Z\" fill=\"#8FBEE7\"></path>\n                </g>\n                <g transform=\"matrix(0.578925,0,0,0.973137,159,10.2885)\">\n                    <path d=\"M394.697,37.725C394.697,25.248 377.669,15.118 356.696,15.118L52.684,15.118C31.711,15.118 14.683,25.248 14.683,37.725L14.683,557.693C14.683,570.17 31.711,580.3 52.684,580.3L356.696,580.3C377.669,580.3 394.697,570.17 394.697,557.693L394.697,37.725Z\" fill=\"#8FBEE7\"></path>\n                </g>\n            </svg>",
-                            Value = "justify-content-center"
-                            }, new ListValueOption()  {
-                            Name = "<svg width=\"48\" height=\"36\" viewBox=\"0 0 800 600\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xml:space=\"preserve\" xmlns:serif=\"http://www.serif.com/\" style=\"fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;\">\n                <g transform=\"matrix(2.10518,0,0,1.0616,-30.91,-16.0489)\">\n                    <path d=\"M394.697,43.377C394.697,27.78 388.312,15.118 380.447,15.118L28.933,15.118C21.068,15.118 14.683,27.78 14.683,43.377L14.683,552.041C14.683,567.638 21.068,580.3 28.933,580.3L380.447,580.3C388.312,580.3 394.697,567.638 394.697,552.041L394.697,43.377Z\" fill=\"#D0DEF2\"></path>\n                </g>\n                <g transform=\"matrix(0.578925,0,0,0.973137,546.5,10.2885)\">\n                    <path d=\"M394.697,37.725C394.697,25.248 377.669,15.118 356.696,15.118L52.684,15.118C31.711,15.118 14.683,25.248 14.683,37.725L14.683,557.693C14.683,570.17 31.711,580.3 52.684,580.3L356.696,580.3C377.669,580.3 394.697,570.17 394.697,557.693L394.697,37.725Z\" fill=\"#8FBEE7\"></path>\n                </g>\n                <g transform=\"matrix(0.578925,0,0,0.973137,16.4997,10.2885)\">\n                    <path d=\"M394.697,37.725C394.697,25.248 377.669,15.118 356.696,15.118L52.684,15.118C31.711,15.118 14.683,25.248 14.683,37.725L14.683,557.693C14.683,570.17 31.711,580.3 52.684,580.3L356.696,580.3C377.669,580.3 394.697,570.17 394.697,557.693L394.697,37.725Z\" fill=\"#8FBEE7\"></path>\n                </g>\n            </svg>",
-                            Value = "justify-content-between"
-                            }, new ListValueOption()  {
-                            Name = "<svg width=\"48\" height=\"36\" viewBox=\"0 0 800 600\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xml:space=\"preserve\" xmlns:serif=\"http://www.serif.com/\" style=\"fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;\">\n                <g transform=\"matrix(2.10518,0,0,1.0616,-30.91,-16.0489)\">\n                    <path d=\"M394.697,43.377C394.697,27.78 388.312,15.118 380.447,15.118L28.933,15.118C21.068,15.118 14.683,27.78 14.683,43.377L14.683,552.041C14.683,567.638 21.068,580.3 28.933,580.3L380.447,580.3C388.312,580.3 394.697,567.638 394.697,552.041L394.697,43.377Z\" fill=\"#D0DEF2\"></path>\n                </g>\n                <g transform=\"matrix(0.578925,0,0,0.973137,451.5,10.2885)\">\n                    <path d=\"M394.697,37.725C394.697,25.248 377.669,15.118 356.696,15.118L52.684,15.118C31.711,15.118 14.683,25.248 14.683,37.725L14.683,557.693C14.683,570.17 31.711,580.3 52.684,580.3L356.696,580.3C377.669,580.3 394.697,570.17 394.697,557.693L394.697,37.725Z\" fill=\"#8FBEE7\"></path>\n                </g>\n                <g transform=\"matrix(0.578925,0,0,0.973137,101.5,10.2885)\">\n                    <path d=\"M394.697,37.725C394.697,25.248 377.669,15.118 356.696,15.118L52.684,15.118C31.711,15.118 14.683,25.248 14.683,37.725L14.683,557.693C14.683,570.17 31.711,580.3 52.684,580.3L356.696,580.3C377.669,580.3 394.697,570.17 394.697,557.693L394.697,37.725Z\" fill=\"#8FBEE7\"></path>\n                </g>\n            </svg>",
-                            Value = "justify-content-around"
-                            } }
+        Name = "<svg width=\"48\" height=\"36\" viewBox=\"0 0 800 600\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xml:space=\"preserve\" xmlns:serif=\"http://www.serif.com/\" style=\"fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;\">\n                <g transform=\"matrix(2.10518,0,0,1.0616,-30.91,-16.0489)\">\n                    <path d=\"M394.697,43.377C394.697,27.78 388.312,15.118 380.447,15.118L28.933,15.118C21.068,15.118 14.683,27.78 14.683,43.377L14.683,552.041C14.683,567.638 21.068,580.3 28.933,580.3L380.447,580.3C388.312,580.3 394.697,567.638 394.697,552.041L394.697,43.377Z\" fill=\"#D0DEF2\"></path>\n                </g>\n                <g transform=\"matrix(0.578925,0,0,0.973137,16.4997,10.2885)\">\n                    <path d=\"M394.697,37.725C394.697,25.248 377.669,15.118 356.696,15.118L52.684,15.118C31.711,15.118 14.683,25.248 14.683,37.725L14.683,557.693C14.683,570.17 31.711,580.3 52.684,580.3L356.696,580.3C377.669,580.3 394.697,570.17 394.697,557.693L394.697,37.725Z\" fill=\"#8FBEE7\"></path>\n                </g>\n                <g transform=\"matrix(0.578925,0,0,0.973137,261.5,10.2885)\">\n                    <path d=\"M394.697,37.725C394.697,25.248 377.669,15.118 356.696,15.118L52.684,15.118C31.711,15.118 14.683,25.248 14.683,37.725L14.683,557.693C14.683,570.17 31.711,580.3 52.684,580.3L356.696,580.3C377.669,580.3 394.697,570.17 394.697,557.693L394.697,37.725Z\" fill=\"#8FBEE7\"></path>\n                </g>\n            </svg>",
+        Value = "justify-content-start"
+        }, new ListValueOption()  {
+        Name = "<svg width=\"48\" height=\"36\" viewBox=\"0 0 800 600\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xml:space=\"preserve\" xmlns:serif=\"http://www.serif.com/\" style=\"fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;\">\n                <g transform=\"matrix(2.10518,0,0,1.0616,-30.91,-16.0489)\">\n                    <path d=\"M394.697,43.377C394.697,27.78 388.312,15.118 380.447,15.118L28.933,15.118C21.068,15.118 14.683,27.78 14.683,43.377L14.683,552.041C14.683,567.638 21.068,580.3 28.933,580.3L380.447,580.3C388.312,580.3 394.697,567.638 394.697,552.041L394.697,43.377Z\" fill=\"#D0DEF2\"></path>\n                </g>\n                <g transform=\"matrix(0.578925,0,0,0.973137,546.5,10.2885)\">\n                    <path d=\"M394.697,37.725C394.697,25.248 377.669,15.118 356.696,15.118L52.684,15.118C31.711,15.118 14.683,25.248 14.683,37.725L14.683,557.693C14.683,570.17 31.711,580.3 52.684,580.3L356.696,580.3C377.669,580.3 394.697,570.17 394.697,557.693L394.697,37.725Z\" fill=\"#8FBEE7\"></path>\n                </g>\n                <g transform=\"matrix(0.578925,0,0,0.973137,301.5,10.2885)\">\n                    <path d=\"M394.697,37.725C394.697,25.248 377.669,15.118 356.696,15.118L52.684,15.118C31.711,15.118 14.683,25.248 14.683,37.725L14.683,557.693C14.683,570.17 31.711,580.3 52.684,580.3L356.696,580.3C377.669,580.3 394.697,570.17 394.697,557.693L394.697,37.725Z\" fill=\"#8FBEE7\"></path>\n                </g>\n            </svg>",
+        Value = "justify-content-end"
+        }, new ListValueOption()  {
+        Name = "<svg width=\"48\" height=\"36\" viewBox=\"0 0 800 600\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xml:space=\"preserve\" xmlns:serif=\"http://www.serif.com/\" style=\"fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;\">\n                <g transform=\"matrix(2.10518,0,0,1.0616,-30.91,-16.0489)\">\n                    <path d=\"M394.697,43.377C394.697,27.78 388.312,15.118 380.447,15.118L28.933,15.118C21.068,15.118 14.683,27.78 14.683,43.377L14.683,552.041C14.683,567.638 21.068,580.3 28.933,580.3L380.447,580.3C388.312,580.3 394.697,567.638 394.697,552.041L394.697,43.377Z\" fill=\"#D0DEF2\"></path>\n                </g>\n                <g transform=\"matrix(0.578925,0,0,0.973137,404,10.2885)\">\n                    <path d=\"M394.697,37.725C394.697,25.248 377.669,15.118 356.696,15.118L52.684,15.118C31.711,15.118 14.683,25.248 14.683,37.725L14.683,557.693C14.683,570.17 31.711,580.3 52.684,580.3L356.696,580.3C377.669,580.3 394.697,570.17 394.697,557.693L394.697,37.725Z\" fill=\"#8FBEE7\"></path>\n                </g>\n                <g transform=\"matrix(0.578925,0,0,0.973137,159,10.2885)\">\n                    <path d=\"M394.697,37.725C394.697,25.248 377.669,15.118 356.696,15.118L52.684,15.118C31.711,15.118 14.683,25.248 14.683,37.725L14.683,557.693C14.683,570.17 31.711,580.3 52.684,580.3L356.696,580.3C377.669,580.3 394.697,570.17 394.697,557.693L394.697,37.725Z\" fill=\"#8FBEE7\"></path>\n                </g>\n            </svg>",
+        Value = "justify-content-center"
+        }, new ListValueOption()  {
+        Name = "<svg width=\"48\" height=\"36\" viewBox=\"0 0 800 600\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xml:space=\"preserve\" xmlns:serif=\"http://www.serif.com/\" style=\"fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;\">\n                <g transform=\"matrix(2.10518,0,0,1.0616,-30.91,-16.0489)\">\n                    <path d=\"M394.697,43.377C394.697,27.78 388.312,15.118 380.447,15.118L28.933,15.118C21.068,15.118 14.683,27.78 14.683,43.377L14.683,552.041C14.683,567.638 21.068,580.3 28.933,580.3L380.447,580.3C388.312,580.3 394.697,567.638 394.697,552.041L394.697,43.377Z\" fill=\"#D0DEF2\"></path>\n                </g>\n                <g transform=\"matrix(0.578925,0,0,0.973137,546.5,10.2885)\">\n                    <path d=\"M394.697,37.725C394.697,25.248 377.669,15.118 356.696,15.118L52.684,15.118C31.711,15.118 14.683,25.248 14.683,37.725L14.683,557.693C14.683,570.17 31.711,580.3 52.684,580.3L356.696,580.3C377.669,580.3 394.697,570.17 394.697,557.693L394.697,37.725Z\" fill=\"#8FBEE7\"></path>\n                </g>\n                <g transform=\"matrix(0.578925,0,0,0.973137,16.4997,10.2885)\">\n                    <path d=\"M394.697,37.725C394.697,25.248 377.669,15.118 356.696,15.118L52.684,15.118C31.711,15.118 14.683,25.248 14.683,37.725L14.683,557.693C14.683,570.17 31.711,580.3 52.684,580.3L356.696,580.3C377.669,580.3 394.697,570.17 394.697,557.693L394.697,37.725Z\" fill=\"#8FBEE7\"></path>\n                </g>\n            </svg>",
+        Value = "justify-content-between"
+        }, new ListValueOption()  {
+        Name = "<svg width=\"48\" height=\"36\" viewBox=\"0 0 800 600\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xml:space=\"preserve\" xmlns:serif=\"http://www.serif.com/\" style=\"fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;\">\n                <g transform=\"matrix(2.10518,0,0,1.0616,-30.91,-16.0489)\">\n                    <path d=\"M394.697,43.377C394.697,27.78 388.312,15.118 380.447,15.118L28.933,15.118C21.068,15.118 14.683,27.78 14.683,43.377L14.683,552.041C14.683,567.638 21.068,580.3 28.933,580.3L380.447,580.3C388.312,580.3 394.697,567.638 394.697,552.041L394.697,43.377Z\" fill=\"#D0DEF2\"></path>\n                </g>\n                <g transform=\"matrix(0.578925,0,0,0.973137,451.5,10.2885)\">\n                    <path d=\"M394.697,37.725C394.697,25.248 377.669,15.118 356.696,15.118L52.684,15.118C31.711,15.118 14.683,25.248 14.683,37.725L14.683,557.693C14.683,570.17 31.711,580.3 52.684,580.3L356.696,580.3C377.669,580.3 394.697,570.17 394.697,557.693L394.697,37.725Z\" fill=\"#8FBEE7\"></path>\n                </g>\n                <g transform=\"matrix(0.578925,0,0,0.973137,101.5,10.2885)\">\n                    <path d=\"M394.697,37.725C394.697,25.248 377.669,15.118 356.696,15.118L52.684,15.118C31.711,15.118 14.683,25.248 14.683,37.725L14.683,557.693C14.683,570.17 31.711,580.3 52.684,580.3L356.696,580.3C377.669,580.3 394.697,570.17 394.697,557.693L394.697,37.725Z\" fill=\"#8FBEE7\"></path>\n                </g>\n            </svg>",
+        Value = "justify-content-around"
+        } }
                     })
                 )
                 .WithField("TitleLayout", field => field
@@ -289,6 +315,254 @@ namespace StatCan.Themes.DigitalTheme
                     .OfType("TextField")
                     .WithDisplayName("Style")
                     .WithPosition("4")
+                )
+            );
+        }
+
+        private void SectionPanel()
+        {
+            _contentDefinitionManager.AlterTypeDefinition("SectionPanel", type => type
+                .DisplayedAs("Section Panel")
+                .Stereotype("Widget")
+                .WithPart("SectionPanel", part => part
+                    .WithPosition("1")
+                )
+                .WithPart("TitlePart", part => part
+                    .WithPosition("0")
+                    .WithSettings(new TitlePartSettings
+                    {
+                        Pattern = "{{ ContentItem.Content.SectionPanel.Title.Text | sluggify }}"
+                    })
+                )
+                .WithPart("Links", part => part
+                    .WithDisplayName("Links")
+                    .WithDescription("Bag of links.")
+                    .WithPosition("2")
+                    .WithSettings(new BagPartSettings
+                    {
+                        ContainedContentTypes = new[] { "SectionPanelLink" }
+                    })
+                )
+            );
+
+            _contentDefinitionManager.AlterPartDefinition("SectionPanel", part => part
+                .WithField("Title", field => field
+                    .OfType("TextField")
+                    .WithDisplayName("Title")
+                    .WithPosition("3")
+                    .WithSettings(new TextFieldSettings
+                    {
+                        Required = true
+                    })
+                )
+                .WithField("Icon", field => field
+                    .OfType("TextField")
+                    .WithDisplayName("Icon")
+                    .WithEditor("IconPicker")
+                    .WithPosition("1")
+                    .WithSettings(new TextFieldSettings
+                    {
+                        Required = true
+                    })
+                )
+                .WithField("Description", field => field
+                    .OfType("TextField")
+                    .WithDisplayName("Description")
+                    .WithPosition("4")
+                )
+                .WithField("ListDirection", field => field
+                    .OfType("TextField")
+                    .WithDisplayName("List Direction")
+                    .WithEditor("PredefinedGroup")
+                    .WithPosition("6")
+                    .WithSettings(new TextFieldPredefinedListEditorSettings
+                    {
+                        Options = new[] { new RegularListValueOption() {
+                            Name = "Horizontal",
+                            Value = "is-horizontal-list"
+                            }, new RegularListValueOption() {
+                            Name = "Vertical",
+                            Value = "is-vertical-list"
+                            } }
+                    })
+                    .WithSettings(new TextFieldPredefinedGroupEditorSettings
+                    {
+                        Options = new[] { new ListValueOption() {
+                            Name = "<svg width=\"80\" height=\"60\" viewBox=\"0 0 800 600\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xml:space=\"preserve\" xmlns:serif=\"http://www.serif.com/\" style=\"fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;\">\n    <g transform=\"matrix(1.28652,0,0,1.19424,-5.55908,-2.22669)\">\n        <path d=\"M626.156,26.985C626.156,13.121 615.707,1.865 602.837,1.865L27.64,1.865C14.77,1.865 4.321,13.121 4.321,26.985L4.321,479.156C4.321,493.021 14.77,504.277 27.64,504.277L602.837,504.277C615.707,504.277 626.156,493.021 626.156,479.156L626.156,26.985Z\" style=\"fill:rgb(210,222,240);\"/>\n    </g>\n    <g transform=\"matrix(0.292796,0,0,1.51434,37.0443,56.3379)\">\n        <path d=\"M727.317,94.867C727.317,76.645 650.799,61.85 556.55,61.85L215.015,61.85C120.766,61.85 44.248,76.645 44.248,94.867L44.248,193.92C44.248,212.143 120.766,226.938 215.015,226.938L556.55,226.938C650.799,226.938 727.317,212.143 727.317,193.92L727.317,94.867Z\" style=\"fill:rgb(153,189,227);\"/>\n    </g>\n    <g transform=\"matrix(0.292796,0,0,1.51434,287.044,56.3379)\">\n        <path d=\"M727.317,94.867C727.317,76.645 650.799,61.85 556.55,61.85L215.015,61.85C120.766,61.85 44.248,76.645 44.248,94.867L44.248,193.92C44.248,212.143 120.766,226.938 215.015,226.938L556.55,226.938C650.799,226.938 727.317,212.143 727.317,193.92L727.317,94.867Z\" style=\"fill:rgb(153,189,227);\"/>\n    </g>\n    <g transform=\"matrix(0.292796,0,0,1.51434,537.044,56.3379)\">\n        <path d=\"M727.317,94.867C727.317,76.645 650.799,61.85 556.55,61.85L215.015,61.85C120.766,61.85 44.248,76.645 44.248,94.867L44.248,193.92C44.248,212.143 120.766,226.938 215.015,226.938L556.55,226.938C650.799,226.938 727.317,212.143 727.317,193.92L727.317,94.867Z\" style=\"fill:rgb(153,189,227);\"/>\n    </g>\n</svg>\n",
+                            Value = "is-horizontal-list"
+                            }, new ListValueOption() {
+                            Name = "<svg width=\"80\" height=\"60\" viewBox=\"0 0 800 600\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xml:space=\"preserve\" xmlns:serif=\"http://www.serif.com/\" style=\"fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;\">\n    <g transform=\"matrix(1.28652,0,0,1.19424,-5.55908,-2.22669)\">\n        <path d=\"M626.156,26.985C626.156,13.121 615.707,1.865 602.837,1.865L27.64,1.865C14.77,1.865 4.321,13.121 4.321,26.985L4.321,479.156C4.321,493.021 14.77,504.277 27.64,504.277L602.837,504.277C615.707,504.277 626.156,493.021 626.156,479.156L626.156,26.985Z\" style=\"fill:rgb(210,222,240);\"/>\n    </g>\n    <g transform=\"matrix(1.02479,0,0,0.805631,4.6552,183.172)\">\n        <path d=\"M727.317,103.122C727.317,80.343 712.779,61.85 694.871,61.85L76.694,61.85C58.787,61.85 44.248,80.343 44.248,103.122L44.248,185.666C44.248,208.444 58.787,226.938 76.694,226.938L694.871,226.938C712.779,226.938 727.317,208.444 727.317,185.666L727.317,103.122Z\" style=\"fill:rgb(153,189,227);\"/>\n    </g>\n    <g transform=\"matrix(1.02479,0,0,0.805631,4.75565,366.172)\">\n        <path d=\"M727.317,103.122C727.317,80.343 712.779,61.85 694.871,61.85L76.694,61.85C58.787,61.85 44.248,80.343 44.248,103.122L44.248,185.666C44.248,208.444 58.787,226.938 76.694,226.938L694.871,226.938C712.779,226.938 727.317,208.444 727.317,185.666L727.317,103.122Z\" style=\"fill:rgb(153,189,227);\"/>\n    </g>\n    <g transform=\"matrix(1.02479,0,0,0.805631,4.6552,0.171783)\">\n        <path d=\"M727.317,103.122C727.317,80.343 712.779,61.85 694.871,61.85L76.694,61.85C58.787,61.85 44.248,80.343 44.248,103.122L44.248,185.666C44.248,208.444 58.787,226.938 76.694,226.938L694.871,226.938C712.779,226.938 727.317,208.444 727.317,185.666L727.317,103.122Z\" style=\"fill:rgb(153,189,227);\"/>\n    </g>\n</svg>\n",
+                            Value = "is-vertical-list"
+                            } }
+                    })
+                )
+                .WithField("Image", field => field
+                    .OfType("MediaField")
+                    .WithDisplayName("Image")
+                    .WithPosition("2")
+                    .WithSettings(new MediaFieldSettings
+                    {
+                        Hint = "The image will override the icon.",
+                        Multiple = false
+                    })
+                )
+                .WithField("Size", field => field
+                    .OfType("TextField")
+                    .WithDisplayName("Size")
+                    .WithEditor("PredefinedList")
+                    .WithPosition("5")
+                    .WithSettings(new TextFieldPredefinedListEditorSettings
+                    {
+                        Options = new[] { new RegularListValueOption() {
+                            Name = "None (Section Column Layout decides)",
+                            Value = ""
+                            }, new RegularListValueOption() {
+                            Name = "4 Columns (1/3 width)",
+                            Value = "col-md-4 col-12"
+                            }, new RegularListValueOption() {
+                            Name = "6 Columns (1/2 width)",
+                            Value = "col-md-6 col-12"
+                            }, new RegularListValueOption() {
+                            Name = "8 Columns (2/3 width)",
+                            Value = "col-md-8 col-12"
+                            } }
+                    })
+                )
+            );
+        }
+
+        private void SectionPanelLink()
+        {
+            _contentDefinitionManager.AlterTypeDefinition("SectionPanelLink", type => type
+                .DisplayedAs("Section Panel Link")
+                .Stereotype("Widget")
+                .WithPart("SectionPanelLink", part => part
+                    .WithPosition("1")
+                )
+                .WithPart("TitlePart", part => part
+                    .WithPosition("0")
+                    .WithSettings(new TitlePartSettings
+                    {
+                        Pattern = "{{ ContentItem.Content.SectionPanelLink.Name.Text }}"
+                    })
+                )
+                .WithPart("Actions", part => part
+                    .WithDisplayName("Actions")
+                    .WithDescription("Extra actions related to this item.")
+                    .WithPosition("2")
+                    .WithSettings(new BagPartSettings
+                    {
+                        ContainedContentTypes = new[] { "LinkMenuItem" }
+                    })
+                )
+            );
+
+            _contentDefinitionManager.AlterPartDefinition("SectionPanelLink", part => part
+                .WithField("Name", field => field
+                    .OfType("TextField")
+                    .WithDisplayName("Name")
+                    .WithPosition("2")
+                    .WithSettings(new TextFieldSettings
+                    {
+                        Required = true
+                    })
+                )
+                .WithField("Description", field => field
+                    .OfType("TextField")
+                    .WithDisplayName("Description")
+                    .WithPosition("3")
+                    .WithSettings(new TextFieldSettings
+                    {
+                        Required = true
+                    })
+                )
+                .WithField("Icon", field => field
+                    .OfType("TextField")
+                    .WithDisplayName("Icon")
+                    .WithEditor("IconPicker")
+                    .WithPosition("1")
+                )
+                .WithField("Url", field => field
+                    .OfType("TextField")
+                    .WithDisplayName("Url")
+                    .WithPosition("4")
+                    .WithSettings(new TextFieldSettings
+                    {
+                        Required = true
+                    })
+                )
+                .WithField("Image", field => field
+                    .OfType("MediaField")
+                    .WithDisplayName("Image")
+                    .WithPosition("0")
+                    .WithSettings(new MediaFieldSettings
+                    {
+                        Multiple = false
+                    })
+                )
+                .WithField("HeroHighlight", field => field
+                    .OfType("BooleanField")
+                    .WithDisplayName("Hero Highlight")
+                    .WithPosition("5")
+                    .WithSettings(new BooleanFieldSettings
+                    {
+                        Hint = "Display this link in the hero. The suggested limit of displayed links in the hero is 3.",
+                        Label = "Display in hero"
+                    })
+                )
+                .WithField("ModalID", field => field
+                    .OfType("TextField")
+                    .WithDisplayName("Modal ID")
+                    .WithPosition("6")
+                )
+            );
+        }
+
+        private void LinkButton()
+        {
+            _contentDefinitionManager.AlterTypeDefinition("LinkButton", type => type
+                .DisplayedAs("Link Button")
+                .Stereotype("Widget")
+                .WithPart("LinkButton", part => part
+                    .WithPosition("1")
+                )
+                .WithPart("TitlePart", part => part
+                    .WithPosition("0")
+                    .WithSettings(new TitlePartSettings
+                    {
+                        Pattern = "{{ ContentItem.Content.LinkButton.Link.Text }}"
+                    })
+                )
+            );
+
+            _contentDefinitionManager.AlterPartDefinition("LinkButton", part => part
+                .WithField("Link", field => field
+                    .OfType("LinkField")
+                    .WithDisplayName("Link")
+                    .WithPosition("0")
+                    .WithSettings(new LinkFieldSettings
+                    {
+                        Required = true
+                    })
+                )
+            );
+        }
+
+        private void SiteIcon()
+        {
+            _contentDefinitionManager.AlterTypeDefinition("SiteIcon", type => type
+                .DisplayedAs("Site Icon")
+                .Stereotype("CustomSettings")
+                .WithPart("SiteIcon", part => part
+                    .WithPosition("0")
+                )
+            );
+
+            _contentDefinitionManager.AlterPartDefinition("SiteIcon", part => part
+                .WithField("Icon", field => field
+                    .OfType("TextField")
+                    .WithDisplayName("Icon")
+                    .WithPosition("0")
                 )
             );
         }

@@ -1,5 +1,5 @@
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Options;
+using OrchardCore.Data.Migration;
 using OrchardCore.Modules;
 using OrchardCore.ResourceManagement;
 
@@ -7,9 +7,10 @@ namespace StatCan.Themes.PortalTheme
 {
     public class Startup : StartupBase
     {
-        public override void ConfigureServices(IServiceCollection serviceCollection)
+        public override void ConfigureServices(IServiceCollection services)
         {
-            serviceCollection.AddScoped<IResourceManifestProvider, ResourceManifest>();
+            services.AddScoped<IResourceManifestProvider, ResourceManifest>();
+            services.AddScoped<IDataMigration, Migrations>();
         }
     }
 }

@@ -1,5 +1,4 @@
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Options;
 using OrchardCore.Data.Migration;
 using OrchardCore.Modules;
 using OrchardCore.ResourceManagement;
