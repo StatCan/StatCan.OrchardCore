@@ -1,13 +1,14 @@
-using Inno.Hackathons;
 using OrchardCore.ContentManagement.Metadata;
 using OrchardCore.Data.Migration;
 using OrchardCore.ContentManagement.Metadata.Settings;
 using OrchardCore.ContentFields.Settings;
 using OrchardCore.Title.Models;
 using OrchardCore.ContentFields.Fields;
+using OrchardCore.Modules;
 
 namespace StatCan.OrchardCore.Hackathon
 {
+    [RequireFeatures("StatCan.OrchardCore.Hackathon.Team")]
     public class TeamMigrations : DataMigration
     {
         private readonly IContentDefinitionManager _contentDefinitionManager;
@@ -89,7 +90,6 @@ namespace StatCan.OrchardCore.Hackathon
                     new BooleanFieldSettings() { Label = "Can hackers create / join / leave teams?" }));
 
             _contentDefinitionManager.AlterTypeDefinition("HackathonCustomSettings", type => type
-                .WithPart("HackathonCustomSettings", p => p.WithPosition("0"))
                 .WithPart("TeamCustomSettings", p => p.WithPosition("1"))
                 .Stereotype("CustomSettings"));
         }

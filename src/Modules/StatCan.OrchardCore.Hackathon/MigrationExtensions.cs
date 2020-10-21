@@ -4,7 +4,7 @@ using OrchardCore.ContentFields.Settings;
 using OrchardCore.ContentManagement.Metadata.Builders;
 using OrchardCore.ContentManagement.Metadata.Settings;
 
-namespace Inno.Hackathons
+namespace StatCan.OrchardCore.Hackathon
 {
     /// <summary>
     /// Content Type / Part builder extensions to simplify migrations

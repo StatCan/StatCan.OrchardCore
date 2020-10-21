@@ -16,17 +16,17 @@ using OrchardCore.Modules.Manifest;
 )]
 
 [assembly: Feature(
-    Id = "StatCan.Orchardcore.Hackathon.Team",
+    Id = "StatCan.OrchardCore.Hackathon.Team",
     Name = "Hackathon Teams",
     Description = "Provides Teams management for the Hackathon feature",
-    Dependencies = new[] { "StatCan.Orchardcore.Hackathon" },
+    Dependencies = new[] { "StatCan.OrchardCore.Hackathon" },
     Category = "Innovation"
 )]
 
-//[assembly: Feature(
-//    Id = "StatCan.Orchardcore.Hackathon.Judging",
-//    Name = "Hackathon Judging",
-//    Description = "Provides Juding management for the Hackathon feature",
-//    Dependencies = new[] { "StatCan.Orchardcore.Hackathon" },
-//    Category = "Innovation"
-//)]
+[assembly: Feature(
+    Id = "StatCan.OrchardCore.Hackathon.Judging",
+    Name = "Hackathon Judging",
+    Description = "Provides Juding management for the Hackathon feature",
+    Dependencies = new[] { "StatCan.OrchardCore.Hackathon" },
+    Category = "Innovation"
+)]
