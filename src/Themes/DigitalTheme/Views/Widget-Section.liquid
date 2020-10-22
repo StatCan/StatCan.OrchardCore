@@ -8,9 +8,10 @@
     </div>
   </div>
   {% if Model.ContentItem.Content.Section.TopDivider.Text %}
-    <div class="widget-section-divider top {{ Model.ContentItem.Content.Section.TopDivider.Text }}"></div>
+    {{ "Dividers" | shape_new | shape_properties: divider: Model.ContentItem.Content.Section.TopDivider.Text, pos: 'top', mirror: 'mirrorY' | shape_render }}
   {% endif %}
   {% if Model.ContentItem.Content.Section.BottomDivider.Text %}
-    <div class="widget-section-divider bottom {{ Model.ContentItem.Content.Section.BottomDivider.Text }}"></div>
+    {{ "Dividers" | shape_new | shape_properties: divider: Model.ContentItem.Content.Section.BottomDivider.Text, pos: 'bottom', mirror: 'mirrorY' | shape_render }}
   {% endif %}
+  
 </section>

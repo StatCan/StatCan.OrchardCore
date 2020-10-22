@@ -1,74 +1,62 @@
 .widget-section {
   position: relative;
+  padding: 7rem 0;
+  &.primary {
+    background-color: $bgPrimary;
+    .divider-color {
+      fill: $bgSecondary;
+    }
+  }
+  &.secondary {
+    background-color: $bgSecondary;
+    .divider-color {
+      fill: $bgPrimary;
+    }
+  }
 
   .widget-section-divider {
     position: absolute;
-    height: 100%;
-    width: 100vw;
-    z-index: -1;
-    &.divider-steps-1 {
-      background-image: url("../images/divider-steps-1.svg");
-    }
-    &.divider-steps-2 {
-      background-image: url("../images/divider-steps-2.svg");
-    }
-    background-position: top center;
-    background-size: auto;
+    left: calc((3840px - 100vw) / -2);
     &.top {
-      transform: scaleY(1);
+      top: 0;
       &.mirrorX {
         transform: scaleX(-1) scaleY(1);
       }
       &.mirrorY {
         transform: scaleX(-1) scaleY(-1);
       }
+      &.mirrorXY {
+        transform: scaleX(1) scaleY(-1);
+      }
     }
     &.bottom {
-      transform: scaleY(-1);
+      bottom: 0;
       &.mirrorX {
         transform: scaleX(-1) scaleY(-1);
       }
       &.mirrorY {
-        transform: scaleX(1) scaleY(1);
+        transform: scaleX(-1) scaleY(1);
+      }
+      &.mirrorXY {
+        transform: scaleX(1) scaleY(-1);
       }
     }
   }
+}
 
-  &.bg-vanilla {
-    &.primary {
-      background: $bgPrimary;
-    }
-    &.secondary {
-      background: $bgSecondary;
-    }
-    padding-top: 7rem;
-    padding-bottom: 7rem;
-  }
-
+.widget-section {
+  position: relative;
   &.bg-circuit {
     &.primary {
       background-image: url("../images/CircuitL.svg"),
-        url("../images/CircuitR.svg"), url("../images/DigitalHeroStepDown.svg"),
-        url("../images/BG1StepUp.svg");
+        url("../images/CircuitR.svg");
     }
-    background-position: right 85vw top 0, left 85vw top -4rem, center top,
-      center bottom;
-    background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
+    background-position: right 85vw top 0, left 85vw top -4rem;
+    background-repeat: no-repeat, no-repeat;
     padding-top: 10rem;
     padding-bottom: 10rem;
   }
 
-  &.bg-steps {
-    &.primary {
-      background-image: url("../images/BG1StepDown.svg"),
-        url("../images/FooterStepDown.svg");
-    }
-    background-position: center top, center bottom;
-    background-size: auto, auto;
-    background-repeat: no-repeat, no-repeat;
-    padding-top: 9rem;
-    padding-bottom: 9rem;
-  }
   a:not(.btn) {
     text-decoration: none;
     background-color: #dddddd;
