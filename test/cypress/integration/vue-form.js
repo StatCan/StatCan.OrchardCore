@@ -7,8 +7,7 @@ describe("VueForm Tests", function() {
   let tenant;
 
   before(() => {
-      // generate a tenant for all tests below
-      tenant = generateTenantInfo("bootstrap-theme-setup")
+      tenant = generateTenantInfo("bootstrap-theme-setup", "VueForm tests")
       cy.newTenant(tenant);
       cy.login(tenant);
       cy.uploadRecipeJson(tenant, "recipes/vue-form.json");
