@@ -12,6 +12,5 @@ describe("SaaS site setup", function() {
     cy.login(sassCreds)
     cy.setPageSize(sassCreds,"100");
   });
-  // for the tenants page. To easily be able to see all testing tenants
 });
  
