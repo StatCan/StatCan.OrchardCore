@@ -5,7 +5,7 @@ describe("Hackathon Tests", function() {
   let tenant;
 
   before(() => {
-    tenant = generateTenantInfo("hackathon-setup-recipe")
+    tenant = generateTenantInfo("hackathon-theme-setup")
     cy.newTenant(tenant);
   })
   

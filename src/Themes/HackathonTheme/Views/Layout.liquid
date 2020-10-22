@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="{{ Culture.Name }}">
+  <head>
+    <title>{% page_title Site.SiteName %}</title>
+    {% resources type: "Meta" %}
+    {% resources type: "HeadLink" %}
+    {% resources type: "Stylesheet" %}
+    
+    {{ "CommonLayoutResources" | shape_new | shape_render }}    
+    {% render_section "HeadMeta", required: false %}
+    {% resources type: "HeadScript" %}
+  </head>
+  <body id="page-top" dir="{{ Culture.Dir }}">
+    <a class="skip-navigation text-center" href="#content">{{ "Skip to main content" | t }}</a>
+    {% render_section "Header", required: false %}
+    <div class="container messages-wrapper">
+      {% render_section "Messages", required: false %}
+    </div>
+    <div id="content">
+      {% render_section "Content" %}
+    </div>
+    {% render_section "Footer", required: false %}
+    {% resources type: "FootScript" %}
+  </body>
+</html>
