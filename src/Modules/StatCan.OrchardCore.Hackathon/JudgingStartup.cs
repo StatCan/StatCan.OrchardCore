@@ -17,21 +17,21 @@ namespace StatCan.OrchardCore.Hackathon
             services.AddScoped<IDataMigration, JudgingMigrations>();
         }
 
-        /*public override void Configure(IApplicationBuilder builder, IEndpointRouteBuilder routes, IServiceProvider serviceProvider)
+        public override void Configure(IApplicationBuilder builder, IEndpointRouteBuilder routes, IServiceProvider serviceProvider)
         {
             routes.MapAreaControllerRoute(
                 name: "DisplayJudgingEntry",
-                areaName: "Inno.Hackathons",
+                areaName: "StatCan.OrchardCore.Hackathon",
                 pattern: "JudgingEntry/{contentItemId}",
                 defaults: new { controller = "Judging", action = "DisplayEntry" }
             );
             routes.MapAreaControllerRoute(
                 name: "PublishJudgingEntry",
-                areaName: "Inno.Hackathons",
+                areaName: "StatCan.OrchardCore.Hackathon",
                 pattern: "JudgingEntry/publish",
                 defaults: new { controller = "Judging", action = "PublishJudgingEntry" }
             );
-            routes.MapAreaControllerRoute(
+            /*routes.MapAreaControllerRoute(
                 name: "ConcludeHacking",
                 areaName: "Inno.Hackathons",
                 pattern: "Admin/Hackathons/dashboard/{hackathonLocalizationSet}/conclude-hacking",
@@ -64,7 +64,7 @@ namespace StatCan.OrchardCore.Hackathon
                 areaName: "Inno.Hackathons",
                 pattern: "Admin/Hackathons/dashboard/{hackathonLocalizationSet}/end-round",
                 defaults: new { controller = "JudgingAdmin", Action = "EndJudgingRound" }
-            );
-        }*/
+            );*/
+        }
     }
 }

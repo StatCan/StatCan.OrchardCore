@@ -31,6 +31,7 @@ namespace StatCan.OrchardCore.Hackathon
             CreateWidgets();
             CreateHackerVolunteers();
             CreateHackathonFormReference();
+            //CreateCase();
 
             await _recipeMigrator.ExecuteAsync("roles.recipe.json", this);
             await _recipeMigrator.ExecuteAsync("queries.recipe.json", this);
@@ -258,5 +259,31 @@ namespace StatCan.OrchardCore.Hackathon
 
             );
         }
+
+        /*private void CreateCase()
+        {
+            _contentDefinitionManager.AlterPartDefinition("Case", p => p
+                .WithHackathonField("0")
+                .WithTextField("Name", "1")
+                .WithTextField("ShortDescription", "Short description", "2", new TextFieldSettings()
+                {
+                    Hint = "Short description that appears in case selection dropdowns"
+                })
+            );
+
+            _contentDefinitionManager.AlterTypeDefinition("Case", t => t.Creatable().Listable().Securable()
+                // Name of this part is used as a magic string to associate with the Judge's type
+                .WithPart(nameof(TitlePart), p => p
+                    .WithPosition("0")
+                    .WithSettings(new TitlePartSettings()
+                    {
+                        Options = TitlePartOptions.GeneratedHidden
+                    })
+                )
+                .WithPart(nameof(LocalizationPart), p => p.WithPosition("1"))
+                .WithPart("Case", p => p.WithPosition("2"))
+                .WithPart("HtmlBodyPart", p => p.WithPosition("3").WithEditor("Wysiwyg"))
+            );
+        }*/
     }
 }

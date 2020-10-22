@@ -1,0 +1,24 @@
+{% if User | is_in_role: "Judge" %}
+
+{% if Site.Properties.HackathonCustomSettings.JudgingCustomSettings.JudgingInProgress.Value != true %}
+    <h3>{{"No active Judging round" | t}}</h3>
+{%else%}
+
+  {% assign teams = Queries.GetItemsForHackathon | query: type: "Team" %}
+
+    <div class="row justify-content-center">
+      <div class="col-6 d-flex flex-column">
+        {% for team in teams %}
+        {% if forloop.length <= 0 %}
+        <div class="d-flex flex-fill align-items-center justify-content-center">
+          <i class="fas fa-signature fa-3x text-muted" aria-label="{{ 'Empty' | t }}"></i>
+        </div>
+        {% endif %}
+        <div class="d-flex mb-1">
+          <a class="btn btn-primary col-12" href="{{ '~/JudgingEntry/' | append: team.ContentItemId | href }}?returnUrl={{Request.Path}}">{{ "Team" | t }} {{ team.Id }}</a>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+{% endif %}
+{% endif %}

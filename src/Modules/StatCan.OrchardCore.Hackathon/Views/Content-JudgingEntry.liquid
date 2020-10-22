@@ -1,0 +1,25 @@
+{% assign team = Model.ContentItem.ContentItemId | content_item_id | first %}
+{% assign currentScore = Model.ContentItem.Content.Team.Score.Value %}
+{% assign returnUrl = Request.Query['returnUrl'] %}
+
+<h1>{{ "Team " | t }} {{ team.Id }}</h1> 
+<form method="post" action="{{ "~/JudgingEntry/publish" | href }}">
+    <input type="hidden" name="contentItemId" value="{{ Model.ContentItem.ContentItemId }}">
+    <input type="hidden" name="returnUrl" value="{{ Request.Query['returnUrl'] | href }}">
+
+      <div class="row my-4">
+          <div class="col-md-12 col-4 d-flex justify-content-center mb-5">
+              <div class="btn-group btn-group btn-group-toggle btn-score" role="group" aria-label="{{ "Score" | t }}" data-toggle="buttons">
+                  {% for item in (0..10) %}
+                  <label class="btn btn-primary"><input type="radio" name="score{{item}}"  value="{{ item }}" autocomplete="off">{{ item }}</label>
+                  {% endfor %}
+              </div>
+          </div>
+      </div>
+
+    <div class="d-flex justify-content-center">
+        <button type="submit" class="btn btn-primary">{{ "Submit score" | t }}</button>
+    </div>
+    {% antiforgerytoken %}
+    <input type="hidden" name="score" value="{{team.ContentItemId}}">
+</form>
