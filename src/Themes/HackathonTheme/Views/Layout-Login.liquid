@@ -9,21 +9,21 @@
     {% render_section "HeadMeta", required: false %}
     {% resources type: "HeadScript" %}
   </head>
-
-  <body id="page-top" dir="{{ Culture.Dir }}" class="d-flex flex-column">
-    {% render_section "Header", required: false %}
-    <main id="bootstrap-main" class="d-flex flex-fill">
-      <section class="flex-fill container-fluid d-flex align-self-center align-items-center">
-        <div class="container">
-          <div class="row align-items-center justify-content-center">
-            <di v class="col-lg-6 col-md-8 col-12">
-              {% render_section "Content" %}        
+  <body dir="{{ Culture.Dir }}">
+    <div id="page-top" v-cloak>
+      <v-app>
+        <v-main>
+          <v-container  >
+            <div class="d-flex justify-center">
+              {% render_section "Content" %}
             </div>
-          </div>
-        </div>
-      </section>
-    </main>
-    {% render_section "Footer", required: false %}
+          </v-container>
+        </v-main>
+        <v-footer app padless>
+          {% render_section "Footer", required: false %}
+        </v-footer>
+      </v-app>
+    </div>
     {% resources type: "FootScript" %}
   </body>
 </html>

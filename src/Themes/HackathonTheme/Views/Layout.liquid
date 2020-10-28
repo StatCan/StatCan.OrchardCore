@@ -9,16 +9,28 @@
     {% render_section "HeadMeta", required: false %}
     {% resources type: "HeadScript" %}
   </head>
-  <body id="page-top" dir="{{ Culture.Dir }}">
-    <a class="sr-only sr-only-focusable text-center" href="#content">{{ "Skip to main content" | t }}</a>
-    {% render_section "Header", required: false %}
-    <div class="container messages-wrapper">
-      {% render_section "Messages", required: false %}
+  <body dir="{{ Culture.Dir }}">
+    <div id="page-top" v-cloak>
+      <v-app>
+        <!-- Style this absolute in the middle, on top of app-bar -->
+        <a class="d-sr-only-focusable" href="#main">{{ "Skip to main content" | t }}</a>
+        <v-navigation-drawer app v-model="drawer">
+          {% render_section "Drawer", required: false %}
+        </v-navigation-drawer>
+        <v-app-bar app>
+          <v-app-bar-nav-icon class="hidden-lg-and-up" @click="drawer = !drawer"></v-app-bar-nav-icon>
+          <v-spacer></v-spacer>
+          {% render_section "Header", required: false %}
+        </v-app-bar>
+        <v-main id="main">
+          {% render_section "Messages", required: false %}
+          {% render_section "Content" %}
+        </v-main>
+        <v-footer app padless>
+          {% render_section "Footer", required: false %}
+        </v-footer>
+      </v-app>
     </div>
-    <div id="content">
-      {% render_section "Content" %}
-    </div>
-    {% render_section "Footer", required: false %}
     {% resources type: "FootScript" %}
   </body>
 </html>
