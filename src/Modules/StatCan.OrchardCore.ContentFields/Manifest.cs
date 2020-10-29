@@ -25,3 +25,10 @@ using StatCan.OrchardCore.ContentFields;
     Category = "Content",
     Dependencies = new[] { "OrchardCore.ContentFields" }
 )]
+
+[assembly: Feature(
+    Id = Constants.Features.MultiSelect,
+    Name = "Multi Select Field",
+    Description = "Field for choosing multiple values from collection of configured options.",
+    Category = "Content"
+)]

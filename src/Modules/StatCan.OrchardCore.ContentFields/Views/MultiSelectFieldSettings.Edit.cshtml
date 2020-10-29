@@ -1,0 +1,65 @@
+﻿@model StatCan.OrchardCore.ContentFields.MultiSelect.ViewModels.EditMultiSelectFieldSettingsViewModel
+
+<script asp-src="https://vuejs.org/js/vue.min.js" debug-src="https://vuejs.org/js/vue.js" asp-name="vuejs"
+at="Foot"></script>
+<script asp-src="https://cdn.jsdelivr.net/sortable/1.4.2/Sortable.min.js"
+debug-src="https://cdn.jsdelivr.net/sortable/1.4.2/Sortable.js" asp-name="sortable" at="Foot"></script>
+<script asp-src="https://cdnjs.cloudflare.com/ajax/libs/Vue.Draggable/2.14.1/vuedraggable.min.js"
+debug-src="https://cdnjs.cloudflare.com/ajax/libs/Vue.Draggable/2.14.1/vuedraggable.js" asp-name="vuedraggable"
+depends-on="vuejs, sortable" at="Foot"></script>
+
+<script asp-src="~/StatCan.OrchardCore.ContentFields/Scripts/values/admin.js" asp-name="values" depends-on="jquery"
+at="Foot"></script>
+<script at="Foot">
+    initializeValuesEditor(document.getElementById('@Html.IdFor(m => m)'));
+</script>
+
+<style>
+    [v-cloak] {
+    display: none;
+    }
+</style>
+
+<fieldset class="form-group">
+    <label asp-for="Options">Options</label>
+    <p class="hint">Configure options available on content field.</p>
+
+    <div id="@Html.IdFor(m => m)" data-for="@Html.IdFor(m => m.OptionsJson)" asp-validation-class-for="OptionsJson"
+    v-cloak>
+        <input type="hidden" asp-for="OptionsJson" :value="value" data-init="@Model.OptionsJson">
+
+        <div class="form-inline mb-3">
+            <div class="form-group mr-3 w-100" style="max-width: 300px;">
+                <label for="@Html.IdFor(m => m.Options)_NewValue" class="sr-only">@T["New Option"]</label>
+                <input type="text" class="form-control w-100" id="@Html.IdFor(m => m.Options)_NewValue"
+                placeholder="@T["Enter a new option"]" v-model="newValue" v-on:keydown.enter.prevent="add">
+            </div>
+            <button type="button" class="btn btn-primary btn-sm" v-on:click="add">@T["Add"]</button>
+        </div>
+
+        <draggable tag="ul" class="list-group" v-model="items" handle=".handle">
+            <li v-for="(item, index) in items" class="list-group-item">
+                <div class="d-flex">
+                    <div class="w-100 text-left align-self-center">
+                        {{item}}
+                    </div>
+                    <div class="flex-shrink-1 text-right align-self-center">
+                        <button v-on:click="remove(index)" class="btn btn-danger btn-sm" type="button">
+                            <i class="fa fa-trash-alt"></i>
+                        </button>
+                    </div>
+                </div>
+            </li>
+        </draggable>
+
+        <p v-if="!hasValues" class="hint">@T["Currently no options have been added."]</p>
+    </div>
+</fieldset>
+
+<fieldset class="form-group">
+    <div class="row col-sm-6">
+        <label asp-for="Hint">@T["Hint"]</label>
+        <textarea asp-for="Hint" rows="2" class="form-control"></textarea>
+        <span class="hint">@T["The hint text to display for this field on the editor."]</span>
+    </div>
+</fieldset>

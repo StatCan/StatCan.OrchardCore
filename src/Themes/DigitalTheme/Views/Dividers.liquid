@@ -1,14 +1,13 @@
-{% assign divider = Model.Divider %}
+{% assign selectedValues = Model.SelectedValues %}
 {% assign pos = Model.Pos %}
-{% assign mirror = Model.Mirror %} {% comment %}Unused for now, use 'mirrorX' and 'mirrorY' classes through Divider{% endcomment %}
-{% if divider contains 'divider-step-1' %}
-    <svg class="widget-section-divider {{ divider }} {{ pos }} {{ mirror }}" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" width="3840" viewBox="0 0 3840 30"><path class="divider-color" d="M3840,30V0H1950l-30,30Z"/></svg>
+{% if selectedValues contains 'divider-step-1' %}
+    <svg class="widget-section-divider {{ pos }} {% for item in selectedValues %}{{ item }} {% endfor %}" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" width="3840" viewBox="0 0 3840 30"><path class="divider-color" d="M3840,30V0H1950l-30,30Z"/></svg>
 {% endif %}
-{% if divider contains 'divider-step-2' %}
-    <svg class="widget-section-divider {{ divider }} {{ pos }} {{ mirror }}" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" width="3840" viewBox="0 0 3840 60"><path class="divider-color" data-name="2-step" d="M1267,60l60-30h286l30-30H3840V60Z"/></svg>
+{% if selectedValues contains 'divider-step-2' %}
+    <svg class="widget-section-divider {{ pos }} {% for item in selectedValues %}{{ item }} {% endfor %}" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" width="3840" viewBox="0 0 3840 60"><path class="divider-color" data-name="2-step" d="M1267,60l60-30h286l30-30H3840V60Z"/></svg>
 {% endif %}
-{% if divider contains 'hero-step-1' %}
-    <svg class="widget-section-divider {{ divider }} {{ pos }}" xmlns="http://www.w3.org/2000/svg" width="3840" height="31" viewBox="0 0 3840 31">
+{% if selectedValues contains 'hero-step-1' %}
+    <svg class="widget-section-divider {{ pos }} {% for item in selectedValues %}{{ item }} {% endfor %}" xmlns="http://www.w3.org/2000/svg" width="3840" height="31" viewBox="0 0 3840 31">
         <path d="M0,1750H3840v62H1980l-60-60H0Z" transform="translate(0 -1750)" fill="#e0e3e6"/>
     </svg>
 {% endif %}

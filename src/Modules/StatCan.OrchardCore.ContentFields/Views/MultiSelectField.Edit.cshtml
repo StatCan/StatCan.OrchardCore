@@ -1,0 +1,41 @@
+﻿@model StatCan.OrchardCore.ContentFields.MultiSelect.ViewModels.EditMultiSelectFieldViewModel
+
+@using OrchardCore.ContentManagement.Metadata.Models
+@using StatCan.OrchardCore.ContentFields.MultiSelect.Settings
+
+@{
+    var settings = Model.PartFieldDefinition.GetSettings<MultiSelectFieldSettings>();
+    var options = settings.Options == null ? Array.Empty<string>() : settings.Options;
+}
+
+<fieldset class="form-group">
+    <h5>
+        @Model.PartFieldDefinition.DisplayName()
+
+        @if (!string.IsNullOrWhiteSpace(settings.Hint))
+        {
+            <span class="hint">— @settings.Hint</span>
+        }
+    </h5>
+
+    @if (options.Length == 0)
+    {
+        <p class="alert alert-warning">
+            <a href="~/Admin/ContentParts/@Model.PartFieldDefinition.PartDefinition.Name/Fields/@Model.PartFieldDefinition.Name/Edit?returnUrl=@FullRequestPath">@T["Please specify at least one option."]</a>
+        </p>
+    }
+    else
+    {
+        <div class="row">
+            @for (var i = 0; i < options.Length; i++)
+            {
+                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="@Html.IdFor(m => m.SelectedValues)_@i" name="@Html.NameFor(m => m.SelectedValues)" value="@options[i]" @(Model.SelectedValues.Contains(options[i]) ? "checked=\"checked\"" : "")>
+                        <label class="custom-control-label" for="@Html.IdFor(m => m.SelectedValues)_@i">@options[i]</label>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</fieldset>
