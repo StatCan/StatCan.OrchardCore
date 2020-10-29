@@ -12,6 +12,7 @@
     <PackageReference Include="OrchardCore.DisplayManagement" Version="$(OrchardCoreVersion)" />
     <PackageReference Include="OrchardCore.ResourceManagement" Version="$(OrchardCoreVersion)" />
     <PackageReference Include="OrchardCore.Users" Version="$(OrchardCoreVersion)" />
+    <PackageReference Include="OrchardCore.Admin" Version="$(OrchardCoreVersion)" />
     <PackageReference Include="OrchardCore.Workflows" Version="$(OrchardCoreVersion)" />
   </ItemGroup>
 
