@@ -7026,6 +7026,645 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     value: true
   });
 });
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+function confirmDialog(_ref) {
+  var callback = _ref.callback,
+      options = _objectWithoutProperties(_ref, ["callback"]);
+
+  var defaultOptions = $('#confirmRemoveModalMetadata').data();
+
+  var _$$extend = $.extend({}, defaultOptions, options),
+      title = _$$extend.title,
+      message = _$$extend.message,
+      okText = _$$extend.okText,
+      cancelText = _$$extend.cancelText,
+      okClass = _$$extend.okClass,
+      cancelClass = _$$extend.cancelClass;
+
+  $('<div id="confirmRemoveModal" class="modal" tabindex="-1" role="dialog">\
+        <div class="modal-dialog modal-dialog-centered" role="document">\
+            <div class="modal-content">\
+                <div class="modal-header">\
+                    <h5 class="modal-title">' + title + '</h5>\
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">\
+                        <span aria-hidden="true">&times;</span>\
+                    </button>\
+                </div>\
+                <div class="modal-body">\
+                    <p>' + message + '</p>\
+                </div>\
+                <div class="modal-footer">\
+                    <button id="modalOkButton" type="button" class="btn ' + okClass + '">' + okText + '</button>\
+                    <button id="modalCancelButton" type="button" class="btn ' + cancelClass + '" data-dismiss="modal">' + cancelText + '</button>\
+                </div>\
+            </div>\
+        </div>\
+    </div>').appendTo("body");
+  $("#confirmRemoveModal").modal({
+    backdrop: 'static',
+    keyboard: false
+  });
+  $("#confirmRemoveModal").on('hidden.bs.modal', function () {
+    $("#confirmRemoveModal").remove();
+  });
+  $("#modalOkButton").click(function () {
+    callback(true);
+    $("#confirmRemoveModal").modal("hide");
+  });
+  $("#modalCancelButton").click(function () {
+    callback(false);
+    $("#confirmRemoveModal").modal("hide");
+  });
+} // Prevents page flickering while downloading css
+
+
+$(window).on("load", function () {
+  $("body").removeClass("preload");
+});
+$(function () {
+  $("body").on("click", "[itemprop~='RemoveUrl']", function () {
+    var _this = $(this); // don't show the confirm dialog if the link is also UnsafeUrl, as it will already be handled below.
+
+
+    if (_this.filter("[itemprop~='UnsafeUrl']").length == 1) {
+      return false;
+    }
+
+    confirmDialog(_objectSpread(_objectSpread({}, _this.data()), {}, {
+      callback: function callback(resp) {
+        if (resp) {
+          var url = _this.attr('href');
+
+          if (url == undefined) {
+            var form = _this.parents('form'); // This line is reuired in case we used the FormValueRequiredAttribute
+
+
+            form.append($("<input type=\"hidden\" name=\"" + _this.attr('name') + "\" value=\"" + _this.attr('value') + "\" />"));
+            form.submit();
+          } else {
+            window.location = url;
+          }
+        }
+      }
+    }));
+    return false;
+  });
+});
+$(function () {
+  var magicToken = $("input[name=__RequestVerificationToken]").first();
+
+  if (magicToken) {
+    $("body").on("click", "a[itemprop~='UnsafeUrl'], a[data-unsafe-url]", function () {
+      var _this = $(this);
+
+      var hrefParts = _this.attr("href").split("?");
+
+      var form = $("<form action=\"" + hrefParts[0] + "\" method=\"POST\" />");
+      form.append(magicToken.clone());
+
+      if (hrefParts.length > 1) {
+        var queryParts = hrefParts[1].split("&");
+
+        for (var i = 0; i < queryParts.length; i++) {
+          var queryPartKVP = queryParts[i].split("="); //trusting hrefs in the page here
+
+          form.append($("<input type=\"hidden\" name=\"" + decodeURIComponent(queryPartKVP[0]) + "\" value=\"" + decodeURIComponent(queryPartKVP[1]) + "\" />"));
+        }
+      }
+
+      form.css({
+        "position": "absolute",
+        "left": "-9999em"
+      });
+      $("body").append(form);
+
+      var unsafeUrlPrompt = _this.data("unsafe-url");
+
+      if (unsafeUrlPrompt && unsafeUrlPrompt.length > 0) {
+        confirmDialog(_objectSpread(_objectSpread({}, _this.data()), {}, {
+          callback: function callback(resp) {
+            if (resp) {
+              form.submit();
+            }
+          }
+        }));
+        return false;
+      }
+
+      if (_this.filter("[itemprop~='RemoveUrl']").length == 1) {
+        confirmDialog(_objectSpread(_objectSpread({}, _this.data()), {}, {
+          callback: function callback(resp) {
+            if (resp) {
+              form.submit();
+            }
+          }
+        }));
+        return false;
+      }
+
+      form.submit();
+      return false;
+    });
+  }
+});
+$(function () {
+  $('input[data-toggle="collapse"]').each(function () {
+    // Prevent bootstrap from altering its behavior
+    // c.f. https://github.com/twbs/bootstrap/issues/21079
+    $(this).removeAttr("data-toggle"); // Expand the section if necessary
+
+    var target = $($(this).data('target'));
+
+    if ($(this).prop('checked')) {
+      target.addClass('show');
+    }
+
+    $(this).on('change', function (e) {
+      // During a double-click, ignore state changes while the element is collapsing
+      if (target.hasClass('collapsing')) {
+        $(this).prop('checked', !$(this).prop('checked'));
+      }
+
+      target.collapse($(this).prop('checked') ? 'show' : 'hide');
+    });
+  });
+});
+$(function () {
+  $('input[data-toggle="collapse active"]').each(function () {
+    // Prevent bootstrap from altering its behavior for inputs that hide target when input value is checked
+    // c.f. https://github.com/twbs/bootstrap/issues/21079
+    $(this).removeAttr("data-toggle"); // Expand the section if necessary
+
+    var target = $($(this).data('target'));
+
+    if (!$(this).prop('checked')) {
+      target.addClass('show');
+    }
+
+    $(this).on('change', function (e) {
+      // During a double-click, ignore state changes while the element is collapsing
+      if (target.hasClass('collapsing')) {
+        console.log('collapsing');
+        $(this).prop('checked', !$(this).prop('checked'));
+      }
+
+      target.collapse($(this).prop('checked') ? 'hide' : 'show');
+    });
+  });
+});
+
+function getTechnicalName(name) {
+  var result = "",
+      c;
+
+  if (!name || name.length == 0) {
+    return "";
+  }
+
+  name = removeDiacritics(name);
+
+  for (i = 0; i < name.length; i++) {
+    c = name[i];
+
+    if (isLetter(c) || isNumber(c) && i > 0) {
+      result += c;
+    }
+  }
+
+  return result;
+}
+
+function isLetter(str) {
+  return str.length === 1 && str.match(/[a-z]/i);
+}
+
+function isNumber(str) {
+  return str.length === 1 && str.match(/[0-9]/i);
+}
+$("#btn-darkmode").click(function () {
+  if ($('#admin-darkmode').attr('media') === 'all') {
+    $('#admin-default').attr('media', 'all');
+    $('#admin-darkmode').attr('media', 'not all');
+    darkMode = false;
+  } else {
+    $('#admin-default').attr('media', 'not all');
+    $('#admin-darkmode').attr('media', 'all');
+    darkMode = true;
+  }
+
+  persistAdminPreferences();
+});
+// When we load compact status from preferences we need to do some other tasks besides adding the class to the body.
+// UserPreferencesLoader has already added the needed class.
+$(function () {
+  // We set leftbar to compact if :
+  // 1. That preference was stored by the user the last time he was on the page
+  // 2. Or it's the first time on page and page is small.
+  //
+  if ($('body').hasClass('left-sidebar-compact') || $('body').hasClass('no-admin-preferences') && $(window).width() < 768) {
+    setCompactStatus();
+  }
+});
+$('span.title').each(function () {
+  $(this).prev('.icon').prop('title', $(this).text());
+});
+$('.leftbar-compactor').click(function () {
+  $('body').hasClass('left-sidebar-compact') ? unSetCompactStatus() : setCompactStatus(true);
+});
+$('#left-nav li.has-items').click(function () {
+  $('#left-nav li.has-items').removeClass("visible");
+  $(this).addClass("visible");
+});
+$(document).on("click", function (event) {
+  var $trigger = $("#left-nav li.has-items");
+
+  if ($trigger !== event.target && !$trigger.has(event.target).length) {
+    $('#left-nav li.has-items').removeClass("visible");
+  }
+});
+var isCompactExplicit = isCompactExplicit === undefined ? false : isCompactExplicit;
+var subMenuArray = new Array();
+
+function setCompactStatus(explicit) {
+  // This if is to avoid that when sliding from expanded to compact the 
+  // underliyng ul is visible while shrinking. It is ugly.    
+  if (!$('body').hasClass('left-sidebar-compact')) {
+    var labels = $('#left-nav ul.menu-admin > li > figure > figcaption > .item-label');
+    labels.css('background-color', 'transparent');
+    setTimeout(function () {
+      labels.css('background-color', '');
+    }, 200);
+  }
+
+  $('body').addClass('left-sidebar-compact'); // When leftbar is expanded  all ul tags are collapsed.
+  // When leftbar is compacted we don't want the first level collapsed. 
+  // We want it expanded so that hovering over the root buttons shows the full submenu
+
+  $('#left-nav ul.menu-admin > li > figure > ul').removeClass('collapse'); // When hovering, don't want toggling when clicking on label
+
+  $('#left-nav ul.menu-admin > li > figure > figcaption > a').attr('data-toggle', '');
+  $('#left-nav li.has-items').removeClass("visible"); //after menu has collapsed we set the transitions to none so that we don't do any transition
+  //animation when open a sub-menu
+
+  setTimeout(function () {
+    $('#left-nav > ul > li').css("transition", "none");
+  }, 200);
+
+  if (explicit == true) {
+    isCompactExplicit = explicit;
+  }
+
+  persistAdminPreferences();
+}
+
+function unSetCompactStatus() {
+  $('body').removeClass('left-sidebar-compact'); // resetting what we disabled for compact state
+
+  $('#left-nav ul.menu-admin > li > figure > ul').addClass('collapse');
+  $('#left-nav ul.menu-admin > li > figure > figcaption a').attr('data-toggle', 'collapse');
+  $('#left-nav li.has-items').removeClass("visible");
+  $('#left-nav > ul > li').css("transition", "");
+  isCompactExplicit = false;
+  persistAdminPreferences();
+}
+/*
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+*/
+var defaultDiacriticsRemovalMap = [{
+  'base': 'A',
+  'letters': "A\u24B6\uFF21\xC0\xC1\xC2\u1EA6\u1EA4\u1EAA\u1EA8\xC3\u0100\u0102\u1EB0\u1EAE\u1EB4\u1EB2\u0226\u01E0\xC4\u01DE\u1EA2\xC5\u01FA\u01CD\u0200\u0202\u1EA0\u1EAC\u1EB6\u1E00\u0104\u023A\u2C6F"
+}, {
+  'base': 'AA',
+  'letters': "\uA732"
+}, {
+  'base': 'AE',
+  'letters': "\xC6\u01FC\u01E2"
+}, {
+  'base': 'AO',
+  'letters': "\uA734"
+}, {
+  'base': 'AU',
+  'letters': "\uA736"
+}, {
+  'base': 'AV',
+  'letters': "\uA738\uA73A"
+}, {
+  'base': 'AY',
+  'letters': "\uA73C"
+}, {
+  'base': 'B',
+  'letters': "B\u24B7\uFF22\u1E02\u1E04\u1E06\u0243\u0182\u0181"
+}, {
+  'base': 'C',
+  'letters': "C\u24B8\uFF23\u0106\u0108\u010A\u010C\xC7\u1E08\u0187\u023B\uA73E"
+}, {
+  'base': 'D',
+  'letters': "D\u24B9\uFF24\u1E0A\u010E\u1E0C\u1E10\u1E12\u1E0E\u0110\u018B\u018A\u0189\uA779"
+}, {
+  'base': 'DZ',
+  'letters': "\u01F1\u01C4"
+}, {
+  'base': 'Dz',
+  'letters': "\u01F2\u01C5"
+}, {
+  'base': 'E',
+  'letters': "E\u24BA\uFF25\xC8\xC9\xCA\u1EC0\u1EBE\u1EC4\u1EC2\u1EBC\u0112\u1E14\u1E16\u0114\u0116\xCB\u1EBA\u011A\u0204\u0206\u1EB8\u1EC6\u0228\u1E1C\u0118\u1E18\u1E1A\u0190\u018E"
+}, {
+  'base': 'F',
+  'letters': "F\u24BB\uFF26\u1E1E\u0191\uA77B"
+}, {
+  'base': 'G',
+  'letters': "G\u24BC\uFF27\u01F4\u011C\u1E20\u011E\u0120\u01E6\u0122\u01E4\u0193\uA7A0\uA77D\uA77E"
+}, {
+  'base': 'H',
+  'letters': "H\u24BD\uFF28\u0124\u1E22\u1E26\u021E\u1E24\u1E28\u1E2A\u0126\u2C67\u2C75\uA78D"
+}, {
+  'base': 'I',
+  'letters': "I\u24BE\uFF29\xCC\xCD\xCE\u0128\u012A\u012C\u0130\xCF\u1E2E\u1EC8\u01CF\u0208\u020A\u1ECA\u012E\u1E2C\u0197"
+}, {
+  'base': 'J',
+  'letters': "J\u24BF\uFF2A\u0134\u0248"
+}, {
+  'base': 'K',
+  'letters': "K\u24C0\uFF2B\u1E30\u01E8\u1E32\u0136\u1E34\u0198\u2C69\uA740\uA742\uA744\uA7A2"
+}, {
+  'base': 'L',
+  'letters': "L\u24C1\uFF2C\u013F\u0139\u013D\u1E36\u1E38\u013B\u1E3C\u1E3A\u0141\u023D\u2C62\u2C60\uA748\uA746\uA780"
+}, {
+  'base': 'LJ',
+  'letters': "\u01C7"
+}, {
+  'base': 'Lj',
+  'letters': "\u01C8"
+}, {
+  'base': 'M',
+  'letters': "M\u24C2\uFF2D\u1E3E\u1E40\u1E42\u2C6E\u019C"
+}, {
+  'base': 'N',
+  'letters': "N\u24C3\uFF2E\u01F8\u0143\xD1\u1E44\u0147\u1E46\u0145\u1E4A\u1E48\u0220\u019D\uA790\uA7A4"
+}, {
+  'base': 'NJ',
+  'letters': "\u01CA"
+}, {
+  'base': 'Nj',
+  'letters': "\u01CB"
+}, {
+  'base': 'O',
+  'letters': "O\u24C4\uFF2F\xD2\xD3\xD4\u1ED2\u1ED0\u1ED6\u1ED4\xD5\u1E4C\u022C\u1E4E\u014C\u1E50\u1E52\u014E\u022E\u0230\xD6\u022A\u1ECE\u0150\u01D1\u020C\u020E\u01A0\u1EDC\u1EDA\u1EE0\u1EDE\u1EE2\u1ECC\u1ED8\u01EA\u01EC\xD8\u01FE\u0186\u019F\uA74A\uA74C"
+}, {
+  'base': 'OI',
+  'letters': "\u01A2"
+}, {
+  'base': 'OO',
+  'letters': "\uA74E"
+}, {
+  'base': 'OU',
+  'letters': "\u0222"
+}, {
+  'base': 'OE',
+  'letters': "\x8C\u0152"
+}, {
+  'base': 'oe',
+  'letters': "\x9C\u0153"
+}, {
+  'base': 'P',
+  'letters': "P\u24C5\uFF30\u1E54\u1E56\u01A4\u2C63\uA750\uA752\uA754"
+}, {
+  'base': 'Q',
+  'letters': "Q\u24C6\uFF31\uA756\uA758\u024A"
+}, {
+  'base': 'R',
+  'letters': "R\u24C7\uFF32\u0154\u1E58\u0158\u0210\u0212\u1E5A\u1E5C\u0156\u1E5E\u024C\u2C64\uA75A\uA7A6\uA782"
+}, {
+  'base': 'S',
+  'letters': "S\u24C8\uFF33\u1E9E\u015A\u1E64\u015C\u1E60\u0160\u1E66\u1E62\u1E68\u0218\u015E\u2C7E\uA7A8\uA784"
+}, {
+  'base': 'T',
+  'letters': "T\u24C9\uFF34\u1E6A\u0164\u1E6C\u021A\u0162\u1E70\u1E6E\u0166\u01AC\u01AE\u023E\uA786"
+}, {
+  'base': 'TZ',
+  'letters': "\uA728"
+}, {
+  'base': 'U',
+  'letters': "U\u24CA\uFF35\xD9\xDA\xDB\u0168\u1E78\u016A\u1E7A\u016C\xDC\u01DB\u01D7\u01D5\u01D9\u1EE6\u016E\u0170\u01D3\u0214\u0216\u01AF\u1EEA\u1EE8\u1EEE\u1EEC\u1EF0\u1EE4\u1E72\u0172\u1E76\u1E74\u0244"
+}, {
+  'base': 'V',
+  'letters': "V\u24CB\uFF36\u1E7C\u1E7E\u01B2\uA75E\u0245"
+}, {
+  'base': 'VY',
+  'letters': "\uA760"
+}, {
+  'base': 'W',
+  'letters': "W\u24CC\uFF37\u1E80\u1E82\u0174\u1E86\u1E84\u1E88\u2C72"
+}, {
+  'base': 'X',
+  'letters': "X\u24CD\uFF38\u1E8A\u1E8C"
+}, {
+  'base': 'Y',
+  'letters': "Y\u24CE\uFF39\u1EF2\xDD\u0176\u1EF8\u0232\u1E8E\u0178\u1EF6\u1EF4\u01B3\u024E\u1EFE"
+}, {
+  'base': 'Z',
+  'letters': "Z\u24CF\uFF3A\u0179\u1E90\u017B\u017D\u1E92\u1E94\u01B5\u0224\u2C7F\u2C6B\uA762"
+}, {
+  'base': 'a',
+  'letters': "a\u24D0\uFF41\u1E9A\xE0\xE1\xE2\u1EA7\u1EA5\u1EAB\u1EA9\xE3\u0101\u0103\u1EB1\u1EAF\u1EB5\u1EB3\u0227\u01E1\xE4\u01DF\u1EA3\xE5\u01FB\u01CE\u0201\u0203\u1EA1\u1EAD\u1EB7\u1E01\u0105\u2C65\u0250"
+}, {
+  'base': 'aa',
+  'letters': "\uA733"
+}, {
+  'base': 'ae',
+  'letters': "\xE6\u01FD\u01E3"
+}, {
+  'base': 'ao',
+  'letters': "\uA735"
+}, {
+  'base': 'au',
+  'letters': "\uA737"
+}, {
+  'base': 'av',
+  'letters': "\uA739\uA73B"
+}, {
+  'base': 'ay',
+  'letters': "\uA73D"
+}, {
+  'base': 'b',
+  'letters': "b\u24D1\uFF42\u1E03\u1E05\u1E07\u0180\u0183\u0253"
+}, {
+  'base': 'c',
+  'letters': "c\u24D2\uFF43\u0107\u0109\u010B\u010D\xE7\u1E09\u0188\u023C\uA73F\u2184"
+}, {
+  'base': 'd',
+  'letters': "d\u24D3\uFF44\u1E0B\u010F\u1E0D\u1E11\u1E13\u1E0F\u0111\u018C\u0256\u0257\uA77A"
+}, {
+  'base': 'dz',
+  'letters': "\u01F3\u01C6"
+}, {
+  'base': 'e',
+  'letters': "e\u24D4\uFF45\xE8\xE9\xEA\u1EC1\u1EBF\u1EC5\u1EC3\u1EBD\u0113\u1E15\u1E17\u0115\u0117\xEB\u1EBB\u011B\u0205\u0207\u1EB9\u1EC7\u0229\u1E1D\u0119\u1E19\u1E1B\u0247\u025B\u01DD"
+}, {
+  'base': 'f',
+  'letters': "f\u24D5\uFF46\u1E1F\u0192\uA77C"
+}, {
+  'base': 'g',
+  'letters': "g\u24D6\uFF47\u01F5\u011D\u1E21\u011F\u0121\u01E7\u0123\u01E5\u0260\uA7A1\u1D79\uA77F"
+}, {
+  'base': 'h',
+  'letters': "h\u24D7\uFF48\u0125\u1E23\u1E27\u021F\u1E25\u1E29\u1E2B\u1E96\u0127\u2C68\u2C76\u0265"
+}, {
+  'base': 'hv',
+  'letters': "\u0195"
+}, {
+  'base': 'i',
+  'letters': "i\u24D8\uFF49\xEC\xED\xEE\u0129\u012B\u012D\xEF\u1E2F\u1EC9\u01D0\u0209\u020B\u1ECB\u012F\u1E2D\u0268\u0131"
+}, {
+  'base': 'j',
+  'letters': "j\u24D9\uFF4A\u0135\u01F0\u0249"
+}, {
+  'base': 'k',
+  'letters': "k\u24DA\uFF4B\u1E31\u01E9\u1E33\u0137\u1E35\u0199\u2C6A\uA741\uA743\uA745\uA7A3"
+}, {
+  'base': 'l',
+  'letters': "l\u24DB\uFF4C\u0140\u013A\u013E\u1E37\u1E39\u013C\u1E3D\u1E3B\u017F\u0142\u019A\u026B\u2C61\uA749\uA781\uA747"
+}, {
+  'base': 'lj',
+  'letters': "\u01C9"
+}, {
+  'base': 'm',
+  'letters': "m\u24DC\uFF4D\u1E3F\u1E41\u1E43\u0271\u026F"
+}, {
+  'base': 'n',
+  'letters': "n\u24DD\uFF4E\u01F9\u0144\xF1\u1E45\u0148\u1E47\u0146\u1E4B\u1E49\u019E\u0272\u0149\uA791\uA7A5"
+}, {
+  'base': 'nj',
+  'letters': "\u01CC"
+}, {
+  'base': 'o',
+  'letters': "o\u24DE\uFF4F\xF2\xF3\xF4\u1ED3\u1ED1\u1ED7\u1ED5\xF5\u1E4D\u022D\u1E4F\u014D\u1E51\u1E53\u014F\u022F\u0231\xF6\u022B\u1ECF\u0151\u01D2\u020D\u020F\u01A1\u1EDD\u1EDB\u1EE1\u1EDF\u1EE3\u1ECD\u1ED9\u01EB\u01ED\xF8\u01FF\u0254\uA74B\uA74D\u0275"
+}, {
+  'base': 'oi',
+  'letters': "\u01A3"
+}, {
+  'base': 'ou',
+  'letters': "\u0223"
+}, {
+  'base': 'oo',
+  'letters': "\uA74F"
+}, {
+  'base': 'p',
+  'letters': "p\u24DF\uFF50\u1E55\u1E57\u01A5\u1D7D\uA751\uA753\uA755"
+}, {
+  'base': 'q',
+  'letters': "q\u24E0\uFF51\u024B\uA757\uA759"
+}, {
+  'base': 'r',
+  'letters': "r\u24E1\uFF52\u0155\u1E59\u0159\u0211\u0213\u1E5B\u1E5D\u0157\u1E5F\u024D\u027D\uA75B\uA7A7\uA783"
+}, {
+  'base': 's',
+  'letters': "s\u24E2\uFF53\xDF\u015B\u1E65\u015D\u1E61\u0161\u1E67\u1E63\u1E69\u0219\u015F\u023F\uA7A9\uA785\u1E9B"
+}, {
+  'base': 't',
+  'letters': "t\u24E3\uFF54\u1E6B\u1E97\u0165\u1E6D\u021B\u0163\u1E71\u1E6F\u0167\u01AD\u0288\u2C66\uA787"
+}, {
+  'base': 'tz',
+  'letters': "\uA729"
+}, {
+  'base': 'u',
+  'letters': "u\u24E4\uFF55\xF9\xFA\xFB\u0169\u1E79\u016B\u1E7B\u016D\xFC\u01DC\u01D8\u01D6\u01DA\u1EE7\u016F\u0171\u01D4\u0215\u0217\u01B0\u1EEB\u1EE9\u1EEF\u1EED\u1EF1\u1EE5\u1E73\u0173\u1E77\u1E75\u0289"
+}, {
+  'base': 'v',
+  'letters': "v\u24E5\uFF56\u1E7D\u1E7F\u028B\uA75F\u028C"
+}, {
+  'base': 'vy',
+  'letters': "\uA761"
+}, {
+  'base': 'w',
+  'letters': "w\u24E6\uFF57\u1E81\u1E83\u0175\u1E87\u1E85\u1E98\u1E89\u2C73"
+}, {
+  'base': 'x',
+  'letters': "x\u24E7\uFF58\u1E8B\u1E8D"
+}, {
+  'base': 'y',
+  'letters': "y\u24E8\uFF59\u1EF3\xFD\u0177\u1EF9\u0233\u1E8F\xFF\u1EF7\u1E99\u1EF5\u01B4\u024F\u1EFF"
+}, {
+  'base': 'z',
+  'letters': "z\u24E9\uFF5A\u017A\u1E91\u017C\u017E\u1E93\u1E95\u01B6\u0225\u0240\u2C6C\uA763"
+}];
+var diacriticsMap = {};
+
+for (var i = 0; i < defaultDiacriticsRemovalMap.length; i++) {
+  var letters = defaultDiacriticsRemovalMap[i].letters;
+
+  for (var j = 0; j < letters.length; j++) {
+    diacriticsMap[letters[j]] = defaultDiacriticsRemovalMap[i].base;
+  }
+}
+
+function removeDiacritics(str) {
+  return str.replace(/[^\u0000-\u007E]/g, function (a) {
+    return diacriticsMap[a] || a;
+  });
+}
+// System to detect when the window's size reaches a given breakpoint
+// Right now it is only used to compact the lefbar when resizing under 768px
+// In the future maybe this is useful to do other things on resizing.
+$(function () {
+  lastWidth = $(this).width(); //this = window
+
+  var breakPoint = 768;
+  lastDirection = "";
+  var lastDirectionManaged = "";
+  BreakpointChangeManaged = false;
+  $(window).on('resize', function () {
+    var width = $(this).width();
+    var breakPoint = 768;
+    var direction = width < lastWidth ? 'reducing' : 'increasing';
+
+    if (direction !== lastDirection) {
+      BreakpointChangeManaged = false; // need to listen for breakpoint            
+    }
+
+    if (BreakpointChangeManaged == false && direction != lastDirectionManaged) {
+      if (direction == "reducing" && width < breakPoint) {
+        // breakpoint reached while going down
+        setCompactStatus();
+        lastDirectionManaged = direction;
+        BreakpointChangeManaged = true;
+      }
+
+      if (direction == "increasing" && width > breakPoint) {
+        // breakpoint reached while going up
+        if (isCompactExplicit == false) {
+          unSetCompactStatus();
+        }
+
+        lastDirectionManaged = direction;
+        BreakpointChangeManaged = true;
+      }
+    }
+
+    lastDirection = direction;
+    lastWidth = width;
+  });
+});
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 /**!
@@ -8245,1899 +8884,6 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
   Sortable.version = '1.4.2';
   return Sortable;
 });
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
-function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
-function confirmDialog(_ref) {
-  var callback = _ref.callback,
-      options = _objectWithoutProperties(_ref, ["callback"]);
-
-  var defaultOptions = $('#confirmRemoveModalMetadata').data();
-
-  var _$$extend = $.extend({}, defaultOptions, options),
-      title = _$$extend.title,
-      message = _$$extend.message,
-      okText = _$$extend.okText,
-      cancelText = _$$extend.cancelText,
-      okClass = _$$extend.okClass,
-      cancelClass = _$$extend.cancelClass;
-
-  $('<div id="confirmRemoveModal" class="modal" tabindex="-1" role="dialog">\
-        <div class="modal-dialog modal-dialog-centered" role="document">\
-            <div class="modal-content">\
-                <div class="modal-header">\
-                    <h5 class="modal-title">' + title + '</h5>\
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">\
-                        <span aria-hidden="true">&times;</span>\
-                    </button>\
-                </div>\
-                <div class="modal-body">\
-                    <p>' + message + '</p>\
-                </div>\
-                <div class="modal-footer">\
-                    <button id="modalOkButton" type="button" class="btn ' + okClass + '">' + okText + '</button>\
-                    <button id="modalCancelButton" type="button" class="btn ' + cancelClass + '" data-dismiss="modal">' + cancelText + '</button>\
-                </div>\
-            </div>\
-        </div>\
-    </div>').appendTo("body");
-  $("#confirmRemoveModal").modal({
-    backdrop: 'static',
-    keyboard: false
-  });
-  $("#confirmRemoveModal").on('hidden.bs.modal', function () {
-    $("#confirmRemoveModal").remove();
-  });
-  $("#modalOkButton").click(function () {
-    callback(true);
-    $("#confirmRemoveModal").modal("hide");
-  });
-  $("#modalCancelButton").click(function () {
-    callback(false);
-    $("#confirmRemoveModal").modal("hide");
-  });
-}
-
-$(function () {
-  $("body").removeClass("preload");
-});
-$(function () {
-  $("body").on("click", "[itemprop~='RemoveUrl']", function () {
-    var _this = $(this); // don't show the confirm dialog if the link is also UnsafeUrl, as it will already be handled below.
-
-
-    if (_this.filter("[itemprop~='UnsafeUrl']").length == 1) {
-      return false;
-    }
-
-    confirmDialog(_objectSpread(_objectSpread({}, _this.data()), {}, {
-      callback: function callback(resp) {
-        if (resp) {
-          var url = _this.attr('href');
-
-          if (url == undefined) {
-            var form = _this.parents('form'); // This line is reuired in case we used the FormValueRequiredAttribute
-
-
-            form.append($("<input type=\"hidden\" name=\"" + _this.attr('name') + "\" value=\"" + _this.attr('value') + "\" />"));
-            form.submit();
-          } else {
-            window.location = url;
-          }
-        }
-      }
-    }));
-    return false;
-  });
-});
-$(function () {
-  var magicToken = $("input[name=__RequestVerificationToken]").first();
-
-  if (magicToken) {
-    $("body").on("click", "a[itemprop~='UnsafeUrl'], a[data-unsafe-url]", function () {
-      var _this = $(this);
-
-      var hrefParts = _this.attr("href").split("?");
-
-      var form = $("<form action=\"" + hrefParts[0] + "\" method=\"POST\" />");
-      form.append(magicToken.clone());
-
-      if (hrefParts.length > 1) {
-        var queryParts = hrefParts[1].split("&");
-
-        for (var i = 0; i < queryParts.length; i++) {
-          var queryPartKVP = queryParts[i].split("="); //trusting hrefs in the page here
-
-          form.append($("<input type=\"hidden\" name=\"" + decodeURIComponent(queryPartKVP[0]) + "\" value=\"" + decodeURIComponent(queryPartKVP[1]) + "\" />"));
-        }
-      }
-
-      form.css({
-        "position": "absolute",
-        "left": "-9999em"
-      });
-      $("body").append(form);
-
-      var unsafeUrlPrompt = _this.data("unsafe-url");
-
-      if (unsafeUrlPrompt && unsafeUrlPrompt.length > 0) {
-        confirmDialog(_objectSpread(_objectSpread({}, _this.data()), {}, {
-          callback: function callback(resp) {
-            if (resp) {
-              form.submit();
-            }
-          }
-        }));
-        return false;
-      }
-
-      if (_this.filter("[itemprop~='RemoveUrl']").length == 1) {
-        confirmDialog(_objectSpread(_objectSpread({}, _this.data()), {}, {
-          callback: function callback(resp) {
-            if (resp) {
-              form.submit();
-            }
-          }
-        }));
-        return false;
-      }
-
-      form.submit();
-      return false;
-    });
-  }
-});
-$(function () {
-  $('input[data-toggle="collapse"]').each(function () {
-    // Prevent bootstrap from altering its behavior
-    // c.f. https://github.com/twbs/bootstrap/issues/21079
-    $(this).removeAttr("data-toggle"); // Expand the section if necessary
-
-    var target = $($(this).data('target'));
-
-    if ($(this).prop('checked')) {
-      target.addClass('show');
-    }
-
-    $(this).on('change', function (e) {
-      // During a double-click, ignore state changes while the element is collapsing
-      if (target.hasClass('collapsing')) {
-        $(this).prop('checked', !$(this).prop('checked'));
-      }
-
-      target.collapse($(this).prop('checked') ? 'show' : 'hide');
-    });
-  });
-});
-$(function () {
-  $('input[data-toggle="collapse active"]').each(function () {
-    // Prevent bootstrap from altering its behavior for inputs that hide target when input value is checked
-    // c.f. https://github.com/twbs/bootstrap/issues/21079
-    $(this).removeAttr("data-toggle"); // Expand the section if necessary
-
-    var target = $($(this).data('target'));
-
-    if (!$(this).prop('checked')) {
-      target.addClass('show');
-    }
-
-    $(this).on('change', function (e) {
-      // During a double-click, ignore state changes while the element is collapsing
-      if (target.hasClass('collapsing')) {
-        console.log('collapsing');
-        $(this).prop('checked', !$(this).prop('checked'));
-      }
-
-      target.collapse($(this).prop('checked') ? 'hide' : 'show');
-    });
-  });
-});
-
-function getTechnicalName(name) {
-  var result = "",
-      c;
-
-  if (!name || name.length == 0) {
-    return "";
-  }
-
-  name = removeDiacritics(name);
-
-  for (i = 0; i < name.length; i++) {
-    c = name[i];
-
-    if (isLetter(c) || isNumber(c) && i > 0) {
-      result += c;
-    }
-  }
-
-  return result;
-}
-
-function isLetter(str) {
-  return str.length === 1 && str.match(/[a-z]/i);
-}
-
-function isNumber(str) {
-  return str.length === 1 && str.match(/[0-9]/i);
-}
-var leftMenuPS; // When we load compact status from preferences we need to do some other tasks besides adding the class to the body.
-// UserPreferencesLoader has already added the needed class.
-
-$(function () {
-  leftMenuPS = new PerfectScrollbar('#left-nav', {
-    suppressScrollX: true
-  }); // We set leftbar to compact if :
-  // 1. That preference was stored by the user the last time he was on the page
-  // 2. Or it's the first time on page and page is small.
-  //
-
-  if ($('body').hasClass('left-sidebar-compact') || $('body').hasClass('no-admin-preferences') && $(window).width() < 768) {
-    setCompactStatus();
-  }
-});
-$('.leftbar-compactor').click(function () {
-  $('body').hasClass('left-sidebar-compact') ? unSetCompactStatus() : setCompactStatus(true);
-});
-$('#left-nav li.has-items').click(function () {
-  $('#left-nav li.has-items').removeClass("visible");
-  $(this).addClass("visible");
-});
-$(document).on("click", function (event) {
-  var $trigger = $("#left-nav li.has-items");
-
-  if ($trigger !== event.target && !$trigger.has(event.target).length) {
-    $('#left-nav li.has-items').removeClass("visible");
-  }
-});
-var isCompactExplicit = isCompactExplicit === undefined ? false : isCompactExplicit;
-var subMenuArray = new Array();
-
-function setCompactStatus(explicit) {
-  // This if is to avoid that when sliding from expanded to compact the 
-  // underliyng ul is visible while shrinking. It is ugly.    
-  if (!$('body').hasClass('left-sidebar-compact')) {
-    var labels = $('#left-nav ul.menu-admin > li > .item-label');
-    labels.css('background-color', 'transparent');
-    setTimeout(function () {
-      labels.css('background-color', '');
-    }, 200);
-  }
-
-  $('body').addClass('left-sidebar-compact'); // When leftbar is expanded  all ul tags are collapsed.
-  // When leftbar is compacted we don't want the first level collapsed. 
-  // We want it expanded so that hovering over the root buttons shows the full submenu
-
-  $('#left-nav ul.menu-admin > li > ul').removeClass('collapse'); // When hovering, don't want toggling when clicking on label
-
-  $('#left-nav ul.menu-admin > li > label').attr('data-toggle', '');
-  $('#left-nav li.has-items').removeClass("visible"); //after menu has collapsed we set the transitions to none so that we don't do any transition
-  //animation when open a sub-menu
-
-  setTimeout(function () {
-    $('#left-nav > ul > li').css("transition", "none");
-  }, 200); //$('#left-nav').scrollTop = 0;
-  //leftMenuPS.update();
-
-  if (leftMenuPS) {
-    leftMenuPS.destroy();
-    leftMenuPS = null; // to make sure garbages are collected
-  } //set PerfectScrollBar on sub-menu items.
-
-
-  var submenus = $('#left-nav > ul > li > [id^="m"]');
-  submenus.each(function (index) {
-    subMenuArray[index] = new PerfectScrollbar(this, {
-      suppressScrollX: true
-    });
-  });
-
-  if (explicit == true) {
-    isCompactExplicit = explicit;
-  }
-
-  persistAdminPreferences();
-}
-
-function unSetCompactStatus() {
-  $('body').removeClass('left-sidebar-compact'); // resetting what we disabled for compact state
-
-  $('#left-nav ul.menu-admin > li > ul').addClass('collapse');
-  $('#left-nav ul.menu-admin > li > label').attr('data-toggle', 'collapse');
-  $('#left-nav li.has-items').removeClass("visible");
-  $('#left-nav > ul > li').css("transition", "");
-
-  if (leftMenuPS == null) {
-    leftMenuPS = new PerfectScrollbar('#left-nav', {
-      suppressScrollX: true
-    });
-  } else {
-    leftMenuPS.destroy();
-    leftMenuPS = null; // to make sure garbages are collected
-
-    leftMenuPS = new PerfectScrollbar('#left-nav', {
-      suppressScrollX: true
-    });
-  } //remove PerfectScrollBar on sub-menu items
-
-
-  subMenuArray.forEach(function (ps) {
-    ps.destroy();
-    ps = null; // to make sure garbages are collected
-  });
-  isCompactExplicit = false;
-  persistAdminPreferences();
-}
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-/*!
- * perfect-scrollbar v1.3.0
- * (c) 2017 Hyunje Jun
- * @license MIT
- */
-(function (global, factory) {
-  (typeof exports === "undefined" ? "undefined" : _typeof(exports)) === 'object' && typeof module !== 'undefined' ? module.exports = factory() : typeof define === 'function' && define.amd ? define(factory) : global.PerfectScrollbar = factory();
-})(this, function () {
-  'use strict';
-
-  function get(element) {
-    return getComputedStyle(element);
-  }
-
-  function set(element, obj) {
-    for (var key in obj) {
-      var val = obj[key];
-
-      if (typeof val === 'number') {
-        val = val + "px";
-      }
-
-      element.style[key] = val;
-    }
-
-    return element;
-  }
-
-  function div(className) {
-    var div = document.createElement('div');
-    div.className = className;
-    return div;
-  }
-
-  var elMatches = typeof Element !== 'undefined' && (Element.prototype.matches || Element.prototype.webkitMatchesSelector || Element.prototype.msMatchesSelector);
-
-  function matches(element, query) {
-    if (!elMatches) {
-      throw new Error('No element matching method supported');
-    }
-
-    return elMatches.call(element, query);
-  }
-
-  function remove(element) {
-    if (element.remove) {
-      element.remove();
-    } else {
-      if (element.parentNode) {
-        element.parentNode.removeChild(element);
-      }
-    }
-  }
-
-  function queryChildren(element, selector) {
-    return Array.prototype.filter.call(element.children, function (child) {
-      return matches(child, selector);
-    });
-  }
-
-  var cls = {
-    main: 'ps',
-    element: {
-      thumb: function thumb(x) {
-        return "ps__thumb-" + x;
-      },
-      rail: function rail(x) {
-        return "ps__rail-" + x;
-      },
-      consuming: 'ps__child--consume'
-    },
-    state: {
-      focus: 'ps--focus',
-      active: function active(x) {
-        return "ps--active-" + x;
-      },
-      scrolling: function scrolling(x) {
-        return "ps--scrolling-" + x;
-      }
-    }
-  };
-  /*
-   * Helper methods
-   */
-
-  var scrollingClassTimeout = {
-    x: null,
-    y: null
-  };
-
-  function addScrollingClass(i, x) {
-    var classList = i.element.classList;
-    var className = cls.state.scrolling(x);
-
-    if (classList.contains(className)) {
-      clearTimeout(scrollingClassTimeout[x]);
-    } else {
-      classList.add(className);
-    }
-  }
-
-  function removeScrollingClass(i, x) {
-    scrollingClassTimeout[x] = setTimeout(function () {
-      return i.isAlive && i.element.classList.remove(cls.state.scrolling(x));
-    }, i.settings.scrollingThreshold);
-  }
-
-  function setScrollingClassInstantly(i, x) {
-    addScrollingClass(i, x);
-    removeScrollingClass(i, x);
-  }
-
-  var EventElement = function EventElement(element) {
-    this.element = element;
-    this.handlers = {};
-  };
-
-  var prototypeAccessors = {
-    isEmpty: {
-      configurable: true
-    }
-  };
-
-  EventElement.prototype.bind = function bind(eventName, handler) {
-    if (typeof this.handlers[eventName] === 'undefined') {
-      this.handlers[eventName] = [];
-    }
-
-    this.handlers[eventName].push(handler);
-    this.element.addEventListener(eventName, handler, false);
-  };
-
-  EventElement.prototype.unbind = function unbind(eventName, target) {
-    var this$1 = this;
-    this.handlers[eventName] = this.handlers[eventName].filter(function (handler) {
-      if (target && handler !== target) {
-        return true;
-      }
-
-      this$1.element.removeEventListener(eventName, handler, false);
-      return false;
-    });
-  };
-
-  EventElement.prototype.unbindAll = function unbindAll() {
-    var this$1 = this;
-
-    for (var name in this$1.handlers) {
-      this$1.unbind(name);
-    }
-  };
-
-  prototypeAccessors.isEmpty.get = function () {
-    var this$1 = this;
-    return Object.keys(this.handlers).every(function (key) {
-      return this$1.handlers[key].length === 0;
-    });
-  };
-
-  Object.defineProperties(EventElement.prototype, prototypeAccessors);
-
-  var EventManager = function EventManager() {
-    this.eventElements = [];
-  };
-
-  EventManager.prototype.eventElement = function eventElement(element) {
-    var ee = this.eventElements.filter(function (ee) {
-      return ee.element === element;
-    })[0];
-
-    if (!ee) {
-      ee = new EventElement(element);
-      this.eventElements.push(ee);
-    }
-
-    return ee;
-  };
-
-  EventManager.prototype.bind = function bind(element, eventName, handler) {
-    this.eventElement(element).bind(eventName, handler);
-  };
-
-  EventManager.prototype.unbind = function unbind(element, eventName, handler) {
-    var ee = this.eventElement(element);
-    ee.unbind(eventName, handler);
-
-    if (ee.isEmpty) {
-      // remove
-      this.eventElements.splice(this.eventElements.indexOf(ee), 1);
-    }
-  };
-
-  EventManager.prototype.unbindAll = function unbindAll() {
-    this.eventElements.forEach(function (e) {
-      return e.unbindAll();
-    });
-    this.eventElements = [];
-  };
-
-  EventManager.prototype.once = function once(element, eventName, handler) {
-    var ee = this.eventElement(element);
-
-    var onceHandler = function onceHandler(evt) {
-      ee.unbind(eventName, onceHandler);
-      handler(evt);
-    };
-
-    ee.bind(eventName, onceHandler);
-  };
-
-  function createEvent(name) {
-    if (typeof window.CustomEvent === 'function') {
-      return new CustomEvent(name);
-    } else {
-      var evt = document.createEvent('CustomEvent');
-      evt.initCustomEvent(name, false, false, undefined);
-      return evt;
-    }
-  }
-
-  var processScrollDiff = function processScrollDiff(i, axis, diff, useScrollingClass, forceFireReachEvent) {
-    if (useScrollingClass === void 0) useScrollingClass = true;
-    if (forceFireReachEvent === void 0) forceFireReachEvent = false;
-    var fields;
-
-    if (axis === 'top') {
-      fields = ['contentHeight', 'containerHeight', 'scrollTop', 'y', 'up', 'down'];
-    } else if (axis === 'left') {
-      fields = ['contentWidth', 'containerWidth', 'scrollLeft', 'x', 'left', 'right'];
-    } else {
-      throw new Error('A proper axis should be provided');
-    }
-
-    processScrollDiff$1(i, diff, fields, useScrollingClass, forceFireReachEvent);
-  };
-
-  function processScrollDiff$1(i, diff, ref, useScrollingClass, forceFireReachEvent) {
-    var contentHeight = ref[0];
-    var containerHeight = ref[1];
-    var scrollTop = ref[2];
-    var y = ref[3];
-    var up = ref[4];
-    var down = ref[5];
-    if (useScrollingClass === void 0) useScrollingClass = true;
-    if (forceFireReachEvent === void 0) forceFireReachEvent = false;
-    var element = i.element; // reset reach
-
-    i.reach[y] = null; // 1 for subpixel rounding
-
-    if (element[scrollTop] < 1) {
-      i.reach[y] = 'start';
-    } // 1 for subpixel rounding
-
-
-    if (element[scrollTop] > i[contentHeight] - i[containerHeight] - 1) {
-      i.reach[y] = 'end';
-    }
-
-    if (diff) {
-      element.dispatchEvent(createEvent("ps-scroll-" + y));
-
-      if (diff < 0) {
-        element.dispatchEvent(createEvent("ps-scroll-" + up));
-      } else if (diff > 0) {
-        element.dispatchEvent(createEvent("ps-scroll-" + down));
-      }
-
-      if (useScrollingClass) {
-        setScrollingClassInstantly(i, y);
-      }
-    }
-
-    if (i.reach[y] && (diff || forceFireReachEvent)) {
-      element.dispatchEvent(createEvent("ps-" + y + "-reach-" + i.reach[y]));
-    }
-  }
-
-  function toInt(x) {
-    return parseInt(x, 10) || 0;
-  }
-
-  function isEditable(el) {
-    return matches(el, 'input,[contenteditable]') || matches(el, 'select,[contenteditable]') || matches(el, 'textarea,[contenteditable]') || matches(el, 'button,[contenteditable]');
-  }
-
-  function outerWidth(element) {
-    var styles = get(element);
-    return toInt(styles.width) + toInt(styles.paddingLeft) + toInt(styles.paddingRight) + toInt(styles.borderLeftWidth) + toInt(styles.borderRightWidth);
-  }
-
-  var env = {
-    isWebKit: typeof document !== 'undefined' && 'WebkitAppearance' in document.documentElement.style,
-    supportsTouch: typeof window !== 'undefined' && ('ontouchstart' in window || window.DocumentTouch && document instanceof window.DocumentTouch),
-    supportsIePointer: typeof navigator !== 'undefined' && navigator.msMaxTouchPoints,
-    isChrome: typeof navigator !== 'undefined' && /Chrome/i.test(navigator && navigator.userAgent)
-  };
-
-  var updateGeometry = function updateGeometry(i) {
-    var element = i.element;
-    i.containerWidth = element.clientWidth;
-    i.containerHeight = element.clientHeight;
-    i.contentWidth = element.scrollWidth;
-    i.contentHeight = element.scrollHeight;
-
-    if (!element.contains(i.scrollbarXRail)) {
-      // clean up and append
-      queryChildren(element, cls.element.rail('x')).forEach(function (el) {
-        return remove(el);
-      });
-      element.appendChild(i.scrollbarXRail);
-    }
-
-    if (!element.contains(i.scrollbarYRail)) {
-      // clean up and append
-      queryChildren(element, cls.element.rail('y')).forEach(function (el) {
-        return remove(el);
-      });
-      element.appendChild(i.scrollbarYRail);
-    }
-
-    if (!i.settings.suppressScrollX && i.containerWidth + i.settings.scrollXMarginOffset < i.contentWidth) {
-      i.scrollbarXActive = true;
-      i.railXWidth = i.containerWidth - i.railXMarginWidth;
-      i.railXRatio = i.containerWidth / i.railXWidth;
-      i.scrollbarXWidth = getThumbSize(i, toInt(i.railXWidth * i.containerWidth / i.contentWidth));
-      i.scrollbarXLeft = toInt((i.negativeScrollAdjustment + element.scrollLeft) * (i.railXWidth - i.scrollbarXWidth) / (i.contentWidth - i.containerWidth));
-    } else {
-      i.scrollbarXActive = false;
-    }
-
-    if (!i.settings.suppressScrollY && i.containerHeight + i.settings.scrollYMarginOffset < i.contentHeight) {
-      i.scrollbarYActive = true;
-      i.railYHeight = i.containerHeight - i.railYMarginHeight;
-      i.railYRatio = i.containerHeight / i.railYHeight;
-      i.scrollbarYHeight = getThumbSize(i, toInt(i.railYHeight * i.containerHeight / i.contentHeight));
-      i.scrollbarYTop = toInt(element.scrollTop * (i.railYHeight - i.scrollbarYHeight) / (i.contentHeight - i.containerHeight));
-    } else {
-      i.scrollbarYActive = false;
-    }
-
-    if (i.scrollbarXLeft >= i.railXWidth - i.scrollbarXWidth) {
-      i.scrollbarXLeft = i.railXWidth - i.scrollbarXWidth;
-    }
-
-    if (i.scrollbarYTop >= i.railYHeight - i.scrollbarYHeight) {
-      i.scrollbarYTop = i.railYHeight - i.scrollbarYHeight;
-    }
-
-    updateCss(element, i);
-
-    if (i.scrollbarXActive) {
-      element.classList.add(cls.state.active('x'));
-    } else {
-      element.classList.remove(cls.state.active('x'));
-      i.scrollbarXWidth = 0;
-      i.scrollbarXLeft = 0;
-      element.scrollLeft = 0;
-    }
-
-    if (i.scrollbarYActive) {
-      element.classList.add(cls.state.active('y'));
-    } else {
-      element.classList.remove(cls.state.active('y'));
-      i.scrollbarYHeight = 0;
-      i.scrollbarYTop = 0;
-      element.scrollTop = 0;
-    }
-  };
-
-  function getThumbSize(i, thumbSize) {
-    if (i.settings.minScrollbarLength) {
-      thumbSize = Math.max(thumbSize, i.settings.minScrollbarLength);
-    }
-
-    if (i.settings.maxScrollbarLength) {
-      thumbSize = Math.min(thumbSize, i.settings.maxScrollbarLength);
-    }
-
-    return thumbSize;
-  }
-
-  function updateCss(element, i) {
-    var xRailOffset = {
-      width: i.railXWidth
-    };
-
-    if (i.isRtl) {
-      xRailOffset.left = i.negativeScrollAdjustment + element.scrollLeft + i.containerWidth - i.contentWidth;
-    } else {
-      xRailOffset.left = element.scrollLeft;
-    }
-
-    if (i.isScrollbarXUsingBottom) {
-      xRailOffset.bottom = i.scrollbarXBottom - element.scrollTop;
-    } else {
-      xRailOffset.top = i.scrollbarXTop + element.scrollTop;
-    }
-
-    set(i.scrollbarXRail, xRailOffset);
-    var yRailOffset = {
-      top: element.scrollTop,
-      height: i.railYHeight
-    };
-
-    if (i.isScrollbarYUsingRight) {
-      if (i.isRtl) {
-        yRailOffset.right = i.contentWidth - (i.negativeScrollAdjustment + element.scrollLeft) - i.scrollbarYRight - i.scrollbarYOuterWidth;
-      } else {
-        yRailOffset.right = i.scrollbarYRight - element.scrollLeft;
-      }
-    } else {
-      if (i.isRtl) {
-        yRailOffset.left = i.negativeScrollAdjustment + element.scrollLeft + i.containerWidth * 2 - i.contentWidth - i.scrollbarYLeft - i.scrollbarYOuterWidth;
-      } else {
-        yRailOffset.left = i.scrollbarYLeft + element.scrollLeft;
-      }
-    }
-
-    set(i.scrollbarYRail, yRailOffset);
-    set(i.scrollbarX, {
-      left: i.scrollbarXLeft,
-      width: i.scrollbarXWidth - i.railBorderXWidth
-    });
-    set(i.scrollbarY, {
-      top: i.scrollbarYTop,
-      height: i.scrollbarYHeight - i.railBorderYWidth
-    });
-  }
-
-  var clickRail = function clickRail(i) {
-    i.event.bind(i.scrollbarY, 'mousedown', function (e) {
-      return e.stopPropagation();
-    });
-    i.event.bind(i.scrollbarYRail, 'mousedown', function (e) {
-      var positionTop = e.pageY - window.pageYOffset - i.scrollbarYRail.getBoundingClientRect().top;
-      var direction = positionTop > i.scrollbarYTop ? 1 : -1;
-      i.element.scrollTop += direction * i.containerHeight;
-      updateGeometry(i);
-      e.stopPropagation();
-    });
-    i.event.bind(i.scrollbarX, 'mousedown', function (e) {
-      return e.stopPropagation();
-    });
-    i.event.bind(i.scrollbarXRail, 'mousedown', function (e) {
-      var positionLeft = e.pageX - window.pageXOffset - i.scrollbarXRail.getBoundingClientRect().left;
-      var direction = positionLeft > i.scrollbarXLeft ? 1 : -1;
-      i.element.scrollLeft += direction * i.containerWidth;
-      updateGeometry(i);
-      e.stopPropagation();
-    });
-  };
-
-  var dragThumb = function dragThumb(i) {
-    bindMouseScrollHandler(i, ['containerWidth', 'contentWidth', 'pageX', 'railXWidth', 'scrollbarX', 'scrollbarXWidth', 'scrollLeft', 'x']);
-    bindMouseScrollHandler(i, ['containerHeight', 'contentHeight', 'pageY', 'railYHeight', 'scrollbarY', 'scrollbarYHeight', 'scrollTop', 'y']);
-  };
-
-  function bindMouseScrollHandler(i, ref) {
-    var containerHeight = ref[0];
-    var contentHeight = ref[1];
-    var pageY = ref[2];
-    var railYHeight = ref[3];
-    var scrollbarY = ref[4];
-    var scrollbarYHeight = ref[5];
-    var scrollTop = ref[6];
-    var y = ref[7];
-    var element = i.element;
-    var startingScrollTop = null;
-    var startingMousePageY = null;
-    var scrollBy = null;
-
-    function mouseMoveHandler(e) {
-      element[scrollTop] = startingScrollTop + scrollBy * (e[pageY] - startingMousePageY);
-      addScrollingClass(i, y);
-      updateGeometry(i);
-      e.stopPropagation();
-      e.preventDefault();
-    }
-
-    function mouseUpHandler() {
-      removeScrollingClass(i, y);
-      i.event.unbind(i.ownerDocument, 'mousemove', mouseMoveHandler);
-    }
-
-    i.event.bind(i[scrollbarY], 'mousedown', function (e) {
-      startingScrollTop = element[scrollTop];
-      startingMousePageY = e[pageY];
-      scrollBy = (i[contentHeight] - i[containerHeight]) / (i[railYHeight] - i[scrollbarYHeight]);
-      i.event.bind(i.ownerDocument, 'mousemove', mouseMoveHandler);
-      i.event.once(i.ownerDocument, 'mouseup', mouseUpHandler);
-      e.stopPropagation();
-      e.preventDefault();
-    });
-  }
-
-  var keyboard = function keyboard(i) {
-    var element = i.element;
-
-    var elementHovered = function elementHovered() {
-      return matches(element, ':hover');
-    };
-
-    var scrollbarFocused = function scrollbarFocused() {
-      return matches(i.scrollbarX, ':focus') || matches(i.scrollbarY, ':focus');
-    };
-
-    function shouldPreventDefault(deltaX, deltaY) {
-      var scrollTop = element.scrollTop;
-
-      if (deltaX === 0) {
-        if (!i.scrollbarYActive) {
-          return false;
-        }
-
-        if (scrollTop === 0 && deltaY > 0 || scrollTop >= i.contentHeight - i.containerHeight && deltaY < 0) {
-          return !i.settings.wheelPropagation;
-        }
-      }
-
-      var scrollLeft = element.scrollLeft;
-
-      if (deltaY === 0) {
-        if (!i.scrollbarXActive) {
-          return false;
-        }
-
-        if (scrollLeft === 0 && deltaX < 0 || scrollLeft >= i.contentWidth - i.containerWidth && deltaX > 0) {
-          return !i.settings.wheelPropagation;
-        }
-      }
-
-      return true;
-    }
-
-    i.event.bind(i.ownerDocument, 'keydown', function (e) {
-      if (e.isDefaultPrevented && e.isDefaultPrevented() || e.defaultPrevented) {
-        return;
-      }
-
-      if (!elementHovered() && !scrollbarFocused()) {
-        return;
-      }
-
-      var activeElement = document.activeElement ? document.activeElement : i.ownerDocument.activeElement;
-
-      if (activeElement) {
-        if (activeElement.tagName === 'IFRAME') {
-          activeElement = activeElement.contentDocument.activeElement;
-        } else {
-          // go deeper if element is a webcomponent
-          while (activeElement.shadowRoot) {
-            activeElement = activeElement.shadowRoot.activeElement;
-          }
-        }
-
-        if (isEditable(activeElement)) {
-          return;
-        }
-      }
-
-      var deltaX = 0;
-      var deltaY = 0;
-
-      switch (e.which) {
-        case 37:
-          // left
-          if (e.metaKey) {
-            deltaX = -i.contentWidth;
-          } else if (e.altKey) {
-            deltaX = -i.containerWidth;
-          } else {
-            deltaX = -30;
-          }
-
-          break;
-
-        case 38:
-          // up
-          if (e.metaKey) {
-            deltaY = i.contentHeight;
-          } else if (e.altKey) {
-            deltaY = i.containerHeight;
-          } else {
-            deltaY = 30;
-          }
-
-          break;
-
-        case 39:
-          // right
-          if (e.metaKey) {
-            deltaX = i.contentWidth;
-          } else if (e.altKey) {
-            deltaX = i.containerWidth;
-          } else {
-            deltaX = 30;
-          }
-
-          break;
-
-        case 40:
-          // down
-          if (e.metaKey) {
-            deltaY = -i.contentHeight;
-          } else if (e.altKey) {
-            deltaY = -i.containerHeight;
-          } else {
-            deltaY = -30;
-          }
-
-          break;
-
-        case 32:
-          // space bar
-          if (e.shiftKey) {
-            deltaY = i.containerHeight;
-          } else {
-            deltaY = -i.containerHeight;
-          }
-
-          break;
-
-        case 33:
-          // page up
-          deltaY = i.containerHeight;
-          break;
-
-        case 34:
-          // page down
-          deltaY = -i.containerHeight;
-          break;
-
-        case 36:
-          // home
-          deltaY = i.contentHeight;
-          break;
-
-        case 35:
-          // end
-          deltaY = -i.contentHeight;
-          break;
-
-        default:
-          return;
-      }
-
-      if (i.settings.suppressScrollX && deltaX !== 0) {
-        return;
-      }
-
-      if (i.settings.suppressScrollY && deltaY !== 0) {
-        return;
-      }
-
-      element.scrollTop -= deltaY;
-      element.scrollLeft += deltaX;
-      updateGeometry(i);
-
-      if (shouldPreventDefault(deltaX, deltaY)) {
-        e.preventDefault();
-      }
-    });
-  };
-
-  var wheel = function wheel(i) {
-    var element = i.element;
-
-    function shouldPreventDefault(deltaX, deltaY) {
-      var isTop = element.scrollTop === 0;
-      var isBottom = element.scrollTop + element.offsetHeight === element.scrollHeight;
-      var isLeft = element.scrollLeft === 0;
-      var isRight = element.scrollLeft + element.offsetWidth === element.offsetWidth;
-      var hitsBound; // pick axis with primary direction
-
-      if (Math.abs(deltaY) > Math.abs(deltaX)) {
-        hitsBound = isTop || isBottom;
-      } else {
-        hitsBound = isLeft || isRight;
-      }
-
-      return hitsBound ? !i.settings.wheelPropagation : true;
-    }
-
-    function getDeltaFromEvent(e) {
-      var deltaX = e.deltaX;
-      var deltaY = -1 * e.deltaY;
-
-      if (typeof deltaX === 'undefined' || typeof deltaY === 'undefined') {
-        // OS X Safari
-        deltaX = -1 * e.wheelDeltaX / 6;
-        deltaY = e.wheelDeltaY / 6;
-      }
-
-      if (e.deltaMode && e.deltaMode === 1) {
-        // Firefox in deltaMode 1: Line scrolling
-        deltaX *= 10;
-        deltaY *= 10;
-      }
-
-      if (deltaX !== deltaX && deltaY !== deltaY
-      /* NaN checks */
-      ) {
-          // IE in some mouse drivers
-          deltaX = 0;
-          deltaY = e.wheelDelta;
-        }
-
-      if (e.shiftKey) {
-        // reverse axis with shift key
-        return [-deltaY, -deltaX];
-      }
-
-      return [deltaX, deltaY];
-    }
-
-    function shouldBeConsumedByChild(target, deltaX, deltaY) {
-      // FIXME: this is a workaround for <select> issue in FF and IE #571
-      if (!env.isWebKit && element.querySelector('select:focus')) {
-        return true;
-      }
-
-      if (!element.contains(target)) {
-        return false;
-      }
-
-      var cursor = target;
-
-      while (cursor && cursor !== element) {
-        if (cursor.classList.contains(cls.element.consuming)) {
-          return true;
-        }
-
-        var style = get(cursor);
-        var overflow = [style.overflow, style.overflowX, style.overflowY].join(''); // if scrollable
-
-        if (overflow.match(/(scroll|auto)/)) {
-          var maxScrollTop = cursor.scrollHeight - cursor.clientHeight;
-
-          if (maxScrollTop > 0) {
-            if (!(cursor.scrollTop === 0 && deltaY > 0) && !(cursor.scrollTop === maxScrollTop && deltaY < 0)) {
-              return true;
-            }
-          }
-
-          var maxScrollLeft = cursor.scrollLeft - cursor.clientWidth;
-
-          if (maxScrollLeft > 0) {
-            if (!(cursor.scrollLeft === 0 && deltaX < 0) && !(cursor.scrollLeft === maxScrollLeft && deltaX > 0)) {
-              return true;
-            }
-          }
-        }
-
-        cursor = cursor.parentNode;
-      }
-
-      return false;
-    }
-
-    function mousewheelHandler(e) {
-      var ref = getDeltaFromEvent(e);
-      var deltaX = ref[0];
-      var deltaY = ref[1];
-
-      if (shouldBeConsumedByChild(e.target, deltaX, deltaY)) {
-        return;
-      }
-
-      var shouldPrevent = false;
-
-      if (!i.settings.useBothWheelAxes) {
-        // deltaX will only be used for horizontal scrolling and deltaY will
-        // only be used for vertical scrolling - this is the default
-        element.scrollTop -= deltaY * i.settings.wheelSpeed;
-        element.scrollLeft += deltaX * i.settings.wheelSpeed;
-      } else if (i.scrollbarYActive && !i.scrollbarXActive) {
-        // only vertical scrollbar is active and useBothWheelAxes option is
-        // active, so let's scroll vertical bar using both mouse wheel axes
-        if (deltaY) {
-          element.scrollTop -= deltaY * i.settings.wheelSpeed;
-        } else {
-          element.scrollTop += deltaX * i.settings.wheelSpeed;
-        }
-
-        shouldPrevent = true;
-      } else if (i.scrollbarXActive && !i.scrollbarYActive) {
-        // useBothWheelAxes and only horizontal bar is active, so use both
-        // wheel axes for horizontal bar
-        if (deltaX) {
-          element.scrollLeft += deltaX * i.settings.wheelSpeed;
-        } else {
-          element.scrollLeft -= deltaY * i.settings.wheelSpeed;
-        }
-
-        shouldPrevent = true;
-      }
-
-      updateGeometry(i);
-      shouldPrevent = shouldPrevent || shouldPreventDefault(deltaX, deltaY);
-
-      if (shouldPrevent && !e.ctrlKey) {
-        e.stopPropagation();
-        e.preventDefault();
-      }
-    }
-
-    if (typeof window.onwheel !== 'undefined') {
-      i.event.bind(element, 'wheel', mousewheelHandler);
-    } else if (typeof window.onmousewheel !== 'undefined') {
-      i.event.bind(element, 'mousewheel', mousewheelHandler);
-    }
-  };
-
-  var touch = function touch(i) {
-    if (!env.supportsTouch && !env.supportsIePointer) {
-      return;
-    }
-
-    var element = i.element;
-
-    function shouldPrevent(deltaX, deltaY) {
-      var scrollTop = element.scrollTop;
-      var scrollLeft = element.scrollLeft;
-      var magnitudeX = Math.abs(deltaX);
-      var magnitudeY = Math.abs(deltaY);
-
-      if (magnitudeY > magnitudeX) {
-        // user is perhaps trying to swipe up/down the page
-        if (deltaY < 0 && scrollTop === i.contentHeight - i.containerHeight || deltaY > 0 && scrollTop === 0) {
-          // set prevent for mobile Chrome refresh
-          return window.scrollY === 0 && deltaY > 0 && env.isChrome;
-        }
-      } else if (magnitudeX > magnitudeY) {
-        // user is perhaps trying to swipe left/right across the page
-        if (deltaX < 0 && scrollLeft === i.contentWidth - i.containerWidth || deltaX > 0 && scrollLeft === 0) {
-          return true;
-        }
-      }
-
-      return true;
-    }
-
-    function applyTouchMove(differenceX, differenceY) {
-      element.scrollTop -= differenceY;
-      element.scrollLeft -= differenceX;
-      updateGeometry(i);
-    }
-
-    var startOffset = {};
-    var startTime = 0;
-    var speed = {};
-    var easingLoop = null;
-
-    function getTouch(e) {
-      if (e.targetTouches) {
-        return e.targetTouches[0];
-      } else {
-        // Maybe IE pointer
-        return e;
-      }
-    }
-
-    function shouldHandle(e) {
-      if (e.pointerType && e.pointerType === 'pen' && e.buttons === 0) {
-        return false;
-      }
-
-      if (e.targetTouches && e.targetTouches.length === 1) {
-        return true;
-      }
-
-      if (e.pointerType && e.pointerType !== 'mouse' && e.pointerType !== e.MSPOINTER_TYPE_MOUSE) {
-        return true;
-      }
-
-      return false;
-    }
-
-    function touchStart(e) {
-      if (!shouldHandle(e)) {
-        return;
-      }
-
-      var touch = getTouch(e);
-      startOffset.pageX = touch.pageX;
-      startOffset.pageY = touch.pageY;
-      startTime = new Date().getTime();
-
-      if (easingLoop !== null) {
-        clearInterval(easingLoop);
-      }
-    }
-
-    function shouldBeConsumedByChild(target, deltaX, deltaY) {
-      if (!element.contains(target)) {
-        return false;
-      }
-
-      var cursor = target;
-
-      while (cursor && cursor !== element) {
-        if (cursor.classList.contains(cls.element.consuming)) {
-          return true;
-        }
-
-        var style = get(cursor);
-        var overflow = [style.overflow, style.overflowX, style.overflowY].join(''); // if scrollable
-
-        if (overflow.match(/(scroll|auto)/)) {
-          var maxScrollTop = cursor.scrollHeight - cursor.clientHeight;
-
-          if (maxScrollTop > 0) {
-            if (!(cursor.scrollTop === 0 && deltaY > 0) && !(cursor.scrollTop === maxScrollTop && deltaY < 0)) {
-              return true;
-            }
-          }
-
-          var maxScrollLeft = cursor.scrollLeft - cursor.clientWidth;
-
-          if (maxScrollLeft > 0) {
-            if (!(cursor.scrollLeft === 0 && deltaX < 0) && !(cursor.scrollLeft === maxScrollLeft && deltaX > 0)) {
-              return true;
-            }
-          }
-        }
-
-        cursor = cursor.parentNode;
-      }
-
-      return false;
-    }
-
-    function touchMove(e) {
-      if (shouldHandle(e)) {
-        var touch = getTouch(e);
-        var currentOffset = {
-          pageX: touch.pageX,
-          pageY: touch.pageY
-        };
-        var differenceX = currentOffset.pageX - startOffset.pageX;
-        var differenceY = currentOffset.pageY - startOffset.pageY;
-
-        if (shouldBeConsumedByChild(e.target, differenceX, differenceY)) {
-          return;
-        }
-
-        applyTouchMove(differenceX, differenceY);
-        startOffset = currentOffset;
-        var currentTime = new Date().getTime();
-        var timeGap = currentTime - startTime;
-
-        if (timeGap > 0) {
-          speed.x = differenceX / timeGap;
-          speed.y = differenceY / timeGap;
-          startTime = currentTime;
-        }
-
-        if (shouldPrevent(differenceX, differenceY)) {
-          e.preventDefault();
-        }
-      }
-    }
-
-    function touchEnd() {
-      if (i.settings.swipeEasing) {
-        clearInterval(easingLoop);
-        easingLoop = setInterval(function () {
-          if (i.isInitialized) {
-            clearInterval(easingLoop);
-            return;
-          }
-
-          if (!speed.x && !speed.y) {
-            clearInterval(easingLoop);
-            return;
-          }
-
-          if (Math.abs(speed.x) < 0.01 && Math.abs(speed.y) < 0.01) {
-            clearInterval(easingLoop);
-            return;
-          }
-
-          applyTouchMove(speed.x * 30, speed.y * 30);
-          speed.x *= 0.8;
-          speed.y *= 0.8;
-        }, 10);
-      }
-    }
-
-    if (env.supportsTouch) {
-      i.event.bind(element, 'touchstart', touchStart);
-      i.event.bind(element, 'touchmove', touchMove);
-      i.event.bind(element, 'touchend', touchEnd);
-    } else if (env.supportsIePointer) {
-      if (window.PointerEvent) {
-        i.event.bind(element, 'pointerdown', touchStart);
-        i.event.bind(element, 'pointermove', touchMove);
-        i.event.bind(element, 'pointerup', touchEnd);
-      } else if (window.MSPointerEvent) {
-        i.event.bind(element, 'MSPointerDown', touchStart);
-        i.event.bind(element, 'MSPointerMove', touchMove);
-        i.event.bind(element, 'MSPointerUp', touchEnd);
-      }
-    }
-  };
-
-  var defaultSettings = function defaultSettings() {
-    return {
-      handlers: ['click-rail', 'drag-thumb', 'keyboard', 'wheel', 'touch'],
-      maxScrollbarLength: null,
-      minScrollbarLength: null,
-      scrollingThreshold: 1000,
-      scrollXMarginOffset: 0,
-      scrollYMarginOffset: 0,
-      suppressScrollX: false,
-      suppressScrollY: false,
-      swipeEasing: true,
-      useBothWheelAxes: false,
-      wheelPropagation: false,
-      wheelSpeed: 1
-    };
-  };
-
-  var handlers = {
-    'click-rail': clickRail,
-    'drag-thumb': dragThumb,
-    keyboard: keyboard,
-    wheel: wheel,
-    touch: touch
-  };
-
-  var PerfectScrollbar = function PerfectScrollbar(element, userSettings) {
-    var this$1 = this;
-    if (userSettings === void 0) userSettings = {};
-
-    if (typeof element === 'string') {
-      element = document.querySelector(element);
-    }
-
-    if (!element || !element.nodeName) {
-      throw new Error('no element is specified to initialize PerfectScrollbar');
-    }
-
-    this.element = element;
-    element.classList.add(cls.main);
-    this.settings = defaultSettings();
-
-    for (var key in userSettings) {
-      this$1.settings[key] = userSettings[key];
-    }
-
-    this.containerWidth = null;
-    this.containerHeight = null;
-    this.contentWidth = null;
-    this.contentHeight = null;
-
-    var focus = function focus() {
-      return element.classList.add(cls.state.focus);
-    };
-
-    var blur = function blur() {
-      return element.classList.remove(cls.state.focus);
-    };
-
-    this.isRtl = get(element).direction === 'rtl';
-
-    this.isNegativeScroll = function () {
-      var originalScrollLeft = element.scrollLeft;
-      var result = null;
-      element.scrollLeft = -1;
-      result = element.scrollLeft < 0;
-      element.scrollLeft = originalScrollLeft;
-      return result;
-    }();
-
-    this.negativeScrollAdjustment = this.isNegativeScroll ? element.scrollWidth - element.clientWidth : 0;
-    this.event = new EventManager();
-    this.ownerDocument = element.ownerDocument || document;
-    this.scrollbarXRail = div(cls.element.rail('x'));
-    element.appendChild(this.scrollbarXRail);
-    this.scrollbarX = div(cls.element.thumb('x'));
-    this.scrollbarXRail.appendChild(this.scrollbarX);
-    this.scrollbarX.setAttribute('tabindex', 0);
-    this.event.bind(this.scrollbarX, 'focus', focus);
-    this.event.bind(this.scrollbarX, 'blur', blur);
-    this.scrollbarXActive = null;
-    this.scrollbarXWidth = null;
-    this.scrollbarXLeft = null;
-    var railXStyle = get(this.scrollbarXRail);
-    this.scrollbarXBottom = parseInt(railXStyle.bottom, 10);
-
-    if (isNaN(this.scrollbarXBottom)) {
-      this.isScrollbarXUsingBottom = false;
-      this.scrollbarXTop = toInt(railXStyle.top);
-    } else {
-      this.isScrollbarXUsingBottom = true;
-    }
-
-    this.railBorderXWidth = toInt(railXStyle.borderLeftWidth) + toInt(railXStyle.borderRightWidth); // Set rail to display:block to calculate margins
-
-    set(this.scrollbarXRail, {
-      display: 'block'
-    });
-    this.railXMarginWidth = toInt(railXStyle.marginLeft) + toInt(railXStyle.marginRight);
-    set(this.scrollbarXRail, {
-      display: ''
-    });
-    this.railXWidth = null;
-    this.railXRatio = null;
-    this.scrollbarYRail = div(cls.element.rail('y'));
-    element.appendChild(this.scrollbarYRail);
-    this.scrollbarY = div(cls.element.thumb('y'));
-    this.scrollbarYRail.appendChild(this.scrollbarY);
-    this.scrollbarY.setAttribute('tabindex', 0);
-    this.event.bind(this.scrollbarY, 'focus', focus);
-    this.event.bind(this.scrollbarY, 'blur', blur);
-    this.scrollbarYActive = null;
-    this.scrollbarYHeight = null;
-    this.scrollbarYTop = null;
-    var railYStyle = get(this.scrollbarYRail);
-    this.scrollbarYRight = parseInt(railYStyle.right, 10);
-
-    if (isNaN(this.scrollbarYRight)) {
-      this.isScrollbarYUsingRight = false;
-      this.scrollbarYLeft = toInt(railYStyle.left);
-    } else {
-      this.isScrollbarYUsingRight = true;
-    }
-
-    this.scrollbarYOuterWidth = this.isRtl ? outerWidth(this.scrollbarY) : null;
-    this.railBorderYWidth = toInt(railYStyle.borderTopWidth) + toInt(railYStyle.borderBottomWidth);
-    set(this.scrollbarYRail, {
-      display: 'block'
-    });
-    this.railYMarginHeight = toInt(railYStyle.marginTop) + toInt(railYStyle.marginBottom);
-    set(this.scrollbarYRail, {
-      display: ''
-    });
-    this.railYHeight = null;
-    this.railYRatio = null;
-    this.reach = {
-      x: element.scrollLeft <= 0 ? 'start' : element.scrollLeft >= this.contentWidth - this.containerWidth ? 'end' : null,
-      y: element.scrollTop <= 0 ? 'start' : element.scrollTop >= this.contentHeight - this.containerHeight ? 'end' : null
-    };
-    this.isAlive = true;
-    this.settings.handlers.forEach(function (handlerName) {
-      return handlers[handlerName](this$1);
-    });
-    this.lastScrollTop = element.scrollTop; // for onScroll only
-
-    this.lastScrollLeft = element.scrollLeft; // for onScroll only
-
-    this.event.bind(this.element, 'scroll', function (e) {
-      return this$1.onScroll(e);
-    });
-    updateGeometry(this);
-  };
-
-  PerfectScrollbar.prototype.update = function update() {
-    if (!this.isAlive) {
-      return;
-    } // Recalcuate negative scrollLeft adjustment
-
-
-    this.negativeScrollAdjustment = this.isNegativeScroll ? this.element.scrollWidth - this.element.clientWidth : 0; // Recalculate rail margins
-
-    set(this.scrollbarXRail, {
-      display: 'block'
-    });
-    set(this.scrollbarYRail, {
-      display: 'block'
-    });
-    this.railXMarginWidth = toInt(get(this.scrollbarXRail).marginLeft) + toInt(get(this.scrollbarXRail).marginRight);
-    this.railYMarginHeight = toInt(get(this.scrollbarYRail).marginTop) + toInt(get(this.scrollbarYRail).marginBottom); // Hide scrollbars not to affect scrollWidth and scrollHeight
-
-    set(this.scrollbarXRail, {
-      display: 'none'
-    });
-    set(this.scrollbarYRail, {
-      display: 'none'
-    });
-    updateGeometry(this);
-    processScrollDiff(this, 'top', 0, false, true);
-    processScrollDiff(this, 'left', 0, false, true);
-    set(this.scrollbarXRail, {
-      display: ''
-    });
-    set(this.scrollbarYRail, {
-      display: ''
-    });
-  };
-
-  PerfectScrollbar.prototype.onScroll = function onScroll(e) {
-    if (!this.isAlive) {
-      return;
-    }
-
-    updateGeometry(this);
-    processScrollDiff(this, 'top', this.element.scrollTop - this.lastScrollTop);
-    processScrollDiff(this, 'left', this.element.scrollLeft - this.lastScrollLeft);
-    this.lastScrollTop = this.element.scrollTop;
-    this.lastScrollLeft = this.element.scrollLeft;
-  };
-
-  PerfectScrollbar.prototype.destroy = function destroy() {
-    if (!this.isAlive) {
-      return;
-    }
-
-    this.event.unbindAll();
-    remove(this.scrollbarX);
-    remove(this.scrollbarY);
-    remove(this.scrollbarXRail);
-    remove(this.scrollbarYRail);
-    this.removePsClasses(); // unset elements
-
-    this.element = null;
-    this.scrollbarX = null;
-    this.scrollbarY = null;
-    this.scrollbarXRail = null;
-    this.scrollbarYRail = null;
-    this.isAlive = false;
-  };
-
-  PerfectScrollbar.prototype.removePsClasses = function removePsClasses() {
-    this.element.className = this.element.className.split(' ').filter(function (name) {
-      return !name.match(/^ps([-_].+|)$/);
-    }).join(' ');
-  };
-
-  return PerfectScrollbar;
-});
-/*
-   Licensed under the Apache License, Version 2.0 (the "License");
-   you may not use this file except in compliance with the License.
-   You may obtain a copy of the License at
-
-       http://www.apache.org/licenses/LICENSE-2.0
-
-   Unless required by applicable law or agreed to in writing, software
-   distributed under the License is distributed on an "AS IS" BASIS,
-   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-   See the License for the specific language governing permissions and
-   limitations under the License.
-*/
-var defaultDiacriticsRemovalMap = [{
-  'base': 'A',
-  'letters': "A\u24B6\uFF21\xC0\xC1\xC2\u1EA6\u1EA4\u1EAA\u1EA8\xC3\u0100\u0102\u1EB0\u1EAE\u1EB4\u1EB2\u0226\u01E0\xC4\u01DE\u1EA2\xC5\u01FA\u01CD\u0200\u0202\u1EA0\u1EAC\u1EB6\u1E00\u0104\u023A\u2C6F"
-}, {
-  'base': 'AA',
-  'letters': "\uA732"
-}, {
-  'base': 'AE',
-  'letters': "\xC6\u01FC\u01E2"
-}, {
-  'base': 'AO',
-  'letters': "\uA734"
-}, {
-  'base': 'AU',
-  'letters': "\uA736"
-}, {
-  'base': 'AV',
-  'letters': "\uA738\uA73A"
-}, {
-  'base': 'AY',
-  'letters': "\uA73C"
-}, {
-  'base': 'B',
-  'letters': "B\u24B7\uFF22\u1E02\u1E04\u1E06\u0243\u0182\u0181"
-}, {
-  'base': 'C',
-  'letters': "C\u24B8\uFF23\u0106\u0108\u010A\u010C\xC7\u1E08\u0187\u023B\uA73E"
-}, {
-  'base': 'D',
-  'letters': "D\u24B9\uFF24\u1E0A\u010E\u1E0C\u1E10\u1E12\u1E0E\u0110\u018B\u018A\u0189\uA779"
-}, {
-  'base': 'DZ',
-  'letters': "\u01F1\u01C4"
-}, {
-  'base': 'Dz',
-  'letters': "\u01F2\u01C5"
-}, {
-  'base': 'E',
-  'letters': "E\u24BA\uFF25\xC8\xC9\xCA\u1EC0\u1EBE\u1EC4\u1EC2\u1EBC\u0112\u1E14\u1E16\u0114\u0116\xCB\u1EBA\u011A\u0204\u0206\u1EB8\u1EC6\u0228\u1E1C\u0118\u1E18\u1E1A\u0190\u018E"
-}, {
-  'base': 'F',
-  'letters': "F\u24BB\uFF26\u1E1E\u0191\uA77B"
-}, {
-  'base': 'G',
-  'letters': "G\u24BC\uFF27\u01F4\u011C\u1E20\u011E\u0120\u01E6\u0122\u01E4\u0193\uA7A0\uA77D\uA77E"
-}, {
-  'base': 'H',
-  'letters': "H\u24BD\uFF28\u0124\u1E22\u1E26\u021E\u1E24\u1E28\u1E2A\u0126\u2C67\u2C75\uA78D"
-}, {
-  'base': 'I',
-  'letters': "I\u24BE\uFF29\xCC\xCD\xCE\u0128\u012A\u012C\u0130\xCF\u1E2E\u1EC8\u01CF\u0208\u020A\u1ECA\u012E\u1E2C\u0197"
-}, {
-  'base': 'J',
-  'letters': "J\u24BF\uFF2A\u0134\u0248"
-}, {
-  'base': 'K',
-  'letters': "K\u24C0\uFF2B\u1E30\u01E8\u1E32\u0136\u1E34\u0198\u2C69\uA740\uA742\uA744\uA7A2"
-}, {
-  'base': 'L',
-  'letters': "L\u24C1\uFF2C\u013F\u0139\u013D\u1E36\u1E38\u013B\u1E3C\u1E3A\u0141\u023D\u2C62\u2C60\uA748\uA746\uA780"
-}, {
-  'base': 'LJ',
-  'letters': "\u01C7"
-}, {
-  'base': 'Lj',
-  'letters': "\u01C8"
-}, {
-  'base': 'M',
-  'letters': "M\u24C2\uFF2D\u1E3E\u1E40\u1E42\u2C6E\u019C"
-}, {
-  'base': 'N',
-  'letters': "N\u24C3\uFF2E\u01F8\u0143\xD1\u1E44\u0147\u1E46\u0145\u1E4A\u1E48\u0220\u019D\uA790\uA7A4"
-}, {
-  'base': 'NJ',
-  'letters': "\u01CA"
-}, {
-  'base': 'Nj',
-  'letters': "\u01CB"
-}, {
-  'base': 'O',
-  'letters': "O\u24C4\uFF2F\xD2\xD3\xD4\u1ED2\u1ED0\u1ED6\u1ED4\xD5\u1E4C\u022C\u1E4E\u014C\u1E50\u1E52\u014E\u022E\u0230\xD6\u022A\u1ECE\u0150\u01D1\u020C\u020E\u01A0\u1EDC\u1EDA\u1EE0\u1EDE\u1EE2\u1ECC\u1ED8\u01EA\u01EC\xD8\u01FE\u0186\u019F\uA74A\uA74C"
-}, {
-  'base': 'OI',
-  'letters': "\u01A2"
-}, {
-  'base': 'OO',
-  'letters': "\uA74E"
-}, {
-  'base': 'OU',
-  'letters': "\u0222"
-}, {
-  'base': 'OE',
-  'letters': "\x8C\u0152"
-}, {
-  'base': 'oe',
-  'letters': "\x9C\u0153"
-}, {
-  'base': 'P',
-  'letters': "P\u24C5\uFF30\u1E54\u1E56\u01A4\u2C63\uA750\uA752\uA754"
-}, {
-  'base': 'Q',
-  'letters': "Q\u24C6\uFF31\uA756\uA758\u024A"
-}, {
-  'base': 'R',
-  'letters': "R\u24C7\uFF32\u0154\u1E58\u0158\u0210\u0212\u1E5A\u1E5C\u0156\u1E5E\u024C\u2C64\uA75A\uA7A6\uA782"
-}, {
-  'base': 'S',
-  'letters': "S\u24C8\uFF33\u1E9E\u015A\u1E64\u015C\u1E60\u0160\u1E66\u1E62\u1E68\u0218\u015E\u2C7E\uA7A8\uA784"
-}, {
-  'base': 'T',
-  'letters': "T\u24C9\uFF34\u1E6A\u0164\u1E6C\u021A\u0162\u1E70\u1E6E\u0166\u01AC\u01AE\u023E\uA786"
-}, {
-  'base': 'TZ',
-  'letters': "\uA728"
-}, {
-  'base': 'U',
-  'letters': "U\u24CA\uFF35\xD9\xDA\xDB\u0168\u1E78\u016A\u1E7A\u016C\xDC\u01DB\u01D7\u01D5\u01D9\u1EE6\u016E\u0170\u01D3\u0214\u0216\u01AF\u1EEA\u1EE8\u1EEE\u1EEC\u1EF0\u1EE4\u1E72\u0172\u1E76\u1E74\u0244"
-}, {
-  'base': 'V',
-  'letters': "V\u24CB\uFF36\u1E7C\u1E7E\u01B2\uA75E\u0245"
-}, {
-  'base': 'VY',
-  'letters': "\uA760"
-}, {
-  'base': 'W',
-  'letters': "W\u24CC\uFF37\u1E80\u1E82\u0174\u1E86\u1E84\u1E88\u2C72"
-}, {
-  'base': 'X',
-  'letters': "X\u24CD\uFF38\u1E8A\u1E8C"
-}, {
-  'base': 'Y',
-  'letters': "Y\u24CE\uFF39\u1EF2\xDD\u0176\u1EF8\u0232\u1E8E\u0178\u1EF6\u1EF4\u01B3\u024E\u1EFE"
-}, {
-  'base': 'Z',
-  'letters': "Z\u24CF\uFF3A\u0179\u1E90\u017B\u017D\u1E92\u1E94\u01B5\u0224\u2C7F\u2C6B\uA762"
-}, {
-  'base': 'a',
-  'letters': "a\u24D0\uFF41\u1E9A\xE0\xE1\xE2\u1EA7\u1EA5\u1EAB\u1EA9\xE3\u0101\u0103\u1EB1\u1EAF\u1EB5\u1EB3\u0227\u01E1\xE4\u01DF\u1EA3\xE5\u01FB\u01CE\u0201\u0203\u1EA1\u1EAD\u1EB7\u1E01\u0105\u2C65\u0250"
-}, {
-  'base': 'aa',
-  'letters': "\uA733"
-}, {
-  'base': 'ae',
-  'letters': "\xE6\u01FD\u01E3"
-}, {
-  'base': 'ao',
-  'letters': "\uA735"
-}, {
-  'base': 'au',
-  'letters': "\uA737"
-}, {
-  'base': 'av',
-  'letters': "\uA739\uA73B"
-}, {
-  'base': 'ay',
-  'letters': "\uA73D"
-}, {
-  'base': 'b',
-  'letters': "b\u24D1\uFF42\u1E03\u1E05\u1E07\u0180\u0183\u0253"
-}, {
-  'base': 'c',
-  'letters': "c\u24D2\uFF43\u0107\u0109\u010B\u010D\xE7\u1E09\u0188\u023C\uA73F\u2184"
-}, {
-  'base': 'd',
-  'letters': "d\u24D3\uFF44\u1E0B\u010F\u1E0D\u1E11\u1E13\u1E0F\u0111\u018C\u0256\u0257\uA77A"
-}, {
-  'base': 'dz',
-  'letters': "\u01F3\u01C6"
-}, {
-  'base': 'e',
-  'letters': "e\u24D4\uFF45\xE8\xE9\xEA\u1EC1\u1EBF\u1EC5\u1EC3\u1EBD\u0113\u1E15\u1E17\u0115\u0117\xEB\u1EBB\u011B\u0205\u0207\u1EB9\u1EC7\u0229\u1E1D\u0119\u1E19\u1E1B\u0247\u025B\u01DD"
-}, {
-  'base': 'f',
-  'letters': "f\u24D5\uFF46\u1E1F\u0192\uA77C"
-}, {
-  'base': 'g',
-  'letters': "g\u24D6\uFF47\u01F5\u011D\u1E21\u011F\u0121\u01E7\u0123\u01E5\u0260\uA7A1\u1D79\uA77F"
-}, {
-  'base': 'h',
-  'letters': "h\u24D7\uFF48\u0125\u1E23\u1E27\u021F\u1E25\u1E29\u1E2B\u1E96\u0127\u2C68\u2C76\u0265"
-}, {
-  'base': 'hv',
-  'letters': "\u0195"
-}, {
-  'base': 'i',
-  'letters': "i\u24D8\uFF49\xEC\xED\xEE\u0129\u012B\u012D\xEF\u1E2F\u1EC9\u01D0\u0209\u020B\u1ECB\u012F\u1E2D\u0268\u0131"
-}, {
-  'base': 'j',
-  'letters': "j\u24D9\uFF4A\u0135\u01F0\u0249"
-}, {
-  'base': 'k',
-  'letters': "k\u24DA\uFF4B\u1E31\u01E9\u1E33\u0137\u1E35\u0199\u2C6A\uA741\uA743\uA745\uA7A3"
-}, {
-  'base': 'l',
-  'letters': "l\u24DB\uFF4C\u0140\u013A\u013E\u1E37\u1E39\u013C\u1E3D\u1E3B\u017F\u0142\u019A\u026B\u2C61\uA749\uA781\uA747"
-}, {
-  'base': 'lj',
-  'letters': "\u01C9"
-}, {
-  'base': 'm',
-  'letters': "m\u24DC\uFF4D\u1E3F\u1E41\u1E43\u0271\u026F"
-}, {
-  'base': 'n',
-  'letters': "n\u24DD\uFF4E\u01F9\u0144\xF1\u1E45\u0148\u1E47\u0146\u1E4B\u1E49\u019E\u0272\u0149\uA791\uA7A5"
-}, {
-  'base': 'nj',
-  'letters': "\u01CC"
-}, {
-  'base': 'o',
-  'letters': "o\u24DE\uFF4F\xF2\xF3\xF4\u1ED3\u1ED1\u1ED7\u1ED5\xF5\u1E4D\u022D\u1E4F\u014D\u1E51\u1E53\u014F\u022F\u0231\xF6\u022B\u1ECF\u0151\u01D2\u020D\u020F\u01A1\u1EDD\u1EDB\u1EE1\u1EDF\u1EE3\u1ECD\u1ED9\u01EB\u01ED\xF8\u01FF\u0254\uA74B\uA74D\u0275"
-}, {
-  'base': 'oi',
-  'letters': "\u01A3"
-}, {
-  'base': 'ou',
-  'letters': "\u0223"
-}, {
-  'base': 'oo',
-  'letters': "\uA74F"
-}, {
-  'base': 'p',
-  'letters': "p\u24DF\uFF50\u1E55\u1E57\u01A5\u1D7D\uA751\uA753\uA755"
-}, {
-  'base': 'q',
-  'letters': "q\u24E0\uFF51\u024B\uA757\uA759"
-}, {
-  'base': 'r',
-  'letters': "r\u24E1\uFF52\u0155\u1E59\u0159\u0211\u0213\u1E5B\u1E5D\u0157\u1E5F\u024D\u027D\uA75B\uA7A7\uA783"
-}, {
-  'base': 's',
-  'letters': "s\u24E2\uFF53\xDF\u015B\u1E65\u015D\u1E61\u0161\u1E67\u1E63\u1E69\u0219\u015F\u023F\uA7A9\uA785\u1E9B"
-}, {
-  'base': 't',
-  'letters': "t\u24E3\uFF54\u1E6B\u1E97\u0165\u1E6D\u021B\u0163\u1E71\u1E6F\u0167\u01AD\u0288\u2C66\uA787"
-}, {
-  'base': 'tz',
-  'letters': "\uA729"
-}, {
-  'base': 'u',
-  'letters': "u\u24E4\uFF55\xF9\xFA\xFB\u0169\u1E79\u016B\u1E7B\u016D\xFC\u01DC\u01D8\u01D6\u01DA\u1EE7\u016F\u0171\u01D4\u0215\u0217\u01B0\u1EEB\u1EE9\u1EEF\u1EED\u1EF1\u1EE5\u1E73\u0173\u1E77\u1E75\u0289"
-}, {
-  'base': 'v',
-  'letters': "v\u24E5\uFF56\u1E7D\u1E7F\u028B\uA75F\u028C"
-}, {
-  'base': 'vy',
-  'letters': "\uA761"
-}, {
-  'base': 'w',
-  'letters': "w\u24E6\uFF57\u1E81\u1E83\u0175\u1E87\u1E85\u1E98\u1E89\u2C73"
-}, {
-  'base': 'x',
-  'letters': "x\u24E7\uFF58\u1E8B\u1E8D"
-}, {
-  'base': 'y',
-  'letters': "y\u24E8\uFF59\u1EF3\xFD\u0177\u1EF9\u0233\u1E8F\xFF\u1EF7\u1E99\u1EF5\u01B4\u024F\u1EFF"
-}, {
-  'base': 'z',
-  'letters': "z\u24E9\uFF5A\u017A\u1E91\u017C\u017E\u1E93\u1E95\u01B6\u0225\u0240\u2C6C\uA763"
-}];
-var diacriticsMap = {};
-
-for (var i = 0; i < defaultDiacriticsRemovalMap.length; i++) {
-  var letters = defaultDiacriticsRemovalMap[i].letters;
-
-  for (var j = 0; j < letters.length; j++) {
-    diacriticsMap[letters[j]] = defaultDiacriticsRemovalMap[i].base;
-  }
-}
-
-function removeDiacritics(str) {
-  return str.replace(/[^\u0000-\u007E]/g, function (a) {
-    return diacriticsMap[a] || a;
-  });
-}
-// System to detect when the window's size reaches a given breakpoint
-// Right now it is only used to compact the lefbar when resizing under 768px
-// In the future maybe this is useful to do other things on resizing.
-$(function () {
-  lastWidth = $(this).width(); //this = window
-
-  var breakPoint = 768;
-  lastDirection = "";
-  var lastDirectionManaged = "";
-  BreakpointChangeManaged = false;
-  $(window).on('resize', function () {
-    var width = $(this).width();
-    var breakPoint = 768;
-    var direction = width < lastWidth ? 'reducing' : 'increasing';
-
-    if (direction !== lastDirection) {
-      BreakpointChangeManaged = false; // need to listen for breakpoint            
-    }
-
-    if (BreakpointChangeManaged == false && direction != lastDirectionManaged) {
-      if (direction == "reducing" && width < breakPoint) {
-        // breakpoint reached while going down
-        setCompactStatus();
-        lastDirectionManaged = direction;
-        BreakpointChangeManaged = true;
-      }
-
-      if (direction == "increasing" && width > breakPoint) {
-        // breakpoint reached while going up
-        if (isCompactExplicit == false) {
-          unSetCompactStatus();
-        }
-
-        lastDirectionManaged = direction;
-        BreakpointChangeManaged = true;
-      }
-    }
-
-    lastDirection = direction;
-    lastWidth = width;
-  });
-});
 // Each time the sidebar status is modified, that is persisted to localStorage.
 // When the page is loaded again, userPreferencesLoader.js will read that info to 
 // restore the sidebar to the previous state.
@@ -10146,6 +8892,7 @@ function persistAdminPreferences() {
     var adminPreferences = {};
     adminPreferences.leftSidebarCompact = $('body').hasClass('left-sidebar-compact') ? true : false;
     adminPreferences.isCompactExplicit = isCompactExplicit;
+    adminPreferences.darkMode = darkMode;
     localStorage.setItem('adminPreferences', JSON.stringify(adminPreferences));
   }, 200);
 }
