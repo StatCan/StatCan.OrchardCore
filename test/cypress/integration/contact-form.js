@@ -6,6 +6,6 @@ describe("ContactForm Test", function() {
     let tenant = generateTenantInfo("bootstrap-theme-setup", "VueForm contact form example")
     cy.newTenant(tenant);
     cy.login(tenant);
-    cy.runRecipe(tenant, 'VueForms Contact form example');
+    cy.runRecipe(tenant, 'VueForm_ContactForm');
   })
 });
