@@ -1,0 +1,16 @@
+[
+  {
+    "copy": true,
+    "inputs": [
+      "node_modules/vue/dist/vue.js"
+    ],
+    "output": "wwwroot/Scripts/vue.js"
+  },
+  {
+    "copy": true,
+    "inputs": [
+      "node_modules/vue/dist/vue.min.js"
+    ],
+    "output": "wwwroot/Scripts/vue.min.js"
+  }
+]
