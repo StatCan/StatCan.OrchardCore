@@ -1,5 +1,6 @@
 using Fluid;
 using Fluid.Values;
+using Newtonsoft.Json.Linq;
 using OrchardCore.ContentManagement;
 using OrchardCore.Liquid;
 using StatCan.OrchardCore.LocalizedText.Fields;
@@ -18,10 +19,21 @@ namespace StatCan.OrchardCore.LocalizedText.Liquid
         }
         public ValueTask<FluidValue> ProcessAsync(FluidValue input, FilterArguments arguments, TemplateContext context)
         {
-            var contentItem = input.ToObjectValue() as ContentItem;
             int paramFirstIndex = 0;
             var culture = context.CultureInfo.Name;
             var value = "";
+
+            var inputObj = input.ToObjectValue();
+            ContentItem contentItem = null;
+
+            if(inputObj is ContentItem)
+            {
+                contentItem = inputObj as ContentItem;
+            }
+            if(inputObj is JObject)
+            {
+                contentItem = (inputObj as JObject)?.ToObject<ContentItem>();
+            }
 
             // if the ContentItem is passed to the filter, use the first argument as the name of the value to find
             if (contentItem != null)
