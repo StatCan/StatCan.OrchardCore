@@ -25,8 +25,9 @@ namespace StatCan.OrchardCore.Security
                 builder.AddDefaultSrc().Self();
                 builder.AddImgSrc().Self().Data().From("*.statcan.ca").From("*.statcan.gc.ca")
                     .From("*.omtrdc.net").From("*.demdex.net").From("cm.everesttech.net"); // adobe analytics
-                builder.AddFontSrc().Self().Data().From("cdn.jsdelivr.net").From("fonts.googleapis.com").From("fonts.gstatic.com");
+                builder.AddFontSrc().Self().Data().From("cdn.jsdelivr.net").From("fonts.googleapis.com").From("fonts.gstatic.com").From("cdn.materialdesignicons.com");
                 builder.AddStyleSrc().UnsafeInline().Self()
+                    .From("cdn.materialdesignicons.com")
                     .From("cdn.jsdelivr.net")
                     .From("fonts.googleapis.com")
                     .From("code.jquery.com")
