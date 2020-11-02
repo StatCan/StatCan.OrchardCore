@@ -10,7 +10,7 @@ namespace StatCan.Themes.HackathonTheme
         public override void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<IResourceManifestProvider, ResourceManifest>();
-           // services.AddScoped<IDataMigration, Migrations>();
+            services.AddScoped<IDataMigration, Migrations>();
         }
     }
 }

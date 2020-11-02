@@ -88,7 +88,7 @@
         "UseSiteTheme": true
       },
       "LayerSettings": {
-        "Zones": ["Header", "Footer"]
+        "Zones": ["Header", "Breadcrumb", "Footer"]
       }
     }
   ]
