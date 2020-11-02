@@ -1,0 +1,5 @@
+{% assign contentItems = Model.ContentItem.Content.ScoringPage.VueForm.ContentItemIds | content_item_id %}
+{% for contentItem in contentItems %}
+  {{ contentItem | shape_build_display | shape_render }}
+{% endfor %}
+

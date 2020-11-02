@@ -5,6 +5,7 @@
 {%else%}
 
   {% assign teams = Queries.GetItemsForHackathon | query: type: "Team" %}
+  {% assign selectedTeam = teams | first %}
 
     <div class="row justify-content-center">
       <div class="col-6 d-flex flex-column">
@@ -15,10 +16,11 @@
         </div>
         {% endif %}
         <div class="d-flex mb-1">
-          <a class="btn btn-primary col-12" href="{{ '~/JudgingEntry/' | append: team.ContentItemId | href }}?returnUrl={{Request.Path}}">{{ "Team" | t }} {{ team.Id }}</a>
+          <a class="btn btn-primary col-12" href="{{ '~/ScoringPage' | href }}?teamId={{team.ContentItemId}}">{{ "Team" | t }} {{ team.Id }}</a>
         </div>
         {% endfor %}
       </div>
     </div>
+
 {% endif %}
 {% endif %}

@@ -62,10 +62,10 @@ namespace StatCan.OrchardCore.Hackathon.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreateTeam(string returnUrl)
         {
-            /*if (!await _authorizationService.AuthorizeAsync(User, ParticipantType.Hacker))
+            if (!HttpContext.User.IsInRole("Hacker"))
             {
                 return NotFound();
-            }*/
+            }        
             
             var site = await _siteService.GetSiteSettingsAsync();
             var hackathonCustomSettings = site.As<ContentItem>("HackathonCustomSettings");
@@ -89,10 +89,10 @@ namespace StatCan.OrchardCore.Hackathon.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> JoinTeam(string teamContentItemId, string returnUrl)
         {
-            /*if (!await _authorizationService.AuthorizeAsync(User, hackathonLocalizationSet, ParticipantType.Hacker))
+            if (!HttpContext.User.IsInRole("Hacker"))
             {
                 return NotFound();
-            }*/
+            }
 
             if (string.IsNullOrEmpty(teamContentItemId))
             {
@@ -124,10 +124,10 @@ namespace StatCan.OrchardCore.Hackathon.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> LeaveTeam(string returnUrl)
         {
-            /*if (!await _authorizationService.AuthorizeAsync(User, hackathonLocalizationSet, ParticipantType.Hacker))
+            if (!HttpContext.User.IsInRole("Hacker"))
             {
                 return NotFound();
-            }*/
+            }
 
             var site = await _siteService.GetSiteSettingsAsync();
             var hackathonCustomSettings = site.As<ContentItem>("HackathonCustomSettings");

@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using OrchardCore.Title.Models;
 using StatCan.OrchardCore.Hackathon;
 using OrchardCore.Modules;
+using OrchardCore.Autoroute.Models;
 
 namespace StatCan.OrchardCore.Hackathon
 {
@@ -47,16 +48,46 @@ namespace StatCan.OrchardCore.Hackathon
             // create new Score part
             _contentDefinitionManager.AlterPartDefinition("Score", p => p
                 .Attachable()
-                //.WithNumericField("Round", "0", new NumericFieldSettings() { Required = true })
-                /*.WithField("Type", f => f
-                    .OfType(nameof(TextField))
-                    .WithPosition("1")
-                    .WithDisplayName("Type")
-                    .WithEditor("PredefinedList")
-                    .WithSettings(new TextFieldPredefinedListEditorSettings() { Options = judgingTypes.ToArray(), DefaultValue = "Technical" })
-                )*/
                 .WithNumericField("Score", "0", new NumericFieldSettings() { Required = true, Scale = 1, Minimum = (decimal?)0.0, DefaultValue = "0" })
+                .WithTextField("Comment", "1")
+                .WithField("Judge", f => f
+                    .OfType(nameof(ContentPickerField))
+                    .WithDisplayName("Judge")
+                    .WithPosition("2")
+                    .WithSettings(new ContentPickerFieldSettings() { DisplayedContentTypes = new[] { "Volunteer" }, Required = true })
+                )
+                .WithField("Team", f => f
+                    .OfType(nameof(ContentPickerField))
+                    .WithDisplayName("Team")
+                    .WithPosition("3")
+                    .WithSettings(new ContentPickerFieldSettings() { DisplayedContentTypes = new[] { "Team" }, Required = true })
+                )
             );
+
+            _contentDefinitionManager.AlterPartDefinition("ScoringPage", p => p
+                .WithField("VueForm", f => f
+                    .OfType(nameof(ContentPickerField))
+                    .WithDisplayName("VueForm")
+                    .WithPosition("0")
+                    .WithSettings(new ContentPickerFieldSettings() { DisplayedContentTypes = new string[] { "VueForm" } })
+                )
+            );
+
+            _contentDefinitionManager.AlterTypeDefinition("ScoringPage", t => t.Creatable().Listable().Securable().Draftable()
+                .WithPart("ScoringPage", p => p.WithPosition("0"))
+                .WithPart("AutoroutePart", p => p.WithPosition("1").WithSettings(new AutoroutePartSettings() { Pattern = "ScoringPage"}))
+            );
+
+
+
+            //.WithNumericField("Round", "0", new NumericFieldSettings() { Required = true })
+            /*.WithField("Type", f => f
+                .OfType(nameof(TextField))
+                .WithPosition("1")
+                .WithDisplayName("Type")
+                .WithEditor("PredefinedList")
+                .WithSettings(new TextFieldPredefinedListEditorSettings() { Options = judgingTypes.ToArray(), DefaultValue = "Technical" })
+            )*/
 
             // modify Hackathon type
             /*_contentDefinitionManager.AlterPartDefinition("Hackathon", p => p
@@ -95,24 +126,11 @@ namespace StatCan.OrchardCore.Hackathon
             );*/
 
             // Add Scores bag to team type
-            /*_contentDefinitionManager.AlterTypeDefinition("ScoreEntry", t => t
+            _contentDefinitionManager.AlterTypeDefinition("ScoreEntry", t => t
                 .WithPart("Score", p => p.WithPosition("0"))
                 .WithPart("ScoreEntry", p => p.WithPosition("1"))
-                .WithPart(nameof(TitlePart), p => p
-                    .WithPosition("2")
-                    .WithSettings(new TitlePartSettings()
-                    {
-                        Options = TitlePartOptions.GeneratedHidden,
-                        Pattern = "Round {{ContentItem.Content.Score.Round.Value}} - Type {{ContentItem.Content.Score.Type.Text}} - {{ContentItem.Content.Score.Score.Value}} points"
-                    })
-                )
-            );*/
-
-            _contentDefinitionManager.AlterTypeDefinition("Team", t => t
-                .WithPart("Score", p => p
-                    .WithPosition("3")
-                )
             );
+
             /*_contentDefinitionManager.AlterPartDefinition("Team", p => p
                 .WithSwitchBooleanField("InTheRunning", "In the running", "3", new BooleanFieldSettings()
                 {

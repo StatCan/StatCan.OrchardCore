@@ -27,6 +27,6 @@ using OrchardCore.Modules.Manifest;
     Id = "StatCan.OrchardCore.Hackathon.Judging",
     Name = "Hackathon Judging",
     Description = "Provides Juding management for the Hackathon feature",
-    Dependencies = new[] { "StatCan.OrchardCore.Hackathon" },
+    Dependencies = new[] { "StatCan.OrchardCore.Hackathon", "StatCan.OrchardCore.Hackathon.Team", "StatCan.OrchardCore.VueForms" },
     Category = "Innovation"
 )]

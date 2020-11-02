@@ -19,7 +19,7 @@ namespace StatCan.OrchardCore.Hackathon
 
         public override void Configure(IApplicationBuilder builder, IEndpointRouteBuilder routes, IServiceProvider serviceProvider)
         {
-            routes.MapAreaControllerRoute(
+            /*routes.MapAreaControllerRoute(
                 name: "DisplayJudgingEntry",
                 areaName: "StatCan.OrchardCore.Hackathon",
                 pattern: "JudgingEntry/{contentItemId}",
@@ -30,7 +30,7 @@ namespace StatCan.OrchardCore.Hackathon
                 areaName: "StatCan.OrchardCore.Hackathon",
                 pattern: "JudgingEntry/publish",
                 defaults: new { controller = "Judging", action = "PublishJudgingEntry" }
-            );
+            );*/
             /*routes.MapAreaControllerRoute(
                 name: "ConcludeHacking",
                 areaName: "Inno.Hackathons",
