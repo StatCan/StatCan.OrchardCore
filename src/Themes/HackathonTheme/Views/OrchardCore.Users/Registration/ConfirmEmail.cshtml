@@ -1,13 +1,13 @@
-@{ 
-    ThemeLayout.Metadata.Alternates.Add("Layout__Login");
+@{
+  ThemeLayout.Metadata.Alternates.Add("Layout__Login");
 }
-@* TODO *@
-<h1 class="login">@T["Email confirmed"]</h1>
-<div class="login">
-  <section class="col-xl-5 col-lg-6 col-md-8 col-12">
-    <div class="d-flex justify-content-center">
-      <p class="text-center">@T["Thank you for confirming your email."]</p>
-      <a href="@Url.Content("~/")" class="btn btn-lg btn-primary is-rounded">@T["Home"]</a>
-    </div>
-  </section>
-</div>
+<v-card class="px-4">
+  <v-card-title>@T["Email confirmed"]</v-card-title>
+  <v-card-text>
+    <v-icon x-large color="success">mdi-checkbox-marked-circle</v-icon>
+    <span>@T["Thank you for confirming your email."]</span>
+  </v-card-text>
+  <v-card-actions>
+    <v-btn href="@Url.Content("~/")" x-large block color="success">@T["Home"]</v-btn>
+  </v-card-actions>
+</v-card>
