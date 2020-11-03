@@ -21,12 +21,12 @@
 
 <v-card class="px-4">
   <v-card-title>@T["Log In"]</v-card-title>
-  <v-card-text>
-    <v-row>
-      @if (!disableLocalLogin)
-      {
+  @if (!disableLocalLogin)
+  {
+    <v-card-text>
+      <v-row>
         <v-col cols="12">
-          <form id="form" asp-controller="Account" asp-action="Login" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post">
+          <form id="LoginForm" asp-controller="Account" asp-action="Login" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post">
             @if(ViewData.ModelState.ErrorCount > 0) 
             {
               <v-alert color="red" type="error">
@@ -51,33 +51,29 @@
             </v-row>
           </form>
         </v-col>
-      }
-    </v-row>
-  </v-card-text>
-  @if (!disableLocalLogin)
-  {
+      </v-row>
+    </v-card-text>
     <v-card-actions>
       @await RenderSectionAsync("AfterLogin", required: false)
-      <v-btn type="submit" form="form" x-large block color="success">@T["Log in"]</v-btn>
+      <v-btn type="submit" form="LoginForm" x-large block color="success">@T["Log in"]</v-btn>
     </v-card-actions>
   }
-  @if (loginProviders.Count == 0)
+  @if (loginProviders.Count > 0)
   {
-    <div class="d-flex align-center">
-      <v-divider></v-divider><span class="px-2">@T["or"]</span><v-divider></v-divider>
-    </div>
-    <v-card-actions>
-      <v-row>
-        <v-col>
-          <form asp-controller="Account" asp-action="ExternalLogin" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post">
-            @foreach (var provider in loginProviders)
-            {
-              <v-btn type="submit" x-large block name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@T["Log in using"] @provider.DisplayName</v-btn>
-            }
-          </form>
-        </v-col>
-      </v-row>
-    </v-card-actions>
+    @if (!disableLocalLogin)
+    {
+      <div class="d-flex align-center">
+        <v-divider></v-divider><span class="px-2">@T["or"]</span><v-divider></v-divider>
+      </div>
+    }
+    <form asp-controller="Account" asp-action="ExternalLogin" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post">
+      <v-card-actions>
+        @foreach (var provider in loginProviders)
+        {
+          <v-btn type="submit" x-large block name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</v-btn>
+        }
+      </v-card-actions>
+    </form>
   }
   @if (userCanRegister)
   {
@@ -85,8 +81,7 @@
       <v-divider></v-divider><span class="px-2">@T["or"]</span><v-divider></v-divider>
     </div>
     <v-card-actions>
-      <form id="RegistrationForm" asp-controller="Registration" asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post"></form>
-      <v-btn type="submit" form="RegistrationForm" x-large block color="grey lighten-2">@T["Create an account"]</v-btn>
+      <v-btn href="@Url.Action("Register", "Registration", new { Area = "OrchardCore.Users", returnUrl=ViewData["ReturnUrl"] })" x-large block color="grey lighten-2">@T["Create an account"]</v-btn>
     </v-card-actions>
   }
 </v-card>
