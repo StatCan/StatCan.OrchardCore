@@ -52,16 +52,6 @@ namespace StatCan.OrchardCore.Hackathon
                     .WithDisplayName("End Date")
                     .WithPosition("1")
                 )
-                .WithField("Logo", f => f
-                    .OfType(nameof(MediaField))
-                    .WithDisplayName("Logo")
-                    .WithPosition("2")
-                )
-                .WithField("SiteTitle", f => f
-                    .OfType(nameof(TextField))
-                    .WithDisplayName("Site Title")
-                    .WithPosition("3")
-                )
             );
 
             _contentDefinitionManager.AlterTypeDefinition("HackathonCustomSettings", type => type
@@ -79,7 +69,7 @@ namespace StatCan.OrchardCore.Hackathon
                 )
             );
 
-            _contentDefinitionManager.AlterTypeDefinition("HackathonPage", t => t.Creatable().Listable().Securable().Draftable()              
+            _contentDefinitionManager.AlterTypeDefinition("HackathonPage", t => t.Creatable().Listable().Securable().Draftable()
                 .WithPart(nameof(LocalizationPart), p => p.WithPosition("0"))
                 .WithPart(nameof(TitlePart), p => p
                     .WithPosition("1")
@@ -91,7 +81,7 @@ namespace StatCan.OrchardCore.Hackathon
                 .WithPart("HackathonPage", p => p.WithPosition("2"))
                 .WithPart("AutoroutePart", p => p.WithPosition("3").WithSettings(new AutoroutePartSettings()
                 {
-                    Pattern = "{% assign hackathon = ContentItem.Content.HackathonPage.Hackathon.LocalizationSets | localization_set | first %}\r\n{% if hackathon != null %}\r\n{{ hackathon.Content.AutoroutePart.Path }}/{{ContentItem.Content.HackathonPage.Name.Text}}\r\n{% endif %}",
+                    Pattern = "{{ContentItem.Content.HackathonPage.Name.Text}}",
                     AllowCustomPath = true,
                     ShowHomepageOption = true
                 }))
