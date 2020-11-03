@@ -1,0 +1,25 @@
+{% assign prefix = Model.ContentItem.DisplayText | slugify %}
+<ul {%if Model.Id != null%}{%if Model.Id != null%}id="{{ Model.Id }}"{%endif%}{%endif%} class="nav nav-pills mb-3 {{ Model.Classes | join: ' ' }}" role="tablist">
+  {% for tab in Model.ContentItem.Content.FlowPart.Widgets %}
+  {% capture tabId %}{{prefix}}{{tab.DisplayText | slugify}}{% endcapture %}
+  <li class="nav-item">
+      <a 
+        class="nav-link {% if forloop.first == true %}active{% endif %}" id="{{tabId}}-tab" 
+        data-toggle="pill" 
+        href="#{{tabId}}" 
+        role="tab" 
+        aria-controls="{{tabId}}" 
+        aria-selected="true">
+        {{ tab.DisplayText }}
+      </a>
+    </li>
+  {% endfor %}
+</ul>
+<div class="tab-content">
+  {% for tab in Model.ContentItem.Content.FlowPart.Widgets %}
+  {% capture tabId %}{{prefix}}{{tab.DisplayText | slugify}}{% endcapture %}
+  <div class="tab-pane fade show {% if forloop.first == true %} show active {%endif%}" id="{{tabId}}" role="tabpanel" aria-labelledby="{{tabId}}-tab">
+    {{ tab | shape_build_display | shape_render }}
+  </div>
+  {% endfor %}
+</div>
