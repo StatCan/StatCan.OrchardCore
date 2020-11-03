@@ -2,6 +2,7 @@ using OrchardCore.ContentManagement.Metadata;
 using OrchardCore.ContentManagement.Metadata.Settings;
 using OrchardCore.Data.Migration;
 using OrchardCore.Autoroute.Models;
+using StatCan.OrchardCore.Extensions;
 
 namespace StatCan.OrchardCore.CommonTypes.Page
 {
@@ -37,9 +38,7 @@ namespace StatCan.OrchardCore.CommonTypes.Page
                         ShowHomepageOption = true,
                     })
                 )
-                .WithPart("FlowPart", part => part
-                    .WithPosition("3")
-                )
+                .WithFlow("3")
             );
             _contentDefinitionManager.AlterTypeDefinition("HtmlPage", type => type
                 .DisplayedAs("Html Page")
@@ -63,10 +62,7 @@ namespace StatCan.OrchardCore.CommonTypes.Page
                         ShowHomepageOption = true,
                     })
                 )
-                .WithPart("HtmlBodyPart", part => part
-                    .WithPosition("3")
-                    .WithEditor("Wysiwyg")
-                )
+                .WithHtmlBody("3")
                 .WithPart("HtmlPage", part => part
                     .WithPosition("4")
                 )
@@ -122,10 +118,7 @@ namespace StatCan.OrchardCore.CommonTypes.Page
                         ShowHomepageOption = true,
                     })
                 )
-                .WithPart("MarkdownBodyPart", part => part
-                    .WithPosition("3")
-                    .WithEditor("Wysiwyg")
-                )
+                .WithMarkdownBody("3")
                 .WithPart("MarkdownPage", part => part
                     .WithPosition("4")
                 )
