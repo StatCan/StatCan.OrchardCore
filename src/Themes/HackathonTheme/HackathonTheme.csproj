@@ -16,7 +16,12 @@
     <PackageReference Include="OrchardCore.Workflows" Version="$(OrchardCoreVersion)" />
   </ItemGroup>
 
-<ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="OrchardCore.Title" Version="$(OrchardCoreVersion)" />
+    <ProjectReference Include="..\..\Lib\StatCan.OrchardCore.Extensions\StatCan.OrchardCore.Extensions.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
   </ItemGroup>
 

@@ -1,0 +1,10 @@
+<div class="row pb-3">
+    <div class="col-lg-3 col-4 text-right">
+        <div>{{ Model.ContentItem.Content.ScheduleEvent.Time.Text }}</div>
+        <div class="small">{{ Model.ContentItem.Content.ScheduleEvent.Location.Text }}</div>
+    </div>
+    <div class="col-lg-9 col-8">
+        <h3>{{ Model.ContentItem | display_text }}</h3>
+        <div>{{ Model.Content.MarkdownBodyPart | shape_render }}</div>
+    </div>
+</div>

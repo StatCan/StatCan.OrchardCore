@@ -5,6 +5,10 @@ using OrchardCore.ContentManagement.Metadata;
 using OrchardCore.ContentManagement.Metadata.Builders;
 using OrchardCore.ContentManagement.Metadata.Settings;
 using OrchardCore.Flows.Models;
+using OrchardCore.Html.Models;
+using OrchardCore.Markdown.Fields;
+using OrchardCore.Markdown.Models;
+using OrchardCore.Markdown.Settings;
 
 namespace StatCan.OrchardCore.Extensions
 {
@@ -13,14 +17,25 @@ namespace StatCan.OrchardCore.Extensions
     /// </summary>
     public static class BuilderExtensions
     {
-        public static ContentPartDefinitionBuilder WithHtmlField(this ContentPartDefinitionBuilder p, string name, string displayName, string hint,  string position)
+        public static ContentPartDefinitionBuilder WithHtmlField(this ContentPartDefinitionBuilder p, string name, string displayName, string hint, string position)
         {
             return p.WithField(name, f => f
                 .OfType(nameof(HtmlField))
                 .WithEditor("Wysiwyg")
                 .WithDisplayName(displayName)
                 .WithPosition(position)
-                .WithSettings(new HtmlFieldSettings(){Hint = hint})
+                .WithSettings(new HtmlFieldSettings() { Hint = hint })
+            );
+        }
+
+        public static ContentPartDefinitionBuilder WithMarkdownField(this ContentPartDefinitionBuilder p, string name, string displayName, string hint, string position)
+        {
+            return p.WithField(name, f => f
+                .OfType(nameof(MarkdownField))
+                .WithEditor("Wysiwyg")
+                .WithDisplayName(displayName)
+                .WithPosition(position)
+                .WithSettings(new MarkdownFieldSettings() { Hint = hint })
             );
         }
 
@@ -117,11 +132,29 @@ namespace StatCan.OrchardCore.Extensions
             );
         }
 
+        public static ContentTypeDefinitionBuilder WithHtmlBody(this ContentTypeDefinitionBuilder t, string position)
+        {
+            return t.WithPart(nameof(HtmlBodyPart), p => {
+                p.WithPosition(position);
+                p.WithDisplayName("Html Body");
+                p.WithEditor("Wysiwyg");
+            });
+        }
+
+        public static ContentTypeDefinitionBuilder WithMarkdownBody(this ContentTypeDefinitionBuilder t, string position)
+        {
+            return t.WithPart(nameof(MarkdownBodyPart), p => {
+                p.WithPosition(position);
+                p.WithDisplayName("Markdown Body");
+                p.WithEditor("Wysiwyg");
+            });
+        }
+
         public static ContentTypeDefinitionBuilder WithFlow(this ContentTypeDefinitionBuilder t, string position, string[] containedContentTypes = null)
         {
             return t.WithPart(nameof(FlowPart), p => {
                 p.WithPosition(position);
-                if(containedContentTypes != null)
+                if (containedContentTypes != null)
                 {
                     p.WithSettings(new FlowPartSettings() { ContainedContentTypes = containedContentTypes });
                 }
@@ -132,7 +165,7 @@ namespace StatCan.OrchardCore.Extensions
         {
             return t.WithPart(nameof(ContentPermissionsPart), p => {
                 p.WithPosition(position);
-                if(redirectUrl != null)
+                if (redirectUrl != null)
                 {
                     p.WithSettings(new ContentPermissionsPartSettings() { RedirectUrl = redirectUrl });
                 }
