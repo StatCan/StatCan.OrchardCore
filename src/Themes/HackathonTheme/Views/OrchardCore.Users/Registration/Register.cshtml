@@ -34,22 +34,21 @@
               </v-alert>
             }
             <v-text-field id="UserName" name="UserName" label="@T["Username"]" value="@userName?.AttemptedValue"
-            error-messages="@(userName?.Errors.FirstOrDefault()?.ErrorMessage)"></v-text-field>
+              error-messages="@(userName?.Errors.FirstOrDefault()?.ErrorMessage)"></v-text-field>
             <v-text-field id="Email" type="email" name="Email" label="@T["Email"]" value="@email?.AttemptedValue"
-            error-messages="@(email?.Errors.FirstOrDefault()?.ErrorMessage)"></v-text-field>
+              error-messages="@(email?.Errors.FirstOrDefault()?.ErrorMessage)"></v-text-field>
             <v-text-field id="Password" type="password" name="Password" label="@T["Password"]"
-            value="@password?.AttemptedValue" error-messages="@(password?.Errors.FirstOrDefault()?.ErrorMessage)">
+              error-messages="@(password?.Errors.FirstOrDefault()?.ErrorMessage)">
             </v-text-field>
             <v-text-field id="ConfirmPassword" type="password" name="ConfirmPassword" label="@T["Confirm password"]"
-            value="@confirmPassword?.AttemptedValue"
-            error-messages="@(confirmPassword?.Errors.FirstOrDefault()?.ErrorMessage)">
+              error-messages="@(confirmPassword?.Errors.FirstOrDefault()?.ErrorMessage)">
             </v-text-field>
         </v-col>
       </v-row>
     </v-card-text>
     <v-card-actions>
       @await RenderSectionAsync("AfterRegister", required: false)
-      <v-btn type="submit" x-large block color="success"><span>@T["Create account"]</span></button>
+      <v-btn type="submit" x-large block color="success">@T["Create account"]</v-btn>
     </v-card-actions>
     @if (!disableLocalLogin)
     {
