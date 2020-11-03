@@ -4,7 +4,7 @@
     <TargetFramework>$(AspNetCoreTargetFramework)</TargetFramework>
     <CodeAnalysisRuleSet>..\..\..\roslynator.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
-  
+
   <ItemGroup>
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
   </ItemGroup>
@@ -12,6 +12,13 @@
   <ItemGroup>
     <PackageReference Include="OrchardCore.ContentFields" Version="$(OrchardCoreVersion)" />
     <PackageReference Include="OrchardCore.ContentManagement.Abstractions" Version="$(OrchardCoreVersion)" />
+    <PackageReference Include="OrchardCore.Flows" Version="$(OrchardCoreVersion)" />
+    <PackageReference Include="OrchardCore.Markdown" Version="$(OrchardCoreVersion)" />
+    <PackageReference Include="OrchardCore.Html" Version="$(OrchardCoreVersion)" />
   </ItemGroup>
-  
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Modules\StatCan.OrchardCore.ContentPermissions\StatCan.OrchardCore.ContentPermissions.csproj" />
+  </ItemGroup>
+
 </Project>

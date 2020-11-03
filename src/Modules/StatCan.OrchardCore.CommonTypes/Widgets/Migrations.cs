@@ -2,6 +2,7 @@ using OrchardCore.ContentManagement.Metadata;
 using OrchardCore.ContentManagement.Metadata.Settings;
 using OrchardCore.Data.Migration;
 using OrchardCore.Title.Models;
+using StatCan.OrchardCore.Extensions;
 
 namespace StatCan.OrchardCore.CommonTypes.Widgets
 {
@@ -17,15 +18,12 @@ namespace StatCan.OrchardCore.CommonTypes.Widgets
         {
             _contentDefinitionManager.AlterTypeDefinition("Container", builder => builder
                 .Stereotype("Widget")
-                .WithPart("FlowPart", part => part.WithPosition("1"))
+                .WithFlow("1")
             );
 
             _contentDefinitionManager.AlterTypeDefinition("HtmlWidget", builder => builder
                 .Stereotype("Widget")
-                .WithPart("HtmlBodyPart", part => part
-                    .WithDisplayName("HTML Body")
-                    .WithEditor("Wysiwyg")
-                )
+                .WithHtmlBody("1")
             );
 
             _contentDefinitionManager.AlterTypeDefinition("LiquidWidget", builder => builder
@@ -36,10 +34,7 @@ namespace StatCan.OrchardCore.CommonTypes.Widgets
             );
              _contentDefinitionManager.AlterTypeDefinition("MarkdownWidget", builder => builder
                 .Stereotype("Widget")
-                .WithPart("MarkdownBodyPart", part => part
-                    .WithDisplayName("Markdown body")
-                    .WithEditor("Wysiwyg")
-                )
+                .WithMarkdownBody("1")
             );
             return 1;
 

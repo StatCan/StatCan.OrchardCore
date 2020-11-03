@@ -1,0 +1,19 @@
+{
+  "HtmlField_Edit": [
+    {
+      "place": "Parts#Security:15",
+      "contentType": [
+        "SecurePage"
+      ],
+      "differentiator": "SecurePage-UnauthorizedHtml"
+    }
+  ],
+  "ContentPermissionsPart_Edit": [
+    {
+      "place": "Parts#Security:10",
+      "contentType": [
+        "SecurePage"
+      ]
+    }
+  ]
+}

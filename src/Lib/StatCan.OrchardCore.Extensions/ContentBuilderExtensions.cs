@@ -1,7 +1,14 @@
+using Etch.OrchardCore.ContentPermissions.Models;
 using OrchardCore.ContentFields.Fields;
 using OrchardCore.ContentFields.Settings;
+using OrchardCore.ContentManagement.Metadata;
 using OrchardCore.ContentManagement.Metadata.Builders;
 using OrchardCore.ContentManagement.Metadata.Settings;
+using OrchardCore.Flows.Models;
+using OrchardCore.Html.Models;
+using OrchardCore.Markdown.Fields;
+using OrchardCore.Markdown.Models;
+using OrchardCore.Markdown.Settings;
 
 namespace StatCan.OrchardCore.Extensions
 {
@@ -10,14 +17,25 @@ namespace StatCan.OrchardCore.Extensions
     /// </summary>
     public static class BuilderExtensions
     {
-        public static ContentPartDefinitionBuilder WithHtmlField(this ContentPartDefinitionBuilder p, string name, string displayName, string hint,  string position)
+        public static ContentPartDefinitionBuilder WithHtmlField(this ContentPartDefinitionBuilder p, string name, string displayName, string hint, string position)
         {
             return p.WithField(name, f => f
                 .OfType(nameof(HtmlField))
                 .WithEditor("Wysiwyg")
                 .WithDisplayName(displayName)
                 .WithPosition(position)
-                .WithSettings(new HtmlFieldSettings(){Hint = hint})
+                .WithSettings(new HtmlFieldSettings() { Hint = hint })
+            );
+        }
+
+        public static ContentPartDefinitionBuilder WithMarkdownField(this ContentPartDefinitionBuilder p, string name, string displayName, string hint, string position)
+        {
+            return p.WithField(name, f => f
+                .OfType(nameof(MarkdownField))
+                .WithEditor("Wysiwyg")
+                .WithDisplayName(displayName)
+                .WithPosition(position)
+                .WithSettings(new MarkdownFieldSettings() { Hint = hint })
             );
         }
 
@@ -111,6 +129,54 @@ namespace StatCan.OrchardCore.Extensions
                 .WithDisplayName(displayName)
                 .WithPosition(position)
                 .WithSettings(settings)
+            );
+        }
+
+        public static ContentTypeDefinitionBuilder WithHtmlBody(this ContentTypeDefinitionBuilder t, string position)
+        {
+            return t.WithPart(nameof(HtmlBodyPart), p => {
+                p.WithPosition(position);
+                p.WithDisplayName("Html Body");
+                p.WithEditor("Wysiwyg");
+            });
+        }
+
+        public static ContentTypeDefinitionBuilder WithMarkdownBody(this ContentTypeDefinitionBuilder t, string position)
+        {
+            return t.WithPart(nameof(MarkdownBodyPart), p => {
+                p.WithPosition(position);
+                p.WithDisplayName("Markdown Body");
+                p.WithEditor("Wysiwyg");
+            });
+        }
+
+        public static ContentTypeDefinitionBuilder WithFlow(this ContentTypeDefinitionBuilder t, string position, string[] containedContentTypes = null)
+        {
+            return t.WithPart(nameof(FlowPart), p => {
+                p.WithPosition(position);
+                if (containedContentTypes != null)
+                {
+                    p.WithSettings(new FlowPartSettings() { ContainedContentTypes = containedContentTypes });
+                }
+            });
+        }
+
+        public static ContentTypeDefinitionBuilder WithContentPermission(this ContentTypeDefinitionBuilder t, string position, string redirectUrl = null)
+        {
+            return t.WithPart(nameof(ContentPermissionsPart), p => {
+                p.WithPosition(position);
+                if (redirectUrl != null)
+                {
+                    p.WithSettings(new ContentPermissionsPartSettings() { RedirectUrl = redirectUrl });
+                }
+            });
+        }
+
+        public static void CreateBasicWidget(this IContentDefinitionManager manager, string name)
+        {
+            manager.AlterPartDefinition(name, p => p.WithDisplayName(name));
+            manager.AlterTypeDefinition(name, t => t.Stereotype("Widget")
+               .WithPart(name, p => p.WithPosition("0"))
             );
         }
     }

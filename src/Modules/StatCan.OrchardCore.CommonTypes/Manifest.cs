@@ -19,7 +19,8 @@ using static StatCan.OrchardCore.CommonTypes.FeatureIds;
         "OrchardCore.Flows",
         "OrchardCore.Html",
         "OrchardCore.Liquid",
-        "OrchardCore.Title",
+        "OrchardCore.Markdown",
+        "OrchardCore.Title"
     }
 )]
 
@@ -30,10 +31,25 @@ using static StatCan.OrchardCore.CommonTypes.FeatureIds;
     Description = "Adds generic widget content types such as Liquid, Html, Markdown and Container widgets",
     Dependencies = new[]
     {
-        "OrchardCore.Autoroute",
-        "OrchardCore.Flows",
         "OrchardCore.Html",
+        "OrchardCore.Flows",
         "OrchardCore.Liquid",
         "OrchardCore.Title",
+        "OrchardCore.Markdown",
+    }
+)]
+
+[assembly: Feature(
+    Id = SecurePage,
+    Name = "StatCan.CommonTypes - Secure Page",
+    Category = "Content",
+    Description = "Adds a page content types that has the ContentPermission part attached to it.",
+    Dependencies = new[]
+    {
+        "OrchardCore.Autoroute",
+        "OrchardCore.Flows",
+        "OrchardCore.Title",
+        "OrchardCore.Html",
+        "StatCan.OrchardCore.ContentPermissions"
     }
 )]
