@@ -9,7 +9,7 @@
       {% if hacker == null %}
       {{ Model.Content.TeamFlowDashboardWidget__NoTeamHtml | shape_render }}
       {% else %}
-       {{ Model.Content.AdvancedFlowPart | clone_properties: Model | shape_render }}
+       {{ Model.Content.FlowPart | shape_render }}
        {% endif %}
     </div>
 </div>

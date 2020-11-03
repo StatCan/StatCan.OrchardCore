@@ -5,6 +5,7 @@ using OrchardCore.ContentFields.Settings;
 using OrchardCore.Title.Models;
 using OrchardCore.ContentFields.Fields;
 using OrchardCore.Modules;
+using StatCan.OrchardCore.Extensions;
 
 namespace StatCan.OrchardCore.Hackathon
 {
@@ -23,6 +24,15 @@ namespace StatCan.OrchardCore.Hackathon
             CreateTeam();
             CreateWidgets();
             CreateTeamCustomSettings();
+
+            _contentDefinitionManager.AlterPartDefinition("Hacker", p => p
+                .WithField("Team", f => f
+                    .OfType(nameof(ContentPickerField))
+                    .WithDisplayName("Team")
+                    .WithPosition("0")
+                    .WithSettings(new ContentPickerFieldSettings() { DisplayedContentTypes = new string[] { "Team" } })
+                )
+            );
 
             return 1;
         }
@@ -57,20 +67,20 @@ namespace StatCan.OrchardCore.Hackathon
 
         private void CreateWidgets()
         {
-            CreateBasicWidget("TeamDashboardWidget");
+            _contentDefinitionManager.CreateBasicWidget("TeamDashboardWidget");
             _contentDefinitionManager.AlterPartDefinition("TeamDashboardWidget", t => t
                 .WithHtmlField("SoloMessage", "Solo message", "The html displayed when the participant is not part of a team", "0")
                 .WithHtmlField("TeamMessage", "Team message", "The html displayed when the participant is part of a team", "1")
             );
 
-            CreateBasicWidget("TeamJoinListWidget");
+            _contentDefinitionManager.CreateBasicWidget("TeamJoinListWidget");
 
-            CreateBasicWidget("TeamFlowDashboardWidget");
+            _contentDefinitionManager.CreateBasicWidget("TeamFlowDashboardWidget");
             _contentDefinitionManager.AlterTypeDefinition("TeamFlowDashboardWidget", t => t
                 .WithPart(nameof(TitlePart), p => p
                     .WithPosition("1")
                 )
-                .WithAdvancedFlowPart("2")
+                .WithFlow("2")
             );
             _contentDefinitionManager.AlterPartDefinition("TeamFlowDashboardWidget", t => t
                 .WithHtmlField("NoTeamHtml", "Solo message", "The html displayed when the participant is not part of a team", "0")
@@ -90,16 +100,9 @@ namespace StatCan.OrchardCore.Hackathon
                     new BooleanFieldSettings() { Label = "Can hackers create / join / leave teams?" }));
 
             _contentDefinitionManager.AlterTypeDefinition("HackathonCustomSettings", type => type
-                .WithPart("TeamCustomSettings", p => p.WithPosition("1"))
-                .Stereotype("CustomSettings"));
+                .WithPart("TeamCustomSettings", p => p.WithPosition("1")));
         }
 
-        private void CreateBasicWidget(string name)
-        {
-            _contentDefinitionManager.AlterPartDefinition(name, p => p.WithDisplayName(name));
-            _contentDefinitionManager.AlterTypeDefinition(name, t => t.Stereotype("Widget")
-               .WithPart(name, p => p.WithPosition("0"))
-            );
-        }
+
     }
 }

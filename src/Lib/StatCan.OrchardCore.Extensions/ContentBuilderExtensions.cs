@@ -1,7 +1,10 @@
+using Etch.OrchardCore.ContentPermissions.Models;
 using OrchardCore.ContentFields.Fields;
 using OrchardCore.ContentFields.Settings;
+using OrchardCore.ContentManagement.Metadata;
 using OrchardCore.ContentManagement.Metadata.Builders;
 using OrchardCore.ContentManagement.Metadata.Settings;
+using OrchardCore.Flows.Models;
 
 namespace StatCan.OrchardCore.Extensions
 {
@@ -111,6 +114,36 @@ namespace StatCan.OrchardCore.Extensions
                 .WithDisplayName(displayName)
                 .WithPosition(position)
                 .WithSettings(settings)
+            );
+        }
+
+        public static ContentTypeDefinitionBuilder WithFlow(this ContentTypeDefinitionBuilder t, string position, string[] containedContentTypes = null)
+        {
+            return t.WithPart(nameof(FlowPart), p => {
+                p.WithPosition(position);
+                if(containedContentTypes != null)
+                {
+                    p.WithSettings(new FlowPartSettings() { ContainedContentTypes = containedContentTypes });
+                }
+            });
+        }
+
+        public static ContentTypeDefinitionBuilder WithContentPermission(this ContentTypeDefinitionBuilder t, string position, string redirectUrl = null)
+        {
+            return t.WithPart(nameof(ContentPermissionsPart), p => {
+                p.WithPosition(position);
+                if(redirectUrl != null)
+                {
+                    p.WithSettings(new ContentPermissionsPartSettings() { RedirectUrl = redirectUrl });
+                }
+            });
+        }
+
+        public static void CreateBasicWidget(this IContentDefinitionManager manager, string name)
+        {
+            manager.AlterPartDefinition(name, p => p.WithDisplayName(name));
+            manager.AlterTypeDefinition(name, t => t.Stereotype("Widget")
+               .WithPart(name, p => p.WithPosition("0"))
             );
         }
     }

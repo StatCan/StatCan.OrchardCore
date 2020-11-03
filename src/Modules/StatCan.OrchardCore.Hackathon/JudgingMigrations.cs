@@ -10,6 +10,7 @@ using OrchardCore.Title.Models;
 using StatCan.OrchardCore.Hackathon;
 using OrchardCore.Modules;
 using OrchardCore.Autoroute.Models;
+using StatCan.OrchardCore.Extensions;
 
 namespace StatCan.OrchardCore.Hackathon
 {

@@ -9,6 +9,7 @@ using OrchardCore.Flows.Models;
 using OrchardCore.Media.Fields;
 using OrchardCore.Recipes.Services;
 using OrchardCore.Title.Models;
+using StatCan.OrchardCore.Extensions;
 using System.Threading.Tasks;
 
 namespace StatCan.OrchardCore.Hackathon
@@ -26,7 +27,7 @@ namespace StatCan.OrchardCore.Hackathon
 
         public async Task<int> CreateAsync()
         {
-            CreateHackathonPage();
+            CreateSecurePage();
             CreateHackathonCustomSetings();
             CreateWidgets();
             CreateHackerVolunteers();
@@ -52,6 +53,7 @@ namespace StatCan.OrchardCore.Hackathon
                     .WithDisplayName("End Date")
                     .WithPosition("1")
                 )
+                .WithNumericField("Capacity", "2", new NumericFieldSettings() { DefaultValue = "0", Hint = "The maximum number of participants" })
             );
 
             _contentDefinitionManager.AlterTypeDefinition("HackathonCustomSettings", type => type
@@ -59,67 +61,52 @@ namespace StatCan.OrchardCore.Hackathon
                 .Stereotype("CustomSettings"));
         }
 
-        private void CreateHackathonPage()
+        private void CreateSecurePage()
         {
-            _contentDefinitionManager.AlterPartDefinition("HackathonPage", p => p
-                .WithField("Name", f => f
-                    .OfType(nameof(TextField))
-                    .WithDisplayName("Name")
-                    .WithPosition("0")
-                )
-            );
+            _contentDefinitionManager.AlterPartDefinition("SecurePage", p => p.WithDisplayName("Secure Page"));
 
-            _contentDefinitionManager.AlterTypeDefinition("HackathonPage", t => t.Creatable().Listable().Securable().Draftable()
+            _contentDefinitionManager.AlterTypeDefinition("SecurePage", t => t.Creatable().Listable().Securable().Draftable()
                 .WithPart(nameof(LocalizationPart), p => p.WithPosition("0"))
                 .WithPart(nameof(TitlePart), p => p
                     .WithPosition("1")
                     .WithSettings(new TitlePartSettings()
                     {
-                        Pattern = "{{ContentItem.Content.HackathonPage.Name.Text}}"
+                        RenderTitle = false,
+                        Options = TitlePartOptions.EditableRequired
                     })
                 )
-                .WithPart("HackathonPage", p => p.WithPosition("2"))
+                .WithPart("SecurePage", p => p.WithPosition("2"))
                 .WithPart("AutoroutePart", p => p.WithPosition("3").WithSettings(new AutoroutePartSettings()
                 {
-                    Pattern = "{{ContentItem.Content.HackathonPage.Name.Text}}",
+                    Pattern = "{{ContentItem | display_text | slugify}}",
                     AllowCustomPath = true,
                     ShowHomepageOption = true
                 }))
-                .WithPart(nameof(FlowPart), p => p.WithPosition("4"))
+                .WithFlow("4")
+                .WithContentPermission("5")
             );
         }
 
         private void CreateWidgets()
         {
-            CreateBasicWidget("HackathonCalendar");
+            _contentDefinitionManager.CreateBasicWidget("HackathonCalendar");
 
-            CreateBasicWidget("Tabs");
-            _contentDefinitionManager.AlterTypeDefinition("Tabs", t => t
-                .WithPart(nameof(TitlePart), p => p
-                    .WithPosition("0")
-                )
-                .WithPart("Tabs", nameof(BagPart), p => p
-                    .WithDisplayName("Tabs")
-                    .WithPosition("1")
-                    .WithSettings(new BagPartSettings() { ContainedContentTypes = new string[] { "Tab" } })
-                )
-            );
-            _contentDefinitionManager.AlterPartDefinition("Tab", p => p.WithDisplayName("Tab"));
-            _contentDefinitionManager.AlterTypeDefinition("Tab", t => t
-               .WithPart(nameof(TitlePart), p => p
-                    .WithPosition("0")
-                )
-            );
+            //CreateBasicWidget("Tabs");
+            //_contentDefinitionManager.AlterTypeDefinition("Tabs", t => t
+            //    .WithPart(nameof(TitlePart), p => p
+            //        .WithPosition("0")
+            //    )
+            //    .WithFlow("1", new string[] { "Tab" })
+            //);
+            //_contentDefinitionManager.AlterPartDefinition("Tab", p => p.WithDisplayName("Tab"));
+            //_contentDefinitionManager.AlterTypeDefinition("Tab", t => t
+            //   .WithPart(nameof(TitlePart), p => p
+            //        .WithPosition("0")
+            //    )
+            //   .WithPart("Tab", p => p.WithPosition("1"))
+            //   .WithFlow("2")
+            //);
         }
-
-        private void CreateBasicWidget(string name)
-        {
-            _contentDefinitionManager.AlterPartDefinition(name, p => p.WithDisplayName(name));
-            _contentDefinitionManager.AlterTypeDefinition(name, t => t.Stereotype("Widget")
-               .WithPart(name, p => p.WithPosition("0"))
-            );
-        }
-
         private void CreateHackerVolunteers()
         {
             _contentDefinitionManager.AlterPartDefinition("ParticipantPart", p => p
@@ -146,33 +133,9 @@ namespace StatCan.OrchardCore.Hackathon
                 )
                 .WithTextField("AdditionalInformation", "AdditionalInformation", "TextArea", "4")
                 .WithTextField("AdministratorNotes", "Administrator Notes", "TextArea", "5")
-                .WithSwitchBooleanField("Selected", "Selected", "6", new BooleanFieldSettings()
-                {
-                    Hint = "Only selected participants can see the dashboard pages",
-                    Label = "Is selected",
-                    DefaultValue = false
-                })
-                .WithSwitchBooleanField("Attending", "Attending", "7", new BooleanFieldSettings()
-                {
-                    Hint = "Field set by the user when confirming attendance",
-                    Label = "Is attending",
-                    DefaultValue = false
-                })
-                 .WithSwitchBooleanField("CheckedIn", "Checked-in", "8", new BooleanFieldSettings()
-                 {
-                     Hint = "The participant is checked in at the door by the volunteers",
-                     Label = "Is checked-in",
-                     DefaultValue = false
-                 })
             );
             _contentDefinitionManager.AlterPartDefinition("Hacker", p => p
-                .WithField("Team", f => f
-                    .OfType(nameof(ContentPickerField))
-                    .WithDisplayName("Team")
-                    .WithPosition("0")
-                    .WithSettings(new ContentPickerFieldSettings() { DisplayedContentTypes = new string[] { "Team" } })
-                )
-                .WithCaseField("1")
+                .WithDisplayName("Hacker")
             );
 
             _contentDefinitionManager.AlterTypeDefinition("Hacker", t => t.Creatable().Listable().Securable()
