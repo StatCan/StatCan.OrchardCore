@@ -1,4 +1,5 @@
-using Etch.OrchardCore.ContentPermissions.Models;
+﻿using Etch.OrchardCore.ContentPermissions.Models;
+using Etch.OrchardCore.ContentPermissions.Services;
 using Etch.OrchardCore.ContentPermissions.ViewModels;
 using Microsoft.AspNetCore.Http;
 using OrchardCore.ContentManagement.Display.ContentDisplay;
@@ -9,8 +10,6 @@ using OrchardCore.DisplayManagement.Views;
 using OrchardCore.Security.Services;
 using System;
 using System.Linq;
-using System.Net;
-using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace Etch.OrchardCore.ContentPermissions.Drivers
@@ -19,7 +18,7 @@ namespace Etch.OrchardCore.ContentPermissions.Drivers
     {
         #region Dependencies
 
-        private readonly IContentDefinitionManager _contentDefinitionManager;
+        private readonly IContentPermissionsService _contentPermissionsService;
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly IRoleService _roleService;
 
@@ -27,9 +26,9 @@ namespace Etch.OrchardCore.ContentPermissions.Drivers
 
         #region Constructor
 
-        public ContentPermissionsDisplay(IContentDefinitionManager contentDefinitionManager, IHttpContextAccessor httpContextAccessor, IRoleService roleService)
+        public ContentPermissionsDisplay(IContentPermissionsService contentPermissionsService, IHttpContextAccessor httpContextAccessor, IRoleService roleService)
         {
-            _contentDefinitionManager = contentDefinitionManager;
+            _contentPermissionsService = contentPermissionsService;
             _httpContextAccessor = httpContextAccessor;
             _roleService = roleService;
         }
@@ -40,15 +39,16 @@ namespace Etch.OrchardCore.ContentPermissions.Drivers
 
         public override IDisplayResult Display(ContentPermissionsPart part, BuildPartDisplayContext context)
         {
-            var settings = GetSettings(part);
-            if (context.DisplayType != "Detail" || !part.Enabled || settings.DisableRedirect || _httpContextAccessor.HttpContext.User.CanAccess(part.Roles))
+            var settings = _contentPermissionsService.GetSettings(part);
+
+            if (context.DisplayType != "Detail" || !settings.HasRedirectUrl || _contentPermissionsService.CanAccess(part))
             {
                 return null;
             }
 
-            var redirectUrl = settings.HasRedirectUrl ? settings.RedirectUrl : "/Error/403";
+            var redirectUrl = settings.RedirectUrl;
 
-            if (!redirectUrl.StartsWith("/"))
+            if (!settings.RedirectUrl.StartsWith("/"))
             {
                 redirectUrl = $"/{redirectUrl}";
             }
@@ -68,8 +68,7 @@ namespace Etch.OrchardCore.ContentPermissions.Drivers
                 model.Enabled = part.Enabled;
                 model.PossibleRoles = roles.ToArray();
                 model.Roles = part.Roles;
-            })
-            .Location("Parts#Security:10");
+            });
         }
 
         public override async Task<IDisplayResult> UpdateAsync(ContentPermissionsPart model, IUpdateModel updater, UpdatePartEditorContext context)
@@ -82,17 +81,6 @@ namespace Etch.OrchardCore.ContentPermissions.Drivers
             }
 
             return Edit(model, context);
-        }
-
-        #endregion
-
-        #region Helpers
-
-        private ContentPermissionsPartSettings GetSettings(ContentPermissionsPart part)
-        {
-            var contentTypeDefinition = _contentDefinitionManager.GetTypeDefinition(part.ContentItem.ContentType);
-            var contentTypePartDefinition = contentTypeDefinition.Parts.FirstOrDefault(x => string.Equals(x.PartDefinition.Name, nameof(ContentPermissionsPart)));
-            return contentTypePartDefinition.GetSettings<ContentPermissionsPartSettings>();
         }
 
         #endregion
