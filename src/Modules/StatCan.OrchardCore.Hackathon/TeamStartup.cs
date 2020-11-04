@@ -7,7 +7,7 @@ using System;
 
 namespace StatCan.OrchardCore.Hackathon
 {
-    [RequireFeatures("StatCan.OrchardCore.Hackathon.Team")]
+    [Feature(FeatureIds.Team)]
     public class TeamStartup : StartupBase
     {
         public override void ConfigureServices(IServiceCollection services)
@@ -21,19 +21,19 @@ namespace StatCan.OrchardCore.Hackathon
                name: "JoinTeam",
                areaName: "StatCan.OrchardCore.Hackathon",
                pattern: "team/join",
-               defaults: new { controller = "Dashboard", action = "JoinTeam" }
+               defaults: new { controller = "Team", action = "JoinTeam" }
             );
             routes.MapAreaControllerRoute(
                name: "LeaveTeam",
                areaName: "StatCan.OrchardCore.Hackathon",
                pattern: "team/leave",
-               defaults: new { controller = "Dashboard", action = "LeaveTeam" }
+               defaults: new { controller = "Team", action = "LeaveTeam" }
             );
             routes.MapAreaControllerRoute(
                name: "CreateTeam",
                areaName: "StatCan.OrchardCore.Hackathon",
                pattern: "team/create",
-               defaults: new { controller = "Dashboard", action = "CreateTeam" }
+               defaults: new { controller = "Team", action = "CreateTeam" }
             );
         }
     }

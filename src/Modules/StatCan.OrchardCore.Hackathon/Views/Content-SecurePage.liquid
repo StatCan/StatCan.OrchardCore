@@ -1,7 +1,0 @@
-<section>
-  {% if Model.ContentItem | user_can_view %}
-	  {{ Model.Content | shape_render }}
-  {% else %}
-	  <p>{{ "Unauthorized" | t }}</p>
-  {% endif %}
-</section>

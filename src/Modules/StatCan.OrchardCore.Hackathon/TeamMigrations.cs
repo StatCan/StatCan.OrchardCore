@@ -4,12 +4,10 @@ using OrchardCore.ContentManagement.Metadata.Settings;
 using OrchardCore.ContentFields.Settings;
 using OrchardCore.Title.Models;
 using OrchardCore.ContentFields.Fields;
-using OrchardCore.Modules;
 using StatCan.OrchardCore.Extensions;
 
 namespace StatCan.OrchardCore.Hackathon
 {
-    [RequireFeatures("StatCan.OrchardCore.Hackathon.Team")]
     public class TeamMigrations : DataMigration
     {
         private readonly IContentDefinitionManager _contentDefinitionManager;
@@ -26,12 +24,7 @@ namespace StatCan.OrchardCore.Hackathon
             CreateTeamCustomSettings();
 
             _contentDefinitionManager.AlterPartDefinition("Hacker", p => p
-                .WithField("Team", f => f
-                    .OfType(nameof(ContentPickerField))
-                    .WithDisplayName("Team")
-                    .WithPosition("0")
-                    .WithSettings(new ContentPickerFieldSettings() { DisplayedContentTypes = new string[] { "Team" } })
-                )
+                .WithTeamField("0")
             );
 
             return 1;
@@ -39,29 +32,26 @@ namespace StatCan.OrchardCore.Hackathon
 
         private void CreateTeam()
         {
-            _contentDefinitionManager.AlterPartDefinition("TeamSubmissionPart", p => p
-                .WithDisplayName("Team Submission")
-                .WithDescription("Collection of fields related to Team Submission")
+            _contentDefinitionManager.AlterPartDefinition("TeamSolutionPart", p => p
+                .WithDisplayName("Team Solution")
+                .WithDescription("Fields related to the team's solution to the challenge")
                 .Attachable()
-                .WithTextField("Name", "Submission name", "0", new TextFieldSettings() { Hint = "Comma delimited list of volunteer types selected by the volunteer" })
-                .WithTextField("Description", "Submission description", "TextArea", "1")
-                .WithTextField("RepositoryUrl", "Submission repository url", "2", new TextFieldSettings() { Hint = "Repository url submitted by the participant." })
-                .WithTextField("ForkedRepositoryUrl", "Forked repository url", "3", new TextFieldSettings() { Hint = "System forked url of the repository" })
+                .WithTextField("Name", "Name of solution", "0")
+                .WithTextField("Description", "Solution description", "TextArea", "1")
+                .WithTextField("RepositoryUrl", "Solution repository url", "2", new TextFieldSettings() { Hint = "Url of where we can get solution artifacts. Typically a git repository" })
             );
 
             _contentDefinitionManager.AlterPartDefinition("Team", p => p
-                .WithCaseField("0")
+                .WithTextField("Name", "Team Name", "0")
+                .WithTextField("Description", "Team Description", "TextArea", "1")
+                .WithCaseField("2")
             );
 
             _contentDefinitionManager.AlterTypeDefinition("Team", t => t
                 .Creatable().Listable().Securable()
-                // Name of this part is used as a magic string to associate with the Judge's type
-                .WithPart(nameof(TitlePart), p => p
-                    .WithPosition("0")
-                    .WithSettings(new TitlePartSettings() { Options = TitlePartOptions.GeneratedDisabled, Pattern = "{% assign hackathon = ContentItem.Content.Team.Hackathon.LocalizationSets | localization_set: 'en' | first %}\r\n{% assign case = ContentItem.Content.Team.Case.LocalizationSets | localization_set: 'en' | first %}\r\n{{ hackathon | display_text | slugify }}-{{ case | display_text | slugify }}-{{ ContentItem.Id }}" })
-                )
+                .WithTitlePart("0", TitlePartOptions.GeneratedDisabled, "{% assign case = ContentItem.Content.Team.Case.LocalizationSets | localization_set: 'en' | first %}\r\n{{ case | display_text | slugify }}-{{ContentItem.Content.Team.Name.Text}}-{{ ContentItem.Id }}")
                 .WithPart("Team", p => p.WithPosition("1"))
-                .WithPart("TeamSubmissionPart", p => p.WithPosition("2"))
+                .WithPart("TeamSolutionPart", p => p.WithPosition("2"))
             );
         }
 
@@ -102,7 +92,5 @@ namespace StatCan.OrchardCore.Hackathon
             _contentDefinitionManager.AlterTypeDefinition("HackathonCustomSettings", type => type
                 .WithPart("TeamCustomSettings", p => p.WithPosition("1")));
         }
-
-
     }
 }

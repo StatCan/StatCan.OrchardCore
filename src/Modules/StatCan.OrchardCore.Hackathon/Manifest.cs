@@ -1,4 +1,5 @@
 using OrchardCore.Modules.Manifest;
+using StatCan.OrchardCore.Hackathon;
 
 [assembly: Module(
     Name = "Hackathons",
@@ -8,25 +9,32 @@ using OrchardCore.Modules.Manifest;
 )]
 
 [assembly: Feature(
-    Id = "StatCan.OrchardCore.Hackathon",
+    Id = FeatureIds.Hackathon,
     Name = "Hackathon",
     Description = "Manages types and templates for hackathon support",
-    Dependencies = new[] { "OrchardCore.Contents", "OrchardCore.Workflows", "OrchardCore.Workflows.Http", "OrchardCore.Autoroute", "OrchardCore.Queries.Sql" },
-    Category = "Innovation"
+    Dependencies = new[] {
+        "OrchardCore.Contents",
+        "OrchardCore.Workflows",
+        "OrchardCore.Workflows.Http",
+        "OrchardCore.Autoroute",
+        "OrchardCore.Queries.Sql",
+        "StatCan.OrchardCore.VueForms"
+    },
+    Category = "Hackathon"
 )]
 
 [assembly: Feature(
-    Id = "StatCan.OrchardCore.Hackathon.Team",
+    Id = FeatureIds.Team,
     Name = "Hackathon Teams",
     Description = "Provides Teams management for the Hackathon feature",
-    Dependencies = new[] { "StatCan.OrchardCore.Hackathon" },
-    Category = "Innovation"
+    Dependencies = new[] { FeatureIds.Hackathon },
+    Category = "Hackathon"
 )]
 
 [assembly: Feature(
-    Id = "StatCan.OrchardCore.Hackathon.Judging",
+    Id =  FeatureIds.Judging,
     Name = "Hackathon Judging",
     Description = "Provides Juding management for the Hackathon feature",
-    Dependencies = new[] { "StatCan.OrchardCore.Hackathon", "StatCan.OrchardCore.Hackathon.Team", "StatCan.OrchardCore.VueForms" },
-    Category = "Innovation"
+    Dependencies = new[] { FeatureIds.Team },
+    Category = "Hackathon"
 )]

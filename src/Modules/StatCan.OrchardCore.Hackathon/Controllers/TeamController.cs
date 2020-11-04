@@ -10,33 +10,32 @@ using Microsoft.AspNetCore.Mvc.Localization;
 using OrchardCore.Settings;
 using OrchardCore.ContentManagement;
 using OrchardCore.Entities;
+using OrchardCore.Modules;
 
 namespace StatCan.OrchardCore.Hackathon.Controllers
 {
+    [RequireFeatures(FeatureIds.Team)]
     [Authorize]
-    public class DashboardController : Controller, IUpdateModel
+    public class TeamController : Controller, IUpdateModel
     {
         private readonly IHackathonService _hackathonService;
         private readonly IAuthorizationService _authorizationService;
         private readonly INotifier _notifier;
-        //private readonly ISchoolService _schoolService;
-        //private readonly IDepartmentService _departmentService;
         private readonly YesSql.ISession _session;
         private readonly ISiteService _siteService;
         public dynamic New { get; set; }
 
-        public DashboardController(IShapeFactory shapeFactory,
+        public TeamController(IShapeFactory shapeFactory,
             IHackathonService hackathonService,
-            IHtmlLocalizer<DashboardController> htmlLocalizer,
-            //ISchoolService schoolService,
-            //IDepartmentService departmentService,
-            IAuthorizationService authorizationService, INotifier notifier, YesSql.ISession session, ISiteService siteService)
-        {
+            IHtmlLocalizer<TeamController> htmlLocalizer,
+            IAuthorizationService authorizationService,
+            INotifier notifier,
+            YesSql.ISession session,
+            ISiteService siteService
+        ){
             New = shapeFactory;
             _hackathonService = hackathonService;
             H = htmlLocalizer;
-            //_schoolService = schoolService;
-            //_departmentService = departmentService;
             _authorizationService = authorizationService;
             _notifier = notifier;
             _session = session;
@@ -65,8 +64,8 @@ namespace StatCan.OrchardCore.Hackathon.Controllers
             if (!HttpContext.User.IsInRole("Hacker"))
             {
                 return NotFound();
-            }        
-            
+            }
+
             var site = await _siteService.GetSiteSettingsAsync();
             var hackathonCustomSettings = site.As<ContentItem>("HackathonCustomSettings");
 
@@ -119,7 +118,7 @@ namespace StatCan.OrchardCore.Hackathon.Controllers
             await _session.CommitAsync();
             return LocalRedirect(GetPrefixedUrl(returnUrl));
         }
-        
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> LeaveTeam(string returnUrl)
@@ -146,61 +145,5 @@ namespace StatCan.OrchardCore.Hackathon.Controllers
             await _session.CommitAsync();
             return LocalRedirect(GetPrefixedUrl(returnUrl));
         }
-        /*
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> SetCase(string hackathonLocalizationSet, string caseLocalizationSet, string returnUrl)
-        {
-            if (!(await _authorizationService.AuthorizeAsync(User, hackathonLocalizationSet, ParticipantType.Hacker)))
-            {
-                return NotFound();
-            }
-            var hackathon = await _hackathonService.GetHackathon(hackathonLocalizationSet);
-            if(hackathon.Content.Hackathon.CasesSelectable?.Value == false)
-            {
-                return Unauthorized();
-            }
-            await _hackathonService.SetCase(hackathonLocalizationSet, caseLocalizationSet, ModelState);
-
-            if (ModelState.IsValid)
-            {
-                _notifier.Success(H["Successfully selected a challenge"]);
-            }
-            await _session.CommitAsync();
-            return LocalRedirect(GetPrefixedUrl(returnUrl));
-        }
-        
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Attendance(string hackathonLocalizationSet, string returnUrl)
-        {
-            if (!await _authorizationService.AuthorizeAsync(User, hackathonLocalizationSet, ParticipantType.Hacker))
-            {
-                return NotFound();
-            }
-            var hackathon = await _hackathonService.GetHackathon(hackathonLocalizationSet);
-            await _hackathonService.SetAttendance(hackathonLocalizationSet, ModelState);
-            if (ModelState.IsValid)
-            {
-                _notifier.Success(H["Succesfully changed attendance."]);
-            }
-            await _session.CommitAsync();
-            return LocalRedirect(GetPrefixedUrl(returnUrl));
-        }
-
-        public JsonResult UniversityList()
-        {
-            return Json(_schoolService.UniversityJson);
-        }
-
-        public JsonResult DegreeList(string university)
-        {
-            return Json(_schoolService.DegreeJson.GetValue(university));
-        }
-
-        public JsonResult DepartmentList()
-        {
-            return Json(_departmentService.DepartmentJson);
-        }*/
     }
 }

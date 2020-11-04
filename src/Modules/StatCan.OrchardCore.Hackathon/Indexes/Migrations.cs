@@ -46,7 +46,7 @@ namespace StatCan.OrchardCore.Hackathon.Indexes
                 .CreateIndex("IDX_HackathonItemsIndex_CaseLocalizationSet", "CaseLocalizationSet")
             );
 
-            return 6;
+            return 1;
         }
     }
 }

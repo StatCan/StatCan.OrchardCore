@@ -22,38 +22,6 @@
       "name": "content",
       "data": [
         {
-          "ContentItemId": "4genypd0rqv02tsr4n52knx2n5",
-          "ContentItemVersionId": "40cjv9f9ywpxa6d58sggxyf9wz",
-          "ContentType": "ScoringPage",
-          "DisplayText": null,
-          "Latest": true,
-          "Published": true,
-          "ModifiedUtc": "2020-10-30T15:42:53.206432Z",
-          "PublishedUtc": "2020-10-30T15:42:53.2099594Z",
-          "CreatedUtc": "2020-10-30T15:42:53.206432Z",
-          "Owner": "admin",
-          "Author": "admin",
-          "ScoringPage": {
-            "VueForm": {
-              "ContentItemIds": [
-                "423fn7nvrwcdv2ksy8hww9qwdn"
-              ]
-            }
-          },
-          "AutoroutePart": {
-            "Path": "ScoringPage",
-            "SetHomepage": false,
-            "Disabled": false,
-            "RouteContainedItems": false,
-            "Absolute": false
-          }
-        }
-      ]
-    },
-    {
-      "name": "content",
-      "data": [
-        {
           "ContentItemId": "423fn7nvrwcdv2ksy8hww9qwdn",
           "ContentItemVersionId": "447chqav6sw0d7bhf9fzmjqkmy",
           "ContentType": "VueForm",

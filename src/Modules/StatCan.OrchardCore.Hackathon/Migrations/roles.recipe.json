@@ -5,14 +5,12 @@
       "Roles": [
         {
           "Name": "Hacker",
+          "Description": "Hackathon Hacker",
           "Permissions": []
         },
         {
           "Name": "Volunteer",
-          "Permissions": []
-        },
-        {
-          "Name": "Judge",
+          "Description": "Hackathon Voilunteer",
           "Permissions": []
         }
       ]

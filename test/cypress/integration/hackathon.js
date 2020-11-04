@@ -11,5 +11,8 @@ describe("Hackathon Tests", function() {
   
   it("Can login to Hackathon site", function() {
     cy.login(tenant);
+    cy.enableFeature(tenant, "StatCan_OrchardCore_Hackathon");
+    cy.enableFeature(tenant, "StatCan_OrchardCore_Hackathon_Team");
+    cy.enableFeature(tenant, "StatCan_OrchardCore_Hackathon_Judging");
   })
 });

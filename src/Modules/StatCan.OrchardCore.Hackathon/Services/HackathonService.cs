@@ -4,13 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using StatCan.OrchardCore.Hackathon.Indexes;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.Extensions.Localization;
 using Newtonsoft.Json.Linq;
-using OrchardCore.ContentLocalization;
-using OrchardCore.ContentLocalization.Models;
-using OrchardCore.ContentLocalization.Services;
 using OrchardCore.ContentManagement;
 using OrchardCore.Queries;
 using YesSql;
@@ -21,42 +17,24 @@ namespace StatCan.OrchardCore.Hackathon.Services
     {
         private readonly YesSql.ISession _session;
         private readonly IContentManager _contentManager;
-        //private readonly IContentCulturePickerService _culturePickerService;
-        //private readonly IContentLocalizationManager _contentLocalizationManager;
         private readonly IQueryManager _queryManager;
         private readonly IHttpContextAccessor _httpContextAccessor;
 
         public HackathonService(YesSql.ISession session,
             IStringLocalizer<HackathonService> localizer,
             IContentManager contentManager,
-            //IContentLocalizationManager contentLocalizationManager,
-            //IContentCulturePickerService culturePickerService,
             IQueryManager queryManager,
             IHttpContextAccessor httpContextAccessor
         )
         {
             _session = session;
             _contentManager = contentManager;
-            //_culturePickerService = culturePickerService;
-            //_contentLocalizationManager = contentLocalizationManager;
             _queryManager = queryManager;
             _httpContextAccessor = httpContextAccessor;
             T = localizer;
         }
 
         public IStringLocalizer T { get; }
-
-        /*public Task<ContentItem> GetHackathon(string hackathonLocalizationSet)
-        {
-            var culture = _httpContextAccessor.HttpContext.Features.Get<IRequestCultureFeature>().RequestCulture;
-            return _contentLocalizationManager.GetContentItemAsync(hackathonLocalizationSet, culture.Culture.Name);
-        }*/
-
-        /*public Task<LocalizationEntry> GetLocalizationEntryAsync(string hackathonSlug)
-        {
-            var path = new PathString(RootUrl(hackathonSlug));
-            return _culturePickerService.GetLocalizationFromRouteAsync(path);
-        }*/
 
         public Task<ContentItem> GetParticipantFromSetAsync()
         {
@@ -83,28 +61,6 @@ namespace StatCan.OrchardCore.Hackathon.Services
             var teamCount = await _session.QueryIndex<HackathonItemsIndex>(x => x.ContentItemId == teamContentItemId && x.ContentType == "Team" && x.Published).CountAsync();
             return teamCount > 0;
         }
-
-        /*public async Task<bool> SetCase(string caseLocalizationSet, ModelStateDictionary modelState)
-        {
-            var participant = await GetParticipantFromSetAsync();
-            var cases = await _contentLocalizationManager.GetItemsForSetAsync(caseLocalizationSet);
-            var teamId = participant.Content?.Hacker?.Team?.ContentItemIds?.First?.Value;
-            if (cases != null && teamId != null)
-            {
-                var caseLink = JObject.FromObject(new { LocalizationSets = new string[] { caseLocalizationSet } });
-                var team = await _contentManager.GetAsync(teamId);
-                team.Content.Team.Case = caseLink;
-                var members = await GetTeamMembers(team.ContentItemId);
-                foreach (var member in members)
-                {
-                    member.Content.Hacker.Case = caseLink;
-                    await _contentManager.UpdateAsync(member);
-                }
-                await _contentManager.UpdateAsync(team);
-                return true;
-            }
-            return false;
-        }*/
 
         public async Task<bool> IsTeamFull(string teamContentItemId)
         {
@@ -201,34 +157,6 @@ namespace StatCan.OrchardCore.Hackathon.Services
             participant.Content.Hacker.Team = JObject.FromObject(new { ContentItemIds = new string[0] });
             await _contentManager.UpdateAsync(participant);
 
-            return true;
-        }
-
-        public async Task<ContentItem> SetTeamRepository(string teamContentItemId, string repositoryPath)
-        {
-            var team = await _contentManager.GetAsync(teamContentItemId);
-            team.Content.Team.RepositoryLink.Url = repositoryPath;
-
-            await _contentManager.UpdateAsync(team);
-
-            return team;
-        }
-
-        public async Task<bool> SetAttendance(ModelStateDictionary modelState)
-        {
-            var participant = await GetParticipantFromSetAsync();
-            if (participant == null || participant.ContentType != "Hacker")
-            {
-                modelState.AddModelError("error", T["You are not a hacker"].Value);
-                return false;
-            }
-            if (participant.ContentItem.Content.ParticipantPart.Attending == null)
-            {
-                participant.ContentItem.Content.ParticipantPart.Attending = JObject.FromObject(new { Value = false });
-            }
-
-            participant.ContentItem.Content.ParticipantPart.Attending.Value = !(bool)participant.ContentItem.Content.ParticipantPart.Attending.Value;
-            await _contentManager.UpdateAsync(participant);
             return true;
         }
 
@@ -401,92 +329,6 @@ namespace StatCan.OrchardCore.Hackathon.Services
             return true;
         }
 
-        public async Task<bool> AssignCases()
-        {
-            var teams = await _session.Query<ContentItem, HackathonItemsIndex>(x => x.ContentType == "Team" && x.Published).ListAsync();
-            if (!teams.Any())
-            {
-                return false;
-            }
-            var cases = await _session.QueryIndex<HackathonItemsIndex>(x => x.ContentType == "Case" && x.Published /*&& x.Culture == hackathon.Culture*/).ListAsync();
-            if (!cases.Any())
-            {
-                return false;
-            }
-            var caseCount = cases.Count();
-            int caseIndex = 0;
-            for (int i = 0; i < teams.Count(); i++)
-            {
-                var caseLink = JObject.FromObject(new { LocalizationSets = new string[] { cases.ElementAt(caseIndex).CaseLocalizationSet } });
-                var team = await _session.Query<ContentItem, HackathonItemsIndex>(x => x.ContentItemId == teams.ElementAt(i).ContentItemId && x.ContentType == "Team").FirstOrDefaultAsync();
-                team.Content.Team.Case = caseLink;
-                team.DisplayText = ""; // Clear the name and let OC generate it
-                await _contentManager.UpdateAsync(team);
-
-                var teamMembers = await GetTeamMembers(team.ContentItemId);
-                foreach (var hacker in teamMembers)
-                {
-                    hacker.Content.Hacker.Case = caseLink;
-                    await _contentManager.UpdateAsync(hacker);
-                }
-                if (caseIndex >= caseCount - 1)
-                {
-                    caseIndex = 0;
-                }
-                else
-                {
-                    caseIndex++;
-                }
-            }
-            return true;
-        }
-
-        public async Task<bool> ToggleParticipantRegistration()
-        {
-            var hackathon = await _session.Query<ContentItem, HackathonItemsIndex>(x => x.ContentType == "Hackathon").FirstOrDefaultAsync();
-            var newValue = hackathon.Content.ParticipantForm?.Enabled?.Value != true;
-            if (hackathon.Content.ParticipantForm == null)
-            {
-                hackathon.Content.ParticipantForm = JObject.FromObject(new { Enabled = new { Value = newValue } });
-            }
-            else
-            {
-                hackathon.Content.ParticipantForm.Enabled = JObject.FromObject(new { Value = newValue });
-            }
-            hackathon.Published = false;
-            await _contentManager.UpdateAsync(hackathon);
-            await _contentManager.PublishAsync(hackathon);
-            return newValue;
-        }
-
-        public async Task<bool> ToggleVolunteerRegistration()
-        {
-            var hackathon = await _session.Query<ContentItem, HackathonItemsIndex>(x => x.ContentType == "Hackathon").FirstOrDefaultAsync();
-            var newValue = hackathon.Content.VolunteerForm?.Enabled?.Value != true;
-            if (hackathon.Content.VolunteerForm == null)
-            {
-                hackathon.Content.VolunteerForm = JObject.FromObject(new { Enabled = new { Value = newValue } });
-            }
-            else
-            {
-                hackathon.Content.VolunteerForm.Enabled = JObject.FromObject(new { Value = newValue });
-            }
-            hackathon.Published = false;
-            await _contentManager.UpdateAsync(hackathon);
-            await _contentManager.PublishAsync(hackathon);
-            return newValue;
-        }
-
-        public async Task<bool> SelectNParticipants(int n)
-        {
-            var participantList = await _session.QueryIndex<HackathonItemsIndex>(x => x.ContentType == "Hacker" && x.Published).OrderBy(x => x.CreatedUtc).Take(n).ListAsync();
-            foreach (var participant in participantList)
-            {
-                await SelectParticipant(participant.ContentItemId);
-            }
-            return true;
-        }
-
         public async Task<bool> RunUpdateHandlers()
         {
             var allItems = await _session.Query<ContentItem, HackathonItemsIndex>(x => x.Published).ListAsync();
@@ -495,13 +337,6 @@ namespace StatCan.OrchardCore.Hackathon.Services
                 await _contentManager.UpdateAsync(item);
             }
             return true;
-        }
-
-        private async Task SelectParticipant(string participantContentId)
-        {
-            var participant = await _session.Query<ContentItem, HackathonItemsIndex>(x => x.ContentItemId == participantContentId && x.ContentType == "Hacker" && x.Published).FirstOrDefaultAsync();
-            participant.ContentItem.Content.ParticipantPart.Selected = JObject.FromObject(new { Value = true });
-            await _contentManager.UpdateAsync(participant);
         }
     }
 }
