@@ -1,8 +1,8 @@
-<div {%if Model.Id != null%}id="{{ Model.Id }}"{%endif%} class="row pb-3 {{ Model.Classes | join: ' ' }}">
-  <h2 class="offset-lg-3 offset-4 col-lg-9 col-8">{{ Model.ContentItem | display_text }}</h2>
-</div>
-<div class="row">
-  <div class="col-12">
-    {{Model.Content.FlowPart | shape_render}}
-  </div>
-</div>
+<v-card class="mx-auto my-5" max-width="400">
+  <v-card dark flat tile>
+    <v-card-title>{{ Model.ContentItem | display_text }}</v-card-title>
+  </v-card>
+  <v-timeline align-top dense>
+    {{ Model.Content.FlowPart | shape_render }}
+  </v-timeline>
+</v-card>

@@ -18,21 +18,19 @@
           <template #prepend>
             <v-toolbar
             class="v-bar--underline"
-            flat
-          >
-          {%if Site.Properties.HackathonThemeSettings.HackathonThemeSettings.Logo.Paths.first != null %}
-            <v-list-item class="pa-0 mx-n1 justify-center">
-              <a href="{{ '~/' | href }}">
-              
-                <img
-                  src="{{Site.Properties.HackathonThemeSettings.HackathonThemeSettings.Logo.Paths.first | asset_url | resize_url: width:160, height:160 }}"
-                  max-width="148"
-                  width="148"
-                />
-              </a>
-            </v-list-item>
-            {%endif%}
-          </v-toolbar>
+            flat>
+              {% if Site.Properties.HackathonThemeSettings.HackathonThemeSettings.Logo.Paths.first != null %}
+                <v-list-item class="pa-0 mx-n1 justify-center">
+                  {% comment %} <a href="{{ '~/' | href }}">
+                    <img
+                      src="{{Site.Properties.HackathonThemeSettings.HackathonThemeSettings.Logo.Paths.first | asset_url }}"
+                      max-width="148"
+                      width="148"
+                    />
+                  </a> {% endcomment %}
+                </v-list-item>
+              {% endif %}
+            </v-toolbar>
           </template>
           <v-divider></v-divider>
           {% assign drawerAlias = "alias:navigation-drawer-" | append: Culture.Name %}
@@ -40,6 +38,10 @@
         </v-navigation-drawer>
         <v-app-bar app>
           <v-app-bar-nav-icon class="hidden-lg-and-up" @click="drawer = !drawer"></v-app-bar-nav-icon>
+          {% if Site.Properties.HackathonThemeSettings.HackathonThemeSettings.Logo.Paths.first %}
+            <v-img src="{{ Site.Properties.HackathonThemeSettings.HackathonThemeSettings.Logo.Paths.first | asset_url }}" max-height="32" max-width="32" alt="logo" class="mr-2"></v-img>
+          {% endif %}
+          <v-toolbar-title>{{ Site.SiteName | shortcode }}</v-toolbar-title>
           <v-spacer></v-spacer>
           {{ "UserMenu" | shape_new | shape_render }}
          {{ "ContentCulturePicker" | shape_new | shape_render }}
