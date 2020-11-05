@@ -41,7 +41,11 @@
           {% if Site.Properties.HackathonThemeSettings.HackathonThemeSettings.Logo.Paths.first %}
             <v-img src="{{ Site.Properties.HackathonThemeSettings.HackathonThemeSettings.Logo.Paths.first | asset_url | resize_url: width:160, height:160 }}" max-height="32" max-width="32" alt="logo" class="mr-2"></v-img>
           {% endif %}
-          <v-toolbar-title>{{ Site.Properties.HackathonThemeSettings.HackathonThemeSettings.DisplayName.Text | shortcode }}</v-toolbar-title>
+          {% if Site.Properties.HackathonThemeSettings.HackathonThemeSettings.DisplayName.Text %}
+            <v-toolbar-title>{{ Site.Properties.HackathonThemeSettings.HackathonThemeSettings.DisplayName.Text | shortcode }}</v-toolbar-title>
+          {% else %}
+            <v-toolbar-title>{{ Site.SiteName | shortcode }}</v-toolbar-title>
+          {% endif %}
           <v-spacer></v-spacer>
           {{ "UserMenu" | shape_new | shape_render }}
          {{ "ContentCulturePicker" | shape_new | shape_render }}
