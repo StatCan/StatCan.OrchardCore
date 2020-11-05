@@ -34,10 +34,14 @@ namespace StatCan.Themes.HackathonTheme
             );
 
             _contentDefinitionManager.AlterPartDefinition("HackathonThemeSettings", part => part
+                .WithField("DisplayName", field => field
+                    .OfType("TextField")
+                    .WithDisplayName("DisplayName")
+                    .WithPosition("0"))
                 .WithField("Logo", field => field
                     .OfType("MediaField")
                     .WithDisplayName("Logo")
-                    .WithPosition("0")
+                    .WithPosition("1")
                 )
             );
         }
