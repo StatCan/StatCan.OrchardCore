@@ -1,6 +1,4 @@
 @using StatCan.OrchardCore.VueForms.Models
-@using Newtonsoft.Json.Linq
-@inject OrchardCore.Liquid.ISlugService slugService
 @{
     var contentItem = ((ContentItem)Model.ContentItem);
     var vueComponent = contentItem.As<VueComponent>();

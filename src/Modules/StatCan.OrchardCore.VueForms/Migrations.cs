@@ -5,7 +5,6 @@ using OrchardCore.ContentManagement.Metadata.Settings;
 using OrchardCore.Data.Migration;
 using OrchardCore.Title.Models;
 using StatCan.OrchardCore.Extensions;
-
 namespace StatCan.OrchardCore.VueForms
 {
     public class Migrations : DataMigration
@@ -26,6 +25,29 @@ namespace StatCan.OrchardCore.VueForms
                         Hint = "The form accepts submissions if is enabled"
                     }
                 )
+                .WithField("RenderAs", field => field
+                    .OfType("TextField")
+                    .WithDisplayName("Render as")
+                    .WithEditor("PredefinedList")
+                    .WithPosition("2")
+                    .WithSettings(new TextFieldPredefinedListEditorSettings
+                    {
+                        Options = new ListValueOption[] { new ListValueOption() {
+                            Name= "Vue Component",
+                            Value= ""
+                            }, new ListValueOption() {
+                            Name= "Vue App",
+                            Value= "VueApp"
+                            }, new ListValueOption() {
+                            Name= "Vuetify App",
+                            Value= "VuetifyApp"
+                            } },
+                        Editor = EditorOption.Dropdown,
+                    })
+                    .WithSettings(new TextFieldSettings() {
+                        Hint = "Render this form as a Vue component, a standalone vue app or a vuetify app (wrapping with v-app)"
+                    })
+                )
                 .WithField("DisabledHtml", f => f
                     .OfType(nameof(HtmlField))
                     .WithDisplayName("Disabled Html")
@@ -40,7 +62,6 @@ namespace StatCan.OrchardCore.VueForms
                 {
                     Hint = "(optional) The message to display if a server error occured in the ajax request. With liquid support."
                 })
-                .Attachable()
                 .WithDescription("Turns your content items into a vue form."));
 
             _contentDefinitionManager.AlterPartDefinition("VueFormScripts", part => part
@@ -51,13 +72,13 @@ namespace StatCan.OrchardCore.VueForms
                     .WithPosition("0")
                     .WithEditor("CodeMirrorJS")
                 )
-                .WithField("VueComponentScript", f => f
+                .WithField("ComponentOptions", f => f
                    .OfType(nameof(TextField))
-                   .WithDisplayName("Vue Component Script")
-                   .WithSettings(new TextFieldSettings() {  Required = true, Hint = "VueJS Component script. Write the JS object that represents the script part of the vue component without a return statement. With liquid support." })
+                   .WithDisplayName("Component Options object")
+                   .WithSettings(new TextFieldSettings() {  Required = true, Hint = "The form's vue component options object. With liquid support." })
                    .WithPosition("1")
-                   .WithEditor("CodeMirrorLiquid")
-               )
+                   .WithEditor("CodeMirrorJS")
+                )
                 .WithField("OnValidation", f => f
                     .OfType(nameof(TextField))
                     .WithDisplayName("On Validation")
@@ -76,7 +97,7 @@ namespace StatCan.OrchardCore.VueForms
                 .WithDescription("Script fields for AjaxForm"));
 
             _contentDefinitionManager.AlterTypeDefinition("VueForm", type => type
-                .Draftable()
+                .Draftable().Securable()
                 .WithPart("TitlePart", p => p.WithPosition("0"))
                 .WithPart("VueForm", p => p.WithPosition("1"))
                 .WithPart("FlowPart", p => p.WithPosition("2"))
@@ -112,12 +133,12 @@ namespace StatCan.OrchardCore.VueForms
         public int UpdateFrom2()
         {
             _contentDefinitionManager.AlterPartDefinition("VueFormScripts", part => part
-                .WithField("Vue Component Script", f => f
+                .WithField("ComponentOptions", f => f
                    .OfType(nameof(TextField))
-                   .WithDisplayName("VueComponentScript")
-                   .WithSettings(new TextFieldSettings() {  Required = true, Hint = "VueJS Component script. Write the JS object that represents the script part of the vue component without a return statement. With liquid support." })
+                   .WithDisplayName("Component Options object")
+                   .WithSettings(new TextFieldSettings() {  Required = true, Hint = "The form's vue component options object. With liquid support." })
                    .WithPosition("1")
-                   .WithEditor("CodeMirrorLiquid")
+                   .WithEditor("CodeMirrorJS")
                )
                 .WithField("OnValidation", f => f
                     .WithPosition("2")
@@ -125,12 +146,37 @@ namespace StatCan.OrchardCore.VueForms
                 .WithField("OnSubmitted", f => f
                     .WithPosition("3")
                 )
-                .Attachable()
-                .WithDescription("Script fields for AjaxForm"));
+                .Attachable());
 
             _contentDefinitionManager.AlterPartDefinition("VueComponent", part => part
                 .RemoveField("Script")
             );
+
+             _contentDefinitionManager.AlterPartDefinition("VueForm", part => part
+                .WithField("RenderAs", field => field
+                    .OfType("TextField")
+                    .WithDisplayName("Render as")
+                    .WithEditor("PredefinedList")
+                    .WithPosition("2")
+                    .WithSettings(new TextFieldPredefinedListEditorSettings
+                    {
+                        Options = new ListValueOption[] { new ListValueOption() {
+                            Name= "Vue Component",
+                            Value= ""
+                            }, new ListValueOption() {
+                            Name= "Vue App",
+                            Value= "VueApp"
+                            }, new ListValueOption() {
+                            Name= "Vuetify App",
+                            Value= "VuetifyApp"
+                            } },
+                        Editor = EditorOption.Dropdown,
+                    })
+                    .WithSettings(new TextFieldSettings() {
+                        Hint = "Render this form as a Vue component, a standalone vue app or a vuetify app (wrapping with v-app)"
+                    })
+                ));
+            _contentDefinitionManager.AlterTypeDefinition("VueForm", type => type.Securable());
             return 3;
         }
 
@@ -140,9 +186,6 @@ namespace StatCan.OrchardCore.VueForms
             _contentDefinitionManager.AlterTypeDefinition("VueFormReference", type => type
                 .DisplayedAs("Vue Form Reference")
                 .Stereotype("Widget")
-                .WithPart("VueFormReference", part => part
-                    .WithPosition("1")
-                )
                 .WithPart("TitlePart", part => part
                     .WithPosition("0")
                     .WithSettings(new TitlePartSettings
@@ -150,11 +193,14 @@ namespace StatCan.OrchardCore.VueForms
                         RenderTitle = false
                     })
                 )
+                .WithPart("VueFormReference", part => part
+                    .WithPosition("1")
+                )
             );
             _contentDefinitionManager.AlterPartDefinition("VueFormReference", part => part
                 .WithField("FormReference", field => field
                     .OfType("ContentPickerField")
-                    .WithDisplayName("FormReference")
+                    .WithDisplayName("Form Reference")
                     .WithSettings(new ContentPickerFieldSettings
                     {
                         DisplayedContentTypes = new[] { "VueForm" }

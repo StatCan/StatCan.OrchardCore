@@ -74,22 +74,15 @@ function initForm(app) {
   // Set VeeValidate language based on the lang parameter
   VeeValidate.localize(app.dataset.lang);
 
-  // run the vue-form init script provided in the OC admin ui
-  let initScript = app.dataset.initScript;
-  if (initScript) {
-    const initFn = new Function(atob(initScript));
-    initFn();
+  let componentOptions = app.dataset.options;
+
+  let parsedOptions = {};
+  if(componentOptions)  {
+    const fn = new Function(`return ${atob(componentOptions)};`);
+    parsedOptions = fn();
   }
 
-  let modelScript = app.dataset.script;
-
-  let parsedScript = {};
-  if(modelScript)  {
-    const fn = new Function(`return ${atob(modelScript)};`);
-    parsedScript = fn();
-  }
-
-  const { data: parsedData, methods: parsedMethods, ...parsedRest } = parsedScript;
+  const { data: parsedData, methods: parsedMethods, ...parsedRest } = parsedOptions;
   let objData = parsedData;
   if(typeof parsedData === "function")
   {
@@ -122,7 +115,6 @@ function initForm(app) {
         this.$refs.obs.reset();
       },
       formHandleSubmit(e) {
-        console.log("test");
         e.preventDefault();
         const vm = this;
         // keep a reference to the VeeValidate observer
@@ -130,13 +122,13 @@ function initForm(app) {
         observer.validate().then((valid) => {
           if (valid) {
             const action = vm.$refs.form.getAttribute("action");
-            var token = $("input[name='__RequestVerificationToken']").val();
+            var token = vm.$refs.form.querySelector('input[name="__RequestVerificationToken"]');;
             vm.form.submitting = true;
             
             $.ajax({
               type: "POST",
               url: action,
-              data: {...vm.$data, __RequestVerificationToken: token },
+              data: {...vm.$data, __RequestVerificationToken: token.value },
               cache: false,
               dataType: "json",
               success: function (data) {
@@ -178,13 +170,27 @@ function initForm(app) {
       }
     }
   });
-  new Vue({
-    el: app,
-    vuetify: new Vuetify()
-  })
+
+  // run the vue-form init script provided in the OC admin ui
+  let initScript = app.dataset.initScript;
+  if (initScript) {
+    const initFn = new Function(atob(initScript));
+    initFn();
+  }
 }
 
 document.addEventListener("DOMContentLoaded", function(event) { 
   // look for all vue forms when this script is loaded and initialize them
   document.querySelectorAll(".vue-form").forEach(initForm);
-})
+  document.querySelectorAll(".vuetify-app-instance").forEach(function(elem){
+    new Vue({
+      el: elem,
+      vuetify: new Vuetify()
+    });
+  });
+  document.querySelectorAll(".vue-app-instance").forEach(function(elem){
+    new Vue({
+      el: elem,
+    });
+  });
+});

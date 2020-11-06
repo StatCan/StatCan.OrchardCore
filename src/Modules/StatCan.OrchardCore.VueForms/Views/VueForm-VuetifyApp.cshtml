@@ -1,0 +1,13 @@
+@{
+    Model.Metadata.Alternates.Clear();
+    Model.Metadata.Type = "VueForm__CommonTemplate";
+}
+
+<style asp-name="vuetify"></style>
+<script asp-name="vuetify" at="Foot"></script>
+
+<div class="vuetify-app-instance">
+  <v-app>
+    @await DisplayAsync(Model)
+  </v-app>
+</div>

@@ -1,0 +1,36 @@
+{
+  // "TextField_Edit" : [
+  //   {
+  //       "differentiator": "VueForm-Enabled",
+  //       "place" : "Parts:0#Team;1",
+  //       "contentType": [
+  //           "VueForm"
+  //       ]
+  //   }
+  // ],
+  // "NumericField_Edit" : [
+  //   {
+  //       "differentiator": "TeamCustomSettings-TeamSize",
+  //       "place" : "Parts:0#Team;1",
+  //       "contentType": [
+  //           "VueForm"
+  //       ]
+  //   }
+  // ],
+  // "BooleanField_Edit" : [
+  //   {
+  //       "differentiator": "VueForm-Enabled",
+  //       "place" : "Parts:1#Team;1",
+  //       "contentType": [
+  //           "VueForm"
+  //       ]
+  //   },
+  //   {
+  //       "differentiator": "JudgingCustomSettings-JudgingInProgress",
+  //       "place" : "Parts:0#Judging;2",
+  //       "contentType": [
+  //           "VueForm"
+  //       ]
+  //   }
+  // ]
+} 

@@ -14,7 +14,7 @@ namespace StatCan.OrchardCore.VueForms.Models
         /// The VueModel script to merge with the form script
         /// </summary>
         /// <value></value>
-        public TextField VueComponentScript { get; set; }
+        public TextField ComponentOptions { get; set; }
 
         /// <summary>
         /// Script that runs everytime the form is submitted, to validate the values.
