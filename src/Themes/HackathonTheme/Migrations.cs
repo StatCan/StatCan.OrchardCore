@@ -88,5 +88,16 @@ namespace StatCan.Themes.HackathonTheme
                 .WithMarkdownBody("2")
             );
         }
+
+        private void ContentMenuItem()
+        {
+            _contentDefinitionManager.AlterPartDefinition("ContentMenuItem", part => part
+                .WithField("IconName", field => field
+                    .OfType("TextField")
+                    .WithDisplayName("Icon Name")
+                    .WithPosition("0")
+                )
+            );
+        }
     }
 }
