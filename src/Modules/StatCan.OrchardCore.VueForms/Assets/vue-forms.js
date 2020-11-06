@@ -68,105 +68,84 @@ VeeValidate.localize({
   },
 });
 
-
-
 // run init script
 function initForm(app) {
-
-  var vuetify;
-  var initScriptResult = null;
 
   // Set VeeValidate language based on the lang parameter
   VeeValidate.localize(app.dataset.lang);
 
   // run the vue-form init script provided in the OC admin ui
-  let appScript = app.dataset.script;
-  if (appScript) {
-    const initFn = new Function(atob(appScript));
-    initScriptResult = initFn();
+  let initScript = app.dataset.initScript;
+  if (initScript) {
+    const initFn = new Function(atob(initScript));
+    initFn();
   }
-  if (initScriptResult) {
-    vuetify = initScriptResult;
-  } else {
-    vuetify = new Vuetify(); // I wonder if there is a way to avoid having this dependency here
+
+  let modelScript = app.dataset.script;
+
+  let parsedScript = {};
+  if(modelScript)  {
+    const fn = new Function(`return ${atob(modelScript)};`);
+    parsedScript = fn();
   }
-  
-  // register all vue components coming from the admin ui
-  const vueComponentsElements = app.querySelectorAll("[data-vf-name]");
-  vueComponentsElements.forEach(x => {
 
-    let name = x.dataset.vfName;
-    let encodedScript = x.dataset.vfScript;
-    
-    if (encodedScript) {
+  const { data: parsedData, methods: parsedMethods, ...parsedRest } = parsedScript;
+  let objData = parsedData;
+  if(typeof parsedData === "function")
+  {
+    objData = parsedData();
+  }
+  const defaultFormData = {
+    submitting: false,
+    submitSuccess: false,
+    successMessage: undefined,
+    submitError: false,
+    errorMessage: undefined
+  }
 
-      let script = atob(encodedScript);
-      const getVueObject = new Function(
-        `
-        var component = ${script};
-        Object.assign(component, {name: '${name}', props: 
-          ['obs-valid',
-          'obs-invalid',
-          'obs-reset',
-          'obs-validate',
-          'form-handle-submit',
-          'form-reset',
-          'form-submitting',
-          'form-submit-success',
-          'form-success-message',
-          'form-submit-error',
-          'form-error-message']
-        });
-        return Vue.component('${name}', component);
-        `
-      );
-      getVueObject();
-    }
-  });
-
-  // instanciate the top level vue component
-  new Vue({
-    el: app,
-    vuetify: vuetify,
+  //todo component name
+  Vue.component(app.dataset.name, {
+    // First because the elements below will override
+    ...parsedRest,
+    template: `#${app.dataset.name}`,
     data: function () { 
       return {
-        submitting: false,
-        submitSuccess: false,
-        successMessage: undefined,
-        submitError: false,
-        errorMessage: undefined
+        ...objData,
+        form: {...defaultFormData}
       };
     },
     methods: {
+      ...parsedMethods,
       formReset() {
-        Object.assign(this.$data, this.$options.data.apply(this));
+        Object.assign(this.$data.form, {...defaultFormData});
         // also reset the VeeValidate observer
         this.$refs.obs.reset();
       },
       formHandleSubmit(e) {
+        console.log("test");
         e.preventDefault();
         const vm = this;
         // keep a reference to the VeeValidate observer
         const observer = vm.$refs.obs;
         observer.validate().then((valid) => {
           if (valid) {
-           
-            const action = vm.$refs.form.$attrs.action;
-            const serializedForm = $("#" + vm.$refs.form.$attrs.id).serialize();
-            vm.$data.submitting = true;
+            const action = vm.$refs.form.getAttribute("action");
+            var token = $("input[name='__RequestVerificationToken']").val();
+            vm.form.submitting = true;
             
             $.ajax({
               type: "POST",
               url: action,
-              data: serializedForm,
+              data: {...vm.$data, __RequestVerificationToken: token },
               cache: false,
               dataType: "json",
               success: function (data) {
-                Object.assign(vm.$data, vm.$options.data.apply(this));
+
+                Object.assign(vm.$data.form, {...defaultFormData});
                 // if there are validation errors on the form, display them.
                 if (data.validationError) {
-                  vm.submitError = true;
-                  vm.errorMessage = data.errorMessage;
+                  vm.form.submitError = true;
+                  vm.form.errorMessage = data.errorMessage;
                   observer.setErrors(data.errors);
                   return;
                 }
@@ -179,18 +158,18 @@ function initForm(app) {
 
                 //success, set the form success message 
                 if (data.success) {
-                  vm.submitSuccess = true;
-                  vm.successMessage = data.successMessage;
+                  vm.form.submitSuccess = true;
+                  vm.form.successMessage = data.successMessage;
                   return;
                 }
-                vm.submitError = true;
+                vm.form.submitError = true;
                 // something went wrong, dev issue
-                vm.errorMessage = "Something wen't wrong. Please report this to your site administrators. Error code: `VueForms.AjaxHandler`";
+                vm.form.errorMessage = "Something wen't wrong. Please report this to your site administrators. Error code: `VueForms.AjaxHandler`";
               },
               error: function (xhr, statusText) {
-                Object.assign(vm.$data, vm.$options.data.apply(this));
-                vm.submitError = true;
-                vm.errorMessage = `${xhr.status} ${statusText}`;
+                Object.assign(vm.$data.form, {...defaultFormData});
+                vm.form.submitError = true;
+                vm.form.errorMessage = `${xhr.status} ${statusText}`;
               }
             });
           }
@@ -198,8 +177,14 @@ function initForm(app) {
         return false;
       }
     }
+  });
+  new Vue({
+    el: app,
+    vuetify: new Vuetify()
   })
 }
 
-// look for all vue forms when this script is loaded and initialize them
-document.querySelectorAll(".vue-form").forEach(initForm);
+document.addEventListener("DOMContentLoaded", function(event) { 
+  // look for all vue forms when this script is loaded and initialize them
+  document.querySelectorAll(".vue-form").forEach(initForm);
+})

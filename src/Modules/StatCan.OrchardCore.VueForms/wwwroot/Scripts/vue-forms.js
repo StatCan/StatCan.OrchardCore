@@ -5,6 +5,16 @@
 
 "use strict"; // register VeeValidate components globally
 
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
 Vue.component('validation-provider', VeeValidate.ValidationProvider);
 Vue.component('validation-observer', VeeValidate.ValidationObserver); // include default english and french translations.
 
@@ -72,77 +82,81 @@ VeeValidate.localize({
 }); // run init script
 
 function initForm(app) {
-  var vuetify;
-  var initScriptResult = null; // Set VeeValidate language based on the lang parameter
-
+  // Set VeeValidate language based on the lang parameter
   VeeValidate.localize(app.dataset.lang); // run the vue-form init script provided in the OC admin ui
 
-  var appScript = app.dataset.script;
+  var initScript = app.dataset.initScript;
 
-  if (appScript) {
-    var initFn = new Function(atob(appScript));
-    initScriptResult = initFn();
+  if (initScript) {
+    var initFn = new Function(atob(initScript));
+    initFn();
   }
 
-  if (initScriptResult) {
-    vuetify = initScriptResult;
-  } else {
-    vuetify = new Vuetify(); // I wonder if there is a way to avoid having this dependency here
-  } // register all vue components coming from the admin ui
+  var modelScript = app.dataset.script;
+  var parsedScript = {};
 
+  if (modelScript) {
+    var fn = new Function("return ".concat(atob(modelScript), ";"));
+    parsedScript = fn();
+  }
 
-  var vueComponentsElements = app.querySelectorAll("[data-vf-name]");
-  vueComponentsElements.forEach(function (x) {
-    var name = x.dataset.vfName;
-    var encodedScript = x.dataset.vfScript;
+  var _parsedScript = parsedScript,
+      parsedData = _parsedScript.data,
+      parsedMethods = _parsedScript.methods,
+      parsedRest = _objectWithoutProperties(_parsedScript, ["data", "methods"]);
 
-    if (encodedScript) {
-      var script = atob(encodedScript);
-      var getVueObject = new Function("\n        var component = ".concat(script, ";\n        Object.assign(component, {name: '").concat(name, "', props: \n          ['obs-valid',\n          'obs-invalid',\n          'obs-reset',\n          'obs-validate',\n          'form-handle-submit',\n          'form-reset',\n          'form-submitting',\n          'form-submit-success',\n          'form-success-message',\n          'form-submit-error',\n          'form-error-message']\n        });\n        return Vue.component('").concat(name, "', component);\n        "));
-      getVueObject();
-    }
-  }); // instanciate the top level vue component
+  var objData = parsedData;
 
-  new Vue({
-    el: app,
-    vuetify: vuetify,
+  if (typeof parsedData === "function") {
+    objData = parsedData();
+  }
+
+  var defaultFormData = {
+    submitting: false,
+    submitSuccess: false,
+    successMessage: undefined,
+    submitError: false,
+    errorMessage: undefined
+  }; //todo component name
+
+  Vue.component(app.dataset.name, _objectSpread(_objectSpread({}, parsedRest), {}, {
+    template: "#".concat(app.dataset.name),
     data: function data() {
-      return {
-        submitting: false,
-        submitSuccess: false,
-        successMessage: undefined,
-        submitError: false,
-        errorMessage: undefined
-      };
+      return _objectSpread(_objectSpread({}, objData), {}, {
+        form: _objectSpread({}, defaultFormData)
+      });
     },
-    methods: {
+    methods: _objectSpread(_objectSpread({}, parsedMethods), {}, {
       formReset: function formReset() {
-        Object.assign(this.$data, this.$options.data.apply(this)); // also reset the VeeValidate observer
+        Object.assign(this.$data.form, _objectSpread({}, defaultFormData)); // also reset the VeeValidate observer
 
         this.$refs.obs.reset();
       },
       formHandleSubmit: function formHandleSubmit(e) {
+        console.log("test");
         e.preventDefault();
         var vm = this; // keep a reference to the VeeValidate observer
 
         var observer = vm.$refs.obs;
         observer.validate().then(function (valid) {
           if (valid) {
-            var action = vm.$refs.form.$attrs.action;
-            var serializedForm = $("#" + vm.$refs.form.$attrs.id).serialize();
-            vm.$data.submitting = true;
+            var action = vm.$refs.form.getAttribute("action");
+            var token = $("input[name='__RequestVerificationToken']").val();
+            vm.form.submitting = true;
             $.ajax({
               type: "POST",
               url: action,
-              data: serializedForm,
+              data: _objectSpread(_objectSpread({}, vm.$data), {}, {
+                __RequestVerificationToken: token
+              }),
               cache: false,
               dataType: "json",
               success: function success(data) {
-                Object.assign(vm.$data, vm.$options.data.apply(this)); // if there are validation errors on the form, display them.
+                Object.assign(vm.$data.form, _objectSpread({}, defaultFormData)); // if there are validation errors on the form, display them.
 
                 if (data.validationError) {
-                  vm.submitError = true;
-                  vm.errorMessage = data.errorMessage;
+                  vm.form.submitError = true;
+                  vm.form.errorMessage = data.errorMessage;
                   observer.setErrors(data.errors);
                   return;
                 } // if the server sends a redirect, reload the window
@@ -155,28 +169,34 @@ function initForm(app) {
 
 
                 if (data.success) {
-                  vm.submitSuccess = true;
-                  vm.successMessage = data.successMessage;
+                  vm.form.submitSuccess = true;
+                  vm.form.successMessage = data.successMessage;
                   return;
                 }
 
-                vm.submitError = true; // something went wrong, dev issue
+                vm.form.submitError = true; // something went wrong, dev issue
 
-                vm.errorMessage = "Something wen't wrong. Please report this to your site administrators. Error code: `VueForms.AjaxHandler`";
+                vm.form.errorMessage = "Something wen't wrong. Please report this to your site administrators. Error code: `VueForms.AjaxHandler`";
               },
               error: function error(xhr, statusText) {
-                Object.assign(vm.$data, vm.$options.data.apply(this));
-                vm.submitError = true;
-                vm.errorMessage = "".concat(xhr.status, " ").concat(statusText);
+                Object.assign(vm.$data.form, _objectSpread({}, defaultFormData));
+                vm.form.submitError = true;
+                vm.form.errorMessage = "".concat(xhr.status, " ").concat(statusText);
               }
             });
           }
         });
         return false;
       }
-    }
+    })
+  }));
+  new Vue({
+    el: app,
+    vuetify: new Vuetify()
   });
-} // look for all vue forms when this script is loaded and initialize them
+}
 
-
-document.querySelectorAll(".vue-form").forEach(initForm);
+document.addEventListener("DOMContentLoaded", function (event) {
+  // look for all vue forms when this script is loaded and initialize them
+  document.querySelectorAll(".vue-form").forEach(initForm);
+});

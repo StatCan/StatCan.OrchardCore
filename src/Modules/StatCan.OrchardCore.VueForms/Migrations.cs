@@ -46,23 +46,30 @@ namespace StatCan.OrchardCore.VueForms
             _contentDefinitionManager.AlterPartDefinition("VueFormScripts", part => part
                 .WithField("ClientInit", f => f
                     .OfType(nameof(TextField))
-                    .WithDisplayName("ClientInit")
+                    .WithDisplayName("Client Init")
                     .WithSettings(new TextFieldSettings() { Hint = "(Optional) Script that runs client side to set various options for your form (such as setup the VeeValidate locales). With liquid support." })
                     .WithPosition("0")
                     .WithEditor("CodeMirrorJS")
                 )
+                .WithField("VueComponentScript", f => f
+                   .OfType(nameof(TextField))
+                   .WithDisplayName("Vue Component Script")
+                   .WithSettings(new TextFieldSettings() {  Required = true, Hint = "VueJS Component script. Write the JS object that represents the script part of the vue component without a return statement. With liquid support." })
+                   .WithPosition("1")
+                   .WithEditor("CodeMirrorLiquid")
+               )
                 .WithField("OnValidation", f => f
                     .OfType(nameof(TextField))
-                    .WithDisplayName("OnValidation")
+                    .WithDisplayName("On Validation")
                     .WithSettings(new TextFieldSettings() { Hint = "(Optional) Script that runs server side to validate your form."})
-                    .WithPosition("1")
+                    .WithPosition("2")
                     .WithEditor("CodeMirrorJS")
                 )
                 .WithField("OnSubmitted", f => f
                     .OfType(nameof(TextField))
-                    .WithDisplayName("OnSubmitted")
+                    .WithDisplayName("On Submitted")
                     .WithSettings(new TextFieldSettings() { Hint = "(Optional) Script that runs server side after when the form is valid, before the workflow event is triggerred." })
-                    .WithPosition("2")
+                    .WithPosition("3")
                     .WithEditor("CodeMirrorJS")
                 )
                 .Attachable()
@@ -83,14 +90,7 @@ namespace StatCan.OrchardCore.VueForms
                    .WithSettings(new TextFieldSettings() { Required = true, Hint = "VueJS Component template. Need to return a single node. Vuetify(https://vuetifyjs.com/en/components/forms) and  VeeValidate(https://logaretm.github.io/vee-validate/guide/basics.html) librairies are loaded by default. With liquid support." })
                    .WithPosition("1")
                    .WithEditor("CodeMirrorLiquid")
-               )
-               .WithField("Script", f => f
-                   .OfType(nameof(TextField))
-                   .WithDisplayName("Script")
-                   .WithSettings(new TextFieldSettings() {  Required = true, Hint = "VueJS Component script. Write the JS object that represents the script part of the vue component without a return statement. With liquid support." })
-                   .WithPosition("2")
-                   .WithEditor("CodeMirrorLiquid")
-               ));
+            ));
 
             _contentDefinitionManager.AlterTypeDefinition("VueComponent", type => type
                 .WithPart("TitlePart", p => p.WithPosition("0"))
@@ -99,7 +99,7 @@ namespace StatCan.OrchardCore.VueForms
 
             AddVueFormReference();
 
-            return 2;
+            return 3;
         }
 
         public int UpdateFrom1()
@@ -107,6 +107,31 @@ namespace StatCan.OrchardCore.VueForms
             AddVueFormReference();
 
             return 2;
+        }
+
+        public int UpdateFrom2()
+        {
+            _contentDefinitionManager.AlterPartDefinition("VueFormScripts", part => part
+                .WithField("Vue Component Script", f => f
+                   .OfType(nameof(TextField))
+                   .WithDisplayName("VueComponentScript")
+                   .WithSettings(new TextFieldSettings() {  Required = true, Hint = "VueJS Component script. Write the JS object that represents the script part of the vue component without a return statement. With liquid support." })
+                   .WithPosition("1")
+                   .WithEditor("CodeMirrorLiquid")
+               )
+                .WithField("OnValidation", f => f
+                    .WithPosition("2")
+                )
+                .WithField("OnSubmitted", f => f
+                    .WithPosition("3")
+                )
+                .Attachable()
+                .WithDescription("Script fields for AjaxForm"));
+
+            _contentDefinitionManager.AlterPartDefinition("VueComponent", part => part
+                .RemoveField("Script")
+            );
+            return 3;
         }
 
         public void AddVueFormReference()

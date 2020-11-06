@@ -69,9 +69,6 @@
                 "VueComponent": {
                   "Template": {
                     "Text": "<v-container >\r\n  <v-card-text>\r\n    <v-row justify=\"center\">\r\n      <v-col cols=\"8\">\r\n        <validation-provider name=\"name\" rules=\"\" v-slot=\"{ errors, valid }\">\r\n          <v-text-field name=\"name\" v-model=\"name\" :error-messages=\"errors\" filled=\"filled\" label=\"{{ \"nameLabel\" | localize }}\"></v-text-field>\r\n        </validation-provider>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n        <validation-provider name=\"email\" rules=\"required\" v-slot=\"{ errors, valid }\">\r\n          <v-text-field name=\"email\" v-model=\"email\" :error-messages=\"errors\" filled=\"filled\" label=\"{{ \"emailLabel\" | localize }}\"></v-text-field>\r\n        </validation-provider>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n        <validation-provider name=\"message\" rules=\"required\" v-slot=\"{ errors, valid }\">\r\n       \t  <v-textarea name=\"message\" v-model=\"message\" :error-messages=\"errors\" counter=\"true\" filled=\"filled\" label=\"{{ \"messageLabel\" | localize }}\" rows=\"5\">\r\n          </v-textarea>\r\n    \t</validation-provider>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n        <v-alert type=\"success\" v-if=\"formSuccessMessage\">\r\n          {% raw %}{{ formSuccessMessage }}{% endraw %}\r\n        </v-alert>\r\n        <v-alert type=\"error\" v-if=\"formErrorMessage\">\r\n          {% raw %}{{ formErrorMessage }}{% endraw %}\r\n        </v-alert>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n    \t<v-btn type=\"submit\" color=\"#000\" depressed block dark @click=\"formHandleSubmit\" :disabled=\"formSubmitting\">{{ \"submitLabel\" | localize }}</v-btn>\r\n      </v-col>\r\n    </v-row>\r\n  </v-card-text>\r\n</v-container>"
-                  },
-                  "Script": {
-                    "Text": "{\r\n  data: () => ({\r\n    name: \"\",\r\n\temail: \"\",\r\n    message: \"\",\r\n  })\r\n}"
                   }
                 },
                 "FlowMetadata": {
@@ -84,6 +81,9 @@
           "VueFormScripts": {
             "ClientInit": {
               "Text": "VeeValidate.setInteractionMode('passive');\r\nVeeValidate.localize({\r\n  {{Culture.Name}}: {\r\n    fields: {\r\n      name: {\r\n        required: '{{ \"nameRequiredError\" | localize }}',\r\n      },\r\n      email: {\r\n        required: '{{ \"emailRequiredError\" | localize }}',\r\n          email: '{{\"emailInvalidError\" | localize}}'\r\n      },\r\n      message: {\r\n        required: '{{ \"messageRequiredError\" | localize }}' \r\n      }\r\n    }\r\n  }\r\n});\r\nreturn new Vuetify();"
+            },
+            "VueComponentScript":{
+              "Text": "{\r\n  data: () => ({\r\n    name: \"\",\r\n\temail: \"\",\r\n    message: \"\",\r\n  })\r\n}"
             },
             "OnValidation": {
               "Text": "var data = requestFormAsJsonObject();\r\nvar localizedText = getLocalizedTextValues(getFormContentItem());\r\n\r\nif(data.name == \"\") {\r\n  addError('name', localizedText.nameRequiredError);\r\n}\r\n\r\nif(data.email == \"\") {\r\n  addError('email', localizedText.emailRequiredError);\r\n}\r\nfunction validateEmail(email) {\r\n    const re = /^(([^<>()\\[\\]\\\\.,;:\\s@\"]+(\\.[^<>()\\[\\]\\\\.,;:\\s@\"]+)*)|(\".+\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$/;\r\n    return re.test(String(email).toLowerCase());\r\n}\r\nif(!validateEmail(data.email)) {\r\n  addError('email', localizedText.emailInvalidError);\r\n}\r\nif(data.message == \"\") {\r\n  addError('message', localizedText.messageRequiredError);\r\n}"
