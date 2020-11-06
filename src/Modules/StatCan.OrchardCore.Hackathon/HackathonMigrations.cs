@@ -26,6 +26,7 @@ namespace StatCan.OrchardCore.Hackathon
             CreateHackathonCustomSetings();
             CreateWidgets();
             CreateHackerVolunteers();
+            CreateChallenge();
 
             await _recipeMigrator.ExecuteAsync("queries.recipe.json", this);
             await _recipeMigrator.ExecuteAsync("roles.recipe.json", this);
@@ -57,6 +58,7 @@ namespace StatCan.OrchardCore.Hackathon
         private void CreateWidgets()
         {
             _contentDefinitionManager.CreateBasicWidget("HackathonCalendar");
+            _contentDefinitionManager.CreateBasicWidget("ChallengeListWidget");
         }
         private void CreateHackerVolunteers()
         {
@@ -103,6 +105,19 @@ namespace StatCan.OrchardCore.Hackathon
                 .WithPart("Volunteer", p => p.WithPosition("1"))
                 .WithPart("ParticipantPart", p => p.WithPosition("2"))
            );
+        }
+
+        private void CreateChallenge()
+        {
+            _contentDefinitionManager.AlterPartDefinition("Challenge", p => p
+                .WithTextField("Name", "0")
+                .WithTextField("ShortDescription", "Short Description", "1")
+                .WithHtmlField("Description", "Description", "Complete description of the challenge" ,"2")
+            );
+
+            _contentDefinitionManager.AlterTypeDefinition("Challenge", t => t.Creatable().Draftable().Listable().Securable()
+                .WithPart("Challenge", p => p.WithPosition("0"))
+            );
         }
     }
 }

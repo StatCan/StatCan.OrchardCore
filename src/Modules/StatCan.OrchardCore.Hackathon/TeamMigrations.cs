@@ -44,7 +44,7 @@ namespace StatCan.OrchardCore.Hackathon
             _contentDefinitionManager.AlterPartDefinition("Team", p => p
                 .WithTextField("Name", "Team Name", "0")
                 .WithTextField("Description", "Team Description", "TextArea", "1")
-                .WithCaseField("2")
+                .WithChallengeField("2")
             );
 
             _contentDefinitionManager.AlterTypeDefinition("Team", t => t
