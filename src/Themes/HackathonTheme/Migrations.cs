@@ -20,6 +20,7 @@ namespace StatCan.Themes.HackathonTheme
             HackathonThemeSettings();
             Tabs();
             ScheduleEvent();
+            MenuItems();
             return 1;
         }
 
@@ -89,9 +90,16 @@ namespace StatCan.Themes.HackathonTheme
             );
         }
 
-        private void ContentMenuItem()
+        private void MenuItems()
         {
             _contentDefinitionManager.AlterPartDefinition("ContentMenuItem", part => part
+                .WithField("IconName", field => field
+                    .OfType("TextField")
+                    .WithDisplayName("Icon Name")
+                    .WithPosition("0")
+                )
+            );
+            _contentDefinitionManager.AlterPartDefinition("LinkMenuItem", part => part
                 .WithField("IconName", field => field
                     .OfType("TextField")
                     .WithDisplayName("Icon Name")
