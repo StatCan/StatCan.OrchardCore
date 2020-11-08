@@ -1,36 +1,88 @@
 {
-  // "TextField_Edit" : [
-  //   {
-  //       "differentiator": "VueForm-Enabled",
-  //       "place" : "Parts:0#Team;1",
-  //       "contentType": [
-  //           "VueForm"
-  //       ]
-  //   }
-  // ],
-  // "NumericField_Edit" : [
-  //   {
-  //       "differentiator": "TeamCustomSettings-TeamSize",
-  //       "place" : "Parts:0#Team;1",
-  //       "contentType": [
-  //           "VueForm"
-  //       ]
-  //   }
-  // ],
-  // "BooleanField_Edit" : [
-  //   {
-  //       "differentiator": "VueForm-Enabled",
-  //       "place" : "Parts:1#Team;1",
-  //       "contentType": [
-  //           "VueForm"
-  //       ]
-  //   },
-  //   {
-  //       "differentiator": "JudgingCustomSettings-JudgingInProgress",
-  //       "place" : "Parts:0#Judging;2",
-  //       "contentType": [
-  //           "VueForm"
-  //       ]
-  //   }
-  // ]
+  "TextField_Edit" : [
+    {
+      "differentiator": "VueForm-RenderAs",
+      "place" : "Parts#Options:2",
+      "contentType": [
+          "VueForm"
+      ]
+    },
+    {
+      "differentiator": "VueForm-SuccessMessage",
+      "place" : "Parts#Server%Validation:1",
+      "contentType": [
+          "VueForm"
+      ]
+    },
+    {
+      "differentiator": "VueForm-ErrorMessage",
+      "place" : "Parts#Server%Validation:2",
+      "contentType": [
+          "VueForm"
+      ]
+    },
+    {
+      "differentiator": "VueFormScripts-OnValidation",
+      "place" : "Parts#Server%Validation:3",
+      "contentType": [
+          "VueForm"
+      ]
+    },
+    {
+      "differentiator": "VueFormScripts-ClientInit",
+      "place" : "Parts#Client:1",
+      "contentType": [
+          "VueForm"
+      ]
+    },
+    {
+      "differentiator": "VueFormScripts-ComponentOptions",
+      "place" : "Parts#Client:2",
+      "contentType": [
+          "VueForm"
+      ]
+    },
+    {
+      "differentiator": "VueFormScripts-OnSubmitted",
+      "place" : "Parts#Server%Submission:1",
+      "contentType": [
+          "VueForm"
+      ]
+    }
+  ],
+  "HtmlField_Edit" : [
+    {
+        "differentiator": "VueForm-DisabledHtml",
+        "place" : "Parts#Options:4",
+        "contentType": [
+            "VueForm"
+        ]
+    }
+  ],
+  "LocalizedTextPart_Edit": [
+    {
+      "place" : "Parts#Localization:1",
+      "contentType": [
+          "VueForm"
+      ]
+    }
+  ],
+  "TitlePart_Edit": [
+    {
+      "place" : "Parts#Options:1",
+      "contentType": [
+          "VueForm"
+      ]
+    }
+  ],
+
+  "BooleanField_Edit" : [
+    {
+      "differentiator": "VueForm-Enabled",
+      "place" : "Parts#Options:3",
+      "contentType": [
+          "VueForm"
+      ]
+    }
+  ]
 } 
