@@ -12,4 +12,3 @@ The project is built on OrchardCore CMS version `1.0.0-rc2-15402`. To learn more
 I want to:
 * Help contribute to the underlying platform: See the [Getting Started](development/getting-started/) guide 
 * Set up a solution (e.g. website) quickly for my project and modify how it looks: Follow the [Solution Templates](development/solution-templates) guide
-
