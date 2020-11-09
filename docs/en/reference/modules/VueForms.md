@@ -59,9 +59,12 @@ if(data.name == "") {
 }
 ```
 
-Of course, you can also use this script to perform advanced validations such as validating duplicate names, or calling an external service.
+You can also add to a list of "global" error messages by passing the 'serverValidationMessage' name to the `addError()` function. 
+``` javascript
+addError('serverValidationMessage', 'This is a validation message that is not tied to any input!!'); 
+addError('serverValidationMessage', 'You can add many, they will come as an array via the "form.serverValidationMessage" prop!'); 
+```
 
-The server side validation depends on your vue component using VeeValidate's ValidationProvider component to map error messages.
 
 #### OnSubmitted script
 
