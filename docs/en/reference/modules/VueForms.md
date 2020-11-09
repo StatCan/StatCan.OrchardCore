@@ -157,16 +157,16 @@ Example:
 
 ## Available Props
 
-The VueForm component has some default properties and methods. Some props of the VeeValidate [ValidationProvider](https://logaretm.github.io/vee-validate/api/validation-observer.html) are also available.
+The VueForm component has some default properties and methods. Some props of the VeeValidate [ValidationObserver](https://logaretm.github.io/vee-validate/api/validation-observer.html) are also available.
 
 You can access these properties in your templates or in the component options object.
 
 |  Name  | Definition |
 |--------|------------|
-| valid | True if all fields are valid. From the `ValidationProvider`. |
-| invalid| True if at least one field is invalid. From the `ValidationProvider`. |
-| reset | A method that resets the **validation state** for all providers. `() => void`. From the `ValidationProvider`. |
-| validate | A method that triggers validation for all providers. Mutates child providers state unless silent is true. `() => Promise<boolean>`. From the `ValidationProvider`. |
+| valid | True if all fields are valid. From the `ValidationObserver`. |
+| invalid| True if at least one field is invalid. From the `ValidationObserver`. |
+| reset | A method that resets the **validation state** for all providers. `() => void`. From the `ValidationObserver`. |
+| validate | A method that triggers validation for all providers. Mutates child providers state unless silent is true. `() => Promise<boolean>`. From the `ValidationObserver`. |
 | formReset | A method that resets the form.* properties to the initial state. Does not reset your component's data. `() => void` |
 | formHandleSubmit | A method that calls the `validate()` method and then, if valid, sends an ajax request to our controller `() => void` |
 | form.submitting | Set to true when the form is being submitted. |
