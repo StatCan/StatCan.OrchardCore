@@ -75,7 +75,7 @@ namespace StatCan.OrchardCore.VueForms
                 .WithField("ComponentOptions", f => f
                    .OfType(nameof(TextField))
                    .WithDisplayName("Component Options object")
-                   .WithSettings(new TextFieldSettings() {  Required = true, Hint = "The form's vue component options object. With liquid support." })
+                   .WithSettings(new TextFieldSettings() {  Required = true, Hint = "The form's vue component options object. The component's data object is sent to the server. With liquid support." })
                    .WithPosition("1")
                    .WithEditor("CodeMirrorJS")
                 )
