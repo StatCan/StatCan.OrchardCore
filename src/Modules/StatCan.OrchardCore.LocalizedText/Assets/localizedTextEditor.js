@@ -4,11 +4,18 @@ function initializeLocalizedTextEditor(element, confirmModalOptions) {
   const initialData = $el.data('init');
   const cultures = $el.data('cultures');
   
-  $('.autoexpand-listener').on('input', 'textarea', function() {
+  function autoExpand(){
     // textareas autoexpand when text changes
     this.style.height = 'auto';
+    this.style.minHeight="38px";
     this.style.height = (this.scrollHeight) + 'px';
-  });
+  }
+
+  $('.autoexpand-listener').on('input', 'textarea', autoExpand);
+
+  $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+    $('.autoexpand-listener').find("textarea").each(autoExpand);
+  })
 
     let parsedData = initialData ?
         initialData.map(
@@ -54,10 +61,7 @@ function initializeLocalizedTextEditor(element, confirmModalOptions) {
 
       mounted: function () {
         // expand the textareas on mount
-        $('.autoexpand-listener').find("textarea").each(function () {
-          this.style.height = 'auto';
-          this.style.height = (this.scrollHeight) + 'px';
-        });
+        $('.autoexpand-listener').find("textarea").each(autoExpand);
       },
 
       methods: {
