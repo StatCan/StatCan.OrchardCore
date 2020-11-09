@@ -10,7 +10,7 @@ namespace StatCan.OrchardCore.ContentFields
         {
             public const string ContentFields = "StatCan.OrchardCore.ContentFields";
             public const string PredefinedGroup = "StatCan.OrchardCore.ContentFields.PredefinedGroup";
-            public const string MultiSelect = "StatCan.OrchardCore.ContentFields.MultiSelect";
+            public const string Multivalue = "StatCan.OrchardCore.ContentFields.Multivalue";
         }
     }
 }

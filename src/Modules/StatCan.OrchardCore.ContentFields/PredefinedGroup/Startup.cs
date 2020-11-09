@@ -3,7 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using OrchardCore.Modules;
 using OrchardCore.ContentTypes.Editors;
 
-namespace StatCan.OrchardCore.ContentFields
+namespace StatCan.OrchardCore.ContentFields.PredefinedGroup
 {
     [Feature(Constants.Features.PredefinedGroup)]
     public class Startup : StartupBase
