@@ -103,5 +103,9 @@ describe("VueForm Tests", function() {
     cy.getByCy('form-field-name').closest('.v-input').find('.v-messages__message').should('contain', 'The name is required');
     cy.getByCy('form-errormessage').contains('An error occurred while submitting your form.');
 
+    cy.getByCy('form-button-formClear').click();	
+    cy.getByCy('form-field-gender').should('be.empty');	
+    cy.getByCy('form-field-email').should('be.empty');
+
   })
 });
