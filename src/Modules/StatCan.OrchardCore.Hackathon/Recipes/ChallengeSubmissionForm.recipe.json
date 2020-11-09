@@ -1,0 +1,186 @@
+{
+  "name": "Hackathon.ChallengeSubmissionForm",
+  "displayName": "Challenge Submission Form",
+  "description": "Creates a form that can be used by users to submit a challenge",
+  "author": "StatCan Digital Innovation",
+  "website": "digital.statcan.gc.ca",
+  "version": "1.0.0",
+  "issetuprecipe": false,
+  "categories": [],
+  "tags": [],
+  "steps": [
+    {
+      "name": "Content",
+      "data": [
+        {
+          "ContentItemId": "4kpgcnkaydrkb5hfxy10261qmb",
+          "ContentItemVersionId": "4pzsbqqsg7rz54x6tbmystd445",
+          "ContentType": "VueForm",
+          "DisplayText": "Challenge Submission",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": "2020-11-09T19:00:51.5044893Z",
+          "PublishedUtc": "2020-11-09T19:00:51.5265467Z",
+          "CreatedUtc": "2020-11-09T15:32:59.0009638Z",
+          "Owner": "admin",
+          "Author": "admin",
+          "TitlePart": {
+            "Title": "Challenge Submission"
+          },
+          "VueForm": {
+            "Enabled": {
+              "Value": true
+            },
+            "DisabledHtml": {
+              "Html": "<div class=\"container text-center mt-2\">\nThe challenge submission form is currently disabled.\n</div>"
+            },
+            "SuccessMessage": {
+              "Text": "The challenge was submitted successfully"
+            },
+            "ErrorMessage": {
+              "Text": "Please correct the errors above"
+            }
+          },
+          "FlowPart": {
+            "Widgets": [
+              {
+                "ContentItemId": "4yrfj7je3y674srn95mqeg33mx",
+                "ContentItemVersionId": null,
+                "ContentType": "VueComponent",
+                "DisplayText": "Challenge Submission",
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": "2020-11-09T19:00:51.5124726Z",
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": "",
+                "Author": "admin",
+                "TitlePart": {
+                  "Title": "Challenge Submission"
+                },
+                "VueComponent": {
+                  "Template": {
+                    "Text": "<v-container >\r\n  <v-card-text>\r\n    <v-row justify=\"center\">\r\n      <v-col cols=\"8\">\r\n        <validation-provider name=\"name\" rules=\"\" v-slot=\"{ errors, valid }\">\r\n          <v-text-field name=\"name\" v-model=\"name\" :error-messages=\"errors\" filled=\"filled\" label=\"{{ \"nameLabel\" | localize }}\"></v-text-field>\r\n        </validation-provider>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n        <validation-provider name=\"shortDescription\" rules=\"required\" v-slot=\"{ errors, valid }\">\r\n          <v-text-field name=\"shortDescription\" v-model=\"shortDescription\" :error-messages=\"errors\" filled=\"filled\" label=\"{{ \"shortDescriptionLabel\" | localize }}\"></v-text-field>\r\n        </validation-provider>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n        <validation-provider name=\"description\" rules=\"required\" v-slot=\"{ errors, valid }\">\r\n       \t  <v-textarea name=\"description\" v-model=\"description\" :error-messages=\"errors\" counter=\"true\" filled=\"filled\" label=\"{{ \"descriptionLabel\" | localize }}\" rows=\"5\">\r\n          </v-textarea>\r\n    \t</validation-provider>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n        <v-alert type=\"success\" v-if=\"formSuccessMessage\">\r\n          {% raw %}{{ formSuccessMessage }}{% endraw %}\r\n        </v-alert>\r\n        <v-alert type=\"error\" v-if=\"formErrorMessage\">\r\n          {% raw %}{{ formErrorMessage }}{% endraw %}\r\n        </v-alert>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n    \t<v-btn type=\"submit\" color=\"#000\" depressed block dark @click=\"formHandleSubmit\" :disabled=\"formSubmitting\">{{ \"submitLabel\" | localize }}</v-btn>\r\n      </v-col>\r\n    </v-row>\r\n  </v-card-text>\r\n</v-container>"
+                  },
+                  "Script": {
+                    "Text": "{\r\n  data: () => ({\r\n    name: \"\",\r\n\tshortDescription: \"\",\r\n    description: \"\",\r\n  })\r\n}"
+                  }
+                },
+                "FlowMetadata": {
+                  "Alignment": 3,
+                  "Size": 100
+                }
+              }
+            ]
+          },
+          "VueFormScripts": {
+            "ClientInit": {
+              "Text": "VeeValidate.setInteractionMode('passive');\r\nVeeValidate.localize({\r\n  {{Culture.Name}}: {\r\n    fields: {\r\n      name: {\r\n        required: '{{ \"nameRequiredError\" | localize }}',\r\n      },\r\n      shortDescription: {\r\n        required: '{{ \"shortDescriptionRequiredError\" | localize }}'\r\n      },\r\n      description: {\r\n        required: '{{ \"descriptionRequiredError\" | localize }}' \r\n      }\r\n    }\r\n  }\r\n});\r\nreturn new Vuetify();"
+            },
+            "OnValidation": {
+              "Text": "var data = requestFormAsJsonObject();\r\nvar localizedText = getLocalizedTextValues(getFormContentItem());\r\n\r\nif(data.name == \"\") {\r\n  addError('name', localizedText.nameRequiredError);\r\n}\r\n\r\nif(data.shortDescription == \"\") {\r\n  addError('shortDescription', localizedText.shortDescriptionRequiredError);\r\n}\r\n\r\nif(data.description == \"\") {\r\n  addError('description', localizedText.descriptionRequiredError);\r\n}"
+            },
+            "OnSubmitted": {
+              "Text": "var data = requestFormAsJsonObject();\r\n\r\nvar item = createContentItem(\"Challenge\", false, {\r\n  \"Challenge\": {\r\n    \"Name\": {\r\n      \"Text\": data.name\r\n    },\r\n    \"ShortDescription\": {\r\n      \"Text\": data.shortDescription\r\n    },\r\n    \"Description\": {\r\n      \"Html\": data.description\r\n    }\r\n  }\r\n});\r\n\r\nhttpRedirect('');"
+            }
+          },
+          "LocalizedTextPart": {
+            "Data": [
+              {
+                "Name": "nameRequiredError",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Un nom est requis"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "A name is required"
+                  }
+                ]
+              },
+              {
+                "Name": "shortDescriptionRequiredError",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Une courte description est requise"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "A short description is required"
+                  }
+                ]
+              },
+              {
+                "Name": "descriptionRequiredError",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Une description est requise"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "A description is required"
+                  }
+                ]
+              },
+              {
+                "Name": "nameLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Nom"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Name"
+                  }
+                ]
+              },
+              {
+                "Name": "shortDescriptionLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Courte description"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Short Description"
+                  }
+                ]
+              },
+              {
+                "Name": "descriptionLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Description"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Description"
+                  }
+                ]
+              },
+              {
+                "Name": "submitLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Envoyer"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Send"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
