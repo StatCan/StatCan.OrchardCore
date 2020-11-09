@@ -5,7 +5,6 @@ using OrchardCore.ContentManagement.Metadata.Settings;
 using OrchardCore.Data.Migration;
 using OrchardCore.Title.Models;
 using StatCan.OrchardCore.Extensions;
-
 namespace StatCan.OrchardCore.VueForms
 {
     public class Migrations : DataMigration
@@ -26,6 +25,29 @@ namespace StatCan.OrchardCore.VueForms
                         Hint = "The form accepts submissions if is enabled"
                     }
                 )
+                .WithField("RenderAs", field => field
+                    .OfType("TextField")
+                    .WithDisplayName("Render as")
+                    .WithEditor("PredefinedList")
+                    .WithPosition("2")
+                    .WithSettings(new TextFieldPredefinedListEditorSettings
+                    {
+                        Options = new ListValueOption[] { new ListValueOption() {
+                            Name= "Vue Component",
+                            Value= ""
+                            }, new ListValueOption() {
+                            Name= "Vue App",
+                            Value= "VueApp"
+                            }, new ListValueOption() {
+                            Name= "Vuetify App",
+                            Value= "VuetifyApp"
+                            } },
+                        Editor = EditorOption.Dropdown,
+                    })
+                    .WithSettings(new TextFieldSettings() {
+                        Hint = "Render this form as a Vue component, a standalone vue app or a vuetify app (wrapping with v-app)"
+                    })
+                )
                 .WithField("DisabledHtml", f => f
                     .OfType(nameof(HtmlField))
                     .WithDisplayName("Disabled Html")
@@ -36,40 +58,42 @@ namespace StatCan.OrchardCore.VueForms
                 {
                     Hint = "(optional) The message returned to the client if validation passed and no redirect has been set. With liquid support."
                 })
-                .WithTextField("ErrorMessage", "Error Message", "4", new TextFieldSettings()
-                {
-                    Hint = "(optional) The message to display if a server error occured in the ajax request. With liquid support."
-                })
-                .Attachable()
                 .WithDescription("Turns your content items into a vue form."));
 
             _contentDefinitionManager.AlterPartDefinition("VueFormScripts", part => part
                 .WithField("ClientInit", f => f
                     .OfType(nameof(TextField))
-                    .WithDisplayName("ClientInit")
+                    .WithDisplayName("Client Init")
                     .WithSettings(new TextFieldSettings() { Hint = "(Optional) Script that runs client side to set various options for your form (such as setup the VeeValidate locales). With liquid support." })
                     .WithPosition("0")
                     .WithEditor("CodeMirrorJS")
                 )
+                .WithField("ComponentOptions", f => f
+                   .OfType(nameof(TextField))
+                   .WithDisplayName("Component Options object")
+                   .WithSettings(new TextFieldSettings() {  Required = true, Hint = "The form's vue component options object. The component's data object is sent to the server. With liquid support." })
+                   .WithPosition("1")
+                   .WithEditor("CodeMirrorJS")
+                )
                 .WithField("OnValidation", f => f
                     .OfType(nameof(TextField))
-                    .WithDisplayName("OnValidation")
+                    .WithDisplayName("On Validation")
                     .WithSettings(new TextFieldSettings() { Hint = "(Optional) Script that runs server side to validate your form."})
-                    .WithPosition("1")
+                    .WithPosition("2")
                     .WithEditor("CodeMirrorJS")
                 )
                 .WithField("OnSubmitted", f => f
                     .OfType(nameof(TextField))
-                    .WithDisplayName("OnSubmitted")
-                    .WithSettings(new TextFieldSettings() { Hint = "(Optional) Script that runs server side after when the form is valid, before the workflow event is triggerred." })
-                    .WithPosition("2")
+                    .WithDisplayName("On Submitted")
+                    .WithSettings(new TextFieldSettings() { Hint = "(Optional) Script that runs server side after form validation has passed, before the workflow event is triggerred." })
+                    .WithPosition("3")
                     .WithEditor("CodeMirrorJS")
                 )
                 .Attachable()
                 .WithDescription("Script fields for AjaxForm"));
 
             _contentDefinitionManager.AlterTypeDefinition("VueForm", type => type
-                .Draftable()
+                .Draftable().Securable()
                 .WithPart("TitlePart", p => p.WithPosition("0"))
                 .WithPart("VueForm", p => p.WithPosition("1"))
                 .WithPart("FlowPart", p => p.WithPosition("2"))
@@ -80,17 +104,10 @@ namespace StatCan.OrchardCore.VueForms
                .WithField("Template", f => f
                    .OfType(nameof(TextField))
                    .WithDisplayName("Template")
-                   .WithSettings(new TextFieldSettings() { Required = true, Hint = "VueJS Component template. Need to return a single node. Vuetify(https://vuetifyjs.com/en/components/forms) and  VeeValidate(https://logaretm.github.io/vee-validate/guide/basics.html) librairies are loaded by default. With liquid support." })
+                   .WithSettings(new TextFieldSettings() { Required = true, Hint = "VueJS Component template. Need to return a single node. The VeeValidate(https://logaretm.github.io/vee-validate/guide/basics.html) library is used for client / server side validaiton support. With liquid support." })
                    .WithPosition("1")
                    .WithEditor("CodeMirrorLiquid")
-               )
-               .WithField("Script", f => f
-                   .OfType(nameof(TextField))
-                   .WithDisplayName("Script")
-                   .WithSettings(new TextFieldSettings() {  Required = true, Hint = "VueJS Component script. Write the JS object that represents the script part of the vue component without a return statement. With liquid support." })
-                   .WithPosition("2")
-                   .WithEditor("CodeMirrorLiquid")
-               ));
+            ));
 
             _contentDefinitionManager.AlterTypeDefinition("VueComponent", type => type
                 .WithPart("TitlePart", p => p.WithPosition("0"))
@@ -99,7 +116,7 @@ namespace StatCan.OrchardCore.VueForms
 
             AddVueFormReference();
 
-            return 2;
+            return 3;
         }
 
         public int UpdateFrom1()
@@ -109,27 +126,65 @@ namespace StatCan.OrchardCore.VueForms
             return 2;
         }
 
+        public int UpdateFrom2()
+        {
+            _contentDefinitionManager.AlterPartDefinition("VueFormScripts", part => part
+                .WithField("ComponentOptions", f => f
+                   .OfType(nameof(TextField))
+                   .WithDisplayName("Component Options object")
+                   .WithSettings(new TextFieldSettings() {  Required = true, Hint = "The form's vue component options object. With liquid support." })
+                   .WithPosition("1")
+                   .WithEditor("CodeMirrorJS")
+               )
+            );
+
+            _contentDefinitionManager.AlterPartDefinition("VueComponent", part => part
+                .RemoveField("Script")
+            );
+
+
+             _contentDefinitionManager.AlterPartDefinition("VueForm", part => part
+                .RemoveField("ErrorMessage")
+                .WithField("RenderAs", field => field
+                    .OfType("TextField")
+                    .WithDisplayName("Render as")
+                    .WithEditor("PredefinedList")
+                    .WithPosition("2")
+                    .WithSettings(new TextFieldPredefinedListEditorSettings
+                    {
+                        Options = new ListValueOption[] { new ListValueOption() {
+                            Name= "Vue Component",
+                            Value= ""
+                            }, new ListValueOption() {
+                            Name= "Vue App",
+                            Value= "VueApp"
+                            }, new ListValueOption() {
+                            Name= "Vuetify App",
+                            Value= "VuetifyApp"
+                            } },
+                        Editor = EditorOption.Dropdown,
+                    })
+                    .WithSettings(new TextFieldSettings() {
+                        Hint = "Render this form as a Vue component, a standalone vue app or a vuetify app (wrapping with v-app)"
+                    })
+                ));
+            _contentDefinitionManager.AlterTypeDefinition("VueForm", type => type.Securable());
+            return 3;
+        }
+
         public void AddVueFormReference()
         {
-             // VueFormReference is a widget meant
             _contentDefinitionManager.AlterTypeDefinition("VueFormReference", type => type
                 .DisplayedAs("Vue Form Reference")
                 .Stereotype("Widget")
                 .WithPart("VueFormReference", part => part
-                    .WithPosition("1")
-                )
-                .WithPart("TitlePart", part => part
                     .WithPosition("0")
-                    .WithSettings(new TitlePartSettings
-                    {
-                        RenderTitle = false
-                    })
                 )
             );
             _contentDefinitionManager.AlterPartDefinition("VueFormReference", part => part
                 .WithField("FormReference", field => field
                     .OfType("ContentPickerField")
-                    .WithDisplayName("FormReference")
+                    .WithDisplayName("Form Reference")
                     .WithSettings(new ContentPickerFieldSettings
                     {
                         DisplayedContentTypes = new[] { "VueForm" }

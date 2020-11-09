@@ -1,33 +1,6 @@
 @using StatCan.OrchardCore.VueForms.Models
-@using Newtonsoft.Json.Linq
-@inject OrchardCore.Liquid.ISlugService slugService
 @{
     var contentItem = ((ContentItem)Model.ContentItem);
-
-    var componentName = slugService.Slugify(contentItem.DisplayText);
-
     var vueComponent = contentItem.As<VueComponent>();
-    // todo: pass the object required for loading initial data here
-    var script = await Orchard.LiquidAsync(vueComponent.Script.Text, (ContentItem)Model.ContentItem);
-    var template = await Orchard.LiquidAsync(vueComponent.Template.Text, (ContentItem)Model.ContentItem);
-
-    TagBuilder component = Tag(Model, componentName);
-    component.Attributes.Add("inline-template","");
-    component.Attributes.Add("v-bind:obs-invalid", "invalid");
-    component.Attributes.Add("v-bind:obs-valid", "valid");
-    component.Attributes.Add("v-bind:obs-reset", "reset");
-    component.Attributes.Add("v-bind:obs-validate", "validate");
-    component.Attributes.Add("v-bind:form-handle-submit", "formHandleSubmit");
-    component.Attributes.Add("v-bind:form-reset", "formReset");
-    component.Attributes.Add("v-bind:form-submitting", "submitting");
-    component.Attributes.Add("v-bind:form-submit-success", "submitSuccess");
-    component.Attributes.Add("v-bind:form-success-message", "successMessage");
-    component.Attributes.Add("v-bind:form-submit-error", "submitError");
-    component.Attributes.Add("v-bind:form-error-message", "errorMessage");
-    component.InnerHtml.AppendHtml(Html.Raw(template));
-
 }
-
-<div data-vf-name="@componentName" data-vf-script="@Orchard.B64Encode(script)" v-cloak>
-  @component
-</div>
+@Html.Raw(await Orchard.LiquidAsync(vueComponent.Template.Text, contentItem))
