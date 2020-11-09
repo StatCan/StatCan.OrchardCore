@@ -20,6 +20,7 @@ namespace StatCan.Themes.HackathonTheme
             HackathonThemeSettings();
             Tabs();
             ScheduleEvent();
+            MenuItems();
             return 1;
         }
 
@@ -34,10 +35,14 @@ namespace StatCan.Themes.HackathonTheme
             );
 
             _contentDefinitionManager.AlterPartDefinition("HackathonThemeSettings", part => part
+                .WithField("DisplayName", field => field
+                    .OfType("TextField")
+                    .WithDisplayName("DisplayName")
+                    .WithPosition("0"))
                 .WithField("Logo", field => field
                     .OfType("MediaField")
                     .WithDisplayName("Logo")
-                    .WithPosition("0")
+                    .WithPosition("1")
                 )
             );
         }
@@ -82,6 +87,24 @@ namespace StatCan.Themes.HackathonTheme
                 )
                 .WithPart("ScheduleEvent", p => p.WithPosition("1"))
                 .WithMarkdownBody("2")
+            );
+        }
+
+        private void MenuItems()
+        {
+            _contentDefinitionManager.AlterPartDefinition("ContentMenuItem", part => part
+                .WithField("IconName", field => field
+                    .OfType("TextField")
+                    .WithDisplayName("Icon Name")
+                    .WithPosition("0")
+                )
+            );
+            _contentDefinitionManager.AlterPartDefinition("LinkMenuItem", part => part
+                .WithField("IconName", field => field
+                    .OfType("TextField")
+                    .WithDisplayName("Icon Name")
+                    .WithPosition("0")
+                )
             );
         }
     }
