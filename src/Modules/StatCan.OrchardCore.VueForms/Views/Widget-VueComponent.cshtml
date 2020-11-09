@@ -2,7 +2,5 @@
 @{
     var contentItem = ((ContentItem)Model.ContentItem);
     var vueComponent = contentItem.As<VueComponent>();
-    var template = await Orchard.LiquidAsync(vueComponent.Template.Text, contentItem);
 }
-
-@Html.Raw(template)
+@Html.Raw(await Orchard.LiquidAsync(vueComponent.Template.Text, contentItem))

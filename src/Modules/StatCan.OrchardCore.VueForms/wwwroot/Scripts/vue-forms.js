@@ -194,15 +194,6 @@ function initForm(app) {
 document.addEventListener("DOMContentLoaded", function (event) {
   // look for all vue forms when this script is loaded and initialize them
   document.querySelectorAll(".vue-form").forEach(initForm);
-  document.querySelectorAll(".vuetify-app-instance").forEach(function (elem) {
-    new Vue({
-      el: elem,
-      vuetify: new Vuetify()
-    });
-  });
-  document.querySelectorAll(".vue-app-instance").forEach(function (elem) {
-    new Vue({
-      el: elem
-    });
-  });
+  var formLoadedEvent = new Event('vue-form-component-loaded');
+  document.dispatchEvent(formLoadedEvent);
 });

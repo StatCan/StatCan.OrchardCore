@@ -89,7 +89,7 @@ namespace StatCan.OrchardCore.VueForms
                 .WithField("OnSubmitted", f => f
                     .OfType(nameof(TextField))
                     .WithDisplayName("On Submitted")
-                    .WithSettings(new TextFieldSettings() { Hint = "(Optional) Script that runs server side after when the form is valid, before the workflow event is triggerred." })
+                    .WithSettings(new TextFieldSettings() { Hint = "(Optional) Script that runs server side after form validation has passed, before the workflow event is triggerred." })
                     .WithPosition("3")
                     .WithEditor("CodeMirrorJS")
                 )
@@ -108,7 +108,7 @@ namespace StatCan.OrchardCore.VueForms
                .WithField("Template", f => f
                    .OfType(nameof(TextField))
                    .WithDisplayName("Template")
-                   .WithSettings(new TextFieldSettings() { Required = true, Hint = "VueJS Component template. Need to return a single node. Vuetify(https://vuetifyjs.com/en/components/forms) and  VeeValidate(https://logaretm.github.io/vee-validate/guide/basics.html) librairies are loaded by default. With liquid support." })
+                   .WithSettings(new TextFieldSettings() { Required = true, Hint = "VueJS Component template. Need to return a single node. The VeeValidate(https://logaretm.github.io/vee-validate/guide/basics.html) library is used for client / server side validaiton support. With liquid support." })
                    .WithPosition("1")
                    .WithEditor("CodeMirrorLiquid")
             ));
@@ -140,13 +140,7 @@ namespace StatCan.OrchardCore.VueForms
                    .WithPosition("1")
                    .WithEditor("CodeMirrorJS")
                )
-                .WithField("OnValidation", f => f
-                    .WithPosition("2")
-                )
-                .WithField("OnSubmitted", f => f
-                    .WithPosition("3")
-                )
-                .Attachable());
+            );
 
             _contentDefinitionManager.AlterPartDefinition("VueComponent", part => part
                 .RemoveField("Script")
@@ -182,19 +176,11 @@ namespace StatCan.OrchardCore.VueForms
 
         public void AddVueFormReference()
         {
-             // VueFormReference is a widget meant
             _contentDefinitionManager.AlterTypeDefinition("VueFormReference", type => type
                 .DisplayedAs("Vue Form Reference")
                 .Stereotype("Widget")
-                .WithPart("TitlePart", part => part
-                    .WithPosition("0")
-                    .WithSettings(new TitlePartSettings
-                    {
-                        RenderTitle = false
-                    })
-                )
                 .WithPart("VueFormReference", part => part
-                    .WithPosition("1")
+                    .WithPosition("0")
                 )
             );
             _contentDefinitionManager.AlterPartDefinition("VueFormReference", part => part
