@@ -58,10 +58,6 @@ namespace StatCan.OrchardCore.VueForms
                 {
                     Hint = "(optional) The message returned to the client if validation passed and no redirect has been set. With liquid support."
                 })
-                .WithTextField("ErrorMessage", "Error Message", "4", new TextFieldSettings()
-                {
-                    Hint = "(optional) The message to display if a server error occured in the ajax request. With liquid support."
-                })
                 .WithDescription("Turns your content items into a vue form."));
 
             _contentDefinitionManager.AlterPartDefinition("VueFormScripts", part => part
@@ -146,7 +142,9 @@ namespace StatCan.OrchardCore.VueForms
                 .RemoveField("Script")
             );
 
+
              _contentDefinitionManager.AlterPartDefinition("VueForm", part => part
+                .RemoveField("ErrorMessage")
                 .WithField("RenderAs", field => field
                     .OfType("TextField")
                     .WithDisplayName("Render as")

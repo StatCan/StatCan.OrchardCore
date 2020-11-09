@@ -25,8 +25,9 @@ function initForm(app) {
     submitSuccess: false,
     successMessage: undefined,
     submitError: false,
-    submitValidationError: false,
-    errorMessage: undefined
+    submitValidationErrors: false,
+    serverValidationMessage: undefined,
+    serverErrorMessage: undefined
   }
 
   //todo component name
@@ -43,7 +44,7 @@ function initForm(app) {
     methods: {
       ...parsedMethods,
       formReset() {
-        Object.assign(this.$data.form, {...defaultFormData});
+        this.form = {...defaultFormData};
         // also reset the VeeValidate observer
         this.$refs.obs.reset();
       },
@@ -66,11 +67,14 @@ function initForm(app) {
               dataType: "json",
               success: function (data) {
 
-                Object.assign(vm.$data.form, {...defaultFormData});
+                vm.form = {...defaultFormData};
                 // if there are validation errors on the form, display them.
                 if (data.validationError) {
+                  // special key for serverErrorMessages
+                  if(data.errors['serverValidationMessage'] != null) {
+                    vm.form.serverValidationMessage = data.errors['serverValidationMessage'];
+                  }
                   vm.form.submitValidationError = true;
-                  vm.form.errorMessage = data.errorMessage;
                   observer.setErrors(data.errors);
                   return;
                 }
@@ -89,12 +93,12 @@ function initForm(app) {
                 }
                 vm.form.submitError = true;
                 // something went wrong, dev issue
-                vm.form.errorMessage = "Something wen't wrong. Please report this to your site administrators. Error code: `VueForms.AjaxHandler`";
+                vm.form.serverErrorMessage = "Something wen't wrong. Please report this to your site administrators. Error code: `VueForms.AjaxHandler`";
               },
               error: function (xhr, statusText) {
-                Object.assign(vm.$data.form, {...defaultFormData});
+                vm.form = {...defaultFormData};
                 vm.form.submitError = true;
-                vm.form.errorMessage = `${xhr.status} ${statusText}`;
+                vm.form.serverErrorMessage = `${xhr.status} ${statusText}`;
               }
             });
           }

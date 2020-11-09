@@ -25,7 +25,7 @@
   @Tag(Model, componentName)
 </div>
 <script at="Foot" type="text/html" id="@componentName">
-  <validation-observer ref="obs" slim v-slot="{ valid, invalid, handleSubmit, validate, setErrors, reset }">
+  <validation-observer ref="obs" slim v-slot="obs">
     <form v-cloak
           ref="form"
           id="@formPart.ContentItem.ContentItemId"

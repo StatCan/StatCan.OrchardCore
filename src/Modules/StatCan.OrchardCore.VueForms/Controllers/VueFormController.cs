@@ -85,8 +85,7 @@ namespace StatCan.OrchardCore.VueForms.Controllers
 
             if (errorsDictionary.Count > 0)
             {
-                var formErrorMessage = await _liquidTemplateManager.RenderAsync(formPart.ErrorMessage?.Text, _htmlEncoder);
-                return Json(new { validationError = true, errors = errorsDictionary, errorMessage = formErrorMessage });
+                return Json(new { validationError = true, errors = errorsDictionary });
             }
 
             if (!string.IsNullOrEmpty(script?.OnSubmitted?.Text))

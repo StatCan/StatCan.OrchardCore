@@ -17,7 +17,6 @@ The form submission is handled via an ajax call to a generic controller that ret
 | RenderAs | Render the Form as a Vue Component, a Vue App or Vuetify app |
 | DisabledHtml | Html displayed when the form is disabled. |
 | SuccessMessage | The success message returned to the client when the form is valid and no redirect is specified after submission. With Liquid support. |
-| ErrorMessage | The error message returned to the client when the form is invalid or a server error occurs. With Liquid support. |
 
 ### VueFormScripts Part
 
@@ -157,24 +156,22 @@ Example:
 
 ## Available Props
 
-The VueForm component has some default properties and methods. Some props of the VeeValidate [ValidationObserver](https://logaretm.github.io/vee-validate/api/validation-observer.html) are also available.
+The VueForm component has some default properties and methods.
 
 You can access these properties in your templates or in the component options object.
 
 |  Name  | Definition |
 |--------|------------|
-| valid | True if all fields are valid. From the `ValidationObserver`. |
-| invalid| True if at least one field is invalid. From the `ValidationObserver`. |
-| reset | A method that resets the **validation state** for all providers. `() => void`. From the `ValidationObserver`. |
-| validate | A method that triggers validation for all providers. Mutates child providers state unless silent is true. `() => Promise<boolean>`. From the `ValidationObserver`. |
+| obs.* | All props available on the v-slot of the [ValidationObserver](https://logaretm.github.io/vee-validate/api/validation-observer.html#scoped-slot-props) are available. |
 | formReset | A method that resets the form.* properties to the initial state. Does not reset your component's data. `() => void` |
 | formHandleSubmit | A method that calls the `validate()` method and then, if valid, sends an ajax request to our controller `() => void` |
 | form.submitting | Set to true when the form is being submitted. |
 | form.submitSuccess | Set to true when no redirect is specified and the submission was a success. |
 | form.successMessage | The success message returned from the server as specified in the [VueForm](#vueform-part) |
-| form.submitError | Set to true when a server error, ajax error or unhandled error occurs. |
 | form.submitValidationError | Set to true when a server validation error occus. |
-| form.errorMessage | The error message returned from the server as specified in the [VueForm](#vueform-part) or the ajax error status code and text in case of a server error. |
+| form.serverValidationMessage | Array of errors set by the server with the `addError('serverValidationMessage', 'Message')` scripting method. |
+| form.submitError | Set to true when a server error, ajax error or unhandled error occurs. |
+| form.serverErrorMessage | An error message set with the ajax error status code and text. Only set when a server errors occur. |
 
 
 ## Scripting

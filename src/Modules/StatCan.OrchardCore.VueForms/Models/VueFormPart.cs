@@ -9,6 +9,5 @@ namespace StatCan.OrchardCore.VueForms.Models
         public TextField RenderAs { get; set; }
         public TextField SuccessMessage { get; set; }
         public HtmlField DisabledHtml { get; set; }
-        public TextField ErrorMessage { get; set; }
     }
 }
