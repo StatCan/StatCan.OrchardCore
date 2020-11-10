@@ -46,5 +46,5 @@ You can get the values stored in the LocalizedTextPart inside a script.
 
 | Function | Description 
 | -------- | ----------- |
-| `addError(name: String, errorMessage: String): void` | Adds an error to the input / VeeValidate.ValidationProvider with the specified name |
+| `addError(name: String, errorMessage: String): void` | Adds an error to the input with the specified name. Use the `serverValidationMessage` name to add a global error message to your VueForm. |
 | `getFormContentItem(): ContentItem` | Only available in the VueForm server side scripts. Returns the current VueForm ContentItem instance. |

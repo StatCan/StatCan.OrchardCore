@@ -1,0 +1,17 @@
+@{
+    Model.Metadata.Alternates.Clear();
+    Model.Metadata.Type = "VueForm__CommonTemplate";
+}
+
+<div class="vue-app-instance">
+  @await DisplayAsync(Model)
+</div>
+<script at="Foot" asp-name="vue-app-instance" depends-on="vuejs">
+  document.addEventListener("vue-form-component-loaded", function(event) { 
+    document.querySelectorAll(".vue-app-instance").forEach(function(elem){
+      new Vue({
+        el: elem,
+      });
+    });
+  });
+</script>
