@@ -27,7 +27,6 @@ namespace StatCan.OrchardCore.ContentFields.Multivalue.Settings
                 var settings = partFieldDefinition.GetSettings<MultivalueFieldEditorSettings>();
 
                 model.DefaultValue = settings.DefaultValue;
-                model.Editor = settings.Editor;
                 model.Options = JsonConvert.SerializeObject(settings.Options ?? new ListValueOption[0], Formatting.Indented);
             })
             .Location("Editor");
@@ -45,7 +44,6 @@ namespace StatCan.OrchardCore.ContentFields.Multivalue.Settings
                 try
                 {
                     settings.DefaultValue = model.DefaultValue;
-                    settings.Editor = model.Editor;
                     settings.Options = string.IsNullOrWhiteSpace(model.Options)
                         ? new ListValueOption[0]
                         : JsonConvert.DeserializeObject<ListValueOption[]>(model.Options);
