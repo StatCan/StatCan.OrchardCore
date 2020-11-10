@@ -19,8 +19,8 @@
           "DisplayText": "Challenge Submission",
           "Latest": true,
           "Published": true,
-          "ModifiedUtc": "2020-11-09T19:00:51.5044893Z",
-          "PublishedUtc": "2020-11-09T19:00:51.5265467Z",
+          "ModifiedUtc": "2020-11-10T20:04:27.0081079Z",
+          "PublishedUtc": "2020-11-10T20:04:27.0344088Z",
           "CreatedUtc": "2020-11-09T15:32:59.0009638Z",
           "Owner": "admin",
           "Author": "admin",
@@ -39,6 +39,9 @@
             },
             "ErrorMessage": {
               "Text": "Please correct the errors above"
+            },
+            "RenderAs": {
+              "Text": null
             }
           },
           "FlowPart": {
@@ -50,7 +53,7 @@
                 "DisplayText": "Challenge Submission",
                 "Latest": false,
                 "Published": false,
-                "ModifiedUtc": "2020-11-09T19:00:51.5124726Z",
+                "ModifiedUtc": "2020-11-10T20:04:27.0142947Z",
                 "PublishedUtc": null,
                 "CreatedUtc": null,
                 "Owner": "",
@@ -60,7 +63,7 @@
                 },
                 "VueComponent": {
                   "Template": {
-                    "Text": "<v-container >\r\n  <v-card-text>\r\n    <v-row justify=\"center\">\r\n      <v-col cols=\"8\">\r\n        <validation-provider name=\"name\" rules=\"\" v-slot=\"{ errors, valid }\">\r\n          <v-text-field name=\"name\" v-model=\"name\" :error-messages=\"errors\" filled=\"filled\" label=\"{{ \"nameLabel\" | localize }}\"></v-text-field>\r\n        </validation-provider>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n        <validation-provider name=\"shortDescription\" rules=\"required\" v-slot=\"{ errors, valid }\">\r\n          <v-text-field name=\"shortDescription\" v-model=\"shortDescription\" :error-messages=\"errors\" filled=\"filled\" label=\"{{ \"shortDescriptionLabel\" | localize }}\"></v-text-field>\r\n        </validation-provider>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n        <validation-provider name=\"description\" rules=\"required\" v-slot=\"{ errors, valid }\">\r\n       \t  <v-textarea name=\"description\" v-model=\"description\" :error-messages=\"errors\" counter=\"true\" filled=\"filled\" label=\"{{ \"descriptionLabel\" | localize }}\" rows=\"5\">\r\n          </v-textarea>\r\n    \t</validation-provider>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n        <v-alert type=\"success\" v-if=\"formSuccessMessage\">\r\n          {% raw %}{{ formSuccessMessage }}{% endraw %}\r\n        </v-alert>\r\n        <v-alert type=\"error\" v-if=\"formErrorMessage\">\r\n          {% raw %}{{ formErrorMessage }}{% endraw %}\r\n        </v-alert>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n    \t<v-btn type=\"submit\" color=\"#000\" depressed block dark @click=\"formHandleSubmit\" :disabled=\"formSubmitting\">{{ \"submitLabel\" | localize }}</v-btn>\r\n      </v-col>\r\n    </v-row>\r\n  </v-card-text>\r\n</v-container>"
+                    "Text": "<v-container >\r\n  <v-card-text>\r\n    <v-row justify=\"center\">\r\n      <v-col cols=\"8\">\r\n        <validation-provider name=\"name\" rules=\"\" v-slot=\"{ errors, valid }\">\r\n          <v-text-field name=\"name\" v-model=\"name\" :error-messages=\"errors\" filled=\"filled\" label=\"{{ \"nameLabel\" | localize }}\"></v-text-field>\r\n        </validation-provider>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n        <validation-provider name=\"shortDescription\" rules=\"required\" v-slot=\"{ errors, valid }\">\r\n          <v-text-field name=\"shortDescription\" v-model=\"shortDescription\" :error-messages=\"errors\" filled=\"filled\" label=\"{{ \"shortDescriptionLabel\" | localize }}\"></v-text-field>\r\n        </validation-provider>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n        <validation-provider name=\"description\" rules=\"required\" v-slot=\"{ errors, valid }\">\r\n       \t  <v-textarea name=\"description\" v-model=\"description\" :error-messages=\"errors\" counter=\"true\" filled=\"filled\" label=\"{{ \"descriptionLabel\" | localize }}\" rows=\"5\">\r\n          </v-textarea>\r\n    \t</validation-provider>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n        <v-alert type=\"success\" v-if=\"form.successMessage\">\r\n          {% raw %}{{ form.successMessage }}{% endraw %}\r\n        </v-alert>\r\n        <v-alert type=\"error\" v-if=\"form.errorMessage\">\r\n          {% raw %}{{ form.errorMessage }}{% endraw %}\r\n        </v-alert>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n    \t<v-btn type=\"submit\" depressed block @click=\"formHandleSubmit\" :disabled=\"form.submitting\">{{ \"submitLabel\" | localize }}</v-btn>\r\n      </v-col>\r\n    </v-row>\r\n  </v-card-text>\r\n</v-container>"
                   },
                   "Script": {
                     "Text": "{\r\n  data: () => ({\r\n    name: \"\",\r\n\tshortDescription: \"\",\r\n    description: \"\",\r\n  })\r\n}"
@@ -82,6 +85,9 @@
             },
             "OnSubmitted": {
               "Text": "var data = requestFormAsJsonObject();\r\n\r\nvar item = createContentItem(\"Challenge\", false, {\r\n  \"Challenge\": {\r\n    \"Name\": {\r\n      \"Text\": data.name\r\n    },\r\n    \"ShortDescription\": {\r\n      \"Text\": data.shortDescription\r\n    },\r\n    \"Description\": {\r\n      \"Html\": data.description\r\n    }\r\n  }\r\n});\r\n\r\nhttpRedirect('');"
+            },
+            "ComponentOptions": {
+              "Text": "{\r\n  data: () => ({\r\n    name: \"\",\r\n\tshortDescription: \"\", \r\n    description: \"\",\r\n  })\r\n}"
             }
           },
           "LocalizedTextPart": {

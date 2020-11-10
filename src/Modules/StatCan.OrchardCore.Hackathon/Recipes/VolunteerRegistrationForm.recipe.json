@@ -19,8 +19,8 @@
           "DisplayText": "VolunteerRegistrationForm",
           "Latest": true,
           "Published": true,
-          "ModifiedUtc": "2020-11-04T20:49:30.5559566Z",
-          "PublishedUtc": "2020-11-04T20:49:30.5678628Z",
+          "ModifiedUtc": "2020-11-10T20:36:50.16364Z",
+          "PublishedUtc": "2020-11-10T20:36:50.1808496Z",
           "CreatedUtc": "2020-11-04T20:49:04.774105Z",
           "Owner": "admin",
           "Author": "admin",
@@ -39,6 +39,9 @@
             },
             "ErrorMessage": {
               "Text": "Please correct the errors above"
+            },
+            "RenderAs": {
+              "Text": null
             }
           },
           "FlowPart": {
@@ -50,7 +53,7 @@
                 "DisplayText": "Volunteer Registration",
                 "Latest": false,
                 "Published": false,
-                "ModifiedUtc": "2020-11-04T20:49:30.5603769Z",
+                "ModifiedUtc": "2020-11-10T20:36:50.1688941Z",
                 "PublishedUtc": null,
                 "CreatedUtc": null,
                 "Owner": "",
@@ -60,7 +63,7 @@
                 },
                 "VueComponent": {
                   "Template": {
-                    "Text": "<v-container >\r\n  <v-card-text>\r\n    <v-row justify=\"center\">\r\n      <v-col cols=\"8\">\r\n        <h1>{{ \"volunteerRegistrationLabel\" | localize }}</h1>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n        <validation-provider name=\"firstName\" rules=\"\" v-slot=\"{ errors, valid }\">\r\n          <v-text-field name=\"firstName\" v-model=\"firstName\" :error-messages=\"errors\" filled=\"filled\" label=\"{{ \"firstNameLabel\" | localize }}\"></v-text-field>\r\n        </validation-provider>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n        <validation-provider name=\"lastName\" rules=\"\" v-slot=\"{ errors, valid }\">\r\n          <v-text-field name=\"lastName\" v-model=\"lastName\" :error-messages=\"errors\" filled=\"filled\" label=\"{{ \"lastNameLabel\" | localize }}\"></v-text-field>\r\n        </validation-provider>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n        <validation-provider name=\"email\" rules=\"required\" v-slot=\"{ errors, valid }\">\r\n          <v-text-field name=\"email\" v-model=\"email\" :error-messages=\"errors\" filled=\"filled\" label=\"{{ \"emailLabel\" | localize }}\"></v-text-field>\r\n        </validation-provider>\r\n      </v-col>\r\n      <v-col cols=\"8\">      \r\n        <p>{{ \"languageLabel\" | localize }}</p>\r\n        <v-radio-group name=\"language\" v-model=\"language\" row >\r\n          <v-radio label=\"{{ \"languageEnglishLabel\" | localize }}\" value=\"en\" ></v-radio>\r\n          <v-radio label=\"{{ \"languageFrenchLabel\" | localize }}\" value=\"fr\" ></v-radio>\r\n          <v-radio label=\"{{ \"languageBothLabel\" | localize }}\" value=\"both\" ></v-radio>\r\n        </v-radio-group>    \r\n      </v-col>\r\n        <v-col cols=\"8\">\r\n          <v-alert type=\"success\" v-if=\"formSuccessMessage\">\r\n            {% raw %}{{ formSuccessMessage }}{% endraw %}\r\n          </v-alert>\r\n          <v-alert type=\"error\" v-if=\"formErrorMessage\">\r\n            {% raw %}{{ formErrorMessage }}{% endraw %}\r\n          </v-alert>\r\n        </v-col>\r\n        <v-col cols=\"8\">\r\n    \t  <v-btn type=\"submit\" color=\"#000\" depressed block dark @click=\"formHandleSubmit\" :disabled=\"formSubmitting\">{{ \"submitLabel\" | localize }}</v-btn>\r\n        </v-col>\r\n    </v-row>\r\n  </v-card-text>\r\n</v-container>\r\n"
+                    "Text": "<v-container >\r\n  <v-card-text>\r\n    <v-row justify=\"center\">\r\n      <v-col cols=\"8\">\r\n        <h1>{{ \"volunteerRegistrationLabel\" | localize }}</h1>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n        <validation-provider name=\"firstName\" rules=\"\" v-slot=\"{ errors, valid }\">\r\n          <v-text-field name=\"firstName\" v-model=\"firstName\" :error-messages=\"errors\" filled=\"filled\" label=\"{{ \"firstNameLabel\" | localize }}\"></v-text-field>\r\n        </validation-provider>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n        <validation-provider name=\"lastName\" rules=\"\" v-slot=\"{ errors, valid }\">\r\n          <v-text-field name=\"lastName\" v-model=\"lastName\" :error-messages=\"errors\" filled=\"filled\" label=\"{{ \"lastNameLabel\" | localize }}\"></v-text-field>\r\n        </validation-provider>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n        <validation-provider name=\"email\" rules=\"required\" v-slot=\"{ errors, valid }\">\r\n          <v-text-field name=\"email\" v-model=\"email\" :error-messages=\"errors\" filled=\"filled\" label=\"{{ \"emailLabel\" | localize }}\"></v-text-field>\r\n        </validation-provider>\r\n      </v-col>\r\n      <v-col cols=\"8\">      \r\n        <p>{{ \"languageLabel\" | localize }}</p>\r\n        <v-radio-group name=\"language\" v-model=\"language\" row >\r\n          <v-radio label=\"{{ \"languageEnglishLabel\" | localize }}\" value=\"en\" ></v-radio>\r\n          <v-radio label=\"{{ \"languageFrenchLabel\" | localize }}\" value=\"fr\" ></v-radio>\r\n          <v-radio label=\"{{ \"languageBothLabel\" | localize }}\" value=\"both\" ></v-radio>\r\n        </v-radio-group>    \r\n      </v-col>\r\n        <v-col cols=\"8\">\r\n          <v-alert type=\"success\" v-if=\"form.successMessage\">\r\n            {% raw %}{{ form.successMessage }}{% endraw %}\r\n          </v-alert>\r\n          <v-alert type=\"error\" v-if=\"form.errorMessage \">\r\n            {% raw %}{{ form.errorMessage  }}{% endraw %}\r\n          </v-alert>\r\n        </v-col>\r\n        <v-col cols=\"8\">\r\n    \t  <v-btn type=\"submit\" depressed block @click=\"formHandleSubmit\" :disabled=\"form.submitting\">{{ \"submitLabel\" | localize }}</v-btn>\r\n        </v-col>\r\n    </v-row>\r\n  </v-card-text>\r\n</v-container>\r\n"
                   },
                   "Script": {
                     "Text": "{\r\n  data: () => ({\r\n    firstName: \"\",\r\n\tlastName: \"\",\r\n\temail: \"\",\r\n    language: \"\",\r\n  })\r\n}"
@@ -82,6 +85,9 @@
             },
             "OnSubmitted": {
               "Text": "var data = requestFormAsJsonObject();\r\n\r\nvar item = createContentItem(\"Volunteer\", true, {\r\n  \"ParticipantPart\": {\r\n    \"FirstName\": {\r\n      \"Text\": data.firstName\r\n    },\r\n    \"LastName\": {\r\n      \"Text\": data.lastName\r\n    },\r\n    \"Email\": {\r\n      \"Text\": data.email\r\n    },\r\n    \"Language\": {\r\n      \"Text\": data.language\r\n    }\r\n  }\r\n});\r\n\r\nhttpRedirect('');"
+            },
+            "ComponentOptions": {
+              "Text": "{\r\n  data: () => ({\r\n    firstName: \"\",\r\n\tlastName: \"\", \r\n    email: \"\",\r\n    language: \"\"\r\n  })\r\n}"
             }
           },
           "LocalizedTextPart": {
