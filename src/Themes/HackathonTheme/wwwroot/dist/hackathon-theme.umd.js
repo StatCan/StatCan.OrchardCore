@@ -10118,7 +10118,7 @@ var framework_Vuetify = /*#__PURE__*/function () {
 
 framework_Vuetify.install = install;
 framework_Vuetify.installed = false;
-framework_Vuetify.version = "2.3.15";
+framework_Vuetify.version = "2.3.16";
 framework_Vuetify.config = {
   silent: false
 };
@@ -17605,7 +17605,7 @@ var dirtyTypes = ['color', 'file', 'time', 'date', 'datetime-local', 'week', 'mo
         return this.counterValue(this.internalValue);
       }
 
-      return _toConsumableArray(this.internalValue || '').length;
+      return _toConsumableArray((this.internalValue || '').toString()).length;
     },
     hasCounter: function hasCounter() {
       return this.counter !== false && this.counter != null;
@@ -18294,7 +18294,13 @@ var VSelect_baseMixins = mixins(VTextField_VTextField, comparable, dependent, fi
       var uniqueValues = new Map();
 
       for (var index = 0; index < arr.length; ++index) {
-        var item = arr[index];
+        var item = arr[index]; // Do not deduplicate headers or dividers (#12517)
+
+        if (item.header || item.divider) {
+          uniqueValues.set(item, item);
+          continue;
+        }
+
         var val = this.getValue(item); // TODO: comparator
 
         !uniqueValues.has(val) && uniqueValues.set(val, item);
@@ -20011,7 +20017,8 @@ var VDialog_baseMixins = mixins(activatable, dependent, detachable, overlayable,
       animate: false,
       animateTimeout: -1,
       isActive: !!this.value,
-      stackMinZIndex: 200
+      stackMinZIndex: 200,
+      previousActiveElement: null
     };
   },
   computed: {
@@ -20036,8 +20043,11 @@ var VDialog_baseMixins = mixins(activatable, dependent, detachable, overlayable,
         this.show();
         this.hideScroll();
       } else {
+        var _this$previousActiveE;
+
         this.removeOverlay();
         this.unbind();
+        (_this$previousActiveE = this.previousActiveElement) == null ? void 0 : _this$previousActiveE.focus();
       }
     },
     fullscreen: function fullscreen(val) {
@@ -20102,11 +20112,16 @@ var VDialog_baseMixins = mixins(activatable, dependent, detachable, overlayable,
     show: function show() {
       var _this3 = this;
 
-      !this.fullscreen && !this.hideOverlay && this.genOverlay();
-      this.$nextTick(function () {
-        _this3.$refs.content.focus();
+      !this.fullscreen && !this.hideOverlay && this.genOverlay(); // Double nextTick to wait for lazy content to be generated
 
-        _this3.bind();
+      this.$nextTick(function () {
+        _this3.$nextTick(function () {
+          _this3.previousActiveElement = document.activeElement;
+
+          _this3.$refs.content.focus();
+
+          _this3.bind();
+        });
       });
     },
     bind: function bind() {

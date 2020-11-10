@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "watch": "vue-cli-service build --watch --target lib --name hackathon-theme --formats umd --mode production Assets/src/App.js",
+    "watch": "vue-cli-service build --watch --target lib --name hackathon-theme --formats umd,umd-min --mode production Assets/src/App.js",
     "build": "vue-cli-service build --target lib --name hackathon-theme --formats umd,umd-min Assets/src/App.js",
     "lint": "vue-cli-service lint"
   },

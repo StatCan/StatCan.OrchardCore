@@ -1,17 +1,17 @@
 {
   "devDependencies": {
     "cypress": "^5.5.0",
-    "cypress-orchardcore": "0.1.2",
+    "cypress-orchardcore": "0.2.0",
     "rimraf": "3.0.2"
   },
   "dependencies": {},
   "scripts": {
-    "build": "node -e \"require('cypress-orchardcore/test-runner').build('../src/StatCan.OrchardCore.Cms.Web')\"",
-    "clean": "node -e \"require('cypress-orchardcore/test-runner').clean('../src/StatCan.OrchardCore.Cms.Web')\"",
-    "host": "node -e \"require('cypress-orchardcore/test-runner').host('../src/StatCan.OrchardCore.Cms.Web', 'StatCan.OrchardCore.Cms.Web.dll')\"",
-    "test": "node -e \"require('cypress-orchardcore/test-runner').e2e('../src/StatCan.OrchardCore.Cms.Web', 'StatCan.OrchardCore.Cms.Web.dll')\"",
-    "test:clean": "node -e \"require('cypress-orchardcore/test-runner').e2e('../src/StatCan.OrchardCore.Cms.Web', 'StatCan.OrchardCore.Cms.Web.dll', true)\"",
-    "test:clean-build": "node -e \"require('cypress-orchardcore/test-runner').e2e('../src/StatCan.OrchardCore.Cms.Web', 'StatCan.OrchardCore.Cms.Web.dll', true, true)\"",
+    "build": "node -e \"require('cypress-orchardcore/dist/test-runner').build('../src/StatCan.OrchardCore.Cms.Web')\"",
+    "clean": "node -e \"require('cypress-orchardcore/dist/test-runner').clean('../src/StatCan.OrchardCore.Cms.Web')\"",
+    "host": "node -e \"require('cypress-orchardcore/dist/test-runner').host('../src/StatCan.OrchardCore.Cms.Web', 'StatCan.OrchardCore.Cms.Web.dll')\"",
+    "test": "node -e \"require('cypress-orchardcore/dist/test-runner').e2e('../src/StatCan.OrchardCore.Cms.Web', 'StatCan.OrchardCore.Cms.Web.dll')\"",
+    "test:clean": "node -e \"require('cypress-orchardcore/dist/test-runner').e2e('../src/StatCan.OrchardCore.Cms.Web', 'StatCan.OrchardCore.Cms.Web.dll', true)\"",
+    "test:clean-build": "node -e \"require('cypress-orchardcore/dist/test-runner').e2e('../src/StatCan.OrchardCore.Cms.Web', 'StatCan.OrchardCore.Cms.Web.dll', true, true)\"",
     "cypress:run": "cypress run",
     "cypress": "cypress open"
   }
