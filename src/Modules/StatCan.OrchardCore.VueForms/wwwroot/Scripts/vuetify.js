@@ -1205,11 +1205,13 @@ var defaultMenuProps = __assign(__assign({}, _VSelect_VSelect__WEBPACK_IMPORTED_
       return this.selectedValues.indexOf(this.getValue(item)) > -1;
     },
     onCopy: function onCopy(event) {
+      var _a, _b;
+
       if (this.selectedIndex === -1) return;
       var currentItem = this.selectedItems[this.selectedIndex];
       var currentItemText = this.getText(currentItem);
-      event.clipboardData.setData('text/plain', currentItemText);
-      event.clipboardData.setData('text/vnd.vuetify.autocomplete.item+plain', currentItemText);
+      (_a = event.clipboardData) === null || _a === void 0 ? void 0 : _a.setData('text/plain', currentItemText);
+      (_b = event.clipboardData) === null || _b === void 0 ? void 0 : _b.setData('text/vnd.vuetify.autocomplete.item+plain', currentItemText);
       event.preventDefault();
     }
   }
@@ -3038,7 +3040,7 @@ var __assign = undefined && undefined.__assign || function () {
       }],
       on: __assign(__assign({}, this.$listeners), {
         'click:date': function clickDate(day) {
-          if (_this.$listeners['input']) {
+          if (_this.$listeners.input) {
             _this.$emit('input', day.date);
           }
 
@@ -8182,52 +8184,46 @@ var modes = {
     genInputs: function genInputs() {
       var _this = this;
 
-      switch (this.internalMode) {
-        case 'hexa':
-          {
-            var hex = this.color.hexa;
-            var value = this.hideAlpha && hex.endsWith('FF') ? hex.substr(0, 7) : hex;
-            return this.genInput('hex', {
-              maxlength: this.hideAlpha ? 7 : 9,
-              disabled: this.disabled
-            }, value, {
-              change: function change(e) {
-                var el = e.target;
+      if (this.internalMode === 'hexa') {
+        var hex = this.color.hexa;
+        var value = this.hideAlpha && hex.endsWith('FF') ? hex.substr(0, 7) : hex;
+        return this.genInput('hex', {
+          maxlength: this.hideAlpha ? 7 : 9,
+          disabled: this.disabled
+        }, value, {
+          change: function change(e) {
+            var el = e.target;
 
-                _this.$emit('update:color', _this.currentMode.from(Object(_util_colorUtils__WEBPACK_IMPORTED_MODULE_3__["parseHex"])(el.value)));
-              }
-            });
+            _this.$emit('update:color', _this.currentMode.from(Object(_util_colorUtils__WEBPACK_IMPORTED_MODULE_3__["parseHex"])(el.value)));
           }
+        });
+      } else {
+        var inputs = this.hideAlpha ? this.currentMode.inputs.slice(0, -1) : this.currentMode.inputs;
+        return inputs.map(function (_a) {
+          var _b = __read(_a, 3),
+              target = _b[0],
+              max = _b[1],
+              type = _b[2];
 
-        default:
-          {
-            var inputs = this.hideAlpha ? this.currentMode.inputs.slice(0, -1) : this.currentMode.inputs;
-            return inputs.map(function (_a) {
-              var _b = __read(_a, 3),
-                  target = _b[0],
-                  max = _b[1],
-                  type = _b[2];
+          var value = _this.color[_this.internalMode];
+          return _this.genInput(target, {
+            type: 'number',
+            min: 0,
+            max: max,
+            step: type === 'float' ? '0.01' : type === 'int' ? '1' : undefined,
+            disabled: _this.disabled
+          }, _this.getValue(value[target], type), {
+            input: function input(e) {
+              var _a;
 
-              var value = _this.color[_this.internalMode];
-              return _this.genInput(target, {
-                type: 'number',
-                min: 0,
-                max: max,
-                step: type === 'float' ? '0.01' : type === 'int' ? '1' : undefined,
-                disabled: _this.disabled
-              }, _this.getValue(value[target], type), {
-                input: function input(e) {
-                  var _a;
+              var el = e.target;
 
-                  var el = e.target;
+              var newVal = _this.parseValue(el.value || '0', type);
 
-                  var newVal = _this.parseValue(el.value || '0', type);
-
-                  _this.$emit('update:color', _this.currentMode.from(Object.assign({}, value, (_a = {}, _a[target] = newVal, _a)), _this.color.alpha));
-                }
-              });
-            });
-          }
+              _this.$emit('update:color', _this.currentMode.from(Object.assign({}, value, (_a = {}, _a[target] = newVal, _a)), _this.color.alpha));
+            }
+          });
+        });
       }
     },
     genSwitch: function genSwitch() {
@@ -8956,8 +8952,10 @@ var __assign = undefined && undefined.__assign || function () {
       this.internalSearch = null;
     },
     onPaste: function onPaste(event) {
+      var _a;
+
       if (!this.multiple || this.searchIsDirty) return;
-      var pastedItemText = event.clipboardData.getData('text/vnd.vuetify.autocomplete.item+plain');
+      var pastedItemText = (_a = event.clipboardData) === null || _a === void 0 ? void 0 : _a.getData('text/vnd.vuetify.autocomplete.item+plain');
 
       if (pastedItemText && this.findExistingIndex(pastedItemText) === -1) {
         event.preventDefault();
@@ -9362,7 +9360,7 @@ var __spread = undefined && undefined.__spread || function () {
       return this.isGrouped ? this.groupItems(this.computedItems) : null;
     },
     scopedProps: function scopedProps() {
-      var props = {
+      return {
         sort: this.sort,
         sortArray: this.sortArray,
         group: this.group,
@@ -9373,7 +9371,6 @@ var __spread = undefined && undefined.__spread || function () {
         groupedItems: this.groupedItems,
         originalItemsLength: this.items.length
       };
-      return props;
     },
     computedOptions: function computedOptions() {
       return __assign({}, this.options);
@@ -10129,7 +10126,7 @@ var __read = undefined && undefined.__read || function (o, n) {
     },
     genEmpty: function genEmpty(originalItemsLength, filteredItemsLength) {
       if (originalItemsLength === 0 && this.loading) {
-        var loading = this.$slots['loading'] || this.$vuetify.lang.t(this.loadingText);
+        var loading = this.$slots.loading || this.$vuetify.lang.t(this.loadingText);
         return this.genEmptyWrapper(loading);
       } else if (originalItemsLength === 0) {
         var noData = this.$slots['no-data'] || this.$vuetify.lang.t(this.noDataText);
@@ -11447,7 +11444,7 @@ var __spread = undefined && undefined.__spread || function () {
       }) : this.$createElement('span', [header.text]));
 
       if (!this.disableSort && (header.sortable || !header.hasOwnProperty('sortable'))) {
-        data.on['click'] = function () {
+        data.on.click = function () {
           return _this.$emit('sort', header.value);
         };
 
@@ -12556,9 +12553,7 @@ function sanitizeDateString(dateString, type) {
       this.checkMultipleProp();
       this.setInputDate();
 
-      if (!this.isMultiple && this.value && !this.pickerDate) {
-        this.tableDate = sanitizeDateString(this.inputDate, this.type === 'month' ? 'year' : 'month');
-      } else if (this.isMultiple && this.multipleValue.length && (!oldValue || !oldValue.length) && !this.pickerDate) {
+      if (!this.isMultiple && this.value && !this.pickerDate || this.isMultiple && this.multipleValue.length && (!oldValue || !oldValue.length) && !this.pickerDate) {
         this.tableDate = sanitizeDateString(this.inputDate, this.type === 'month' ? 'year' : 'month');
       }
     },
@@ -14224,7 +14219,8 @@ var baseMixins = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_10__["default"])(_
       animate: false,
       animateTimeout: -1,
       isActive: !!this.value,
-      stackMinZIndex: 200
+      stackMinZIndex: 200,
+      previousActiveElement: null
     };
   },
   computed: {
@@ -14245,12 +14241,15 @@ var baseMixins = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_10__["default"])(_
   },
   watch: {
     isActive: function isActive(val) {
+      var _a;
+
       if (val) {
         this.show();
         this.hideScroll();
       } else {
         this.removeOverlay();
         this.unbind();
+        (_a = this.previousActiveElement) === null || _a === void 0 ? void 0 : _a.focus();
       }
     },
     fullscreen: function fullscreen(val) {
@@ -14315,11 +14314,16 @@ var baseMixins = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_10__["default"])(_
     show: function show() {
       var _this = this;
 
-      !this.fullscreen && !this.hideOverlay && this.genOverlay();
-      this.$nextTick(function () {
-        _this.$refs.content.focus();
+      !this.fullscreen && !this.hideOverlay && this.genOverlay(); // Double nextTick to wait for lazy content to be generated
 
-        _this.bind();
+      this.$nextTick(function () {
+        _this.$nextTick(function () {
+          _this.previousActiveElement = document.activeElement;
+
+          _this.$refs.content.focus();
+
+          _this.bind();
+        });
       });
     },
     bind: function bind() {
@@ -16596,9 +16600,9 @@ var VIcon = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_7__["default"])(_mixins
       });
       return explicitSize && SIZE_MAP[explicitSize] || Object(_util_helpers__WEBPACK_IMPORTED_MODULE_5__["convertToUnit"])(this.size);
     },
-    // Component data for both font and svg icon.
+    // Component data for both font icon and SVG wrapper span
     getDefaultData: function getDefaultData() {
-      var data = {
+      return {
         staticClass: 'v-icon notranslate',
         class: {
           'v-icon--disabled': this.disabled,
@@ -16614,7 +16618,20 @@ var VIcon = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_7__["default"])(_mixins
         }, this.attrs$),
         on: this.listeners$
       };
-      return data;
+    },
+    getSvgWrapperData: function getSvgWrapperData() {
+      var fontSize = this.getSize();
+
+      var wrapperData = __assign(__assign({}, this.getDefaultData()), {
+        style: fontSize ? {
+          fontSize: fontSize,
+          height: fontSize,
+          width: fontSize
+        } : undefined
+      });
+
+      this.applyColors(wrapperData);
+      return wrapperData;
     },
     applyColors: function applyColors(data) {
       data.class = __assign(__assign({}, data.class), this.themeClasses);
@@ -16647,37 +16664,37 @@ var VIcon = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_7__["default"])(_mixins
       return h(this.hasClickListener ? 'button' : this.tag, data, newChildren);
     },
     renderSvgIcon: function renderSvgIcon(icon, h) {
-      var fontSize = this.getSize();
-
-      var wrapperData = __assign(__assign({}, this.getDefaultData()), {
-        style: fontSize ? {
-          fontSize: fontSize,
-          height: fontSize,
-          width: fontSize
-        } : undefined
-      });
-
-      wrapperData.class['v-icon--svg'] = true;
-      this.applyColors(wrapperData);
       var svgData = {
+        class: 'v-icon__svg',
         attrs: {
           xmlns: 'http://www.w3.org/2000/svg',
           viewBox: '0 0 24 24',
-          height: fontSize || '24',
-          width: fontSize || '24',
           role: 'img',
           'aria-hidden': true
         }
       };
-      return h(this.hasClickListener ? 'button' : 'span', wrapperData, [h('svg', svgData, [h('path', {
+      var size = this.getSize();
+
+      if (size) {
+        svgData.style = {
+          fontSize: size,
+          height: size,
+          width: size
+        };
+      }
+
+      return h(this.hasClickListener ? 'button' : 'span', this.getSvgWrapperData(), [h('svg', svgData, [h('path', {
         attrs: {
           d: icon
         }
       })])]);
     },
     renderSvgIconComponent: function renderSvgIconComponent(icon, h) {
-      var data = this.getDefaultData();
-      data.class['v-icon--is-component'] = true;
+      var data = {
+        class: {
+          'v-icon__component': true
+        }
+      };
       var size = this.getSize();
 
       if (size) {
@@ -16692,7 +16709,7 @@ var VIcon = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_7__["default"])(_mixins
       var component = icon.component;
       data.props = icon.props;
       data.nativeOn = data.on;
-      return h(component, data);
+      return h(this.hasClickListener ? 'button' : 'span', this.getSvgWrapperData(), [h(component, data)]);
     }
   },
   render: function render(h) {
@@ -18446,7 +18463,6 @@ var baseMixins = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_9__["default"])(_m
   directives: {
     Ripple: _directives_ripple__WEBPACK_IMPORTED_MODULE_6__["default"]
   },
-  inheritAttrs: false,
   inject: {
     isInGroup: {
       default: false
@@ -18461,6 +18477,7 @@ var baseMixins = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_9__["default"])(_m
       default: false
     }
   },
+  inheritAttrs: false,
   props: {
     activeClass: {
       type: String,
@@ -19034,16 +19051,16 @@ var baseMixins = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_13__["default"])(_
 
 /* harmony default export */ __webpack_exports__["default"] = (baseMixins.extend({
   name: 'v-menu',
+  directives: {
+    ClickOutside: _directives_click_outside__WEBPACK_IMPORTED_MODULE_11__["default"],
+    Resize: _directives_resize__WEBPACK_IMPORTED_MODULE_12__["default"]
+  },
   provide: function provide() {
     return {
       isInMenu: true,
       // Pass theme through to default slot
       theme: this.theme
     };
-  },
-  directives: {
-    ClickOutside: _directives_click_outside__WEBPACK_IMPORTED_MODULE_11__["default"],
-    Resize: _directives_resize__WEBPACK_IMPORTED_MODULE_12__["default"]
   },
   props: {
     auto: Boolean,
@@ -19633,15 +19650,15 @@ var baseMixins = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_13__["default"])(O
 
 /* harmony default export */ __webpack_exports__["default"] = (baseMixins.extend({
   name: 'v-navigation-drawer',
-  provide: function provide() {
-    return {
-      isInNav: this.tag === 'nav'
-    };
-  },
   directives: {
     ClickOutside: _directives_click_outside__WEBPACK_IMPORTED_MODULE_9__["default"],
     Resize: _directives_resize__WEBPACK_IMPORTED_MODULE_10__["default"],
     Touch: _directives_touch__WEBPACK_IMPORTED_MODULE_11__["default"]
+  },
+  provide: function provide() {
+    return {
+      isInNav: this.tag === 'nav'
+    };
   },
   props: {
     bottom: Boolean,
@@ -19768,14 +19785,13 @@ var baseMixins = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_13__["default"])(O
     },
     styles: function styles() {
       var translate = this.isBottom ? 'translateY' : 'translateX';
-      var styles = {
+      return {
         height: Object(_util_helpers__WEBPACK_IMPORTED_MODULE_12__["convertToUnit"])(this.height),
         top: !this.isBottom ? Object(_util_helpers__WEBPACK_IMPORTED_MODULE_12__["convertToUnit"])(this.computedTop) : 'auto',
         maxHeight: this.computedMaxHeight != null ? "calc(100% - " + Object(_util_helpers__WEBPACK_IMPORTED_MODULE_12__["convertToUnit"])(this.computedMaxHeight) + ")" : undefined,
         transform: translate + "(" + Object(_util_helpers__WEBPACK_IMPORTED_MODULE_12__["convertToUnit"])(this.computedTransform, '%') + ")",
         width: Object(_util_helpers__WEBPACK_IMPORTED_MODULE_12__["convertToUnit"])(this.computedWidth)
       };
-      return styles;
     }
   },
   watch: {
@@ -20110,7 +20126,7 @@ var __assign = undefined && undefined.__assign || function () {
       }) || item;
 
       if (!itemObj.text || !itemObj.callback) {
-        Object(_util_console__WEBPACK_IMPORTED_MODULE_5__["consoleWarn"])('When using \'segmented\' prop without a selection slot, items must contain both a text and callback property', this);
+        Object(_util_console__WEBPACK_IMPORTED_MODULE_5__["consoleWarn"])('When using "segmented" prop without a selection slot, items must contain both a text and callback property', this);
         return null;
       }
 
@@ -22398,12 +22414,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _VInput__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../VInput */ "./src/components/VInput/index.ts");
 /* harmony import */ var _VTextField_VTextField__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../VTextField/VTextField */ "./src/components/VTextField/VTextField.ts");
 /* harmony import */ var _mixins_comparable__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../mixins/comparable */ "./src/mixins/comparable/index.ts");
-/* harmony import */ var _mixins_filterable__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../mixins/filterable */ "./src/mixins/filterable/index.ts");
-/* harmony import */ var _directives_click_outside__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../directives/click-outside */ "./src/directives/click-outside/index.ts");
-/* harmony import */ var _util_mergeData__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../util/mergeData */ "./src/util/mergeData.ts");
-/* harmony import */ var _util_helpers__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../util/helpers */ "./src/util/helpers.ts");
-/* harmony import */ var _util_console__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../util/console */ "./src/util/console.ts");
-/* harmony import */ var _util_mixins__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../util/mixins */ "./src/util/mixins.ts");
+/* harmony import */ var _mixins_dependent__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../mixins/dependent */ "./src/mixins/dependent/index.ts");
+/* harmony import */ var _mixins_filterable__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../mixins/filterable */ "./src/mixins/filterable/index.ts");
+/* harmony import */ var _directives_click_outside__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../directives/click-outside */ "./src/directives/click-outside/index.ts");
+/* harmony import */ var _util_mergeData__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../util/mergeData */ "./src/util/mergeData.ts");
+/* harmony import */ var _util_helpers__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../util/helpers */ "./src/util/helpers.ts");
+/* harmony import */ var _util_console__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../util/console */ "./src/util/console.ts");
+/* harmony import */ var _util_mixins__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../util/mixins */ "./src/util/mixins.ts");
 var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -22449,6 +22466,7 @@ var __values = undefined && undefined.__values || function (o) {
  // Mixins
 
 
+
  // Directives
 
  // Utilities
@@ -22466,13 +22484,13 @@ var defaultMenuProps = {
   maxHeight: 304
 }; // Types
 
-var baseMixins = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_13__["default"])(_VTextField_VTextField__WEBPACK_IMPORTED_MODULE_6__["default"], _mixins_comparable__WEBPACK_IMPORTED_MODULE_7__["default"], _mixins_filterable__WEBPACK_IMPORTED_MODULE_8__["default"]);
+var baseMixins = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_14__["default"])(_VTextField_VTextField__WEBPACK_IMPORTED_MODULE_6__["default"], _mixins_comparable__WEBPACK_IMPORTED_MODULE_7__["default"], _mixins_dependent__WEBPACK_IMPORTED_MODULE_8__["default"], _mixins_filterable__WEBPACK_IMPORTED_MODULE_9__["default"]);
 /* @vue/component */
 
 /* harmony default export */ __webpack_exports__["default"] = (baseMixins.extend().extend({
   name: 'v-select',
   directives: {
-    ClickOutside: _directives_click_outside__WEBPACK_IMPORTED_MODULE_9__["default"]
+    ClickOutside: _directives_click_outside__WEBPACK_IMPORTED_MODULE_10__["default"]
   },
   props: {
     appendIcon: {
@@ -22565,11 +22583,16 @@ var baseMixins = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_13__["default"])(_
       return this.multiple ? this.selectedItems.length : (this.getText(this.selectedItems[0]) || '').toString().length;
     },
     directives: function directives() {
+      var _this = this;
+
       return this.isFocused ? [{
         name: 'click-outside',
         value: {
           handler: this.blur,
-          closeConditional: this.closeConditional
+          closeConditional: this.closeConditional,
+          include: function include() {
+            return _this.getOpenDependentElements();
+          }
         }
       }] : undefined;
     },
@@ -22616,7 +22639,7 @@ var baseMixins = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_13__["default"])(_
     },
     staticList: function staticList() {
       if (this.$slots['no-data'] || this.$slots['prepend-item'] || this.$slots['append-item']) {
-        Object(_util_console__WEBPACK_IMPORTED_MODULE_12__["consoleError"])('assert: staticList should not be called if slots are used');
+        Object(_util_console__WEBPACK_IMPORTED_MODULE_13__["consoleError"])('assert: staticList should not be called if slots are used');
       }
 
       return this.$createElement(_VSelectList__WEBPACK_IMPORTED_MODULE_4__["default"], this.listData);
@@ -22709,7 +22732,13 @@ var baseMixins = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_13__["default"])(_
       var uniqueValues = new Map();
 
       for (var index = 0; index < arr.length; ++index) {
-        var item = arr[index];
+        var item = arr[index]; // Do not deduplicate headers or dividers (#12517)
+
+        if (item.header || item.divider) {
+          uniqueValues.set(item, item);
+          continue;
+        }
+
         var val = this.getValue(item); // TODO: comparator
 
         !uniqueValues.has(val) && uniqueValues.set(val, item);
@@ -22789,7 +22818,7 @@ var baseMixins = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_13__["default"])(_
 
       if (type === 'append') {
         // Don't allow the dropdown icon to be focused
-        icon.children[0].data = Object(_util_mergeData__WEBPACK_IMPORTED_MODULE_10__["default"])(icon.children[0].data, {
+        icon.children[0].data = Object(_util_mergeData__WEBPACK_IMPORTED_MODULE_11__["default"])(icon.children[0].data, {
           attrs: {
             tabindex: icon.children[0].componentOptions.listeners && '-1',
             'aria-hidden': 'true',
@@ -22803,7 +22832,7 @@ var baseMixins = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_13__["default"])(_
     genInput: function genInput() {
       var input = _VTextField_VTextField__WEBPACK_IMPORTED_MODULE_6__["default"].options.methods.genInput.call(this);
       delete input.data.attrs.name;
-      input.data = Object(_util_mergeData__WEBPACK_IMPORTED_MODULE_10__["default"])(input.data, {
+      input.data = Object(_util_mergeData__WEBPACK_IMPORTED_MODULE_11__["default"])(input.data, {
         domProps: {
           value: null
         },
@@ -22811,8 +22840,8 @@ var baseMixins = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_13__["default"])(_
           readonly: true,
           type: 'text',
           'aria-readonly': String(this.isReadonly),
-          'aria-activedescendant': Object(_util_helpers__WEBPACK_IMPORTED_MODULE_11__["getObjectValueByPath"])(this.$refs.menu, 'activeTile.id'),
-          autocomplete: Object(_util_helpers__WEBPACK_IMPORTED_MODULE_11__["getObjectValueByPath"])(input.data, 'attrs.autocomplete', 'off')
+          'aria-activedescendant': Object(_util_helpers__WEBPACK_IMPORTED_MODULE_12__["getObjectValueByPath"])(this.$refs.menu, 'activeTile.id'),
+          autocomplete: Object(_util_helpers__WEBPACK_IMPORTED_MODULE_12__["getObjectValueByPath"])(input.data, 'attrs.autocomplete', 'off')
         },
         on: {
           keypress: this.onKeyPress
@@ -22939,13 +22968,13 @@ var baseMixins = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_13__["default"])(_
       return this.$refs.menu ? this.$refs.menu.listIndex : -1;
     },
     getDisabled: function getDisabled(item) {
-      return Object(_util_helpers__WEBPACK_IMPORTED_MODULE_11__["getPropertyFromItem"])(item, this.itemDisabled, false);
+      return Object(_util_helpers__WEBPACK_IMPORTED_MODULE_12__["getPropertyFromItem"])(item, this.itemDisabled, false);
     },
     getText: function getText(item) {
-      return Object(_util_helpers__WEBPACK_IMPORTED_MODULE_11__["getPropertyFromItem"])(item, this.itemText, item);
+      return Object(_util_helpers__WEBPACK_IMPORTED_MODULE_12__["getPropertyFromItem"])(item, this.itemText, item);
     },
     getValue: function getValue(item) {
-      return Object(_util_helpers__WEBPACK_IMPORTED_MODULE_11__["getPropertyFromItem"])(item, this.itemValue, this.getText(item));
+      return Object(_util_helpers__WEBPACK_IMPORTED_MODULE_12__["getPropertyFromItem"])(item, this.itemValue, this.getText(item));
     },
     onBlur: function onBlur(e) {
       e && this.$emit('blur', e);
@@ -23018,16 +23047,16 @@ var baseMixins = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_13__["default"])(_
     onKeyDown: function onKeyDown(e) {
       var _this = this;
 
-      if (this.isReadonly && e.keyCode !== _util_helpers__WEBPACK_IMPORTED_MODULE_11__["keyCodes"].tab) return;
+      if (this.isReadonly && e.keyCode !== _util_helpers__WEBPACK_IMPORTED_MODULE_12__["keyCodes"].tab) return;
       var keyCode = e.keyCode;
       var menu = this.$refs.menu; // If enter, space, open menu
 
-      if ([_util_helpers__WEBPACK_IMPORTED_MODULE_11__["keyCodes"].enter, _util_helpers__WEBPACK_IMPORTED_MODULE_11__["keyCodes"].space].includes(keyCode)) this.activateMenu();
+      if ([_util_helpers__WEBPACK_IMPORTED_MODULE_12__["keyCodes"].enter, _util_helpers__WEBPACK_IMPORTED_MODULE_12__["keyCodes"].space].includes(keyCode)) this.activateMenu();
       this.$emit('keydown', e);
       if (!menu) return; // If menu is active, allow default
       // listIndex change from menu
 
-      if (this.isMenuActive && keyCode !== _util_helpers__WEBPACK_IMPORTED_MODULE_11__["keyCodes"].tab) {
+      if (this.isMenuActive && keyCode !== _util_helpers__WEBPACK_IMPORTED_MODULE_12__["keyCodes"].tab) {
         this.$nextTick(function () {
           menu.changeListIndex(e);
 
@@ -23039,13 +23068,13 @@ var baseMixins = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_13__["default"])(_
       // available options
 
 
-      if (!this.isMenuActive && [_util_helpers__WEBPACK_IMPORTED_MODULE_11__["keyCodes"].up, _util_helpers__WEBPACK_IMPORTED_MODULE_11__["keyCodes"].down].includes(keyCode)) return this.onUpDown(e); // If escape deactivate the menu
+      if (!this.isMenuActive && [_util_helpers__WEBPACK_IMPORTED_MODULE_12__["keyCodes"].up, _util_helpers__WEBPACK_IMPORTED_MODULE_12__["keyCodes"].down].includes(keyCode)) return this.onUpDown(e); // If escape deactivate the menu
 
-      if (keyCode === _util_helpers__WEBPACK_IMPORTED_MODULE_11__["keyCodes"].esc) return this.onEscDown(e); // If tab - select item or close menu
+      if (keyCode === _util_helpers__WEBPACK_IMPORTED_MODULE_12__["keyCodes"].esc) return this.onEscDown(e); // If tab - select item or close menu
 
-      if (keyCode === _util_helpers__WEBPACK_IMPORTED_MODULE_11__["keyCodes"].tab) return this.onTabDown(e); // If space preventDefault
+      if (keyCode === _util_helpers__WEBPACK_IMPORTED_MODULE_12__["keyCodes"].tab) return this.onTabDown(e); // If space preventDefault
 
-      if (keyCode === _util_helpers__WEBPACK_IMPORTED_MODULE_11__["keyCodes"].space) return this.onSpaceDown(e);
+      if (keyCode === _util_helpers__WEBPACK_IMPORTED_MODULE_12__["keyCodes"].space) return this.onSpaceDown(e);
     },
     onMenuActiveChange: function onMenuActiveChange(val) {
       // If menu is closing and mulitple
@@ -23063,7 +23092,8 @@ var baseMixins = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_13__["default"])(_
       }
     },
     onMouseUp: function onMouseUp(e) {
-      var _this = this;
+      var _this = this; // eslint-disable-next-line sonarjs/no-collapsible-if
+
 
       if (this.hasMouseDown && e.which !== 3 && this.isInteractive) {
         // If append inner is present
@@ -23072,10 +23102,7 @@ var baseMixins = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_13__["default"])(_
         if (this.isAppendInner(e.target)) {
           this.$nextTick(function () {
             return _this.isMenuActive = !_this.isMenuActive;
-          }); // If user is clicking in the container
-          // and field is enclosed, activate it
-        } else if (this.isEnclosed) {
-          this.isMenuActive = true;
+          });
         }
       }
 
@@ -23131,7 +23158,7 @@ var baseMixins = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_13__["default"])(_
       menu.isBooted = true;
       window.requestAnimationFrame(function () {
         menu.getTiles();
-        _util_helpers__WEBPACK_IMPORTED_MODULE_11__["keyCodes"].up === keyCode ? menu.prevTile() : menu.nextTile();
+        _util_helpers__WEBPACK_IMPORTED_MODULE_12__["keyCodes"].up === keyCode ? menu.prevTile() : menu.nextTile();
         menu.activeTile && menu.activeTile.click();
       });
     },
@@ -23384,8 +23411,8 @@ var __assign = undefined && undefined.__assign || function () {
       var searchInput = (this.searchInput || '').toString().toLocaleLowerCase();
       var index = text.toLocaleLowerCase().indexOf(searchInput);
       if (index < 0) return {
-        start: '',
-        middle: text,
+        start: text,
+        middle: '',
         end: ''
       };
       var start = text.slice(0, index);
@@ -24526,8 +24553,7 @@ var __assign = undefined && undefined.__assign || function () {
       return this.step > 0 ? parseFloat(this.step) : 0;
     },
     inputWidth: function inputWidth() {
-      var value = (this.roundValue(this.internalValue) - this.minValue) / (this.maxValue - this.minValue) * 100;
-      return value;
+      return (this.roundValue(this.internalValue) - this.minValue) / (this.maxValue - this.minValue) * 100;
     },
     trackFillStyles: function trackFillStyles() {
       var _a;
@@ -25438,10 +25464,11 @@ var __assign = undefined && undefined.__assign || function () {
       return this.$createElement('defs', [this.$createElement('linearGradient', {
         attrs: {
           id: this._uid,
-          x1: +(gradientDirection === 'left'),
-          y1: +(gradientDirection === 'top'),
-          x2: +(gradientDirection === 'right'),
-          y2: +(gradientDirection === 'bottom')
+          gradientUnits: 'userSpaceOnUse',
+          x1: gradientDirection === 'left' ? '100%' : '0',
+          y1: gradientDirection === 'top' ? '100%' : '0',
+          x2: gradientDirection === 'right' ? '100%' : '0',
+          y2: gradientDirection === 'bottom' ? '100%' : '0'
         }
       }, stops)]);
     },
@@ -25617,7 +25644,7 @@ function genPoints(values, boundary) {
   return values.map(function (value, index) {
     return {
       x: minX + index * gridX,
-      y: maxY - (value - minValue) * gridY + +(index === totalValues - 1) * 0.00001 - +(index === 0) * 0.00001,
+      y: maxY - (value - minValue) * gridY,
       value: value
     };
   });
@@ -27542,10 +27569,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _mixins_intersectable__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../mixins/intersectable */ "./src/mixins/intersectable/index.ts");
 /* harmony import */ var _mixins_loadable__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../mixins/loadable */ "./src/mixins/loadable/index.ts");
 /* harmony import */ var _mixins_validatable__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../mixins/validatable */ "./src/mixins/validatable/index.ts");
-/* harmony import */ var _directives_ripple__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../directives/ripple */ "./src/directives/ripple/index.ts");
-/* harmony import */ var _util_helpers__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../util/helpers */ "./src/util/helpers.ts");
-/* harmony import */ var _util_console__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../util/console */ "./src/util/console.ts");
-/* harmony import */ var _util_mixins__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../util/mixins */ "./src/util/mixins.ts");
+/* harmony import */ var _directives_resize__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../directives/resize */ "./src/directives/resize/index.ts");
+/* harmony import */ var _directives_ripple__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../directives/ripple */ "./src/directives/ripple/index.ts");
+/* harmony import */ var _util_helpers__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../util/helpers */ "./src/util/helpers.ts");
+/* harmony import */ var _util_console__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../util/console */ "./src/util/console.ts");
+/* harmony import */ var _util_mixins__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../util/mixins */ "./src/util/mixins.ts");
 var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -27560,6 +27588,41 @@ var __assign = undefined && undefined.__assign || function () {
   };
 
   return __assign.apply(this, arguments);
+};
+
+var __read = undefined && undefined.__read || function (o, n) {
+  var m = typeof Symbol === "function" && o[Symbol.iterator];
+  if (!m) return o;
+  var i = m.call(o),
+      r,
+      ar = [],
+      e;
+
+  try {
+    while ((n === void 0 || n-- > 0) && !(r = i.next()).done) {
+      ar.push(r.value);
+    }
+  } catch (error) {
+    e = {
+      error: error
+    };
+  } finally {
+    try {
+      if (r && !r.done && (m = i["return"])) m.call(i);
+    } finally {
+      if (e) throw e.error;
+    }
+  }
+
+  return ar;
+};
+
+var __spread = undefined && undefined.__spread || function () {
+  for (var ar = [], i = 0; i < arguments.length; i++) {
+    ar = ar.concat(__read(arguments[i]));
+  }
+
+  return ar;
 }; // Styles
 
 
@@ -27574,14 +27637,15 @@ var __assign = undefined && undefined.__assign || function () {
 
  // Directives
 
+
  // Utilities
 
 
  // Types
 
 
-var baseMixins = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_10__["default"])(_VInput__WEBPACK_IMPORTED_MODULE_1__["default"], Object(_mixins_intersectable__WEBPACK_IMPORTED_MODULE_4__["default"])({
-  onVisible: ['setLabelWidth', 'setPrefixWidth', 'setPrependWidth', 'tryAutofocus']
+var baseMixins = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_11__["default"])(_VInput__WEBPACK_IMPORTED_MODULE_1__["default"], Object(_mixins_intersectable__WEBPACK_IMPORTED_MODULE_4__["default"])({
+  onVisible: ['onResize', 'tryAutofocus']
 }), _mixins_loadable__WEBPACK_IMPORTED_MODULE_5__["default"]);
 var dirtyTypes = ['color', 'file', 'time', 'date', 'datetime-local', 'week', 'month'];
 /* @vue/component */
@@ -27589,7 +27653,8 @@ var dirtyTypes = ['color', 'file', 'time', 'date', 'datetime-local', 'week', 'mo
 /* harmony default export */ __webpack_exports__["default"] = (baseMixins.extend().extend({
   name: 'v-text-field',
   directives: {
-    ripple: _directives_ripple__WEBPACK_IMPORTED_MODULE_7__["default"]
+    resize: _directives_resize__WEBPACK_IMPORTED_MODULE_7__["default"],
+    ripple: _directives_ripple__WEBPACK_IMPORTED_MODULE_8__["default"]
   },
   inheritAttrs: false,
   props: {
@@ -27663,7 +27728,7 @@ var dirtyTypes = ['color', 'file', 'time', 'date', 'datetime-local', 'week', 'mo
         return this.counterValue(this.internalValue);
       }
 
-      return (this.internalValue || '').toString().length;
+      return __spread((this.internalValue || '').toString()).length;
     },
     hasCounter: function hasCounter() {
       return this.counter !== false && this.counter != null;
@@ -27717,7 +27782,7 @@ var dirtyTypes = ['color', 'file', 'time', 'date', 'datetime-local', 'week', 'mo
     }
   },
   watch: {
-    labelValue: 'setLabelWidth',
+    // labelValue: 'setLabelWidth', // moved to mounted, see #11533
     outlined: 'setLabelWidth',
     label: function label() {
       this.$nextTick(this.setLabelWidth);
@@ -27733,28 +27798,29 @@ var dirtyTypes = ['color', 'file', 'time', 'date', 'datetime-local', 'week', 'mo
   created: function created() {
     /* istanbul ignore next */
     if (this.$attrs.hasOwnProperty('box')) {
-      Object(_util_console__WEBPACK_IMPORTED_MODULE_9__["breaking"])('box', 'filled', this);
+      Object(_util_console__WEBPACK_IMPORTED_MODULE_10__["breaking"])('box', 'filled', this);
     }
     /* istanbul ignore next */
 
 
     if (this.$attrs.hasOwnProperty('browser-autocomplete')) {
-      Object(_util_console__WEBPACK_IMPORTED_MODULE_9__["breaking"])('browser-autocomplete', 'autocomplete', this);
+      Object(_util_console__WEBPACK_IMPORTED_MODULE_10__["breaking"])('browser-autocomplete', 'autocomplete', this);
     }
     /* istanbul ignore if */
 
 
     if (this.shaped && !(this.filled || this.outlined || this.isSolo)) {
-      Object(_util_console__WEBPACK_IMPORTED_MODULE_9__["consoleWarn"])('shaped should be used with either filled or outlined', this);
+      Object(_util_console__WEBPACK_IMPORTED_MODULE_10__["consoleWarn"])('shaped should be used with either filled or outlined', this);
     }
   },
   mounted: function mounted() {
-    var _this = this;
+    var _this = this; // #11533
 
+
+    this.$watch(function () {
+      return _this.labelValue;
+    }, this.setLabelWidth);
     this.autofocus && this.tryAutofocus();
-    this.setLabelWidth();
-    this.setPrefixWidth();
-    this.setPrependWidth();
     requestAnimationFrame(function () {
       return _this.isBooted = true;
     });
@@ -27808,8 +27874,8 @@ var dirtyTypes = ['color', 'file', 'time', 'date', 'datetime-local', 'week', 'mo
     genIconSlot: function genIconSlot() {
       var slot = [];
 
-      if (this.$slots['append']) {
-        slot.push(this.$slots['append']);
+      if (this.$slots.append) {
+        slot.push(this.$slots.append);
       } else if (this.appendIcon) {
         slot.push(this.genIcon('append'));
       }
@@ -27889,13 +27955,13 @@ var dirtyTypes = ['color', 'file', 'time', 'date', 'datetime-local', 'week', 'mo
       });
       return this.$createElement('legend', {
         style: {
-          width: !this.isSingle ? Object(_util_helpers__WEBPACK_IMPORTED_MODULE_8__["convertToUnit"])(width) : undefined
+          width: !this.isSingle ? Object(_util_helpers__WEBPACK_IMPORTED_MODULE_9__["convertToUnit"])(width) : undefined
         }
       }, [span]);
     },
     genInput: function genInput() {
       var listeners = Object.assign({}, this.listeners$);
-      delete listeners['change']; // Change should not be bound externally
+      delete listeners.change; // Change should not be bound externally
 
       return this.$createElement('input', {
         style: {},
@@ -27916,7 +27982,14 @@ var dirtyTypes = ['color', 'file', 'time', 'date', 'datetime-local', 'week', 'mo
           focus: this.onFocus,
           keydown: this.onKeyDown
         }),
-        ref: 'input'
+        ref: 'input',
+        directives: [{
+          name: 'resize',
+          modifiers: {
+            quiet: true
+          },
+          value: this.onResize
+        }]
       });
     },
     genMessages: function genMessages() {
@@ -27968,7 +28041,7 @@ var dirtyTypes = ['color', 'file', 'time', 'date', 'datetime-local', 'week', 'mo
       this.badInput = target.validity && target.validity.badInput;
     },
     onKeyDown: function onKeyDown(e) {
-      if (e.keyCode === _util_helpers__WEBPACK_IMPORTED_MODULE_8__["keyCodes"].enter) this.$emit('change', this.internalValue);
+      if (e.keyCode === _util_helpers__WEBPACK_IMPORTED_MODULE_9__["keyCodes"].enter) this.$emit('change', this.internalValue);
       this.$emit('keydown', e);
     },
     onMouseDown: function onMouseDown(e) {
@@ -28010,6 +28083,11 @@ var dirtyTypes = ['color', 'file', 'time', 'date', 'datetime-local', 'week', 'mo
       } else if (this.initialValue !== this.lazyValue) {
         this.$emit('change', this.lazyValue);
       }
+    },
+    onResize: function onResize() {
+      this.setLabelWidth();
+      this.setPrefixWidth();
+      this.setPrependWidth();
     }
   }
 }));
@@ -31120,13 +31198,13 @@ var __assign = undefined && undefined.__assign || function () {
 
 /* harmony default export */ __webpack_exports__["default"] = (_VItemGroup_VItemGroup__WEBPACK_IMPORTED_MODULE_4__["BaseItemGroup"].extend({
   name: 'v-window',
+  directives: {
+    Touch: _directives_touch__WEBPACK_IMPORTED_MODULE_1__["default"]
+  },
   provide: function provide() {
     return {
       windowGroup: this
     };
-  },
-  directives: {
-    Touch: _directives_touch__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   props: {
     activeClass: {
@@ -32380,13 +32458,7 @@ function directive(e, el, binding) {
   // Explicitly check for false to allow fallback compatibility
   // with non-toggleable components
 
-  if (!e || isActive(e) === false) return; // If click was triggered programmaticaly (domEl.click()) then
-  // it shouldn't be treated as click-outside
-  // Chrome/Firefox support isTrusted property
-  // IE/Edge support pointerType property (empty if not triggered
-  // by pointing device)
-
-  if ('isTrusted' in e && !e.isTrusted || 'pointerType' in e && !e.pointerType) return; // Check if additional elements were passed to be included in check
+  if (!e || isActive(e) === false) return; // Check if additional elements were passed to be included in check
   // (click must be outside all included elements, if any)
 
   var elements = (_typeof(binding.value) === 'object' && binding.value.include || function () {
@@ -32738,12 +32810,12 @@ var __spread = undefined && undefined.__spread || function () {
 var DELAY_RIPPLE = 80;
 
 function transform(el, value) {
-  el.style['transform'] = value;
-  el.style['webkitTransform'] = value;
+  el.style.transform = value;
+  el.style.webkitTransform = value;
 }
 
 function opacity(el, value) {
-  el.style['opacity'] = value.toString();
+  el.style.opacity = value.toString();
 }
 
 function isTouchEvent(e) {
@@ -33306,7 +33378,7 @@ function () {
 
   Vuetify.install = _install__WEBPACK_IMPORTED_MODULE_0__["install"];
   Vuetify.installed = false;
-  Vuetify.version = "2.3.10";
+  Vuetify.version = "2.3.16";
   Vuetify.config = {
     silent: false
   };
@@ -33388,7 +33460,7 @@ function install(Vue, args) {
   install.installed = true;
 
   if (vue__WEBPACK_IMPORTED_MODULE_0___default.a !== Vue) {
-    Object(_util_console__WEBPACK_IMPORTED_MODULE_1__["consoleError"])('Multiple instances of Vue detected\nSee https://github.com/vuetifyjs/vuetify/issues/4068\n\nIf you\'re seeing "$attrs is readonly", it\'s caused by this');
+    Object(_util_console__WEBPACK_IMPORTED_MODULE_1__["consoleError"])("Multiple instances of Vue detected\nSee https://github.com/vuetifyjs/vuetify/issues/4068\n\nIf you're seeing \"$attrs is readonly\", it's caused by this");
   }
 
   var components = args.components || {};
@@ -33646,7 +33718,7 @@ __webpack_require__.r(__webpack_exports__);
   datePicker: {
     itemsSelected: '{0} seleccionats',
     nextMonthAriaLabel: 'El mes que ve',
-    nextYearAriaLabel: 'L\'any que ve',
+    nextYearAriaLabel: "L'any que ve",
     prevMonthAriaLabel: 'Mes anterior',
     prevYearAriaLabel: 'Any anterior'
   },
@@ -34304,7 +34376,7 @@ __webpack_require__.r(__webpack_exports__);
   close: 'Fermer',
   dataIterator: {
     noResultsText: 'Aucun enregistrement correspondant trouvé',
-    loadingText: "Chargement de l'élément..."
+    loadingText: "Chargement de l'\xE9l\xE9ment..."
   },
   dataTable: {
     itemsPerPageText: 'Lignes par page:',
@@ -34330,7 +34402,7 @@ __webpack_require__.r(__webpack_exports__);
   datePicker: {
     itemsSelected: '{0} sélectionnés',
     nextMonthAriaLabel: 'Le mois prochain',
-    nextYearAriaLabel: 'L\'année prochaine',
+    nextYearAriaLabel: "L'ann\xE9e prochaine",
     prevMonthAriaLabel: 'Le mois précédent',
     prevYearAriaLabel: 'Année précédente'
   },
@@ -34848,7 +34920,7 @@ __webpack_require__.r(__webpack_exports__);
       sortDescending: 'Ordinati in ordine decrescente.',
       sortAscending: 'Ordinati in ordine crescente.',
       sortNone: 'Non ordinato.',
-      activateNone: 'Attiva per rimuovere l\'ordinamento.',
+      activateNone: "Attiva per rimuovere l'ordinamento.",
       activateDescending: 'Attiva per ordinare in ordine decrescente.',
       activateAscending: 'Attiva per ordinare in ordine crescente.'
     },
@@ -34866,9 +34938,9 @@ __webpack_require__.r(__webpack_exports__);
   datePicker: {
     itemsSelected: '{0} selezionati',
     nextMonthAriaLabel: 'Il prossimo mese',
-    nextYearAriaLabel: 'L\'anno prossimo',
+    nextYearAriaLabel: "L'anno prossimo",
     prevMonthAriaLabel: 'Il mese scorso',
-    prevYearAriaLabel: 'L\'anno scorso'
+    prevYearAriaLabel: "L'anno scorso"
   },
   noDataText: 'Nessun elemento disponibile',
   carousel: {
@@ -35980,19 +36052,19 @@ __webpack_require__.r(__webpack_exports__);
   close: 'ปิด',
   dataIterator: {
     noResultsText: 'ไม่พบข้อมูลที่ค้นหา',
-    loadingText: 'กำลังโหลดข้อมูล... กรุณารอสักครู่'
+    loadingText: 'กำลังโหลดข้อมูล...'
   },
   dataTable: {
     itemsPerPageText: 'แถวต่อหน้า:',
     ariaLabel: {
-      sortDescending: 'เรียงลำดับจากมากไปน้อย กดเพื่อปิดการเรียงลำดับ',
-      sortAscending: 'เรียงจากน้อยไปมาก กดเพื่อเรียงลำดับจากมากไปน้อย',
-      sortNone: 'ไม่ได้จัดเรียง กดเพื่อเรียงลำดับจากน้อยไปมาก',
-      activateNone: 'Activate to remove sorting.',
-      activateDescending: 'Activate to sort descending.',
-      activateAscending: 'Activate to sort ascending.'
+      sortDescending: 'เรียงจากมากไปน้อยอยู่',
+      sortAscending: 'เรียงจากน้อยไปมากอยู่',
+      sortNone: 'ไม่ได้เรียงลำดับ',
+      activateNone: 'กดเพื่อปิดการเรียงลำดับ',
+      activateDescending: 'กดเพื่อเรียงจากมากไปน้อย',
+      activateAscending: 'กดเพื่อเรียงจากน้อยไปมาก'
     },
-    sortBy: 'จัดเรียงตาม'
+    sortBy: 'เรียงตาม'
   },
   dataFooter: {
     itemsPerPageText: 'รายการต่อหน้า:',
@@ -36005,21 +36077,21 @@ __webpack_require__.r(__webpack_exports__);
   },
   datePicker: {
     itemsSelected: 'เลือก {0} วัน',
-    nextMonthAriaLabel: 'เดือนหน้า',
-    nextYearAriaLabel: 'ปีหน้า',
-    prevMonthAriaLabel: 'เดือนที่แล้ว',
-    prevYearAriaLabel: 'ปีก่อน'
+    nextMonthAriaLabel: 'เดือนถัดไป',
+    nextYearAriaLabel: 'ปีถัดไป',
+    prevMonthAriaLabel: 'เดือนก่อนหน้า',
+    prevYearAriaLabel: 'ปีก่อนหน้า'
   },
   noDataText: 'ไม่มีข้อมูล',
   carousel: {
     prev: 'ภาพก่อนหน้า',
-    next: 'ภาพต่อไป',
+    next: 'ภาพถัดไป',
     ariaLabel: {
-      delimiter: 'Carousel slide {0} of {1}'
+      delimiter: 'ภาพสไลด์ที่ {0} จาก {1}'
     }
   },
   calendar: {
-    moreEvents: 'อีก {0}'
+    moreEvents: 'มีอีก {0}'
   },
   fileInput: {
     counter: '{0} ไฟล์',
@@ -36031,11 +36103,11 @@ __webpack_require__.r(__webpack_exports__);
   },
   pagination: {
     ariaLabel: {
-      wrapper: 'การแบ่งหน้าการนำทาง',
+      wrapper: 'การนำทางไปยังหน้า',
       next: 'หน้าต่อไป',
       previous: 'หน้าที่แล้ว',
       page: 'ไปที่หน้า {0}',
-      currentPage: 'หน้าปัจจุบันหน้า {0}'
+      currentPage: 'หน้าปัจจุบัน (หน้า {0})'
     }
   }
 });
@@ -37427,7 +37499,7 @@ function factory(namespace, child, parent) {
     }
   });
 }
-/* eslint-disable-next-line no-redeclare */
+/* eslint-disable-next-line @typescript-eslint/no-redeclare */
 
 var Groupable = factory('itemGroup');
 /* harmony default export */ __webpack_exports__["default"] = (Groupable);
@@ -38520,7 +38592,7 @@ function factory(prop, event) {
     }, _b)
   });
 }
-/* eslint-disable-next-line no-redeclare */
+/* eslint-disable-next-line @typescript-eslint/no-redeclare */
 
 var Proxyable = factory();
 /* harmony default export */ __webpack_exports__["default"] = (Proxyable);
@@ -39400,7 +39472,7 @@ var __spread = undefined && undefined.__spread || function () {
 /*!***************************************!*\
   !*** ./src/mixins/themeable/index.ts ***!
   \***************************************/
-/*! exports provided: functionalThemeClasses, default */
+/*! exports provided: default, functionalThemeClasses */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -39425,14 +39497,6 @@ var __assign = undefined && undefined.__assign || function () {
 };
 
 
-function functionalThemeClasses(context) {
-  var vm = __assign(__assign({}, context.props), context.injections);
-
-  var isDark = Themeable.options.computed.isDark.call(vm);
-  return Themeable.options.computed.themeClasses.call({
-    isDark: isDark
-  });
-}
 /* @vue/component */
 
 var Themeable = vue__WEBPACK_IMPORTED_MODULE_0___default.a.extend().extend({
@@ -39521,6 +39585,14 @@ var Themeable = vue__WEBPACK_IMPORTED_MODULE_0___default.a.extend().extend({
   }
 });
 /* harmony default export */ __webpack_exports__["default"] = (Themeable);
+function functionalThemeClasses(context) {
+  var vm = __assign(__assign({}, context.props), context.injections);
+
+  var isDark = Themeable.options.computed.isDark.call(vm);
+  return Themeable.options.computed.themeClasses.call({
+    isDark: isDark
+  });
+}
 
 /***/ }),
 
@@ -39569,7 +39641,7 @@ function factory(prop, event) {
     }, _b)
   });
 }
-/* eslint-disable-next-line no-redeclare */
+/* eslint-disable-next-line @typescript-eslint/no-redeclare */
 
 var Toggleable = factory();
 /* harmony default export */ __webpack_exports__["default"] = (Toggleable);
@@ -40022,7 +40094,7 @@ var __extends = undefined && undefined.__extends || function () {
       d.__proto__ = b;
     } || function (d, b) {
       for (var p in b) {
-        if (b.hasOwnProperty(p)) d[p] = b[p];
+        if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p];
       }
     };
 
@@ -40116,7 +40188,7 @@ var __extends = undefined && undefined.__extends || function () {
       d.__proto__ = b;
     } || function (d, b) {
       for (var p in b) {
-        if (b.hasOwnProperty(p)) d[p] = b[p];
+        if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p];
       }
     };
 
@@ -40394,7 +40466,7 @@ var __extends = undefined && undefined.__extends || function () {
       d.__proto__ = b;
     } || function (d, b) {
       for (var p in b) {
-        if (b.hasOwnProperty(p)) d[p] = b[p];
+        if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p];
       }
     };
 
@@ -40476,7 +40548,6 @@ function goTo(_target, _settings) {
   /* istanbul ignore else */
 
   if (!ease) throw new TypeError("Easing function \"" + settings.easing + "\" not found."); // Cannot be tested properly in jsdom
-  // tslint:disable-next-line:promise-must-complete
 
   /* istanbul ignore next */
 
@@ -40595,7 +40666,7 @@ var __extends = undefined && undefined.__extends || function () {
       d.__proto__ = b;
     } || function (d, b) {
       for (var p in b) {
-        if (b.hasOwnProperty(p)) d[p] = b[p];
+        if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p];
       }
     };
 
@@ -40933,7 +41004,7 @@ var icons = {
   edit: 'mdi-pencil',
   ratingEmpty: 'mdi-star-outline',
   ratingFull: 'mdi-star',
-  ratingHalf: 'mdi-star-half',
+  ratingHalf: 'mdi-star-half-full',
   loading: 'mdi-cached',
   first: 'mdi-page-first',
   last: 'mdi-page-last',
@@ -41007,7 +41078,7 @@ var __extends = undefined && undefined.__extends || function () {
       d.__proto__ = b;
     } || function (d, b) {
       for (var p in b) {
-        if (b.hasOwnProperty(p)) d[p] = b[p];
+        if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p];
       }
     };
 
@@ -41172,7 +41243,7 @@ var __extends = undefined && undefined.__extends || function () {
       d.__proto__ = b;
     } || function (d, b) {
       for (var p in b) {
-        if (b.hasOwnProperty(p)) d[p] = b[p];
+        if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p];
       }
     };
 
@@ -41292,7 +41363,7 @@ var __extends = undefined && undefined.__extends || function () {
       d.__proto__ = b;
     } || function (d, b) {
       for (var p in b) {
-        if (b.hasOwnProperty(p)) d[p] = b[p];
+        if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p];
       }
     };
 
@@ -41354,8 +41425,9 @@ function (_super) {
   }
 
   Object.defineProperty(Theme.prototype, "css", {
-    // When setting css, check for element
-    // and apply new values
+    // When setting css, check for element and apply new values
+
+    /* eslint-disable-next-line accessor-pairs */
     set: function set(val) {
       if (this.vueMeta) {
         if (this.isVueMeta23) {
@@ -42985,9 +43057,9 @@ function getNestedValue(obj, path, fallback) {
 function deepEqual(a, b) {
   if (a === b) return true;
 
-  if (a instanceof Date && b instanceof Date) {
-    // If the values are Date, they were convert to timestamp with getTime and compare it
-    if (a.getTime() !== b.getTime()) return false;
+  if (a instanceof Date && b instanceof Date && a.getTime() !== b.getTime()) {
+    // If the values are Date, compare them as timestamps
+    return false;
   }
 
   if (a !== Object(a) || b !== Object(b)) {

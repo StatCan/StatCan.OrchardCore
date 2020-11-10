@@ -18080,17 +18080,17 @@ html.overflow-y-hidden {
 .v-icon--disabled {
   pointer-events: none;
 }
-.v-icon--is-component {
+.v-icon--dense__component, .v-icon--dense__svg {
+  height: 20px;
+}
+.v-icon__component {
   height: 24px;
   width: 24px;
 }
-.v-icon--svg {
+.v-icon__svg {
   height: 24px;
   width: 24px;
   fill: currentColor;
-}
-.v-icon--dense--is-component {
-  height: 20px;
 }
 .v-btn:not(.v-btn--outlined).primary, .v-btn:not(.v-btn--outlined).secondary, .v-btn:not(.v-btn--outlined).accent, .v-btn:not(.v-btn--outlined).success, .v-btn:not(.v-btn--outlined).error, .v-btn:not(.v-btn--outlined).warning, .v-btn:not(.v-btn--outlined).info {
   color: #FFFFFF;
@@ -18554,7 +18554,7 @@ html.overflow-y-hidden {
   justify-content: center;
 }
 .v-progress-circular__underlay {
-  stroke: rgba(0, 0, 0, 0.1);
+  stroke: rgba(158, 158, 158, 0.4);
   z-index: 1;
 }
 .v-progress-circular__overlay {
@@ -20730,7 +20730,6 @@ html.overflow-y-hidden {
   top: 0;
   transition: inherit;
   width: 100%;
-  z-index: 1;
 }
 
 .v-progress-linear--reverse .v-progress-linear__buffer {
@@ -20760,7 +20759,6 @@ html.overflow-y-hidden {
   position: absolute;
   top: 0;
   width: 100%;
-  z-index: 2;
 }
 
 .v-progress-linear--reverse .v-progress-linear__content {
@@ -22442,11 +22440,11 @@ html.overflow-y-hidden {
   box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.2), 0px 0px 0px 0px rgba(0, 0, 0, 0.14), 0px 0px 0px 0px rgba(0, 0, 0, 0.12) !important;
 }
 
-.v-card--hover {
+.v-sheet.v-card--hover {
   cursor: pointer;
   transition: box-shadow 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
-.v-card--hover:hover, .v-card--hover:focus {
+.v-sheet.v-card--hover:hover, .v-sheet.v-card--hover:focus {
   box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12);
 }
 
@@ -22831,6 +22829,7 @@ html.overflow-y-hidden {
 }
 .theme--light.v-color-picker .v-color-picker__input input {
   border: thin solid rgba(0, 0, 0, 0.12);
+  color: rgba(0, 0, 0, 0.87);
 }
 .theme--light.v-color-picker span {
   color: rgba(0, 0, 0, 0.6);
@@ -22841,6 +22840,7 @@ html.overflow-y-hidden {
 
 .theme--dark.v-color-picker .v-color-picker__input input {
   border: thin solid rgba(255, 255, 255, 0.12);
+  color: #FFFFFF;
 }
 .theme--dark.v-color-picker span {
   color: rgba(255, 255, 255, 0.7);
@@ -23434,16 +23434,16 @@ html.overflow-y-hidden {
 .v-data-table {
   border-radius: 4px;
 }
-.v-data-table tbody tr.v-data-table__expanded {
+.v-data-table > .v-data-table__wrapper tbody tr.v-data-table__expanded {
   border-bottom: 0;
 }
-.v-data-table tbody tr.v-data-table__expanded__content {
+.v-data-table > .v-data-table__wrapper tbody tr.v-data-table__expanded__content {
   box-shadow: inset 0px 4px 8px -5px rgba(50, 50, 50, 0.75), inset 0px -4px 8px -5px rgba(50, 50, 50, 0.75);
 }
-.v-data-table .v-data-table__mobile-table-row {
+.v-data-table > .v-data-table__wrapper .v-data-table__mobile-table-row {
   display: initial;
 }
-.v-data-table .v-data-table__mobile-row {
+.v-data-table > .v-data-table__wrapper .v-data-table__mobile-row {
   height: initial;
   min-height: 48px;
 }
@@ -23459,6 +23459,12 @@ html.overflow-y-hidden {
 }
 .v-data-table__mobile-row__header {
   font-weight: 600;
+}
+.v-application--is-ltr .v-data-table__mobile-row__header {
+  padding-right: 16px;
+}
+.v-application--is-rtl .v-data-table__mobile-row__header {
+  padding-left: 16px;
 }
 .v-application--is-ltr .v-data-table__mobile-row__cell {
   text-align: right;
@@ -24367,6 +24373,7 @@ html.overflow-y-hidden {
 .v-file-input input[type=file] {
   left: 0;
   opacity: 0;
+  pointer-events: none;
   position: absolute;
   max-width: 0;
   width: 0;
@@ -28145,6 +28152,7 @@ html.overflow-y-hidden {
 
 .v-tab {
   align-items: center;
+  cursor: pointer;
   display: flex;
   flex: 0 1 auto;
   font-size: 0.875rem;
@@ -28180,9 +28188,6 @@ html.overflow-y-hidden {
   right: 0;
   top: 0;
   transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
-}
-.v-tab:not(.v-tab-disabled) {
-  cursor: pointer;
 }
 
 .v-tabs-slider {
@@ -28811,6 +28816,7 @@ html.overflow-y-hidden {
 .v-time-picker-clock__container {
   display: flex;
   flex-direction: column;
+  flex-basis: 290px;
   justify-content: center;
   padding: 10px;
 }

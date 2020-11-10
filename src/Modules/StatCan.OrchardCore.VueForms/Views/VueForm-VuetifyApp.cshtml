@@ -11,7 +11,7 @@
     @await DisplayAsync(Model)
   </v-app>
 </div>
-<script at="Foot" asp-name="vuetify-app-instance" depends-on="vuetify">
+<script at="Foot" asp-name="vuetify-app-instance" depends-on="vuetify, vue-forms">
   document.addEventListener("vue-form-component-loaded", function(event) { 
     document.querySelectorAll(".vuetify-app-instance").forEach(function(elem){
       new Vue({

@@ -17,8 +17,6 @@
   var componentName = "c-" + Guid.NewGuid().ToString("N");
 }
 <style asp-name="vue-forms"></style>
-<script asp-name="vuejs" at="Foot"></script>
-<script asp-name="vee-validate" at="Foot"></script>
 <script asp-name="vue-forms" at="Foot"></script>
 
 <div class="vue-form" data-name="@componentName" data-init-script="@Orchard.B64Encode(initScript)" data-options="@Orchard.B64Encode(options)" data-lang="@CultureInfo.CurrentUICulture.TwoLetterISOLanguageName">
