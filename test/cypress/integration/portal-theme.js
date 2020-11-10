@@ -1,5 +1,5 @@
 /// <reference types="Cypress" />
-import { generateTenantInfo } from 'cypress-orchardcore/utils';
+import { generateTenantInfo } from 'cypress-orchardcore/dist/utils';
 
 describe("Portal theme tests", function() {    
   let tenant;

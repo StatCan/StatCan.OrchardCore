@@ -8,7 +8,7 @@ const sassCreds = {
 describe("SaaS site setup", function() {
   it("SaaS tenant setup", function() {
     cy.visit("/");
-    cy.setupSite(sassCreds);
+    cy.siteSetup(sassCreds);
     cy.login(sassCreds);
     cy.setPageSize(sassCreds,"100");
   });

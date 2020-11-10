@@ -5,7 +5,7 @@
   "license": "ISC",
   "dependencies": {
     "vue": "^2.6.12",
-    "vuetify": "^2.3.10",
-    "vee-validate": "^3.3.11"
+    "vuetify": "^2.3.16",
+    "vee-validate": "^3.4.4"
   }
 }

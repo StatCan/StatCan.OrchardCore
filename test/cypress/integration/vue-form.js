@@ -1,5 +1,5 @@
 /// <reference types="Cypress" />
-import { generateTenantInfo } from 'cypress-orchardcore/utils';
+import { generateTenantInfo } from 'cypress-orchardcore/dist/utils';
 
 const contentId = "45kdfafn7sv6racbrhaarghjma"
 
@@ -14,7 +14,7 @@ describe("VueForm Tests", function() {
   })
 
   it("Client side validation prevents submit", function() {
-    cy.visitContent(tenant, contentId);
+    cy.visitContentPage(tenant, contentId);
 
     // submit the form
     cy.getByCy('form-button-submit').click();
@@ -25,7 +25,7 @@ describe("VueForm Tests", function() {
 
   it("Server side validation highlights the error", function() {
     
-    cy.visitContent(tenant, contentId);
+    cy.visitContentPage(tenant, contentId);
 
     cy.getByCy('form-field-email').type('email@email.com', {force:true});
     cy.getByCy('form-field-gender').click({force:true}).type('{downarrow}{enter}', {force:true});
@@ -36,7 +36,7 @@ describe("VueForm Tests", function() {
   })
 
   it("Clear buttons clears the validation errors", function() {
-    cy.visitContent(tenant, contentId);
+    cy.visitContentPage(tenant, contentId);
 
     cy.getByCy('form-button-submit').click();
     cy.getByCy('form-field-email').closest('.v-input').find('.v-messages__message').should('contain', 'The email field is required');
@@ -49,7 +49,7 @@ describe("VueForm Tests", function() {
   })
 
   it("Submit works and displays success message", function() {
-    cy.visitContent(tenant, contentId);
+    cy.visitContentPage(tenant, contentId);
 
     cy.getByCy('form-field-name').type('Jean-Philippe Tissot', {force:true});
     cy.getByCy('form-field-email').type('jp@email.com', {force:true});
@@ -60,7 +60,7 @@ describe("VueForm Tests", function() {
   })
 
   it("Submit works, creates a ContenItem and redirects", function() {
-    cy.visitContent(tenant, "44w9hn15s953d23n4pak4fm3n4");
+    cy.visitContentPage(tenant, "44w9hn15s953d23n4pak4fm3n4");
 
     cy.getByCy('form-field-name').type('Jean-Philippe Tissot', {force:true});
     cy.getByCy('form-field-email').type('jp@email.com', {force:true});
@@ -73,7 +73,7 @@ describe("VueForm Tests", function() {
   })
 
   it("Localization works", function() {
-    cy.visitContent(tenant, contentId);
+    cy.visitContentPage(tenant, contentId);
 
     cy.getByCy('form-field-name').closest('.v-input').find('.v-label').should('contain', "Name");
     cy.get('#navbar-toggle-button').click();
@@ -81,7 +81,7 @@ describe("VueForm Tests", function() {
   })
 
   it("Using Submit state to disable the button", function(){
-    cy.visitContent(tenant, contentId);
+    cy.visitContentPage(tenant, contentId);
 
     cy.getByCy('form-field-name').type('Jean-Philippe Tissot', {force:true});
     cy.getByCy('form-field-email').type('jp@email.com', {force:true});
@@ -94,7 +94,7 @@ describe("VueForm Tests", function() {
   
   it("Clearing the form state works", function() {
     
-    cy.visitContent(tenant, contentId);
+    cy.visitContentPage(tenant, contentId);
 
     cy.getByCy('form-field-email').type('email@email.com', {force:true});
     cy.getByCy('form-field-gender').click({force:true}).type('{downarrow}{enter}', {force:true});
