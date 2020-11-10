@@ -45,7 +45,7 @@ namespace StatCan.OrchardCore.VueForms
 
             manifest
                .DefineScript("vue-forms")
-               .SetDependencies("vuejs", "vuetify", "vee-validate")
+               .SetDependencies("jQuery", "vuejs", "vee-validate")
                .SetUrl("~/StatCan.OrchardCore.VueForms/Scripts/vue-forms.js", "~/StatCan.OrchardCore.VueForms/Scripts/vue-forms.js")
                .SetVersion("1.0.0");
         }
