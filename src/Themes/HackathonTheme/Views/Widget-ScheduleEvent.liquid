@@ -1,10 +1,12 @@
-<div class="row pb-3">
-    <div class="col-lg-3 col-4 text-right">
-        <div>{{ Model.ContentItem.Content.ScheduleEvent.Time.Text }}</div>
-        <div class="small">{{ Model.ContentItem.Content.ScheduleEvent.Location.Text }}</div>
-    </div>
-    <div class="col-lg-9 col-8">
-        <h3>{{ Model.ContentItem | display_text }}</h3>
-        <div>{{ Model.Content.MarkdownBodyPart | shape_render }}</div>
-    </div>
-</div>
+<v-timeline-item color="pink" small>
+  <v-row class="mt-n3">
+    <v-col cols="3">
+      <strong>{{ Model.ContentItem.Content.ScheduleEvent.Time.Text }}</strong>
+    </v-col>
+    <v-col>
+      <strong>{{ Model.ContentItem | display_text }}</strong>
+      <div class="caption">{{ Model.ContentItem.Content.ScheduleEvent.Location.Text }}</div>
+      <div>{{ Model.Content.MarkdownBodyPart | shape_render }}</div>
+    </v-col>
+  </v-row>
+</v-timeline-item>

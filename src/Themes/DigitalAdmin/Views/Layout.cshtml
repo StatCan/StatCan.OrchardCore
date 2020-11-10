@@ -1,5 +1,5 @@
 @inject OrchardCore.Environment.Shell.Descriptor.Models.ShellDescriptor shellDescriptor
-@{  
+@{
     var adminSettings = Site.As<AdminSettings>();
 }
 <!DOCTYPE html>
@@ -9,29 +9,29 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <link type="image/x-icon" rel="shortcut icon" href="~/DigitalAdmin/favicon.ico" />
+    <link type="image/x-icon" rel="shortcut icon" href="~/TheAdmin/favicon.ico" />
 
     <!-- Bootstrap CSS -->
-    <style id="admin-default" media="all" asp-name="admin" asp-src="~/DigitalAdmin/Styles/TheAdmin.min.css" debug-src="~/DigitalAdmin/Styles/TheAdmin.css" depends-on="jQuery-ui"></style>
+    <style id="admin-default" media="all" asp-name="admin" asp-src="~/TheAdmin/Styles/TheAdmin.min.css" debug-src="~/TheAdmin/Styles/TheAdmin.css" depends-on="jQuery-ui"></style>
     @if (adminSettings.DisplayDarkMode)
     {
-        <style id="admin-darkmode" media="not all" asp-name="admin-darkmode" asp-src="~/DigitalAdmin/Styles/TheAdmin-darkmode.min.css" debug-src="~/DigitalAdmin/Styles/TheAdmin-darkmode.css" depends-on="jQuery-ui"></style>
+        <style id="admin-darkmode" media="not all" asp-name="admin-darkmode" asp-src="~/TheAdmin/Styles/TheAdmin-darkmode.min.css" debug-src="~/TheAdmin/Styles/TheAdmin-darkmode.css" depends-on="jQuery-ui"></style>
     }
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
 
     <script asp-name="font-awesome" at="Foot" version="5"></script>
     <script asp-name="font-awesome-v4-shims" at="Foot" version="5"></script>
-    <script asp-name="admin" asp-src="~/DigitalAdmin/Scripts/TheAdmin.min.js" debug-src="~/DigitalAdmin/Scripts/TheAdmin.js" depends-on="jQuery, jQuery-ui, jQuery-ui-i18n" at="Foot"></script>
+    <script asp-name="admin" asp-src="~/TheAdmin/Scripts/TheAdmin.min.js" debug-src="~/TheAdmin/Scripts/TheAdmin.js" depends-on="jQuery, jQuery-ui, jQuery-ui-i18n" at="Foot"></script>
     <resources type="Header" />
 
     <!-- This script can't wait till the footer -->
-    <script asp-src="~/DigitalAdmin/Scripts/TheAdmin-header.min.js" debug-src="~/DigitalAdmin/Scripts/TheAdmin-header.js"></script>
+    <script asp-src="~/TheAdmin/Scripts/TheAdmin-header.min.js" debug-src="~/TheAdmin/Scripts/TheAdmin-header.js"></script>
     @await RenderSectionAsync("HeadMeta", required: false)
 </head>
 <body class="preload">
     <div class="ta-wrapper">
         <div class="ta-navbar-top navbar-expand-lg bg-primary">
-            <a class="ta-navbar-brand" href="@Url.Content("~/")">@Site.SiteName</a>
+            <a class="ta-navbar-brand" href="@Url.Content("~/")" target="_blank">@Site.SiteName</a>
             <div class="mr-auto">
                 @await RenderSectionAsync("NavbarTop", required: false)
             </div>
@@ -42,7 +42,9 @@
             }
             @if (shellDescriptor.Features.Any(x => x.Id == "OrchardCore.ContentLocalization.ContentCulturePicker"))
             {
-              <shape type="ContentCulturePicker"></shape>
+              <div class="ml-2">
+                <shape type="ContentCulturePicker"></shape>
+              </div>
             }
         </div>
 

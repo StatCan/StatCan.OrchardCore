@@ -38802,14 +38802,16 @@ var src_styles = __webpack_require__("e19a");
  // Sets the cookie based on the current html lang. This is to avoid potential issues when landing on a french page.
 
 document.cookie = '.AspNetCore.Culture=c%3D' + document.documentElement.lang + '%7Cuic%3D' + document.documentElement.lang + ';path=/';
-new external_commonjs_vue_commonjs2_vue_root_Vue_default.a({
-  vuetify: vuetify,
-  data: function data() {
-    return {
-      drawer: null
-    };
-  }
-}).$mount('#page-top');
+document.addEventListener("DOMContentLoaded", function () {
+  new external_commonjs_vue_commonjs2_vue_root_Vue_default.a({
+    vuetify: vuetify,
+    data: function data() {
+      return {
+        drawer: null
+      };
+    }
+  }).$mount('#page-top');
+});
 // CONCATENATED MODULE: ./node_modules/@vue/cli-service/lib/commands/build/entry-lib-no-default.js
 
 

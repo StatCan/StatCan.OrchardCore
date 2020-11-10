@@ -3,9 +3,5 @@
 ** Any changes made directly to this file will be overwritten next time its asset group is processed by Gulp.
 */
 
-/*https: //vuejs.org/v2/api/#v-cloak*/
 [v-cloak] {
   display: none; }
-
-.v-application--wrap {
-  min-height: 0; }
