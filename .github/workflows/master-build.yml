@@ -26,7 +26,7 @@ jobs:
       run: |
            cd test/cypress
            npm install
-           npm run test
+           npm run ci:test
   build:
     needs: test
     name: Build and Publish
