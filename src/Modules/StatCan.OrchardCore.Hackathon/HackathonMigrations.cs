@@ -115,8 +115,9 @@ namespace StatCan.OrchardCore.Hackathon
             );
 
             _contentDefinitionManager.AlterTypeDefinition("Challenge", t => t.Creatable().Draftable().Listable().Securable()
-                .WithPart("Challenge", p => p.WithPosition("0"))
-                .WithMarkdownBody("1")
+                .WithTitlePart("0", TitlePartOptions.GeneratedDisabled, "{{ContentItem.Content.Challenge.Name.Text}}")
+                .WithPart("Challenge", p => p.WithPosition("1"))
+                .WithMarkdownBody("2")
             );
         }
     }
