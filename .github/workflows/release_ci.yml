@@ -58,4 +58,4 @@ jobs:
     - name: Deploy nightly nuget packages
       run: |
         dotnet pack -c Release -o build-output --no-build --include-symbols -p:SymbolPackageFormat=snupkg
-        dotnet nuget push './build-output/*.nupkg' -k ${{secrets.NUGET_APIKEY}} -n true -s https://nuget.cloudsmith.io/statcan-digitalinnovation/statcan-orchardcore/v3/index.json  --skip-duplicate
+        dotnet nuget push './build-output/*.{sn,n}upkg' -k ${{secrets.NUGET_APIKEY}} -n true -s https://nuget.cloudsmith.io/statcan-digitalinnovation/statcan-orchardcore/v3/index.json  --skip-duplicate
