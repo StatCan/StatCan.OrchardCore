@@ -33,8 +33,7 @@ namespace StatCan.OrchardCore.Scripting
                 {
                     var session = serviceProvider.GetRequiredService<ISession>();
                     var owner = httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
-                    return session.Query<ContentItem, ContentItemIndex>(c=>c.Owner == owner && c.ContentType == type).FirstOrDefaultAsync().GetAwaiter().GetResult();
-
+                    return session.Query<ContentItem, ContentItemIndex>(c=>c.Owner == owner && c.ContentType == type && c.Published == true).FirstOrDefaultAsync().GetAwaiter().GetResult();
                 }
                 )
             };
