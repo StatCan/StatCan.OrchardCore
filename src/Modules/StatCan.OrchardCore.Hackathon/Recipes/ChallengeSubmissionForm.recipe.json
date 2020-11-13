@@ -19,11 +19,8 @@
           "DisplayText": "Challenge Submission",
           "Latest": true,
           "Published": true,
-          "ModifiedUtc": "2020-11-10T20:04:27.0081079Z",
-          "PublishedUtc": "2020-11-10T20:04:27.0344088Z",
-          "CreatedUtc": "2020-11-09T15:32:59.0009638Z",
-          "Owner": "admin",
-          "Author": "admin",
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
           "TitlePart": {
             "Title": "Challenge Submission"
           },
@@ -32,7 +29,7 @@
               "Value": true
             },
             "DisabledHtml": {
-              "Html": "<div class=\"container text-center mt-2\">\nThe challenge submission form is currently disabled.\n</div>"
+              "Html": "<div class=\"container text-center mt-2\">\n  [locale en]The challenge submission form is currently disabled.[/locale]\n  [locale fr]Le formulaire de soumission de défi est présentement désactivé[/locale]\n</div>"
             },
             "SuccessMessage": {
               "Text": "The challenge was submitted successfully"
@@ -53,7 +50,7 @@
                 "DisplayText": "Challenge Submission",
                 "Latest": false,
                 "Published": false,
-                "ModifiedUtc": "2020-11-10T20:04:27.0142947Z",
+                "ModifiedUtc": "2020-11-13T22:32:35.9664207Z",
                 "PublishedUtc": null,
                 "CreatedUtc": null,
                 "Owner": "",
@@ -63,7 +60,7 @@
                 },
                 "VueComponent": {
                   "Template": {
-                    "Text": "<v-container >\r\n  <v-card-text>\r\n    <v-row justify=\"center\">\r\n      <v-col cols=\"8\">\r\n        <validation-provider name=\"name\" rules=\"\" v-slot=\"{ errors, valid }\">\r\n          <v-text-field name=\"name\" v-model=\"name\" :error-messages=\"errors\" filled=\"filled\" label=\"{{ \"nameLabel\" | localize }}\"></v-text-field>\r\n        </validation-provider>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n        <validation-provider name=\"shortDescription\" rules=\"required\" v-slot=\"{ errors, valid }\">\r\n          <v-text-field name=\"shortDescription\" v-model=\"shortDescription\" :error-messages=\"errors\" filled=\"filled\" label=\"{{ \"shortDescriptionLabel\" | localize }}\"></v-text-field>\r\n        </validation-provider>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n        <validation-provider name=\"description\" rules=\"required\" v-slot=\"{ errors, valid }\">\r\n       \t  <v-textarea name=\"description\" v-model=\"description\" :error-messages=\"errors\" counter=\"true\" filled=\"filled\" label=\"{{ \"descriptionLabel\" | localize }}\" rows=\"5\">\r\n          </v-textarea>\r\n    \t</validation-provider>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n        <v-alert type=\"success\" v-if=\"form.successMessage\">\r\n          {% raw %}{{ form.successMessage }}{% endraw %}\r\n        </v-alert>\r\n        <v-alert type=\"error\" v-if=\"form.errorMessage\">\r\n          {% raw %}{{ form.errorMessage }}{% endraw %}\r\n        </v-alert>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n    \t<v-btn type=\"submit\" depressed block @click=\"formHandleSubmit\" :disabled=\"form.submitting\">{{ \"submitLabel\" | localize }}</v-btn>\r\n      </v-col>\r\n    </v-row>\r\n  </v-card-text>\r\n</v-container>"
+                    "Text": "<v-container >\r\n  <v-card-text>\r\n    <v-row justify=\"center\">\r\n      <v-col cols=\"8\">\r\n        <validation-provider name=\"{{ \"nameLabel\" | localize }}\" rules=\"required\" v-slot=\"{ errors, valid }\">\r\n          <v-text-field v-model=\"name\" :success=\"valid\" :error-messages=\"errors\" filled=\"filled\" label=\"{{ \"nameLabel\" | localize }}\"></v-text-field>\r\n        </validation-provider>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n        <validation-provider name=\"{{ \"shortDescriptionLabel\" | localize }}\" rules=\"required\" v-slot=\"{ errors, valid }\">\r\n          <v-text-field v-model=\"shortDescription\" :success=\"valid\" :error-messages=\"errors\" filled=\"filled\" label=\"{{ \"shortDescriptionLabel\" | localize }}\"></v-text-field>\r\n        </validation-provider>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n        <validation-provider name=\"{{ \"descriptionLabel\" | localize }}\" rules=\"required\" v-slot=\"{ errors, valid }\">\r\n       \t  <v-textarea v-model=\"description\" :success=\"valid\" :error-messages=\"errors\" counter=\"true\" filled=\"filled\" label=\"{{ \"descriptionLabel\" | localize }}\" hint=\"{{ \"descriptionHint\" | localize }}\" rows=\"5\">\r\n          </v-textarea>\r\n    \t</validation-provider>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n        <v-alert type=\"success\" v-if=\"form.successMessage\">\r\n          {% raw %}{{ form.successMessage }}{% endraw %}\r\n        </v-alert>\r\n        <v-alert type=\"error\" v-if=\"form.serverValidationMessage\">\r\n          {% raw %}{{ form.serverValidationMessage[0] }}{% endraw %}\r\n        </v-alert>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n    \t<v-btn type=\"submit\" depressed block @click=\"formHandleSubmit\" :disabled=\"form.submitting || form.submitSuccess\">{{ \"submitLabel\" | localize }}</v-btn>\r\n      </v-col>\r\n    </v-row>\r\n  </v-card-text>\r\n</v-container>"
                   },
                   "Script": {
                     "Text": "{\r\n  data: () => ({\r\n    name: \"\",\r\n\tshortDescription: \"\",\r\n    description: \"\",\r\n  })\r\n}"
@@ -78,13 +75,13 @@
           },
           "VueFormScripts": {
             "ClientInit": {
-              "Text": "VeeValidate.setInteractionMode('passive');\r\nVeeValidate.localize({\r\n  {{Culture.Name}}: {\r\n    fields: {\r\n      name: {\r\n        required: '{{ \"nameRequiredError\" | localize }}',\r\n      },\r\n      shortDescription: {\r\n        required: '{{ \"shortDescriptionRequiredError\" | localize }}'\r\n      },\r\n      description: {\r\n        required: '{{ \"descriptionRequiredError\" | localize }}' \r\n      }\r\n    }\r\n  }\r\n});\r\nreturn new Vuetify();"
+              "Text": "VeeValidate.setInteractionMode('passive');"
             },
             "OnValidation": {
-              "Text": "var data = requestFormAsJsonObject();\r\nvar localizedText = getLocalizedTextValues(getFormContentItem());\r\n\r\nif(data.name == \"\") {\r\n  addError('name', localizedText.nameRequiredError);\r\n}\r\n\r\nif(data.shortDescription == \"\") {\r\n  addError('shortDescription', localizedText.shortDescriptionRequiredError);\r\n}\r\n\r\nif(data.description == \"\") {\r\n  addError('description', localizedText.descriptionRequiredError);\r\n}"
+              "Text": "var data = requestFormAsJsonObject();\r\nvar localizedText = getLocalizedTextValues(getFormContentItem());\r\n\r\nif(data.name == \"\" || data.shortDescription == \"\" || data.description == \"\") {\r\n  addError('serverValidationMessage', localizedText.serverValidationError);\r\n}"
             },
             "OnSubmitted": {
-              "Text": "var data = requestFormAsJsonObject();\r\n\r\nvar item = createContentItem(\"Challenge\", false, {\r\n  \"Challenge\": {\r\n    \"Name\": {\r\n      \"Text\": data.name\r\n    },\r\n    \"ShortDescription\": {\r\n      \"Text\": data.shortDescription\r\n    },\r\n    \"Description\": {\r\n      \"Html\": data.description\r\n    }\r\n  }\r\n});\r\n\r\nhttpRedirect('');"
+              "Text": "var data = requestFormAsJsonObject();\r\n\r\nvar item = createContentItem(\"Challenge\", false, {\r\n  \"Challenge\": {\r\n    \"Name\": {\r\n      \"Text\": data.name\r\n    },\r\n    \"ShortDescription\": {\r\n      \"Text\": data.shortDescription\r\n    }\r\n  },\r\n  \"MarkdownBodyPart\": {\r\n    \"Markdown\": data.description\r\n  }\r\n});\r\n"
             },
             "ComponentOptions": {
               "Text": "{\r\n  data: () => ({\r\n    name: \"\",\r\n\tshortDescription: \"\", \r\n    description: \"\",\r\n  })\r\n}"
@@ -92,45 +89,6 @@
           },
           "LocalizedTextPart": {
             "Data": [
-              {
-                "Name": "nameRequiredError",
-                "LocalizedItems": [
-                  {
-                    "Culture": "fr",
-                    "Value": "Un nom est requis"
-                  },
-                  {
-                    "Culture": "en",
-                    "Value": "A name is required"
-                  }
-                ]
-              },
-              {
-                "Name": "shortDescriptionRequiredError",
-                "LocalizedItems": [
-                  {
-                    "Culture": "fr",
-                    "Value": "Une courte description est requise"
-                  },
-                  {
-                    "Culture": "en",
-                    "Value": "A short description is required"
-                  }
-                ]
-              },
-              {
-                "Name": "descriptionRequiredError",
-                "LocalizedItems": [
-                  {
-                    "Culture": "fr",
-                    "Value": "Une description est requise"
-                  },
-                  {
-                    "Culture": "en",
-                    "Value": "A description is required"
-                  }
-                ]
-              },
               {
                 "Name": "nameLabel",
                 "LocalizedItems": [
@@ -171,6 +129,19 @@
                 ]
               },
               {
+                "Name": "descriptionHint",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Supporte la syntaxe markdown"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Supports markdown syntax"
+                  }
+                ]
+              },
+              {
                 "Name": "submitLabel",
                 "LocalizedItems": [
                   {
@@ -180,6 +151,32 @@
                   {
                     "Culture": "en",
                     "Value": "Send"
+                  }
+                ]
+              },
+              {
+                "Name": "successMessage",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Votre défi a été envoyé avec succès!"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Your challenge was submitted successfully!"
+                  }
+                ]
+              },
+              {
+                "Name": "serverValidationError",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Une erreure est survenue lors de la soumission. Veuillez nous contacter."
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "An error occurred during submission. Please contact us."
                   }
                 ]
               }

@@ -112,11 +112,11 @@ namespace StatCan.OrchardCore.Hackathon
             _contentDefinitionManager.AlterPartDefinition("Challenge", p => p
                 .WithTextField("Name", "0")
                 .WithTextField("ShortDescription", "Short Description", "1")
-                .WithHtmlField("Description", "Description", "Complete description of the challenge" ,"2")
             );
 
             _contentDefinitionManager.AlterTypeDefinition("Challenge", t => t.Creatable().Draftable().Listable().Securable()
                 .WithPart("Challenge", p => p.WithPosition("0"))
+                .WithMarkdownBody("1")
             );
         }
     }

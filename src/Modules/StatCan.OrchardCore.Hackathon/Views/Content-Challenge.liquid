@@ -6,6 +6,6 @@
       {{ Model.ContentItem.Content.Challenge.ShortDescription.Text }}
   </v-card-subtitle>
   <v-card-text>
-      {{ Model.ContentItem.Content.Challenge.Description.Html | raw }}
+      {{ Model.Content.MarkdownBodyPart | shape_render }}
   </v-card-text>
 </v-card>
