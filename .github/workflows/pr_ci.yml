@@ -1,18 +1,14 @@
-name: Build, Test and Publish
+name: PR - CI
 on: 
   pull_request:
     branches:
       - master
-  push:
-    branches:
-      - 'master'
 env:
   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
   DOTNET_CLI_TELEMETRY_OPTOUT: true
-  BuildNumber: ${{ github.run_number }}
 jobs:
-  test:
-    name: Test
+  build_test_push:
+    name: Build & Test
     runs-on: ubuntu-latest
     container:
       image: cypress/browsers:node12.13.0-chrome78-ff70
@@ -38,6 +34,8 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1.402
+    - name: Dotnet build 
+      run: dotnet build -c Release
     - name: Test
       run: |
            cd test/cypress
@@ -51,20 +49,3 @@ jobs:
           test/cypress/screenshots
           src/StatCan.OrchardCore.Cms.Web/App_Data/logs
         retention-days: 3
-  publish:
-    if: github.ref == 'refs/heads/master'
-    needs: test
-    name: Build and Publish
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-      - name: Setup .NET Core SDK
-        uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: 3.1.402
-      - name: Dotnet build 
-        run: dotnet build -c Release
-      - name: Pack
-        run: dotnet pack -c Release -o build-output --no-build
-      - name: Publish nuget
-        run: dotnet nuget push './build-output/*.nupkg' -k ${{secrets.NUGET_APIKEY}} -n true -s https://nuget.cloudsmith.io/statcan-digitalinnovation/statcan-orchardcore/v3/index.json  --skip-duplicate
