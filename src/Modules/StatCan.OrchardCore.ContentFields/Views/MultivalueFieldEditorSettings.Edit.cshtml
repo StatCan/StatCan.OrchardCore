@@ -1,11 +1,11 @@
 @using StatCan.OrchardCore.ContentFields.Multivalue.Settings
 @model StatCan.OrchardCore.ContentFields.Multivalue.ViewModels.MultivalueFieldSettingsViewModel
 
-<script asp-src="~/OrchardCore.ContentFields/Scripts/optionsEditor.min.js"
-  debug-src="~/OrchardCore.ContentFields/Scripts/optionsEditor.js" asp-name="optionsEditor" at="Foot"
+<script asp-src="~/StatCan/OrchardCore.ContentFields/Scripts/optionsEditor.min.js"
+  debug-src="~/StatCan/OrchardCore.ContentFields/Scripts/optionsEditor.js" asp-name="optionsEditor" at="Foot"
   depends-on="vuejs, vuedraggable"></script>
-<style asp-src="~/OrchardCore.ContentFields/Styles/optionsEditor.min.css"
-  debug-src="~/OrchardCore.ContentFields/Styles/optionsEditor.css"></style>
+<style asp-src="~/StatCan/OrchardCore.ContentFields/Styles/optionsEditor.min.css"
+  debug-src="~/StatCan/OrchardCore.ContentFields/Styles/optionsEditor.css"></style>
 
 <script at="Foot">
   initializeOptionsEditor(document.getElementById('@Html.IdFor(m => m)'), @Html.Raw(Model.Options), '@Model.DefaultValue', document.getElementsByClassName('@Html.IdFor(m => m)-ModalBody'));

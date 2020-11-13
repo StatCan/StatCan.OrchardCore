@@ -14,7 +14,6 @@ using StatCan.OrchardCore.ContentFields.Multivalue.Fields;
 using StatCan.OrchardCore.ContentFields.Multivalue.Settings;
 using StatCan.OrchardCore.ContentFields.Multivalue.ViewModels;
 
-
 namespace StatCan.OrchardCore.ContentFields.Multivalue
 {
     [Feature(Constants.Features.Multivalue)]
@@ -32,7 +31,7 @@ namespace StatCan.OrchardCore.ContentFields.Multivalue
         {
             services.AddContentField<MultivalueField>()
                 .UseDisplayDriver<MultivalueFieldDisplayDriver>();
-            // services.AddScoped<IContentPartFieldDefinitionDisplayDriver, TextFieldSettingsDriver>();
+            services.AddScoped<IContentPartFieldDefinitionDisplayDriver, MultivalueFieldSettingsDriver>();
             // services.AddScoped<IContentFieldIndexHandler, TextFieldIndexHandler>();
             services.AddScoped<IContentPartFieldDefinitionDisplayDriver, TextFieldHeaderDisplaySettingsDriver>();
             services.AddScoped<IContentPartFieldDefinitionDisplayDriver, MultivalueFieldEditorSettingsDriver>();
