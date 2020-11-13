@@ -1,10 +1,8 @@
 using System.Threading.Tasks;
-using OrchardCore.ContentFields.Fields;
 using OrchardCore.ContentManagement.Metadata.Models;
 using OrchardCore.ContentTypes.Editors;
 using OrchardCore.DisplayManagement.Views;
 using StatCan.OrchardCore.ContentFields.Multivalue.Fields;
-using StatCan.OrchardCore.ContentFields.Multivalue.Settings;
 
 namespace StatCan.OrchardCore.ContentFields.Multivalue.Settings
 {

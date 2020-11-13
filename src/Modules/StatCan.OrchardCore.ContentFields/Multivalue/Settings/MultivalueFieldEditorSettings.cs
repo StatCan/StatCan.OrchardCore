@@ -11,7 +11,7 @@ namespace StatCan.OrchardCore.ContentFields.Multivalue.Settings
 
     public enum EditorOption
     {
-        Radio,
+        Checkbox,
         Dropdown
     }
 
