@@ -85,15 +85,17 @@
 </script>
 
 <div id="@Html.IdFor(m => m)" class="field-editor field-editor-predefinedlist">
-  @* <div class="row">
+  <div class="row">
     <div class="form-group col-sm-6">
-    <label asp-for="Editor">What type of list editor should be used?/label>
-    <select asp-for="Editor" class="form-control">
-    <option value="@nameof(EditorOption.Dropdown)">Drop down list</option>
-    <option value="@nameof(EditorOption.Radio)">Radio buttons</option>
-    </select>
+      <label asp-for="Editor">What type of list editor should be used?</label>
+      <select asp-for="Editor" class="form-control">
+        <option value="@nameof(StatCan.OrchardCore.ContentFields.Multivalue.Settings.EditorOption.Dropdown)">Drop down
+          list</option>
+        <option value="@nameof(StatCan.OrchardCore.ContentFields.Multivalue.Settings.EditorOption.Radio)">Radio buttons
+        </option>
+      </select>
     </div>
-    </div> *@
+  </div>
 
   <div class="row">
     <div class="col-sm-6">

@@ -10,7 +10,7 @@ namespace StatCan.OrchardCore.ContentFields.Multivalue.ViewModels
 {
     public class EditMultivalueFieldViewModel
     {
-        public string Values { get; set; }
+        public string[] Values { get; set; }
         public MultivalueField Field { get; set; }
         public ContentPart Part { get; set; }
         public ContentPartFieldDefinition PartFieldDefinition { get; set; }

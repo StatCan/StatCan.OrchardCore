@@ -4,6 +4,7 @@ namespace StatCan.OrchardCore.ContentFields.Multivalue.ViewModels
 {
     public class MultivalueFieldSettingsViewModel
     {
+        public EditorOption Editor { get; set; }
         public string Options { get; set; }
         public string DefaultValue { get; set; }
     }

@@ -45,7 +45,7 @@ namespace StatCan.OrchardCore.ContentFields.Multivalue.Drivers
         {
             return Initialize<EditMultivalueFieldViewModel>(GetEditorShapeType(context), model =>
             {
-                model.Values = string.Join(",", field.Values);
+                model.Values = field.Values;
 
                 model.Field = field;
                 model.Part = context.ContentPart;
@@ -74,8 +74,7 @@ namespace StatCan.OrchardCore.ContentFields.Multivalue.Drivers
                 return Edit(field, context);
             }
 
-            field.Values = viewModel.Values == null
-                ? new string[0] : viewModel.Values.Split(',', StringSplitOptions.RemoveEmptyEntries);
+            field.Values = viewModel.Values;
 
             var settings = context.PartFieldDefinition.GetSettings<MultivalueFieldSettings>();
 
