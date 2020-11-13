@@ -1,7 +1,6 @@
 "use strict";
 
 function decodeUnicode(str) {
-  // Going backwards: from bytestream, to percent-encoding, to original string.
   return decodeURIComponent(atob(str).split('').map(function (c) {
     return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
   }).join(''));
@@ -38,7 +37,6 @@ function initForm(app) {
     serverErrorMessage: undefined
   }
 
-  //todo component name
   Vue.component(app.dataset.name, {
     // First because the elements below will override
     ...parsedRest,
@@ -124,9 +122,11 @@ function initForm(app) {
   }
 }
 
-
 // look for all vue forms when this script is loaded and initialize them
 document.querySelectorAll(".vue-form").forEach(initForm);
-const formLoadedEvent = new Event('vue-form-component-loaded');
-document.dispatchEvent(formLoadedEvent);
 
+document.addEventListener("DOMContentLoaded", function(event) { 
+  const formLoadedEvent = new Event('vue-form-component-loaded');
+  document.dispatchEvent(formLoadedEvent);
+});
+ 
