@@ -34,9 +34,6 @@
             "SuccessMessage": {
               "Text": "{{ \"successMessage\" | localize }}"
             },
-            "ErrorMessage": {
-              "Text": "Please correct the errors above"
-            },
             "RenderAs": {
               "Text": null
             }
@@ -78,7 +75,7 @@
               "Text": "VeeValidate.setInteractionMode('passive');"
             },
             "OnValidation": {
-              "Text": "var data = requestFormAsJsonObject();\r\nvar localizedText = getLocalizedTextValues(getFormContentItem());\r\n\r\nfunction validateEmail(email) {\r\n    const re = /^(([^<>()\\[\\]\\\\.,;:\\s@\"]+(\\.[^<>()\\[\\]\\\\.,;:\\s@\"]+)*)|(\".+\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$/;\r\n    return re.test(String(email).toLowerCase());\r\n}\r\n\r\nif(data.firstName == \"\" || data.lastName == \"\" || data.email == \"\" || data.language == \"\" || !validateEmail(data.email)) {\r\n  addError('serverValidationMessage', localizedText.serverValidationError);\r\n}\r\nvar existing = ownContentByType(\"Hacker\")\r\nif(existing != null) {\r\n  addError('serverValidationMessage', localizedText.alreadyRegisteredError); \r\n}"
+              "Text": "var data = requestFormAsJsonObject();\r\nvar localizedText = getLocalizedTextValues(getFormContentItem());\r\n\r\nfunction validateEmail(email) {\r\n    const re = /^(([^<>()\\[\\]\\\\.,;:\\s@\"]+(\\.[^<>()\\[\\]\\\\.,;:\\s@\"]+)*)|(\".+\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$/;\r\n    return re.test(String(email).toLowerCase());\r\n}\r\n\r\nif(data.firstName == \"\" || data.lastName == \"\" || data.email == \"\" || data.language == \"\" || !validateEmail(data.email)) {\r\n  addError('serverValidationMessage', localizedText.serverValidationError);\r\n}\r\nvar existing = ownContentByType(\"Hacker\")\r\nif(existing.length > 0) {\r\n  addError('serverValidationMessage', localizedText.alreadyRegisteredError); \r\n}"
             },
             "OnSubmitted": {
               "Text": "var data = requestFormAsJsonObject();\r\n\r\nvar item = createContentItem(\"Hacker\", true, {\r\n  \"ParticipantPart\": {\r\n    \"FirstName\": {\r\n      \"Text\": data.firstName\r\n    },\r\n    \"LastName\": {\r\n      \"Text\": data.lastName\r\n    },\r\n    \"Email\": {\r\n      \"Text\": data.email\r\n    },\r\n    \"Language\": {\r\n      \"Text\": data.language\r\n    }\r\n  }\r\n});\r\n"

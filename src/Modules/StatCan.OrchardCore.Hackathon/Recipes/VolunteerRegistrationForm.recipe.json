@@ -13,17 +13,14 @@
       "name": "Content",
       "data": [
         {
-          "ContentItemId": "4jjje1q162zaay11nbf3w2634h",
-          "ContentItemVersionId": "4s5t3cq1ap6c7s1rwty5pqwqws",
+          "ContentItemId": "4dj03mdaztzf8wg12gw56xkg43",
+          "ContentItemVersionId": "47t6a7fwchwpd2x0fqpj5t7kmm",
           "ContentType": "VueForm",
           "DisplayText": "VolunteerRegistrationForm",
           "Latest": true,
           "Published": true,
-          "ModifiedUtc": "2020-11-10T20:36:50.16364Z",
-          "PublishedUtc": "2020-11-10T20:36:50.1808496Z",
-          "CreatedUtc": "2020-11-04T20:49:04.774105Z",
-          "Owner": "admin",
-          "Author": "admin",
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
           "TitlePart": {
             "Title": "VolunteerRegistrationForm"
           },
@@ -32,13 +29,10 @@
               "Value": true
             },
             "DisabledHtml": {
-              "Html": "<div class=\"container text-center mt-2\">\n\tThe Volunteer registration form is currently disabled.\n</div>"
+              "Html": "<div class=\"container text-center mt-2\">\n  [locale en]The Volunteer registration form is currently disabled.[/locale]\n  [locale fr]Le formulaire d'enreigstrement est présentement désactivé[/locale]\n</div>"
             },
             "SuccessMessage": {
-              "Text": "Submission successful"
-            },
-            "ErrorMessage": {
-              "Text": "Please correct the errors above"
+              "Text": "{{ \"successMessage\" | localize }}"
             },
             "RenderAs": {
               "Text": null
@@ -47,13 +41,13 @@
           "FlowPart": {
             "Widgets": [
               {
-                "ContentItemId": "4x2jaqc0ygg4prrkc3sgyk6c5k",
+                "ContentItemId": "4pwj3gsktvf8st4f3ekxyrjgd7",
                 "ContentItemVersionId": null,
                 "ContentType": "VueComponent",
                 "DisplayText": "Volunteer Registration",
                 "Latest": false,
                 "Published": false,
-                "ModifiedUtc": "2020-11-10T20:36:50.1688941Z",
+                "ModifiedUtc": "2020-11-13T20:21:23.6296364Z",
                 "PublishedUtc": null,
                 "CreatedUtc": null,
                 "Owner": "",
@@ -63,7 +57,7 @@
                 },
                 "VueComponent": {
                   "Template": {
-                    "Text": "<v-container >\r\n  <v-card-text>\r\n    <v-row justify=\"center\">\r\n      <v-col cols=\"8\">\r\n        <h1>{{ \"volunteerRegistrationLabel\" | localize }}</h1>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n        <validation-provider name=\"firstName\" rules=\"\" v-slot=\"{ errors, valid }\">\r\n          <v-text-field name=\"firstName\" v-model=\"firstName\" :error-messages=\"errors\" filled=\"filled\" label=\"{{ \"firstNameLabel\" | localize }}\"></v-text-field>\r\n        </validation-provider>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n        <validation-provider name=\"lastName\" rules=\"\" v-slot=\"{ errors, valid }\">\r\n          <v-text-field name=\"lastName\" v-model=\"lastName\" :error-messages=\"errors\" filled=\"filled\" label=\"{{ \"lastNameLabel\" | localize }}\"></v-text-field>\r\n        </validation-provider>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n        <validation-provider name=\"email\" rules=\"required\" v-slot=\"{ errors, valid }\">\r\n          <v-text-field name=\"email\" v-model=\"email\" :error-messages=\"errors\" filled=\"filled\" label=\"{{ \"emailLabel\" | localize }}\"></v-text-field>\r\n        </validation-provider>\r\n      </v-col>\r\n      <v-col cols=\"8\">      \r\n        <p>{{ \"languageLabel\" | localize }}</p>\r\n        <v-radio-group name=\"language\" v-model=\"language\" row >\r\n          <v-radio label=\"{{ \"languageEnglishLabel\" | localize }}\" value=\"en\" ></v-radio>\r\n          <v-radio label=\"{{ \"languageFrenchLabel\" | localize }}\" value=\"fr\" ></v-radio>\r\n          <v-radio label=\"{{ \"languageBothLabel\" | localize }}\" value=\"both\" ></v-radio>\r\n        </v-radio-group>    \r\n      </v-col>\r\n        <v-col cols=\"8\">\r\n          <v-alert type=\"success\" v-if=\"form.successMessage\">\r\n            {% raw %}{{ form.successMessage }}{% endraw %}\r\n          </v-alert>\r\n          <v-alert type=\"error\" v-if=\"form.errorMessage \">\r\n            {% raw %}{{ form.errorMessage  }}{% endraw %}\r\n          </v-alert>\r\n        </v-col>\r\n        <v-col cols=\"8\">\r\n    \t  <v-btn type=\"submit\" depressed block @click=\"formHandleSubmit\" :disabled=\"form.submitting\">{{ \"submitLabel\" | localize }}</v-btn>\r\n        </v-col>\r\n    </v-row>\r\n  </v-card-text>\r\n</v-container>\r\n"
+                    "Text": "<v-container >\r\n  <v-card-text>\r\n    <v-row justify=\"center\">\r\n      <v-col cols=\"8\">\r\n        <h1>[locale en]Volunteer registration[/locale][locale fr]Enregistrement des volontaire[/locale]</h1>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n        <validation-provider name=\"{{ \"firstNameLabel\" | localize }}\" rules=\"required\" v-slot=\"{ errors, valid }\">\r\n          <v-text-field  v-model=\"firstName\" :success=\"valid\" :error-messages=\"errors\" filled=\"filled\" label=\"{{ \"firstNameLabel\" | localize }}\"></v-text-field>\r\n        </validation-provider>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n        <validation-provider name=\"{{ \"lastNameLabel\" | localize  }}\" rules=\"required\" v-slot=\"{ errors, valid }\">\r\n          <v-text-field v-model=\"lastName\" :success=\"valid\" :error-messages=\"errors\" filled=\"filled\" label=\"{{ \"lastNameLabel\" | localize }}\"></v-text-field>\r\n        </validation-provider>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n        <validation-provider name=\"{{ \"emailLabel\" | localize }}\" rules=\"required|email\" v-slot=\"{ errors, valid }\">\r\n          <v-text-field v-model=\"email\" :success=\"valid\" :error-messages=\"errors\" filled=\"filled\" label=\"{{ \"emailLabel\" | localize }}\"></v-text-field>\r\n        </validation-provider>\r\n      </v-col>\r\n      <v-col cols=\"8\">      \r\n        <p>{{ \"languageLabel\" | localize }}</p>\r\n        <v-radio-group name=\"language\" v-model=\"language\" row >\r\n          <v-radio label=\"{{ \"languageEnglishLabel\" | localize }}\" value=\"en\" ></v-radio>\r\n          <v-radio label=\"{{ \"languageFrenchLabel\" | localize }}\" value=\"fr\" ></v-radio>\r\n          <v-radio label=\"{{ \"languageBothLabel\" | localize }}\" value=\"both\" ></v-radio>\r\n        </v-radio-group>    \r\n      </v-col>\r\n        <v-col cols=\"8\">\r\n          <v-alert type=\"success\" v-if=\"form.successMessage\">\r\n            {% raw %}{{ form.successMessage }}{% endraw %}\r\n          </v-alert>\r\n          <v-alert type=\"error\" v-if=\"form.serverValidationMessage\">\r\n            {% raw %}{{ form.serverValidationMessage[0] }}{% endraw %}\r\n          </v-alert>\r\n        </v-col>\r\n        <v-col cols=\"8\">\r\n    \t  <v-btn type=\"submit\" depressed block @click=\"formHandleSubmit\" :disabled=\"form.submitting\">[locale en]Register[/locale][locale fr]S'enregistrer[/locale]</v-btn>\r\n        </v-col>\r\n    </v-row>\r\n  </v-card-text>\r\n</v-container>\r\n"
                   },
                   "Script": {
                     "Text": "{\r\n  data: () => ({\r\n    firstName: \"\",\r\n\tlastName: \"\",\r\n\temail: \"\",\r\n    language: \"\",\r\n  })\r\n}"
@@ -78,13 +72,13 @@
           },
           "VueFormScripts": {
             "ClientInit": {
-              "Text": "VeeValidate.setInteractionMode('passive');\r\nVeeValidate.localize({\r\n  {{Culture.Name}}: {\r\n    fields: {\r\n      firstName: {\r\n        required: '{{ \"firtsNameRequiredError\" | localize }}',\r\n      },\r\n  \t  lastName: {\r\n        required: '{{ \"lastNameRequiredError\" | localize }}',\r\n      },\r\n      email: {\r\n        required: '{{ \"emailRequiredError\" | localize }}',\r\n          email: '{{\"emailInvalidError\" | localize}}'\r\n      },\r\n      language: {\r\n        required: '{{ \"languageRequiredError\" | localize }}' \r\n      }\r\n    }\r\n  }\r\n});\r\nreturn new Vuetify();"
+              "Text": "VeeValidate.setInteractionMode('passive');"
             },
             "OnValidation": {
-              "Text": "var data = requestFormAsJsonObject();\r\nvar localizedText = getLocalizedTextValues(getFormContentItem());\r\n\r\nif(data.firstName == \"\") {\r\n  addError('firstName', localizedText.firstNameRequiredError);\r\n}\r\n\r\nif(data.lastName == \"\") {\r\n  addError('lastName', localizedText.lastNameRequiredError);\r\n}\r\n\r\nif(data.email == \"\") {\r\n  addError('email', localizedText.emailRequiredError);\r\n}\r\n\r\nif(data.language == \"\") {\r\n  addError('language', localizedText.languageRequiredError);\r\n}\r\n\r\nfunction validateEmail(email) {\r\n    const re = /^(([^<>()\\[\\]\\\\.,;:\\s@\"]+(\\.[^<>()\\[\\]\\\\.,;:\\s@\"]+)*)|(\".+\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$/;\r\n    return re.test(String(email).toLowerCase());\r\n}\r\nif(!validateEmail(data.email)) {\r\n  addError('email', localizedText.emailInvalidError);\r\n}"
+              "Text": "var data = requestFormAsJsonObject();\r\nvar localizedText = getLocalizedTextValues(getFormContentItem());\r\n\r\nfunction validateEmail(email) {\r\n    const re = /^(([^<>()\\[\\]\\\\.,;:\\s@\"]+(\\.[^<>()\\[\\]\\\\.,;:\\s@\"]+)*)|(\".+\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$/;\r\n    return re.test(String(email).toLowerCase());\r\n}\r\n\r\nif(data.firstName == \"\" || data.lastName == \"\" || data.email == \"\" || data.language == \"\" || !validateEmail(data.email)) {\r\n  addError('serverValidationMessage', localizedText.serverValidationError);\r\n}\r\nvar existing = ownContentByType(\"Volunteer\")\r\nif(existing.length > 0) {\r\n  addError('serverValidationMessage', localizedText.alreadyRegisteredError); \r\n}"
             },
             "OnSubmitted": {
-              "Text": "var data = requestFormAsJsonObject();\r\n\r\nvar item = createContentItem(\"Volunteer\", true, {\r\n  \"ParticipantPart\": {\r\n    \"FirstName\": {\r\n      \"Text\": data.firstName\r\n    },\r\n    \"LastName\": {\r\n      \"Text\": data.lastName\r\n    },\r\n    \"Email\": {\r\n      \"Text\": data.email\r\n    },\r\n    \"Language\": {\r\n      \"Text\": data.language\r\n    }\r\n  }\r\n});\r\n\r\nhttpRedirect('');"
+              "Text": "var data = requestFormAsJsonObject();\r\n\r\nvar item = createContentItem(\"Volunteer\", true, {\r\n  \"ParticipantPart\": {\r\n    \"FirstName\": {\r\n      \"Text\": data.firstName\r\n    },\r\n    \"LastName\": {\r\n      \"Text\": data.lastName\r\n    },\r\n    \"Email\": {\r\n      \"Text\": data.email\r\n    },\r\n    \"Language\": {\r\n      \"Text\": data.language\r\n    }\r\n  }\r\n});\r\n"
             },
             "ComponentOptions": {
               "Text": "{\r\n  data: () => ({\r\n    firstName: \"\",\r\n\tlastName: \"\", \r\n    email: \"\",\r\n    language: \"\"\r\n  })\r\n}"
@@ -92,71 +86,6 @@
           },
           "LocalizedTextPart": {
             "Data": [
-              {
-                "Name": "firtsNameRequiredError",
-                "LocalizedItems": [
-                  {
-                    "Culture": "fr",
-                    "Value": "Votre prénom est requis"
-                  },
-                  {
-                    "Culture": "en",
-                    "Value": "Your first name is required"
-                  }
-                ]
-              },
-              {
-                "Name": "lastNameRequiredError",
-                "LocalizedItems": [
-                  {
-                    "Culture": "fr",
-                    "Value": "Votre nom est requis"
-                  },
-                  {
-                    "Culture": "en",
-                    "Value": "Your last name is required"
-                  }
-                ]
-              },
-              {
-                "Name": "emailRequiredError",
-                "LocalizedItems": [
-                  {
-                    "Culture": "fr",
-                    "Value": "Votre courriel est requis"
-                  },
-                  {
-                    "Culture": "en",
-                    "Value": "Your email is required"
-                  }
-                ]
-              },
-              {
-                "Name": "emailInvalidError",
-                "LocalizedItems": [
-                  {
-                    "Culture": "fr",
-                    "Value": "Votre courriel est invalide"
-                  },
-                  {
-                    "Culture": "en",
-                    "Value": "Your email is invalid"
-                  }
-                ]
-              },
-              {
-                "Name": "languageRequiredError",
-                "LocalizedItems": [
-                  {
-                    "Culture": "fr",
-                    "Value": "Une langue est requise"
-                  },
-                  {
-                    "Culture": "en",
-                    "Value": "A language is required"
-                  }
-                ]
-              },
               {
                 "Name": "firstNameLabel",
                 "LocalizedItems": [
@@ -249,28 +178,41 @@
                 ]
               },
               {
-                "Name": "submitLabel",
+                "Name": "serverValidationError",
                 "LocalizedItems": [
                   {
                     "Culture": "fr",
-                    "Value": "S'inscrire"
+                    "Value": "Une erreure est survenue lors de la soumission. Veuillez nous contacter."
                   },
                   {
                     "Culture": "en",
-                    "Value": "Register"
+                    "Value": "An error occurred during submission. Please contact us."
                   }
                 ]
               },
               {
-                "Name": "volunteerRegistrationLabel",
+                "Name": "alreadyRegisteredError",
                 "LocalizedItems": [
                   {
                     "Culture": "fr",
-                    "Value": "Enregistrement des volontaires"
+                    "Value": "Vous êtes déjà enregistré a cet événement."
                   },
                   {
                     "Culture": "en",
-                    "Value": "Volunteer registration"
+                    "Value": "You are already registered to this event."
+                  }
+                ]
+              },
+              {
+                "Name": "successMessage",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Vôtre enregistrement a été reçu avec succès!"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "You have successfully registered!"
                   }
                 ]
               }

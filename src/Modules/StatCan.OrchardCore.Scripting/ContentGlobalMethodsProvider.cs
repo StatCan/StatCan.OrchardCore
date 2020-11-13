@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Security.Claims;
 using Microsoft.Extensions.DependencyInjection;
 using OrchardCore.ContentManagement;
@@ -29,11 +30,11 @@ namespace StatCan.OrchardCore.Scripting
             _ownContentByType = new GlobalMethod
             {
                 Name = "ownContentByType",
-                Method = serviceProvider => (Func<string, ContentItem>)((type) =>
+                Method = serviceProvider => (Func<string, IEnumerable<ContentItem>>)((type) =>
                 {
                     var session = serviceProvider.GetRequiredService<ISession>();
                     var owner = httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
-                    return session.Query<ContentItem, ContentItemIndex>(c=>c.Owner == owner && c.ContentType == type && c.Published == true).FirstOrDefaultAsync().GetAwaiter().GetResult();
+                    return session.Query<ContentItem, ContentItemIndex>(c=>c.Owner == owner && c.ContentType == type && c.Published == true).ListAsync().GetAwaiter().GetResult();
                 }
                 )
             };
