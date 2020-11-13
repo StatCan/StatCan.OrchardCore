@@ -2,12 +2,14 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Localization;
 using Newtonsoft.Json;
 using OrchardCore.ContentFields.Fields;
+
 using OrchardCore.ContentManagement.Metadata.Models;
 using OrchardCore.ContentTypes.Editors;
 using OrchardCore.DisplayManagement.Views;
 using StatCan.OrchardCore.ContentFields.Multivalue.Fields;
 using StatCan.OrchardCore.ContentFields.Multivalue.ViewModels;
 using StatCan.OrchardCore.ContentFields.Multivalue.Settings;
+
 
 namespace StatCan.OrchardCore.ContentFields.Multivalue.Settings
 {
@@ -34,7 +36,7 @@ namespace StatCan.OrchardCore.ContentFields.Multivalue.Settings
 
         public override async Task<IDisplayResult> UpdateAsync(ContentPartFieldDefinition partFieldDefinition, UpdatePartFieldEditorContext context)
         {
-            if (partFieldDefinition.Editor() == "Multivalue")
+            if (partFieldDefinition.Editor() == "PredefinedList")
             {
                 var model = new MultivalueFieldSettingsViewModel();
                 var settings = new MultivalueFieldEditorSettings();

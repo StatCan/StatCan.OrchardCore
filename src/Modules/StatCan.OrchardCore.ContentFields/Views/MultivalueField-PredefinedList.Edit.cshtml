@@ -20,19 +20,19 @@
 <div class="form-group">
 
   @if (listSettings.Editor == StatCan.OrchardCore.ContentFields.Multivalue.Settings.EditorOption.Radio)
-    {
+  {
     var i = 0;
     <label asp-for="Values">@Model.PartFieldDefinition.DisplayName()</label>
     @foreach (var option in options)
     {
-    <div class="custom-control custom-radio" asp-for="Values">
-    @Html.RadioButton("Text", option.Value, option.Selected, new { @class = "custom-control-input content-preview-text",
-    id = Html.IdFor(m => m.Values) + "_" + i })
-    <label class="custom-control-label" for="@(Html.IdFor(m => m.Values) + "_" + i)">@option.Text</label>
-    </div>
-    i++;
+      <div class="custom-control custom-checkbox" asp-for="Values">
+        @Html.CheckBox("Values", option.Selected, new { @class = "custom-control-input content-preview-text",
+          id = Html.IdFor(m => m.Values) + "_" + i })
+        <label class="custom-control-label" for="@(Html.IdFor(m => m.Values) + "_" + i)">@option.Text</label>
+      </div>
+      i++;
     }
-    }
+  }
 
   @if (listSettings.Editor == StatCan.OrchardCore.ContentFields.Multivalue.Settings.EditorOption.Dropdown)
   {

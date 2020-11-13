@@ -1,5 +1,4 @@
-﻿using OrchardCore.ContentFields.Fields;
-using OrchardCore.ContentManagement;
+﻿using OrchardCore.ContentManagement;
 using OrchardCore.ContentManagement.Metadata.Models;
 using StatCan.OrchardCore.ContentFields.Multivalue.Fields;
 
