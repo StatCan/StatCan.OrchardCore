@@ -1,5 +1,13 @@
 "use strict";
 
+function decodeUnicode(str) {
+  // Going backwards: from bytestream, to percent-encoding, to original string.
+  return decodeURIComponent(atob(str).split('').map(function (c) {
+    return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+  }).join(''));
+}
+
+
 // run init script
 function initForm(app) {
 
@@ -10,7 +18,7 @@ function initForm(app) {
 
   let parsedOptions = {};
   if(componentOptions)  {
-    const fn = new Function(`return ${atob(componentOptions)};`);
+    const fn = new Function(`return ${decodeUnicode(componentOptions)};`);
     parsedOptions = fn();
   }
 
@@ -111,7 +119,7 @@ function initForm(app) {
   // run the vue-form init script provided in the OC admin ui
   let initScript = app.dataset.initScript;
   if (initScript) {
-    const initFn = new Function(atob(initScript));
+    const initFn = new Function(decodeUnicode(initScript));
     initFn();
   }
 }
