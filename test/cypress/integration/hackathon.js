@@ -31,7 +31,8 @@ describe("Hackathon Tests", function() {
     cy.runRecipe(tenant, 'Hackathon_VolunteerRegistrationForm');
   })
 
-  it("Challenge Submission form client side validation prevents submit", function() {
+  // Challenge Submission Form
+  it("Challenge Submission: Client side validation prevents submit", function() {
     cy.visitContentPage(tenant, contentIdChallengeSubmissionForm);
 
     cy.get('button[type=submit]').click();
@@ -41,7 +42,7 @@ describe("Hackathon Tests", function() {
     cy.get('textarea[name=description]').closest('.v-input').find('.v-messages__message').should('contain', 'The description field is required');
   })
 
-  it("Challenge Submission form submit works and displays success message", function() {
+  it("Challenge Submission: Submit works and displays success message", function() {
     cy.visitContentPage(tenant, contentIdChallengeSubmissionForm);
 
     cy.get('input[name=name]').type('Challenge Name', {force:true});
@@ -53,7 +54,8 @@ describe("Hackathon Tests", function() {
     cy.get('div[class=v-alert__content]').should('contain', 'The challenge was submitted successfully');
   })
 
-  it("Hacker Registration form client side validation prevents submit", function() {
+  // Hacker Registration Form
+  it("Hacker Registration: Client side validation prevents submit", function() {
     cy.visitContentPage(tenant, contentIdHackerRegistrationForm);
   
     cy.get('button[type=submit]').click();
@@ -63,7 +65,7 @@ describe("Hackathon Tests", function() {
     cy.get('input[name=email]').closest('.v-input').find('.v-messages__message').should('contain', 'The Email Address field is required');
   })
   
-  it("Hacker Registration form submit works and displays success message", function() {
+  it("Hacker Registration: Submit works and displays success message", function() {
     cy.visitContentPage(tenant, contentIdHackerRegistrationForm);
   
     cy.get('input[name=firstName]').type('Tester', {force:true});
@@ -76,7 +78,8 @@ describe("Hackathon Tests", function() {
     cy.get('div[class=v-alert__content]').should('contain', 'You have successfully registered!');
   })
     
-  it("Volunteer Registration form Client side validation prevents submit", function() {
+  // Volunteer Registration Form
+  it("Volunteer Registration: Client side validation prevents submit", function() {
     cy.visitContentPage(tenant, contentIdVolunteerRegistrationForm);
   
     cy.get('button[type=submit]').click();
@@ -86,7 +89,7 @@ describe("Hackathon Tests", function() {
     cy.get('input[name=email]').closest('.v-input').find('.v-messages__message').should('contain', 'The Email Address field is required');
   })
   
-  it("Volunteer Registration form submission works and displays success message", function() {
+  it("Volunteer Registration: Submit works and displays success message", function() {
     cy.visitContentPage(tenant, contentIdVolunteerRegistrationForm);
   
     cy.get('input[name=firstName]').type('Tester', {force:true});
