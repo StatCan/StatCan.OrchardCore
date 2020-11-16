@@ -51,8 +51,10 @@ namespace StatCan.OrchardCore.LocalizedText.Drivers
             var model = new EditLocalizedTextFieldViewModel();
 
             await updater.TryUpdateModelAsync(model, Prefix, m => m.Data);
-
-            part.Data = JsonConvert.DeserializeObject<List<LocalizedTextEntry>>(model.Data);
+            if(!string.IsNullOrEmpty(model.Data))
+            {
+                part.Data = JsonConvert.DeserializeObject<List<LocalizedTextEntry>>(model.Data);
+            }
 
             return Edit(part, context);
         }

@@ -10,6 +10,7 @@ namespace StatCan.OrchardCore.Scripting
         {
             services.AddSingleton<IGlobalMethodProvider, FormsGlobalMethodsProvider>();
             services.AddSingleton<IGlobalMethodProvider, HttpGlobalMethodsProvider>();
+            services.AddSingleton<IGlobalMethodProvider, UserSettingsGlobalMethodsProvider>();
         }
     }
     [RequireFeatures("OrchardCore.Contents")]
