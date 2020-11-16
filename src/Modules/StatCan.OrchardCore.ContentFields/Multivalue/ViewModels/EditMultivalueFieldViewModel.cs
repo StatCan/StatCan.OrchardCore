@@ -1,6 +1,6 @@
+using System;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
-using OrchardCore.ContentFields.Fields;
 using OrchardCore.ContentManagement;
 using OrchardCore.ContentManagement.Metadata.Models;
 using OrchardCore.ContentFields.ViewModels;
@@ -10,7 +10,7 @@ namespace StatCan.OrchardCore.ContentFields.Multivalue.ViewModels
 {
     public class EditMultivalueFieldViewModel
     {
-        public string[] Values { get; set; }
+        public String[] Values { get; set; }
         public MultivalueField Field { get; set; }
         public ContentPart Part { get; set; }
         public ContentPartFieldDefinition PartFieldDefinition { get; set; }
