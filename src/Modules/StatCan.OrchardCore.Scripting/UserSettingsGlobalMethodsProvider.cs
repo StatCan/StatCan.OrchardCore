@@ -21,6 +21,12 @@ using OrchardCore.Users.Services;
 
 namespace StatCan.OrchardCore.Scripting
 {
+    public enum StatusEnum
+    {
+        Success=0,
+        Unauthorized=1,
+        TypeError=2,
+    }
     public class UserSettingsGlobalMethodsProvider : IGlobalMethodProvider
     {
         private readonly GlobalMethod _updateUserProperties;
@@ -29,8 +35,8 @@ namespace StatCan.OrchardCore.Scripting
         {
             _updateUserProperties = new GlobalMethod
             {
-                Name = "updateUserSettings",
-                Method = serviceProvider => (Func<string, object, bool>)((type, properties) =>
+                Name = "updateCustomUserSettings",
+                Method = serviceProvider => (Func<string, object, StatusEnum>)((type, properties) =>
                 {
                     var contentDefinitionManager  = serviceProvider.GetRequiredService<IContentDefinitionManager>();
                     IEnumerable<IContentHandler> contentHandlers = serviceProvider.GetRequiredService<IEnumerable<IContentHandler>>();
@@ -44,19 +50,17 @@ namespace StatCan.OrchardCore.Scripting
 
                     if(def == null)
                     {
-                        return false;
+                        return StatusEnum.TypeError;
                     }
 
-                    if (! authorizationService.AuthorizeAsync(userClaim, CustomUserSettingsPermissions.CreatePermissionForType(def)).GetAwaiter().GetResult())
+                    if (!authorizationService.AuthorizeAsync(userClaim, CustomUserSettingsPermissions.CreatePermissionForType(def)).GetAwaiter().GetResult())
                     {
-                        // permission error
-                        return false;
+                        return StatusEnum.Unauthorized;
                     }
 
                     if(def.GetSettings<ContentTypeSettings>().Stereotype != "CustomUserSettings")
                     {
-                        // better error message
-                        return false;
+                        return StatusEnum.TypeError;
                     }
 
                     var user = (User)userService.GetAuthenticatedUserAsync(userClaim).GetAwaiter().GetResult();
@@ -73,8 +77,7 @@ namespace StatCan.OrchardCore.Scripting
                     user.Properties[def.Name] = JObject.FromObject(contentItem);
 
                     userManager.UpdateAsync(user).GetAwaiter().GetResult();
-
-                    return true;
+                    return StatusEnum.Success;
                 }
                 )
             };

@@ -26,6 +26,14 @@ These methods are added when the `OrchardCore.Contents` module is enabled
 | -------- | ----------- |
 |`contentByItemId(contentItemId: String): ContentItem`| Returns the ContentItem with the specified contentItemId |
 
+### CustomUserSettings
+
+These methods are added when the `OrchardCore.Users.CustomUserSettings` module is enabled
+
+| Function | Description 
+| -------- | ----------- |
+|`updateCustomUserSettings(contentType: String, properties: Object): StatusEnum`| Updates the CustomUserSettings with the specified contentType with the passed properties. Returns 0 for success, 1 for unauthorized and 2 for type error.  |
+
 ### Localization
 
 These methods are added when the `OrchardCore.ContentLocalization` module is enabled

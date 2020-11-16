@@ -10,7 +10,6 @@ namespace StatCan.OrchardCore.Scripting
         {
             services.AddSingleton<IGlobalMethodProvider, FormsGlobalMethodsProvider>();
             services.AddSingleton<IGlobalMethodProvider, HttpGlobalMethodsProvider>();
-            services.AddSingleton<IGlobalMethodProvider, UserSettingsGlobalMethodsProvider>();
         }
     }
     [RequireFeatures("OrchardCore.Contents")]
@@ -27,6 +26,14 @@ namespace StatCan.OrchardCore.Scripting
         public override void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton<IGlobalMethodProvider, LocalizationGlobalMethodsProvider>();
+        }
+    }
+    [RequireFeatures("OrchardCore.Users.CustomUserSettings")]
+    public class ContentLocalizationStartup : StartupBase
+    {
+        public override void ConfigureServices(IServiceCollection services)
+        {
+            services.AddSingleton<IGlobalMethodProvider, UserSettingsGlobalMethodsProvider>();
         }
     }
 }
