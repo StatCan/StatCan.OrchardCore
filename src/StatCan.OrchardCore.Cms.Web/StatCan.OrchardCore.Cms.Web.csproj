@@ -9,6 +9,7 @@
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
     <PreserveCompilationReferences>true</PreserveCompilationReferences>
     <CodeAnalysisRuleSet>..\..\roslynator.ruleset</CodeAnalysisRuleSet>
+    <StartupObject>web.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Folder Include="wwwroot\" />

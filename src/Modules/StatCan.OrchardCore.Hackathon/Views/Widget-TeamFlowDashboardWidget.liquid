@@ -1,0 +1,15 @@
+{%comment%}Widget that displays it's content when the user is part of a team{%endcomment%}
+{% assign hacker = Queries.GetHacker | query: owner: User.Identity.Name | first %}
+
+<div {%if Model.Id != null%}id="{{ Model.Id }}"{%endif%} class="{{ Model.Classes | join: ' ' }}">
+    <div class="vg-header">
+        <h2>{{ Model.ContentItem | display_text }}</h2>
+    </div>
+    <div class="vg-content" >
+      {% if hacker == null %}
+      {{ Model.Content.TeamFlowDashboardWidget__NoTeamHtml | shape_render }}
+      {% else %}
+       {{ Model.Content.FlowPart | shape_render }}
+       {% endif %}
+    </div>
+</div>

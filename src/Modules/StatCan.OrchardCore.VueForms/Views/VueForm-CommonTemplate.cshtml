@@ -11,8 +11,8 @@
   var flowPart = contentItem.As<FlowPart>();
   var scripts = contentItem.As<VueFormScripts>();
 
-  var initScript = await Orchard.LiquidAsync(scripts.ClientInit?.Text, contentItem);
-  var options = await Orchard.LiquidAsync(scripts.ComponentOptions?.Text, contentItem);
+  var initScript = await Orchard.LiquidShortcodesAsync(scripts.ClientInit?.Text, contentItem);
+  var options = await Orchard.LiquidShortcodesAsync(scripts.ComponentOptions?.Text, contentItem);
 
   var componentName = "c-" + Guid.NewGuid().ToString("N");
 }

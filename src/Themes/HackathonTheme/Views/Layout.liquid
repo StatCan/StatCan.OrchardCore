@@ -14,29 +14,11 @@
       <v-app>
         <!-- Style this absolute in the middle, on top of app-bar -->
         <a class="d-sr-only-focusable" href="#main">{{ "Skip to main content" | t }}</a>
-        <v-navigation-drawer app v-model="drawer">
-          <template #prepend>
-            <v-toolbar
-            class="v-bar--underline"
-            flat>
-              {% if Site.Properties.HackathonThemeSettings.HackathonThemeSettings.Logo.Paths.first != null %}
-                <v-list-item class="pa-0 mx-n1 justify-center">
-                  {% comment %} <a href="{{ '~/' | href }}">
-                    <img
-                      src="{{Site.Properties.HackathonThemeSettings.HackathonThemeSettings.Logo.Paths.first | asset_url | resize_url: width:160, height:160 }}"
-                      max-width="148"
-                      width="148"
-                    />
-                  </a> {% endcomment %}
-                </v-list-item>
-              {% endif %}
-            </v-toolbar>
-          </template>
-          <v-divider></v-divider>
+        <v-navigation-drawer app clipped v-model="drawer">
           {% assign drawerAlias = "alias:navigation-drawer-" | append: Culture.Name %}
           {% shape "menu", alias: drawerAlias, cache_id: drawerAlias, cache_fixed_duration: "00:00:01", cache_tag: menuAlias %}
         </v-navigation-drawer>
-        <v-app-bar app>
+        <v-app-bar app clipped-left>
           <v-app-bar-nav-icon class="hidden-lg-and-up" @click="drawer = !drawer"></v-app-bar-nav-icon>
           {% if Site.Properties.HackathonThemeSettings.HackathonThemeSettings.Logo.Paths.first %}
             <v-img src="{{ Site.Properties.HackathonThemeSettings.HackathonThemeSettings.Logo.Paths.first | asset_url | resize_url: width:160, height:160 }}" max-height="32" max-width="32" alt="logo" class="mr-2"></v-img>

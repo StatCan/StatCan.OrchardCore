@@ -1,5 +1,12 @@
 "use strict";
 
+function decodeUnicode(str) {
+  return decodeURIComponent(atob(str).split('').map(function (c) {
+    return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+  }).join(''));
+}
+
+
 // run init script
 function initForm(app) {
 
@@ -10,7 +17,7 @@ function initForm(app) {
 
   let parsedOptions = {};
   if(componentOptions)  {
-    const fn = new Function(`return ${atob(componentOptions)};`);
+    const fn = new Function(`return ${decodeUnicode(componentOptions)};`);
     parsedOptions = fn();
   }
 
@@ -30,7 +37,6 @@ function initForm(app) {
     serverErrorMessage: undefined
   }
 
-  //todo component name
   Vue.component(app.dataset.name, {
     // First because the elements below will override
     ...parsedRest,
@@ -111,14 +117,16 @@ function initForm(app) {
   // run the vue-form init script provided in the OC admin ui
   let initScript = app.dataset.initScript;
   if (initScript) {
-    const initFn = new Function(atob(initScript));
+    const initFn = new Function(decodeUnicode(initScript));
     initFn();
   }
 }
 
-
 // look for all vue forms when this script is loaded and initialize them
 document.querySelectorAll(".vue-form").forEach(initForm);
-const formLoadedEvent = new Event('vue-form-component-loaded');
-document.dispatchEvent(formLoadedEvent);
 
+document.addEventListener("DOMContentLoaded", function(event) { 
+  const formLoadedEvent = new Event('vue-form-component-loaded');
+  document.dispatchEvent(formLoadedEvent);
+});
+ 

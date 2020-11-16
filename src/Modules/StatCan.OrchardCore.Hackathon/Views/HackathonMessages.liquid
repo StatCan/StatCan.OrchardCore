@@ -1,0 +1,5 @@
+<dl>
+  {% for message in Model.Messages %}
+  {{ message | shape_build_display | shape_render }}
+  {% endfor %}
+</dl>
