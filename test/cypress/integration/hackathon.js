@@ -32,7 +32,7 @@ describe("Hackathon Tests", function() {
   })
 
   // Challenge Submission Form
-  it("Client side validation prevents submit", function() {
+  it("Challenge Submission: Client side validation prevents submit", function() {
     cy.visitContentPage(tenant, contentIdChallengeSubmissionForm);
 
     // submit the form
@@ -43,7 +43,7 @@ describe("Hackathon Tests", function() {
     cy.get('textarea[name=description]').closest('.v-input').find('.v-messages__message').should('contain', 'The description field is required');
   })
 
-  it("Submit works and displays success message", function() {
+  it("Challenge Submission: Submit works and displays success message", function() {
     cy.visitContentPage(tenant, contentIdChallengeSubmissionForm);
 
     cy.get('input[name=name]').type('Challenge Name', {force:true});
@@ -56,7 +56,7 @@ describe("Hackathon Tests", function() {
   })
 
   // Hacker Registration Form
-  it("Client side validation prevents submit", function() {
+  it("Hacker Registration: Client side validation prevents submit", function() {
     cy.visitContentPage(tenant, contentIdHackerRegistrationForm);
   
     // submit the form
@@ -67,7 +67,7 @@ describe("Hackathon Tests", function() {
     cy.get('input[name=email]').closest('.v-input').find('.v-messages__message').should('contain', 'The Email Address field is required');
   })
   
-  it("Submit works and displays success message", function() {
+  it("Hacker Registration: Submit works and displays success message", function() {
     cy.visitContentPage(tenant, contentIdHackerRegistrationForm);
   
     cy.get('input[name=firstName]').type('Tester', {force:true});
@@ -81,7 +81,7 @@ describe("Hackathon Tests", function() {
   })
     
   // Volunteer Registration Form
-  it("Client side validation prevents submit", function() {
+  it("Volunteer Registration: Client side validation prevents submit", function() {
     cy.visitContentPage(tenant, contentIdVolunteerRegistrationForm);
   
     // submit the form
@@ -92,7 +92,7 @@ describe("Hackathon Tests", function() {
     cy.get('input[name=email]').closest('.v-input').find('.v-messages__message').should('contain', 'The Email Address field is required');
   })
   
-  it("Submit works and displays success message", function() {
+  it("Volunteer Registration: Submit works and displays success message", function() {
     cy.visitContentPage(tenant, contentIdVolunteerRegistrationForm);
   
     cy.get('input[name=firstName]').type('Tester', {force:true});
@@ -106,7 +106,7 @@ describe("Hackathon Tests", function() {
   })
 
   // Scoring Page Form  
-  it("Submit works and displays success message", function() {
+  it("Scoring Page: Submit works and displays success message", function() {
     cy.visitContentPage(tenant, contentIdScoringPageForm);
   
     cy.get('input[value=7]').click({force:true});
