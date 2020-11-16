@@ -1,5 +1,5 @@
 {
-  "name": "Hackthon.ScoringPage",
+  "name": "Hackathon.ScoringPage",
   "displayName": "Scoring Page",
   "description": "Creates a page with a scoring form that can be used by judge.",
   "author": "StatCan Digital Innovation",
@@ -87,13 +87,13 @@
           },
           "VueFormScripts": {
             "ClientInit": {
-              "Text": "VeeValidate.setInteractionMode('passive');\r\nVeeValidate.localize({\r\n  {{Culture.Name}}: {\r\n    fields: {\r\n      comment: {\r\n        required: '{{ \"scoreRequiredError\" | localize }}',\r\n      }\r\n    }\r\n  }\r\n});\r\nreturn new Vuetify();"
+              "Text": "VeeValidate.setInteractionMode('passive');\r\nVeeValidate.localize({\r\n  {{Culture.Name}}: {\r\n    fields: {\r\n      comment: {\r\n        required: '{{ \"scoreRequiredError\" | localize }}',\r\n      }\r\n    }\r\n  }\r\n});\r\n"
             },
             "OnValidation": {
               "Text": "var data = requestFormAsJsonObject();\r\nvar localizedText = getLocalizedTextValues(getFormContentItem());\r\n\r\nif(data.score == \"\" && data.comment == \"\") {\r\n  addError('score', localizedText.scoreRequiredError);\r\n}"
             },
             "OnSubmitted": {
-              "Text": "var data = requestFormAsJsonObject();\r\n\r\nvar item = createContentItem(\"ScoreEntry\", true, {\r\n  \"Score\": {\r\n    \"Score\": {\r\n      \"Value\": data.score\r\n    },\r\n    \"Judge\": {\r\n      \"ContentItemIds\": [\r\n        data.judge\r\n      ]\r\n    },\r\n    \"Team\": {\r\n      \"ContentItemIds\": [\r\n        data.team\r\n      ]\r\n    },\r\n    \"comment\": {\r\n      \"Text\": data.comment\r\n    }\r\n  }\r\n});\r\n\r\nhttpRedirect('hackpage');"
+              "Text": "var data = requestFormAsJsonObject();\r\n\r\nvar item = createContentItem(\"ScoreEntry\", true, {\r\n  \"Score\": {\r\n    \"Score\": {\r\n      \"Value\": data.score\r\n    },\r\n    \"Judge\": {\r\n      \"ContentItemIds\": [\r\n        data.judge\r\n      ]\r\n    },\r\n    \"Team\": {\r\n      \"ContentItemIds\": [\r\n        data.team\r\n      ]\r\n    },\r\n    \"comment\": {\r\n      \"Text\": data.comment\r\n    }\r\n  }\r\n});\r\n\r\n"
             },
             "ComponentOptions": {
               "Text": "{\r\n  data: () => ({\r\n    score: \"\",\r\n\tcomment: \"\", \r\n    judge: \"{{ judge.ContentItemId }}\",\r\n    team: \"{{ Request.Query['teamId'] }}\"\r\n  })\r\n}"
