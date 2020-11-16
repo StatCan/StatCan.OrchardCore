@@ -22,20 +22,18 @@ describe("Hackathon Tests", function() {
     cy.enableFeature(tenant, "StatCan_OrchardCore_Hackathon_Judging");
   })
 
-  it("Can run VueForm recipes", function() {
+  it("Can run Hackathon recipes recipes", function() {
     cy.visit(`${tenant.prefix}/login`)
     cy.login(tenant);
     cy.runRecipe(tenant, 'Hackathon_ChallengeSubmissionForm');
     cy.runRecipe(tenant, 'Hackathon_HackerRegistrationForm');
-    cy.runRecipe(tenant, 'Hackathon_ScoringPage');
+   // cy.runRecipe(tenant, 'Hackathon_ScoringPage');
     cy.runRecipe(tenant, 'Hackathon_VolunteerRegistrationForm');
   })
 
-  // Challenge Submission Form
-  it("Client side validation prevents submit", function() {
+  it("Challenge Submission form client side validation prevents submit", function() {
     cy.visitContentPage(tenant, contentIdChallengeSubmissionForm);
 
-    // submit the form
     cy.get('button[type=submit]').click();
 
     cy.get('input[name=name]').closest('.v-input').find('.v-messages__message').should('contain', 'The name field is required');
@@ -43,7 +41,7 @@ describe("Hackathon Tests", function() {
     cy.get('textarea[name=description]').closest('.v-input').find('.v-messages__message').should('contain', 'The description field is required');
   })
 
-  it("Submit works and displays success message", function() {
+  it("Challenge Submission form submit works and displays success message", function() {
     cy.visitContentPage(tenant, contentIdChallengeSubmissionForm);
 
     cy.get('input[name=name]').type('Challenge Name', {force:true});
@@ -55,11 +53,9 @@ describe("Hackathon Tests", function() {
     cy.get('div[class=v-alert__content]').should('contain', 'The challenge was submitted successfully');
   })
 
-  // Hacker Registration Form
-  it("Client side validation prevents submit", function() {
+  it("Hacker Registration form client side validation prevents submit", function() {
     cy.visitContentPage(tenant, contentIdHackerRegistrationForm);
   
-    // submit the form
     cy.get('button[type=submit]').click();
   
     cy.get('input[name=firstName]').closest('.v-input').find('.v-messages__message').should('contain', 'The First name field is required');
@@ -67,7 +63,7 @@ describe("Hackathon Tests", function() {
     cy.get('input[name=email]').closest('.v-input').find('.v-messages__message').should('contain', 'The Email Address field is required');
   })
   
-  it("Submit works and displays success message", function() {
+  it("Hacker Registration form submit works and displays success message", function() {
     cy.visitContentPage(tenant, contentIdHackerRegistrationForm);
   
     cy.get('input[name=firstName]').type('Tester', {force:true});
@@ -80,11 +76,9 @@ describe("Hackathon Tests", function() {
     cy.get('div[class=v-alert__content]').should('contain', 'You have successfully registered!');
   })
     
-  // Volunteer Registration Form
-  it("Client side validation prevents submit", function() {
+  it("Volunteer Registration form Client side validation prevents submit", function() {
     cy.visitContentPage(tenant, contentIdVolunteerRegistrationForm);
   
-    // submit the form
     cy.get('button[type=submit]').click();
   
     cy.get('input[name=firstName]').closest('.v-input').find('.v-messages__message').should('contain', 'The First name field is required');
@@ -92,7 +86,7 @@ describe("Hackathon Tests", function() {
     cy.get('input[name=email]').closest('.v-input').find('.v-messages__message').should('contain', 'The Email Address field is required');
   })
   
-  it("Submit works and displays success message", function() {
+  it("Volunteer Registration form submission works and displays success message", function() {
     cy.visitContentPage(tenant, contentIdVolunteerRegistrationForm);
   
     cy.get('input[name=firstName]').type('Tester', {force:true});
@@ -105,15 +99,15 @@ describe("Hackathon Tests", function() {
     cy.get('div[class=v-alert__content]').should('contain', 'You have successfully registered!');
   })
 
-  // Scoring Page Form  
-  it("Submit works and displays success message", function() {
-    cy.visitContentPage(tenant, contentIdScoringPageForm);
+  // // Scoring Page Form  
+  // it("Submit works and displays success message", function() {
+  //   cy.visitContentPage(tenant, contentIdScoringPageForm);
   
-    cy.get('input[value=7]').click({force:true});
-    cy.get('textarea[name=comment]').type('really good blah blah blah blah blah blah blah blah blah', {force:true});
+  //   cy.get('input[value=7]').click({force:true});
+  //   cy.get('textarea[name=comment]').type('really good blah blah blah blah blah blah blah blah blah', {force:true});
   
-    cy.get('button[type=submit]').click();
+  //   cy.get('button[type=submit]').click();
     
-    cy.get('div[class=v-alert__content]').should('contain', 'Your submission was successful');
-  })
+  //   cy.get('div[class=v-alert__content]').should('contain', 'Your submission was successful');
+  // })
 });
