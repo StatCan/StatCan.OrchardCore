@@ -1,0 +1,268 @@
+{
+  "name": "VueForm.UserProfile",
+  "displayName": "User Profile form example",
+  "description": "An example form to update the user's profile. This will enable the OrchardCore.Users.ChangeEmail feature. You must also property configure the roles to allow authenticated users to modify their own UserProfiles.",
+  "author": "StatCan Digital Innovation",
+  "website": "digital.statcan.gc.ca",
+  "version": "1.0.0",
+  "issetuprecipe": false,
+  "categories": ["VueForm"],
+  "tags": ["Example","Form","UserProfile"],
+  "steps": [
+    {
+      "name": "feature",
+      "disable": [],
+      "enable": [
+        "StatCan.OrchardCore.VueForms.Localized",
+        "OrchardCore.Users.ChangeEmail",
+        "OrchardCore.Users.CustomUserSettings"
+      ]
+    },
+    {
+      "name": "content",
+      "data": [
+        {
+          "ContentItemId": "4pbmvhq49bwy1yatrapasxctnk",
+          "ContentItemVersionId": "45pdhgw4x2g3t77t0k6833zc4h",
+          "ContentType": "VueForm",
+          "DisplayText": "User Profile",
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "TitlePart": {
+            "Title": "User Profile"
+          },
+          "VueForm": {
+            "Enabled": {
+              "Value": true
+            },
+            "RenderAs": {
+              "Text": null
+            },
+            "DisabledHtml": {
+              "Html": ""
+            },
+            "SuccessMessage": {
+              "Text": "{{ \"successMessage\" | localize }}"
+            }
+          },
+          "FlowPart": {
+            "Widgets": [
+              {
+                "ContentItemId": "4ectyjesg049tz30gp0hby9n57",
+                "ContentItemVersionId": null,
+                "ContentType": "VueComponent",
+                "DisplayText": "Update user profile",
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": "2020-11-17T16:32:47.9275256Z",
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": "",
+                "Author": "admin",
+                "TitlePart": {
+                  "Title": "Update user profile"
+                },
+                "VueComponent": {
+                  "Template": {
+                    "Text": "<v-container >\r\n  <v-card-text>\r\n    <v-row justify=\"center\">\r\n      <v-col cols=\"8\">\r\n        <h1>[locale en]User profile[/locale][locale fr]Profil d'utilisateur[/locale]</h1>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n        <v-text-field v-model=\"firstName\" filled=\"filled\" label=\"[locale en]First name[/locale][locale fr]Prénom[/locale]\"></v-text-field>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n        <v-text-field v-model=\"lastName\" filled=\"filled\" label=\"[locale en]Surname[/locale][locale fr]Nom[/locale]\"></v-text-field>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n        <validation-provider name=\"{{ \"emailLabel\" | localize | downcase | raw }}\" rules=\"required|email\" v-slot=\"{ errors, valid }\">\r\n          <v-text-field v-model=\"email\" :success=\"valid\" :error-messages=\"errors\" filled=\"filled\" label=\"{{ \"emailLabel\" | localize }}\"></v-text-field>\r\n        </validation-provider>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n        <p>[locale en]Language[/locale][locale fr]Langue[/locale]</p>\r\n        <v-radio-group  v-model=\"language\" row >\r\n          <v-radio label=\"[locale en]English[/locale][locale fr]Anglais[/locale]\" value=\"en\" ></v-radio>\r\n          <v-radio label=\"[locale en]French[/locale][locale fr]Français[/locale]\" value=\"fr\" ></v-radio>\r\n          <v-radio label=\"[locale en]Billingual[/locale][locale fr]Billingue[/locale]\" value=\"both\" ></v-radio>\r\n        </v-radio-group>\r\n      </v-col>\r\n        <v-col cols=\"8\">\r\n          <v-alert type=\"success\" v-if=\"form.successMessage\">\r\n            {% raw %}{{ form.successMessage }}{% endraw %}\r\n          </v-alert>\r\n          <v-alert type=\"error\" v-if=\"form.serverValidationMessage\">\r\n            {% raw %}{{ form.serverValidationMessage[0] }}{% endraw %}\r\n          </v-alert>\r\n        </v-col>\r\n        <v-col cols=\"8\">\r\n    \t  <v-btn type=\"submit\" depressed block @click=\"formHandleSubmit\" :loading=\"form.submitting\" :disabled=\"form.submitting\">[locale en]Update profile[/locale][locale fr]Mettre à jour vôtre profil[/locale]</v-btn>\r\n        </v-col>\r\n    </v-row>\r\n  </v-card-text>\r\n</v-container>\r\n"
+                  }
+                },
+                "FlowMetadata": {
+                  "Alignment": 3,
+                  "Size": 100
+                }
+              }
+            ]
+          },
+          "VueFormScripts": {
+            "ClientInit": {
+              "Text": null
+            },
+            "ComponentOptions": {
+              "Text": "{% assign properties = User | user_properties %}\r\n{\r\n  data: () => ({\r\n    firstName: \"{{properties.UserProfile.UserProfile.FirstName.Text}}\",\r\n\tlastName: \"{{properties.UserProfile.UserProfile.LastName.Text}}\", \r\n    email: \"{{ User | user_email }}\",\r\n    language: \"{{properties.UserProfile.UserProfile.Language.Text}}\"\r\n  })\r\n}"
+            },
+            "OnValidation": {
+              "Text": "var data = requestFormAsJsonObject();\r\nvar localizedText = getLocalizedTextValues(getFormContentItem());\r\n\r\nif(!validateEmail(data.email)){\r\n    addError(\"email\", localizedText.invalidEmail);\r\n}\r\n"
+            },
+            "OnSubmitted": {
+              "Text": "var data = requestFormAsJsonObject();\r\nvar localizedText = getLocalizedTextValues(getFormContentItem());\r\n\r\nvar updateEmailResult = updateEmail(data.email);\r\n\r\nif(updateEmailResult == 3)\r\n{\r\n  addError(\"email\", localizedText.duplicateEmail);\r\n}\r\n\r\nif(updateEmailResult == 4 || updateEmailResult == 1)\r\n{\r\n  addError(\"serverValidationMessage\", localizedText.updateSettingsError); \r\n}\r\n\r\nif(hasErrors()) \r\n{\r\n  return; \r\n}\r\n\r\nvar updateSettingsResult = updateCustomUserSettings(\"UserProfile\", {\r\n  \"UserProfile\" : {\r\n     \"FirstName\": {\r\n       \"Text\": data.firstName, \r\n     },\r\n     \"LastName\": {\r\n       \"Text\": data.lastName, \r\n     },\r\n     \"Language\": {\r\n       \"Text\": data.language, \r\n     },\r\n  }\r\n});\r\n\r\nif(updateSettingsResult == 1 || updateSettingsResult == 2) \r\n{\r\n  addError(\"serverValidationMessage\", localizedText.updateSettingsError);  \r\n}\r\n// success message displayed\r\n"
+            }
+          },
+          "LocalizedTextPart": {
+            "Data": [
+              {
+                "Name": "successMessage",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Vôtre profil a été mis à jour."
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Your profile was updated."
+                  }
+                ]
+              },
+              {
+                "Name": "emailLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Adresse courriel"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Email Address"
+                  }
+                ]
+              },
+              {
+                "Name": "invalidEmail",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Le courriel est invalide"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "The email is invalid"
+                  }
+                ]
+              },
+              {
+                "Name": "duplicateEmail",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Le courriel est déjà utilisé"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "The email is already in use"
+                  }
+                ]
+              },
+              {
+                "Name": "updateSettingsError",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Une erreure est survenue lors de la mise à jour de votre profile. Veuillez contacter l'administrateur"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "An error occurred while updating your profile. Please contact the site admin."
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "ContentDefinition",
+      "ContentTypes": [
+        {
+          "Name": "UserProfile",
+          "DisplayName": "UserProfile",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Stereotype": "CustomUserSettings"
+            },
+            "FullTextAspectSettings": {
+              "IncludeBodyAspect": false,
+              "IncludeDisplayText": false
+            }
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "UserProfile",
+              "Name": "UserProfile",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "ContentParts": [
+        {
+          "Name": "UserProfile",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "TextField",
+              "Name": "FirstName",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "First Name",
+                  "Position": "0"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "LastName",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Last Name",
+                  "Position": "1"
+                },
+                "TextFieldSettings": {},
+                "TextFieldPredefinedListEditorSettings": {
+                  "Options": [
+                    {
+                      "name": "English",
+                      "value": "en"
+                    },
+                    {
+                      "name": "French",
+                      "value": "fr"
+                    },
+                    {
+                      "name": "Billingual",
+                      "value": "both"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "Language",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Language",
+                  "Editor": "PredefinedList",
+                  "Position": "2"
+                },
+                "TextFieldSettings": {},
+                "TextFieldPredefinedListEditorSettings": {
+                  "Options": [
+                    {
+                      "name": "English",
+                      "value": "en"
+                    },
+                    {
+                      "name": "French",
+                      "value": "fr"
+                    },
+                    {
+                      "name": "Billingual",
+                      "value": "both"
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

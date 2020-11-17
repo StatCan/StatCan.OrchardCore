@@ -12,6 +12,7 @@ namespace StatCan.OrchardCore.VueForms.Scripting
     public class VueFormMethodsProvider : IGlobalMethodProvider
     {
         private readonly GlobalMethod _setModelError;
+        private readonly GlobalMethod _hasErrors;
         private readonly GlobalMethod _getFormContentItem;
 
         public VueFormMethodsProvider(ContentItem form, IDictionary<string, List<string>> errors)
@@ -35,6 +36,11 @@ namespace StatCan.OrchardCore.VueForms.Scripting
                         }
                     )
             };
+            _hasErrors = new GlobalMethod
+            {
+                Name = "hasErrors",
+                Method = serviceProvider => (Func<bool>)(() => errors.Count > 0)
+            };
             _getFormContentItem = new GlobalMethod
             {
                 Name = "getFormContentItem",
@@ -44,7 +50,7 @@ namespace StatCan.OrchardCore.VueForms.Scripting
 
         public IEnumerable<GlobalMethod> GetMethods()
         {
-            return new[] { _setModelError, _getFormContentItem };
+            return new[] { _setModelError, _getFormContentItem, _hasErrors };
         }
     }
 }

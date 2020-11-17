@@ -27,11 +27,8 @@
           "DisplayText": "Contact Us",
           "Latest": true,
           "Published": true,
-          "ModifiedUtc": "2020-11-09T15:07:13.7538203Z",
-          "PublishedUtc": "2020-11-09T15:07:13.7622679Z",
-          "CreatedUtc": "2020-09-22T15:00:20.3579397Z",
-          "Owner": "admin",
-          "Author": "admin",
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
           "TitlePart": {
             "Title": "Contact Us"
           },
@@ -46,7 +43,7 @@
               "Html": "<div class=\"container text-center mt-2\">\nThe contact form is currently disabled.\n</div>"
             },
             "SuccessMessage": {
-              "Text": "Your contact request was sucessfully recieved"
+              "Text": "{{ \"successMessage\" | localize }}"
             },
             "ErrorMessage": {
               "Text": "Please correct the errors above."
@@ -61,7 +58,7 @@
                 "DisplayText": "Contact Us",
                 "Latest": false,
                 "Published": false,
-                "ModifiedUtc": "2020-11-09T15:07:13.7572614Z",
+                "ModifiedUtc": "2020-11-17T16:31:46.0169115Z",
                 "PublishedUtc": null,
                 "CreatedUtc": null,
                 "Owner": "",
@@ -71,7 +68,7 @@
                 },
                 "VueComponent": {
                   "Template": {
-                    "Text": "<v-container >\r\n  <v-card-text>\r\n    <v-row justify=\"center\">\r\n      <v-col cols=\"8\">\r\n        <validation-provider name=\"{{ \"nameLabel\" | localize | downcase }}\" rules=\"required\" v-slot=\"{ errors }\">\r\n          <v-text-field v-model=\"name\" :error-messages=\"errors\" filled=\"filled\" label=\"{{ \"nameLabel\" | localize }}\"></v-text-field>\r\n        </validation-provider>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n        <validation-provider name=\"{{ \"emailLabel\" | localize | downcase }}\" rules=\"required|email\" v-slot=\"{ errors }\">\r\n          <v-text-field v-model=\"email\" :error-messages=\"errors\" filled=\"filled\" label=\"{{ \"emailLabel\" | localize }}\"></v-text-field>\r\n        </validation-provider>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n        <validation-provider name=\"{{ \"messageLabel\" | localize | downcase }}\" rules=\"required\" v-slot=\"{ errors }\">\r\n       \t  <v-textarea v-model=\"message\" :error-messages=\"errors\" counter=\"true\" filled=\"filled\" label=\"{{ \"messageLabel\" | localize }}\" rows=\"5\">\r\n          </v-textarea>\r\n    \t</validation-provider>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n        <v-alert type=\"success\" v-if=\"form.successMessage\">\r\n          {% raw %}{{ form.successMessage }}{% endraw %}\r\n        </v-alert>\r\n        <v-alert type=\"error\" v-if=\"form.errorMessage\">\r\n          {% raw %}{{ form.errorMessage }}{% endraw %}\r\n        </v-alert>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n    \t<v-btn type=\"submit\" depressed block @click=\"formHandleSubmit\" :disabled=\"form.submitting\">{{ \"submitLabel\" | localize }}</v-btn>\r\n      </v-col>\r\n    </v-row>\r\n  </v-card-text>\r\n</v-container>"
+                    "Text": "<v-container >\r\n  <v-card-text>\r\n    <v-row justify=\"center\">\r\n      <v-col cols=\"8\">\r\n        <validation-provider name=\"{{ \"nameLabel\" | localize | downcase }}\" rules=\"required\" v-slot=\"{ errors, valid }\">\r\n          <v-text-field v-model=\"name\" :success=\"valid\" :error-messages=\"errors\" filled=\"filled\" label=\"{{ \"nameLabel\" | localize }}\"></v-text-field>\r\n        </validation-provider>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n        <validation-provider name=\"{{ \"emailLabel\" | localize | downcase }}\" rules=\"required|email\" v-slot=\"{ errors, valid }\">\r\n          <v-text-field v-model=\"email\" :success=\"valid\" :error-messages=\"errors\" filled=\"filled\" label=\"{{ \"emailLabel\" | localize }}\"></v-text-field>\r\n        </validation-provider>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n        <validation-provider name=\"{{ \"messageLabel\" | localize | downcase }}\" rules=\"required\" v-slot=\"{ errors, valid }\">\r\n       \t  <v-textarea v-model=\"message\" :success=\"valid\" :error-messages=\"errors\" counter=\"true\" filled=\"filled\" label=\"{{ \"messageLabel\" | localize }}\" rows=\"5\">\r\n          </v-textarea>\r\n    \t</validation-provider>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n        <v-alert type=\"success\" v-if=\"form.successMessage\">\r\n          {% raw %}{{ form.successMessage }}{% endraw %}\r\n        </v-alert>\r\n        <v-alert type=\"error\" v-if=\"form.serverValidationMessage\">\r\n          {% raw %}{{ form.serverValidationMessage[0] }}{% endraw %}\r\n        </v-alert>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n    \t<v-btn type=\"submit\" depressed block @click=\"formHandleSubmit\" :disabled=\"form.submitting\">{{ \"submitLabel\" | localize }}</v-btn>\r\n      </v-col>\r\n    </v-row>\r\n  </v-card-text>\r\n</v-container>"
                   }
                 },
                 "FlowMetadata": {
@@ -83,16 +80,16 @@
           },
           "VueFormScripts": {
             "ClientInit": {
-              "Text": "VeeValidate.setInteractionMode('passive');"
+              "Text": null
             },
             "ComponentOptions": {
-              "Text": "{\r\n  data: () => ({\r\n    name: \"\",\r\n\temail: \"\",\r\n    message: \"\",\r\n  })\r\n}"
+              "Text": "{\r\n  data: () => ({\r\n    name: \"\",\r\n\temail: \"{{User | user_email}}\",\r\n    message: \"\",\r\n  })\r\n}"
             },
             "OnValidation": {
-              "Text": "var data = requestFormAsJsonObject();\r\nvar localizedText = getLocalizedTextValues(getFormContentItem());\r\n\r\nif(data.name == \"\") {\r\n  addError('name', localizedText.nameRequiredError);\r\n}\r\n\r\nif(data.email == \"\") {\r\n  addError('email', localizedText.emailRequiredError);\r\n}\r\nfunction validateEmail(email) {\r\n    const re = /^(([^<>()\\[\\]\\\\.,;:\\s@\"]+(\\.[^<>()\\[\\]\\\\.,;:\\s@\"]+)*)|(\".+\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$/;\r\n    return re.test(String(email).toLowerCase());\r\n}\r\nif(!validateEmail(data.email)) {\r\n  addError('email', localizedText.emailInvalidError);\r\n}\r\nif(data.message == \"\") {\r\n  addError('message', localizedText.messageRequiredError);\r\n}"
+              "Text": "var data = requestFormAsJsonObject();\r\nvar localizedText = getLocalizedTextValues(getFormContentItem());\r\n\r\nif(data.name == \"\" || data.email == \"\" || data.message == \"\" || !validateEmail(data.email)) {\r\n  addError('serverValidationMessage', localizedText.serverValidationError);\r\n}"
             },
             "OnSubmitted": {
-              "Text": "var data = requestFormAsJsonObject();\r\n\r\nvar item = createContentItem(\"ContactRequest\", true, {\r\n  \"ContactRequest\": {\r\n    \"Name\": {\r\n      \"Text\": data.name\r\n    },\r\n    \"Email\": {\r\n      \"Text\": data.email\r\n    },\r\n    \"Message\": {\r\n      \"Text\": data.message\r\n    }\r\n  }\r\n});\r\n\r\nhttpRedirect('Contents/ContentItems/' + item.ContentItemId);"
+              "Text": "var data = requestFormAsJsonObject();\r\n\r\nvar item = createContentItem(\"ContactRequest\", true, {\r\n  \"ContactRequest\": {\r\n    \"Name\": {\r\n      \"Text\": data.name\r\n    },\r\n    \"Email\": {\r\n      \"Text\": data.email\r\n    },\r\n    \"Message\": {\r\n      \"Text\": data.message\r\n    }\r\n  }\r\n});"
             }
           },
           "LocalizedText": {},
@@ -144,9 +141,35 @@
                     "Culture": "fr",
                     "Value": "Envoyer"
                   },
-                  {
+                  { 
                     "Culture": "en",
                     "Value": "Send"
+                  }
+                ]
+              },
+              {
+                "Name": "successMessage",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Vôtre message a été reçu avec succès"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Your contact request was successfully received"
+                  }
+                ]
+              },
+              {
+                "Name": "serverValidationError",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Une erreure est survenue."
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "An error occured."
                   }
                 ]
               }
