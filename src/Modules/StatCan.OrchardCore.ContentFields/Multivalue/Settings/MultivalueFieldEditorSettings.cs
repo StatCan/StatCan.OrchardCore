@@ -12,7 +12,8 @@ namespace StatCan.OrchardCore.ContentFields.Multivalue.Settings
     public enum EditorOption
     {
         Checkbox,
-        Dropdown
+        Dropdown,
+        Picker
     }
 
     public class ListValueOption
