@@ -4,6 +4,7 @@ on:
     paths-ignore:
       - '**/*.md'
       - 'mkdocs.yml'
+      - 'requirements.txt'
       - 'docs/**/*'
     branches:
       - master

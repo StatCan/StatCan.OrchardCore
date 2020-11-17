@@ -3,6 +3,7 @@ on:
   push:
     paths:
       - 'mkdocs.yml'
+      - 'requirements.txt'
       - 'docs/**/*'
     branches:
       - master
