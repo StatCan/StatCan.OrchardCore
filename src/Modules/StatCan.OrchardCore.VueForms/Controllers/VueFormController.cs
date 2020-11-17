@@ -97,6 +97,11 @@ namespace StatCan.OrchardCore.VueForms.Controllers
                 _scriptingManager.EvaluateJs(script.OnSubmitted.Text, scriptingProvider);
             }
 
+            if (errorsDictionary.Count > 0)
+            {
+                return Json(new { validationError = true, errors = errorsDictionary });
+            }
+
             // _workflow manager is null if workflow feature is not enabled
             if (_workflowManager != null)
             {

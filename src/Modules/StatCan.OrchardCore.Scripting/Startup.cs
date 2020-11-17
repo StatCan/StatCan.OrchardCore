@@ -28,12 +28,12 @@ namespace StatCan.OrchardCore.Scripting
             services.AddSingleton<IGlobalMethodProvider, LocalizationGlobalMethodsProvider>();
         }
     }
-    [RequireFeatures("OrchardCore.Users.CustomUserSettings")]
-    public class ContentLocalizationStartup : StartupBase
+    [RequireFeatures("OrchardCore.Users")]
+    public class UsersStartup : StartupBase
     {
         public override void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton<IGlobalMethodProvider, UserSettingsGlobalMethodsProvider>();
+            services.AddSingleton<IGlobalMethodProvider, UserGlobalMethodsProvider>();
         }
     }
 }
