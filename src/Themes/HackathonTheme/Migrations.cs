@@ -25,6 +25,9 @@ namespace StatCan.Themes.HackathonTheme
             Tabs();
             ScheduleEvent();
             MenuItems();
+            VContainer();
+            VRow();
+            VCol();
             return 1;
         }
 
@@ -163,12 +166,11 @@ namespace StatCan.Themes.HackathonTheme
                     }, new ListValueOption() {
                     Name="Col 4 (1/4)",
                     Value="md=\"4\""
-                    } }
+                    } },
+                        Editor = StatCan.OrchardCore.ContentFields.MultiValueTextField.Settings.EditorOption.Dropdown
                     })
                 )
             );
-
-
         }
         private void VRow()
         {
@@ -214,7 +216,8 @@ namespace StatCan.Themes.HackathonTheme
                         }, new ListValueOption() {
                         Name="Justify Around",
                         Value="justify=\"space-around\""
-                        } }
+                        } },
+                        Editor = StatCan.OrchardCore.ContentFields.MultiValueTextField.Settings.EditorOption.Dropdown
                     })
                 )
             );
@@ -250,11 +253,11 @@ namespace StatCan.Themes.HackathonTheme
                             Name="Fluid",
                             Value="fluid"
                         }
-                    }
+                    },
+                        Editor = StatCan.OrchardCore.ContentFields.MultiValueTextField.Settings.EditorOption.Dropdown
                     })
                 )
             );
         }
     }
 }
-

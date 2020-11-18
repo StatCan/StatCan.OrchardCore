@@ -56,6 +56,9 @@
         "OrchardCore.Users.ResetPassword",
         //"StatCan.OrchardCore.Hackathon",
         "StatCan.OrchardCore.DisplayHelpers",
+        "StatCan.OrchardCore.ContentFields.MultiValueTextField",
+        "StatCan.OrchardCore.CommonTypes.Pages",
+        "StatCan.OrchardCore.CommonTypes.SecurePage",
         "DigitalAdmin",
         "HackathonTheme"
       ]
