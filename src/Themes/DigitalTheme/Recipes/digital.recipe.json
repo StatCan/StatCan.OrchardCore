@@ -13,7 +13,6 @@
       "name": "feature",
       "enable": [
         "Application.Default",
-        "StatCan.OrchardCore.Cms.Web",
         "OrchardCore.Resources",
         "OrchardCore.Liquid",
         "OrchardCore.Settings",

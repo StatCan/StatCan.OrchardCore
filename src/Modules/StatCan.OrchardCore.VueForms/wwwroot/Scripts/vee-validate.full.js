@@ -1,5 +1,5 @@
 /**
-  * vee-validate v3.3.11
+  * vee-validate v3.4.4
   * (c) 2020 Abdelrahman Awad
   * @license MIT
   */
@@ -39,7 +39,8 @@
   	regex: "The {_field_} field format is invalid",
   	required_if: "The {_field_} field is required",
   	required: "The {_field_} field is required",
-  	size: "The {_field_} field size must be less than {size}KB"
+  	size: "The {_field_} field size must be less than {size}KB",
+  	double: "The {_field_} field must be a valid decimal"
   };
   var en = {
   	code: code,
@@ -900,6 +901,33 @@
       params: params$j
   };
 
+  var validate$r = function (value, _a) {
+      var _b = _a === void 0 ? {} : _a, _c = _b.decimals, decimals = _c === void 0 ? 0 : _c, _d = _b.separator, separator = _d === void 0 ? 'dot' : _d;
+      var separators = {
+          dot: '.',
+          comma: ','
+      };
+      var regexPart = +decimals === 0 ? '+' : "{" + decimals + "}";
+      var regex = new RegExp("^-?\\d+\\" + (separators[separator] || '.') + "\\d" + regexPart + "$");
+      return Array.isArray(value) ? value.every(function (val) { return regex.test(String(val)); }) : regex.test(String(value));
+  };
+  var params$k = [
+      {
+          name: 'decimals',
+          default: 0
+      },
+      {
+          name: 'separator',
+          default: 'dot'
+      }
+  ];
+  var double = {
+      validate: validate$r,
+      params: params$k
+  };
+
+  /* eslint-disable camelcase */
+
   var Rules = /*#__PURE__*/Object.freeze({
     __proto__: null,
     alpha_dash: alpha_dash,
@@ -928,7 +956,8 @@
     regex: regex,
     required: required,
     required_if: required_if,
-    size: size
+    size: size,
+    double: double
   });
 
   /*! *****************************************************************************
@@ -1045,7 +1074,9 @@
           var _a, _b, _c, _d, _e, _f, _g, _h;
           var message;
           // find if specific message for that field was specified.
-          message = ((_c = (_b = (_a = this.container[locale]) === null || _a === void 0 ? void 0 : _a.fields) === null || _b === void 0 ? void 0 : _b[field]) === null || _c === void 0 ? void 0 : _c[rule]) || ((_e = (_d = this.container[locale]) === null || _d === void 0 ? void 0 : _d.messages) === null || _e === void 0 ? void 0 : _e[rule]);
+          var fieldContainer = (_c = (_b = (_a = this.container[locale]) === null || _a === void 0 ? void 0 : _a.fields) === null || _b === void 0 ? void 0 : _b[field]) === null || _c === void 0 ? void 0 : _c[rule];
+          var messageContainer = (_e = (_d = this.container[locale]) === null || _d === void 0 ? void 0 : _d.messages) === null || _e === void 0 ? void 0 : _e[rule];
+          message = fieldContainer || messageContainer || '';
           if (!message) {
               message = '{_field_} is not valid';
           }
@@ -1355,7 +1386,7 @@
   /**
    * Validates a value against the rules.
    */
-  function validate$r(value, rules, options) {
+  function validate$s(value, rules, options) {
       if (options === void 0) { options = {}; }
       return __awaiter(this, void 0, void 0, function () {
           var shouldBail, skipIfEmpty, field, result, errors, failedRules, regenerateMap;
@@ -2130,6 +2161,10 @@
               default: function () {
                   return {};
               }
+          },
+          detectInput: {
+              type: Boolean,
+              default: true
           }
       },
       watch: {
@@ -2209,27 +2244,28 @@
           this.registerField();
           var ctx = createValidationCtx(this);
           var children = normalizeChildren(this, ctx);
-          var inputs = findInputNodes(children);
-          if (!inputs.length) {
-              // Silent exit if no input was found.
-              return this.slim && children.length <= 1 ? children[0] : h(this.tag, children);
+          // Automatic v-model detection
+          if (this.detectInput) {
+              var inputs = findInputNodes(children);
+              if (inputs.length) {
+                  inputs.forEach(function (input, idx) {
+                      var _a, _b, _c, _d, _e, _f;
+                      // If the elements are not checkboxes and there are more input nodes
+                      if (!includes(['checkbox', 'radio'], (_b = (_a = input.data) === null || _a === void 0 ? void 0 : _a.attrs) === null || _b === void 0 ? void 0 : _b.type) && idx > 0) {
+                          return;
+                      }
+                      var resolved = getConfig().useConstraintAttrs ? resolveRules(input) : {};
+                      if (!isEqual(_this._resolvedRules, resolved)) {
+                          _this._needsValidation = true;
+                      }
+                      if (isHTMLNode(input)) {
+                          _this.fieldName = ((_d = (_c = input.data) === null || _c === void 0 ? void 0 : _c.attrs) === null || _d === void 0 ? void 0 : _d.name) || ((_f = (_e = input.data) === null || _e === void 0 ? void 0 : _e.attrs) === null || _f === void 0 ? void 0 : _f.id);
+                      }
+                      _this._resolvedRules = resolved;
+                      addListeners(_this, input);
+                  });
+              }
           }
-          inputs.forEach(function (input, idx) {
-              var _a, _b, _c, _d, _e, _f;
-              // If the elements are not checkboxes and there are more input nodes
-              if (!includes(['checkbox', 'radio'], (_b = (_a = input.data) === null || _a === void 0 ? void 0 : _a.attrs) === null || _b === void 0 ? void 0 : _b.type) && idx > 0) {
-                  return;
-              }
-              var resolved = getConfig().useConstraintAttrs ? resolveRules(input) : {};
-              if (!isEqual(_this._resolvedRules, resolved)) {
-                  _this._needsValidation = true;
-              }
-              if (isHTMLNode(input)) {
-                  _this.fieldName = ((_d = (_c = input.data) === null || _c === void 0 ? void 0 : _c.attrs) === null || _d === void 0 ? void 0 : _d.name) || ((_f = (_e = input.data) === null || _e === void 0 ? void 0 : _e.attrs) === null || _f === void 0 ? void 0 : _f.id);
-              }
-              _this._resolvedRules = resolved;
-              addListeners(_this, input);
-          });
           return this.slim && children.length <= 1 ? children[0] : h(this.tag, children);
       },
       beforeDestroy: function () {
@@ -2297,7 +2333,7 @@
                                   enumerable: false,
                                   configurable: false
                               });
-                              return [4 /*yield*/, validate$r(this.value, rules, __assign(__assign({ name: this.name || this.fieldName }, createLookup(this)), { bails: this.bails, skipIfEmpty: this.skipIfEmpty, isInitial: !this.initialized, customMessages: this.customMessages }))];
+                              return [4 /*yield*/, validate$s(this.value, rules, __assign(__assign({ name: this.name || this.fieldName }, createLookup(this)), { bails: this.bails, skipIfEmpty: this.skipIfEmpty, isInitial: !this.initialized, customMessages: this.customMessages }))];
                           case 1:
                               result = _a.sent();
                               this.setFlags({
@@ -2557,18 +2593,42 @@
                   this.observers.splice(idx, 1);
               }
           },
-          validate: function (_a) {
+          validateWithInfo: function (_a) {
               var _b = (_a === void 0 ? {} : _a).silent, silent = _b === void 0 ? false : _b;
               return __awaiter(this, void 0, void 0, function () {
-                  var results;
-                  return __generator(this, function (_c) {
-                      switch (_c.label) {
+                  var results, isValid, _c, errors, flags, fields;
+                  return __generator(this, function (_d) {
+                      switch (_d.label) {
                           case 0: return [4 /*yield*/, Promise.all(__spreadArrays(values(this.refs)
                                   .filter(function (r) { return !r.disabled; })
                                   .map(function (ref) { return ref[silent ? 'validateSilent' : 'validate']().then(function (r) { return r.valid; }); }), this.observers.filter(function (o) { return !o.disabled; }).map(function (obs) { return obs.validate({ silent: silent }); })))];
                           case 1:
-                              results = _c.sent();
-                              return [2 /*return*/, results.every(function (r) { return r; })];
+                              results = _d.sent();
+                              isValid = results.every(function (r) { return r; });
+                              _c = computeObserverState.call(this), errors = _c.errors, flags = _c.flags, fields = _c.fields;
+                              this.errors = errors;
+                              this.flags = flags;
+                              this.fields = fields;
+                              return [2 /*return*/, {
+                                      errors: errors,
+                                      flags: flags,
+                                      fields: fields,
+                                      isValid: isValid
+                                  }];
+                      }
+                  });
+              });
+          },
+          validate: function (_a) {
+              var _b = (_a === void 0 ? {} : _a).silent, silent = _b === void 0 ? false : _b;
+              return __awaiter(this, void 0, void 0, function () {
+                  var isValid;
+                  return __generator(this, function (_c) {
+                      switch (_c.label) {
+                          case 0: return [4 /*yield*/, this.validateWithInfo({ silent: silent })];
+                          case 1:
+                              isValid = (_c.sent()).isValid;
+                              return [2 /*return*/, isValid];
                       }
                   });
               });
@@ -2619,14 +2679,14 @@
       }
   }
   function prepareSlotProps(vm) {
-      return __assign(__assign({}, vm.flags), { errors: vm.errors, fields: vm.fields, validate: vm.validate, passes: vm.handleSubmit, handleSubmit: vm.handleSubmit, reset: vm.reset });
+      return __assign(__assign({}, vm.flags), { errors: vm.errors, fields: vm.fields, validate: vm.validate, validateWithInfo: vm.validateWithInfo, passes: vm.handleSubmit, handleSubmit: vm.handleSubmit, reset: vm.reset });
   }
   // Creates a modified version of validation flags
   function createObserverFlags() {
       return __assign(__assign({}, createFlags()), { valid: true, invalid: false });
   }
   function computeObserverState() {
-      var vms = __spreadArrays(values(this.refs), this.observers);
+      var vms = __spreadArrays(values(this.refs), this.observers.filter(function (o) { return !o.disabled; }));
       var errors = {};
       var flags = createObserverFlags();
       var fields = {};
@@ -2694,7 +2754,7 @@
       return hoc;
   }
 
-  var version = '3.3.11';
+  var version = '3.4.4';
   // Install all rules.
   var RulesAsList = Object.keys(Rules).map(function (key) { return ({ schema: Rules[key], name: key }); });
   RulesAsList.forEach(function (_a) {
@@ -2713,7 +2773,7 @@
   exports.localize = localize;
   exports.normalizeRules = normalizeRules;
   exports.setInteractionMode = setInteractionMode;
-  exports.validate = validate$r;
+  exports.validate = validate$s;
   exports.version = version;
   exports.withValidation = withValidation;
 

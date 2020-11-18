@@ -1,0 +1,8 @@
+<v-card class="mx-auto my-5" max-width="400">
+  <v-card flat tile>
+    <v-card-title>{{ Model.ContentItem | display_text }}</v-card-title>
+  </v-card>
+  <v-timeline align-top dense>
+    {{ Model.Content.FlowPart | shape_render }}
+  </v-timeline>
+</v-card>

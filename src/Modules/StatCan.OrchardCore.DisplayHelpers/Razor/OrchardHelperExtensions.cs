@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Html;
 using Microsoft.Extensions.DependencyInjection;
 using OrchardCore;
 using OrchardCore.Liquid;
+using OrchardCore.Shortcodes.Services;
 
 public static class LiquidRazorHelperExtensions
 {
@@ -51,6 +52,37 @@ public static class LiquidRazorHelperExtensions
         liquid = await liquidTemplateManager.RenderAsync(liquid, htmlEncoder, model);
 
         return new HtmlString(htmlSanitizer.Sanitize(liquid));
+    }
+
+    /// <summary>
+    /// Parses a liquid string to HTML
+    /// </summary>
+    /// <param name="liquid">The liquid to parse.</param>
+    /// <param name="model">(optional)A model to bind against.</param>
+    public static async Task<string> LiquidShortcodesAsync(this IOrchardHelper orchardHelper, string liquid, object model = null)
+    {
+        var liquidTemplateManager = orchardHelper.HttpContext.RequestServices.GetRequiredService<ILiquidTemplateManager>();
+        var shortcodeService = orchardHelper.HttpContext.RequestServices.GetRequiredService<IShortcodeService>();
+        var htmlEncoder = orchardHelper.HttpContext.RequestServices.GetRequiredService<HtmlEncoder>();
+
+        liquid = await liquidTemplateManager.RenderAsync(liquid, htmlEncoder, model);
+        liquid = await shortcodeService.ProcessAsync(liquid);
+
+        return liquid;
+    }
+
+    /// <summary>
+    /// Applies short codes to html.
+    /// </summary>
+    /// <param name="orchardHelper">The <see cref="IOrchardHelper"/></param>
+    /// <param name="html">The html to apply short codes.</param>
+    public static async Task<string> ShortcodesAsync(this IOrchardHelper orchardHelper, string html)
+    {
+        var shortcodeService = orchardHelper.HttpContext.RequestServices.GetRequiredService<IShortcodeService>();
+
+        html = await shortcodeService.ProcessAsync(html);
+
+        return html;
     }
 }
 

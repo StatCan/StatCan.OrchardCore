@@ -26,6 +26,16 @@ These methods are added when the `OrchardCore.Contents` module is enabled
 | -------- | ----------- |
 |`contentByItemId(contentItemId: String): ContentItem`| Returns the ContentItem with the specified contentItemId |
 
+### Users
+
+These methods are added when the `OrchardCore.Users` module is enabled
+
+| Function | Description 
+| -------- | ----------- |
+|`validateEmail(email: String): Boolean`| Validates an email address |
+|`updateEmail(email: String): UpdateEmailStatus`| Validates an email address. Success = 0, Unauthorized = 1, InvalidEmail = 2, AlreadyExists = 3, UpdateError = 4 |
+|`updateCustomUserSettings(contentType: String, properties: Object): UpdateSettingsStatus`| Updates the CustomUserSettings with the specified contentType with the passed properties. Success = 0, Unauthorized = 1, TypeError = 2 |
+
 ### Localization
 
 These methods are added when the `OrchardCore.ContentLocalization` module is enabled
@@ -46,5 +56,5 @@ You can get the values stored in the LocalizedTextPart inside a script.
 
 | Function | Description 
 | -------- | ----------- |
-| `addError(name: String, errorMessage: String): void` | Adds an error to the input / VeeValidate.ValidationProvider with the specified name |
+| `addError(name: String, errorMessage: String): void` | Adds an error to the input with the specified name. Use the `serverValidationMessage` name to add a global error message to your VueForm. |
 | `getFormContentItem(): ContentItem` | Only available in the VueForm server side scripts. Returns the current VueForm ContentItem instance. |

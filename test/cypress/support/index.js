@@ -15,7 +15,4 @@
 
 // Import commands.js using ES2015 syntax:
 import './commands'
-import 'cypress-orchardcore'
-
-// Alternatively you can use CommonJS syntax:
-// require('./commands')
+import 'cypress-orchardcore/dist'

@@ -1,17 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
-using Microsoft.AspNetCore.Http;
+using System.Linq;
+using System.Security.Claims;
 using Microsoft.Extensions.DependencyInjection;
 using OrchardCore.ContentManagement;
+using OrchardCore.ContentManagement.Records;
 using OrchardCore.Scripting;
+using YesSql;
 
 namespace StatCan.OrchardCore.Scripting
 {
     public class ContentGlobalMethodsProvider : IGlobalMethodProvider
     {
         private readonly GlobalMethod _contentByItemId;
+        private readonly GlobalMethod _ownContentByType;
 
-        public ContentGlobalMethodsProvider(IHttpContextAccessor httpContextAccessor)
+        public ContentGlobalMethodsProvider(Microsoft.AspNetCore.Http.IHttpContextAccessor httpContextAccessor)
         {
             _contentByItemId = new GlobalMethod
             {
@@ -23,11 +27,22 @@ namespace StatCan.OrchardCore.Scripting
                 }
                 )
             };
+            _ownContentByType = new GlobalMethod
+            {
+                Name = "ownContentByType",
+                Method = serviceProvider => (Func<string, IEnumerable<ContentItem>>)((type) =>
+                {
+                    var session = serviceProvider.GetRequiredService<ISession>();
+                    var owner = httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
+                    return session.Query<ContentItem, ContentItemIndex>(c=>c.Owner == owner && c.ContentType == type && c.Published == true).ListAsync().GetAwaiter().GetResult();
+                }
+                )
+            };
         }
 
         public IEnumerable<GlobalMethod> GetMethods()
         {
-            return new[] { _contentByItemId };
+            return new[] { _contentByItemId, _ownContentByType };
         }
     }
 }

@@ -12,6 +12,7 @@ using OrchardCore.DisplayManagement.ModelBinding;
 using OrchardCore.Liquid;
 using OrchardCore.Scripting;
 using OrchardCore.Workflows.Services;
+using OrchardCore.Shortcodes.Services;
 using StatCan.OrchardCore.VueForms.Models;
 using StatCan.OrchardCore.VueForms.Workflows;
 using StatCan.OrchardCore.Extensions;
@@ -29,6 +30,7 @@ namespace StatCan.OrchardCore.VueForms.Controllers
         private readonly IScriptingManager _scriptingManager;
         private readonly ILiquidTemplateManager _liquidTemplateManager;
         private readonly HtmlEncoder _htmlEncoder;
+        private readonly IShortcodeService _shortcodeService;
         private readonly IWorkflowManager _workflowManager;
 
         public VueFormController(
@@ -40,6 +42,7 @@ namespace StatCan.OrchardCore.VueForms.Controllers
             IScriptingManager scriptingManager,
             ILiquidTemplateManager liquidTemplateManager,
             HtmlEncoder htmlEncoder,
+            IShortcodeService shortcodeService,
             IWorkflowManager workflowManager = null
         )
         {
@@ -51,6 +54,7 @@ namespace StatCan.OrchardCore.VueForms.Controllers
             _scriptingManager = scriptingManager;
             _liquidTemplateManager = liquidTemplateManager;
             _htmlEncoder = htmlEncoder;
+            _shortcodeService = shortcodeService;
             _workflowManager = workflowManager;
         }
 
@@ -85,13 +89,17 @@ namespace StatCan.OrchardCore.VueForms.Controllers
 
             if (errorsDictionary.Count > 0)
             {
-                var formErrorMessage = await _liquidTemplateManager.RenderAsync(formPart.ErrorMessage?.Text, _htmlEncoder);
-                return Json(new { validationError = true, errors = errorsDictionary, errorMessage = formErrorMessage });
+                return Json(new { validationError = true, errors = errorsDictionary });
             }
 
             if (!string.IsNullOrEmpty(script?.OnSubmitted?.Text))
             {
                 _scriptingManager.EvaluateJs(script.OnSubmitted.Text, scriptingProvider);
+            }
+
+            if (errorsDictionary.Count > 0)
+            {
+                return Json(new { validationError = true, errors = errorsDictionary });
             }
 
             // _workflow manager is null if workflow feature is not enabled
@@ -112,6 +120,7 @@ namespace StatCan.OrchardCore.VueForms.Controllers
                 return Json(returnValue);
             }
             var formSuccessMessage = await _liquidTemplateManager.RenderAsync(formPart.SuccessMessage?.Text, _htmlEncoder);
+            formSuccessMessage = await _shortcodeService.ProcessAsync(formSuccessMessage);
             // everything worked fine. send the success signal to the client
             return Json(new { success = true, successMessage = formSuccessMessage });
         }

@@ -1,4 +1,4 @@
-using Etch.OrchardCore.ContentPermissions.Models;
+﻿using Etch.OrchardCore.ContentPermissions.Models;
 using Etch.OrchardCore.ContentPermissions.ViewModels;
 using OrchardCore.ContentManagement.Metadata.Models;
 using OrchardCore.ContentTypes.Editors;
@@ -20,7 +20,7 @@ namespace Etch.OrchardCore.ContentPermissions.Settings
             return Initialize<ContentPermissionsPartSettingsViewModel>("ContentPermissionsPartSettings_Edit", model =>
             {
                 var settings = contentTypePartDefinition.GetSettings<ContentPermissionsPartSettings>();
-                model.DisableRedirect = settings.DisableRedirect;
+
                 model.RedirectUrl = settings.RedirectUrl;
             }).Location("Content");
         }
@@ -34,9 +34,9 @@ namespace Etch.OrchardCore.ContentPermissions.Settings
 
             var model = new ContentPermissionsPartSettingsViewModel();
 
-            await context.Updater.TryUpdateModelAsync(model, Prefix, m => m.RedirectUrl, m => m.DisableRedirect);
+            await context.Updater.TryUpdateModelAsync(model, Prefix, m => m.RedirectUrl);
 
-            context.Builder.WithSettings(new ContentPermissionsPartSettings { RedirectUrl = model.RedirectUrl, DisableRedirect = model.DisableRedirect});
+            context.Builder.WithSettings(new ContentPermissionsPartSettings { RedirectUrl = model.RedirectUrl });
 
             return Edit(contentTypePartDefinition, context.Updater);
         }

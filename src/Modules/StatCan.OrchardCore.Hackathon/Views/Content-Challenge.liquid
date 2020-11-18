@@ -1,0 +1,11 @@
+<v-card>
+  <v-card-title>
+      {{ Model.ContentItem.Content.Challenge.Name.Text }}
+  </v-card-title>
+  <v-card-subtitle>
+      {{ Model.ContentItem.Content.Challenge.ShortDescription.Text }}
+  </v-card-subtitle>
+  <v-card-text>
+      {{ Model.Content.MarkdownBodyPart | shape_render }}
+  </v-card-text>
+</v-card>
