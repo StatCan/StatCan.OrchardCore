@@ -1,3 +1,3 @@
-<v-col {{ Model.ContentItem.Content.VCol.Props.Text | raw }}>
+<v-col {{ Model.ContentItem.Content.VCol.Props.Values | join: ' ' | raw }} cols="12">
   {{ Model.Content.FlowPart | shape_render }}
 </v-col>
