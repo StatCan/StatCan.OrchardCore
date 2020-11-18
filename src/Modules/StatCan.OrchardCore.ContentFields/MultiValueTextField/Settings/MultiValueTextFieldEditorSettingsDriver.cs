@@ -4,25 +4,24 @@ using Newtonsoft.Json;
 using OrchardCore.ContentManagement.Metadata.Models;
 using OrchardCore.ContentTypes.Editors;
 using OrchardCore.DisplayManagement.Views;
-using StatCan.OrchardCore.ContentFields.Multivalue.Fields;
-using StatCan.OrchardCore.ContentFields.Multivalue.ViewModels;
+using StatCan.OrchardCore.ContentFields.MultiValueTextField.ViewModels;
 
-namespace StatCan.OrchardCore.ContentFields.Multivalue.Settings
+namespace StatCan.OrchardCore.ContentFields.MultiValueTextField.Settings
 {
-    public class MultivalueFieldEditorSettingsDriver : ContentPartFieldDefinitionDisplayDriver<MultivalueField>
+    public class MultiValueTextFieldEditorSettingsDriver : ContentPartFieldDefinitionDisplayDriver<Fields.MultiValueTextField>
     {
         private readonly IStringLocalizer S;
 
-        public MultivalueFieldEditorSettingsDriver(IStringLocalizer<MultivalueFieldEditorSettingsDriver> localizer)
+        public MultiValueTextFieldEditorSettingsDriver(IStringLocalizer<MultiValueTextFieldEditorSettingsDriver> localizer)
         {
             S = localizer;
         }
 
         public override IDisplayResult Edit(ContentPartFieldDefinition partFieldDefinition)
         {
-            return Initialize<MultivalueFieldSettingsViewModel>("MultivalueFieldEditorSettings_Edit", model =>
+            return Initialize<MultiValueTextFieldSettingsViewModel>("MultiValueTextFieldEditorSettings_Edit", model =>
             {
-                var settings = partFieldDefinition.GetSettings<MultivalueFieldEditorSettings>();
+                var settings = partFieldDefinition.GetSettings<MultiValueTextFieldEditorSettings>();
 
                 model.DefaultValue = settings.DefaultValue;
                 model.Editor = settings.Editor;
@@ -35,8 +34,8 @@ namespace StatCan.OrchardCore.ContentFields.Multivalue.Settings
         {
             if (partFieldDefinition.Editor() == "PredefinedList")
             {
-                var model = new MultivalueFieldSettingsViewModel();
-                var settings = new MultivalueFieldEditorSettings();
+                var model = new MultiValueTextFieldSettingsViewModel();
+                var settings = new MultiValueTextFieldEditorSettings();
 
                 await context.Updater.TryUpdateModelAsync(model, Prefix);
 

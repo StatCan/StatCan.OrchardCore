@@ -27,8 +27,9 @@ using StatCan.OrchardCore.ContentFields;
 )]
 
 [assembly: Feature(
-    Id = Constants.Features.Multivalue,
-    Name = "StatCan Multivalue Field",
+    Id = Constants.Features.MultiValueTextField,
+    Name = "StatCan MultiValue TextField",
     Description = "Field for choosing multiple values from collection of configured options.",
-    Category = "Content"
+    Category = "Content",
+    Dependencies = new[] { "OrchardCore.ContentFields" }
 )]

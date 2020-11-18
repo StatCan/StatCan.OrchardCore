@@ -10,28 +10,28 @@ using OrchardCore.ContentManagement.Metadata.Models;
 using OrchardCore.DisplayManagement.ModelBinding;
 using OrchardCore.DisplayManagement.Views;
 using OrchardCore.Mvc.ModelBinding;
-using StatCan.OrchardCore.ContentFields.Multivalue.Fields;
-using StatCan.OrchardCore.ContentFields.Multivalue.Settings;
-using StatCan.OrchardCore.ContentFields.Multivalue.ViewModels;
+using StatCan.OrchardCore.ContentFields.MultiValueTextField.Fields;
+using StatCan.OrchardCore.ContentFields.MultiValueTextField.Settings;
+using StatCan.OrchardCore.ContentFields.MultiValueTextField.ViewModels;
 
-namespace StatCan.OrchardCore.ContentFields.Multivalue.Drivers
+namespace StatCan.OrchardCore.ContentFields.MultiValueTextField.Drivers
 {
-    public class MultivalueFieldDisplayDriver : ContentFieldDisplayDriver<MultivalueField>
+    public class MultiValueTextFieldDisplayDriver : ContentFieldDisplayDriver<Fields.MultiValueTextField>
     {
         private readonly IContentManager _contentManager;
         private readonly IStringLocalizer S;
 
-        public MultivalueFieldDisplayDriver(
+        public MultiValueTextFieldDisplayDriver(
             IContentManager contentManager,
-            IStringLocalizer<MultivalueFieldDisplayDriver> localizer)
+            IStringLocalizer<MultiValueTextFieldDisplayDriver> localizer)
         {
             _contentManager = contentManager;
             S = localizer;
         }
 
-        public override IDisplayResult Display(MultivalueField field, BuildFieldDisplayContext context)
+        public override IDisplayResult Display(Fields.MultiValueTextField field, BuildFieldDisplayContext context)
         {
-            return Initialize<DisplayMultivalueFieldViewModel>(GetDisplayShapeType(context), model =>
+            return Initialize<DisplayMultiValueTextFieldViewModel>(GetDisplayShapeType(context), model =>
             {
                 model.Field = field;
                 model.Part = context.ContentPart;
@@ -41,9 +41,9 @@ namespace StatCan.OrchardCore.ContentFields.Multivalue.Drivers
             .Location("Summary", "Content");
         }
 
-        public override IDisplayResult Edit(MultivalueField field, BuildFieldEditorContext context)
+        public override IDisplayResult Edit(Fields.MultiValueTextField field, BuildFieldEditorContext context)
         {
-            return Initialize<EditMultivalueFieldViewModel>(GetEditorShapeType(context), model =>
+            return Initialize<EditMultiValueTextFieldViewModel>(GetEditorShapeType(context), model =>
             {
                 model.Values = field.Values;
 
@@ -63,9 +63,9 @@ namespace StatCan.OrchardCore.ContentFields.Multivalue.Drivers
             });
         }
 
-        public override async Task<IDisplayResult> UpdateAsync(MultivalueField field, IUpdateModel updater, UpdateFieldEditorContext context)
+        public override async Task<IDisplayResult> UpdateAsync(Fields.MultiValueTextField field, IUpdateModel updater, UpdateFieldEditorContext context)
         {
-            var viewModel = new EditMultivalueFieldViewModel();
+            var viewModel = new EditMultiValueTextFieldViewModel();
 
             var modelUpdated = await updater.TryUpdateModelAsync(viewModel, Prefix, f => f.Values);
 
@@ -76,7 +76,7 @@ namespace StatCan.OrchardCore.ContentFields.Multivalue.Drivers
 
             field.Values = viewModel.Values;
 
-            var settings = context.PartFieldDefinition.GetSettings<MultivalueFieldSettings>();
+            var settings = context.PartFieldDefinition.GetSettings<MultiValueTextFieldSettings>();
 
             if (settings.Required && field.Values.Length == 0)
             {

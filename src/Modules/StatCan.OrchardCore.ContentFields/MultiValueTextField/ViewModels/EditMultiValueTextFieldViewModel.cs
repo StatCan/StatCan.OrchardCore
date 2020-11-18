@@ -4,14 +4,13 @@ using Microsoft.AspNetCore.Mvc.ModelBinding;
 using OrchardCore.ContentManagement;
 using OrchardCore.ContentManagement.Metadata.Models;
 using OrchardCore.ContentFields.ViewModels;
-using StatCan.OrchardCore.ContentFields.Multivalue.Fields;
 
-namespace StatCan.OrchardCore.ContentFields.Multivalue.ViewModels
+namespace StatCan.OrchardCore.ContentFields.MultiValueTextField.ViewModels
 {
-    public class EditMultivalueFieldViewModel
+    public class EditMultiValueTextFieldViewModel
     {
         public String[] Values { get; set; }
-        public MultivalueField Field { get; set; }
+        public Fields.MultiValueTextField Field { get; set; }
         public ContentPart Part { get; set; }
         public ContentPartFieldDefinition PartFieldDefinition { get; set; }
 

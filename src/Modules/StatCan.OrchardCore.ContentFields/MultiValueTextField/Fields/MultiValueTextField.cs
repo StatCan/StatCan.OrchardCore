@@ -1,9 +1,9 @@
 using System;
 using OrchardCore.ContentManagement;
 
-namespace StatCan.OrchardCore.ContentFields.Multivalue.Fields
+namespace StatCan.OrchardCore.ContentFields.MultiValueTextField.Fields
 {
-    public class MultivalueField : ContentField
+    public class MultiValueTextField : ContentField
     {
         public string[] Values { get; set; } = Array.Empty<string>();
     }

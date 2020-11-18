@@ -1,8 +1,8 @@
 using Newtonsoft.Json;
 
-namespace StatCan.OrchardCore.ContentFields.Multivalue.Settings
+namespace StatCan.OrchardCore.ContentFields.MultiValueTextField.Settings
 {
-    public class MultivalueFieldEditorSettings
+    public class MultiValueTextFieldEditorSettings
     {
         public ListValueOption[] Options { get; set; }
         public EditorOption Editor { get; set; }

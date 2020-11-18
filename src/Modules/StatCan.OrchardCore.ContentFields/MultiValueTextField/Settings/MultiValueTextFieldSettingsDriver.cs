@@ -2,21 +2,20 @@ using System.Threading.Tasks;
 using OrchardCore.ContentManagement.Metadata.Models;
 using OrchardCore.ContentTypes.Editors;
 using OrchardCore.DisplayManagement.Views;
-using StatCan.OrchardCore.ContentFields.Multivalue.Fields;
 
-namespace StatCan.OrchardCore.ContentFields.Multivalue.Settings
+namespace StatCan.OrchardCore.ContentFields.MultiValueTextField.Settings
 {
-    public class MultivalueFieldSettingsDriver : ContentPartFieldDefinitionDisplayDriver<MultivalueField>
+    public class MultiValueTextFieldSettingsDriver : ContentPartFieldDefinitionDisplayDriver<Fields.MultiValueTextField>
     {
         public override IDisplayResult Edit(ContentPartFieldDefinition partFieldDefinition)
         {
-            return Initialize<MultivalueFieldSettings>("MultivalueFieldSettings_Edit", model => partFieldDefinition.PopulateSettings(model))
+            return Initialize<MultiValueTextFieldSettings>("MultiValueTextFieldSettings_Edit", model => partFieldDefinition.PopulateSettings(model))
                 .Location("Content");
         }
 
         public override async Task<IDisplayResult> UpdateAsync(ContentPartFieldDefinition partFieldDefinition, UpdatePartFieldEditorContext context)
         {
-            var model = new MultivalueFieldSettings();
+            var model = new MultiValueTextFieldSettings();
 
             await context.Updater.TryUpdateModelAsync(model, Prefix);
 
