@@ -22,8 +22,8 @@ namespace StatCan.Themes.HackathonTheme
             Tabs();
             ScheduleEvent();
             MenuItems();
-            VRow();
             VContainer();
+            VRow();
             VCol();
             return 1;
         }
@@ -133,7 +133,8 @@ namespace StatCan.Themes.HackathonTheme
                     }, new ListValueOption() {
                         Name="Col 4 (1/4)",
                         Value="md=\"4\""
-                    } }
+                    } },
+                        OrchardCore.ContentFields.MultiValueTextField.Settings.EditorOption.Dropdown
                 )
             );
         }
@@ -169,7 +170,7 @@ namespace StatCan.Themes.HackathonTheme
                     }, new ListValueOption() {
                         Name="Justify Around",
                         Value="justify=\"space-around\""
-                    }}
+                    }}, OrchardCore.ContentFields.MultiValueTextField.Settings.EditorOption.Dropdown
                 )
             );
         }
@@ -191,10 +192,10 @@ namespace StatCan.Themes.HackathonTheme
                                 Name="Fluid",
                                 Value="fluid"
                             }
-                        }
+                        },
+                        OrchardCore.ContentFields.MultiValueTextField.Settings.EditorOption.Dropdown
                 )
             );
         }
     }
 }
-
