@@ -8,6 +8,12 @@
   "issetuprecipe": true,
   "categories": ["innovation"],
   "tags": ["innovation", "inno"],
+  "variables": {
+    "homeEnContentItemId": "[js:uuid()]",
+    "homeFrContentItemId": "[js:uuid()]",
+    "scheduleEnContentItemId": "[js:uuid()]",
+    "scheduleFrContentItemId": "[js:uuid()]"
+  },
   "steps": [
     {
       "name": "feature",
@@ -99,7 +105,7 @@
       "name": "Content",
       "data": [
         {
-          "ContentItemId": "[js: uuid()]",
+          "ContentItemId": "[js: variables('homeEnContentItemId')]",
           "ContentType": "Page",
           "DisplayText": "Home English",
           "Latest": true,
@@ -314,7 +320,7 @@
           }
         },
         {
-          "ContentItemId": "[js: uuid()]",
+          "ContentItemId": "[js: variables('homeFrContentItemId')]",
           "ContentType": "Page",
           "DisplayText": "Home French",
           "Latest": true,
@@ -561,7 +567,7 @@
                   "Name": "Home",
                   "SelectedContentItem": {
                     "ContentItemIds": [
-                      "44nww6y12y3k214742pcnykymy"
+                      "[js: variables('homeEnContentItemId')]"
                     ]
                   }
                 },
@@ -587,7 +593,7 @@
                   "Name": "Schedule",
                   "SelectedContentItem": {
                     "ContentItemIds": [
-                      "4x5mwz1mxbgcpwkaewxy7cy8d0"
+                      "[js: variables('scheduleEnContentItemId')]"
                     ]
                   }
                 },
@@ -609,7 +615,7 @@
           }
         },
         {
-          "ContentItemId": "[js: uuid()]",
+          "ContentItemId": "[js: variables('scheduleFrContentItemId')]",
           "ContentType": "Page",
           "DisplayText": "Schedule French",
           "Latest": true,
@@ -1019,7 +1025,7 @@
                   "Name": "Accueil",
                   "SelectedContentItem": {
                     "ContentItemIds": [
-                      "4z2zknnjysb931vttxbwce42c0"
+                      "[js: variables('homeFrContentItemId')]"
                     ]
                   }
                 },
@@ -1045,7 +1051,7 @@
                   "Name": "Horaire",
                   "SelectedContentItem": {
                     "ContentItemIds": [
-                      "41fvnazzqw2a54fpmn9y8hncc7"
+                      "[js: variables('scheduleFrContentItemId')]"
                     ]
                   }
                 },
@@ -1067,7 +1073,7 @@
           }
         },
         {
-          "ContentItemId": "[js: uuid()]",
+          "ContentItemId": "[js: variables('scheduleEnContentItemId')]",
           "ContentType": "Page",
           "DisplayText": "Schedule English",
           "Latest": true,
