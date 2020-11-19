@@ -77,12 +77,41 @@ namespace StatCan.OrchardCore.Extensions
                 .WithPosition(position)
             );
         }
+        public static ContentPartDefinitionBuilder WithTextFieldPredefinedList(this ContentPartDefinitionBuilder p, string name, string displayName, string position, TextFieldPredefinedListEditorSettings settings)
+        {
+            return p.WithField(name, f => f
+                .OfType(nameof(TextField))
+                .WithDisplayName(displayName)
+                .WithEditor("PredefinedList")
+                .WithPosition(position)
+                .WithSettings(settings)
+            );
+        }
+        public static ContentPartDefinitionBuilder WithTextFieldPredefinedList(this ContentPartDefinitionBuilder p, string name, string displayName, string position, string hint, TextFieldPredefinedListEditorSettings settings)
+        {
+            return p.WithField(name, f => f
+                .OfType(nameof(TextField))
+                .WithDisplayName(displayName)
+                .WithEditor("PredefinedList")
+                .WithPosition(position)
+                .WithSettings(new TextFieldSettings() { Hint = hint })
+                .WithSettings(settings)
+            );
+        }
 
         public static ContentPartDefinitionBuilder WithNumericField(this ContentPartDefinitionBuilder p, string name, string position)
         {
             return p.WithField(name, f => f
                 .OfType(nameof(NumericField))
                 .WithDisplayName(name)
+                .WithPosition(position)
+            );
+        }
+        public static ContentPartDefinitionBuilder WithNumericField(this ContentPartDefinitionBuilder p, string name, string displayName, string position)
+        {
+            return p.WithField(name, f => f
+                .OfType(nameof(NumericField))
+                .WithDisplayName(displayName)
                 .WithPosition(position)
             );
         }
@@ -134,7 +163,7 @@ namespace StatCan.OrchardCore.Extensions
             );
         }
 
-        public static ContentPartDefinitionBuilder WithMultiValueTextField(this ContentPartDefinitionBuilder p, string name, string displayName, string position, ListValueOption[] options, ContentFields.MultiValueTextField.Settings.EditorOption editor = ContentFields.MultiValueTextField.Settings.EditorOption.Dropdown)
+        public static ContentPartDefinitionBuilder WithMultiValueTextField(this ContentPartDefinitionBuilder p, string name, string displayName, string position, ListValueOption[] options, MultiValueEditorOption editor = MultiValueEditorOption.Checkbox)
         {
             return p.WithField(name, field => field
                .OfType("MultiValueTextField")

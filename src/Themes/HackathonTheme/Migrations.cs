@@ -3,7 +3,6 @@ using OrchardCore.ContentManagement.Metadata.Settings;
 using OrchardCore.Data.Migration;
 using OrchardCore.Title.Models;
 using StatCan.OrchardCore.Extensions;
-using StatCan.OrchardCore.ContentFields.MultiValueTextField.Settings;
 using OrchardCore.ContentFields.Settings;
 
 namespace StatCan.Themes.HackathonTheme
@@ -102,40 +101,78 @@ namespace StatCan.Themes.HackathonTheme
                 .WithFlow("1")
             );
 
+            var colsSettings = new TextFieldPredefinedListEditorSettings()
+            {
+                Editor = EditorOption.Dropdown,
+                DefaultValue = "12",
+                Options = new ListValueOption[] {
+                                        new ListValueOption(){Name = "Auto", Value = "auto"},
+                                        new ListValueOption(){Name = "1", Value = "1"},
+                                        new ListValueOption(){Name = "2", Value = "2"},
+                                        new ListValueOption(){Name = "3", Value = "3"},
+                                        new ListValueOption(){Name = "4", Value = "4"},
+                                        new ListValueOption(){Name = "5", Value = "5"},
+                                        new ListValueOption(){Name = "6", Value = "6"},
+                                        new ListValueOption(){Name = "7", Value = "7"},
+                                        new ListValueOption(){Name = "8", Value = "8"},
+                                        new ListValueOption(){Name = "9", Value = "9"},
+                                        new ListValueOption(){Name = "10", Value = "10"},
+                                        new ListValueOption(){Name = "11", Value = "11"},
+                                        new ListValueOption(){Name = "12", Value = "12"},
+                                    }
+            };
+
+            var offsetSettings = new TextFieldPredefinedListEditorSettings()
+            {
+                Editor = EditorOption.Dropdown,
+
+                Options = new ListValueOption[] {
+                    new ListValueOption(){Name = "None", Value = ""},
+                    new ListValueOption(){Name = "1", Value = "1"},
+                    new ListValueOption(){Name = "2", Value = "2"},
+                    new ListValueOption(){Name = "3", Value = "3"},
+                    new ListValueOption(){Name = "4", Value = "4"},
+                    new ListValueOption(){Name = "5", Value = "5"},
+                    new ListValueOption(){Name = "6", Value = "6"},
+                    new ListValueOption(){Name = "7", Value = "7"},
+                    new ListValueOption(){Name = "8", Value = "8"},
+                    new ListValueOption(){Name = "9", Value = "9"},
+                    new ListValueOption(){Name = "10", Value = "10"},
+                    new ListValueOption(){Name = "11", Value = "11"},
+                    new ListValueOption(){Name = "12", Value = "12"},
+                }
+            };
+
             _contentDefinitionManager.AlterPartDefinition("VCol", part => part
-                .WithMultiValueTextField("Props","Props","0", new ListValueOption[] { new ListValueOption() {
-                        Name="Align Self Start",
-                        Value="align-self=\"start\""
-                    }, new ListValueOption() {
-                        Name="Align Self Center",
-                        Value="align-self=\"center\""
-                    }, new ListValueOption() {
-                        Name="Align Self End",
-                        Value="align-self=\"end\""
-                    }, new ListValueOption() {
-                        Name="Align Self Auto",
-                        Value="align-self=\"auto\""
-                    }, new ListValueOption() {
-                        Name="Align Self Baseline",
-                        Value="align-self=\"baseline\""
-                    }, new ListValueOption() {
-                        Name="Align Self Stretch",
-                        Value="align-self=\"stretch\""
-                    }, new ListValueOption() {
-                        Name="Col 12 (Full)",
-                        Value="md=\"12\""
-                    }, new ListValueOption() {
-                        Name="Col 8 (3/4)",
-                        Value="md=\"8\""
-                    }, new ListValueOption() {
-                        Name="Col 6 (1/2)",
-                        Value="md=\"6\""
-                    }, new ListValueOption() {
-                        Name="Col 4 (1/4)",
-                        Value="md=\"4\""
-                    } },
-                        OrchardCore.ContentFields.MultiValueTextField.Settings.EditorOption.Dropdown
+                .WithTextFieldPredefinedList("AlignSelf", "Align Self", "0", new TextFieldPredefinedListEditorSettings()
+                    {
+                        Editor = EditorOption.Dropdown,
+                        Options = new ListValueOption[] {
+                                        new ListValueOption(){Name = "Default", Value = ""},
+                                        new ListValueOption(){Name = "Start", Value = "start"},
+                                        new ListValueOption(){Name = "Center", Value = "center"},
+                                        new ListValueOption(){Name = "End", Value = "end"},
+                                        new ListValueOption(){Name = "Auto", Value = "auto"},
+                                        new ListValueOption(){Name = "Baseline", Value = "baseline"},
+                                        new ListValueOption(){Name = "Stretch", Value = "stretch"}
+                                    }
+                    }
                 )
+                .WithTextFieldPredefinedList("Cols", "Cols Xs", "1", colsSettings)
+                .WithTextFieldPredefinedList("ColsSm", "Cols Sm", "2", colsSettings)
+                .WithTextFieldPredefinedList("ColsMd", "Cols Md", "3", colsSettings)
+                .WithTextFieldPredefinedList("ColsLg", "Cols Lg", "4", colsSettings)
+                .WithTextFieldPredefinedList("ColsXl", "Cols Xl", "5", colsSettings)
+                .WithTextFieldPredefinedList("Offset", "Offset Xs", "6", offsetSettings)
+                .WithTextFieldPredefinedList("OffsetSm", "Offset Sm", "7", offsetSettings)
+                .WithTextFieldPredefinedList("OffsetMd", "Offset Md", "8", offsetSettings)
+                .WithTextFieldPredefinedList("OffsetLg", "Offset Lg", "9", offsetSettings)
+                .WithTextFieldPredefinedList("OffsetXl", "Offset Xl", "10", offsetSettings)
+                .WithNumericField("Order", "Order Xs", "11")
+                .WithNumericField("OrderSm", "Order Sm", "12")
+                .WithNumericField("OrderMd", "Order Md", "13")
+                .WithNumericField("OrderLg", "Order Lg", "14")
+                .WithNumericField("OrderXl", "Order Xl", "15")
             );
         }
 
@@ -149,29 +186,68 @@ namespace StatCan.Themes.HackathonTheme
                 )
                 .WithFlow("1", new[] { "VCol" })
             );
+            var jutifySettings = new TextFieldPredefinedListEditorSettings()
+            {
+                Editor = EditorOption.Dropdown,
+                Options = new ListValueOption[] {
+                        new ListValueOption(){Name = "Default", Value = ""},
+                        new ListValueOption(){Name = "Start", Value = "start"},
+                        new ListValueOption(){Name = "Center", Value = "center"},
+                        new ListValueOption(){Name = "End", Value = "end"},
+                        new ListValueOption(){Name = "Between", Value = "space-between"},
+                        new ListValueOption(){Name = "Around", Value = "space-around"},
+                    }
+            };
+
+            var alignContentSettings = new TextFieldPredefinedListEditorSettings()
+            {
+                Editor = EditorOption.Dropdown,
+                Options = new ListValueOption[] {
+                        new ListValueOption(){Name = "Default", Value = ""},
+                        new ListValueOption(){Name = "Start", Value = "start"},
+                        new ListValueOption(){Name = "Center", Value = "center"},
+                        new ListValueOption(){Name = "End", Value = "end"},
+                        new ListValueOption(){Name = "Between", Value = "space-between"},
+                        new ListValueOption(){Name = "Around", Value = "space-around"},
+                        new ListValueOption(){Name = "Stretch", Value = "stretch"},
+                    }
+            };
+
+            var alignItemsSettings = new TextFieldPredefinedListEditorSettings()
+            {
+                Editor = EditorOption.Dropdown,
+                Options = new ListValueOption[] {
+                        new ListValueOption(){Name = "Default", Value = ""},
+                        new ListValueOption(){Name = "Start", Value = "start"},
+                        new ListValueOption(){Name = "Center", Value = "center"},
+                        new ListValueOption(){Name = "End", Value = "end"},
+                        new ListValueOption(){Name = "Baseline", Value = "baseline"},
+                        new ListValueOption(){Name = "Stretch", Value = "stretch"}
+                    }
+            };
 
             _contentDefinitionManager.AlterPartDefinition("VRow", part => part
-            .WithMultiValueTextField("Props", "Props", "0", new ListValueOption[] {
-                    new ListValueOption() {
-                        Name="No Gutters",
-                        Value="no-gutters"
-                    }, new ListValueOption() {
-                        Name="Justify Start",
-                        Value="justify=\"start\""
-                    }, new ListValueOption() {
-                        Name="Justify Center",
-                        Value="justify=\"center\""
-                    }, new ListValueOption() {
-                        Name="Justify End",
-                        Value="justify=\"end\""
-                    }, new ListValueOption() {
-                        Name="Justify Between",
-                        Value="justify=\"space-between\""
-                    }, new ListValueOption() {
-                        Name="Justify Around",
-                        Value="justify=\"space-around\""
-                    }}, OrchardCore.ContentFields.MultiValueTextField.Settings.EditorOption.Dropdown
+                .WithMultiValueTextField("Props", "Props", "0", new ListValueOption[] {
+                        new ListValueOption() {Name="No Gutters", Value="no-gutters"},
+                        new ListValueOption() {Name="Dense", Value="dense"}
+                    }
                 )
+                .WithTextFieldPredefinedList("Justify", "Justify Xs", "1", jutifySettings)
+                .WithTextFieldPredefinedList("JustifySm", "Justify Sm", "2", jutifySettings)
+                .WithTextFieldPredefinedList("JustifyLg", "Justify Lg", "3", jutifySettings)
+                .WithTextFieldPredefinedList("JustifyMd", "Justify Md", "4", jutifySettings)
+                .WithTextFieldPredefinedList("JustifyXl", "Justify Xl", "5", jutifySettings)
+                .WithTextFieldPredefinedList("Align", "Align Xs", "6", alignItemsSettings)
+                .WithTextFieldPredefinedList("AlignSm", "Align Sm", "7", alignItemsSettings)
+                .WithTextFieldPredefinedList("AlignLg", "Align Lg", "8", alignItemsSettings)
+                .WithTextFieldPredefinedList("AlignMd", "Align Md", "9", alignItemsSettings)
+                .WithTextFieldPredefinedList("AlignXl", "Align Xl", "10", alignItemsSettings)
+                .WithTextFieldPredefinedList("AlignContent", "Align Content Xs", "11", alignContentSettings)
+                .WithTextFieldPredefinedList("AlignContentSm", "Align Content Sm", "12", alignContentSettings)
+                .WithTextFieldPredefinedList("AlignContentLg", "Align Content Lg", "13", alignContentSettings)
+                .WithTextFieldPredefinedList("AlignContentMd", "Align Content Md", "14", alignContentSettings)
+                .WithTextFieldPredefinedList("AlignContentXl", "Align Content Xl", "15", alignContentSettings)
+
             );
         }
 
@@ -187,13 +263,11 @@ namespace StatCan.Themes.HackathonTheme
             );
 
             _contentDefinitionManager.AlterPartDefinition("VContainer", part => part
-                .WithMultiValueTextField("Props", "Props", "0", new ListValueOption[] {
-                                new ListValueOption() {
-                                Name="Fluid",
-                                Value="fluid"
-                            }
-                        },
-                        OrchardCore.ContentFields.MultiValueTextField.Settings.EditorOption.Dropdown
+                .WithMultiValueTextField("Props", "Props", "0",
+                    new ListValueOption[] {
+                         new ListValueOption() { Name="Fluid", Value="fluid"}
+                    },
+                OrchardCore.ContentFields.MultiValueTextField.Settings.MultiValueEditorOption.Dropdown
                 )
             );
         }
