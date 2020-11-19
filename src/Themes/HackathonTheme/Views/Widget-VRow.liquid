@@ -1,3 +1,18 @@
-<v-row {{ Model.ContentItem.Content.VRow.Props.Values | join: ' ' | raw }} >
+<v-row {{ Model.ContentItem.Content.VRow.Props.Values | join: ' ' | raw }} 
+  justify="{{ Model.ContentItem.Content.VRow.Justify.Text }}"
+  justify-sm="{{ Model.ContentItem.Content.VRow.JustifySm.Text }}"
+  justify-md="{{ Model.ContentItem.Content.VRow.JustifyMd.Text }}"
+  justify-lg="{{ Model.ContentItem.Content.VRow.JustifyLg.Text }}"
+  justify-xl="{{ Model.ContentItem.Content.VRow.JustifyXl.Text }}"
+  align="{{ Model.ContentItem.Content.VRow.Align.Text }}"
+  align-sm="{{ Model.ContentItem.Content.VRow.AlignSm.Text }}"
+  align-md="{{ Model.ContentItem.Content.VRow.AlignMd.Text }}"
+  align-lg="{{ Model.ContentItem.Content.VRow.AlignLg.Text }}"
+  align-xl="{{ Model.ContentItem.Content.VRow.AlignXl.Text }}"
+  align-content="{{ Model.ContentItem.Content.VRow.AlignContent.Text }}"
+  align-content-sm="{{ Model.ContentItem.Content.VRow.AlignContentSm.Text }}"
+  align-content-md="{{ Model.ContentItem.Content.VRow.AlignContentMd.Text }}"
+  align-content-lg="{{ Model.ContentItem.Content.VRow.AlignContentLg.Text }}"
+  align-content-xl="{{ Model.ContentItem.Content.VRow.AlignContentXl.Text }}">
   {{ Model.Content.FlowPart | shape_render }}
 </v-row>
