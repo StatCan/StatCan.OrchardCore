@@ -2,6 +2,7 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Localization;
 using Newtonsoft.Json;
 using OrchardCore.ContentFields.Fields;
+using OrchardCore.ContentFields.Settings;
 using OrchardCore.ContentManagement.Metadata.Models;
 using OrchardCore.ContentTypes.Editors;
 using OrchardCore.DisplayManagement.Views;

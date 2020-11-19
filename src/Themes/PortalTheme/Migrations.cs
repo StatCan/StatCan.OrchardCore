@@ -8,8 +8,6 @@ using OrchardCore.Flows.Models;
 using OrchardCore.Media.Settings;
 using OrchardCore.Title.Models;
 using StatCan.OrchardCore.ContentFields.PredefinedGroup.Settings;
-using RegularListValueOption = OrchardCore.ContentFields.Settings.ListValueOption;
-using ListValueOption = StatCan.OrchardCore.ContentFields.PredefinedGroup.Settings.ListValueOption;
 
 namespace StatCan.Themes.PortalTheme
 {
@@ -377,10 +375,10 @@ namespace StatCan.Themes.PortalTheme
                     .WithPosition("6")
                     .WithSettings(new TextFieldPredefinedListEditorSettings
                     {
-                        Options = new[] { new RegularListValueOption() {
+                        Options = new[] { new ListValueOption() {
                             Name = "Horizontal",
                             Value = "is-horizontal-list"
-                            }, new RegularListValueOption() {
+                            }, new ListValueOption() {
                             Name = "Vertical",
                             Value = "is-vertical-list"
                             } }
@@ -413,16 +411,16 @@ namespace StatCan.Themes.PortalTheme
                     .WithPosition("5")
                     .WithSettings(new TextFieldPredefinedListEditorSettings
                     {
-                        Options = new[] { new RegularListValueOption() {
+                        Options = new[] { new ListValueOption() {
                             Name = "None (Section Column Layout decides)",
                             Value = ""
-                            }, new RegularListValueOption() {
+                            }, new ListValueOption() {
                             Name = "4 Columns (1/3 width)",
                             Value = "col-md-4 col-12"
-                            }, new RegularListValueOption() {
+                            }, new ListValueOption() {
                             Name = "6 Columns (1/2 width)",
                             Value = "col-md-6 col-12"
-                            }, new RegularListValueOption() {
+                            }, new ListValueOption() {
                             Name = "8 Columns (2/3 width)",
                             Value = "col-md-8 col-12"
                             } }

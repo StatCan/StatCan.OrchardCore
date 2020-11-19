@@ -15,6 +15,11 @@
     <PackageReference Include="OrchardCore.Flows" Version="$(OrchardCoreVersion)" />
     <PackageReference Include="OrchardCore.Markdown" Version="$(OrchardCoreVersion)" />
     <PackageReference Include="OrchardCore.Html" Version="$(OrchardCoreVersion)" />
+    <PackageReference Include="OrchardCore.Title" Version="$(OrchardCoreVersion)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Modules\StatCan.OrchardCore.ContentFields\StatCan.OrchardCore.ContentFields.csproj" />
   </ItemGroup>
 
   <ItemGroup>

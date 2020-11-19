@@ -1,4 +1,5 @@
 using Newtonsoft.Json;
+using OrchardCore.ContentFields.Settings;
 
 namespace StatCan.OrchardCore.ContentFields.PredefinedGroup.Settings
 {
@@ -14,12 +15,4 @@ namespace StatCan.OrchardCore.ContentFields.PredefinedGroup.Settings
         ButtonGroup
     }
 
-    public class ListValueOption
-    {
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("value")]
-        public string Value { get; set; }
-    }
 }
