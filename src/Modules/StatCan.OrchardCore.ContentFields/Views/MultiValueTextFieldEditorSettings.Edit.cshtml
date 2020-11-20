@@ -1,12 +1,14 @@
 @using StatCan.OrchardCore.ContentFields.MultiValueTextField.Settings
 @model StatCan.OrchardCore.ContentFields.MultiValueTextField.ViewModels.MultiValueTextFieldSettingsViewModel
 
-
-<script asp-src="~/OrchardCore.ContentFields/Scripts/optionsEditor.min.js" debug-src="~/OrchardCore.ContentFields/Scripts/optionsEditor.js" asp-name="optionsEditor" at="Foot" depends-on="vuejs, vuedraggable"></script>
-<style asp-src="~/OrchardCore.ContentFields/Styles/optionsEditor.min.css" debug-src="~/OrchardCore.ContentFields/Styles/optionsEditor.css"></style>
+<script asp-src="~/OrchardCore.ContentFields/Scripts/optionsEditor.min.js"
+  debug-src="~/OrchardCore.ContentFields/Scripts/optionsEditor.js" asp-name="optionsEditor" at="Foot"
+  depends-on="vuejs, vuedraggable"></script>
+<style asp-src="~/OrchardCore.ContentFields/Styles/optionsEditor.min.css"
+  debug-src="~/OrchardCore.ContentFields/Styles/optionsEditor.css"></style>
 
 <script at="Foot">
-    initializeOptionsEditor(document.getElementById('@Html.IdFor(m => m)'), @Html.Raw(Model.Options), '@Model.DefaultValue', document.getElementsByClassName('@Html.IdFor(m => m)-ModalBody'));
+  initializeOptionsEditor(document.getElementById('@Html.IdFor(m => m)'), @Html.Raw(Model.Options), '@Model.DefaultValue', document.getElementsByClassName('@Html.IdFor(m => m)-ModalBody'));
 </script>
 
 <script type="text/x-template" id="options-table">
@@ -87,8 +89,8 @@
     <div class="form-group col-sm-6">
       <label asp-for="Editor">@T["What type of list editor should be used?"]</label>
       <select asp-for="Editor" class="form-control">
-        <option value="@nameof(EditorOption.Dropdown)">@T["Drop down list"]</option>
-        <option value="@nameof(EditorOption.Checkbox)">@T["Checkboxes"]</option>
+        <option value="@nameof(MultiValueEditorOption.Checkbox)">@T["Checkbox"]</option>
+        <option value="@nameof(MultiValueEditorOption.Dropdown)">@T["Drop down list"]</option>
       </select>
     </div>
   </div>
@@ -96,7 +98,8 @@
   <div class="row">
     <div class="col-sm-6">
       <label asp-for="Options">@T["Options"]</label>
-      <a href="javascript:void(0)" v-on:click="showModal" class="float-right" title="@T["Edit Data"]"><i class="fas fa-edit"></i></a>
+      <a href="javascript:void(0)" v-on:click="showModal" class="float-right" title="@string.Empty"><i
+          class="fas fa-edit"></i></a>
       <options-table :data="sharedState"></options-table>
       <options-modal :data="sharedState" v-on:reload-data="reloadData()"></options-modal>
     </div>

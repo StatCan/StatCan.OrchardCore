@@ -7,8 +7,6 @@ using OrchardCore.Data.Migration;
 using OrchardCore.Flows.Models;
 using OrchardCore.Title.Models;
 using StatCan.OrchardCore.ContentFields.PredefinedGroup.Settings;
-using ListValueOption = StatCan.OrchardCore.ContentFields.PredefinedGroup.Settings.ListValueOption;
-using RegListValueOption = OrchardCore.ContentFields.Settings.ListValueOption;
 namespace StatCan.Themes.DigitalTheme
 {
     public class Migrations : DataMigration
@@ -311,13 +309,13 @@ namespace StatCan.Themes.DigitalTheme
                     .WithPosition("4")
                     .WithSettings(new TextFieldPredefinedListEditorSettings
                     {
-                        Options = new RegListValueOption[] { new RegListValueOption() {
+                        Options = new ListValueOption[] { new ListValueOption() {
             Name = "BG Primary",
             Value = "primary"
-            }, new RegListValueOption() {
+            }, new ListValueOption() {
             Name = "BG Secondary",
             Value = "secondary"
-            }, new RegListValueOption() {
+            }, new ListValueOption() {
             Name = "BG Circuit",
             Value = "bg-circuit primary"
             } },
@@ -331,23 +329,23 @@ namespace StatCan.Themes.DigitalTheme
                     .WithPosition("5")
                     .WithSettings(new TextFieldPredefinedListEditorSettings
                     {
-                        Options = new RegListValueOption[] {
-                            new RegListValueOption()
+                        Options = new ListValueOption[] {
+                            new ListValueOption()
                             {
                                 Name = "None",
                                 Value = ""
                             },
-                            new RegListValueOption()
+                            new ListValueOption()
                             {
                                 Name = "Divider Step 1",
                                 Value = "divider-step-1"
                             },
-                            new RegListValueOption()
+                            new ListValueOption()
                             {
                                 Name = "Divider Step 2",
                                 Value = "divider-step-2"
                             },
-                            new RegListValueOption()
+                            new ListValueOption()
                             {
                                 Name = "Hero Step 1",
                                 Value = "hero-step-1"
@@ -362,20 +360,20 @@ namespace StatCan.Themes.DigitalTheme
                     .WithPosition("6")
                     .WithSettings(new TextFieldPredefinedListEditorSettings
                     {
-                        Options = new RegListValueOption[] {
-                            new RegListValueOption() {
+                        Options = new ListValueOption[] {
+                            new ListValueOption() {
             Name = "None",
             Value = ""
             },
-                            new RegListValueOption() {
+                            new ListValueOption() {
             Name = "Divider Step 1",
             Value = "divider-step-1"
             },
-                            new RegListValueOption() {
+                            new ListValueOption() {
             Name = "Divider Step 2",
             Value = "divider-step-2"
             },
-                            new RegListValueOption() {
+                            new ListValueOption() {
             Name = "Hero Step 1",
             Value = "hero-step-1"
             }

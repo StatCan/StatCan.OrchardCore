@@ -21,7 +21,6 @@
 
   <ItemGroup>
     <PackageReference Include="HtmlSanitizer" />
-    <PackageReference Include="OrchardCore.Title" Version="$(OrchardCoreVersion)" />
   </ItemGroup>
 
   <ItemGroup>

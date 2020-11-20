@@ -1,0 +1,46 @@
+{
+  "TextField_Edit" : [
+    {
+      "differentiator": "VCol-AlignSelf",
+      "place" : "Parts:0#Styles;1",
+      "contentType": [
+          "VCol"
+      ]
+    },
+    {
+      "differentiator": "VCol-Cols",
+      "place" : "Parts#Styles;1%Col|Xs_2;0",
+      "contentType": [
+          "VCol"
+      ]
+    },
+    {
+      "differentiator": "VCol-ColsSm",
+      "place" : "Parts#Styles;1%Col|Sm_2;1",
+      "contentType": [
+          "VCol"
+      ]
+    },
+    {
+      "differentiator": "VCol-ColsMd",
+      "place" : "Parts#Styles;1%Col|Md_2;2",
+      "contentType": [
+          "VCol"
+      ]
+    },
+    {
+      "differentiator": "VCol-ColsLg",
+      "place" : "Parts#Styles;1%Col|Lg_2;3",
+      "contentType": [
+          "VCol"
+      ]
+    },
+    {
+      "differentiator": "VCol-ColsXl",
+      "place" : "Parts#Styles;1%Col|Xl_2;4",
+      "contentType": [
+          "VCol"
+      ]
+    }
+  ]
+} 
