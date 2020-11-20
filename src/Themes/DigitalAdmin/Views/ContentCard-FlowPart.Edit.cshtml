@@ -1,0 +1,95 @@
+@using OrchardCore.ContentManagement.Metadata.Models
+
+@inject OrchardCore.ContentManagement.Metadata.IContentDefinitionManager ContentDefinitionManager
+
+@{
+    var contentItem = (IContent)Model.ContentItem;
+    var contentTypeDisplayText = ContentDefinitionManager.GetTypeDefinition((string)Model.ContentItem.ContentType).DisplayName;
+    var contentItemDisplayText = contentItem.ContentItem.DisplayText;
+    var widgetContentTypes = (IEnumerable<ContentTypeDefinition>)Model.ContainedContentTypes;
+    var displayName = string.IsNullOrEmpty(contentItemDisplayText) ? contentTypeDisplayText : $"{contentItemDisplayText} {contentTypeDisplayText}";
+    var editorId = "contentEditor_" + Model.PrefixValue;
+}
+
+<div class="widget widget-editor card my-1">
+    <div class="widget-editor-header card-header text-muted py-1 pl-3 pr-1">
+        @if (Model.CanMove != false)
+        {
+            <div class="widget-editor-handle"><i class="fas fa-arrows-alt"></i></div>
+        }
+        <button type="button" class="btn btn-outline-secondary btn-sm widget-editor-btn-toggle widget-editor-btn-collapse"><i class="fa fa-angle-down" aria-hidden="true"></i></button>
+        <button type="button" class="btn btn-outline-secondary btn-sm widget-editor-btn-toggle widget-editor-btn-expand"><i class="fa fa-angle-right" aria-hidden="true"></i></button>
+        <span data-content-type-display-text="@contentTypeDisplayText" class="widget-editor-header-text">@displayName</span>
+        <div class="btn-widget-metadata border border-info w-100">
+            <div class="btn-group">
+                @if (Model.CanInsert != false)
+                {
+                    <div class="btn-group">
+                        <button class="toggleAll btn btn-secondary btn-sm" onclick="toggleWidgets(); return false;" title="@T["Toggle all widgets"]">
+                            <i class="fa fa-angle-double-up" aria-hidden="true"></i>
+                        </button>
+                        <button type="button" title="@T["Insert Widget before {0}", displayName]" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-plus" aria-hidden="true"></i>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            @foreach (var type in widgetContentTypes.OrderBy(w => w.DisplayName))
+                            {
+                                <a class="dropdown-item insert-widget btn-sm"
+                                   data-target-id="@Model.TargetId"
+                                   data-prefixes-name="@Model.PrefixesName"
+                                   data-flowmetadata="true"
+                                   data-parent-content-type="@Model.ParentContentType"
+                                   data-part-name="@Model.CollectionPartName"
+                                   data-contenttypes-name="@Model.ContentTypesName"
+                                   data-widget-type="@type.Name"
+                                   href="javascript:;">@type.DisplayName</a>
+                            }
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="btn-group btn-group-sm float-right" role="group">
+          @if (Model.ContentEditor.Settings != null)
+          {
+             <button type="button" class="btn btn-secondary m1-2" data-toggle="modal" data-target="#Modal_@Model.PrefixValue" title=" @T["Settings for {0}", displayName]" >
+              <i class="fas fa-cog"></i>
+            </button>
+
+            <!-- Modal -->            
+            <div class="modal fade" id="Modal_@Model.PrefixValue" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+              <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title widget-editor-header-text" data-content-type-display-text="@T["Settings"]" id="Modal_@Model.PrefixValue@Model.PrefixValue__LongTitle">
+                      @T["Settings for {0}", displayName]
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="@T["Close"]">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    @await DisplayAsync(Model.ContentEditor.Settings)
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">@T["Close"]</button>                   
+                  </div>
+                </div>
+              </div>
+            </div>
+          }
+          @if (Model.CanDelete != false)
+          {
+              <button type="button" class="btn btn-danger widget-delete" data-title="@T["Delete"]" data-message="@T["Are you sure you want to remove this item?"]"><i class="fa fa-trash" aria-hidden="true"></i></button>
+          }
+        </div>
+    </div>
+    <div class="widget-editor-body card-body px-2 py-1">
+        <div class="w-100">
+            @if (Model.ContentEditor != null)
+            {
+                @await DisplayAsync(Model.ContentEditor)
+            }
+        </div>
+    </div>
+</div>
