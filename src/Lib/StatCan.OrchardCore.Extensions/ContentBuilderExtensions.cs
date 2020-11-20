@@ -163,7 +163,7 @@ namespace StatCan.OrchardCore.Extensions
             );
         }
 
-        public static ContentPartDefinitionBuilder WithMultiValueTextField(this ContentPartDefinitionBuilder p, string name, string displayName, string position, ListValueOption[] options, MultiValueEditorOption editor = MultiValueEditorOption.Checkbox)
+        public static ContentPartDefinitionBuilder WithMultiValueTextField(this ContentPartDefinitionBuilder p, string name, string displayName, string position, ListValueOption[] options, MultiValueEditorOption editor = MultiValueEditorOption.Dropdown)
         {
             return p.WithField(name, field => field
                .OfType("MultiValueTextField")

@@ -53,12 +53,15 @@ namespace StatCan.OrchardCore.ContentFields.MultiValueTextField.Drivers
 
                 model.SelectedItems = new List<VueMultiselectItemViewModel>();
 
-                foreach (var value in field.Values)
+                if(field.Values != null)
                 {
-                    model.SelectedItems.Add(new VueMultiselectItemViewModel
+                    foreach (var value in field.Values)
                     {
-                        DisplayText = value.ToString(),
-                    });
+                        model.SelectedItems.Add(new VueMultiselectItemViewModel
+                        {
+                            DisplayText = value.ToString(),
+                        });
+                    }
                 }
             });
         }

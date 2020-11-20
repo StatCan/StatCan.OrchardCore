@@ -266,8 +266,7 @@ namespace StatCan.Themes.HackathonTheme
                 .WithMultiValueTextField("Props", "Props", "0",
                     new ListValueOption[] {
                          new ListValueOption() { Name="Fluid", Value="fluid"}
-                    },
-                OrchardCore.ContentFields.MultiValueTextField.Settings.MultiValueEditorOption.Dropdown
+                    }
                 )
             );
         }

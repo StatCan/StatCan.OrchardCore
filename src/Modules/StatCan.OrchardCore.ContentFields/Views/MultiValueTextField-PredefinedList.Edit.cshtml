@@ -10,11 +10,10 @@
   var listSettings = Model.PartFieldDefinition.GetSettings<MultiValueTextFieldEditorSettings>();
 
   var options = new List<SelectListItem>();
-  var selectedValues = Model.Values;
 
   foreach (var option in listSettings.Options)
   {
-    var isSelected = selectedValues.Contains(option.Value); 
+    var isSelected = Model.Values?.Contains(option.Value) == true; 
   
     options.Add(new SelectListItem { Text = option.Name, Value = option.Value, Selected = isSelected });
   }
