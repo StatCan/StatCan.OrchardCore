@@ -338,5 +338,42 @@ namespace StatCan.OrchardCore.Hackathon.Services
             }
             return true;
         }
+
+        public async Task<bool> RemoveTeamMember(string hackerContentItemId, ModelStateDictionary modelState)
+        {
+            var participant = await _session.Query<ContentItem, HackathonItemsIndex>(x => x.ContentItemId == hackerContentItemId && x.ContentType == "Hacker" && x.Published).FirstOrDefaultAsync();
+            if (participant == null || participant.ContentType != "Hacker")
+            {
+                modelState.AddModelError("error", T["You are not a hacker"].Value);
+                return false;
+            }
+
+            if (!participant.HasTeam())
+            {
+                modelState.AddModelError("error", T["You are not part of a team"].Value);
+                return false;
+            }
+
+            participant.Content.Hacker.Team = JObject.FromObject(new { ContentItemIds = new string[0] });
+            await _contentManager.UpdateAsync(participant);
+
+            return true;
+        }
+
+        public async Task<bool> SaveTeam(string teamContentItemId, string teamDescription, string challenge, ModelStateDictionary modelState)
+        {
+            var team = await _session.Query<ContentItem, HackathonItemsIndex>(x => x.ContentItemId == teamContentItemId && x.ContentType == "Team" && x.Published).FirstOrDefaultAsync();
+            if (team == null || team.ContentType != "Team")
+            {
+                modelState.AddModelError("error", T["Team doesn't exist"].Value);
+                return false;
+            }
+
+            team.Content.Team.Description = JObject.FromObject(new { Text = teamDescription });
+            team.Content.Team.Challenge = JObject.FromObject(new { ContentItemIds = challenge });
+            await _contentManager.UpdateAsync(team);
+
+            return true;
+        }
     }
 }

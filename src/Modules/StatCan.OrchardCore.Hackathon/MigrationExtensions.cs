@@ -39,11 +39,21 @@ namespace StatCan.OrchardCore.Hackathon
 
         public static ContentPartDefinitionBuilder WithChallengeField(this ContentPartDefinitionBuilder p, string position)
         {
-            return p.WithField("Team", f => f
+            return p.WithField("Challenge", f => f
                     .OfType(nameof(ContentPickerField))
                     .WithDisplayName("Challenge")
                     .WithPosition(position)
                     .WithSettings(new ContentPickerFieldSettings() { DisplayedContentTypes = new string[] { "Challenge" } })
+                );
+        }
+
+        public static ContentPartDefinitionBuilder WithTeamCaptainField(this ContentPartDefinitionBuilder p, string position)
+        {
+            return p.WithField("TeamCaptain", f => f
+                    .OfType(nameof(ContentPickerField))
+                    .WithDisplayName("Team Captain")
+                    .WithPosition(position)
+                    .WithSettings(new ContentPickerFieldSettings() { DisplayedContentTypes = new string[] { "Hacker" } })
                 );
         }
     }

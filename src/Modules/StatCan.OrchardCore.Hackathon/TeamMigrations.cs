@@ -45,6 +45,7 @@ namespace StatCan.OrchardCore.Hackathon
                 .WithTextField("Name", "Team Name", "0")
                 .WithTextField("Description", "Team Description", "TextArea", "1")
                 .WithChallengeField("2")
+                .WithTeamCaptainField("3")
             );
 
             _contentDefinitionManager.AlterTypeDefinition("Team", t => t

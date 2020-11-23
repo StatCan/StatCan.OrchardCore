@@ -145,5 +145,51 @@ namespace StatCan.OrchardCore.Hackathon.Controllers
             await _session.CommitAsync();
             return LocalRedirect(GetPrefixedUrl(returnUrl));
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> RemoveTeamMember(string hackerContentItemId, string returnUrl)
+        {
+            if (!HttpContext.User.IsInRole("Hacker"))
+            {
+                return NotFound();
+            }
+
+            var site = await _siteService.GetSiteSettingsAsync();
+            var hackathonCustomSettings = site.As<ContentItem>("HackathonCustomSettings");
+
+            if (hackathonCustomSettings.Content["TeamCustomSettings"]["TeamEditable"].Value == false)
+            {
+                return Unauthorized();
+            }
+
+            await _hackathonService.RemoveTeamMember(hackerContentItemId, ModelState);
+            if (ModelState.IsValid)
+            {
+                _notifier.Success(H["Member successfully removed from the team"]);
+            }
+
+            await _session.CommitAsync();
+            return LocalRedirect(GetPrefixedUrl(returnUrl));
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> SaveTeam(string teamContentItemId, string teamDescription, string challenge, string returnUrl)
+        {
+            if (!HttpContext.User.IsInRole("Hacker"))
+            {
+                return NotFound();
+            }
+
+            await _hackathonService.SaveTeam(teamContentItemId, teamDescription, challenge, ModelState);
+            if (ModelState.IsValid)
+            {
+                _notifier.Success(H["Team info successfully updated"]);
+            }
+
+            await _session.CommitAsync();
+            return LocalRedirect(GetPrefixedUrl(returnUrl));
+        }
     }
 }

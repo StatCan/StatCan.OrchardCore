@@ -1,0 +1,54 @@
+{% assign challenges = Queries.GetItemsForHackathon | query: type: "Challenge" %}
+{% assign teamMembers = Queries.GetHackersForTeam | query: teamContentItemId: Model.ContentItem.ContentItemId %}
+
+<v-container fluid>
+  <form method="post" action="{{ "~/team/save" | href }}">
+    <v-card>
+      <v-card-title>
+        {{ Model.ContentItem.Content.Team.Name.Text }} {{ "Description" | t }}
+      </v-card-title>
+      <v-card-text>
+        <v-textarea solo name="teamDescription" label="Edit team description" value="{{ Model.ContentItem.Content.Team.Description.Text }}"></v-textarea>
+      </v-card-text>
+    </v-card>
+    
+    <v-card>
+      <v-card-title>
+        {{ "Challenge" | t }}
+      </v-card-title>
+      <v-card-text>
+        <v-combobox name="challenge" :items="challenges" item-text="DisplayText" item-value="ContentItemId" ></v-combobox>
+        <v-select solo name="challengeV" :items="challenges" item-text="DisplayText" item-value="ContentItemId" ></v-select>
+
+        {% for challenge in challenges %}
+          {{ challenge.DisplayText }}
+          {{ challenge.ContentItemId }}
+        {% endfor %}
+      </v-card-text>
+    </v-card>  
+  
+    <v-btn type="submit">{{ "Save" | t }}</v-btn>
+    {% antiforgerytoken %}
+    <input type="hidden" name="teamContentItemId" value="{{Model.ContentItem.ContentItemId}}">
+    <input type="hidden" name="returnUrl" value="{{Request.Path}}">
+  </form>
+  
+  <v-card>
+    <v-card-title>{{ "Team Members" | t }}</v-card-title>
+    <v-container fluid>
+      <v-row>
+        {% for teamMember in teamMembers %}
+          <v-card>
+            <v-card-title>{{ teamMember.DisplayText }}</v-card-title>
+              <form method="post" action="{{ "~/team/remove" | href }}">
+                <v-btn {% if Model.ContentItem.Content.Team.TeamCaptain == teamMember.ContentItemId %} disabled {% endif %} type="submit">{{ "Remove" | t }}</v-btn>
+                {% antiforgerytoken %}
+                <input type="hidden" name="hackerContentItemId" value="{{teamMember.ContentItemId}}">
+                <input type="hidden" name="returnUrl" value="{{Request.Path}}">
+              </form>
+          </v-card>
+        {% endfor %}
+      </v-row>
+    </v-container>
+  </v-card>
+</v-container>
