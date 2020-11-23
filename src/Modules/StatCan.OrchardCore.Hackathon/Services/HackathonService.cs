@@ -370,7 +370,7 @@ namespace StatCan.OrchardCore.Hackathon.Services
             }
 
             team.Content.Team.Description = JObject.FromObject(new { Text = teamDescription });
-            team.Content.Team.Challenge = JObject.FromObject(new { ContentItemIds = challenge });
+            team.Content.Team.Challenge = JObject.FromObject(new { ContentItemIds = new string[] { challenge } });
             await _contentManager.UpdateAsync(team);
 
             return true;
