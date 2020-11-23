@@ -1,29 +1,28 @@
 using System.Threading.Tasks;
 using Microsoft.Extensions.Localization;
 using Newtonsoft.Json;
-using OrchardCore.ContentFields.Fields;
 using OrchardCore.ContentFields.Settings;
 using OrchardCore.ContentManagement.Metadata.Models;
 using OrchardCore.ContentTypes.Editors;
 using OrchardCore.DisplayManagement.Views;
-using StatCan.OrchardCore.ContentFields.PredefinedGroup.ViewModels;
+using StatCan.OrchardCore.ContentFields.MultiValueTextField.ViewModels;
 
-namespace StatCan.OrchardCore.ContentFields.PredefinedGroup.Settings
+namespace StatCan.OrchardCore.ContentFields.MultiValueTextField.Settings
 {
-    public class TextFieldPredefinedGroupEditorSettingsDriver : ContentPartFieldDefinitionDisplayDriver<TextField>
+    public class MultiValueTextFieldEditorSettingsDriver : ContentPartFieldDefinitionDisplayDriver<Fields.MultiValueTextField>
     {
         private readonly IStringLocalizer S;
 
-        public TextFieldPredefinedGroupEditorSettingsDriver(IStringLocalizer<TextFieldPredefinedGroupEditorSettingsDriver> localizer)
+        public MultiValueTextFieldEditorSettingsDriver(IStringLocalizer<MultiValueTextFieldEditorSettingsDriver> localizer)
         {
             S = localizer;
         }
 
         public override IDisplayResult Edit(ContentPartFieldDefinition partFieldDefinition)
         {
-            return Initialize<PredefinedGroupSettingsViewModel>("TextFieldPredefinedGroupEditorSettings_Edit", model =>
+            return Initialize<MultiValueTextFieldSettingsViewModel>("MultiValueTextFieldEditorSettings_Edit", model =>
             {
-                var settings = partFieldDefinition.GetSettings<TextFieldPredefinedGroupEditorSettings>();
+                var settings = partFieldDefinition.GetSettings<MultiValueTextFieldEditorSettings>();
 
                 model.DefaultValue = settings.DefaultValue;
                 model.Editor = settings.Editor;
@@ -34,10 +33,10 @@ namespace StatCan.OrchardCore.ContentFields.PredefinedGroup.Settings
 
         public override async Task<IDisplayResult> UpdateAsync(ContentPartFieldDefinition partFieldDefinition, UpdatePartFieldEditorContext context)
         {
-            if (partFieldDefinition.Editor() == "PredefinedGroup")
+            if (partFieldDefinition.Editor() == "PredefinedList")
             {
-                var model = new PredefinedGroupSettingsViewModel();
-                var settings = new TextFieldPredefinedGroupEditorSettings();
+                var model = new MultiValueTextFieldSettingsViewModel();
+                var settings = new MultiValueTextFieldEditorSettings();
 
                 await context.Updater.TryUpdateModelAsync(model, Prefix);
 

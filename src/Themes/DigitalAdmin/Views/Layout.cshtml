@@ -13,6 +13,7 @@
 
     <!-- Bootstrap CSS -->
     <style id="admin-default" media="all" asp-name="admin" asp-src="~/TheAdmin/Styles/TheAdmin.min.css" debug-src="~/TheAdmin/Styles/TheAdmin.css" depends-on="jQuery-ui"></style>
+    <style asp-src="~/DigitalAdmin/overrides.css" depends-on="admin"></style>
     @if (adminSettings.DisplayDarkMode)
     {
         <style id="admin-darkmode" media="not all" asp-name="admin-darkmode" asp-src="~/TheAdmin/Styles/TheAdmin-darkmode.min.css" debug-src="~/TheAdmin/Styles/TheAdmin-darkmode.css" depends-on="jQuery-ui"></style>

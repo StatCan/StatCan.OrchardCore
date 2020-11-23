@@ -38807,7 +38807,11 @@ external_commonjs_vue_commonjs2_vue_root_Vue_default.a.use(framework_Vuetify, {
     VExpandXTransition: VExpandXTransition
   }
 });
-/* harmony default export */ var vuetify = (new framework_Vuetify({}));
+/* harmony default export */ var vuetify = (new framework_Vuetify({
+  theme: {
+    dark: true
+  }
+}));
 // EXTERNAL MODULE: ./Assets/src/styles.scss
 var src_styles = __webpack_require__("e19a");
 

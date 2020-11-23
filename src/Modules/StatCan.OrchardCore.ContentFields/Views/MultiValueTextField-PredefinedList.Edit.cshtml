@@ -1,0 +1,47 @@
+@using StatCan.OrchardCore.ContentFields.MultiValueTextField.Settings
+@model StatCan.OrchardCore.ContentFields.MultiValueTextField.ViewModels.EditMultiValueTextFieldViewModel
+
+@{
+  var partName = Model.PartFieldDefinition.PartDefinition.Name;
+  var fieldName = Model.PartFieldDefinition.Name;
+  var vueElementId = $"Picker_{partName}_{fieldName}_{Guid.NewGuid().ToString("n")}";
+
+  var settings = Model.PartFieldDefinition.GetSettings<MultiValueTextFieldSettings>();
+  var listSettings = Model.PartFieldDefinition.GetSettings<MultiValueTextFieldEditorSettings>();
+
+  var options = new List<SelectListItem>();
+
+  foreach (var option in listSettings.Options)
+  {
+    var isSelected = Model.Values?.Contains(option.Value) == true; 
+  
+    options.Add(new SelectListItem { Text = option.Name, Value = option.Value, Selected = isSelected });
+  }
+}
+
+<div class="form-group">
+  <label asp-for="Values">@Model.PartFieldDefinition.DisplayName()</label>
+  @if (listSettings.Editor == StatCan.OrchardCore.ContentFields.MultiValueTextField.Settings.MultiValueEditorOption.Checkbox)
+  {
+    var i = 0;
+    @foreach (var option in options)
+    {
+      <div class="custom-control custom-checkbox" asp-for="Values">
+        <input class="custom-control-input content-preview-text" id="@(Html.IdFor(m => m.Values) + "_" + i)" name="@Html.NameFor(m=>m.Values)" type="checkbox" value="@option.Value" checked="@option.Selected" />
+        <label class="custom-control-label" for="@(Html.IdFor(m => m.Values) + "_" + i)">@option.Text</label>
+      </div>
+      i++;
+    }
+  }
+
+  @if (listSettings.Editor == StatCan.OrchardCore.ContentFields.MultiValueTextField.Settings.MultiValueEditorOption.Dropdown)
+  {
+    <select class="form-control content-preview-select" asp-for="Values" asp-items="options"></select>
+  }
+
+  @if (!String.IsNullOrEmpty(settings.Hint))
+  {
+    <span class="hint">— @settings.Hint</span>
+  }
+</div>
+

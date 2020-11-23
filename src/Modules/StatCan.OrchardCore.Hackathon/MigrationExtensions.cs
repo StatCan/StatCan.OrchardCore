@@ -22,21 +22,6 @@ namespace StatCan.OrchardCore.Hackathon
                 );
         }
 
-        public static ContentTypeDefinitionBuilder WithTitlePart(this ContentTypeDefinitionBuilder t, string position)
-        {
-            return t.WithPart(nameof(TitlePart), p => p
-                .WithPosition(position)
-            );
-        }
-
-        public static ContentTypeDefinitionBuilder WithTitlePart(this ContentTypeDefinitionBuilder t, string position, TitlePartOptions options = TitlePartOptions.Editable, string pattern = "")
-        {
-            return t.WithPart(nameof(TitlePart), p => p
-                .WithPosition(position)
-                .WithSettings(new TitlePartSettings(){Options = options, Pattern = pattern})
-            );
-        }
-
         public static ContentPartDefinitionBuilder WithChallengeField(this ContentPartDefinitionBuilder p, string position)
         {
             return p.WithField("Challenge", f => f
