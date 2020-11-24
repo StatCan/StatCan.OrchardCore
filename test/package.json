@@ -6,9 +6,9 @@
   },
   "dependencies": {},
   "scripts": {
-    "build": "node -e \"require('cypress-orchardcore/dist/test-runner').build('../src/StatCan.OrchardCore.Cms.Web')\"",
-    "host": "node -e \"require('cypress-orchardcore/dist/test-runner').host('../src/StatCan.OrchardCore.Cms.Web', 'StatCan.OrchardCore.Cms.Web.dll')\"",
-    "test": "node -e \"require('cypress-orchardcore/dist/test-runner').e2e('../src/StatCan.OrchardCore.Cms.Web', 'StatCan.OrchardCore.Cms.Web.dll')\"",
+    "build": "node -e \"require('./test-runner').build('../src/StatCan.OrchardCore.Cms.Web')\"",
+    "host": "node -e \"require('./test-runner').host('../src/StatCan.OrchardCore.Cms.Web', 'StatCan.OrchardCore.Cms.Web.dll')\"",
+    "test": "node -e \"require('./test-runner').e2e('../src/StatCan.OrchardCore.Cms.Web', 'StatCan.OrchardCore.Cms.Web.dll')\"",
     "cypress:run": "cypress run",
     "cypress": "cypress open"
   }
