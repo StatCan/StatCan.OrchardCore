@@ -1,6 +1,6 @@
 {
   "devDependencies": {
-    "cypress": "^5.5.0",
+    "cypress": "^6.0.0",
     "cypress-orchardcore": "0.4.1",
     "rimraf": "3.0.2"
   },
