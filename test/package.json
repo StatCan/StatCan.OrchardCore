@@ -1,14 +1,14 @@
 {
   "devDependencies": {
     "cypress": "^6.0.0",
-    "cypress-orchardcore": "0.4.1",
+    "cypress-orchardcore": "0.4.2",
     "rimraf": "3.0.2"
   },
   "dependencies": {},
   "scripts": {
-    "build": "node -e \"require('./test-runner').build('../src/StatCan.OrchardCore.Cms.Web')\"",
-    "host": "node -e \"require('./test-runner').host('../src/StatCan.OrchardCore.Cms.Web', 'StatCan.OrchardCore.Cms.Web.dll')\"",
-    "test": "node -e \"require('./test-runner').e2e('../src/StatCan.OrchardCore.Cms.Web', 'StatCan.OrchardCore.Cms.Web.dll')\"",
+    "build": "node -e \"require('cypress-orchardcore/dist/test-runner').build('../src/StatCan.OrchardCore.Cms.Web')\"",
+    "host": "node -e \"require('cypress-orchardcore/dist/test-runner').host('../src/StatCan.OrchardCore.Cms.Web', 'StatCan.OrchardCore.Cms.Web.dll', {dotnetVersion:'net5.0'})\"",
+    "test": "node -e \"require('cypress-orchardcore/dist/test-runner').e2e('../src/StatCan.OrchardCore.Cms.Web', 'StatCan.OrchardCore.Cms.Web.dll',  {dotnetVersion:'net5.0'})\"",
     "cypress:run": "cypress run",
     "cypress": "cypress open"
   }
