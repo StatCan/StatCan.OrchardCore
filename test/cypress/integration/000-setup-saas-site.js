@@ -5,7 +5,7 @@ const sassCreds = {
   setupRecipe: "SaaS",
 }
 
-describe.skip("SaaS site setup", function() {
+describe("SaaS site setup", function() {
   it("SaaS tenant setup", function() {
     cy.visit("/");
     cy.siteSetup(sassCreds);
