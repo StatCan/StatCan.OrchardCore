@@ -9,20 +9,20 @@ global.log = function(msg) {
 };
 
 // Build the dotnet application in release mode
-export function build(dir) {
+function build(dir) {
   global.log("Building ...");
   child_process.spawnSync("dotnet", ["build", "-c", "Release"], { cwd: dir });
 }
 
 // destructive action that deletes the App_Data folder
-export function deleteDirectory(dir) {
+function deleteDirectory(dir) {
   //const appdataPath = path.join(dir, "App_Data");
   fs.removeSync(dir);
   global.log(`${dir} deleted`);
 }
 
 // Host the dotnet application, does not rebuild
-export function host(dir, assembly, appDataLocation='./App_Data') {
+function host(dir, assembly, appDataLocation='./App_Data') {
   if (fs.existsSync(path.join(dir, "bin/Release/netcoreapp3.1/", assembly))) {
     global.log("Application already built, skipping build");
   } else {
@@ -62,7 +62,7 @@ export function host(dir, assembly, appDataLocation='./App_Data') {
 }
 
 // combines the functions above, useful when triggering tests from CI
-export function e2e(dir, assembly) {
+function e2e(dir, assembly) {
   deleteDirectory(path.join(dir, "App_Data_Tests"));
   var server = host(dir, assembly, "./App_Data_Tests");
 
@@ -82,3 +82,7 @@ export function e2e(dir, assembly) {
   });
 }
 
+exports.build = build;
+exports.deleteDirectory = deleteDirectory;
+exports.e2e = e2e;
+exports.host = host;
