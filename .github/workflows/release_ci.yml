@@ -47,14 +47,14 @@ jobs:
       run: |
            cd test/cypress
            npm install
-           npm run ci:test
+           npm run test
     - uses: actions/upload-artifact@v2
       if: failure()
       with:
         name: functional-test-postgresql-failure
         path: |
           test/cypress/screenshots
-          src/StatCan.OrchardCore.Cms.Web/App_Data/logs
+          src/StatCan.OrchardCore.Cms.Web/App_Data_Tests/logs
         retention-days: 3
     - name: Deploy nightly nuget packages
       run: |

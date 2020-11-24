@@ -30,22 +30,26 @@ jobs:
       OrchardCore__DatabaseProvider: "Postgres"
     steps:
     - uses: actions/checkout@v1
-    - name: Setup .NET Core SDK
+    - name: Setup .NET Core 3.1 
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 3.1.402
+        dotnet-version: 3.1.404
+    - name: Setup .NET Core 5.0
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.0.100
     - name: Dotnet build 
       run: dotnet build -c Release
     - name: Test
       run: |
            cd test/cypress
            npm install
-           npm run ci:test
+           npm run test
     - uses: actions/upload-artifact@v2
       if: failure()
       with:
         name: functional-test-postgresql-failure
         path: |
           test/cypress/screenshots
-          src/StatCan.OrchardCore.Cms.Web/App_Data/logs
+          src/StatCan.OrchardCore.Cms.Web/App_Data_Tests/logs
         retention-days: 3

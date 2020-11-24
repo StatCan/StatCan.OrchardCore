@@ -1,16 +1,14 @@
 {
   "devDependencies": {
     "cypress": "^5.5.0",
-    "cypress-orchardcore": "0.3.0",
+    "cypress-orchardcore": "0.4.1",
     "rimraf": "3.0.2"
   },
   "dependencies": {},
   "scripts": {
     "build": "node -e \"require('cypress-orchardcore/dist/test-runner').build('../src/StatCan.OrchardCore.Cms.Web')\"",
-    "setup": "node -e \"require('cypress-orchardcore/dist/test-runner').setup('../src/StatCan.OrchardCore.Cms.Web', 'SaaSTenantFiles')\"",
     "host": "node -e \"require('cypress-orchardcore/dist/test-runner').host('../src/StatCan.OrchardCore.Cms.Web', 'StatCan.OrchardCore.Cms.Web.dll')\"",
     "test": "node -e \"require('cypress-orchardcore/dist/test-runner').e2e('../src/StatCan.OrchardCore.Cms.Web', 'StatCan.OrchardCore.Cms.Web.dll')\"",
-    "ci:test": "npm run setup && npm run test",
     "cypress:run": "cypress run",
     "cypress": "cypress open"
   }
