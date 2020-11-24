@@ -40,11 +40,12 @@ function host(dir, assembly, appDataLocation='./App_Data') {
 
   ocEnv["ORCHARD_APP_DATA"] = appDataLocation;
   
-  console.log(`Environment variables:`, ocEnv)
+  console.log(`Environment variables:`, ocEnv);
+  
   let server = child_process.spawn(
     "dotnet",
     ["bin/Release/netcoreapp3.1/" + assembly],
-    { cwd: dir, env: ocEnv }
+    { cwd: dir, env: process.env }
   );
 
   server.stdout.on("data", data => {
