@@ -70,7 +70,7 @@ namespace StatCan.OrchardCore.Scripting
                     {
                         return UpdateCustomUserSettingsStatus.TypeError;
                     }
-                    
+
                     if (!authorizationService.AuthorizeAsync(userClaim, CustomUserSettingsPermissions.CreatePermissionForType(def)).GetAwaiter().GetResult())
                     {
                         return UpdateCustomUserSettingsStatus.Unauthorized;

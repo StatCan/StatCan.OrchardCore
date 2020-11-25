@@ -1,3 +1,4 @@
+const { exec } = require("child_process");
 var fs = require("file-system"),
   glob = require("glob"),
   path = require("path-posix"),
@@ -39,6 +40,8 @@ gulp.task("build", function () {
     var doRebuild = false;
     return createAssetGroupTask(assetGroup, doRebuild);
   });
+
+  hackathonTheme("build"); 
   return merge(assetGroupTasks);
 });
 
@@ -48,6 +51,7 @@ gulp.task("rebuild", function () {
     var doRebuild = true;
     return createAssetGroupTask(assetGroup, doRebuild);
   });
+  hackathonTheme("build"); 
   return merge(assetGroupTasks);
 });
 
@@ -120,6 +124,8 @@ gulp.task("watch", function () {
       );
     });
   });
+  hackathonTheme("watch"); 
+
   console.log("Waiting for file changes");
 });
 
@@ -134,6 +140,23 @@ gulp.task("help", function () {
       watch     Continuous watch (each asset group is built whenever one of its inputs changes).
     `);
 });
+
+function hackathonTheme(command) {
+
+  const hackWatch = exec(`npm run ${command}`, {cwd: './src/Themes/HackathonTheme' });
+
+  hackWatch.stdout.on("data", data => {
+      console.log(`HackathonTheme: ${data}`);
+  });
+  hackWatch.on('error', (error) => {
+      console.error(`HackathonTheme: ${error.message}`);
+  });
+  hackWatch.on("close", code => {
+      console.log(`HackathonTheme ${command} exited with code ${code}`);
+  });
+
+  console.log("Watching Hackathon Theme")
+}
 
 /*
  ** ASSET GROUPS

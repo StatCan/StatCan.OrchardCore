@@ -81,7 +81,7 @@
               "Text": null
             },
             "ComponentOptions": {
-              "Text": "{% assign properties = User | user_properties %}\r\n{\r\n  data: () => ({\r\n    firstName: \"{{properties.UserProfile.UserProfile.FirstName.Text}}\",\r\n\tlastName: \"{{properties.UserProfile.UserProfile.LastName.Text}}\", \r\n    email: \"{{ User | user_email }}\",\r\n    language: \"{{properties.UserProfile.UserProfile.Language.Text}}\"\r\n  })\r\n}"
+              "Text": "{% assign user = User | user_id | users_by_id %}\r\n{\r\n  data: () => ({\r\n    firstName: \"{{user.Properties.UserProfile.UserProfile.FirstName.Text}}\",\r\n\tlastName: \"{{user.Properties.UserProfile.UserProfile.LastName.Text}}\", \r\n    email: \"{{ user.Email }}\",\r\n    language: \"{{user.Properties.UserProfile.UserProfile.Language.Text}}\"\r\n  })\r\n}"
             },
             "OnValidation": {
               "Text": "var data = requestFormAsJsonObject();\r\nvar localizedText = getLocalizedTextValues(getFormContentItem());\r\n\r\nif(!validateEmail(data.email)){\r\n    addError(\"email\", localizedText.invalidEmail);\r\n}\r\n"
