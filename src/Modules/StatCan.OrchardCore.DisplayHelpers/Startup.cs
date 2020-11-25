@@ -14,7 +14,6 @@ namespace StatCan.OrchardCore.DisplayHelpers
             services.AddLiquidFilter<IsCurrentUrlFilter>("is_current_url");
             services.AddLiquidFilter<GetClaimLiquidFilter>("get_claim");
             services.AddLiquidFilter<ReturnUrlFilter>("return_url");
-            services.AddLiquidFilter<UserPropertiesFilter>("user_properties");
         }
     }
 }
