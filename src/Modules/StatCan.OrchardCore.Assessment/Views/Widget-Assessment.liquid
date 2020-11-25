@@ -1,0 +1,9 @@
+<pre>
+{{Model.ContentItem.Content}}
+</pre>
+
+{% script name:"surveyjs", src:"~/StatCan.OrchardCore.Assessment/Scripts/surveyjs.min.js", debug_src:"~/StatCan.OrchardCore.Assessment/Scripts/surveyjs.js", at:"Foot" %}
+
+{% block "script", at: "Foot", depends-on:"surveyjs" %}
+// surveyjs init code goes here
+{% endblock%}
