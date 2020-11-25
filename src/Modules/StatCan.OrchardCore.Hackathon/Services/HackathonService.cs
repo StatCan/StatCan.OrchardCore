@@ -344,7 +344,7 @@ namespace StatCan.OrchardCore.Hackathon.Services
             var participant = await _session.Query<ContentItem, HackathonItemsIndex>(x => x.ContentItemId == hackerContentItemId && x.ContentType == "Hacker" && x.Published).FirstOrDefaultAsync();
             if (participant == null || participant.ContentType != "Hacker")
             {
-                modelState.AddModelError("error", T["You are not a hacker"].Value);
+                modelState.AddModelError("error", T["You are not the team captain. Only the team captain can perform this action"].Value);
                 return false;
             }
 

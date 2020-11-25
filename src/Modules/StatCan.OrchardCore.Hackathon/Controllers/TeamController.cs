@@ -11,6 +11,7 @@ using OrchardCore.Settings;
 using OrchardCore.ContentManagement;
 using OrchardCore.Entities;
 using OrchardCore.Modules;
+using System.Security.Claims;
 
 namespace StatCan.OrchardCore.Hackathon.Controllers
 {
@@ -148,7 +149,7 @@ namespace StatCan.OrchardCore.Hackathon.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> RemoveTeamMember(string hackerContentItemId, string returnUrl)
+        public async Task<IActionResult> RemoveTeamMember(string hackerContentItemId, string teamCaptainId, string returnUrl)
         {
             if (!HttpContext.User.IsInRole("Hacker"))
             {
@@ -159,6 +160,11 @@ namespace StatCan.OrchardCore.Hackathon.Controllers
             var hackathonCustomSettings = site.As<ContentItem>("HackathonCustomSettings");
 
             if (hackathonCustomSettings.Content["TeamCustomSettings"]["TeamEditable"].Value == false)
+            {
+                return Unauthorized();
+            }
+
+            if (HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier) != teamCaptainId)
             {
                 return Unauthorized();
             }
