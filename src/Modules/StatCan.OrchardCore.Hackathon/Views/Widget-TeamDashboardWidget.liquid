@@ -1,6 +1,7 @@
 {% if User | is_in_role: "Hacker" %}
 
-  {% assign hacker = Queries.GetHacker | query: owner: User.Identity.Name | first %}
+  {% assign userId = User | user_id %}
+  {% assign hacker = Queries.GetHacker | query: owner: userId %}
   {% assign teamMembers = Queries.GetHackersForTeam | query: teamContentItemId: hacker.TeamContentItemId %}
   
   <div {%if Model.Id != null%}id="{{ Model.Id }}"{%endif%} class="{{ Model.Classes | join: ' ' }}">
