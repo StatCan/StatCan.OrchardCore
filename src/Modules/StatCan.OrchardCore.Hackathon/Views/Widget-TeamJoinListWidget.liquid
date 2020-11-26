@@ -1,4 +1,5 @@
-{% assign hacker = Queries.GetHacker | query: owner: User.Identity.Name | first %}
+{% assign userId = User | user_id %}
+{% assign hacker = Queries.GetHacker | query: owner: userId | first %}
 
 {% if User | is_in_role: "Hacker" %}
   {% if Site.Properties.HackathonCustomSettings.TeamCustomSettings.TeamEditable.Value == true and hacker.TeamContentItemId == null  %}
