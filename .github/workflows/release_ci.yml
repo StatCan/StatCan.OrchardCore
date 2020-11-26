@@ -29,8 +29,6 @@ jobs:
       run: |
         echo $Version
         dotnet pack -c Release -o build-output --no-build
-        cd build-output
-        ls
         dotnet nuget push './build-output/*.nupkg' -k ${{secrets.NUGET_APIKEY}} -n true -s https://nuget.cloudsmith.io/statcan-digitalinnovation/statcan-orchardcore/v3/index.json  --skip-duplicate
     - name: Login to DockerHub
       uses: docker/login-action@v1
