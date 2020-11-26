@@ -18,7 +18,6 @@
     <PackageReference Include="OrchardCore.Flows" Version="$(OrchardCoreVersion)" />
     <PackageReference Include="OrchardCore.Html" Version="$(OrchardCoreVersion)" />
     <PackageReference Include="OrchardCore.MetaWeblog.Abstractions" Version="$(OrchardCoreVersion)" />
-    <PackageReference Include="OrchardCore.Module.Targets" Version="$(OrchardCoreVersion)" />
     <PackageReference Include="OrchardCore.ResourceManagement" Version="$(OrchardCoreVersion)" />
   </ItemGroup>
 
