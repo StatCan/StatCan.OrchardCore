@@ -5,9 +5,9 @@ on:
       version:
         required: true
         description: 'Version used for nuget packages and docker tag'
-      version:
+      description:
         required: true
-        description: 'Version used for nuget packages and docker tag'  
+        description: 'Short description of the github release'  
 env:
   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
   DOTNET_CLI_TELEMETRY_OPTOUT: true
@@ -45,13 +45,14 @@ jobs:
         dotnet publish -c Release -o ./.build/release --no-build --no-restore
         docker build -t statcan/statcan.orchardcore:${{ github.event.inputs.version }} .
         docker push statcan/statcan.orchardcore
-     - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
-        with:
-          tag_name: ${{ github.event.inputs.version }}
-          release_name: ${{ github.event.inputs.version }}
-          draft: false
-          prerelease: false
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+      with:
+        tag_name: ${{ github.event.inputs.version }}
+        release_name: ${{ github.event.inputs.version }}
+        body: ${{ github.event.inputs.description }}
+        draft: false
+        prerelease: false
