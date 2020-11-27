@@ -10,13 +10,13 @@
     -->
 
     <!-- Libs -->
-    <ProjectReference Include="..\StatCan.OrchardCore.Security\StatCan.OrchardCore.Security.csproj" PrivateAssets="none" />
     <ProjectReference Include="..\StatCan.OrchardCore.Extensions\StatCan.OrchardCore.Extensions.csproj" PrivateAssets="none" />
+    <ProjectReference Include="..\StatCan.OrchardCore.Security\StatCan.OrchardCore.Security.csproj" PrivateAssets="none" />
     
     <!-- Modules -->
-    <ProjectReference Include="..\..\Modules\StatCan.OrchardCore.DisplayHelpers\StatCan.OrchardCore.DisplayHelpers.csproj" PrivateAssets="none" />
     <ProjectReference Include="..\..\Modules\StatCan.OrchardCore.CommonTypes\StatCan.OrchardCore.CommonTypes.csproj" PrivateAssets="none" />
     <ProjectReference Include="..\..\Modules\StatCan.OrchardCore.ContentFields\StatCan.OrchardCore.ContentFields.csproj" PrivateAssets="none" />
+    <ProjectReference Include="..\..\Modules\StatCan.OrchardCore.DisplayHelpers\StatCan.OrchardCore.DisplayHelpers.csproj" PrivateAssets="none" />
     <ProjectReference Include="..\..\Modules\StatCan.OrchardCore.GCCollab\StatCan.OrchardCore.GCCollab.csproj" PrivateAssets="none" />
     <ProjectReference Include="..\..\Modules\StatCan.OrchardCore.GitHub\StatCan.OrchardCore.GitHub.csproj" PrivateAssets="none" />
     <ProjectReference Include="..\..\Modules\StatCan.OrchardCore.Hackathon\StatCan.OrchardCore.Hackathon.csproj" PrivateAssets="none" />
@@ -26,8 +26,8 @@
     <ProjectReference Include="..\..\Modules\StatCan.OrchardCore.VueForms\StatCan.OrchardCore.VueForms.csproj" PrivateAssets="none" />
 
     <!-- Included OpenSource Extensions -->
-    <ProjectReference Include="..\..\Modules\StatCan.OrchardCore.Helpful-Extensions\StatCan.OrchardCore.HelpfulExtensions.csproj" PrivateAssets="none" />
     <ProjectReference Include="..\..\Modules\StatCan.OrchardCore.ContentPermissions\StatCan.OrchardCore.ContentPermissions.csproj" PrivateAssets="none" />
+    <ProjectReference Include="..\..\Modules\StatCan.OrchardCore.Helpful-Extensions\StatCan.OrchardCore.HelpfulExtensions.csproj" PrivateAssets="none" />
     
     <!-- Themes -->
     <ProjectReference Include="..\..\Themes\BootstrapTheme\BootstrapTheme.csproj" PrivateAssets="none" />
