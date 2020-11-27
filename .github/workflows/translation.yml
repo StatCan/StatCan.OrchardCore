@@ -18,7 +18,7 @@ jobs:
         dotnet-version: 3.1.404
     - name: Setup Google Api credentials
       run: | 
-        echo "${{secrets.GOOGLE_API_KEY_JSON}}" > ${{github.workspace}}/account.json
+        echo "${{secrets.GOOGLE_API_KEY}}" | base64 -d > ${{github.workspace}}/account.json
         echo "GOOGLE_APPLICATION_CREDENTIALS=${{github.workspace}}/account.json" >> $GITHUB_ENV
     - name: Extract translations
       run: |
