@@ -79,6 +79,8 @@ async function start() {
     if(fs.existsSync(outputPath)){
       var output = fs.readFileSync(outputPath);
       var tpo = gettextParser.po.parse(output, 'utf8');
+    } else {
+      fs.mkdirSync(outputPath);
     }
     
     for(let k in po.translations) {
