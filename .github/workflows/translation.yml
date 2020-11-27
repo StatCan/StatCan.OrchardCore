@@ -15,7 +15,7 @@ jobs:
     - name: Setup .NET Core 5.0
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 5.0.100
+        dotnet-version: 3.1.404
     - name: Setup Google Api credentials
       run: | 
         echo "${{secrets.GOOGLE_API_KEY_JSON}}" > ${{github.workspace}}/account.json
