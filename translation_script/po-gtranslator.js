@@ -63,6 +63,11 @@ async function tr(text) {
 
 async function start() {
 
+  // create output folder if it does not exist
+  if(!fs.existsSync(po_path)) {
+    fs.mkdirSync(po_path);
+  }
+
   fs.readdirSync(po_source_path).forEach( async file => {
     var filePath = path.parse(file);
     if(!(filePath.ext == ".po" || filePath.ext == ".pot"))
@@ -79,8 +84,6 @@ async function start() {
     if(fs.existsSync(outputPath)){
       var output = fs.readFileSync(outputPath);
       var tpo = gettextParser.po.parse(output, 'utf8');
-    } else {
-      fs.mkdirSync(outputPath);
     }
     
     for(let k in po.translations) {
