@@ -1,25 +1,37 @@
 msgid ""
 msgstr "Content-Type: text/plain\n"
 
-#: StatCan.OrchardCore.GCCollab/AdminMenu.cs:29
+#: StatCan.OrchardCore.GCCollab\AdminMenu.cs:29
 #. builder.Add(S["Security"], security => security
 msgctxt "StatCan.OrchardCore.GCCollab.AdminMenuGCCollabLogin"
 msgid "Security"
 msgstr "Sécurité"
 
-#: StatCan.OrchardCore.GCCollab/AdminMenu.cs:30
+#: StatCan.OrchardCore.GCCollab\AdminMenu.cs:30
 #. .Add(S["Authentication"], authentication => authentication
 msgctxt "StatCan.OrchardCore.GCCollab.AdminMenuGCCollabLogin"
 msgid "Authentication"
 msgstr "Authentification"
 
-#: StatCan.OrchardCore.GCCollab/AdminMenu.cs:31
+#: StatCan.OrchardCore.GCCollab\AdminMenu.cs:31
 #. .Add(S["GCCollab"], "14", settings => settings
 msgctxt "StatCan.OrchardCore.GCCollab.AdminMenuGCCollabLogin"
 msgid "GCCollab"
 msgstr "GCCollab"
 
-#: StatCan.OrchardCore.GCCollab/ViewModels/GCCollabAuthenticationSettingsViewModel.cs:7
+#: StatCan.OrchardCore.GCCollab\Services\GCCollabAuthenticationService.cs:56
+#. yield return new ValidationResult(S["ClientID is required"], new string[] { nameof(settings.ClientID) });
+msgctxt "StatCan.OrchardCore.GCCollab.Services.GCCollabAuthenticationService"
+msgid "ClientID is required"
+msgstr "ClientID est requis"
+
+#: StatCan.OrchardCore.GCCollab\Services\GCCollabAuthenticationService.cs:61
+#. yield return new ValidationResult(S["ClientSecret is required"], new string[] { nameof(settings.ClientSecret) });
+msgctxt "StatCan.OrchardCore.GCCollab.Services.GCCollabAuthenticationService"
+msgid "ClientSecret is required"
+msgstr "ClientSecret est requis"
+
+#: StatCan.OrchardCore.GCCollab\ViewModels\GCCollabAuthenticationSettingsViewModel.cs:7
 #. [Required(AllowEmptyStrings = false, ErrorMessage = "API key is required")]
 msgctxt ""
 "StatCan.OrchardCore.GCCollab.ViewModels."
@@ -27,7 +39,7 @@ msgctxt ""
 msgid "API key is required"
 msgstr "La clé API est requise"
 
-#: StatCan.OrchardCore.GCCollab/ViewModels/GCCollabAuthenticationSettingsViewModel.cs:10
+#: StatCan.OrchardCore.GCCollab\ViewModels\GCCollabAuthenticationSettingsViewModel.cs:10
 #. [Required(AllowEmptyStrings = false, ErrorMessage = "API secret key is required")]
 msgctxt ""
 "StatCan.OrchardCore.GCCollab.ViewModels."
@@ -35,7 +47,7 @@ msgctxt ""
 msgid "API secret key is required"
 msgstr "La clé secrète de l'API est requise"
 
-#: StatCan.OrchardCore.GCCollab/ViewModels/GCCollabAuthenticationSettingsViewModel.cs:13
+#: StatCan.OrchardCore.GCCollab\ViewModels\GCCollabAuthenticationSettingsViewModel.cs:13
 #. [RegularExpression(@"\/[-A-Za-z0-9+&@#\/%?=~_|!:,.;]+[-A-Za-z0-9+&@#\/%=~_|]", ErrorMessage = "Invalid path")]
 msgctxt ""
 "StatCan.OrchardCore.GCCollab.ViewModels."
@@ -43,69 +55,51 @@ msgctxt ""
 msgid "Invalid path"
 msgstr "Chemin invalide"
 
-#: StatCan.OrchardCore.GCCollab/Services/GCCollabAuthenticationService.cs:56
-#. yield return new ValidationResult(S["ClientID is required"], new string[] { nameof(settings.ClientID) });
-msgctxt "StatCan.OrchardCore.GCCollab.Services.GCCollabAuthenticationService"
-msgid "ClientID is required"
-msgstr "ClientID est requis"
-
-#: StatCan.OrchardCore.GCCollab/Services/GCCollabAuthenticationService.cs:61
-#. yield return new ValidationResult(S["ClientSecret is required"], new string[] { nameof(settings.ClientSecret) });
-msgctxt "StatCan.OrchardCore.GCCollab.Services.GCCollabAuthenticationService"
-msgid "ClientSecret is required"
-msgstr "ClientSecret est requis"
-
-#: StatCan.OrchardCore.GCCollab/Views/NavigationItemText-gccollab.Id.cshtml:1
-#. <span class="icon"></span><span class="title">@T["GCCollab"]</span>
-msgctxt "StatCan.OrchardCore.GCCollab/Views/NavigationItemText-gccollab.Id"
-msgid "GCCollab"
-msgstr "GCCollab"
-
-#: StatCan.OrchardCore.GCCollab/Views/GCCollabAuthenticationSettings.Edit.cshtml:4
+#: StatCan.OrchardCore.GCCollab\Views\GCCollabAuthenticationSettings.Edit.cshtml:4
 #. <p class="alert alert-warning">@T["The current tenant will be reloaded when the settings are saved."]</p>
-msgctxt "StatCan.OrchardCore.GCCollab/Views/GCCollabAuthenticationSettings.Edit"
+msgctxt "StatCan.OrchardCore.GCCollab.Views.GCCollabAuthenticationSettings.Edit"
 msgid "The current tenant will be reloaded when the settings are saved."
 msgstr "Le locataire actuel sera rechargé lorsque les paramètres seront enregistrés."
 
-#: StatCan.OrchardCore.GCCollab/Views/GCCollabAuthenticationSettings.Edit.cshtml:6
+#: StatCan.OrchardCore.GCCollab\Views\GCCollabAuthenticationSettings.Edit.cshtml:6
 #. <h3>@T["GCCollab Authentication Settings"]</h3>
-msgctxt "StatCan.OrchardCore.GCCollab/Views/GCCollabAuthenticationSettings.Edit"
+msgctxt "StatCan.OrchardCore.GCCollab.Views.GCCollabAuthenticationSettings.Edit"
 msgid "GCCollab Authentication Settings"
 msgstr "Paramètres d'authentification GCCollab"
 
-#: StatCan.OrchardCore.GCCollab/Views/GCCollabAuthenticationSettings.Edit.cshtml:11
+#: StatCan.OrchardCore.GCCollab\Views\GCCollabAuthenticationSettings.Edit.cshtml:11
 #. <label asp-for="ClientID">@T["Client ID"]</label>
-msgctxt "StatCan.OrchardCore.GCCollab/Views/GCCollabAuthenticationSettings.Edit"
+msgctxt "StatCan.OrchardCore.GCCollab.Views.GCCollabAuthenticationSettings.Edit"
 msgid "Client ID"
 msgstr "identité du client"
 
-#: StatCan.OrchardCore.GCCollab/Views/GCCollabAuthenticationSettings.Edit.cshtml:14
+#: StatCan.OrchardCore.GCCollab\Views\GCCollabAuthenticationSettings.Edit.cshtml:14
 #. <span class="hint">@T["The Client ID"]</span>
-msgctxt "StatCan.OrchardCore.GCCollab/Views/GCCollabAuthenticationSettings.Edit"
+msgctxt "StatCan.OrchardCore.GCCollab.Views.GCCollabAuthenticationSettings.Edit"
 msgid "The Client ID"
 msgstr "L'ID client"
 
-#: StatCan.OrchardCore.GCCollab/Views/GCCollabAuthenticationSettings.Edit.cshtml:20
+#: StatCan.OrchardCore.GCCollab\Views\GCCollabAuthenticationSettings.Edit.cshtml:20
 #. <label asp-for="ClientSecret">@T["Client secret"]</label>
-msgctxt "StatCan.OrchardCore.GCCollab/Views/GCCollabAuthenticationSettings.Edit"
+msgctxt "StatCan.OrchardCore.GCCollab.Views.GCCollabAuthenticationSettings.Edit"
 msgid "Client secret"
 msgstr "Secret du client"
 
-#: StatCan.OrchardCore.GCCollab/Views/GCCollabAuthenticationSettings.Edit.cshtml:23
+#: StatCan.OrchardCore.GCCollab\Views\GCCollabAuthenticationSettings.Edit.cshtml:23
 #. <span class="hint">@T["The secret for your app."]</span>
-msgctxt "StatCan.OrchardCore.GCCollab/Views/GCCollabAuthenticationSettings.Edit"
+msgctxt "StatCan.OrchardCore.GCCollab.Views.GCCollabAuthenticationSettings.Edit"
 msgid "The secret for your app."
 msgstr "Le secret de votre application."
 
-#: StatCan.OrchardCore.GCCollab/Views/GCCollabAuthenticationSettings.Edit.cshtml:29
+#: StatCan.OrchardCore.GCCollab\Views\GCCollabAuthenticationSettings.Edit.cshtml:29
 #. <label asp-for="CallbackUrl">@T["CallbackPath"]</label>
-msgctxt "StatCan.OrchardCore.GCCollab/Views/GCCollabAuthenticationSettings.Edit"
+msgctxt "StatCan.OrchardCore.GCCollab.Views.GCCollabAuthenticationSettings.Edit"
 msgid "CallbackPath"
 msgstr "CallbackPath"
 
-#: StatCan.OrchardCore.GCCollab/Views/GCCollabAuthenticationSettings.Edit.cshtml:32
+#: StatCan.OrchardCore.GCCollab\Views\GCCollabAuthenticationSettings.Edit.cshtml:32
 #. <span class="hint">@T["The request path within the application's base path where the user-agent will be returned. The middleware will process this request when it arrives."]</span>
-msgctxt "StatCan.OrchardCore.GCCollab/Views/GCCollabAuthenticationSettings.Edit"
+msgctxt "StatCan.OrchardCore.GCCollab.Views.GCCollabAuthenticationSettings.Edit"
 msgid ""
 "The request path within the application's base path where the user-agent "
 "will be returned. The middleware will process this request when it arrives."
@@ -113,3 +107,9 @@ msgstr ""
 "Le chemin de la demande dans le chemin de base de l'application où l'agent "
 "utilisateur sera renvoyé. L'intergiciel traitera cette demande à son "
 "arrivée."
+
+#: StatCan.OrchardCore.GCCollab\Views\NavigationItemText-gccollab.Id.cshtml:1
+#. <span class="icon"></span><span class="title">@T["GCCollab"]</span>
+msgctxt "StatCan.OrchardCore.GCCollab.Views.NavigationItemText-gccollab.Id"
+msgid "GCCollab"
+msgstr "GCCollab"
