@@ -2,13 +2,15 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Crowdin-Project: orchard-core\n"
+"X-Crowdin-Project-ID: 307044\n"
 "X-Crowdin-Language: fr\n"
 "X-Crowdin-File: /dev/Localization/OrchardCore.Layers.pot\n"
+"X-Crowdin-File-ID: 568\n"
 "Project-Id-Version: orchard-core\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
-"PO-Revision-Date: 2020-03-31 14:42\n"
+"PO-Revision-Date: 2020-11-10 07:27\n"
 
 #. .Add(S["Design"], design => design
 #: OrchardCore.Layers\AdminMenu.cs:26
@@ -22,16 +24,16 @@ msgctxt "OrchardCore.Layers.AdminMenu"
 msgid "Settings"
 msgstr "Paramètres"
 
-#. .Add(S["Zones"], S["Zones"], zones => zones
-#. .Add(S["Zones"], S["Zones"], zones => zones
+#. .Add(S["Zones"], S["Zones"].PrefixPosition(), zones => zones
+#. .Add(S["Zones"], S["Zones"].PrefixPosition(), zones => zones
 #: OrchardCore.Layers\AdminMenu.cs:28
 #: OrchardCore.Layers\AdminMenu.cs:28
 msgctxt "OrchardCore.Layers.AdminMenu"
 msgid "Zones"
 msgstr "Zones"
 
-#. .Add(S["Widgets"], S["Widgets"], widgets => widgets
-#. .Add(S["Widgets"], S["Widgets"], widgets => widgets
+#. .Add(S["Widgets"], S["Widgets"].PrefixPosition(), widgets => widgets
+#. .Add(S["Widgets"], S["Widgets"].PrefixPosition(), widgets => widgets
 #: OrchardCore.Layers\AdminMenu.cs:33
 #: OrchardCore.Layers\AdminMenu.cs:33
 msgctxt "OrchardCore.Layers.AdminMenu"
@@ -75,7 +77,7 @@ msgid "Zone is missing"
 msgstr "Zone manquante"
 
 #. Description = S["Site layers define the rules and zone placement for widgets."],
-#: OrchardCore.Layers\GraphQL\SiteLayersQuery.cs:28
+#: OrchardCore.Layers\GraphQL\SiteLayersQuery.cs:30
 msgctxt "OrchardCore.Layers.GraphQL.SiteLayersQuery"
 msgid "Site layers define the rules and zone placement for widgets."
 msgstr "Les layers du site définissent les règles et le placement pour les widgets dans les zones."
@@ -92,7 +94,7 @@ msgctxt "OrchardCore.Layers.Views.LayerMetadata.Edit"
 msgid "Render title"
 msgstr "Afficher le titre"
 
-#. <span class="hint">— @T["If checked, the title will be rendered with the widget."]</span>
+#. <span class="hint dashed">@T["If checked, the title will be rendered with the widget."]</span>
 #: OrchardCore.Layers\Views\LayerMetadata.Edit.cshtml:13
 msgctxt "OrchardCore.Layers.Views.LayerMetadata.Edit"
 msgid "If checked, the title will be rendered with the widget."
@@ -110,11 +112,11 @@ msgctxt "OrchardCore.Layers.Views.LayerSettings.Edit"
 msgid "Available zones for Layers"
 msgstr "Zones disponibles pour les layers"
 
-#. <span class="hint">@T["A comma separated list of values, representing the available zones for widgets."]</span>
-#: OrchardCore.Layers\Views\LayerSettings.Edit.cshtml:7
+#. @T["A comma separated list of values, representing the available zones for <a href=\"{0}\">widgets</a>. Note that you'll need to render these zones in the layout template, as they do not automatically render.",
+#: OrchardCore.Layers\Views\LayerSettings.Edit.cshtml:8
 msgctxt "OrchardCore.Layers.Views.LayerSettings.Edit"
-msgid "A comma separated list of values, representing the available zones for widgets."
-msgstr "Une liste de valeurs séparées par des virgules, représentant les zones disponibles pour les widgets."
+msgid "A comma separated list of values, representing the available zones for <a href=\"{0}\">widgets</a>. Note that you'll need to render these zones in the layout template, as they do not automatically render."
+msgstr "Une liste de valeurs séparées par des virgules, représentant les zones disponibles pour les <a href=\"{0}\">widgets</a>. Notez que vous devrez afficher ces zones dans le modèle de mise en page, car elles ne sont pas automatiquement rendues."
 
 #. <h1>@RenderTitleSegments(T["Create Layer"])</h1>
 #: OrchardCore.Layers\Views\Admin\Create.cshtml:3

@@ -2,46 +2,48 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Crowdin-Project: orchard-core\n"
+"X-Crowdin-Project-ID: 307044\n"
 "X-Crowdin-Language: fr\n"
 "X-Crowdin-File: /dev/Localization/TheAdmin.pot\n"
+"X-Crowdin-File-ID: 636\n"
 "Project-Id-Version: orchard-core\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
-"PO-Revision-Date: 2020-03-31 15:46\n"
+"PO-Revision-Date: 2020-11-10 07:27\n"
 
-#. <button type="submit" class="btn btn-link nav-link" role="button"><i class="fa fa-sign-out" aria-hidden="true"></i> @T["Log off"]</button>
-#: TheAdmin\Views\Layout.cshtml:37
+#. <a id="btn-darkmode" class="btn btn-sm btn-light ml-2" title="@T["Dark mode"]"><i class="fas fa-moon"></i></a>
+#: TheAdmin\Views\Layout.cshtml:40
 msgctxt "TheAdmin.Views.Layout"
-msgid "Log off"
-msgstr "Déconnexion"
+msgid "Dark mode"
+msgstr "Mode sombre"
 
 #. <button class="leftbar-compactor" type="button" title="@T["Collapse / expand menu"]"></button>
-#: TheAdmin\Views\Layout.cshtml:45
+#: TheAdmin\Views\Layout.cshtml:47
 msgctxt "TheAdmin.Views.Layout"
 msgid "Collapse / expand menu"
 msgstr "Réduire / agrandir menu"
 
 #. <div id="confirmRemoveModalMetadata" data-title="@T["Delete"]" data-message="@T["Are you sure you want to remove this element?"]" data-ok-text="@T["Ok"]" data-cancel-text="@T["Cancel"]" data-ok-class="btn-danger" data-cancel-class="btn-secondary"></div>
-#: TheAdmin\Views\Layout.cshtml:60
+#: TheAdmin\Views\Layout.cshtml:62
 msgctxt "TheAdmin.Views.Layout"
 msgid "Delete"
 msgstr "Supprimer"
 
 #. <div id="confirmRemoveModalMetadata" data-title="@T["Delete"]" data-message="@T["Are you sure you want to remove this element?"]" data-ok-text="@T["Ok"]" data-cancel-text="@T["Cancel"]" data-ok-class="btn-danger" data-cancel-class="btn-secondary"></div>
-#: TheAdmin\Views\Layout.cshtml:60
+#: TheAdmin\Views\Layout.cshtml:62
 msgctxt "TheAdmin.Views.Layout"
 msgid "Are you sure you want to remove this element?"
 msgstr "Êtes-vous certain de vouloir supprimer cet élément ?"
 
 #. <div id="confirmRemoveModalMetadata" data-title="@T["Delete"]" data-message="@T["Are you sure you want to remove this element?"]" data-ok-text="@T["Ok"]" data-cancel-text="@T["Cancel"]" data-ok-class="btn-danger" data-cancel-class="btn-secondary"></div>
-#: TheAdmin\Views\Layout.cshtml:60
+#: TheAdmin\Views\Layout.cshtml:62
 msgctxt "TheAdmin.Views.Layout"
 msgid "Ok"
 msgstr "Ok"
 
 #. <div id="confirmRemoveModalMetadata" data-title="@T["Delete"]" data-message="@T["Are you sure you want to remove this element?"]" data-ok-text="@T["Ok"]" data-cancel-text="@T["Cancel"]" data-ok-class="btn-danger" data-cancel-class="btn-secondary"></div>
-#: TheAdmin\Views\Layout.cshtml:60
+#: TheAdmin\Views\Layout.cshtml:62
 msgctxt "TheAdmin.Views.Layout"
 msgid "Cancel"
 msgstr "Annuler"
@@ -51,4 +53,10 @@ msgstr "Annuler"
 msgctxt "TheAdmin.Views.Navigation-admin"
 msgid "Filter"
 msgstr "Filtrer"
+
+#. <button type="submit" class="dropdown-item"><span><i class="fa fa-sign-out-alt" aria-hidden="true"></i></span>&nbsp;<span> @T["Log off"]</span></button>
+#: TheAdmin\Views\UserMenu.cshtml:7
+msgctxt "TheAdmin.Views.UserMenu"
+msgid "Log off"
+msgstr "Déconnexion"
 
