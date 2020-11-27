@@ -1,0 +1,73 @@
+msgid ""
+msgstr "Content-Type: text/plain\n"
+
+#: StatCan.OrchardCore.VueForms/AdminMenu.cs:32
+#. builder.Add(S["Content"], design => design
+msgctxt "StatCan.OrchardCore.VueForms.AdminMenu"
+msgid "Content"
+msgstr "Contenu"
+
+#: StatCan.OrchardCore.VueForms/AdminMenu.cs:33
+#: StatCan.OrchardCore.VueForms/AdminMenu.cs:33
+#. .Add(S["Vue Forms"], S["Vue Forms"], menus => menus
+#. .Add(S["Vue Forms"], S["Vue Forms"], menus => menus
+msgctxt "StatCan.OrchardCore.VueForms.AdminMenu"
+msgid "Vue Forms"
+msgstr "Vue Forms"
+
+#: StatCan.OrchardCore.VueForms/Workflows/VueFormSubmittedEvent.cs:24
+#. public override LocalizedString DisplayText => S["VueForm Submitted Event"];
+msgctxt "StatCan.OrchardCore.VueForms.Workflows.VueFormSubmittedEvent"
+msgid "VueForm Submitted Event"
+msgstr "Événement soumis par VueForm"
+
+#: StatCan.OrchardCore.VueForms/Workflows/VueFormSubmittedEvent.cs:26
+#. public override LocalizedString Category => S["VueForm"];
+msgctxt "StatCan.OrchardCore.VueForms.Workflows.VueFormSubmittedEvent"
+msgid "VueForm"
+msgstr "VueForm"
+
+#: StatCan.OrchardCore.VueForms/Workflows/VueFormSubmittedEvent.cs:30
+#. return Outcomes(S["Done"]);
+msgctxt "StatCan.OrchardCore.VueForms.Workflows.VueFormSubmittedEvent"
+msgid "Done"
+msgstr "Terminé"
+
+#: StatCan.OrchardCore.VueForms/Views/Items/VueFormSubmittedEvent.Fields.Design.cshtml:5
+#. <h4><i class="fa fa-bolt"></i>@Model.Activity.GetTitleOrDefault(() => T["Vue Form submitted"])</h4>
+msgctxt "StatCan.OrchardCore.VueForms/Views/Items/VueFormSubmittedEvent.Fields.Design"
+msgid "Vue Form submitted"
+msgstr "Vue Formulaire soumis"
+
+#: StatCan.OrchardCore.VueForms/Views/Items/VueFormSubmittedEvent.Fields.Design.cshtml:0
+msgctxt "StatCan.OrchardCore.VueForms/Views/Items/VueFormSubmittedEvent.Fields.Design"
+msgid "All Forms"
+msgstr "Toutes les formes"
+
+#: StatCan.OrchardCore.VueForms/Views/Items/VueFormSubmittedEvent.Fields.Edit.cshtml:4
+#. <label asp-for="SelectedFormIds">@T["VueForms"]</label>
+msgctxt "StatCan.OrchardCore.VueForms/Views/Items/VueFormSubmittedEvent.Fields.Edit"
+msgid "VueForms"
+msgstr "VueForms"
+
+#: StatCan.OrchardCore.VueForms/Views/Items/VueFormSubmittedEvent.Fields.Edit.cshtml:18
+#. <span class="hint">@T["Select the forms for which this workflow runs"]</span>
+msgctxt "StatCan.OrchardCore.VueForms/Views/Items/VueFormSubmittedEvent.Fields.Edit"
+msgid "Select the forms for which this workflow runs"
+msgstr "Sélectionnez les formulaires pour lesquels ce workflow s'exécute"
+
+#: StatCan.OrchardCore.VueForms/Views/Items/VueFormSubmittedEvent.Fields.Thumbnail.cshtml:1
+#. <h4 class="card-title"><i class="fa fa-bolt"></i>@T["VueForm Submitted"]</h4>
+msgctxt ""
+"StatCan.OrchardCore.VueForms/Views/Items/VueFormSubmittedEvent.Fields."
+"Thumbnail"
+msgid "VueForm Submitted"
+msgstr "VueForm soumis"
+
+#: StatCan.OrchardCore.VueForms/Views/Items/VueFormSubmittedEvent.Fields.Thumbnail.cshtml:2
+#. <p>@T["VueForm passed validation and is submitted."]</p>
+msgctxt ""
+"StatCan.OrchardCore.VueForms/Views/Items/VueFormSubmittedEvent.Fields."
+"Thumbnail"
+msgid "VueForm passed validation and is submitted."
+msgstr "VueForm a passé la validation et est soumis."
