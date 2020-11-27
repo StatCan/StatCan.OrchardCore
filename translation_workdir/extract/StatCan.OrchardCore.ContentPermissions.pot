@@ -1,0 +1,42 @@
+#: StatCan.OrchardCore.ContentPermissions/Views/ContentPermissionsPart.Edit.cshtml:6
+#. @T["Content Permissions"] <span class="hint"> @T["— Define security for who can view content."]</span>
+msgctxt "StatCan.OrchardCore.ContentPermissions/Views/ContentPermissionsPart.Edit"
+msgid "Content Permissions"
+msgstr ""
+
+#: StatCan.OrchardCore.ContentPermissions/Views/ContentPermissionsPart.Edit.cshtml:6
+#. @T["Content Permissions"] <span class="hint"> @T["— Define security for who can view content."]</span>
+msgctxt "StatCan.OrchardCore.ContentPermissions/Views/ContentPermissionsPart.Edit"
+msgid "— Define security for who can view content."
+msgstr ""
+
+#: StatCan.OrchardCore.ContentPermissions/Views/ContentPermissionsPart.Edit.cshtml:14
+#. <label class="custom-control-label" asp-for="Enabled">@T["Enable content item access control"]</label>
+msgctxt "StatCan.OrchardCore.ContentPermissions/Views/ContentPermissionsPart.Edit"
+msgid "Enable content item access control"
+msgstr ""
+
+#: StatCan.OrchardCore.ContentPermissions/Views/ContentPermissionsPart.Edit.cshtml:17
+#. <span class="hint">@T["Check to define which roles can access this content item."]</span>
+msgctxt "StatCan.OrchardCore.ContentPermissions/Views/ContentPermissionsPart.Edit"
+msgid "Check to define which roles can access this content item."
+msgstr ""
+
+#: StatCan.OrchardCore.ContentPermissions/Views/ContentPermissionsPart.Edit.cshtml:23
+#. <span class="hint">@T["Select which roles are able to access content item."]</span>
+msgctxt "StatCan.OrchardCore.ContentPermissions/Views/ContentPermissionsPart.Edit"
+msgid "Select which roles are able to access content item."
+msgstr ""
+
+#: StatCan.OrchardCore.ContentPermissions/Views/ContentPermissionsPartSettings.Edit.cshtml:7
+#. <label asp-for="RedirectUrl">@T["Redirect URL"]</label>
+msgctxt "StatCan.OrchardCore.ContentPermissions/Views/ContentPermissionsPartSettings.Edit"
+msgid "Redirect URL"
+msgstr ""
+
+#: StatCan.OrchardCore.ContentPermissions/Views/ContentPermissionsPartSettings.Edit.cshtml:9
+#. <span class="hint">@T["User will be redirected to this URL when unable to access content item. Leave blank to disable redirect and handle user not having permission within view template."]</span>
+msgctxt "StatCan.OrchardCore.ContentPermissions/Views/ContentPermissionsPartSettings.Edit"
+msgid "User will be redirected to this URL when unable to access content item. Leave blank to disable redirect and handle user not having permission within view template."
+msgstr ""
+

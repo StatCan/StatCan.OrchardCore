@@ -1,0 +1,48 @@
+#: StatCan.OrchardCore.LocalizedText/Views/LocalizedTextPart.Edit.cshtml:9
+#. initializeLocalizedTextEditor(document.getElementById('@Html.IdFor(m => m)'), {title: "@T["Remove"]", message: "@T["Are you sure you want to remove this entry?"]"});
+msgctxt "StatCan.OrchardCore.LocalizedText/Views/LocalizedTextPart.Edit"
+msgid "Remove"
+msgstr ""
+
+#: StatCan.OrchardCore.LocalizedText/Views/LocalizedTextPart.Edit.cshtml:9
+#. initializeLocalizedTextEditor(document.getElementById('@Html.IdFor(m => m)'), {title: "@T["Remove"]", message: "@T["Are you sure you want to remove this entry?"]"});
+msgctxt "StatCan.OrchardCore.LocalizedText/Views/LocalizedTextPart.Edit"
+msgid "Are you sure you want to remove this entry?"
+msgstr ""
+
+#: StatCan.OrchardCore.LocalizedText/Views/LocalizedTextPart.Edit.cshtml:13
+#. <label asp-for="Data">@T["Localized Text"]</label>
+msgctxt "StatCan.OrchardCore.LocalizedText/Views/LocalizedTextPart.Edit"
+msgid "Localized Text"
+msgstr ""
+
+#: StatCan.OrchardCore.LocalizedText/Views/LocalizedTextPart.Edit.cshtml:14
+#. <span class="hint">@T["Use the 'localize' liquid filter to reference these strings"]</span>
+msgctxt "StatCan.OrchardCore.LocalizedText/Views/LocalizedTextPart.Edit"
+msgid "Use the 'localize' liquid filter to reference these strings"
+msgstr ""
+
+#: StatCan.OrchardCore.LocalizedText/Views/LocalizedTextPart.Edit.cshtml:25
+#. <input class="form-control d-inline-block mx-1  content-preview-text" asp-validation-class-for="Data" placeholder="@T["Name"]" type="text" v-model="entry.name" />
+msgctxt "StatCan.OrchardCore.LocalizedText/Views/LocalizedTextPart.Edit"
+msgid "Name"
+msgstr ""
+
+#: StatCan.OrchardCore.LocalizedText/Views/LocalizedTextPart.Edit.cshtml:38
+#. <textarea :id="'value-' + index + idk2" class="form-control overflow-hidden" rows="1" asp-validation-class-for="Data" placeholder="@T["Value"]" type="text" v-model="item.value" > </textarea>
+msgctxt "StatCan.OrchardCore.LocalizedText/Views/LocalizedTextPart.Edit"
+msgid "Value"
+msgstr ""
+
+#: StatCan.OrchardCore.LocalizedText/Views/LocalizedTextPart.Edit.cshtml:44
+#. <p v-if="!hasEntries" class="hint">@T["No entries yet, add one below"]</p>
+msgctxt "StatCan.OrchardCore.LocalizedText/Views/LocalizedTextPart.Edit"
+msgid "No entries yet, add one below"
+msgstr ""
+
+#: StatCan.OrchardCore.LocalizedText/Views/LocalizedTextPart.Edit.cshtml:46
+#. <button v-on:click="add" class="btn btn-primary" type="button"><i class="fa fa-plus"></i> @T["Add"]</button>
+msgctxt "StatCan.OrchardCore.LocalizedText/Views/LocalizedTextPart.Edit"
+msgid "Add"
+msgstr ""
+

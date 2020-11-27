@@ -1,0 +1,102 @@
+#: StatCan.OrchardCore.GCCollab/AdminMenu.cs:29
+#. builder.Add(S["Security"], security => security
+msgctxt "StatCan.OrchardCore.GCCollab.AdminMenuGCCollabLogin"
+msgid "Security"
+msgstr ""
+
+#: StatCan.OrchardCore.GCCollab/AdminMenu.cs:30
+#. .Add(S["Authentication"], authentication => authentication
+msgctxt "StatCan.OrchardCore.GCCollab.AdminMenuGCCollabLogin"
+msgid "Authentication"
+msgstr ""
+
+#: StatCan.OrchardCore.GCCollab/AdminMenu.cs:31
+#. .Add(S["GCCollab"], "14", settings => settings
+msgctxt "StatCan.OrchardCore.GCCollab.AdminMenuGCCollabLogin"
+msgid "GCCollab"
+msgstr ""
+
+#: StatCan.OrchardCore.GCCollab/ViewModels/GCCollabAuthenticationSettingsViewModel.cs:7
+#. [Required(AllowEmptyStrings = false, ErrorMessage = "API key is required")]
+msgctxt "StatCan.OrchardCore.GCCollab.ViewModels.GCCollabAuthenticationSettingsViewModel"
+msgid "API key is required"
+msgstr ""
+
+#: StatCan.OrchardCore.GCCollab/ViewModels/GCCollabAuthenticationSettingsViewModel.cs:10
+#. [Required(AllowEmptyStrings = false, ErrorMessage = "API secret key is required")]
+msgctxt "StatCan.OrchardCore.GCCollab.ViewModels.GCCollabAuthenticationSettingsViewModel"
+msgid "API secret key is required"
+msgstr ""
+
+#: StatCan.OrchardCore.GCCollab/ViewModels/GCCollabAuthenticationSettingsViewModel.cs:13
+#. [RegularExpression(@"\/[-A-Za-z0-9+&@#\/%?=~_|!:,.;]+[-A-Za-z0-9+&@#\/%=~_|]", ErrorMessage = "Invalid path")]
+msgctxt "StatCan.OrchardCore.GCCollab.ViewModels.GCCollabAuthenticationSettingsViewModel"
+msgid "Invalid path"
+msgstr ""
+
+#: StatCan.OrchardCore.GCCollab/Services/GCCollabAuthenticationService.cs:56
+#. yield return new ValidationResult(S["ClientID is required"], new string[] { nameof(settings.ClientID) });
+msgctxt "StatCan.OrchardCore.GCCollab.Services.GCCollabAuthenticationService"
+msgid "ClientID is required"
+msgstr ""
+
+#: StatCan.OrchardCore.GCCollab/Services/GCCollabAuthenticationService.cs:61
+#. yield return new ValidationResult(S["ClientSecret is required"], new string[] { nameof(settings.ClientSecret) });
+msgctxt "StatCan.OrchardCore.GCCollab.Services.GCCollabAuthenticationService"
+msgid "ClientSecret is required"
+msgstr ""
+
+#: StatCan.OrchardCore.GCCollab/Views/NavigationItemText-gccollab.Id.cshtml:1
+#. <span class="icon"></span><span class="title">@T["GCCollab"]</span>
+msgctxt "StatCan.OrchardCore.GCCollab/Views/NavigationItemText-gccollab.Id"
+msgid "GCCollab"
+msgstr ""
+
+#: StatCan.OrchardCore.GCCollab/Views/GCCollabAuthenticationSettings.Edit.cshtml:4
+#. <p class="alert alert-warning">@T["The current tenant will be reloaded when the settings are saved."]</p>
+msgctxt "StatCan.OrchardCore.GCCollab/Views/GCCollabAuthenticationSettings.Edit"
+msgid "The current tenant will be reloaded when the settings are saved."
+msgstr ""
+
+#: StatCan.OrchardCore.GCCollab/Views/GCCollabAuthenticationSettings.Edit.cshtml:6
+#. <h3>@T["GCCollab Authentication Settings"]</h3>
+msgctxt "StatCan.OrchardCore.GCCollab/Views/GCCollabAuthenticationSettings.Edit"
+msgid "GCCollab Authentication Settings"
+msgstr ""
+
+#: StatCan.OrchardCore.GCCollab/Views/GCCollabAuthenticationSettings.Edit.cshtml:11
+#. <label asp-for="ClientID">@T["Client ID"]</label>
+msgctxt "StatCan.OrchardCore.GCCollab/Views/GCCollabAuthenticationSettings.Edit"
+msgid "Client ID"
+msgstr ""
+
+#: StatCan.OrchardCore.GCCollab/Views/GCCollabAuthenticationSettings.Edit.cshtml:14
+#. <span class="hint">@T["The Client ID"]</span>
+msgctxt "StatCan.OrchardCore.GCCollab/Views/GCCollabAuthenticationSettings.Edit"
+msgid "The Client ID"
+msgstr ""
+
+#: StatCan.OrchardCore.GCCollab/Views/GCCollabAuthenticationSettings.Edit.cshtml:20
+#. <label asp-for="ClientSecret">@T["Client secret"]</label>
+msgctxt "StatCan.OrchardCore.GCCollab/Views/GCCollabAuthenticationSettings.Edit"
+msgid "Client secret"
+msgstr ""
+
+#: StatCan.OrchardCore.GCCollab/Views/GCCollabAuthenticationSettings.Edit.cshtml:23
+#. <span class="hint">@T["The secret for your app."]</span>
+msgctxt "StatCan.OrchardCore.GCCollab/Views/GCCollabAuthenticationSettings.Edit"
+msgid "The secret for your app."
+msgstr ""
+
+#: StatCan.OrchardCore.GCCollab/Views/GCCollabAuthenticationSettings.Edit.cshtml:29
+#. <label asp-for="CallbackUrl">@T["CallbackPath"]</label>
+msgctxt "StatCan.OrchardCore.GCCollab/Views/GCCollabAuthenticationSettings.Edit"
+msgid "CallbackPath"
+msgstr ""
+
+#: StatCan.OrchardCore.GCCollab/Views/GCCollabAuthenticationSettings.Edit.cshtml:32
+#. <span class="hint">@T["The request path within the application's base path where the user-agent will be returned. The middleware will process this request when it arrives."]</span>
+msgctxt "StatCan.OrchardCore.GCCollab/Views/GCCollabAuthenticationSettings.Edit"
+msgid "The request path within the application's base path where the user-agent will be returned. The middleware will process this request when it arrives."
+msgstr ""
+

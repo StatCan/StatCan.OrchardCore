@@ -1,0 +1,377 @@
+#: DigitalTheme/Views/OrchardCore.Users/Account/Login.cshtml:19
+#. <h1 class="login">@T["Log in"]</h1>
+#: DigitalTheme/Views/OrchardCore.Users/Account/Login.cshtml:76
+#. <button type="submit" class="btn btn-lg btn-primary is-rounded"><span>@T["Log in"]</span></button>
+msgctxt "DigitalTheme/Views/OrchardCore.Users/Account/Login"
+msgid "Log in"
+msgstr ""
+
+#: DigitalTheme/Views/OrchardCore.Users/Account/Login.cshtml:27
+#. <h2 class="text-center mb-3">@T["Log in with"]</h2>
+msgctxt "DigitalTheme/Views/OrchardCore.Users/Account/Login"
+msgid "Log in with"
+msgstr ""
+
+#: DigitalTheme/Views/OrchardCore.Users/Account/Login.cshtml:57
+#. <h2 class="text-center">@T["Digital account"]</h2>
+msgctxt "DigitalTheme/Views/OrchardCore.Users/Account/Login"
+msgid "Digital account"
+msgstr ""
+
+#: DigitalTheme/Views/OrchardCore.Users/Account/Login.cshtml:61
+#. <label class="asterix" asp-for="UserName">@T["Username"]</label>
+msgctxt "DigitalTheme/Views/OrchardCore.Users/Account/Login"
+msgid "Username"
+msgstr ""
+
+#: DigitalTheme/Views/OrchardCore.Users/Account/Login.cshtml:66
+#. <label class="asterix" asp-for="Password">@T["Password"]</label>
+msgctxt "DigitalTheme/Views/OrchardCore.Users/Account/Login"
+msgid "Password"
+msgstr ""
+
+#: DigitalTheme/Views/OrchardCore.Users/Account/Login.cshtml:72
+#. <label asp-for="RememberMe" class="custom-control-label">@T["Remember me"]</label>
+msgctxt "DigitalTheme/Views/OrchardCore.Users/Account/Login"
+msgid "Remember me"
+msgstr ""
+
+#: DigitalTheme/Views/OrchardCore.Users/Account/Login.cshtml:81
+#. <a class="h4" asp-controller="ResetPassword" asp-action="ForgotPassword" class="label-link">@T["Forgot your password?"]</a>
+msgctxt "DigitalTheme/Views/OrchardCore.Users/Account/Login"
+msgid "Forgot your password?"
+msgstr ""
+
+#: DigitalTheme/Views/OrchardCore.Users/Account/Login.cshtml:94
+#. <a class="btn btn-lg btn-outline-primary is-rounded" asp-controller="Registration" asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]">@T["Create an account"]</a>
+msgctxt "DigitalTheme/Views/OrchardCore.Users/Account/Login"
+msgid "Create an account"
+msgstr ""
+
+#: DigitalTheme/Views/MenuItemLink-LoginMenuItem.liquid:0
+#: DigitalTheme/Views/MenuItemLink-LoginMenuItem.liquid:0
+#: DigitalTheme/Views/MenuItemLink-LoginMenuItem.liquid:0
+msgctxt "DigitalTheme/Views/MenuItemLink-LoginMenuItem"
+msgid "Account"
+msgstr ""
+
+#: DigitalTheme/Views/MenuItemLink-LoginMenuItem.liquid:0
+#: DigitalTheme/Views/MenuItemLink-LoginMenuItem.liquid:0
+#: DigitalTheme/Views/MenuItemLink-LoginMenuItem.liquid:0
+#: DigitalTheme/Views/MenuItemLink-LoginMenuItem.liquid:0
+msgctxt "DigitalTheme/Views/MenuItemLink-LoginMenuItem"
+msgid "Log in"
+msgstr ""
+
+#: DigitalTheme/Views/MenuItemLink-FeedbackMenuItem.liquid:0
+#: DigitalTheme/Views/MenuItemLink-FeedbackMenuItem.liquid:0
+#: DigitalTheme/Views/MenuItemLink-FeedbackMenuItem.liquid:0
+#: DigitalTheme/Views/MenuItemLink-FeedbackMenuItem.liquid:0
+msgctxt "DigitalTheme/Views/MenuItemLink-FeedbackMenuItem"
+msgid "Send feedback"
+msgstr ""
+
+#: DigitalTheme/Views/ModalFeedback.liquid:0
+msgctxt "DigitalTheme/Views/ModalFeedback"
+msgid "Instant feedback"
+msgstr ""
+
+#: DigitalTheme/Views/ModalFeedback.liquid:0
+msgctxt "DigitalTheme/Views/ModalFeedback"
+msgid "How was your experience?"
+msgstr ""
+
+#: DigitalTheme/Views/ModalFeedback.liquid:0
+msgctxt "DigitalTheme/Views/ModalFeedback"
+msgid "Close"
+msgstr ""
+
+#: DigitalTheme/Views/ModalFeedback.liquid:0
+msgctxt "DigitalTheme/Views/ModalFeedback"
+msgid "Enter your feedback"
+msgstr ""
+
+#: DigitalTheme/Views/ModalFeedback.liquid:0
+msgctxt "DigitalTheme/Views/ModalFeedback"
+msgid "Happy mood"
+msgstr ""
+
+#: DigitalTheme/Views/ModalFeedback.liquid:0
+msgctxt "DigitalTheme/Views/ModalFeedback"
+msgid "Neutral mood"
+msgstr ""
+
+#: DigitalTheme/Views/ModalFeedback.liquid:0
+msgctxt "DigitalTheme/Views/ModalFeedback"
+msgid "Sad mood"
+msgstr ""
+
+#: DigitalTheme/Views/ModalFeedback.liquid:0
+msgctxt "DigitalTheme/Views/ModalFeedback"
+msgid "Send feedback"
+msgstr ""
+
+#: DigitalTheme/Views/SharedPasswordRequirementText.liquid:0
+msgctxt "DigitalTheme/Views/SharedPasswordRequirementText"
+msgid "Passwords must have:<br>• 8 characters or more<br>• an uppercase letter<br>• a lowercase letter<br>• a number<br>• a special character"
+msgstr ""
+
+#: DigitalTheme/Views/SymbolStatisticsCanada.liquid:0
+#: DigitalTheme/Views/SymbolStatisticsCanada.liquid:0
+msgctxt "DigitalTheme/Views/SymbolStatisticsCanada"
+msgid "Statistics Canada"
+msgstr ""
+
+#: DigitalTheme/Views/Layout.liquid:0
+msgctxt "DigitalTheme/Views/Layout"
+msgid "Skip to main content"
+msgstr ""
+
+#: DigitalTheme/Views/ModalBonusAction.liquid:0
+msgctxt "DigitalTheme/Views/ModalBonusAction"
+msgid "Request a Kubeflow namespace"
+msgstr ""
+
+#: DigitalTheme/Views/ModalBonusAction.liquid:0
+msgctxt "DigitalTheme/Views/ModalBonusAction"
+msgid "An admin will follow up with you at"
+msgstr ""
+
+#: DigitalTheme/Views/ModalBonusAction.liquid:0
+msgctxt "DigitalTheme/Views/ModalBonusAction"
+msgid "with questions or updates."
+msgstr ""
+
+#: DigitalTheme/Views/ModalBonusAction.liquid:0
+msgctxt "DigitalTheme/Views/ModalBonusAction"
+msgid "Close"
+msgstr ""
+
+#: DigitalTheme/Views/ModalBonusAction.liquid:0
+msgctxt "DigitalTheme/Views/ModalBonusAction"
+msgid "Namespace name"
+msgstr ""
+
+#: DigitalTheme/Views/ModalBonusAction.liquid:0
+msgctxt "DigitalTheme/Views/ModalBonusAction"
+msgid "Send request"
+msgstr ""
+
+#: DigitalTheme/Views/MenuItemLink-Footer.liquid:0
+msgctxt "DigitalTheme/Views/MenuItemLink-Footer"
+msgid "in a new tab"
+msgstr ""
+
+#: DigitalTheme/Views/Widget-FatFooter.liquid:0
+msgctxt "DigitalTheme/Views/Widget-FatFooter"
+msgid "Digital Innovation logo"
+msgstr ""
+
+#: DigitalTheme/Views/SymbolCanada.liquid:0
+msgctxt "DigitalTheme/Views/SymbolCanada"
+msgid "Symbol of the Government of Canada"
+msgstr ""
+
+#: DigitalTheme/Views/ModalProfile.liquid:0
+msgctxt "DigitalTheme/Views/ModalProfile"
+msgid "account"
+msgstr ""
+
+#: DigitalTheme/Views/ModalProfile.liquid:0
+msgctxt "DigitalTheme/Views/ModalProfile"
+msgid "Close"
+msgstr ""
+
+#: DigitalTheme/Views/ModalProfile.liquid:0
+msgctxt "DigitalTheme/Views/ModalProfile"
+msgid "Contact email"
+msgstr ""
+
+#: DigitalTheme/Views/ModalProfile.liquid:0
+msgctxt "DigitalTheme/Views/ModalProfile"
+msgid "Azure account"
+msgstr ""
+
+#: DigitalTheme/Views/ModalProfile.liquid:0
+msgctxt "DigitalTheme/Views/ModalProfile"
+msgid "Log out"
+msgstr ""
+
+#: DigitalTheme/Views/Shared/NotFound.liquid:0
+msgctxt "DigitalTheme/Views/Shared/NotFound"
+msgid "We couldn't find what you're looking for"
+msgstr ""
+
+#: DigitalTheme/Views/OrchardCore.Users/Registration/ConfirmEmail.liquid:0
+msgctxt "DigitalTheme/Views/OrchardCore.Users/Registration/ConfirmEmail"
+msgid "Email confirmed"
+msgstr ""
+
+#: DigitalTheme/Views/OrchardCore.Users/Registration/ConfirmEmail.liquid:0
+msgctxt "DigitalTheme/Views/OrchardCore.Users/Registration/ConfirmEmail"
+msgid "Thank you for confirming your email."
+msgstr ""
+
+#: DigitalTheme/Views/OrchardCore.Users/Registration/ConfirmEmail.liquid:0
+msgctxt "DigitalTheme/Views/OrchardCore.Users/Registration/ConfirmEmail"
+msgid "Home"
+msgstr ""
+
+#: DigitalTheme/Views/OrchardCore.Users/Registration/Register.liquid:0
+#: DigitalTheme/Views/OrchardCore.Users/Registration/Register.liquid:0
+msgctxt "DigitalTheme/Views/OrchardCore.Users/Registration/Register"
+msgid "Create account"
+msgstr ""
+
+#: DigitalTheme/Views/OrchardCore.Users/Registration/Register.liquid:0
+msgctxt "DigitalTheme/Views/OrchardCore.Users/Registration/Register"
+msgid "Digital account"
+msgstr ""
+
+#: DigitalTheme/Views/OrchardCore.Users/Registration/Register.liquid:0
+msgctxt "DigitalTheme/Views/OrchardCore.Users/Registration/Register"
+msgid "Register for your Digital account here!"
+msgstr ""
+
+#: DigitalTheme/Views/OrchardCore.Users/Registration/Register.liquid:0
+msgctxt "DigitalTheme/Views/OrchardCore.Users/Registration/Register"
+msgid "Passwords must have:<br>• 8 characters or more<br>• an uppercase letter<br>• a lowercase letter<br>• a number<br>• a special character"
+msgstr ""
+
+#: DigitalTheme/Views/OrchardCore.Users/ResetPassword/ForgotPassword.liquid:0
+msgctxt "DigitalTheme/Views/OrchardCore.Users/ResetPassword/ForgotPassword"
+msgid "Forgot password"
+msgstr ""
+
+#: DigitalTheme/Views/OrchardCore.Users/ResetPassword/ForgotPassword.liquid:0
+msgctxt "DigitalTheme/Views/OrchardCore.Users/ResetPassword/ForgotPassword"
+msgid "Recover Digital account"
+msgstr ""
+
+#: DigitalTheme/Views/OrchardCore.Users/ResetPassword/ForgotPassword.liquid:0
+msgctxt "DigitalTheme/Views/OrchardCore.Users/ResetPassword/ForgotPassword"
+msgid "Things happen, it's ok"
+msgstr ""
+
+#: DigitalTheme/Views/OrchardCore.Users/ResetPassword/ForgotPassword.liquid:0
+msgctxt "DigitalTheme/Views/OrchardCore.Users/ResetPassword/ForgotPassword"
+msgid "A recovery link will be sent to the email address tied to your account."
+msgstr ""
+
+#: DigitalTheme/Views/OrchardCore.Users/ResetPassword/ForgotPassword.liquid:0
+msgctxt "DigitalTheme/Views/OrchardCore.Users/ResetPassword/ForgotPassword"
+msgid "Send recovery email"
+msgstr ""
+
+#: DigitalTheme/Views/OrchardCore.Users/ResetPassword/ForgotPassword.liquid:0
+msgctxt "DigitalTheme/Views/OrchardCore.Users/ResetPassword/ForgotPassword"
+msgid "If you can't access the inbox tied to your account, see if we can help."
+msgstr ""
+
+#: DigitalTheme/Views/OrchardCore.Users/ResetPassword/ResetPasswordConfirmation.liquid:0
+msgctxt "DigitalTheme/Views/OrchardCore.Users/ResetPassword/ResetPasswordConfirmation"
+msgid "Password reset complete"
+msgstr ""
+
+#: DigitalTheme/Views/OrchardCore.Users/ResetPassword/ResetPasswordConfirmation.liquid:0
+msgctxt "DigitalTheme/Views/OrchardCore.Users/ResetPassword/ResetPasswordConfirmation"
+msgid "New password is set"
+msgstr ""
+
+#: DigitalTheme/Views/OrchardCore.Users/ResetPassword/ResetPasswordConfirmation.liquid:0
+msgctxt "DigitalTheme/Views/OrchardCore.Users/ResetPassword/ResetPasswordConfirmation"
+msgid "Give it try"
+msgstr ""
+
+#: DigitalTheme/Views/OrchardCore.Users/ResetPassword/ResetPasswordConfirmation.liquid:0
+msgctxt "DigitalTheme/Views/OrchardCore.Users/ResetPassword/ResetPasswordConfirmation"
+msgid "Login"
+msgstr ""
+
+#: DigitalTheme/Views/OrchardCore.Users/ResetPassword/ForgotPasswordConfirmation.liquid:0
+msgctxt "DigitalTheme/Views/OrchardCore.Users/ResetPassword/ForgotPasswordConfirmation"
+msgid "Password recovery sent"
+msgstr ""
+
+#: DigitalTheme/Views/OrchardCore.Users/ResetPassword/ForgotPasswordConfirmation.liquid:0
+msgctxt "DigitalTheme/Views/OrchardCore.Users/ResetPassword/ForgotPasswordConfirmation"
+msgid "Check your email"
+msgstr ""
+
+#: DigitalTheme/Views/OrchardCore.Users/ResetPassword/ForgotPasswordConfirmation.liquid:0
+msgctxt "DigitalTheme/Views/OrchardCore.Users/ResetPassword/ForgotPasswordConfirmation"
+msgid "It may take a few minutes"
+msgstr ""
+
+#: DigitalTheme/Views/OrchardCore.Users/ResetPassword/ForgotPasswordConfirmation.liquid:0
+msgctxt "DigitalTheme/Views/OrchardCore.Users/ResetPassword/ForgotPasswordConfirmation"
+msgid "A recovery email has been sent to the email address tied to your account. "
+msgstr ""
+
+#: DigitalTheme/Views/OrchardCore.Users/ResetPassword/ForgotPasswordConfirmation.liquid:0
+msgctxt "DigitalTheme/Views/OrchardCore.Users/ResetPassword/ForgotPasswordConfirmation"
+msgid "If you're still stuck, see if we can help."
+msgstr ""
+
+#: DigitalTheme/Views/OrchardCore.Users/ResetPassword/ResetPassword.liquid:0
+#: DigitalTheme/Views/OrchardCore.Users/ResetPassword/ResetPassword.liquid:0
+msgctxt "DigitalTheme/Views/OrchardCore.Users/ResetPassword/ResetPassword"
+msgid "Reset password"
+msgstr ""
+
+#: DigitalTheme/Views/OrchardCore.Users/ResetPassword/ResetPassword.liquid:0
+msgctxt "DigitalTheme/Views/OrchardCore.Users/ResetPassword/ResetPassword"
+msgid "Set a new password"
+msgstr ""
+
+#: DigitalTheme/Views/OrchardCore.Users/ResetPassword/ResetPassword.liquid:0
+msgctxt "DigitalTheme/Views/OrchardCore.Users/ResetPassword/ResetPassword"
+msgid "Secure and memorable"
+msgstr ""
+
+#: DigitalTheme/Views/OrchardCore.Users/Account/RegisterExternalLogin.liquid:0
+msgctxt "DigitalTheme/Views/OrchardCore.Users/Account/RegisterExternalLogin"
+msgid "Finish registration"
+msgstr ""
+
+#: DigitalTheme/Views/OrchardCore.Users/Account/RegisterExternalLogin.liquid:0
+msgctxt "DigitalTheme/Views/OrchardCore.Users/Account/RegisterExternalLogin"
+msgid "One last thing"
+msgstr ""
+
+#: DigitalTheme/Views/OrchardCore.Users/Account/RegisterExternalLogin.liquid:0
+msgctxt "DigitalTheme/Views/OrchardCore.Users/Account/RegisterExternalLogin"
+msgid "Your Azure account has been linked! Enter an email address to receive updates for namespace requests."
+msgstr ""
+
+#: DigitalTheme/Views/OrchardCore.Users/Account/RegisterExternalLogin.liquid:0
+msgctxt "DigitalTheme/Views/OrchardCore.Users/Account/RegisterExternalLogin"
+msgid "Create account"
+msgstr ""
+
+#: DigitalTheme/Views/OrchardCore.Users/Account/ChangePasswordConfirmation.liquid:0
+msgctxt "DigitalTheme/Views/OrchardCore.Users/Account/ChangePasswordConfirmation"
+msgid "Password changed"
+msgstr ""
+
+#: DigitalTheme/Views/OrchardCore.Users/Account/ChangePasswordConfirmation.liquid:0
+msgctxt "DigitalTheme/Views/OrchardCore.Users/Account/ChangePasswordConfirmation"
+msgid "Your password has been changed successfully."
+msgstr ""
+
+#: DigitalTheme/Views/OrchardCore.Users/Account/ChangePassword.liquid:0
+#: DigitalTheme/Views/OrchardCore.Users/Account/ChangePassword.liquid:0
+msgctxt "DigitalTheme/Views/OrchardCore.Users/Account/ChangePassword"
+msgid "Change password"
+msgstr ""
+
+#: DigitalTheme/Views/OrchardCore.Users/Account/ChangePassword.liquid:0
+msgctxt "DigitalTheme/Views/OrchardCore.Users/Account/ChangePassword"
+msgid "Digital account security"
+msgstr ""
+
+#: DigitalTheme/Views/OrchardCore.Users/Account/ChangePassword.liquid:0
+msgctxt "DigitalTheme/Views/OrchardCore.Users/Account/ChangePassword"
+msgid "New password, new beginning"
+msgstr ""
+
