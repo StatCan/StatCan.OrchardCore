@@ -5,24 +5,40 @@ env:
   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
   DOTNET_CLI_TELEMETRY_OPTOUT: true
 jobs:
-  extract_translations:
-    name: Extract Translations
-    runs-on: ubuntu-latest
+  extract_translations: 
+    name: Translate and pull request
+    runs-on: windows-latest
     steps:
     - uses: actions/checkout@v1
     - name: Setup .NET Core 5.0
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1.404
-    - name: Setup Google Api credentials
-      run: | 
-        echo "${{secrets.GOOGLE_API_KEY}}" | base64 -d > /tmp/account.json
-        echo "GOOGLE_APPLICATION_CREDENTIALS=/tmp/account.json" >> $GITHUB_ENV
     - name: Extract translations using PoExtractor
       run: |
         dotnet tool install --global PoExtractor.OrchardCore --version 0.4.0-rc1-13272
         mkdir /tmp/translation_workdir
         extractpo-oc ${{github.workspace}}/src /tmp/translation_workdir/extract
+    - uses: actions/upload-artifact@v2
+      with:
+        name: Extracted translation files
+        path: |
+          /tmp/translation_workdir/
+        retention-days: 1
+  translate_pr:
+    needs: extract_translations
+    name: Translate and pull request
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - uses: actions/download-artifact@v2
+      with:
+        name: Extracted translation files
+        path: /tmp/translation_workdir/
+    - name: Setup Google Api credentials
+      run: | 
+        echo "${{secrets.GOOGLE_API_KEY}}" | base64 -d > /tmp/account.json
+        echo "GOOGLE_APPLICATION_CREDENTIALS=/tmp/account.json" >> $GITHUB_ENV
     - name: Auto translate missing translation strings
       run: |
         cd ./translation_script
