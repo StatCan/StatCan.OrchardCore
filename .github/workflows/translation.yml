@@ -1,0 +1,38 @@
+name: Extract Translations
+on: 
+  push:
+    branches:
+      - translation
+env:
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
+  DOTNET_CLI_TELEMETRY_OPTOUT: true
+jobs:
+  extract_translations:
+    name: Extract Translations
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Setup .NET Core 5.0
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.0.100
+    - name: Setup Google Api credentials
+      run: | 
+        echo "${{secrets.GOOGLE_API_KEY_JSON}}" > ${{github.workspace}}/account.json
+        echo "GOOGLE_APPLICATION_CREDENTIALS=${{github.workspace}}/account.json" >> $GITHUB_ENV
+    - name: Extract translations
+      run: |
+        dotnet tool install --global PoExtractor.OrchardCore --version 0.4.0-rc1-13272
+        mkdir ${{github.workspace}}/translation_workdir
+        extractpo-oc ${{github.workspace}}/src ${{github.workspace}}/translation_workdir/extract
+        cd ./translation_script
+        npm install
+        mkdir ${{github.workspace}}/translation_workdir/translated
+        node po-gtranslator.js --project_id=oc-translation --po_source="${{github.workspace}}/translation_workdir/extract" --po_dest="${{github.workspace}}/translation_workdir/translated" --lang=fr
+
+    - uses: actions/upload-artifact@v2
+      with:
+        name: Translation files
+        path: |
+          ${{github.workspace}}/translation_workdir/
+        retention-days: 3
