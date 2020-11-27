@@ -1,0 +1,320 @@
+msgid ""
+msgstr "Content-Type: text/plain\n"
+
+#: StatCan.OrchardCore.ContentFields/MultiValueTextField/Drivers/MultiValueTextFieldDisplayDriver.cs:86
+#. updater.ModelState.AddModelError(Prefix, nameof(field.Values), S["The {0} field is required.", context.PartFieldDefinition.DisplayName()]);
+msgctxt ""
+"StatCan.OrchardCore.ContentFields.MultiValueTextField.Drivers."
+"MultiValueTextFieldDisplayDriver"
+msgid "The {0} field is required."
+msgstr "Le champ {0} est obligatoire."
+
+#: StatCan.OrchardCore.ContentFields/MultiValueTextField/Settings/MultiValueTextFieldEditorSettingsDriver.cs:53
+#. context.Updater.ModelState.AddModelError(Prefix, S["The options are written in an incorrect format."]);
+msgctxt ""
+"StatCan.OrchardCore.ContentFields.MultiValueTextField.Settings."
+"MultiValueTextFieldEditorSettingsDriver"
+msgid "The options are written in an incorrect format."
+msgstr "Les options sont écrites dans un format incorrect."
+
+#: StatCan.OrchardCore.ContentFields/PredefinedGroup/Settings/TextFieldPredefinedGroupEditorSettingsDriver.cs:54
+#. context.Updater.ModelState.AddModelError(Prefix, S["The options are written in an incorrect format."]);
+msgctxt ""
+"StatCan.OrchardCore.ContentFields.PredefinedGroup.Settings."
+"TextFieldPredefinedGroupEditorSettingsDriver"
+msgid "The options are written in an incorrect format."
+msgstr "Les options sont écrites dans un format incorrect."
+
+#: StatCan.OrchardCore.ContentFields/Views/TextFieldPredefinedGroupEditorSettings.Edit.cshtml:106
+#. <th scope="col">@T["Group Label"]</th>
+msgctxt ""
+"StatCan.OrchardCore.ContentFields/Views/"
+"TextFieldPredefinedGroupEditorSettings.Edit"
+msgid "Group Label"
+msgstr "Étiquette de groupe"
+
+#: StatCan.OrchardCore.ContentFields/Views/TextFieldPredefinedGroupEditorSettings.Edit.cshtml:107
+#. <th scope="col">@T["Value"]</th>
+msgctxt ""
+"StatCan.OrchardCore.ContentFields/Views/"
+"TextFieldPredefinedGroupEditorSettings.Edit"
+msgid "Value"
+msgstr "Valeur"
+
+#: StatCan.OrchardCore.ContentFields/Views/TextFieldPredefinedGroupEditorSettings.Edit.cshtml:108
+#. <th scope="col" colspan="3">@T["Default?"]</th>
+msgctxt ""
+"StatCan.OrchardCore.ContentFields/Views/"
+"TextFieldPredefinedGroupEditorSettings.Edit"
+msgid "Default?"
+msgstr "Défaut?"
+
+#: StatCan.OrchardCore.ContentFields/Views/TextFieldPredefinedGroupEditorSettings.Edit.cshtml:122
+#. <label class="custom-control-label" title="@T["Set as default"]" v-bind:for="'customRadio_' + index"></label>
+msgctxt ""
+"StatCan.OrchardCore.ContentFields/Views/"
+"TextFieldPredefinedGroupEditorSettings.Edit"
+msgid "Set as default"
+msgstr "Définir par défaut"
+
+#: StatCan.OrchardCore.ContentFields/Views/TextFieldPredefinedGroupEditorSettings.Edit.cshtml:126
+#. <a v-on:click="remove(index)" href="javascript:void(0)" title="@T["Remove element from list"]" class="btn">
+msgctxt ""
+"StatCan.OrchardCore.ContentFields/Views/"
+"TextFieldPredefinedGroupEditorSettings.Edit"
+msgid "Remove element from list"
+msgstr "Supprimer l'élément de la liste"
+
+#: StatCan.OrchardCore.ContentFields/Views/TextFieldPredefinedGroupEditorSettings.Edit.cshtml:136
+#. <a v-on:click="add()" class="btn btn-light w-100 btn-sm"><i class="fas fa-plus small"></i> @T["Add an option"]</a>
+msgctxt ""
+"StatCan.OrchardCore.ContentFields/Views/"
+"TextFieldPredefinedGroupEditorSettings.Edit"
+msgid "Add an option"
+msgstr "Ajouter une option"
+
+#: StatCan.OrchardCore.ContentFields/Views/TextFieldPredefinedGroupEditorSettings.Edit.cshtml:149
+#: StatCan.OrchardCore.ContentFields/Views/TextFieldPredefinedGroupEditorSettings.Edit.cshtml:188
+#. <h5 class="modal-title">@T["Edit Data"]</h5>
+#. <a href="javascript:void(0)" v-on:click="showModal" class="float-right" title="@T["Edit Data"]"><i class="fas fa-edit"></i></a>
+msgctxt ""
+"StatCan.OrchardCore.ContentFields/Views/"
+"TextFieldPredefinedGroupEditorSettings.Edit"
+msgid "Edit Data"
+msgstr "Modifier les données"
+
+#: StatCan.OrchardCore.ContentFields/Views/TextFieldPredefinedGroupEditorSettings.Edit.cshtml:156
+#. <label for="groups-textarea">@T["Groups"]</label>
+msgctxt ""
+"StatCan.OrchardCore.ContentFields/Views/"
+"TextFieldPredefinedGroupEditorSettings.Edit"
+msgid "Groups"
+msgstr "Groupes"
+
+#: StatCan.OrchardCore.ContentFields/Views/TextFieldPredefinedGroupEditorSettings.Edit.cshtml:158
+#. <span class="hint">@T["A JSON representation of the allowed values, e.g. {0}", "[ { name: 'First option', value: 'option1' }, { name: 'Second option', value: 'option2' } ]"]</span>
+msgctxt ""
+"StatCan.OrchardCore.ContentFields/Views/"
+"TextFieldPredefinedGroupEditorSettings.Edit"
+msgid "A JSON representation of the allowed values, e.g. {0}"
+msgstr "Une représentation JSON des valeurs autorisées, par exemple {0}"
+
+#: StatCan.OrchardCore.ContentFields/Views/TextFieldPredefinedGroupEditorSettings.Edit.cshtml:161
+#. <label for="groups-defaultvalue">@T["Default value"]</label>
+msgctxt ""
+"StatCan.OrchardCore.ContentFields/Views/"
+"TextFieldPredefinedGroupEditorSettings.Edit"
+msgid "Default value"
+msgstr "Valeur par défaut"
+
+#: StatCan.OrchardCore.ContentFields/Views/TextFieldPredefinedGroupEditorSettings.Edit.cshtml:163
+#. <span class="hint">@T["(Optional) The default to assign to the text field."]</span>
+msgctxt ""
+"StatCan.OrchardCore.ContentFields/Views/"
+"TextFieldPredefinedGroupEditorSettings.Edit"
+msgid "(Optional) The default to assign to the text field."
+msgstr "(Facultatif) Valeur par défaut à affecter au champ de texte."
+
+#: StatCan.OrchardCore.ContentFields/Views/TextFieldPredefinedGroupEditorSettings.Edit.cshtml:167
+#. <button type="button" class="btn btn-primary btn-submit" v-on:click="closeModal()">@T["OK"]</button>
+msgctxt ""
+"StatCan.OrchardCore.ContentFields/Views/"
+"TextFieldPredefinedGroupEditorSettings.Edit"
+msgid "OK"
+msgstr "D'accord"
+
+#: StatCan.OrchardCore.ContentFields/Views/TextFieldPredefinedGroupEditorSettings.Edit.cshtml:168
+#. <button type="button" class="btn btn-secondary" data-dismiss="modal">@T["Cancel"]</button>
+msgctxt ""
+"StatCan.OrchardCore.ContentFields/Views/"
+"TextFieldPredefinedGroupEditorSettings.Edit"
+msgid "Cancel"
+msgstr "Annuler"
+
+#: StatCan.OrchardCore.ContentFields/Views/TextFieldPredefinedGroupEditorSettings.Edit.cshtml:187
+#. <label asp-for="Options">@T["Options"]</label>
+msgctxt ""
+"StatCan.OrchardCore.ContentFields/Views/"
+"TextFieldPredefinedGroupEditorSettings.Edit"
+msgid "Options"
+msgstr "Options"
+
+#: StatCan.OrchardCore.ContentFields/Views/TextField-PredefinedGroup.Option.cshtml:4
+#. <option value="PredefinedGroup" selected="@(currentEditor == "PredefinedGroup")">@T["Predefined Group"]</option>
+msgctxt "StatCan.OrchardCore.ContentFields/Views/TextField-PredefinedGroup.Option"
+msgid "Predefined Group"
+msgstr "Groupe prédéfini"
+
+#: StatCan.OrchardCore.ContentFields/Views/MultiValueTextFieldSettings.Edit.cshtml:6
+#. <label class="custom-control-label" asp-for="Required">@T["Required"]</label>
+msgctxt "StatCan.OrchardCore.ContentFields/Views/MultiValueTextFieldSettings.Edit"
+msgid "Required"
+msgstr "Obligatoire"
+
+#: StatCan.OrchardCore.ContentFields/Views/MultiValueTextFieldSettings.Edit.cshtml:7
+#. <span class="hint dashed">@T["Whether a value is required."]</span>
+msgctxt "StatCan.OrchardCore.ContentFields/Views/MultiValueTextFieldSettings.Edit"
+msgid "Whether a value is required."
+msgstr "Si une valeur est requise."
+
+#: StatCan.OrchardCore.ContentFields/Views/MultiValueTextFieldSettings.Edit.cshtml:13
+#. <label asp-for="Hint">@T["Hint"]</label>
+msgctxt "StatCan.OrchardCore.ContentFields/Views/MultiValueTextFieldSettings.Edit"
+msgid "Hint"
+msgstr "Allusion"
+
+#: StatCan.OrchardCore.ContentFields/Views/MultiValueTextFieldSettings.Edit.cshtml:16
+#. <span class="hint">@T["The hint text to display for this field on the editor."]</span>
+msgctxt "StatCan.OrchardCore.ContentFields/Views/MultiValueTextFieldSettings.Edit"
+msgid "The hint text to display for this field on the editor."
+msgstr "Le texte d'indication à afficher pour ce champ dans l'éditeur."
+
+#: StatCan.OrchardCore.ContentFields/Views/MultiValueTextField-PredefinedList.Option.cshtml:4
+#. <option value="PredefinedList" selected="@(currentEditor == "PredefinedList")">@T["Predefined List"]</option>
+msgctxt ""
+"StatCan.OrchardCore.ContentFields/Views/MultiValueTextField-PredefinedList."
+"Option"
+msgid "Predefined List"
+msgstr "Liste prédéfinie"
+
+#: StatCan.OrchardCore.ContentFields/Views/MultiValueTextFieldEditorSettings.Edit.cshtml:18
+#. <th scope="col">@T["Option Label"]</th>
+msgctxt ""
+"StatCan.OrchardCore.ContentFields/Views/MultiValueTextFieldEditorSettings."
+"Edit"
+msgid "Option Label"
+msgstr "Étiquette d'option"
+
+#: StatCan.OrchardCore.ContentFields/Views/MultiValueTextFieldEditorSettings.Edit.cshtml:19
+#. <th scope="col">@T["Value"]</th>
+msgctxt ""
+"StatCan.OrchardCore.ContentFields/Views/MultiValueTextFieldEditorSettings."
+"Edit"
+msgid "Value"
+msgstr "Valeur"
+
+#: StatCan.OrchardCore.ContentFields/Views/MultiValueTextFieldEditorSettings.Edit.cshtml:20
+#. <th scope="col" colspan="3">@T["Default?"]</th>
+msgctxt ""
+"StatCan.OrchardCore.ContentFields/Views/MultiValueTextFieldEditorSettings."
+"Edit"
+msgid "Default?"
+msgstr "Défaut?"
+
+#: StatCan.OrchardCore.ContentFields/Views/MultiValueTextFieldEditorSettings.Edit.cshtml:34
+#. <label class="custom-control-label" title="@T["Set as default"]" v-bind:for="'customRadio_' + index"></label>
+msgctxt ""
+"StatCan.OrchardCore.ContentFields/Views/MultiValueTextFieldEditorSettings."
+"Edit"
+msgid "Set as default"
+msgstr "Définir par défaut"
+
+#: StatCan.OrchardCore.ContentFields/Views/MultiValueTextFieldEditorSettings.Edit.cshtml:38
+#. <a v-on:click="remove(index)" href="javascript:void(0)" title="@T["Remove element from list"]" class="btn">
+msgctxt ""
+"StatCan.OrchardCore.ContentFields/Views/MultiValueTextFieldEditorSettings."
+"Edit"
+msgid "Remove element from list"
+msgstr "Supprimer l'élément de la liste"
+
+#: StatCan.OrchardCore.ContentFields/Views/MultiValueTextFieldEditorSettings.Edit.cshtml:48
+#. <a v-on:click="add()" class="btn btn-light w-100 btn-sm"><i class="fas fa-plus small"></i> @T["Add an option"]</a>
+msgctxt ""
+"StatCan.OrchardCore.ContentFields/Views/MultiValueTextFieldEditorSettings."
+"Edit"
+msgid "Add an option"
+msgstr "Ajouter une option"
+
+#: StatCan.OrchardCore.ContentFields/Views/MultiValueTextFieldEditorSettings.Edit.cshtml:61
+#. <h5 class="modal-title">@T["Edit Data"]</h5>
+msgctxt ""
+"StatCan.OrchardCore.ContentFields/Views/MultiValueTextFieldEditorSettings."
+"Edit"
+msgid "Edit Data"
+msgstr "Modifier les données"
+
+#: StatCan.OrchardCore.ContentFields/Views/MultiValueTextFieldEditorSettings.Edit.cshtml:68
+#: StatCan.OrchardCore.ContentFields/Views/MultiValueTextFieldEditorSettings.Edit.cshtml:100
+#. <label for="options-textarea">@T["Options"]</label>
+#. <label asp-for="Options">@T["Options"]</label>
+msgctxt ""
+"StatCan.OrchardCore.ContentFields/Views/MultiValueTextFieldEditorSettings."
+"Edit"
+msgid "Options"
+msgstr "Options"
+
+#: StatCan.OrchardCore.ContentFields/Views/MultiValueTextFieldEditorSettings.Edit.cshtml:70
+#. <span class="hint">@T["A JSON representation of the allowed values, e.g. {0}", "[ { name: 'First option', value: 'option1' }, { name: 'Second option', value: 'option2' } ]"]</span>
+msgctxt ""
+"StatCan.OrchardCore.ContentFields/Views/MultiValueTextFieldEditorSettings."
+"Edit"
+msgid "A JSON representation of the allowed values, e.g. {0}"
+msgstr "Une représentation JSON des valeurs autorisées, par exemple {0}"
+
+#: StatCan.OrchardCore.ContentFields/Views/MultiValueTextFieldEditorSettings.Edit.cshtml:73
+#. <label for="options-defaultvalue">@T["Default value"]</label>
+msgctxt ""
+"StatCan.OrchardCore.ContentFields/Views/MultiValueTextFieldEditorSettings."
+"Edit"
+msgid "Default value"
+msgstr "Valeur par défaut"
+
+#: StatCan.OrchardCore.ContentFields/Views/MultiValueTextFieldEditorSettings.Edit.cshtml:75
+#. <span class="hint">@T["(Optional) The default to assign to the text field."]</span>
+msgctxt ""
+"StatCan.OrchardCore.ContentFields/Views/MultiValueTextFieldEditorSettings."
+"Edit"
+msgid "(Optional) The default to assign to the text field."
+msgstr "(Facultatif) Valeur par défaut à affecter au champ de texte."
+
+#: StatCan.OrchardCore.ContentFields/Views/MultiValueTextFieldEditorSettings.Edit.cshtml:79
+#. <button type="button" class="btn btn-primary btn-submit" v-on:click="closeModal()">@T["OK"]</button>
+msgctxt ""
+"StatCan.OrchardCore.ContentFields/Views/MultiValueTextFieldEditorSettings."
+"Edit"
+msgid "OK"
+msgstr "D'accord"
+
+#: StatCan.OrchardCore.ContentFields/Views/MultiValueTextFieldEditorSettings.Edit.cshtml:80
+#. <button type="button" class="btn btn-secondary" data-dismiss="modal">@T["Cancel"]</button>
+msgctxt ""
+"StatCan.OrchardCore.ContentFields/Views/MultiValueTextFieldEditorSettings."
+"Edit"
+msgid "Cancel"
+msgstr "Annuler"
+
+#: StatCan.OrchardCore.ContentFields/Views/MultiValueTextFieldEditorSettings.Edit.cshtml:90
+#. <label asp-for="Editor">@T["What type of list editor should be used?"]</label>
+msgctxt ""
+"StatCan.OrchardCore.ContentFields/Views/MultiValueTextFieldEditorSettings."
+"Edit"
+msgid "What type of list editor should be used?"
+msgstr "Quel type d'éditeur de liste utiliser?"
+
+#: StatCan.OrchardCore.ContentFields/Views/MultiValueTextFieldEditorSettings.Edit.cshtml:92
+#. <option value="@nameof(MultiValueEditorOption.Checkbox)">@T["Checkbox"]</option>
+msgctxt ""
+"StatCan.OrchardCore.ContentFields/Views/MultiValueTextFieldEditorSettings."
+"Edit"
+msgid "Checkbox"
+msgstr "Case à cocher"
+
+#: StatCan.OrchardCore.ContentFields/Views/MultiValueTextFieldEditorSettings.Edit.cshtml:93
+#. <option value="@nameof(MultiValueEditorOption.Dropdown)">@T["Drop down list"]</option>
+msgctxt ""
+"StatCan.OrchardCore.ContentFields/Views/MultiValueTextFieldEditorSettings."
+"Edit"
+msgid "Drop down list"
+msgstr "La liste déroulante"
+
+#: StatCan.OrchardCore.ContentFields/Views/TextField-CodeMirrorJS.Option.cshtml:4
+#. <option value="CodeMirrorJS" selected="@(currentEditor == "CodeMirrorJS")">@T["Code Mirror JavaScript"]</option>
+msgctxt "StatCan.OrchardCore.ContentFields/Views/TextField-CodeMirrorJS.Option"
+msgid "Code Mirror JavaScript"
+msgstr "Code miroir JavaScript"
+
+#: StatCan.OrchardCore.ContentFields/Views/TextField-CodeMirrorLiquid.Option.cshtml:4
+#. <option value="CodeMirrorLiquid" selected="@(currentEditor == "CodeMirrorLiquid")">@T["Code Mirror Liquid"]</option>
+msgctxt "StatCan.OrchardCore.ContentFields/Views/TextField-CodeMirrorLiquid.Option"
+msgid "Code Mirror Liquid"
+msgstr "Code Mirror Liquid"
