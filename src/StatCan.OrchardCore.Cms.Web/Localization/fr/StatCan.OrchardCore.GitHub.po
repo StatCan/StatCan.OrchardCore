@@ -1,209 +1,291 @@
 msgid ""
 msgstr "Content-Type: text/plain\n"
 
-#: StatCan.OrchardCore.GitHub/AdminMenu.cs:27
+#: StatCan.OrchardCore.GitHub\AdminMenu.cs:27
 #. builder.Add(S["Configuration"], configuration => configuration
 msgctxt "StatCan.OrchardCore.GitHub.GitHubApiAdminMenu"
 msgid "Configuration"
 msgstr "Configuration"
 
-#: StatCan.OrchardCore.GitHub/AdminMenu.cs:28
+#: StatCan.OrchardCore.GitHub\AdminMenu.cs:28
 #. .Add(S["Settings"], settings => settings
 msgctxt "StatCan.OrchardCore.GitHub.GitHubApiAdminMenu"
 msgid "Settings"
 msgstr "Réglages"
 
-#: StatCan.OrchardCore.GitHub/AdminMenu.cs:29
-#: StatCan.OrchardCore.GitHub/AdminMenu.cs:29
+#: StatCan.OrchardCore.GitHub\AdminMenu.cs:29
+#: StatCan.OrchardCore.GitHub\AdminMenu.cs:29
 #. .Add(S["GitHub Api"], S["GitHub Api"].PrefixPosition(), settings => settings
 #. .Add(S["GitHub Api"], S["GitHub Api"].PrefixPosition(), settings => settings
 msgctxt "StatCan.OrchardCore.GitHub.GitHubApiAdminMenu"
 msgid "GitHub Api"
 msgstr "API GitHub"
 
-#: StatCan.OrchardCore.GitHub/Activities/CreateBranchTask.cs:38
-#. public override LocalizedString DisplayText => S["GitHub - Create Branch"];
-msgctxt "StatCan.OrchardCore.GitHub.Activities.CreateBranchTask"
-msgid "GitHub - Create Branch"
-msgstr "GitHub - Créer une branche"
-
-#: StatCan.OrchardCore.GitHub/Activities/CreateBranchTask.cs:40
-#. public override LocalizedString Category => S["GitHub"];
-msgctxt "StatCan.OrchardCore.GitHub.Activities.CreateBranchTask"
-msgid "GitHub"
-msgstr "GitHub"
-
-#: StatCan.OrchardCore.GitHub/Activities/CreateBranchTask.cs:75
-#. new Outcome("BranchCreated", S["Branch created"]),
-msgctxt "StatCan.OrchardCore.GitHub.Activities.CreateBranchTask"
-msgid "Branch created"
-msgstr "Branche créée"
-
-#: StatCan.OrchardCore.GitHub/Activities/CreateBranchTask.cs:76
-#. new Outcome("Error", S["Error"])
-msgctxt "StatCan.OrchardCore.GitHub.Activities.CreateBranchTask"
-msgid "Error"
-msgstr "Erreur"
-
-#: StatCan.OrchardCore.GitHub/Activities/CommitFileTask.cs:39
+#: StatCan.OrchardCore.GitHub\Activities\CommitFileTask.cs:39
 #. public override LocalizedString DisplayText => S["GitHub - Commit file"];
 msgctxt "StatCan.OrchardCore.GitHub.Activities.CommitFileTask"
 msgid "GitHub - Commit file"
 msgstr "GitHub - Fichier de validation"
 
-#: StatCan.OrchardCore.GitHub/Activities/CommitFileTask.cs:41
+#: StatCan.OrchardCore.GitHub\Activities\CommitFileTask.cs:41
 #. public override LocalizedString Category => S["GitHub"];
 msgctxt "StatCan.OrchardCore.GitHub.Activities.CommitFileTask"
 msgid "GitHub"
 msgstr "GitHub"
 
-#: StatCan.OrchardCore.GitHub/Activities/CommitFileTask.cs:86
+#: StatCan.OrchardCore.GitHub\Activities\CommitFileTask.cs:86
 #. new Outcome("FileCommitted", S["File committed"]),
 msgctxt "StatCan.OrchardCore.GitHub.Activities.CommitFileTask"
 msgid "File committed"
 msgstr "Fichier engagé"
 
-#: StatCan.OrchardCore.GitHub/Activities/CommitFileTask.cs:87
+#: StatCan.OrchardCore.GitHub\Activities\CommitFileTask.cs:87
 #. new Outcome("Error", S["Error"])
 msgctxt "StatCan.OrchardCore.GitHub.Activities.CommitFileTask"
 msgid "Error"
 msgstr "Erreur"
 
-#: StatCan.OrchardCore.GitHub/Activities/CreatePullRequestTask.cs:38
-#. public override LocalizedString DisplayText => S["GitHub - Create Pull Request"];
-msgctxt "StatCan.OrchardCore.GitHub.Activities.CreatePullRequestTask"
-msgid "GitHub - Create Pull Request"
-msgstr "GitHub - Créer une demande d'extraction"
+#: StatCan.OrchardCore.GitHub\Activities\CreateBranchTask.cs:38
+#. public override LocalizedString DisplayText => S["GitHub - Create Branch"];
+msgctxt "StatCan.OrchardCore.GitHub.Activities.CreateBranchTask"
+msgid "GitHub - Create Branch"
+msgstr "GitHub - Créer une branche"
 
-#: StatCan.OrchardCore.GitHub/Activities/CreatePullRequestTask.cs:40
+#: StatCan.OrchardCore.GitHub\Activities\CreateBranchTask.cs:40
 #. public override LocalizedString Category => S["GitHub"];
-msgctxt "StatCan.OrchardCore.GitHub.Activities.CreatePullRequestTask"
+msgctxt "StatCan.OrchardCore.GitHub.Activities.CreateBranchTask"
 msgid "GitHub"
 msgstr "GitHub"
 
-#: StatCan.OrchardCore.GitHub/Activities/CreatePullRequestTask.cs:85
-#. new Outcome("PullRequestCreated", S["Pull Request created"]),
-msgctxt "StatCan.OrchardCore.GitHub.Activities.CreatePullRequestTask"
-msgid "Pull Request created"
-msgstr "Demande d'extraction créée"
+#: StatCan.OrchardCore.GitHub\Activities\CreateBranchTask.cs:75
+#. new Outcome("BranchCreated", S["Branch created"]),
+msgctxt "StatCan.OrchardCore.GitHub.Activities.CreateBranchTask"
+msgid "Branch created"
+msgstr "Branche créée"
 
-#: StatCan.OrchardCore.GitHub/Activities/CreatePullRequestTask.cs:86
+#: StatCan.OrchardCore.GitHub\Activities\CreateBranchTask.cs:76
 #. new Outcome("Error", S["Error"])
-msgctxt "StatCan.OrchardCore.GitHub.Activities.CreatePullRequestTask"
+msgctxt "StatCan.OrchardCore.GitHub.Activities.CreateBranchTask"
 msgid "Error"
 msgstr "Erreur"
 
-#: StatCan.OrchardCore.GitHub/Activities/CreateIssueTask.cs:38
+#: StatCan.OrchardCore.GitHub\Activities\CreateIssueTask.cs:38
 #. public override LocalizedString DisplayText => S["GitHub - Create Issue"];
 msgctxt "StatCan.OrchardCore.GitHub.Activities.CreateIssueTask"
 msgid "GitHub - Create Issue"
 msgstr "GitHub - Créer un problème"
 
-#: StatCan.OrchardCore.GitHub/Activities/CreateIssueTask.cs:40
+#: StatCan.OrchardCore.GitHub\Activities\CreateIssueTask.cs:40
 #. public override LocalizedString Category => S["GitHub"];
 msgctxt "StatCan.OrchardCore.GitHub.Activities.CreateIssueTask"
 msgid "GitHub"
 msgstr "GitHub"
 
-#: StatCan.OrchardCore.GitHub/Activities/CreateIssueTask.cs:79
+#: StatCan.OrchardCore.GitHub\Activities\CreateIssueTask.cs:79
 #. new Outcome("IssueCreated", S["Issue created"]),
 msgctxt "StatCan.OrchardCore.GitHub.Activities.CreateIssueTask"
 msgid "Issue created"
 msgstr "Problème créé"
 
-#: StatCan.OrchardCore.GitHub/Activities/CreateIssueTask.cs:80
+#: StatCan.OrchardCore.GitHub\Activities\CreateIssueTask.cs:80
 #. new Outcome("Error", S["Error"])
 msgctxt "StatCan.OrchardCore.GitHub.Activities.CreateIssueTask"
 msgid "Error"
 msgstr "Erreur"
 
-#: StatCan.OrchardCore.GitHub/Drivers/GitHubApiSettingsDisplayDriver.cs:86
+#: StatCan.OrchardCore.GitHub\Activities\CreatePullRequestTask.cs:38
+#. public override LocalizedString DisplayText => S["GitHub - Create Pull Request"];
+msgctxt "StatCan.OrchardCore.GitHub.Activities.CreatePullRequestTask"
+msgid "GitHub - Create Pull Request"
+msgstr "GitHub - Créer une demande d'extraction"
+
+#: StatCan.OrchardCore.GitHub\Activities\CreatePullRequestTask.cs:40
+#. public override LocalizedString Category => S["GitHub"];
+msgctxt "StatCan.OrchardCore.GitHub.Activities.CreatePullRequestTask"
+msgid "GitHub"
+msgstr "GitHub"
+
+#: StatCan.OrchardCore.GitHub\Activities\CreatePullRequestTask.cs:85
+#. new Outcome("PullRequestCreated", S["Pull Request created"]),
+msgctxt "StatCan.OrchardCore.GitHub.Activities.CreatePullRequestTask"
+msgid "Pull Request created"
+msgstr "Demande d'extraction créée"
+
+#: StatCan.OrchardCore.GitHub\Activities\CreatePullRequestTask.cs:86
+#. new Outcome("Error", S["Error"])
+msgctxt "StatCan.OrchardCore.GitHub.Activities.CreatePullRequestTask"
+msgid "Error"
+msgstr "Erreur"
+
+#: StatCan.OrchardCore.GitHub\Drivers\GitHubApiSettingsDisplayDriver.cs:86
 #. context.Updater.ModelState.AddModelError(Prefix, S["Please use unique token names"]);
 msgctxt "StatCan.OrchardCore.GitHub.Drivers.GitHubApiSettingsDisplayDriver"
 msgid "Please use unique token names"
 msgstr "Veuillez utiliser des noms de jetons uniques"
 
-#: StatCan.OrchardCore.GitHub/Drivers/GitHubApiSettingsDisplayDriver.cs:111
+#: StatCan.OrchardCore.GitHub\Drivers\GitHubApiSettingsDisplayDriver.cs:111
 #. context.Updater.ModelState.AddModelError(Prefix, S["The tokens are written in an incorrect format."]);
 msgctxt "StatCan.OrchardCore.GitHub.Drivers.GitHubApiSettingsDisplayDriver"
 msgid "The tokens are written in an incorrect format."
 msgstr "Les jetons sont écrits dans un format incorrect."
 
-#: StatCan.OrchardCore.GitHub/Views/CommitFileTask.Fields.Thumbnail.cshtml:1
-#. <h4 class="card-title"><i class="fas fa-code"></i>@T["GitHub - Commit File"]</h4>
-msgctxt "StatCan.OrchardCore.GitHub/Views/CommitFileTask.Fields.Thumbnail"
-msgid "GitHub - Commit File"
-msgstr "GitHub - Fichier de validation"
+#: StatCan.OrchardCore.GitHub\Views\CommitFileTask.Fields.Design.cshtml:3
+#. <h4><i class="fas fa-code"></i>@Model.Activity.GetTitleOrDefault(() => T["Commit File"])</h4>
+msgctxt "StatCan.OrchardCore.GitHub.Views.CommitFileTask.Fields.Design"
+msgid "Commit File"
+msgstr "Fichier de validation"
 
-#: StatCan.OrchardCore.GitHub/Views/CommitFileTask.Fields.Thumbnail.cshtml:2
-#. <p>@T["Commit a file to a branch."]</p>
-msgctxt "StatCan.OrchardCore.GitHub/Views/CommitFileTask.Fields.Thumbnail"
-msgid "Commit a file to a branch."
-msgstr "Validez un fichier dans une branche."
-
-#: StatCan.OrchardCore.GitHub/Views/CreatePullRequestTask.Fields.Design.cshtml:3
-#. <h4><i class="fas fa-project-diagram"></i>@Model.Activity.GetTitleOrDefault(() => T["Create Pull Request"])</h4>
-msgctxt "StatCan.OrchardCore.GitHub/Views/CreatePullRequestTask.Fields.Design"
-msgid "Create Pull Request"
-msgstr "Créer une demande d'extraction"
-
-#: StatCan.OrchardCore.GitHub/Views/CreatePullRequestTask.Fields.Design.cshtml:5
-#. <span>@T["<em>{0} - {1} </em>", Model.Activity.SourceBranch, Model.Activity.TargetBranch]</span>
-msgctxt "StatCan.OrchardCore.GitHub/Views/CreatePullRequestTask.Fields.Design"
+#: StatCan.OrchardCore.GitHub\Views\CommitFileTask.Fields.Design.cshtml:5
+#. <span>@T["<em>{0} - {1} </em>", Model.Activity.BranchName, Model.Activity.FileName]</span>
+msgctxt "StatCan.OrchardCore.GitHub.Views.CommitFileTask.Fields.Design"
 msgid "<em>{0} - {1} </em>"
 msgstr "<em>{0} - {1}</em>"
 
-#: StatCan.OrchardCore.GitHub/Views/CreatePullRequestTask.Fields.Thumbnail.cshtml:1
-#. <h4 class="card-title"><i class="fas fa-project-diagram"></i>@T["GitHub - Create Pull Request"]</h4>
-msgctxt "StatCan.OrchardCore.GitHub/Views/CreatePullRequestTask.Fields.Thumbnail"
-msgid "GitHub - Create Pull Request"
-msgstr "GitHub - Créer une demande d'extraction"
-
-#: StatCan.OrchardCore.GitHub/Views/CreatePullRequestTask.Fields.Thumbnail.cshtml:2
-#. <p>@T["Create a pull request"]</p>
-msgctxt "StatCan.OrchardCore.GitHub/Views/CreatePullRequestTask.Fields.Thumbnail"
-msgid "Create a pull request"
-msgstr "Créer une pull request"
-
-#: StatCan.OrchardCore.GitHub/Views/CreateBranchTask.Fields.Edit.cshtml:6
+#: StatCan.OrchardCore.GitHub\Views\CommitFileTask.Fields.Edit.cshtml:6
 #. <span class="hint">@T["The token to use when interacting with the github api"]</span>
-msgctxt "StatCan.OrchardCore.GitHub/Views/CreateBranchTask.Fields.Edit"
+msgctxt "StatCan.OrchardCore.GitHub.Views.CommitFileTask.Fields.Edit"
 msgid "The token to use when interacting with the github api"
 msgstr "Le jeton à utiliser lors de l'interaction avec l'API github"
 
-#: StatCan.OrchardCore.GitHub/Views/CreateBranchTask.Fields.Edit.cshtml:10
+#: StatCan.OrchardCore.GitHub\Views\CommitFileTask.Fields.Edit.cshtml:10
 #. <label asp-for="Owner">@T["Owner"]</label>
-msgctxt "StatCan.OrchardCore.GitHub/Views/CreateBranchTask.Fields.Edit"
+msgctxt "StatCan.OrchardCore.GitHub.Views.CommitFileTask.Fields.Edit"
 msgid "Owner"
 msgstr "Propriétaire"
 
-#: StatCan.OrchardCore.GitHub/Views/CreateBranchTask.Fields.Edit.cshtml:13
+#: StatCan.OrchardCore.GitHub\Views\CommitFileTask.Fields.Edit.cshtml:13
 #. <span class="hint">@T["The owner (or organization) of the repository. With Liquid support."]</span>
-msgctxt "StatCan.OrchardCore.GitHub/Views/CreateBranchTask.Fields.Edit"
+msgctxt "StatCan.OrchardCore.GitHub.Views.CommitFileTask.Fields.Edit"
 msgid "The owner (or organization) of the repository. With Liquid support."
 msgstr "Le propriétaire (ou l'organisation) du référentiel. Avec support liquide."
 
-#: StatCan.OrchardCore.GitHub/Views/CreateBranchTask.Fields.Edit.cshtml:17
+#: StatCan.OrchardCore.GitHub\Views\CommitFileTask.Fields.Edit.cshtml:17
 #. <label asp-for="Repo">@T["Repository"]</label>
-msgctxt "StatCan.OrchardCore.GitHub/Views/CreateBranchTask.Fields.Edit"
+msgctxt "StatCan.OrchardCore.GitHub.Views.CommitFileTask.Fields.Edit"
 msgid "Repository"
 msgstr "Dépôt"
 
-#: StatCan.OrchardCore.GitHub/Views/CreateBranchTask.Fields.Edit.cshtml:20
+#: StatCan.OrchardCore.GitHub\Views\CommitFileTask.Fields.Edit.cshtml:20
 #. <span class="hint">@T["The name of the repository. With Liquid support."]</span>
-msgctxt "StatCan.OrchardCore.GitHub/Views/CreateBranchTask.Fields.Edit"
+msgctxt "StatCan.OrchardCore.GitHub.Views.CommitFileTask.Fields.Edit"
 msgid "The name of the repository. With Liquid support."
 msgstr "Le nom du référentiel. Avec support liquide."
 
-#: StatCan.OrchardCore.GitHub/Views/CreateBranchTask.Fields.Edit.cshtml:24
+#: StatCan.OrchardCore.GitHub\Views\CommitFileTask.Fields.Edit.cshtml:24
+#. <label asp-for="BranchName">@T["Branch Name"]</label>
+msgctxt "StatCan.OrchardCore.GitHub.Views.CommitFileTask.Fields.Edit"
+msgid "Branch Name"
+msgstr "Nom de la filiale"
+
+#: StatCan.OrchardCore.GitHub\Views\CommitFileTask.Fields.Edit.cshtml:27
+#. <span class="hint">@T["The name of the branch to commit to. With Liquid support."]</span>
+msgctxt "StatCan.OrchardCore.GitHub.Views.CommitFileTask.Fields.Edit"
+msgid "The name of the branch to commit to. With Liquid support."
+msgstr "Le nom de la branche dans laquelle s'engager. Avec support liquide."
+
+#: StatCan.OrchardCore.GitHub\Views\CommitFileTask.Fields.Edit.cshtml:31
+#. <label asp-for="FileName">@T["File Name"]</label>
+msgctxt "StatCan.OrchardCore.GitHub.Views.CommitFileTask.Fields.Edit"
+msgid "File Name"
+msgstr "Nom de fichier"
+
+#: StatCan.OrchardCore.GitHub\Views\CommitFileTask.Fields.Edit.cshtml:34
+#. <span class="hint">@T["The name of the file to create / update. With Liquid support."]</span>
+msgctxt "StatCan.OrchardCore.GitHub.Views.CommitFileTask.Fields.Edit"
+msgid "The name of the file to create / update. With Liquid support."
+msgstr "Le nom du fichier à créer / mettre à jour. Avec support liquide."
+
+#: StatCan.OrchardCore.GitHub\Views\CommitFileTask.Fields.Edit.cshtml:38
+#. <label asp-for="FileContents">@T["File Contents"]</label>
+msgctxt "StatCan.OrchardCore.GitHub.Views.CommitFileTask.Fields.Edit"
+msgid "File Contents"
+msgstr "Contenu du fichier"
+
+#: StatCan.OrchardCore.GitHub\Views\CommitFileTask.Fields.Edit.cshtml:41
+#. <span class="hint">@T["The content of the file to commit. If updating an existing file, this will overwrite it. With Liquid support."]</span>
+msgctxt "StatCan.OrchardCore.GitHub.Views.CommitFileTask.Fields.Edit"
+msgid ""
+"The content of the file to commit. If updating an existing file, this will "
+"overwrite it. With Liquid support."
+msgstr ""
+"Le contenu du fichier à valider. Si vous mettez à jour un fichier existant, "
+"cela l'écrasera. Avec support liquide."
+
+#: StatCan.OrchardCore.GitHub\Views\CommitFileTask.Fields.Edit.cshtml:45
+#. <label asp-for="CommitMessage">@T["Commit message"]</label>
+msgctxt "StatCan.OrchardCore.GitHub.Views.CommitFileTask.Fields.Edit"
+msgid "Commit message"
+msgstr "Message de validation"
+
+#: StatCan.OrchardCore.GitHub\Views\CommitFileTask.Fields.Edit.cshtml:48
+#. <span class="hint">@T["The git commit message. With Liquid support."]</span>
+msgctxt "StatCan.OrchardCore.GitHub.Views.CommitFileTask.Fields.Edit"
+msgid "The git commit message. With Liquid support."
+msgstr "Le message git commit. Avec support liquide."
+
+#: StatCan.OrchardCore.GitHub\Views\CommitFileTask.Fields.Thumbnail.cshtml:1
+#. <h4 class="card-title"><i class="fas fa-code"></i>@T["GitHub - Commit File"]</h4>
+msgctxt "StatCan.OrchardCore.GitHub.Views.CommitFileTask.Fields.Thumbnail"
+msgid "GitHub - Commit File"
+msgstr "GitHub - Fichier de validation"
+
+#: StatCan.OrchardCore.GitHub\Views\CommitFileTask.Fields.Thumbnail.cshtml:2
+#. <p>@T["Commit a file to a branch."]</p>
+msgctxt "StatCan.OrchardCore.GitHub.Views.CommitFileTask.Fields.Thumbnail"
+msgid "Commit a file to a branch."
+msgstr "Validez un fichier dans une branche."
+
+#: StatCan.OrchardCore.GitHub\Views\CreateBranchTask.Fields.Design.cshtml:3
+#. <h4><i class="fas fa-code-branch"></i>@Model.Activity.GetTitleOrDefault(() => T["Create Branch"])</h4>
+msgctxt "StatCan.OrchardCore.GitHub.Views.CreateBranchTask.Fields.Design"
+msgid "Create Branch"
+msgstr "Créer une branche"
+
+#: StatCan.OrchardCore.GitHub\Views\CreateBranchTask.Fields.Design.cshtml:5
+#. <span>@T["<em>{0} -> {1}</em>", Model.Activity.ReferenceName, Model.Activity.TargetBranchName]</span>
+msgctxt "StatCan.OrchardCore.GitHub.Views.CreateBranchTask.Fields.Design"
+msgid "<em>{0} -> {1}</em>"
+msgstr "<em>{0} -&gt; {1}</em>"
+
+#: StatCan.OrchardCore.GitHub\Views\CreateBranchTask.Fields.Edit.cshtml:6
+#. <span class="hint">@T["The token to use when interacting with the github api"]</span>
+msgctxt "StatCan.OrchardCore.GitHub.Views.CreateBranchTask.Fields.Edit"
+msgid "The token to use when interacting with the github api"
+msgstr "Le jeton à utiliser lors de l'interaction avec l'API github"
+
+#: StatCan.OrchardCore.GitHub\Views\CreateBranchTask.Fields.Edit.cshtml:10
+#. <label asp-for="Owner">@T["Owner"]</label>
+msgctxt "StatCan.OrchardCore.GitHub.Views.CreateBranchTask.Fields.Edit"
+msgid "Owner"
+msgstr "Propriétaire"
+
+#: StatCan.OrchardCore.GitHub\Views\CreateBranchTask.Fields.Edit.cshtml:13
+#. <span class="hint">@T["The owner (or organization) of the repository. With Liquid support."]</span>
+msgctxt "StatCan.OrchardCore.GitHub.Views.CreateBranchTask.Fields.Edit"
+msgid "The owner (or organization) of the repository. With Liquid support."
+msgstr "Le propriétaire (ou l'organisation) du référentiel. Avec support liquide."
+
+#: StatCan.OrchardCore.GitHub\Views\CreateBranchTask.Fields.Edit.cshtml:17
+#. <label asp-for="Repo">@T["Repository"]</label>
+msgctxt "StatCan.OrchardCore.GitHub.Views.CreateBranchTask.Fields.Edit"
+msgid "Repository"
+msgstr "Dépôt"
+
+#: StatCan.OrchardCore.GitHub\Views\CreateBranchTask.Fields.Edit.cshtml:20
+#. <span class="hint">@T["The name of the repository. With Liquid support."]</span>
+msgctxt "StatCan.OrchardCore.GitHub.Views.CreateBranchTask.Fields.Edit"
+msgid "The name of the repository. With Liquid support."
+msgstr "Le nom du référentiel. Avec support liquide."
+
+#: StatCan.OrchardCore.GitHub\Views\CreateBranchTask.Fields.Edit.cshtml:24
 #. <label asp-for="ReferenceName">@T["Reference name"]</label>
-msgctxt "StatCan.OrchardCore.GitHub/Views/CreateBranchTask.Fields.Edit"
+msgctxt "StatCan.OrchardCore.GitHub.Views.CreateBranchTask.Fields.Edit"
 msgid "Reference name"
 msgstr "Nom de référence"
 
-#: StatCan.OrchardCore.GitHub/Views/CreateBranchTask.Fields.Edit.cshtml:27
+#: StatCan.OrchardCore.GitHub\Views\CreateBranchTask.Fields.Edit.cshtml:27
 #. <span class="hint">@T["The name of the reference to create a branch from. To select the tip of the master branch, use heads/master for example. With Liquid support."]</span>
-msgctxt "StatCan.OrchardCore.GitHub/Views/CreateBranchTask.Fields.Edit"
+msgctxt "StatCan.OrchardCore.GitHub.Views.CreateBranchTask.Fields.Edit"
 msgid ""
 "The name of the reference to create a branch from. To select the tip of the "
 "master branch, use heads/master for example. With Liquid support."
@@ -212,345 +294,107 @@ msgstr ""
 "sélectionner la pointe de la branche master, utilisez par exemple heads / "
 "master. Avec support liquide."
 
-#: StatCan.OrchardCore.GitHub/Views/CreateBranchTask.Fields.Edit.cshtml:31
+#: StatCan.OrchardCore.GitHub\Views\CreateBranchTask.Fields.Edit.cshtml:31
 #. <label asp-for="TargetBranchName">@T["Target branch name"]</label>
-msgctxt "StatCan.OrchardCore.GitHub/Views/CreateBranchTask.Fields.Edit"
+msgctxt "StatCan.OrchardCore.GitHub.Views.CreateBranchTask.Fields.Edit"
 msgid "Target branch name"
 msgstr "Nom de la branche cible"
 
-#: StatCan.OrchardCore.GitHub/Views/CreateBranchTask.Fields.Edit.cshtml:34
+#: StatCan.OrchardCore.GitHub\Views\CreateBranchTask.Fields.Edit.cshtml:34
 #. <span class="hint">@T["The name of the branch to create. With Liquid support."]</span>
-msgctxt "StatCan.OrchardCore.GitHub/Views/CreateBranchTask.Fields.Edit"
+msgctxt "StatCan.OrchardCore.GitHub.Views.CreateBranchTask.Fields.Edit"
 msgid "The name of the branch to create. With Liquid support."
 msgstr "Le nom de la branche à créer. Avec support liquide."
 
-#: StatCan.OrchardCore.GitHub/Views/CreateIssueTask.Fields.Thumbnail.cshtml:1
-#. <h4 class="card-title"><i class="fas fa-project-diagram"></i>@T["GitHub - Create Issue"]</h4>
-msgctxt "StatCan.OrchardCore.GitHub/Views/CreateIssueTask.Fields.Thumbnail"
-msgid "GitHub - Create Issue"
-msgstr "GitHub - Créer un problème"
-
-#: StatCan.OrchardCore.GitHub/Views/CreateIssueTask.Fields.Thumbnail.cshtml:2
-#. <p>@T["Create a GitHub issue"]</p>
-msgctxt "StatCan.OrchardCore.GitHub/Views/CreateIssueTask.Fields.Thumbnail"
-msgid "Create a GitHub issue"
-msgstr "Créer un problème GitHub"
-
-#: StatCan.OrchardCore.GitHub/Views/CommitFileTask.Fields.Edit.cshtml:6
-#. <span class="hint">@T["The token to use when interacting with the github api"]</span>
-msgctxt "StatCan.OrchardCore.GitHub/Views/CommitFileTask.Fields.Edit"
-msgid "The token to use when interacting with the github api"
-msgstr "Le jeton à utiliser lors de l'interaction avec l'API github"
-
-#: StatCan.OrchardCore.GitHub/Views/CommitFileTask.Fields.Edit.cshtml:10
-#. <label asp-for="Owner">@T["Owner"]</label>
-msgctxt "StatCan.OrchardCore.GitHub/Views/CommitFileTask.Fields.Edit"
-msgid "Owner"
-msgstr "Propriétaire"
-
-#: StatCan.OrchardCore.GitHub/Views/CommitFileTask.Fields.Edit.cshtml:13
-#. <span class="hint">@T["The owner (or organization) of the repository. With Liquid support."]</span>
-msgctxt "StatCan.OrchardCore.GitHub/Views/CommitFileTask.Fields.Edit"
-msgid "The owner (or organization) of the repository. With Liquid support."
-msgstr "Le propriétaire (ou l'organisation) du référentiel. Avec support liquide."
-
-#: StatCan.OrchardCore.GitHub/Views/CommitFileTask.Fields.Edit.cshtml:17
-#. <label asp-for="Repo">@T["Repository"]</label>
-msgctxt "StatCan.OrchardCore.GitHub/Views/CommitFileTask.Fields.Edit"
-msgid "Repository"
-msgstr "Dépôt"
-
-#: StatCan.OrchardCore.GitHub/Views/CommitFileTask.Fields.Edit.cshtml:20
-#. <span class="hint">@T["The name of the repository. With Liquid support."]</span>
-msgctxt "StatCan.OrchardCore.GitHub/Views/CommitFileTask.Fields.Edit"
-msgid "The name of the repository. With Liquid support."
-msgstr "Le nom du référentiel. Avec support liquide."
-
-#: StatCan.OrchardCore.GitHub/Views/CommitFileTask.Fields.Edit.cshtml:24
-#. <label asp-for="BranchName">@T["Branch Name"]</label>
-msgctxt "StatCan.OrchardCore.GitHub/Views/CommitFileTask.Fields.Edit"
-msgid "Branch Name"
-msgstr "Nom de la filiale"
-
-#: StatCan.OrchardCore.GitHub/Views/CommitFileTask.Fields.Edit.cshtml:27
-#. <span class="hint">@T["The name of the branch to commit to. With Liquid support."]</span>
-msgctxt "StatCan.OrchardCore.GitHub/Views/CommitFileTask.Fields.Edit"
-msgid "The name of the branch to commit to. With Liquid support."
-msgstr "Le nom de la branche dans laquelle s'engager. Avec support liquide."
-
-#: StatCan.OrchardCore.GitHub/Views/CommitFileTask.Fields.Edit.cshtml:31
-#. <label asp-for="FileName">@T["File Name"]</label>
-msgctxt "StatCan.OrchardCore.GitHub/Views/CommitFileTask.Fields.Edit"
-msgid "File Name"
-msgstr "Nom de fichier"
-
-#: StatCan.OrchardCore.GitHub/Views/CommitFileTask.Fields.Edit.cshtml:34
-#. <span class="hint">@T["The name of the file to create / update. With Liquid support."]</span>
-msgctxt "StatCan.OrchardCore.GitHub/Views/CommitFileTask.Fields.Edit"
-msgid "The name of the file to create / update. With Liquid support."
-msgstr "Le nom du fichier à créer / mettre à jour. Avec support liquide."
-
-#: StatCan.OrchardCore.GitHub/Views/CommitFileTask.Fields.Edit.cshtml:38
-#. <label asp-for="FileContents">@T["File Contents"]</label>
-msgctxt "StatCan.OrchardCore.GitHub/Views/CommitFileTask.Fields.Edit"
-msgid "File Contents"
-msgstr "Contenu du fichier"
-
-#: StatCan.OrchardCore.GitHub/Views/CommitFileTask.Fields.Edit.cshtml:41
-#. <span class="hint">@T["The content of the file to commit. If updating an existing file, this will overwrite it. With Liquid support."]</span>
-msgctxt "StatCan.OrchardCore.GitHub/Views/CommitFileTask.Fields.Edit"
-msgid ""
-"The content of the file to commit. If updating an existing file, this will "
-"overwrite it. With Liquid support."
-msgstr ""
-"Le contenu du fichier à valider. Si vous mettez à jour un fichier existant, "
-"cela l'écrasera. Avec support liquide."
-
-#: StatCan.OrchardCore.GitHub/Views/CommitFileTask.Fields.Edit.cshtml:45
-#. <label asp-for="CommitMessage">@T["Commit message"]</label>
-msgctxt "StatCan.OrchardCore.GitHub/Views/CommitFileTask.Fields.Edit"
-msgid "Commit message"
-msgstr "Message de validation"
-
-#: StatCan.OrchardCore.GitHub/Views/CommitFileTask.Fields.Edit.cshtml:48
-#. <span class="hint">@T["The git commit message. With Liquid support."]</span>
-msgctxt "StatCan.OrchardCore.GitHub/Views/CommitFileTask.Fields.Edit"
-msgid "The git commit message. With Liquid support."
-msgstr "Le message git commit. Avec support liquide."
-
-#: StatCan.OrchardCore.GitHub/Views/CommitFileTask.Fields.Design.cshtml:3
-#. <h4><i class="fas fa-code"></i>@Model.Activity.GetTitleOrDefault(() => T["Commit File"])</h4>
-msgctxt "StatCan.OrchardCore.GitHub/Views/CommitFileTask.Fields.Design"
-msgid "Commit File"
-msgstr "Fichier de validation"
-
-#: StatCan.OrchardCore.GitHub/Views/CommitFileTask.Fields.Design.cshtml:5
-#. <span>@T["<em>{0} - {1} </em>", Model.Activity.BranchName, Model.Activity.FileName]</span>
-msgctxt "StatCan.OrchardCore.GitHub/Views/CommitFileTask.Fields.Design"
-msgid "<em>{0} - {1} </em>"
-msgstr "<em>{0} - {1}</em>"
-
-#: StatCan.OrchardCore.GitHub/Views/GitHubApiSettings.Edit.cshtml:3
-#. <h3>@T["GitHub Api Settings"]</h3>
-msgctxt "StatCan.OrchardCore.GitHub/Views/GitHubApiSettings.Edit"
-msgid "GitHub Api Settings"
-msgstr "Paramètres de l'API GitHub"
-
-#: StatCan.OrchardCore.GitHub/Views/GitHubApiSettings.Edit.cshtml:5
-#. @T["If you change the name of a token, you might break workflows / liquid filters that use this token name."]
-msgctxt "StatCan.OrchardCore.GitHub/Views/GitHubApiSettings.Edit"
-msgid ""
-"If you change the name of a token, you might break workflows / liquid "
-"filters that use this token name."
-msgstr ""
-"Si vous modifiez le nom d'un jeton, vous risquez de rompre les flux de "
-"travail / filtres liquides qui utilisent ce nom de jeton."
-
-#: StatCan.OrchardCore.GitHub/Views/GitHubApiSettings.Edit.cshtml:19
-#. <th scope="col">@T["Token name"]</th>
-msgctxt "StatCan.OrchardCore.GitHub/Views/GitHubApiSettings.Edit"
-msgid "Token name"
-msgstr "Nom du jeton"
-
-#: StatCan.OrchardCore.GitHub/Views/GitHubApiSettings.Edit.cshtml:20
-#. <th scope="col">@T["Value"]</th>
-msgctxt "StatCan.OrchardCore.GitHub/Views/GitHubApiSettings.Edit"
-msgid "Value"
-msgstr "Valeur"
-
-#: StatCan.OrchardCore.GitHub/Views/GitHubApiSettings.Edit.cshtml:31
-#. <a v-on:click="remove(index)" href="javascript:void(0)" title="@T["Remove token from the list"]" class="btn">
-msgctxt "StatCan.OrchardCore.GitHub/Views/GitHubApiSettings.Edit"
-msgid "Remove token from the list"
-msgstr "Supprimer le jeton de la liste"
-
-#: StatCan.OrchardCore.GitHub/Views/GitHubApiSettings.Edit.cshtml:39
-#. <a v-on:click="add()" class="btn btn-light w-100 btn-sm"><i class="fas fa-plus small"></i> @T["Add an token"]</a>
-msgctxt "StatCan.OrchardCore.GitHub/Views/GitHubApiSettings.Edit"
-msgid "Add an token"
-msgstr "Ajouter un jeton"
-
-#: StatCan.OrchardCore.GitHub/Views/GitHubApiSettings.Edit.cshtml:49
-#. <label asp-for="ApiTokens">@T["Tokens"]</label>
-msgctxt "StatCan.OrchardCore.GitHub/Views/GitHubApiSettings.Edit"
-msgid "Tokens"
-msgstr "Jetons"
-
-#: StatCan.OrchardCore.GitHub/Views/CreateIssueTask.Fields.Design.cshtml:3
-#. <h4><i class="fas fa-plus-square"></i>@Model.Activity.GetTitleOrDefault(() => T["Create Issue"])</h4>
-msgctxt "StatCan.OrchardCore.GitHub/Views/CreateIssueTask.Fields.Design"
-msgid "Create Issue"
-msgstr "Créer un problème"
-
-#: StatCan.OrchardCore.GitHub/Views/CreateIssueTask.Fields.Design.cshtml:5
-#. <span>@T["<em>{0}</em>", Model.Activity.Title]</span>
-msgctxt "StatCan.OrchardCore.GitHub/Views/CreateIssueTask.Fields.Design"
-msgid "<em>{0}</em>"
-msgstr "<em>{0}</em>"
-
-#: StatCan.OrchardCore.GitHub/Views/CreateBranchTask.Fields.Thumbnail.cshtml:1
+#: StatCan.OrchardCore.GitHub\Views\CreateBranchTask.Fields.Thumbnail.cshtml:1
 #. <h4 class="card-title"><i class="fas fa-code-branch"></i>@T["GitHub - Create Branch"]</h4>
-msgctxt "StatCan.OrchardCore.GitHub/Views/CreateBranchTask.Fields.Thumbnail"
+msgctxt "StatCan.OrchardCore.GitHub.Views.CreateBranchTask.Fields.Thumbnail"
 msgid "GitHub - Create Branch"
 msgstr "GitHub - Créer une branche"
 
-#: StatCan.OrchardCore.GitHub/Views/CreateBranchTask.Fields.Thumbnail.cshtml:2
+#: StatCan.OrchardCore.GitHub\Views\CreateBranchTask.Fields.Thumbnail.cshtml:2
 #. <p>@T["Create a branch from a git reference."]</p>
-msgctxt "StatCan.OrchardCore.GitHub/Views/CreateBranchTask.Fields.Thumbnail"
+msgctxt "StatCan.OrchardCore.GitHub.Views.CreateBranchTask.Fields.Thumbnail"
 msgid "Create a branch from a git reference."
 msgstr "Créez une branche à partir d'une référence git."
 
-#: StatCan.OrchardCore.GitHub/Views/CreatePullRequestTask.Fields.Edit.cshtml:6
+#: StatCan.OrchardCore.GitHub\Views\CreateIssueTask.Fields.Design.cshtml:3
+#. <h4><i class="fas fa-plus-square"></i>@Model.Activity.GetTitleOrDefault(() => T["Create Issue"])</h4>
+msgctxt "StatCan.OrchardCore.GitHub.Views.CreateIssueTask.Fields.Design"
+msgid "Create Issue"
+msgstr "Créer un problème"
+
+#: StatCan.OrchardCore.GitHub\Views\CreateIssueTask.Fields.Design.cshtml:5
+#. <span>@T["<em>{0}</em>", Model.Activity.Title]</span>
+msgctxt "StatCan.OrchardCore.GitHub.Views.CreateIssueTask.Fields.Design"
+msgid "<em>{0}</em>"
+msgstr "<em>{0}</em>"
+
+#: StatCan.OrchardCore.GitHub\Views\CreateIssueTask.Fields.Edit.cshtml:6
 #. <span class="hint">@T["The token to use when interacting with the github api"]</span>
-msgctxt "StatCan.OrchardCore.GitHub/Views/CreatePullRequestTask.Fields.Edit"
+msgctxt "StatCan.OrchardCore.GitHub.Views.CreateIssueTask.Fields.Edit"
 msgid "The token to use when interacting with the github api"
 msgstr "Le jeton à utiliser lors de l'interaction avec l'API github"
 
-#: StatCan.OrchardCore.GitHub/Views/CreatePullRequestTask.Fields.Edit.cshtml:10
+#: StatCan.OrchardCore.GitHub\Views\CreateIssueTask.Fields.Edit.cshtml:10
 #. <label asp-for="Owner">@T["Owner"]</label>
-msgctxt "StatCan.OrchardCore.GitHub/Views/CreatePullRequestTask.Fields.Edit"
+msgctxt "StatCan.OrchardCore.GitHub.Views.CreateIssueTask.Fields.Edit"
 msgid "Owner"
 msgstr "Propriétaire"
 
-#: StatCan.OrchardCore.GitHub/Views/CreatePullRequestTask.Fields.Edit.cshtml:13
+#: StatCan.OrchardCore.GitHub\Views\CreateIssueTask.Fields.Edit.cshtml:13
 #. <span class="hint">@T["The owner (or organization) of the repository. With Liquid support."]</span>
-msgctxt "StatCan.OrchardCore.GitHub/Views/CreatePullRequestTask.Fields.Edit"
+msgctxt "StatCan.OrchardCore.GitHub.Views.CreateIssueTask.Fields.Edit"
 msgid "The owner (or organization) of the repository. With Liquid support."
 msgstr "Le propriétaire (ou l'organisation) du référentiel. Avec support liquide."
 
-#: StatCan.OrchardCore.GitHub/Views/CreatePullRequestTask.Fields.Edit.cshtml:17
+#: StatCan.OrchardCore.GitHub\Views\CreateIssueTask.Fields.Edit.cshtml:17
 #. <label asp-for="Repo">@T["Repository"]</label>
-msgctxt "StatCan.OrchardCore.GitHub/Views/CreatePullRequestTask.Fields.Edit"
+msgctxt "StatCan.OrchardCore.GitHub.Views.CreateIssueTask.Fields.Edit"
 msgid "Repository"
 msgstr "Dépôt"
 
-#: StatCan.OrchardCore.GitHub/Views/CreatePullRequestTask.Fields.Edit.cshtml:20
+#: StatCan.OrchardCore.GitHub\Views\CreateIssueTask.Fields.Edit.cshtml:20
 #. <span class="hint">@T["The name of the repository. With Liquid support."]</span>
-msgctxt "StatCan.OrchardCore.GitHub/Views/CreatePullRequestTask.Fields.Edit"
+msgctxt "StatCan.OrchardCore.GitHub.Views.CreateIssueTask.Fields.Edit"
 msgid "The name of the repository. With Liquid support."
 msgstr "Le nom du référentiel. Avec support liquide."
 
-#: StatCan.OrchardCore.GitHub/Views/CreatePullRequestTask.Fields.Edit.cshtml:24
-#. <label asp-for="SourceBranch">@T["Source branch"]</label>
-msgctxt "StatCan.OrchardCore.GitHub/Views/CreatePullRequestTask.Fields.Edit"
-msgid "Source branch"
-msgstr "Branche source"
-
-#: StatCan.OrchardCore.GitHub/Views/CreatePullRequestTask.Fields.Edit.cshtml:27
-#. <span class="hint">@T["The branch to use as the pull request source. With Liquid support."]</span>
-msgctxt "StatCan.OrchardCore.GitHub/Views/CreatePullRequestTask.Fields.Edit"
-msgid "The branch to use as the pull request source. With Liquid support."
-msgstr ""
-"La branche à utiliser comme source de demande d'extraction. Avec support "
-"liquide."
-
-#: StatCan.OrchardCore.GitHub/Views/CreatePullRequestTask.Fields.Edit.cshtml:31
-#. <label asp-for="TargetBranch">@T["Target branch"]</label>
-msgctxt "StatCan.OrchardCore.GitHub/Views/CreatePullRequestTask.Fields.Edit"
-msgid "Target branch"
-msgstr "Branche cible"
-
-#: StatCan.OrchardCore.GitHub/Views/CreatePullRequestTask.Fields.Edit.cshtml:34
-#. <span class="hint">@T["The branch to use as the pull request target. With Liquid support."]</span>
-msgctxt "StatCan.OrchardCore.GitHub/Views/CreatePullRequestTask.Fields.Edit"
-msgid "The branch to use as the pull request target. With Liquid support."
-msgstr ""
-"La branche à utiliser comme cible de la demande d'extraction. Avec support "
-"liquide."
-
-#: StatCan.OrchardCore.GitHub/Views/CreatePullRequestTask.Fields.Edit.cshtml:38
+#: StatCan.OrchardCore.GitHub\Views\CreateIssueTask.Fields.Edit.cshtml:24
 #. <label asp-for="Title">@T["Title"]</label>
-msgctxt "StatCan.OrchardCore.GitHub/Views/CreatePullRequestTask.Fields.Edit"
+msgctxt "StatCan.OrchardCore.GitHub.Views.CreateIssueTask.Fields.Edit"
 msgid "Title"
 msgstr "Titre"
 
-#: StatCan.OrchardCore.GitHub/Views/CreatePullRequestTask.Fields.Edit.cshtml:41
-#. <span class="hint">@T["The title of the pull request. With Liquid support."]</span>
-msgctxt "StatCan.OrchardCore.GitHub/Views/CreatePullRequestTask.Fields.Edit"
-msgid "The title of the pull request. With Liquid support."
-msgstr "Le titre de la demande d'extraction. Avec support liquide."
-
-#: StatCan.OrchardCore.GitHub/Views/CreatePullRequestTask.Fields.Edit.cshtml:45
-#. <label asp-for="Description">@T["Description"]</label>
-msgctxt "StatCan.OrchardCore.GitHub/Views/CreatePullRequestTask.Fields.Edit"
-msgid "Description"
-msgstr "La description"
-
-#: StatCan.OrchardCore.GitHub/Views/CreatePullRequestTask.Fields.Edit.cshtml:48
-#. <span class="hint">@T["Pull request description supports GitHub flavored markdown. With Liquid support."]</span>
-msgctxt "StatCan.OrchardCore.GitHub/Views/CreatePullRequestTask.Fields.Edit"
-msgid ""
-"Pull request description supports GitHub flavored markdown. With Liquid "
-"support."
-msgstr ""
-"La description de la demande d'extraction prend en charge le démarquage de "
-"type GitHub. Avec support liquide."
-
-#: StatCan.OrchardCore.GitHub/Views/CreateIssueTask.Fields.Edit.cshtml:6
-#. <span class="hint">@T["The token to use when interacting with the github api"]</span>
-msgctxt "StatCan.OrchardCore.GitHub/Views/CreateIssueTask.Fields.Edit"
-msgid "The token to use when interacting with the github api"
-msgstr "Le jeton à utiliser lors de l'interaction avec l'API github"
-
-#: StatCan.OrchardCore.GitHub/Views/CreateIssueTask.Fields.Edit.cshtml:10
-#. <label asp-for="Owner">@T["Owner"]</label>
-msgctxt "StatCan.OrchardCore.GitHub/Views/CreateIssueTask.Fields.Edit"
-msgid "Owner"
-msgstr "Propriétaire"
-
-#: StatCan.OrchardCore.GitHub/Views/CreateIssueTask.Fields.Edit.cshtml:13
-#. <span class="hint">@T["The owner (or organization) of the repository. With Liquid support."]</span>
-msgctxt "StatCan.OrchardCore.GitHub/Views/CreateIssueTask.Fields.Edit"
-msgid "The owner (or organization) of the repository. With Liquid support."
-msgstr "Le propriétaire (ou l'organisation) du référentiel. Avec support liquide."
-
-#: StatCan.OrchardCore.GitHub/Views/CreateIssueTask.Fields.Edit.cshtml:17
-#. <label asp-for="Repo">@T["Repository"]</label>
-msgctxt "StatCan.OrchardCore.GitHub/Views/CreateIssueTask.Fields.Edit"
-msgid "Repository"
-msgstr "Dépôt"
-
-#: StatCan.OrchardCore.GitHub/Views/CreateIssueTask.Fields.Edit.cshtml:20
-#. <span class="hint">@T["The name of the repository. With Liquid support."]</span>
-msgctxt "StatCan.OrchardCore.GitHub/Views/CreateIssueTask.Fields.Edit"
-msgid "The name of the repository. With Liquid support."
-msgstr "Le nom du référentiel. Avec support liquide."
-
-#: StatCan.OrchardCore.GitHub/Views/CreateIssueTask.Fields.Edit.cshtml:24
-#. <label asp-for="Title">@T["Title"]</label>
-msgctxt "StatCan.OrchardCore.GitHub/Views/CreateIssueTask.Fields.Edit"
-msgid "Title"
-msgstr "Titre"
-
-#: StatCan.OrchardCore.GitHub/Views/CreateIssueTask.Fields.Edit.cshtml:27
+#: StatCan.OrchardCore.GitHub\Views\CreateIssueTask.Fields.Edit.cshtml:27
 #. <span class="hint">@T["The title of the issue. With Liquid support."]</span>
-msgctxt "StatCan.OrchardCore.GitHub/Views/CreateIssueTask.Fields.Edit"
+msgctxt "StatCan.OrchardCore.GitHub.Views.CreateIssueTask.Fields.Edit"
 msgid "The title of the issue. With Liquid support."
 msgstr "Le titre du numéro. Avec support liquide."
 
-#: StatCan.OrchardCore.GitHub/Views/CreateIssueTask.Fields.Edit.cshtml:31
+#: StatCan.OrchardCore.GitHub\Views\CreateIssueTask.Fields.Edit.cshtml:31
 #. <label asp-for="Description">@T["Description"]</label>
-msgctxt "StatCan.OrchardCore.GitHub/Views/CreateIssueTask.Fields.Edit"
+msgctxt "StatCan.OrchardCore.GitHub.Views.CreateIssueTask.Fields.Edit"
 msgid "Description"
 msgstr "La description"
 
-#: StatCan.OrchardCore.GitHub/Views/CreateIssueTask.Fields.Edit.cshtml:34
+#: StatCan.OrchardCore.GitHub\Views\CreateIssueTask.Fields.Edit.cshtml:34
 #. <span class="hint">@T["Issue description supports GitHub flavored markdown. With Liquid support."]</span>
-msgctxt "StatCan.OrchardCore.GitHub/Views/CreateIssueTask.Fields.Edit"
+msgctxt "StatCan.OrchardCore.GitHub.Views.CreateIssueTask.Fields.Edit"
 msgid "Issue description supports GitHub flavored markdown. With Liquid support."
 msgstr ""
 "La description du problème prend en charge le démarquage de GitHub. Avec "
 "support liquide."
 
-#: StatCan.OrchardCore.GitHub/Views/CreateIssueTask.Fields.Edit.cshtml:38
+#: StatCan.OrchardCore.GitHub\Views\CreateIssueTask.Fields.Edit.cshtml:38
 #. <label asp-for="Labels">@T["Labels"]</label>
-msgctxt "StatCan.OrchardCore.GitHub/Views/CreateIssueTask.Fields.Edit"
+msgctxt "StatCan.OrchardCore.GitHub.Views.CreateIssueTask.Fields.Edit"
 msgid "Labels"
 msgstr "Étiquettes"
 
-#: StatCan.OrchardCore.GitHub/Views/CreateIssueTask.Fields.Edit.cshtml:41
+#: StatCan.OrchardCore.GitHub\Views\CreateIssueTask.Fields.Edit.cshtml:41
 #. <span class="hint">@T["A comma seperated list of issue labels. These labels must exist on the repository or an error will be thrown. With Liquid support."]</span>
-msgctxt "StatCan.OrchardCore.GitHub/Views/CreateIssueTask.Fields.Edit"
+msgctxt "StatCan.OrchardCore.GitHub.Views.CreateIssueTask.Fields.Edit"
 msgid ""
 "A comma seperated list of issue labels. These labels must exist on the "
 "repository or an error will be thrown. With Liquid support."
@@ -559,20 +403,176 @@ msgstr ""
 "étiquettes doivent exister sur le référentiel ou une erreur sera générée. "
 "Avec support liquide."
 
-#: StatCan.OrchardCore.GitHub/Views/CreateBranchTask.Fields.Design.cshtml:3
-#. <h4><i class="fas fa-code-branch"></i>@Model.Activity.GetTitleOrDefault(() => T["Create Branch"])</h4>
-msgctxt "StatCan.OrchardCore.GitHub/Views/CreateBranchTask.Fields.Design"
-msgid "Create Branch"
-msgstr "Créer une branche"
+#: StatCan.OrchardCore.GitHub\Views\CreateIssueTask.Fields.Thumbnail.cshtml:1
+#. <h4 class="card-title"><i class="fas fa-project-diagram"></i>@T["GitHub - Create Issue"]</h4>
+msgctxt "StatCan.OrchardCore.GitHub.Views.CreateIssueTask.Fields.Thumbnail"
+msgid "GitHub - Create Issue"
+msgstr "GitHub - Créer un problème"
 
-#: StatCan.OrchardCore.GitHub/Views/CreateBranchTask.Fields.Design.cshtml:5
-#. <span>@T["<em>{0} -> {1}</em>", Model.Activity.ReferenceName, Model.Activity.TargetBranchName]</span>
-msgctxt "StatCan.OrchardCore.GitHub/Views/CreateBranchTask.Fields.Design"
-msgid "<em>{0} -> {1}</em>"
-msgstr "<em>{0} -&gt; {1}</em>"
+#: StatCan.OrchardCore.GitHub\Views\CreateIssueTask.Fields.Thumbnail.cshtml:2
+#. <p>@T["Create a GitHub issue"]</p>
+msgctxt "StatCan.OrchardCore.GitHub.Views.CreateIssueTask.Fields.Thumbnail"
+msgid "Create a GitHub issue"
+msgstr "Créer un problème GitHub"
 
-#: StatCan.OrchardCore.GitHub/Views/Shared/Components/SelectToken/Default.cshtml:2
+#: StatCan.OrchardCore.GitHub\Views\CreatePullRequestTask.Fields.Design.cshtml:3
+#. <h4><i class="fas fa-project-diagram"></i>@Model.Activity.GetTitleOrDefault(() => T["Create Pull Request"])</h4>
+msgctxt "StatCan.OrchardCore.GitHub.Views.CreatePullRequestTask.Fields.Design"
+msgid "Create Pull Request"
+msgstr "Créer une demande d'extraction"
+
+#: StatCan.OrchardCore.GitHub\Views\CreatePullRequestTask.Fields.Design.cshtml:5
+#. <span>@T["<em>{0} - {1} </em>", Model.Activity.SourceBranch, Model.Activity.TargetBranch]</span>
+msgctxt "StatCan.OrchardCore.GitHub.Views.CreatePullRequestTask.Fields.Design"
+msgid "<em>{0} - {1} </em>"
+msgstr "<em>{0} - {1}</em>"
+
+#: StatCan.OrchardCore.GitHub\Views\CreatePullRequestTask.Fields.Edit.cshtml:6
+#. <span class="hint">@T["The token to use when interacting with the github api"]</span>
+msgctxt "StatCan.OrchardCore.GitHub.Views.CreatePullRequestTask.Fields.Edit"
+msgid "The token to use when interacting with the github api"
+msgstr "Le jeton à utiliser lors de l'interaction avec l'API github"
+
+#: StatCan.OrchardCore.GitHub\Views\CreatePullRequestTask.Fields.Edit.cshtml:10
+#. <label asp-for="Owner">@T["Owner"]</label>
+msgctxt "StatCan.OrchardCore.GitHub.Views.CreatePullRequestTask.Fields.Edit"
+msgid "Owner"
+msgstr "Propriétaire"
+
+#: StatCan.OrchardCore.GitHub\Views\CreatePullRequestTask.Fields.Edit.cshtml:13
+#. <span class="hint">@T["The owner (or organization) of the repository. With Liquid support."]</span>
+msgctxt "StatCan.OrchardCore.GitHub.Views.CreatePullRequestTask.Fields.Edit"
+msgid "The owner (or organization) of the repository. With Liquid support."
+msgstr "Le propriétaire (ou l'organisation) du référentiel. Avec support liquide."
+
+#: StatCan.OrchardCore.GitHub\Views\CreatePullRequestTask.Fields.Edit.cshtml:17
+#. <label asp-for="Repo">@T["Repository"]</label>
+msgctxt "StatCan.OrchardCore.GitHub.Views.CreatePullRequestTask.Fields.Edit"
+msgid "Repository"
+msgstr "Dépôt"
+
+#: StatCan.OrchardCore.GitHub\Views\CreatePullRequestTask.Fields.Edit.cshtml:20
+#. <span class="hint">@T["The name of the repository. With Liquid support."]</span>
+msgctxt "StatCan.OrchardCore.GitHub.Views.CreatePullRequestTask.Fields.Edit"
+msgid "The name of the repository. With Liquid support."
+msgstr "Le nom du référentiel. Avec support liquide."
+
+#: StatCan.OrchardCore.GitHub\Views\CreatePullRequestTask.Fields.Edit.cshtml:24
+#. <label asp-for="SourceBranch">@T["Source branch"]</label>
+msgctxt "StatCan.OrchardCore.GitHub.Views.CreatePullRequestTask.Fields.Edit"
+msgid "Source branch"
+msgstr "Branche source"
+
+#: StatCan.OrchardCore.GitHub\Views\CreatePullRequestTask.Fields.Edit.cshtml:27
+#. <span class="hint">@T["The branch to use as the pull request source. With Liquid support."]</span>
+msgctxt "StatCan.OrchardCore.GitHub.Views.CreatePullRequestTask.Fields.Edit"
+msgid "The branch to use as the pull request source. With Liquid support."
+msgstr ""
+"La branche à utiliser comme source de demande d'extraction. Avec support "
+"liquide."
+
+#: StatCan.OrchardCore.GitHub\Views\CreatePullRequestTask.Fields.Edit.cshtml:31
+#. <label asp-for="TargetBranch">@T["Target branch"]</label>
+msgctxt "StatCan.OrchardCore.GitHub.Views.CreatePullRequestTask.Fields.Edit"
+msgid "Target branch"
+msgstr "Branche cible"
+
+#: StatCan.OrchardCore.GitHub\Views\CreatePullRequestTask.Fields.Edit.cshtml:34
+#. <span class="hint">@T["The branch to use as the pull request target. With Liquid support."]</span>
+msgctxt "StatCan.OrchardCore.GitHub.Views.CreatePullRequestTask.Fields.Edit"
+msgid "The branch to use as the pull request target. With Liquid support."
+msgstr ""
+"La branche à utiliser comme cible de la demande d'extraction. Avec support "
+"liquide."
+
+#: StatCan.OrchardCore.GitHub\Views\CreatePullRequestTask.Fields.Edit.cshtml:38
+#. <label asp-for="Title">@T["Title"]</label>
+msgctxt "StatCan.OrchardCore.GitHub.Views.CreatePullRequestTask.Fields.Edit"
+msgid "Title"
+msgstr "Titre"
+
+#: StatCan.OrchardCore.GitHub\Views\CreatePullRequestTask.Fields.Edit.cshtml:41
+#. <span class="hint">@T["The title of the pull request. With Liquid support."]</span>
+msgctxt "StatCan.OrchardCore.GitHub.Views.CreatePullRequestTask.Fields.Edit"
+msgid "The title of the pull request. With Liquid support."
+msgstr "Le titre de la demande d'extraction. Avec support liquide."
+
+#: StatCan.OrchardCore.GitHub\Views\CreatePullRequestTask.Fields.Edit.cshtml:45
+#. <label asp-for="Description">@T["Description"]</label>
+msgctxt "StatCan.OrchardCore.GitHub.Views.CreatePullRequestTask.Fields.Edit"
+msgid "Description"
+msgstr "La description"
+
+#: StatCan.OrchardCore.GitHub\Views\CreatePullRequestTask.Fields.Edit.cshtml:48
+#. <span class="hint">@T["Pull request description supports GitHub flavored markdown. With Liquid support."]</span>
+msgctxt "StatCan.OrchardCore.GitHub.Views.CreatePullRequestTask.Fields.Edit"
+msgid ""
+"Pull request description supports GitHub flavored markdown. With Liquid "
+"support."
+msgstr ""
+"La description de la demande d'extraction prend en charge le démarquage de "
+"type GitHub. Avec support liquide."
+
+#: StatCan.OrchardCore.GitHub\Views\CreatePullRequestTask.Fields.Thumbnail.cshtml:1
+#. <h4 class="card-title"><i class="fas fa-project-diagram"></i>@T["GitHub - Create Pull Request"]</h4>
+msgctxt "StatCan.OrchardCore.GitHub.Views.CreatePullRequestTask.Fields.Thumbnail"
+msgid "GitHub - Create Pull Request"
+msgstr "GitHub - Créer une demande d'extraction"
+
+#: StatCan.OrchardCore.GitHub\Views\CreatePullRequestTask.Fields.Thumbnail.cshtml:2
+#. <p>@T["Create a pull request"]</p>
+msgctxt "StatCan.OrchardCore.GitHub.Views.CreatePullRequestTask.Fields.Thumbnail"
+msgid "Create a pull request"
+msgstr "Créer une pull request"
+
+#: StatCan.OrchardCore.GitHub\Views\GitHubApiSettings.Edit.cshtml:3
+#. <h3>@T["GitHub Api Settings"]</h3>
+msgctxt "StatCan.OrchardCore.GitHub.Views.GitHubApiSettings.Edit"
+msgid "GitHub Api Settings"
+msgstr "Paramètres de l'API GitHub"
+
+#: StatCan.OrchardCore.GitHub\Views\GitHubApiSettings.Edit.cshtml:5
+#. @T["If you change the name of a token, you might break workflows / liquid filters that use this token name."]
+msgctxt "StatCan.OrchardCore.GitHub.Views.GitHubApiSettings.Edit"
+msgid ""
+"If you change the name of a token, you might break workflows / liquid "
+"filters that use this token name."
+msgstr ""
+"Si vous modifiez le nom d'un jeton, vous risquez de rompre les flux de "
+"travail / filtres liquides qui utilisent ce nom de jeton."
+
+#: StatCan.OrchardCore.GitHub\Views\GitHubApiSettings.Edit.cshtml:19
+#. <th scope="col">@T["Token name"]</th>
+msgctxt "StatCan.OrchardCore.GitHub.Views.GitHubApiSettings.Edit"
+msgid "Token name"
+msgstr "Nom du jeton"
+
+#: StatCan.OrchardCore.GitHub\Views\GitHubApiSettings.Edit.cshtml:20
+#. <th scope="col">@T["Value"]</th>
+msgctxt "StatCan.OrchardCore.GitHub.Views.GitHubApiSettings.Edit"
+msgid "Value"
+msgstr "Valeur"
+
+#: StatCan.OrchardCore.GitHub\Views\GitHubApiSettings.Edit.cshtml:31
+#. <a v-on:click="remove(index)" href="javascript:void(0)" title="@T["Remove token from the list"]" class="btn">
+msgctxt "StatCan.OrchardCore.GitHub.Views.GitHubApiSettings.Edit"
+msgid "Remove token from the list"
+msgstr "Supprimer le jeton de la liste"
+
+#: StatCan.OrchardCore.GitHub\Views\GitHubApiSettings.Edit.cshtml:39
+#. <a v-on:click="add()" class="btn btn-light w-100 btn-sm"><i class="fas fa-plus small"></i> @T["Add an token"]</a>
+msgctxt "StatCan.OrchardCore.GitHub.Views.GitHubApiSettings.Edit"
+msgid "Add an token"
+msgstr "Ajouter un jeton"
+
+#: StatCan.OrchardCore.GitHub\Views\GitHubApiSettings.Edit.cshtml:49
+#. <label asp-for="ApiTokens">@T["Tokens"]</label>
+msgctxt "StatCan.OrchardCore.GitHub.Views.GitHubApiSettings.Edit"
+msgid "Tokens"
+msgstr "Jetons"
+
+#: StatCan.OrchardCore.GitHub\Views\Shared\Components\SelectToken\Default.cshtml:2
 #. <label for="@Html.Id(Model.HtmlName)">@T["Token Name"]</label>
-msgctxt "StatCan.OrchardCore.GitHub/Views/Shared/Components/SelectToken/Default"
+msgctxt "StatCan.OrchardCore.GitHub.Views.Shared.Components.SelectToken.Default"
 msgid "Token Name"
 msgstr "Nom du jeton"
