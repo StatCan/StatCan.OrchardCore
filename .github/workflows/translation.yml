@@ -37,6 +37,7 @@ jobs:
       with:
         commit-message: Update translations
         signoff: false
+        base: localization
         branch: update-localizations
         delete-branch: true
         title: '[Localization] Update translations'
