@@ -4,7 +4,6 @@ on:
 env:
   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
   DOTNET_CLI_TELEMETRY_OPTOUT: true
-  
 jobs:
   extract_translations:
     name: Extract Translations
@@ -44,7 +43,6 @@ jobs:
         labels: |
           localization
         assignees: jptissot
-
     - name: Check pull request output
       run: |
         echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
