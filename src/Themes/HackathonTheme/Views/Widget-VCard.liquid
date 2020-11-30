@@ -1,3 +1,5 @@
+{% assign numberOfActions = Model.ContentItem.Content.Actions | size %}
+
 <v-card>
   {% if Model.ContentItem.Content.VCard.Title.Text %}
     <v-card-title>{{ Model.ContentItem.Content.VCard.Title.Text }}</v-card-title>
@@ -5,12 +7,12 @@
   {% if Model.ContentItem.Content.VCard.Subtitle.Text %}
     <v-card-subtitle>{{ Model.ContentItem.Content.VCard.Subtitle.Text }}</v-card-subtitle>
   {% endif %}
-  {% if Model.ContentItem.Content.VCard.Content.Html %}
+  {% if Model.ContentItem.Content.VCard.Content.Html != "" %}
     <v-card-text>
       {{ Model.ContentItem.Content.VCard.Content.Html | sanitize_html | shortcode | raw }}
     </v-card-text>
   {% endif %}
-  {% if Model.ContentItem.Content.Actions %}
+  {% if numberOfActions > 0 %}
     <v-card-actions>
       {% assign contentItems = Model.ContentItem.Content.Actions.ContentItems %}
       {% for contentItem in contentItems %}
