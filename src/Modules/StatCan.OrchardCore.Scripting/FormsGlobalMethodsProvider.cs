@@ -6,12 +6,14 @@ using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json.Linq;
 using OrchardCore.Infrastructure.Html;
 using OrchardCore.Scripting;
+using OrchardCore.ReCaptcha.Services;
 
 namespace StatCan.OrchardCore.Scripting
 {
     public class FormsGlobalMethodsProvider : IGlobalMethodProvider
     {
         private readonly GlobalMethod _formAsJsonObject;
+        private readonly GlobalMethod _validateReCaptcha;
 
         public FormsGlobalMethodsProvider()
         {
@@ -37,11 +39,19 @@ namespace StatCan.OrchardCore.Scripting
                 }
                 )
             };
+            _validateReCaptcha = new GlobalMethod
+            {
+                Name = "validateReCaptcha",
+                Method = serviceProvider => (Func<string, bool>)((reCaptchaResponse) => {
+                    var recaptchaService = serviceProvider.GetRequiredService<ReCaptchaService>();
+                    return recaptchaService.VerifyCaptchaResponseAsync(reCaptchaResponse).GetAwaiter().GetResult();
+                })
+            };
         }
 
         public IEnumerable<GlobalMethod> GetMethods()
         {
-            return new[] { _formAsJsonObject };
+            return new[] { _formAsJsonObject, _validateReCaptcha };
         }
     }
 }

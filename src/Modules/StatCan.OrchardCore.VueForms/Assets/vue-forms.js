@@ -62,13 +62,19 @@ function initForm(app) {
         observer.validate().then((valid) => {
           if (valid) {
             const action = vm.$refs.form.getAttribute("action");
-            var token = vm.$refs.form.querySelector('input[name="__RequestVerificationToken"]');;
+            let frmData = {...vm.$data};
+            frmData.__RequestVerificationToken = vm.$refs.form.querySelector('input[name="__RequestVerificationToken"]').value;
+            if(typeof(grecaptcha) == 'object')
+            {
+              frmData.recaptcha = grecaptcha.getResponse();
+            }
+
             vm.form.submitting = true;
             
             $.ajax({
               type: "POST",
               url: action,
-              data: {...vm.$data, __RequestVerificationToken: token.value },
+              data: frmData,
               cache: false,
               dataType: "json",
               success: function (data) {
