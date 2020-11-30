@@ -21,7 +21,6 @@ var fs = require("file-system"),
   eol = require("gulp-eol"),
   util = require("gulp-util"),
   postcss = require("gulp-postcss"),
-  rtl = require("postcss-rtl"),
   babel = require("gulp-babel");
 
 // For compat with older versions of Node.js.
@@ -247,9 +246,6 @@ function buildCssPipeline(assetGroup, doConcat, doRebuild) {
   var generateSourceMaps = assetGroup.hasOwnProperty("generateSourceMaps")
     ? assetGroup.generateSourceMaps
     : true;
-  var generateRTL = assetGroup.hasOwnProperty("generateRTL")
-    ? assetGroup.generateRTL
-    : false;
   var containsLessOrScss = assetGroup.inputPaths.some(function (inputPath) {
     var ext = path.extname(inputPath).toLowerCase();
     return ext === ".less" || ext === ".scss";
@@ -285,7 +281,6 @@ function buildCssPipeline(assetGroup, doConcat, doRebuild) {
       )
     )
     .pipe(gulpif(doConcat, concat(assetGroup.outputFileName)))
-    .pipe(gulpif(generateRTL, postcss([rtl()])))
     .pipe(
       minify({
         minify: true,
@@ -343,7 +338,6 @@ function buildCssPipeline(assetGroup, doConcat, doRebuild) {
         "*/\n\n"
       )
     )
-    .pipe(gulpif(generateRTL, postcss([rtl()])))
     .pipe(gulpif(generateSourceMaps, sourcemaps.write()))
     .pipe(eol())
     .pipe(gulp.dest(assetGroup.outputDir));
