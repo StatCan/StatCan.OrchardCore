@@ -69,15 +69,8 @@ namespace StatCan.OrchardCore.VueForms.Workflows
         private IContent GetForm(WorkflowExecutionContext workflowContext)
         {
            // get the form from the workflow Input or Properties
-            var content = workflowContext.Input.GetValue<IContent>(InputKey)
+            return workflowContext.Input.GetValue<IContent>(InputKey)
                 ?? workflowContext.Properties.GetValue<IContent>(InputKey);
-
-            if (content != null)
-            {
-                return content;
-            }
-
-            return null;
         }
     }
 }

@@ -34,7 +34,8 @@ function initForm(app) {
     submitError: false,
     submitValidationErrors: false,
     serverValidationMessage: undefined,
-    serverErrorMessage: undefined
+    serverErrorMessage: undefined,
+    responseData: undefined
   }
 
   Vue.component(app.dataset.name, {
@@ -80,9 +81,11 @@ function initForm(app) {
               success: function (data) {
 
                 vm.form = {...defaultFormData};
+                vm.form.responseData = data;
                 // if there are validation errors on the form, display them.
                 if (data.validationError) {
-                  // special key for serverErrorMessages
+                  
+                  //legacy
                   if(data.errors['serverValidationMessage'] != null) {
                     vm.form.serverValidationMessage = data.errors['serverValidationMessage'];
                   }
@@ -97,15 +100,10 @@ function initForm(app) {
                   return;
                 }
 
-                //success, set the form success message 
-                if (data.success) {
-                  vm.form.submitSuccess = true;
-                  vm.form.successMessage = data.successMessage;
-                  return;
-                }
-                vm.form.submitError = true;
-                // something went wrong, dev issue
-                vm.form.serverErrorMessage = "Something wen't wrong. Please report this to your site administrators. Error code: `VueForms.AjaxHandler`";
+                vm.form.submitSuccess = true;
+                vm.form.successMessage = data.successMessage;
+                return;
+                
               },
               error: function (xhr, statusText) {
                 vm.form = {...defaultFormData};

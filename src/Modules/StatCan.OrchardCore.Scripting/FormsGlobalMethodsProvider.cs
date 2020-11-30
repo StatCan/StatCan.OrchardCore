@@ -7,6 +7,7 @@ using Newtonsoft.Json.Linq;
 using OrchardCore.Infrastructure.Html;
 using OrchardCore.Scripting;
 using OrchardCore.ReCaptcha.Services;
+using OrchardCore.DisplayManagement.ModelBinding;
 
 namespace StatCan.OrchardCore.Scripting
 {
@@ -14,9 +15,27 @@ namespace StatCan.OrchardCore.Scripting
     {
         private readonly GlobalMethod _formAsJsonObject;
         private readonly GlobalMethod _validateReCaptcha;
+        private readonly GlobalMethod _setModelError;
+        private readonly GlobalMethod _hasErrors;
 
         public FormsGlobalMethodsProvider()
         {
+             _setModelError = new GlobalMethod
+            {
+                Name = "addError",
+                Method = serviceProvider => (Action<string, string>)((name, text) => {
+                   var updateModelAccessor = serviceProvider.GetRequiredService<IUpdateModelAccessor>();
+                    updateModelAccessor.ModelUpdater.ModelState.AddModelError(name, text);
+                })
+            };
+            _hasErrors = new GlobalMethod
+            {
+                Name = "hasErrors",
+                Method = serviceProvider => (Func<bool>)(() => {
+                   var updateModelAccessor = serviceProvider.GetRequiredService<IUpdateModelAccessor>();
+                    return updateModelAccessor.ModelUpdater.ModelState.ErrorCount > 0;
+                })
+            };
             _formAsJsonObject = new GlobalMethod
             {
                 Name = "requestFormAsJsonObject",
@@ -51,7 +70,7 @@ namespace StatCan.OrchardCore.Scripting
 
         public IEnumerable<GlobalMethod> GetMethods()
         {
-            return new[] { _formAsJsonObject, _validateReCaptcha };
+            return new[] { _formAsJsonObject, _validateReCaptcha, _setModelError, _hasErrors };
         }
     }
 }

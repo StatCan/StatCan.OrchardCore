@@ -17,6 +17,8 @@ using StatCan.OrchardCore.VueForms.Models;
 using StatCan.OrchardCore.VueForms.Workflows;
 using StatCan.OrchardCore.Extensions;
 using StatCan.OrchardCore.VueForms.Scripting;
+using System.Linq;
+using OrchardCore.Workflows.Http;
 
 namespace StatCan.OrchardCore.VueForms.Controllers
 {
@@ -77,9 +79,7 @@ namespace StatCan.OrchardCore.VueForms.Controllers
                 return NotFound();
             }
 
-            // form validation server side script
-            var errorsDictionary = new Dictionary<string, List<string>>();
-            var scriptingProvider = new VueFormMethodsProvider(form, errorsDictionary);
+            var scriptingProvider = new VueFormMethodsProvider(form);
 
             var script = form.As<VueFormScripts>();
             if (!string.IsNullOrEmpty(script?.OnValidation?.Text))
@@ -87,9 +87,9 @@ namespace StatCan.OrchardCore.VueForms.Controllers
                 _scriptingManager.EvaluateJs(script.OnValidation.Text, scriptingProvider);
             }
 
-            if (errorsDictionary.Count > 0)
+            if (ModelState.ErrorCount > 0)
             {
-                return Json(new { validationError = true, errors = errorsDictionary });
+                return Json(new { validationError = true, errors = GetErrorDictionary() });
             }
 
             if (!string.IsNullOrEmpty(script?.OnSubmitted?.Text))
@@ -97,32 +97,55 @@ namespace StatCan.OrchardCore.VueForms.Controllers
                 _scriptingManager.EvaluateJs(script.OnSubmitted.Text, scriptingProvider);
             }
 
-            if (errorsDictionary.Count > 0)
+            if (ModelState.ErrorCount > 0)
             {
-                return Json(new { validationError = true, errors = errorsDictionary });
+                return Json(new { validationError = true, errors = GetErrorDictionary() });
             }
 
             // _workflow manager is null if workflow feature is not enabled
             if (_workflowManager != null)
             {
-                //todo: make sure this does not create issues if the workflows has a blocking event
                 await _workflowManager.TriggerEventAsync(nameof(VueFormSubmittedEvent),
                     input: new { VueForm = form },
                     correlationId: form.ContentItemId
                 );
             }
 
-            // 302 are equivalent to 301 in this case. No permanent redirect
+            // workflow added errors, return them here
+            if (ModelState.ErrorCount > 0)
+            {
+                return Json(new { validationError = true, errors = GetErrorDictionary() });
+            }
+
+            // Handle the redirects with ajax requests.
+            // 302 are equivalent to 301 in this case. No permanent redirect.
+            // This can come from a scripting method or the HttpRedirect Workflow Task
             if(HttpContext.Response.StatusCode == 301 || HttpContext.Response.StatusCode == 302)
             {
                 var returnValue = new { redirect = WebUtility.UrlDecode(HttpContext.Response.Headers["Location"])};
                 HttpContext.Response.Clear();
                 return Json(returnValue);
             }
+
+            // This get's set by either the HttpRedirectTask or HttpResponseTask
+            if(HttpContext.Items[WorkflowHttpResult.Instance] != null)
+            {
+                // Let the HttpResponseTask control the response. This will fail on the client if it's anything other than json
+                return new EmptyResult();
+            }
             var formSuccessMessage = await _liquidTemplateManager.RenderAsync(formPart.SuccessMessage?.Text, _htmlEncoder);
             formSuccessMessage = await _shortcodeService.ProcessAsync(formSuccessMessage);
             // everything worked fine. send the success signal to the client
-            return Json(new { success = true, successMessage = formSuccessMessage });
+            return Json(new { successMessage = formSuccessMessage });
+        }
+        private Dictionary<string, string[]> GetErrorDictionary()
+        {
+           return ModelState
+                .Where(x => x.Value.Errors.Count > 0)
+                .ToDictionary(
+                    kvp => kvp.Key,
+                    kvp => kvp.Value.Errors.Select(e => e.ErrorMessage).ToArray()
+                );
         }
     }
 }

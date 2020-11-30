@@ -17,6 +17,9 @@ The following methods are available in addition to the OrchardCore [scripting me
 | Function | Description 
 | -------- | ----------- |
 |`requestFormAsJsonObject(): JObject`| Returns a sanitized JObject representation of the `HttpContext.Request.Form` object. Sanitization is performed by Orchard's [sanitizer](https://docs.orchardcore.net/en/dev/docs/reference/core/Sanitizer/). |
+| `addError(name: String, errorMessage: String): void` | Adds an error to the input with the specified name. Use the `serverValidationMessage` name to add a global error message to your VueForm. |
+| `hasErrors(): Boolean` | Returns true if the error dictionary contains any errors. |
+| `validateReCaptcha(recaptchaResponse): Boolean` | Returns true if the recaptchaResponse is valid, false if invalid. |
 
 ### Contents
 
@@ -56,5 +59,4 @@ You can get the values stored in the LocalizedTextPart inside a script.
 
 | Function | Description 
 | -------- | ----------- |
-| `addError(name: String, errorMessage: String): void` | Adds an error to the input with the specified name. Use the `serverValidationMessage` name to add a global error message to your VueForm. |
 | `getFormContentItem(): ContentItem` | Only available in the VueForm server side scripts. Returns the current VueForm ContentItem instance. |
