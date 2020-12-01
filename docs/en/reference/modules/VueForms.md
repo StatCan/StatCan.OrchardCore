@@ -44,7 +44,7 @@ VeeValidate.setInteractionMode('passive');
 
 #### OnValidation script
 
-The OnValidation script is used to specify the server side valiadtion script. We are planning to implement components with integrated validation in the future.
+The OnValidation script is used to specify the server side validation script. We are planning to implement components with integrated validation in the future.
 This module adds some [scripting methods](../Scripting.md#vueforms-module-statcanorchardcorevueforms) to facilitate handling form data and errors. 
 
 Here is an example OnValidation script that validates that the name is required.
@@ -65,6 +65,7 @@ addError('serverValidationMessage', 'This is a validation message that is not ti
 addError('serverValidationMessage', 'You can add many, they will come as an array via the "form.serverValidationMessage" prop!'); 
 ```
 
+All errors are also available on the VueJS component options object's via the `form.responseData.errors` property
 
 #### OnSubmitted script
 
@@ -173,6 +174,7 @@ You can access these properties in your templates or in the component options ob
 | form.successMessage | The success message returned from the server as specified in the [VueForm](#vueform-part) |
 | form.submitValidationError | Set to true when a server validation error occus. |
 | form.serverValidationMessage | Array of errors set by the server with the `addError('serverValidationMessage', 'Message')` scripting method. |
+| form.responseData | The raw response data recieved from the server. Useful if you want to return additional data to the form via a workflow. |
 | form.submitError | Set to true when a server error, ajax error or unhandled error occurs. |
 | form.serverErrorMessage | An error message set with the ajax error status code and text. Only set when a server errors occur. |
 
@@ -187,12 +189,21 @@ Although this module does not require a workflow to handle the form submissions,
 
 Please see the [workflow](../Workflows.md#vueforms-statcanorchardcorevueforms) documentation.
 
+If you do use a workflow, you can use the `addError("name", "message");` script to add form errors. You can also use the `HttpRedirect` or `HttpResponse` workflow tasks to redirect or return a custom set of data to the client. All data returned by the HttpResponse task is available via the `form.responseData` object.
+
 ## Localization (`StatCan.OrchardCore.VueForms.Localized`)
 
 While you can use Orchard's [LocalizationPart](https://docs.orchardcore.net/en/dev/docs/reference/modules/ContentLocalization/#localizationpart) to localize your forms. We suggest you use the [LocalizedText](LocalizedText.md) feature to implement i18n in your forms. This part is what we weld to your VueForm content type when you enable this feature.
+
+The `[locale]` shortcode is also useful to use in your views to localize simple text fields.
 
 ## Examples
 
 The following example forms are provided with the VueForms module as recipes:
 
 - Contact Form
+- UserProfile Form
+
+### UserProfile Form
+
+This form allows you to edit a `UserProfile` Content Type with the `CustomUserSettings` stereotype. For this form to work, you must enable the `Users Change Email` feature along with allowing users to update their email in the settings.

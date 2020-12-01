@@ -1,11 +1,12 @@
 using OrchardCore.Modules.Manifest;
+using static StatCan.OrchardCore.Manifest.StatCanManifestConstants;
 using StatCan.OrchardCore.VueForms;
 
 [assembly: Module(
     Name = "StatCan VueForms",
-    Author = "Jean-Philippe Tissot - Digital Innovation Team",
-    Website = "https://digital.statcan.gc.ca",
-    Version = "1.0.0",
+    Author = DigitalInnovationTeam,
+    Website = DigitalInnovationWebsite,
+    Version = Version,
     Description = "The VueForm module provides a form ContentType that simplifies using VueJs forms in the frontend.",
     Category = "Form"
 )]

@@ -1,11 +1,12 @@
 using OrchardCore.Modules.Manifest;
+using static StatCan.OrchardCore.Manifest.StatCanManifestConstants;
 using StatCan.OrchardCore.GCCollab;
 
 [assembly: Module(
     Name = "GCCollab",
-    Author = "StatCan Digital Innovation team",
-    Website = "https://digital.statcan.gc.ca",
-    Version = "1.0.0",
+    Author = DigitalInnovationTeam,
+    Website = DigitalInnovationWebsite,
+    Version = Version,
     Category = "GCCollab"
 )]
 

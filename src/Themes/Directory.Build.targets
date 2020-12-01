@@ -3,6 +3,10 @@
   <Import Project="..\Build\StatCan.OrchardCore.Commons.targets" />
   <ItemGroup>
     <PackageReference Include="OrchardCore.Module.Targets" Version="$(OrchardCoreVersion)" />
+    <PackageReference Include="OrchardCore.Theme.Targets" Version="$(OrchardCoreVersion)" />
+    <PackageReference Include="OrchardCore.DisplayManagement" Version="$(OrchardCoreVersion)" />
+    <PackageReference Include="OrchardCore.ResourceManagement" Version="$(OrchardCoreVersion)" />
+    <ProjectReference Include="..\..\Lib\StatCan.OrchardCore.Manifest\StatCan.OrchardCore.Manifest.csproj" />
   </ItemGroup>
 
   <PropertyGroup>

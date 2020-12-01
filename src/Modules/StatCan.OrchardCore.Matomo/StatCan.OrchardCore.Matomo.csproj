@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <PackageReference Include="OrchardCore.Admin.Abstractions" Version="$(OrchardCoreVersion)" />
-    <PackageReference Include="OrchardCore.Module.Targets" Version="$(OrchardCoreVersion)" />
     <PackageReference Include="OrchardCore.Data.Abstractions" Version="$(OrchardCoreVersion)" />
     <PackageReference Include="OrchardCore.DisplayManagement" Version="$(OrchardCoreVersion)" />
     <PackageReference Include="OrchardCore.Navigation.Core" Version="$(OrchardCoreVersion)" />

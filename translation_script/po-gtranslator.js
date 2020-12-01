@@ -63,6 +63,11 @@ async function tr(text) {
 
 async function start() {
 
+  // create output folder if it does not exist
+  if(!fs.existsSync(po_path)) {
+    fs.mkdirSync(po_path);
+  }
+
   fs.readdirSync(po_source_path).forEach( async file => {
     var filePath = path.parse(file);
     if(!(filePath.ext == ".po" || filePath.ext == ".pot"))

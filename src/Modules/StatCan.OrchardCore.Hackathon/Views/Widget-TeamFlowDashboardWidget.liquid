@@ -1,5 +1,6 @@
 {%comment%}Widget that displays it's content when the user is part of a team{%endcomment%}
-{% assign hacker = Queries.GetHacker | query: owner: User.Identity.Name | first %}
+{% assign userId = User | user_id %}
+{% assign hacker = Queries.GetHacker | query: owner: userId | first %}
 
 <div {%if Model.Id != null%}id="{{ Model.Id }}"{%endif%} class="{{ Model.Classes | join: ' ' }}">
     <div class="vg-header">
