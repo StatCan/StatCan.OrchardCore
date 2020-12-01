@@ -1,0 +1,10 @@
+﻿<div class="embed embed--@Model.Service embed--ratio-16-9">
+    <div class="embed__source">
+        <iframe src="@Model.SourceUrl" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+
+    @if (Model.HasCaption)
+    {
+        <p class="embed__caption">@Html.Raw(Model.Caption)</p>
+    }
+</div>

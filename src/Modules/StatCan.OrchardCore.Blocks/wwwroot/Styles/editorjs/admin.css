@@ -1,0 +1,26 @@
+/**
+ * Styles primarily used to apply customisations to block editor experience.
+ */
+/**
+ * Overrides styles applied to editor.js
+ */
+/**
+ * 1. Reduce the spacing beneath the editor, 300px is too
+ * excessive. Have to use !important because editor.js sets 
+ * padding-bottom as an inline style.
+ */
+.codex-editor .codex-editor__redactor {
+  padding-bottom: 100px !important;
+  /* 1. */ }
+
+/**
+ * Overrides block styles in editor.js
+ */
+/**
+ * Override the block focused state to make it obvious
+ * what block is currently focused.
+ */
+.ce-block--focused {
+  background-color: rgba(207, 214, 229, 0.27);
+  background-image: none; }
+

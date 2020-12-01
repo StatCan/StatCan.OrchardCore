@@ -1,0 +1,12 @@
+﻿@{ 
+    TagBuilder tag = Tag(Model, Model.Style == "unordered" ? "ul" : "ol");
+}
+
+@tag.RenderStartTag()
+
+@foreach (var item in Model.ListItems)
+{
+    <li>@Html.Raw(item)</li>
+}
+
+@tag.RenderEndTag()

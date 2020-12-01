@@ -1,0 +1,10 @@
+﻿@model Etch.OrchardCore.Blocks.ViewModels.DisplayBlockBodyPartViewModel
+
+<section class="section">
+    <div class="section__content constrain">
+        @foreach (var block in Model.Blocks)
+        {
+            @await DisplayAsync(block)
+        }
+    </div>
+</section>

@@ -1,0 +1,11 @@
+﻿@inject OrchardCore.Environment.Shell.IShellFeaturesManager ShellFeaturesManager
+
+@{
+    string currentEditor = Model.Editor;
+
+    var isEditorJSEnabled = (await ShellFeaturesManager.GetEnabledFeaturesAsync()).Any(x => x.Id == "StatCan.OrchardCore.Blocks.EditorJS");
+}
+
+@if (isEditorJSEnabled) {
+    <option value="EditorJS" selected="@(currentEditor == "EditorJS")">@T["Editor.js"]</option>
+}

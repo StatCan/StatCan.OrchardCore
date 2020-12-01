@@ -33,6 +33,7 @@
     <ProjectReference Include="..\..\Modules\StatCan.OrchardCore.VueForms\StatCan.OrchardCore.VueForms.csproj" PrivateAssets="none" />
 
     <!-- Included OpenSource Extensions -->
+    <ProjectReference Include="..\..\Modules\StatCan.OrchardCore.Blocks\StatCan.OrchardCore.Blocks.csproj" PrivateAssets="none" />
     <ProjectReference Include="..\..\Modules\StatCan.OrchardCore.ContentPermissions\StatCan.OrchardCore.ContentPermissions.csproj" PrivateAssets="none" />
     <ProjectReference Include="..\..\Modules\StatCan.OrchardCore.Helpful-Extensions\StatCan.OrchardCore.HelpfulExtensions.csproj" PrivateAssets="none" />
     

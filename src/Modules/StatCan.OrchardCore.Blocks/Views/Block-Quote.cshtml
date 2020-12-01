@@ -1,0 +1,12 @@
+﻿@{ 
+    var cssClass = Model.Alignment == "center" ? "blockquote blockquote--centered" : "blockquote";
+}
+
+<blockquote class="@cssClass">
+    <p>@Html.Raw(Model.Text)</p>
+
+    @if (Model.HasCaption)
+    {
+        <footer>@Html.Raw(Model.Caption)</footer>
+    }
+</blockquote>

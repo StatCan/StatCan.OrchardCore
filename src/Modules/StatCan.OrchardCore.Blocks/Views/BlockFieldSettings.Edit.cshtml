@@ -1,0 +1,7 @@
+﻿@model Etch.OrchardCore.Blocks.Settings.BlockFieldSettings
+
+<fieldset class="form-group">
+    <label asp-for="LinkableContentTypes">@T["Linkable Content Types"]</label>
+    <span class="hint">@T["The content types that should be searched when adding links."]</span>
+    @await Component.InvokeAsync("SelectContentTypes", new { selectedContentTypes = Model.LinkableContentTypes, htmlName = Html.NameFor(m => m.LinkableContentTypes) })
+</fieldset>

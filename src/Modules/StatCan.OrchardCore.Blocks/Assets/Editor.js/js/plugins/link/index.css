@@ -1,0 +1,51 @@
+.link-tool-editor {
+    display: none;
+    width: 280px;
+}
+
+.link-tool-editor--active {
+    display: block;
+}
+
+    .link-tool-editor__content-items {
+        list-style: none;
+        margin-bottom: 0!important;
+        padding: 8px;
+        width: 100%;
+
+        font-size: 13px;
+    }
+
+    .link-tool-editor__content-items:empty {
+        padding: 0;
+    }
+
+        .link-tool-editor__content-items li {
+            margin-bottom: 8px;
+            max-width: 100%;
+        }
+
+        .link-tool-editor__content-items li:last-child {
+            margin-bottom: 0;
+        }
+
+            .link-tool-editor__content-items li button {
+                overflow: hidden;
+                padding: 0;
+                width: 100%;
+
+                background-color: transparent;
+                border: 0;
+                outline: 0;
+                
+                text-align: left;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+
+                cursor: pointer;
+            }
+
+            .link-tool-editor__content-items li button:focus,
+            .link-tool-editor__content-items li button:hover {
+                color: #a8d6ff;
+            }
