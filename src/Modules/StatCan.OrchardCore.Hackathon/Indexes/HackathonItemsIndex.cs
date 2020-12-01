@@ -87,12 +87,6 @@ namespace StatCan.OrchardCore.Hackathon.Indexes
                             (f.FieldDefinition.Name == nameof(LocalizationSetContentPickerField) && f.Name == "Hackathon")))
                         .ToArray();
 
-                    // only index ContentTypes that are linked to a hackathon
-                   /* if (hackathonElementsFields.Length == 0)
-                    {
-                        return null;
-                    }*/
-
                     var caseElementsFields = _contentDefinitionManager
                         .GetTypeDefinition(contentItem.ContentType)
                         .Parts.SelectMany(x => x.PartDefinition.Fields.Where(f =>

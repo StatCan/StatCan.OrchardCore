@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Security.Claims;
 using StatCan.OrchardCore.Hackathon.Indexes;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
@@ -10,6 +11,8 @@ using Newtonsoft.Json.Linq;
 using OrchardCore.ContentManagement;
 using OrchardCore.Queries;
 using YesSql;
+using OrchardCore.Settings;
+using OrchardCore.Entities;
 
 namespace StatCan.OrchardCore.Hackathon.Services
 {
@@ -19,12 +22,14 @@ namespace StatCan.OrchardCore.Hackathon.Services
         private readonly IContentManager _contentManager;
         private readonly IQueryManager _queryManager;
         private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly ISiteService _siteService;
 
         public HackathonService(YesSql.ISession session,
             IStringLocalizer<HackathonService> localizer,
             IContentManager contentManager,
             IQueryManager queryManager,
-            IHttpContextAccessor httpContextAccessor
+            IHttpContextAccessor httpContextAccessor,
+            ISiteService siteService
         )
         {
             _session = session;
@@ -32,6 +37,7 @@ namespace StatCan.OrchardCore.Hackathon.Services
             _queryManager = queryManager;
             _httpContextAccessor = httpContextAccessor;
             T = localizer;
+            _siteService = siteService;
         }
 
         public IStringLocalizer T { get; }
@@ -43,17 +49,17 @@ namespace StatCan.OrchardCore.Hackathon.Services
             {
                 return Task.FromResult<ContentItem>(null);
             }
-            return _session.Query<ContentItem, HackathonItemsIndex>(x => x.Owner == user.Identity.Name && (x.ContentType == "Hacker" || x.ContentType == "Volunteer")).FirstOrDefaultAsync();
+            return _session.Query<ContentItem, HackathonUsersIndex>(x => x.UserId == user.FindFirst(ClaimTypes.NameIdentifier).Value).FirstOrDefaultAsync();
         }
 
         public Task<int> GetTeamMemberCount(string teamContentItemId)
         {
-            return _session.QueryIndex<HackathonItemsIndex>(x => x.TeamContentItemId == teamContentItemId && x.ContentType == "Hacker" && x.Published).CountAsync();
+            return _session.QueryIndex<HackathonUsersIndex>(x => x.TeamContentItemId == teamContentItemId).CountAsync();
         }
 
         public Task<IEnumerable<ContentItem>> GetTeamMembers(string teamContentItemId)
         {
-            return _session.Query<ContentItem, HackathonItemsIndex>(x => x.TeamContentItemId == teamContentItemId && x.ContentType == "Hacker" && x.Published).ListAsync();
+            return _session.Query<ContentItem, HackathonUsersIndex>(x => x.TeamContentItemId == teamContentItemId).ListAsync();
         }
 
         public async Task<bool> TeamExists(string teamContentItemId)
@@ -64,11 +70,13 @@ namespace StatCan.OrchardCore.Hackathon.Services
 
         public async Task<bool> IsTeamFull(string teamContentItemId)
         {
-            var members = await _session.QueryIndex<HackathonItemsIndex>(x => x.TeamContentItemId == teamContentItemId && x.ContentType == "Hacker" && x.Published).ListAsync();
+            var site = await _siteService.GetSiteSettingsAsync();
+            var hackathonCustomSettings = site.As<ContentItem>("HackathonCustomSettings");
+
+            var members = await _session.QueryIndex<HackathonUsersIndex>(x => x.TeamContentItemId == teamContentItemId).ListAsync();
             if (members.Any())
             {
-                var hackathon = await _session.Query<ContentItem, HackathonItemsIndex>(x => x.ContentType == "Hackathon").FirstOrDefaultAsync();
-                if (hackathon != null && members.Count() >= hackathon.Content.Hackathon.MaxTeamSize?.Value?.ToObject<int>())
+                if (members.Count() >= hackathonCustomSettings.Content["TeamCustomSettings"]["TeamSize"].Value)
                 {
                     return true;
                 }
@@ -79,7 +87,9 @@ namespace StatCan.OrchardCore.Hackathon.Services
         public async Task<ContentItem> JoinTeam(string teamContentItemId, ModelStateDictionary modelState)
         {
             var participant = await GetParticipantFromSetAsync();
-            if (participant == null || participant.ContentType != "Hacker")
+            var user = _httpContextAccessor.HttpContext.User;
+
+            if (participant == null || !user.IsInRole("Hacker"))
             {
                 modelState.AddModelError("error", T["You are not a hacker"].Value);
                 return null;

@@ -24,8 +24,9 @@ namespace StatCan.OrchardCore.Hackathon
         public async Task<int> CreateAsync()
         {
             CreateHackathonCustomSetings();
+            CreateUserProfiles();
             CreateWidgets();
-            CreateHackerVolunteers();
+            //CreateHackerVolunteers();
             CreateChallenge();
 
             await _recipeMigrator.ExecuteAsync("queries.recipe.json", this);
@@ -55,12 +56,48 @@ namespace StatCan.OrchardCore.Hackathon
                 .Stereotype("CustomSettings"));
         }
 
+        private void CreateUserProfiles()
+        {
+            _contentDefinitionManager.AlterPartDefinition("ParticipantPart", part => part
+                .WithTextField("FirstName", "First Name", "0")
+                .WithTextField("LastName", "Last Name", "1")
+                .WithTextField("Email", "Contact Email", "Email", "2")
+                .WithField("Language", f => f
+                    .OfType(nameof(TextField))
+                    .WithDisplayName("Language")
+                    .WithPosition("3")
+                    .WithEditor("PredefinedList")
+                    .WithSettings(new TextFieldPredefinedListEditorSettings()
+                    {
+                        Editor = 0,
+                        DefaultValue = "en",
+                        Options = new ListValueOption[] {
+                            new ListValueOption(){Name = "English", Value = "en"},
+                            new ListValueOption(){Name = "French", Value = "fr"},
+                            new ListValueOption(){Name = "Billingual", Value = "both"}
+                        }
+                    })
+                )              
+            );
+
+            _contentDefinitionManager.AlterPartDefinition("Participant", p => p
+                .WithDisplayName("Participant")
+            );
+
+            _contentDefinitionManager.AlterTypeDefinition("Participant", type => type
+                .WithPart("Participant", p => p.WithPosition("0"))
+                .WithPart("ParticipantPart", p => p.WithPosition("1"))
+                .Stereotype("CustomUserSettings")
+            );
+        }
+
         private void CreateWidgets()
         {
             _contentDefinitionManager.CreateBasicWidget("HackathonCalendar");
             _contentDefinitionManager.CreateBasicWidget("ChallengeListWidget");
         }
-        private void CreateHackerVolunteers()
+
+        /*private void CreateHackerVolunteers()
         {
             _contentDefinitionManager.AlterPartDefinition("ParticipantPart", p => p
                 .WithDescription("Fields common to all participants")
@@ -105,7 +142,7 @@ namespace StatCan.OrchardCore.Hackathon
                 .WithPart("Volunteer", p => p.WithPosition("1"))
                 .WithPart("ParticipantPart", p => p.WithPosition("2"))
            );
-        }
+        }*/
 
         private void CreateChallenge()
         {

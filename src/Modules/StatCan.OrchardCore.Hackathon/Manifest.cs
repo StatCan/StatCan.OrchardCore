@@ -18,6 +18,7 @@ using StatCan.OrchardCore.Hackathon;
         "OrchardCore.Workflows.Http",
         "OrchardCore.Autoroute",
         "OrchardCore.Queries.Sql",
+        "OrchardCore.User.CustomUserSettings",
         "StatCan.OrchardCore.VueForms.Localized"
     },
     Category = "Hackathon"
