@@ -2,49 +2,55 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Crowdin-Project: orchard-core\n"
+"X-Crowdin-Project-ID: 307044\n"
 "X-Crowdin-Language: fr\n"
 "X-Crowdin-File: /dev/Localization/OrchardCore.Twitter.pot\n"
+"X-Crowdin-File-ID: 626\n"
 "Project-Id-Version: orchard-core\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
-"PO-Revision-Date: 2020-03-31 14:09\n"
+"PO-Revision-Date: 2020-11-10 07:27\n"
 
 #. builder.Add(S["Security"], security => security
-#: OrchardCore.Twitter\AdminMenu.cs:28
+#: OrchardCore.Twitter\AdminMenu.cs:23
 msgctxt "OrchardCore.Twitter.AdminMenu"
 msgid "Security"
 msgstr "Sécurité"
 
 #. .Add(S["Authentication"], authentication => authentication
-#: OrchardCore.Twitter\AdminMenu.cs:29
+#: OrchardCore.Twitter\AdminMenu.cs:24
 msgctxt "OrchardCore.Twitter.AdminMenu"
 msgid "Authentication"
 msgstr "Authentification"
 
-#. .Add(S["Twitter"], "18", settings => settings
-#: OrchardCore.Twitter\AdminMenu.cs:30
+#. .Add(S["Sign in with Twitter"], S["Sign in with Twitter"].PrefixPosition(), settings => settings
+#. .Add(S["Sign in with Twitter"], S["Sign in with Twitter"].PrefixPosition(), settings => settings
+#: OrchardCore.Twitter\AdminMenu.cs:25
+#: OrchardCore.Twitter\AdminMenu.cs:25
 msgctxt "OrchardCore.Twitter.AdminMenu"
-msgid "Twitter"
-msgstr "Twitter"
-
-#. builder.Add(S["Security"], security => security
-#: OrchardCore.Twitter\AdminMenu.cs:59
-msgctxt "OrchardCore.Twitter.AdminMenuSignin"
-msgid "Security"
-msgstr "Sécurité"
-
-#. .Add(S["Twitter"], "15", settings => settings
-#: OrchardCore.Twitter\AdminMenu.cs:60
-msgctxt "OrchardCore.Twitter.AdminMenuSignin"
-msgid "Twitter"
-msgstr "Twitter"
-
-#. .Add(S["Sign in with Twitter"], "15", client => client
-#: OrchardCore.Twitter\AdminMenu.cs:62
-msgctxt "OrchardCore.Twitter.AdminMenuSignin"
 msgid "Sign in with Twitter"
 msgstr "Se connecter avec Twitter"
+
+#. builder.Add(S["Configuration"], configuration => configuration
+#: OrchardCore.Twitter\AdminMenu.cs:50
+msgctxt "OrchardCore.Twitter.AdminMenuSignin"
+msgid "Configuration"
+msgstr "Configuration"
+
+#. .Add(S["Settings"], settings => settings
+#: OrchardCore.Twitter\AdminMenu.cs:51
+msgctxt "OrchardCore.Twitter.AdminMenuSignin"
+msgid "Settings"
+msgstr "Paramètres"
+
+#. .Add(S["Twitter"], S["Twitter"].PrefixPosition(), settings => settings
+#. .Add(S["Twitter"], S["Twitter"].PrefixPosition(), settings => settings
+#: OrchardCore.Twitter\AdminMenu.cs:52
+#: OrchardCore.Twitter\AdminMenu.cs:52
+msgctxt "OrchardCore.Twitter.AdminMenuSignin"
+msgid "Twitter"
+msgstr "Twitter"
 
 #. yield return new ValidationResult(S["ConsumerKey is required"], new string[] { nameof(settings.ConsumerKey) });
 #: OrchardCore.Twitter\Services\TwitterSettingsService.cs:57
@@ -70,26 +76,56 @@ msgctxt "OrchardCore.Twitter.Services.TwitterSettingsService"
 msgid "Access Token Secret is required"
 msgstr "Secret du jeton d'accès est requis"
 
+#. [Required(AllowEmptyStrings = false, ErrorMessage = "API key is required")]
+#: OrchardCore.Twitter\ViewModels\TwitterSettingsViewModel.cs:7
+msgctxt "OrchardCore.Twitter.ViewModels.TwitterSettingsViewModel"
+msgid "API key is required"
+msgstr "La clé API est requise"
+
+#. [Required(AllowEmptyStrings = false, ErrorMessage = "API secret key is required")]
+#: OrchardCore.Twitter\ViewModels\TwitterSettingsViewModel.cs:10
+msgctxt "OrchardCore.Twitter.ViewModels.TwitterSettingsViewModel"
+msgid "API secret key is required"
+msgstr "La clé secrète API est requise"
+
+#. [Required(AllowEmptyStrings = false, ErrorMessage = "Access token is required")]
+#: OrchardCore.Twitter\ViewModels\TwitterSettingsViewModel.cs:13
+msgctxt "OrchardCore.Twitter.ViewModels.TwitterSettingsViewModel"
+msgid "Access token is required"
+msgstr "L'Access token est requis"
+
+#. [Required(AllowEmptyStrings = false, ErrorMessage = "Access token secret is required")]
+#: OrchardCore.Twitter\ViewModels\TwitterSettingsViewModel.cs:16
+msgctxt "OrchardCore.Twitter.ViewModels.TwitterSettingsViewModel"
+msgid "Access token secret is required"
+msgstr "L'Access token secret est requis"
+
+#. [RegularExpression(@"\/[-A-Za-z0-9+&@#\/%?=~_|!:,.;]+[-A-Za-z0-9+&@#\/%=~_|]", ErrorMessage = "Invalid path")]
+#: OrchardCore.Twitter\Signin\ViewModels\TwitterSigninSettingsViewModel.cs:7
+msgctxt "OrchardCore.Twitter.Signin.ViewModels.TwitterSigninSettingsViewModel"
+msgid "Invalid path"
+msgstr "Chemin invalide"
+
 #. public override LocalizedString DisplayText => S["Update Twitter Status Task"];
-#: OrchardCore.Twitter\Workflows\Activities\UpdateTwitterStatusTask.cs:35
+#: OrchardCore.Twitter\Workflows\Activities\UpdateTwitterStatusTask.cs:32
 msgctxt "OrchardCore.Twitter.Workflows.Activities.UpdateTwitterStatusTask"
 msgid "Update Twitter Status Task"
 msgstr "Tâche mettre à jour le statut Twitter"
 
 #. public override LocalizedString Category => S["Social"];
-#: OrchardCore.Twitter\Workflows\Activities\UpdateTwitterStatusTask.cs:38
+#: OrchardCore.Twitter\Workflows\Activities\UpdateTwitterStatusTask.cs:35
 msgctxt "OrchardCore.Twitter.Workflows.Activities.UpdateTwitterStatusTask"
 msgid "Social"
 msgstr "Social"
 
 #. return Outcomes(S["Done"], S["Failed"]);
-#: OrchardCore.Twitter\Workflows\Activities\UpdateTwitterStatusTask.cs:50
+#: OrchardCore.Twitter\Workflows\Activities\UpdateTwitterStatusTask.cs:47
 msgctxt "OrchardCore.Twitter.Workflows.Activities.UpdateTwitterStatusTask"
 msgid "Done"
 msgstr "Terminé"
 
 #. return Outcomes(S["Done"], S["Failed"]);
-#: OrchardCore.Twitter\Workflows\Activities\UpdateTwitterStatusTask.cs:50
+#: OrchardCore.Twitter\Workflows\Activities\UpdateTwitterStatusTask.cs:47
 msgctxt "OrchardCore.Twitter.Workflows.Activities.UpdateTwitterStatusTask"
 msgid "Failed"
 msgstr "Echec"
@@ -183,6 +219,18 @@ msgstr "Chemin de Callback"
 msgctxt "OrchardCore.Twitter.Views.TwitterSigninSettings.Edit"
 msgid "The request path within the application's base path where the user-agent will be returned. The middleware will process this request when it arrives."
 msgstr "Le chemin de la requête dans le chemin de base de l'application où l'utilisateur-agent sera retourné. Le middleware va traiter cette requête lorsqu'elle arrive."
+
+#. <label class="custom-control-label" asp-for="SaveTokens">@T["Store tokens"]</label>
+#: OrchardCore.Twitter\Views\TwitterSigninSettings.Edit.cshtml:20
+msgctxt "OrchardCore.Twitter.Views.TwitterSigninSettings.Edit"
+msgid "Store tokens"
+msgstr "Stocker les jetons"
+
+#. <span class="hint dashed">@T["Store external authentication tokens for reuse"]</span>
+#: OrchardCore.Twitter\Views\TwitterSigninSettings.Edit.cshtml:21
+msgctxt "OrchardCore.Twitter.Views.TwitterSigninSettings.Edit"
+msgid "Store external authentication tokens for reuse"
+msgstr "Stocker les jetons d'authentification externes pour les réutiliser"
 
 #. <h4><i class="fab fa-twitter"></i>@Model.Activity.GetTitleOrDefault(() => T["Update Twitter Status"])</h4>
 #: OrchardCore.Twitter\Views\Items\UpdateTwitterStatusTask.Fields.Design.cshtml:8

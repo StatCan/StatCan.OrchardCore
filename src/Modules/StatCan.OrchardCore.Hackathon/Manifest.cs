@@ -1,15 +1,16 @@
 using OrchardCore.Modules.Manifest;
-using StatCan.OrchardCore.Hackathon;
+using static StatCan.OrchardCore.Manifest.StatCanManifestConstants;
+using static StatCan.OrchardCore.Hackathon.FeatureIds;
 
 [assembly: Module(
     Name = "Hackathons",
-    Author = "Digital Innovation Team",
-    Website = "https://innovation.statcan.gc.ca",
-    Version = "1.0.0"
+    Author = DigitalInnovationTeam,
+    Website = DigitalInnovationWebsite,
+    Version = Version
 )]
 
 [assembly: Feature(
-    Id = FeatureIds.Hackathon,
+    Id = Hackathon,
     Name = "Hackathon",
     Description = "Manages types and templates for hackathon support",
     Dependencies = new[] {
@@ -25,17 +26,17 @@ using StatCan.OrchardCore.Hackathon;
 )]
 
 [assembly: Feature(
-    Id = FeatureIds.Team,
+    Id = Team,
     Name = "Hackathon Teams",
     Description = "Provides Teams management for the Hackathon feature",
-    Dependencies = new[] { FeatureIds.Hackathon },
+    Dependencies = new[] { Hackathon },
     Category = "Hackathon"
 )]
 
 [assembly: Feature(
-    Id =  FeatureIds.Judging,
+    Id =  Judging,
     Name = "Hackathon Judging",
     Description = "Provides Juding management for the Hackathon feature",
-    Dependencies = new[] { FeatureIds.Team },
+    Dependencies = new[] { Team },
     Category = "Hackathon"
 )]

@@ -1,0 +1,64 @@
+msgid ""
+msgstr "Content-Type: text/plain\n"
+
+#: StatCan.OrchardCore.Matomo\AdminMenu.cs:22
+#. builder.Add(S["Configuration"], configuration => configuration
+msgctxt "StatCan.OrchardCore.Matomo.MatomoAdminMenu"
+msgid "Configuration"
+msgstr "Configuration"
+
+#: StatCan.OrchardCore.Matomo\AdminMenu.cs:23
+#. .Add(S["Settings"], settings => settings
+msgctxt "StatCan.OrchardCore.Matomo.MatomoAdminMenu"
+msgid "Settings"
+msgstr "Réglages"
+
+#: StatCan.OrchardCore.Matomo\AdminMenu.cs:24
+#: StatCan.OrchardCore.Matomo\AdminMenu.cs:24
+#. .Add(S["Matomo"], S["Matomo"].PrefixPosition(), settings => settings
+#. .Add(S["Matomo"], S["Matomo"].PrefixPosition(), settings => settings
+msgctxt "StatCan.OrchardCore.Matomo.MatomoAdminMenu"
+msgid "Matomo"
+msgstr "Matomo"
+
+#: StatCan.OrchardCore.Matomo\Drivers\MatomoSettingsDisplayDriver.cs:65
+#. context.Updater.ModelState.AddModelError(Prefix, S["Please enter a valid server url."]);
+msgctxt "StatCan.OrchardCore.Matomo.Drivers.MatomoSettingsDisplayDriver"
+msgid "Please enter a valid server url."
+msgstr "Veuillez saisir une URL de serveur valide."
+
+#: StatCan.OrchardCore.Matomo\Views\MatomoSettings.Edit.cshtml:3
+#. <h3>@T["Matomo Settings"]</h3>
+msgctxt "StatCan.OrchardCore.Matomo.Views.MatomoSettings.Edit"
+msgid "Matomo Settings"
+msgstr "Paramètres Matomo"
+
+#: StatCan.OrchardCore.Matomo\Views\MatomoSettings.Edit.cshtml:7
+#. <label asp-for="SiteID">@T["Site ID"]</label>
+msgctxt "StatCan.OrchardCore.Matomo.Views.MatomoSettings.Edit"
+msgid "Site ID"
+msgstr "ID du site"
+
+#: StatCan.OrchardCore.Matomo\Views\MatomoSettings.Edit.cshtml:10
+#. <span class="hint">@T["The Site ID defined in your matomo admin panel."]</span>
+msgctxt "StatCan.OrchardCore.Matomo.Views.MatomoSettings.Edit"
+msgid "The Site ID defined in your matomo admin panel."
+msgstr "L'ID de site défini dans votre panneau d'administration matomo."
+
+#: StatCan.OrchardCore.Matomo\Views\MatomoSettings.Edit.cshtml:15
+#. <label asp-for="ServerUri">@T["Server Uri"]</label>
+msgctxt "StatCan.OrchardCore.Matomo.Views.MatomoSettings.Edit"
+msgid "Server Uri"
+msgstr "Uri du serveur"
+
+#: StatCan.OrchardCore.Matomo\Views\MatomoSettings.Edit.cshtml:18
+#. <span class="hint">@T["The Uri of the matomo server, without the scheme."]</span>
+msgctxt "StatCan.OrchardCore.Matomo.Views.MatomoSettings.Edit"
+msgid "The Uri of the matomo server, without the scheme."
+msgstr "L'URI du serveur matomo, sans le schéma."
+
+#: StatCan.OrchardCore.Matomo\Views\NavigationItemText-matomo.Id.cshtml:1
+#. <span class="icon"><i class="fa fa-chart-line" aria-hidden="true"></i></span><span class="title">@T["Matomo"]</span>
+msgctxt "StatCan.OrchardCore.Matomo.Views.NavigationItemText-matomo.Id"
+msgid "Matomo"
+msgstr "Matomo"

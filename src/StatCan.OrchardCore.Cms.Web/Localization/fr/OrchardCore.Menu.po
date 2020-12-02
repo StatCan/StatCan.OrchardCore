@@ -2,31 +2,59 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Crowdin-Project: orchard-core\n"
+"X-Crowdin-Project-ID: 307044\n"
 "X-Crowdin-Language: fr\n"
 "X-Crowdin-File: /dev/Localization/OrchardCore.Menu.pot\n"
+"X-Crowdin-File-ID: 584\n"
 "Project-Id-Version: orchard-core\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
-"PO-Revision-Date: 2020-03-31 15:23\n"
+"PO-Revision-Date: 2020-11-10 07:27\n"
 
 #. builder.Add(S["Content"], design => design
-#: OrchardCore.Menu\AdminMenu.cs:32
+#: OrchardCore.Menu\AdminMenu.cs:33
 msgctxt "OrchardCore.Menu.AdminMenu"
 msgid "Content"
 msgstr "Contenu"
 
-#. .Add(S["Menus"], "1.3", menus => menus
-#: OrchardCore.Menu\AdminMenu.cs:33
+#. .Add(S["Menus"], S["Menus"].PrefixPosition(), menus => menus
+#. .Add(S["Menus"], S["Menus"].PrefixPosition(), menus => menus
+#: OrchardCore.Menu\AdminMenu.cs:34
+#: OrchardCore.Menu\AdminMenu.cs:34
 msgctxt "OrchardCore.Menu.AdminMenu"
 msgid "Menus"
 msgstr "Menus"
 
 #. _notifier.Success(H["Menu item deleted successfully"]);
-#: OrchardCore.Menu\Controllers\AdminController.cs:267
+#: OrchardCore.Menu\Controllers\AdminController.cs:279
 msgctxt "OrchardCore.Menu.Controllers.AdminController"
 msgid "Menu item deleted successfully"
 msgstr "Élément de menu supprimé avec succès"
+
+#. <h5>@T["Content Menu Item"]</h5>
+#: OrchardCore.Menu\Views\ContentMenuItemPart.Edit.cshtml:3
+msgctxt "OrchardCore.Menu.Views.ContentMenuItemPart.Edit"
+msgid "Content Menu Item"
+msgstr "Élément de menu de contenu"
+
+#. <label asp-for="Name">@T["Name"]</label>
+#: OrchardCore.Menu\Views\ContentMenuItemPart.Edit.cshtml:6
+msgctxt "OrchardCore.Menu.Views.ContentMenuItemPart.Edit"
+msgid "Name"
+msgstr "Nom"
+
+#. <h4 class="card-title">@T["Content Menu Item"]</h4>
+#: OrchardCore.Menu\Views\ContentMenuItemPart.Thumbnail.cshtml:1
+msgctxt "OrchardCore.Menu.Views.ContentMenuItemPart.Thumbnail"
+msgid "Content Menu Item"
+msgstr "Élément de menu de contenu"
+
+#. <p>@T["Links to a Content url."]</p>
+#: OrchardCore.Menu\Views\ContentMenuItemPart.Thumbnail.cshtml:2
+msgctxt "OrchardCore.Menu.Views.ContentMenuItemPart.Thumbnail"
+msgid "Links to a Content url."
+msgstr "Lien vers une Url de contenu."
 
 #. <h5>@T["Link Menu Item"]</h5>
 #: OrchardCore.Menu\Views\LinkMenuItemPart.Edit.cshtml:3
@@ -83,25 +111,25 @@ msgid "Add"
 msgstr "Ajouter"
 
 #. @T["Add Menu Item"]
-#: OrchardCore.Menu\Views\MenuPart.Edit.cshtml:26
+#: OrchardCore.Menu\Views\MenuPart.Edit.cshtml:27
 msgctxt "OrchardCore.Menu.Views.MenuPart.Edit"
 msgid "Add Menu Item"
 msgstr "Ajouter un élément de menu"
 
-#. <h5 class="modal-title">@T["Available Menu Items"]</h5>
-#: OrchardCore.Menu\Views\MenuPart.Edit.cshtml:47
+#. <h5 class="modal-title" id="available-menu-items-title">@T["Available Menu Items"]</h5>
+#: OrchardCore.Menu\Views\MenuPart.Edit.cshtml:48
 msgctxt "OrchardCore.Menu.Views.MenuPart.Edit"
 msgid "Available Menu Items"
 msgstr "Éléments de menu disponibles"
 
 #. <button type="button" class="btn btn-secondary" data-dismiss="modal">@T["Cancel"]</button>
-#: OrchardCore.Menu\Views\MenuPart.Edit.cshtml:68
+#: OrchardCore.Menu\Views\MenuPart.Edit.cshtml:69
 msgctxt "OrchardCore.Menu.Views.MenuPart.Edit"
 msgid "Cancel"
 msgstr "Annuler"
 
 #. <div id="msg-leave" style="display:none" data>@T["You have reordered the navigation."]</div>
-#: OrchardCore.Menu\Views\MenuPart.Edit.cshtml:75
+#: OrchardCore.Menu\Views\MenuPart.Edit.cshtml:76
 msgctxt "OrchardCore.Menu.Views.MenuPart.Edit"
 msgid "You have reordered the navigation."
 msgstr "Vous avez réorganisé la navigation."

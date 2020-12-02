@@ -6,15 +6,36 @@ using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json.Linq;
 using OrchardCore.Infrastructure.Html;
 using OrchardCore.Scripting;
+using OrchardCore.ReCaptcha.Services;
+using OrchardCore.DisplayManagement.ModelBinding;
 
 namespace StatCan.OrchardCore.Scripting
 {
     public class FormsGlobalMethodsProvider : IGlobalMethodProvider
     {
         private readonly GlobalMethod _formAsJsonObject;
+        private readonly GlobalMethod _validateReCaptcha;
+        private readonly GlobalMethod _setModelError;
+        private readonly GlobalMethod _hasErrors;
 
         public FormsGlobalMethodsProvider()
         {
+             _setModelError = new GlobalMethod
+            {
+                Name = "addError",
+                Method = serviceProvider => (Action<string, string>)((name, text) => {
+                   var updateModelAccessor = serviceProvider.GetRequiredService<IUpdateModelAccessor>();
+                    updateModelAccessor.ModelUpdater.ModelState.AddModelError(name, text);
+                })
+            };
+            _hasErrors = new GlobalMethod
+            {
+                Name = "hasErrors",
+                Method = serviceProvider => (Func<bool>)(() => {
+                   var updateModelAccessor = serviceProvider.GetRequiredService<IUpdateModelAccessor>();
+                    return updateModelAccessor.ModelUpdater.ModelState.ErrorCount > 0;
+                })
+            };
             _formAsJsonObject = new GlobalMethod
             {
                 Name = "requestFormAsJsonObject",
@@ -37,11 +58,19 @@ namespace StatCan.OrchardCore.Scripting
                 }
                 )
             };
+            _validateReCaptcha = new GlobalMethod
+            {
+                Name = "validateReCaptcha",
+                Method = serviceProvider => (Func<string, bool>)((reCaptchaResponse) => {
+                    var recaptchaService = serviceProvider.GetRequiredService<ReCaptchaService>();
+                    return recaptchaService.VerifyCaptchaResponseAsync(reCaptchaResponse).GetAwaiter().GetResult();
+                })
+            };
         }
 
         public IEnumerable<GlobalMethod> GetMethods()
         {
-            return new[] { _formAsJsonObject };
+            return new[] { _formAsJsonObject, _validateReCaptcha, _setModelError, _hasErrors };
         }
     }
 }
