@@ -13,6 +13,7 @@ using OrchardCore.Queries;
 using YesSql;
 using OrchardCore.Settings;
 using OrchardCore.Entities;
+using OrchardCore.Users.Models;
 
 namespace StatCan.OrchardCore.Hackathon.Services
 {
@@ -42,14 +43,14 @@ namespace StatCan.OrchardCore.Hackathon.Services
 
         public IStringLocalizer T { get; }
 
-        public Task<ContentItem> GetParticipantFromSetAsync()
+        public Task<User> GetParticipantFromSetAsync()
         {
             var user = _httpContextAccessor.HttpContext.User;
             if (!user.Identity.IsAuthenticated)
             {
-                return Task.FromResult<ContentItem>(null);
+                return Task.FromResult<User>(null);
             }
-            return _session.Query<ContentItem, HackathonUsersIndex>(x => x.UserId == user.FindFirst(ClaimTypes.NameIdentifier).Value).FirstOrDefaultAsync();
+            return _session.Query<User, HackathonUsersIndex>(x => x.UserId == user.FindFirst(ClaimTypes.NameIdentifier).Value).FirstOrDefaultAsync();
         }
 
         public Task<int> GetTeamMemberCount(string teamContentItemId)
@@ -57,9 +58,9 @@ namespace StatCan.OrchardCore.Hackathon.Services
             return _session.QueryIndex<HackathonUsersIndex>(x => x.TeamContentItemId == teamContentItemId).CountAsync();
         }
 
-        public Task<IEnumerable<ContentItem>> GetTeamMembers(string teamContentItemId)
+        public Task<IEnumerable<User>> GetTeamMembers(string teamContentItemId)
         {
-            return _session.Query<ContentItem, HackathonUsersIndex>(x => x.TeamContentItemId == teamContentItemId).ListAsync();
+            return _session.Query<User, HackathonUsersIndex>(x => x.TeamContentItemId == teamContentItemId).ListAsync();
         }
 
         public async Task<bool> TeamExists(string teamContentItemId)
@@ -76,7 +77,7 @@ namespace StatCan.OrchardCore.Hackathon.Services
             var members = await _session.QueryIndex<HackathonUsersIndex>(x => x.TeamContentItemId == teamContentItemId).ListAsync();
             if (members.Any())
             {
-                if (members.Count() >= hackathonCustomSettings.Content["TeamCustomSettings"]["TeamSize"].Value)
+                if (members.Count() >= hackathonCustomSettings.Content["TeamCustomSettings"]["TeamSize"].Value.Value)
                 {
                     return true;
                 }
@@ -86,16 +87,15 @@ namespace StatCan.OrchardCore.Hackathon.Services
 
         public async Task<ContentItem> JoinTeam(string teamContentItemId, ModelStateDictionary modelState)
         {
-            var participant = await GetParticipantFromSetAsync();
-            var user = _httpContextAccessor.HttpContext.User;
+            var user = await GetParticipantFromSetAsync();
 
-            if (participant == null || !user.IsInRole("Hacker"))
+            if (user == null || !user.RoleNames.Contains("Hacker"))
             {
                 modelState.AddModelError("error", T["You are not a hacker"].Value);
                 return null;
             }
 
-            if (participant.HasTeam())
+            if (user.HasTeam())
             {
                 modelState.AddModelError("error", T["Already have a team"].Value);
                 return null;
@@ -114,58 +114,65 @@ namespace StatCan.OrchardCore.Hackathon.Services
                 return null;
             }
 
-            participant.Content.Hacker.Team = JObject.FromObject(new { ContentItemIds = new string[] { team.ContentItemId } });
+            var hacker = user.Properties.ToObject<ContentItem>();
+            hacker.Content.Hacker.Hacker.Team.ContentItemIds.Add(team.ContentItemId);
+            user.Properties = JObject.FromObject(hacker);
 
-            await _contentManager.UpdateAsync(participant);
+            _session.Save(user);
 
             return team;
         }
 
         public async Task<ContentItem> CreateTeam(ModelStateDictionary modelState)
         {
-            var participant = await GetParticipantFromSetAsync();
-            if (participant == null || participant.ContentType != "Hacker")
+            var user = await GetParticipantFromSetAsync();
+            if (user == null || !user.RoleNames.Contains("Hacker"))
             {
                 modelState.AddModelError("error", T["You are not a hacker"].Value);
                 return null;
             }
 
-            if (participant.HasTeam())
+            if (user.HasTeam())
             {
                 modelState.AddModelError("error", T["Already on a team"].Value);
                 return null;
             }
 
-            var user = _httpContextAccessor.HttpContext.User;
             var team = await _contentManager.NewAsync("Team");
-            team.Owner = user.Identity.Name;
+            team.Owner = user.UserId;
 
             await _contentManager.CreateAsync(team, VersionOptions.Published);
-
             await _contentManager.UpdateAsync(team);
-            participant.Content.Hacker.Team = JObject.FromObject(new { ContentItemIds = new string[] { team.ContentItemId } });
-            await _contentManager.UpdateAsync(participant);
+
+            var hacker = user.Properties.ToObject<ContentItem>();
+            hacker.Content.Hacker.Hacker.Team.ContentItemIds.Add(team.ContentItemId);
+            user.Properties = JObject.FromObject(hacker);
+
+            _session.Save(user);
 
             return team;
         }
 
         public async Task<bool> LeaveTeam(ModelStateDictionary modelState)
         {
-            var participant = await GetParticipantFromSetAsync();
-            if (participant == null || participant.ContentType != "Hacker")
+            var user = await GetParticipantFromSetAsync();
+            if (user == null || !user.RoleNames.Contains("Hacker"))
             {
                 modelState.AddModelError("error", T["You are not a hacker"].Value);
                 return false;
             }
 
-            if (!participant.HasTeam())
+            if (!user.HasTeam())
             {
                 modelState.AddModelError("error", T["You are not part of a team"].Value);
                 return false;
             }
 
-            participant.Content.Hacker.Team = JObject.FromObject(new { ContentItemIds = new string[0] });
-            await _contentManager.UpdateAsync(participant);
+            var hacker = user.Properties.ToObject<ContentItem>();
+            hacker.Content.Hacker.Hacker.Team.ContentItemIds[0] = null;
+            user.Properties = JObject.FromObject(hacker);
+
+            _session.Save(user);
 
             return true;
         }
@@ -287,10 +294,10 @@ namespace StatCan.OrchardCore.Hackathon.Services
             var team1 = JObject.FromObject(new { ContentItemIds = new string[] { teamContentId1 } });
             foreach (var member in team2Members)
             {
-                member.ContentItem.Content.Hacker.Team = team1;
-                await _contentManager.UpdateAsync(member);
+                /*member.ContentItem.Content.Hacker.Team = team1;
+                await _contentManager.UpdateAsync(member);*/
             }
-            // Delete team 2
+            // Delete team 2 
             await _contentManager.RemoveAsync(await _contentManager.GetAsync(team2.ContentItemId));
             return true;
         }
@@ -327,12 +334,12 @@ namespace StatCan.OrchardCore.Hackathon.Services
                     var member = (await GetTeamMembers(team.ContentItemId)).FirstOrDefault();
                     if (member != null)
                     {
-                        if (member.Content.ParticipantPart?.Attending?.Value != true)
+                        /*if (member.Content.ParticipantPart?.Attending?.Value != true)
                         {
                             await _contentManager.RemoveAsync(team);
                             member.Content.Hacker.Team = JObject.FromObject(new { ContentItemIds = new string[] { } });
                             await _contentManager.UpdateAsync(member);
-                        }
+                        }*/
                     }
                 }
             }

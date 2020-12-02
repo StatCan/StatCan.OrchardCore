@@ -3,14 +3,15 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using OrchardCore.ContentLocalization.Models;
 using OrchardCore.ContentManagement;
+using OrchardCore.Users.Models;
 
 namespace StatCan.OrchardCore.Hackathon.Services
 {
     public interface IHackathonService
     {
-        Task<ContentItem> GetParticipantFromSetAsync();
+        Task<User> GetParticipantFromSetAsync();
         Task<int> GetTeamMemberCount(string teamContentItemId);
-        Task<IEnumerable<ContentItem>> GetTeamMembers(string teamContentItemId);
+        Task<IEnumerable<User>> GetTeamMembers(string teamContentItemId);
         Task<bool> TeamExists(string teamContentItemId);
         Task<bool> IsTeamFull(string teamContentItemId);
         Task<ContentItem> CreateTeam(ModelStateDictionary modelState);

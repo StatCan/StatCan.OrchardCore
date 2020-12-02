@@ -53,7 +53,10 @@ namespace StatCan.OrchardCore.Hackathon.Indexes
                     if (user.Properties.TryGetValue("Hacker", out property))
                     {
                         var hacker = property.ToObject<ContentItem>();
-                        hackathonUsersIndex.TeamContentItemId = hacker.Content.Hacker.Team.ContentItemIds[0];
+                        if(hacker.Content.Hacker.Team.ContentItemIds.Count != 0)
+                            hackathonUsersIndex.TeamContentItemId = hacker.Content.Hacker.Team.ContentItemIds[0];
+                        else
+                            hackathonUsersIndex.TeamContentItemId = string.Empty;
                     }
 
                     return hackathonUsersIndex;
