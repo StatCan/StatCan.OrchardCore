@@ -2,13 +2,15 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Crowdin-Project: orchard-core\n"
+"X-Crowdin-Project-ID: 307044\n"
 "X-Crowdin-Language: fr\n"
 "X-Crowdin-File: /dev/Localization/OrchardCore.Sitemaps.pot\n"
+"X-Crowdin-File-ID: 660\n"
 "Project-Id-Version: orchard-core\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
-"PO-Revision-Date: 2020-03-31 15:23\n"
+"PO-Revision-Date: 2020-11-10 07:27\n"
 
 #. builder.Add(S["Configuration"], NavigationConstants.AdminMenuConfigurationPosition, cfg => cfg
 #: OrchardCore.Sitemaps\AdminMenu.cs:24
@@ -16,148 +18,154 @@ msgctxt "OrchardCore.Sitemaps.AdminMenu"
 msgid "Configuration"
 msgstr "Configuration"
 
-#. .Add(S["SEO"], S["SEO"], admt => admt
-#. .Add(S["SEO"], S["SEO"], admt => admt
+#. .Add(S["SEO"], S["SEO"].PrefixPosition(), seo => seo
+#. .Add(S["SEO"], S["SEO"].PrefixPosition(), seo => seo
 #: OrchardCore.Sitemaps\AdminMenu.cs:25
 #: OrchardCore.Sitemaps\AdminMenu.cs:25
 msgctxt "OrchardCore.Sitemaps.AdminMenu"
 msgid "SEO"
 msgstr "SEO"
 
-#. .Add(S["Sitemaps"], "5", sitemaps => sitemaps
+#. .Add(S["Sitemaps"], S["Sitemaps"].PrefixPosition("1"), sitemaps => sitemaps
+#. .Add(S["Sitemaps"], S["Sitemaps"].PrefixPosition("1"), sitemaps => sitemaps
+#: OrchardCore.Sitemaps\AdminMenu.cs:27
 #: OrchardCore.Sitemaps\AdminMenu.cs:27
 msgctxt "OrchardCore.Sitemaps.AdminMenu"
 msgid "Sitemaps"
 msgstr "Sitemaps"
 
-#. .Add(S["Sitemap Indexes"], "10", sitemaps => sitemaps
+#. .Add(S["Sitemap Indexes"], S["Sitemap Indexes"].PrefixPosition("2"), sitemaps => sitemaps
+#. .Add(S["Sitemap Indexes"], S["Sitemap Indexes"].PrefixPosition("2"), sitemaps => sitemaps
+#: OrchardCore.Sitemaps\AdminMenu.cs:31
 #: OrchardCore.Sitemaps\AdminMenu.cs:31
 msgctxt "OrchardCore.Sitemaps.AdminMenu"
 msgid "Sitemap Indexes"
 msgstr "Index de plan du site"
 
-#. .Add(S["Sitemaps Cache"], "15", sitemaps => sitemaps
+#. .Add(S["Sitemaps Cache"], S["Sitemaps Cache"].PrefixPosition("3"), sitemaps => sitemaps
+#. .Add(S["Sitemaps Cache"], S["Sitemaps Cache"].PrefixPosition("3"), sitemaps => sitemaps
+#: OrchardCore.Sitemaps\AdminMenu.cs:35
 #: OrchardCore.Sitemaps\AdminMenu.cs:35
 msgctxt "OrchardCore.Sitemaps.AdminMenu"
 msgid "Sitemaps Cache"
 msgstr "Cache de Sitemaps"
 
 #. _notifier.Success(H["Sitemap updated successfully"]);
-#: OrchardCore.Sitemaps\Controllers\AdminController.cs:279
+#: OrchardCore.Sitemaps\Controllers\AdminController.cs:270
 msgctxt "OrchardCore.Sitemaps.Controllers.AdminController"
 msgid "Sitemap updated successfully"
 msgstr "Plan du site mis à jour avec succès"
 
 #. _notifier.Success(H["Sitemap deleted successfully"]);
-#: OrchardCore.Sitemaps\Controllers\AdminController.cs:308
+#: OrchardCore.Sitemaps\Controllers\AdminController.cs:296
 msgctxt "OrchardCore.Sitemaps.Controllers.AdminController"
 msgid "Sitemap deleted successfully"
 msgstr "Plan du site supprimé avec succès"
 
 #. _notifier.Success(H["Sitemap toggled successfully"]);
-#: OrchardCore.Sitemaps\Controllers\AdminController.cs:334
+#: OrchardCore.Sitemaps\Controllers\AdminController.cs:320
 msgctxt "OrchardCore.Sitemaps.Controllers.AdminController"
 msgid "Sitemap toggled successfully"
 msgstr "Plan du site basculé avec succès"
 
 #. _notifier.Error(H["Sitemap cache purged, with errors."]);
-#: OrchardCore.Sitemaps\Controllers\SitemapCacheController.cs:63
+#: OrchardCore.Sitemaps\Controllers\SitemapCacheController.cs:60
 msgctxt "OrchardCore.Sitemaps.Controllers.SitemapCacheController"
 msgid "Sitemap cache purged, with errors."
 msgstr "Cache Sitemap purgé, avec des erreurs."
 
 #. _notifier.Information(H["Sitemap cache purged."]);
-#: OrchardCore.Sitemaps\Controllers\SitemapCacheController.cs:67
+#: OrchardCore.Sitemaps\Controllers\SitemapCacheController.cs:64
 msgctxt "OrchardCore.Sitemaps.Controllers.SitemapCacheController"
 msgid "Sitemap cache purged."
 msgstr "Cache Sitemap purgé."
 
 #. _notifier.Error(H["Error purging sitemap cache item."]);
-#: OrchardCore.Sitemaps\Controllers\SitemapCacheController.cs:84
+#: OrchardCore.Sitemaps\Controllers\SitemapCacheController.cs:81
 msgctxt "OrchardCore.Sitemaps.Controllers.SitemapCacheController"
 msgid "Error purging sitemap cache item."
 msgstr "Erreur lors de la purge du cache de sitemap."
 
 #. _notifier.Information(H["Sitemap cache item purged."]);
-#: OrchardCore.Sitemaps\Controllers\SitemapCacheController.cs:88
+#: OrchardCore.Sitemaps\Controllers\SitemapCacheController.cs:85
 msgctxt "OrchardCore.Sitemaps.Controllers.SitemapCacheController"
 msgid "Sitemap cache item purged."
 msgstr "Cache Sitemap purgé."
 
 #. _notifier.Success(H["Sitemap index created successfully"]);
-#: OrchardCore.Sitemaps\Controllers\SitemapIndexController.cs:183
+#: OrchardCore.Sitemaps\Controllers\SitemapIndexController.cs:179
 msgctxt "OrchardCore.Sitemaps.Controllers.SitemapIndexController"
 msgid "Sitemap index created successfully"
 msgstr "Index du plan du site créé avec succès"
 
 #. _notifier.Success(H["Sitemap index updated successfully"]);
-#: OrchardCore.Sitemaps\Controllers\SitemapIndexController.cs:270
+#: OrchardCore.Sitemaps\Controllers\SitemapIndexController.cs:268
 msgctxt "OrchardCore.Sitemaps.Controllers.SitemapIndexController"
 msgid "Sitemap index updated successfully"
 msgstr "Index du plan du site mis à jour avec succès"
 
 #. _notifier.Success(H["Sitemap index deleted successfully"]);
-#: OrchardCore.Sitemaps\Controllers\SitemapIndexController.cs:299
+#: OrchardCore.Sitemaps\Controllers\SitemapIndexController.cs:294
 msgctxt "OrchardCore.Sitemaps.Controllers.SitemapIndexController"
 msgid "Sitemap index deleted successfully"
 msgstr "L'index du plan du site a été supprimé avec succès"
 
 #. _notifier.Success(H["Sitemap index menu toggled successfully"]);
-#: OrchardCore.Sitemaps\Controllers\SitemapIndexController.cs:325
+#: OrchardCore.Sitemaps\Controllers\SitemapIndexController.cs:318
 msgctxt "OrchardCore.Sitemaps.Controllers.SitemapIndexController"
 msgid "Sitemap index menu toggled successfully"
 msgstr "Menu d'index du plan du site basculé avec succès"
 
 #. _notifier.Success(H["Sitemap source added successfully"]);
-#: OrchardCore.Sitemaps\Controllers\SourceController.cs:131
+#: OrchardCore.Sitemaps\Controllers\SourceController.cs:125
 msgctxt "OrchardCore.Sitemaps.Controllers.SourceController"
 msgid "Sitemap source added successfully"
 msgstr "La source du plan du site a été ajoutée avec succès"
 
 #. _notifier.Success(H["Sitemap source updated successfully"]);
-#: OrchardCore.Sitemaps\Controllers\SourceController.cs:206
+#: OrchardCore.Sitemaps\Controllers\SourceController.cs:197
 msgctxt "OrchardCore.Sitemaps.Controllers.SourceController"
 msgid "Sitemap source updated successfully"
 msgstr "La source du plan du site a été mise à jour avec succès"
 
 #. _notifier.Error(H["The sitemap source has validation errors"]);
-#: OrchardCore.Sitemaps\Controllers\SourceController.cs:210
+#: OrchardCore.Sitemaps\Controllers\SourceController.cs:201
 msgctxt "OrchardCore.Sitemaps.Controllers.SourceController"
 msgid "The sitemap source has validation errors"
 msgstr "La source du sitemap a des erreurs de validation"
 
 #. _notifier.Success(H["Sitemap source deleted successfully"]);
-#: OrchardCore.Sitemaps\Controllers\SourceController.cs:246
+#: OrchardCore.Sitemaps\Controllers\SourceController.cs:234
 msgctxt "OrchardCore.Sitemaps.Controllers.SourceController"
 msgid "Sitemap source deleted successfully"
 msgstr "La source du plan du site a été supprimée avec succès"
 
 #. updater.ModelState.AddModelError(Prefix, Path, S["Your permalink can't be set to the homepage"]);
-#: OrchardCore.Sitemaps\Services\SitemapHelperService.cs:39
+#: OrchardCore.Sitemaps\Services\SitemapHelperService.cs:40
 msgctxt "OrchardCore.Sitemaps.Services.SitemapHelperService"
 msgid "Your permalink can't be set to the homepage"
 msgstr "Votre permalien ne peut pas être défini sur la page d'accueil"
 
 #. updater.ModelState.AddModelError(Prefix, Path, S["Please do not use any of the following characters in your permalink: {0}. No spaces are allowed (please use dashes or underscores instead).", invalidCharactersForMessage]);
-#: OrchardCore.Sitemaps\Services\SitemapHelperService.cs:45
+#: OrchardCore.Sitemaps\Services\SitemapHelperService.cs:46
 msgctxt "OrchardCore.Sitemaps.Services.SitemapHelperService"
 msgid "Please do not use any of the following characters in your permalink: {0}. No spaces are allowed (please use dashes or underscores instead)."
 msgstr "Veuillez ne pas utiliser les caractères suivants dans votre permalien : {0}. Aucun espace n'est autorisé (veuillez utiliser des tirets ou des tirets bas à la place)."
 
 #. updater.ModelState.AddModelError(Prefix, Path, S["Your permalink must end with {0}.", SitemapPathExtension]);
-#: OrchardCore.Sitemaps\Services\SitemapHelperService.cs:51
+#: OrchardCore.Sitemaps\Services\SitemapHelperService.cs:52
 msgctxt "OrchardCore.Sitemaps.Services.SitemapHelperService"
 msgid "Your permalink must end with {0}."
 msgstr "Votre permalien doit se terminer par {0}."
 
 #. updater.ModelState.AddModelError(Prefix, Path, S["Your permalink is too long. The permalink can only be up to {0} characters.", MaxPathLength]);
-#: OrchardCore.Sitemaps\Services\SitemapHelperService.cs:56
+#: OrchardCore.Sitemaps\Services\SitemapHelperService.cs:57
 msgctxt "OrchardCore.Sitemaps.Services.SitemapHelperService"
 msgid "Your permalink is too long. The permalink can only be up to {0} characters."
 msgstr "Votre permalien est trop long. Le permalien ne peut contenir que {0} caractères."
 
 #. updater.ModelState.AddModelError(Prefix, Path, S["Your permalink is already in use."]);
-#: OrchardCore.Sitemaps\Services\SitemapHelperService.cs:73
+#: OrchardCore.Sitemaps\Services\SitemapHelperService.cs:74
 msgctxt "OrchardCore.Sitemaps.Services.SitemapHelperService"
 msgid "Your permalink is already in use."
 msgstr "Votre permalien est déjà utilisé."
@@ -168,7 +176,7 @@ msgctxt "OrchardCore.Sitemaps.Views.SitemapPart.Edit"
 msgid "Override sitemap configuration"
 msgstr "Remplacer la configuration du sitemap"
 
-#. <span class="hint">— @T["Check to override sitemap configuration."]</span>
+#. <span class="hint dashed">@T["Check to override sitemap configuration."]</span>
 #: OrchardCore.Sitemaps\Views\SitemapPart.Edit.cshtml:7
 msgctxt "OrchardCore.Sitemaps.Views.SitemapPart.Edit"
 msgid "Check to override sitemap configuration."
@@ -180,7 +188,7 @@ msgctxt "OrchardCore.Sitemaps.Views.SitemapPart.Edit"
 msgid "Exclude"
 msgstr "Exclure"
 
-#. <span class="hint">— @T["Check to exclude this content item from the site map."]</span>
+#. <span class="hint dashed">@T["Check to exclude this content item from the site map."]</span>
 #: OrchardCore.Sitemaps\Views\SitemapPart.Edit.cshtml:14
 msgctxt "OrchardCore.Sitemaps.Views.SitemapPart.Edit"
 msgid "Check to exclude this content item from the site map."
@@ -324,8 +332,8 @@ msgctxt "OrchardCore.Sitemaps.Views.Admin.Create"
 msgid "Permalink"
 msgstr "Permalien"
 
-#. <span class="hint">@T["The url of the sitemap. Leave empty to auto-generate it."]</span>
-#: OrchardCore.Sitemaps\Views\Admin\Create.cshtml:30
+#. <span class="hint d-block">@T["The url of the sitemap. Leave empty to auto-generate it."]</span>
+#: OrchardCore.Sitemaps\Views\Admin\Create.cshtml:29
 msgctxt "OrchardCore.Sitemaps.Views.Admin.Create"
 msgid "The url of the sitemap. Leave empty to auto-generate it."
 msgstr "L'url du plan du site. Laissez vide pour le générer automatiquement."
@@ -342,13 +350,13 @@ msgctxt "OrchardCore.Sitemaps.Views.Admin.Create"
 msgid "Uncheck to disable routing to this sitemap."
 msgstr "Décocher pour désactiver le routage vers l'index sitemap."
 
-#. <button class="btn btn-primary" type="submit">@T["Create"]</button>
+#. <button class="btn btn-primary create" type="submit">@T["Create"]</button>
 #: OrchardCore.Sitemaps\Views\Admin\Create.cshtml:41
 msgctxt "OrchardCore.Sitemaps.Views.Admin.Create"
 msgid "Create"
 msgstr "Créer"
 
-#. <a class="btn btn-secondary" asp-route-action="List">@T["Cancel"]</a>
+#. <a class="btn btn-secondary cancel" role="button" asp-route-action="List">@T["Cancel"]</a>
 #: OrchardCore.Sitemaps\Views\Admin\Create.cshtml:42
 msgctxt "OrchardCore.Sitemaps.Views.Admin.Create"
 msgid "Cancel"
@@ -366,32 +374,32 @@ msgctxt "OrchardCore.Sitemaps.Views.Admin.Display"
 msgid "The site settings 'Base url' property is empty, but is required to generate sitemaps."
 msgstr "Le paramètre du site 'Url de base' est vide, mais est requis pour générer des sitemaps."
 
-#. <a asp-action="Index" asp-controller="Sitemap" asp-area="OrchardCore.Sitemaps" asp-route-sitemapId="@Model.Sitemap.SitemapId" class="btn btn-success btn-sm" itemprop="">@T["View"]</a>
-#: OrchardCore.Sitemaps\Views\Admin\Display.cshtml:16
+#. <a asp-action="Index" asp-controller="Sitemap" asp-area="OrchardCore.Sitemaps" asp-route-sitemapId="@Model.Sitemap.SitemapId" target="_blank" class="btn btn-success btn-sm">@T["View"]</a>
+#: OrchardCore.Sitemaps\Views\Admin\Display.cshtml:14
 msgctxt "OrchardCore.Sitemaps.Views.Admin.Display"
 msgid "View"
 msgstr "Voir"
 
 #. @T["Add Source"]
-#: OrchardCore.Sitemaps\Views\Admin\Display.cshtml:25
+#: OrchardCore.Sitemaps\Views\Admin\Display.cshtml:20
 msgctxt "OrchardCore.Sitemaps.Views.Admin.Display"
 msgid "Add Source"
 msgstr "Ajouter une source"
 
 #. @T["<strong>Nothing here!</strong> There are no sources on this sitemap for the moment."]
-#: OrchardCore.Sitemaps\Views\Admin\Display.cshtml:49
+#: OrchardCore.Sitemaps\Views\Admin\Display.cshtml:43
 msgctxt "OrchardCore.Sitemaps.Views.Admin.Display"
 msgid "<strong>Nothing here!</strong> There are no sources on this sitemap for the moment."
 msgstr "<strong>Rien ici !</strong> Il n'y a pas de sources sur ce plan du site pour le moment."
 
-#. <h5 class="modal-title">@T["Available Sources"]</h5>
-#: OrchardCore.Sitemaps\Views\Admin\Display.cshtml:59
+#. <h5 class="modal-title" id="available-sources-title">@T["Available Sources"]</h5>
+#: OrchardCore.Sitemaps\Views\Admin\Display.cshtml:53
 msgctxt "OrchardCore.Sitemaps.Views.Admin.Display"
 msgid "Available Sources"
 msgstr "Sources disponibles"
 
 #. <button type="button" class="btn btn-secondary" data-dismiss="modal">@T["Cancel"]</button>
-#: OrchardCore.Sitemaps\Views\Admin\Display.cshtml:73
+#: OrchardCore.Sitemaps\Views\Admin\Display.cshtml:67
 msgctxt "OrchardCore.Sitemaps.Views.Admin.Display"
 msgid "Cancel"
 msgstr "Annuler"
@@ -426,8 +434,8 @@ msgctxt "OrchardCore.Sitemaps.Views.Admin.Edit"
 msgid "Permalink"
 msgstr "Permalien"
 
-#. <span class="hint">@T["The url of the sitemap. Leave empty to auto-generate it."]</span>
-#: OrchardCore.Sitemaps\Views\Admin\Edit.cshtml:31
+#. <span class="hint d-block">@T["The url of the sitemap. Leave empty to auto-generate it."]</span>
+#: OrchardCore.Sitemaps\Views\Admin\Edit.cshtml:30
 msgctxt "OrchardCore.Sitemaps.Views.Admin.Edit"
 msgid "The url of the sitemap. Leave empty to auto-generate it."
 msgstr "L'url du plan du site. Laissez vide pour le générer automatiquement."
@@ -444,13 +452,13 @@ msgctxt "OrchardCore.Sitemaps.Views.Admin.Edit"
 msgid "Uncheck to disable routing to this sitemap."
 msgstr "Décocher pour désactiver le routage vers ce sitemap."
 
-#. <button class="btn btn-primary" type="submit">@T["Save"]</button>
+#. <button class="btn btn-primary save" type="submit">@T["Save"]</button>
 #: OrchardCore.Sitemaps\Views\Admin\Edit.cshtml:41
 msgctxt "OrchardCore.Sitemaps.Views.Admin.Edit"
 msgid "Save"
 msgstr "Enregistrer"
 
-#. <a class="btn btn-secondary" asp-route-action="List">@T["Cancel"]</a>
+#. <a class="btn btn-secondary cancel" role="button" asp-route-action="List">@T["Cancel"]</a>
 #: OrchardCore.Sitemaps\Views\Admin\Edit.cshtml:42
 msgctxt "OrchardCore.Sitemaps.Views.Admin.Edit"
 msgid "Cancel"
@@ -474,13 +482,13 @@ msgctxt "OrchardCore.Sitemaps.Views.Admin.List"
 msgid "Search"
 msgstr "Recherche"
 
-#. <a asp-route-action="Create" class="btn btn-primary float-right" role="button">@T["Add Sitemap"]</a>
+#. <a asp-route-action="Create" class="btn btn-primary float-right create" role="button">@T["Add Sitemap"]</a>
 #: OrchardCore.Sitemaps\Views\Admin\List.cshtml:21
 msgctxt "OrchardCore.Sitemaps.Views.Admin.List"
 msgid "Add Sitemap"
 msgstr "Ajouter un plan du site"
 
-#. <a asp-action="Index" asp-controller="Sitemap" asp-area="OrchardCore.Sitemaps" asp-route-sitemapId="@entry.SitemapId" class="btn btn-success btn-sm" itemprop="">@T["View"]</a>
+#. <a asp-action="Index" asp-controller="Sitemap" asp-area="OrchardCore.Sitemaps" asp-route-sitemapId="@entry.SitemapId" target="_blank" class="btn btn-success btn-sm">@T["View"]</a>
 #: OrchardCore.Sitemaps\Views\Admin\List.cshtml:36
 msgctxt "OrchardCore.Sitemaps.Views.Admin.List"
 msgid "View"
@@ -634,13 +642,13 @@ msgctxt "OrchardCore.Sitemaps.Views.SitemapIndex.Create"
 msgid "The sitemaps this index contains."
 msgstr "Les sitemaps que cet index contient."
 
-#. <button class="btn btn-primary" type="submit">@T["Save"]</button>
+#. <button class="btn btn-primary save" type="submit">@T["Save"]</button>
 #: OrchardCore.Sitemaps\Views\SitemapIndex\Create.cshtml:59
 msgctxt "OrchardCore.Sitemaps.Views.SitemapIndex.Create"
 msgid "Save"
 msgstr "Enregistrer"
 
-#. <a class="btn btn-secondary" asp-controller="SitemapIndex" asp-action="List" asp-area="OrchardCore.Sitemaps">@T["Cancel"]</a>
+#. <a class="btn btn-secondary cancel" role="button" asp-controller="SitemapIndex" asp-action="List" asp-area="OrchardCore.Sitemaps">@T["Cancel"]</a>
 #: OrchardCore.Sitemaps\Views\SitemapIndex\Create.cshtml:60
 msgctxt "OrchardCore.Sitemaps.Views.SitemapIndex.Create"
 msgid "Cancel"
@@ -706,13 +714,13 @@ msgctxt "OrchardCore.Sitemaps.Views.SitemapIndex.Edit"
 msgid "The sitemaps this index contains."
 msgstr "Les sitemaps que cet index contient."
 
-#. <button class="btn btn-primary" type="submit">@T["Save"]</button>
+#. <button class="btn btn-primary save" type="submit">@T["Save"]</button>
 #: OrchardCore.Sitemaps\Views\SitemapIndex\Edit.cshtml:60
 msgctxt "OrchardCore.Sitemaps.Views.SitemapIndex.Edit"
 msgid "Save"
 msgstr "Enregistrer"
 
-#. <a class="btn btn-secondary" asp-controller="SitemapIndex" asp-action="List" asp-area="OrchardCore.Sitemaps">@T["Cancel"]</a>
+#. <a class="btn btn-secondary cancel" role="button" asp-controller="SitemapIndex" asp-action="List" asp-area="OrchardCore.Sitemaps">@T["Cancel"]</a>
 #: OrchardCore.Sitemaps\Views\SitemapIndex\Edit.cshtml:61
 msgctxt "OrchardCore.Sitemaps.Views.SitemapIndex.Edit"
 msgid "Cancel"
@@ -736,13 +744,13 @@ msgctxt "OrchardCore.Sitemaps.Views.SitemapIndex.List"
 msgid "Search"
 msgstr "Recherche"
 
-#. <a asp-route-action="Create" class="btn btn-primary float-right" role="button">@T["Add Sitemap Index"]</a>
+#. <a asp-route-action="Create" class="btn btn-primary float-right create">@T["Add Sitemap Index"]</a>
 #: OrchardCore.Sitemaps\Views\SitemapIndex\List.cshtml:21
 msgctxt "OrchardCore.Sitemaps.Views.SitemapIndex.List"
 msgid "Add Sitemap Index"
 msgstr "Ajouter l'index du plan du site"
 
-#. <a asp-action="Index" asp-controller="Sitemap" asp-area="OrchardCore.Sitemaps" asp-route-sitemapId="@entry.SitemapId" class="btn btn-success btn-sm" itemprop="">@T["View"]</a>
+#. <a asp-action="Index" asp-controller="Sitemap" asp-area="OrchardCore.Sitemaps" asp-route-sitemapId="@entry.SitemapId" target="_blank" class="btn btn-success btn-sm">@T["View"]</a>
 #: OrchardCore.Sitemaps\Views\SitemapIndex\List.cshtml:36
 msgctxt "OrchardCore.Sitemaps.Views.SitemapIndex.List"
 msgid "View"
@@ -790,13 +798,13 @@ msgctxt "OrchardCore.Sitemaps.Views.Source.Create"
 msgid "Create Sitemap Source"
 msgstr "Créer une source de Sitemap"
 
-#. <button class="btn btn-primary" type="submit">@T["Create"]</button>
+#. <button class="btn btn-primary create" type="submit">@T["Create"]</button>
 #: OrchardCore.Sitemaps\Views\Source\Create.cshtml:15
 msgctxt "OrchardCore.Sitemaps.Views.Source.Create"
 msgid "Create"
 msgstr "Créer"
 
-#. <a class="btn btn-secondary" asp-route-action="Display" asp-route-controller="Admin" asp-route-sitemapId="@Model.SitemapId">@T["Cancel"]</a>
+#. <a class="btn btn-secondary cancel" role="button" asp-route-action="Display" asp-route-controller="Admin" asp-route-sitemapId="@Model.SitemapId">@T["Cancel"]</a>
 #: OrchardCore.Sitemaps\Views\Source\Create.cshtml:16
 msgctxt "OrchardCore.Sitemaps.Views.Source.Create"
 msgid "Cancel"
@@ -814,20 +822,20 @@ msgctxt "OrchardCore.Sitemaps.Views.Source.Edit"
 msgid "The site settings 'Base url' property is empty, but is required to generate sitemaps."
 msgstr "Le paramètre du site 'Url de base' est vide, mais est requis pour générer des sitemaps."
 
-#. <button class="btn btn-primary" type="submit">@T["Save"]</button>
+#. <button class="btn btn-primary save" type="submit">@T["Save"]</button>
 #: OrchardCore.Sitemaps\Views\Source\Edit.cshtml:19
 msgctxt "OrchardCore.Sitemaps.Views.Source.Edit"
 msgid "Save"
 msgstr "Enregistrer"
 
 #. itemprop="RemoveUrl UnsafeUrl">@T["Delete"]</a>
-#: OrchardCore.Sitemaps\Views\Source\Edit.cshtml:26
+#: OrchardCore.Sitemaps\Views\Source\Edit.cshtml:27
 msgctxt "OrchardCore.Sitemaps.Views.Source.Edit"
 msgid "Delete"
 msgstr "Supprimer"
 
 #. asp-route-sitemapId="@Model.SitemapId">@T["Cancel"]</a>
-#: OrchardCore.Sitemaps\Views\Source\Edit.cshtml:31
+#: OrchardCore.Sitemaps\Views\Source\Edit.cshtml:33
 msgctxt "OrchardCore.Sitemaps.Views.Source.Edit"
 msgid "Cancel"
 msgstr "Annuler"

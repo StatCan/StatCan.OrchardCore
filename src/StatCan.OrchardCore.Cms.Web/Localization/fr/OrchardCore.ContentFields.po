@@ -2,124 +2,144 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Crowdin-Project: orchard-core\n"
+"X-Crowdin-Project-ID: 307044\n"
 "X-Crowdin-Language: fr\n"
 "X-Crowdin-File: /dev/Localization/OrchardCore.ContentFields.pot\n"
+"X-Crowdin-File-ID: 522\n"
 "Project-Id-Version: orchard-core\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
-"PO-Revision-Date: 2020-05-23 12:12\n"
+"PO-Revision-Date: 2020-11-10 07:27\n"
 
-#. updater.ModelState.AddModelError(Prefix, S["The {0} field is required.", context.PartFieldDefinition.DisplayName()]);
-#: OrchardCore.ContentFields\Drivers\ContentPickerFieldDisplayDriver.cs:91
+#. updater.ModelState.AddModelError(Prefix, nameof(field.ContentItemIds), S["The {0} field is required.", context.PartFieldDefinition.DisplayName()]);
+#: OrchardCore.ContentFields\Drivers\ContentPickerFieldDisplayDriver.cs:92
 msgctxt "OrchardCore.ContentFields.Drivers.ContentPickerFieldDisplayDriver"
 msgid "The {0} field is required."
 msgstr "Le champ {0} est requis."
 
-#. updater.ModelState.AddModelError(Prefix, S["The {0} field cannot contain multiple items.", context.PartFieldDefinition.DisplayName()]);
-#: OrchardCore.ContentFields\Drivers\ContentPickerFieldDisplayDriver.cs:96
+#. updater.ModelState.AddModelError(Prefix, nameof(field.ContentItemIds), S["The {0} field cannot contain multiple items.", context.PartFieldDefinition.DisplayName()]);
+#: OrchardCore.ContentFields\Drivers\ContentPickerFieldDisplayDriver.cs:97
 msgctxt "OrchardCore.ContentFields.Drivers.ContentPickerFieldDisplayDriver"
 msgid "The {0} field cannot contain multiple items."
 msgstr "Le champ {0} ne peut pas contenir plusieurs éléments."
 
-#. context.Updater.ModelState.AddModelError(nameof(field.Html), S["{0} doesn't contain a valid Liquid expression. Details: {1}", fieldName, string.Join(" ", errors)]);
-#: OrchardCore.ContentFields\Drivers\HtmlFieldDisplayDriver.cs:84
+#. updater.ModelState.AddModelError(Prefix, nameof(field.Value), S["A value is required for {0}.", context.PartFieldDefinition.DisplayName()]);
+#: OrchardCore.ContentFields\Drivers\DateFieldDisplayDriver.cs:54
+msgctxt "OrchardCore.ContentFields.Drivers.DateFieldDisplayDriver"
+msgid "A value is required for {0}."
+msgstr "Une valeur est requise pour {0}."
+
+#. updater.ModelState.AddModelError(Prefix, nameof(model.LocalDateTime), S["A value is required for {0}.", context.PartFieldDefinition.DisplayName()]);
+#: OrchardCore.ContentFields\Drivers\DateTimeFieldDisplayDriver.cs:63
+msgctxt "OrchardCore.ContentFields.Drivers.DateTimeFieldDisplayDriver"
+msgid "A value is required for {0}."
+msgstr "Une valeur est requise pour {0}."
+
+#. context.Updater.ModelState.AddModelError(Prefix, nameof(viewModel.Html), S["{0} doesn't contain a valid Liquid expression. Details: {1}", fieldName, string.Join(" ", errors)]);
+#: OrchardCore.ContentFields\Drivers\HtmlFieldDisplayDriver.cs:91
 msgctxt "OrchardCore.ContentFields.Drivers.HtmlFieldDisplayDriver"
 msgid "{0} doesn't contain a valid Liquid expression. Details: {1}"
 msgstr "{0} ne contient pas une expression Liquid valide. Détails: {1}"
 
-#. updater.ModelState.AddModelError(Prefix, S["The url is required for {0}.", context.PartFieldDefinition.DisplayName()]);
-#: OrchardCore.ContentFields\Drivers\LinkFieldDisplayDriver.cs:69
+#. updater.ModelState.AddModelError(Prefix, nameof(field.Url), S["The url is required for {0}.", context.PartFieldDefinition.DisplayName()]);
+#: OrchardCore.ContentFields\Drivers\LinkFieldDisplayDriver.cs:71
 msgctxt "OrchardCore.ContentFields.Drivers.LinkFieldDisplayDriver"
 msgid "The url is required for {0}."
 msgstr "L'url est requise pour {0}."
 
-#. updater.ModelState.AddModelError(Prefix, S["{0} is an invalid url.", field.Url]);
-#: OrchardCore.ContentFields\Drivers\LinkFieldDisplayDriver.cs:73
+#. updater.ModelState.AddModelError(Prefix, nameof(field.Url), S["{0} is an invalid url.", field.Url]);
+#: OrchardCore.ContentFields\Drivers\LinkFieldDisplayDriver.cs:75
 msgctxt "OrchardCore.ContentFields.Drivers.LinkFieldDisplayDriver"
 msgid "{0} is an invalid url."
 msgstr "{0} est une Url invalide."
 
-#. updater.ModelState.AddModelError(Prefix, S["The link text is required for {0}.", context.PartFieldDefinition.DisplayName()]);
-#: OrchardCore.ContentFields\Drivers\LinkFieldDisplayDriver.cs:77
+#. updater.ModelState.AddModelError(Prefix, nameof(field.Text), S["The link text is required for {0}.", context.PartFieldDefinition.DisplayName()]);
+#: OrchardCore.ContentFields\Drivers\LinkFieldDisplayDriver.cs:81
 msgctxt "OrchardCore.ContentFields.Drivers.LinkFieldDisplayDriver"
 msgid "The link text is required for {0}."
 msgstr "Le texte du lien est requis pour {0}."
 
-#. updater.ModelState.AddModelError(Prefix, S["The text default value is required for {0}.", context.PartFieldDefinition.DisplayName()]);
-#: OrchardCore.ContentFields\Drivers\LinkFieldDisplayDriver.cs:81
+#. updater.ModelState.AddModelError(Prefix, nameof(field.Text), S["The text default value is required for {0}.", context.PartFieldDefinition.DisplayName()]);
+#: OrchardCore.ContentFields\Drivers\LinkFieldDisplayDriver.cs:85
 msgctxt "OrchardCore.ContentFields.Drivers.LinkFieldDisplayDriver"
 msgid "The text default value is required for {0}."
 msgstr "La valeur par défaut du texte est requise pour {0}."
 
-#. updater.ModelState.AddModelError(Prefix, S["The {0} field is required.", context.PartFieldDefinition.DisplayName()]);
-#: OrchardCore.ContentFields\Drivers\LocalizationSetContentPickerFieldDisplayDriver.cs:97
+#. updater.ModelState.AddModelError(Prefix, nameof(field.LocalizationSets), S["The {0} field is required.", context.PartFieldDefinition.DisplayName()]);
+#: OrchardCore.ContentFields\Drivers\LocalizationSetContentPickerFieldDisplayDriver.cs:98
 msgctxt "OrchardCore.ContentFields.Drivers.LocalizationSetContentPickerFieldDisplayDriver"
 msgid "The {0} field is required."
 msgstr "Le champ {0} est requis."
 
-#. updater.ModelState.AddModelError(Prefix, S["The {0} field cannot contain multiple items.", context.PartFieldDefinition.DisplayName()]);
-#: OrchardCore.ContentFields\Drivers\LocalizationSetContentPickerFieldDisplayDriver.cs:102
+#. updater.ModelState.AddModelError(Prefix, nameof(field.LocalizationSets), S["The {0} field cannot contain multiple items.", context.PartFieldDefinition.DisplayName()]);
+#: OrchardCore.ContentFields\Drivers\LocalizationSetContentPickerFieldDisplayDriver.cs:103
 msgctxt "OrchardCore.ContentFields.Drivers.LocalizationSetContentPickerFieldDisplayDriver"
 msgid "The {0} field cannot contain multiple items."
 msgstr "Le champ {0} ne peut pas contenir plusieurs éléments."
 
-#. updater.ModelState.AddModelError(Prefix, S["The {0} field is required.", context.PartFieldDefinition.DisplayName()]);
-#: OrchardCore.ContentFields\Drivers\NumericFieldDisplayDriver.cs:68
+#. updater.ModelState.AddModelError(Prefix, nameof(field.Value), S["The {0} field is required.", context.PartFieldDefinition.DisplayName()]);
+#: OrchardCore.ContentFields\Drivers\NumericFieldDisplayDriver.cs:69
 msgctxt "OrchardCore.ContentFields.Drivers.NumericFieldDisplayDriver"
 msgid "The {0} field is required."
 msgstr "Le champ {0} est requis."
 
-#. updater.ModelState.AddModelError(Prefix, S["{0} is an invalid number.", context.PartFieldDefinition.DisplayName()]);
-#: OrchardCore.ContentFields\Drivers\NumericFieldDisplayDriver.cs:73
+#. updater.ModelState.AddModelError(Prefix, nameof(field.Value), S["{0} is an invalid number.", context.PartFieldDefinition.DisplayName()]);
+#: OrchardCore.ContentFields\Drivers\NumericFieldDisplayDriver.cs:74
 msgctxt "OrchardCore.ContentFields.Drivers.NumericFieldDisplayDriver"
 msgid "{0} is an invalid number."
 msgstr "{0} est un nombre invalide."
 
-#. updater.ModelState.AddModelError(Prefix, S["The value must be greater than {0}.", settings.Minimum.Value]);
-#: OrchardCore.ContentFields\Drivers\NumericFieldDisplayDriver.cs:81
+#. updater.ModelState.AddModelError(Prefix, nameof(field.Value), S["The value must be greater than {0}.", settings.Minimum.Value]);
+#: OrchardCore.ContentFields\Drivers\NumericFieldDisplayDriver.cs:82
 msgctxt "OrchardCore.ContentFields.Drivers.NumericFieldDisplayDriver"
 msgid "The value must be greater than {0}."
 msgstr "La valeur doit être supérieure à {0}."
 
-#. updater.ModelState.AddModelError(Prefix, S["The value must be less than {0}.", settings.Maximum.Value]);
-#: OrchardCore.ContentFields\Drivers\NumericFieldDisplayDriver.cs:86
+#. updater.ModelState.AddModelError(Prefix, nameof(field.Value), S["The value must be less than {0}.", settings.Maximum.Value]);
+#: OrchardCore.ContentFields\Drivers\NumericFieldDisplayDriver.cs:87
 msgctxt "OrchardCore.ContentFields.Drivers.NumericFieldDisplayDriver"
 msgid "The value must be less than {0}."
 msgstr "La valeur doit être inférieure à {0}."
 
-#. updater.ModelState.AddModelError(Prefix, S["The {0} field must be an integer.", context.PartFieldDefinition.DisplayName()]);
-#: OrchardCore.ContentFields\Drivers\NumericFieldDisplayDriver.cs:94
+#. updater.ModelState.AddModelError(Prefix, nameof(field.Value), S["The {0} field must be an integer.", context.PartFieldDefinition.DisplayName()]);
+#: OrchardCore.ContentFields\Drivers\NumericFieldDisplayDriver.cs:95
 msgctxt "OrchardCore.ContentFields.Drivers.NumericFieldDisplayDriver"
 msgid "The {0} field must be an integer."
 msgstr "Le champ {0} doit être un entier."
 
-#. updater.ModelState.AddModelError(Prefix, S["Invalid number of digits for {0}, max allowed: {1}.", context.PartFieldDefinition.DisplayName(), settings.Scale]);
-#: OrchardCore.ContentFields\Drivers\NumericFieldDisplayDriver.cs:98
+#. updater.ModelState.AddModelError(Prefix, nameof(field.Value), S["Invalid number of digits for {0}, max allowed: {1}.", context.PartFieldDefinition.DisplayName(), settings.Scale]);
+#: OrchardCore.ContentFields\Drivers\NumericFieldDisplayDriver.cs:99
 msgctxt "OrchardCore.ContentFields.Drivers.NumericFieldDisplayDriver"
 msgid "Invalid number of digits for {0}, max allowed: {1}."
 msgstr "Nombre de chiffres non valide pour {0}, max autorisé : {1}."
 
-#. updater.ModelState.AddModelError(Prefix, S["A value is required for {0}.", context.PartFieldDefinition.DisplayName()]);
-#: OrchardCore.ContentFields\Drivers\TextFieldDisplayDriver.cs:54
+#. updater.ModelState.AddModelError(Prefix, nameof(field.Text), S["A value is required for {0}.", context.PartFieldDefinition.DisplayName()]);
+#: OrchardCore.ContentFields\Drivers\TextFieldDisplayDriver.cs:55
 msgctxt "OrchardCore.ContentFields.Drivers.TextFieldDisplayDriver"
 msgid "A value is required for {0}."
 msgstr "Une valeur est requise pour {0}."
 
-#. updater.ModelState.AddModelError(Prefix, S["A value is required for '{0}'.", context.PartFieldDefinition.DisplayName()]);
-#: OrchardCore.ContentFields\Drivers\YoutubeFieldDisplayDriver.cs:58
+#. updater.ModelState.AddModelError(Prefix, nameof(field.Value), S["A value is required for {0}.", context.PartFieldDefinition.DisplayName()]);
+#: OrchardCore.ContentFields\Drivers\TimeFieldDisplayDriver.cs:54
+msgctxt "OrchardCore.ContentFields.Drivers.TimeFieldDisplayDriver"
+msgid "A value is required for {0}."
+msgstr "Une valeur est requise pour {0}."
+
+#. updater.ModelState.AddModelError(Prefix, nameof(model.RawAddress), S["A value is required for '{0}'.", context.PartFieldDefinition.DisplayName()]);
+#: OrchardCore.ContentFields\Drivers\YoutubeFieldDisplayDriver.cs:59
 msgctxt "OrchardCore.ContentFields.Drivers.YoutubeFieldDisplayDriver"
 msgid "A value is required for '{0}'."
 msgstr "Une valeur est requise pour '{0}'."
 
-#. updater.ModelState.AddModelError(Prefix + "." + nameof(model.RawAddress), S["The format of the url is invalid"]);
-#: OrchardCore.ContentFields\Drivers\YoutubeFieldDisplayDriver.cs:76
+#. updater.ModelState.AddModelError(Prefix, nameof(model.RawAddress), S["The format of the url is invalid"]);
+#: OrchardCore.ContentFields\Drivers\YoutubeFieldDisplayDriver.cs:77
 msgctxt "OrchardCore.ContentFields.Drivers.YoutubeFieldDisplayDriver"
 msgid "The format of the url is invalid"
 msgstr "Le format de l'url est invalide"
 
-#. context.Updater.ModelState.AddModelError(Prefix, S["The options are written in an incorrect format."]);
-#: OrchardCore.ContentFields\Settings\HtmlFieldTrumbowygEditorSettingsDriver.cs:51
+#. context.Updater.ModelState.AddModelError(Prefix + '.' + nameof(TrumbowygSettingsViewModel.Options), S["The options are written in an incorrect format."]);
+#: OrchardCore.ContentFields\Settings\HtmlFieldTrumbowygEditorSettingsDriver.cs:44
 msgctxt "OrchardCore.ContentFields.Settings.HtmlFieldTrumbowygEditorSettingsDriver"
 msgid "The options are written in an incorrect format."
 msgstr "Les options sont écrites dans un format incorrect."
@@ -161,7 +181,7 @@ msgid "Hint"
 msgstr "Indication"
 
 #. <span class="hint">@T["The hint text to display for this field on the editor."]</span>
-#: OrchardCore.ContentFields\Views\BooleanFieldSettings.Edit.cshtml:7
+#: OrchardCore.ContentFields\Views\BooleanFieldSettings.Edit.cshtml:8
 msgctxt "OrchardCore.ContentFields.Views.BooleanFieldSettings.Edit"
 msgid "The hint text to display for this field on the editor."
 msgstr "Le texte d'indication à afficher pour ce champ dans l'éditeur."
@@ -173,7 +193,7 @@ msgid "Label"
 msgstr "Label"
 
 #. <span class="hint">@T["The text associated to the checkbox."]</span>
-#: OrchardCore.ContentFields\Views\BooleanFieldSettings.Edit.cshtml:15
+#: OrchardCore.ContentFields\Views\BooleanFieldSettings.Edit.cshtml:16
 msgctxt "OrchardCore.ContentFields.Views.BooleanFieldSettings.Edit"
 msgid "The text associated to the checkbox."
 msgstr "Le texte associé à la case à cocher."
@@ -184,7 +204,7 @@ msgctxt "OrchardCore.ContentFields.Views.BooleanFieldSettings.Edit"
 msgid "Default value is true"
 msgstr "La valeur par défaut est vraie"
 
-#. <span class="hint">— @T["The default value this field will be initialized with when creating a new item."]</span>
+#. <span class="hint dashed">@T["The default value this field will be initialized with when creating a new item."]</span>
 #: OrchardCore.ContentFields\Views\BooleanFieldSettings.Edit.cshtml:23
 msgctxt "OrchardCore.ContentFields.Views.BooleanFieldSettings.Edit"
 msgid "The default value this field will be initialized with when creating a new item."
@@ -246,7 +266,7 @@ msgctxt "OrchardCore.ContentFields.Views.ContentPickerFieldSettings.Edit"
 msgid "Required"
 msgstr "Obligatoire"
 
-#. <span class="hint">— @T["Whether to ensure at least one element is selected."]</span>
+#. <span class="hint dashed">@T["Whether to ensure at least one element is selected."]</span>
 #: OrchardCore.ContentFields\Views\ContentPickerFieldSettings.Edit.cshtml:21
 msgctxt "OrchardCore.ContentFields.Views.ContentPickerFieldSettings.Edit"
 msgid "Whether to ensure at least one element is selected."
@@ -258,7 +278,7 @@ msgctxt "OrchardCore.ContentFields.Views.ContentPickerFieldSettings.Edit"
 msgid "Allow multiple"
 msgstr "Autoriser plusieurs"
 
-#. <span class="hint">— @T["Whether to allow multiple elements to be selected."]</span>
+#. <span class="hint dashed">@T["Whether to allow multiple elements to be selected."]</span>
 #: OrchardCore.ContentFields\Views\ContentPickerFieldSettings.Edit.cshtml:29
 msgctxt "OrchardCore.ContentFields.Views.ContentPickerFieldSettings.Edit"
 msgid "Whether to allow multiple elements to be selected."
@@ -282,7 +302,7 @@ msgctxt "OrchardCore.ContentFields.Views.ContentPickerFieldSettings.Edit"
 msgid "Display All Content Types"
 msgstr "Afficher tous les types de contenu"
 
-#. <span class="hint">— @T["Whether to allow picker to display all content types."]</span>
+#. <span class="hint dashed">@T["Whether to allow picker to display all content types."]</span>
 #: OrchardCore.ContentFields\Views\ContentPickerFieldSettings.Edit.cshtml:40
 msgctxt "OrchardCore.ContentFields.Views.ContentPickerFieldSettings.Edit"
 msgid "Whether to allow picker to display all content types."
@@ -295,7 +315,7 @@ msgid "Hint"
 msgstr "Indication"
 
 #. <span class="hint">@T["The hint text to display for this field on the editor."]</span>
-#: OrchardCore.ContentFields\Views\ContentPickerFieldSettings.Edit.cshtml:52
+#: OrchardCore.ContentFields\Views\ContentPickerFieldSettings.Edit.cshtml:53
 msgctxt "OrchardCore.ContentFields.Views.ContentPickerFieldSettings.Edit"
 msgid "The hint text to display for this field on the editor."
 msgstr "Le texte d'indication à afficher pour ce champ dans l'éditeur."
@@ -324,7 +344,7 @@ msgctxt "OrchardCore.ContentFields.Views.DateFieldSettings.Edit"
 msgid "Required"
 msgstr "Obligatoire"
 
-#. <span class="hint">— @T["Whether a value is required."]</span>
+#. <span class="hint dashed">@T["Whether a value is required."]</span>
 #: OrchardCore.ContentFields\Views\DateFieldSettings.Edit.cshtml:7
 msgctxt "OrchardCore.ContentFields.Views.DateFieldSettings.Edit"
 msgid "Whether a value is required."
@@ -337,7 +357,7 @@ msgid "Hint"
 msgstr "Indication"
 
 #. <span class="hint">@T["The hint text to display for this field on the editor."]</span>
-#: OrchardCore.ContentFields\Views\DateFieldSettings.Edit.cshtml:15
+#: OrchardCore.ContentFields\Views\DateFieldSettings.Edit.cshtml:16
 msgctxt "OrchardCore.ContentFields.Views.DateFieldSettings.Edit"
 msgid "The hint text to display for this field on the editor."
 msgstr "Le texte d'indication à afficher pour ce champ dans l'éditeur."
@@ -360,7 +380,7 @@ msgctxt "OrchardCore.ContentFields.Views.DateTimeFieldSettings.Edit"
 msgid "Required"
 msgstr "Obligatoire"
 
-#. <span class="hint">— @T["Whether a value is required."]</span>
+#. <span class="hint dashed">@T["Whether a value is required."]</span>
 #: OrchardCore.ContentFields\Views\DateTimeFieldSettings.Edit.cshtml:7
 msgctxt "OrchardCore.ContentFields.Views.DateTimeFieldSettings.Edit"
 msgid "Whether a value is required."
@@ -373,7 +393,7 @@ msgid "Hint"
 msgstr "Indication"
 
 #. <span class="hint">@T["The hint text to display for this field on the editor."]</span>
-#: OrchardCore.ContentFields\Views\DateTimeFieldSettings.Edit.cshtml:15
+#: OrchardCore.ContentFields\Views\DateTimeFieldSettings.Edit.cshtml:16
 msgctxt "OrchardCore.ContentFields.Views.DateTimeFieldSettings.Edit"
 msgid "The hint text to display for this field on the editor."
 msgstr "Le texte d'indication à afficher pour ce champ dans l'éditeur."
@@ -415,7 +435,7 @@ msgid "Hint"
 msgstr "Indication"
 
 #. <span class="hint">@T["The hint text to display for this field on the editor."]</span>
-#: OrchardCore.ContentFields\Views\HtmlFieldSettings.Edit.cshtml:7
+#: OrchardCore.ContentFields\Views\HtmlFieldSettings.Edit.cshtml:8
 msgctxt "OrchardCore.ContentFields.Views.HtmlFieldSettings.Edit"
 msgid "The hint text to display for this field on the editor."
 msgstr "Le texte d'indication à afficher pour ce champ dans l'éditeur."
@@ -426,7 +446,7 @@ msgctxt "OrchardCore.ContentFields.Views.HtmlFieldSettings.Edit"
 msgid "Sanitize Html"
 msgstr "Nettoyer le Html"
 
-#. <span class="hint">— @T["Whether the Html is sanitized to prevent custom scripts."]</span>
+#. <span class="hint dashed">@T["Whether the Html is sanitized to prevent custom scripts."]</span>
 #: OrchardCore.ContentFields\Views\HtmlFieldSettings.Edit.cshtml:15
 msgctxt "OrchardCore.ContentFields.Views.HtmlFieldSettings.Edit"
 msgid "Whether the Html is sanitized to prevent custom scripts."
@@ -438,7 +458,7 @@ msgctxt "OrchardCore.ContentFields.Views.HtmlFieldTrumbowygEditorSettings.Edit"
 msgid "Insert Media with url"
 msgstr "Insérer un média avec url"
 
-#. <span class="hint">— @T["Whether the url is used when selected from Insert Media (By default, the Short Code is inserted)."]</span>
+#. <span class="hint dashed">@T["Whether the url is used when selected from Insert Media (By default, the Short Code is inserted)."]</span>
 #: OrchardCore.ContentFields\Views\HtmlFieldTrumbowygEditorSettings.Edit.cshtml:7
 msgctxt "OrchardCore.ContentFields.Views.HtmlFieldTrumbowygEditorSettings.Edit"
 msgid "Whether the url is used when selected from Insert Media (By default, the Short Code is inserted)."
@@ -475,13 +495,13 @@ msgid "Link text"
 msgstr "Texte du lien"
 
 #. <label class="custom-control-label" asp-for="Required">@T["Required"]</label>
-#: OrchardCore.ContentFields\Views\LinkFieldSettings.Edit.cshtml:8
+#: OrchardCore.ContentFields\Views\LinkFieldSettings.Edit.cshtml:7
 msgctxt "OrchardCore.ContentFields.Views.LinkFieldSettings.Edit"
 msgid "Required"
 msgstr "Obligatoire"
 
-#. <span class="hint">— @T["Whether the url is required."]</span>
-#: OrchardCore.ContentFields\Views\LinkFieldSettings.Edit.cshtml:9
+#. <span class="hint dashed">@T["Whether the url is required."]</span>
+#: OrchardCore.ContentFields\Views\LinkFieldSettings.Edit.cshtml:8
 msgctxt "OrchardCore.ContentFields.Views.LinkFieldSettings.Edit"
 msgid "Whether the url is required."
 msgstr "Si l'url est requise."
@@ -644,7 +664,7 @@ msgctxt "OrchardCore.ContentFields.Views.LocalizationSetContentPickerFieldSettin
 msgid "Required"
 msgstr "Obligatoire"
 
-#. <span class="hint">— @T["Whether to ensure at least one element is selected."]</span>
+#. <span class="hint dashed">@T["Whether to ensure at least one element is selected."]</span>
 #: OrchardCore.ContentFields\Views\LocalizationSetContentPickerFieldSettings.Edit.cshtml:8
 msgctxt "OrchardCore.ContentFields.Views.LocalizationSetContentPickerFieldSettings.Edit"
 msgid "Whether to ensure at least one element is selected."
@@ -656,7 +676,7 @@ msgctxt "OrchardCore.ContentFields.Views.LocalizationSetContentPickerFieldSettin
 msgid "Allow multiple"
 msgstr "Autoriser plusieurs"
 
-#. <span class="hint">— @T["Whether to allow multiple elements to be selected."]</span>
+#. <span class="hint dashed">@T["Whether to allow multiple elements to be selected."]</span>
 #: OrchardCore.ContentFields\Views\LocalizationSetContentPickerFieldSettings.Edit.cshtml:16
 msgctxt "OrchardCore.ContentFields.Views.LocalizationSetContentPickerFieldSettings.Edit"
 msgid "Whether to allow multiple elements to be selected."
@@ -681,7 +701,7 @@ msgid "Hint"
 msgstr "Indication"
 
 #. <span class="hint">@T["The hint text to display for this field on the editor."]</span>
-#: OrchardCore.ContentFields\Views\LocalizationSetContentPickerFieldSettings.Edit.cshtml:30
+#: OrchardCore.ContentFields\Views\LocalizationSetContentPickerFieldSettings.Edit.cshtml:31
 msgctxt "OrchardCore.ContentFields.Views.LocalizationSetContentPickerFieldSettings.Edit"
 msgid "The hint text to display for this field on the editor."
 msgstr "Le texte d'indication à afficher pour ce champ dans l'éditeur."
@@ -711,7 +731,7 @@ msgid "Range"
 msgstr "Intervalle"
 
 #. <option value="">@T["None"]</option>
-#: OrchardCore.ContentFields\Views\NumericField-Select.Edit.cshtml:17
+#: OrchardCore.ContentFields\Views\NumericField-Select.Edit.cshtml:18
 msgctxt "OrchardCore.ContentFields.Views.NumericField-Select.Edit"
 msgid "None"
 msgstr "Aucun"
@@ -752,7 +772,7 @@ msgctxt "OrchardCore.ContentFields.Views.NumericFieldSettings.Edit"
 msgid "Required"
 msgstr "Obligatoire"
 
-#. <span class="hint">— @T["Whether a value is required."]</span>
+#. <span class="hint dashed">@T["Whether a value is required."]</span>
 #: OrchardCore.ContentFields\Views\NumericFieldSettings.Edit.cshtml:15
 msgctxt "OrchardCore.ContentFields.Views.NumericFieldSettings.Edit"
 msgid "Whether a value is required."
@@ -765,7 +785,7 @@ msgid "Hint"
 msgstr "Indication"
 
 #. <span class="hint">@T["The hint text to display for this field on the editor."]</span>
-#: OrchardCore.ContentFields\Views\NumericFieldSettings.Edit.cshtml:23
+#: OrchardCore.ContentFields\Views\NumericFieldSettings.Edit.cshtml:24
 msgctxt "OrchardCore.ContentFields.Views.NumericFieldSettings.Edit"
 msgid "The hint text to display for this field on the editor."
 msgstr "Le texte d'indication à afficher pour ce champ dans l'éditeur."
@@ -777,7 +797,7 @@ msgid "Watermark (placeholder)"
 msgstr "Placeholder"
 
 #. <span class="hint">@T["A hint to display when the input is empty. (optional)"]</span>
-#: OrchardCore.ContentFields\Views\NumericFieldSettings.Edit.cshtml:31
+#: OrchardCore.ContentFields\Views\NumericFieldSettings.Edit.cshtml:32
 msgctxt "OrchardCore.ContentFields.Views.NumericFieldSettings.Edit"
 msgid "A hint to display when the input is empty. (optional)"
 msgstr "Une indication à afficher lorsque l'entrée est vide. (facultatif)"
@@ -789,7 +809,7 @@ msgid "Scale"
 msgstr "Échelle"
 
 #. <span class="hint">@T["The number of digits after the decimal point."]</span>
-#: OrchardCore.ContentFields\Views\NumericFieldSettings.Edit.cshtml:39
+#: OrchardCore.ContentFields\Views\NumericFieldSettings.Edit.cshtml:40
 msgctxt "OrchardCore.ContentFields.Views.NumericFieldSettings.Edit"
 msgid "The number of digits after the decimal point."
 msgstr "Le nombre de chiffres après le point décimal."
@@ -801,7 +821,7 @@ msgid "Minimum"
 msgstr "Minimum"
 
 #. <span class="hint">@T["The minimum value allowed. (optional)"]</span>
-#: OrchardCore.ContentFields\Views\NumericFieldSettings.Edit.cshtml:47
+#: OrchardCore.ContentFields\Views\NumericFieldSettings.Edit.cshtml:48
 msgctxt "OrchardCore.ContentFields.Views.NumericFieldSettings.Edit"
 msgid "The minimum value allowed. (optional)"
 msgstr "La valeur minimale autorisée. (facultatif)"
@@ -813,7 +833,7 @@ msgid "Maximum"
 msgstr "Maximum"
 
 #. <span class="hint">@T["The maximum value allowed. (optional)"]</span>
-#: OrchardCore.ContentFields\Views\NumericFieldSettings.Edit.cshtml:55
+#: OrchardCore.ContentFields\Views\NumericFieldSettings.Edit.cshtml:56
 msgctxt "OrchardCore.ContentFields.Views.NumericFieldSettings.Edit"
 msgid "The maximum value allowed. (optional)"
 msgstr "La valeur maximale autorisée. (facultatif)"
@@ -825,7 +845,7 @@ msgid "Default value"
 msgstr "Valeur par défaut"
 
 #. <span class="hint">@T["The default value. (optional)"]</span>
-#: OrchardCore.ContentFields\Views\NumericFieldSettings.Edit.cshtml:63
+#: OrchardCore.ContentFields\Views\NumericFieldSettings.Edit.cshtml:64
 msgctxt "OrchardCore.ContentFields.Views.NumericFieldSettings.Edit"
 msgid "The default value. (optional)"
 msgstr "La valeur par défaut. (facultatif)"
@@ -1044,7 +1064,7 @@ msgctxt "OrchardCore.ContentFields.Views.TextFieldSettings.Edit"
 msgid "Required"
 msgstr "Obligatoire"
 
-#. <span class="hint">— @T["Whether a value is required."]</span>
+#. <span class="hint dashed">@T["Whether a value is required."]</span>
 #: OrchardCore.ContentFields\Views\TextFieldSettings.Edit.cshtml:7
 msgctxt "OrchardCore.ContentFields.Views.TextFieldSettings.Edit"
 msgid "Whether a value is required."
@@ -1057,7 +1077,7 @@ msgid "Hint"
 msgstr "Indication"
 
 #. <span class="hint">@T["The hint text to display for this field on the editor."]</span>
-#: OrchardCore.ContentFields\Views\TextFieldSettings.Edit.cshtml:15
+#: OrchardCore.ContentFields\Views\TextFieldSettings.Edit.cshtml:16
 msgctxt "OrchardCore.ContentFields.Views.TextFieldSettings.Edit"
 msgid "The hint text to display for this field on the editor."
 msgstr "Le texte d'indication à afficher pour ce champ dans l'éditeur."
@@ -1080,7 +1100,7 @@ msgctxt "OrchardCore.ContentFields.Views.TimeFieldSettings.Edit"
 msgid "Required"
 msgstr "Obligatoire"
 
-#. <span class="hint">— @T["Whether a value is required."]</span>
+#. <span class="hint dashed">@T["Whether a value is required."]</span>
 #: OrchardCore.ContentFields\Views\TimeFieldSettings.Edit.cshtml:7
 msgctxt "OrchardCore.ContentFields.Views.TimeFieldSettings.Edit"
 msgid "Whether a value is required."
@@ -1093,7 +1113,7 @@ msgid "Hint"
 msgstr "Indication"
 
 #. <span class="hint">@T["The hint text to display for this field on the editor."]</span>
-#: OrchardCore.ContentFields\Views\TimeFieldSettings.Edit.cshtml:15
+#: OrchardCore.ContentFields\Views\TimeFieldSettings.Edit.cshtml:16
 msgctxt "OrchardCore.ContentFields.Views.TimeFieldSettings.Edit"
 msgid "The hint text to display for this field on the editor."
 msgstr "Le texte d'indication à afficher pour ce champ dans l'éditeur."
@@ -1110,44 +1130,44 @@ msgctxt "OrchardCore.ContentFields.Views.YoutubeFieldSetting.Edit"
 msgid "Required"
 msgstr "Obligatoire"
 
-#. <span class="hint">— @T["Whether a value is required."]</span>
+#. <span class="hint dashed">@T["Whether a value is required."]</span>
 #: OrchardCore.ContentFields\Views\YoutubeFieldSetting.Edit.cshtml:13
 msgctxt "OrchardCore.ContentFields.Views.YoutubeFieldSetting.Edit"
 msgid "Whether a value is required."
 msgstr "Si une valeur est requise."
 
 #. <label asp-for="Hint">@T["Hint"]</label>
-#: OrchardCore.ContentFields\Views\YoutubeFieldSetting.Edit.cshtml:18
+#: OrchardCore.ContentFields\Views\YoutubeFieldSetting.Edit.cshtml:19
 msgctxt "OrchardCore.ContentFields.Views.YoutubeFieldSetting.Edit"
 msgid "Hint"
 msgstr "Indication"
 
 #. <span class="hint">@T["The hint text to display for this field on the editor."]</span>
-#: OrchardCore.ContentFields\Views\YoutubeFieldSetting.Edit.cshtml:20
+#: OrchardCore.ContentFields\Views\YoutubeFieldSetting.Edit.cshtml:22
 msgctxt "OrchardCore.ContentFields.Views.YoutubeFieldSetting.Edit"
 msgid "The hint text to display for this field on the editor."
 msgstr "Le texte d'indication à afficher pour ce champ dans l'éditeur."
 
 #. <label asp-for="Width">@T["Width"]</label>
-#: OrchardCore.ContentFields\Views\YoutubeFieldSetting.Edit.cshtml:25
+#: OrchardCore.ContentFields\Views\YoutubeFieldSetting.Edit.cshtml:27
 msgctxt "OrchardCore.ContentFields.Views.YoutubeFieldSetting.Edit"
 msgid "Width"
 msgstr "Largeur"
 
 #. <span class="hint">@T["The width of the Videobox"]</span>
-#: OrchardCore.ContentFields\Views\YoutubeFieldSetting.Edit.cshtml:27
+#: OrchardCore.ContentFields\Views\YoutubeFieldSetting.Edit.cshtml:30
 msgctxt "OrchardCore.ContentFields.Views.YoutubeFieldSetting.Edit"
 msgid "The width of the Videobox"
 msgstr "La largeur de la boîte vidéo"
 
 #. <label asp-for="Height">@T["Height"]</label>
-#: OrchardCore.ContentFields\Views\YoutubeFieldSetting.Edit.cshtml:30
+#: OrchardCore.ContentFields\Views\YoutubeFieldSetting.Edit.cshtml:35
 msgctxt "OrchardCore.ContentFields.Views.YoutubeFieldSetting.Edit"
 msgid "Height"
 msgstr "Hauteur"
 
 #. <span class="hint">@T["The height of the Videobox"]</span>
-#: OrchardCore.ContentFields\Views\YoutubeFieldSetting.Edit.cshtml:32
+#: OrchardCore.ContentFields\Views\YoutubeFieldSetting.Edit.cshtml:38
 msgctxt "OrchardCore.ContentFields.Views.YoutubeFieldSetting.Edit"
 msgid "The height of the Videobox"
 msgstr "La hauteur de la boîte vidéo"

@@ -2,13 +2,15 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Crowdin-Project: orchard-core\n"
+"X-Crowdin-Project-ID: 307044\n"
 "X-Crowdin-Language: fr\n"
 "X-Crowdin-File: /dev/Localization/OrchardCore.ReCaptcha.pot\n"
+"X-Crowdin-File-ID: 598\n"
 "Project-Id-Version: orchard-core\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
-"PO-Revision-Date: 2020-03-31 14:00\n"
+"PO-Revision-Date: 2020-11-10 07:27\n"
 
 #. .Add(S["Security"], security => security
 #: OrchardCore.ReCaptcha\AdminMenu.cs:26
@@ -22,13 +24,25 @@ msgctxt "OrchardCore.ReCaptcha.AdminMenu"
 msgid "Settings"
 msgstr "Paramètres"
 
-#. .Add(S["reCaptcha"], S["reCaptcha"], registration => registration
-#. .Add(S["reCaptcha"], S["reCaptcha"], registration => registration
+#. .Add(S["reCaptcha"], S["reCaptcha"].PrefixPosition(), registration => registration
+#. .Add(S["reCaptcha"], S["reCaptcha"].PrefixPosition(), registration => registration
 #: OrchardCore.ReCaptcha\AdminMenu.cs:28
 #: OrchardCore.ReCaptcha\AdminMenu.cs:28
 msgctxt "OrchardCore.ReCaptcha.AdminMenu"
 msgid "reCaptcha"
 msgstr "reCaptcha"
+
+#. return new SiteSettingsPropertyDeploymentStepDriver<ReCaptchaSettings>(S["ReCaptcha settings"], S["Exports the ReCaptcha settings."]);
+#: OrchardCore.ReCaptcha\Startup.cs:40
+msgctxt "OrchardCore.ReCaptcha.DeploymentStartup"
+msgid "ReCaptcha settings"
+msgstr "Paramètres ReCaptcha"
+
+#. return new SiteSettingsPropertyDeploymentStepDriver<ReCaptchaSettings>(S["ReCaptcha settings"], S["Exports the ReCaptcha settings."]);
+#: OrchardCore.ReCaptcha\Startup.cs:40
+msgctxt "OrchardCore.ReCaptcha.DeploymentStartup"
+msgid "Exports the ReCaptcha settings."
+msgstr "Exporte les paramètres ReCaptcha."
 
 #. public override LocalizedString DisplayText => S["Validate ReCaptcha Task"];
 #: OrchardCore.ReCaptcha\Workflows\ValidateReCaptchaTask.cs:31

@@ -1,11 +1,12 @@
 using OrchardCore.Modules.Manifest;
+using static StatCan.OrchardCore.Manifest.StatCanManifestConstants;
 using static StatCan.OrchardCore.CommonTypes.FeatureIds;
 
 [assembly: Module(
     Name = "StatCan CommonTypes",
-    Author = "Digital Innovation Team",
-    Website = "https://digital.statcan.gc.ca",
-    Version = "1.0.0"
+    Author = DigitalInnovationTeam,
+    Website = DigitalInnovationWebsite,
+    Version = Version
 )]
 
 [assembly: Feature(

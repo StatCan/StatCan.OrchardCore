@@ -2,13 +2,15 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Crowdin-Project: orchard-core\n"
+"X-Crowdin-Project-ID: 307044\n"
 "X-Crowdin-Language: fr\n"
 "X-Crowdin-File: /dev/Localization/OrchardCore.Themes.pot\n"
+"X-Crowdin-File-ID: 622\n"
 "Project-Id-Version: orchard-core\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
-"PO-Revision-Date: 2020-05-28 19:15\n"
+"PO-Revision-Date: 2020-11-10 07:27\n"
 
 #. .Add(S["Design"], NavigationConstants.AdminMenuDesignPosition, design => design
 #: OrchardCore.Themes\AdminMenu.cs:25
@@ -17,39 +19,39 @@ msgid "Design"
 msgstr "Design"
 
 #. .Add(S["Themes"], "Themes", installed => installed
-#: OrchardCore.Themes\AdminMenu.cs:28
+#: OrchardCore.Themes\AdminMenu.cs:27
 msgctxt "OrchardCore.Themes.AdminMenu"
 msgid "Themes"
 msgstr "Thèmes"
 
 #. _notifier.Success(H["{0} was enabled", feature.Name ?? feature.Id]);
 #. _notifier.Success(H["{0} was enabled", feature.Name ?? feature.Id]);
-#: OrchardCore.Themes\Controllers\AdminController.cs:154
-#: OrchardCore.Themes\Controllers\AdminController.cs:233
+#: OrchardCore.Themes\Controllers\AdminController.cs:160
+#: OrchardCore.Themes\Controllers\AdminController.cs:239
 msgctxt "OrchardCore.Themes.Controllers.AdminController"
 msgid "{0} was enabled"
 msgstr "{0} a été activé"
 
 #. _notifier.Success(H["{0} was set as the default {1} theme", feature.Name ?? feature.Id, isAdmin ? "Admin" : "Site"]);
-#: OrchardCore.Themes\Controllers\AdminController.cs:157
+#: OrchardCore.Themes\Controllers\AdminController.cs:163
 msgctxt "OrchardCore.Themes.Controllers.AdminController"
 msgid "{0} was set as the default {1} theme"
-msgstr "{0} a été défini comme le thème par défaut de {1}"
+msgstr "{0} a été défini comme le thème {1} par défaut"
 
 #. _notifier.Success(H["The Site theme was reset."]);
-#: OrchardCore.Themes\Controllers\AdminController.cs:174
+#: OrchardCore.Themes\Controllers\AdminController.cs:180
 msgctxt "OrchardCore.Themes.Controllers.AdminController"
 msgid "The Site theme was reset."
 msgstr "Le thème du site a été réinitialisé."
 
 #. _notifier.Success(H["The Admin theme was reset."]);
-#: OrchardCore.Themes\Controllers\AdminController.cs:189
+#: OrchardCore.Themes\Controllers\AdminController.cs:195
 msgctxt "OrchardCore.Themes.Controllers.AdminController"
 msgid "The Admin theme was reset."
 msgstr "Le thème Admin a été réinitialisé."
 
 #. _notifier.Success(H["{0} was disabled", feature.Name ?? feature.Id]);
-#: OrchardCore.Themes\Controllers\AdminController.cs:211
+#: OrchardCore.Themes\Controllers\AdminController.cs:217
 msgctxt "OrchardCore.Themes.Controllers.AdminController"
 msgid "{0} was disabled"
 msgstr "{0} a été désactivé"

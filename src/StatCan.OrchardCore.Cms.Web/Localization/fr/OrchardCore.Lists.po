@@ -2,13 +2,15 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Crowdin-Project: orchard-core\n"
+"X-Crowdin-Project-ID: 307044\n"
 "X-Crowdin-Language: fr\n"
 "X-Crowdin-File: /dev/Localization/OrchardCore.Lists.pot\n"
+"X-Crowdin-File-ID: 572\n"
 "Project-Id-Version: orchard-core\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
-"PO-Revision-Date: 2020-03-31 14:42\n"
+"PO-Revision-Date: 2020-11-10 07:27\n"
 
 #. Description = S["the list part of the content item"];
 #: OrchardCore.Lists\GraphQL\ContainedInputObjectType.cs:13
@@ -35,7 +37,7 @@ msgid "Represents a collection of content items."
 msgstr "Représente une collection d'éléments de contenu."
 
 #. throw new Exception(S["The specified Blog Post doesn't exist anymore. Please create a new Blog Post."]);
-#: OrchardCore.Lists\RemotePublishing\MetaWeblogHandler.cs:375
+#: OrchardCore.Lists\RemotePublishing\MetaWeblogHandler.cs:371
 msgctxt "OrchardCore.Lists.RemotePublishing.MetaWeblogHandler"
 msgid "The specified Blog Post doesn't exist anymore. Please create a new Blog Post."
 msgstr "Le Blog Post spécifié n'existe plus. Veuillez créer un nouveau blog Post."
@@ -67,31 +69,39 @@ msgid "The list is empty"
 msgstr "La liste est vide"
 
 #. <a asp-action="EditTypePart" asp-controller="Admin" asp-route-area="OrchardCore.ContentTypes" asp-route-id="@Model.ListPart.ContentItem.ContentType" asp-route-name="ListPart">@T["Please specify at least one contained content type."]</a>
-#: OrchardCore.Lists\Views\ListPart.DetailAdmin.cshtml:17
+#: OrchardCore.Lists\Views\ListPart.DetailAdmin.cshtml:15
 msgctxt "OrchardCore.Lists.Views.ListPart.DetailAdmin"
 msgid "Please specify at least one contained content type."
 msgstr "Veuillez spécifier au moins un type de contenu."
 
+#. @T["Edit {0}", @Model.ListPart.ContentItem.DisplayText]
+#. @T["Edit {0}", @Model.ListPart.ContentItem.DisplayText]
+#: OrchardCore.Lists\Views\ListPart.DetailAdmin.cshtml:27
+#: OrchardCore.Lists\Views\ListPart.DetailAdmin.cshtml:42
+msgctxt "OrchardCore.Lists.Views.ListPart.DetailAdmin"
+msgid "Edit {0}"
+msgstr "Modifier {0}"
+
 #. @T["Create {0}", contentTypeDefinition.DisplayName]
-#: OrchardCore.Lists\Views\ListPart.DetailAdmin.cshtml:28
+#: OrchardCore.Lists\Views\ListPart.DetailAdmin.cshtml:30
 msgctxt "OrchardCore.Lists.Views.ListPart.DetailAdmin"
 msgid "Create {0}"
 msgstr "Créer {0}"
 
 #. @T["Create"]
-#: OrchardCore.Lists\Views\ListPart.DetailAdmin.cshtml:39
+#: OrchardCore.Lists\Views\ListPart.DetailAdmin.cshtml:45
 msgctxt "OrchardCore.Lists.Views.ListPart.DetailAdmin"
 msgid "Create"
 msgstr "Créer"
 
 #. <div id="update-order-error-message" class="d-none" data-message="@T["There was an error when updating the order of the items."]" />
-#: OrchardCore.Lists\Views\ListPart.DetailAdmin.cshtml:76
+#: OrchardCore.Lists\Views\ListPart.DetailAdmin.cshtml:83
 msgctxt "OrchardCore.Lists.Views.ListPart.DetailAdmin"
 msgid "There was an error when updating the order of the items."
 msgstr "Une erreur s'est produite lors de la mise à jour de l'ordre des éléments."
 
 #. <p class="alert alert-warning">@T["The list is empty."]</p>
-#: OrchardCore.Lists\Views\ListPart.DetailAdmin.cshtml:81
+#: OrchardCore.Lists\Views\ListPart.DetailAdmin.cshtml:88
 msgctxt "OrchardCore.Lists.Views.ListPart.DetailAdmin"
 msgid "The list is empty."
 msgstr "La liste est vide."
@@ -114,11 +124,11 @@ msgctxt "OrchardCore.Lists.Views.ListPartFeed.Edit"
 msgid "Provide a custom public url which will be used to proxy the local rss feed."
 msgstr "Fournir une url publique personnalisée qui sera utilisée pour proxifier le flux local rss."
 
-#. <span class="hint">@T["The current feed is available at <a href=\"{0}\">{0}</a>.", Url.Action("Index", "Feed", new { area = "OrchardCore.Feeds", ContentItemId = Model.ContentItem.ContentItemId }, Context.Request.Scheme)]</span>
+#. <span class="hint">@T["The current feed is available at <a href=\"{0}\" target=\"_blank\">{0}</a>.", Url.Action("Index", "Feed", new { area = "OrchardCore.Feeds", ContentItemId = Model.ContentItem.ContentItemId }, Context.Request.Scheme)]</span>
 #: OrchardCore.Lists\Views\ListPartFeed.Edit.cshtml:8
 msgctxt "OrchardCore.Lists.Views.ListPartFeed.Edit"
-msgid "The current feed is available at <a href=\"{0}\">{0}</a>."
-msgstr "Le flux actuel est disponible à <a href=\"{0}\">{0}</a>."
+msgid "The current feed is available at <a href=\"{0}\" target=\"_blank\">{0}</a>."
+msgstr "Le flux actuel est disponible sur <a href=\"{0}\" target=\"_blank\">{0}</a>."
 
 #. <label asp-for="FeedItemsCount">@T["Feed items count"]</label>
 #: OrchardCore.Lists\Views\ListPartFeed.Edit.cshtml:12
@@ -150,7 +160,7 @@ msgctxt "OrchardCore.Lists.Views.ListPartSettings.Edit"
 msgid "Enable Ordering"
 msgstr "Activer la possibilité d'ordonner"
 
-#. <span class="hint">— @T["Check this option to enable manual ordering of items."]</span>
+#. <span class="hint dashed">@T["Check this option to enable manual ordering of items."]</span>
 #: OrchardCore.Lists\Views\ListPartSettings.Edit.cshtml:14
 msgctxt "OrchardCore.Lists.Views.ListPartSettings.Edit"
 msgid "Check this option to enable manual ordering of items."
@@ -206,7 +216,7 @@ msgctxt "OrchardCore.Lists.Views.Items.ListsAdminNode.Fields.TreeEdit"
 msgid "Pick an icon"
 msgstr "Choisir une icône"
 
-#. <span class="text-muted">- @T["Lists"]</span>
+#. <span class="text-muted dashed">@T["Lists"]</span>
 #: OrchardCore.Lists\Views\Items\ListsAdminNode.Fields.TreeSummary.cshtml:11
 msgctxt "OrchardCore.Lists.Views.Items.ListsAdminNode.Fields.TreeSummary"
 msgid "Lists"
