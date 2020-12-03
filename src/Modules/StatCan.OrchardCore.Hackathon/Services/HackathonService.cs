@@ -169,7 +169,7 @@ namespace StatCan.OrchardCore.Hackathon.Services
             }
 
             var hacker = user.Properties.ToObject<ContentItem>();
-            hacker.Content.Hacker.Hacker.Team.ContentItemIds[0] = null;
+            hacker.Content.Hacker.Hacker.Team.ContentItemIds.Clear();
             user.Properties = JObject.FromObject(hacker);
 
             _session.Save(user);

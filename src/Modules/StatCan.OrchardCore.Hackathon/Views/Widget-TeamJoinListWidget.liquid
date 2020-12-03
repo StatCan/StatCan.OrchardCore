@@ -1,7 +1,5 @@
 {% assign user = User | user_id | users_by_id %}
 
-{{user.Properties}}
-
 {% if User | is_in_role: "Hacker" %}
   {% if Site.Properties.HackathonCustomSettings.TeamCustomSettings.TeamEditable.Value == true and user.Properties.Hacker.Hacker.Team.ContentItemIds | first == null %}
     {% assign teams = Queries.GetItemsForHackathon | query: type: "Team" %}

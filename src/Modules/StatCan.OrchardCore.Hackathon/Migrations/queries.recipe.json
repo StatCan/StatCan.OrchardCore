@@ -18,18 +18,11 @@
           "Template": "SELECT DocumentId FROM HackathonItemsIndex where ContentType ='{{type}}'"
         },
         {
-          "Name": "GetHacker",
-          "ReturnDocuments": false,
-          "Schema": null,
-          "Source": "Sql",
-          "Template": "SELECT * FROM HackathonItemsIndex where ContentType ='Hacker' and Published = true and Owner = '{{owner}}'"
-        },
-        {
           "Name": "GetHackersForTeam",
-          "ReturnDocuments": true,
-          "Schema": null,
+          "ReturnDocuments": false,
+          "Schema": "null",
           "Source": "Sql",
-          "Template": "SELECT DocumentId FROM HackathonItemsIndex where ContentType ='Hacker' and TeamContentItemId = '{{teamContentItemId}}'"
+          "Template": "SELECT * FROM HackathonUsersIndex where TeamContentItemId = '{{teamContentItemId}}'"
         },
         {
           "Name": "GetScoreEntry",

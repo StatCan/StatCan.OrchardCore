@@ -1,9 +1,9 @@
 {% if User | is_in_role: "Hacker" %}
 
   {% assign userId = User | user_id %}
-  {% assign hacker = Queries.GetHacker | query: owner: userId %}
-  {% assign teamMembers = Queries.GetHackersForTeam | query: teamContentItemId: hacker.TeamContentItemId %}
   {% assign user = User | user_id | users_by_id %}
+  {% assign teamContentItemId = user.Properties.Hacker.Hacker.Team.ContentItemIds | first %}
+  {% assign teamMembers = Queries.GetHackersForTeam | query: teamContentItemId: teamContentItemId %}
   
   <div {%if Model.Id != null%}id="{{ Model.Id }}"{%endif%} class="{{ Model.Classes | join: ' ' }}">
     {% if user.Properties.Hacker.Hacker.Team.ContentItemIds | first != null %}
@@ -39,7 +39,8 @@
               <i class="fas fa-user-circle small"></i>
             </div>
             <div class="col">
-              {{ teamMember.DisplayText }}
+              {{ teamMember.FirstName }}
+              {{ teamMember.LastName }}
             </div>
           </li>
         {% endfor %}
