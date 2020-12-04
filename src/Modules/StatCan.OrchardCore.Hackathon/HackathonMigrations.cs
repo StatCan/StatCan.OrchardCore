@@ -26,7 +26,6 @@ namespace StatCan.OrchardCore.Hackathon
             CreateHackathonCustomSetings();
             CreateUserProfiles();
             CreateWidgets();
-            //CreateHackerVolunteers();
             CreateChallenge();
 
             await _recipeMigrator.ExecuteAsync("queries.recipe.json", this);
