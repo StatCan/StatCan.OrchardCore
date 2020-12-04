@@ -9,7 +9,7 @@ namespace StatCan.OrchardCore.Hackathon.Services
 {
     public interface IHackathonService
     {
-        Task<User> GetParticipantFromSetAsync();
+        Task<User> GetParticipantAsync();
         Task<int> GetTeamMemberCount(string teamContentItemId);
         Task<IEnumerable<User>> GetTeamMembers(string teamContentItemId);
         Task<bool> TeamExists(string teamContentItemId);

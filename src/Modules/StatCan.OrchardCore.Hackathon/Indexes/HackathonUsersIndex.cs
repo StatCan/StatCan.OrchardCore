@@ -42,12 +42,12 @@ namespace StatCan.OrchardCore.Hackathon.Indexes
                         Email = user.NormalizedEmail
                     };
 
-                    if (user.Properties.TryGetValue("Participant", out var property))
+                    if (user.Properties.TryGetValue("ParticipantProfile", out var property))
                     {
                         var hacker = property.ToObject<ContentItem>();
-                        hackathonUsersIndex.FirstName = hacker.Content.ParticipantPart.FirstName.Text;
-                        hackathonUsersIndex.LastName = hacker.Content.ParticipantPart.LastName.Text;
-                        hackathonUsersIndex.Language = hacker.Content.ParticipantPart.Language.Text;
+                        hackathonUsersIndex.FirstName = hacker.Content.ParticipantProfile.FirstName.Text;
+                        hackathonUsersIndex.LastName = hacker.Content.ParticipantProfile.LastName.Text;
+                        hackathonUsersIndex.Language = hacker.Content.ParticipantProfile.Language.Text;
                     }
 
                     if (user.Properties.TryGetValue("Hacker", out property))

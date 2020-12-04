@@ -43,7 +43,7 @@ namespace StatCan.OrchardCore.Hackathon.Services
 
         public IStringLocalizer T { get; }
 
-        public Task<User> GetParticipantFromSetAsync()
+        public Task<User> GetParticipantAsync()
         {
             var user = _httpContextAccessor.HttpContext.User;
             if (!user.Identity.IsAuthenticated)
@@ -87,7 +87,7 @@ namespace StatCan.OrchardCore.Hackathon.Services
 
         public async Task<ContentItem> JoinTeam(string teamContentItemId, ModelStateDictionary modelState)
         {
-            var user = await GetParticipantFromSetAsync();
+            var user = await GetParticipantAsync();
 
             if (user == null || !user.RoleNames.Contains("Hacker"))
             {
@@ -125,7 +125,7 @@ namespace StatCan.OrchardCore.Hackathon.Services
 
         public async Task<ContentItem> CreateTeam(ModelStateDictionary modelState)
         {
-            var user = await GetParticipantFromSetAsync();
+            var user = await GetParticipantAsync();
             if (user == null || !user.RoleNames.Contains("Hacker"))
             {
                 modelState.AddModelError("error", T["You are not a hacker"].Value);
@@ -155,7 +155,7 @@ namespace StatCan.OrchardCore.Hackathon.Services
 
         public async Task<bool> LeaveTeam(ModelStateDictionary modelState)
         {
-            var user = await GetParticipantFromSetAsync();
+            var user = await GetParticipantAsync();
             if (user == null || !user.RoleNames.Contains("Hacker"))
             {
                 modelState.AddModelError("error", T["You are not a hacker"].Value);
@@ -204,8 +204,6 @@ namespace StatCan.OrchardCore.Hackathon.Services
         {
             var hackathon = await _session.Query<ContentItem, HackathonItemsIndex>(x => x.ContentType == "Hackathon").FirstOrDefaultAsync();
             var hackersWithoutTeams = (await _session.Query<ContentItem, HackathonItemsIndex>(x => x.TeamContentItemId == null && x.ContentType == "Hacker" && x.Published).ListAsync()).ToList();
-            // remove non attending hackers from algo
-            hackersWithoutTeams = hackersWithoutTeams.Where(h => h.Content.ParticipantPart?.Attending?.Value == true).ToList();
 
             int maxTeamSize = (int)hackathon.Content.Hackathon.MaxTeamSize?.Value;
             await CleanupTeams();
@@ -294,8 +292,11 @@ namespace StatCan.OrchardCore.Hackathon.Services
             var team1 = JObject.FromObject(new { ContentItemIds = new string[] { teamContentId1 } });
             foreach (var member in team2Members)
             {
-                /*member.ContentItem.Content.Hacker.Team = team1;
-                await _contentManager.UpdateAsync(member);*/
+                var hacker = member.Properties.ToObject<ContentItem>();
+                hacker.Content.Hacker.Hacker.Team.ContentItemIds.Add(teamContentId1);
+                member.Properties = JObject.FromObject(hacker);
+
+                _session.Save(member);
             }
             // Delete team 2 
             await _contentManager.RemoveAsync(await _contentManager.GetAsync(team2.ContentItemId));
@@ -304,9 +305,14 @@ namespace StatCan.OrchardCore.Hackathon.Services
 
         private async Task<bool> AddHackerToTeam(string teamContentId, string participantContentId)
         {
-            var participant = await _session.Query<ContentItem, HackathonItemsIndex>(x => x.ContentItemId == participantContentId && x.ContentType == "Hacker" && x.Published).FirstOrDefaultAsync();
-            participant.Content.Hacker.Team = JObject.FromObject(new { ContentItemIds = new string[] { teamContentId } });
-            await _contentManager.UpdateAsync(participant);
+            var participant = await _session.Query<User, HackathonUsersIndex>(x => x.UserId == participantContentId).FirstOrDefaultAsync();
+
+            var hacker = participant.Properties.ToObject<ContentItem>();
+            hacker.Content.Hacker.Hacker.Team.ContentItemIds.Add(teamContentId);
+            participant.Properties = JObject.FromObject(hacker);
+
+            _session.Save(participant);
+
             return true;
         }
 
@@ -327,20 +333,6 @@ namespace StatCan.OrchardCore.Hackathon.Services
                 if (count == 0)
                 {
                     await _contentManager.RemoveAsync(team);
-                }
-                // remove teams with 1 member that are not attending.
-                if (count == 1)
-                {
-                    var member = (await GetTeamMembers(team.ContentItemId)).FirstOrDefault();
-                    if (member != null)
-                    {
-                        /*if (member.Content.ParticipantPart?.Attending?.Value != true)
-                        {
-                            await _contentManager.RemoveAsync(team);
-                            member.Content.Hacker.Team = JObject.FromObject(new { ContentItemIds = new string[] { } });
-                            await _contentManager.UpdateAsync(member);
-                        }*/
-                    }
                 }
             }
             return true;
