@@ -114,10 +114,10 @@ namespace StatCan.OrchardCore.Hackathon.Services
                 return null;
             }
 
-            var hacker = user.Properties.ToObject<ContentItem>();
-            hacker.Content.Hacker.Hacker.Team.ContentItemIds.Add(team.ContentItemId);
-            user.Properties = JObject.FromObject(hacker);
+            var contentItem = await GetSettings(user, "Hacker");
 
+            contentItem.Content.Hacker.Team.ContentItemIds.Add(team.ContentItemId);
+            user.Properties["Hacker"] = JObject.FromObject(contentItem);
             _session.Save(user);
 
             return team;
@@ -144,10 +144,10 @@ namespace StatCan.OrchardCore.Hackathon.Services
             await _contentManager.CreateAsync(team, VersionOptions.Published);
             await _contentManager.UpdateAsync(team);
 
-            var hacker = user.Properties.ToObject<ContentItem>();
-            hacker.Content.Hacker.Hacker.Team.ContentItemIds.Add(team.ContentItemId);
-            user.Properties = JObject.FromObject(hacker);
+            var contentItem = await GetSettings(user, "Hacker");
 
+            contentItem.Content.Hacker.Team.ContentItemIds.Add(team.ContentItemId);
+            user.Properties["Hacker"] = JObject.FromObject(contentItem);
             _session.Save(user);
 
             return team;
@@ -168,10 +168,10 @@ namespace StatCan.OrchardCore.Hackathon.Services
                 return false;
             }
 
-            var hacker = user.Properties.ToObject<ContentItem>();
-            hacker.Content.Hacker.Hacker.Team.ContentItemIds.Clear();
-            user.Properties = JObject.FromObject(hacker);
+            var contentItem = await GetSettings(user, "Hacker");
 
+            contentItem.Content.Hacker.Team.ContentItemIds.Clear();
+            user.Properties["Hacker"] = JObject.FromObject(contentItem);
             _session.Save(user);
 
             return true;
@@ -292,10 +292,10 @@ namespace StatCan.OrchardCore.Hackathon.Services
             var team1 = JObject.FromObject(new { ContentItemIds = new string[] { teamContentId1 } });
             foreach (var member in team2Members)
             {
-                var hacker = member.Properties.ToObject<ContentItem>();
-                hacker.Content.Hacker.Hacker.Team.ContentItemIds.Add(teamContentId1);
-                member.Properties = JObject.FromObject(hacker);
+                var contentItem = await GetSettings(member, "Hacker");
 
+                contentItem.Content.Hacker.Team.ContentItemIds.Add(teamContentId1);
+                member.Properties["Hacker"] = JObject.FromObject(contentItem);
                 _session.Save(member);
             }
             // Delete team 2 
@@ -307,10 +307,10 @@ namespace StatCan.OrchardCore.Hackathon.Services
         {
             var participant = await _session.Query<User, HackathonUsersIndex>(x => x.UserId == participantContentId).FirstOrDefaultAsync();
 
-            var hacker = participant.Properties.ToObject<ContentItem>();
-            hacker.Content.Hacker.Hacker.Team.ContentItemIds.Add(teamContentId);
-            participant.Properties = JObject.FromObject(hacker);
+            var contentItem = await GetSettings(participant, "Hacker");
 
+            contentItem.Content.Hacker.Team.ContentItemIds.Add(teamContentId);
+            participant.Properties["Hacker"] = JObject.FromObject(contentItem);
             _session.Save(participant);
 
             return true;
@@ -346,6 +346,23 @@ namespace StatCan.OrchardCore.Hackathon.Services
                 await _contentManager.UpdateAsync(item);
             }
             return true;
+        }
+
+        public async Task<ContentItem> GetSettings(User user, string type)
+        {
+            ContentItem contentItem;
+            if (user.Properties.TryGetValue(type, out var properties))
+            {
+                var existing = properties.ToObject<ContentItem>();
+                contentItem = await _contentManager.NewAsync(type);
+                contentItem.Merge(existing);
+            }
+            else
+            {
+                contentItem = await _contentManager.NewAsync(type);
+            }
+
+            return contentItem;
         }
     }
 }
