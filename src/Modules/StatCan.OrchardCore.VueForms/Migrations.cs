@@ -5,6 +5,8 @@ using OrchardCore.ContentManagement.Metadata.Settings;
 using OrchardCore.Data.Migration;
 using OrchardCore.Title.Models;
 using StatCan.OrchardCore.Extensions;
+using StatCan.OrchardCore.ContentFields.MultiValueTextField.Settings;
+
 namespace StatCan.OrchardCore.VueForms
 {
     public class Migrations : DataMigration
@@ -170,6 +172,208 @@ namespace StatCan.OrchardCore.VueForms
                 ));
             _contentDefinitionManager.AlterTypeDefinition("VueForm", type => type.Securable());
             return 3;
+        }
+
+        public int updateFrom3()
+        {
+            _contentDefinitionManager.AlterTypeDefinition("VTextField", type => type
+                .DisplayedAs("VTextField")
+                .Stereotype("Widget")
+                .WithPart("VTextField", part => part
+                    .WithPosition("1")
+                )
+                .WithTitlePart("0", TitlePartOptions.GeneratedDisabled, "{{ Model.ContentItem.Content.VExpansionPanel.Header.Text }}")
+            );
+
+            _contentDefinitionManager.AlterPartDefinition("VTextField", part => part
+                .WithField("Model", field => field
+                    .OfType("TextField")
+                    .WithDisplayName("Model")
+                    .WithSettings(new TextFieldSettings
+                    {
+                        Hint = "The model for this field.",
+                        Required = true,
+                    })
+                )
+                .WithField("Label", field => field
+                    .OfType("TextField")
+                    .WithDisplayName("Label")
+                    .WithSettings(new TextFieldSettings
+                    {
+                        Hint = "Sets input label.",
+                        Required = true,
+                    })
+                )
+                .WithField("Value", field => field
+                    .OfType("TextField")
+                    .WithDisplayName("Value")
+                    .WithSettings(new TextFieldSettings
+                    {
+                        Hint = "The input’s value.",
+                    })
+                )
+                .WithField("Placeholder", field => field
+                    .OfType("TextField")
+                    .WithDisplayName("Placeholder")
+                    .WithSettings(new TextFieldSettings
+                    {
+                        Hint = "Sets the input’s placeholder text.",
+                    })
+                )
+                .WithField("Hint", field => field
+                    .OfType("TextField")
+                    .WithDisplayName("Hint")
+                    .WithSettings(new TextFieldSettings
+                    {
+                        Hint = "Hint text.",
+                    })
+                )
+                .WithField("Prefix", field => field
+                    .OfType("TextField")
+                    .WithDisplayName("Prefix")
+                    .WithSettings(new TextFieldSettings
+                    {
+                        Hint = "Displays prefix text.",
+                    })
+                )
+                .WithField("Suffix", field => field
+                    .OfType("TextField")
+                    .WithDisplayName("Suffix")
+                    .WithSettings(new TextFieldSettings
+                    {
+                        Hint = "Displays suffix text.",
+                    })
+                )
+                .WithField("AppendIcon", field => field
+                    .OfType("TextField")
+                    .WithDisplayName("Append Icon")
+                    .WithSettings(new TextFieldSettings
+                    {
+                        Hint = "Appends an icon to the component.",
+                    })
+                )
+                .WithField("AppendOuterIcon", field => field
+                    .OfType("TextField")
+                    .WithDisplayName("AppendOuterIcon")
+                    .WithSettings(new TextFieldSettings
+                    {
+                        Hint = "Appends an icon to the outside the component’s input.",
+                    })
+                )
+                .WithField("PrependIcon", field => field
+                    .OfType("TextField")
+                    .WithDisplayName("PrependIcon")
+                    .WithSettings(new TextFieldSettings
+                    {
+                        Hint = "Prepends an icon to the component.",
+                    })
+                )
+                .WithField("PrependInnerIcon", field => field
+                    .OfType("TextField")
+                    .WithDisplayName("PrependInnerIcon")
+                    .WithSettings(new TextFieldSettings
+                    {
+                        Hint = "Prepends an icon inside the component’s input.",
+                    })
+                )
+                .WithField("Color", field => field
+                    .OfType("TextField")
+                    .WithDisplayName("Color")
+                    .WithSettings(new TextFieldSettings
+                    {
+                        Hint = "Applies specified color to the control - it can be the name of material color (for example success or purple) or css color (#033 or rgba(255, 0, 0, 0.5)).",
+                    })
+                )
+                .WithField("BackgroundColor", field => field
+                    .OfType("TextField")
+                    .WithDisplayName("Background Color")
+                    .WithSettings(new TextFieldSettings
+                    {
+                        Hint = "Applies specified color to the control background - it can be the name of material color (for example success or purple) or css color (#033 or rgba(255, 0, 0, 0.5)).",
+                    })
+                )
+                .WithField("ClearIcon", field => field
+                    .OfType("TextField")
+                    .WithDisplayName("Clear Icon")
+                    .WithSettings(new TextFieldSettings
+                    {
+                        Hint = "Applied when using clearable and the input is dirty.",
+                    })
+                )
+                .WithField("Props", field => field
+                    .OfType("MultiValueTextField")
+                    .WithDisplayName("Props")
+                    .WithEditor("PredefinedList")
+                    .WithSettings(new MultiValueTextFieldEditorSettings
+                    {
+                        Options = new ListValueOption[] { new ListValueOption() {
+                            Name = "Autofocus",
+                            Value = "autofocus"
+                        }, new ListValueOption() {
+                            Name = "Clearable",
+                            Value = "clearable"
+                        }, new ListValueOption() {
+                            Name = "Dark",
+                            Value = "dark"
+                        }, new ListValueOption() {
+                            Name = "Dense",
+                            Value = "dense"
+                        }, new ListValueOption() {
+                            Name = "Disabled",
+                            Value = "disabled"
+                        }, new ListValueOption() {
+                            Name = "Error",
+                            Value = "error"
+                        }, new ListValueOption() {
+                            Name = "Flat",
+                            Value = "flat"
+                        }, new ListValueOption() {
+                            Name = "Filled",
+                            Value = "full-width"
+                        }, new ListValueOption() {
+                            Name = "Light",
+                            Value = "light"
+                        }, new ListValueOption() {
+                            Name = "Loading",
+                            Value = "loading"
+                        }, new ListValueOption() {
+                            Name = "Outlined",
+                            Value = "outlined"
+                        }, new ListValueOption() {
+                            Name = "Persistent Hint",
+                            Value = "persistent-hint"
+                        }, new ListValueOption() {
+                            Name = "Read-only",
+                            Value = "readonly"
+                        }, new ListValueOption() {
+                            Name = "Reverse",
+                            Value = "reverse"
+                        }, new ListValueOption() {
+                            Name = "Rounded",
+                            Value = "rounded"
+                        }, new ListValueOption() {
+                            Name = "Shaped",
+                            Value = "shaped"
+                        }, new ListValueOption() {
+                            Name = "Single Line",
+                            Value = "single-line"
+                        }, new ListValueOption() {
+                            Name = "Solo",
+                            Value = "solo"
+                        }, new ListValueOption() {
+                            Name = "Solo Inverted",
+                            Value = "solo-inverted"
+                        }, new ListValueOption() {
+                            Name = "Success",
+                            Value = "success"
+                        }, new ListValueOption() {
+                            Name = "Validate on Blur",
+                            Value = "validate-on-blur"
+                        } },
+                    })
+                )
+            );
+            return 4;
         }
 
         public void AddVueFormReference()
