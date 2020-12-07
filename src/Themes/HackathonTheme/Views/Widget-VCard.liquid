@@ -9,7 +9,7 @@
   {% endif %}
   {% if Model.ContentItem.Content.VCard.Content.Html != "" %}
     <v-card-text>
-      {{ Model.ContentItem.Content.VCard.Content.Html | sanitize_html | shortcode | raw }}
+      {{ Model.Content.VCard__Content | shape_render }}
     </v-card-text>
   {% endif %}
   {% if numberOfActions > 0 %}

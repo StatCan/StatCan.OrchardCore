@@ -422,14 +422,7 @@ namespace StatCan.Themes.HackathonTheme
                 .WithPart("VCard", part => part
                     .WithPosition("1")
                 )
-                .WithPart("TitlePart", part => part
-                    .WithPosition("0")
-                    .WithSettings(new TitlePartSettings
-                    {
-                        Options = TitlePartOptions.GeneratedHidden,
-                        Pattern = "{{ Model.ContentItem.Content.VCard.Title.Text }}",
-                    })
-                )
+                .WithTitlePart("0", TitlePartOptions.GeneratedDisabled, "{{ Model.ContentItem.Content.VCard.Title.Text }}")
                 .WithPart("Actions", part => part
                     .WithDisplayName("Actions")
                     .WithDescription("Used for placing actions for a card.")
@@ -468,14 +461,7 @@ namespace StatCan.Themes.HackathonTheme
                 .WithPart("VExpansionPanel", part => part
                     .WithPosition("1")
                 )
-                .WithPart("TitlePart", part => part
-                    .WithPosition("0")
-                    .WithSettings(new TitlePartSettings
-                    {
-                        Options = TitlePartOptions.GeneratedHidden,
-                        Pattern = "{{ Model.ContentItem.Content.VExpansionPanel.Header.Text }}",
-                    })
-                )
+                .WithTitlePart("0", TitlePartOptions.GeneratedDisabled, "{{ Model.ContentItem.Content.VExpansionPanel.Header.Text }}")
                 .WithPart("FlowPart", part => part
                     .WithPosition("2")
                 )
@@ -815,14 +801,7 @@ namespace StatCan.Themes.HackathonTheme
                 .WithPart("VTextField", part => part
                     .WithPosition("1")
                 )
-                .WithPart("TitlePart", part => part
-                    .WithPosition("0")
-                    .WithSettings(new TitlePartSettings
-                    {
-                        Options = TitlePartOptions.GeneratedHidden,
-                        Pattern = "{{ Model.ContentItem.Content.VExpansionPanel.Header.Text }}",
-                    })
-                )
+                .WithTitlePart("0", TitlePartOptions.GeneratedDisabled, "{{ Model.ContentItem.Content.VExpansionPanel.Header.Text }}")
             );
 
             _contentDefinitionManager.AlterPartDefinition("VTextField", part => part

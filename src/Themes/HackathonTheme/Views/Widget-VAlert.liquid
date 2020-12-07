@@ -10,5 +10,5 @@
   {% if elevation %}elevation="{{ elevation }}"{% endif %}
   {% if icon %}icon="{{ icon }}"{% endif %}
   {% if border %}border="{{ border }}"{% endif %}>
-  {{ Model.ContentItem.Content.HtmlBodyPart.Html | sanitize_html | raw }}
+  {{ Model.Content.HtmlBodyPart | shape_render }}
 </v-alert>
