@@ -1,0 +1,32 @@
+{% assign model = Model.ContentItem.Content.VTextField.Model.Text %}
+{% assign label = Model.ContentItem.Content.VTextField.Label.Text %}
+{% assign value = Model.ContentItem.Content.VTextField.Value.Text %}
+{% assign appendIcon = Model.ContentItem.Content.VTextField.AppendIcon.Text %}
+{% assign appendOuterIcon = Model.ContentItem.Content.VTextField.AppendOuterIcon.Text %}
+{% assign prependIcon = Model.ContentItem.Content.VTextField.PrependIcon.Text %}
+{% assign prependInnerIcon = Model.ContentItem.Content.VTextField.PrependInnerIcon.Text %}
+{% assign placeholder = Model.ContentItem.Content.VTextField.Placeholder.Text %}
+{% assign hint = Model.ContentItem.Content.VTextField.Hint.Text %}
+{% assign prefix = Model.ContentItem.Content.VTextField.Prefix.Text %}
+{% assign suffix = Model.ContentItem.Content.VTextField.Suffix.Text %}
+{% assign color = Model.ContentItem.Content.VTextField.Color.Text %}
+{% assign backgroundColor = Model.ContentItem.Content.VTextField.BackgroundColor.Text %}
+
+<validation-provider name="{{ label }}" v-slot="{ valid, error }">
+  <v-text-field {{ Model.ContentItem.Content.VTextField.Props.Values | join: ' ' | raw }}
+    {% if model %}v-model="{{ model }}"{% endif %}
+    {% if label %}label="{{ label }}"{% endif %}
+    {% if placeholder %}placeholder="{{ placeholder }}"{% endif %}
+    {% if hint %}hint="{{ hint }}"{% endif %}
+    {% if prefix %}prefix="{{ prefix }}"{% endif %}
+    {% if suffix %}suffix="{{ suffix }}"{% endif %}
+    {% if clearIcon %}clear-icon="{{ clearIcon }}"{% endif %}
+    {% if appendIcon %}append-icon="{{ appendIcon }}"{% endif %}
+    {% if appendOuterIcon %}append-outer-icon="{{ appendOuterIcon }}"{% endif %}
+    {% if prependIcon %}prepend-icon="{{ prependIcon }}"{% endif %}
+    {% if prependInnerIcon %}prepend-inner-icon="{{ prependInnerIcon }}"{% endif %}
+    {% if color %}color="{{ color }}"{% endif %}
+    {% if backgroundColor %}backgroundColor="{{ backgroundColor }}"{% endif %}>
+      {{ value }}
+  </v-text-field>
+</validation-provider>

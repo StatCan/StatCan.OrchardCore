@@ -1,0 +1,31 @@
+{% assign model = Model.ContentItem.Content.VInput.Model.Text %}
+{% assign label = Model.ContentItem.Content.VInput.Label.Text %}
+{% assign value = Model.ContentItem.Content.VInput.Value.Text %}
+{% assign appendIcon = Model.ContentItem.Content.VInput.AppendIcon.Text %}
+{% assign appendOuterIcon = Model.ContentItem.Content.VInput.AppendOuterIcon.Text %}
+{% assign prependIcon = Model.ContentItem.Content.VInput.PrependIcon.Text %}
+{% assign prependInnerIcon = Model.ContentItem.Content.VInput.PrependInnerIcon.Text %}
+{% assign placeholder = Model.ContentItem.Content.VInput.Placeholder.Text %}
+{% assign hint = Model.ContentItem.Content.VInput.Hint.Text %}
+{% assign prefix = Model.ContentItem.Content.VInput.Prefix.Text %}
+{% assign suffix = Model.ContentItem.Content.VInput.Suffix.Text %}
+{% assign color = Model.ContentItem.Content.VInput.Color.Text %}
+{% assign backgroundColor = Model.ContentItem.Content.VInput.BackgroundColor.Text %}
+
+<validation-provider name="{{ label }}" v-slot="{ valid, error }">
+  <v-text-field {{ Model.ContentItem.Content.VInput.Props.Values | join: ' ' | raw }}
+    v-model="{{ model }}"
+    label="{{ label }}"
+    placeholder="{{ placeholder }}"
+    hint="{{ hint }}"
+    prefix="{{ prefix }}"
+    suffix="{{ suffix }}"
+    append-icon="{{ appendIcon }}"
+    append-outer-icon="{{ appendOuterIcon }}"
+    prepend-icon="{{ prependIcon }}"
+    prepend-inner-icon="{{ prependInnerIcon }}"
+    color="{{ color }}"
+    backgroundColor="{{ backgroundColor }}">
+      {{ value }}
+  </v-text-field>
+</validation-provider>
