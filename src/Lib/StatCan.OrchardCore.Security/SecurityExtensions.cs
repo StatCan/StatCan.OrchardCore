@@ -40,6 +40,7 @@ namespace StatCan.OrchardCore.Security
                     .UnsafeEval() // for vue-js in oc admin
                     .UnsafeInline() // for oc admin
                     .Self()
+                    .From("https://www.google.com/recaptcha/").From("https://www.gstatic.com/recaptcha/") //recaptcha
                     .From("cdn.jsdelivr.net")
                     .From("code.jquery.com")
                     .From("ajax.googleapis.com")
@@ -56,7 +57,9 @@ namespace StatCan.OrchardCore.Security
                     .From("*.demdex.net") // adobe analytics
                     .From("cm.everesttech.net") // adobe analytics
                     .From("*.adobe.com"); // adobe analytics
-                builder.AddFrameSource().Self().From("canada.demdex.net"); // adobe analytics
+                builder.AddFrameSource().Self()
+                .From("canada.demdex.net")// adobe analytics
+                .From("https://www.google.com/recaptcha/");
             });
 
             if (!env.IsDevelopment())

@@ -12,7 +12,6 @@
     <PackageReference Include="OrchardCore.ContentTypes" Version="$(OrchardCoreVersion)" />
     <PackageReference Include="OrchardCore.DisplayManagement" Version="$(OrchardCoreVersion)" />
     <PackageReference Include="OrchardCore.ResourceManagement" Version="$(OrchardCoreVersion)" />
-    <PackageReference Include="OrchardCore.Module.Targets" Version="$(OrchardCoreVersion)" />
   </ItemGroup>
 
   <ItemGroup>

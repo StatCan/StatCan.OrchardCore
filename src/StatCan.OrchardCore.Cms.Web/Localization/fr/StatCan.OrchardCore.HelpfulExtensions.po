@@ -1,0 +1,34 @@
+msgid ""
+msgstr "Content-Type: text/plain\n"
+
+#: StatCan.OrchardCore.Helpful-Extensions\Extensions\CodeGeneration\CodeGenerationDisplayDriver.cs:52
+#. return T["\"FIX ME! Couldn't determine the actual type to instantiate.\" {0}", jObject.ToString()];
+msgctxt ""
+"Lombiq.HelpfulExtensions.Extensions.CodeGeneration."
+"CodeGenerationDisplayDriver"
+msgid "\"FIX ME! Couldn't determine the actual type to instantiate.\" {0}"
+msgstr "\"FIX ME! Impossible de déterminer le type réel à instancier.\" {0}"
+
+#: StatCan.OrchardCore.Helpful-Extensions\Views\AdditionalStylingPart.Edit.cshtml:5
+#. <button type="button" title="@T["Settings"]" class="btn btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+msgctxt "StatCan.OrchardCore.Helpful-Extensions.Views.AdditionalStylingPart.Edit"
+msgid "Settings"
+msgstr "Réglages"
+
+#: StatCan.OrchardCore.Helpful-Extensions\Views\AdditionalStylingPart.Edit.cshtml:10
+#. <label asp-for="CustomClasses" class="form-check-label">@T["Custom classes"]</label>
+msgctxt "StatCan.OrchardCore.Helpful-Extensions.Views.AdditionalStylingPart.Edit"
+msgid "Custom classes"
+msgstr "Cours personnalisés"
+
+#: StatCan.OrchardCore.Helpful-Extensions\Views\AdditionalStylingPart.Edit.cshtml:15
+#. <label class="form-check-label" asp-for="RemoveGridExtensionClasses">@T["Remove grid extension classes"]</label>
+msgctxt "StatCan.OrchardCore.Helpful-Extensions.Views.AdditionalStylingPart.Edit"
+msgid "Remove grid extension classes"
+msgstr "Supprimer les classes d'extension de grille"
+
+#: StatCan.OrchardCore.Helpful-Extensions\Views\ContentTypeMigrations.Edit.cshtml:8
+#. @T["Toggle showing generated migration code"]
+msgctxt "StatCan.OrchardCore.Helpful-Extensions.Views.ContentTypeMigrations.Edit"
+msgid "Toggle showing generated migration code"
+msgstr "Basculer l'affichage du code de migration généré"

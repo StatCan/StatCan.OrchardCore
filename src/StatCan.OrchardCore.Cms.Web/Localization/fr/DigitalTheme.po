@@ -1,0 +1,409 @@
+msgid ""
+msgstr "Content-Type: text/plain\n"
+
+#: DigitalTheme\Views\OrchardCore.Users\Account\Login.cshtml:19
+#: DigitalTheme\Views\OrchardCore.Users\Account\Login.cshtml:76
+#. <h1 class="login">@T["Log in"]</h1>
+#. <button type="submit" class="btn btn-lg btn-primary is-rounded"><span>@T["Log in"]</span></button>
+msgctxt "DigitalTheme.Views.OrchardCore.Users.Account.Login"
+msgid "Log in"
+msgstr "S'identifier"
+
+#: DigitalTheme\Views\OrchardCore.Users\Account\Login.cshtml:27
+#. <h2 class="text-center mb-3">@T["Log in with"]</h2>
+msgctxt "DigitalTheme.Views.OrchardCore.Users.Account.Login"
+msgid "Log in with"
+msgstr "Connectez-vous avec"
+
+#: DigitalTheme\Views\OrchardCore.Users\Account\Login.cshtml:57
+#. <h2 class="text-center">@T["Digital account"]</h2>
+msgctxt "DigitalTheme.Views.OrchardCore.Users.Account.Login"
+msgid "Digital account"
+msgstr "Compte numérique"
+
+#: DigitalTheme\Views\OrchardCore.Users\Account\Login.cshtml:61
+#. <label class="asterix" asp-for="UserName">@T["Username"]</label>
+msgctxt "DigitalTheme.Views.OrchardCore.Users.Account.Login"
+msgid "Username"
+msgstr "Nom d'utilisateur"
+
+#: DigitalTheme\Views\OrchardCore.Users\Account\Login.cshtml:66
+#. <label class="asterix" asp-for="Password">@T["Password"]</label>
+msgctxt "DigitalTheme.Views.OrchardCore.Users.Account.Login"
+msgid "Password"
+msgstr "Mot de passe"
+
+#: DigitalTheme\Views\OrchardCore.Users\Account\Login.cshtml:72
+#. <label asp-for="RememberMe" class="custom-control-label">@T["Remember me"]</label>
+msgctxt "DigitalTheme.Views.OrchardCore.Users.Account.Login"
+msgid "Remember me"
+msgstr "Souviens-toi de moi"
+
+#: DigitalTheme\Views\OrchardCore.Users\Account\Login.cshtml:81
+#. <a class="h4" asp-controller="ResetPassword" asp-action="ForgotPassword" class="label-link">@T["Forgot your password?"]</a>
+msgctxt "DigitalTheme.Views.OrchardCore.Users.Account.Login"
+msgid "Forgot your password?"
+msgstr "Mot de passe oublié?"
+
+#: DigitalTheme\Views\OrchardCore.Users\Account\Login.cshtml:94
+#. <a class="btn btn-lg btn-outline-primary is-rounded" asp-controller="Registration" asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]">@T["Create an account"]</a>
+msgctxt "DigitalTheme.Views.OrchardCore.Users.Account.Login"
+msgid "Create an account"
+msgstr "Créer un compte"
+
+#: DigitalTheme\Views\Layout.liquid:0
+msgctxt "DigitalTheme.Views.Layout"
+msgid "Skip to main content"
+msgstr "Passer au contenu principal"
+
+#: DigitalTheme\Views\MenuItemLink-FeedbackMenuItem.liquid:0
+#: DigitalTheme\Views\MenuItemLink-FeedbackMenuItem.liquid:0
+#: DigitalTheme\Views\MenuItemLink-FeedbackMenuItem.liquid:0
+#: DigitalTheme\Views\MenuItemLink-FeedbackMenuItem.liquid:0
+msgctxt "DigitalTheme.Views.MenuItemLink-FeedbackMenuItem"
+msgid "Send feedback"
+msgstr "Envoyez des commentaires"
+
+#: DigitalTheme\Views\MenuItemLink-Footer.liquid:0
+msgctxt "DigitalTheme.Views.MenuItemLink-Footer"
+msgid "in a new tab"
+msgstr "dans un nouvel onglet"
+
+#: DigitalTheme\Views\MenuItemLink-LoginMenuItem.liquid:0
+#: DigitalTheme\Views\MenuItemLink-LoginMenuItem.liquid:0
+#: DigitalTheme\Views\MenuItemLink-LoginMenuItem.liquid:0
+msgctxt "DigitalTheme.Views.MenuItemLink-LoginMenuItem"
+msgid "Account"
+msgstr "Compte"
+
+#: DigitalTheme\Views\MenuItemLink-LoginMenuItem.liquid:0
+#: DigitalTheme\Views\MenuItemLink-LoginMenuItem.liquid:0
+#: DigitalTheme\Views\MenuItemLink-LoginMenuItem.liquid:0
+#: DigitalTheme\Views\MenuItemLink-LoginMenuItem.liquid:0
+msgctxt "DigitalTheme.Views.MenuItemLink-LoginMenuItem"
+msgid "Log in"
+msgstr "S'identifier"
+
+#: DigitalTheme\Views\ModalBonusAction.liquid:0
+msgctxt "DigitalTheme.Views.ModalBonusAction"
+msgid "Request a Kubeflow namespace"
+msgstr "Demander un espace de noms Kubeflow"
+
+#: DigitalTheme\Views\ModalBonusAction.liquid:0
+msgctxt "DigitalTheme.Views.ModalBonusAction"
+msgid "An admin will follow up with you at"
+msgstr "Un administrateur vous contactera au"
+
+#: DigitalTheme\Views\ModalBonusAction.liquid:0
+msgctxt "DigitalTheme.Views.ModalBonusAction"
+msgid "with questions or updates."
+msgstr "avec des questions ou des mises à jour."
+
+#: DigitalTheme\Views\ModalBonusAction.liquid:0
+msgctxt "DigitalTheme.Views.ModalBonusAction"
+msgid "Close"
+msgstr "proche"
+
+#: DigitalTheme\Views\ModalBonusAction.liquid:0
+msgctxt "DigitalTheme.Views.ModalBonusAction"
+msgid "Namespace name"
+msgstr "Nom de l'espace de noms"
+
+#: DigitalTheme\Views\ModalBonusAction.liquid:0
+msgctxt "DigitalTheme.Views.ModalBonusAction"
+msgid "Send request"
+msgstr "Envoyer une demande"
+
+#: DigitalTheme\Views\ModalFeedback.liquid:0
+msgctxt "DigitalTheme.Views.ModalFeedback"
+msgid "Instant feedback"
+msgstr "Rétroaction instantanée"
+
+#: DigitalTheme\Views\ModalFeedback.liquid:0
+msgctxt "DigitalTheme.Views.ModalFeedback"
+msgid "How was your experience?"
+msgstr "Comment était ton expérience?"
+
+#: DigitalTheme\Views\ModalFeedback.liquid:0
+msgctxt "DigitalTheme.Views.ModalFeedback"
+msgid "Close"
+msgstr "proche"
+
+#: DigitalTheme\Views\ModalFeedback.liquid:0
+msgctxt "DigitalTheme.Views.ModalFeedback"
+msgid "Enter your feedback"
+msgstr "Entrez vos commentaires"
+
+#: DigitalTheme\Views\ModalFeedback.liquid:0
+msgctxt "DigitalTheme.Views.ModalFeedback"
+msgid "Happy mood"
+msgstr "Bonne humeur"
+
+#: DigitalTheme\Views\ModalFeedback.liquid:0
+msgctxt "DigitalTheme.Views.ModalFeedback"
+msgid "Neutral mood"
+msgstr "Humeur neutre"
+
+#: DigitalTheme\Views\ModalFeedback.liquid:0
+msgctxt "DigitalTheme.Views.ModalFeedback"
+msgid "Sad mood"
+msgstr "Humeur triste"
+
+#: DigitalTheme\Views\ModalFeedback.liquid:0
+msgctxt "DigitalTheme.Views.ModalFeedback"
+msgid "Send feedback"
+msgstr "Envoyez des commentaires"
+
+#: DigitalTheme\Views\ModalProfile.liquid:0
+msgctxt "DigitalTheme.Views.ModalProfile"
+msgid "account"
+msgstr "Compte"
+
+#: DigitalTheme\Views\ModalProfile.liquid:0
+msgctxt "DigitalTheme.Views.ModalProfile"
+msgid "Close"
+msgstr "proche"
+
+#: DigitalTheme\Views\ModalProfile.liquid:0
+msgctxt "DigitalTheme.Views.ModalProfile"
+msgid "Contact email"
+msgstr "Email du contact"
+
+#: DigitalTheme\Views\ModalProfile.liquid:0
+msgctxt "DigitalTheme.Views.ModalProfile"
+msgid "Azure account"
+msgstr "Compte Azure"
+
+#: DigitalTheme\Views\ModalProfile.liquid:0
+msgctxt "DigitalTheme.Views.ModalProfile"
+msgid "Log out"
+msgstr "Se déconnecter"
+
+#: DigitalTheme\Views\SharedPasswordRequirementText.liquid:0
+msgctxt "DigitalTheme.Views.SharedPasswordRequirementText"
+msgid ""
+"Passwords must have:<br>• 8 characters or more<br>• an uppercase "
+"letter<br>• a lowercase letter<br>• a number<br>• a special character"
+msgstr ""
+"Les mots de passe doivent avoir:<br> • 8 caractères ou plus<br> • une "
+"lettre majuscule<br> • une lettre minuscule<br> • un numéro<br> • un "
+"caractère spécial"
+
+#: DigitalTheme\Views\SymbolCanada.liquid:0
+msgctxt "DigitalTheme.Views.SymbolCanada"
+msgid "Symbol of the Government of Canada"
+msgstr "Symbole du gouvernement du Canada"
+
+#: DigitalTheme\Views\SymbolStatisticsCanada.liquid:0
+#: DigitalTheme\Views\SymbolStatisticsCanada.liquid:0
+msgctxt "DigitalTheme.Views.SymbolStatisticsCanada"
+msgid "Statistics Canada"
+msgstr "Statistique Canada"
+
+#: DigitalTheme\Views\Widget-FatFooter.liquid:0
+msgctxt "DigitalTheme.Views.Widget-FatFooter"
+msgid "Digital Innovation logo"
+msgstr "Logo de l'innovation numérique"
+
+#: DigitalTheme\Views\Shared\NotFound.liquid:0
+msgctxt "DigitalTheme.Views.Shared.NotFound"
+msgid "We couldn't find what you're looking for"
+msgstr "Nous n'avons pas trouvé ce que vous cherchez"
+
+#: DigitalTheme\Views\OrchardCore.Users\Account\ChangePassword.liquid:0
+#: DigitalTheme\Views\OrchardCore.Users\Account\ChangePassword.liquid:0
+msgctxt "DigitalTheme.Views.OrchardCore.Users.Account.ChangePassword"
+msgid "Change password"
+msgstr "Changer le mot de passe"
+
+#: DigitalTheme\Views\OrchardCore.Users\Account\ChangePassword.liquid:0
+msgctxt "DigitalTheme.Views.OrchardCore.Users.Account.ChangePassword"
+msgid "Digital account security"
+msgstr "Sécurité des comptes numériques"
+
+#: DigitalTheme\Views\OrchardCore.Users\Account\ChangePassword.liquid:0
+msgctxt "DigitalTheme.Views.OrchardCore.Users.Account.ChangePassword"
+msgid "New password, new beginning"
+msgstr "Nouveau mot de passe, nouveau départ"
+
+#: DigitalTheme\Views\OrchardCore.Users\Account\ChangePasswordConfirmation.liquid:0
+msgctxt "DigitalTheme.Views.OrchardCore.Users.Account.ChangePasswordConfirmation"
+msgid "Password changed"
+msgstr "Mot de passe changé"
+
+#: DigitalTheme\Views\OrchardCore.Users\Account\ChangePasswordConfirmation.liquid:0
+msgctxt "DigitalTheme.Views.OrchardCore.Users.Account.ChangePasswordConfirmation"
+msgid "Your password has been changed successfully."
+msgstr "Votre mot de passe a été changé avec succès."
+
+#: DigitalTheme\Views\OrchardCore.Users\Account\RegisterExternalLogin.liquid:0
+msgctxt "DigitalTheme.Views.OrchardCore.Users.Account.RegisterExternalLogin"
+msgid "Finish registration"
+msgstr "Terminer l'inscription"
+
+#: DigitalTheme\Views\OrchardCore.Users\Account\RegisterExternalLogin.liquid:0
+msgctxt "DigitalTheme.Views.OrchardCore.Users.Account.RegisterExternalLogin"
+msgid "One last thing"
+msgstr "Une dernière chose"
+
+#: DigitalTheme\Views\OrchardCore.Users\Account\RegisterExternalLogin.liquid:0
+msgctxt "DigitalTheme.Views.OrchardCore.Users.Account.RegisterExternalLogin"
+msgid ""
+"Your Azure account has been linked! Enter an email address to receive "
+"updates for namespace requests."
+msgstr ""
+"Votre compte Azure a été lié! Saisissez une adresse e-mail pour recevoir "
+"les mises à jour des demandes d'espace de noms."
+
+#: DigitalTheme\Views\OrchardCore.Users\Account\RegisterExternalLogin.liquid:0
+msgctxt "DigitalTheme.Views.OrchardCore.Users.Account.RegisterExternalLogin"
+msgid "Create account"
+msgstr "Créer un compte"
+
+#: DigitalTheme\Views\OrchardCore.Users\Registration\ConfirmEmail.liquid:0
+msgctxt "DigitalTheme.Views.OrchardCore.Users.Registration.ConfirmEmail"
+msgid "Email confirmed"
+msgstr "Email confirmé"
+
+#: DigitalTheme\Views\OrchardCore.Users\Registration\ConfirmEmail.liquid:0
+msgctxt "DigitalTheme.Views.OrchardCore.Users.Registration.ConfirmEmail"
+msgid "Thank you for confirming your email."
+msgstr "Merci d'avoir confirmé votre email."
+
+#: DigitalTheme\Views\OrchardCore.Users\Registration\ConfirmEmail.liquid:0
+msgctxt "DigitalTheme.Views.OrchardCore.Users.Registration.ConfirmEmail"
+msgid "Home"
+msgstr "Accueil"
+
+#: DigitalTheme\Views\OrchardCore.Users\Registration\Register.liquid:0
+#: DigitalTheme\Views\OrchardCore.Users\Registration\Register.liquid:0
+msgctxt "DigitalTheme.Views.OrchardCore.Users.Registration.Register"
+msgid "Create account"
+msgstr "Créer un compte"
+
+#: DigitalTheme\Views\OrchardCore.Users\Registration\Register.liquid:0
+msgctxt "DigitalTheme.Views.OrchardCore.Users.Registration.Register"
+msgid "Digital account"
+msgstr "Compte numérique"
+
+#: DigitalTheme\Views\OrchardCore.Users\Registration\Register.liquid:0
+msgctxt "DigitalTheme.Views.OrchardCore.Users.Registration.Register"
+msgid "Register for your Digital account here!"
+msgstr "Créez votre compte numérique ici!"
+
+#: DigitalTheme\Views\OrchardCore.Users\Registration\Register.liquid:0
+msgctxt "DigitalTheme.Views.OrchardCore.Users.Registration.Register"
+msgid ""
+"Passwords must have:<br>• 8 characters or more<br>• an uppercase "
+"letter<br>• a lowercase letter<br>• a number<br>• a special character"
+msgstr ""
+"Les mots de passe doivent avoir:<br> • 8 caractères ou plus<br> • une "
+"lettre majuscule<br> • une lettre minuscule<br> • un numéro<br> • un "
+"caractère spécial"
+
+#: DigitalTheme\Views\OrchardCore.Users\ResetPassword\ForgotPassword.liquid:0
+msgctxt "DigitalTheme.Views.OrchardCore.Users.ResetPassword.ForgotPassword"
+msgid "Forgot password"
+msgstr "Mot de passe oublié"
+
+#: DigitalTheme\Views\OrchardCore.Users\ResetPassword\ForgotPassword.liquid:0
+msgctxt "DigitalTheme.Views.OrchardCore.Users.ResetPassword.ForgotPassword"
+msgid "Recover Digital account"
+msgstr "Récupérer un compte numérique"
+
+#: DigitalTheme\Views\OrchardCore.Users\ResetPassword\ForgotPassword.liquid:0
+msgctxt "DigitalTheme.Views.OrchardCore.Users.ResetPassword.ForgotPassword"
+msgid "Things happen, it's ok"
+msgstr "Les choses arrivent, c'est bon"
+
+#: DigitalTheme\Views\OrchardCore.Users\ResetPassword\ForgotPassword.liquid:0
+msgctxt "DigitalTheme.Views.OrchardCore.Users.ResetPassword.ForgotPassword"
+msgid "A recovery link will be sent to the email address tied to your account."
+msgstr ""
+"Un lien de récupération sera envoyé à l'adresse e-mail associée à votre "
+"compte."
+
+#: DigitalTheme\Views\OrchardCore.Users\ResetPassword\ForgotPassword.liquid:0
+msgctxt "DigitalTheme.Views.OrchardCore.Users.ResetPassword.ForgotPassword"
+msgid "Send recovery email"
+msgstr "Envoyer un e-mail de récupération"
+
+#: DigitalTheme\Views\OrchardCore.Users\ResetPassword\ForgotPassword.liquid:0
+msgctxt "DigitalTheme.Views.OrchardCore.Users.ResetPassword.ForgotPassword"
+msgid "If you can't access the inbox tied to your account, see if we can help."
+msgstr ""
+"Si vous ne pouvez pas accéder à la boîte de réception associée à votre "
+"compte, voyez si nous pouvons vous aider."
+
+#: DigitalTheme\Views\OrchardCore.Users\ResetPassword\ForgotPasswordConfirmation.liquid:0
+msgctxt ""
+"DigitalTheme.Views.OrchardCore.Users.ResetPassword."
+"ForgotPasswordConfirmation"
+msgid "Password recovery sent"
+msgstr "Récupération du mot de passe envoyée"
+
+#: DigitalTheme\Views\OrchardCore.Users\ResetPassword\ForgotPasswordConfirmation.liquid:0
+msgctxt ""
+"DigitalTheme.Views.OrchardCore.Users.ResetPassword."
+"ForgotPasswordConfirmation"
+msgid "Check your email"
+msgstr "Vérifiez votre email"
+
+#: DigitalTheme\Views\OrchardCore.Users\ResetPassword\ForgotPasswordConfirmation.liquid:0
+msgctxt ""
+"DigitalTheme.Views.OrchardCore.Users.ResetPassword."
+"ForgotPasswordConfirmation"
+msgid "It may take a few minutes"
+msgstr "Cela peut prendre quelques minutes"
+
+#: DigitalTheme\Views\OrchardCore.Users\ResetPassword\ForgotPasswordConfirmation.liquid:0
+msgctxt ""
+"DigitalTheme.Views.OrchardCore.Users.ResetPassword."
+"ForgotPasswordConfirmation"
+msgid "A recovery email has been sent to the email address tied to your account. "
+msgstr ""
+"Un e-mail de récupération a été envoyé à l'adresse e-mail associée à votre "
+"compte."
+
+#: DigitalTheme\Views\OrchardCore.Users\ResetPassword\ForgotPasswordConfirmation.liquid:0
+msgctxt ""
+"DigitalTheme.Views.OrchardCore.Users.ResetPassword."
+"ForgotPasswordConfirmation"
+msgid "If you're still stuck, see if we can help."
+msgstr "Si vous êtes toujours bloqué, voyez si nous pouvons vous aider."
+
+#: DigitalTheme\Views\OrchardCore.Users\ResetPassword\ResetPassword.liquid:0
+#: DigitalTheme\Views\OrchardCore.Users\ResetPassword\ResetPassword.liquid:0
+msgctxt "DigitalTheme.Views.OrchardCore.Users.ResetPassword.ResetPassword"
+msgid "Reset password"
+msgstr "Réinitialiser le mot de passe"
+
+#: DigitalTheme\Views\OrchardCore.Users\ResetPassword\ResetPassword.liquid:0
+msgctxt "DigitalTheme.Views.OrchardCore.Users.ResetPassword.ResetPassword"
+msgid "Set a new password"
+msgstr "Définissez un nouveau mot de passe"
+
+#: DigitalTheme\Views\OrchardCore.Users\ResetPassword\ResetPassword.liquid:0
+msgctxt "DigitalTheme.Views.OrchardCore.Users.ResetPassword.ResetPassword"
+msgid "Secure and memorable"
+msgstr "Sécurisé et mémorable"
+
+#: DigitalTheme\Views\OrchardCore.Users\ResetPassword\ResetPasswordConfirmation.liquid:0
+msgctxt "DigitalTheme.Views.OrchardCore.Users.ResetPassword.ResetPasswordConfirmation"
+msgid "Password reset complete"
+msgstr "Réinitialisation du mot de passe terminée"
+
+#: DigitalTheme\Views\OrchardCore.Users\ResetPassword\ResetPasswordConfirmation.liquid:0
+msgctxt "DigitalTheme.Views.OrchardCore.Users.ResetPassword.ResetPasswordConfirmation"
+msgid "New password is set"
+msgstr "Le nouveau mot de passe est défini"
+
+#: DigitalTheme\Views\OrchardCore.Users\ResetPassword\ResetPasswordConfirmation.liquid:0
+msgctxt "DigitalTheme.Views.OrchardCore.Users.ResetPassword.ResetPasswordConfirmation"
+msgid "Give it try"
+msgstr "Essayez-le"
+
+#: DigitalTheme\Views\OrchardCore.Users\ResetPassword\ResetPasswordConfirmation.liquid:0
+msgctxt "DigitalTheme.Views.OrchardCore.Users.ResetPassword.ResetPasswordConfirmation"
+msgid "Login"
+msgstr "S'identifier"

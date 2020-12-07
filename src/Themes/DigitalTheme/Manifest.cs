@@ -1,9 +1,10 @@
 using OrchardCore.DisplayManagement.Manifest;
+using static StatCan.OrchardCore.Manifest.StatCanManifestConstants;
 
 [assembly: Theme(
     Name = "DigitalTheme",
-    Author = "Digital Innovation Team",
-    Website = "https://digital.statcan.gc.ca",
-    Version = "1.0.0",
+    Author = DigitalInnovationTeam,
+    Website = DigitalInnovationWebsite,
+    Version = Version,
     Description = "Theme of Innovation Team website"
 )]

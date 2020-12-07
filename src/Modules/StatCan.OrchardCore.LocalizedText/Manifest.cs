@@ -1,11 +1,12 @@
 using OrchardCore.Modules.Manifest;
+using static StatCan.OrchardCore.Manifest.StatCanManifestConstants;
 using StatCan.OrchardCore.LocalizedText;
 
 [assembly: Module(
     Name = "LocalizedText Part",
-    Author = "Digital Innovation Team",
-    Website = "https://digital.statcan.gc.ca",
-    Version = "1.0.0",
+    Author = DigitalInnovationTeam,
+    Website = DigitalInnovationWebsite,
+    Version = Version,
     Description = "Localization part that allows storing localized strings in a single content item",
     Category = "Content"
 )]

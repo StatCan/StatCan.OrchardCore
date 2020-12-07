@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="OrchardCore.ReCaptcha.Core" Version="$(OrchardCoreVersion)" />
     <PackageReference Include="OrchardCore.Abstractions" Version="$(OrchardCoreVersion)" />
     <PackageReference Include="OrchardCore.Infrastructure.Abstractions" Version="$(OrchardCoreVersion)" />
     <PackageReference Include="OrchardCore.ContentManagement" Version="$(OrchardCoreVersion)" />
