@@ -30,13 +30,6 @@
           "Schema": null,
           "Source": "Sql",
           "Template": "SELECT * FROM HackathonItemsIndex where ContentType ='ScoreEntry' and TeamContentItemId = '{{teamContentItemId}}' and Owner = '{{owner}}'"
-        },
-        {
-          "Name": "GetVolunteer",
-          "ReturnDocuments": true,
-          "Schema": null,
-          "Source": "Sql",
-          "Template": "SELECT DocumentId FROM HackathonItemsIndex where ContentType ='Volunteer' and Owner = '{{owner}}'"
         }
       ]
     }

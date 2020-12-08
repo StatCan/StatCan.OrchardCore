@@ -1,6 +1,5 @@
 {% if User | is_in_role: "Hacker" %}
 
-  {% assign userId = User | user_id %}
   {% assign user = User | user_id | users_by_id %}
   {% assign teamContentItemId = user.Properties.Hacker.Hacker.Team.ContentItemIds | first %}
   {% assign teamMembers = Queries.GetHackersForTeam | query: teamContentItemId: teamContentItemId %}
