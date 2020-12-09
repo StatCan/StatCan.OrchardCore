@@ -1,19 +1,33 @@
+{% assign alignSelf = Model.ContentItem.Content.VCol.AlignSelf.Text %}
+
+{% assign colsXs = Model.ContentItem.Content.VCol.Cols.Text %}
+{% assign colsSm = Model.ContentItem.Content.VCol.ColsSm.Text %}
+{% assign colsMd = Model.ContentItem.Content.VCol.ColsMd.Text %}
+{% assign colsLg = Model.ContentItem.Content.VCol.ColsLg.Text %}
+{% assign colsXl = Model.ContentItem.Content.VCol.ColsXl.Text %}
+
+{% assign offsetXs = Model.ContentItem.Content.VCol.Offset.Text %}
+{% assign offsetSm = Model.ContentItem.Content.VCol.OffsetSm.Text %}
+{% assign offsetMd = Model.ContentItem.Content.VCol.OffsetMd.Text %}
+{% assign offsetLg = Model.ContentItem.Content.VCol.OffsetLg.Text %}
+{% assign offsetXl = Model.ContentItem.Content.VCol.OffsetXl.Text %}
+
 <v-col 
-  align-self="{{ Model.ContentItem.Content.VCol.AlignSelf.Text }}" 
-  cols="{{ Model.ContentItem.Content.VCol.Cols.Text }}"
-  sm="{{ Model.ContentItem.Content.VCol.ColsSm.Text }}"
-  md="{{ Model.ContentItem.Content.VCol.ColsMd.Text }}"
-  lg="{{ Model.ContentItem.Content.VCol.ColsLg.Text }}"
-  xl="{{ Model.ContentItem.Content.VCol.ColsXl.Text }}"
-  offset="{{ Model.ContentItem.Content.VCol.Offset.Text }}"
-  offset-sm="{{ Model.ContentItem.Content.VCol.OffsetSm.Text }}"
-  offset-md="{{ Model.ContentItem.Content.VCol.OffsetMd.Text }}"
-  offset-lg="{{ Model.ContentItem.Content.VCol.OffsetLg.Text }}"
-  offset-xl="{{ Model.ContentItem.Content.VCol.OffsetXl.Text }}"
-  order="{{ Model.ContentItem.Content.VCol.Order.Text }}"
-  order-sm="{{ Model.ContentItem.Content.VCol.OrderSm.Text }}"
-  order-md="{{ Model.ContentItem.Content.VCol.OrderMd.Text }}"
-  order-lg="{{ Model.ContentItem.Content.VCol.OrderLg.Text }}"
-  order-xl="{{ Model.ContentItem.Content.VCol.OrderXl.Text }}">
+  {% if alignSelf %}align-self="{{ alignSelf }}"{% endif %}
+  {% if colsXs %}cols="{{ colsXs }}"{% endif %}
+  {% if colsSm %}sm="{{ colsSm }}"{% endif %}
+  {% if colsMd %}md="{{ colsMd }}"{% endif %}
+  {% if colsLg %}lg="{{ colsLg }}"{% endif %}
+  {% if colsXl %}xl="{{ colsXl }}"{% endif %}
+  {% if offsetXs %}offset="{{ offsetXs }}"{% endif %}
+  {% if offsetSm %}offset-sm="{{ offsetSm }}"{% endif %}
+  {% if offsetMd %}offset-md="{{ offsetMd }}"{% endif %}
+  {% if offsetLg %}offset-lg="{{ offsetLg }}"{% endif %}
+  {% if offsetXl %}offset-xl="{{ offsetXl }}"{% endif %}
+  {% if orderXs %}order="{{ orderXs }}"{% endif %}
+  {% if orderSm %}order-sm="{{ orderSm }}"{% endif %}
+  {% if orderMd %}order-md="{{ orderMd }}"{% endif %}
+  {% if orderLg %}order-lg="{{ orderLg }}"{% endif %}
+  {% if orderXl %}order-xl="{{ orderXl }}"{% endif %}>
   {{ Model.Content.FlowPart | shape_render }}
 </v-col>

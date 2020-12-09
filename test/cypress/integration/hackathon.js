@@ -12,6 +12,8 @@ describe("Hackathon Tests", function() {
   before(() => {
     tenant = generateTenantInfo("hackathon-theme-setup")
     cy.newTenant(tenant);
+    cy.login(tenant);
+    cy.uploadRecipeJson(tenant, "recipes/users.json");
   })
   
   it("Can login to Hackathon site", function() {
@@ -66,6 +68,7 @@ describe("Hackathon Tests", function() {
   })
   
   it("Hacker Registration: Submit works and displays success message", function() {
+    cy.loginAs(tenant.prefix, 'James', 'Inno111!');
     cy.visitContentPage(tenant, contentIdHackerRegistrationForm);
   
     cy.get('input[name=firstName]').type('Tester', {force:true});
@@ -90,6 +93,7 @@ describe("Hackathon Tests", function() {
   })
   
   it("Volunteer Registration: Submit works and displays success message", function() {
+    cy.loginAs(tenant.prefix, 'Alan', 'Inno111!');
     cy.visitContentPage(tenant, contentIdVolunteerRegistrationForm);
   
     cy.get('input[name=firstName]').type('Tester', {force:true});

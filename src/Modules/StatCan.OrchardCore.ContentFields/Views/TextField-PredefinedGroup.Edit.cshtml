@@ -32,9 +32,9 @@
         <div class="btn-group btn-group-toggle mb-3" data-toggle="buttons">
             @foreach (var option in options)
             {
-                <label class="btn btn-outline-primary" asp-for="Text">
-                    @Html.RadioButton("Text", option.Value, option.Selected, new { @class = "custom-control-input content-preview-text", id = Html.IdFor(m => m.Text) + "_" + i })
-                    @Html.Raw(@option.Text)
+                <label for="@(Html.IdFor(m => m.Text) + "_" + i)" class="btn btn-outline-primary" asp-for="Text">
+                    <input id="@(Html.IdFor(m => m.Text) + "_" + i)" name="@Html.NameFor(m=>m.Text)" type="radio" autocomplete="off" value="@option.Value" aria-pressed="@option.Selected" checked="@option.Selected" />
+                    @Html.Raw(option.Text)
                 </label>
                 i++;
             }
@@ -46,4 +46,3 @@
         <span class="hint">— @settings.Hint</span>
     }
 </div>
-

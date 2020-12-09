@@ -13,6 +13,41 @@
       "contentType": [
         "VContainer"
       ]
+    },
+    {
+      "differentiator": "VAlert-Props",
+      "place": "Settings|Md_6;4",
+      "contentType": [
+        "VAlert"
+      ]
+    },
+    {
+      "differentiator": "VExpansionPanels-Props",
+      "place": "Settings",
+      "contentType": [
+        "VExpansionPanels"
+      ]
+    },
+    {
+      "differentiator": "VImg-Props",
+      "place": "Settings",
+      "contentType": [
+        "VImg"
+      ]
+    },
+    {
+      "differentiator": "VTimeline-Props",
+      "place": "Settings",
+      "contentType": [
+        "VTimeline"
+      ]
+    },
+    {
+      "differentiator": "VTimelineItem-Props",
+      "place": "Settings",
+      "contentType": [
+        "VTimelineItem"
+      ]
     }
   ],
   "TextField_Edit" : [
@@ -201,6 +236,69 @@
       "contentType": [
           "VRow"
       ]
+    },
+    {
+      "differentiator": "VAlert-Color",
+      "place": "Settings|12",
+      "contentType": [
+        "VAlert"
+      ]
+    },
+    {
+      "differentiator": "VAlert-Icon",
+      "place": "Settings|12",
+      "contentType": [
+        "VAlert"
+      ]
+    },
+    {
+      "differentiator": "VAlert-Type",
+      "place": "Settings|12",
+      "contentType": [
+        "VAlert"
+      ]
+    },
+    {
+      "differentiator": "VAlert-Border",
+      "place": "Settings",
+      "contentType": [
+        "VAlert"
+      ]
+    },
+    {
+      "differentiator": "VContainerRow-Layout",
+      "place" : "Settings",
+      "contentType": [
+          "VContainerRow"
+      ]
+    },
+    {
+      "differentiator": "VTimelineItem-Color",
+      "place" : "Settings|Xs_8;0",
+      "contentType": [
+          "VTimelineItem"
+      ]
+    },
+    {
+      "differentiator": "VTimelineItem-Icon",
+      "place" : "Settings|Xs_8;0",
+      "contentType": [
+          "VTimelineItem"
+      ]
+    },
+    {
+      "differentiator": "VTimelineItem-IconColor",
+      "place" : "Settings|Xs_8;0",
+      "contentType": [
+          "VTimelineItem"
+      ]
+    },
+    {
+      "differentiator": "VImg-Gradient",
+      "place" : "Settings|Xs_8;0",
+      "contentType": [
+          "VImg"
+      ]
     }
 
   ],
@@ -238,6 +336,34 @@
       "place" : "Settings|Xl_2;4",
       "contentType": [
           "VCol"
+      ]
+    },
+    {
+      "differentiator": "VAlert-Elevation",
+      "place": "Settings",
+      "contentType": [
+        "VAlert"
+      ]
+    },
+    {
+      "differentiator": "VImg-AspectRatio",
+      "place" : "Settings|Xs_8;0",
+      "contentType": [
+          "VImg"
+      ]
+    },
+    {
+      "differentiator": "VImg-Height",
+      "place" : "Settings|Xs_8;0",
+      "contentType": [
+          "VImg"
+      ]
+    },
+    {
+      "differentiator": "VImg-Width",
+      "place" : "Settings|Xs_8;0",
+      "contentType": [
+          "VImg"
       ]
     }
   ]

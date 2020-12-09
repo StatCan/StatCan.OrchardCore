@@ -4,6 +4,7 @@ using OrchardCore.Data.Migration;
 using OrchardCore.Modules;
 using StatCan.OrchardCore.Hackathon.Indexes;
 using StatCan.OrchardCore.Hackathon.Services;
+using YesSql.Indexes;
 
 namespace StatCan.OrchardCore.Hackathon
 {
@@ -14,6 +15,7 @@ namespace StatCan.OrchardCore.Hackathon
         {
             services.AddScoped<IDataMigration, IndexMigrations>();
             services.AddScoped<IScopedIndexProvider, HackathonItemsIndexProvider>();
+            services.AddSingleton<IIndexProvider, HackathonUsersIndexProvider>();
 
             services.AddScoped<IHackathonService, HackathonService>();
             services.AddScoped<IDataMigration, HackathonMigrations>();

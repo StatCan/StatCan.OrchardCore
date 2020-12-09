@@ -23,10 +23,6 @@ namespace StatCan.OrchardCore.Hackathon
             CreateWidgets();
             CreateTeamCustomSettings();
 
-            _contentDefinitionManager.AlterPartDefinition("Hacker", p => p
-                .WithTeamField("0")
-            );
-
             return 1;
         }
 
@@ -53,6 +49,16 @@ namespace StatCan.OrchardCore.Hackathon
                 .WithTitlePart("0", TitlePartOptions.GeneratedDisabled, "{% assign case = ContentItem.Content.Team.Case.LocalizationSets | localization_set: 'en' | first %}\r\n{{ case | display_text | slugify }}-{{ContentItem.Content.Team.Name.Text}}-{{ ContentItem.Id }}")
                 .WithPart("Team", p => p.WithPosition("1"))
                 .WithPart("TeamSolutionPart", p => p.WithPosition("2"))
+            );
+
+            _contentDefinitionManager.AlterPartDefinition("Hacker", p => p
+                .WithDisplayName("Hacker")
+                .WithTeamField("0")
+            );
+
+            _contentDefinitionManager.AlterTypeDefinition("Hacker", type => type
+                .WithPart("Hacker", p => p.WithPosition("0"))
+                .Stereotype("CustomUserSettings")
             );
         }
 
