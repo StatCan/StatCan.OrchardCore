@@ -24,8 +24,8 @@ namespace StatCan.OrchardCore.Hackathon
         public async Task<int> CreateAsync()
         {
             CreateHackathonCustomSetings();
+            CreateUserProfiles();
             CreateWidgets();
-            CreateHackerVolunteers();
             CreateChallenge();
 
             await _recipeMigrator.ExecuteAsync("queries.recipe.json", this);
@@ -55,19 +55,12 @@ namespace StatCan.OrchardCore.Hackathon
                 .Stereotype("CustomSettings"));
         }
 
-        private void CreateWidgets()
+        private void CreateUserProfiles()
         {
-            _contentDefinitionManager.CreateBasicWidget("HackathonCalendar");
-            _contentDefinitionManager.CreateBasicWidget("ChallengeListWidget");
-        }
-        private void CreateHackerVolunteers()
-        {
-            _contentDefinitionManager.AlterPartDefinition("ParticipantPart", p => p
-                .WithDescription("Fields common to all participants")
-                .Attachable()
+            _contentDefinitionManager.AlterPartDefinition("ParticipantProfile", part => part
                 .WithTextField("FirstName", "First Name", "0")
                 .WithTextField("LastName", "Last Name", "1")
-                .WithTextField("Email", "Email", "Email", "2")
+                .WithTextField("Email", "Contact Email", "Email", "2")
                 .WithField("Language", f => f
                     .OfType(nameof(TextField))
                     .WithDisplayName("Language")
@@ -83,28 +76,19 @@ namespace StatCan.OrchardCore.Hackathon
                             new ListValueOption(){Name = "Billingual", Value = "both"}
                         }
                     })
-                )
-                .WithTextField("AdministratorNotes", "Administrator Notes", "TextArea", "5")
-            );
-            _contentDefinitionManager.AlterPartDefinition("Hacker", p => p
-                .WithDisplayName("Hacker")
+                )              
             );
 
-            _contentDefinitionManager.AlterTypeDefinition("Hacker", t => t.Creatable().Listable().Securable()
-                .WithTitlePart("0", TitlePartOptions.GeneratedDisabled, "{{ ContentItem.Content.ParticipantPart.LastName.Text }}, {{ ContentItem.Content.ParticipantPart.FirstName.Text }}")
-                .WithPart("ParticipantPart", p => p.WithPosition("1"))
-                .WithPart("Hacker", p => p.WithPosition("2"))
+            _contentDefinitionManager.AlterTypeDefinition("ParticipantProfile", type => type
+                .WithPart("ParticipantProfile", p => p.WithPosition("0"))
+                .Stereotype("CustomUserSettings")
             );
+        }
 
-            _contentDefinitionManager.AlterPartDefinition("Volunteer", p => p
-                .WithTextField("VolunteerTypes", "Volunteer Types", "0", new TextFieldSettings() { Hint = "Comma delimited list of volunteer types selected by the volunteer" })
-            );
-
-            _contentDefinitionManager.AlterTypeDefinition("Volunteer", t => t.Creatable().Listable().Securable()
-                .WithTitlePart("0", TitlePartOptions.GeneratedDisabled, "{{ ContentItem.Content.ParticipantPart.LastName.Text }}, {{ ContentItem.Content.ParticipantPart.FirstName.Text }}")
-                .WithPart("Volunteer", p => p.WithPosition("1"))
-                .WithPart("ParticipantPart", p => p.WithPosition("2"))
-           );
+        private void CreateWidgets()
+        {
+            _contentDefinitionManager.CreateBasicWidget("HackathonCalendar");
+            _contentDefinitionManager.CreateBasicWidget("ChallengeListWidget");
         }
 
         private void CreateChallenge()

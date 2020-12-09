@@ -43,6 +43,7 @@ namespace StatCan.OrchardCore.Scripting
         private readonly GlobalMethod _updateUserProperties;
         private readonly GlobalMethod _validateEmail;
         private readonly GlobalMethod _updateEmail;
+        private readonly GlobalMethod _setRole;
 
         public UserGlobalMethodsProvider(IHttpContextAccessor httpContextAccessor, ILogger<UserGlobalMethodsProvider> logger)
         {
@@ -155,19 +156,39 @@ namespace StatCan.OrchardCore.Scripting
                 }
                 )
             };
+            _setRole = new GlobalMethod
+            {
+                Name = "setUserRole",
+                Method = serviceProvider => (Func<string, string, bool>)((userName, roleName) =>
+                {
+                    var userService = serviceProvider.GetRequiredService<IUserService>();
+                    var userManager = serviceProvider.GetRequiredService<UserManager<IUser>>();
+
+                    var user = (User)userService.GetUserAsync(userName).GetAwaiter().GetResult();
+                    if (user != null)
+                    {
+                        if (!user.RoleNames.Contains(roleName))
+                        {
+                            userManager.AddToRoleAsync(user, roleName).GetAwaiter().GetResult();
+                        }
+
+                        return true;
+                    }
+                    return false;
+                }
+                )
+            };
         }
 
         public IEnumerable<GlobalMethod> GetMethods()
         {
-            return new[] { _updateUserProperties, _validateEmail, _updateEmail };
+            return new[] { _updateUserProperties, _validateEmail, _updateEmail, _setRole };
         }
 
-        private async Task<ContentItem> GetUserSettingsAsync(IContentManager contentManager, User user, ContentTypeDefinition settingsType)
+        private static async Task<ContentItem> GetUserSettingsAsync(IContentManager contentManager, User user, ContentTypeDefinition settingsType)
         {
-            JToken property;
             ContentItem contentItem;
-
-            if (user.Properties.TryGetValue(settingsType.Name, out property))
+            if (user.Properties.TryGetValue(settingsType.Name, out JToken property))
             {
                 var existing = property.ToObject<ContentItem>();
 

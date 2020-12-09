@@ -10,8 +10,13 @@
         },
         {
           "Name": "Volunteer",
-          "Description": "Hackathon Voilunteer",
+          "Description": "Hackathon Volunteer",
           "Permissions": []
+        },
+        {
+          "Name": "Authenticated",
+          "Description": "Authenticated role",
+          "Permissions": ["ManageOwnCustomUserSettings_ParticipantProfile", "ManageOwnCustomUserSettings_Hacker"]
         }
       ]
     }

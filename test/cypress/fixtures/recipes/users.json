@@ -1,0 +1,12 @@
+{
+    "steps": [
+        {
+            "name": "command",
+            "Commands": [
+                "createUser /UserName:James /Password:Inno111! /Email:james@inno.com /Roles:Authenticated",
+                "createUser /UserName:Alan /Password:Inno111! /Email:alan@inno.com /Roles:Authenticated",
+                "createUser /UserName:Alice /Password:Inno111! /Email:Alice@inno.com /Roles:Authenticated"
+            ]
+        }
+    ]
+}

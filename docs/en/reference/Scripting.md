@@ -38,6 +38,7 @@ These methods are added when the `OrchardCore.Users` module is enabled
 |`validateEmail(email: String): Boolean`| Validates an email address |
 |`updateEmail(email: String): UpdateEmailStatus`| Validates an email address. Success = 0, Unauthorized = 1, InvalidEmail = 2, AlreadyExists = 3, UpdateError = 4 |
 |`updateCustomUserSettings(contentType: String, properties: Object): UpdateSettingsStatus`| Updates the CustomUserSettings with the specified contentType with the passed properties. Success = 0, Unauthorized = 1, TypeError = 2 |
+|`setUserRole(userName: String, roleName: String): Boolean`| Sets a role to a user. Security critical function. |
 
 ### Localization
 

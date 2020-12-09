@@ -28,11 +28,11 @@
           "DisplayText": "Scoring",
           "Latest": true,
           "Published": true,
-          "ModifiedUtc": "2020-11-10T20:36:14.5985851Z",
-          "PublishedUtc": "2020-11-10T20:36:14.6229125Z",
+          "ModifiedUtc": "2020-12-08T16:46:33.0288821Z",
+          "PublishedUtc": "2020-12-08T16:46:33.0415421Z",
           "CreatedUtc": "2020-10-30T15:39:26.8575804Z",
-          "Owner": "admin",
-          "Author": "admin",
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
           "TitlePart": {
             "Title": "Scoring"
           },
@@ -62,7 +62,7 @@
                 "DisplayText": "Scoring",
                 "Latest": false,
                 "Published": false,
-                "ModifiedUtc": "2020-11-10T20:36:14.6101288Z",
+                "ModifiedUtc": "2020-12-08T16:46:33.0329859Z",
                 "PublishedUtc": null,
                 "CreatedUtc": null,
                 "Owner": "",
@@ -72,7 +72,7 @@
                 },
                 "VueComponent": {
                   "Template": {
-                    "Text": "{% assign userId = User | user_id %}\r\n{% assign scoreEntry = Queries.GetScoreEntry | query: teamContentItemId: Request.Query['teamId'], owner: userId  %}\r\n{% assign judge = Queries.GetVolunteer | query: owner: userId | first %}\r\n\r\n<v-container fluid>\r\n  {% if scoreEntry == null %}\r\n  <v-card-text>\r\n    <v-row justify=\"center\">\r\n        <v-col cols=\"8\">       \r\n          <v-radio-group name=\"score\" v-model=\"score\" row>\r\n                <v-radio v-for=\"n in 11\" :key=\"n\" :label=\"`${n - 1}`\" :value=\"`${n - 1}`\" />\r\n\t\t  </v-radio-group>        \r\n        </v-col>\r\n        <v-col cols=\"8\">\r\n         \t  <v-textarea name=\"comment\" v-model=\"comment\" :error-messages=\"errors\" counter=\"true\" filled=\"filled\" label=\"{{ \"commentLabel\" | localize }}\" rows=\"5\"/>\r\n        </v-col>\r\n        <v-col cols=\"8\">\r\n          <v-alert type=\"success\" v-if=\"form.successMessage\">\r\n            {% raw %}{{ form.successMessage }}{% endraw %}\r\n          </v-alert>\r\n          <v-alert type=\"error\" v-if=\"form.errorMessage\">\r\n            {% raw %}{{ form.errorMessage }}{% endraw %}\r\n          </v-alert>\r\n        </v-col>\r\n        <v-col cols=\"8\">\r\n    \t  <v-btn type=\"submit\" depressed block @click=\"formHandleSubmit\" :disabled=\"form.submitting\">{{ \"submitLabel\" | localize }}</v-btn>\r\n        </v-col>\r\n    </v-row>\r\n  </v-card-text>\r\n  {% endif %}\r\n</v-container>\r\n"
+                    "Text": "{% assign user = User | user_id | users_by_id %}\r\n{% assign userId = User | user_id %}\r\n{% assign scoreEntry = Queries.GetScoreEntry | query: teamContentItemId: Request.Query['teamId'], owner: userId  %}\r\n\r\n<v-container fluid>\r\n  {% if scoreEntry == null %}\r\n  <v-card-text>\r\n    <v-row justify=\"center\">\r\n        <v-col cols=\"8\">       \r\n          <v-radio-group name=\"score\" v-model=\"score\" row>\r\n                <v-radio v-for=\"n in 11\" :key=\"n\" :label=\"`${n - 1}`\" :value=\"`${n - 1}`\" />\r\n\t\t  </v-radio-group>        \r\n        </v-col>\r\n        <v-col cols=\"8\">\r\n         \t  <v-textarea name=\"comment\" v-model=\"comment\" :error-messages=\"errors\" counter=\"true\" filled=\"filled\" label=\"{{ \"commentLabel\" | localize }}\" rows=\"5\"/>\r\n        </v-col>\r\n        <v-col cols=\"8\">\r\n          <v-alert type=\"success\" v-if=\"form.successMessage\">\r\n            {% raw %}{{ form.successMessage }}{% endraw %}\r\n          </v-alert>\r\n          <v-alert type=\"error\" v-if=\"form.errorMessage\">\r\n            {% raw %}{{ form.errorMessage }}{% endraw %}\r\n          </v-alert>\r\n        </v-col>\r\n        <v-col cols=\"8\">\r\n    \t  <v-btn type=\"submit\" depressed block @click=\"formHandleSubmit\" :disabled=\"form.submitting\">{{ \"submitLabel\" | localize }}</v-btn>\r\n        </v-col>\r\n    </v-row>\r\n  </v-card-text>\r\n  {% endif %}\r\n</v-container>\r\n"
                   },
                   "Script": {
                     "Text": "{\r\n  data: () => ({\r\n    score: \"\",\r\n\tcomment: \"\",\r\n\tjudge: \"\",\r\n\tteam: \"\"\r\n  })\r\n}"
@@ -96,7 +96,7 @@
               "Text": "var data = requestFormAsJsonObject();\r\n\r\nvar item = createContentItem(\"ScoreEntry\", true, {\r\n  \"Score\": {\r\n    \"Score\": {\r\n      \"Value\": data.score\r\n    },\r\n    \"Judge\": {\r\n      \"ContentItemIds\": [\r\n        data.judge\r\n      ]\r\n    },\r\n    \"Team\": {\r\n      \"ContentItemIds\": [\r\n        data.team\r\n      ]\r\n    },\r\n    \"comment\": {\r\n      \"Text\": data.comment\r\n    }\r\n  }\r\n});\r\n\r\n"
             },
             "ComponentOptions": {
-              "Text": "{\r\n  data: () => ({\r\n    score: \"\",\r\n\tcomment: \"\", \r\n    judge: \"{{ judge.ContentItemId }}\",\r\n    team: \"{{ Request.Query['teamId'] }}\"\r\n  })\r\n}"
+              "Text": "{\r\n  data: () => ({\r\n    score: \"\",\r\n\tcomment: \"\", \r\n    judge: \"{{ user.Properties.ParticipantProfile.ContentItemId }}\",\r\n    team: \"{{ Request.Query['teamId'] }}\"\r\n  })\r\n}"
             }
           },
           "LocalizedTextPart": {
