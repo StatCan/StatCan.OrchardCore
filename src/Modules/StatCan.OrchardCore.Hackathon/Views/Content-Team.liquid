@@ -1,6 +1,5 @@
 {% assign challenges = Queries.GetItemsForHackathon | query: type: "Challenge" %}
 {% assign teamMembers = Queries.GetHackersForTeam | query: teamContentItemId: Model.ContentItem.ContentItemId %}
-{% assign teamCaptain = Model.ContentItem.Content.Team.TeamCaptain.ContentItemIds | content_item_id | first %}
 {% assign challengeSelected =  Model.ContentItem.Content.Team.Challenge.ContentItemIds | content_item_id %}
 
 {% capture challengeObjects %}
@@ -34,8 +33,7 @@ Vue.component("team-component", {
 {% endblock %}
 
 {% block "script", type:"text/html", At: "Foot", id: "TeamComponent" %}
-
-  {% if teamCaptain.ContentItem.Owner == User | user_id %}
+  {% if Model.ContentItem.Content.Team.TeamCaptain.UserIds.first == User | user_id and Site.Properties.HackathonCustomSettings.TeamCustomSettings.TeamEditable.Value == true %}
     <v-container fluid>
       <form method="post" action="{{ "~/team/save" | href }}">
         <v-card>
@@ -52,13 +50,12 @@ Vue.component("team-component", {
             {{ "Challenge" | t }}
           </v-card-title>
           <v-card-text>
-            <v-select solo label="{{ challengeSelected }}" name="challenge" :items="challenges" item-text="text" item-value="value" value="Select" ></v-select>
+            <v-select solo label="{{ challengeSelected }}" name="challenge" :items="challenges" item-text="text" item-value="value" ></v-select>
           </v-card-text>
         </v-card>  
       
         <v-btn type="submit">{{ "Save" | t }}</v-btn>
         {% antiforgerytoken %}
-        <input type="hidden" name="teamContentItemId" value="{{Model.ContentItem.ContentItemId}}">
         <input type="hidden" name="returnUrl" value="{{Request.Path}}">
       </form>
       
@@ -68,12 +65,11 @@ Vue.component("team-component", {
           <v-row>
             {% for teamMember in teamMembers %}
               <v-card>
-                <v-card-title>{{ teamMember.DisplayText }}</v-card-title>
+                <v-card-title>{{ teamMember.FirstName }} {{ teamMember.LastName }}</v-card-title>
                   <form method="post" action="{{ "~/team/remove" | href }}">
-                    <v-btn {% if Model.ContentItem.Content.Team.TeamCaptain.ContentItemIds.first == teamMember.ContentItemId %} disabled {% endif %} type="submit">{{ "Remove" | t }}</v-btn>
+                    <v-btn {% if Model.ContentItem.Content.Team.TeamCaptain.UserIds.first == teamMember.UserId %} disabled {% endif %} type="submit">{{ "Remove" | t }}</v-btn>
                     {% antiforgerytoken %}
-                    <input type="hidden" name="hackerContentItemId" value="{{teamMember.ContentItemId}}">
-                    <input type="hidden" name="teamCaptainId" value="{{teamCaptain.ContentItem.Owner}}">
+                    <input type="hidden" name="hackerContentItemId" value="{{teamMember.UserId}}">
                     <input type="hidden" name="returnUrl" value="{{Request.Path}}">
                   </form>
               </v-card>

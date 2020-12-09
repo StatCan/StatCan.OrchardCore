@@ -367,8 +367,11 @@ namespace StatCan.OrchardCore.Hackathon.Services
 
         public async Task<bool> RemoveTeamMember(string hackerContentItemId, ModelStateDictionary modelState)
         {
-            var participant = await _session.Query<ContentItem, HackathonItemsIndex>(x => x.ContentItemId == hackerContentItemId && x.ContentType == "Hacker" && x.Published).FirstOrDefaultAsync();
-            if (participant == null || participant.ContentType != "Hacker")
+            var participant = await _session.Query<User, HackathonUsersIndex>(x => x.UserId == hackerContentItemId).FirstOrDefaultAsync();
+            var user = await GetParticipantAsync();
+            var team = await _session.Query<ContentItem, HackathonItemsIndex>(x => x.ContentItemId == participant.GetTeamId() && x.ContentType == "Team" && x.Published).FirstOrDefaultAsync();
+
+            if (participant == null || team.Content.Team.TeamCaptain.UserIds[0] != user.UserId)
             {
                 modelState.AddModelError("error", T["You are not the team captain. Only the team captain can perform this action"].Value);
                 return false;
@@ -380,18 +383,35 @@ namespace StatCan.OrchardCore.Hackathon.Services
                 return false;
             }
 
-            participant.Content.Hacker.Team = JObject.FromObject(new { ContentItemIds = new string[0] });
-            await _contentManager.UpdateAsync(participant);
+            var contentItem = await GetSettings(participant, "Hacker");
+
+            contentItem.Content.Hacker.Team.ContentItemIds.Clear();
+            participant.Properties["Hacker"] = JObject.FromObject(contentItem);
+            _session.Save(participant);
 
             return true;
         }
 
-        public async Task<bool> SaveTeam(string teamContentItemId, string teamDescription, string challenge, ModelStateDictionary modelState)
+        public async Task<bool> SaveTeam(string teamDescription, string challenge, ModelStateDictionary modelState)
         {
-            var team = await _session.Query<ContentItem, HackathonItemsIndex>(x => x.ContentItemId == teamContentItemId && x.ContentType == "Team" && x.Published).FirstOrDefaultAsync();
+            var user = await GetParticipantAsync();
+
+            var team = await _session.Query<ContentItem, HackathonItemsIndex>(x => x.ContentItemId == user.GetTeamId() && x.ContentType == "Team" && x.Published).FirstOrDefaultAsync();
             if (team == null || team.ContentType != "Team")
             {
                 modelState.AddModelError("error", T["Team doesn't exist"].Value);
+                return false;
+            }
+
+            if (user == null || team.Content.Team.TeamCaptain.UserIds[0] != user.UserId)
+            {
+                modelState.AddModelError("error", T["You are not the team captain. Only the team captain can perform this action"].Value);
+                return false;
+            }
+
+            if (!user.HasTeam())
+            {
+                modelState.AddModelError("error", T["You are not part of a team"].Value);
                 return false;
             }
 

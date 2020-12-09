@@ -149,7 +149,7 @@ namespace StatCan.OrchardCore.Hackathon.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> RemoveTeamMember(string hackerContentItemId, string teamCaptainId, string returnUrl)
+        public async Task<IActionResult> RemoveTeamMember(string hackerContentItemId, string returnUrl)
         {
             if (!HttpContext.User.IsInRole("Hacker"))
             {
@@ -158,13 +158,7 @@ namespace StatCan.OrchardCore.Hackathon.Controllers
 
             var site = await _siteService.GetSiteSettingsAsync();
             var hackathonCustomSettings = site.As<ContentItem>("HackathonCustomSettings");
-
             if (hackathonCustomSettings.Content["TeamCustomSettings"]["TeamEditable"].Value == false)
-            {
-                return Unauthorized();
-            }
-
-            if (HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier) != teamCaptainId)
             {
                 return Unauthorized();
             }
@@ -181,14 +175,21 @@ namespace StatCan.OrchardCore.Hackathon.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> SaveTeam(string teamContentItemId, string teamDescription, string challenge, string returnUrl)
+        public async Task<IActionResult> SaveTeam(string teamDescription, string challenge, string returnUrl)
         {
             if (!HttpContext.User.IsInRole("Hacker"))
             {
                 return NotFound();
             }
 
-            await _hackathonService.SaveTeam(teamContentItemId, teamDescription, challenge, ModelState);
+            var site = await _siteService.GetSiteSettingsAsync();
+            var hackathonCustomSettings = site.As<ContentItem>("HackathonCustomSettings");
+            if (hackathonCustomSettings.Content["TeamCustomSettings"]["TeamEditable"].Value == false)
+            {
+                return Unauthorized();
+            }
+
+            await _hackathonService.SaveTeam(teamDescription, challenge, ModelState);
             if (ModelState.IsValid)
             {
                 _notifier.Success(H["Team info successfully updated"]);
