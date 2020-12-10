@@ -156,6 +156,9 @@ namespace StatCan.OrchardCore.Hackathon.Services
         public async Task<bool> LeaveTeam(ModelStateDictionary modelState)
         {
             var user = await GetParticipantAsync();
+            var team = await _session.Query<ContentItem, HackathonItemsIndex>(x => x.ContentItemId == user.GetTeamId() && x.ContentType == "Team" && x.Published).FirstOrDefaultAsync();
+            var teamContentItemId = user.GetTeamId();
+
             if (user == null || !user.RoleNames.Contains("Hacker"))
             {
                 modelState.AddModelError("error", T["You are not a hacker"].Value);
@@ -168,11 +171,27 @@ namespace StatCan.OrchardCore.Hackathon.Services
                 return false;
             }
 
+            //Remove user from team
             var contentItem = await GetSettings(user, "Hacker");
-
             contentItem.Content.Hacker.Team.ContentItemIds.Clear();
             user.Properties["Hacker"] = JObject.FromObject(contentItem);
             _session.Save(user);
+
+            //if the team has no member left, delete it
+            if (await GetTeamMemberCount(teamContentItemId) > 0)
+            {
+                //if the user was the team captain, make another hacker the team captain
+                if (team.Content.Team.TeamCaptain.UserIds[0] == user.UserId)
+                {
+                    var hacker = await _session.Query<User, HackathonUsersIndex>(x => x.TeamContentItemId == teamContentItemId).FirstOrDefaultAsync();
+                    team.Content.Team.TeamCaptain = JObject.FromObject(new { UserIds = new string[] { hacker.UserId } });
+                    await _contentManager.UpdateAsync(team);
+                }
+            }
+            else
+            {
+                await _contentManager.RemoveAsync(team);
+            }
 
             return true;
         }
