@@ -1,0 +1,29 @@
+<pre>
+{{Model.ContentItem.Content}}
+</pre>
+
+{% style name:"bar", src:"~/StatCan.OrchardCore.OpenAPI/Scripts/swagger-ui.css", debug_src:"~/StatCan.OrchardCore.OpenAPI/Scripts/swagger-ui.css" %}
+{% script name:"swagger", src:"~/StatCan.OrchardCore.OpenAPI/Scripts/swagger-ui-bundle.js", debug_src:"~/StatCan.OrchardCore.OpenAPI/Scripts/swagger-ui.js", at:"Foot" %}
+{% script name:"swagger-preset", src:"~/StatCan.OrchardCore.OpenAPI/Scripts/swagger-ui-standalone-preset.js", debug_src:"~/StatCan.OrchardCore.OpenAPI/Scripts/swagger-ui-standalone-preset.js", at:"Foot" %}
+
+{% block "script", at: "Foot", depends-on:"surveyjs" %}
+window.onload = function() {
+    // Begin Swagger UI call region
+    const ui = SwaggerUIBundle({
+    url: "https://petstore.swagger.io/v2/swagger.json",
+    dom_id: '#swagger-ui',
+    deepLinking: true,
+    presets: [
+        SwaggerUIBundle.presets.apis,
+        SwaggerUIStandalonePreset
+    ],
+    plugins: [
+        SwaggerUIBundle.plugins.DownloadUrl
+    ],
+    layout: "StandaloneLayout"
+    })
+    // End Swagger UI call region
+
+    window.ui = ui
+}
+{% endblock%}
