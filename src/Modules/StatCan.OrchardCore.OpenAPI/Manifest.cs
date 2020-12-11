@@ -15,6 +15,7 @@ using static StatCan.OrchardCore.OpenAPI.FeatureIds;
     Description = "Adds a widget that displays the Swagger UI",
     Dependencies = new[]
     {
-        "OrchardCore.Widgets"
+        "OrchardCore.Widgets",
+        "OrchardCore.Title"
     }
 )]
