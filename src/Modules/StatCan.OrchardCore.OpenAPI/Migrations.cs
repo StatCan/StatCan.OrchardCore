@@ -16,10 +16,24 @@ namespace StatCan.OrchardCore.OpenAPI
 
         public int Create()
         {
-            _contentDefinitionManager.AlterTypeDefinition("OpenAPI", builder => builder
-                .Stereotype("Widget") 
+            _contentDefinitionManager.AlterTypeDefinition("OpenAPI", type => type
+                .DisplayedAs("OpenAPI")
+                .Stereotype("Widget")
                 .WithPart("TitlePart", part => part
-                .WithSettings<TitlePartSettings>(new TitlePartSettings { RenderTitle = false }))
+                    .WithSettings(new TitlePartSettings
+                    {
+                        RenderTitle = false,
+                    })
+                )
+                .WithPart("OpenAPI")
+            );
+
+            _contentDefinitionManager.AlterPartDefinition("OpenAPI", part => part
+                .WithField("Spec", field => field
+                    .OfType("TextField")
+                    .WithDisplayName("Spec")
+                    .WithEditor("CodeMirror")
+                )
             );
             return 1;
         }
