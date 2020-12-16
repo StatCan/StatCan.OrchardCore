@@ -15,6 +15,7 @@ using static StatCan.OrchardCore.Assessment.FeatureIds;
     Description = "Adds a widget used to create assessments",
     Dependencies = new[]
     {
-        "OrchardCore.Widgets"
+        "OrchardCore.Widgets",
+        
     }
 )]
