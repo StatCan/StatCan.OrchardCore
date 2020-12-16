@@ -390,15 +390,15 @@ namespace StatCan.OrchardCore.Hackathon.Services
             var user = await GetParticipantAsync();
             var team = await _session.Query<ContentItem, HackathonItemsIndex>(x => x.ContentItemId == participant.GetTeamId() && x.ContentType == "Team" && x.Published).FirstOrDefaultAsync();
 
-            if (participant == null || team.Content.Team.TeamCaptain.UserIds[0] != user.UserId)
-            {
-                modelState.AddModelError("error", T["You are not the team captain. Only the team captain can perform this action"].Value);
-                return false;
-            }
-
             if (!participant.HasTeam())
             {
                 modelState.AddModelError("error", T["You are not part of a team"].Value);
+                return false;
+            }
+
+            if (participant == null || team.Content.Team.TeamCaptain.UserIds[0] != user.UserId)
+            {
+                modelState.AddModelError("error", T["You are not the team captain. Only the team captain can perform this action"].Value);
                 return false;
             }
 
@@ -422,15 +422,15 @@ namespace StatCan.OrchardCore.Hackathon.Services
                 return false;
             }
 
-            if (user == null || team.Content.Team.TeamCaptain.UserIds[0] != user.UserId)
-            {
-                modelState.AddModelError("error", T["You are not the team captain. Only the team captain can perform this action"].Value);
-                return false;
-            }
-
             if (!user.HasTeam())
             {
                 modelState.AddModelError("error", T["You are not part of a team"].Value);
+                return false;
+            }
+
+            if (user == null || team.Content.Team.TeamCaptain.UserIds[0] != user.UserId)
+            {
+                modelState.AddModelError("error", T["You are not the team captain. Only the team captain can perform this action"].Value);
                 return false;
             }
 
