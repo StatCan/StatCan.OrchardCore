@@ -12,7 +12,7 @@ namespace StatCan.OrchardCore.Hackathon
         {
             if (model.ContentType == "Team")
             {
-                // This injects a button on the SummaryAdmin view for the Hacker ContentType
+                // This injects a button on the SummaryAdmin view for the Team ContentType
                 return Combine(
                   Shape("Contents_SummaryAdmin__Team__MailTo__Button", new ContentItemViewModel(model)).Location("SummaryAdmin", "Actions:9")
                 );
