@@ -1,9 +1,49 @@
-<pre>
-{{Model.ContentItem.Content}}
-</pre>
+<div id="surveyElement" style="display:inline-block;width:100%;"></div>
+<div id="surveyResult"></div>
 
-{% script name:"surveyjs", src:"~/StatCan.OrchardCore.Assessment/Scripts/surveyjs.min.js", debug_src:"~/StatCan.OrchardCore.Assessment/Scripts/surveyjs.js", at:"Foot" %}
 
-{% block "script", at: "Foot", depends-on:"surveyjs" %}
-// surveyjs init code goes here
-{% endblock%}
+
+{% style name:"modern", src:"~/StatCan.OrchardCore.*your_module*/Styles/modern.css" %}
+{% script name:"knockout", src:"~/StatCan.OrchardCore.*your_module*/Scripts/knockout-min.js", at:"Foot" %}
+{% script name:"survey-ko", src:"~/StatCan.OrchardCore.*your_module*/Scripts/survey.ko.min.js", at:"Foot" %}
+
+{% block "script", at: "Foot", depends-on:"survey-ko" %}
+
+Survey
+    .StylesManager
+    .applyTheme("modern");
+
+Survey
+    .JsonObject
+    .metaData
+    .addProperty("itemvalue", {name: "score:number"});
+
+var json = {{Model.ContentItem.Content.Assessment.Data.Text | raw}};
+
+window.survey = new Survey.Model(json);
+
+survey
+    .onComplete
+    .add(function (result) {
+
+       var plainData = result.getPlainData({
+         calculations: [{ propertyName: "score"}]
+       });
+       var totalScore = 0
+       function calcScore(data) {
+         return (data || [] ).reduce(function(sum, item) {
+           return sum+ (item.isNode ? calcScore(item.data) : item.score);
+          }, 0)
+      }
+      
+       totalScore = calcScore(plainData);
+
+      document
+          .querySelector('#surveyResult')
+          .innerHTML = "Total Score is:\n" + JSON.stringify(totalScore);
+    });
+  
+survey.render("surveyElement");
+
+
+{% endblock %}
