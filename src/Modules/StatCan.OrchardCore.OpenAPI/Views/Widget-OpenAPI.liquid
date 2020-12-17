@@ -7,7 +7,7 @@
 window.onload = function() {
     // Begin Swagger UI call region
     const ui = SwaggerUIBundle({
-    spec: {{ Model.ContentItem.Content.OpenAPI.JSON.Text | raw }},
+    spec: {{ Model.ContentItem.Content.OpenAPI.Spec.Text | raw }},
     dom_id: '#swagger-ui',
     deepLinking: true,
     presets: [
