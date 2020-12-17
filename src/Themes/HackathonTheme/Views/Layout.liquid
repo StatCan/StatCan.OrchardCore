@@ -11,12 +11,13 @@
   </head>
   <body dir="{{ Culture.Dir }}">
     <div id="page-top" v-cloak>
-      <v-app>
+      <v-app light="false">
         <!-- Style this absolute in the middle, on top of app-bar -->
         <a class="d-sr-only-focusable" href="#main">{{ "Skip to main content" | t }}</a>
         {% render_section "NavigationDrawer", required: false %}
         {% render_section "Header", required: false %}
         <v-main id="main">
+          <v-btn @click="this.$vuetify.theme.dark = !this.$vuetify.theme.dark"></v-btn>
           {% render_section "Messages", required: false %}
           {% render_section "Breadcrumbs", required: false %}
           {% render_body %}
