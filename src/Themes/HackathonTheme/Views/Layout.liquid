@@ -17,7 +17,6 @@
         {% render_section "NavigationDrawer", required: false %}
         {% render_section "Header", required: false %}
         <v-main id="main">
-          <v-btn @click="this.$vuetify.theme.dark = !this.$vuetify.theme.dark"></v-btn>
           {% render_section "Messages", required: false %}
           {% render_section "Breadcrumbs", required: false %}
           {% render_body %}
