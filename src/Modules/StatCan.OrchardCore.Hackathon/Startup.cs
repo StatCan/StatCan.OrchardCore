@@ -1,4 +1,5 @@
 using Microsoft.Extensions.DependencyInjection;
+using OrchardCore.ContentManagement.Display.ContentDisplay;
 using OrchardCore.Data;
 using OrchardCore.Data.Migration;
 using OrchardCore.Modules;
@@ -19,6 +20,7 @@ namespace StatCan.OrchardCore.Hackathon
 
             services.AddScoped<IHackathonService, HackathonService>();
             services.AddScoped<IDataMigration, HackathonMigrations>();
+            services.AddScoped<IContentDisplayDriver, HackathonDriver>();
         }
     }
 }
