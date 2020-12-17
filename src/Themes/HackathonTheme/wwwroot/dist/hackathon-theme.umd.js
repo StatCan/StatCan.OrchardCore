@@ -38809,7 +38809,7 @@ external_commonjs_vue_commonjs2_vue_root_Vue_default.a.use(framework_Vuetify, {
 });
 /* harmony default export */ var vuetify = (new framework_Vuetify({
   theme: {
-    dark: true
+    dark: false
   }
 }));
 // EXTERNAL MODULE: ./Assets/src/styles.scss
