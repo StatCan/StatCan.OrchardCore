@@ -15,6 +15,7 @@ namespace StatCan.OrchardCore.Hackathon.Indexes
         public string UserId { get; set; }
         public string UserName { get; set; }
         public string Email { get; set; }
+        public string ContactEmail { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Language { get; set; }
@@ -47,6 +48,7 @@ namespace StatCan.OrchardCore.Hackathon.Indexes
                         var hacker = property.ToObject<ContentItem>();
                         hackathonUsersIndex.FirstName = hacker.Content.ParticipantProfile.FirstName.Text;
                         hackathonUsersIndex.LastName = hacker.Content.ParticipantProfile.LastName.Text;
+                        hackathonUsersIndex.ContactEmail = hacker.Content.ParticipantProfile.Email.Text;
                         hackathonUsersIndex.Language = hacker.Content.ParticipantProfile.Language.Text;
                     }
 

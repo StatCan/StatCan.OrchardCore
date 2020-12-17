@@ -14,26 +14,9 @@
       <v-app>
         <!-- Style this absolute in the middle, on top of app-bar -->
         <a class="d-sr-only-focusable" href="#main">{{ "Skip to main content" | t }}</a>
-        <v-navigation-drawer app clipped v-model="drawer">
-          {% assign drawerAlias = "alias:navigation-drawer-" | append: Culture.Name %}
-          {% shape "menu", alias: drawerAlias, cache_id: drawerAlias, cache_fixed_duration: "00:00:01", cache_tag: menuAlias %}
-        </v-navigation-drawer>
-        <v-app-bar app clipped-left>
-          <v-app-bar-nav-icon class="hidden-lg-and-up" @click="drawer = !drawer"></v-app-bar-nav-icon>
-          {% if Site.Properties.HackathonThemeSettings.HackathonThemeSettings.Logo.Paths.first %}
-            <v-img src="{{ Site.Properties.HackathonThemeSettings.HackathonThemeSettings.Logo.Paths.first | asset_url | resize_url: width:160, height:160 }}" max-height="32" max-width="32" alt="logo" class="mr-2"></v-img>
-          {% endif %}
-          {% if Site.Properties.HackathonThemeSettings.HackathonThemeSettings.DisplayName.Text %}
-            <v-toolbar-title>{{ Site.Properties.HackathonThemeSettings.HackathonThemeSettings.DisplayName.Text | shortcode }}</v-toolbar-title>
-          {% else %}
-            <v-toolbar-title>{{ Site.SiteName | shortcode }}</v-toolbar-title>
-          {% endif %}
-          <v-spacer></v-spacer>
-          {{ "UserMenu" | shape_new | shape_render }}
-         {{ "ContentCulturePicker" | shape_new | shape_render }}
-        </v-app-bar>
+        {% render_section "NavigationDrawer", required: false %}
+        {% render_section "Header", required: false %}
         <v-main id="main">
-          {% render_section "Header", required: false %}
           {% render_section "Messages", required: false %}
           {% render_section "Breadcrumbs", required: false %}
           {% render_body %}

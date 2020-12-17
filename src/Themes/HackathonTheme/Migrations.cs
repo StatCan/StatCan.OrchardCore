@@ -2,8 +2,9 @@ using OrchardCore.ContentFields.Settings;
 using OrchardCore.ContentManagement.Metadata;
 using OrchardCore.ContentManagement.Metadata.Settings;
 using OrchardCore.Data.Migration;
-using OrchardCore.Title.Models;
 using OrchardCore.Flows.Models;
+using OrchardCore.Media.Settings;
+using OrchardCore.Title.Models;
 using StatCan.OrchardCore.Extensions;
 using StatCan.OrchardCore.ContentFields.MultiValueTextField.Settings;
 using StatCan.OrchardCore.ContentFields.PredefinedGroup.Settings;
@@ -32,6 +33,11 @@ namespace StatCan.Themes.HackathonTheme
             VExpansionPanel();
             VExpansionPanels();
             VImg();
+            VTimeline();
+            VTimelineItem();
+            VContainerRow();
+            VAppBar();
+            VNavigationDrawer();
             return 1;
         }
 
@@ -788,6 +794,315 @@ namespace StatCan.Themes.HackathonTheme
                             Value = "3-6-3"
                         } },
                         DefaultValue = "6-6",
+                    })
+                )
+            );
+        }
+
+        private void VAppBar()
+        {
+            _contentDefinitionManager.AlterTypeDefinition("VAppBar", type => type
+                .DisplayedAs("VAppBar")
+                .Stereotype("Widget")
+                .WithPart("VAppBar", part => part
+                    .WithPosition("0")
+                )
+            );
+
+            _contentDefinitionManager.AlterPartDefinition("VAppBar", part => part
+                .WithField("Props", field => field
+                    .OfType("MultiValueTextField")
+                    .WithDisplayName("Props")
+                    .WithEditor("PredefinedList")
+                    .WithPosition("0")
+                    .WithSettings(new MultiValueTextFieldEditorSettings
+                    {
+                        Options = new ListValueOption[] { new ListValueOption() {
+                            Name = "Absolute",
+                            Value = "absolute"
+                        }, new ListValueOption() {
+                            Name = "Bottom",
+                            Value = "bottom"
+                        }, new ListValueOption() {
+                            Name = "Collapse",
+                            Value = "collapse"
+                        }, new ListValueOption() {
+                            Name = "Collapse On Scroll",
+                            Value = "collapse-on-scroll"
+                        }, new ListValueOption() {
+                            Name = "Dark",
+                            Value = "dark"
+                        }, new ListValueOption() {
+                            Name = "Dense",
+                            Value = "dense"
+                        }, new ListValueOption() {
+                            Name = "Elevate On Scroll",
+                            Value = "elevate-on-scroll"
+                        }, new ListValueOption() {
+                            Name = "Extended",
+                            Value = "extended"
+                        }, new ListValueOption() {
+                            Name = "Fade Image On Scroll",
+                            Value = "fade-img-on-scroll"
+                        }, new ListValueOption() {
+                            Name = "Fixed",
+                            Value = "fixed"
+                        }, new ListValueOption() {
+                            Name = "Flat",
+                            Value = "flat"
+                        }, new ListValueOption() {
+                            Name = "Floating",
+                            Value = "floating"
+                        }, new ListValueOption() {
+                            Name = "Hide On Scroll",
+                            Value = "hide-on-scroll"
+                        }, new ListValueOption() {
+                            Name = "Inverted Scroll",
+                            Value = "inverted-scroll"
+                        }, new ListValueOption() {
+                            Name = "Light",
+                            Value = "light"
+                        }, new ListValueOption() {
+                            Name = "Outlined",
+                            Value = "outlined"
+                        }, new ListValueOption() {
+                            Name = "Prominent",
+                            Value = "prominent"
+                        }, new ListValueOption() {
+                            Name = "Scroll Off Screen",
+                            Value = "scroll-off-screen"
+                        }, new ListValueOption() {
+                            Name = "Shaped",
+                            Value = "shaped"
+                        }, new ListValueOption() {
+                            Name = "Short",
+                            Value = "short"
+                        }, new ListValueOption() {
+                            Name = "Shrink On Scroll",
+                            Value = "shrink-on-scroll"
+                        }, new ListValueOption() {
+                            Name = "Tile",
+                            Value = "tile"
+                        } },
+                    })
+                )
+                .WithField("Color", field => field
+                    .OfType("TextField")
+                    .WithDisplayName("Color")
+                    .WithPosition("2")
+                    .WithSettings(new TextFieldSettings
+                    {
+                        Hint = "Applies specified color to the control - it can be the name of material color (for example success or purple) or css color (#033 or rgba(255, 0, 0, 0.5)).",
+                    })
+                )
+                .WithField("Elevation", field => field
+                    .OfType("NumericField")
+                    .WithDisplayName("Elevation")
+                    .WithEditor("Slider")
+                    .WithPosition("3")
+                    .WithSettings(new NumericFieldSettings
+                    {
+                        Hint = "Designates an elevation applied to the component between 0 and 24.",
+                        Minimum = 0,
+                        Maximum = 24,
+                    })
+                )
+                .WithField("ExtensionHeight", field => field
+                    .OfType("NumericField")
+                    .WithDisplayName("Extension Height")
+                    .WithPosition("4")
+                    .WithSettings(new NumericFieldSettings
+                    {
+                        Hint = "Specify an explicit height for the extension slot.",
+                        Minimum = 0,
+                        Maximum = 9999,
+                        DefaultValue = "48",
+                    })
+                )
+                .WithField("ScrollThreshold", field => field
+                    .OfType("NumericField")
+                    .WithDisplayName("Scroll Threshold")
+                    .WithPosition("5")
+                    .WithSettings(new NumericFieldSettings
+                    {
+                        Hint = "The amount of scroll distance down before hide-on-scroll activates.",
+                        Minimum = 0,
+                        Maximum = 9999,
+                    })
+                )
+                .WithField("BackgroundImage", field => field
+                    .OfType("MediaField")
+                    .WithDisplayName("Background Image")
+                    .WithPosition("1")
+                    .WithSettings(new MediaFieldSettings
+                    {
+                        Hint = "Image source. See v-img for details.",
+                        Multiple = false,
+                    })
+                )
+                .WithField("Height", field => field
+                    .OfType("NumericField")
+                    .WithDisplayName("Height")
+                    .WithPosition("6")
+                    .WithSettings(new NumericFieldSettings
+                    {
+                        Hint = "Sets the height for the component.",
+                        Minimum = 0,
+                        Maximum = 9999,
+                    })
+                )
+                .WithField("Width", field => field
+                    .OfType("NumericField")
+                    .WithDisplayName("Width")
+                    .WithPosition("7")
+                    .WithSettings(new NumericFieldSettings
+                    {
+                        Hint = "Sets the width for the component.",
+                        Minimum = 0,
+                        Maximum = 9999,
+                    })
+                )
+            );
+        }
+
+        private void VNavigationDrawer()
+        {
+            _contentDefinitionManager.AlterTypeDefinition("VNavigationDrawer", type => type
+                .DisplayedAs("VNavigationDrawer")
+                .Stereotype("Widget")
+                .WithPart("VNavigationDrawer", part => part
+                    .WithPosition("0")
+                )
+            );
+
+            _contentDefinitionManager.AlterPartDefinition("VNavigationDrawer", part => part
+                .WithField("Props", field => field
+                    .OfType("MultiValueTextField")
+                    .WithDisplayName("Props")
+                    .WithEditor("PredefinedList")
+                    .WithSettings(new MultiValueTextFieldEditorSettings
+                    {
+                        Options = new ListValueOption[] { new ListValueOption() {
+                            Name = "Absolute",
+                            Value = "absolute"
+                        }, new ListValueOption() {
+                            Name = "Bottom",
+                            Value = "bottom"
+                        }, new ListValueOption() {
+                            Name = "Clipped",
+                            Value = "clipped"
+                        }, new ListValueOption() {
+                            Name = "Dark",
+                            Value = "dark"
+                        }, new ListValueOption() {
+                            Name = "Disable Resize Watcher",
+                            Value = "disable-resize-watcher"
+                        }, new ListValueOption() {
+                            Name = "Disable Route Watcher",
+                            Value = "disable-route-watcher"
+                        }, new ListValueOption() {
+                            Name = "Expand on Hover",
+                            Value = "expand-on-hover"
+                        }, new ListValueOption() {
+                            Name = "Floating",
+                            Value = "floating"
+                        }, new ListValueOption() {
+                            Name = "Hide Overlay",
+                            Value = "hide-overlay"
+                        }, new ListValueOption() {
+                            Name = "Light",
+                            Value = "light"
+                        }, new ListValueOption() {
+                            Name = "Mini",
+                            Value = "mini-variant"
+                        }, new ListValueOption() {
+                            Name = "Permanent",
+                            Value = "permanent"
+                        }, new ListValueOption() {
+                            Name = "Right",
+                            Value = "right"
+                        }, new ListValueOption() {
+                            Name = "Stateless",
+                            Value = "stateless"
+                        }, new ListValueOption() {
+                            Name = "Temporary",
+                            Value = "temporary"
+                        }, new ListValueOption() {
+                            Name = "Touchless",
+                            Value = "touchless"
+                        } },
+                    })
+                )
+                .WithField("BackgroundImage", field => field
+                    .OfType("MediaField")
+                    .WithDisplayName("Background Image")
+                    .WithSettings(new MediaFieldSettings
+                    {
+                        Hint = "Specifies a v-img as the component’s background.",
+                        Multiple = false,
+                    })
+                )
+                .WithField("Color", field => field
+                    .OfType("TextField")
+                    .WithDisplayName("Color")
+                    .WithSettings(new TextFieldSettings
+                    {
+                        Hint = "Applies specified color to the control - it can be the name of material color (for example success or purple) or css color (#033 or rgba(255, 0, 0, 0.5)).",
+                    })
+                )
+                .WithField("MiniVariantWidth", field => field
+                    .OfType("NumericField")
+                    .WithDisplayName("Mini Variant Width")
+                    .WithSettings(new NumericFieldSettings
+                    {
+                        Hint = "Designates the width assigned when the mini prop is turned on.",
+                        Minimum = 0,
+                        Maximum = 9999,
+                        DefaultValue = "56",
+                    })
+                )
+                .WithField("MobileBreakpoint", field => field
+                    .OfType("NumericField")
+                    .WithDisplayName("Mobile Breakpoint")
+                    .WithSettings(new NumericFieldSettings
+                    {
+                        Hint = "Sets the designated mobile breakpoint for the component. This will apply alternate styles for mobile devices such as the temporary prop, or activate the bottom prop when the breakpoint value is met. Setting the value to 0 will disable this functionality.",
+                        Minimum = 0,
+                        Maximum = 9999,
+                    })
+                )
+                .WithField("OverlayColor", field => field
+                    .OfType("TextField")
+                    .WithDisplayName("Overlay Color")
+                )
+                .WithField("OverlayOpacity", field => field
+                    .OfType("NumericField")
+                    .WithDisplayName("Overlay Opacity")
+                    .WithEditor("Slider")
+                    .WithSettings(new NumericFieldSettings
+                    {
+                        Scale = 4,
+                        Minimum = 0,
+                        Maximum = 1,
+                    })
+                )
+                .WithField("Height", field => field
+                    .OfType("NumericField")
+                    .WithDisplayName("Height")
+                    .WithSettings(new NumericFieldSettings
+                    {
+                        Hint = "Sets the height for the component.",
+                        Minimum = 0,
+                    })
+                )
+                .WithField("Width", field => field
+                    .OfType("NumericField")
+                    .WithDisplayName("Width")
+                    .WithSettings(new NumericFieldSettings
+                    {
+                        Hint = "Sets the width for the component.",
+                        Minimum = 0,
+                        Maximum = 9999,
                     })
                 )
             );
