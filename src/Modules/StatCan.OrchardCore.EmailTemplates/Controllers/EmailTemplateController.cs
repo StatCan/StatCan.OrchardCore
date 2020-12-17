@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Encodings.Web;
 using System.Threading.Tasks;
+using Fluid;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Localization;
@@ -11,6 +13,7 @@ using OrchardCore.Admin;
 using OrchardCore.DisplayManagement;
 using OrchardCore.DisplayManagement.Notify;
 using OrchardCore.Email;
+using OrchardCore.Liquid;
 using OrchardCore.Navigation;
 using OrchardCore.Routing;
 using OrchardCore.Settings;
@@ -23,8 +26,11 @@ namespace StatCan.OrchardCore.EmailTemplates.Controllers
     [Admin]
     public class EmailTemplateController : Controller
     {
+
         private readonly IAuthorizationService _authorizationService;
         private readonly EmailTemplatesManager _templatesManager;
+        private readonly HtmlEncoder _htmlEncoder;
+        private readonly ILiquidTemplateManager _liquidTemplateManager;
         private readonly ISiteService _siteService;
         private readonly INotifier _notifier;
         private readonly ISmtpService _smtpService;
@@ -40,7 +46,10 @@ namespace StatCan.OrchardCore.EmailTemplates.Controllers
             IStringLocalizer<EmailTemplateController> stringLocalizer,
             IHtmlLocalizer<EmailTemplateController> htmlLocalizer,
             INotifier notifier,
-            ISmtpService smtpService)
+            ISmtpService smtpService,
+            ILiquidTemplateManager liquidTemplateManager,
+            HtmlEncoder htmlEncoder
+        )
         {
             _authorizationService = authorizationService;
             _templatesManager = templatesManager;
@@ -50,6 +59,8 @@ namespace StatCan.OrchardCore.EmailTemplates.Controllers
             _smtpService = smtpService;
             S = stringLocalizer;
             H = htmlLocalizer;
+            _liquidTemplateManager = liquidTemplateManager;
+            _htmlEncoder = htmlEncoder;
         }
 
         public async Task<IActionResult> Index(ContentOptions options, PagerParameters pagerParameters)
@@ -129,6 +140,7 @@ namespace StatCan.OrchardCore.EmailTemplates.Controllers
                 {
                     Description = model.Description,
                     AuthorExpression = model.AuthorExpression,
+                    SenderExpression = model.SenderExpression,
                     ReplyToExpression = model.ReplyToExpression,
                     RecipientsExpression = model.RecipientsExpression,
                     SubjectExpression = model.SubjectExpression,
@@ -176,6 +188,7 @@ namespace StatCan.OrchardCore.EmailTemplates.Controllers
                 Body = template.Body,
                 Description = template.Description,
                 AuthorExpression = template.AuthorExpression,
+                SenderExpression = template.SenderExpression,
                 ReplyToExpression = template.ReplyToExpression,
                 RecipientsExpression = template.RecipientsExpression,
                 SubjectExpression = template.SubjectExpression,
@@ -214,6 +227,7 @@ namespace StatCan.OrchardCore.EmailTemplates.Controllers
                     Description = model.Description,
                     AuthorExpression = model.AuthorExpression,
                     ReplyToExpression = model.ReplyToExpression,
+                    SenderExpression = model.SenderExpression,
                     RecipientsExpression = model.RecipientsExpression,
                     SubjectExpression = model.SubjectExpression,
                     Body = model.Body,
@@ -310,11 +324,12 @@ namespace StatCan.OrchardCore.EmailTemplates.Controllers
             var model = new SendEmailTemplateViewModel
             {
                 Name = name,
-                Body = template.Body,
-                AuthorExpression = template.AuthorExpression,
-                ReplyToExpression = template.ReplyToExpression,
-                RecipientsExpression = template.RecipientsExpression,
-                SubjectExpression = template.SubjectExpression,
+                AuthorExpression = await RenderLiquid(template.AuthorExpression),
+                SenderExpression = await RenderLiquid(template.SenderExpression),
+                ReplyToExpression = await RenderLiquid(template.ReplyToExpression),
+                RecipientsExpression = await RenderLiquid(template.RecipientsExpression),
+                SubjectExpression = await RenderLiquid(template.SubjectExpression),
+                Body = await RenderLiquid(template.Body),
                 IsBodyHtml = template.IsBodyHtml,
             };
 
@@ -362,9 +377,17 @@ namespace StatCan.OrchardCore.EmailTemplates.Controllers
                 ReplyTo = sendEmail.ReplyToExpression
             };
 
-            if (!String.IsNullOrWhiteSpace(sendEmail.SenderExpression))
+            var author = sendEmail.AuthorExpression;
+            var sender = sendEmail.SenderExpression;
+
+            if(!string.IsNullOrWhiteSpace(author) || ! string.IsNullOrWhiteSpace(sender))
             {
-                message.Sender = sendEmail.SenderExpression;
+                message.From = author?.Trim() ?? sender?.Trim();
+            }
+
+            if (!String.IsNullOrWhiteSpace(sender))
+            {
+                message.Sender = sender;
             }
 
             if (!String.IsNullOrWhiteSpace(sendEmail.SubjectExpression))
@@ -380,6 +403,15 @@ namespace StatCan.OrchardCore.EmailTemplates.Controllers
              message.IsBodyHtml = sendEmail.IsBodyHtml;
 
             return message;
+        }
+
+        private async Task<string> RenderLiquid(string liquid)
+        {
+            if(!string.IsNullOrWhiteSpace(liquid))
+            {
+                return await _liquidTemplateManager.RenderAsync(liquid, _htmlEncoder, null, null);
+            }
+            return liquid;
         }
 
         private IActionResult RedirectToReturnUrlOrIndex(string returnUrl)
