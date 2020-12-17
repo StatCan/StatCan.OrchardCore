@@ -1,11 +1,11 @@
 {% if User | is_in_role: "Hacker" %}
 
-  {% assign userId = User | user_id %}
-  {% assign hacker = Queries.GetHacker | query: owner: userId %}
-  {% assign teamMembers = Queries.GetHackersForTeam | query: teamContentItemId: hacker.TeamContentItemId %}
+  {% assign user = User | user_id | users_by_id %}
+  {% assign teamContentItemId = user.Properties.Hacker.Hacker.Team.ContentItemIds | first %}
+  {% assign teamMembers = Queries.GetHackersForTeam | query: teamContentItemId: teamContentItemId %}
   
   <div {%if Model.Id != null%}id="{{ Model.Id }}"{%endif%} class="{{ Model.Classes | join: ' ' }}">
-    {% if hacker.TeamContentItemId != null %}
+    {% if user.Properties.Hacker.Hacker.Team.ContentItemIds | first != null %}
       <div class="d-flex align-items-center">
         <div class="icon-col">
         <i class="fas fa-users"></i>
@@ -15,7 +15,7 @@
           {% if Site.Properties.HackathonCustomSettings.TeamCustomSettings.TeamEditable.Value == true %}
           <button class="team-clipboard" tabindex="0" onclick="select_all_and_copy(document.getElementById('team-id'));$('#clipboard-icon').addClass('fa-clipboard fa-clipboard-check');">
             <span class="d-flex align-items-center">{{ "ID:" | t }}
-            <span id="team-id" class="mx-1">{{ hacker.TeamContentItemId }}</span>
+            <span id="team-id" class="mx-1">{{ user.Properties.Hacker.Hacker.Team.ContentItemIds | first }}</span>
             <i id="clipboard-icon" class="fas fa-clipboard mx-1" aria-label="{{ "Copy team identification" | t }}"></i>
             </span>
           </button>
@@ -38,7 +38,8 @@
               <i class="fas fa-user-circle small"></i>
             </div>
             <div class="col">
-              {{ teamMember.DisplayText }}
+              {{ teamMember.FirstName }}
+              {{ teamMember.LastName }}
             </div>
           </li>
         {% endfor %}

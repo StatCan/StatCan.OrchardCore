@@ -93,6 +93,121 @@
       "LayerSettings": {
         "Zones": ["Header", "Breadcrumb", "Footer"]
       }
+    },
+    {
+      "name": "Layers",
+      "Layers": [
+        {
+          "Name": "All",
+          "Rule": "true",
+          "Description": null
+        }
+      ]
+    },
+    {
+      "name": "Settings",
+      "LayerSettings": {
+        "Zones": [
+          "Header",
+          "Breadcrumb",
+          "NavigationDrawer",
+          "Footer"
+        ]
+      }
+    },
+    {
+      "name": "Content",
+      "data": [
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentType": "VAppBar",
+          "DisplayText": "App Bar",
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "VAppBar": {
+            "Props": {
+              "Values": null
+            },
+            "Color": {
+              "Text": null
+            },
+            "Elevation": {
+              "Value": null
+            },
+            "ExtensionHeight": {
+              "Value": null
+            },
+            "ScrollThreshold": {
+              "Value": null
+            },
+            "BackgroundImage": {
+              "Paths": [],
+              "MediaTexts": []
+            },
+            "Height": {
+              "Value": null
+            },
+            "Width": {
+              "Value": null
+            }
+          },
+          "LayerMetadata": {
+            "Position": 1.0,
+            "Zone": "Header",
+            "RenderTitle": false,
+            "Layer": "All"
+          }
+        },
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentType": "VNavigationDrawer",
+          "DisplayText": "Navigation Drawer",
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "VNavigationDrawer": {
+            "Props": {
+              "Values": [
+                "clipped"
+              ]
+            },
+            "BackgroundImage": {
+              "Paths": [],
+              "MediaTexts": []
+            },
+            "Color": {
+              "Text": null
+            },
+            "MiniVariantWidth": {
+              "Value": null
+            },
+            "MobileBreakpoint": {
+              "Value": null
+            },
+            "OverlayColor": {
+              "Text": null
+            },
+            "OverlayOpacity": {
+              "Value": null
+            },
+            "Height": {
+              "Value": null
+            },
+            "Width": {
+              "Value": null
+            }
+          },
+          "LayerMetadata": {
+            "Position": 1.0,
+            "Zone": "NavigationDrawer",
+            "RenderTitle": false,
+            "Layer": "All"
+          }
+        }
+      ]
     }
   ]
 }

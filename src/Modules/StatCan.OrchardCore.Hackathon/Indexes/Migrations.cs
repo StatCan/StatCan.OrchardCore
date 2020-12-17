@@ -1,12 +1,28 @@
 using OrchardCore.ContentManagement.Records;
 using OrchardCore.Data.Migration;
+using OrchardCore.Users.Models;
 using System;
+using YesSql;
 
 namespace StatCan.OrchardCore.Hackathon.Indexes
 {
     public class IndexMigrations : DataMigration
     {
+        private readonly ISession _session;
+        public IndexMigrations(ISession session)
+        {
+            _session = session;
+        }
+
         public int Create()
+        {
+            CreateHackathonItemsIndex();
+            CreateHackathonUsersIndex();
+
+            return 1;
+        }
+
+        private void CreateHackathonItemsIndex()
         {
             SchemaBuilder.CreateMapIndexTable(typeof(HackathonItemsIndex), table => table
                 .Column<string>("ContentItemId", c => c.WithLength(26))
@@ -45,8 +61,26 @@ namespace StatCan.OrchardCore.Hackathon.Indexes
             SchemaBuilder.AlterTable(nameof(HackathonItemsIndex), table => table
                 .CreateIndex("IDX_HackathonItemsIndex_CaseLocalizationSet", "CaseLocalizationSet")
             );
+        }
 
-            return 1;
+        private async void CreateHackathonUsersIndex()
+        {
+            SchemaBuilder.CreateMapIndexTable(typeof(HackathonUsersIndex), table => table
+                .Column<string>("UserId", c => c.WithLength(26))
+                .Column<string>("UserName", c => c.WithLength(26))
+                .Column<string>("Email", c => c.Nullable().WithLength(255))
+                .Column<string>("FirstName", c => c.WithLength(26))
+                .Column<string>("LastName", c => c.WithLength(26))
+                .Column<string>("Language", c => c.WithLength(4))
+                .Column<string>("TeamContentItemId", c => c.WithLength(26)),
+                null
+            );
+
+            var users = await _session.Query<User>().ListAsync();
+            foreach (var user in users)
+            {
+                _session.Save(user);
+            }
         }
     }
 }
