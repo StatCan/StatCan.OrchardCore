@@ -11,7 +11,7 @@
   </head>
   <body dir="{{ Culture.Dir }}">
     <div id="page-top" v-cloak>
-      <v-app>
+      <v-app light="false">
         <!-- Style this absolute in the middle, on top of app-bar -->
         <a class="d-sr-only-focusable" href="#main">{{ "Skip to main content" | t }}</a>
         {% render_section "NavigationDrawer", required: false %}
