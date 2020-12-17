@@ -207,7 +207,6 @@ namespace StatCan.OrchardCore.EmailTemplates.Controllers
                 return Forbid();
             }
 
-
             var templatesDocument = await _templatesManager.LoadEmailTemplatesDocumentAsync();
 
             if (ModelState.IsValid && !model.Name.Equals(sourceName, StringComparison.OrdinalIgnoreCase) && templatesDocument.Templates.ContainsKey(model.Name))
@@ -324,11 +323,11 @@ namespace StatCan.OrchardCore.EmailTemplates.Controllers
             var model = new SendEmailTemplateViewModel
             {
                 Name = name,
-                AuthorExpression = await RenderLiquid(template.AuthorExpression),
-                SenderExpression = await RenderLiquid(template.SenderExpression),
-                ReplyToExpression = await RenderLiquid(template.ReplyToExpression),
-                RecipientsExpression = await RenderLiquid(template.RecipientsExpression),
-                SubjectExpression = await RenderLiquid(template.SubjectExpression),
+                Author = await RenderLiquid(template.AuthorExpression),
+                Sender = await RenderLiquid(template.SenderExpression),
+                ReplyTo = await RenderLiquid(template.ReplyToExpression),
+                Recipients = await RenderLiquid(template.RecipientsExpression),
+                Subject = await RenderLiquid(template.SubjectExpression),
                 Body = await RenderLiquid(template.Body),
                 IsBodyHtml = template.IsBodyHtml,
             };
@@ -371,28 +370,28 @@ namespace StatCan.OrchardCore.EmailTemplates.Controllers
         {
             var message = new MailMessage
             {
-                To = sendEmail.RecipientsExpression,
-                // Bcc = sendEmail.BccExpression,
+                To = sendEmail.Recipients,
+                // Bcc = sendEmail.Bcc,
                 // Cc = sendEmail.Cc,
-                ReplyTo = sendEmail.ReplyToExpression
+                ReplyTo = sendEmail.ReplyTo
             };
 
-            var author = sendEmail.AuthorExpression;
-            var sender = sendEmail.SenderExpression;
+            var author = sendEmail.Author;
+            var sender = sendEmail.Sender;
 
-            if(!string.IsNullOrWhiteSpace(author) || ! string.IsNullOrWhiteSpace(sender))
+            if(!string.IsNullOrWhiteSpace(author))
             {
-                message.From = author?.Trim() ?? sender?.Trim();
+                message.From = author.Trim();
             }
 
             if (!String.IsNullOrWhiteSpace(sender))
             {
-                message.Sender = sender;
+                message.Sender = sender.Trim();
             }
 
-            if (!String.IsNullOrWhiteSpace(sendEmail.SubjectExpression))
+            if (!String.IsNullOrWhiteSpace(sendEmail.Subject))
             {
-                message.Subject = sendEmail.SubjectExpression;
+                message.Subject = sendEmail.Subject;
             }
 
             if (!String.IsNullOrWhiteSpace(sendEmail.Body))

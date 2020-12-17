@@ -12,15 +12,15 @@ namespace StatCan.OrchardCore.EmailTemplates.ViewModels
 
         #region Email Properties
 
-        public string AuthorExpression { get; set; }
-        public string SenderExpression { get; set; }
-        public string ReplyToExpression { get; set; }
+        public string Author { get; set; }
+        public string Sender { get; set; }
+        public string ReplyTo { get; set; }
 
         [Required]
-        public string RecipientsExpression { get; set; }
-        //public string CCExpression { get; set; }
-        //public string BCCExpression { get; set; }
-        public string SubjectExpression { get; set; }
+        public string Recipients { get; set; }
+        //public string CC { get; set; }
+        //public string BCC { get; set; }
+        public string Subject { get; set; }
         [Required]
         public string Body { get; set; }
         public bool IsBodyHtml { get; set; }
