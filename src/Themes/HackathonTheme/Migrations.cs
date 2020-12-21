@@ -36,9 +36,14 @@ namespace StatCan.Themes.HackathonTheme
             VTimeline();
             VTimelineItem();
             VContainerRow();
+            return 2;
+        }
+
+        public int UpdateFrom1()
+        {
             VAppBar();
             VNavigationDrawer();
-            return 1;
+            return 2;
         }
 
         private void HackathonThemeSettings()
