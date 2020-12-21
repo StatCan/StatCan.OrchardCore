@@ -36,7 +36,7 @@ namespace StatCan.Themes.HackathonTheme
             VTimeline();
             VTimelineItem();
             VContainerRow();
-            return 2;
+            return 1;
         }
 
         public int UpdateFrom1()
