@@ -69,6 +69,63 @@ This widget is best used in the **Header** zone.
 | Content | Allows free-form HTML. |
 | Actions | Call-to-action buttons for the card. |
 
+### VCol
+
+| Field  | Definition |
+|--------|------------|
+| Align Self |  Applies the [align-items](https://developer.mozilla.org/en-US/docs/Web/CSS/align-items) css property. Available options are **start**, **center**, **end**, **auto**, **baseline** and **stretch**. |
+| Cols [Breakpoint] | Sets the default number of columns the component extends. Available options are **1 -> 12** and **auto**. |
+| Offset [Breakpoint] | Sets the default offset for the column. |
+| Order [Breakpoint] | Sets the default [order](https://developer.mozilla.org/en-US/docs/Web/CSS/order) for the column. |
+| Flow | Any number of widgets can be added to the component. |
+
+### VContainer
+
+| Field  | Definition |
+|--------|------------|
+| Fluid | Removes viewport maximum-width size breakpoints. |
+| Flow | Any number of `VRow`s can be added to the component |
+
+### VExpansionPanel
+
+| Field  | Definition |
+|--------|------------|
+| Header | Sets the expansion-panel header. |
+| Flow | Any number of widgets can be added to the component. |
+
+### VExpansionPanels
+
+| Field  | Definition |
+|--------|------------|
+| Accordion | Removes the margin around open panels. |
+| Dark | Applies the dark theme variant to the component. |
+| Disabled | Disables the entire expansion-panel. |
+| Flat | Removes the expansion-panel’s elevation and borders. |
+| Focusable | Makes the expansion-panel headers focusable. |
+| Inset | Makes the expansion-panel open with a inset style. |
+| Light | Applies the light theme variant to the component. |
+| Mandatory | Forces a value to always be selected (if available). |
+| Multiple | Allow multiple selections. |
+| Popout | Makes the expansion-panel open with an popout style. |
+| Read-Only | Makes the entire expansion-panel read only. |
+| Tile | Removes the border-radius. |
+| Flow | Any number of `VExpansionPanel`s can be added to the component |
+
+### VImg
+
+| Field  | Definition |
+|--------|------------|
+| Alternate Text | Alternate text for screen readers. Leave empty for decorative images. |
+| Aspect Ratio | Calculated as `width/height`, so for a 1920x1080px image this will be `1.7778`. Will be calculated automatically if omitted. |
+| Contain | Prevents the image from being cropped if it doesn’t fit. |
+| Dark | Applies the dark theme variant to the component. |
+| Eager | Will force the components content to render on mounted. This is useful if you have content that will not be rendered in the DOM that you want crawled for SEO. |
+| Gradient | Overlays a gradient onto the image. Only supports [linear-gradient](https://developer.mozilla.org/en-US/docs/Web/CSS/linear-gradient()) syntax, anything else should be done with classes (see examples). |
+| Height | Sets the height for the component. |
+| Light | Applies the light theme variant to the component. |
+| Source | The image. This field is mandatory. |
+| Width | Sets the width for the component. |
+
 ### VNavigationDrawer
 
 This widget is best used in the **Navigation Drawer** zone.
@@ -97,31 +154,6 @@ This widget is best used in the **Navigation Drawer** zone.
 | Stateless | Remove all automated state functionality (resize, mobile, route) and manually control the drawer state. |
 | Temporary | A temporary drawer sits above its application and uses a scrim (overlay) to darken the background. |
 | Touchless | Disable mobile touch functionality. |
-| Width | Sets the width for the component. |
-
-### VCol
-
-| Field  | Definition |
-|--------|------------|
-| Align Self |  Applies the [align-items](https://developer.mozilla.org/en-US/docs/Web/CSS/align-items) css property. Available options are **start**, **center**, **end**, **auto**, **baseline** and **stretch**. |
-| Cols [Breakpoint] | Sets the default number of columns the component extends. Available options are **1 -> 12** and **auto**. |
-| Offset [Breakpoint] | Sets the default offset for the column. |
-| Order [Breakpoint] | Sets the default [order](https://developer.mozilla.org/en-US/docs/Web/CSS/order) for the column. |
-| Flow | Any number of widgets can be added to the component. |
-
-### VImg
-
-| Field  | Definition |
-|--------|------------|
-| Alternate Text | Alternate text for screen readers. Leave empty for decorative images. |
-| Aspect Ratio | Calculated as `width/height`, so for a 1920x1080px image this will be `1.7778`. Will be calculated automatically if omitted. |
-| Contain | Prevents the image from being cropped if it doesn’t fit. |
-| Dark | Applies the dark theme variant to the component. |
-| Eager | Will force the components content to render on mounted. This is useful if you have content that will not be rendered in the DOM that you want crawled for SEO. |
-| Gradient | Overlays a gradient onto the image. Only supports [linear-gradient](https://developer.mozilla.org/en-US/docs/Web/CSS/linear-gradient()) syntax, anything else should be done with classes (see examples). |
-| Height | Sets the height for the component. |
-| Light | Applies the light theme variant to the component. |
-| Source | The image. This field is mandatory. |
 | Width | Sets the width for the component. |
 
 ### VRow
