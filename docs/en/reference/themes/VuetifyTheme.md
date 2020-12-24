@@ -31,8 +31,8 @@ This widget is best used in the **Header** zone.
 | Field  | Definition |
 |--------|------------|
 | Absolute | Applies **position: absolute** to the component. |
-| Bottom | Aligns the component towards the bottom. |
 | Background Image | Adds an image to the app-bar background |
+| Bottom | Aligns the component towards the bottom. |
 | Collapse | Puts the toolbar into a collapsed state reducing its maximum width. |
 | Collapse On Scroll | Puts the app-bar into a collapsed state when scrolling. |
 | Color | Applies specified color to the control - it can be the name of material color (for example success or purple) or css color (#033 or rgba(255, 0, 0, 0.5)). You can find list of built in classes on the [colors page](https://dev.vuetifyjs.com/en/styles/colors/#material-colors). |
@@ -68,6 +68,36 @@ This widget is best used in the **Header** zone.
 | Subtitle | Applies a subheader to the card. |
 | Content | Allows free-form HTML. |
 | Actions | Call-to-action buttons for the card. |
+
+### VNavigationDrawer
+
+This widget is best used in the **Navigation Drawer** zone.
+
+| Field  | Definition |
+|--------|------------|
+| Absolute | Applies **position: absolute** to the component. |
+| Background Image | Adds an image to the navigation-drawer background |
+| Bottom | Expands from the bottom of the screen on mobile devices. |
+| Clipped | A clipped drawer rests under the application toolbar. |
+| Color | Applies specified color to the control - it can be the name of material color (for example success or purple) or css color (#033 or rgba(255, 0, 0, 0.5)). You can find list of built in classes on the [colors page](https://dev.vuetifyjs.com/en/styles/colors/#material-colors). |
+| Disable Resize Watcher | Will automatically open/close drawer when resized depending if mobile or desktop. | 
+| Disable Route Watcher | Disables opening of navigation drawer when route changes. |
+| Expand On Hover | Collapses the drawer to a **mini-variant** until hovering with the mouse. |
+| Floating | A floating drawer has no visible container (no border-right). |
+| Height | Sets the height of the navigation drawer. |
+| Hide Overlay | Hides the display of the overlay. |
+| Light | Applies the light theme variant to the component. |
+| Mini | Condenses navigation drawer width, also accepts the **.sync** modifier. With this, the drawer will re-open when clicking it. |
+| Mini Variant Width | Designates the width assigned when the **mini** prop is turned on. |
+| Mobile Breakpoint | Sets the designated mobile breakpoint for the component. This will apply alternate styles for mobile devices such as the **temporary** prop, or activate the **bottom** prop when the breakpoint value is met. Setting the value to 0 will disable this functionality. |
+| Overlay Color | Sets the overlay color. |
+| Overlay Opacity | Sets the overlay opacity. |
+| Permanent | The drawer remains visible regardless of screen size. |
+| Right | Places the navigation drawer on the right. |
+| Stateless | Remove all automated state functionality (resize, mobile, route) and manually control the drawer state. |
+| Temporary | A temporary drawer sits above its application and uses a scrim (overlay) to darken the background. |
+| Touchless | Disable mobile touch functionality. |
+| Width | Sets the width for the component. |
 
 ### VCol
 
