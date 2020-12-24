@@ -109,6 +109,21 @@ This widget is best used in the **Navigation Drawer** zone.
 | Order [Breakpoint] | Sets the default [order](https://developer.mozilla.org/en-US/docs/Web/CSS/order) for the column. |
 | Flow | Any number of widgets can be added to the component. |
 
+### VImg
+
+| Field  | Definition |
+|--------|------------|
+| Alternate Text | Alternate text for screen readers. Leave empty for decorative images. |
+| Aspect Ratio | Calculated as `width/height`, so for a 1920x1080px image this will be `1.7778`. Will be calculated automatically if omitted. |
+| Contain | Prevents the image from being cropped if it doesn’t fit. |
+| Dark | Applies the dark theme variant to the component. |
+| Eager | Will force the components content to render on mounted. This is useful if you have content that will not be rendered in the DOM that you want crawled for SEO. |
+| Gradient | Overlays a gradient onto the image. Only supports [linear-gradient](https://developer.mozilla.org/en-US/docs/Web/CSS/linear-gradient()) syntax, anything else should be done with classes (see examples). |
+| Height | Sets the height for the component. |
+| Light | Applies the light theme variant to the component. |
+| Source | The image. This field is mandatory. |
+| Width | Sets the width for the component. |
+
 ### VRow
 
 | Field  | Definition |
