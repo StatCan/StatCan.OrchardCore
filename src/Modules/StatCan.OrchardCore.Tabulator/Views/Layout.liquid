@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="{{ Culture.Name }}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    {% render_section "HeadMeta", required: false %}
+    <title>{% page_title  Site.SiteName %}</title>
+
+    <link href="https://unpkg.com/tabulator-tables@4.8.1/dist/css/tabulator.min.css" rel="stylesheet">
+    <script type="text/javascript" src="https://unpkg.com/tabulator-tables@4.8.1/dist/js/tabulator.min.js"></script>
+
+    {% resources type: "Meta" %}
+    {% resources type: "HeadLink" %}
+    {% resources type: "HeadScript" %}
+    {% resources type: "Stylesheet" %}
+</head>
+
+<body id="page-top" dir="{{ Culture.Dir }}">
+
+</body>
+</html>
+

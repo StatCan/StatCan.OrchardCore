@@ -1,0 +1,24 @@
+{% style name:"styles", src:"~/StatCan.OrchardCore.Tabulator/Styles/tabulator.min.css" %}
+{% script name:"tabulator", src:"~/StatCan.OrchardCore.Tabulatort/Scripts/tabulator.min.js", at:"Foot" %}
+
+
+<div id="tabulator-table" style="display:inline-block;width:100%;"></div>
+{% block "script", at: "Foot", depends-on: "tabulator"%}
+
+var render = function (table, node) {
+    node.innerHTML = table;
+};
+
+var table = new Tabulator("#tabulator-table" {
+    data: {{Model.ContentItem.Content.Tabulator.TableData.Text | raw}},
+    columns: {{Model.ContentItem.Content.Tabulator.TableColumns.Text | raw}},
+    height: 220,
+    layout: "fitColumns",
+    pagination: "local",
+    paginationSize: 5,
+    tooltips: true,
+})
+
+render(table, document.querySelector('#tabulator-table'))
+
+{% endblock %}
