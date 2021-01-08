@@ -1,0 +1,114 @@
+{
+    "name": "Tabulator",
+    "displayName": "Tabulator",
+    "description": "Creates tables from a JSON formatted data.",
+    "author": "StatCan Digital Innovation",
+    "website": "digital.statcan.gc.ca",
+    "version": "1.0.0",
+    "issetuprecipe": false,
+    "categories": [],
+    "tags": [], 
+    "steps": [
+        {
+            "name": "feature",
+            "disable": [],
+            "enable": [
+                "StatCan.OrchardCore.Tabulator"
+            ]
+        },
+        {
+          "name": "ContentDefinition",
+          "ContentTypes": [
+            {
+              "Name": "Tabulator",
+              "DisplayName": "Tabulator",
+              "Settings": {
+                "ContentTypeSettings": {
+                  "Creatable": true,
+                  "Listable": true,
+                  "Draftable": true,
+                  "Versionable": true,
+                  "Stereotype": "Widget",
+                  "Securable": true
+                },
+                "FullTextAspectSettings": {}
+              },
+              "ContentTypePartDefinitionRecords": [
+                {
+                  "PartName": "Tabulator",
+                  "Name": "Tabulator",
+                  "Settings": {
+                    "ContentTypePartSettings": {
+                      "Position": "0"
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "ContentParts": [
+            {
+              "Name": "Tabulator",
+              "Settings": {},
+              "ContentPartFieldDefinitionRecords": [
+                {
+                  "FieldName": "TextField",
+                  "Name": "TableData",
+                  "Settings": {
+                    "ContentPartFieldSettings": {
+                      "DisplayName": "TableData",
+                      "Position": "0"
+                    },
+                    "TextFieldSettings": {
+                      "Hint": "Enter JSON for Table Data here",
+                      "Required": true
+                    }
+                  }
+                },
+                {
+                  "FieldName": "TextField",
+                  "Name": "ColumnsData",
+                  "Settings": {
+                    "ContentPartFieldSettings": {
+                      "DisplayName": "ColumnsData",
+                      "Position": "1"
+                    },
+                    "TextFieldSettings": {
+                      "Hint": "To specify the column headers, enter the JSON for the columns here. If using the AutoColumnizer feature, enter an empty set of quotation marks. Eg. \"\".",
+                      "Required": true
+                    }
+                  }
+                },
+                {
+                  "FieldName": "TextField",
+                  "Name": "AutoColumnizer",
+                  "Settings": {
+                    "ContentPartFieldSettings": {
+                      "DisplayName": "AutoColumnizer",
+                      "Position": "2"
+                    },
+                    "TextFieldSettings": {
+                      "Hint": "Enter \"true\" to automatically set the columns as per the TableData. Enter \"false\" to set the columns as per the json in the ColumnsData field."
+                    }
+                  }
+                },
+                {
+                  "FieldName": "TextField",
+                  "Name": "PaginationSize",
+                  "Settings": {
+                    "ContentPartFieldSettings": {
+                      "DisplayName": "PaginationSize",
+                      "Position": "3"
+                    },
+                    "TextFieldSettings": {
+                      "Hint": "Enter the number of rows to be displayed per page. For example, entering \"5\" will display 5 rows per page.",
+                      "Required": true
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+}
