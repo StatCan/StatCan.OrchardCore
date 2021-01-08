@@ -1,0 +1,21 @@
+{% style name:"styles", src:"https://unpkg.com/tabulator-tables@4.9.3/dist/css/tabulator.min.css" %}
+{% script name:"tabulator", src:"https://unpkg.com/tabulator-tables@4.9.3/dist/js/tabulator.min.js", at:"Foot" %}
+
+
+<div id="tabulator-table" style="display:inline-block;width:100%;"></div>
+{% block "script", at: "Foot", depends-on: "tabulator"%}
+
+var table = new Tabulator("#tabulator-table", {
+    height: "100%",
+    layout: "fitColumns", //columns will fill the width of the container
+    pagination: "local", //local pagination
+    tooltips: true, //displays on hover text
+
+    data: {{Model.ContentItem.Content.Tabulator.TableData.Text | raw}},
+    columns: {{Model.ContentItem.Content.Tabulator.ColumnsData.Text | raw}},
+    autoColumns: {{Model.ContentItem.Content.Tabulator.AutoColumnizer.Text | raw}},
+    paginationSize: {{Model.ContentItem.Content.Tabulator.PaginationSize.Text | raw}},
+    
+});
+
+{% endblock %}
