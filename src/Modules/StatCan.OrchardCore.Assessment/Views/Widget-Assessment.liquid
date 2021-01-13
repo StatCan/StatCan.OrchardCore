@@ -3,9 +3,10 @@
 
 
 
-{% style name:"modern", src:"~/StatCan.OrchardCore.*your_module*/Styles/modern.css" %}
-{% script name:"knockout", src:"~/StatCan.OrchardCore.*your_module*/Scripts/knockout-min.js", at:"Foot" %}
-{% script name:"survey-ko", src:"~/StatCan.OrchardCore.*your_module*/Scripts/survey.ko.min.js", at:"Foot" %}
+{% style name:"modern", src:"https://unpkg.com/survey-knockout@1.8.24/modern.css" %}
+{% script name:"knockout", src:"https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.1/knockout-latest.js", at:"Foot" %}
+{% script name:"survey-ko", src:"https://unpkg.com/survey-knockout@1.8.24/survey.ko.min.js", at:"Foot" %}
+
 
 {% block "script", at: "Foot", depends-on:"survey-ko" %}
 
