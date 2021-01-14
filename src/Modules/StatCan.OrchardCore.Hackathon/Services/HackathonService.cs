@@ -156,6 +156,9 @@ namespace StatCan.OrchardCore.Hackathon.Services
         public async Task<bool> LeaveTeam(ModelStateDictionary modelState)
         {
             var user = await GetParticipantAsync();
+            var team = await _session.Query<ContentItem, HackathonItemsIndex>(x => x.ContentItemId == user.GetTeamId() && x.ContentType == "Team" && x.Published).FirstOrDefaultAsync();
+            var teamContentItemId = user.GetTeamId();
+
             if (user == null || !user.RoleNames.Contains("Hacker"))
             {
                 modelState.AddModelError("error", T["You are not a hacker"].Value);
@@ -168,11 +171,27 @@ namespace StatCan.OrchardCore.Hackathon.Services
                 return false;
             }
 
+            //Remove user from team
             var contentItem = await GetSettings(user, "Hacker");
-
             contentItem.Content.Hacker.Team.ContentItemIds.Clear();
             user.Properties["Hacker"] = JObject.FromObject(contentItem);
             _session.Save(user);
+
+            //if the team has no member left, delete it
+            if (await GetTeamMemberCount(teamContentItemId) > 0)
+            {
+                //if the user was the team captain, make another hacker the team captain
+                if (team.Content.Team.TeamCaptain.UserIds[0] == user.UserId)
+                {
+                    var hacker = await _session.Query<User, HackathonUsersIndex>(x => x.TeamContentItemId == teamContentItemId).FirstOrDefaultAsync();
+                    team.Content.Team.TeamCaptain = JObject.FromObject(new { UserIds = new string[] { hacker.UserId } });
+                    await _contentManager.UpdateAsync(team);
+                }
+            }
+            else
+            {
+                await _contentManager.RemoveAsync(team);
+            }
 
             return true;
         }
@@ -363,6 +382,63 @@ namespace StatCan.OrchardCore.Hackathon.Services
             }
 
             return contentItem;
+        }
+
+        public async Task<bool> RemoveTeamMember(string hackerContentItemId, ModelStateDictionary modelState)
+        {
+            var participant = await _session.Query<User, HackathonUsersIndex>(x => x.UserId == hackerContentItemId).FirstOrDefaultAsync();
+            var user = await GetParticipantAsync();
+            var team = await _session.Query<ContentItem, HackathonItemsIndex>(x => x.ContentItemId == participant.GetTeamId() && x.ContentType == "Team" && x.Published).FirstOrDefaultAsync();
+
+            if (!participant.HasTeam())
+            {
+                modelState.AddModelError("error", T["You are not part of a team"].Value);
+                return false;
+            }
+
+            if (participant == null || team.Content.Team.TeamCaptain.UserIds[0] != user.UserId)
+            {
+                modelState.AddModelError("error", T["You are not the team captain. Only the team captain can perform this action"].Value);
+                return false;
+            }
+
+            var contentItem = await GetSettings(participant, "Hacker");
+
+            contentItem.Content.Hacker.Team.ContentItemIds.Clear();
+            participant.Properties["Hacker"] = JObject.FromObject(contentItem);
+            _session.Save(participant);
+
+            return true;
+        }
+
+        public async Task<bool> SaveTeam(string teamDescription, string challenge, ModelStateDictionary modelState)
+        {
+            var user = await GetParticipantAsync();
+
+            var team = await _session.Query<ContentItem, HackathonItemsIndex>(x => x.ContentItemId == user.GetTeamId() && x.ContentType == "Team" && x.Published).FirstOrDefaultAsync();
+            if (team == null || team.ContentType != "Team")
+            {
+                modelState.AddModelError("error", T["Team doesn't exist"].Value);
+                return false;
+            }
+
+            if (!user.HasTeam())
+            {
+                modelState.AddModelError("error", T["You are not part of a team"].Value);
+                return false;
+            }
+
+            if (user == null || team.Content.Team.TeamCaptain.UserIds[0] != user.UserId)
+            {
+                modelState.AddModelError("error", T["You are not the team captain. Only the team captain can perform this action"].Value);
+                return false;
+            }
+
+            team.Content.Team.Description = JObject.FromObject(new { Text = teamDescription });
+            team.Content.Team.Challenge = JObject.FromObject(new { ContentItemIds = new string[] { challenge } });
+            await _contentManager.UpdateAsync(team);
+
+            return true;
         }
     }
 }
