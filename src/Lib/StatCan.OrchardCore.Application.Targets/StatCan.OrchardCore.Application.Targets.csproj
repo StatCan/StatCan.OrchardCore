@@ -23,6 +23,7 @@
     <ProjectReference Include="..\..\Modules\StatCan.OrchardCore.DisplayHelpers\StatCan.OrchardCore.DisplayHelpers.csproj" PrivateAssets="none" />
     <ProjectReference Include="..\..\Modules\StatCan.OrchardCore.EmailTemplates\StatCan.OrchardCore.EmailTemplates.csproj" PrivateAssets="none" />
     <ProjectReference Include="..\..\Modules\StatCan.OrchardCore.FIP\StatCan.OrchardCore.FIP.csproj" PrivateAssets="none" />
+    <ProjectReference Include="..\..\Modules\StatCan.OrchardCore.Ethos\StatCan.OrchardCore.Ethos.csproj" PrivateAssets="none" />
     <ProjectReference Include="..\..\Modules\StatCan.OrchardCore.GCCollab\StatCan.OrchardCore.GCCollab.csproj" PrivateAssets="none" />
     <ProjectReference Include="..\..\Modules\StatCan.OrchardCore.GitHub\StatCan.OrchardCore.GitHub.csproj" PrivateAssets="none" />
     <ProjectReference Include="..\..\Modules\StatCan.OrchardCore.Hackathon\StatCan.OrchardCore.Hackathon.csproj" PrivateAssets="none" />
