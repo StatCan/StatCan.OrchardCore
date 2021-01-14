@@ -1,0 +1,27 @@
+{% style name:"swagger-style", src:"~/StatCan.OrchardCore.OpenAPI/Styles/swagger-ui.css", debug_src:"~/StatCan.OrchardCore.OpenAPI/Styles/swagger-ui.css" %}
+{% script name:"swagger", src:"~/StatCan.OrchardCore.OpenAPI/Scripts/swagger-ui-bundle.js", debug_src:"~/StatCan.OrchardCore.OpenAPI/Scripts/swagger-ui-bundle.js", at:"Foot" %}
+{% script name:"swagger-preset", src:"~/StatCan.OrchardCore.OpenAPI/Scripts/swagger-ui-standalone-preset.js", debug_src:"~/StatCan.OrchardCore.OpenAPI/Scripts/swagger-ui-standalone-preset.js", at:"Foot" %}
+{% assign generatedId = "swagger-" | append: Model.ContentItem.ContentItemId %}
+
+<div id="{{ generatedId }}"></div>
+{% block "script", at: "Foot", depends-on:"swagger" %}
+window.onload = function() {
+    // Begin Swagger UI call region
+    const ui = SwaggerUIBundle({
+    spec: {{ Model.ContentItem.Content.OpenAPI.Spec.Text | raw }},
+    dom_id: '#{{generatedId}}',
+    deepLinking: true,
+    presets: [
+        SwaggerUIBundle.presets.apis,
+        SwaggerUIStandalonePreset
+    ],
+    plugins: [
+        SwaggerUIBundle.plugins.DownloadUrl
+    ],
+    layout: "BaseLayout"
+    })
+    // End Swagger UI call region
+
+    window.ui = ui
+}
+{% endblock%}

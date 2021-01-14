@@ -23,12 +23,10 @@ jobs:
         dotnet-version: 5.0.100
     - name: Set version environment variable
       run: echo "Version=${{ github.event.inputs.version }}" >> $GITHUB_ENV
-    - name: Dotnet build 
-      run: dotnet build -c Release
     - name: Deploy nuget packages on cloudsmith
       run: |
         echo $Version
-        dotnet pack -c Release -o build-output --no-build
+        dotnet pack -c Release -o build-output 
         dotnet nuget push './build-output/*.nupkg' -k ${{secrets.NUGET_APIKEY}} -n true -s https://nuget.cloudsmith.io/statcan-digitalinnovation/statcan-orchardcore/v3/index.json  --skip-duplicate
     - name: Login to DockerHub
       uses: docker/login-action@v1
@@ -40,7 +38,7 @@ jobs:
         rm -rf ./src/StatCan.OrchardCore.Cms.Web/App_Data
         rm -rf ./src/StatCan.OrchardCore.Cms.Web/App_Data_Tests
         cd src/StatCan.OrchardCore.Cms.Web
-        dotnet publish -c Release -o ./.build/release --no-build --no-restore
+        dotnet publish -c Release -o ./.build/release --no-restore
         docker build -t statcan/statcan.orchardcore:${{ github.event.inputs.version }} .
         docker push statcan/statcan.orchardcore
     - name: Create Release

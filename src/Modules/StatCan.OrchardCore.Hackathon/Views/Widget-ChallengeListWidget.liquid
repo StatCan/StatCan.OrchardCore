@@ -1,22 +1,23 @@
 {% assign challenges = Queries.GetItemsForHackathon | query: type: "Challenge" %}
+<v-row>
+  {% for challenge in challenges %}
+    {% if challenge.Published == true %}
+      <v-col cols="12" sm="6" md="4" lg="3">
+        <v-card
+          outlined
+          elevation="5"
+          href="{{ challenge.ContentItem | display_url }}"
+        >
+          <v-list-item>
+            <v-list-item-content>
+              <v-list-item-title class="headline mb-1">
+                {{ challenge.ContentItem.Content.Challenge.Name.Text | shortcode }}
+              </v-list-item-title>
+              <v-list-item-subtitle>{{ challenge.ContentItem.Content.Challenge.ShortDescription.Text | shortcode }}</v-list-item-subtitle>
+            </v-list-item-content>
+          </v-list-item>
+        </v-card>
+      </v-col>
+    {% endif %}
+  {% endfor %}
 
-<v-card class="mx-auto" max-width="400" >
-    <v-list subheader three-line >
-
-      {% for challenge in challenges %}
-      {% if challenge.Published == true %}
-
-      <a href="{{ challenge.ContentItem | display_url }}">
-        <v-list-item>
-          <v-list-item-content>
-            <v-list-item-title>{{ challenge.ContentItem.Content.Challenge.Name.Text }}</v-list-item-title>
-            <v-list-item-subtitle>{{ challenge.ContentItem.Content.Challenge.ShortDescription.Text }}</v-list-item-subtitle>
-          </v-list-item-content>
-        </v-list-item>
-      </a>
-
-      {% endif %}
-      {% endfor %}
-      
-  </v-list>
-</v-card>

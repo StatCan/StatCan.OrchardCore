@@ -38,7 +38,56 @@ namespace StatCan.Themes.HackathonTheme
             VContainerRow();
             VAppBar();
             VNavigationDrawer();
-            return 1;
+            AuthContentMenuItem();
+            return 4;
+        }
+
+        public int UpdateFrom1()
+        {
+            VAppBar();
+            VNavigationDrawer();
+            return 2;
+        }
+
+        public int UpdateFrom2()
+        {
+            VTimeline();
+            VTimelineItem();
+            VContainerRow();
+            return 3;
+        }
+
+        public int UpdateFrom3()
+        {
+            AuthContentMenuItem();
+            return 4;
+        }
+
+        private void AuthContentMenuItem()
+        {
+            _contentDefinitionManager.AlterTypeDefinition("AuthContentMenuItem", type => type
+                .DisplayedAs("Authenticated Content Menu Item")
+                .Stereotype("MenuItem")
+                .WithTitlePart("0")
+                .WithPart("AuthContentMenuItem", part => part
+                    .WithPosition("1")
+                )
+                .WithContentPermission("2")
+            );
+
+            _contentDefinitionManager.AlterPartDefinition("AuthContentMenuItem", part => part
+                .WithTextField("IconName","Icon Name" , "0")
+                .WithField("SelectedContentItem", field => field
+                    .OfType("ContentPickerField")
+                    .WithDisplayName("Selected Content Item")
+                    .WithPosition("1")
+                    .WithSettings(new ContentPickerFieldSettings
+                    {
+                        Required = true,
+                        DisplayAllContentTypes = true
+                    })
+                )
+            );
         }
 
         private void HackathonThemeSettings()

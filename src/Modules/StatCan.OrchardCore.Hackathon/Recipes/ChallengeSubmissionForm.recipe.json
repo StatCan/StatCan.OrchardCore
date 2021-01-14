@@ -32,7 +32,7 @@
               "Html": "<div class=\"container text-center mt-2\">\n  [locale en]The challenge submission form is currently disabled.[/locale]\n  [locale fr]Le formulaire de soumission de défi est présentement désactivé[/locale]\n</div>"
             },
             "SuccessMessage": {
-              "Text": "The challenge was submitted successfully"
+              "Text": "{{ \"successMessage\" | localize }}"
             },
             "ErrorMessage": {
               "Text": "Please correct the errors above"
@@ -50,7 +50,7 @@
                 "DisplayText": "Challenge Submission",
                 "Latest": false,
                 "Published": false,
-                "ModifiedUtc": "2020-11-13T22:32:35.9664207Z",
+                "ModifiedUtc": "2021-01-12T19:20:26.8722353Z",
                 "PublishedUtc": null,
                 "CreatedUtc": null,
                 "Owner": "",
@@ -60,7 +60,7 @@
                 },
                 "VueComponent": {
                   "Template": {
-                    "Text": "<v-container >\r\n  <v-card-text>\r\n    <v-row justify=\"center\">\r\n      <v-col cols=\"8\">\r\n        <validation-provider name=\"name\" rules=\"required\" v-slot=\"{ errors, valid }\">\r\n          <v-text-field name=\"name\" v-model=\"name\" :error-messages=\"errors\" filled=\"filled\" label=\"{{ \"nameLabel\" | localize }}\"></v-text-field>\r\n        </validation-provider>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n        <validation-provider name=\"shortDescription\" rules=\"required\" v-slot=\"{ errors, valid }\">\r\n          <v-text-field name=\"shortDescription\" v-model=\"shortDescription\" :error-messages=\"errors\" filled=\"filled\" label=\"{{ \"shortDescriptionLabel\" | localize }}\"></v-text-field>\r\n        </validation-provider>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n        <validation-provider name=\"description\" rules=\"required\" v-slot=\"{ errors, valid }\">\r\n       \t  <v-textarea name=\"description\" v-model=\"description\" :error-messages=\"errors\" counter=\"true\" filled=\"filled\" label=\"{{ \"descriptionLabel\" | localize }}\" rows=\"5\">\r\n          </v-textarea>\r\n    \t</validation-provider>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n        <v-alert type=\"success\" v-if=\"form.successMessage\">\r\n          {% raw %}{{ form.successMessage }}{% endraw %}\r\n        </v-alert>\r\n        <v-alert type=\"error\" v-if=\"form.errorMessage\">\r\n          {% raw %}{{ form.errorMessage }}{% endraw %}\r\n        </v-alert>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n    \t<v-btn type=\"submit\" depressed block @click=\"formHandleSubmit\" :disabled=\"form.submitting\">{{ \"submitLabel\" | localize }}</v-btn>\r\n      </v-col>\r\n    </v-row>\r\n  </v-card-text>\r\n</v-container>"
+                    "Text": "<v-container >\r\n  <v-card-text>\r\n    <v-row justify=\"center\">\r\n      <v-col cols=\"8\">\r\n        <h1>[locale en]Challenge submission[/locale][locale fr]Soumission de défi[/locale]</h1>\r\n      </v-col>\r\n{% if User.Identity.Name == null %}\r\n      <v-col cols=\"8\">\r\n        [locale en]Please <a href=\"{{ '~/login' | return_url }}\">login</a> before submitting a challenge[/locale]\r\n        [locale fr]Veuillez vous <a href=\"{{ '~/login' | return_url }}\">connecter</a> avant de soumettre un défi[/locale]\r\n      </v-col>\r\n{% else %}\r\n      <v-col cols=\"8\">\r\n        <validation-provider name=\"name\" rules=\"required\" v-slot=\"{ errors, valid }\">\r\n          <v-text-field name=\"name\" v-model=\"name\" :error-messages=\"errors\" filled=\"filled\" label=\"{{ \"nameLabel\" | localize }}\"></v-text-field>\r\n        </validation-provider>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n        <validation-provider name=\"shortDescription\" rules=\"required\" v-slot=\"{ errors, valid }\">\r\n          <v-text-field name=\"shortDescription\" v-model=\"shortDescription\" :error-messages=\"errors\" filled=\"filled\" label=\"{{ \"shortDescriptionLabel\" | localize }}\"></v-text-field>\r\n        </validation-provider>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n        <validation-provider name=\"description\" rules=\"required\" v-slot=\"{ errors, valid }\">\r\n       \t  <v-textarea name=\"description\" v-model=\"description\" :error-messages=\"errors\" counter=\"true\" filled=\"filled\" label=\"{{ \"descriptionLabel\" | localize }}\" rows=\"5\">\r\n          </v-textarea>\r\n    \t</validation-provider>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n        <v-alert type=\"success\" v-if=\"form.successMessage\">\r\n          {% raw %}{{ form.successMessage }}{% endraw %}\r\n        </v-alert>\r\n        <v-alert type=\"error\" v-if=\"form.errorMessage\">\r\n          {% raw %}{{ form.errorMessage }}{% endraw %}\r\n        </v-alert>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n    \t<v-btn type=\"submit\" depressed block @click=\"formHandleSubmit\" :disabled=\"form.submitting\">{{ \"submitLabel\" | localize }}</v-btn>\r\n      </v-col>\r\n{% endif %}\r\n    </v-row>\r\n  </v-card-text>\r\n</v-container>"
                   },
                   "Script": {
                     "Text": "{\r\n  data: () => ({\r\n    name: \"\",\r\n\tshortDescription: \"\",\r\n    description: \"\",\r\n  })\r\n}"
@@ -78,7 +78,7 @@
               "Text": "VeeValidate.setInteractionMode('passive');"
             },
             "OnValidation": {
-              "Text": "var data = requestFormAsJsonObject();\r\nvar localizedText = getLocalizedTextValues(getFormContentItem());\r\n\r\nif(data.name == \"\" || data.shortDescription == \"\" || data.description == \"\") {\r\n  addError('serverValidationMessage', localizedText.serverValidationError);\r\n}"
+              "Text": "var data = requestFormAsJsonObject();\r\nvar localizedText = getLocalizedTextValues(getFormContentItem());\r\n\r\nif(!isAuthenticated() || data.name == \"\" || data.shortDescription == \"\" || data.description == \"\") {\r\n  addError('serverValidationMessage', localizedText.serverValidationError);\r\n}"
             },
             "OnSubmitted": {
               "Text": "var data = requestFormAsJsonObject();\r\n\r\nvar item = createContentItem(\"Challenge\", false, {\r\n  \"Challenge\": {\r\n    \"Name\": {\r\n      \"Text\": data.name\r\n    },\r\n    \"ShortDescription\": {\r\n      \"Text\": data.shortDescription\r\n    }\r\n  },\r\n  \"MarkdownBodyPart\": {\r\n    \"Markdown\": data.description\r\n  }\r\n});\r\n"
