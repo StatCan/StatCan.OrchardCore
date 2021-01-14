@@ -20,5 +20,7 @@ namespace StatCan.OrchardCore.Hackathon.Services
         Task<bool> MatchTeams();
         string RootUrl(string hackathonSlug);
         Task<bool> RunUpdateHandlers();
+        Task<bool> RemoveTeamMember(string hackerContentItemId, ModelStateDictionary modelState);
+        Task<bool> SaveTeam(string teamDescription, string challenge, ModelStateDictionary modelState);
     }
 }

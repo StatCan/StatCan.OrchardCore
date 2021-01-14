@@ -35,6 +35,18 @@ namespace StatCan.OrchardCore.Hackathon
                pattern: "team/create",
                defaults: new { controller = "Team", action = "CreateTeam" }
             );
+            routes.MapAreaControllerRoute(
+               name: "RemoveTeamMember",
+               areaName: "StatCan.OrchardCore.Hackathon",
+               pattern: "team/remove",
+               defaults: new { controller = "Team", action = "RemoveTeamMember" }
+            );
+            routes.MapAreaControllerRoute(
+               name: "SaveTeam",
+               areaName: "StatCan.OrchardCore.Hackathon",
+               pattern: "team/save",
+               defaults: new { controller = "Team", action = "SaveTeam" }
+            );
         }
     }
 }
