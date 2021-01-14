@@ -4,7 +4,7 @@
   {% assign teamContentItemId = user.Properties.Hacker.Hacker.Team.ContentItemIds | first %}
   {% assign teamMembers = Queries.GetHackersForTeam | query: teamContentItemId: teamContentItemId %}
   {% assign team = Queries.GetTeam | query: teamContentItemId: teamContentItemId %}
-  
+
   {% if user.Properties.Hacker.Hacker.Team.ContentItemIds | first != null %}
     <v-container>
       <v-row justify="center">
@@ -16,14 +16,14 @@
                   <div class="d-flex">
                     <div class="icon-col"></div>
                     <div class="col">
-                      {{ Model.ContentItem.Content.TeamDashboardWidget.TeamMessage.Html | liquid | sanitize_html | raw }}
+                      {{ Model.ContentItem.Content.TeamDashboardWidget.TeamMessage.Html | liquid |  raw }}
                     </div>
                   </div>
                 {% endif %}
               </v-card-text>
             </v-card>
 
-            <v-card-title>{{ team | dispaly_text }}</v-card-title>
+            <v-card-title>{{ team | display_text }}</v-card-title>
             <v-card-text>
               {% if Site.Properties.HackathonCustomSettings.TeamCustomSettings.TeamEditable.Value == true %}
                 <button class="team-clipboard" tabindex="0" onclick="select_all_and_copy(document.getElementById('team-id'));$('#clipboard-icon').addClass('fa-clipboard fa-clipboard-check');">
@@ -55,7 +55,7 @@
                 <div class="col d-flex justify-content-md-start justify-content-end">
                 <form class="my-2" method="post" action="{{"~/team/leave" | href}}">
                   {% antiforgerytoken%}
-                  <input type="hidden" name="returnUrl" value="{{ Model.Dashboard.Content.AutoroutePart.Path }}">
+                  <input type="hidden" name="returnUrl" value="{{ '' | return_url | href }}">
                   <v-btn type="submit">{{ "Leave team" | t }}</v-btn>
                 </form>
                 </div>
@@ -73,7 +73,7 @@
           <v-card>
             <v-card outlined>
               <v-card-text>
-                {{ Model.ContentItem.Content.TeamDashboardWidget.SoloMessage.Html | liquid | sanitize_html | raw }}
+                {{ Model.ContentItem.Content.TeamDashboardWidget.SoloMessage.Html | liquid | raw }}
               </v-card-text>
             </v-card>
 
@@ -81,7 +81,7 @@
               <v-card-text>
                 <form class="my-2" method="post" action="{{"~/team/create" | href}}">
                   {% antiforgerytoken%}
-                  <input type="hidden" name="returnUrl" value="{{ Model.Dashboard.Content.AutoroutePart.Path }}">
+                  <input type="hidden" name="returnUrl" value="{{ '' | return_url | href }}">
                   <v-btn type="submit">{{ "Create team" | t }}</v-btn>
                 </form>
 
@@ -91,7 +91,7 @@
                   {% antiforgerytoken%}
                   <div class="input-group">
                     <v-text-field id="teamId" type="text" name="teamContentItemId" class="form-control" placeholder="{{ "Team ID" | t }}" aria-label="{{ "Team  identification" | t }}" aria-describedby="team-submit"></v-text-field>
-                    <input type="hidden" name="returnUrl" value="{{ Model.Dashboard.Content.AutoroutePart.Path }}">
+                    <input type="hidden" name="returnUrl" value="{{ '' | return_url | href }}">
                     <div class="input-group-append">
                       <v-btn type="submit" id="team-submit-addon">{{ "Join" | t }}</v-btn>
                     </div>

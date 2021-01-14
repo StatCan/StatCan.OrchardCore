@@ -45,18 +45,6 @@ namespace StatCan.OrchardCore.Hackathon.Controllers
 
         public IHtmlLocalizer H {get;}
 
-        private string GetPrefixedUrl(string url)
-        {
-            if (string.IsNullOrEmpty(url))
-            {
-                return "~/";
-            }
-            if (!url.StartsWith('/'))
-            {
-                url = "/" + url;
-            }
-            return "~" + url;
-        }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -82,7 +70,7 @@ namespace StatCan.OrchardCore.Hackathon.Controllers
             }
 
             await _session.CommitAsync();
-            return LocalRedirect(GetPrefixedUrl(returnUrl));
+            return LocalRedirect(returnUrl);
         }
 
         [HttpPost]
@@ -97,7 +85,7 @@ namespace StatCan.OrchardCore.Hackathon.Controllers
             if (string.IsNullOrEmpty(teamContentItemId))
             {
                 _notifier.Error(H["Enter a team ID"]);
-                return LocalRedirect(GetPrefixedUrl(returnUrl));
+                return LocalRedirect(returnUrl);
             }
 
             var site = await _siteService.GetSiteSettingsAsync();
@@ -117,7 +105,7 @@ namespace StatCan.OrchardCore.Hackathon.Controllers
             }
 
             await _session.CommitAsync();
-            return LocalRedirect(GetPrefixedUrl(returnUrl));
+            return LocalRedirect(returnUrl);
         }
 
         [HttpPost]
@@ -144,7 +132,7 @@ namespace StatCan.OrchardCore.Hackathon.Controllers
             }
 
             await _session.CommitAsync();
-            return LocalRedirect(GetPrefixedUrl(returnUrl));
+            return LocalRedirect(returnUrl);
         }
 
         [HttpPost]
