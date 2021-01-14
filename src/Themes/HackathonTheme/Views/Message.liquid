@@ -1,0 +1,16 @@
+
+
+<v-alert
+  {% if Model.Type == 0%}
+    type="success"
+  {% elsif Model.Type == 1 %}
+    type="information"
+  {% elsif Model.Type == 2 %}
+    type="warning"
+  {% elsif Model.Type == 3 %}
+    type="error"
+  {%endif%}
+>
+{{Model.Message}}
+</v-alert>
+

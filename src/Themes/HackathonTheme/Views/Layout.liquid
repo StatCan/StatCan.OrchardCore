@@ -17,7 +17,9 @@
         {% render_section "NavigationDrawer", required: false %}
         {% render_section "Header", required: false %}
         <v-main id="main">
-          {% render_section "Messages", required: false %}
+          <v-container>
+            {% render_section "Messages", required: false %}
+          </v-container>
           {% render_section "Breadcrumbs", required: false %}
           {% render_body %}
         </v-main>
