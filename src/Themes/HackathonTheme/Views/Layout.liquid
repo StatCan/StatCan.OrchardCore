@@ -11,13 +11,15 @@
   </head>
   <body dir="{{ Culture.Dir }}">
     <div id="page-top" v-cloak>
-      <v-app light="false">
+      <v-app>
         <!-- Style this absolute in the middle, on top of app-bar -->
         <a class="d-sr-only-focusable" href="#main">{{ "Skip to main content" | t }}</a>
         {% render_section "NavigationDrawer", required: false %}
         {% render_section "Header", required: false %}
         <v-main id="main">
-          {% render_section "Messages", required: false %}
+          <v-container>
+            {% render_section "Messages", required: false %}
+          </v-container>
           {% render_section "Breadcrumbs", required: false %}
           {% render_body %}
         </v-main>
