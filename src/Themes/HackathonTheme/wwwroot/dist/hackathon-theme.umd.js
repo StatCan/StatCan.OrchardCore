@@ -5915,6 +5915,13 @@ module.exports = function (it, TAG, STATIC) {
 
 /***/ }),
 
+/***/ "d575":
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
 /***/ "d58f":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -38815,7 +38822,11 @@ external_commonjs_vue_commonjs2_vue_root_Vue_default.a.use(framework_Vuetify, {
 // EXTERNAL MODULE: ./Assets/src/styles.scss
 var src_styles = __webpack_require__("e19a");
 
+// EXTERNAL MODULE: ./Assets/src/sass/github-markdown.scss
+var github_markdown = __webpack_require__("d575");
+
 // CONCATENATED MODULE: ./Assets/src/App.js
+
 
 
  // Sets the cookie based on the current html lang. This is to avoid potential issues when landing on a french page.
