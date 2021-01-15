@@ -116,7 +116,7 @@ namespace StatCan.OrchardCore.Hackathon.Services
 
             var contentItem = await GetSettings(user, "Hacker");
 
-            contentItem.Content.Hacker.Team.ContentItemIds.Add(team.ContentItemId);
+            contentItem.Content.Hacker.Team = JObject.FromObject(new { ContentItemIds = new string[] { team.ContentItemId } });
             user.Properties["Hacker"] = JObject.FromObject(contentItem);
             _session.Save(user);
 
@@ -142,11 +142,11 @@ namespace StatCan.OrchardCore.Hackathon.Services
             team.Owner = user.UserId;
 
             await _contentManager.CreateAsync(team, VersionOptions.Published);
+            team.Content.Team.TeamCaptain = JObject.FromObject(new { UserIds = new string[] { user.UserId } });
             await _contentManager.UpdateAsync(team);
 
             var contentItem = await GetSettings(user, "Hacker");
-
-            contentItem.Content.Hacker.Team.ContentItemIds.Add(team.ContentItemId);
+            contentItem.Content.Hacker.Team = JObject.FromObject(new { ContentItemIds = new string[] { team.ContentItemId } });
             user.Properties["Hacker"] = JObject.FromObject(contentItem);
             _session.Save(user);
 
@@ -173,7 +173,7 @@ namespace StatCan.OrchardCore.Hackathon.Services
 
             //Remove user from team
             var contentItem = await GetSettings(user, "Hacker");
-            contentItem.Content.Hacker.Team.ContentItemIds.Clear();
+            contentItem.Content.Hacker.Team?.ContentItemIds.Clear();
             user.Properties["Hacker"] = JObject.FromObject(contentItem);
             _session.Save(user);
 
@@ -181,7 +181,7 @@ namespace StatCan.OrchardCore.Hackathon.Services
             if (await GetTeamMemberCount(teamContentItemId) > 0)
             {
                 //if the user was the team captain, make another hacker the team captain
-                if (team.Content.Team.TeamCaptain.UserIds[0] == user.UserId)
+                if (team.Content.Team?.TeamCaptain?.UserIds?.First == user.UserId)
                 {
                     var hacker = await _session.Query<User, HackathonUsersIndex>(x => x.TeamContentItemId == teamContentItemId).FirstOrDefaultAsync();
                     team.Content.Team.TeamCaptain = JObject.FromObject(new { UserIds = new string[] { hacker.UserId } });
@@ -317,7 +317,7 @@ namespace StatCan.OrchardCore.Hackathon.Services
                 member.Properties["Hacker"] = JObject.FromObject(contentItem);
                 _session.Save(member);
             }
-            // Delete team 2 
+            // Delete team 2
             await _contentManager.RemoveAsync(await _contentManager.GetAsync(team2.ContentItemId));
             return true;
         }
@@ -396,7 +396,7 @@ namespace StatCan.OrchardCore.Hackathon.Services
                 return false;
             }
 
-            if (participant == null || team.Content.Team.TeamCaptain.UserIds[0] != user.UserId)
+            if (participant == null || team.Content.Team.TeamCaptain?.UserIds?.First != user.UserId)
             {
                 modelState.AddModelError("error", T["You are not the team captain. Only the team captain can perform this action"].Value);
                 return false;
@@ -411,7 +411,7 @@ namespace StatCan.OrchardCore.Hackathon.Services
             return true;
         }
 
-        public async Task<bool> SaveTeam(string teamDescription, string challenge, ModelStateDictionary modelState)
+        public async Task<bool> SaveTeam(string teamName, string teamDescription, string challenge, ModelStateDictionary modelState)
         {
             var user = await GetParticipantAsync();
 
@@ -428,12 +428,12 @@ namespace StatCan.OrchardCore.Hackathon.Services
                 return false;
             }
 
-            if (user == null || team.Content.Team.TeamCaptain.UserIds[0] != user.UserId)
+            if (user == null || team.Content.Team.TeamCaptain?.UserIds?.First != user.UserId)
             {
                 modelState.AddModelError("error", T["You are not the team captain. Only the team captain can perform this action"].Value);
                 return false;
             }
-
+            team.Content.Team.Name = JObject.FromObject(new { Text = teamName });
             team.Content.Team.Description = JObject.FromObject(new { Text = teamDescription });
             team.Content.Team.Challenge = JObject.FromObject(new { ContentItemIds = new string[] { challenge } });
             await _contentManager.UpdateAsync(team);

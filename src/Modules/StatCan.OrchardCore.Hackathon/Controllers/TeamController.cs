@@ -158,12 +158,12 @@ namespace StatCan.OrchardCore.Hackathon.Controllers
             }
 
             await _session.CommitAsync();
-            return LocalRedirect(GetPrefixedUrl(returnUrl));
+            return LocalRedirect(returnUrl);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> SaveTeam(string teamDescription, string challenge, string returnUrl)
+        public async Task<IActionResult> SaveTeam(string teamName, string teamDescription, string challenge, string returnUrl)
         {
             if (!HttpContext.User.IsInRole("Hacker"))
             {
@@ -177,14 +177,14 @@ namespace StatCan.OrchardCore.Hackathon.Controllers
                 return Unauthorized();
             }
 
-            await _hackathonService.SaveTeam(teamDescription, challenge, ModelState);
+            await _hackathonService.SaveTeam(teamName, teamDescription, challenge, ModelState);
             if (ModelState.IsValid)
             {
                 _notifier.Success(H["Team info successfully updated"]);
             }
 
             await _session.CommitAsync();
-            return LocalRedirect(GetPrefixedUrl(returnUrl));
+            return LocalRedirect(returnUrl);
         }
     }
 }
