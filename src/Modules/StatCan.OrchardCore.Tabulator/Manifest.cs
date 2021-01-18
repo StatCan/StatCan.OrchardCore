@@ -2,7 +2,7 @@ using OrchardCore.Modules.Manifest;
 using static StatCan.OrchardCore.Tabulator.FeatureIds;
 
 [assembly: Module(
-    Name = "StatCan Tabulator",
+    Name = "StatCan Table Creator",
     Author = "Digital Innovation Team",
     Website = "https://digital.statcan.gc.ca",
     Version = "1.0.0"
@@ -10,9 +10,9 @@ using static StatCan.OrchardCore.Tabulator.FeatureIds;
 
 [assembly: Feature(
     Id = Tabulator,
-    Name = "StatCan.Tabulator - Widgets",
+    Name = "StatCan.TableCreator - Widgets",
     Category = "Content",
-    Description = "Adds a widget used to create Tabulator",
+    Description = "Adds a widget used to create tables",
     Dependencies = new[]
     {
         "OrchardCore.Widgets",

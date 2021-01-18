@@ -11,10 +11,10 @@ var table = new Tabulator("#tabulator-table", {
     pagination: "local", //local pagination
     tooltips: true, //displays on hover text
 
-    data: {{Model.ContentItem.Content.Tabulator.TableData.Text | raw}},
-    columns: {{Model.ContentItem.Content.Tabulator.ColumnsData.Text | raw}},
-    autoColumns: {{Model.ContentItem.Content.Tabulator.AutoColumnizer.Text | raw}},
-    paginationSize: {{Model.ContentItem.Content.Tabulator.PaginationSize.Text | raw}},
+    data: {{Model.ContentItem.Content.TableCreator.TableData.Text | raw}},
+    columns: {{Model.ContentItem.Content.TableCreator.ColumnsData.Text | raw}},
+    autoColumns: {{Model.ContentItem.Content.TableCreator.AutoColumnizer.Text | raw}},
+    paginationSize: {{Model.ContentItem.Content.TableCreator.PaginationSize.Value | raw}},
     
 });
 
