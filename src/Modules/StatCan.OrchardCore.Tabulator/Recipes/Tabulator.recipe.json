@@ -1,6 +1,6 @@
 {
-    "name": "Tabulator",
-    "displayName": "Tabulator",
+    "name": "TableCreator",
+    "displayName": "TableCreator",
     "description": "Creates tables from a JSON formatted data.",
     "author": "StatCan Digital Innovation",
     "website": "digital.statcan.gc.ca",
@@ -20,8 +20,8 @@
           "name": "ContentDefinition",
           "ContentTypes": [
             {
-              "Name": "Tabulator",
-              "DisplayName": "Tabulator",
+              "Name": "TableCreator",
+              "DisplayName": "TableCreator",
               "Settings": {
                 "ContentTypeSettings": {
                   "Creatable": true,
@@ -35,8 +35,8 @@
               },
               "ContentTypePartDefinitionRecords": [
                 {
-                  "PartName": "Tabulator",
-                  "Name": "Tabulator",
+                  "PartName": "TableCreator",
+                  "Name": "TableCreator",
                   "Settings": {
                     "ContentTypePartSettings": {
                       "Position": "0"
@@ -48,7 +48,7 @@
           ],
           "ContentParts": [
             {
-              "Name": "Tabulator",
+              "Name": "TableCreator",
               "Settings": {},
               "ContentPartFieldDefinitionRecords": [
                 {
@@ -93,16 +93,17 @@
                   }
                 },
                 {
-                  "FieldName": "TextField",
+                  "FieldName": "NumericField",
                   "Name": "PaginationSize",
                   "Settings": {
                     "ContentPartFieldSettings": {
                       "DisplayName": "PaginationSize",
-                      "Position": "3"
+                      "Position": "2"
                     },
-                    "TextFieldSettings": {
+                    "NumericFieldSettings": {
                       "Hint": "Enter the number of rows to be displayed per page. For example, entering \"5\" will display 5 rows per page.",
-                      "Required": true
+                      "Minimum": 1.0,
+                      "Maximum": 100.0
                     }
                   }
                 }
