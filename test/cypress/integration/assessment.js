@@ -1,13 +1,6 @@
 /// <reference types="Cypress" />
 import { generateTenantInfo } from 'cypress-orchardcore/dist/utils';
 
-
-before(function () {
-  cy.fixture('assessment.json').then(function (dataJSON) {
-    this.data = dataJSON;
-  })
-})
-
 describe("Assessment Test", function() {    
   let tenant;
   it("Create Assessment tenant ", function() {
