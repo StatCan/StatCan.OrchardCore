@@ -1,0 +1,11 @@
+@inject Etch.OrchardCore.ContentPermissions.Services.IContentPermissionsService ContentPermissionsService
+<v-container class="py-4 px-4" fluid>
+  @if (ContentPermissionsService.CanAccess(Model.ContentItem))
+  {
+    @await DisplayAsync(Model.Content.FlowPart) 
+  }
+  else
+  {
+    @await DisplayAsync(Model.Content.Named("SecurePage-UnauthorizedHtml"))
+  }
+</v-container>
