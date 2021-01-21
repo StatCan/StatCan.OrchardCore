@@ -1,0 +1,6 @@
+@using StatCan.OrchardCore.EmailTemplates.ViewModels;
+@using StatCan.OrchardCore.EmailTemplates.Models;
+@using OrchardCore.ContentManagement
+@model EmailTemplatePartViewModel
+
+<a href="@Url.Action("SendEmail", "EmailTemplate", new {area="StatCan.OrchardCore.EmailTemplates", name=Model.EmailTemplate, contentItemId=Model.ContentItemId })" class="btn btn-primary btn-sm"><i class="fas fa-envelope"></i> @Model.EmailTemplate</a>

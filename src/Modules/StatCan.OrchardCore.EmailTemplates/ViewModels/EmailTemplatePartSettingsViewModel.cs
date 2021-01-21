@@ -1,4 +1,3 @@
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using StatCan.OrchardCore.EmailTemplates.Models;
 using System.Collections.Generic;

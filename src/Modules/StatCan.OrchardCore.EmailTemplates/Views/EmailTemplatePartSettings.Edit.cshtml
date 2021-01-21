@@ -3,16 +3,12 @@
 @using OrchardCore.ContentManagement.Routing;
 @model EmailTemplatePartSettingsViewModel
 @inject OrchardCore.ContentManagement.IContentManager ContentManager
-@{
-    var name = Model;
-    var emailTemplates = Model.EmailTemplates;
-}
 
 <div class="form-group">
     <div class="w-100 w-md-50 pr-md-3">
-      @if (emailTemplates.Any())
+    <label>Email Template</label>
+      @if (Model.EmailTemplates.Any())
       {
-        <label>@Model.EmailTemplate</label>
         <select class="form-control content-preview-select" asp-for="EmailTemplate" asp-items="Model.EmailTemplates"></select>
       }
     </div>

@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc.Localization;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Localization;
 using OrchardCore.Admin;
+using OrchardCore.ContentManagement;
 using OrchardCore.DisplayManagement;
 using OrchardCore.DisplayManagement.Notify;
 using OrchardCore.Email;
@@ -37,6 +38,7 @@ namespace StatCan.OrchardCore.EmailTemplates.Controllers
         private readonly IStringLocalizer S;
         private readonly IHtmlLocalizer H;
         private readonly dynamic New;
+        private readonly IContentManager _contentManager;
 
         public EmailTemplateController(
             IAuthorizationService authorizationService,
@@ -48,7 +50,8 @@ namespace StatCan.OrchardCore.EmailTemplates.Controllers
             INotifier notifier,
             ISmtpService smtpService,
             ILiquidTemplateManager liquidTemplateManager,
-            HtmlEncoder htmlEncoder
+            HtmlEncoder htmlEncoder,
+            IContentManager contentManager
         )
         {
             _authorizationService = authorizationService;
@@ -61,9 +64,10 @@ namespace StatCan.OrchardCore.EmailTemplates.Controllers
             H = htmlLocalizer;
             _liquidTemplateManager = liquidTemplateManager;
             _htmlEncoder = htmlEncoder;
+            _contentManager = contentManager;
         }
 
-        public async Task<IActionResult> Index(ContentOptions options, PagerParameters pagerParameters)
+        public async Task<IActionResult> Index(ViewModels.ContentOptions options, PagerParameters pagerParameters)
         {
             if (!await _authorizationService.AuthorizeAsync(User, Permissions.ManageEmailTemplates))
             {
@@ -160,7 +164,7 @@ namespace StatCan.OrchardCore.EmailTemplates.Controllers
                 {
                     return RedirectToReturnUrlOrIndex(returnUrl);
                 }
-            }
+            }   
 
             // If we got this far, something failed, redisplay form
             return View(model);
@@ -272,7 +276,7 @@ namespace StatCan.OrchardCore.EmailTemplates.Controllers
 
         [HttpPost, ActionName("Index")]
         [FormValueRequired("submit.BulkAction")]
-        public async Task<ActionResult> ListPost(ContentOptions options, IEnumerable<string> itemIds)
+        public async Task<ActionResult> ListPost(ViewModels.ContentOptions options, IEnumerable<string> itemIds)
         {
             if (!await _authorizationService.AuthorizeAsync(User, Permissions.ManageEmailTemplates))
             {
@@ -304,7 +308,7 @@ namespace StatCan.OrchardCore.EmailTemplates.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> SendEmail(string name)
+        public async Task<IActionResult> SendEmail(string name, string contentItemId)
         {
             if (!await _authorizationService.AuthorizeAsync(User, Permissions.ManageEmailTemplates))
             {
@@ -319,16 +323,17 @@ namespace StatCan.OrchardCore.EmailTemplates.Controllers
             }
 
             var template = templatesDocument.Templates[name];
+            var contentItem = await _contentManager.GetAsync(contentItemId);
 
             var model = new SendEmailTemplateViewModel
             {
                 Name = name,
-                Author = await RenderLiquid(template.AuthorExpression),
-                Sender = await RenderLiquid(template.SenderExpression),
-                ReplyTo = await RenderLiquid(template.ReplyToExpression),
-                Recipients = await RenderLiquid(template.RecipientsExpression),
-                Subject = await RenderLiquid(template.SubjectExpression),
-                Body = await RenderLiquid(template.Body),
+                Author = await RenderLiquid(template.AuthorExpression, contentItem),
+                Sender = await RenderLiquid(template.SenderExpression, contentItem),
+                ReplyTo = await RenderLiquid(template.ReplyToExpression, contentItem),
+                Recipients = await RenderLiquid(template.RecipientsExpression, contentItem),
+                Subject = await RenderLiquid(template.SubjectExpression, contentItem),
+                Body = await RenderLiquid(template.Body, contentItem),
                 IsBodyHtml = template.IsBodyHtml,
             };
 
@@ -409,6 +414,15 @@ namespace StatCan.OrchardCore.EmailTemplates.Controllers
             if(!string.IsNullOrWhiteSpace(liquid))
             {
                 return await _liquidTemplateManager.RenderAsync(liquid, _htmlEncoder, null, null);
+            }
+            return liquid;
+        }
+
+        private async Task<string> RenderLiquid(string liquid, ContentItem contentItem)
+        {
+            if (!string.IsNullOrWhiteSpace(liquid))
+            {
+                return await _liquidTemplateManager.RenderAsync(liquid, _htmlEncoder, contentItem, null);
             }
             return liquid;
         }

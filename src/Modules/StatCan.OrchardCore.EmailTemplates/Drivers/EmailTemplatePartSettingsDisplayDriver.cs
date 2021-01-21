@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Mvc.Rendering;
-using OrchardCore.ContentManagement.Display.Models;
 using OrchardCore.ContentManagement.Metadata.Models;
 using OrchardCore.ContentTypes.Editors;
 using OrchardCore.DisplayManagement.ModelBinding;
@@ -10,7 +9,6 @@ using StatCan.OrchardCore.EmailTemplates.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using System.Linq;
 
 namespace StatCan.OrchardCore.EmailTemplates.Drivers
 {
@@ -33,10 +31,11 @@ namespace StatCan.OrchardCore.EmailTemplates.Drivers
             {
                 var settings = contentTypePartDefinition.GetSettings<EmailTemplatePartSettings>();
                 var templateDocuments = await _templatesManager.GetEmailTemplatesDocumentAsync();
+                
 
                 if (settings.EmailTemplate != null)
                 {
-                    model.EmailTemplate = settings.EmailTemplate.Name;
+                    model.EmailTemplate = settings.EmailTemplate;
                 }
 
                 model.EmailTemplates = new List<SelectListItem>();
@@ -66,10 +65,10 @@ namespace StatCan.OrchardCore.EmailTemplates.Drivers
             await context.Updater.TryUpdateModelAsync(model, Prefix,
                 m => m.EmailTemplate);
 
-            var templateDocuments = await _templatesManager.GetEmailTemplatesDocumentAsync();
+            var templatesDocument = await _templatesManager.GetEmailTemplatesDocumentAsync();
             context.Builder.WithSettings(new EmailTemplatePartSettings
             {
-                EmailTemplate = templateDocuments.Templates.Where(x => x.Key == model.EmailTemplate).Select(y => y.Value).FirstOrDefault()
+                EmailTemplate = model.EmailTemplate
             });
 
             return Edit(contentTypePartDefinition, context.Updater);

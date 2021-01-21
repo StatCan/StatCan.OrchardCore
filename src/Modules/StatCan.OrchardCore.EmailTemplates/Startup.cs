@@ -37,6 +37,7 @@ namespace StatCan.OrchardCore.EmailTemplates
         {
             services.AddScoped<IDataMigration, Migrations>();
 
+            services.AddContentPart<EmailTemplatePart>().UseDisplayDriver<EmailTemplatePartDisplayDriver>();
             services.AddScoped<IContentTypePartDefinitionDisplayDriver, EmailTemplatePartSettingsDisplayDriver>();
             services.AddScoped<EmailTemplatesManager>();
             services.AddScoped<IPermissionProvider, Permissions>();
