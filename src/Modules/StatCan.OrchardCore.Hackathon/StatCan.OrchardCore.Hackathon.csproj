@@ -17,6 +17,7 @@
     <PackageReference Include="OrchardCore.ResourceManagement" Version="$(OrchardCoreVersion)" />
     <PackageReference Include="OrchardCore.Autoroute" Version="$(OrchardCoreVersion)" />
     <PackageReference Include="OrchardCore.Media" Version="$(OrchardCoreVersion)" />
+    <PackageReference Include="OrchardCore.Users" Version="$(OrchardCoreVersion)" />
   </ItemGroup>
 
   <ItemGroup>
