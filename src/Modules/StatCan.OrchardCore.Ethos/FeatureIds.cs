@@ -1,7 +1,7 @@
-namespace StatCan.OrchardCore.Ethos
+namespace StatCan.OrchardCore.Persona
 {
     public static class FeatureIds
     {
-        public const string Ethos = "StatCan.OrchardCore.Ethos";
+        public const string Persona = "StatCan.OrchardCore.Persona";
     }
 }
