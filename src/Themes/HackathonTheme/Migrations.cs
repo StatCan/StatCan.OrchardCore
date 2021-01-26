@@ -39,7 +39,8 @@ namespace StatCan.Themes.HackathonTheme
             VAppBar();
             VNavigationDrawer();
             AuthContentMenuItem();
-            return 4;
+            CompatibilityBanner();
+            return 5;
         }
 
         public int UpdateFrom1()
@@ -61,6 +62,12 @@ namespace StatCan.Themes.HackathonTheme
         {
             AuthContentMenuItem();
             return 4;
+        }
+
+        public int UpdateFrom4()
+        {
+            CompatibilityBanner();
+            return 5;
         }
 
         private void AuthContentMenuItem()
@@ -1153,6 +1160,17 @@ namespace StatCan.Themes.HackathonTheme
                         Minimum = 0,
                         Maximum = 9999,
                     })
+                )
+            );
+        }
+
+        private void CompatibilityBanner()
+        {
+            _contentDefinitionManager.AlterTypeDefinition("CompatibilityBanner", type => type
+                .DisplayedAs("CompatibilityBanner")
+                .Stereotype("Widget")
+                .WithPart("CompatibilityBanner", part => part
+                    .WithPosition("0")
                 )
             );
         }
