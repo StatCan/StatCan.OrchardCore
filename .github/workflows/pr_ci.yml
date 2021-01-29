@@ -42,13 +42,20 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 5.0.100
+    - name: Temp Fix ci build
+      run: |
+          sudo bash -c 'echo "deb http://deb.debian.org/debian bullseye main" >> /etc/apt/sources.list'
+          sudo apt-get update
+          sudo apt-get install ca-certificates
+          sudo sed -i '$ d' /etc/apt/sources.list
+          sudo apt-get update
     - name: Dotnet build 
       run: dotnet build -c Release
     - name: Test
       run: |
-           cd test/cypress
-           npm install
-           npm run test
+          cd test/cypress
+          npm install
+          npm run test
     - uses: actions/upload-artifact@v2
       if: failure()
       with:
