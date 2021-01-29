@@ -33,9 +33,9 @@ namespace StatCan.OrchardCore.EmailTemplates.Drivers
                 var templateDocuments = await _templatesManager.GetEmailTemplatesDocumentAsync();
                 
 
-                if (settings.EmailTemplate != null)
+                if (settings.SelectedEmailTemplates != null)
                 {
-                    model.EmailTemplate = settings.EmailTemplate;
+                    model.SelectedEmailTemplates = settings.SelectedEmailTemplates;
                 }
 
                 model.EmailTemplates = new List<SelectListItem>();
@@ -63,12 +63,12 @@ namespace StatCan.OrchardCore.EmailTemplates.Drivers
             var model = new EmailTemplatePartSettingsViewModel();
 
             await context.Updater.TryUpdateModelAsync(model, Prefix,
-                m => m.EmailTemplate);
+                m => m.SelectedEmailTemplates);
 
             var templatesDocument = await _templatesManager.GetEmailTemplatesDocumentAsync();
             context.Builder.WithSettings(new EmailTemplatePartSettings
             {
-                EmailTemplate = model.EmailTemplate
+                SelectedEmailTemplates = model.SelectedEmailTemplates[0]?.Split(',', StringSplitOptions.RemoveEmptyEntries)
             });
 
             return Edit(contentTypePartDefinition, context.Updater);

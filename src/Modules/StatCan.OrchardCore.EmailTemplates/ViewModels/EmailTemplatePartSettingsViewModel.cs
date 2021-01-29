@@ -7,7 +7,7 @@ namespace StatCan.OrchardCore.EmailTemplates.ViewModels
     public class EmailTemplatePartSettingsViewModel
     {
         public List<SelectListItem> EmailTemplates { get; set; }
-        public string EmailTemplate { get; set; }
+        public string[] SelectedEmailTemplates { get; set; }
         public EmailTemplatePartSettings EmailTemplatePartSettings { get; set; }
     }
 }

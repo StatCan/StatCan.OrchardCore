@@ -12,12 +12,12 @@ namespace StatCan.OrchardCore.EmailTemplates.Drivers
         {
             var settings = context.TypePartDefinition.GetSettings<EmailTemplatePartSettings>();
 
-            if (settings.EmailTemplate != null)
+            if (settings.SelectedEmailTemplates != null)
             {
                 // This injects a button on the SummaryAdmin view for any ContentItem with an Email Template
                 return Initialize<EmailTemplatePartViewModel>("EmailTemplatePart", m =>
                 {
-                    m.EmailTemplate = settings.EmailTemplate;
+                    m.SelectedEmailTemplates = settings.SelectedEmailTemplates;
                     m.ContentItemId = emailTemplatePart.ContentItem.ContentItemId;
                 })
                 .Location("SummaryAdmin", "Actions:9");
