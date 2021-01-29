@@ -111,7 +111,8 @@
           "Header",
           "Breadcrumb",
           "NavigationDrawer",
-          "Footer"
+          "Footer",
+          "IEBanner"
         ]
       }
     },
@@ -205,6 +206,25 @@
             "Zone": "NavigationDrawer",
             "RenderTitle": false,
             "Layer": "All"
+          }
+        },
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentType": "CompatibilityBanner",
+          "DisplayText": "Compatibility Banner",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": "2021-01-26T15:39:01.656923Z",
+          "PublishedUtc": "2021-01-26T15:39:01.658717Z",
+          "CreatedUtc": "2021-01-26T15:26:33.688292Z",
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "CompatibilityBanner": {},
+          "LayerMetadata": {
+            "Position": 1.0,
+            "Zone": "IEBanner",
+            "Layer": "All",
+            "RenderTitle": false
           }
         }
       ]
