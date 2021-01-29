@@ -17,11 +17,12 @@
         {% render_section "NavigationDrawer", required: false %}
         {% render_section "Header", required: false %}
         <v-main id="main">
-          <v-container>
-            {% render_section "Messages", required: false %}
-          </v-container>
           {% render_section "Breadcrumbs", required: false %}
-          {% render_body %}
+          <v-container class="py-4 px-4" fluid>
+            {% render_section "Messages", required: false %}
+            {% render_section "IEBanner", required: false %}
+            {% render_body %}
+          </v-container>
         </v-main>
         <v-footer app padless>
           {% render_section "Footer", required: false %}
