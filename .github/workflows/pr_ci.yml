@@ -18,8 +18,6 @@ jobs:
   build_test:
     name: Build & Test
     runs-on: ubuntu-latest
-    container:
-      image: cypress/included:6.0.0
     services:
       postgres:
         image: postgres:11
