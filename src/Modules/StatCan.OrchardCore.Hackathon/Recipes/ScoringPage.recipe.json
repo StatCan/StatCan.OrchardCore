@@ -65,8 +65,8 @@
                 "ModifiedUtc": "2020-12-08T16:46:33.0329859Z",
                 "PublishedUtc": null,
                 "CreatedUtc": null,
-                "Owner": "",
-                "Author": "admin",
+                "Owner": "[js: parameters('AdminUserId')]",
+                "Author": "[js: parameters('AdminUsername')]",
                 "TitlePart": {
                   "Title": "Scoring"
                 },
