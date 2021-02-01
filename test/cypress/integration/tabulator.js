@@ -14,7 +14,7 @@ describe("Table Creator Test", function() {
    it("Can run TableCreator Recipe", function() {
     cy.visit(`${tenant.prefix}/login`)
     cy.login(tenant);
-    cy.runRecipe(tenant, 'TableCreator');
+    cy.runRecipe(tenant, 'Table_Creator');
 })
 
   //Add Tabulator widget

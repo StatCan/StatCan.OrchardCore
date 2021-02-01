@@ -1,6 +1,6 @@
 {
-    "name": "TableCreator",
-    "displayName": "TableCreator",
+    "name": "Table Creator",
+    "displayName": "Table Creator",
     "description": "Creates tables from a JSON formatted data.",
     "author": "StatCan Digital Innovation",
     "website": "digital.statcan.gc.ca",
