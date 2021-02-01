@@ -3,7 +3,7 @@
 {% script name:"swagger-preset", src:"~/StatCan.OrchardCore.OpenAPI/Scripts/swagger-ui-standalone-preset.js", debug_src:"~/StatCan.OrchardCore.OpenAPI/Scripts/swagger-ui-standalone-preset.js", at:"Foot" %}
 {% assign generatedId = "swagger-" | append: Model.ContentItem.ContentItemId %}
 
-<div id="{{ generatedId }}" class="reset-all">
+<div id="{{ generatedId }}">
 </div>
 
 {% block "script", at: "Foot", depends-on:"swagger" %}
