@@ -15,11 +15,9 @@
     <ProjectReference Include="..\StatCan.OrchardCore.Security\StatCan.OrchardCore.Security.csproj" PrivateAssets="none" />
     
     <!-- Modules -->
-    <ProjectReference Include="..\..\Modules\StatCan.OrchardCore.Assessment\StatCan.OrchardCore.Assessment.csproj" PrivateAssets="none" />
     <ProjectReference Include="..\..\Modules\StatCan.OrchardCore.CommonTypes\StatCan.OrchardCore.CommonTypes.csproj" PrivateAssets="none" />
     <ProjectReference Include="..\..\Modules\StatCan.OrchardCore.ContentFields\StatCan.OrchardCore.ContentFields.csproj" PrivateAssets="none" />
     <ProjectReference Include="..\..\Modules\StatCan.OrchardCore.DisplayHelpers\StatCan.OrchardCore.DisplayHelpers.csproj" PrivateAssets="none" />
-    <ProjectReference Include="..\..\Modules\StatCan.OrchardCore.Ethos\StatCan.OrchardCore.Ethos.csproj" PrivateAssets="none" />
     <ProjectReference Include="..\..\Modules\StatCan.OrchardCore.GCCollab\StatCan.OrchardCore.GCCollab.csproj" PrivateAssets="none" />
     <ProjectReference Include="..\..\Modules\StatCan.OrchardCore.GitHub\StatCan.OrchardCore.GitHub.csproj" PrivateAssets="none" />
     <ProjectReference Include="..\..\Modules\StatCan.OrchardCore.Hackathon\StatCan.OrchardCore.Hackathon.csproj" PrivateAssets="none" />
