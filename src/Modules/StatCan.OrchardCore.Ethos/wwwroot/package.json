@@ -1,7 +1,0 @@
-{
-    "name": "statcan-ethos",
-    "version": "0.1.0",
-    "devDependencies": {
-        "tailwindcss": "^1.7.3"
-    }
-}

@@ -1,6 +1,0 @@
-[
-    {
-    "inputs": ["node_modules/tailwindcss"],
-    "output": "wwwroot/Ethos.js"
-    }
-]
