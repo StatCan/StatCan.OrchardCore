@@ -44,7 +44,7 @@ jobs:
         dotnet-version: 5.0.100
     - name: Fix nuget restore issue
       run: |
-          apt update && apt upgrade
+          apt update && apt --only-upgrade install ca-certificates -y
     - name: Dotnet build 
       run: dotnet build -c Release
     - name: Test
