@@ -67,7 +67,7 @@ namespace StatCan.OrchardCore.EmailTemplates.Controllers
             _contentManager = contentManager;
         }
 
-        public async Task<IActionResult> Index(ViewModels.ContentOptions options, PagerParameters pagerParameters)
+        public async Task<IActionResult> Index(ViewModels.ContentOptions options, PagerParameters pagerParameters, string returnUrl)
         {
             if (!await _authorizationService.AuthorizeAsync(User, Permissions.ManageEmailTemplates))
             {
@@ -308,7 +308,7 @@ namespace StatCan.OrchardCore.EmailTemplates.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> SendEmail(string name, string contentItemId)
+        public async Task<IActionResult> SendEmail(string name, string contentItemId, string returnUrl)
         {
             if (!await _authorizationService.AuthorizeAsync(User, Permissions.ManageEmailTemplates))
             {
@@ -319,7 +319,7 @@ namespace StatCan.OrchardCore.EmailTemplates.Controllers
 
             if (!templatesDocument.Templates.ContainsKey(name))
             {
-                return RedirectToAction("Index");
+                return Redirect(returnUrl);
             }
 
             var template = templatesDocument.Templates[name];
@@ -337,11 +337,13 @@ namespace StatCan.OrchardCore.EmailTemplates.Controllers
                 IsBodyHtml = template.IsBodyHtml,
             };
 
+            ViewData["returnUrl"] = returnUrl;
+
             return View(model);
         }
 
         [HttpPost]
-        public async Task<IActionResult> SendEmail(SendEmailTemplateViewModel model)
+        public async Task<IActionResult> SendEmail(SendEmailTemplateViewModel model, string returnUrl)
         {
             if (!await _authorizationService.AuthorizeAsync(User, Permissions.ManageEmailTemplates))
             {
@@ -364,7 +366,7 @@ namespace StatCan.OrchardCore.EmailTemplates.Controllers
                 else
                 {
                     _notifier.Success(H["Message sent successfully"]);
-                    return RedirectToAction("Index");
+                    return Redirect(returnUrl);
                 }
             }
 

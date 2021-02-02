@@ -13,6 +13,6 @@
 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
     @foreach (var entry in Model.SelectedEmailTemplates)
     {
-        <a class="dropdown-item" href="@Url.Action("SendEmail", "EmailTemplate", new {area="StatCan.OrchardCore.EmailTemplates", name=entry, contentItemId=Model.ContentItemId })">@entry</a>
+        <a class="dropdown-item" href="@Url.Action("SendEmail", "EmailTemplate", new {area="StatCan.OrchardCore.EmailTemplates", name=entry, contentItemId=Model.ContentItemId, returnUrl=@FullRequestPath })">@entry</a>
     }
 </div>
