@@ -17,24 +17,4 @@ describe("Assessment Test", function() {
     cy.runRecipe(tenant, 'Assessment');
 })
 
-  //Add Assessment widget
-  it("Can create an assessment form", function() {
-    cy.fixture('assessment.json').as('dataJSON')
-    cy.visit(`${tenant.prefix}/login`)
-    cy.login(tenant);
-    cy.visit(`${tenant.prefix}/Admin/Contents/ContentTypes/Assessment/create`);
-    cy.fixture('assessment.json').then((dataJSON) => {
-      cy.get("input[name='Assessment.Data.Text']")
-        .type(JSON.stringify(dataJSON),{ force: true, parseSpecialCharSequences: false })
-    })
-    cy.get('.btn-success').click();
-  })
-
-  //View Assessment
-  it("Can view the Assessment form", function() {
-    cy.visit(`${tenant.prefix}/login`)
-    cy.login(tenant);
-    cy.visit(`${tenant.prefix}/Admin/Contents/ContentItems`);
-    cy.get('.float-right > .btn-success').click();
-  })
 })
