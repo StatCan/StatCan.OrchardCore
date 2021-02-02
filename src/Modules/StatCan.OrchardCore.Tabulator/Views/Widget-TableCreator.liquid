@@ -1,7 +1,6 @@
 {% style name:"styles", src:"https://unpkg.com/tabulator-tables@4.9.3/dist/css/tabulator.min.css" %}
 {% script name:"tabulator", src:"https://unpkg.com/tabulator-tables@4.9.3/dist/js/tabulator.min.js", at:"Foot" %}
 
-
 <div id="tabulator-table" style="display:inline-block;width:100%;"></div>
 {% block "script", at: "Foot", depends-on: "tabulator"%}
 
@@ -15,7 +14,6 @@ var table = new Tabulator("#tabulator-table", {
     columns: {{Model.ContentItem.Content.TableCreator.ColumnsData.Text | raw}},
     autoColumns: {{Model.ContentItem.Content.TableCreator.AutoColumnizer.Text | raw}},
     paginationSize: {{Model.ContentItem.Content.TableCreator.PaginationSize.Value | raw}},
-    
 });
 
 {% endblock %}
