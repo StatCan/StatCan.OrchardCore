@@ -40,7 +40,8 @@ namespace StatCan.Themes.HackathonTheme
             VNavigationDrawer();
             AuthContentMenuItem();
             CompatibilityBanner();
-            return 5;
+            VFooter();
+            return 6;
         }
 
         public int UpdateFrom1()
@@ -68,6 +69,12 @@ namespace StatCan.Themes.HackathonTheme
         {
             CompatibilityBanner();
             return 5;
+        }
+
+        public int UpdateFrom5()
+        {
+            VFooter();
+            return 6;
         }
 
         private void AuthContentMenuItem()
@@ -1170,6 +1177,38 @@ namespace StatCan.Themes.HackathonTheme
                 .DisplayedAs("CompatibilityBanner")
                 .Stereotype("Widget")
                 .WithPart("CompatibilityBanner", part => part
+                    .WithPosition("0")
+                )
+            );
+        }
+
+        private void VFooter()
+        {
+            _contentDefinitionManager.AlterTypeDefinition("VFooter", type => type
+                .DisplayedAs("VFooter")
+                .Stereotype("Widget")
+                .WithPart("VFooter", part => part
+                    .WithPosition("0")
+                )
+                .WithPart("FlowPart", part => part
+                    .WithPosition("1")
+                )
+            );
+
+            _contentDefinitionManager.AlterPartDefinition("VFooter", part => part
+                .WithField("Height", field => field
+                    .OfType("NumericField")
+                    .WithDisplayName("Height")
+                    .WithPosition("1")
+                )
+                .WithField("Width", field => field
+                    .OfType("NumericField")
+                    .WithDisplayName("Width")
+                    .WithPosition("2")
+                )
+                .WithField("Color", field => field
+                    .OfType("TextField")
+                    .WithDisplayName("Color")
                     .WithPosition("0")
                 )
             );
