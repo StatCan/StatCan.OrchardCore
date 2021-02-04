@@ -1,12 +1,16 @@
+@using System.Linq;
 @using Newtonsoft.Json.Linq
 @model OrchardCore.ContentManagement.Display.ViewModels.ContentItemViewModel
 
 @{
-  var teamMembers = await Orchard.QueryAsync("GetHackersForTeam", new Dictionary<string, object>(){{"teamContentItemId", Model.ContentItem.ContentItemId }});
+  var items = await Orchard.QueryAsync("GetHackersForTeam", new Dictionary<string, object>(){{"teamContentItemId", Model.ContentItem.ContentItemId }});
+  var teamMembers = items.Cast<JObject>().ToList();
   var emailId = String.Format("{0}_emails", @Model.ContentItem.ContentItemId);
   var i = false;
 }
 
+@if (teamMembers.Any())
+{
   <div onclick=select_all_and_copy(document.getElementById("@emailId")) class="btn btn-primary btn-sm"><i class="fas fa-envelope"></i> @T["Team"]</div>
   <div class="sr-only" id=@emailId>
   @foreach (var member in teamMembers) 
@@ -34,6 +38,6 @@
           <a class="dropdown-item" href="@Url.Action("Edit", "Admin", new {area="OrchardCore.Users", id=JObject.Parse(member.ToString())["UserId"], returnUrl=@FullRequestPath })">@JObject.Parse(member.ToString())["FirstName"] @JObject.Parse(member.ToString())["LastName"]</a>
       }
   </div> 
-
+}
 
 <script asp-src="~/OrchardCore.Workflows/Scripts/crossbrowserclipboardcopy.min.js" debug-src="~/OrchardCore.Workflows/Scripts/crossbrowserclipboardcopy.js" at="Foot"></script>
