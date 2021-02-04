@@ -1,0 +1,39 @@
+@using Newtonsoft.Json.Linq
+@model OrchardCore.ContentManagement.Display.ViewModels.ContentItemViewModel
+
+@{
+  var teamMembers = await Orchard.QueryAsync("GetHackersForTeam", new Dictionary<string, object>(){{"teamContentItemId", Model.ContentItem.ContentItemId }});
+  var emailId = String.Format("{0}_emails", @Model.ContentItem.ContentItemId);
+  var i = false;
+}
+
+  <div onclick=select_all_and_copy(document.getElementById("@emailId")) class="btn btn-primary btn-sm"><i class="fas fa-envelope"></i> @T["Team"]</div>
+  <div class="sr-only" id=@emailId>
+  @foreach (var member in teamMembers) 
+  {
+    @if (i)
+    {
+      @T[";"];
+    }
+    i = true;
+
+    var email = JObject.Parse(member.ToString())["ContactEmail"];
+    @T[email.ToString()];
+  } 
+  </div>
+  
+  
+  <button class="btn btn-primary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <i class="fas fa-envelope"></i>
+      @T["Members"]
+  </button>
+  
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+      @foreach (var member in teamMembers)
+      {
+          <a class="dropdown-item" href="@Url.Action("Edit", "Admin", new {area="OrchardCore.Users", id=JObject.Parse(member.ToString())["UserId"], returnUrl=@FullRequestPath })">@JObject.Parse(member.ToString())["FirstName"] @JObject.Parse(member.ToString())["LastName"]</a>
+      }
+  </div> 
+
+
+<script asp-src="~/OrchardCore.Workflows/Scripts/crossbrowserclipboardcopy.min.js" debug-src="~/OrchardCore.Workflows/Scripts/crossbrowserclipboardcopy.js" at="Foot"></script>
