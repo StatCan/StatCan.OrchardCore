@@ -2,12 +2,13 @@
 
   <PropertyGroup>
     <AspNetCoreTargetFramework>net5.0</AspNetCoreTargetFramework>
-    <OrchardCoreVersion>1.0.0-rc2-15674</OrchardCoreVersion>
+    <OrchardCoreVersion>1.0.0-rc2-15821
+</OrchardCoreVersion>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageManagement Include="NetEscapades.AspNetCore.SecurityHeaders" Version="0.12.1" />
-    <PackageManagement Include="HtmlSanitizer" Version="5.0.355" />
+    <PackageManagement Include="HtmlSanitizer" Version="5.0.376" />
     <PackageManagement Include="Octokit" Version="0.48.0" />
   </ItemGroup>
 
