@@ -1,4 +1,6 @@
 {% assign teamMembers = Queries.GetHackersForTeam | query: teamContentItemId: Model.ContentItem.ContentItemId %}
+
 <div {% if teamMembers != null %}onclick="select_all_and_copy(document.getElementById('{{Model.ContentItem.ContentItemId}}_emails'))"{%endif%} class="btn btn-primary btn-sm {% if teamMembers == null %}disabled{% endif %}"><i class="fas fa-envelope"></i> {{ "Team" | t }}</div>
 <div class="sr-only" id="{{Model.ContentItem.ContentItemId}}_emails">{% for member in teamMembers %}{{ member.ContactEmail }}{% if forloop.last == false %};{% endif%}{% endfor %}</div>
+
 {% script src:'~/OrchardCore.Workflows/Scripts/crossbrowserclipboardcopy.min.js', debug_src:'~/OrchardCore.Workflows/Scripts/crossbrowserclipboardcopy.js', at:"Foot" %}
