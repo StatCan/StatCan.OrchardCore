@@ -58,5 +58,5 @@ jobs:
         name: functional-test-postgresql-failure
         path: |
           test/cypress/screenshots
-          src/StatCan.OrchardCore.Cms.Web/App_Data_Tests/logs
+          src/StatCan.OrchardCore.Cms.Web/App_Data/logs
         retention-days: 3
