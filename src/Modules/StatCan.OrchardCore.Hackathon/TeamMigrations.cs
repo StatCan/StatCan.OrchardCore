@@ -49,6 +49,7 @@ namespace StatCan.OrchardCore.Hackathon
                 .WithTitlePart("0", TitlePartOptions.GeneratedDisabled, "{% assign case = ContentItem.Content.Team.Case.LocalizationSets | localization_set: 'en' | first %}\r\n{{ case | display_text | slugify }}-{{ContentItem.Content.Team.Name.Text}}-{{ ContentItem.Id }}")
                 .WithPart("Team", p => p.WithPosition("1"))
                 .WithPart("TeamSolutionPart", p => p.WithPosition("2"))
+                .WithPart("EmailTemplatePart", p => p.WithPosition("3"))
             );
 
             _contentDefinitionManager.AlterPartDefinition("Hacker", p => p

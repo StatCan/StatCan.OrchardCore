@@ -68,7 +68,7 @@
                     </div>
                     <div class="properties">
                         <div class="related">
-                            <a asp-action="SendEmail" asp-route-name="@entry.Name" class="btn btn-primary btn-sm">@T["Send Email"]</a>
+                            <a asp-action="SendEmail" asp-route-name="@entry.Name" asp-route-returnUrl="@FullRequestPath" class="btn btn-primary btn-sm">@T["Send Email"]</a>
                             <a asp-action="Edit" asp-route-name="@entry.Name" asp-route-returnUrl="@FullRequestPath" class="btn btn-primary btn-sm">@T["Edit"]</a>
                             <a asp-action="Delete" asp-route-name="@entry.Name" asp-route-returnUrl="@FullRequestPath" class="btn btn-danger btn-sm" itemprop="RemoveUrl UnsafeUrl">@T["Delete"]</a>
                         </div>
