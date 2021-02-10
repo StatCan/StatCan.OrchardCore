@@ -1,46 +1,8 @@
-<div id="surveyElement" style="display:inline-block;width:100%;"></div>
-<div id="surveyResult"></div>
+<div id="surveyElement" data-data="{{Model.ContentItem.Content.Assessment.Data.Text }}"></div>
+<div class="surveyResult" data-data="{{Model.ContentItem.Content.Assessment.Data.Text }}"></div>
 
 {% style name:"default", src:"https://unpkg.com/survey-knockout@1.8.24/modern.css" %}
 {% script name:"knockout", src:"https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.1/knockout-latest.js", at:"Foot" %}
 {% script name:"survey-ko", src:"https://unpkg.com/survey-knockout@1.8.24/survey.ko.min.js", at:"Foot" %}
 
-{% block "script", at: "Foot", depends-on:"survey-ko" %}
-
-Survey
-    .StylesManager
-    .applyTheme("default");
-
-Survey
-    .JsonObject
-    .metaData
-    .addProperty("itemvalue", {name: "score:number"});
-
-var json = {{Model.ContentItem.Content.Assessment.Data.Text | raw}};
-
-window.survey = new Survey.Model(json);
-
-survey
-    .onComplete
-    .add(function (result) {
-
-       var plainData = result.getPlainData({
-         calculations: [{ propertyName: "score"}]
-       });
-       var totalScore = 0
-       function calcScore(data) {
-         return (data || [] ).reduce(function(sum, item) {
-           return sum+ (item.isNode ? calcScore(item.data) : item.score);
-          }, 0)
-      }
-      
-       totalScore = calcScore(plainData);
-
-      document
-          .querySelector('#surveyResult')
-          .innerHTML = "Total Score is:\n" + JSON.stringify(totalScore);
-    });
-  
-survey.render("surveyElement");
-
-{% endblock %}
+{% script name:"assessment", src:"~/StatCan.OrchardCore.Assessment/Scripts/assessment.js", type: "text/javascript", at:"Foot" %}

@@ -10,11 +10,4 @@ describe("Assessment Test", function() {
     cy.enableFeature(tenant, "StatCan_OrchardCore_Assessment");
   })
 
-  //Run Assessment Recipe
-  it("Can run Assessment Recipe", function() {
-    cy.visit(`${tenant.prefix}/login`)
-    cy.login(tenant);
-    cy.runRecipe(tenant, 'Assessment');
-})
-
 })

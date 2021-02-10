@@ -1,0 +1,7 @@
+[
+    {
+        "copy": true,
+        "inputs": [ "Assets/assessment.js" ],
+        "output": "wwwroot/Scripts/assessment.js"
+      }
+]
