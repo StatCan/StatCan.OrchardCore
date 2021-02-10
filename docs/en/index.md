@@ -4,7 +4,7 @@ Welcome to the `StatCan.OrchardCore` documentation. Learn how to use our collect
 
 ## OrchardCore CMS
 
-The project is built on OrchardCore CMS version `1.0.0-rc2-15821`. To learn more about the underlying framework, take a look through the [Orchard Core CMS documentation](https://docs.orchardcore.net) and the [Orchard Core Github repository](https://github.com/OrchardCMS/OrchardCore).
+The project is built on OrchardCore CMS version `1.0.0-rc2-15838`. To learn more about the underlying framework, take a look through the [Orchard Core CMS documentation](https://docs.orchardcore.net) and the [Orchard Core Github repository](https://github.com/OrchardCMS/OrchardCore).
 
 
 ## Where to Start?
