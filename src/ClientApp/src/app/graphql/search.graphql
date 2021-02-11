@@ -1,0 +1,10 @@
+query searchQuery($parameters: String) {
+  searchBlogPosts(parameters: $parameters) {
+    subtitle
+    displayText
+    path
+    image {
+      urls
+    }
+  }
+}

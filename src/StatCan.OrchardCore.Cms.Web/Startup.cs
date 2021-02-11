@@ -27,6 +27,14 @@ namespace web
 
         public void ConfigureServices(IServiceCollection services)
         {
+            // Allows everything from CORS
+            services.AddCors(o => o.AddDefaultPolicy(builder =>
+            {
+                builder.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader();
+            }));
+
             services.AddOrchardCms().ConfigureServices(tenantServices => tenantServices.ConfigureHtmlSanitizer(sanitizer => sanitizer.AllowedSchemes.Add("mailto")));
             services.Configure<IdentityOptions>(options => Configuration.GetSection("IdentityOptions").Bind(options));
             services.Configure<GzipCompressionProviderOptions>(options => options.Level = System.IO.Compression.CompressionLevel.Optimal);
@@ -67,6 +75,7 @@ namespace web
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseCors(); // To use CORS middleware
             app.UseResponseCompression();
             app.UseStatCanSecurityHeaders()
                 .UseStaticFiles()

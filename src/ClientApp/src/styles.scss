@@ -1,0 +1,50 @@
+/* You can add global styles to this file, and also import other style files */
+@import "../node_modules/bulma/sass/utilities/_all.sass";
+@import "../node_modules/bulma/sass/base/_all.sass";
+@import "../node_modules/bulma/sass/helpers/_all.sass";
+@import "../node_modules/bulma/sass/form/_all.sass";
+@import "../node_modules/bulma/sass/components/navbar.sass";
+@import "../node_modules/bulma/sass/layout/hero.sass";
+@import "../node_modules/bulma/sass/layout/section.sass";
+@import "../node_modules/bulma/sass/components/level.sass";
+@import "../node_modules/bulma/sass/components/tabs.sass";
+@import "../node_modules/bulma/sass/components/card.sass";
+@import "../node_modules/bulma/sass/components/breadcrumb.sass";
+@import "../node_modules/bulma/sass/components/message.sass";
+@import "../node_modules/bulma/sass/components/media.sass";
+@import "../node_modules/bulma/sass/components/modal.sass";
+@import "../node_modules/bulma/sass/elements/_all.sass";
+@import "../node_modules/bulma/sass/layout/footer.sass";
+@import "../node_modules/bulma/sass/grid/_all.sass";
+
+$dark-grey:  #1d2024;
+$light-grey: #353b43;
+$global-text-color: #878787;
+.background-color-dark-grey {
+  background-color: $dark-grey !important;
+  color: $global-text-color !important;
+}
+.background-color-light-grey {
+  background-color: $light-grey !important;
+  color: $global-text-color !important;
+}
+body {
+  font-family: 'Poppins', sans-serif !important;
+  color: white !important;
+}
+.light-grey-text {
+  color: $global-text-color !important;
+}
+
+.hover-effect-to-top {
+  position: relative;
+  top: 0;
+  transition: top .3s ease-in-out;
+}
+
+.hover-effect-to-top:hover {
+  top: -10px;
+}
+.background-gray {
+  background-color: #303030;
+}

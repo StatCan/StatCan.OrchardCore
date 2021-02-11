@@ -1,0 +1,50 @@
+<section class="hero is-medium hero-area is-bold">
+    <div class="hero-body">
+        <div class="container">
+            <h1 class="title has-text-centered light-grey-text" data-aos="fade-up" data-aos-delay="50">
+                Blog
+            </h1>
+        </div>
+    </div>
+</section>
+
+<section style="background-color: #353b43;">
+    <br>
+    <br>
+    <div class="has-text-centered has-text-info has-text-weight-bold is-size-3">
+        <h2 class="has-text-weight-bold wow fadeIn is-uppercase" data-wow-delay="0.2s"
+            style="visibility: visible; animation-name: fadeIn; animation-delay: 0.2s;" data-aos="fade-in"
+            data-aos-delay="300"> Orchard CMS <span class="has-text-white">Blog </span>
+            <i style="font-weight: bolder;" class=" tf-ion-android-list"></i>
+        </h2>
+        <!--Excerpt-->
+    </div>
+
+    <!--/Intro-->
+    <br>
+    <br>
+    <div class="container">
+
+        <!-- Post -->
+        <div class="card block">
+
+            <ng-container *ngFor="let blog of (blogPost | async)?.blogPost">
+                <figure style="cursor: pointer;"  class="image">
+  
+                    <img class="image" *ngIf="blog.image.urls" src="https://localhost:5001{{blog.image.urls}}"
+                      alt="Placeholder image">
+              
+                  </figure>
+                  <br>
+                <h1 class="has-text-centered has-text-white is-size-3 has-text-weight-bold">{{blog.subtitle}}</h1> 
+                <br>
+                <hr>
+                <markdown lineNumbers [start]="1" [data]="blog.markdownBody.markdown"> </markdown>
+               
+            </ng-container>
+        </div>
+
+        <!--/ Magazine -->
+    </div>
+    <br>
+</section>

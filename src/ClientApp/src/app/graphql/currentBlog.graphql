@@ -1,0 +1,16 @@
+
+query currentBlog($urlPath: String) {
+ blogPost(where: {path: $urlPath}) {
+    path
+     subtitle
+     displayText
+     owner
+     publishedUtc
+     image {
+        urls
+    }
+    markdownBody {
+        markdown
+    }
+  }
+}

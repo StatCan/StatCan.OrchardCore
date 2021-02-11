@@ -1,0 +1,139 @@
+.card {
+    padding: 60px;
+}
+
+.hero-area {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.83), rgba(0, 0, 0, 0.8)), url("../../assets/img/Blog-Background.jpg")no-repeat center center;
+    background-size: cover;
+  }
+.background-color {
+    background-color: #353b43;
+}
+
+.block {
+    background: #242930 !important;
+    border-bottom: 2px solid transparent !important;
+    transition: .5s all;
+    margin-bottom: 20px;
+}
+
+markdown {
+    ::ng-deep img {
+        width: 100%;
+    }
+    ::ng-deep h2, ::ng-deep h1 {
+        color: #3298dc !important;
+    }
+::ng-deep p {
+    margin-bottom: 16px;
+    margin-top: 16px;
+}
+    ::ng-deep p,
+    ::ng-deep li,
+    ::ng-deep strong {
+        color: #878787 !important;
+    }
+    ::ng-deep .number {
+        align-items: center;
+        background-color: #282f2f;
+        border-radius: 290486px;
+        display: unset;
+        font-size: 1em;
+        height: 2em;
+        justify-content: center;
+        margin-right: 0;
+        min-width: 2.5em;
+        padding: 0;
+        text-align: center;
+        vertical-align: top;
+    }
+
+    ::ng-deep h1 {
+        padding-bottom: 50px;
+        padding-left: 60px;
+        padding-right: 60px;
+        text-align: center;
+    }
+
+    ::ng-deep h1,
+    ::ng-deep h2 {
+        font-size: 2rem;
+        border-bottom: 1px solid;
+        padding-bottom: 18px;
+    }
+
+
+
+    ::ng-deep #setting-up-a-debian-10-buster-linux-basic-development-environment {
+        padding-bottom: 50px;
+        padding-left: 60px;
+        padding-right: 60px;
+        text-align: center;
+    }
+
+    ::ng-deep .tag:not(body) {
+        display: unset;
+        font-size: 1em;
+        background-color: transparent;
+        white-space: unset;
+    }
+
+}
+
+.container {
+    max-width: 1140px;
+}
+
+
+
+@media (max-width: 770px) {
+
+    .block {
+        margin: 0 5px;
+    }
+    .card {
+        padding: 10px;
+    }
+
+    markdown {
+
+        ::ng-deep h1,
+        ::ng-deep h2,
+        ::ng-deep p {
+            font-size: 5vw;
+        }
+
+        ::ng-deep #setting-up-a-debian-10-buster-linux-basic-development-environment {
+            padding-bottom: 10px !important;
+            padding-left: 0px !important;
+            padding-right: 0px !important;
+        }
+    }
+}
+
+.custom-pagination .page-number {
+    display: inline-block;
+    /* padding: 5px 12px; */
+    background: #afffe6;
+    margin: 0px 4px;
+    border-radius: 25px;
+}
+
+.page-number.current {
+    background: #ffffff !important;
+    border: 2px solid #458873;
+}
+
+.page-number span {
+    display: block;
+    width: 28px;
+    height: 28px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.pagination-previous,
+.pagination-next {
+    display: inline-block;
+    font-weight: bold;
+}

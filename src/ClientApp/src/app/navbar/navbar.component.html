@@ -1,0 +1,60 @@
+<nav class="navbar background-color-dark-grey" role="navigation" aria-label="main navigation">
+    <div class="container">
+      <div class="navbar-brand">
+        <a class="navbar-item" aria-label="OrchardSkills.com" rel="noopener" href="/">
+          <img alt="Orchard CMS" src="../../../assets/icons/icon-57x57.png" width="112" height="28">
+          <p class="media-right light-grey-text is-size-4">Orchard<strong class="has-text-info">Skills</strong></p>
+        </a>
+  
+        <a (click)="toggleNavbar()" role="button" [ngClass]="{'is-active': isActive}"
+          class="navbar-burger burger has-text-info" aria-label="menu" aria-expanded="false"
+          data-target="navbarBasicExample">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+  
+      <div (click)="toggleNavbar()" [ngClass]="{'is-active': isActive}" id="navbarBasicExample"
+        class="is-success navbar-menu">
+        <div class="navbar-end" style="margin-left: unset;">
+          <a class="navbar-item margin-right  bottom-line-hover" [routerLink]="['/']" routerLinkActive="is-focus"
+            [routerLinkActiveOptions]="{ exact: true }">
+            Blog
+          </a>
+          <a (click)="openSearch()" class="navbar-item margin-right bottom-line-hover">
+            Search
+          </a>          
+        </div>
+      </div>
+    </div>
+    <div class="search-wrapper">
+      <div class="search-container" [ngClass]="{'active': add}">
+        <input [ngClass]="{'active': add}" type="search" (input)="search($event.target.value)" class="input"
+          placeholder="Search" autofocus>
+        <i (click)="openSearch()" class="fa tf-ion-close-circled" style="font-size: 35px;" aria-hidden="true"></i>
+      </div>
+    </div>
+    <div class="search-list">
+      <ng-container *ngFor="let se of (searchPosts | async)?.searchBlogPosts">
+        <div class="box" style="margin-bottom: 0.1rem;" *ngIf="add">
+          <article class="media">
+            <div class="media-left">
+              <figure class="image is-64x64">
+                <img src="https://localhost:5001{{se.image.urls}}" alt="Image">
+              </figure>
+            </div>
+            <div class="media-content">
+              <div class="content">
+                <p style="cursor: pointer;" (click)="navigate(se.path)">
+                  <strong>{{se.displayText}}</strong>
+                  <br>
+                  {{se.subtitle}}
+                </p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </ng-container>
+    </div>    
+  </nav>

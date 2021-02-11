@@ -1,0 +1,59 @@
+
+
+.hero-area {
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.83), rgba(0, 0, 0, 0.8)), url("../../assets/img/Blog-Background.jpg")no-repeat center center;
+  background-size: cover;
+}
+
+pagination-controls {
+  ::ng-deep .ngx-pagination {
+    margin-left: 0px;
+    margin-bottom: 1rem;
+    padding: 0 !important;
+    text-align: center;
+  }
+
+  ::ng-deep .pagination-next,
+  ::ng-deep .pagination-previous {
+    border: unset;
+  }
+
+  ::ng-deep .ngx-pagination a {
+    color: #3273dc;
+  }
+
+  ::ng-deep .ngx-pagination a:hover,
+  ::ng-deep .ngx-pagination button:hover {
+    background: #424242;
+  }
+
+  ::ng-deep .ngx-pagination ::ng-deep .disabled {
+    padding: 10px 10px;
+    margin: 0px 20px;
+  }
+}
+
+
+.wrapper {
+  max-width: 1060px;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin: auto;
+}
+
+.media-left,
+.media-content {
+  cursor: pointer;
+}
+
+.block:hover {
+  border-bottom: 2px solid #3298dc !important;
+  color: #3298dc !important;
+}
+
+.block {
+  background: #242930 !important;
+  border-bottom: 2px solid transparent !important;
+  transition: .5s all;
+  margin-bottom: 20px;
+}

@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+  <PropertyGroup>
+    <TargetFramework>$(AspNetCoreTargetFramework)</TargetFramework>
+    <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="OrchardCore.Admin.Abstractions" Version="$(OrchardCoreVersion)" />
+    <PackageReference Include="OrchardCore.Email.Abstractions" Version="$(OrchardCoreVersion)" />
+    <PackageReference Include="OrchardCore.Data.Abstractions" Version="$(OrchardCoreVersion)" />
+    <PackageReference Include="OrchardCore.Module.Targets" Version="$(OrchardCoreVersion)" />
+    <PackageReference Include="OrchardCore.Recipes.Abstractions" Version="$(OrchardCoreVersion)" />
+    <PackageReference Include="OrchardCore.Setup.Abstractions" Version="$(OrchardCoreVersion)" />
+    <PackageReference Include="OrchardCore.Setup" Version="$(OrchardCoreVersion)" />
+    <PackageReference Include="OrchardCore.Contents" Version="$(OrchardCoreVersion)" />
+    <PackageReference Include="OrchardCore.Media" Version="$(OrchardCoreVersion)" />
+    <PackageReference Include="OrchardCore.Menu" Version="$(OrchardCoreVersion)" />
+    <PackageReference Include="OrchardCore.Theme.Targets" Version="$(OrchardCoreVersion)" />
+    <PackageReference Include="OrchardCore.ContentManagement" Version="$(OrchardCoreVersion)" />
+    <PackageReference Include="OrchardCore.DisplayManagement" Version="$(OrchardCoreVersion)" />
+    <PackageReference Include="OrchardCore.ResourceManagement" Version="$(OrchardCoreVersion)" />
+    <PackageReference Include="OrchardCore.Settings" Version="$(OrchardCoreVersion)" />
+    <PackageReference Include="OrchardCore.Users" Version="$(OrchardCoreVersion)" />
+    <PackageReference Include="OrchardCore.Users.Abstractions" Version="$(OrchardCoreVersion)" />
+    <PackageReference Include="OrchardCore.Users.Core" Version="$(OrchardCoreVersion)" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,18 @@
+﻿{
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "match": {
+            "Content.ContentItem.FullText": "{{Term}}"
+          }
+        },
+        {
+          "term": {
+            "Content.ContentItem.ContentType": "BlogPost"
+          }
+        }
+      ]
+    }
+  }
+}

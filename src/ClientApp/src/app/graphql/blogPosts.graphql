@@ -1,0 +1,15 @@
+ query BlogPosts {
+    blogPost {
+        path
+        subtitle
+        displayText
+        owner
+        publishedUtc
+        markdownBody {
+          markdown
+        }
+        image {
+      urls
+    }
+  }
+}

@@ -1,0 +1,51 @@
+<section class="hero is-medium hero-area is-bold">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title has-text-centered light-grey-text" data-aos="fade-up" data-aos-delay="50">
+        Blog
+      </h1>
+    </div>
+  </div>
+</section>
+<section style="background-color: #353b43;">
+  <div class="wrapper">
+    <br>
+    <div class="columns is-1 is-variable">
+      <div class="column is-12">
+        <ng-container *ngFor="let blog of (blogPosts | async)?.blogPost  | paginate: config">
+          <div (click)="showMore(blog.path)" class="card block">
+            <div class="card-image">
+              <figure style="cursor: pointer;" (click)="showMore(blog.path)" class="image">
+  
+                <img class="image" *ngIf="blog.image.urls" src="https://localhost:5001{{blog.image.urls}}"
+                  alt="Placeholder image">
+
+              </figure>
+            </div>
+            <div class="card-content">
+              <p style="cursor: pointer;" (click)="showMore(blog.path)"
+                class="title is-4 has-text-centered has-text-info">{{blog.displayText}}</p>
+              <p style="cursor: pointer;" (click)="showMore(blog.path)"
+                class="subtitle is-6 has-text-centered has-text-white">{{blog.subtitle}}
+              </p>
+              <p class="has-text-info">Posted by <span class="has-text-white">{{blog.owner}}</span> on <time
+                  datetime="2016-1-1">{{blog.publishedUtc  | date}}</time></p>
+              <hr>
+              <div (click)="showMore(blog.path)" style="cursor: pointer;"
+                class="content has-text-centered light-grey-text">
+
+                <button class="button is-link is-rounded">Click here for more info</button>
+                <br>
+
+              </div>
+            </div>
+
+          </div>
+        </ng-container>
+        <br>
+        <pagination-controls [responsive]="responsive" (pageChange)="onPageChange($event)"></pagination-controls>
+        <br>
+      </div>
+    </div>
+  </div>
+</section>

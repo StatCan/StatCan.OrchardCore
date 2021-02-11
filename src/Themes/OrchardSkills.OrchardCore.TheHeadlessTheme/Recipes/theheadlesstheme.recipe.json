@@ -1,0 +1,1642 @@
+{
+  "name": "The Headless Theme",
+  "displayName": "The Headless Theme",
+  "description": "Provides a functional Headless CMS features.",
+  "author": "OrchardSkills",
+  "website": "https://OrcharsSkills.com",
+  "version": "2.0",
+  "issetuprecipe": true,
+  "categories": [ "default" ],
+  "tags": [ "blog" ],
+
+  // The variables are evaluated the first time they are accessed, and reused across steps
+  "variables": {
+    "homeContentItemId": "[js:uuid()]",
+    "blogContentItemId": "[js:uuid()]",
+    "menuContentItemId": "[js:uuid()]"
+    // "now": "[js: new Date().toISOString()]"
+  },
+
+  "steps": [
+    {
+      "name": "feature",
+      "disable": [],
+      "enable": [
+        // SaaS
+        "OrchardCore.HomeRoute",
+        "OrchardCore.Admin",
+        "OrchardCore.Diagnostics",
+        "OrchardCore.DynamicCache",
+        "OrchardCore.Email",
+        "OrchardCore.Features",
+        "OrchardCore.Navigation",
+        "OrchardCore.Recipes",
+        "OrchardCore.Resources",
+        "OrchardCore.Roles",
+        "OrchardCore.Settings",
+        "OrchardCore.Themes",
+        "OrchardCore.Users",
+        "OrchardCore.Apis.GraphQL",
+
+        // Content Management
+        "OrchardCore.Alias",
+        "OrchardCore.AdminMenu",
+        "OrchardCore.Autoroute",
+        "OrchardCore.Html",
+        "OrchardCore.ContentFields",
+        "OrchardCore.ContentPreview",
+        "OrchardCore.Contents",
+        "OrchardCore.Contents.FileContentDefinition",
+        "OrchardCore.ContentTypes",
+        "OrchardCore.CustomSettings",
+        "OrchardCore.Deployment",
+        "OrchardCore.Deployment.Remote",
+        "OrchardCore.Feeds",
+        "OrchardCore.Flows",
+        "OrchardCore.Forms",
+        "OrchardCore.Indexing",
+        "OrchardCore.Layers",
+        "OrchardCore.Lucene",
+        "OrchardCore.Lists",
+        "OrchardCore.Liquid",
+        "OrchardCore.Markdown",
+        "OrchardCore.Media",
+        "OrchardCore.Menu",
+        "OrchardCore.Queries",
+        "OrchardCore.Title",
+        "OrchardCore.Templates",
+        "OrchardCore.Widgets",
+        "OrchardCore.Workflows",
+        "OrchardCore.Workflows.Http",
+
+        // Themes
+        "TheHeadlessTheme",
+        "TheAdmin",
+        "SafeMode"
+      ]
+    },
+    {
+      "name": "themes",
+      "admin": "TheAdmin",
+      "site": "TheHeadlessTheme"
+    },
+    {
+      "name": "settings",
+      "HomeRoute": {
+        "Action": "Display",
+        "Controller": "Item",
+        "Area": "OrchardCore.Contents",
+        "ContentItemId": "[js: variables('blogContentItemId')]"
+      },
+      "LayerSettings": {
+        "Zones": [
+          "Header",
+          "Content",
+          "Footer"
+        ]
+      }
+    },
+    {
+      "name": "ContentDefinition",
+      "ContentTypes": [
+        {
+          "Name": "Article",
+          "DisplayName": "Article",
+          "Hidden": false,
+          "Settings": {
+            "ContentTypeSettings": {
+              "Creatable": true,
+              "Draftable": true,
+              "Versionable": true,
+              "Listable": true
+            }
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "Article",
+              "Name": "Article",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "2"
+                }
+              }
+            },
+            {
+              "PartName": "AutoroutePart",
+              "Name": "AutoroutePart",
+              "Settings": {
+                "AutoroutePartSettings": {
+                  "AllowCustomPath": true,
+                  "Pattern": "{{ Model.ContentItem | display_text | slugify }}",
+                  "ShowHomepageOption": true
+                },
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                }
+              }
+            },
+            {
+              "PartName": "HtmlBodyPart",
+              "Name": "HtmlBodyPart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Editor": "Wysiwyg",
+                  "Position": "3"
+                }
+              }
+            },
+            {
+              "PartName": "TitlePart",
+              "Name": "TitlePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "LiquidPage",
+          "DisplayName": "Liquid Page",
+          "Hidden": false,
+          "Settings": {
+            "ContentTypeSettings": {
+              "Creatable": true,
+              "Draftable": true,
+              "Versionable": true,
+              "Listable": true
+            }
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "LiquidPage",
+              "Name": "LiquidPage",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "2"
+                }
+              }
+            },
+            {
+              "PartName": "AutoroutePart",
+              "Name": "AutoroutePart",
+              "Settings": {
+                "AutoroutePartSettings": {
+                  "AllowCustomPath": true,
+                  "Pattern": "{{ Model.ContentItem | display_text | slugify }}",
+                  "ShowHomepageOption": true
+                },
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                }
+              }
+            },
+            {
+              "PartName": "LiquidPart",
+              "Name": "LiquidPart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "3"
+                }
+              }
+            },
+            {
+              "PartName": "TitlePart",
+              "Name": "TitlePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "BlogPost",
+          "DisplayName": "Blog Post",
+          "Hidden": false,
+          "Settings": {
+            "ContentTypeSettings": {
+              "Draftable": true,
+              "Versionable": true
+            }
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "TitlePart",
+              "Name": "TitlePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            },
+            {
+              "PartName": "AutoroutePart",
+              "Name": "AutoroutePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                },
+                "AutoroutePartSettings": {
+                  "AllowCustomPath": true,
+                  "Pattern": "{{ Model.ContentItem | container | display_text | slugify }}/{{ Model.ContentItem | display_text | slugify }}",
+                  "ShowHomepageOption": false
+                }
+              }
+            },
+            {
+              "PartName": "BlogPost",
+              "Name": "BlogPost",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "2"
+				        }
+              }
+            },
+            {
+              "PartName": "MarkdownBodyPart",
+              "Name": "MarkdownBodyPart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Editor": "Wysiwyg",
+                  "Position": "3"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "Blog",
+          "DisplayName": "Blog",
+          "Hidden": false,
+          "Settings": {
+            "ContentTypeSettings": {
+              "Creatable": true,
+              "Draftable": true,
+              "Versionable": true,
+              "Listable": true,
+              "Securable": true
+            }
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "TitlePart",
+              "Name": "TitlePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            },
+            {
+              "PartName": "AutoroutePart",
+              "Name": "AutoroutePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+				        },
+                "ContentIndexSettings": {
+                  "Included": false,
+                  "Stored": false,
+                  "Analyzed": false,
+                  "Sanitized": false,
+                  "Tokenized": false,
+                  "Template": null
+                },
+                "AutoroutePartSettings": {
+                  "AllowCustomPath": true,
+                  "Pattern": "{{ Model.ContentItem | display_text | slugify }}",
+                  "ShowHomepageOption": true
+                }
+              }
+            },
+            {
+              "PartName": "Blog",
+              "Name": "Blog",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "2"
+				        }
+              }
+            },
+            {
+              "PartName": "HtmlBodyPart",
+              "Name": "HtmlBodyPart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "3"
+				        }
+              }
+            },
+            {
+              "PartName": "ListPart",
+              "Name": "ListPart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "4"
+                },
+                "ListPartSettings": {
+                  "PageSize": 10,
+                  "ContainedContentTypes": [
+                    "BlogPost"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "Container",
+          "DisplayName": "Container",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Draftable": true,
+              "Versionable": true,
+              "Securable": true,
+              "Stereotype": "Widget"
+            }
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "Container",
+              "Name": "Container",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            },
+            {
+              "PartName": "FlowPart",
+              "Name": "FlowPart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "Blockquote",
+          "DisplayName": "Blockquote",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Draftable": true,
+              "Versionable": true,
+              "Securable": true,
+              "Stereotype": "Widget"
+            }
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "Blockquote",
+              "Name": "Blockquote",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "ImageWidget",
+          "DisplayName": "Image",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Draftable": true,
+              "Versionable": true,
+              "Securable": true,
+              "Stereotype": "Widget"
+            }
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "Image",
+              "Name": "Image",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "LiquidWidget",
+          "DisplayName": "Liquid",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Draftable": true,
+              "Versionable": true,
+              "Securable": true,
+              "Listable": true,
+              "Stereotype": "Widget"
+            }
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "LiquidPart",
+              "Name": "LiquidPart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "Image",
+          "DisplayName": "Image",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Versionable": true
+            }
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "Image",
+              "Name": "Image",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            },
+            {
+              "PartName": "TitlePart",
+              "Name": "TitlePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "Paragraph",
+          "DisplayName": "Paragraph",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Draftable": true,
+              "Versionable": true,
+              "Securable": true,
+              "Stereotype": "Widget"
+            }
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "Paragraph",
+              "Name": "Paragraph",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "RawHtml",
+          "DisplayName": "Raw Html",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Draftable": true,
+              "Versionable": true,
+              "Securable": true,
+              "Stereotype": "Widget"
+            }
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "RawHtml",
+              "Name": "RawHtml",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "Page",
+          "DisplayName": "Page",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Creatable": true,
+              "Draftable": true,
+              "Versionable": true,
+              "Listable": true,
+              "Securable": true
+            }
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "Page",
+              "Name": "Page",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "3"
+                }
+              }
+            },
+            {
+              "PartName": "AutoroutePart",
+              "Name": "AutoroutePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                },
+                "AutoroutePartSettings": {
+                  "AllowCustomPath": true,
+                  "Pattern": "{{ Model.ContentItem | display_text | slugify }}",
+                  "ShowHomepageOption": true
+                }
+              }
+            },
+            {
+              "PartName": "FlowPart",
+              "Name": "FlowPart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "2"
+                }
+              }
+            },
+            {
+              "PartName": "TitlePart",
+              "Name": "TitlePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "ContentParts": [
+        {
+          "Name": "Blog",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "MediaField",
+              "Name": "Image",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Banner Image"
+                },
+                "ContentIndexSettings": {
+                  "Included": false,
+                  "Stored": false,
+                  "Analyzed": false,
+                  "Sanitized": false,
+                  "Tokenized": false,
+                  "Template": null
+                },
+                "MediaFieldSettings": {
+                  "Hint": null,
+                  "Required": true,
+                  "Multiple": false
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "BlogPost",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "TextField",
+              "Name": "Subtitle",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Subtitle"
+                }
+              }
+            },
+            {
+              "FieldName": "MediaField",
+              "Name": "Image",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Banner Image"
+                },
+                "ContentIndexSettings": {
+                  "Included": false,
+                  "Stored": false,
+                  "Analyzed": false,
+                  "Sanitized": false,
+                  "Tokenized": false,
+                  "Template": null
+                },
+                "MediaFieldSettings": {
+                  "Hint": null,
+                  "Required": true,
+                  "Multiple": false
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "Article",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "TextField",
+              "Name": "Subtitle",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Subtitle"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "Blockquote",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "TextField",
+              "Name": "Quote",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Quote",
+                  "Editor": "TextArea",
+                  "Position": "0"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "Image",
+          "Settings": {
+            "Attachable": true
+          },
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "MediaField",
+              "Name": "Media",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Image",
+                  "Position": "0"
+                },
+                "MediaFieldSettings": {
+                  "Multiple": false,
+                  "Required": true
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "Caption",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Caption",
+                  "Position": "1"
+                },
+                "TextFieldSettings": {
+                  "Hint": "A description of the image used as title or alternate text"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "Paragraph",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "HtmlField",
+              "Name": "Content",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Content",
+                  "Position": "0",
+                  "Editor": "Wysiwyg"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "RawHtml",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "HtmlField",
+              "Name": "Content",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Content",
+                  "Position": "0",
+                  "Editor": "Multiline"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      // Create the indices before the content items so they are indexed automatically.
+      "name": "lucene-index",
+      "Indices": [
+        {
+          "Search": {
+            "AnalyzerName": "standardanalyzer",
+            "IndexLatest": false,
+            "IndexedContentTypes": [
+              "Article",
+              "Blockquote",
+              "Blog",
+              "BlogPost",
+              "Button",
+              "Container",
+              "Form",
+              "ImageWidget",
+              "Image",
+              "Input",
+              "Label",
+              "LinkMenuItem",
+              "LiquidWidget",
+              "LiquidPage",
+              "Menu",
+              "Page",
+              "Paragraph",
+              "RawHtml",
+              "Select",
+              "TextArea",
+              "Validation",
+              "ValidationSummary"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      // Create the search settings.
+      "name": "Settings",
+      "LuceneSettings": {
+        "SearchIndex": "Search",
+        "DefaultSearchFields": [
+          "Content.ContentItem.FullText"
+        ]
+      }
+    },
+    {
+      // Create the search index permissions.
+      "name": "Roles",
+      "Roles": [
+        {
+          "Name": "Anonymous",
+          "Description": "Anonymous role",
+          "Permissions": [
+            "ViewContent",
+            "QueryLuceneSearchIndex",
+            "ExecuteGraphQL"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "content",
+      "Data": [
+        {
+          "ContentType": "Menu",
+          "ContentItemId": "[js: variables('menuContentItemId')]",
+          "DisplayText": "Main Menu",
+          "Latest": true,
+          "Published": true,
+          "MenuPart": {},
+          "TitlePart": { "Title": "Main Menu" },
+          "MenuItemsListPart": {
+            "MenuItems": [
+              {
+                "ContentType": "LinkMenuItem",
+                "ContentItemId": "[js: uuid()]",
+                "LinkMenuItemPart": {
+                  "Name": "Home",
+                  "Url": "~/"
+                }
+              },
+              {
+                "ContentType": "LinkMenuItem",
+                "ContentItemId": "[js: uuid()]",
+                "LinkMenuItemPart": {
+                  "Name": "Blog",
+                  "Url": "~/blog"
+                }
+              },
+              {
+                "ContentType": "LinkMenuItem",
+                "ContentItemId": "[js: uuid()]",
+                "LinkMenuItemPart": {
+                  "Name": "About",
+                  "Url": "~/about"
+                }
+              },
+              {
+                "ContentType": "LinkMenuItem",
+                "ContentItemId": "[js: uuid()]",
+                "LinkMenuItemPart": {
+                  "Name": "Contact",
+                  "Url": "~/contact"
+                }
+              },
+              {
+                "ContentType": "LinkMenuItem",
+                "ContentItemId": "[js: uuid()]",
+                "LinkMenuItemPart": {
+                  "Name": "Search",
+                  "Url": "~/search"
+                }
+              }
+            ]
+          },
+          "AliasPart": { "Alias": "main-menu" }
+        },
+        {
+          "ContentType": "Blog",
+          "ContentItemId": "[js: variables('blogContentItemId')]",
+          "DisplayText": "Blog",
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUsername')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "TitlePart": {
+            "Title": "Blog"
+          },
+          "HtmlBodyPart": {
+            "Html": "This is the description of your blog"
+          },
+          "AutoroutePart": {
+            "Path": "blog"
+          },
+          "ListPart": {},
+          "Blog": {
+            "Image": {
+              "Paths": [
+                "home-bg.jpg"
+              ]
+            }
+          }
+        },
+        {
+          "ContentType": "BlogPost",
+          "ContentItemId": "[js: uuid()]",
+          "DisplayText": "Man must explore, and this is exploration at its greatest",
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUsername')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "TitlePart": {
+            "Title": "Man must explore, and this is exploration at its greatest"
+          },
+          "ContainedPart": {
+            "ListContentItemId": "[js: variables('blogContentItemId')]",
+            "Order": 0
+          },
+          "MarkdownBodyPart": {
+            "Markdown": "Never in all their history have men been able truly to conceive of the world as one: a single sphere, a globe, having the qualities of a globe, a round earth in which all the directions eventually meet, in which there is no center because every point, or none, is center — an equal earth which all men occupy as equals. The airman's earth, if free men make it, will be truly round: a globe in practice, not in theory.\n\nScience cuts two ways, of course; its products can be used for both good and evil. But there's no turning back from science. The early warnings about technological dangers also come from science.\n\nWhat was most significant about the lunar voyage was not that man set foot on the Moon but that they set eye on the earth.\n\nA Chinese tale tells of some men sent to harm a young girl who, upon seeing her beauty, become her protectors rather than her violators. That's how I felt seeing the Earth for the first time. I could not help but love and cherish her.\n\nFor those who have seen the Earth from space, and for the hundreds and perhaps thousands more who will, the experience most certainly changes your perspective. The things that we share in our world are far more valuable than those which divide us."
+          },
+          "AutoroutePart": {
+            "Path": "blog/post-1"
+          },
+          "BlogPost": {
+            "Subtitle": {
+              "Text": "Problems look mighty small from 150 miles up"
+            },
+            "Image": {
+              "Paths": [
+                "post-bg.jpg"
+              ]
+            }
+          }
+        },
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentType": "Article",
+          "DisplayText": "Home",
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUsername')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "AutoroutePart": {
+            "Path": "home",
+            "SetHomepage": true
+          },
+          "HtmlBodyPart": {
+            "Html": "<p>This is the home page</p></p>"
+          },
+          "TitlePart": {
+            "Title": "Home"
+          },
+          "Article": {
+            "Subtitle": {
+              "Text": "Welcome"
+            }
+          }
+        },
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentType": "Article",
+          "DisplayText": "About",
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUsername')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "AutoroutePart": {
+            "Path": "about",
+            "SetHomepage": false
+          },
+          "HtmlBodyPart": {
+            "Html": "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe nostrum ullam eveniet pariatur voluptates odit, fuga atque ea nobis sit soluta odio, adipisci quas excepturi maxime quae totam ducimus consectetur?</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius praesentium recusandae illo eaque architecto error, repellendus iusto reprehenderit, doloribus, minus sunt. Numquam at quae voluptatum in officia voluptas voluptatibus, minus!</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum molestiae debitis nobis, quod sapiente qui voluptatum, placeat magni repudiandae accusantium fugit quas labore non rerum possimus, corrupti enim modi! Et.</p>"
+          },
+          "TitlePart": {
+            "Title": "About"
+          },
+          "Article": {
+            "Subtitle": {
+              "Text": "This is what I do."
+            }
+          }
+        },
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentType": "Article",
+          "DisplayText": "Thanks",
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUsername')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "AutoroutePart": {
+            "Path": "thanks",
+            "SetHomepage": false
+          },
+          "HtmlBodyPart": {
+            "Html": "<p>Thank you for your message. Someone will get back with you as soon as possible.</p>"
+          },
+          "TitlePart": {
+            "Title": "Thanks"
+          },
+          "Article": {
+            "Subtitle": {
+              "Text": "Thank You for your Message"
+            }
+          }
+        },
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentType": "Page",
+          "DisplayText": "Contact",
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUsername')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "Page": {},
+          "AutoroutePart": {
+            "Path": "contact",
+            "SetHomepage": false
+          },
+          "FlowPart": {
+            "Widgets": [
+              {
+                "ContentItemId": "4xrapxrd65572r3hrqsyzpqr41",
+                "ContentItemVersionId": null,
+                "ContentType": "Form",
+                "DisplayText": "Contact",
+                "Latest": false,
+                "Published": false,
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": null,
+                "Author": "admin",
+                "TitlePart": {
+                  "Title": "Contact"
+                },
+                "FormPart": {
+                  "Action": "/workflows/Invoke?token=CfDJ8J9X5AJrfSFEg_y2herzL9treOg0l1xGW5AbPXEVnQILZxcfB7HLcWA8hPWv79cYxceFV3RXwPyo4XiarTdobhjPAXg65suEdfjD3bGXLQXph-ACWNVHDncMesMoJxr6MKttRFk8636cBBq7LRJQy3UYfmrlx0jV-EQnBrtcgAkQPZxK6ygsX6MbifonWoz054NbfeUMQ663f85zh2gpl5MhcbPjqkhPRmNpaEfIb52g",
+                  "Method": "POST",
+                  "WorkflowTypeId": null
+                },
+                "FlowPart": {
+                  "Widgets": [
+                    {
+                      "ContentItemId": "4v2zn39myvc9v7knjjygez48db",
+                      "ContentItemVersionId": null,
+                      "ContentType": "Input",
+                      "DisplayText": "Name",
+                      "Latest": false,
+                      "Published": false,
+                      "PublishedUtc": null,
+                      "CreatedUtc": null,
+                      "Owner": null,
+                      "Author": "admin",
+                      "FormInputElementPart": {
+                        "Name": "Name"
+                      },
+                      "FormElementPart": {
+                        "Id": null
+                      },
+                      "InputPart": {
+                        "Type": "text",
+                        "DefaultValue": null,
+                        "Placeholder": "Enter Name"
+                      },
+                      "FlowMetadata": {
+                        "Alignment": 3,
+                        "Size": 100
+                      }
+                    },
+                    {
+                      "ContentItemId": "47q0d4cgpw4p2xrrsh0cggepd2",
+                      "ContentItemVersionId": null,
+                      "ContentType": "Input",
+                      "DisplayText": "Email",
+                      "Latest": false,
+                      "Published": false,
+                      "PublishedUtc": null,
+                      "CreatedUtc": null,
+                      "Owner": null,
+                      "Author": "admin",
+                      "FormInputElementPart": {
+                        "Name": "Email"
+                      },
+                      "FormElementPart": {
+                        "Id": null
+                      },
+                      "InputPart": {
+                        "Type": "email",
+                        "DefaultValue": null,
+                        "Placeholder": "Enter Email"
+                      },
+                      "FlowMetadata": {
+                        "Alignment": 3,
+                        "Size": 100
+                      }
+                    },
+                    {
+                      "ContentItemId": "40tahbx1b3n5ar3tvwmnn5nw5s",
+                      "ContentItemVersionId": null,
+                      "ContentType": "Input",
+                      "DisplayText": "Message",
+                      "Latest": false,
+                      "Published": false,
+                      "PublishedUtc": null,
+                      "CreatedUtc": null,
+                      "Owner": null,
+                      "Author": "admin",
+                      "FormInputElementPart": {
+                        "Name": "Message"
+                      },
+                      "FormElementPart": {
+                        "Id": null
+                      },
+                      "InputPart": {
+                        "Type": "text",
+                        "DefaultValue": null,
+                        "Placeholder": "Enter Message Text"
+                      },
+                      "FlowMetadata": {
+                        "Alignment": 3,
+                        "Size": 100
+                      }
+                    },
+                    {
+                      "ContentItemId": "4d1g2zxrm80z25jjs0rzyvkyxv",
+                      "ContentItemVersionId": null,
+                      "ContentType": "ValidationSummary",
+                      "DisplayText": null,
+                      "Latest": false,
+                      "Published": false,
+                      "PublishedUtc": null,
+                      "CreatedUtc": null,
+                      "Owner": null,
+                      "Author": "admin",
+                      "ValidationSummaryPart": {},
+                      "FlowMetadata": {
+                        "Alignment": 3,
+                        "Size": 100
+                      }
+                    },
+                    {
+                      "ContentItemId": "4nh88g8ddndgz3779jsv6mgbnm",
+                      "ContentItemVersionId": null,
+                      "ContentType": "Button",
+                      "DisplayText": "Submit",
+                      "Latest": false,
+                      "Published": false,
+                      "PublishedUtc": null,
+                      "CreatedUtc": null,
+                      "Owner": null,
+                      "Author": "admin",
+                      "FormInputElementPart": {
+                        "Name": "Submit"
+                      },
+                      "FormElementPart": {
+                        "Id": null
+                      },
+                      "ButtonPart": {
+                        "Text": "Submit",
+                        "Type": "submit"
+                      },
+                      "FlowMetadata": {
+                        "Alignment": 3,
+                        "Size": 100
+                      }
+                    }
+                  ]
+                },
+                "FlowMetadata": {
+                  "Alignment": 3,
+                  "Size": 100
+                }
+              }
+            ]
+          },
+          "TitlePart": {
+            "Title": "Contact"
+          }
+        },
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentType": "RawHtml",
+          "Displaytext": "Footer",
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUsername')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "LayerMetadata": {
+            "Layer": "Always",
+            "Zone": "Footer",
+            "RenderTitle": false,
+            "Position": 10
+          },
+          "RawHtml": {
+            "Content": {
+              "Html": "[file:text('Snippets/footer.html')]"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "media",
+      "Files": [
+        {
+          "TargetPath": "home-bg.jpg",
+          "SourcePath": "../wwwroot/img/home-bg.jpg"
+        },
+        {
+          "TargetPath": "post-bg.jpg",
+          "SourcePath": "../wwwroot/img/post-bg.jpg"
+        }
+      ]
+    },
+    {
+      "name": "layers",
+      "Layers": [
+        {
+          "Name": "Always",
+          "Rule": "true",
+          "Description": "The widgets in this layer are displayed on any page of this site."
+        },
+        {
+          "Name": "Homepage",
+          "Rule": "isHomepage()",
+          "Description": "The widgets in this layer are only displayed on the homepage."
+        }
+      ]
+    },
+    {
+      "name": "queries",
+      "Queries": [
+        {
+          "Source": "Lucene",
+          "Name": "SearchBlogPosts",
+          "Index": "Search",
+          "Template": "[file:text('Snippets/searchBlogPosts.json')]",
+          "Schema": "[js:base64('ew0KICAgICJ0eXBlIjogIkNvbnRlbnRJdGVtL0Jsb2dQb3N0Ig0KfQ==')]",
+          "ReturnContentItems": true
+        },
+        {
+          "Source": "Lucene",
+          "Name": "RecentBlogPosts",
+          "Index": "Search",
+          "Template": "[file:text('Snippets/recentBlogPosts.json')]",
+          "Schema": "[js:base64('ew0KICAgICJ0eXBlIjogIkNvbnRlbnRJdGVtL0Jsb2dQb3N0Ig0KfQ==')]",
+          "ReturnContentItems": true
+        }
+      ]
+    },
+    {
+      "name": "AdminMenu",
+      "data": [
+        {
+          "Id": "baef6f85ad13481681cde70ada401333",
+          "Name": "Admin menu from blog recipe",
+          "Enabled": true,
+          "MenuItems": [
+            {
+              "$type": "OrchardCore.AdminMenu.AdminNodes.LinkAdminNode, OrchardCore.AdminMenu",
+              "LinkText": "Blog",
+              "LinkUrl": "[js: 'Admin/Contents/ContentItems/' +  variables('blogContentItemId') + '/Display']",
+              "IconClass": "fas fa-rss",
+              "UniqueId": "7b293d57056a4eebb3713f07f12c65d8",
+              "Enabled": true,
+              "Text": null,
+              "Id": null,
+              "Href": null,
+              "Url": null,
+              "Position": null,
+              "LinkToFirstChild": true,
+              "LocalNav": false,
+              "Culture": null,
+              "Resource": null,
+              "Items": [],
+              "RouteValues": null,
+              "Permissions": [],
+              "Classes": []
+            },
+            {
+              "$type": "OrchardCore.AdminMenu.AdminNodes.LinkAdminNode, OrchardCore.AdminMenu",
+              "LinkText": "Main Menu",
+              "LinkUrl": "[js: 'Admin/Contents/ContentItems/' +  variables('menuContentItemId') + '/Edit']",
+              "IconClass": "fas fa-sitemap",
+              "UniqueId": "5118cecfde834dacb26ac08980f1b5a7",
+              "Enabled": true,
+              "Text": null,
+              "Id": null,
+              "Href": null,
+              "Url": null,
+              "Position": null,
+              "LinkToFirstChild": true,
+              "LocalNav": false,
+              "Culture": null,
+              "Resource": null,
+              "Items": [],
+              "RouteValues": null,
+              "Permissions": [],
+              "Classes": []
+            },
+            {
+              "$type": "OrchardCore.AdminMenu.AdminNodes.PlaceholderAdminNode, OrchardCore.AdminMenu",
+              "LinkText": "Content",
+              "IconClass": null,
+              "UniqueId": "3e590d44f8704e4588e272dd966ce291",
+              "Enabled": true,
+              "Text": null,
+              "Id": null,
+              "Href": null,
+              "Url": null,
+              "Position": null,
+              "LinkToFirstChild": true,
+              "LocalNav": false,
+              "Culture": null,
+              "Resource": null,
+              "Items": [
+                {
+                  "$type": "OrchardCore.AdminMenu.AdminNodes.LinkAdminNode, OrchardCore.AdminMenu",
+                  "LinkText": "Content Items",
+                  "LinkUrl": "Admin/Contents/ContentItems/",
+                  "IconClass": null,
+                  "UniqueId": "7b293d57056a4eebb3713f07f12c65d9",
+                  "Enabled": true,
+                  "Text": null,
+                  "Id": null,
+                  "Href": null,
+                  "Url": null,
+                  "Position": 0,
+                  "LinkToFirstChild": true,
+                  "LocalNav": false,
+                  "Culture": null,
+                  "Resource": null,
+                  "Items": [],
+                  "RouteValues": null,
+                  "Permissions": [],
+                  "Classes": []
+                },
+                {
+                  "$type": "OrchardCore.AdminMenu.AdminNodes.PlaceholderAdminNode, OrchardCore.AdminMenu",
+                  "LinkText": "Content Types",
+                  "IconClass": null,
+                  "UniqueId": "2f1fc33133334a1abf7d1a0516ee8b4e",
+                  "Enabled": true,
+                  "Text": null,
+                  "Id": null,
+                  "Href": null,
+                  "Url": null,
+                  "Position": 1,
+                  "Priority": 50,
+                  "LinkToFirstChild": true,
+                  "LocalNav": false,
+                  "Culture": null,
+                  "Resource": null,
+                  "Items": [
+                    {
+                      "$type": "OrchardCore.Contents.AdminNodes.ContentTypesAdminNode, OrchardCore.Contents",
+                      "ShowAll": true,
+                      "IconClass": null,
+                      "ContentTypes": [],
+                      "UniqueId": "ee18224e1b814c638b0732678b74cfd9",
+                      "Enabled": true,
+                      "Text": null,
+                      "Id": null,
+                      "Href": null,
+                      "Url": null,
+                      "Position": null,
+                      "LinkToFirstChild": true,
+                      "LocalNav": false,
+                      "Culture": null,
+                      "Resource": null,
+                      "Items": [],
+                      "RouteValues": null,
+                      "Permissions": [],
+                      "Classes": []
+                    }
+                  ],
+                  "RouteValues": null,
+                  "Permissions": [],
+                  "Classes": []
+                }
+              ],
+              "RouteValues": null,
+              "Permissions": [],
+              "Classes": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "WorkflowType",
+      "data": [
+        {
+          "WorkflowTypeId": "4jj8jr3wyat5h7f8s4dvn052db",
+          "Name": "Contact",
+          "IsEnabled": true,
+          "IsSingleton": false,
+          "DeleteFinishedWorkflows": false,
+          "Activities": [
+            {
+              "ActivityId": "490rajejvg37c4wd8m50q06mxv",
+              "Name": "HttpRequestEvent",
+              "X": 0,
+              "Y": 0,
+              "IsStart": true,
+              "Properties": {
+                "ActivityMetadata": {
+                  "Title": "Contact Form Submitted"
+                },
+                "HttpMethod": "POST",
+                "Url": "/workflows/Invoke?token=CfDJ8LNsm1L3BhpCvl1kHZG8BbD7lKzRL4aioHjYFUD-RSYTqQ-fNq1eigkX-b7fKYzHZ0y31U8oAo9pUI7xg0qz_L2ewWrx_hHn9F2jeJ-CYgdcsl0R2k7EzFmZ9VleR0SxC83VUWMoHIPE4aVH79bvuY0tIWWkkTJUE0sEHpg4LeMR_c2rdd2026JyRBxGrRwPfpUCHU2TlmQEvkxSqBUrw-yXabqBgQjpfMX1GKHrhVGe",
+                "ValidateAntiforgeryToken": true,
+                "TokenLifeSpan": 0
+              }
+            },
+            {
+              "ActivityId": "4jjt2hqjp6xk9164hkp0cxv3w7",
+              "Name": "BindModelStateTask",
+              "X": 0,
+              "Y": 190,
+              "IsStart": false,
+              "Properties": {
+                "ActivityMetadata": {
+                  "Title": null
+                }
+              }
+            },
+            {
+              "ActivityId": "4hr22mvxwk0rex8khhkr9cnncp",
+              "Name": "ForkTask",
+              "X": 340,
+              "Y": 20,
+              "IsStart": false,
+              "Properties": {
+                "ActivityMetadata": {
+                  "Title": "Validate Form Fields"
+                },
+                "Forks": [
+                  "Validate Name",
+                  "Validate Email",
+                  "Validate Message"
+                ]
+              }
+            },
+            {
+              "ActivityId": "4655jbn3247ksrt08a2b7r8yw9",
+              "Name": "ValidateFormFieldTask",
+              "X": 320,
+              "Y": 190,
+              "IsStart": false,
+              "Properties": {
+                "FieldName": "Name",
+                "ErrorMessage": "No Name entered",
+                "ActivityMetadata": {
+                  "Title": "Validate Name"
+                }
+              }
+            },
+            {
+              "ActivityId": "4xp021fs701ay5gmram0nyjcdh",
+              "Name": "ValidateFormFieldTask",
+              "X": 760,
+              "Y": 170,
+              "IsStart": false,
+              "Properties": {
+                "FieldName": "Email",
+                "ErrorMessage": "Email not valid",
+                "ActivityMetadata": {
+                  "Title": "Validate Email"
+                }
+              }
+            },
+            {
+              "ActivityId": "4dpzxry0zjy4t0xhj1xfj5mm4k",
+              "Name": "ValidateFormFieldTask",
+              "X": 1150,
+              "Y": 200,
+              "IsStart": false,
+              "Properties": {
+                "FieldName": "Message",
+                "ErrorMessage": "No Message entered",
+                "ActivityMetadata": {
+                  "Title": "Validate Message"
+                }
+              }
+            },
+            {
+              "ActivityId": "48cgyy0wzhjf50yrkz422rn2n1",
+              "Name": "JoinTask",
+              "X": 440,
+              "Y": 300,
+              "IsStart": false,
+              "Properties": {
+                "ActivityMetadata": {
+                  "Title": null
+                },
+                "Mode": 0
+              }
+            },
+            {
+              "ActivityId": "4crzwchrbc2fkym4jbg7aed44j",
+              "Name": "ValidateFormTask",
+              "X": 500,
+              "Y": 470,
+              "IsStart": false,
+              "Properties": {
+                "ActivityMetadata": {
+                  "Title": null
+                }
+              }
+            },
+            {
+              "ActivityId": "47j30tb53gecc2yqewbx3x8pn4",
+              "Name": "EmailTask",
+              "X": 810,
+              "Y": 470,
+              "IsStart": false,
+              "Properties": {
+                "Sender": {
+                  "Expression": "sales@orchardskills.com"
+                },
+                "Recipients": {
+                  "Expression": "sales@orchardskills.com"
+                },
+                "Subject": {
+                  "Expression": "New Message"
+                },
+                "Body": {
+                  "Expression": "<p>The following information was submitted:<p/>\r\n<p>Name: {{ Request.Form.Name }}</p>\r\n<p>Email: {{ Request.Form.Email }}</p>\r\n<p>Message: {{ Request.Form.Message }}</p>"
+                },
+                "IsBodyHtml": true,
+                "ActivityMetadata": {
+                  "Title": "Email to Site Admin"
+                }
+              }
+            },
+            {
+              "ActivityId": "4kyt6yjc0nhp7zn89gmbhrbsdv",
+              "Name": "HttpRedirectTask",
+              "X": 190,
+              "Y": 470,
+              "IsStart": false,
+              "Properties": {
+                "ActivityMetadata": {
+                  "Title": "Display Form Errors"
+                },
+                "Location": {
+                  "Expression": "/contact"
+                },
+                "Permanent": false
+              }
+            },
+            {
+              "ActivityId": "4kbg33s0s6v491sp4k2dpeymn2",
+              "Name": "HttpRedirectTask",
+              "X": 1090,
+              "Y": 470,
+              "IsStart": false,
+              "Properties": {
+                "ActivityMetadata": {
+                  "Title": "Display Thank You Page"
+                },
+                "Location": {
+                  "Expression": "/thanks"
+                },
+                "Permanent": false
+              }
+            }
+          ],
+          "Transitions": [
+            {
+              "Id": 0,
+              "SourceActivityId": "490rajejvg37c4wd8m50q06mxv",
+              "SourceOutcomeName": "Done",
+              "DestinationActivityId": "4jjt2hqjp6xk9164hkp0cxv3w7"
+            },
+            {
+              "Id": 0,
+              "SourceActivityId": "4jjt2hqjp6xk9164hkp0cxv3w7",
+              "SourceOutcomeName": "Done",
+              "DestinationActivityId": "4hr22mvxwk0rex8khhkr9cnncp"
+            },
+            {
+              "Id": 0,
+              "SourceActivityId": "4hr22mvxwk0rex8khhkr9cnncp",
+              "SourceOutcomeName": "Validate Name",
+              "DestinationActivityId": "4655jbn3247ksrt08a2b7r8yw9"
+            },
+            {
+              "Id": 0,
+              "SourceActivityId": "4655jbn3247ksrt08a2b7r8yw9",
+              "SourceOutcomeName": "Done",
+              "DestinationActivityId": "48cgyy0wzhjf50yrkz422rn2n1"
+            },
+            {
+              "Id": 0,
+              "SourceActivityId": "48cgyy0wzhjf50yrkz422rn2n1",
+              "SourceOutcomeName": "Joined",
+              "DestinationActivityId": "4crzwchrbc2fkym4jbg7aed44j"
+            },
+            {
+              "Id": 0,
+              "SourceActivityId": "4crzwchrbc2fkym4jbg7aed44j",
+              "SourceOutcomeName": "Valid",
+              "DestinationActivityId": "47j30tb53gecc2yqewbx3x8pn4"
+            },
+            {
+              "Id": 0,
+              "SourceActivityId": "4crzwchrbc2fkym4jbg7aed44j",
+              "SourceOutcomeName": "Invalid",
+              "DestinationActivityId": "4kyt6yjc0nhp7zn89gmbhrbsdv"
+            },
+            {
+              "Id": 0,
+              "SourceActivityId": "47j30tb53gecc2yqewbx3x8pn4",
+              "SourceOutcomeName": "Done",
+              "DestinationActivityId": "4kbg33s0s6v491sp4k2dpeymn2"
+            },
+            {
+              "Id": 0,
+              "SourceActivityId": "4hr22mvxwk0rex8khhkr9cnncp",
+              "SourceOutcomeName": "Validate Email",
+              "DestinationActivityId": "4xp021fs701ay5gmram0nyjcdh"
+            },
+            {
+              "Id": 0,
+              "SourceActivityId": "4hr22mvxwk0rex8khhkr9cnncp",
+              "SourceOutcomeName": "Validate Message",
+              "DestinationActivityId": "4dpzxry0zjy4t0xhj1xfj5mm4k"
+            },
+            {
+              "Id": 0,
+              "SourceActivityId": "4xp021fs701ay5gmram0nyjcdh",
+              "SourceOutcomeName": "Done",
+              "DestinationActivityId": "48cgyy0wzhjf50yrkz422rn2n1"
+            },
+            {
+              "Id": 0,
+              "SourceActivityId": "4dpzxry0zjy4t0xhj1xfj5mm4k",
+              "SourceOutcomeName": "Done",
+              "DestinationActivityId": "48cgyy0wzhjf50yrkz422rn2n1"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
