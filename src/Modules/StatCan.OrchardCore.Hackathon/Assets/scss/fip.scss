@@ -1,0 +1,36 @@
+footer {
+    .sig > svg {
+        height: 1rem;
+    }
+    .wmms > svg {
+        height: 1.5rem;
+    }
+
+    .fip-flag {
+      fill: #e33445;
+    }
+    .fip-text {
+      fill: #000;
+    }
+    &.mono {
+      .fip-flag {
+        fill: #000;
+      }
+    }
+    &.theme--dark {
+      .fip-flag {
+        fill: #e33445;
+      }
+      .fip-text {
+        fill: #FFF;
+      }
+      &.mono {
+        .fip-flag {
+          fill: #FFF;
+        }
+      }
+    }
+    svg {
+      vertical-align: bottom;
+    }
+  }

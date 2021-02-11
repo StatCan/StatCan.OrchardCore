@@ -24,9 +24,7 @@
             {% render_body %}
           </v-container>
         </v-main>
-        <v-footer app padless>
-          {% render_section "Footer", required: false %}
-        </v-footer>
+        {% render_section "Footer", required: false %}
       </v-app>
     </div>
     {% resources type: "FootScript" %}
