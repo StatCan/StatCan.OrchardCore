@@ -23,4 +23,9 @@
     <PackageReference Include="OrchardCore.ResourceManagement" Version="$(OrchardCoreVersion)" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\Styles\" />
+    <Folder Include="wwwroot\Scripts\" />
+  </ItemGroup>
+
 </Project>
