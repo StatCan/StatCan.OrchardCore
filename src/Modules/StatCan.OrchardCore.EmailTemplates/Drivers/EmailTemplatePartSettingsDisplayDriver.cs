@@ -31,7 +31,6 @@ namespace StatCan.OrchardCore.EmailTemplates.Drivers
             {
                 var settings = contentTypePartDefinition.GetSettings<EmailTemplatePartSettings>();
                 var templateDocuments = await _templatesManager.GetEmailTemplatesDocumentAsync();
-                
 
                 if (settings.SelectedEmailTemplates != null)
                 {
@@ -45,7 +44,7 @@ namespace StatCan.OrchardCore.EmailTemplates.Drivers
                     model.EmailTemplates.Add(new SelectListItem
                     {
                         Value = templateDocument.Key,
-                        Text = templateDocument.Key
+                        Text = templateDocument.Value.Name
                     });
                 }
 

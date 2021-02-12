@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Localization;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Localization;
+using OrchardCore;
 using OrchardCore.Admin;
 using OrchardCore.ContentManagement;
 using OrchardCore.DisplayManagement;
@@ -67,7 +68,7 @@ namespace StatCan.OrchardCore.EmailTemplates.Controllers
             _contentManager = contentManager;
         }
 
-        public async Task<IActionResult> Index(ViewModels.ContentOptions options, PagerParameters pagerParameters, string returnUrl)
+        public async Task<IActionResult> Index(ViewModels.ContentOptions options, PagerParameters pagerParameters)
         {
             if (!await _authorizationService.AuthorizeAsync(User, Permissions.ManageEmailTemplates))
             {
@@ -82,12 +83,12 @@ namespace StatCan.OrchardCore.EmailTemplates.Controllers
 
             if (!string.IsNullOrWhiteSpace(options.Search))
             {
-                templates = templates.Where(x => x.Key.Contains(options.Search)).ToList();
+                templates = templates.Where(x => x.Value.Name.ToLower().Contains(options.Search.ToLower())).ToList();
             }
 
             var count = templates.Count;
 
-            templates = templates.OrderBy(x => x.Key)
+            templates = templates.OrderBy(x => x.Value.Name)
                 .Skip(pager.GetStartIndex())
                 .Take(pager.PageSize).ToList();
 
@@ -95,7 +96,7 @@ namespace StatCan.OrchardCore.EmailTemplates.Controllers
 
             var model = new EmailTemplateIndexViewModel
             {
-                Templates = templates.ConvertAll(x => new TemplateEntry { Name = x.Key, Template = x.Value }),
+                Templates = templates.ConvertAll(x => new TemplateEntry { Id = x.Key, Template = x.Value }),
                 Options = options,
                 Pager = pagerShape
             };
@@ -130,18 +131,11 @@ namespace StatCan.OrchardCore.EmailTemplates.Controllers
 
             if (ModelState.IsValid)
             {
-                var templatesDocument = await _templatesManager.GetEmailTemplatesDocumentAsync();
+                var id = IdGenerator.GenerateId();
 
-                if (templatesDocument.Templates.ContainsKey(model.Name))
-                {
-                    ModelState.AddModelError(nameof(EmailTemplateViewModel.Name), S["A email template with the same name already exists."]);
-                }
-            }
-
-            if (ModelState.IsValid)
-            {
                 var template = new EmailTemplate
                 {
+                    Name = model.Name,
                     Description = model.Description,
                     AuthorExpression = model.AuthorExpression,
                     SenderExpression = model.SenderExpression,
@@ -152,25 +146,25 @@ namespace StatCan.OrchardCore.EmailTemplates.Controllers
                     IsBodyHtml = model.IsBodyHtml,
                 };
 
-                await _templatesManager.UpdateTemplateAsync(model.Name, template);
+                await _templatesManager.UpdateTemplateAsync(id, template);
 
                 _notifier.Success(H["The \"{0}\" email template has been created.", model.Name]);
 
                 if (submit == "SaveAndContinue")
                 {
-                    return RedirectToAction(nameof(Edit), new { name = model.Name, returnUrl });
+                    return RedirectToAction(nameof(Edit), new { id, returnUrl });
                 }
                 else
                 {
                     return RedirectToReturnUrlOrIndex(returnUrl);
                 }
-            }   
+            }
 
             // If we got this far, something failed, redisplay form
             return View(model);
         }
 
-        public async Task<IActionResult> Edit(string name, string returnUrl = null)
+        public async Task<IActionResult> Edit(string id, string returnUrl = null)
         {
             if (!await _authorizationService.AuthorizeAsync(User, Permissions.ManageEmailTemplates))
             {
@@ -179,16 +173,17 @@ namespace StatCan.OrchardCore.EmailTemplates.Controllers
 
             var templatesDocument = await _templatesManager.GetEmailTemplatesDocumentAsync();
 
-            if (!templatesDocument.Templates.ContainsKey(name))
+            if (!templatesDocument.Templates.ContainsKey(id))
             {
-                return RedirectToAction("Create", new { name, returnUrl });
+                return RedirectToAction("Create", new { id, returnUrl });
             }
 
-            var template = templatesDocument.Templates[name];
+            var template = templatesDocument.Templates[id];
 
             var model = new EmailTemplateViewModel
             {
-                Name = name,
+                Id = id,
+                Name = template.Name,
                 Body = template.Body,
                 Description = template.Description,
                 AuthorExpression = template.AuthorExpression,
@@ -204,7 +199,7 @@ namespace StatCan.OrchardCore.EmailTemplates.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(string sourceName, EmailTemplateViewModel model, string submit, string returnUrl = null)
+        public async Task<IActionResult> Edit(EmailTemplateViewModel model, string submit, string returnUrl = null)
         {
             if (!await _authorizationService.AuthorizeAsync(User, Permissions.ManageEmailTemplates))
             {
@@ -213,12 +208,7 @@ namespace StatCan.OrchardCore.EmailTemplates.Controllers
 
             var templatesDocument = await _templatesManager.LoadEmailTemplatesDocumentAsync();
 
-            if (ModelState.IsValid && !model.Name.Equals(sourceName, StringComparison.OrdinalIgnoreCase) && templatesDocument.Templates.ContainsKey(model.Name))
-            {
-                ModelState.AddModelError(nameof(EmailTemplateViewModel.Name), S["A email template with the same name already exists."]);
-            }
-
-            if (!templatesDocument.Templates.ContainsKey(sourceName))
+            if (!templatesDocument.Templates.ContainsKey(model.Id))
             {
                 return NotFound();
             }
@@ -227,6 +217,7 @@ namespace StatCan.OrchardCore.EmailTemplates.Controllers
             {
                 var template = new EmailTemplate
                 {
+                    Name = model.Name,
                     Description = model.Description,
                     AuthorExpression = model.AuthorExpression,
                     ReplyToExpression = model.ReplyToExpression,
@@ -237,9 +228,9 @@ namespace StatCan.OrchardCore.EmailTemplates.Controllers
                     IsBodyHtml = model.IsBodyHtml,
                 };
 
-                await _templatesManager.RemoveTemplateAsync(sourceName);
+                await _templatesManager.RemoveTemplateAsync(model.Id);
 
-                await _templatesManager.UpdateTemplateAsync(model.Name, template);
+                await _templatesManager.UpdateTemplateAsync(model.Id, template);
 
                 if (submit != "SaveAndContinue")
                 {
@@ -253,7 +244,7 @@ namespace StatCan.OrchardCore.EmailTemplates.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Delete(string name, string returnUrl)
+        public async Task<IActionResult> Delete(string id, string returnUrl)
         {
             if (!await _authorizationService.AuthorizeAsync(User, Permissions.ManageEmailTemplates))
             {
@@ -262,12 +253,12 @@ namespace StatCan.OrchardCore.EmailTemplates.Controllers
 
             var templatesDocument = await _templatesManager.LoadEmailTemplatesDocumentAsync();
 
-            if (!templatesDocument.Templates.ContainsKey(name))
+            if (!templatesDocument.Templates.ContainsKey(id))
             {
                 return NotFound();
             }
 
-            await _templatesManager.RemoveTemplateAsync(name);
+            await _templatesManager.RemoveTemplateAsync(id);
 
             _notifier.Success(H["Email template deleted successfully"]);
 
@@ -308,7 +299,7 @@ namespace StatCan.OrchardCore.EmailTemplates.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> SendEmail(string name, string contentItemId, string returnUrl)
+        public async Task<IActionResult> SendEmail(string id, string contentItemId, string returnUrl)
         {
             if (!await _authorizationService.AuthorizeAsync(User, Permissions.ManageEmailTemplates))
             {
@@ -317,17 +308,17 @@ namespace StatCan.OrchardCore.EmailTemplates.Controllers
 
             var templatesDocument = await _templatesManager.GetEmailTemplatesDocumentAsync();
 
-            if (!templatesDocument.Templates.ContainsKey(name))
+            if (!templatesDocument.Templates.ContainsKey(id))
             {
                 return Redirect(returnUrl);
             }
 
-            var template = templatesDocument.Templates[name];
+            var template = templatesDocument.Templates[id];
             var contentItem = await _contentManager.GetAsync(contentItemId);
 
             var model = new SendEmailTemplateViewModel
             {
-                Name = name,
+                Name = template.Name,
                 Author = await RenderLiquid(template.AuthorExpression, contentItem),
                 Sender = await RenderLiquid(template.SenderExpression, contentItem),
                 ReplyTo = await RenderLiquid(template.ReplyToExpression, contentItem),
@@ -386,7 +377,7 @@ namespace StatCan.OrchardCore.EmailTemplates.Controllers
             var author = sendEmail.Author;
             var sender = sendEmail.Sender;
 
-            if(!string.IsNullOrWhiteSpace(author))
+            if (!string.IsNullOrWhiteSpace(author))
             {
                 message.From = author.Trim();
             }
@@ -406,14 +397,14 @@ namespace StatCan.OrchardCore.EmailTemplates.Controllers
                 message.Body = sendEmail.Body;
             }
 
-             message.IsBodyHtml = sendEmail.IsBodyHtml;
+            message.IsBodyHtml = sendEmail.IsBodyHtml;
 
             return message;
         }
 
         private async Task<string> RenderLiquid(string liquid)
         {
-            if(!string.IsNullOrWhiteSpace(liquid))
+            if (!string.IsNullOrWhiteSpace(liquid))
             {
                 return await _liquidTemplateManager.RenderAsync(liquid, _htmlEncoder, null, null);
             }

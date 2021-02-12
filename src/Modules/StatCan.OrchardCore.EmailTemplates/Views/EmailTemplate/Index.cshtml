@@ -63,16 +63,16 @@
             {
                 <li class="list-group-item">
                     <div class="custom-control custom-checkbox float-left">
-                        <input type="checkbox" class="custom-control-input" value="@entry.Name" name="itemIds" id="itemIds-@entry.Name">
-                        <label class="custom-control-label" for="itemIds-@entry.Name">&nbsp;</label>
+                        <input type="checkbox" class="custom-control-input" value="@entry.Id" name="itemIds" id="itemIds-@entry.Id">
+                        <label class="custom-control-label" for="itemIds-@entry.Id">&nbsp;</label>
                     </div>
                     <div class="properties">
                         <div class="related">
-                            <a asp-action="SendEmail" asp-route-name="@entry.Name" asp-route-returnUrl="@FullRequestPath" class="btn btn-primary btn-sm">@T["Send Email"]</a>
-                            <a asp-action="Edit" asp-route-name="@entry.Name" asp-route-returnUrl="@FullRequestPath" class="btn btn-primary btn-sm">@T["Edit"]</a>
-                            <a asp-action="Delete" asp-route-name="@entry.Name" asp-route-returnUrl="@FullRequestPath" class="btn btn-danger btn-sm" itemprop="RemoveUrl UnsafeUrl">@T["Delete"]</a>
+                            <a asp-action="SendEmail" asp-route-id="@entry.Id" asp-route-returnUrl="@FullRequestPath" class="btn btn-primary btn-sm">@T["Send Email"]</a>
+                            <a asp-action="Edit" asp-route-id="@entry.Id" asp-route-returnUrl="@FullRequestPath" class="btn btn-primary btn-sm">@T["Edit"]</a>
+                            <a asp-action="Delete" asp-route-id="@entry.Id" asp-route-returnUrl="@FullRequestPath" class="btn btn-danger btn-sm" itemprop="RemoveUrl UnsafeUrl">@T["Delete"]</a>
                         </div>
-                        <a asp-action="Edit" asp-route-name="@entry.Name" asp-route-returnUrl="@FullRequestPath">@entry.Name</a>
+                        <a asp-action="Edit" asp-route-id="@entry.Id" asp-route-returnUrl="@FullRequestPath">@entry.Template.Name</a>
                         @if (!String.IsNullOrWhiteSpace(entry.Template.Description))
                         {
                             <span class="hint dashed">@entry.Template.Description</span>

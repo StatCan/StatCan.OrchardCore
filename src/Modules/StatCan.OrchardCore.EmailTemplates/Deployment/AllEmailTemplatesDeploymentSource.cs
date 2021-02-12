@@ -32,7 +32,7 @@ namespace StatCan.OrchardCore.EmailTemplates.Deployment
             }
 
             result.Steps.Add(new JObject(
-                new JProperty("name", "EmailTemplates"),
+                new JProperty("id", "EmailTemplates"),
                 new JProperty("EmailTemplates", templateObjects)
             ));
         }

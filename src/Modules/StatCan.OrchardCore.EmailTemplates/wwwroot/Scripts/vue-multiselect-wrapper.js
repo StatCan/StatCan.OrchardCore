@@ -52,7 +52,7 @@ function initVueMultiselect(element) {
       computed: {
         selectedIds: function selectedIds() {
           return this.arrayOfItems.map(function (x) {
-            return x;
+            return x.Value;
           }).join(',');
         },
         isDisabled: function isDisabled() {
