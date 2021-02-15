@@ -73,7 +73,7 @@ function initVueMultiselect(element) {
           var self = this;
 
           for (i = 0; i < self.arrayOfItems.length; i++) {
-            if (self.arrayOfItems[i] === selectedOption) {
+            if (self.arrayOfItems[i].Value === selectedOption.Value) {
               return;
             }
           }
