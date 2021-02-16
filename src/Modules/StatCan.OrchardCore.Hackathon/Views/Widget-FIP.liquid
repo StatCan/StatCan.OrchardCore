@@ -1,6 +1,7 @@
 {% style src:"~/StatCan.OrchardCore.Hackathon/css/fip.min.css" %}
+{% assign dark = Model.ContentItem.Content.FIP.Dark.Value %}
 
-<v-footer absolute app inset>
+<v-footer absolute app class="pa-5" {% if dark == true %}dark{% endif %} inset>
   {{ "SymbolStatisticsCanada" | shape_new | shape_render }}
   <v-spacer></v-spacer>
   {{ "SymbolCanada" | shape_new | shape_render }}
