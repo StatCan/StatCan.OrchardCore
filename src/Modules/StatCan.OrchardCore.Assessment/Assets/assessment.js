@@ -1,7 +1,6 @@
-var assessement = document.querySelector('.surveyResult')
+function initAssessment(assessment) {
+  var json = assessment.dataset.data
 
-  // var json = assessment.dataset.data
-    console.log(assessment)
     Survey
         .StylesManager
         .applyTheme("default");
@@ -11,7 +10,7 @@ var assessement = document.querySelector('.surveyResult')
         .metaData
         .addProperty("itemvalue", {name: "score:number"});
     
-    window.survey = new Survey.Model(assessement.dataset.data);
+    window.survey = new Survey.Model(json);
   
     survey
         .onComplete
@@ -32,8 +31,9 @@ var assessement = document.querySelector('.surveyResult')
           document
             .querySelector('.surveyResult')
             .innerHTML = "Total Score is: " + JSON.stringify(totalScore);
-            
         });
       
     survey.render("surveyElement");
-    
+} 
+
+document.querySelectorAll('.surveyResult').forEach(initAssessment);

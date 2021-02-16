@@ -1,5 +1,4 @@
-var assessment = document.querySelector('.surveyResult')
-
+function initAssessment(assessment) {
   var json = assessment.dataset.data
 
     Survey
@@ -32,8 +31,9 @@ var assessment = document.querySelector('.surveyResult')
           document
             .querySelector('.surveyResult')
             .innerHTML = "Total Score is: " + JSON.stringify(totalScore);
-            
         });
       
     survey.render("surveyElement");
-    
+} 
+
+document.querySelectorAll('.surveyResult').forEach(initAssessment);
