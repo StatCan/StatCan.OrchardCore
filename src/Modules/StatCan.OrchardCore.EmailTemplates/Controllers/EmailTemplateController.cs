@@ -129,6 +129,13 @@ namespace StatCan.OrchardCore.EmailTemplates.Controllers
 
             ViewData["ReturnUrl"] = returnUrl;
 
+            var templatesDocument = await _templatesManager.GetEmailTemplatesDocumentAsync();
+
+            if (templatesDocument.Templates.Values.Any(x => x.Name.Equals(model.Name, StringComparison.OrdinalIgnoreCase)))
+            {
+                ModelState.AddModelError(nameof(EmailTemplateViewModel.Name), S["An email template with the same name already exists."]);
+            }
+
             if (ModelState.IsValid)
             {
                 var id = IdGenerator.GenerateId();
@@ -207,6 +214,11 @@ namespace StatCan.OrchardCore.EmailTemplates.Controllers
             }
 
             var templatesDocument = await _templatesManager.LoadEmailTemplatesDocumentAsync();
+
+            if (ModelState.IsValid && templatesDocument.Templates.Any(x => x.Key != model.Id && x.Value.Name.Equals(model.Name, StringComparison.OrdinalIgnoreCase)))
+            {
+                ModelState.AddModelError(nameof(EmailTemplateViewModel.Name), S["An email template with the same name already exists."]);
+            }
 
             if (!templatesDocument.Templates.ContainsKey(model.Id))
             {
