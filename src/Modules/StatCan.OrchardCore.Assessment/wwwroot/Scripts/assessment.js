@@ -1,5 +1,6 @@
 function initAssessment(assessment) {
   var json = assessment.dataset.data
+  var id = assessment.dataset.id
 
     Survey
         .StylesManager
@@ -33,7 +34,7 @@ function initAssessment(assessment) {
             .innerHTML = "Total Score is: " + JSON.stringify(totalScore);
         });
       
-    survey.render("surveyElement");
+    survey.render(id);
 } 
 
 document.querySelectorAll('.surveyResult').forEach(initAssessment);
