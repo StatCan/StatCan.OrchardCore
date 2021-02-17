@@ -7,8 +7,11 @@
 @inject OrchardCore.ContentManagement.IContentManager ContentManager
 
 @{
-    var allEmailTemplates = JsonConvert.SerializeObject(Model.EmailTemplates.Select(c => c.Value).ToArray());
-    var selectedItems = JsonConvert.SerializeObject(Model.SelectedEmailTemplates);
+    var allEmailTemplates = JsonConvert.SerializeObject(Model.EmailTemplates.Select(c => new { c.Text, c.Value}).ToArray());
+    var selectedItems = JsonConvert.SerializeObject(null);
+    if (Model.SelectedEmailTemplates != null){
+      selectedItems = JsonConvert.SerializeObject(Model.EmailTemplates.Where(x => Model.SelectedEmailTemplates.Contains(x.Value)).Select(c => new { c.Text, c.Value}).ToArray());
+    }
     var partName = "EmailTemplate";
     var fieldName = "EmailTemplate";
     var vueElementId = $"ContentPicker_{partName}_{fieldName}_{Guid.NewGuid().ToString("n")}";
@@ -26,7 +29,7 @@
                 <li v-for="(item, i) in arrayOfItems"
                     class="cursor-move list-group-item content-picker-default__list-item d-flex align-items-start justify-content-between"
                     :key="item">
-                    <div class="align-items-center align-self-center"><span>{{ item }}</span></div>
+                    <div class="align-items-center align-self-center"><span>{{ item.Text }}</span></div>
 
                     <div class="btn-group btn-group-sm align-items-center" role="group">
                         <button v-on:click="remove(item)" type="button" class="btn btn-secondary content-picker-default__list-item__delete"><i class="fa fa-trash fa-sm" aria-hidden="true"></i></button>
@@ -39,7 +42,7 @@
     <div class="form-group">
         <div class="w-xl-50">
             <input asp-for="SelectedEmailTemplates" type="hidden" v-model="selectedIds" />
-            <vue-multiselect :options="options" track-by="id"
+            <vue-multiselect :options="options" track-by="Value"
                              label="displayText" placeholder="@T["Select Email Templates"]"
                              @@select="onSelect"
                              :searchable="false" :close-on-select="true" :reset-after="true"
@@ -47,7 +50,7 @@
                              :disabled="isDisabled"
                              select-label="@T["Select"]" deselect-label="@T["Remove"]">
                 <template slot="option" slot-scope="props">
-                    <div v-cloak><span>{{ props.option }}</span></div>
+                    <div v-cloak><span>{{ props.option.Text }}</span></div>
                 </template>
                 <template slot="noResult">
                     @T["No result found"]

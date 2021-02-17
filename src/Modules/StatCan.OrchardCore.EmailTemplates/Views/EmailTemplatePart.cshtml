@@ -3,7 +3,9 @@
 @using OrchardCore.ContentManagement
 @model EmailTemplatePartViewModel
 
-
+@{
+  
+}
 
 <button class="btn btn-primary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     <i class="fas fa-envelope"></i>
@@ -13,6 +15,6 @@
 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
     @foreach (var entry in Model.SelectedEmailTemplates)
     {
-        <a class="dropdown-item" href="@Url.Action("SendEmail", "EmailTemplate", new {area="StatCan.OrchardCore.EmailTemplates", name=entry, contentItemId=Model.ContentItemId, returnUrl=@FullRequestPath })">@entry</a>
+        <a class="dropdown-item" href="@Url.Action("SendEmail", "EmailTemplate", new {area="StatCan.OrchardCore.EmailTemplates", id=entry.Value, contentItemId=Model.ContentItemId, returnUrl=@FullRequestPath })">@entry.Text</a>
     }
 </div>

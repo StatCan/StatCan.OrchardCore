@@ -14,7 +14,7 @@ namespace StatCan.OrchardCore.EmailTemplates.ViewModels
 
     public class TemplateEntry
     {
-        public string Name { get; set; }
+        public string Id { get; set; }
         public EmailTemplate Template { get; set; }
         public bool IsChecked { get; set; }
     }
