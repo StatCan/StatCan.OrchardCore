@@ -3,9 +3,9 @@ using OrchardCore.Modules;
 using OrchardCore.ResourceManagement;
 using OrchardCore.Data.Migration;
 
-namespace StatCan.OrchardCore.Assessment
+namespace StatCan.OrchardCore.SurveyJS
 {
-    [Feature(FeatureIds.Assessment)]
+    [Feature(FeatureIds.SurveyJS)]
     public class Startup : StartupBase
     {
         public override void ConfigureServices(IServiceCollection serviceCollection) => serviceCollection.AddScoped<IDataMigration, Migrations>();

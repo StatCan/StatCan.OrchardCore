@@ -5,7 +5,7 @@ using OrchardCore.Data.Migration;
 using OrchardCore.Title.Models;
 using StatCan.OrchardCore.Extensions;
 
-namespace StatCan.OrchardCore.Assessment
+namespace StatCan.OrchardCore.SurveyJS
 {
     public class Migrations : DataMigration
     {
@@ -17,20 +17,20 @@ namespace StatCan.OrchardCore.Assessment
 
         public int Create()
         {
-            CreateAssessment();
+            CreateSurveyJS();
             return 1;
         }
 
-        private void CreateAssessment() {
-            _contentDefinitionManager.AlterTypeDefinition("Assessment", type => type
-                .DisplayedAs("Assessment")
+        private void CreateSurveyJS() {
+            _contentDefinitionManager.AlterTypeDefinition("SurveyJS", type => type
+                .DisplayedAs("SurveyJS")
                 .Stereotype("Widget")
-                .WithPart("Assessment", part => part
+                .WithPart("SurveyJS", part => part
                     .WithPosition("0")
                 )
             );
 
-            _contentDefinitionManager.AlterPartDefinition("Assessment", part => part
+            _contentDefinitionManager.AlterPartDefinition("SurveyJS", part => part
                 .WithField("Data", field => field
                     .OfType("TextField")
                     .WithDisplayName("Data")

@@ -1,18 +1,18 @@
 using OrchardCore.Modules.Manifest;
-using static StatCan.OrchardCore.Assessment.FeatureIds;
+using static StatCan.OrchardCore.SurveyJS.FeatureIds;
 
 [assembly: Module(
-    Name = "StatCan Assessment",
+    Name = "StatCan SurveyJS",
     Author = "Digital Innovation Team",
     Website = "https://digital.statcan.gc.ca",
     Version = "1.0.0"
 )]
 
 [assembly: Feature(
-    Id = Assessment,
-    Name = "StatCan.Assessment - Widgets",
+    Id = SurveyJS,
+    Name = "StatCan.SurveyJS - Widgets",
     Category = "Content",
-    Description = "Adds a widget used to create assessments",
+    Description = "Adds a widget used to create SurveyJS Assessments",
     Dependencies = new[]
     {
         "OrchardCore.Widgets",

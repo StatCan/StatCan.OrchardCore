@@ -1,6 +1,6 @@
-function initAssessment(assessment) {
-  var json = assessment.dataset.data
-  var id = assessment.dataset.id
+function initAssessment(surveyjs) {
+  var json = surveyjs.dataset.data
+  var id = surveyjs.dataset.id
 
     Survey
         .StylesManager
