@@ -1,0 +1,142 @@
+{
+    "steps": [
+      {
+        "name": "Content",
+        "data": [
+          {
+            "ContentItemId": "46n9jb7h67hcys32ss5ysjy4w4",
+            "ContentItemVersionId": "44mga3db0br3v49c42vtra5056",
+            "ContentType": "Page",
+            "DisplayText": "Test Page",
+            "Latest": true,
+            "Published": true,
+            "ModifiedUtc": "2021-02-22T19:38:26.7148744Z",
+            "PublishedUtc": "2021-02-22T19:38:26.8521496Z",
+            "CreatedUtc": "2021-02-22T19:38:26.7148744Z",
+            "Owner": "4c4wz1jfm8zrazv5076exf4q4p",
+            "Author": "admin",
+            "LocalizationPart": {
+              "LocalizationSet": "46xe65mh39sps451mysrsshewf",
+              "Culture": "en"
+            },
+            "TitlePart": {
+              "Title": "Test Page"
+            },
+            "AutoroutePart": {
+              "Path": "test-page",
+              "SetHomepage": false,
+              "Disabled": false,
+              "RouteContainedItems": false,
+              "Absolute": false
+            },
+            "FlowPart": {
+              "Widgets": [
+                {
+                  "ContentItemId": "4r6xrcddchk3nydmrymzpchem6",
+                  "ContentItemVersionId": null,
+                  "ContentType": "TeamDashboardWidget",
+                  "DisplayText": null,
+                  "Latest": false,
+                  "Published": false,
+                  "ModifiedUtc": "2021-02-22T19:38:26.1970799Z",
+                  "PublishedUtc": null,
+                  "CreatedUtc": null,
+                  "Owner": null,
+                  "Author": "admin",
+                  "TeamDashboardWidget": {
+                    "SoloMessage": {
+                      "Html": ""
+                    },
+                    "TeamMessage": {
+                      "Html": ""
+                    }
+                  },
+                  "FlowMetadata": {
+                    "Alignment": 3,
+                    "Size": 100
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "ContentItemId": "4yv4zws4z3pkq5tsf8pzv02vx8",
+            "ContentType": "Challenge",
+            "DisplayText": " Team Management Test Challenge",
+            "Latest": true,
+            "Published": true,
+            "Owner": "[js: parameters('AdminUserId')]",
+            "Author": "[js: parameters('AdminUsername')]",
+            "TitlePart": {
+              "Title": " Team Management Test Challenge"
+            },
+            "Challenge": {
+              "Name": {
+                "Text": " Team Management Test Challenge"
+              },
+              "ShortDescription": {
+                "Text": "Lorem ipsum dolor sit amet, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+              }
+            },
+            "MarkdownBodyPart": {
+              "Markdown": "Lorem ipsum dolor sit amet, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+            }
+          }
+        ]
+      },
+      {
+        "name": "custom-settings",
+        "HackathonThemeSettings": {
+          "ContentItemId": "4epf2qpg89kzzrsktbbzrgrs5a",
+          "ContentItemVersionId": null,
+          "ContentType": "HackathonThemeSettings",
+          "DisplayText": null,
+          "Latest": false,
+          "Published": false,
+          "ModifiedUtc": null,
+          "PublishedUtc": null,
+          "CreatedUtc": null,
+          "Owner": null,
+          "Author": null,
+          "HackathonThemeSettings": {}
+        },
+        "HackathonCustomSettings": {
+          "ContentItemId": "4y7vgze86q92d79wd14ddenhna",
+          "ContentItemVersionId": null,
+          "ContentType": "HackathonCustomSettings",
+          "DisplayText": "",
+          "Latest": false,
+          "Published": false,
+          "ModifiedUtc": null,
+          "PublishedUtc": null,
+          "CreatedUtc": null,
+          "Owner": "",
+          "Author": "admin",
+          "HackathonCustomSettings": {
+            "StartDate": {
+              "Value": null
+            },
+            "EndDate": {
+              "Value": null
+            },
+            "Capacity": {
+              "Value": 0.0
+            }
+          },
+          "TeamCustomSettings": {
+            "TeamSize": {
+              "Value": null
+            },
+            "TeamEditable": {
+              "Value": true
+            }
+          },
+          "JudgingCustomSettings": {
+            "JudgingInProgress": {
+              "Value": false
+            }
+          }
+        }
+      }
+    ]
+}

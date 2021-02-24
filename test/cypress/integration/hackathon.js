@@ -1,13 +1,16 @@
 /// <reference types="Cypress" />
 import { generateTenantInfo } from 'cypress-orchardcore/dist/utils';
+import { stringify } from 'postcss';
 
 const contentIdChallengeSubmissionForm = "4kpgcnkaydrkb5hfxy10261qmb";
 const contentIdHackerRegistrationForm = "4dj03mdaztzf8wg12gw56xkg43";
 const contentIdVolunteerRegistrationForm = "4jjje1q162zaay11nbf3w2634h";
 const contentIdScoringPageForm = "423fn7nvrwcdv2ksy8hww9qwdn";
+const TeamManagementPagePath = "test-page";
 
 describe("Hackathon Tests", function() {    
   let tenant;
+  let ContentIdTeam;
 
   before(() => {
     tenant = generateTenantInfo("hackathon-theme-setup")
@@ -22,9 +25,10 @@ describe("Hackathon Tests", function() {
     cy.enableFeature(tenant, "StatCan_OrchardCore_Hackathon");
     cy.enableFeature(tenant, "StatCan_OrchardCore_Hackathon_Team");
     cy.enableFeature(tenant, "StatCan_OrchardCore_Hackathon_Judging");
+    cy.uploadRecipeJson(tenant, "recipes/team-management.json");
   })
 
-  it("Can run Hackathon recipes recipes", function() {
+  it("Can run Hackathon recipes", function() {
     cy.visit(`${tenant.prefix}/login`)
     cy.login(tenant);
     cy.runRecipe(tenant, 'Hackathon_ChallengeSubmissionForm');
@@ -108,6 +112,79 @@ describe("Hackathon Tests", function() {
     cy.get('button[type=submit]').click();
     
     cy.get('div[class=v-alert__content]').should('contain', 'You have successfully registered!');
+  })
+
+  // Team Management
+  it("Team Management: Create Team", function() {
+    cy.loginAs(tenant.prefix, 'Laura', 'Inno111!');
+    cy.visit(`${tenant.prefix}/${TeamManagementPagePath}`)
+  
+    cy.get('button[name=btnCreate]').click();
+
+    cy.get('div[class=v-alert__content]').should('contain', 'Successfully created team');
+    cy.get('span[id=team-id]').should(($span) => ContentIdTeam = $span.text());
+  })
+
+  it("Team Management: Join Team", function() {
+    // Mike joins the team then gets removed by the captain
+    cy.loginAs(tenant.prefix, 'Mike', 'Inno111!');
+    cy.visit(`${tenant.prefix}/${TeamManagementPagePath}`)
+  
+    cy.get('input[name=teamContentItemId]').type(ContentIdTeam, {force:true})
+    cy.get('button[id=team-submit-addon]').click();
+
+    cy.get('div[class=v-alert__content]').should('contain', 'Successfully joined team');
+
+    // Frank joins team then leaves it
+    cy.loginAs(tenant.prefix, 'Frank', 'Inno111!');
+    cy.visit(`${tenant.prefix}/${TeamManagementPagePath}`)
+  
+    cy.get('input[name=teamContentItemId]').type(ContentIdTeam, {force:true})
+    cy.get('button[id=team-submit-addon]').click();
+
+    cy.get('div[class=v-alert__content]').should('contain', 'Successfully joined team');
+  })
+
+  it("Team Management: Leave Team", function() {
+    cy.loginAs(tenant.prefix, 'Frank', 'Inno111!');
+    cy.visit(`${tenant.prefix}/${TeamManagementPagePath}`)
+  
+    cy.get('button[name=btnLeave]').click();
+
+    cy.get('div[class=v-alert__content]').should('contain', 'Successfully left team');
+  })
+
+  it("Team Management: Team Captain Removes Member", function() {
+    cy.loginAs(tenant.prefix, 'Laura', 'Inno111!');
+    cy.visit(`${tenant.prefix}/${TeamManagementPagePath}`)
+  
+    cy.get('button[name=btnRemove]').last().click();
+
+    cy.get('div[class=v-alert__content]').should('contain', 'Member successfully removed from the team');
+  })
+
+  it("Team Management: Team Captain Edits Team", function() {
+    cy.loginAs(tenant.prefix, 'Laura', 'Inno111!');
+    cy.visit(`${tenant.prefix}/${TeamManagementPagePath}`)
+  
+    cy.get('input[name=teamName]').type('Better Team', {force:true});
+    cy.get('textarea[name=teamDescription]').type('Lorem ipsum dolor sit amet, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', {force:true});
+
+    cy.get('button[name=btnSave]').click();
+
+    cy.get('div[class=v-alert__content]').should('contain', 'Team info successfully updated');
+  })
+
+  it("Team Management: Team Captain Selects A Challenge", function() {
+    cy.loginAs(tenant.prefix, 'Laura', 'Inno111!');
+    cy.visit(`${tenant.prefix}/${TeamManagementPagePath}`)
+  
+    cy.get('div[class=v-select__selections]').click();
+    cy.get('div[class=v-list-item__title]').click();
+
+    cy.get('button[name=btnSave]').click();
+
+    cy.get('div[class=v-alert__content]').should('contain', 'Team info successfully updated');
   })
 
   // // Scoring Page Form  
