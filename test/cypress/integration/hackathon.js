@@ -1,6 +1,5 @@
 /// <reference types="Cypress" />
 import { generateTenantInfo } from 'cypress-orchardcore/dist/utils';
-import { stringify } from 'postcss';
 
 const contentIdChallengeSubmissionForm = "4kpgcnkaydrkb5hfxy10261qmb";
 const contentIdHackerRegistrationForm = "4dj03mdaztzf8wg12gw56xkg43";
