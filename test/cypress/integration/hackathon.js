@@ -12,6 +12,8 @@ describe("Hackathon Tests", function() {
   before(() => {
     tenant = generateTenantInfo("hackathon-theme-setup")
     cy.newTenant(tenant);
+    cy.login(tenant);
+    cy.uploadRecipeJson(tenant, "recipes/users.json");
   })
   
   it("Can login to Hackathon site", function() {
@@ -33,6 +35,7 @@ describe("Hackathon Tests", function() {
 
   // Challenge Submission Form
   it("Challenge Submission: Client side validation prevents submit", function() {
+    cy.loginAs(tenant.prefix, 'Challenger', 'Inno111!');
     cy.visitContentPage(tenant, contentIdChallengeSubmissionForm);
 
     cy.get('button[type=submit]').click();
@@ -43,6 +46,7 @@ describe("Hackathon Tests", function() {
   })
 
   it("Challenge Submission: Submit works and displays success message", function() {
+    cy.loginAs(tenant.prefix, 'Challenger', 'Inno111!');
     cy.visitContentPage(tenant, contentIdChallengeSubmissionForm);
 
     cy.get('input[name=name]').type('Challenge Name', {force:true});
@@ -51,21 +55,23 @@ describe("Hackathon Tests", function() {
 
     cy.get('button[type=submit]').click();
 
-    cy.get('div[class=v-alert__content]').should('contain', 'The challenge was submitted successfully');
+    cy.get('div[class=v-alert__content]').should('contain', 'Your challenge was submitted successfully');
   })
 
   // Hacker Registration Form
   it("Hacker Registration: Client side validation prevents submit", function() {
+    cy.loginAs(tenant.prefix, 'Hacker', 'Inno111!');
     cy.visitContentPage(tenant, contentIdHackerRegistrationForm);
   
     cy.get('button[type=submit]').click();
   
     cy.get('input[name=firstName]').closest('.v-input').find('.v-messages__message').should('contain', 'The First name field is required');
     cy.get('input[name=lastName]').closest('.v-input').find('.v-messages__message').should('contain', 'The Last name field is required');
-    cy.get('input[name=email]').closest('.v-input').find('.v-messages__message').should('contain', 'The Email Address field is required');
+    cy.get('input[name=email]').closest('.v-input').find('.v-messages__message').should('contain', 'The Contact Email Address field is required');
   })
   
   it("Hacker Registration: Submit works and displays success message", function() {
+    cy.loginAs(tenant.prefix, 'James', 'Inno111!');
     cy.visitContentPage(tenant, contentIdHackerRegistrationForm);
   
     cy.get('input[name=firstName]').type('Tester', {force:true});
@@ -80,6 +86,7 @@ describe("Hackathon Tests", function() {
     
   // Volunteer Registration Form
   it("Volunteer Registration: Client side validation prevents submit", function() {
+    cy.loginAs(tenant.prefix, 'Volunteer', 'Inno111!');
     cy.visitContentPage(tenant, contentIdVolunteerRegistrationForm);
   
     cy.get('button[type=submit]').click();
@@ -90,6 +97,7 @@ describe("Hackathon Tests", function() {
   })
   
   it("Volunteer Registration: Submit works and displays success message", function() {
+    cy.loginAs(tenant.prefix, 'Alan', 'Inno111!');
     cy.visitContentPage(tenant, contentIdVolunteerRegistrationForm);
   
     cy.get('input[name=firstName]').type('Tester', {force:true});

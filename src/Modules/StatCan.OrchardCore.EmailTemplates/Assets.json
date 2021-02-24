@@ -1,0 +1,14 @@
+[
+  {
+    "inputs": [
+      "Assets/scss/vue-multiselect-wrapper.scss"
+    ],
+    "output": "wwwroot/Styles/vue-multiselect-wrapper.css"
+  },
+  {
+    "inputs": [
+      "Assets/js/vue-multiselect-wrapper.js"
+    ],
+    "output": "wwwroot/Scripts/vue-multiselect-wrapper.js"
+  }
+]

@@ -6,7 +6,7 @@ The VueForms module aims to simplify the creation of client side forms in Orchar
 
 ### VueForm
 
-The VueForm content type is used to create forms that use [VueJs](https://vuejs.org/) and [VeeValidate](https://logaretm.github.io/vee-validate/) client side librairies.
+The VueForm content type is used to create forms that use [VueJs](https://vuejs.org/) and [VeeValidate](https://logaretm.github.io/vee-validate/) client side libraries.
 The form submission is handled via an ajax call to a generic controller that returns json to the client for seamless server side validation.
 
 ### VueForm Part

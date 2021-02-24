@@ -1,0 +1,15 @@
+{
+    "steps": [
+        {
+            "name": "command",
+            "Commands": [
+                "createUser /UserName:James /Password:Inno111! /Email:james@inno.com /Roles:Authenticated",
+                "createUser /UserName:Alan /Password:Inno111! /Email:alan@inno.com /Roles:Authenticated",
+                "createUser /UserName:Alice /Password:Inno111! /Email:Alice@inno.com /Roles:Authenticated",
+                "createUser /UserName:Challenger /Password:Inno111! /Email:Challenger@inno.com /Roles:Authenticated",
+                "createUser /UserName:Hacker /Password:Inno111! /Email:hacker@inno.com /Roles:Authenticated",
+                "createUser /UserName:Volunteer /Password:Inno111! /Email:volunteer@inno.com /Roles:Authenticated"
+            ]
+        }
+    ]
+}

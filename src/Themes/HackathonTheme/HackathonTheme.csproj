@@ -25,6 +25,7 @@
     <PackageReference Include="OrchardCore.Title" Version="$(OrchardCoreVersion)" />
     <PackageReference Include="OrchardCore.Contents" Version="$(OrchardCoreVersion)" />
     <PackageReference Include="OrchardCore.Autoroute" Version="$(OrchardCoreVersion)" />
+    <PackageReference Include="OrchardCore.Media" Version="$(OrchardCoreVersion)" />
     <PackageReference Include="OrchardCore.Flows" Version="$(OrchardCoreVersion)" />
   </ItemGroup>
 

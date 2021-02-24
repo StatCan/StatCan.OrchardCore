@@ -1,39 +1,37 @@
-{% assign userId = User | user_id %}
-{% assign hacker = Queries.GetHacker | query: owner: userId | first %}
+{% assign user = User | user_id | users_by_id %}
 
 {% if User | is_in_role: "Hacker" %}
-  {% if Site.Properties.HackathonCustomSettings.TeamCustomSettings.TeamEditable.Value == true and hacker.TeamContentItemId == null  %}
+  {% if Site.Properties.HackathonCustomSettings.TeamCustomSettings.TeamEditable.Value == true and user.Properties.Hacker.Hacker.Team.ContentItemIds | first == null %}
     {% assign teams = Queries.GetItemsForHackathon | query: type: "Team" %}
-    <div {%if Model.Id != null%}id="{{ Model.Id }}"{%endif%} class="{{ Model.Classes | join: ' ' }}">
-      <div class="vg-header">
-        <h2>{{ "Join a team" | t}}</h2>
-      </div>
-      <div class="join-team-max-vh-40 overflow-auto join-team-scroller vg-content">
-        <ul class="list-group list-group-flush">
-        {% for team in teams %}
-          {% assign h = Queries.GetHackersForTeam | query: teamContentItemId: team.ContentItemId %}
-          {% if h.size < Site.Properties.HackathonCustomSettings.TeamCustomSettings.TeamSize.Value %}
-          <li class="list-group-item bg-transparent border-white">
-            <div class="row">
-              <div class="col flex-start">{{team | display_text}}</div>
-              <div class="col">
-                  <form method="post" action="{{ "~/team/join" | href }}">
-                    <button type="submit" class="btn btn-danger float-right">{{ "Join" | t }}</button>
-                    {% antiforgerytoken %}
-                    <input type="hidden" name="returnUrl" value="{{Model.Dashboard.Content.AutoroutePart.Path}}">
-                    <input type="hidden" name="teamContentItemId" value="{{team.ContentItemId}}">
-                  </form>
-                </div>
-              </div>
-              <div class="row">
-                <div class="flex-start">{{h.size}}/{{ Site.Properties.HackathonCustomSettings.TeamCustomSettings.TeamSize.Value }}</div>
-              </div>
-            </li>
-            {%endif%}
-          
-        {% endfor %}
-        </ul>
-      </div>
-    </div>
+    <v-container>
+      <v-row justify="center">
+        <v-col cols="8">
+          <v-card>
+            <v-card-title>{{ "Join a team" | t }}</v-card-title>
+            <v-card-text>
+              {% for team in teams %}
+                {% assign h = Queries.GetHackersForTeam | query: teamContentItemId: team.ContentItemId %}
+                {% if h.size < Site.Properties.HackathonCustomSettings.TeamCustomSettings.TeamSize.Value or Site.Properties.HackathonCustomSettings.TeamCustomSettings.TeamSize.Value == null %}
+                  <div class="row">
+                    <div class="col flex-start">{{team | display_text}}</div>
+                        <form method="post" action="{{ "~/team/join" | href }}">
+                          <v-btn type="submit">{{ "Join" | t }}</v-btn>
+                          {% antiforgerytoken %}
+                          <input type="hidden" name="returnUrl" value="{{Model.Dashboard.Content.AutoroutePart.Path}}">
+                          <input type="hidden" name="teamContentItemId" value="{{team.ContentItemId}}">
+                        </form>
+                    </div>
+                    <div class="row">
+                      {% if Site.Properties.HackathonCustomSettings.TeamCustomSettings.TeamSize.Value != null %}
+                        <div class="flex-start">{{h.size}}/{{ Site.Properties.HackathonCustomSettings.TeamCustomSettings.TeamSize.Value }}</div>
+                      {%endif%}  
+                    </div>
+                  {%endif%}       
+              {% endfor %}
+            </v-card-text>
+          </v-card>
+        </v-col>
+      </v-row>
+    </v-container>
   {% endif %}
 {% endif %}

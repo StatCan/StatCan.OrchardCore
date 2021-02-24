@@ -18,18 +18,11 @@
           "Template": "SELECT DocumentId FROM HackathonItemsIndex where ContentType ='{{type}}'"
         },
         {
-          "Name": "GetHacker",
-          "ReturnDocuments": false,
-          "Schema": null,
-          "Source": "Sql",
-          "Template": "SELECT * FROM HackathonItemsIndex where ContentType ='Hacker' and Published = true and Owner = '{{owner}}'"
-        },
-        {
           "Name": "GetHackersForTeam",
-          "ReturnDocuments": true,
-          "Schema": null,
+          "ReturnDocuments": false,
+          "Schema": "null",
           "Source": "Sql",
-          "Template": "SELECT DocumentId FROM HackathonItemsIndex where ContentType ='Hacker' and TeamContentItemId = '{{teamContentItemId}}'"
+          "Template": "SELECT * FROM HackathonUsersIndex where TeamContentItemId = '{{teamContentItemId}}'"
         },
         {
           "Name": "GetScoreEntry",
@@ -39,11 +32,11 @@
           "Template": "SELECT * FROM HackathonItemsIndex where ContentType ='ScoreEntry' and TeamContentItemId = '{{teamContentItemId}}' and Owner = '{{owner}}'"
         },
         {
-          "Name": "GetVolunteer",
+          "Name": "GetTeam",
           "ReturnDocuments": true,
           "Schema": null,
           "Source": "Sql",
-          "Template": "SELECT DocumentId FROM HackathonItemsIndex where ContentType ='Volunteer' and Owner = '{{owner}}'"
+          "Template": "SELECT DocumentId FROM HackathonItemsIndex where ContentType ='Team' and ContentItemId = '{{teamContentItemId}}'"
         }
       ]
     }

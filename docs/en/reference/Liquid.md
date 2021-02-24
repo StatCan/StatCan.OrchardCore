@@ -153,3 +153,26 @@ Returns a list of `IssueComment` for the specified issue / pull request number.
 ```liquid
 {{ 123 | github_comments: "owner", "repo", "tokenName" }}
 ```
+
+
+## User filters
+
+### users_by_role filter
+
+Returns a list of Users that have the role(s) passed as a parameter of the filter
+
+```liquid
+{% assign users = "Editor,Administrator" | split:',' | users_by_role %}
+
+{% for user in users%}
+  {{user.Email}}
+{% endfor %}
+
+--
+
+{% assign users = "Editor"  | users_by_role %}
+
+{% for user in users%}
+  {{user.Email}}
+{% endfor %}
+```
