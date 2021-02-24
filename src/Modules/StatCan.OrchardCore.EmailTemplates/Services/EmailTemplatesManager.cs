@@ -20,17 +20,17 @@ namespace StatCan.OrchardCore.EmailTemplates.Services
         /// </summary>
         public Task<EmailTemplatesDocument> GetEmailTemplatesDocumentAsync() => _documentManager.GetOrCreateImmutableAsync();
 
-        public async Task RemoveTemplateAsync(string name)
+        public async Task RemoveTemplateAsync(string id)
         {
             var document = await LoadEmailTemplatesDocumentAsync();
-            document.Templates.Remove(name);
+            document.Templates.Remove(id);
             await _documentManager.UpdateAsync(document);
         }
 
-        public async Task UpdateTemplateAsync(string name, EmailTemplate template)
+        public async Task UpdateTemplateAsync(string id, EmailTemplate template)
         {
             var document = await LoadEmailTemplatesDocumentAsync();
-            document.Templates[name] = template;
+            document.Templates[id] = template;
             await _documentManager.UpdateAsync(document);
         }
     }

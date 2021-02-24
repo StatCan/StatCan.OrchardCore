@@ -39,7 +39,7 @@ function initVueMultiselect(element) {
             },
             computed: {
                 selectedIds: function () {
-                    return this.arrayOfItems.map(function (x) { return x }).join(',');
+                    return this.arrayOfItems.map(function (x) { return x.Value }).join(',');
                 },
                 isDisabled: function () {
                     return this.arrayOfItems.length > 0 && !multiple;
@@ -57,7 +57,7 @@ function initVueMultiselect(element) {
                     var self = this;
 
                     for (i = 0; i < self.arrayOfItems.length; i++) {
-                        if (self.arrayOfItems[i] === selectedOption) {
+                        if (self.arrayOfItems[i].Value === selectedOption.Value) {
                             return;
                         }
                     }
