@@ -1,50 +1,153 @@
 {
-  // Use IntelliSense to find out which attributes exist for C# debugging
-  // Use hover for the description of the existing attributes
-  // For further information visit https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md
   "version": "0.2.0",
   "configurations": [
+    {
+      "name": ".NET Core Launch (console)",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "Web App: Dotnet Build Debug",
+      "program": "${workspaceRoot}/src/StatCan.OrchardCore.Cms.Web/bin/Debug/net5.0/StatCan.OrchardCore.Cms.Web.dll",
+      "args": [],
+      "cwd": "${workspaceRoot}/src/StatCan.OrchardCore.Cms.Web",
+      "env": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "stopAtEntry": false
+    },
     {
       "name": ".NET Core Launch (web debug)",
       "type": "coreclr",
       "request": "launch",
-      "preLaunchTask": "build",
-      // If you have changed target frameworks, make sure to update the program path.
-      "program": "${workspaceFolder}/src/StatCan.OrchardCore.Cms.Web/bin/Debug/netcoreapp3.1/StatCan.OrchardCore.Cms.Web.dll",
+      "internalConsoleOptions": "openOnSessionStart",
+      "preLaunchTask": "Web App: Dotnet Build Debug",
+      "program": "${workspaceRoot}/src/StatCan.OrchardCore.Cms.Web/bin/Debug/net5.0/StatCan.OrchardCore.Cms.Web.dll",
       "args": [],
-      "cwd": "${workspaceFolder}/src/StatCan.OrchardCore.Cms.Web",
-      "stopAtEntry": false,
-      "serverReadyAction": {
-        "action": "openExternally",
-        "pattern": "^\\s*Now listening on:\\s+(https?://\\S+)"
-      },
+      "cwd": "${workspaceRoot}/src/StatCan.OrchardCore.Cms.Web",
       "env": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "ASPNETCORE_URLS": "https://localhost:5001;http://localhost:5000"
       },
-	},
-	{
-		"name": ".NET Core Launch (web release)",
-		"type": "coreclr",
-		"request": "launch",
-		"preLaunchTask": "build-release",
-		// If you have changed target frameworks, make sure to update the program path.
-		"program": "${workspaceFolder}/src/StatCan.OrchardCore.Cms.Web/bin/Release/netcoreapp3.1/StatCan.OrchardCore.Cms.Web.dll",
-		"args": [],
-		"cwd": "${workspaceFolder}/src/StatCan.OrchardCore.Cms.Web",
-		"stopAtEntry": false,
-		"serverReadyAction": {
-		  "action": "openExternally",
-		  "pattern": "^\\s*Now listening on:\\s+(https?://\\S+)"
-		},
-		"env": {
-		  "ASPNETCORE_ENVIRONMENT": "Production"
-		},
-	  },
+      "stopAtEntry": false,
+      "justMyCode": false,
+      "launchBrowser": {
+        "enabled": true,
+        "args": "${auto-detect-url}",
+        "windows": {
+          "command": "cmd.exe",
+          "args": "/C start ${auto-detect-url}"
+        },
+        "osx": {
+          "command": "open"
+        },
+        "linux": {
+          "command": "xdg-open"
+        }
+      }
+    },
+    {
+      "name": ".NET Core Launch (web release)",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "Web App: Dotnet Build Release",
+      "program": "${workspaceRoot}/src/StatCan.OrchardCore.Cms.Web/bin/Release/net5.0/StatCan.OrchardCore.Cms.Web.dll",
+      "args": [],
+      "cwd": "${workspaceRoot}/src/StatCan.OrchardCore.Cms.Web",
+      "env": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "ASPNETCORE_URLS": "https://localhost:5001;http://localhost:5000"
+      },
+      "stopAtEntry": false,
+      "launchBrowser": {
+        "enabled": true,
+        "args": "${auto-detect-url}",
+        "windows": {
+          "command": "cmd.exe",
+          "args": "/C start ${auto-detect-url}"
+        },
+        "osx": {
+          "command": "open"
+        },
+        "linux": {
+          "command": "xdg-open"
+        }
+      }
+    },
     {
       "name": ".NET Core Attach",
       "type": "coreclr",
       "request": "attach",
-      "processId": "${command:pickProcess}"
+      "processId": 0
+    },
+    {
+      "name": ".NET Core Launch (publish framework dependent)",
+      "type": "coreclr",
+      "request": "launch",
+      "internalConsoleOptions": "openOnSessionStart",
+      "preLaunchTask": "Web App: Dotnet Publish (framework dependent)",
+      "program": "${workspaceRoot}/.build/release/StatCan.OrchardCore.Cms.Web.dll",
+      "args": [],
+      "cwd": "${workspaceRoot}/.build/release",
+      "env": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "ASPNETCORE_URLS": "https://localhost:5001;http://localhost:5000"
+      },
+      "stopAtEntry": false,
+      "launchBrowser": {
+        "enabled": true,
+        "args": "${auto-detect-url}",
+        "windows": {
+          "command": "cmd.exe",
+          "args": "/C start ${auto-detect-url}"
+        },
+        "osx": {
+          "command": "open"
+        },
+        "linux": {
+          "command": "xdg-open"
+        }
+      }
+    },
+    {
+      "name": ".NET Core Launch (publish self-contained)",
+      "type": "coreclr",
+      "request": "launch",
+      "internalConsoleOptions": "openOnSessionStart",
+      "preLaunchTask": "Web App: Dotnet Publish (self-contained)",
+      "program": "${workspaceRoot}/.build/release/StatCan.OrchardCore.Cms.Web.dll",
+      "args": [],
+      "cwd": "${workspaceRoot}/.build/release",
+      "env": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "ASPNETCORE_URLS": "https://localhost:5001;http://localhost:5000"
+      },
+      "stopAtEntry": false,
+      "launchBrowser": {
+        "enabled": true,
+        "args": "${auto-detect-url}",
+        "windows": {
+          "command": "cmd.exe",
+          "args": "/C start ${auto-detect-url}"
+        },
+        "osx": {
+          "command": "open"
+        },
+        "linux": {
+          "command": "xdg-open"
+        }
+      }
+    },
+    {
+      "name": "Gulp Debug",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceRoot}/node_modules/gulp/bin/gulp.js",
+      "stopOnEntry": false,
+      "args": [],
+      "cwd": "${workspaceRoot}",
+      "runtimeArgs": [
+        "--nolazy"
+      ],
+      "console": "internalConsole"
     }
   ]
 }
