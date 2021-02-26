@@ -64,7 +64,7 @@
               {% if isTeamCaptain and isTeamEditable %}
                 <form class="d-inline-block pl-4" method="post" action="{{ "~/team/remove" | href }}">
                  
-                    <v-btn {% if team.ContentItem.Content.Team.TeamCaptain.UserIds.first == teamMember.UserId %} disabled {% endif %} type="submit">{{ "Remove" | t }}</v-btn>
+                    <v-btn name="btnRemove" {% if team.ContentItem.Content.Team.TeamCaptain.UserIds.first == teamMember.UserId %} disabled {% endif %} type="submit">{{ "Remove" | t }}</v-btn>
 
                   {% antiforgerytoken %}
                   <input type="hidden" name="hackerContentItemId" value="{{teamMember.UserId}}">
@@ -116,7 +116,7 @@
                 <v-text-field name="teamName" value="{{ team.ContentItem.Content.Team.Name.Text }}" label="{{ "Name" | t }}" ></v-text-field>
                 <v-textarea name="teamDescription" label="{{'Description' | t}}" value="{{ team.ContentItem.Content.Team.Description.Text }}"></v-textarea>
                 <v-select label="{{ "Challenge" | t }}" name="challenge" :items="challenges" v-model="selected" value="{{challengeSelected.ContentItemId}}" ></v-select>
-                <v-btn type="submit" depressed block>{{ "Save" | t }}</v-btn>
+                <v-btn name="btnSave" type="submit" depressed block>{{ "Save" | t }}</v-btn>
                 {% antiforgerytoken %}
                 <input type="hidden" name="returnUrl" value="{{'' | return_url }}">
               </form>
@@ -139,7 +139,7 @@
             <form class="my-2" method="post" action="{{"~/team/leave" | href}}">
               {% antiforgerytoken%}
               <input type="hidden" name="returnUrl" value="{{ '' | return_url }}">
-              <v-btn class="red" type="submit" {% if Site.Properties.HackathonCustomSettings.TeamCustomSettings.TeamEditable.Value != true %}disabled{%endif%}>{{ "Leave team" | t }}</v-btn>
+              <v-btn class="red" type="submit" name="btnLeave" {% if Site.Properties.HackathonCustomSettings.TeamCustomSettings.TeamEditable.Value != true %}disabled{%endif%}>{{ "Leave team" | t }}</v-btn>
             </form>
           </v-card-text>
         </v-card>
@@ -155,7 +155,7 @@
               <form class="my-2" method="post" action="{{"~/team/create" | href}}">
                 {% antiforgerytoken%}
                 <input type="hidden" name="returnUrl" value="{{ '' | return_url }}">
-                <v-btn type="submit">{{ "Create team" | t }}</v-btn>
+                <v-btn type="submit" name="btnCreate">{{ "Create team" | t }}</v-btn>
               </form>
              </v-card-actions>
              <div class="d-flex align-center">
