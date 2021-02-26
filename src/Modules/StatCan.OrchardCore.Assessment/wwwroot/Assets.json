@@ -1,6 +1,0 @@
-[
-    {
-    "inputs": ["node_modules/survey-react"],
-    "output": "wwwroot/SurveyJS.js"
-    }
-]

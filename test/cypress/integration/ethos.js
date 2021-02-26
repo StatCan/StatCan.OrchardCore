@@ -1,11 +1,11 @@
 /// <reference types="Cypress" />
 import { generateTenantInfo } from 'cypress-orchardcore/dist/utils';
 
-describe("Assessment Test", function() {    
-  it("Create Assessment tenant ", function() {
-    let tenant = generateTenantInfo("digital-theme-setup", "Ethos module tests")
+describe("Persona Test", function() {    
+  it("Create Persona tenant ", function() {
+    let tenant = generateTenantInfo("digital-theme-setup", "Persona module tests")
     cy.newTenant(tenant);
     cy.login(tenant);
-    cy.enableFeature(tenant, "StatCan_OrchardCore_Ethos");
+    cy.enableFeature(tenant, "StatCan_OrchardCore_Persona");
   })
 });
