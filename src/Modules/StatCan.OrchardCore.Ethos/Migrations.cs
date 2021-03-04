@@ -63,6 +63,7 @@ namespace StatCan.OrchardCore.Persona
                     .WithSettings(new TextFieldSettings
                     {
                         Hint = "Choose the colour that matches the site's theme.",
+                        Required = true,
                     })
                 )
             );
