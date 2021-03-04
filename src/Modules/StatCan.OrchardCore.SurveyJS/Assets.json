@@ -1,6 +1,5 @@
 [
     {
-        "copy": true,
         "inputs": [ "Assets/surveyjs.js" ],
         "output": "wwwroot/Scripts/surveyjs.js"
       }
