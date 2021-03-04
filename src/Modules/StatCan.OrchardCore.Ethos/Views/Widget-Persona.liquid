@@ -8,21 +8,23 @@
 {% endcapture %}
 
 {% assign json = data | jsonparse %}
+{% assign photo = Model.ContentItem.Content.Persona.PhotoPicker.Paths.first | raw %}
 {% assign colour = Model.ContentItem.Content.Persona.Colour.Text %}
+{% assign anchor = Model.ContentItem.Content.Persona.PhotoPicker.Anchors.first  %}
 
 <div class="max-w-7xl flex items-center justify-center flex-wrap mx-auto md:pt-10 ">
    
     <!-- webView -->
-    <img class="w-80 h-96 object-cover lg:rounded-lg hidden lg:block"  src= {{ Model.ContentItem.Content.Persona.PhotoPicker.Paths.first | asset_url }} />
+    <img class="w-80 h-96 object-cover lg:rounded-lg hidden lg:block"  src={{ photo | asset_url | resize_url: width:320, height:384, mode:'crop', anchor:anchor }}  />
 
 	<!--Info window-->
 	<div class="w-2/5 sm:w-3/5 md:h-full lg:h-80 lg:rounded-r-lg lg:rounded-l-none shadow-2xl lg:mx-0 space-y-1 lg:overflow-y-auto ">
 		<div class="md:p-2 text-left shadow-2xl space-y-1">
 
 			<!-- mobileView  -->
-			<img class="object-cover block lg:hidden rounded-full mx-auto -mt-16 h-48 w-48 shadow-2xl " src= {{ Model.ContentItem.Content.Persona.PhotoPicker.Paths.first | asset_url }} />
+			<img class="object-cover block lg:hidden rounded-full mx-auto -mt-16 h-48 w-48 shadow-2xl " src={{ photo | asset_url | resize_url: width:192, height:192, mode:'crop', anchor:anchor }} />
 			
-			<h1 class="text-3xl font-bold md:pt-4 lg: mb-0 lg:pt-2 px-1"> {{json.name}} </h1>
+			<h1 class="text-3xl font-bold md:pt-4 lg:mb-0 lg:pt-2 px-1"> {{json.name}} </h1>
            
             <!-- line -->
             <div style="border-color:{{colour}}" class="mx-auto lg:mx-0 w-5/5 pt-2 border-b-2 px-1"></div>
@@ -155,7 +157,7 @@
                     36s-36-16.118-36-36 16.118-36 36-36 36 16.118 36 36z"/>
                 </svg>                
                 Job To Be Done:
-                <p class="mt-0 ml-10 flex text-justify pt-0 text-xs lg:justify-start  px-3">
+                <p class="mt-0 ml-10 flex text-justify pt-0 text-xs lg:justify-start px-3">
                     {{json.jtbd | join: " "}}
                 </p>
             </p>
