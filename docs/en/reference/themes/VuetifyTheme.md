@@ -111,6 +111,27 @@ This widget is best used in the **Header** zone.
 | Tile | Removes the border-radius. |
 | Flow | Any number of `VExpansionPanel`s can be added to the component |
 
+### VFooter
+
+This widget is best used in the **Footer** zone.
+
+| Field  | Definition |
+|--------|------------|
+| Absolute | Applies **position: absolute** to the component. |
+| App | Designates the component as part of the application layout. Used for dynamically adjusting content sizing. Components using this prop should reside **outside** of `v-main` component to function properly. You can find more information about layouts on the application page. **Note:** this prop automatically applies position: fixed to the layout element. |
+| Color | Applies specified color to the control - it can be the name of material color (for example success or purple) or css color (#033 or rgba(255, 0, 0, 0.5)). You can find list of built in classes on the [colors page](https://dev.vuetifyjs.com/en/styles/colors/#material-colors). |
+| Dark | Applies the dark theme variant to the component. | 
+| Elevation | Designates an elevation applied to the component between 0 and 24. You can find more information on the [elevation page](https://dev.vuetifyjs.com/en/styles/elevation/). |
+| Fixed | Applies **position: fixed** to the component. |
+| Height | Designates a specific height for the component. |
+| Light | Applies the light theme variant to the component. |
+| Outlined | Makes the background transparent and applies a thin border. |
+| Rounded | Designates the border-radius applied to the component. You can find more information on the [Border Radius page](https://vuetifyjs.com/en/styles/border-radius/). |
+| Padless | Remove all padding from the footer. |
+| Shaped | Applies a large border radius on the top left and bottom right of the footer. |
+| Tile | Removes the component’s border-radius. |
+| Width | Sets the width for the component. |
+
 ### VImg
 
 | Field  | Definition |

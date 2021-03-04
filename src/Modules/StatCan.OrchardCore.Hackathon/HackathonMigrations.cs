@@ -27,11 +27,19 @@ namespace StatCan.OrchardCore.Hackathon
             CreateUserProfiles();
             CreateWidgets();
             CreateChallenge();
+            CreateFip();
 
             await _recipeMigrator.ExecuteAsync("queries.recipe.json", this);
             await _recipeMigrator.ExecuteAsync("roles.recipe.json", this);
 
-            return 1;
+            return 2;
+        }
+
+        public int UpdateFrom1()
+        {
+            CreateFip();
+
+            return 2;
         }
 
         private void CreateHackathonCustomSetings()
@@ -102,6 +110,42 @@ namespace StatCan.OrchardCore.Hackathon
                 .WithTitlePart("0", TitlePartOptions.GeneratedDisabled, "{{ContentItem.Content.Challenge.Name.Text}}")
                 .WithPart("Challenge", p => p.WithPosition("1"))
                 .WithMarkdownBody("2")
+            );
+        }
+
+        private void CreateFip()
+        {
+            _contentDefinitionManager.AlterTypeDefinition("FIP", type => type
+                .DisplayedAs("FIP")
+                .Stereotype("Widget")
+                .WithPart("FIP", part => part
+                    .WithPosition("0")
+                )
+            );
+
+            _contentDefinitionManager.AlterPartDefinition("FIP", part => part
+                .WithField("Props", field => field
+                    .OfType("MultiTextField")
+                    .WithDisplayName("Props")
+                    .WithEditor("Picker")
+                    .WithPosition("0")
+                    .WithSettings(new MultiTextFieldSettings
+                    {
+                        Options = new MultiTextFieldValueOption[] { new MultiTextFieldValueOption() {
+                            Name = "Dark",
+                            Value = "dark"
+                        }, new MultiTextFieldValueOption() {
+                            Name = "Light",
+                            Value = "light"
+                        }, new MultiTextFieldValueOption() {
+                            Name = "Rounded",
+                            Value = "rounded"
+                        }, new MultiTextFieldValueOption() {
+                            Name = "Shaped",
+                            Value = "shaped"
+                        } },
+                    })
+                )
             );
         }
     }

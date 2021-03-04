@@ -91,7 +91,13 @@
         "UseSiteTheme": true
       },
       "LayerSettings": {
-        "Zones": ["Header", "Breadcrumb", "Footer"]
+        "Zones": [
+          "Header",
+          "Breadcrumb",
+          "NavigationDrawer",
+          "Footer",
+          "IEBanner"
+        ]
       }
     },
     {
@@ -103,18 +109,6 @@
           "Description": null
         }
       ]
-    },
-    {
-      "name": "Settings",
-      "LayerSettings": {
-        "Zones": [
-          "Header",
-          "Breadcrumb",
-          "NavigationDrawer",
-          "Footer",
-          "IEBanner"
-        ]
-      }
     },
     {
       "name": "Content",
@@ -129,7 +123,7 @@
           "Author": "[js: parameters('AdminUsername')]",
           "VAppBar": {
             "Props": {
-              "Values": null
+              "Values": []
             },
             "Color": {
               "Text": null
