@@ -18,8 +18,8 @@ namespace StatCan.OrchardCore.EmailTemplates.ViewModels
 
         [Required]
         public string Recipients { get; set; }
-        //public string CC { get; set; }
-        //public string BCC { get; set; }
+        public string CC { get; set; }
+        public string BCC { get; set; }
         public string Subject { get; set; }
         [Required]
         public string Body { get; set; }

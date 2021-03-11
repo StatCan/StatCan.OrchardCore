@@ -148,6 +148,8 @@ namespace StatCan.OrchardCore.EmailTemplates.Controllers
                     SenderExpression = model.SenderExpression,
                     ReplyToExpression = model.ReplyToExpression,
                     RecipientsExpression = model.RecipientsExpression,
+                    CCExpression = model.CCExpression,
+                    BCCExpression = model.BCCExpression,
                     SubjectExpression = model.SubjectExpression,
                     Body = model.Body,
                     IsBodyHtml = model.IsBodyHtml,
@@ -197,6 +199,8 @@ namespace StatCan.OrchardCore.EmailTemplates.Controllers
                 SenderExpression = template.SenderExpression,
                 ReplyToExpression = template.ReplyToExpression,
                 RecipientsExpression = template.RecipientsExpression,
+                CCExpression = template.CCExpression,
+                BCCExpression = template.BCCExpression,
                 SubjectExpression = template.SubjectExpression,
                 IsBodyHtml = template.IsBodyHtml,
             };
@@ -235,6 +239,8 @@ namespace StatCan.OrchardCore.EmailTemplates.Controllers
                     ReplyToExpression = model.ReplyToExpression,
                     SenderExpression = model.SenderExpression,
                     RecipientsExpression = model.RecipientsExpression,
+                    CCExpression = model.CCExpression,
+                    BCCExpression = model.BCCExpression,
                     SubjectExpression = model.SubjectExpression,
                     Body = model.Body,
                     IsBodyHtml = model.IsBodyHtml,
@@ -335,6 +341,8 @@ namespace StatCan.OrchardCore.EmailTemplates.Controllers
                 Sender = await RenderLiquid(template.SenderExpression, contentItem),
                 ReplyTo = await RenderLiquid(template.ReplyToExpression, contentItem),
                 Recipients = await RenderLiquid(template.RecipientsExpression, contentItem),
+                CC = await RenderLiquid(template.CCExpression, contentItem),
+                BCC = await RenderLiquid(template.BCCExpression, contentItem),
                 Subject = await RenderLiquid(template.SubjectExpression, contentItem),
                 Body = await RenderLiquid(template.Body, contentItem),
                 IsBodyHtml = template.IsBodyHtml,
@@ -381,8 +389,8 @@ namespace StatCan.OrchardCore.EmailTemplates.Controllers
             var message = new MailMessage
             {
                 To = sendEmail.Recipients,
-                // Bcc = sendEmail.Bcc,
-                // Cc = sendEmail.Cc,
+                Bcc = sendEmail.BCC,
+                Cc = sendEmail.CC,
                 ReplyTo = sendEmail.ReplyTo
             };
 
