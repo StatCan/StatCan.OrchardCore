@@ -1,4 +1,4 @@
-function initAssessment(surveyjs) {
+function initSurveyJS(surveyjs) {
   var json = surveyjs.dataset.data
   var id = surveyjs.dataset.id
 
@@ -37,4 +37,4 @@ function initAssessment(surveyjs) {
     survey.render(id);
 } 
 
-document.querySelectorAll('.surveyResult').forEach(initAssessment);
+document.querySelectorAll('.surveyResult').forEach(initSurveyJS);

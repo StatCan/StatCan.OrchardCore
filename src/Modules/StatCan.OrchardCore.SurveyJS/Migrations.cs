@@ -34,6 +34,7 @@ namespace StatCan.OrchardCore.SurveyJS
                 .WithField("Data", field => field
                     .OfType("TextField")
                     .WithDisplayName("Data")
+                    .WithEditor("CodeMirror")
                     .WithPosition("0")
                     .WithSettings(new TextFieldSettings
                     {

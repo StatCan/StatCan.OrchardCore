@@ -1,8 +1,8 @@
-<div id="{{ Model.ContentItem.ContentItemId }}" data-id="{{ Model.ContentItem.ContentItemId }} data-data="{{Model.ContentItem.Content.SurveyJS.Data.Text}}" data-name="{{componentName}}"></div>
-<div class="surveyResult" data-data="{{Model.ContentItem.Content.SurveyJS.Data.Text }}" data-id="{{ Model.ContentItem.ContentItemId }}"></div>
+<div id="{{ Model.ContentItem.ContentItemId }}" data-id="{{ Model.ContentItem.ContentItemId }}" data-data="{{Model.ContentItem.Content.SurveyJS.Data.Text | url_encode}}" data-name="{{componentName}}"></div>
+<div class="surveyResult" id="{{ Model.ContentItem.ContentItemId }}-result" data-id="{{ Model.ContentItem.ContentItemId }}" data-data="{{Model.ContentItem.Content.SurveyJS.Data.Text | url_encode}}"></div>
 
 {% style name:"default", src:"https://unpkg.com/survey-knockout@1.8.24/modern.css" %}
 {% script name:"knockout", src:"https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.1/knockout-latest.js", at:"Foot" %}
 {% script name:"survey-ko", src:"https://unpkg.com/survey-knockout@1.8.24/survey.ko.min.js", at:"Foot" %}
 
-{% script name:"surveyjs", src:"~/StatCan.OrchardCore.SurveyJS/Scripts/surveyjs.js", type: "text/javascript", at:"Foot" %}
+{% script name:"surveyjs", src:"~/StatCan.OrchardCore.SurveyJS/Scripts/surveyjs.js", type: "text/javascript", at:"Foot", depends-on:"survey-ko", "knockout" %}

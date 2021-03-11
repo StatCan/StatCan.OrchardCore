@@ -1,5 +1,5 @@
-function initAssessment(surveyjs) {
-  var json = surveyjs.dataset.data
+function initSurveyJS(surveyjs) {
+  var decodedJson = decodeURIComponent(surveyjs.dataset.data).split('+').join('')
   var id = surveyjs.dataset.id
 
     Survey
@@ -11,7 +11,7 @@ function initAssessment(surveyjs) {
         .metaData
         .addProperty("itemvalue", {name: "score:number"});
     
-    window.survey = new Survey.Model(json);
+    window.survey = new Survey.Model(decodedJson);
   
     survey
         .onComplete
@@ -28,13 +28,16 @@ function initAssessment(surveyjs) {
           }
           
           totalScore = calcScore(plainData);
+          var score = JSON.stringify(totalScore)
 
-          document
-            .querySelector('.surveyResult')
-            .innerHTML = "Total Score is: " + JSON.stringify(totalScore);
+          if(score != "null") {
+            document
+              .querySelector('.surveyResult')
+              .innerHTML = "Total Score is: " + score;
+          } 
         });
       
-    survey.render(id);
+    survey.render(id+'-result');
 } 
 
-document.querySelectorAll('.surveyResult').forEach(initAssessment);
+document.querySelectorAll('.surveyResult').forEach(initSurveyJS);
