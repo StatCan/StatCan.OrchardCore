@@ -39,4 +39,4 @@ Every content item with the Email Template part attached to its contnet type wil
 
 You will need to select an email template and provide a JavaScript expression that returns a content item. This content item will be used as the model of the template. By default, the field is assigned the expression `workflow().input["ContentItem"]` which returns the content item from the previous event. You can change it if needed.
 
-Please see the [workflow](../Workflows.md#vueforms-statcanorchardcorevueforms) documentation.
+Please see the [workflow](../Workflows.md#emailtemplates-statcanorchardcoreemailtemplates) documentation.
