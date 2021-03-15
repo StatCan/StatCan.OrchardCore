@@ -15,12 +15,15 @@ using OrchardCore.Mvc.Core.Utilities;
 using OrchardCore.Navigation;
 using OrchardCore.Recipes;
 using OrchardCore.Security.Permissions;
+using OrchardCore.Workflows.Helpers;
 using StatCan.OrchardCore.EmailTemplates.Controllers;
 using StatCan.OrchardCore.EmailTemplates.Deployment;
 using StatCan.OrchardCore.EmailTemplates.Drivers;
 using StatCan.OrchardCore.EmailTemplates.Models;
 using StatCan.OrchardCore.EmailTemplates.Recipes;
 using StatCan.OrchardCore.EmailTemplates.Services;
+using StatCan.OrchardCore.EmailTemplates.Workflows.Activities;
+using StatCan.OrchardCore.EmailTemplates.Workflows.Drivers;
 
 namespace StatCan.OrchardCore.EmailTemplates
 {
@@ -47,6 +50,9 @@ namespace StatCan.OrchardCore.EmailTemplates
             services.AddTransient<IDeploymentSource, AllEmailTemplatesDeploymentSource>();
             services.AddSingleton<IDeploymentStepFactory>(new DeploymentStepFactory<AllEmailTemplatesDeploymentStep>());
             services.AddScoped<IDisplayDriver<DeploymentStep>, AllTemplatesDeploymentStepDriver>();
+
+            services.AddActivity<EmailTemplateTask, EmailTemplateTaskDisplayDriver>();
+            services.AddScoped<IEmailTemplatesService, EmailTemplatesService>();
 
         }
 
