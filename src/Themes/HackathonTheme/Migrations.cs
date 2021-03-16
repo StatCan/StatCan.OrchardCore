@@ -42,7 +42,8 @@ namespace StatCan.Themes.HackathonTheme
             CompatibilityBanner();
             VFooter();
             UpdateToMultiTextField();
-            return 7;
+            CreateFip();
+            return 8;
         }
 
         public int UpdateFrom1()
@@ -82,6 +83,12 @@ namespace StatCan.Themes.HackathonTheme
         {
             UpdateToMultiTextField();
             return 7;
+        }
+
+        public int UpdateFrom7()
+        {
+            CreateFip();
+            return 8;
         }
 
         private void AuthContentMenuItem()
@@ -1476,7 +1483,42 @@ namespace StatCan.Themes.HackathonTheme
                     })
                 )
             );
+        }
 
+        private void CreateFip()
+        {
+            _contentDefinitionManager.AlterTypeDefinition("FIP", type => type
+                .DisplayedAs("FIP")
+                .Stereotype("Widget")
+                .WithPart("FIP", part => part
+                    .WithPosition("0")
+                )
+            );
+
+            _contentDefinitionManager.AlterPartDefinition("FIP", part => part
+                .WithField("Props", field => field
+                    .OfType("MultiTextField")
+                    .WithDisplayName("Props")
+                    .WithEditor("Picker")
+                    .WithPosition("0")
+                    .WithSettings(new MultiTextFieldSettings
+                    {
+                        Options = new MultiTextFieldValueOption[] { new MultiTextFieldValueOption() {
+                            Name = "Dark",
+                            Value = "dark"
+                        }, new MultiTextFieldValueOption() {
+                            Name = "Light",
+                            Value = "light"
+                        }, new MultiTextFieldValueOption() {
+                            Name = "Rounded",
+                            Value = "rounded"
+                        }, new MultiTextFieldValueOption() {
+                            Name = "Shaped",
+                            Value = "shaped"
+                        } },
+                    })
+                )
+            );
         }
     }
 }
