@@ -27,8 +27,8 @@ namespace StatCan.OrchardCore.EmailTemplates.Services
             var message = new MailMessage
             {
                 To = sendEmail.Recipients,
-                // Bcc = sendEmail.Bcc,
-                // Cc = sendEmail.Cc,
+                Bcc = sendEmail.BCC,
+                Cc = sendEmail.CC,
                 ReplyTo = sendEmail.ReplyTo
             };
 
@@ -60,11 +60,11 @@ namespace StatCan.OrchardCore.EmailTemplates.Services
             return message;
         }
 
-        public Task<string> RenderLiquid(string liquid, ContentItem contentItem)
+        public Task<string> RenderLiquid(string liquid, object model)
         {
             if (!string.IsNullOrWhiteSpace(liquid))
             {
-                return _liquidTemplateManager.RenderAsync(liquid, _htmlEncoder, contentItem, null);
+                return _liquidTemplateManager.RenderAsync(liquid, _htmlEncoder, model, null);
             }
             return Task.FromResult(liquid);
         }

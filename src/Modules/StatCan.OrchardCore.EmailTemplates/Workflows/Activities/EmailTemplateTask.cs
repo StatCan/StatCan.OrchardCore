@@ -88,6 +88,8 @@ namespace StatCan.OrchardCore.EmailTemplates.Workflows.Activities
                 Sender = await _emailTemplatesService.RenderLiquid(template.SenderExpression, contentItem),
                 ReplyTo = await _emailTemplatesService.RenderLiquid(template.ReplyToExpression, contentItem),
                 Recipients = await _emailTemplatesService.RenderLiquid(template.RecipientsExpression, contentItem),
+                CC = await _emailTemplatesService.RenderLiquid(template.CCExpression, contentItem),
+                BCC = await _emailTemplatesService.RenderLiquid(template.BCCExpression, contentItem),
                 Subject = await _emailTemplatesService.RenderLiquid(template.SubjectExpression, contentItem),
                 Body = await _emailTemplatesService.RenderLiquid(template.Body, contentItem),
                 IsBodyHtml = template.IsBodyHtml,
