@@ -1,0 +1,39 @@
+@using StatCan.OrchardCore.EmailTemplates.Workflows.ViewModels;
+@model EmailTemplateTaskViewModel
+
+@{
+  if(Model.TemplateModelExpression == null)
+  {
+    Model.TemplateModelExpression = "workflow().input[\"ContentItem\"]";
+  }
+}
+
+<div class="form-group" >
+  <label asp-for="TemplateModelExpression">@T["Template Model Expression"]</label>
+  <textarea asp-for="TemplateModelExpression" rows="5" class="form-control"></textarea>
+  <span asp-validation-for="TemplateModelExpression"></span>
+  <span class="hint">@T["JavaScript expression that returns a ContentItem that will be used as the model of the template."]</span>
+</div>
+
+<div class="form-group" >
+  <select class="form-control content-preview-select" asp-for="SelectedEmailTemplateId" asp-items="@Model.EmailTemplates"></select>
+</div>
+
+<style asp-name="codemirror"></style>
+<script asp-name="codemirror" depends-on="admin" at="Foot"></script>
+<script asp-name="codemirror-mode-javascript" at="Foot"></script>
+<script asp-name="codemirror-addon-mode-simple" at="Foot"></script>
+<script asp-name="codemirror-addon-mode-multiplex" at="Foot"></script>
+<script asp-name="codemirror-mode-xml" at="Foot"></script>
+<script asp-src="~/OrchardCore.Liquid/codemirror/liquid.js" at="Foot"></script>
+
+<script at="Foot">
+$(function () {
+    var editor = CodeMirror.fromTextArea(document.getElementById('@Html.IdFor(x => x.TemplateModelExpression)'), {
+        lineNumbers: true,
+        styleActiveLine: true,
+        matchBrackets: true,
+        mode: { name: "javascript" },
+      });
+});
+</script>

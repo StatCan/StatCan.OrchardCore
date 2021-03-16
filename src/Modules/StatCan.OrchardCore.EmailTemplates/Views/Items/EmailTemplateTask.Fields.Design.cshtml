@@ -1,0 +1,8 @@
+@model ActivityViewModel<EmailTemplateTask>
+@using OrchardCore.Workflows.Helpers
+@using OrchardCore.Workflows.ViewModels
+@using StatCan.OrchardCore.EmailTemplates.Workflows.Activities
+<header>
+    <h4><i class="fa fa-envelope"></i>@Model.Activity.GetTitleOrDefault(() => T["Send Email With Template"])</h4>
+</header>
+<em>@Model.Activity.SelectedEmailTemplateName</em>
