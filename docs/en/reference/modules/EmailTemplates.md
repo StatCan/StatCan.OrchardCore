@@ -35,7 +35,7 @@ The EmailTemplate Part allows you to link one or multiple email templates to any
 
 ## Summary Admin Integration
 
-Every content item with the Email Template part attached to its contnet type will be displayed with a dropdown of selected email templates. This will redirect you to the Send screen and will render the email using the selected content item as the model of the template.
+Every content item with the Email Template part attached to its content type will be displayed with a dropdown of selected email templates. This will redirect you to the Send screen and will render the email using the selected content item as the model of the template.
 
 ## Workflow Intergration
 
