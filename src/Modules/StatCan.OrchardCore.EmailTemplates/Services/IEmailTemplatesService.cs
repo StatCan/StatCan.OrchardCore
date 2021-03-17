@@ -8,6 +8,6 @@ namespace StatCan.OrchardCore.EmailTemplates.Services
     public interface IEmailTemplatesService
     {
         MailMessage CreateMessageFromViewModel(SendEmailTemplateViewModel sendEmail);
-        Task<string> RenderLiquid(string liquid, ContentItem contentItem);
+        Task<string> RenderLiquid(string liquid, object model);
     }
 }
