@@ -42,8 +42,7 @@ namespace StatCan.Themes.HackathonTheme
             CompatibilityBanner();
             VFooter();
             UpdateToMultiTextField();
-            CreateFip();
-            return 8;
+            return 7;
         }
 
         public int UpdateFrom1()
@@ -83,12 +82,6 @@ namespace StatCan.Themes.HackathonTheme
         {
             UpdateToMultiTextField();
             return 7;
-        }
-
-        public int UpdateFrom7()
-        {
-            CreateFip();
-            return 8;
         }
 
         private void AuthContentMenuItem()
