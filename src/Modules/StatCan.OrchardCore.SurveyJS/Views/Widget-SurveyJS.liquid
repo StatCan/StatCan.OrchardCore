@@ -1,5 +1,5 @@
-<div id="{{ Model.ContentItem.ContentItemId }}" data-id="{{ Model.ContentItem.ContentItemId }}" data-data="{{Model.ContentItem.Content.SurveyJS.Data.Text | url_encode}}" data-name="{{componentName}}"></div>
-<div class="surveyResult" id="{{ Model.ContentItem.ContentItemId }}-result" data-id="{{ Model.ContentItem.ContentItemId }}" data-data="{{Model.ContentItem.Content.SurveyJS.Data.Text | url_encode}}"></div>
+<div id="{{ Model.ContentItem.ContentItemId }}" data-id="{{ Model.ContentItem.ContentItemId }}" data-data="{{Model.ContentItem.Content.SurveyJS.Data.Text | to_base64 }}" data-name="{{componentName}}"></div>
+<div class="surveyResult" id="{{ Model.ContentItem.ContentItemId }}-result" data-id="{{ Model.ContentItem.ContentItemId }}" data-data="{{Model.ContentItem.Content.SurveyJS.Data.Text | to_base64 }}"></div>
 
 {% style name:"default", src:"https://unpkg.com/survey-knockout@1.8.24/modern.css" %}
 {% script name:"knockout", src:"https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.1/knockout-latest.js", at:"Foot" %}

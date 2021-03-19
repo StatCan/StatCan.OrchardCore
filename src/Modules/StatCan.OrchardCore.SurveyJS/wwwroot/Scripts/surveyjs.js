@@ -1,5 +1,5 @@
 function initSurveyJS(surveyjs) {
-  var decodedJson = decodeURIComponent(surveyjs.dataset.data).split('+').join('')
+  var decodedJson = atob(surveyjs.dataset.data)
   var id = surveyjs.dataset.id
 
     Survey
@@ -10,7 +10,7 @@ function initSurveyJS(surveyjs) {
         .JsonObject
         .metaData
         .addProperty("itemvalue", {name: "score:number"});
-    
+
     window.survey = new Survey.Model(decodedJson);
   
     survey
