@@ -15,7 +15,7 @@ namespace StatCan.OrchardCore.DisplayHelpers
             services.AddLiquidFilter<GetClaimLiquidFilter>("get_claim");
             services.AddLiquidFilter<ReturnUrlFilter>("return_url");
             services.AddLiquidFilter<UsersByRoleFilter>("users_by_role");
-            services.AddLiquidFilter<Base64Filter>("to_base64");
+            services.AddLiquidFilter<Base64Filter>("base64_encode");
         }
     }
 }
