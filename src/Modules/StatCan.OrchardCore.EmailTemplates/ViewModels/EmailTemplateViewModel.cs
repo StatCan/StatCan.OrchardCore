@@ -21,8 +21,8 @@ namespace StatCan.OrchardCore.EmailTemplates.ViewModels
 
         [Required]
         public string RecipientsExpression { get; set; }
-        //public string CCExpression { get; set; }
-        //public string BCCExpression { get; set; }
+        public string CCExpression { get; set; }
+        public string BCCExpression { get; set; }
         public string SubjectExpression { get; set; }
         [Required]
         public string Body { get; set; }

@@ -40,7 +40,7 @@ jobs:
         cd src/StatCan.OrchardCore.Cms.Web
         dotnet publish -c Release -o ./.build/release --no-restore
         docker build -t statcan/statcan.orchardcore:${{ github.event.inputs.version }} .
-        docker push statcan/statcan.orchardcore
+        docker push statcan/statcan.orchardcore:${{ github.event.inputs.version }}
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1

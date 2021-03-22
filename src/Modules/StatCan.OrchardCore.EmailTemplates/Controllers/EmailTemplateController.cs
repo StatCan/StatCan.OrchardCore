@@ -40,6 +40,7 @@ namespace StatCan.OrchardCore.EmailTemplates.Controllers
         private readonly IHtmlLocalizer H;
         private readonly dynamic New;
         private readonly IContentManager _contentManager;
+        private readonly IEmailTemplatesService _emailTemplatesService;
 
         public EmailTemplateController(
             IAuthorizationService authorizationService,
@@ -52,7 +53,8 @@ namespace StatCan.OrchardCore.EmailTemplates.Controllers
             ISmtpService smtpService,
             ILiquidTemplateManager liquidTemplateManager,
             HtmlEncoder htmlEncoder,
-            IContentManager contentManager
+            IContentManager contentManager,
+            IEmailTemplatesService emailTemplatesService
         )
         {
             _authorizationService = authorizationService;
@@ -66,6 +68,7 @@ namespace StatCan.OrchardCore.EmailTemplates.Controllers
             _liquidTemplateManager = liquidTemplateManager;
             _htmlEncoder = htmlEncoder;
             _contentManager = contentManager;
+            _emailTemplatesService = emailTemplatesService;
         }
 
         public async Task<IActionResult> Index(ViewModels.ContentOptions options, PagerParameters pagerParameters)
@@ -148,6 +151,8 @@ namespace StatCan.OrchardCore.EmailTemplates.Controllers
                     SenderExpression = model.SenderExpression,
                     ReplyToExpression = model.ReplyToExpression,
                     RecipientsExpression = model.RecipientsExpression,
+                    CCExpression = model.CCExpression,
+                    BCCExpression = model.BCCExpression,
                     SubjectExpression = model.SubjectExpression,
                     Body = model.Body,
                     IsBodyHtml = model.IsBodyHtml,
@@ -197,6 +202,8 @@ namespace StatCan.OrchardCore.EmailTemplates.Controllers
                 SenderExpression = template.SenderExpression,
                 ReplyToExpression = template.ReplyToExpression,
                 RecipientsExpression = template.RecipientsExpression,
+                CCExpression = template.CCExpression,
+                BCCExpression = template.BCCExpression,
                 SubjectExpression = template.SubjectExpression,
                 IsBodyHtml = template.IsBodyHtml,
             };
@@ -235,6 +242,8 @@ namespace StatCan.OrchardCore.EmailTemplates.Controllers
                     ReplyToExpression = model.ReplyToExpression,
                     SenderExpression = model.SenderExpression,
                     RecipientsExpression = model.RecipientsExpression,
+                    CCExpression = model.CCExpression,
+                    BCCExpression = model.BCCExpression,
                     SubjectExpression = model.SubjectExpression,
                     Body = model.Body,
                     IsBodyHtml = model.IsBodyHtml,
@@ -331,12 +340,14 @@ namespace StatCan.OrchardCore.EmailTemplates.Controllers
             var model = new SendEmailTemplateViewModel
             {
                 Name = template.Name,
-                Author = await RenderLiquid(template.AuthorExpression, contentItem),
-                Sender = await RenderLiquid(template.SenderExpression, contentItem),
-                ReplyTo = await RenderLiquid(template.ReplyToExpression, contentItem),
-                Recipients = await RenderLiquid(template.RecipientsExpression, contentItem),
-                Subject = await RenderLiquid(template.SubjectExpression, contentItem),
-                Body = await RenderLiquid(template.Body, contentItem),
+                Author = await _emailTemplatesService.RenderLiquid(template.AuthorExpression, contentItem),
+                Sender = await _emailTemplatesService.RenderLiquid(template.SenderExpression, contentItem),
+                ReplyTo = await _emailTemplatesService.RenderLiquid(template.ReplyToExpression, contentItem),
+                Recipients = await _emailTemplatesService.RenderLiquid(template.RecipientsExpression, contentItem),
+                CC = await _emailTemplatesService.RenderLiquid(template.CCExpression, contentItem),
+                BCC = await _emailTemplatesService.RenderLiquid(template.BCCExpression, contentItem),
+                Subject = await _emailTemplatesService.RenderLiquid(template.SubjectExpression, contentItem),
+                Body = await _emailTemplatesService.RenderLiquid(template.Body, contentItem),
                 IsBodyHtml = template.IsBodyHtml,
             };
 
@@ -355,7 +366,7 @@ namespace StatCan.OrchardCore.EmailTemplates.Controllers
 
             if (ModelState.IsValid)
             {
-                var message = CreateMessageFromViewModel(model);
+                var message = _emailTemplatesService.CreateMessageFromViewModel(model);
 
                 var result = await _smtpService.SendAsync(message);
 
@@ -374,63 +385,7 @@ namespace StatCan.OrchardCore.EmailTemplates.Controllers
             }
 
             return View(model);
-        }
-
-        private MailMessage CreateMessageFromViewModel(SendEmailTemplateViewModel sendEmail)
-        {
-            var message = new MailMessage
-            {
-                To = sendEmail.Recipients,
-                // Bcc = sendEmail.Bcc,
-                // Cc = sendEmail.Cc,
-                ReplyTo = sendEmail.ReplyTo
-            };
-
-            var author = sendEmail.Author;
-            var sender = sendEmail.Sender;
-
-            if (!string.IsNullOrWhiteSpace(author))
-            {
-                message.From = author.Trim();
-            }
-
-            if (!String.IsNullOrWhiteSpace(sender))
-            {
-                message.Sender = sender.Trim();
-            }
-
-            if (!String.IsNullOrWhiteSpace(sendEmail.Subject))
-            {
-                message.Subject = sendEmail.Subject;
-            }
-
-            if (!String.IsNullOrWhiteSpace(sendEmail.Body))
-            {
-                message.Body = sendEmail.Body;
-            }
-
-            message.IsBodyHtml = sendEmail.IsBodyHtml;
-
-            return message;
-        }
-
-        private async Task<string> RenderLiquid(string liquid)
-        {
-            if (!string.IsNullOrWhiteSpace(liquid))
-            {
-                return await _liquidTemplateManager.RenderAsync(liquid, _htmlEncoder, null, null);
-            }
-            return liquid;
-        }
-
-        private async Task<string> RenderLiquid(string liquid, ContentItem contentItem)
-        {
-            if (!string.IsNullOrWhiteSpace(liquid))
-            {
-                return await _liquidTemplateManager.RenderAsync(liquid, _htmlEncoder, contentItem, null);
-            }
-            return liquid;
-        }
+        }   
 
         private IActionResult RedirectToReturnUrlOrIndex(string returnUrl)
         {
