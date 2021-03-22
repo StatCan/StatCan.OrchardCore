@@ -10,14 +10,14 @@ namespace StatCan.OrchardCore.EmailTemplates.Deployment
         {
             return
                 Combine(
-                    View("AllTemplatesDeploymentStep_Summary", step).Location("Summary", "Content"),
-                    View("AllTemplatesDeploymentStep_Thumbnail", step).Location("Thumbnail", "Content")
+                    View("AllEmailTemplatesDeploymentStep_Summary", step).Location("Summary", "Content"),
+                    View("AllEmailTemplatesDeploymentStep_Thumbnail", step).Location("Thumbnail", "Content")
                 );
         }
 
         public override IDisplayResult Edit(AllEmailTemplatesDeploymentStep step)
         {
-            return View("AllTemplatesDeploymentStep_Edit", step).Location("Content");
+            return View("AllEmailTemplatesDeploymentStep_Edit", step).Location("Content");
         }
     }
 }

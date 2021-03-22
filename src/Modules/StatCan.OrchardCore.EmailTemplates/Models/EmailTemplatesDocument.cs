@@ -24,6 +24,8 @@ namespace StatCan.OrchardCore.EmailTemplates.Models
         public string SenderExpression { get; set; }
         public string ReplyToExpression { get; set; }
         public string RecipientsExpression { get; set; }
+        public string CCExpression { get; set; }
+        public string BCCExpression { get; set; }
         public string SubjectExpression { get; set; }
         public string Body { get; set; }
         public bool IsBodyHtml { get; set; }

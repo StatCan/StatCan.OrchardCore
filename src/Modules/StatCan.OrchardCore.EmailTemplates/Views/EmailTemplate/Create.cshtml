@@ -60,6 +60,20 @@
         <span class="hint">@T["The comma-separated list of recipient email addresses. With Liquid support."]</span>
     </div>
 
+    <div class="form-group" asp-validation-class-for="CCExpression">
+        <label asp-for="CCExpression">@T["CC"]</label>
+        <textarea asp-for="CCExpression" rows="1" class="form-control code"></textarea>
+        <span class="text-danger d-block" asp-validation-for="CCExpression"></span>
+        <span class="hint">@T["The comma-separated list of CC recipient email addresses. With Liquid support."]</span>
+    </div>
+
+    <div class="form-group" asp-validation-class-for="BCCExpression">
+        <label asp-for="BCCExpression">@T["BCC"]</label>
+        <textarea asp-for="BCCExpression" rows="1" class="form-control code"></textarea>
+        <span class="text-danger d-block" asp-validation-for="BCCExpression"></span>
+        <span class="hint">@T["The comma-separated list of BCC recipient email addresses. With Liquid support."]</span>
+    </div>
+
     <div class="form-group" asp-validation-class-for="SubjectExpression">
         <label asp-for="SubjectExpression">@T["Subject"]</label>
         <textarea asp-for="SubjectExpression" rows="1" class="form-control code"></textarea>
@@ -115,6 +129,8 @@
         CodeMirror.fromTextArea(document.getElementById('@Html.IdFor(x => x.SenderExpression)'), codeMirrorOptions);
         CodeMirror.fromTextArea(document.getElementById('@Html.IdFor(x => x.ReplyToExpression)'), codeMirrorOptions);
         CodeMirror.fromTextArea(document.getElementById('@Html.IdFor(x => x.RecipientsExpression)'), codeMirrorOptions);
+        CodeMirror.fromTextArea(document.getElementById('@Html.IdFor(x => x.CCExpression)'), codeMirrorOptions);
+        CodeMirror.fromTextArea(document.getElementById('@Html.IdFor(x => x.BCCExpression)'), codeMirrorOptions);
         CodeMirror.fromTextArea(document.getElementById('@Html.IdFor(x => x.SubjectExpression)'), codeMirrorOptions);
         CodeMirror.fromTextArea(document.getElementById('@Html.IdFor(x => x.Body)'), codeMirrorOptions);
 });
