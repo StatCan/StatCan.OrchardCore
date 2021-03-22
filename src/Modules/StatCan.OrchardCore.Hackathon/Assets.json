@@ -1,6 +1,0 @@
-[
-  {
-    "inputs": ["Assets/scss/fip.scss"],
-    "output": "wwwroot/css/fip.css"
-  }
-]

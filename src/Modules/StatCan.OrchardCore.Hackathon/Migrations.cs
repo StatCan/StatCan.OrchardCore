@@ -11,29 +11,5 @@ namespace StatCan.OrchardCore.Hackathon
         {
             _contentDefinitionManager = contentDefinitionManager;
         }
-
-        public int Create()
-        {
-            Fip();
-            return 1;
-        }
-
-        private void Fip()
-        {
-            _contentDefinitionManager.AlterTypeDefinition("FIP", type => type
-                .DisplayedAs("FIP")
-                .Stereotype("Widget")
-                .WithPart("FIP", part => part
-                    .WithPosition("0")
-                )
-            );
-
-            _contentDefinitionManager.AlterPartDefinition("FIP", part => part
-                .WithField("Dark", field => field
-                    .OfType("BooleanField")
-                    .WithDisplayName("Dark")
-                )
-            );
-        }
     }
 }
