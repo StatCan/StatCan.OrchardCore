@@ -1,0 +1,384 @@
+{
+  "name": "Hackathon.TenantCreationForm",
+  "displayName": "Tenant Creation Form",
+  "description": "Creates a form and workflow to create and setup tenants",
+  "author": "StatCan Digital Innovation",
+  "website": "digital.statcan.gc.ca",
+  "version": "1.0.0",
+  "issetuprecipe": false,
+  "categories": [],
+  "tags": [],
+  "steps": [
+    {
+      "name": "Content",
+      "data": [
+        {
+          "ContentItemId": "488kqk8s31fqwxj6zx0cbkfawm",
+          "ContentItemVersionId": "4dmewq7h4wgp1xe9kbz9a235n7",
+          "ContentType": "VueForm",
+          "DisplayText": "Tenant Creation Form",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": "2021-03-22T15:45:49.2529828Z",
+          "PublishedUtc": "2021-03-22T15:45:49.2660681Z",
+          "CreatedUtc": "2021-03-17T19:09:02.469553Z",
+          "Owner": "4w4spcma7w3gv5qpntza0af35p",
+          "Author": "admin",
+          "TitlePart": {
+            "Title": "Tenant Creation Form"
+          },
+          "VueForm": {
+            "Enabled": {
+              "Value": true
+            },
+            "RenderAs": {
+              "Text": null
+            },
+            "DisabledHtml": {
+              "Html": "<div class=\"container text-center mt-2\">\n[locale en]The create a tenant form is currently disabled.[/locale][locale fr]Le formulaire pour créer un tenant est présentement désactivé.[/locale]\n</div>"
+            },
+            "SuccessMessage": {
+              "Text": "{{ \"successMessage\" | localize }}"
+            }
+          },
+          "FlowPart": {
+            "Widgets": [
+              {
+                "ContentItemId": "489wkxwqzjtp74f30e830r21cd",
+                "ContentItemVersionId": null,
+                "ContentType": "VueComponent",
+                "DisplayText": "Tenant Creation Form",
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": "2021-03-22T15:45:49.2582841Z",
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": "",
+                "Author": "admin",
+                "TitlePart": {
+                  "Title": "Tenant Creation Form"
+                },
+                "VueComponent": {
+                  "Template": {
+                    "Text": "<v-container >\r\n  <v-card-text>\r\n    <v-row justify=\"center\">\r\n      <v-col cols=\"8\">\r\n        <h1>[locale en]Create a Tenant[/locale][locale fr]Créer un tenant[/locale]</h1>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n          <v-text-field v-model=\"tenantName\"\r\n                        :error-messages=\"errors\"\r\n                        :rules=\"rulesTenantName\"\r\n                        filled=\"filled\" \r\n                        label=\"[locale en]Tenant Name[/locale][locale fr]Nom du tenant[/locale]\">\r\n          </v-text-field>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n        <validation-provider name=\"{{ \"descriptionLabel\" | localize | downcase }}\" rules=\"required\" v-slot=\"{ errors, valid }\">\r\n          <v-text-field v-model=\"description\"\r\n                        :error-messages=\"errors\"\r\n                        filled=\"filled\" \r\n                        label=\"[locale en]Tenant Description[/locale][locale fr]Description du tenant[/locale]\">\r\n          </v-text-field>\r\n        </validation-provider>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n        <v-text-field v-model=\"urlPrefix\" \r\n                      filled=\"filled\" \r\n                      :error-messages=\"errors\"\r\n                      :rules=\"rulesUrl\"\r\n                      label=\"[locale en]Url Prefix[/locale][locale fr]Préfixe d'URL[/locale]\"\r\n                      hint=\"[locale en](Optional) Example: If prefix is &quot;site1&quot;, the tenant URL prefix is &quot;https://orchardcore.net/site1&quot;[/locale]\r\n                            [locale fr](Optionnel) Exemple: Si le préfixe est &quot;site1&quot;, le préfixe du URL du tenant est &quot;https://orchardcore.net/site1&quot;[/locale]\" \r\n                      persistent-hint>\r\n        </v-text-field>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n          <v-text-field v-model=\"adminUserName\" \r\n                        :error-messages=\"errors\"\r\n                        :rules=\"rulesUserName\"\r\n                        filled=\"filled\" \r\n                        label=\"[locale en]Admin User Name[/locale][locale fr]Nom d'utilisateur de l'administrateur[/locale]\">\r\n          </v-text-field>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n        <validation-provider name=\"{{ \"adminPasswordLabel\" | localize | downcase }}\" rules=\"required\" v-slot=\"{ errors, valid }\">\r\n          <v-text-field :type=\"'Password'\"\r\n                        :error-messages=\"errors\"\r\n                        v-model=\"adminPassword\"                      \r\n                        filled=\"filled\" \r\n                        label=\"[locale en]Admin Password[/locale][locale fr]Mot de passe de l'administrateur[/locale]\">\r\n          </v-text-field>\r\n        </validation-provider>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n        <v-alert type=\"success\" v-if=\"form.successMessage\">\r\n          {% raw %}{{ form.successMessage }}{% endraw %}\r\n        </v-alert>\r\n        <v-alert type=\"error\" v-if=\"form.serverValidationMessage\">\r\n          {% raw %}{{ form.serverValidationMessage[0] }}{% endraw %}\r\n        </v-alert>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n    \t<v-btn type=\"submit\" depressed block @click=\"formHandleSubmit\" :loading=\"form.submitting\" :disabled=\"form.submitting\">{{ \"submitLabel\" | localize }}</v-btn>\r\n      </v-col>\r\n    </v-row>\r\n  </v-card-text>\r\n</v-container>\r\n"
+                  }
+                },
+                "FlowMetadata": {
+                  "Alignment": 3,
+                  "Size": 100
+                }
+              }
+            ]
+          },
+          "VueFormScripts": {
+            "ClientInit": {
+              "Text": null
+            },
+            "ComponentOptions": {
+              "Text": "{\r\n  data: () => ({\r\n    tenantName: \"\",\r\n    description: \"\",\r\n    urlPrefix: \"\",\r\n    adminUserName: \"\",\r\n    adminPassword: \"\",\r\n    rulesTenantName: [\r\n      value => !!value || '[locale en]The name field is required[/locale][locale fr]Le champ nom est requis[/locale]',\r\n      value => {\r\n        const pattern = /^\\w+$/\r\n        return pattern.test(value) || '[locale en]Invalid tenant name. Must contain characters only and no spaces.[/locale][locale fr]Nom de tenant invalide. Caractères alpanumériques seulement.[/locale]'\r\n      },\r\n    ],\r\n    rulesUserName: [\r\n      value => !!value || '[locale en]The user name field is required[/locale][locale fr]Le champ du nom d\\'utilisateur est requis[/locale]',\r\n      value => {\r\n        const pattern = /^\\w+$/\r\n        return pattern.test(value) || '[locale en]Invalid user name. Must contain characters only and no spaces.[/locale][locale fr]Nom d\\'utilisateur invalide. Caractères alphanumériques seulement.[/locale]'\r\n      },\r\n    ],\r\n    rulesUrl: [\r\n      value => {\r\n        const pattern = /^\\w+$/\r\n        return pattern.test(value) || '[locale en]Invalid URL prefix. Must contain characters only and no spaces.[/locale][locale fr]Préfixe d\\'URL invalide. Caractères alphanumériques seulement.[/locale]'\r\n      },\r\n    ],\r\n  })\r\n}"
+            },
+            "OnValidation": {
+              "Text": "var data = requestFormAsJsonObject();\r\nvar localizedText = getLocalizedTextValues(getFormContentItem());\r\n\r\nif(data.tenantName == \"\" || data.description == \"\" || data.adminUserName == \"\" || data.adminPassword == \"\"){\r\n  addError('serverValidationMessage', localizedText.serverValidationError);\r\n}"
+            },
+            "OnSubmitted": {
+              "Text": null
+            }
+          },
+          "LocalizedTextPart": {
+            "Data": [
+              {
+                "Name": "successMessage",
+                "LocalizedItems": [
+                  {
+                    "Culture": "en-CA",
+                    "Value": "A new tenant was created successfully."
+                  },
+                  {
+                    "Culture": "fr-CA",
+                    "Value": "Un nouveau tenant a été créé avec succès."
+                  }
+                ]
+              },
+              {
+                "Name": "submitLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "en-CA",
+                    "Value": "Create"
+                  },
+                  {
+                    "Culture": "fr-CA",
+                    "Value": "Créer"
+                  }
+                ]
+              },
+              {
+                "Name": "serverValidationError",
+                "LocalizedItems": [
+                  {
+                    "Culture": "en-CA",
+                    "Value": "An error occured."
+                  },
+                  {
+                    "Culture": "fr-CA",
+                    "Value": "Une erreure est survenue."
+                  }
+                ]
+              },
+              {
+                "Name": "descriptionLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "en-CA",
+                    "Value": "Description"
+                  },
+                  {
+                    "Culture": "fr-CA",
+                    "Value": "Description"
+                  }
+                ]
+              },
+              {
+                "Name": "adminUserNameLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "en-CA",
+                    "Value": "Admin User Name"
+                  },
+                  {
+                    "Culture": "fr-CA",
+                    "Value": "Nom d'utilisateur de l'administrateur"
+                  }
+                ]
+              },
+              {
+                "Name": "adminPasswordLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "en-CA",
+                    "Value": "Admin Password"
+                  },
+                  {
+                    "Culture": "fr-CA",
+                    "Value": "Mot de passe de l'administrateur"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "WorkflowType",
+      "data": [
+        {
+          "WorkflowTypeId": "40fa0gedy0frgy2rg35gy5n3c6",
+          "Name": "Test",
+          "IsEnabled": true,
+          "IsSingleton": false,
+          "DeleteFinishedWorkflows": false,
+          "Activities": [],
+          "Transitions": []
+        },
+        {
+          "WorkflowTypeId": "4fx1kseezbkcw1e4gcfqn1vkms",
+          "Name": "Form Submit",
+          "IsEnabled": true,
+          "IsSingleton": false,
+          "DeleteFinishedWorkflows": false,
+          "Activities": [
+            {
+              "ActivityId": "4qwshsfxs9m4303n0csm0n86m1",
+              "Name": "VueFormSubmittedEvent",
+              "X": 40,
+              "Y": 40,
+              "IsStart": true,
+              "Properties": {
+                "ActivityMetadata": {
+                  "Title": null
+                },
+                "ExecuteForAllForms": false,
+                "VueFormIds": [
+                  "4ty56s2p8vfhmxp76p4f37b1c3"
+                ]
+              }
+            },
+            {
+              "ActivityId": "4w0he132d2svsw991qb4764hxp",
+              "Name": "EmailTask",
+              "X": 340,
+              "Y": 40,
+              "IsStart": false,
+              "Properties": {
+                "Sender": {
+                  "Expression": "{{Request.Form.email}}"
+                },
+                "Author": {
+                  "Expression": null
+                },
+                "Recipients": {
+                  "Expression": "admin@site.com"
+                },
+                "ReplyTo": {
+                  "Expression": null
+                },
+                "Subject": {
+                  "Expression": "Contact request"
+                },
+                "Body": {
+                  "Expression": "From: {{Request.Form.name}} </br>\r\nEmail: {{Request.Form.email}} </br>\r\nMessage: {{Request.Form.message}} </br>"
+                },
+                "IsBodyHtml": true,
+                "ActivityMetadata": {
+                  "Title": "Send email to admin"
+                }
+              }
+            }
+          ],
+          "Transitions": [
+            {
+              "Id": 0,
+              "SourceActivityId": "4qwshsfxs9m4303n0csm0n86m1",
+              "SourceOutcomeName": "Done",
+              "DestinationActivityId": "4w0he132d2svsw991qb4764hxp"
+            }
+          ]
+        },
+        {
+          "WorkflowTypeId": "4e92ffnq06eqsvv6rcbe87ze4p",
+          "Name": "Tenant Creation Form",
+          "IsEnabled": true,
+          "IsSingleton": false,
+          "DeleteFinishedWorkflows": false,
+          "Activities": [
+            {
+              "ActivityId": "4hzw45g1cvq8gzf4m1qwd3dpnn",
+              "Name": "VueFormSubmittedEvent",
+              "X": 70,
+              "Y": 110,
+              "IsStart": true,
+              "Properties": {
+                "ActivityMetadata": {
+                  "Title": "Tenant Creation Form"
+                },
+                "ExecuteForAllForms": false,
+                "VueFormIds": [
+                  "488kqk8s31fqwxj6zx0cbkfawm"
+                ]
+              }
+            },
+            {
+              "ActivityId": "436g31bdw0rde0ecddaycrk1mz",
+              "Name": "CreateTenantTask",
+              "X": 770,
+              "Y": 110,
+              "IsStart": false,
+              "Properties": {
+                "TenantName": {
+                  "Expression": "{{ Workflow.Properties.FormData[\"tenantName\"] }}"
+                },
+                "RequestUrlPrefix": {
+                  "Expression": "{% if Workflow.Properties.FormData[\"urlPrefix\"] != \"\" %} {{ Workflow.Properties.FormData[\"urlPrefix\"] }} {% else %} {{ Workflow.Properties.FormData[\"tenantName\"] }} {% endif %}"
+                },
+                "RequestUrlHost": {
+                  "Expression": null
+                },
+                "DatabaseProvider": {
+                  "Expression": null
+                },
+                "ConnectionString": {
+                  "Expression": null
+                },
+                "TablePrefix": {
+                  "Expression": "{{ Workflow.Properties.FormData[\"tenantName\"] }}"
+                },
+                "RecipeName": {
+                  "Expression": null
+                },
+                "ActivityMetadata": {
+                  "Title": null
+                }
+              }
+            },
+            {
+              "ActivityId": "4s86kwgr447mf1j0nt33bk6v5f",
+              "Name": "SetupTenantTask",
+              "X": 1080,
+              "Y": 110,
+              "IsStart": false,
+              "Properties": {
+                "TenantName": {
+                  "Expression": "{{ Workflow.Properties.FormData[\"tenantName\"] }}"
+                },
+                "SiteName": {
+                  "Expression": "{{ Workflow.Properties.FormData[\"tenantName\"] }}"
+                },
+                "AdminUsername": {
+                  "Expression": "{{ Workflow.Properties.FormData[\"adminUserName\"] }}"
+                },
+                "AdminEmail": {
+                  "Expression": null
+                },
+                "AdminPassword": {
+                  "Expression": "{{ Workflow.Properties.FormData[\"adminPassword\"] }}"
+                },
+                "DatabaseProvider": {
+                  "Expression": null
+                },
+                "DatabaseConnectionString": {
+                  "Expression": null
+                },
+                "DatabaseTablePrefix": {
+                  "Expression": "{{ Workflow.Properties.FormData[\"tenantName\"] }}"
+                },
+                "RecipeName": {
+                  "Expression": null
+                },
+                "ActivityMetadata": {
+                  "Title": null
+                }
+              }
+            },
+            {
+              "ActivityId": "438n5ptd4esenw4902et1f22nf",
+              "Name": "SetPropertyTask",
+              "X": 420,
+              "Y": 110,
+              "IsStart": false,
+              "Properties": {
+                "ActivityMetadata": {
+                  "Title": null
+                },
+                "PropertyName": "FormData",
+                "Value": {
+                  "Expression": "requestFormAsJsonObject()"
+                }
+              }
+            }
+          ],
+          "Transitions": [
+            {
+              "Id": 0,
+              "SourceActivityId": "4hzw45g1cvq8gzf4m1qwd3dpnn",
+              "SourceOutcomeName": "Done",
+              "DestinationActivityId": "438n5ptd4esenw4902et1f22nf"
+            },
+            {
+              "Id": 0,
+              "SourceActivityId": "438n5ptd4esenw4902et1f22nf",
+              "SourceOutcomeName": "Done",
+              "DestinationActivityId": "436g31bdw0rde0ecddaycrk1mz"
+            },
+            {
+              "Id": 0,
+              "SourceActivityId": "436g31bdw0rde0ecddaycrk1mz",
+              "SourceOutcomeName": "Done",
+              "DestinationActivityId": "4s86kwgr447mf1j0nt33bk6v5f"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
