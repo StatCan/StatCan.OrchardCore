@@ -38,6 +38,7 @@
     <ProjectReference Include="..\..\Themes\DigitalAdmin\DigitalAdmin.csproj" PrivateAssets="none" />
     <ProjectReference Include="..\..\Themes\DigitalTheme\DigitalTheme.csproj" PrivateAssets="none" />
     <ProjectReference Include="..\..\Themes\HackathonTheme\HackathonTheme.csproj" PrivateAssets="none" />
+    <ProjectReference Include="..\..\Themes\VuetifyTheme\VuetifyTheme.csproj" PrivateAssets="none" />
     <ProjectReference Include="..\..\Themes\PortalTheme\PortalTheme.csproj" PrivateAssets="none" />
 
 

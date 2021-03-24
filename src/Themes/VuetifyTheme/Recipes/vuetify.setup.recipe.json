@@ -1,13 +1,13 @@
 {
-  "name": "hackathon-theme-setup",
-  "displayName": "Hackathon Theme Setup (Deprecated)",
-  "description": "Recipe used to enable the hackathon platform from the setup page.",
+  "name": "vuetify-theme-setup",
+  "displayName": "Vuetify Theme Setup",
+  "description": "Recipe used to enable the vuetify platform from the setup page.",
   "author": "Digital Innovation Team",
   "website": "https://digital.statcan.gc.ca",
   "version": "1.0",
   "issetuprecipe": true,
-  "categories": ["hackathon"],
-  "tags": ["innovation", "inno", "deprecated"],
+  "categories": ["vuetify"],
+  "tags": ["innovation", "inno"],
   "steps": [
     {
       "name": "feature",
@@ -55,18 +55,17 @@
         "OrchardCore.Users.Registration",
         "OrchardCore.Users.ResetPassword",
         "StatCan.OrchardCore.DisplayHelpers",
-        "StatCan.OrchardCore.ContentFields.MultiValueTextField",
         "StatCan.OrchardCore.CommonTypes.Pages",
         "StatCan.OrchardCore.CommonTypes.SecurePage",
         "StatCan.OrchardCore.CommonTypes.Widgets",
         "DigitalAdmin",
-        "HackathonTheme"
+        "VuetifyTheme"
       ]
     },
     {
       "name": "themes",
       "admin": "DigitalAdmin",
-      "site": "HackathonTheme"
+      "site": "VuetifyTheme"
     },
     {
       "name": "Settings",
