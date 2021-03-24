@@ -1,0 +1,13 @@
+@{
+  ThemeLayout.Metadata.Alternates.Add("Layout__Login");
+}
+<v-card class="px-4">
+  <v-card-title>@T["Email confirmed"]</v-card-title>
+  <v-card-text>
+    <v-icon x-large color="success">mdi-checkbox-marked-circle</v-icon>
+    <span>@T["Thank you for confirming your email."]</span>
+  </v-card-text>
+  <v-card-actions>
+    <v-btn href="@Url.Content("~/")" x-large block color="success">@T["Home"]</v-btn>
+  </v-card-actions>
+</v-card>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="{{ Culture.Name }}">
+  <head>
+    <title>{{ "PageTitle" | shape_new | shape_stringify }}</title>
+    {{ "CommonLayoutResources" | shape_new | shape_render }}
+    {% resources type: "Meta" %}
+    {% resources type: "HeadLink" %}
+    {% resources type: "Stylesheet" %}
+    {% render_section "HeadMeta", required: false %}
+    {% resources type: "HeadScript" %}
+  </head>
+  <body dir="{{ Culture.Dir }}">
+    <div id="page-top" v-cloak>
+      <v-app>
+        <v-main>
+          <v-container  >
+            <div class="d-flex justify-center">
+              {% render_section "Content" %}
+            </div>
+          </v-container>
+        </v-main>
+        <v-footer app padless>
+          {% render_section "Footer", required: false %}
+        </v-footer>
+      </v-app>
+    </div>
+    {% resources type: "FootScript" %}
+  </body>
+</html>
