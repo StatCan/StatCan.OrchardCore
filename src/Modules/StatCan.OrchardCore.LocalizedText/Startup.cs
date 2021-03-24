@@ -38,16 +38,16 @@ namespace StatCan.OrchardCore.LocalizedText
     [RequireFeatures("OrchardCore.Liquid")]
     public class LiquidStartup : StartupBase
     {
-        public LiquidStartup()
-        {
-            TemplateContext.GlobalMemberAccessStrategy.Register<LocalizedTextPart>();
-            TemplateContext.GlobalMemberAccessStrategy.Register<LocalizedTextEntry>();
-            TemplateContext.GlobalMemberAccessStrategy.Register<LocalizedTextItem>();
-        }
 
         public override void ConfigureServices(IServiceCollection services)
         {
             services.AddLiquidFilter<LocalizedTextFilter>("localize");
+            services.Configure<TemplateOptions>(o =>
+            {
+                o.MemberAccessStrategy.Register<LocalizedTextPart>();
+                o.MemberAccessStrategy.Register<LocalizedTextEntry>();
+                o.MemberAccessStrategy.Register<LocalizedTextItem>();
+            });
         }
     }
 }

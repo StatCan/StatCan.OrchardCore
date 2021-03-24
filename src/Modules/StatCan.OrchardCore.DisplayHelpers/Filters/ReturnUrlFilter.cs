@@ -17,7 +17,7 @@ namespace StatCan.OrchardCore.DisplayHelpers.Filters
             _httpContext = httpContextAccessor.HttpContext;
         }
 
-        public ValueTask<FluidValue> ProcessAsync(FluidValue input, FilterArguments arguments, TemplateContext context)
+        public ValueTask<FluidValue> ProcessAsync(FluidValue input, FilterArguments arguments, LiquidTemplateContext context)
         {
             if (!context.AmbientValues.TryGetValue("UrlHelper", out var urlHelper))
             {
