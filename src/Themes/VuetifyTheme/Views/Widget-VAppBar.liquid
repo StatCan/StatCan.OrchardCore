@@ -1,0 +1,29 @@
+{% assign backgroundImage = Model.ContentItem.Content.VAppBar.BackgroundImage.Paths.first | asset_url %}
+{% assign color = Model.ContentItem.Content.VAppBar.Color.Text %}
+{% assign elevation = Model.ContentItem.Content.VAppBar.Elevation.Value %}
+{% assign extensionHeight = Model.ContentItem.Content.VAppBar.ExtensionHeight.Value %}
+{% assign scrollThreshold = Model.ContentItem.Content.VAppBar.ScrollThreshold.Value %}
+{% assign height = Model.ContentItem.Content.VAppBar.Height.Value %}
+{% assign width = Model.ContentItem.Content.VAppBar.Width.Value %}
+
+<v-app-bar app clipped-left
+  {{ Model.ContentItem.Content.VAppBar.Props.Values | join: ' ' | raw }}
+  {% if backgroundImage %}src="{{ backgroundImage }}"{% endif %}
+  {% if color %}color="{{ color }}"{% endif %}
+  {% if extensionHeight %}extension-height="{{ extensionHeight }}"{% endif %}
+  {% if scrollThreshold %}scroll-threshold="{{ scrollThreshold }}"{% endif %}
+  {% if height %}height="{{ height }}"{% endif %}
+  {% if width %}width="{{ width }}"{% endif %}>
+  <v-app-bar-nav-icon class="hidden-lg-and-up" @click="drawer = !drawer"></v-app-bar-nav-icon>
+  {% if Site.Properties.VuetifyThemeSettings.VuetifyThemeSettings.Logo.Paths.first %}
+    <v-img src="{{ Site.Properties.VuetifyThemeSettings.VuetifyThemeSettings.Logo.Paths.first | asset_url | resize_url: width:160, height:160 }}" max-height="32" max-width="32" alt="logo" class="mr-2"></v-img>
+  {% endif %}
+  {% if Site.Properties.VuetifyThemeSettings.VuetifyThemeSettings.DisplayName.Text %}
+    <v-toolbar-title>{{ Site.Properties.VuetifyThemeSettings.VuetifyThemeSettings.DisplayName.Text | shortcode }}</v-toolbar-title>
+  {% else %}
+    <v-toolbar-title>{{ Site.SiteName | shortcode }}</v-toolbar-title>
+  {% endif %}
+  <v-spacer></v-spacer>
+  {{ "UserMenu" | shape_new | shape_render }}
+  {{ "ContentCulturePicker" | shape_new | shape_render }}
+</v-app-bar>
