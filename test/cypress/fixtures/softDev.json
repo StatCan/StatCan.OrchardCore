@@ -1,0 +1,32 @@
+{
+    "id": "softDev",
+    "name": "Sasha",
+    "archetype": "Software Developer",
+    "quote": "\"I am a software developer powder lemon drops gummi bears fruitcake candy canes.\"",
+    "jobSummary": "I spend the majority of my time focused on completing planned development tasks, with roughly 30-40% of time taken by meetings, planning for the next sprint, and fixing bugs or customer requests as they arise. I work off of JIRA tickets and have a regular stand-up with my team.",
+    "alternativeJobTitles": [
+        "Software Engineer",
+        "Application Developer",
+        "Digital Solutions Developer",
+        "Consultant",
+        "Database Developer",
+        "Mobile Developer"
+    ],
+    "tools": [
+        "Calendar",
+        "Slack"
+    ],
+    "jtbd": ["Not specified"],
+    "motivations": [
+        "When I’m planning work, I want to have better communication between stakeholders, so I can deliver something they really need and use.",
+        "When I’m on-call, I want to be the expert on some part of the system, so I know that I’m a valuable part of the team.",
+        "When collaborating with a large number of developers, I want to see a record of everyone’s changes, so we can pinpoint and unwind mistakes.",
+        "When I’m pairing with my teammates, I want to learn new tools and skills, so I can keep growing in my career."
+    ],
+    "frustrations": [
+        "I’m frustrated when requirements change after work has already begun on a project.",
+        "I’m frustrated when work is inaccurately scoped, because it causes stress and eats into time planned for other work.",
+        "I’m frustrated when I come across brittle code and something that should be an easy fix requires a lot of rework.",
+        "I’m concerned that by taking longer than expected on a task I may be judged or seen as blocking others’ work."
+    ]
+}

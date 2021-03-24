@@ -4,7 +4,7 @@
 {% style name:"styles", src:"https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css", rel:"stylesheet" %}
 
 {% capture data %}
-{{Model.ContentItem.Content.Persona.Data.Text | raw}}
+    {{Model.ContentItem.Content.Persona.Data.Text | raw}}
 {% endcapture %}
 
 {% assign json = data | jsonparse %}
@@ -15,15 +15,25 @@
 <div class="max-w-7xl flex items-center justify-center flex-wrap mx-auto md:pt-10 ">
    
     <!-- webView -->
+    {% if photo != undefined %}
     <img class="w-80 h-96 object-cover lg:rounded-lg hidden lg:block"  src={{ photo | asset_url | resize_url: width:320, height:384, mode:'crop', anchor:anchor }}  />
+    {% else %}
+    <svg class="w-80 h-96 object-cover lg:rounded-lg hidden lg:block t p-4" style="width:20%;  background-color:WhiteSmoke" viewBox="0 0 448 512">
+        <path d="M313.6 304c-28.7 0-42.5 16-89.6 16-47.1 0-60.8-16-89.6-16C60.2 304 0 364.2 0 438.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-25.6c0-74.2-60.2-134.4-134.4-134.4zM400 464H48v-25.6c0-47.6 38.8-86.4 86.4-86.4 14.6 0 38.3 16 89.6 16 51.7 0 74.9-16 89.6-16 47.6 0 86.4 38.8 86.4 86.4V464zM224 288c79.5 0 144-64.5 144-144S303.5 0 224 0 80 64.5 80 144s64.5 144 144 144zm0-240c52.9 0 96 43.1 96 96s-43.1 96-96 96-96-43.1-96-96 43.1-96 96-96z"></path>
+    {% endif %}
 
 	<!--Info window-->
 	<div class="w-2/5 sm:w-3/5 md:h-full lg:h-80 lg:rounded-r-lg lg:rounded-l-none shadow-2xl lg:mx-0 space-y-1 lg:overflow-y-auto ">
 		<div class="md:p-2 text-left shadow-2xl space-y-1">
 
 			<!-- mobileView  -->
-			<img class="object-cover block lg:hidden rounded-full mx-auto -mt-16 h-48 w-48 shadow-2xl " src={{ photo | asset_url | resize_url: width:192, height:192, mode:'crop', anchor:anchor }} />
-			
+            {% if photo != undefined %}
+			<img class="object-cover block lg:hidden rounded-full mx-auto -mt-16 h-48 w-48 shadow-2xl" src={{ photo | asset_url | resize_url: width:192, height:192, mode:'crop', anchor:anchor }} />
+			{% else %}
+            <svg class="object-cover block lg:hidden rounded-full mx-auto -mt-16 h-48 w-48 shadow-2xl fill-current"  style="background-color:WhiteSmoke" viewBox="0 0 448 512">
+                <path d="M313.6 304c-28.7 0-42.5 16-89.6 16-47.1 0-60.8-16-89.6-16C60.2 304 0 364.2 0 438.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-25.6c0-74.2-60.2-134.4-134.4-134.4zM400 464H48v-25.6c0-47.6 38.8-86.4 86.4-86.4 14.6 0 38.3 16 89.6 16 51.7 0 74.9-16 89.6-16 47.6 0 86.4 38.8 86.4 86.4V464zM224 288c79.5 0 144-64.5 144-144S303.5 0 224 0 80 64.5 80 144s64.5 144 144 144zm0-240c52.9 0 96 43.1 96 96s-43.1 96-96 96-96-43.1-96-96 43.1-96 96-96z"></path>
+            {% endif %}
+
 			<h1 class="text-3xl font-bold md:pt-4 lg:mb-0 lg:pt-2 px-1"> {{json.name}} </h1>
            
             <!-- line -->

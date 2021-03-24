@@ -35,6 +35,7 @@ namespace StatCan.OrchardCore.Persona
                 .WithField("Data", field => field
                     .OfType("TextField")
                     .WithDisplayName("Data")
+                    .WithEditor("CodeMirror")
                     .WithPosition("0")
                     .WithSettings(new TextFieldSettings
                     {
@@ -49,7 +50,7 @@ namespace StatCan.OrchardCore.Persona
                     .WithSettings(new MediaFieldSettings
                     {
                         Hint = "Select the photo to use for the persona.",
-                        Required = true,
+                        Required = false,
                         Multiple = false,
                         AllowMediaText = false,
                         AllowAnchors = true,
