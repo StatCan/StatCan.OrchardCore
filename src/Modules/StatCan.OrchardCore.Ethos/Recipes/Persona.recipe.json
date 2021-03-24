@@ -1,0 +1,95 @@
+{
+    "name": "Persona",
+    "displayName": "Persona",
+    "description": "Creates a Persona tool.",
+    "author": "StatCan Digital Innovation",
+    "website": "digital.statcan.gc.ca",
+    "version": "1.0.0",
+    "issetuprecipe": false,
+    "categories": [],
+    "tags": [], 
+    "steps": [
+      {
+        "name": "ContentDefinition",
+        "ContentTypes": [
+          {
+            "Name": "Persona",
+            "DisplayName": "Persona",
+            "Settings": {
+              "ContentTypeSettings": {
+                "Creatable": true,
+                "Listable": true,
+                "Stereotype": "Widget"
+              },
+              "FullTextAspectSettings": {}
+            },
+            "ContentTypePartDefinitionRecords": [
+              {
+                "PartName": "Persona",
+                "Name": "Persona",
+                "Settings": {
+                  "ContentTypePartSettings": {
+                    "Position": "0"
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "ContentParts": [
+          {
+            "Name": "Persona",
+            "Settings": {},
+            "ContentPartFieldDefinitionRecords": [
+              {
+                "FieldName": "TextField",
+                "Name": "Data",
+                "Settings": {
+                  "ContentPartFieldSettings": {
+                    "DisplayName": "Data",
+                    "Editor": "CodeMirror",
+                    "Position": "0"
+                  },
+                  "TextFieldSettings": {
+                    "Hint": "Enter JSON for Persona here.",
+                    "Required": true
+                  }
+                }
+              },
+              {
+                "FieldName": "MediaField",
+                "Name": "PhotoPicker",
+                "Settings": {
+                  "ContentPartFieldSettings": {
+                    "DisplayName": "PhotoPicker",
+                    "Position": "2"
+                  },
+                  "MediaFieldSettings": {
+                    "Hint": "Select the photo to use for the persona.",
+                    "Multiple": false,
+                    "AllowMediaText": false,
+                    "AllowAnchors": true
+                  }
+                }
+              },
+              {
+                "FieldName": "TextField",
+                "Name": "Colour",
+                "Settings": {
+                  "ContentPartFieldSettings": {
+                    "DisplayName": "Colour",
+                    "Editor": "Color",
+                    "Position": "1"
+                  },
+                  "TextFieldSettings": {
+                    "Hint": "Choose the colour that matches the site's theme.",
+                    "Required": true
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
