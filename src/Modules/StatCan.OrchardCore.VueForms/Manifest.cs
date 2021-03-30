@@ -23,7 +23,8 @@ using StatCan.OrchardCore.VueForms;
         "OrchardCore.Flows",
         "OrchardCore.Liquid",
         "StatCan.OrchardCore.Scripting",
-        "StatCan.OrchardCore.ContentFields"
+        "StatCan.OrchardCore.ContentFields",
+        "StatCan.OrchardCore.ContentPermissions"
     }
 )]
 
