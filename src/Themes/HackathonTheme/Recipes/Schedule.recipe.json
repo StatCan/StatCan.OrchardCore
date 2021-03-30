@@ -1,0 +1,378 @@
+{
+  "name": "hackathon-schedule",
+  "displayName": "Schedule Page",
+  "description": "Creates a page with the schedule widget",
+  "author": "StatCan Digital Innovation",
+  "website": "digital.statcan.gc.ca",
+  "version": "1.0.0",
+  "issetuprecipe": false,
+  "categories": [],
+  "tags": [],
+  "steps": [
+    {
+      "name": "Content",
+      "data": [
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentItemVersionId": "46s8d03xzgenx7wnycyfn1kbme",
+          "ContentType": "Page",
+          "DisplayText": "Schedule",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": "2021-03-26T17:49:09.1401657Z",
+          "PublishedUtc": "2021-03-26T17:49:09.1978852Z",
+          "CreatedUtc": "2021-03-26T15:10:32.5801335Z",
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "LocalizationPart": {
+            "LocalizationSet": "4v30rj01dq9qaz09mp3b016jwh",
+            "Culture": "en"
+          },
+          "TitlePart": {
+            "Title": "Schedule"
+          },
+          "AutoroutePart": {
+            "Path": "Schedule",
+            "SetHomepage": false,
+            "Disabled": false,
+            "RouteContainedItems": false,
+            "Absolute": false
+          },
+          "FlowPart": {
+            "Widgets": [
+              {
+                "ContentItemId": "[js: uuid()]",
+                "ContentItemVersionId": null,
+                "ContentType": "ScheduleList",
+                "DisplayText": "Day 1",
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": "2021-03-26T17:49:09.1524259Z",
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": "[js: parameters('AdminUserId')]",
+                "Author": "[js: parameters('AdminUsername')]",
+                "ScheduleList": {},
+                "TitlePart": {
+                  "Title": "Day 1"
+                },
+                "FlowPart": {
+                  "Widgets": [
+                    {
+                      "ContentItemId": "4g09w6x6hgk2qxe3nkt6zwf6cd",
+                      "ContentItemVersionId": null,
+                      "ContentType": "ScheduleEvent",
+                      "DisplayText": "Registration",
+                      "Latest": false,
+                      "Published": false,
+                      "ModifiedUtc": "2021-03-26T17:49:09.1553331Z",
+                      "PublishedUtc": null,
+                      "CreatedUtc": null,
+                      "Owner": "",
+                      "Author": "admin",
+                      "TitlePart": {
+                        "Title": "Registration"
+                      },
+                      "ScheduleEvent": {
+                        "Time": {
+                          "Text": "8:00 - 10:00"
+                        },
+                        "Location": {
+                          "Text": "Main hall"
+                        }
+                      },
+                      "MarkdownBodyPart": {
+                        "Markdown": "Please bring your registration ID."
+                      },
+                      "FlowMetadata": {
+                        "Alignment": 3,
+                        "Size": 100
+                      }
+                    },
+                    {
+                      "ContentItemId": "4ttb9tr7mavkhv9vp4tvkcsrcf",
+                      "ContentItemVersionId": null,
+                      "ContentType": "ScheduleEvent",
+                      "DisplayText": "Partner Expo and Workshops",
+                      "Latest": false,
+                      "Published": false,
+                      "ModifiedUtc": "2021-03-26T17:49:09.1593574Z",
+                      "PublishedUtc": null,
+                      "CreatedUtc": null,
+                      "Owner": "",
+                      "Author": "admin",
+                      "TitlePart": {
+                        "Title": "Partner Expo and Workshops"
+                      },
+                      "ScheduleEvent": {
+                        "Time": {
+                          "Text": "10:00 - 10:45"
+                        },
+                        "Location": {
+                          "Text": "Conference hall 3A"
+                        }
+                      },
+                      "MarkdownBodyPart": {
+                        "Markdown": "Take the opportunity to learn and network with the partners of the event."
+                      },
+                      "FlowMetadata": {
+                        "Alignment": 3,
+                        "Size": 100
+                      }
+                    },
+                    {
+                      "ContentItemId": "4w7redzgtwnrg4nd586b879fxx",
+                      "ContentItemVersionId": null,
+                      "ContentType": "ScheduleEvent",
+                      "DisplayText": "Opening Ceremony",
+                      "Latest": false,
+                      "Published": false,
+                      "ModifiedUtc": "2021-03-26T17:49:09.1633225Z",
+                      "PublishedUtc": null,
+                      "CreatedUtc": null,
+                      "Owner": "",
+                      "Author": "admin",
+                      "TitlePart": {
+                        "Title": "Opening Ceremony"
+                      },
+                      "ScheduleEvent": {
+                        "Time": {
+                          "Text": "11:00 - 11:30"
+                        },
+                        "Location": {
+                          "Text": "Conference Hall 2A"
+                        }
+                      },
+                      "MarkdownBodyPart": {
+                        "Markdown": "The event begins! Seating for the opening ceremony will be first come, first served. There will be a LIVE STREAM of the opening ceremony available [HERE](https://www.youtube.com/watch?v=dQw4w9WgXcQ)."
+                      },
+                      "FlowMetadata": {
+                        "Alignment": 3,
+                        "Size": 100
+                      }
+                    },
+                    {
+                      "ContentItemId": "46anrgjc7a8re5z5ana1akmqw9",
+                      "ContentItemVersionId": null,
+                      "ContentType": "ScheduleEvent",
+                      "DisplayText": "Lunch",
+                      "Latest": false,
+                      "Published": false,
+                      "ModifiedUtc": "2021-03-26T17:49:09.166941Z",
+                      "PublishedUtc": null,
+                      "CreatedUtc": null,
+                      "Owner": "",
+                      "Author": "admin",
+                      "TitlePart": {
+                        "Title": "Lunch"
+                      },
+                      "ScheduleEvent": {
+                        "Time": {
+                          "Text": "11:30 - 1:30"
+                        },
+                        "Location": {
+                          "Text": "Dining Hall"
+                        }
+                      },
+                      "MarkdownBodyPart": {
+                        "Markdown": "Please bring your meal voucher for a free meal."
+                      },
+                      "FlowMetadata": {
+                        "Alignment": 3,
+                        "Size": 100
+                      }
+                    },
+                    {
+                      "ContentItemId": "42qzz4a9c0xt640s1w002eec48",
+                      "ContentItemVersionId": null,
+                      "ContentType": "ScheduleEvent",
+                      "DisplayText": "To Your Keyboards!",
+                      "Latest": false,
+                      "Published": false,
+                      "ModifiedUtc": "2021-03-26T17:49:09.1706309Z",
+                      "PublishedUtc": null,
+                      "CreatedUtc": null,
+                      "Owner": null,
+                      "Author": "admin",
+                      "TitlePart": {
+                        "Title": "To Your Keyboards!"
+                      },
+                      "ScheduleEvent": {
+                        "Time": {
+                          "Text": "1:00 - 7:00"
+                        },
+                        "Location": {
+                          "Text": "Conference Hall 1A, 1B, 1C, 1D"
+                        }
+                      },
+                      "MarkdownBodyPart": {
+                        "Markdown": "Everyone to your keyboards and start working on your OrchardCore application! The best and most innovative application will win."
+                      },
+                      "FlowMetadata": {
+                        "Alignment": 3,
+                        "Size": 100
+                      }
+                    },
+                    {
+                      "ContentItemId": "46ct5kngr28ek2gwh12nv9wfd2",
+                      "ContentItemVersionId": null,
+                      "ContentType": "ScheduleEvent",
+                      "DisplayText": "Dinner",
+                      "Latest": false,
+                      "Published": false,
+                      "ModifiedUtc": "2021-03-26T17:49:09.1747203Z",
+                      "PublishedUtc": null,
+                      "CreatedUtc": null,
+                      "Owner": null,
+                      "Author": "admin",
+                      "TitlePart": {
+                        "Title": "Dinner"
+                      },
+                      "ScheduleEvent": {
+                        "Time": {
+                          "Text": "5:00 - 7:00"
+                        },
+                        "Location": {
+                          "Text": "Dinning Hall"
+                        }
+                      },
+                      "MarkdownBodyPart": {
+                        "Markdown": "Please bring your meal voucher for a free meal."
+                      },
+                      "FlowMetadata": {
+                        "Alignment": 3,
+                        "Size": 100
+                      }
+                    }
+                  ]
+                },
+                "FlowMetadata": {
+                  "Alignment": 3,
+                  "Size": 100
+                }
+              },
+              {
+                "ContentItemId": "485gjbb1y6h6trac9nw69cn8df",
+                "ContentItemVersionId": null,
+                "ContentType": "ScheduleList",
+                "DisplayText": "Day 2",
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": "2021-03-26T17:49:09.1801576Z",
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": null,
+                "Author": "admin",
+                "ScheduleList": {},
+                "TitlePart": {
+                  "Title": "Day 2"
+                },
+                "FlowPart": {
+                  "Widgets": [
+                    {
+                      "ContentItemId": "4abf2xx7nt4dz2xj7q6has3kxn",
+                      "ContentItemVersionId": null,
+                      "ContentType": "ScheduleEvent",
+                      "DisplayText": "Judging - Round 1",
+                      "Latest": false,
+                      "Published": false,
+                      "ModifiedUtc": "2021-03-26T17:49:09.1818781Z",
+                      "PublishedUtc": null,
+                      "CreatedUtc": null,
+                      "Owner": null,
+                      "Author": "admin",
+                      "TitlePart": {
+                        "Title": "Judging - Round 1"
+                      },
+                      "ScheduleEvent": {
+                        "Time": {
+                          "Text": "9:00 - 10:00"
+                        },
+                        "Location": {
+                          "Text": "Conference Hall 2B"
+                        }
+                      },
+                      "MarkdownBodyPart": {
+                        "Markdown": "Each team will present their application in a 3-minute pitch. The best application for each categories will be selected to move onto the second round of judging."
+                      },
+                      "FlowMetadata": {
+                        "Alignment": 3,
+                        "Size": 100
+                      }
+                    },
+                    {
+                      "ContentItemId": "4r1dt4fyzy74pxr07hcz0z2rx7",
+                      "ContentItemVersionId": null,
+                      "ContentType": "ScheduleEvent",
+                      "DisplayText": "Judging - Round 2",
+                      "Latest": false,
+                      "Published": false,
+                      "ModifiedUtc": "2021-03-26T17:49:09.1857173Z",
+                      "PublishedUtc": null,
+                      "CreatedUtc": null,
+                      "Owner": null,
+                      "Author": "admin",
+                      "TitlePart": {
+                        "Title": "Judging - Round 2"
+                      },
+                      "ScheduleEvent": {
+                        "Time": {
+                          "Text": "11:00 - 12:00"
+                        },
+                        "Location": {
+                          "Text": "Conference Hall 2B"
+                        }
+                      },
+                      "MarkdownBodyPart": {
+                        "Markdown": "Each team will present their application in a 5-minute pitch, no questions allowed. The top 5 applications will be selected as the winners!"
+                      },
+                      "FlowMetadata": {
+                        "Alignment": 3,
+                        "Size": 100
+                      }
+                    },
+                    {
+                      "ContentItemId": "4brxeem9jfede3kraas87sd35z",
+                      "ContentItemVersionId": null,
+                      "ContentType": "ScheduleEvent",
+                      "DisplayText": "Closing Ceremony",
+                      "Latest": false,
+                      "Published": false,
+                      "ModifiedUtc": "2021-03-26T17:49:09.1895803Z",
+                      "PublishedUtc": null,
+                      "CreatedUtc": null,
+                      "Owner": null,
+                      "Author": "admin",
+                      "TitlePart": {
+                        "Title": "Closing Ceremony"
+                      },
+                      "ScheduleEvent": {
+                        "Time": {
+                          "Text": "12:00 - 1:00"
+                        },
+                        "Location": {
+                          "Text": "Main Hall"
+                        }
+                      },
+                      "MarkdownBodyPart": {
+                        "Markdown": "Congratulations to all the winners! Make sure to stop by to get some orange slices. Amazing work everyone!"
+                      },
+                      "FlowMetadata": {
+                        "Alignment": 3,
+                        "Size": 100
+                      }
+                    }
+                  ]
+                },
+                "FlowMetadata": {
+                  "Alignment": 3,
+                  "Size": 100
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
