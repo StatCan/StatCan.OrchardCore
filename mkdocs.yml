@@ -66,6 +66,7 @@ nav:
         - Modules:
              - ContentFields: reference/modules/ContentFields.md
              - DisplayHelpers: reference/modules/DisplayHelpers.md
+             - EmailTemplates: reference/modules/EmailTemplates.md
              - GCCollab: reference/modules/GCCollab.md
              - GitHub: reference/modules/GitHub.md
              - LocalizedText: reference/modules/LocalizedText.md
