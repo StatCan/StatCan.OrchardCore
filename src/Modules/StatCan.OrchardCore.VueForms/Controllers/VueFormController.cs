@@ -19,6 +19,7 @@ using StatCan.OrchardCore.Extensions;
 using StatCan.OrchardCore.VueForms.Scripting;
 using System.Linq;
 using OrchardCore.Workflows.Http;
+using Etch.OrchardCore.ContentPermissions.Services;
 
 namespace StatCan.OrchardCore.VueForms.Controllers
 {
@@ -33,6 +34,7 @@ namespace StatCan.OrchardCore.VueForms.Controllers
         private readonly ILiquidTemplateManager _liquidTemplateManager;
         private readonly HtmlEncoder _htmlEncoder;
         private readonly IShortcodeService _shortcodeService;
+        private readonly IContentPermissionsService _contentPermissionsService;
         private readonly IWorkflowManager _workflowManager;
 
         public VueFormController(
@@ -45,6 +47,7 @@ namespace StatCan.OrchardCore.VueForms.Controllers
             ILiquidTemplateManager liquidTemplateManager,
             HtmlEncoder htmlEncoder,
             IShortcodeService shortcodeService,
+            IContentPermissionsService contentPermissionsService,
             IWorkflowManager workflowManager = null
         )
         {
@@ -57,6 +60,7 @@ namespace StatCan.OrchardCore.VueForms.Controllers
             _liquidTemplateManager = liquidTemplateManager;
             _htmlEncoder = htmlEncoder;
             _shortcodeService = shortcodeService;
+            _contentPermissionsService = contentPermissionsService;
             _workflowManager = workflowManager;
         }
 
@@ -77,6 +81,12 @@ namespace StatCan.OrchardCore.VueForms.Controllers
             if (!formPart.Enabled.Value)
             {
                 return NotFound();
+            }
+
+            if (!_contentPermissionsService.CanAccess(form))
+            {
+                ModelState.AddModelError("Unauthorized", "You are unauthorized to view this form");
+                return Json(new { validationError = true, errors = GetErrorDictionary() });
             }
 
             var scriptingProvider = new VueFormMethodsProvider(form);
