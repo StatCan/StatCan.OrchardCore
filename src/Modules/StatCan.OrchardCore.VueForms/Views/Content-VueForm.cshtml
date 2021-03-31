@@ -12,7 +12,7 @@
 
 @if (!ContentPermissionsService.CanAccess(Model.ContentItem))
 {
-  @await DisplayAsync("You are unauthorized to view this form")
+  @T["You are unauthorized to view this form"];
 }
 else if (formPart.Enabled?.Value == true)
 {  
