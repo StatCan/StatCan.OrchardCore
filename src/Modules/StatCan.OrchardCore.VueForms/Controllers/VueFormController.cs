@@ -36,7 +36,7 @@ namespace StatCan.OrchardCore.VueForms.Controllers
         private readonly HtmlEncoder _htmlEncoder;
         private readonly IShortcodeService _shortcodeService;
         private readonly IContentPermissionsService _contentPermissionsService;
-        private readonly IStringLocalizer T;
+        private readonly IStringLocalizer S;
         private readonly IWorkflowManager _workflowManager;
 
         public VueFormController(
@@ -64,7 +64,7 @@ namespace StatCan.OrchardCore.VueForms.Controllers
             _htmlEncoder = htmlEncoder;
             _shortcodeService = shortcodeService;
             _contentPermissionsService = contentPermissionsService;
-            T = stringLocalizer;
+            S = stringLocalizer;
             _workflowManager = workflowManager;
         }
 
@@ -89,7 +89,7 @@ namespace StatCan.OrchardCore.VueForms.Controllers
 
             if (!_contentPermissionsService.CanAccess(form))
             {
-                ModelState.AddModelError("Unauthorized", T["You are unauthorized to view this form"]);
+                ModelState.AddModelError("Unauthorized", S["You are unauthorized to view this form"]);
                 return Json(new { validationError = true, errors = GetErrorDictionary() });
             }
 
