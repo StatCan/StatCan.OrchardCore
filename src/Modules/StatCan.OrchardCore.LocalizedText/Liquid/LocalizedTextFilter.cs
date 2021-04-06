@@ -65,6 +65,9 @@ namespace StatCan.OrchardCore.LocalizedText.Liquid
                 }
                 value = string.Format(value, parameters);
             }
+            if(value == null){
+                value = string.Empty;
+            }
 
             return new ValueTask<FluidValue>(new StringValue(value, false));
 

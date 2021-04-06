@@ -11,6 +11,7 @@
     <PackageReference Include="OrchardCore.Abstractions" Version="$(OrchardCoreVersion)" />
     <PackageReference Include="OrchardCore.Infrastructure.Abstractions" Version="$(OrchardCoreVersion)" />
     <PackageReference Include="OrchardCore.ContentManagement" Version="$(OrchardCoreVersion)" />
+    <PackageReference Include="OrchardCore.Deployment.Abstractions" Version="$(OrchardCoreVersion)" />
     <PackageReference Include="OrchardCore.ContentLocalization.Abstractions" Version="$(OrchardCoreVersion)" />
     <PackageReference Include="OrchardCore.Users" Version="$(OrchardCoreVersion)" />
   </ItemGroup>

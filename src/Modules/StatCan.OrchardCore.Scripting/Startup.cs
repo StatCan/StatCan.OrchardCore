@@ -12,6 +12,7 @@ namespace StatCan.OrchardCore.Scripting
             services.AddSingleton<IGlobalMethodProvider, HttpGlobalMethodsProvider>();
         }
     }
+
     [RequireFeatures("OrchardCore.Contents")]
     public class ContentStartup : StartupBase
     {
@@ -20,6 +21,7 @@ namespace StatCan.OrchardCore.Scripting
             services.AddSingleton<IGlobalMethodProvider, ContentGlobalMethodsProvider>();
         }
     }
+
     [RequireFeatures("OrchardCore.ContentLocalization")]
     public class ContentLocalizationStartup : StartupBase
     {
@@ -28,12 +30,22 @@ namespace StatCan.OrchardCore.Scripting
             services.AddSingleton<IGlobalMethodProvider, LocalizationGlobalMethodsProvider>();
         }
     }
+
     [RequireFeatures("OrchardCore.Users")]
     public class UsersStartup : StartupBase
     {
         public override void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton<IGlobalMethodProvider, UserGlobalMethodsProvider>();
+        }
+    }
+
+    [RequireFeatures("OrchardCore.Deployment")]
+    public class RecipeStartup : StartupBase
+    {
+        public override void ConfigureServices(IServiceCollection services)
+        {
+            services.AddSingleton<IGlobalMethodProvider, RecipeGlobalMethodsProvider>();
         }
     }
 }
