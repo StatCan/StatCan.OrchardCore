@@ -1,4 +1,5 @@
-{% if User | is_in_role: "Judge" %}
+{% assign userInRole = User | is_in_role: "Judge"%}
+{% if userInRole %}
 
 {% if Site.Properties.HackathonCustomSettings.JudgingCustomSettings.JudgingInProgress.Value != true %}
     <h3>{{"No active Judging round" | t}}</h3>

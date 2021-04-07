@@ -1,6 +1,7 @@
-{% assign user = User | user_id | users_by_id %}
 
-{% if User | is_in_role: "Hacker" %}
+{% assign userInRole = User | is_in_role: "Hacker"%}
+{% if userInRole %}
+  {% assign user = User | user_id | users_by_id %}
   {% if Site.Properties.HackathonCustomSettings.TeamCustomSettings.TeamEditable.Value == true and user.Properties.Hacker.Hacker.Team.ContentItemIds | first == null %}
     {% assign teams = Queries.GetItemsForHackathon | query: type: "Team" %}
     <v-container>

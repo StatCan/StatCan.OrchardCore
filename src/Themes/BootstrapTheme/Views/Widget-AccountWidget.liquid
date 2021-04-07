@@ -1,12 +1,12 @@
 {% comment %}Check if the user is logged in before displaying.{% endcomment %}
-{%if User.Identity.Name != null%}
+{%if User.Name != null%}
 <div {%if Model.Id != null%}id="{{ Model.Id }}"{%endif%} class="{{ Model.Classes | join: " " | default: "ml-2" }}">
   <div class="d-flex">
     <div class="icon-col">
       <i class="fas fa-user"></i>
     </div>
     <div class="col mt-2">
-      <input id="account-name" type="text" name="account-name" class="form-control" placeholder="{{"Your username" | t}}" aria-label="{{"Username" | t}}" value="{{User.Identity.Name}}" disabled />
+      <input id="account-name" type="text" name="account-name" class="form-control" placeholder="{{"Your username" | t}}" aria-label="{{"Username" | t}}" value="{{User.Name}}" disabled />
     </div>
   </div>
   <div class="d-flex">
