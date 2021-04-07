@@ -68,7 +68,7 @@ function initForm(app) {
         observer.validate().then((valid) => {
           if (valid) {
             const action = vm.$refs.form.getAttribute("action");
-            let frmData = submitData();
+            let frmData = vm.submitData();
             frmData.__RequestVerificationToken = vm.$refs.form.querySelector('input[name="__RequestVerificationToken"]').value;
             if(typeof(grecaptcha) == 'object')
             {
