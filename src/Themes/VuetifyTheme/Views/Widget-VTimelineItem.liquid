@@ -4,8 +4,8 @@
 {% assign color = Model.ContentItem.Content.VTimelineItem.Color.Text %}
 
 <v-timeline-item {{ Model.ContentItem.Content.VTimeline.Props.Values | join: ' ' | raw }}
-  {% if color %}color="{{ color }}"{% endif %}
-  {% if icon %}icon="{{ icon }}"{% endif %}
-  {% if iconColor %}icon-color="{{ iconColor }}"{% endif %}>
+  {% if empty != color %}color="{{ color }}"{% endif %}
+  {% if empty != icon %}icon="{{ icon }}"{% endif %}
+  {% if empty != iconColor %}icon-color="{{ iconColor }}"{% endif %}>
   {{ Model.Content.FlowPart | shape_render }}
 </v-timeline-item>

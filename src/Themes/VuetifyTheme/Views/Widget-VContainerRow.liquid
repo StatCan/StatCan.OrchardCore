@@ -5,9 +5,7 @@
     {% for col in Model.ContentItem.Content.FlowPart.Widgets %}
       {% assign patternIndex = forloop.index | minus: 1 | modulo: patternLength %}
       <v-col cols="12" md="{{ pattern[patternIndex] }}">
-        {% for content in col.FlowPart.Widgets %}
-          {{ content | shape_build_display | shape_render }}
-        {% endfor %}
+        {{ Model.Content.FlowPart | shape_render }}
       </v-col>
     {% endfor %}
   </v-row>

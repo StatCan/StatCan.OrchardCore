@@ -15,8 +15,8 @@
   {% if mobileBreakpoint %}mobile-breakpoint="{{ mobileBreakpoint }}"{% endif %}
   {% if overlayColor %}overlay-color="{{ overlayColor }}"{% endif %}
   {% if overlayOpacity %}overlay-opacity="{{ overlayOpacity }}"{% endif %}
-  {% if height %}height="{{ height }}"{% endif %}
-  {% if width %}width="{{ width }}"{% endif %}
+  {% if empty == height %}height="100%"{% else %}height="{{ height }}"{% endif %}
+  {% if empty == width %}width="256"{% else %}width="{{ width }}"{% endif %}
 >
   {% assign drawerAlias = "alias:navigation-drawer-" | append: Culture.Name %}
   {% shape "menu", alias: drawerAlias, cache_id: drawerAlias, cache_fixed_duration: "00:00:01", cache_tag: menuAlias %}
