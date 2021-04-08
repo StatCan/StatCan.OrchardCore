@@ -12,7 +12,7 @@ namespace StatCan.OrchardCore.GitHub.Liquid
 {
     public class GetIssueCommentsFilter : ILiquidFilter
     {
-        public async ValueTask<FluidValue> ProcessAsync(FluidValue input, FilterArguments arguments, TemplateContext ctx)
+        public async ValueTask<FluidValue> ProcessAsync(FluidValue input, FilterArguments arguments, LiquidTemplateContext ctx)
         {
             if (!ctx.AmbientValues.TryGetValue("Services", out var services))
             {
@@ -39,11 +39,11 @@ namespace StatCan.OrchardCore.GitHub.Liquid
             try
             {
                 var client = await gitHubApiService.GetGitHubClient(tokenName);
-                return FluidValue.Create(await client.Issue.Comment.GetAllForIssue(owner, repo, parsedNumber));
+                return FluidValue.Create(await client.Issue.Comment.GetAllForIssue(owner, repo, parsedNumber), ctx.Options);
             }
             catch(Octokit.ApiException ex)
             {
-                return FluidValue.Create(ex.Message);
+                return FluidValue.Create(ex.Message, ctx.Options);
             }
         }
     }

@@ -25,7 +25,7 @@ public static class LiquidRazorHelperExtensions
         var liquidTemplateManager = orchardHelper.HttpContext.RequestServices.GetRequiredService<ILiquidTemplateManager>();
         var htmlEncoder = orchardHelper.HttpContext.RequestServices.GetRequiredService<HtmlEncoder>();
 
-        return liquidTemplateManager.RenderAsync(liquid, htmlEncoder, model);
+        return liquidTemplateManager.RenderStringAsync(liquid, htmlEncoder, model);
     }
 
     /// <summary>
@@ -49,7 +49,7 @@ public static class LiquidRazorHelperExtensions
         var htmlSanitizer= orchardHelper.HttpContext.RequestServices.GetRequiredService<IHtmlSanitizer>();
         var htmlEncoder = orchardHelper.HttpContext.RequestServices.GetRequiredService<HtmlEncoder>();
 
-        liquid = await liquidTemplateManager.RenderAsync(liquid, htmlEncoder, model);
+        liquid = await liquidTemplateManager.RenderStringAsync(liquid, htmlEncoder, model);
 
         return new HtmlString(htmlSanitizer.Sanitize(liquid));
     }
@@ -65,7 +65,7 @@ public static class LiquidRazorHelperExtensions
         var shortcodeService = orchardHelper.HttpContext.RequestServices.GetRequiredService<IShortcodeService>();
         var htmlEncoder = orchardHelper.HttpContext.RequestServices.GetRequiredService<HtmlEncoder>();
 
-        liquid = await liquidTemplateManager.RenderAsync(liquid, htmlEncoder, model);
+        liquid = await liquidTemplateManager.RenderStringAsync(liquid, htmlEncoder, model);
         liquid = await shortcodeService.ProcessAsync(liquid);
 
         return liquid;

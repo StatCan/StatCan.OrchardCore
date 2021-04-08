@@ -69,7 +69,7 @@ namespace StatCan.OrchardCore.Hackathon.Controllers
                 _notifier.Success(H["Successfully created team"]);
             }
 
-            await _session.CommitAsync();
+            await _session.SaveChangesAsync();
             return LocalRedirect(returnUrl);
         }
 
@@ -104,7 +104,7 @@ namespace StatCan.OrchardCore.Hackathon.Controllers
                 _notifier.Error(H["Team could not be found"]);
             }
 
-            await _session.CommitAsync();
+            await _session.SaveChangesAsync();
             return LocalRedirect(returnUrl);
         }
 
@@ -131,7 +131,7 @@ namespace StatCan.OrchardCore.Hackathon.Controllers
                 _notifier.Success(H["Successfully left team"]);
             }
 
-            await _session.CommitAsync();
+            await _session.SaveChangesAsync();
             return LocalRedirect(returnUrl);
         }
 
@@ -157,7 +157,7 @@ namespace StatCan.OrchardCore.Hackathon.Controllers
                 _notifier.Success(H["Member successfully removed from the team"]);
             }
 
-            await _session.CommitAsync();
+            await _session.SaveChangesAsync();
             return LocalRedirect(returnUrl);
         }
 
@@ -183,7 +183,7 @@ namespace StatCan.OrchardCore.Hackathon.Controllers
                 _notifier.Success(H["Team info successfully updated"]);
             }
 
-            await _session.CommitAsync();
+            await _session.SaveChangesAsync();
             return LocalRedirect(returnUrl);
         }
     }

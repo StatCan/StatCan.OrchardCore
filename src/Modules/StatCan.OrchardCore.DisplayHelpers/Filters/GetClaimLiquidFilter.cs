@@ -8,7 +8,7 @@ namespace StatCan.OrchardCore.DisplayHelpers.Filters
 {
     public class GetClaimLiquidFilter : ILiquidFilter
     {
-        public ValueTask<FluidValue> ProcessAsync(FluidValue input, FilterArguments arguments, TemplateContext context)
+        public ValueTask<FluidValue> ProcessAsync(FluidValue input, FilterArguments arguments, LiquidTemplateContext context)
         {
             var claimType = arguments["type"].Or(arguments.At(0)).ToStringValue();
 

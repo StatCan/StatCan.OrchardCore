@@ -8,7 +8,7 @@ namespace StatCan.OrchardCore.DisplayHelpers.Filters
 {
     public class ClonePropertiesFilter : ILiquidFilter
     {
-        public ValueTask<FluidValue> ProcessAsync(FluidValue input, FilterArguments arguments, TemplateContext ctx)
+        public ValueTask<FluidValue> ProcessAsync(FluidValue input, FilterArguments arguments, LiquidTemplateContext ctx)
         {
           if (input.ToObjectValue() is IShape inputShape && arguments.At(0).ToObjectValue() is IShape toClone)
           {
@@ -19,7 +19,7 @@ namespace StatCan.OrchardCore.DisplayHelpers.Filters
                 inputShape.Properties.Add(prop.Key, prop.Value);
               }
             }
-            return new ValueTask<FluidValue>(FluidValue.Create(inputShape));
+            return new ValueTask<FluidValue>(FluidValue.Create(inputShape, ctx.Options));
           }
           return new ValueTask<FluidValue>(input);
         }

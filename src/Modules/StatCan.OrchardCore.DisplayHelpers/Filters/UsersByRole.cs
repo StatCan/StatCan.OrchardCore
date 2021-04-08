@@ -16,7 +16,7 @@ namespace StatCan.OrchardCore.DisplayHelpers.Filters
 {
     public class UsersByRoleFilter : ILiquidFilter
     {
-        public async ValueTask<FluidValue> ProcessAsync(FluidValue input, FilterArguments arguments, TemplateContext ctx)
+        public async ValueTask<FluidValue> ProcessAsync(FluidValue input, FilterArguments arguments, LiquidTemplateContext ctx)
         {
             if (!ctx.AmbientValues.TryGetValue("Services", out var services))
             {
@@ -33,12 +33,12 @@ namespace StatCan.OrchardCore.DisplayHelpers.Filters
                  var query = session.Query<User>();
                  query.With<UserByRoleNameIndex>(x => x.RoleName.IsIn(userRoles));
 
-                return FluidValue.Create(await query.ListAsync());
+                return FluidValue.Create(await query.ListAsync(), ctx.Options);
             }
             else
             {
                 var normalizedRoleName = roleManager.NormalizeKey(input.ToStringValue());
-                return  FluidValue.Create(await session.Query<User, UserByRoleNameIndex>(u => u.RoleName == normalizedRoleName).ListAsync());
+                return  FluidValue.Create(await session.Query<User, UserByRoleNameIndex>(u => u.RoleName == normalizedRoleName).ListAsync(), ctx.Options);
             }
         }
     }

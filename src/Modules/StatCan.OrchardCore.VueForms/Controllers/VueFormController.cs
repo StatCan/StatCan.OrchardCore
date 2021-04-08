@@ -149,7 +149,7 @@ namespace StatCan.OrchardCore.VueForms.Controllers
                 // Let the HttpResponseTask control the response. This will fail on the client if it's anything other than json
                 return new EmptyResult();
             }
-            var formSuccessMessage = await _liquidTemplateManager.RenderAsync(formPart.SuccessMessage?.Text, _htmlEncoder);
+            var formSuccessMessage = await _liquidTemplateManager.RenderStringAsync(formPart.SuccessMessage?.Text, _htmlEncoder);
             formSuccessMessage = await _shortcodeService.ProcessAsync(formSuccessMessage);
             // everything worked fine. send the success signal to the client
             return Json(new { successMessage = formSuccessMessage, submitResult });
