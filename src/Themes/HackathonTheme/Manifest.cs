@@ -6,5 +6,5 @@ using static StatCan.OrchardCore.Manifest.StatCanManifestConstants;
     Author = DigitalInnovationTeam,
     Website = DigitalInnovationWebsite,
     Version = "1.0.",
-    Description = "Hackathon platform theme"
+    Description = "Hackathon platform theme (deprecated)"
 )]

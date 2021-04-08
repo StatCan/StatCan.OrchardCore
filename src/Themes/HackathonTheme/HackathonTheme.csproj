@@ -7,34 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="OrchardCore.ContentManagement" Version="$(OrchardCoreVersion)" />
-    <PackageReference Include="OrchardCore.ContentFields" Version="$(OrchardCoreVersion)" />
-    <PackageReference Include="OrchardCore.Users" Version="$(OrchardCoreVersion)" />
-    <PackageReference Include="OrchardCore.Admin" Version="$(OrchardCoreVersion)" />
-    <PackageReference Include="OrchardCore.Workflows" Version="$(OrchardCoreVersion)" />
+    <PackageReference Include="OrchardCore.Themes" Version="$(OrchardCoreVersion)" />
   </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="OrchardCore.Title" Version="$(OrchardCoreVersion)" />
-    <ProjectReference Include="..\..\Lib\StatCan.OrchardCore.Extensions\StatCan.OrchardCore.Extensions.csproj" />
-    <ProjectReference Include="..\..\Modules\StatCan.OrchardCore.ContentFields\StatCan.OrchardCore.ContentFields.csproj" />
-  </ItemGroup>
-
-<!-- For content Migrations -->
-  <ItemGroup>
-    <PackageReference Include="OrchardCore.Title" Version="$(OrchardCoreVersion)" />
-    <PackageReference Include="OrchardCore.Contents" Version="$(OrchardCoreVersion)" />
-    <PackageReference Include="OrchardCore.Autoroute" Version="$(OrchardCoreVersion)" />
-    <PackageReference Include="OrchardCore.Media" Version="$(OrchardCoreVersion)" />
-    <PackageReference Include="OrchardCore.Flows" Version="$(OrchardCoreVersion)" />
-  </ItemGroup>
 
   <ItemGroup>
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Remove="**\*.less;**\*.scss;" />
   </ItemGroup>
 
 </Project>
