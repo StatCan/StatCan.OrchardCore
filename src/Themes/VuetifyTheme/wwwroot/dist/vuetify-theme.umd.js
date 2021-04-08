@@ -4,9 +4,9 @@
 	else if(typeof define === 'function' && define.amd)
 		define([], factory);
 	else if(typeof exports === 'object')
-		exports["hackathon-theme"] = factory(require("vue"));
+		exports["vuetify-theme"] = factory(require("vue"));
 	else
-		root["hackathon-theme"] = factory(root["Vue"]);
+		root["vuetify-theme"] = factory(root["Vue"]);
 })((typeof self !== 'undefined' ? self : this), function(__WEBPACK_EXTERNAL_MODULE__8bbf__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
@@ -39409,4 +39409,4 @@ module.exports = global.Promise;
 
 /******/ });
 });
-//# sourceMappingURL=hackathon-theme.umd.js.map
+//# sourceMappingURL=vuetify-theme.umd.js.map
