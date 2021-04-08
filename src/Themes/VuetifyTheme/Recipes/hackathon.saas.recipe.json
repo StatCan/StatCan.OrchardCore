@@ -1,12 +1,12 @@
 {
-  "name": "hackathon-saas-setup",
-  "displayName": "Hackathon SaaS Setup",
-  "description": "Recipe used to enable the hackathon platform as a SaaS tenant",
+  "name": "vuetify-saas-setup",
+  "displayName": "Vuetify SaaS Setup",
+  "description": "Recipe used to enable the vuetify theme as a SaaS tenant",
   "author": "Digital Innovation Team",
   "website": "https://digital.statcan.gc.ca",
   "version": "1.0",
   "issetuprecipe": true,
-  "categories": ["hackathon"],
+  "categories": ["vuetify"],
   "tags": ["innovation", "inno"],
   "variables": {
     "homeEnContentItemId": "[js:uuid()]",
@@ -63,13 +63,13 @@
         "StatCan.OrchardCore.CommonTypes.SecurePage",
         "StatCan.OrchardCore.CommonTypes.Widgets",
         "DigitalAdmin",
-        "HackathonTheme"
+        "VuetifyTheme"
       ]
     },
     {
       "name": "themes",
       "admin": "DigitalAdmin",
-      "site": "HackathonTheme"
+      "site": "VuetifyTheme"
     },
     {
       "name": "Settings",
@@ -102,7 +102,7 @@
       "HackathonThemeSettings": {
         "ContentItemId": "4mr4fnywbahq828he58a35mrxn",
         "ContentItemVersionId": null,
-        "ContentType": "HackathonThemeSettings",
+        "ContentType": "VuetifyThemeSettings",
         "DisplayText": "",
         "Latest": false,
         "Published": false,
@@ -113,7 +113,7 @@
         "Author": "[js: parameters('AdminUsername')]",
         "HackathonThemeSettings": {
           "DisplayName": {
-            "Text": " [locale en]Challenge Platform[/locale][locale fr]Plateforme de défi[/locale]"
+            "Text": " [locale en]Vuetify theme[/locale][locale fr]Thème vuetify[/locale]"
           },
           "Logo": {
             "Paths": [],
