@@ -1,6 +1,7 @@
 {% assign challenges = Queries.GetItemsForHackathon | query: type: "Challenge" %}
 {% assign teamMembers = Queries.GetHackersForTeam | query: teamContentItemId: Model.ContentItem.ContentItemId %}
 {% assign challengeSelected =  Model.ContentItem.Content.Team.Challenge.ContentItemIds | content_item_id %}
+{% assign userId = User | user_id %}
 
 {% capture challengeObjects %}
 [
@@ -33,7 +34,7 @@ Vue.component("team-component", {
 {% endblock %}
 
 {% block "script", type:"text/html", At: "Foot", id: "TeamComponent" %}
-  {% if Model.ContentItem.Content.Team.TeamCaptain.UserIds.first == User | user_id and Site.Properties.HackathonCustomSettings.TeamCustomSettings.TeamEditable.Value == true %}
+  {% if Model.ContentItem.Content.Team.TeamCaptain.UserIds.first == userId and Site.Properties.HackathonCustomSettings.TeamCustomSettings.TeamEditable.Value == true %}
     <v-container fluid>
       <form method="post" action="{{ "~/team/save" | href }}">
         <v-row justify="center">

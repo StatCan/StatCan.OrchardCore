@@ -1,7 +1,7 @@
 <section {%if Model.Id != null%}id="{{ Model.Id }}"{%endif%} class="{{ Model.Classes | join: " " }}">
     <div class="container text-center">
         <h2>{{ Model.ContentItem | display_text }}</h2>
-        {% if Model.ContentItem.Content.ContentPickerSection.Subtitle !=null %}
+        {% if Model.ContentItem.Content.ContentPickerSection.Subtitle != null %}
             <p>{{ Model.ContentItem.Content.ContentPickerSection.Subtitle.Text }}</p>
         {% endif %}
         {% assign contentItems = Model.ContentItem.Content.ContentPickerSection.ContentReference.ContentItemIds | content_item_id %}

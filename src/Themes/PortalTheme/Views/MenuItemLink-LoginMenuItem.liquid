@@ -1,4 +1,4 @@
-{% if User.Identity.IsAuthenticated %}
+{% if User.Name != null %}
     <a href="#" class="dropdown-item d-lg-none d-flex" data-toggle="modal" data-target="#profile-modal" >{{ "Account" | t }}</a>
     <a href="#" class="btn btn-primary is-circle d-lg-flex d-none" data-toggle="modal" data-target="#profile-modal" aria-label="{{ 'Account' | t }}" title="{{ 'Account' | t }}"><i class="fas fa-user"></i></a>
 {% else %}

@@ -9,7 +9,7 @@
   {% assign isTeamEditable = Site.Properties.HackathonCustomSettings.TeamCustomSettings.TeamEditable.Value == true %}
   {% assign challengeSelected =  team.ContentItem.Content.Team.Challenge.ContentItemIds | content_item_id | first %}
 
-  {% if user.Properties.Hacker.Hacker.Team.ContentItemIds | first != null %}
+  {% if user.Properties.Hacker.Hacker.Team.ContentItemIds.first != null %}
     <v-container>
       <v-row justify="center">
         <v-col cols="12" md="10">
