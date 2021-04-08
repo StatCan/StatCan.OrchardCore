@@ -10,7 +10,7 @@ describe("VueForm Tests", function() {
       tenant = generateTenantInfo("bootstrap-theme-setup", "VueForm tests")
       cy.newTenant(tenant);
       cy.login(tenant);
-      cy.enableFeature(tenant, "OrchardCore_Workflows_Http");
+      //cy.enableFeature(tenant, "OrchardCore_Workflows_Http");
       cy.uploadRecipeJson(tenant, "recipes/vue-form.json");
   })
 

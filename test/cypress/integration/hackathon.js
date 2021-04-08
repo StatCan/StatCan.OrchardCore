@@ -62,7 +62,6 @@ describe("Hackathon Tests", function() {
   })
 
   // Hacker Registration Form
-
   it("Hacker Registration: Requires login", function() {
     cy.visitContentPage(tenant, contentIdHackerRegistrationForm);
     cy.get("#main").contains("Please login before registering to this event");

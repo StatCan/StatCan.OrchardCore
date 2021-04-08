@@ -30,7 +30,7 @@
         </div>
       </div>
       <div class="modal-footer di-modal">
-        <input name="User" type="hidden" value="{{ User.Name }}" />
+        <input name="User" type="hidden" value="{{ User.Identity.Name }}" />
         <input name="Email" type="hidden" value="{{ User | get_claim: 'email' }}" />
         <input name="ReturnUrl" type="hidden" value="{{ '' | return_url }}" />
         {% antiforgerytoken %}
