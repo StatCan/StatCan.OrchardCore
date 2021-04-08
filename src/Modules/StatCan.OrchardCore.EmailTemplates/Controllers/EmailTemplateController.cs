@@ -86,7 +86,7 @@ namespace StatCan.OrchardCore.EmailTemplates.Controllers
 
             if (!string.IsNullOrWhiteSpace(options.Search))
             {
-                templates = templates.Where(x => x.Value.Name.ToLower().Contains(options.Search.ToLower())).ToList();
+                templates = templates.Where(x => x.Value.Name.Contains(options.Search, StringComparison.OrdinalIgnoreCase)).ToList();
             }
 
             var count = templates.Count;
@@ -385,7 +385,7 @@ namespace StatCan.OrchardCore.EmailTemplates.Controllers
             }
 
             return View(model);
-        }   
+        }
 
         private IActionResult RedirectToReturnUrlOrIndex(string returnUrl)
         {

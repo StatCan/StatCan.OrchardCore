@@ -64,9 +64,9 @@ namespace StatCan.OrchardCore.EmailTemplates.Services
         {
             if (!string.IsNullOrWhiteSpace(liquid))
             {
-                return _liquidTemplateManager.RenderAsync(liquid, _htmlEncoder, model, null);
+                return _liquidTemplateManager.RenderStringAsync(liquid, _htmlEncoder, model, null);
             }
             return Task.FromResult(liquid);
         }
-    }   
+    }
 }

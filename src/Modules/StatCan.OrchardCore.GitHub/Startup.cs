@@ -40,20 +40,7 @@ namespace StatCan.OrchardCore.GitHub
     {
         static LiquidStartup()
         {
-            // allow liquid to access the properties of these objects
-            TemplateContext.GlobalMemberAccessStrategy.Register<GitReference>();
-            TemplateContext.GlobalMemberAccessStrategy.Register<PullRequest>();
-            TemplateContext.GlobalMemberAccessStrategy.Register<PullRequestReviewComment>();
-            TemplateContext.GlobalMemberAccessStrategy.Register<Reference>();
-            TemplateContext.GlobalMemberAccessStrategy.Register<TagObject>();
-            TemplateContext.GlobalMemberAccessStrategy.Register<RepositoryContentChangeSet>();
-            TemplateContext.GlobalMemberAccessStrategy.Register<RepositoryContentInfo>();
-            TemplateContext.GlobalMemberAccessStrategy.Register<Commit>();
-            TemplateContext.GlobalMemberAccessStrategy.Register<Committer>();
-            TemplateContext.GlobalMemberAccessStrategy.Register<ErrorResult>();
-            TemplateContext.GlobalMemberAccessStrategy.Register<Issue>();
-            TemplateContext.GlobalMemberAccessStrategy.Register<IssueComment>();
-            TemplateContext.GlobalMemberAccessStrategy.Register<Label>();
+
         }
 
         public override void ConfigureServices(IServiceCollection services)
@@ -62,6 +49,24 @@ namespace StatCan.OrchardCore.GitHub
             services.AddLiquidFilter<GetIssueCommentsFilter>("github_comments");
             services.AddLiquidFilter<GetPullRequestFilter>("github_pr");
             services.AddLiquidFilter<GetPullRequestCommentsFilter>("github_pr_reviewcomments");
+
+            services.Configure<TemplateOptions>(o =>
+            {
+                // allow liquid to access the properties of these objects
+                o.MemberAccessStrategy.Register<GitReference>();
+                o.MemberAccessStrategy.Register<PullRequest>();
+                o.MemberAccessStrategy.Register<PullRequestReviewComment>();
+                o.MemberAccessStrategy.Register<Reference>();
+                o.MemberAccessStrategy.Register<TagObject>();
+                o.MemberAccessStrategy.Register<RepositoryContentChangeSet>();
+                o.MemberAccessStrategy.Register<RepositoryContentInfo>();
+                o.MemberAccessStrategy.Register<Commit>();
+                o.MemberAccessStrategy.Register<Committer>();
+                o.MemberAccessStrategy.Register<ErrorResult>();
+                o.MemberAccessStrategy.Register<Issue>();
+                o.MemberAccessStrategy.Register<IssueComment>();
+                o.MemberAccessStrategy.Register<Label>();
+            });
         }
     }
 }

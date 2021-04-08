@@ -1,5 +1,6 @@
 {% assign list_direction = Model.ContentItem.Content.SectionPanel.ListDirection.Text %}
-{% if Model.ContentItem | user_can_view %}
+{% assign canView = Model.ContentItem | user_can_view%}
+{% if canView %}
 <article id="{{ Model.ContentItem | display_text | slugify }}" class="{% if Model.ContentItem.Content.SectionPanel.Size.Text %}{{ Model.ContentItem.Content.SectionPanel.Size.Text }}{% else %}column{% endif %} my-3 d-flex flex-column flex-fill">
   <div class="section-panel">
     <header class="d-flex flex-column justify-content-center text-center mb-5">

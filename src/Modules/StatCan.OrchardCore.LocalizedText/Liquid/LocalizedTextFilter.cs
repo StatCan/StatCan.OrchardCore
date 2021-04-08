@@ -17,7 +17,7 @@ namespace StatCan.OrchardCore.LocalizedText.Liquid
         {
             _accessor = accessor;
         }
-        public ValueTask<FluidValue> ProcessAsync(FluidValue input, FilterArguments arguments, TemplateContext context)
+        public ValueTask<FluidValue> ProcessAsync(FluidValue input, FilterArguments arguments, LiquidTemplateContext context)
         {
             int paramFirstIndex = 0;
             var culture = context.CultureInfo.Name;

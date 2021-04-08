@@ -14,11 +14,6 @@ namespace StatCan.OrchardCore.ContentFields.MultiValueTextField
     [Feature(Constants.Features.MultiValueTextField)]
     public class Startup : StartupBase
     {
-        static Startup()
-        {
-            TemplateContext.GlobalMemberAccessStrategy.Register<Fields.MultiValueTextField>();
-            TemplateContext.GlobalMemberAccessStrategy.Register<DisplayMultiValueTextFieldViewModel>();
-        }
         public override void ConfigureServices(IServiceCollection services)
         {
             services.AddContentField<Fields.MultiValueTextField>()
@@ -26,6 +21,11 @@ namespace StatCan.OrchardCore.ContentFields.MultiValueTextField
             services.AddScoped<IContentPartFieldDefinitionDisplayDriver, MultiValueTextFieldSettingsDriver>();
             services.AddScoped<IContentPartFieldDefinitionDisplayDriver, TextFieldHeaderDisplaySettingsDriver>();
             services.AddScoped<IContentPartFieldDefinitionDisplayDriver, MultiValueTextFieldEditorSettingsDriver>();
+            services.Configure<TemplateOptions>(o =>
+            {
+                o.MemberAccessStrategy.Register<Fields.MultiValueTextField>();
+                o.MemberAccessStrategy.Register<DisplayMultiValueTextFieldViewModel>();
+            });
         }
     }
 }

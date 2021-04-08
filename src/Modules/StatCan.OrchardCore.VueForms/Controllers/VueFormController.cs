@@ -19,6 +19,8 @@ using StatCan.OrchardCore.Extensions;
 using StatCan.OrchardCore.VueForms.Scripting;
 using System.Linq;
 using OrchardCore.Workflows.Http;
+using Etch.OrchardCore.ContentPermissions.Services;
+using Microsoft.Extensions.Localization;
 
 namespace StatCan.OrchardCore.VueForms.Controllers
 {
@@ -33,6 +35,8 @@ namespace StatCan.OrchardCore.VueForms.Controllers
         private readonly ILiquidTemplateManager _liquidTemplateManager;
         private readonly HtmlEncoder _htmlEncoder;
         private readonly IShortcodeService _shortcodeService;
+        private readonly IContentPermissionsService _contentPermissionsService;
+        private readonly IStringLocalizer S;
         private readonly IWorkflowManager _workflowManager;
 
         public VueFormController(
@@ -45,6 +49,8 @@ namespace StatCan.OrchardCore.VueForms.Controllers
             ILiquidTemplateManager liquidTemplateManager,
             HtmlEncoder htmlEncoder,
             IShortcodeService shortcodeService,
+            IContentPermissionsService contentPermissionsService,
+            IStringLocalizer<VueFormController> stringLocalizer,
             IWorkflowManager workflowManager = null
         )
         {
@@ -57,6 +63,8 @@ namespace StatCan.OrchardCore.VueForms.Controllers
             _liquidTemplateManager = liquidTemplateManager;
             _htmlEncoder = htmlEncoder;
             _shortcodeService = shortcodeService;
+            _contentPermissionsService = contentPermissionsService;
+            S = stringLocalizer;
             _workflowManager = workflowManager;
         }
 
@@ -77,6 +85,12 @@ namespace StatCan.OrchardCore.VueForms.Controllers
             if (!formPart.Enabled.Value)
             {
                 return NotFound();
+            }
+
+            if (!_contentPermissionsService.CanAccess(form))
+            {
+                ModelState.AddModelError("Unauthorized", S["You are unauthorized to view this form"]);
+                return Json(new { validationError = true, errors = GetErrorDictionary() });
             }
 
             var scriptingProvider = new VueFormMethodsProvider(form);
@@ -135,7 +149,7 @@ namespace StatCan.OrchardCore.VueForms.Controllers
                 // Let the HttpResponseTask control the response. This will fail on the client if it's anything other than json
                 return new EmptyResult();
             }
-            var formSuccessMessage = await _liquidTemplateManager.RenderAsync(formPart.SuccessMessage?.Text, _htmlEncoder);
+            var formSuccessMessage = await _liquidTemplateManager.RenderStringAsync(formPart.SuccessMessage?.Text, _htmlEncoder);
             formSuccessMessage = await _shortcodeService.ProcessAsync(formSuccessMessage);
             // everything worked fine. send the success signal to the client
             return Json(new { successMessage = formSuccessMessage, submitResult });
