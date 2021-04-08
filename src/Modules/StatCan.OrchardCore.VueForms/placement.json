@@ -75,7 +75,6 @@
       ]
     }
   ],
-
   "BooleanField_Edit" : [
     {
       "differentiator": "VueForm-Enabled",
@@ -84,5 +83,13 @@
           "VueForm"
       ]
     }
+  ],
+  "ContentPermissionsPart_Edit": [
+    {
+      "place": "Parts#Options:5",
+      "contentType": [
+        "VueForm"
+      ]
+    }
   ]
-} 
+}

@@ -99,7 +99,8 @@ namespace StatCan.OrchardCore.VueForms
                 .WithPart("TitlePart", p => p.WithPosition("0"))
                 .WithPart("VueForm", p => p.WithPosition("1"))
                 .WithPart("FlowPart", p => p.WithPosition("2"))
-                .WithPart("VueFormScripts", p => p.WithPosition("3")));
+                .WithPart("VueFormScripts", p => p.WithPosition("3"))
+                .WithPart("ContentPermissionsPart", p => p.WithPosition("4")));
 
             // Vue component
             _contentDefinitionManager.AlterPartDefinition("VueComponent", part => part
