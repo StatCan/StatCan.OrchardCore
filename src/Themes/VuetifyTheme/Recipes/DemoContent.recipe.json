@@ -1,12 +1,12 @@
 {
-  "name": "hackathon-demo-content",
-  "displayName": "Hackathon Demo content pages",
-  "description": "Recipe that seeds demo content to the hackathon website",
+  "name": "vuetify-demo-content",
+  "displayName": "Vuetify Demo hackathon content pages",
+  "description": "Recipe that seeds hackathon demo content to the vuetify theme",
   "author": "Digital Innovation Team",
   "website": "https://digital.statcan.gc.ca",
   "version": "1.0",
   "issetuprecipe": false,
-  "categories": ["innovation"],
+  "categories": ["vuetify"],
   "tags": ["innovation", "inno"],
   "variables": {
     "homeEnContentItemId": "[js:uuid()]",

@@ -1,5 +1,6 @@
 {%comment%}Only visible for users that can view this menuitem {%endcomment%}
-{% if Model.ContentItem | user_can_view %}
+{% assign canView = Model.ContentItem | user_can_view%}
+{% if canView %}
   {% if Model.HasItems %}
     <v-list-group {% if Model.ContentItem.Content.AuthContentMenuItem.IconName.Text != null %}prepend-icon="{{Model.ContentItem.Content.ContentMenuItem.IconName.Text}}"{% endif %}>
       <template v-slot:activator>
