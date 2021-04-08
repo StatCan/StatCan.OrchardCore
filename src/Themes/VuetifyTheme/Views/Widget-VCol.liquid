@@ -13,21 +13,21 @@
 {% assign offsetXl = Model.ContentItem.Content.VCol.OffsetXl.Text %}
 
 <v-col 
-  {% if alignSelf %}align-self="{{ alignSelf }}"{% endif %}
-  {% if colsXs %}cols="{{ colsXs }}"{% endif %}
-  {% if colsSm %}sm="{{ colsSm }}"{% endif %}
-  {% if colsMd %}md="{{ colsMd }}"{% endif %}
-  {% if colsLg %}lg="{{ colsLg }}"{% endif %}
-  {% if colsXl %}xl="{{ colsXl }}"{% endif %}
-  {% if offsetXs %}offset="{{ offsetXs }}"{% endif %}
-  {% if offsetSm %}offset-sm="{{ offsetSm }}"{% endif %}
-  {% if offsetMd %}offset-md="{{ offsetMd }}"{% endif %}
-  {% if offsetLg %}offset-lg="{{ offsetLg }}"{% endif %}
-  {% if offsetXl %}offset-xl="{{ offsetXl }}"{% endif %}
-  {% if orderXs %}order="{{ orderXs }}"{% endif %}
-  {% if orderSm %}order-sm="{{ orderSm }}"{% endif %}
-  {% if orderMd %}order-md="{{ orderMd }}"{% endif %}
-  {% if orderLg %}order-lg="{{ orderLg }}"{% endif %}
-  {% if orderXl %}order-xl="{{ orderXl }}"{% endif %}>
+  {% if empty != alignSelf %}align-self="{{ alignSelf }}"{% endif %}
+  {% if empty != colsXs %}cols="{{ colsXs }}"{% endif %}
+  {% if empty != colsSm %}sm="{{ colsSm }}"{% endif %}
+  {% if empty != colsMd %}md="{{ colsMd }}"{% endif %}
+  {% if empty != colsLg %}lg="{{ colsLg }}"{% endif %}
+  {% if empty != colsXl %}xl="{{ colsXl }}"{% endif %}
+  {% if empty != offsetXs %}offset="{{ offsetXs }}"{% endif %}
+  {% if empty != offsetSm %}offset-sm="{{ offsetSm }}"{% endif %}
+  {% if empty != offsetMd %}offset-md="{{ offsetMd }}"{% endif %}
+  {% if empty != offsetLg %}offset-lg="{{ offsetLg }}"{% endif %}
+  {% if empty != offsetXl %}offset-xl="{{ offsetXl }}"{% endif %}
+  {% if empty != orderXs %}order="{{ orderXs }}"{% endif %}
+  {% if empty != orderSm %}order-sm="{{ orderSm }}"{% endif %}
+  {% if empty != orderMd %}order-md="{{ orderMd }}"{% endif %}
+  {% if empty != orderLg %}order-lg="{{ orderLg }}"{% endif %}
+  {% if empty != orderXl %}order-xl="{{ orderXl }}"{% endif %}>
   {{ Model.Content.FlowPart | shape_render }}
 </v-col>
