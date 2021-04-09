@@ -9,11 +9,11 @@
 <v-app-bar app clipped-left
   {{ Model.ContentItem.Content.VAppBar.Props.Values | join: ' ' | raw }}
   {% if backgroundImage %}src="{{ backgroundImage }}"{% endif %}
-  {% if empty == color %}color="{{ color }}"{% endif %}
-  {% if empty ==  extensionHeight %}extension-height="{{ extensionHeight }}"{% endif %}
-  {% if scrollThreshold %}scroll-threshold="{{ scrollThreshold }}"{% endif %}
-  {% if empty == height %}height="{{ height }}"{% endif %}
-  {% if empty == width %}width="{{ width }}"{% endif %}>
+  {% if empty != color %}color="{{ color }}"{% endif %}
+  {% if empty !=  extensionHeight %}extension-height="{{ extensionHeight }}"{% endif %}
+  {% if empty != scrollThreshold %}scroll-threshold="{{ scrollThreshold }}"{% endif %}
+  {% if empty != height %}height="{{ height }}"{% endif %}
+  {% if empty != width %}width="{{ width }}"{% endif %}>
   <v-app-bar-nav-icon class="hidden-lg-and-up" @click="drawer = !drawer"></v-app-bar-nav-icon>
   {% if Site.Properties.VuetifyThemeSettings.VuetifyThemeSettings.Logo.Paths.first %}
     <v-img src="{{ Site.Properties.VuetifyThemeSettings.VuetifyThemeSettings.Logo.Paths.first | asset_url | resize_url: width:160, height:160 }}" max-height="32" max-width="32" alt="logo" class="mr-2"></v-img>
