@@ -419,10 +419,13 @@ namespace StatCan.Themes.VuetifyTheme
                     .WithPosition("1")
                 )
                 .WithTitlePart("0", TitlePartOptions.GeneratedDisabled, "{{ Model.ContentItem.Content.VCard.Title.Text }}")
+                .WithPart("FlowPart", part => part
+                    .WithPosition("2")
+                )
                 .WithPart("Actions", part => part
                     .WithDisplayName("Actions")
                     .WithDescription("Used for placing actions for a card.")
-                    .WithPosition("2")
+                    .WithPosition("3")
                     .WithSettings(new BagPartSettings
                     {
                         ContainedContentTypes = new[] { "ContentMenuItem", "LinkMenuItem", "Menu" },
@@ -440,11 +443,6 @@ namespace StatCan.Themes.VuetifyTheme
                     .OfType("TextField")
                     .WithDisplayName("Subtitle")
                     .WithPosition("1")
-                )
-                .WithField("Content", field => field
-                    .OfType("HtmlField")
-                    .WithDisplayName("Content")
-                    .WithPosition("2")
                 )
             );
         }
