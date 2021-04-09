@@ -10,8 +10,8 @@
   {{ Model.ContentItem.Content.VAppBar.Props.Values | join: ' ' | raw }}
   {% if backgroundImage %}src="{{ backgroundImage }}"{% endif %}
   {% if empty != color %}color="{{ color }}"{% endif %}
-  {% if empty !=  extensionHeight %}extension-height="{{ extensionHeight }}"{% endif %}
-  {% if scrollThreshold %}scroll-threshold="{{ scrollThreshold }}"{% endif %}
+  {% if empty != extensionHeight %}extension-height="{{ extensionHeight }}"{% endif %}
+  {% if empty != scrollThreshold %}scroll-threshold="{{ scrollThreshold }}"{% endif %}
   {% if empty != height %}height="{{ height }}"{% endif %}
   {% if empty != width %}width="{{ width }}"{% endif %}>
   <v-app-bar-nav-icon class="hidden-lg-and-up" @click="drawer = !drawer"></v-app-bar-nav-icon>
