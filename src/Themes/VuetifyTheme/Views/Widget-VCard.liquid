@@ -7,11 +7,9 @@
   {% if Model.ContentItem.Content.VCard.Subtitle.Text %}
     <v-card-subtitle>{{ Model.ContentItem.Content.VCard.Subtitle.Text }}</v-card-subtitle>
   {% endif %}
-  {% if Model.ContentItem.Content.VCard.Content.Html != "" %}
-    <v-card-text>
-      {{ Model.Content.VCard__Content | shape_render }}
-    </v-card-text>
-  {% endif %}
+  <v-card-text>
+    {{ Model.Content.FlowPart | shape_render }}
+  </v-card-text>
   {% if numberOfActions > 0 %}
     <v-card-actions>
       {% assign contentItems = Model.ContentItem.Content.Actions.ContentItems %}
