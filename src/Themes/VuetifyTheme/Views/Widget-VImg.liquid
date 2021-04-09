@@ -6,9 +6,9 @@
 
 <v-img src="{{ Model.ContentItem.Content.VImg.Source.Paths.first | asset_url }}"
   {{ Model.ContentItem.Content.VImg.Props.Values | join: ' ' | raw }}
-  {% if alternateText %}alt="{{ alternateText }}"{% endif %}
-  {% if aspectRatio %}aspect-ratio="{{ aspectRatio }}"{% endif %}
-  {% if gradient %}gradient="{{ gradient }}"{% endif %}
+  {% if empty != alternateText %}alt="{{ alternateText }}"{% endif %}
+  {% if empty != aspectRatio %}aspect-ratio="{{ aspectRatio }}"{% endif %}
+  {% if empty != gradient %}gradient="{{ gradient }}"{% endif %}
   {% if empty != height %}height="{{ height }}"{% endif %}
   {% if empty != width %}width="{{ width }}"{% endif %}
 >
