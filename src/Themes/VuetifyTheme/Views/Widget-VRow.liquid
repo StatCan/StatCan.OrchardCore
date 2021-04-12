@@ -1,0 +1,36 @@
+{% assign justifyXs = Model.ContentItem.Content.VRow.Justify.Text %}
+{% assign justifySm = Model.ContentItem.Content.VRow.JustifySm.Text %}
+{% assign justifyMd = Model.ContentItem.Content.VRow.JustifyMd.Text %}
+{% assign justifyLg = Model.ContentItem.Content.VRow.JustifyLg.Text %}
+{% assign justifyXl = Model.ContentItem.Content.VRow.JustifyXl.Text %}
+
+{% assign alignXs = Model.ContentItem.Content.VRow.Align.Text %}
+{% assign alignSm = Model.ContentItem.Content.VRow.AlignSm.Text %}
+{% assign alignMd = Model.ContentItem.Content.VRow.AlignMd.Text %}
+{% assign alignLg = Model.ContentItem.Content.VRow.AlignLg.Text %}
+{% assign alignXl = Model.ContentItem.Content.VRow.AlignXl.Text %}
+
+{% assign alignContentXs = Model.ContentItem.Content.VRow.AlignContent.Text %}
+{% assign alignContentSm = Model.ContentItem.Content.VRow.AlignContentSm.Text %}
+{% assign alignContentMd = Model.ContentItem.Content.VRow.AlignContentMd.Text %}
+{% assign alignContentLg = Model.ContentItem.Content.VRow.AlignContentLg.Text %}
+{% assign alignContentXl = Model.ContentItem.Content.VRow.AlignContentXl.Text %}
+
+<v-row {{ Model.ContentItem.Content.VRow.Props.Values | join: ' ' | raw }} 
+  {% if empty != justifyXs %}justify="{{ justifyXs }}"{% endif %}
+  {% if empty != justifySm %}justify-sm="{{ justifySm }}"{% endif %}
+  {% if empty != justifyMd %}justify-md="{{ justifyMd }}"{% endif %}
+  {% if empty != justifyLg %}justify-lg="{{ justifyLg }}"{% endif %}
+  {% if empty != justifyXl %}justify-xl="{{ justifyXl }}"{% endif %}
+  {% if empty != alignXs %}align="{{ alignXs }}"{% endif %}
+  {% if empty != alignSm %}align-sm="{{ alignSm }}"{% endif %}
+  {% if empty != alignMd %}align-md="{{ alignMd }}"{% endif %}
+  {% if empty != alignLg %}align-lg="{{ alignLg }}"{% endif %}
+  {% if empty != alignXl %}align-xl="{{ alignXl }}"{% endif %}
+  {% if empty != alignContentXs %}align-content="{{ AlignContentXs }}"{% endif %}
+  {% if empty != alignContentSm %}align-content-sm="{{ AlignContentSm }}"{% endif %}
+  {% if empty != alignContentMd %}align-content-md="{{ AlignContentMd }}"{% endif %}
+  {% if empty != alignContentLg %}align-content-lg="{{ AlignContentLg }}"{% endif %}
+  {% if empty != alignContentXl %}align-content-xl="{{ AlignContentXl }}"{% endif %}>
+  {{ Model.Content.FlowPart | shape_render }}
+</v-row>

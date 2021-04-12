@@ -1,0 +1,1370 @@
+{
+  "name": "vuetify-demo-content",
+  "displayName": "Vuetify Demo hackathon content pages",
+  "description": "Recipe that seeds hackathon demo content to the vuetify theme",
+  "author": "Digital Innovation Team",
+  "website": "https://digital.statcan.gc.ca",
+  "version": "1.0",
+  "issetuprecipe": false,
+  "categories": ["vuetify"],
+  "tags": ["innovation", "inno"],
+  "variables": {
+    "homeEnContentItemId": "[js:uuid()]",
+    "homeFrContentItemId": "[js:uuid()]",
+    "scheduleEnContentItemId": "[js:uuid()]",
+    "scheduleFrContentItemId": "[js:uuid()]"
+  },
+  "steps": [
+    {
+      "name": "Content",
+      "data": [
+        {
+          "ContentItemId": "[js: variables('homeEnContentItemId')]",
+          "ContentType": "Page",
+          "DisplayText": "Home English",
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "LocalizationPart": {
+            "LocalizationSet": "4sw2mmvdwszcx66fzgmge2mjdw",
+            "Culture": "en"
+          },
+          "TitlePart": {
+            "Title": "Home English"
+          },
+          "AutoroutePart": {
+            "Path": "en/home",
+            "SetHomepage": true,
+            "Disabled": false,
+            "RouteContainedItems": false,
+            "Absolute": false
+          },
+          "FlowPart": {
+            "Widgets": [
+              {
+                "ContentItemId": "44kbxfwyje3qxyndg2sbyp4tmm",
+                "ContentItemVersionId": null,
+                "ContentType": "VContainer",
+                "DisplayText": "",
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": "2020-11-19T19:15:57.811906Z",
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": "",
+                "Author": "inno",
+                "VContainer": {
+                  "Props": {
+                    "Values": null
+                  }
+                },
+                "FlowPart": {
+                  "Widgets": [
+                    {
+                      "ContentItemId": "45pcw7aqwsv1e2nzmaxjkcb3dp",
+                      "ContentItemVersionId": null,
+                      "ContentType": "VRow",
+                      "DisplayText": "",
+                      "Latest": false,
+                      "Published": false,
+                      "ModifiedUtc": "2020-11-19T19:15:57.816759Z",
+                      "PublishedUtc": null,
+                      "CreatedUtc": null,
+                      "Owner": "",
+                      "Author": "inno",
+                      "VRow": {
+                        "Props": {
+                          "Values": null
+                        },
+                        "Justify": {
+                          "Text": null
+                        },
+                        "JustifySm": {
+                          "Text": null
+                        },
+                        "JustifyLg": {
+                          "Text": null
+                        },
+                        "JustifyMd": {
+                          "Text": null
+                        },
+                        "JustifyXl": {
+                          "Text": null
+                        },
+                        "Align": {
+                          "Text": null
+                        },
+                        "AlignSm": {
+                          "Text": null
+                        },
+                        "AlignLg": {
+                          "Text": null
+                        },
+                        "AlignMd": {
+                          "Text": null
+                        },
+                        "AlignXl": {
+                          "Text": null
+                        },
+                        "AlignContent": {
+                          "Text": null
+                        },
+                        "AlignContentSm": {
+                          "Text": null
+                        },
+                        "AlignContentLg": {
+                          "Text": null
+                        },
+                        "AlignContentMd": {
+                          "Text": null
+                        },
+                        "AlignContentXl": {
+                          "Text": null
+                        }
+                      },
+                      "FlowPart": {
+                        "Widgets": [
+                          {
+                            "ContentItemId": "4v2en6kw4xdepwj6e6jvrft0w5",
+                            "ContentItemVersionId": null,
+                            "ContentType": "VCol",
+                            "DisplayText": "",
+                            "Latest": false,
+                            "Published": false,
+                            "ModifiedUtc": "2020-11-19T19:15:57.833085Z",
+                            "PublishedUtc": null,
+                            "CreatedUtc": null,
+                            "Owner": "",
+                            "Author": "inno",
+                            "VCol": {
+                              "AlignSelf": {
+                                "Text": null
+                              },
+                              "Cols": {
+                                "Text": "12"
+                              },
+                              "ColsSm": {
+                                "Text": "12"
+                              },
+                              "ColsMd": {
+                                "Text": "12"
+                              },
+                              "ColsLg": {
+                                "Text": "12"
+                              },
+                              "ColsXl": {
+                                "Text": "12"
+                              },
+                              "Offset": {
+                                "Text": null
+                              },
+                              "OffsetSm": {
+                                "Text": null
+                              },
+                              "OffsetMd": {
+                                "Text": null
+                              },
+                              "OffsetLg": {
+                                "Text": null
+                              },
+                              "OffsetXl": {
+                                "Text": null
+                              },
+                              "Order": {
+                                "Value": null
+                              },
+                              "OrderSm": {
+                                "Value": null
+                              },
+                              "OrderMd": {
+                                "Value": null
+                              },
+                              "OrderLg": {
+                                "Value": null
+                              },
+                              "OrderXl": {
+                                "Value": null
+                              }
+                            },
+                            "FlowPart": {
+                              "Widgets": [
+                                {
+                                  "ContentItemId": "4egtsgh2xqxm7sppsrtrwcjaxs",
+                                  "ContentItemVersionId": null,
+                                  "ContentType": "MarkdownWidget",
+                                  "DisplayText": "",
+                                  "Latest": false,
+                                  "Published": false,
+                                  "ModifiedUtc": "2020-11-19T19:15:57.856947Z",
+                                  "PublishedUtc": null,
+                                  "CreatedUtc": null,
+                                  "Owner": "",
+                                  "Author": "inno",
+                                  "MarkdownBodyPart": {
+                                    "Markdown": "#  Super Hackathon \r\n\r\n**Attention everyone! Do you have a great idea that needs some attention, a project that needs a jumpstart, or do you want to work on something different than your routine tasks?**\r\n\r\nYour January StatCan Innovation Team Hackathon challenge is up to you. Form a team or join as an individual. Tackle a problem identified by StatCan Directors or dream up your own challenge statement!\r\n\r\nOne category of challenges will come from Directors identifying wicked problems facing their divisions. The other category will be challenges proposed by employees just like you.\r\n\r\nAll challenges should belong to one (or more) of the categories of Innovation: **Product**, **Process**, **Outreach**, or **Organization**. Challenges should also be aligned with the Pillars of Modernization. \r\n\r\nThe Innovation Team will be visiting teams to help them along and will work with teams to engage with the stakeholders who would be responsible for implementing their solutions if selected.\r\n\r\n**Date**: January 18th to 21st, 2021 -- Teams work from January 18th @ 8:30 a.m. to January 21st @ 5 p.m. \r\n\r\n**Location**: Virtual.\r\n\r\n**Number of participants**: Unlimited. \r\n\r\n**Eligibility criteria**: StatCan employees in all areas. Multidisciplinary participation yields the best results – participants from all domains, backgrounds, tenure and skillsets are welcome. **You do not need subject matter expertise or an ability to code!**\r\n\r\nTo sign up your team, or look for a team to join, please use our Hackathon registration tool [https://hackathons.statcan.gc.ca/](https://hackathons.statcan.gc.ca/).\r\n\r\nFor more information or register your challenge email: \r\n[statcan.innovationcoordinator-coorddelinnovation.statcan@canada.ca](mailto:statcan.innovationcoordinator-coorddelinnovation.statcan@canada.ca) "
+                                  },
+                                  "FlowMetadata": {
+                                    "Alignment": 3,
+                                    "Size": 100
+                                  }
+                                }
+                              ]
+                            },
+                            "FlowMetadata": {
+                              "Alignment": 3,
+                              "Size": 100
+                            }
+                          }
+                        ]
+                      },
+                      "FlowMetadata": {
+                        "Alignment": 3,
+                        "Size": 100
+                      }
+                    }
+                  ]
+                },
+                "FlowMetadata": {
+                  "Alignment": 3,
+                  "Size": 100
+                }
+              }
+            ]
+          }
+        },
+        {
+          "ContentItemId": "[js: variables('homeFrContentItemId')]",
+          "ContentType": "Page",
+          "DisplayText": "Home French",
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "LocalizationPart": {
+            "LocalizationSet": "4sw2mmvdwszcx66fzgmge2mjdw",
+            "Culture": "fr"
+          },
+          "TitlePart": {
+            "Title": "Home French"
+          },
+          "AutoroutePart": {
+            "Path": "fr/accueil",
+            "SetHomepage": false,
+            "Disabled": false,
+            "RouteContainedItems": false,
+            "Absolute": false
+          },
+          "FlowPart": {
+            "Widgets": [
+              {
+                "ContentItemId": "44kbxfwyje3qxyndg2sbyp4tmm",
+                "ContentItemVersionId": null,
+                "ContentType": "VContainer",
+                "DisplayText": "",
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": "2020-11-19T19:16:16.40461Z",
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": "",
+                "Author": "inno",
+                "VContainer": {
+                  "Props": {
+                    "Values": null
+                  }
+                },
+                "FlowPart": {
+                  "Widgets": [
+                    {
+                      "ContentItemId": "45pcw7aqwsv1e2nzmaxjkcb3dp",
+                      "ContentItemVersionId": null,
+                      "ContentType": "VRow",
+                      "DisplayText": "",
+                      "Latest": false,
+                      "Published": false,
+                      "ModifiedUtc": "2020-11-19T19:16:16.409798Z",
+                      "PublishedUtc": null,
+                      "CreatedUtc": null,
+                      "Owner": "",
+                      "Author": "inno",
+                      "VRow": {
+                        "Props": {
+                          "Values": null
+                        },
+                        "Justify": {
+                          "Text": null
+                        },
+                        "JustifySm": {
+                          "Text": null
+                        },
+                        "JustifyLg": {
+                          "Text": null
+                        },
+                        "JustifyMd": {
+                          "Text": null
+                        },
+                        "JustifyXl": {
+                          "Text": null
+                        },
+                        "Align": {
+                          "Text": null
+                        },
+                        "AlignSm": {
+                          "Text": null
+                        },
+                        "AlignLg": {
+                          "Text": null
+                        },
+                        "AlignMd": {
+                          "Text": null
+                        },
+                        "AlignXl": {
+                          "Text": null
+                        },
+                        "AlignContent": {
+                          "Text": null
+                        },
+                        "AlignContentSm": {
+                          "Text": null
+                        },
+                        "AlignContentLg": {
+                          "Text": null
+                        },
+                        "AlignContentMd": {
+                          "Text": null
+                        },
+                        "AlignContentXl": {
+                          "Text": null
+                        }
+                      },
+                      "FlowPart": {
+                        "Widgets": [
+                          {
+                            "ContentItemId": "4v2en6kw4xdepwj6e6jvrft0w5",
+                            "ContentItemVersionId": null,
+                            "ContentType": "VCol",
+                            "DisplayText": "",
+                            "Latest": false,
+                            "Published": false,
+                            "ModifiedUtc": "2020-11-19T19:16:16.420091Z",
+                            "PublishedUtc": null,
+                            "CreatedUtc": null,
+                            "Owner": "",
+                            "Author": "inno",
+                            "VCol": {
+                              "AlignSelf": {
+                                "Text": null
+                              },
+                              "Cols": {
+                                "Text": "12"
+                              },
+                              "ColsSm": {
+                                "Text": "12"
+                              },
+                              "ColsMd": {
+                                "Text": "12"
+                              },
+                              "ColsLg": {
+                                "Text": "12"
+                              },
+                              "ColsXl": {
+                                "Text": "12"
+                              },
+                              "Offset": {
+                                "Text": null
+                              },
+                              "OffsetSm": {
+                                "Text": null
+                              },
+                              "OffsetMd": {
+                                "Text": null
+                              },
+                              "OffsetLg": {
+                                "Text": null
+                              },
+                              "OffsetXl": {
+                                "Text": null
+                              },
+                              "Order": {
+                                "Value": null
+                              },
+                              "OrderSm": {
+                                "Value": null
+                              },
+                              "OrderMd": {
+                                "Value": null
+                              },
+                              "OrderLg": {
+                                "Value": null
+                              },
+                              "OrderXl": {
+                                "Value": null
+                              }
+                            },
+                            "FlowPart": {
+                              "Widgets": [
+                                {
+                                  "ContentItemId": "4egtsgh2xqxm7sppsrtrwcjaxs",
+                                  "ContentItemVersionId": null,
+                                  "ContentType": "MarkdownWidget",
+                                  "DisplayText": "",
+                                  "Latest": false,
+                                  "Published": false,
+                                  "ModifiedUtc": "2020-11-19T19:16:16.437427Z",
+                                  "PublishedUtc": null,
+                                  "CreatedUtc": null,
+                                  "Owner": "",
+                                  "Author": "inno",
+                                  "MarkdownBodyPart": {
+                                    "Markdown": "# Hackathon Super\r\n\r\n**Votre attention s’il vous plaît! Avez-vous une idée géniale qui nécessite un peu d’attention, avez-vous besoin d’un coup de pouce pour un projet, ou aimeriez-vous faire autre chose que vos tâches habituelles?**\r\n\r\nIl vous revient de décider en quoi consistera le marathon de programmation de l’Équipe de l’innovation de StatCan du mois de novembre. Formez une équipe ou joignez-vous à une équipe existante. Abordez un problème cerné par les directeurs de Statistique Canada ou imaginez votre propre énoncé de problème.\r\n\r\nL’une des catégories de défis comprendra des problèmes auxquels les divisions sont confrontées et qui ont été cernés par les directeurs.  \r\n\r\nCatégories liées à l’innovation : produit, processus, rayonnement, organisation. Les défis devraient également concorder avec [les piliers de la modernisation](https://icn-rci.statcan.ca/07/0706/pdf/0706_000_02-fra.pdf).\r\n\r\nLes équipes ayant des idées prometteuses pourraient être invitées à présenter une demande de financement au Comité de recherche et développement de Statistique Canada.\r\nL’Équipe de l’innovation passera voir les équipes pour leur donner un coup de main et elle travaillera avec elles pour nouer un dialogue avec les parties prenantes qui seront responsables de la mise en œuvre de leurs solutions, si celles-ci sont sélectionnées.\r\n\r\n**Date** : Du 18 au 21 janvier 2021 -- Les équipes travailleront du 18 janvier à 8 h 30 au 21 janvier à 17 h.\r\n\r\n**Emplacement** : Virtuel \r\n\r\n**Nombre de participants** : Illimité.\r\n\r\n**Critères d’admissibilité** : Les employés de Statistique Canada de tous les domaines. D’excellents résultats sont obtenus lorsque les participants proviennent de domaines et de milieux divers, occupent des postes variés et possèdent des compétences variées. **Vous n’avez pas besoin d’être spécialiste ou de savoir comment coder!**\r\n\r\nPour inscrire votre équipe, ou chercher une équipe à laquelle vous joindre, veuillez utiliser l’outil du hackathon : [https://hackathons.statcan.gc.ca/fr/hack](https://hackathons.statcan.gc.ca/fr/hack). \r\n\r\nPour en savoir plus ou enregistrer votre défi, envoyez un courriel à [statcan.innovationcoordinator-coorddelinnovation.statcan@canada.ca](mailto:statcan.innovationcoordinator-coorddelinnovation.statcan@canada.ca).  \r\n"
+                                  },
+                                  "FlowMetadata": {
+                                    "Alignment": 3,
+                                    "Size": 100
+                                  }
+                                }
+                              ]
+                            },
+                            "FlowMetadata": {
+                              "Alignment": 3,
+                              "Size": 100
+                            }
+                          }
+                        ]
+                      },
+                      "FlowMetadata": {
+                        "Alignment": 3,
+                        "Size": 100
+                      }
+                    }
+                  ]
+                },
+                "FlowMetadata": {
+                  "Alignment": 3,
+                  "Size": 100
+                }
+              }
+            ]
+          }
+        },
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentType": "Menu",
+          "DisplayText": "Navigation English",
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "TitlePart": {
+            "Title": "Navigation English"
+          },
+          "AliasPart": {
+            "Alias": "navigation-drawer-en"
+          },
+          "MenuPart": {},
+          "MenuItemsListPart": {
+            "MenuItems": [
+              {
+                "ContentItemId": "4msd7bqm1xesx2a2x97htgzk4h",
+                "ContentItemVersionId": null,
+                "ContentType": "ContentMenuItem",
+                "DisplayText": null,
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": "2020-11-19T19:26:35.389276Z",
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": null,
+                "Author": "inno",
+                "ContentMenuItemPart": {
+                  "Name": "Home",
+                  "SelectedContentItem": {
+                    "ContentItemIds": [
+                      "[js: variables('homeEnContentItemId')]"
+                    ]
+                  }
+                },
+                "ContentMenuItem": {
+                  "IconName": {
+                    "Text": null
+                  }
+                }
+              },
+              {
+                "ContentItemId": "4psscmm8yz2e33b65k809z0rns",
+                "ContentItemVersionId": null,
+                "ContentType": "ContentMenuItem",
+                "DisplayText": null,
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": "2020-11-19T19:27:10.72501Z",
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": null,
+                "Author": "inno",
+                "ContentMenuItemPart": {
+                  "Name": "Schedule",
+                  "SelectedContentItem": {
+                    "ContentItemIds": [
+                      "[js: variables('scheduleEnContentItemId')]"
+                    ]
+                  }
+                },
+                "ContentMenuItem": {
+                  "IconName": {
+                    "Text": null
+                  }
+                }
+              }
+            ]
+          },
+          "@WeldedPartSettings": {
+            "MenuPart": {
+              "Position": "3"
+            },
+            "MenuItemsListPart": {
+              "Position": "4"
+            }
+          }
+        },
+        {
+          "ContentItemId": "[js: variables('scheduleFrContentItemId')]",
+          "ContentType": "Page",
+          "DisplayText": "Schedule French",
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "LocalizationPart": {
+            "LocalizationSet": "4w0a4mh1w27s7trzak1gvfbwcd",
+            "Culture": "fr"
+          },
+          "TitlePart": {
+            "Title": "Schedule French"
+          },
+          "AutoroutePart": {
+            "Path": "fr/horaire",
+            "SetHomepage": false,
+            "Disabled": false,
+            "RouteContainedItems": false,
+            "Absolute": false
+          },
+          "FlowPart": {
+            "Widgets": [
+              {
+                "ContentItemId": "40yww08jhkczdv78ymc1qjvznk",
+                "ContentItemVersionId": null,
+                "ContentType": "VContainer",
+                "DisplayText": "",
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": "2020-11-19T19:31:30.343134Z",
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": "",
+                "Author": "inno",
+                "VContainer": {
+                  "Props": {
+                    "Values": null
+                  }
+                },
+                "FlowPart": {
+                  "Widgets": [
+                    {
+                      "ContentItemId": "46p3z5gen3qs7ytq854h2adec5",
+                      "ContentItemVersionId": null,
+                      "ContentType": "VRow",
+                      "DisplayText": "",
+                      "Latest": false,
+                      "Published": false,
+                      "ModifiedUtc": "2020-11-19T19:31:30.347274Z",
+                      "PublishedUtc": null,
+                      "CreatedUtc": null,
+                      "Owner": "",
+                      "Author": "inno",
+                      "VRow": {
+                        "Props": {
+                          "Values": null
+                        },
+                        "Justify": {
+                          "Text": null
+                        },
+                        "JustifySm": {
+                          "Text": "center"
+                        },
+                        "JustifyLg": {
+                          "Text": null
+                        },
+                        "JustifyMd": {
+                          "Text": null
+                        },
+                        "JustifyXl": {
+                          "Text": null
+                        },
+                        "Align": {
+                          "Text": null
+                        },
+                        "AlignSm": {
+                          "Text": null
+                        },
+                        "AlignLg": {
+                          "Text": null
+                        },
+                        "AlignMd": {
+                          "Text": null
+                        },
+                        "AlignXl": {
+                          "Text": null
+                        },
+                        "AlignContent": {
+                          "Text": null
+                        },
+                        "AlignContentSm": {
+                          "Text": null
+                        },
+                        "AlignContentLg": {
+                          "Text": null
+                        },
+                        "AlignContentMd": {
+                          "Text": null
+                        },
+                        "AlignContentXl": {
+                          "Text": null
+                        }
+                      },
+                      "FlowPart": {
+                        "Widgets": [
+                          {
+                            "ContentItemId": "4a3kamfjyd4y51s6dj2bhfm8wm",
+                            "ContentItemVersionId": null,
+                            "ContentType": "VCol",
+                            "DisplayText": "",
+                            "Latest": false,
+                            "Published": false,
+                            "ModifiedUtc": "2020-11-19T19:31:30.359534Z",
+                            "PublishedUtc": null,
+                            "CreatedUtc": null,
+                            "Owner": "",
+                            "Author": "inno",
+                            "VCol": {
+                              "AlignSelf": {
+                                "Text": null
+                              },
+                              "Cols": {
+                                "Text": "12"
+                              },
+                              "ColsSm": {
+                                "Text": "12"
+                              },
+                              "ColsMd": {
+                                "Text": "8"
+                              },
+                              "ColsLg": {
+                                "Text": "8"
+                              },
+                              "ColsXl": {
+                                "Text": "6"
+                              },
+                              "Offset": {
+                                "Text": null
+                              },
+                              "OffsetSm": {
+                                "Text": null
+                              },
+                              "OffsetMd": {
+                                "Text": null
+                              },
+                              "OffsetLg": {
+                                "Text": null
+                              },
+                              "OffsetXl": {
+                                "Text": null
+                              },
+                              "Order": {
+                                "Value": null
+                              },
+                              "OrderSm": {
+                                "Value": null
+                              },
+                              "OrderMd": {
+                                "Value": null
+                              },
+                              "OrderLg": {
+                                "Value": null
+                              },
+                              "OrderXl": {
+                                "Value": null
+                              }
+                            },
+                            "FlowPart": {
+                              "Widgets": [
+                                {
+                                  "ContentItemId": "4ydy93vb3spkr4gf8k9e9vdymn",
+                                  "ContentItemVersionId": null,
+                                  "ContentType": "ScheduleList",
+                                  "DisplayText": "18 janvier",
+                                  "Latest": false,
+                                  "Published": false,
+                                  "ModifiedUtc": "2020-11-19T19:31:30.380762Z",
+                                  "PublishedUtc": null,
+                                  "CreatedUtc": null,
+                                  "Owner": "",
+                                  "Author": "inno",
+                                  "ScheduleList": {},
+                                  "TitlePart": {
+                                    "Title": "18 janvier"
+                                  },
+                                  "FlowPart": {
+                                    "Widgets": [
+                                      {
+                                        "ContentItemId": "4b9dq0w5hbgsk24qj52hbnt6db",
+                                        "ContentItemVersionId": null,
+                                        "ContentType": "ScheduleEvent",
+                                        "DisplayText": "Début du hackathon",
+                                        "Latest": false,
+                                        "Published": false,
+                                        "ModifiedUtc": "2020-11-19T19:31:30.385092Z",
+                                        "PublishedUtc": null,
+                                        "CreatedUtc": null,
+                                        "Owner": "",
+                                        "Author": "inno",
+                                        "TitlePart": {
+                                          "Title": "Début du hackathon"
+                                        },
+                                        "ScheduleEvent": {
+                                          "Time": {
+                                            "Text": "8h00"
+                                          },
+                                          "Location": {
+                                            "Text": "Virtuelle"
+                                          }
+                                        },
+                                        "MarkdownBodyPart": {
+                                          "Markdown": "Le Super hackathon débute."
+                                        },
+                                        "FlowMetadata": {
+                                          "Alignment": 3,
+                                          "Size": 100
+                                        }
+                                      }
+                                    ]
+                                  },
+                                  "FlowMetadata": {
+                                    "Alignment": 3,
+                                    "Size": 100
+                                  }
+                                }
+                              ]
+                            },
+                            "FlowMetadata": {
+                              "Alignment": 3,
+                              "Size": 100
+                            }
+                          },
+                          {
+                            "ContentItemId": "4jkxs39vjx0w557hck557mygcq",
+                            "ContentItemVersionId": null,
+                            "ContentType": "VCol",
+                            "DisplayText": "",
+                            "Latest": false,
+                            "Published": false,
+                            "ModifiedUtc": "2020-11-19T19:31:30.390779Z",
+                            "PublishedUtc": null,
+                            "CreatedUtc": null,
+                            "Owner": "",
+                            "Author": "inno",
+                            "VCol": {
+                              "AlignSelf": {
+                                "Text": null
+                              },
+                              "Cols": {
+                                "Text": "12"
+                              },
+                              "ColsSm": {
+                                "Text": "12"
+                              },
+                              "ColsMd": {
+                                "Text": "8"
+                              },
+                              "ColsLg": {
+                                "Text": "8"
+                              },
+                              "ColsXl": {
+                                "Text": "6"
+                              },
+                              "Offset": {
+                                "Text": null
+                              },
+                              "OffsetSm": {
+                                "Text": null
+                              },
+                              "OffsetMd": {
+                                "Text": null
+                              },
+                              "OffsetLg": {
+                                "Text": null
+                              },
+                              "OffsetXl": {
+                                "Text": null
+                              },
+                              "Order": {
+                                "Value": null
+                              },
+                              "OrderSm": {
+                                "Value": null
+                              },
+                              "OrderMd": {
+                                "Value": null
+                              },
+                              "OrderLg": {
+                                "Value": null
+                              },
+                              "OrderXl": {
+                                "Value": null
+                              }
+                            },
+                            "FlowPart": {
+                              "Widgets": [
+                                {
+                                  "ContentItemId": "47abjf2vwy9340kdr931htp6mt",
+                                  "ContentItemVersionId": null,
+                                  "ContentType": "ScheduleList",
+                                  "DisplayText": "19 janvier",
+                                  "Latest": false,
+                                  "Published": false,
+                                  "ModifiedUtc": "2020-11-19T19:31:30.401293Z",
+                                  "PublishedUtc": null,
+                                  "CreatedUtc": null,
+                                  "Owner": "",
+                                  "Author": "inno",
+                                  "ScheduleList": {},
+                                  "TitlePart": {
+                                    "Title": "19 janvier"
+                                  },
+                                  "FlowPart": {
+                                    "Widgets": [
+                                      {
+                                        "ContentItemId": "43yhw27ypfmte70e7w0xtjzw48",
+                                        "ContentItemVersionId": null,
+                                        "ContentType": "ScheduleEvent",
+                                        "DisplayText": "Continuation du marathon",
+                                        "Latest": false,
+                                        "Published": false,
+                                        "ModifiedUtc": "2020-11-19T19:31:30.403514Z",
+                                        "PublishedUtc": null,
+                                        "CreatedUtc": null,
+                                        "Owner": "",
+                                        "Author": "inno",
+                                        "TitlePart": {
+                                          "Title": "Continuation du marathon"
+                                        },
+                                        "ScheduleEvent": {
+                                          "Time": {
+                                            "Text": "8h30"
+                                          },
+                                          "Location": {
+                                            "Text": "Virtuelle"
+                                          }
+                                        },
+                                        "MarkdownBodyPart": {
+                                          "Markdown": "Codage++"
+                                        },
+                                        "FlowMetadata": {
+                                          "Alignment": 3,
+                                          "Size": 100
+                                        }
+                                      }
+                                    ]
+                                  },
+                                  "FlowMetadata": {
+                                    "Alignment": 3,
+                                    "Size": 100
+                                  }
+                                }
+                              ]
+                            },
+                            "FlowMetadata": {
+                              "Alignment": 3,
+                              "Size": 100
+                            }
+                          }
+                        ]
+                      },
+                      "FlowMetadata": {
+                        "Alignment": 3,
+                        "Size": 100
+                      }
+                    }
+                  ]
+                },
+                "FlowMetadata": {
+                  "Alignment": 3,
+                  "Size": 100
+                }
+              }
+            ]
+          }
+        },
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentType": "Menu",
+          "DisplayText": "Navigation French",
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "TitlePart": {
+            "Title": "Navigation French"
+          },
+          "AliasPart": {
+            "Alias": "navigation-drawer-fr"
+          },
+          "MenuPart": {},
+          "MenuItemsListPart": {
+            "MenuItems": [
+              {
+                "ContentItemId": "4xmsm4wn3fjc53fxq7mbs9a4mt",
+                "ContentItemVersionId": null,
+                "ContentType": "ContentMenuItem",
+                "DisplayText": null,
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": "2020-11-19T19:27:41.095245Z",
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": null,
+                "Author": "inno",
+                "ContentMenuItemPart": {
+                  "Name": "Accueil",
+                  "SelectedContentItem": {
+                    "ContentItemIds": [
+                      "[js: variables('homeFrContentItemId')]"
+                    ]
+                  }
+                },
+                "ContentMenuItem": {
+                  "IconName": {
+                    "Text": null
+                  }
+                }
+              },
+              {
+                "ContentItemId": "4hhnapqqkh2krvrw4t88e73hwa",
+                "ContentItemVersionId": null,
+                "ContentType": "ContentMenuItem",
+                "DisplayText": null,
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": "2020-11-19T19:32:48.717667Z",
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": null,
+                "Author": "inno",
+                "ContentMenuItemPart": {
+                  "Name": "Horaire",
+                  "SelectedContentItem": {
+                    "ContentItemIds": [
+                      "[js: variables('scheduleFrContentItemId')]"
+                    ]
+                  }
+                },
+                "ContentMenuItem": {
+                  "IconName": {
+                    "Text": null
+                  }
+                }
+              }
+            ]
+          },
+          "@WeldedPartSettings": {
+            "MenuPart": {
+              "Position": "3"
+            },
+            "MenuItemsListPart": {
+              "Position": "4"
+            }
+          }
+        },
+        {
+          "ContentItemId": "[js: variables('scheduleEnContentItemId')]",
+          "ContentType": "Page",
+          "DisplayText": "Schedule English",
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "LocalizationPart": {
+            "LocalizationSet": "4w0a4mh1w27s7trzak1gvfbwcd",
+            "Culture": "en"
+          },
+          "TitlePart": {
+            "Title": "Schedule English"
+          },
+          "AutoroutePart": {
+            "Path": "en/schedule",
+            "SetHomepage": false,
+            "Disabled": false,
+            "RouteContainedItems": false,
+            "Absolute": false
+          },
+          "FlowPart": {
+            "Widgets": [
+              {
+                "ContentItemId": "40yww08jhkczdv78ymc1qjvznk",
+                "ContentItemVersionId": null,
+                "ContentType": "VContainer",
+                "DisplayText": "",
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": "2020-11-19T19:33:37.255965Z",
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": "",
+                "Author": "inno",
+                "VContainer": {
+                  "Props": {
+                    "Values": null
+                  }
+                },
+                "FlowPart": {
+                  "Widgets": [
+                    {
+                      "ContentItemId": "46p3z5gen3qs7ytq854h2adec5",
+                      "ContentItemVersionId": null,
+                      "ContentType": "VRow",
+                      "DisplayText": "",
+                      "Latest": false,
+                      "Published": false,
+                      "ModifiedUtc": "2020-11-19T19:33:37.259284Z",
+                      "PublishedUtc": null,
+                      "CreatedUtc": null,
+                      "Owner": "",
+                      "Author": "inno",
+                      "VRow": {
+                        "Props": {
+                          "Values": null
+                        },
+                        "Justify": {
+                          "Text": null
+                        },
+                        "JustifySm": {
+                          "Text": "center"
+                        },
+                        "JustifyLg": {
+                          "Text": null
+                        },
+                        "JustifyMd": {
+                          "Text": null
+                        },
+                        "JustifyXl": {
+                          "Text": null
+                        },
+                        "Align": {
+                          "Text": null
+                        },
+                        "AlignSm": {
+                          "Text": null
+                        },
+                        "AlignLg": {
+                          "Text": null
+                        },
+                        "AlignMd": {
+                          "Text": null
+                        },
+                        "AlignXl": {
+                          "Text": null
+                        },
+                        "AlignContent": {
+                          "Text": null
+                        },
+                        "AlignContentSm": {
+                          "Text": null
+                        },
+                        "AlignContentLg": {
+                          "Text": null
+                        },
+                        "AlignContentMd": {
+                          "Text": null
+                        },
+                        "AlignContentXl": {
+                          "Text": null
+                        }
+                      },
+                      "FlowPart": {
+                        "Widgets": [
+                          {
+                            "ContentItemId": "4a3kamfjyd4y51s6dj2bhfm8wm",
+                            "ContentItemVersionId": null,
+                            "ContentType": "VCol",
+                            "DisplayText": "",
+                            "Latest": false,
+                            "Published": false,
+                            "ModifiedUtc": "2020-11-19T19:33:37.269529Z",
+                            "PublishedUtc": null,
+                            "CreatedUtc": null,
+                            "Owner": "",
+                            "Author": "inno",
+                            "VCol": {
+                              "AlignSelf": {
+                                "Text": null
+                              },
+                              "Cols": {
+                                "Text": "12"
+                              },
+                              "ColsSm": {
+                                "Text": "12"
+                              },
+                              "ColsMd": {
+                                "Text": "8"
+                              },
+                              "ColsLg": {
+                                "Text": "8"
+                              },
+                              "ColsXl": {
+                                "Text": "6"
+                              },
+                              "Offset": {
+                                "Text": null
+                              },
+                              "OffsetSm": {
+                                "Text": null
+                              },
+                              "OffsetMd": {
+                                "Text": null
+                              },
+                              "OffsetLg": {
+                                "Text": null
+                              },
+                              "OffsetXl": {
+                                "Text": null
+                              },
+                              "Order": {
+                                "Value": null
+                              },
+                              "OrderSm": {
+                                "Value": null
+                              },
+                              "OrderMd": {
+                                "Value": null
+                              },
+                              "OrderLg": {
+                                "Value": null
+                              },
+                              "OrderXl": {
+                                "Value": null
+                              }
+                            },
+                            "FlowPart": {
+                              "Widgets": [
+                                {
+                                  "ContentItemId": "4ydy93vb3spkr4gf8k9e9vdymn",
+                                  "ContentItemVersionId": null,
+                                  "ContentType": "ScheduleList",
+                                  "DisplayText": "January 18th",
+                                  "Latest": false,
+                                  "Published": false,
+                                  "ModifiedUtc": "2020-11-19T19:33:37.280621Z",
+                                  "PublishedUtc": null,
+                                  "CreatedUtc": null,
+                                  "Owner": "",
+                                  "Author": "inno",
+                                  "ScheduleList": {},
+                                  "TitlePart": {
+                                    "Title": "January 18th"
+                                  },
+                                  "FlowPart": {
+                                    "Widgets": [
+                                      {
+                                        "ContentItemId": "4b9dq0w5hbgsk24qj52hbnt6db",
+                                        "ContentItemVersionId": null,
+                                        "ContentType": "ScheduleEvent",
+                                        "DisplayText": "Start your engines",
+                                        "Latest": false,
+                                        "Published": false,
+                                        "ModifiedUtc": "2020-11-19T19:33:37.282199Z",
+                                        "PublishedUtc": null,
+                                        "CreatedUtc": null,
+                                        "Owner": "",
+                                        "Author": "inno",
+                                        "TitlePart": {
+                                          "Title": "Start your engines"
+                                        },
+                                        "ScheduleEvent": {
+                                          "Time": {
+                                            "Text": "8:30am"
+                                          },
+                                          "Location": {
+                                            "Text": "Virtual"
+                                          }
+                                        },
+                                        "MarkdownBodyPart": {
+                                          "Markdown": "Super Hackathon begins."
+                                        },
+                                        "FlowMetadata": {
+                                          "Alignment": 3,
+                                          "Size": 100
+                                        }
+                                      }
+                                    ]
+                                  },
+                                  "FlowMetadata": {
+                                    "Alignment": 3,
+                                    "Size": 100
+                                  }
+                                }
+                              ]
+                            },
+                            "FlowMetadata": {
+                              "Alignment": 3,
+                              "Size": 100
+                            }
+                          },
+                          {
+                            "ContentItemId": "4jkxs39vjx0w557hck557mygcq",
+                            "ContentItemVersionId": null,
+                            "ContentType": "VCol",
+                            "DisplayText": "",
+                            "Latest": false,
+                            "Published": false,
+                            "ModifiedUtc": "2020-11-19T19:33:37.286698Z",
+                            "PublishedUtc": null,
+                            "CreatedUtc": null,
+                            "Owner": "",
+                            "Author": "inno",
+                            "VCol": {
+                              "AlignSelf": {
+                                "Text": null
+                              },
+                              "Cols": {
+                                "Text": "12"
+                              },
+                              "ColsSm": {
+                                "Text": "12"
+                              },
+                              "ColsMd": {
+                                "Text": "8"
+                              },
+                              "ColsLg": {
+                                "Text": "8"
+                              },
+                              "ColsXl": {
+                                "Text": "6"
+                              },
+                              "Offset": {
+                                "Text": null
+                              },
+                              "OffsetSm": {
+                                "Text": null
+                              },
+                              "OffsetMd": {
+                                "Text": null
+                              },
+                              "OffsetLg": {
+                                "Text": null
+                              },
+                              "OffsetXl": {
+                                "Text": null
+                              },
+                              "Order": {
+                                "Value": null
+                              },
+                              "OrderSm": {
+                                "Value": null
+                              },
+                              "OrderMd": {
+                                "Value": null
+                              },
+                              "OrderLg": {
+                                "Value": null
+                              },
+                              "OrderXl": {
+                                "Value": null
+                              }
+                            },
+                            "FlowPart": {
+                              "Widgets": [
+                                {
+                                  "ContentItemId": "47abjf2vwy9340kdr931htp6mt",
+                                  "ContentItemVersionId": null,
+                                  "ContentType": "ScheduleList",
+                                  "DisplayText": "January 19th",
+                                  "Latest": false,
+                                  "Published": false,
+                                  "ModifiedUtc": "2020-11-19T19:33:37.305277Z",
+                                  "PublishedUtc": null,
+                                  "CreatedUtc": null,
+                                  "Owner": "",
+                                  "Author": "inno",
+                                  "ScheduleList": {},
+                                  "TitlePart": {
+                                    "Title": "January 19th"
+                                  },
+                                  "FlowPart": {
+                                    "Widgets": [
+                                      {
+                                        "ContentItemId": "43yhw27ypfmte70e7w0xtjzw48",
+                                        "ContentItemVersionId": null,
+                                        "ContentType": "ScheduleEvent",
+                                        "DisplayText": "Coding continues",
+                                        "Latest": false,
+                                        "Published": false,
+                                        "ModifiedUtc": "2020-11-19T19:33:37.307035Z",
+                                        "PublishedUtc": null,
+                                        "CreatedUtc": null,
+                                        "Owner": "",
+                                        "Author": "inno",
+                                        "TitlePart": {
+                                          "Title": "Coding continues"
+                                        },
+                                        "ScheduleEvent": {
+                                          "Time": {
+                                            "Text": "8:30am"
+                                          },
+                                          "Location": {
+                                            "Text": "Virtual"
+                                          }
+                                        },
+                                        "MarkdownBodyPart": {
+                                          "Markdown": "Code++"
+                                        },
+                                        "FlowMetadata": {
+                                          "Alignment": 3,
+                                          "Size": 100
+                                        }
+                                      }
+                                    ]
+                                  },
+                                  "FlowMetadata": {
+                                    "Alignment": 3,
+                                    "Size": 100
+                                  }
+                                }
+                              ]
+                            },
+                            "FlowMetadata": {
+                              "Alignment": 3,
+                              "Size": 100
+                            }
+                          }
+                        ]
+                      },
+                      "FlowMetadata": {
+                        "Alignment": 3,
+                        "Size": 100
+                      }
+                    }
+                  ]
+                },
+                "FlowMetadata": {
+                  "Alignment": 3,
+                  "Size": 100
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

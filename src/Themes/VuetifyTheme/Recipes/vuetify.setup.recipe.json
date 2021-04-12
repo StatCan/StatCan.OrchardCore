@@ -1,0 +1,226 @@
+{
+  "name": "vuetify-theme-setup",
+  "displayName": "Vuetify Theme Setup",
+  "description": "Recipe used to enable the vuetify platform from the setup page.",
+  "author": "Digital Innovation Team",
+  "website": "https://digital.statcan.gc.ca",
+  "version": "1.0",
+  "issetuprecipe": true,
+  "categories": ["vuetify"],
+  "tags": ["innovation", "inno"],
+  "steps": [
+    {
+      "name": "feature",
+      "disable": [],
+      "enable": [
+        "OrchardCore.HomeRoute",
+        "OrchardCore.Admin",
+        "OrchardCore.Diagnostics",
+        "OrchardCore.DynamicCache",
+        "OrchardCore.Features",
+        "OrchardCore.Navigation",
+        "OrchardCore.Recipes",
+        "OrchardCore.Resources",
+        "OrchardCore.Roles",
+        "OrchardCore.Settings",
+        "OrchardCore.Themes",
+        "OrchardCore.Users",
+        "OrchardCore.Alias",
+        "OrchardCore.Autoroute",
+        "OrchardCore.Html",
+        "OrchardCore.ContentFields",
+        "OrchardCore.ContentLocalization",
+        "OrchardCore.ContentLocalization.ContentCulturePicker",
+        "OrchardCore.ContentPreview",
+        "OrchardCore.Contents",
+        "OrchardCore.ContentTypes",
+        "OrchardCore.CustomSettings",
+        "OrchardCore.Deployment",
+        "OrchardCore.Feeds",
+        "OrchardCore.Indexing",
+        "OrchardCore.Layers",
+        "OrchardCore.Localization",
+        "OrchardCore.Lists",
+        "OrchardCore.Liquid",
+        "OrchardCore.Markdown",
+        "OrchardCore.Media",
+        "OrchardCore.Menu",
+        "OrchardCore.Queries",
+        "OrchardCore.Title",
+        "OrchardCore.Templates",
+        "OrchardCore.Widgets",
+        "OrchardCore.Email",
+        "OrchardCore.Flows",
+        "OrchardCore.Queries.Sql",
+        "OrchardCore.Users.Registration",
+        "OrchardCore.Users.ResetPassword",
+        "StatCan.OrchardCore.DisplayHelpers",
+        "StatCan.OrchardCore.CommonTypes.Pages",
+        "StatCan.OrchardCore.CommonTypes.SecurePage",
+        "StatCan.OrchardCore.CommonTypes.Widgets",
+        "DigitalAdmin",
+        "VuetifyTheme"
+      ]
+    },
+    {
+      "name": "themes",
+      "admin": "DigitalAdmin",
+      "site": "VuetifyTheme"
+    },
+    {
+      "name": "Settings",
+      "Calendar": null,
+      "UseCdn": false,
+      "TimeZoneId": "America/Toronto",
+      "AppendVersion": true,
+      "LocalizationSettings": {
+        "DefaultCulture": "en",
+        "SupportedCultures": ["fr", "en"]
+      },
+      "AdminSettings": {
+        "DisplayMenuFilter": true
+      },
+      "LoginSettings": {
+        "UseSiteTheme": true
+      },
+      "ResetPasswordSettings": {
+        "UseSiteTheme": true
+      },
+      "RegistrationSettings": {
+        "UseSiteTheme": true
+      },
+      "LayerSettings": {
+        "Zones": [
+          "Header",
+          "Breadcrumb",
+          "NavigationDrawer",
+          "Footer",
+          "IEBanner"
+        ]
+      }
+    },
+    {
+      "name": "Layers",
+      "Layers": [
+        {
+          "Name": "All",
+          "Rule": "true",
+          "Description": null
+        }
+      ]
+    },
+    {
+      "name": "Content",
+      "data": [
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentType": "VAppBar",
+          "DisplayText": "App Bar",
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "VAppBar": {
+            "Props": {
+              "Values": []
+            },
+            "Color": {
+              "Text": null
+            },
+            "Elevation": {
+              "Value": null
+            },
+            "ExtensionHeight": {
+              "Value": null
+            },
+            "ScrollThreshold": {
+              "Value": null
+            },
+            "BackgroundImage": {
+              "Paths": [],
+              "MediaTexts": []
+            },
+            "Height": {
+              "Value": null
+            },
+            "Width": {
+              "Value": null
+            }
+          },
+          "LayerMetadata": {
+            "Position": 1.0,
+            "Zone": "Header",
+            "RenderTitle": false,
+            "Layer": "All"
+          }
+        },
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentType": "VNavigationDrawer",
+          "DisplayText": "Navigation Drawer",
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "VNavigationDrawer": {
+            "Props": {
+              "Values": [
+                "clipped"
+              ]
+            },
+            "BackgroundImage": {
+              "Paths": [],
+              "MediaTexts": []
+            },
+            "Color": {
+              "Text": null
+            },
+            "MiniVariantWidth": {
+              "Value": null
+            },
+            "MobileBreakpoint": {
+              "Value": null
+            },
+            "OverlayColor": {
+              "Text": null
+            },
+            "OverlayOpacity": {
+              "Value": null
+            },
+            "Height": {
+              "Value": null
+            },
+            "Width": {
+              "Value": null
+            }
+          },
+          "LayerMetadata": {
+            "Position": 1.0,
+            "Zone": "NavigationDrawer",
+            "RenderTitle": false,
+            "Layer": "All"
+          }
+        },
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentType": "CompatibilityBanner",
+          "DisplayText": "Compatibility Banner",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": "2021-01-26T15:39:01.656923Z",
+          "PublishedUtc": "2021-01-26T15:39:01.658717Z",
+          "CreatedUtc": "2021-01-26T15:26:33.688292Z",
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "CompatibilityBanner": {},
+          "LayerMetadata": {
+            "Position": 1.0,
+            "Zone": "IEBanner",
+            "Layer": "All",
+            "RenderTitle": false
+          }
+        }
+      ]
+    }
+  ]
+}
