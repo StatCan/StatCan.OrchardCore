@@ -49,6 +49,11 @@ function initForm(app) {
       };
     },
     methods: {
+      // default method that return the data to be submitted to the server
+      // this was added first to allow the Administrator to edit this function on the OC Admin
+      submitData() {
+        return {...this.$data};
+      },
       ...parsedMethods,
       formReset() {
         this.form = {...defaultFormData};
@@ -63,7 +68,7 @@ function initForm(app) {
         observer.validate().then((valid) => {
           if (valid) {
             const action = vm.$refs.form.getAttribute("action");
-            let frmData = {...vm.$data};
+            let frmData = vm.submitData();
             frmData.__RequestVerificationToken = vm.$refs.form.querySelector('input[name="__RequestVerificationToken"]').value;
             if(typeof(grecaptcha) == 'object')
             {

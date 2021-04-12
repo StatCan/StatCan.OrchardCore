@@ -1,97 +1,180 @@
-{% if User | is_in_role: "Hacker" %}
+{% assign userInRole = User | is_in_role: "Hacker"%}
+{% if userInRole %}
 
-  {% assign userId = User | user_id %}
-  {% assign hacker = Queries.GetHacker | query: owner: userId %}
-  {% assign teamMembers = Queries.GetHackersForTeam | query: teamContentItemId: hacker.TeamContentItemId %}
+  {% assign user = User | user_id | users_by_id %}
+  {% assign teamContentItemId = user.Properties.Hacker.Hacker.Team.ContentItemIds | first %}
+  {% assign teamMembers = Queries.GetHackersForTeam | query: teamContentItemId: teamContentItemId %}
+  {% assign team =  Content.ContentItemId[teamContentItemId] %}
+  {% assign isTeamCaptain = team.ContentItem.Content.Team.TeamCaptain.UserIds.first != null and team.ContentItem.Content.Team.TeamCaptain.UserIds.first == user.UserId %}
+  {% assign isTeamEditable = Site.Properties.HackathonCustomSettings.TeamCustomSettings.TeamEditable.Value == true %}
+  {% assign challengeSelected =  team.ContentItem.Content.Team.Challenge.ContentItemIds | content_item_id | first %}
+
+  {% if user.Properties.Hacker.Hacker.Team.ContentItemIds.first != null %}
+    <v-container>
+      <v-row justify="center">
+        <v-col cols="12" md="10">
+          <v-card class="elevation-12">
+            <v-card-title class="text-h5">{{'My Team' | t}}</v-card-title>
+            <v-card-text>
+              <v-flex><span class="text-h6">{{"Name" | t}}:</span> {{team.ContentItem.Content.Team.Name.Text}}</v-flex>
+              <v-flex><span class="text-h6">{{"Description" | t}}:</span> {{team.ContentItem.Content.Team.Description.Text}}</v-flex>           
+              <v-flex>
+                <span class="text-h6">{{"Identifier" | t}}:</span>
+                <v-tooltip bottom>
+                  <template v-slot:activator="{ on, attrs }">
+                    <button           
+                      v-bind="attrs"
+                      v-on="on" class="team-clipboard" tabindex="0" onclick="select_all_and_copy(document.getElementById('team-id'));">
+                      <span id="team-id" class="mx-1">{{ user.Properties.Hacker.Hacker.Team.ContentItemIds | first }}</span>
+                      </span>
+                    </button>
+                  </template>
+                  <span>{{"Click to copy. Share your team identifier to invite members"}}</span>
+                </v-tooltip>       
+              </v-flex>   
+              {% if isTeamCaptain and isTeamEditable %}
+                <v-flex class="pt-3">
+                  {{"You are the team captain. Select a challenge, edit your team name and description using the form at the bottom of this page." | t}}
+                </v-flex>    
+              {% endif %}    
+            </v-card-text>
+          </v-card>
+        </v-col>
+        <v-col cols="12" md="10">
+          <v-card class="elevation-12">
+            <v-card-title class="text-h5">{{'My Challenge' | t}}</v-card-title>
+              <v-card-text>
+                {% if challengeSelected != null %}
+                <v-flex><span class="text-h6">{{ challengeSelected.ContentItem.Content.Challenge.Name.Text | shortcode }}</span></v-flex>
+                <v-flex><span class="subtitle-2">{{ challengeSelected.ContentItem.Content.Challenge.ShortDescription.Text | shortcode }}</span></v-flex>
+                {% assign challengeShape = challengeSelected | shape_build_display %}
+                <v-flex class="pt-1">{{ challengeShape.Content.MarkdownBodyPart | shape_render }}</v-flex>
+                {% else%}
+                  {{'You have not yet selected a challenge, please ask your team captain to choose one' | t}}
+                {% endif %}
+              </v-card-text>
+            </v-card>
+        </v-col>
+        <v-col cols="12" md="10">
+          <v-card class="elevation-12">
+            <v-card-title>{{ "Team Members" | t }}</v-card-title>
+            <v-card-text>
+              {% for teamMember in teamMembers %}
+              <v-flex class="pb-2">
+              {{ teamMember.FirstName }} {{ teamMember.LastName }} - {{teamMember.ContactEmail}}
+              {% if isTeamCaptain and isTeamEditable %}
+                <form class="d-inline-block pl-4" method="post" action="{{ "~/team/remove" | href }}">
+                 
+                    <v-btn name="btnRemove" {% if team.ContentItem.Content.Team.TeamCaptain.UserIds.first == teamMember.UserId %} disabled {% endif %} type="submit">{{ "Remove" | t }}</v-btn>
+
+                  {% antiforgerytoken %}
+                  <input type="hidden" name="hackerContentItemId" value="{{teamMember.UserId}}">
+                  <input type="hidden" name="returnUrl" value="{{'' | return_url}}">
+                </form>
+              {% endif %}
+              </v-flex>
+              {% endfor %}
+            </v-card-text>
+          </v-card>
+        </v-col>
+      {% if isTeamCaptain and isTeamEditable %}
+        {% assign challenges = Queries.GetItemsForHackathon | query: type: "Challenge" %}
+        {% capture challengeObjects %}
+        [
+          {% for challenge in challenges %}
+            {% if challenge.Published == true %}
+              {
+                text: "{{challenge.ContentItem.Content.Challenge.Name.Text | shortcode }}",
+                value: "{{challenge.ContentItemId}}"
+              }
+              {% if forloop.last != true %}
+              ,
+              {% endif %}
+            {% endif %}
+          {%endfor%}
+        ]
+        {% endcapture %}
   
-  <div {%if Model.Id != null%}id="{{ Model.Id }}"{%endif%} class="{{ Model.Classes | join: ' ' }}">
-    {% if hacker.TeamContentItemId != null %}
-      <div class="d-flex align-items-center">
-        <div class="icon-col">
-        <i class="fas fa-users"></i>
-        </div>
-        <div class="col d-flex align-items-center justify-content-between">
-          <span class="h1-sub">{{ "Team" | t }}</span>
-          {% if Site.Properties.HackathonCustomSettings.TeamCustomSettings.TeamEditable.Value == true %}
-          <button class="team-clipboard" tabindex="0" onclick="select_all_and_copy(document.getElementById('team-id'));$('#clipboard-icon').addClass('fa-clipboard fa-clipboard-check');">
-            <span class="d-flex align-items-center">{{ "ID:" | t }}
-            <span id="team-id" class="mx-1">{{ hacker.TeamContentItemId }}</span>
-            <i id="clipboard-icon" class="fas fa-clipboard mx-1" aria-label="{{ "Copy team identification" | t }}"></i>
-            </span>
-          </button>
-          {% endif %}
-        </div>
-      </div>
-      {% if Site.Properties.HackathonCustomSettings.TeamCustomSettings.TeamEditable.Value == true %}
-        <div class="d-flex">
-          <div class="icon-col"></div>
-          <div class="col">
-            {{ Model.ContentItem.Content.TeamDashboardWidget.TeamMessage.Html | liquid | sanitize_html | raw }}
-          </div>
-        </div>
+        {% block "script", At: "Foot", depends_on:"vuejs" %}
+          Vue.component("team-edit-component", {
+            template:  "#TeamEditComponent",
+            data: function () { 
+              return {
+                selected:"{{challengeSelected.ContentItemId}}",
+                challenges: {{challengeObjects}}
+              };
+            }
+          });
+        {% endblock %}
+
+        {% block "script", type:"text/html", At: "Foot", id: "TeamEditComponent" %}
+          <v-card class="elevation-12">
+            <v-card-title>
+              {{ 'Edit My Team' | t }}
+            </v-card-title>
+            <v-card-text>
+              <form method="post" action="{{ "~/team/save" | href }}">
+                <v-text-field name="teamName" value="{{ team.ContentItem.Content.Team.Name.Text }}" label="{{ "Name" | t }}" ></v-text-field>
+                <v-textarea name="teamDescription" label="{{'Description' | t}}" value="{{ team.ContentItem.Content.Team.Description.Text }}"></v-textarea>
+                <v-select label="{{ "Challenge" | t }}" name="challenge" :items="challenges" v-model="selected" value="{{challengeSelected.ContentItemId}}" ></v-select>
+                <v-btn name="btnSave" type="submit" depressed block>{{ "Save" | t }}</v-btn>
+                {% antiforgerytoken %}
+                <input type="hidden" name="returnUrl" value="{{'' | return_url }}">
+              </form>
+            </v-card-text>
+          </v-card>
+        {% endblock %}
+        <v-col cols="12" md="10">
+          <team-edit-component></team-edit-component>
+        </v-col>
       {% endif %}
-      <div class="d-flex">
-        <ul class="list-unstyled">
-        {% for teamMember in teamMembers %}
-          <li class="d-flex">
-            <div class="icon-sm-col">
-              <i class="fas fa-user-circle small"></i>
+      <v-col cols="12" md="10">
+        <v-card>
+          <v-card-title>{{"Danger zone" | t}}</v-card-title>
+          <v-card-text>
+            {% if isTeamCaptain and isTeamEditable %}
+              <v-flex class="pt-3">
+                {{"You are the team captain. Leaving the team will assign another member as the team captain." | t}}
+              </v-flex>    
+            {% endif %}    
+            <form class="my-2" method="post" action="{{"~/team/leave" | href}}">
+              {% antiforgerytoken%}
+              <input type="hidden" name="returnUrl" value="{{ '' | return_url }}">
+              <v-btn class="red" type="submit" name="btnLeave" {% if Site.Properties.HackathonCustomSettings.TeamCustomSettings.TeamEditable.Value != true %}disabled{%endif%}>{{ "Leave team" | t }}</v-btn>
+            </form>
+          </v-card-text>
+        </v-card>
+      </v-col>
+    </v-container>
+  {% else %}
+    <v-container>
+      <v-row justify="center">
+        <v-col cols="12" md="6">
+          <v-card class="elevation-12">
+            <v-card-title>{{ "Please create or join an existing team" | t }}</v-card-title>
+            <v-card-actions>
+              <form class="my-2" method="post" action="{{"~/team/create" | href}}">
+                {% antiforgerytoken%}
+                <input type="hidden" name="returnUrl" value="{{ '' | return_url }}">
+                <v-btn type="submit" name="btnCreate">{{ "Create team" | t }}</v-btn>
+              </form>
+             </v-card-actions>
+             <div class="d-flex align-center">
+              <v-divider></v-divider><span class="px-2">{{ "Or" | t }}</span>
+              <v-divider></v-divider>
             </div>
-            <div class="col">
-              {{ teamMember.DisplayText }}
-            </div>
-          </li>
-        {% endfor %}
-        </ul>
-      </div>
-      {% if Site.Properties.HackathonCustomSettings.TeamCustomSettings.TeamEditable.Value == true %}
-      <div class="d-flex">
-        <div class="icon-col"></div>
-        <div class="col d-flex justify-content-md-start justify-content-end">
-        <form class="my-2" method="post" action="{{"~/team/leave" | href}}">
-          {% antiforgerytoken%}
-          <input type="hidden" name="returnUrl" value="{{ Model.Dashboard.Content.AutoroutePart.Path }}">
-          <button type="submit" class="btn btn-primary btn-sm"><span>{{ "Leave team" | t }}</span></button>
-        </form>
-        </div>
-      </div>
-      {% endif %}
-    {% else %}
-      <div class="d-flex align-items-center">
-        <div class="icon-col">
-          <i class="fas fa-user"></i>
-        </div>
-        <div class="col">
-          <div class="h1-sub">{{ "Solo" | t }}</div>
-        </div>
-      </div>
-      <div class="d-flex mb-4">
-        <div class="icon-col"></div>
-        <div class="col">
-          {{ Model.ContentItem.Content.TeamDashboardWidget.SoloMessage.Html | liquid | sanitize_html | raw }}
-        </div>
-      </div>
-      {% if Site.Properties.HackathonCustomSettings.TeamCustomSettings.TeamEditable.Value == true %}
-        <div class="d-flex align-items-baseline mt-4">
-          <form class="my-2" method="post" action="{{"~/team/create" | href}}">
-            {% antiforgerytoken%}
-            <input type="hidden" name="returnUrl" value="{{ Model.Dashboard.Content.AutoroutePart.Path }}">
-            <button class="btn btn-primary btn-sm" type="submit"><span>{{ "Create team" | t }}</span></button>
-          </form>
-          <span class="mx-3">{{ "or" | t }}</span>
-          <form class="my-2" method="post" action="{{"~/team/join" | href}}">
-            {% antiforgerytoken%}
-            <div class="input-group">
-              <input id="teamId" type="text" name="teamContentItemId" class="form-control" placeholder="{{ "Team ID" | t }}" aria-label="{{ "Team  identification" | t }}" aria-describedby="team-submit">
-              <input type="hidden" name="returnUrl" value="{{ Model.Dashboard.Content.AutoroutePart.Path }}">
-              <div class="input-group-append">
-                <button class="btn btn-primary btn-sm" type="submit" id="team-submit-addon"><span>{{ "Join" | t }}</span></button>
-              </div>
-            </div>
-          </form>
-        </div>
-      {% endif %}
-    {% endif %}
-  </div>
-  {% script src:'~/OrchardCore.Workflows/Scripts/crossbrowserclipboardcopy.min.js', debug_src:'~/OrchardCore.Workflows/Scripts/crossbrowserclipboardcopy.js', at:"Foot" %}
+            <v-card-actions>
+              <form class="my-2" method="post" action="{{"~/team/join" | href}}">
+                {% antiforgerytoken%}
+                <input type="hidden" name="returnUrl" value="{{ '' | return_url }}">
+                <v-text-field class="d-inline-block" type="text" required name="teamContentItemId" class="form-control" placeholder="{{ "Team Identifier" | t }}" aria-label="{{ "Team Identifier" | t }}"></v-text-field>
+                <v-btn class="d-inline-block ml-3" type="submit" id="team-submit-addon">{{ "Join team" | t }}</v-btn>
+              </form>
+            </v-card-actions>
+          </v-card>
+        </v-col>
+      </v-row>
+    </v-container>
+  {% endif %}
 {% endif %}
+{% script src:'~/OrchardCore.Workflows/Scripts/crossbrowserclipboardcopy.min.js', debug_src:'~/OrchardCore.Workflows/Scripts/crossbrowserclipboardcopy.js', at:"Foot" %}

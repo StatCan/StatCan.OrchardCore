@@ -19,3 +19,9 @@ The following activities are available with the GitHub module
 | Activity | Type | Description |
 | -------- | ---- | ----------- |
 | VueForm Submitted | Event | Triggerred when a VueForm is valid. Runs for all selected VueForms in the Event options. |
+
+## EmailTemplates (`StatCan.OrchardCore.EmailTemplates`)
+
+| Activity | Type | Description |
+| -------- | ---- | ----------- |
+| Send Email With Template | Task | Sends an email with the selected template. |

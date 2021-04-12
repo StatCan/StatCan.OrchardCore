@@ -5,13 +5,18 @@ const contentIdChallengeSubmissionForm = "4kpgcnkaydrkb5hfxy10261qmb";
 const contentIdHackerRegistrationForm = "4dj03mdaztzf8wg12gw56xkg43";
 const contentIdVolunteerRegistrationForm = "4jjje1q162zaay11nbf3w2634h";
 const contentIdScoringPageForm = "423fn7nvrwcdv2ksy8hww9qwdn";
+const TeamManagementPagePath = "test-page";
+const password = 'Inno111!';
 
 describe("Hackathon Tests", function() {    
   let tenant;
+  let ContentIdTeam;
 
   before(() => {
-    tenant = generateTenantInfo("hackathon-theme-setup")
+    tenant = generateTenantInfo("vuetify-theme-setup")
     cy.newTenant(tenant);
+    cy.login(tenant);
+    cy.uploadRecipeJson(tenant, "recipes/users.json");
   })
   
   it("Can login to Hackathon site", function() {
@@ -20,9 +25,10 @@ describe("Hackathon Tests", function() {
     cy.enableFeature(tenant, "StatCan_OrchardCore_Hackathon");
     cy.enableFeature(tenant, "StatCan_OrchardCore_Hackathon_Team");
     cy.enableFeature(tenant, "StatCan_OrchardCore_Hackathon_Judging");
+    cy.uploadRecipeJson(tenant, "recipes/team-management.json");
   })
 
-  it("Can run Hackathon recipes recipes", function() {
+  it("Can run Hackathon recipes", function() {
     cy.visit(`${tenant.prefix}/login`)
     cy.login(tenant);
     cy.runRecipe(tenant, 'Hackathon_ChallengeSubmissionForm');
@@ -33,6 +39,7 @@ describe("Hackathon Tests", function() {
 
   // Challenge Submission Form
   it("Challenge Submission: Client side validation prevents submit", function() {
+    cy.loginAs(tenant.prefix, 'Challenger', password);
     cy.visitContentPage(tenant, contentIdChallengeSubmissionForm);
 
     cy.get('button[type=submit]').click();
@@ -43,6 +50,7 @@ describe("Hackathon Tests", function() {
   })
 
   it("Challenge Submission: Submit works and displays success message", function() {
+    cy.loginAs(tenant.prefix, 'Challenger', password);
     cy.visitContentPage(tenant, contentIdChallengeSubmissionForm);
 
     cy.get('input[name=name]').type('Challenge Name', {force:true});
@@ -51,21 +59,28 @@ describe("Hackathon Tests", function() {
 
     cy.get('button[type=submit]').click();
 
-    cy.get('div[class=v-alert__content]').should('contain', 'The challenge was submitted successfully');
+    cy.get('div[class=v-alert__content]').should('contain', 'Your challenge was submitted successfully');
   })
 
   // Hacker Registration Form
+  it("Hacker Registration: Requires login", function() {
+    cy.visitContentPage(tenant, contentIdHackerRegistrationForm);
+    cy.get("#main").contains("Please login before registering to this event");
+  })
+
   it("Hacker Registration: Client side validation prevents submit", function() {
+    cy.loginAs(tenant.prefix, 'Hacker', password);
     cy.visitContentPage(tenant, contentIdHackerRegistrationForm);
   
     cy.get('button[type=submit]').click();
   
     cy.get('input[name=firstName]').closest('.v-input').find('.v-messages__message').should('contain', 'The First name field is required');
     cy.get('input[name=lastName]').closest('.v-input').find('.v-messages__message').should('contain', 'The Last name field is required');
-    cy.get('input[name=email]').closest('.v-input').find('.v-messages__message').should('contain', 'The Email Address field is required');
+    cy.get('input[name=email]').closest('.v-input').find('.v-messages__message').should('contain', 'The Contact Email Address field is required');
   })
   
   it("Hacker Registration: Submit works and displays success message", function() {
+    cy.loginAs(tenant.prefix, 'James', password);
     cy.visitContentPage(tenant, contentIdHackerRegistrationForm);
   
     cy.get('input[name=firstName]').type('Tester', {force:true});
@@ -80,6 +95,7 @@ describe("Hackathon Tests", function() {
     
   // Volunteer Registration Form
   it("Volunteer Registration: Client side validation prevents submit", function() {
+    cy.loginAs(tenant.prefix, 'Volunteer', password);
     cy.visitContentPage(tenant, contentIdVolunteerRegistrationForm);
   
     cy.get('button[type=submit]').click();
@@ -90,6 +106,7 @@ describe("Hackathon Tests", function() {
   })
   
   it("Volunteer Registration: Submit works and displays success message", function() {
+    cy.loginAs(tenant.prefix, 'Alan', password);
     cy.visitContentPage(tenant, contentIdVolunteerRegistrationForm);
   
     cy.get('input[name=firstName]').type('Tester', {force:true});
@@ -100,6 +117,79 @@ describe("Hackathon Tests", function() {
     cy.get('button[type=submit]').click();
     
     cy.get('div[class=v-alert__content]').should('contain', 'You have successfully registered!');
+  })
+
+  // Team Management
+  it("Team Management: Create Team", function() {
+    cy.loginAs(tenant.prefix, 'Laura', password);
+    cy.visit(`${tenant.prefix}/${TeamManagementPagePath}`)
+  
+    cy.get('button[name=btnCreate]').click();
+
+    cy.get('div[class=v-alert__content]').should('contain', 'Successfully created team');
+    cy.get('span[id=team-id]').should(($span) => ContentIdTeam = $span.text());
+  })
+
+  it("Team Management: Join Team", function() {
+    // Mike joins the team then gets removed by the captain
+    cy.loginAs(tenant.prefix, 'Mike', password);
+    cy.visit(`${tenant.prefix}/${TeamManagementPagePath}`)
+  
+    cy.get('input[name=teamContentItemId]').type(ContentIdTeam, {force:true})
+    cy.get('button[id=team-submit-addon]').click();
+
+    cy.get('div[class=v-alert__content]').should('contain', 'Successfully joined team');
+
+    // Frank joins team then leaves it
+    cy.loginAs(tenant.prefix, 'Frank', password);
+    cy.visit(`${tenant.prefix}/${TeamManagementPagePath}`)
+  
+    cy.get('input[name=teamContentItemId]').type(ContentIdTeam, {force:true})
+    cy.get('button[id=team-submit-addon]').click();
+
+    cy.get('div[class=v-alert__content]').should('contain', 'Successfully joined team');
+  })
+
+  it("Team Management: Leave Team", function() {
+    cy.loginAs(tenant.prefix, 'Frank', password);
+    cy.visit(`${tenant.prefix}/${TeamManagementPagePath}`)
+  
+    cy.get('button[name=btnLeave]').click();
+
+    cy.get('div[class=v-alert__content]').should('contain', 'Successfully left team');
+  })
+
+  it("Team Management: Team Captain Removes Member", function() {
+    cy.loginAs(tenant.prefix, 'Laura', password);
+    cy.visit(`${tenant.prefix}/${TeamManagementPagePath}`)
+  
+    cy.get('button[name=btnRemove]').last().click();
+
+    cy.get('div[class=v-alert__content]').should('contain', 'Member successfully removed from the team');
+  })
+
+  it("Team Management: Team Captain Edits Team", function() {
+    cy.loginAs(tenant.prefix, 'Laura', password);
+    cy.visit(`${tenant.prefix}/${TeamManagementPagePath}`)
+  
+    cy.get('input[name=teamName]').type('Better Team', {force:true});
+    cy.get('textarea[name=teamDescription]').type('Lorem ipsum dolor sit amet, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', {force:true});
+
+    cy.get('button[name=btnSave]').click();
+
+    cy.get('div[class=v-alert__content]').should('contain', 'Team info successfully updated');
+  })
+
+  it("Team Management: Team Captain Selects A Challenge", function() {
+    cy.loginAs(tenant.prefix, 'Laura', password);
+    cy.visit(`${tenant.prefix}/${TeamManagementPagePath}`)
+  
+    cy.get('div[class=v-select__selections]').click();
+    cy.get('div[class=v-list-item__title]').click();
+
+    cy.get('button[name=btnSave]').click();
+
+    cy.get('div[class=v-alert__content]').should('contain', 'Team info successfully updated');
   })
 
   // // Scoring Page Form  

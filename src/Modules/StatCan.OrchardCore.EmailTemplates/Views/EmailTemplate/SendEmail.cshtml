@@ -1,0 +1,78 @@
+@model SendEmailTemplateViewModel
+
+<h1>@RenderTitleSegments(T["Send email from {0} template", Model.Name])</h1>
+
+<div asp-validation-summary="ModelOnly"></div>
+<form asp-action="SendEmail" asp-route-returnUrl="@ViewData["returnUrl"]" method="post">
+
+    <input type="hidden" asp-for="Name" />
+
+    <div class="form-group" asp-validation-class-for="Author">
+        <label asp-for="Author">@T["From"]</label>
+        <input type="text" asp-for="Author" class="form-control code" />
+        <span class="text-danger d-block" asp-validation-for="Author"></span>
+        <span class="hint">@T["The author's email address that defines who the email is from. Leave blank to use the configured email address."]</span>
+    </div>
+
+    <div class="form-group" asp-validation-class-for="Sender">
+        <label asp-for="Sender">@T["Sender"]</label>
+        <input type="text" asp-for="Sender" class="form-control code" />
+        <span class="text-danger d-block" asp-validation-for="Sender"></span>
+        <span class="hint">@T["The sender's email address. Required if not the same than the \"From\" email address."]</span>
+    </div>
+
+    <div class="form-group" asp-validation-class-for="ReplyTo">
+        <label asp-for="ReplyTo">@T["ReplyTo"]</label>
+        <input type="text" asp-for="ReplyTo" class="form-control code" />
+        <span class="text-danger d-block" asp-validation-for="ReplyTo"></span>
+        <span class="hint">@T["The \"reply to\" email address. Required if you want email replies be sent to a different address than the \"From\" address."]</span>
+    </div>
+
+    <div class="form-group" asp-validation-class-for="Recipients">
+        <label asp-for="Recipients">@T["Recipients"]</label>
+        <input type="text" asp-for="Recipients" class="form-control code" />
+        <span class="text-danger d-block" asp-validation-for="Recipients"></span>
+        <span class="hint">@T["The comma-separated list of recipient email addresses."]</span>
+    </div>
+
+    <div class="form-group" asp-validation-class-for="CC">
+        <label asp-for="CC">@T["CC"]</label>
+        <input type="text" asp-for="CC" class="form-control code" />
+        <span class="text-danger d-block" asp-validation-for="CC"></span>
+        <span class="hint">@T["The comma-separated list of CC recipient email addresses."]</span>
+    </div>
+
+    <div class="form-group" asp-validation-class-for="BCC">
+        <label asp-for="BCC">@T["BCC"]</label>
+        <input type="text" asp-for="BCC" class="form-control code" />
+        <span class="text-danger d-block" asp-validation-for="BCC"></span>
+        <span class="hint">@T["The comma-separated list of BCC recipient email addresses."]</span>
+    </div>
+
+    <div class="form-group" asp-validation-class-for="Subject">
+        <label asp-for="Subject">@T["Subject"]</label>
+        <input type="text" asp-for="Subject" class="form-control code" />
+        <span class="text-danger d-block" asp-validation-for="Subject"></span>
+        <span class="hint">@T["The subject of the email message."]</span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Body">@T["Body"]</label>
+        <textarea asp-for="Body" rows="5" class="form-control"></textarea>
+        <span class="text-danger d-block" asp-validation-for="Body"></span>
+        <span class="hint">@T["The body of the email message."]</span>
+    </div>
+
+    <div class="form-group">
+        <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" asp-for="IsBodyHtml" />
+            <label class="custom-control-label" asp-for="IsBodyHtml">@T["Does the Body contain HTML?"]</label>
+            <span class="hint dashed">@T["If checked, indicates the body of the email message is HTML. If unchecked, indicates the body of the email message is plain text."]</span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">@T["Send"]</button>
+        <a asp-action="Index" class="btn btn-secondary cancel" role="button">@T["Cancel"]</a>
+    </div>
+</form>

@@ -27,7 +27,7 @@ namespace Etch.OrchardCore.ContentPermissions.Liquid
 
         #region Implementation
 
-        public ValueTask<FluidValue> ProcessAsync(FluidValue input, FilterArguments arguments, TemplateContext context)
+        public ValueTask<FluidValue> ProcessAsync(FluidValue input, FilterArguments arguments, LiquidTemplateContext context)
         {
             var item = input.ToObjectValue() as ContentItem;
 

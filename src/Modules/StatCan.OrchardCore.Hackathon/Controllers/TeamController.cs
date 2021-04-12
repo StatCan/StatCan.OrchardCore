@@ -11,6 +11,7 @@ using OrchardCore.Settings;
 using OrchardCore.ContentManagement;
 using OrchardCore.Entities;
 using OrchardCore.Modules;
+using System.Security.Claims;
 
 namespace StatCan.OrchardCore.Hackathon.Controllers
 {
@@ -44,18 +45,6 @@ namespace StatCan.OrchardCore.Hackathon.Controllers
 
         public IHtmlLocalizer H {get;}
 
-        private string GetPrefixedUrl(string url)
-        {
-            if (string.IsNullOrEmpty(url))
-            {
-                return "~/";
-            }
-            if (!url.StartsWith('/'))
-            {
-                url = "/" + url;
-            }
-            return "~" + url;
-        }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -80,8 +69,8 @@ namespace StatCan.OrchardCore.Hackathon.Controllers
                 _notifier.Success(H["Successfully created team"]);
             }
 
-            await _session.CommitAsync();
-            return LocalRedirect(GetPrefixedUrl(returnUrl));
+            await _session.SaveChangesAsync();
+            return LocalRedirect(returnUrl);
         }
 
         [HttpPost]
@@ -96,7 +85,7 @@ namespace StatCan.OrchardCore.Hackathon.Controllers
             if (string.IsNullOrEmpty(teamContentItemId))
             {
                 _notifier.Error(H["Enter a team ID"]);
-                return LocalRedirect(GetPrefixedUrl(returnUrl));
+                return LocalRedirect(returnUrl);
             }
 
             var site = await _siteService.GetSiteSettingsAsync();
@@ -115,8 +104,8 @@ namespace StatCan.OrchardCore.Hackathon.Controllers
                 _notifier.Error(H["Team could not be found"]);
             }
 
-            await _session.CommitAsync();
-            return LocalRedirect(GetPrefixedUrl(returnUrl));
+            await _session.SaveChangesAsync();
+            return LocalRedirect(returnUrl);
         }
 
         [HttpPost]
@@ -142,8 +131,60 @@ namespace StatCan.OrchardCore.Hackathon.Controllers
                 _notifier.Success(H["Successfully left team"]);
             }
 
-            await _session.CommitAsync();
-            return LocalRedirect(GetPrefixedUrl(returnUrl));
+            await _session.SaveChangesAsync();
+            return LocalRedirect(returnUrl);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> RemoveTeamMember(string hackerContentItemId, string returnUrl)
+        {
+            if (!HttpContext.User.IsInRole("Hacker"))
+            {
+                return NotFound();
+            }
+
+            var site = await _siteService.GetSiteSettingsAsync();
+            var hackathonCustomSettings = site.As<ContentItem>("HackathonCustomSettings");
+            if (hackathonCustomSettings.Content["TeamCustomSettings"]["TeamEditable"].Value == false)
+            {
+                return Unauthorized();
+            }
+
+            await _hackathonService.RemoveTeamMember(hackerContentItemId, ModelState);
+            if (ModelState.IsValid)
+            {
+                _notifier.Success(H["Member successfully removed from the team"]);
+            }
+
+            await _session.SaveChangesAsync();
+            return LocalRedirect(returnUrl);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> SaveTeam(string teamName, string teamDescription, string challenge, string returnUrl)
+        {
+            if (!HttpContext.User.IsInRole("Hacker"))
+            {
+                return NotFound();
+            }
+
+            var site = await _siteService.GetSiteSettingsAsync();
+            var hackathonCustomSettings = site.As<ContentItem>("HackathonCustomSettings");
+            if (hackathonCustomSettings.Content["TeamCustomSettings"]["TeamEditable"].Value == false)
+            {
+                return Unauthorized();
+            }
+
+            await _hackathonService.SaveTeam(teamName, teamDescription, challenge, ModelState);
+            if (ModelState.IsValid)
+            {
+                _notifier.Success(H["Team info successfully updated"]);
+            }
+
+            await _session.SaveChangesAsync();
+            return LocalRedirect(returnUrl);
         }
     }
 }

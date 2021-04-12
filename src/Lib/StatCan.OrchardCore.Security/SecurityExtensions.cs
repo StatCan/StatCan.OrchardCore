@@ -34,7 +34,7 @@ namespace StatCan.OrchardCore.Security
                     .From("unpkg.com")
                     .From("cdnjs.cloudflare.com")
                     .From("stackpath.bootstrapcdn.com");
-                builder.AddConnectSrc().Self().From("cdn.jsdelivr.net").From("dpm.demdex.net").From("canada.sc.omtrdc.net"); // adobe analytics
+                builder.AddConnectSrc().Self().From("*.statcan.ca").From("*.statcan.gc.ca").From("cdn.jsdelivr.net").From("dpm.demdex.net").From("canada.sc.omtrdc.net"); // adobe analytics
 
                 builder.AddScriptSrc()
                     .UnsafeEval() // for vue-js in oc admin

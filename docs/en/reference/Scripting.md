@@ -29,6 +29,15 @@ These methods are added when the `OrchardCore.Contents` module is enabled
 | -------- | ----------- |
 |`contentByItemId(contentItemId: String): ContentItem`| Returns the ContentItem with the specified contentItemId |
 
+
+### Deployment
+
+These methods are added when the `OrchardCore.Deployment` module is enabled
+
+| Function | Description 
+| -------- | ----------- |
+|`importRecipeJson(json: String): RecipeJsonResult`| Returns true if the recipe executed successfully or false if something went wrong. Return values Success = 0, InvalidJson = 1, Exception = 2 |
+
 ### Users
 
 These methods are added when the `OrchardCore.Users` module is enabled
@@ -36,8 +45,9 @@ These methods are added when the `OrchardCore.Users` module is enabled
 | Function | Description 
 | -------- | ----------- |
 |`validateEmail(email: String): Boolean`| Validates an email address |
-|`updateEmail(email: String): UpdateEmailStatus`| Validates an email address. Success = 0, Unauthorized = 1, InvalidEmail = 2, AlreadyExists = 3, UpdateError = 4 |
-|`updateCustomUserSettings(contentType: String, properties: Object): UpdateSettingsStatus`| Updates the CustomUserSettings with the specified contentType with the passed properties. Success = 0, Unauthorized = 1, TypeError = 2 |
+|`updateEmail(email: String): UpdateEmailStatus`| Validates an email address. Return values: Success = 0, Unauthorized = 1, InvalidEmail = 2, AlreadyExists = 3, UpdateError = 4 |
+|`updateCustomUserSettings(contentType: String, properties: Object): UpdateSettingsStatus`| Updates the CustomUserSettings with the specified contentType with the passed properties. Return values: Success = 0, Unauthorized = 1, TypeError = 2 |
+|`setUserRole(userName: String, roleName: String): Boolean`| Sets a role to a user. Security critical function. |
 
 ### Localization
 

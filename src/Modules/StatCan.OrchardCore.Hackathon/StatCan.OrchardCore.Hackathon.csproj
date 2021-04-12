@@ -17,6 +17,7 @@
     <PackageReference Include="OrchardCore.ResourceManagement" Version="$(OrchardCoreVersion)" />
     <PackageReference Include="OrchardCore.Autoroute" Version="$(OrchardCoreVersion)" />
     <PackageReference Include="OrchardCore.Media" Version="$(OrchardCoreVersion)" />
+    <PackageReference Include="OrchardCore.Users" Version="$(OrchardCoreVersion)" />
   </ItemGroup>
 
   <ItemGroup>
@@ -29,6 +30,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Lib\StatCan.OrchardCore.Extensions\StatCan.OrchardCore.Extensions.csproj" />
+    <ProjectReference Include="..\StatCan.OrchardCore.EmailTemplates\StatCan.OrchardCore.EmailTemplates.csproj" />
   </ItemGroup>
 
 

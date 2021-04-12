@@ -2,13 +2,19 @@
 @using StatCan.OrchardCore.VueForms.Models
 @inject OrchardCore.ContentManagement.Display.IContentItemDisplayManager ContentItemDisplayManager
 @inject OrchardCore.DisplayManagement.ModelBinding.IUpdateModelAccessor updateModelAccessor
+@inject Etch.OrchardCore.ContentPermissions.Services.IContentPermissionsService ContentPermissionsService
+
 
 @{
   var contentItem = (ContentItem)Model.ContentItem;
   var formPart = contentItem.As<VueForm>();
 }
 
-@if (formPart.Enabled?.Value == true)
+@if (!ContentPermissionsService.CanAccess(Model.ContentItem))
+{
+  @T["You are unauthorized to view this form"];
+}
+else if (formPart.Enabled?.Value == true)
 {  
   Model.Metadata.Alternates.Clear();
   @if(!string.IsNullOrEmpty(formPart.RenderAs?.Text))

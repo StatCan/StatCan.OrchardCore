@@ -15,7 +15,7 @@ namespace StatCan.OrchardCore.DisplayHelpers.Filters
             _httpContext = httpContextAccessor.HttpContext;
         }
 
-        public ValueTask<FluidValue> ProcessAsync(FluidValue input, FilterArguments args, TemplateContext context)
+        public ValueTask<FluidValue> ProcessAsync(FluidValue input, FilterArguments args, LiquidTemplateContext context)
         {
             var path = (_httpContext.Request.PathBase + _httpContext.Request.Path).ToString().TrimEnd('/');
             var toCompare = input.ToStringValue().TrimEnd('/');

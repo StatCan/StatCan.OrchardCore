@@ -17,7 +17,7 @@ namespace StatCan.OrchardCore.LocalizedText.Liquid
         {
             _accessor = accessor;
         }
-        public ValueTask<FluidValue> ProcessAsync(FluidValue input, FilterArguments arguments, TemplateContext context)
+        public ValueTask<FluidValue> ProcessAsync(FluidValue input, FilterArguments arguments, LiquidTemplateContext context)
         {
             int paramFirstIndex = 0;
             var culture = context.CultureInfo.Name;
@@ -64,6 +64,9 @@ namespace StatCan.OrchardCore.LocalizedText.Liquid
                     parameters[i] = arguments.At(i).ToStringValue();
                 }
                 value = string.Format(value, parameters);
+            }
+            if(value == null){
+                value = string.Empty;
             }
 
             return new ValueTask<FluidValue>(new StringValue(value, false));

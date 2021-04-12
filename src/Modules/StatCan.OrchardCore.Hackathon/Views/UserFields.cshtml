@@ -1,0 +1,22 @@
+@model OrchardCore.Users.ViewModels.SummaryAdminUserViewModel
+@inject Microsoft.AspNetCore.Identity.UserManager<OrchardCore.Users.IUser> userManager;
+@{
+  var userRoleNames = await userManager.GetRolesAsync(Model.User);
+}
+
+<h5 class="float-left">@Model.User.UserName <span class="hint dashed">@Model.User.Email</span></h5>
+<div class="float-left ml-2">
+@foreach(var role in userRoleNames)
+  {
+    <span class="badge badge-info" title="@T["Role"]">
+        @role
+    </span>
+  }
+</div>
+@if (!Model.User.IsEnabled)
+{
+    <span class="badge badge-danger ml-2" title="@T["Disabled"]">
+        <i class="fas fa-user-alt-slash"></i> @T["Disabled"]
+    </span>
+}
+
