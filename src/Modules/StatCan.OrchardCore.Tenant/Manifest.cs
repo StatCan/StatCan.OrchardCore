@@ -15,6 +15,7 @@ using static StatCan.OrchardCore.Tenant.FeatureIds;
     Description = "Adds a widget used to display a List of Tenant and its information",
     Dependencies = new[]
     {
+        "OrchardCore.Lists",
         "OrchardCore.Widgets"
     }
 )]
