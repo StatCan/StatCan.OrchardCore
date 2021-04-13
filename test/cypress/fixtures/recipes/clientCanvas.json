@@ -1,0 +1,84 @@
+{
+    "canvas": {
+      "id": "cjOne",
+      "type": "Client Journey Canvas",
+      "title": "Client Journey Canvas One",
+      "author": "Jonathan Lam",
+      "date": "2019-09",
+      "description": "Client journey canvas"
+    },
+    "stakeholder": [
+      {
+        "title": "Stakeholders",
+        "text": ["Business analysts", "Subject matter experts"]
+      }
+    ],
+    "goal": [
+      {
+        "title": "Goals and Expectations",
+        "text": [
+          "Increase in production",
+          "Develop and maintain good communication"
+        ]
+      }
+    ],
+  
+    "moments": [
+      {
+        "title": "On-boarding",
+        "text": "the mechanism through which new employees acquire the necessary knowledge, skills, and behaviors in order to become effective organizational members and insiders",
+        "satisfaction": "sad",
+        "opportunity": [
+          {
+            "title": "Opportunity",
+            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. In vitae turpis massa sed elementum tempus."
+          }
+        ]
+      },
+      {
+        "title": "Account Creation",
+        "text": "Text for account creation ",
+        "satisfaction": "really sad",
+        "opportunity": [
+          {
+            "title": "Opportunity",
+            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. In vitae turpis massa sed elementum tempus."
+          }
+        ]
+      },
+      {
+        "title": "Account Confirmation",
+        "text": "Text for account confirmation",
+        "satisfaction": "happy",
+        "opportunity": [
+          {
+            "title": "Opportunity",
+            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. In vitae turpis massa sed elementum tempus."
+          }
+        ]
+      },
+      {
+        "title": "Services Configuration",
+        "text": "Text for services configuration",
+        "satisfaction": "great",
+        "opportunity": [
+          {
+            "title": "Opportunity",
+            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. In vitae turpis massa sed elementum tempus."
+          }
+        ]
+      },
+      {
+        "title": "Account Deletion",
+        "text": "Text for account deletion",
+        "satisfaction": "sad",
+        "opportunity": [
+          {
+            "title": "Opportunity",
+            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. In vitae turpis massa sed elementum tempus."
+          }
+        ]
+      }
+    ]
+  }
+  
