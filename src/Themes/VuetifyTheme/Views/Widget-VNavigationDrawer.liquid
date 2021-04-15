@@ -1,0 +1,23 @@
+{% assign backgroundImage = Model.ContentItem.Content.VNavigationDrawer.BackgroundImage.Paths.first | asset_url %}
+{% assign color = Model.ContentItem.Content.VNavigationDrawer.Color.Text %}
+{% assign miniVariantWidth = Model.ContentItem.Content.VNavigationDrawer.MiniVariantWidth.Value %}
+{% assign mobileBreakpoint = Model.ContentItem.Content.VNavigationDrawer.MobileBreakpoint.Value %}
+{% assign overlayColor = Model.ContentItem.Content.VNavigationDrawer.OverlayColor.Text %}
+{% assign overlayOpacity = Model.ContentItem.Content.VNavigationDrawer.OverlayOpacity.Value %}
+{% assign height = Model.ContentItem.Content.VNavigationDrawer.Height.Value %}
+{% assign width = Model.ContentItem.Content.VNavigationDrawer.Width.Value %}
+
+<v-navigation-drawer app v-model="drawer"
+  {{ Model.ContentItem.Content.VNavigationDrawer.Props.Values | join: ' ' | raw }}
+  {% if empty != backgroundImage %}src="{{ backgroundImage }}"{% endif %}
+  {% if empty != color %}color="{{ color }}"{% endif %}
+  {% if empty != miniVariantWidth %}mini-variant-width="{{ miniVariantWidth }}"{% endif %}
+  {% if empty != mobileBreakpoint %}mobile-breakpoint="{{ mobileBreakpoint }}"{% endif %}
+  {% if empty != overlayColor %}overlay-color="{{ overlayColor }}"{% endif %}
+  {% if empty != overlayOpacity %}overlay-opacity="{{ overlayOpacity }}"{% endif %}
+  {% if empty == height %}height="100%"{% else %}height="{{ height }}"{% endif %}
+  {% if empty == width %}width="256"{% else %}width="{{ width }}"{% endif %}
+>
+  {% assign drawerAlias = "alias:navigation-drawer-" | append: Culture.Name %}
+  {% shape "menu", alias: drawerAlias, cache_id: drawerAlias, cache_fixed_duration: "00:00:01", cache_tag: menuAlias %}
+</v-navigation-drawer>

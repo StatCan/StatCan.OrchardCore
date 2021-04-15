@@ -2,9 +2,9 @@ using OrchardCore.DisplayManagement.Manifest;
 using static StatCan.OrchardCore.Manifest.StatCanManifestConstants;
 
 [assembly: Theme(
-    Name = "HackathonTheme",
+    Name = "VuetifyTheme",
     Author = DigitalInnovationTeam,
     Website = DigitalInnovationWebsite,
     Version = "1.0.",
-    Description = "Hackathon platform theme (deprecated)"
+    Description = "Vuetify platform theme"
 )]

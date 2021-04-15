@@ -7,13 +7,14 @@ const contentIdVolunteerRegistrationForm = "4jjje1q162zaay11nbf3w2634h";
 const contentIdScoringPageForm = "423fn7nvrwcdv2ksy8hww9qwdn";
 const TeamManagementPagePath = "test-page";
 const draggableContentId = "45a6j8rkq9z56xfhvxwm5hvgc7";
+const password = 'Inno111!';
 
 describe("Hackathon Tests", function() {    
   let tenant;
   let ContentIdTeam;
 
   before(() => {
-    tenant = generateTenantInfo("hackathon-theme-setup")
+    tenant = generateTenantInfo("vuetify-theme-setup")
     cy.newTenant(tenant);
     cy.login(tenant);
     cy.uploadRecipeJson(tenant, "recipes/users.json");
@@ -39,7 +40,7 @@ describe("Hackathon Tests", function() {
 
   // Challenge Submission Form
   it("Challenge Submission: Client side validation prevents submit", function() {
-    cy.loginAs(tenant.prefix, 'Challenger', 'Inno111!');
+    cy.loginAs(tenant.prefix, 'Challenger', password);
     cy.visitContentPage(tenant, contentIdChallengeSubmissionForm);
 
     cy.get('button[type=submit]').click();
@@ -50,7 +51,7 @@ describe("Hackathon Tests", function() {
   })
 
   it("Challenge Submission: Submit works and displays success message", function() {
-    cy.loginAs(tenant.prefix, 'Challenger', 'Inno111!');
+    cy.loginAs(tenant.prefix, 'Challenger', password);
     cy.visitContentPage(tenant, contentIdChallengeSubmissionForm);
 
     cy.get('input[name=name]').type('Challenge Name', {force:true});
@@ -69,7 +70,7 @@ describe("Hackathon Tests", function() {
   })
 
   it("Hacker Registration: Client side validation prevents submit", function() {
-    cy.loginAs(tenant.prefix, 'Hacker', 'Inno111!');
+    cy.loginAs(tenant.prefix, 'Hacker', password);
     cy.visitContentPage(tenant, contentIdHackerRegistrationForm);
   
     cy.get('button[type=submit]').click();
@@ -80,7 +81,7 @@ describe("Hackathon Tests", function() {
   })
   
   it("Hacker Registration: Submit works and displays success message", function() {
-    cy.loginAs(tenant.prefix, 'James', 'Inno111!');
+    cy.loginAs(tenant.prefix, 'James', password);
     cy.visitContentPage(tenant, contentIdHackerRegistrationForm);
   
     cy.get('input[name=firstName]').type('Tester', {force:true});
@@ -95,7 +96,7 @@ describe("Hackathon Tests", function() {
     
   // Volunteer Registration Form
   it("Volunteer Registration: Client side validation prevents submit", function() {
-    cy.loginAs(tenant.prefix, 'Volunteer', 'Inno111!');
+    cy.loginAs(tenant.prefix, 'Volunteer', password);
     cy.visitContentPage(tenant, contentIdVolunteerRegistrationForm);
   
     cy.get('button[type=submit]').click();
@@ -106,7 +107,7 @@ describe("Hackathon Tests", function() {
   })
   
   it("Volunteer Registration: Submit works and displays success message", function() {
-    cy.loginAs(tenant.prefix, 'Alan', 'Inno111!');
+    cy.loginAs(tenant.prefix, 'Alan', password);
     cy.visitContentPage(tenant, contentIdVolunteerRegistrationForm);
   
     cy.get('input[name=firstName]').type('Tester', {force:true});
@@ -121,7 +122,7 @@ describe("Hackathon Tests", function() {
 
   // Team Management
   it("Team Management: Create Team", function() {
-    cy.loginAs(tenant.prefix, 'Laura', 'Inno111!');
+    cy.loginAs(tenant.prefix, 'Laura', password);
     cy.visit(`${tenant.prefix}/${TeamManagementPagePath}`)
   
     cy.get('button[name=btnCreate]').click();
@@ -132,7 +133,7 @@ describe("Hackathon Tests", function() {
 
   it("Team Management: Join Team", function() {
     // Mike joins the team then gets removed by the captain
-    cy.loginAs(tenant.prefix, 'Mike', 'Inno111!');
+    cy.loginAs(tenant.prefix, 'Mike', password);
     cy.visit(`${tenant.prefix}/${TeamManagementPagePath}`)
   
     cy.get('input[name=teamContentItemId]').type(ContentIdTeam, {force:true})
@@ -141,7 +142,7 @@ describe("Hackathon Tests", function() {
     cy.get('div[class=v-alert__content]').should('contain', 'Successfully joined team');
 
     // Frank joins team then leaves it
-    cy.loginAs(tenant.prefix, 'Frank', 'Inno111!');
+    cy.loginAs(tenant.prefix, 'Frank', password);
     cy.visit(`${tenant.prefix}/${TeamManagementPagePath}`)
   
     cy.get('input[name=teamContentItemId]').type(ContentIdTeam, {force:true})
@@ -151,7 +152,7 @@ describe("Hackathon Tests", function() {
   })
 
   it("Team Management: Leave Team", function() {
-    cy.loginAs(tenant.prefix, 'Frank', 'Inno111!');
+    cy.loginAs(tenant.prefix, 'Frank', password);
     cy.visit(`${tenant.prefix}/${TeamManagementPagePath}`)
   
     cy.get('button[name=btnLeave]').click();
@@ -160,7 +161,7 @@ describe("Hackathon Tests", function() {
   })
 
   it("Team Management: Team Captain Removes Member", function() {
-    cy.loginAs(tenant.prefix, 'Laura', 'Inno111!');
+    cy.loginAs(tenant.prefix, 'Laura', password);
     cy.visit(`${tenant.prefix}/${TeamManagementPagePath}`)
   
     cy.get('button[name=btnRemove]').last().click();
@@ -169,7 +170,7 @@ describe("Hackathon Tests", function() {
   })
 
   it("Team Management: Team Captain Edits Team", function() {
-    cy.loginAs(tenant.prefix, 'Laura', 'Inno111!');
+    cy.loginAs(tenant.prefix, 'Laura', password);
     cy.visit(`${tenant.prefix}/${TeamManagementPagePath}`)
   
     cy.get('input[name=teamName]').type('Better Team', {force:true});
@@ -181,7 +182,7 @@ describe("Hackathon Tests", function() {
   })
 
   it("Team Management: Team Captain Selects A Challenge", function() {
-    cy.loginAs(tenant.prefix, 'Laura', 'Inno111!');
+    cy.loginAs(tenant.prefix, 'Laura', password);
     cy.visit(`${tenant.prefix}/${TeamManagementPagePath}`)
   
     cy.get('div[class=v-select__selections]').click();
