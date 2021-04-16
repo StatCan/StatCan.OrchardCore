@@ -3,4 +3,4 @@
     var contentItem = ((ContentItem)Model.ContentItem);
     var vueComponent = contentItem.As<VueComponent>();
 }
-@Html.Raw(await Orchard.LiquidShortcodesAsync(vueComponent.Template.Text, contentItem))
+@Html.Raw(await Orchard.LiquidShortcodesAsync(vueComponent.Template.Text, (object)Model))

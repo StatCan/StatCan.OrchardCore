@@ -5,19 +5,10 @@
 
 <style asp-name="vuetify"></style>
 <script asp-name="vuetify" at="Foot"></script>
+<script asp-name="vue-forms" at="Foot" depends-on="vuetify"></script>
 
 <div class="vuetify-app-instance">
   <v-app>
     @await DisplayAsync(Model)
   </v-app>
 </div>
-<script at="Foot" asp-name="vuetify-app-instance" depends-on="vuetify, vue-forms">
-  document.addEventListener("vue-form-component-loaded", function(event) { 
-    document.querySelectorAll(".vuetify-app-instance").forEach(function(elem){
-      new Vue({
-        el: elem,
-        vuetify: new Vuetify()
-      });
-    });
-  });
-</script>
