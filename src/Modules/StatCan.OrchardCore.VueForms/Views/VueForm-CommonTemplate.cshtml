@@ -11,17 +11,22 @@
   var flowPart = contentItem.As<FlowPart>();
   var scripts = contentItem.As<VueFormScripts>();
 
-  var initScript = await Orchard.LiquidShortcodesAsync(scripts.ClientInit?.Text, contentItem);
-  var options = await Orchard.LiquidShortcodesAsync(scripts.ComponentOptions?.Text, contentItem);
+  var initScript = await Orchard.LiquidShortcodesAsync(scripts.ClientInit?.Text, (object)Model);
+  var options = await Orchard.LiquidShortcodesAsync(scripts.ComponentOptions?.Text, (object)Model);
 
   var componentName = "c-" + Guid.NewGuid().ToString("N");
 }
 <style asp-name="vue-forms"></style>
 <script asp-name="vue-forms" at="Foot"></script>
+@*
+  Render the div that holds the component data in the Content zone. 
+  This allows VueForms to be used inside another component's template
+*@
+<zone name="Content">
+  <div class="vue-form" data-name="@componentName" data-init-script="@Orchard.B64Encode(initScript)" data-options="@Orchard.B64Encode(options)" data-lang="@CultureInfo.CurrentUICulture.TwoLetterISOLanguageName"></div>
+</zone>
 
-<div class="vue-form" data-name="@componentName" data-init-script="@Orchard.B64Encode(initScript)" data-options="@Orchard.B64Encode(options)" data-lang="@CultureInfo.CurrentUICulture.TwoLetterISOLanguageName">
-  @Tag(Model, componentName)
-</div>
+@Tag(Model, componentName)
 <script at="Foot" type="text/html" id="@componentName">
   <validation-observer ref="obs" slim v-slot="obs">
     <form v-cloak
