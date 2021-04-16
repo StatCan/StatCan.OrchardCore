@@ -1,0 +1,25 @@
+@using StatCan.OrchardCore.SaaSConfiguration.ViewModels
+@using Microsoft.IdentityModel.Protocols.OpenIdConnect
+
+@model SaasConfigurationSettingsViewModel
+
+<p class="alert alert-warning">@T["The tenants will be reloaded when the settings are saved."]</p>
+
+<div class="form-group" asp-validation-class-for="Authority">
+    <label>@T["Authority"]</label>
+    <input asp-for="Authority" class="form-control" />
+    <span asp-validation-for="Authority"></span>
+    <span class="hint">@T["The Uri of the tenant that houses the OpenId server. This will be used by the clients"]</span>
+</div>
+
+<div class="form-group" asp-validation-class-for="ClientId">
+    <label>@T["ClientId"]</label>
+    <input asp-for="ClientId" class="form-control" />
+    <span asp-validation-for="ClientId"></span>
+</div>
+
+<div class="form-group" asp-validation-class-for="ClientSecret">
+    <label>@T["Client Secret (enter a new value to replace the existing secret)"]</label>
+    <input asp-for="ClientSecret" class="form-control" type="password" autocomplete="false" />
+    <span asp-validation-for="ClientSecret"></span>
+</div>
