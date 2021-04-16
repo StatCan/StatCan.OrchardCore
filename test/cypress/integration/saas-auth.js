@@ -5,7 +5,7 @@ describe("SaaSConfiguration module tests", function() {
   let tenant;
 
   before(() => {
-    tenant = generateTenantInfo("hackathon-theme-setup");
+    tenant = generateTenantInfo("vuetify-theme-setup");
     cy.newTenant(tenant);
   })
 
