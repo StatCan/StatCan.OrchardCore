@@ -40,7 +40,7 @@ gulp.task("build", function () {
     return createAssetGroupTask(assetGroup, doRebuild);
   });
 
-  hackathonTheme("build"); 
+  vuetifyTheme("build"); 
   return merge(assetGroupTasks);
 });
 
@@ -50,7 +50,7 @@ gulp.task("rebuild", function () {
     var doRebuild = true;
     return createAssetGroupTask(assetGroup, doRebuild);
   });
-  hackathonTheme("build"); 
+  vuetifyTheme("build"); 
   return merge(assetGroupTasks);
 });
 
@@ -123,7 +123,7 @@ gulp.task("watch", function () {
       );
     });
   });
-  hackathonTheme("watch"); 
+  vuetifyTheme("watch"); 
 
   console.log("Waiting for file changes");
 });
@@ -140,21 +140,21 @@ gulp.task("help", function () {
     `);
 });
 
-function hackathonTheme(command) {
+function vuetifyTheme(command) {
 
-  const hackWatch = exec(`npm run ${command}`, {cwd: './src/Themes/HackathonTheme' });
+  const hackWatch = exec(`npm run ${command}`, {cwd: './src/Themes/VuetifyTheme' });
 
   hackWatch.stdout.on("data", data => {
-      console.log(`HackathonTheme: ${data}`);
+      console.log(`VuetifyTheme: ${data}`);
   });
   hackWatch.on('error', (error) => {
-      console.error(`HackathonTheme: ${error.message}`);
+      console.error(`VuetifyTheme: ${error.message}`);
   });
   hackWatch.on("close", code => {
-      console.log(`HackathonTheme ${command} exited with code ${code}`);
+      console.log(`VuetifyTheme ${command} exited with code ${code}`);
   });
 
-  console.log("Watching Hackathon Theme")
+  console.log("Watching Vuetify Theme")
 }
 
 /*
