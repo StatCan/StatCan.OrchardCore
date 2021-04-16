@@ -8,6 +8,8 @@ using OrchardCore.Infrastructure.Html;
 using OrchardCore.Scripting;
 using OrchardCore.ReCaptcha.Services;
 using OrchardCore.DisplayManagement.ModelBinding;
+using OrchardCore.DisplayManagement.Notify;
+using Microsoft.AspNetCore.Mvc.Localization;
 
 namespace StatCan.OrchardCore.Scripting
 {
@@ -17,6 +19,7 @@ namespace StatCan.OrchardCore.Scripting
         private readonly GlobalMethod _validateReCaptcha;
         private readonly GlobalMethod _setModelError;
         private readonly GlobalMethod _hasErrors;
+        private readonly GlobalMethod _notify;
 
         public FormsGlobalMethodsProvider()
         {
@@ -66,11 +69,24 @@ namespace StatCan.OrchardCore.Scripting
                     return recaptchaService.VerifyCaptchaResponseAsync(reCaptchaResponse).GetAwaiter().GetResult();
                 })
             };
+             _notify = new GlobalMethod
+            {
+                Name = "notify",
+                Method = serviceProvider => (Func<string, string, bool>)((type, message ) => {
+                    var notifyService = serviceProvider.GetRequiredService<INotifier>();
+                    if(Enum.TryParse(typeof(NotifyType), type, out var notifyType))
+                    {
+                        notifyService.Add((NotifyType)notifyType, new LocalizedHtmlString(nameof(FormsGlobalMethodsProvider), message));
+                        return true;
+                    }
+                    return false;
+                })
+            };
         }
 
         public IEnumerable<GlobalMethod> GetMethods()
         {
-            return new[] { _formAsJsonObject, _validateReCaptcha, _setModelError, _hasErrors };
+            return new[] { _formAsJsonObject, _validateReCaptcha, _setModelError, _hasErrors, _notify };
         }
     }
 }
