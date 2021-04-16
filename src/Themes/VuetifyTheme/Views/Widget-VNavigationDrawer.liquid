@@ -1,4 +1,4 @@
-{% assign backgroundImage = Model.ContentItem.Content.VNavigationDrawer.BackgroundImage.Paths.first | asset_url %}
+{% assign backgroundImage = Model.ContentItem.Content.VNavigationDrawer.BackgroundImage.Paths.first %}
 {% assign color = Model.ContentItem.Content.VNavigationDrawer.Color.Text %}
 {% assign miniVariantWidth = Model.ContentItem.Content.VNavigationDrawer.MiniVariantWidth.Value %}
 {% assign mobileBreakpoint = Model.ContentItem.Content.VNavigationDrawer.MobileBreakpoint.Value %}
@@ -9,7 +9,7 @@
 
 <v-navigation-drawer app v-model="drawer"
   {{ Model.ContentItem.Content.VNavigationDrawer.Props.Values | join: ' ' | raw }}
-  {% if empty != backgroundImage %}src="{{ backgroundImage }}"{% endif %}
+  {% if empty != backgroundImage %}src="{{ backgroundImage | asset_url }}"{% endif %}
   {% if empty != color %}color="{{ color }}"{% endif %}
   {% if empty != miniVariantWidth %}mini-variant-width="{{ miniVariantWidth }}"{% endif %}
   {% if empty != mobileBreakpoint %}mobile-breakpoint="{{ mobileBreakpoint }}"{% endif %}

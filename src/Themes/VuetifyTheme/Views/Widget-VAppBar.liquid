@@ -1,4 +1,4 @@
-{% assign backgroundImage = Model.ContentItem.Content.VAppBar.BackgroundImage.Paths.first | asset_url %}
+{% assign backgroundImage = Model.ContentItem.Content.VAppBar.BackgroundImage.Paths.first  %}
 {% assign color = Model.ContentItem.Content.VAppBar.Color.Text %}
 {% assign elevation = Model.ContentItem.Content.VAppBar.Elevation.Value %}
 {% assign extensionHeight = Model.ContentItem.Content.VAppBar.ExtensionHeight.Value %}
@@ -8,7 +8,7 @@
 
 <v-app-bar app clipped-left
   {{ Model.ContentItem.Content.VAppBar.Props.Values | join: ' ' | raw }}
-  {% if backgroundImage %}src="{{ backgroundImage }}"{% endif %}
+  {% if empty != backgroundImage %}src="{{ backgroundImage | asset_url }}"{% endif %}
   {% if empty != color %}color="{{ color }}"{% endif %}
   {% if empty !=  extensionHeight %}extension-height="{{ extensionHeight }}"{% endif %}
   {% if empty != scrollThreshold %}scroll-threshold="{{ scrollThreshold }}"{% endif %}
