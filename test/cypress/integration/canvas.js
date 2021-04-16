@@ -50,7 +50,21 @@ before(function () {
       cy.get('.btn-success').click();
     })
 
-    //View Business and Client Canvas
+    it("Can create a Community type Canvas", function() {
+      cy.fixture('communityCanvas.json').as('dataJSON')
+      cy.visit(`${tenant.prefix}/login`)
+      cy.login(tenant);
+      cy.visit(`${tenant.prefix}/Admin/Contents/ContentTypes/Canvas/create`);
+      cy.get('[type="radio"]').check("community", {force: true})
+      cy.fixture('communityCanvas.json').then((dataJSON) => {
+      cy.get('.CodeMirror textarea')
+        .type(JSON.stringify(dataJSON),{ force: true, parseSpecialCharSequences: false })
+      })
+      cy.get('.btn-success').click();
+    })
+
+
+    //View Business, Client Canvas and Community
     it("Can view Business and Client Canvas", function() {
       cy.visit(`${tenant.prefix}/login`)
       cy.login(tenant);

@@ -62,6 +62,10 @@
                         {
                           "name": "Client",
                           "value": "client"
+                        },
+                        {
+                          "name": "Community",
+                          "value": "community"
                         }
                       ]
                     }

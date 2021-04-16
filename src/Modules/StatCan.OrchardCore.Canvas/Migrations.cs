@@ -50,6 +50,10 @@ namespace StatCan.OrchardCore.Canvas
                                     new ListValueOption() {
                                         Name="Client",
                                         Value="client"
+                                    },
+                                     new ListValueOption() {
+                                        Name="Community",
+                                        Value="community"
                                     }
                     },
                 })

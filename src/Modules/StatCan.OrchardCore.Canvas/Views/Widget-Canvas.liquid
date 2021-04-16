@@ -11,7 +11,7 @@
 
 {% assign business = "BusinessCanvas" | shape_new | shape_properties: data: data, json: json, colour: colour %}
 {% assign client = "ClientCanvas" | shape_new | shape_properties: data: data, json: json, colour: colour %}
-{% assign community = "CommunityCanvas" | shape_new %}
+{% assign community = "CommunityCanvas" | shape_new | shape_properties: data: data, json: json, colour: colour %}
 
 {% if type == 'business' %}
     {{ business | shape_render }}
