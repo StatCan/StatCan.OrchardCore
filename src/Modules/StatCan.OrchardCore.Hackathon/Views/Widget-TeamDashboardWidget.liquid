@@ -7,7 +7,7 @@
   {% assign team =  Content.ContentItemId[teamContentItemId] %}
   {% assign isTeamCaptain = team.ContentItem.Content.Team.TeamCaptain.UserIds.first != null and team.ContentItem.Content.Team.TeamCaptain.UserIds.first == user.UserId %}
   {% assign isTeamEditable = Site.Properties.HackathonCustomSettings.TeamCustomSettings.TeamEditable.Value == true %}
-  {% assign challengeSelected =  team.ContentItem.Content.Team.Challenge.ContentItemIds | content_item_id | first %}
+  {% assign challengeSelected =  "" %}
 
   {% if user.Properties.Hacker.Hacker.Team.ContentItemIds.first != null %}
     <v-container>

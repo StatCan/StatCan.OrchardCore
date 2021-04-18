@@ -1,6 +1,6 @@
 {% assign challenges = Queries.GetItemsForHackathon | query: type: "Challenge" %}
 {% assign teamMembers = Queries.GetHackersForTeam | query: teamContentItemId: Model.ContentItem.ContentItemId %}
-{% assign challengeSelected =  Model.ContentItem.Content.Team.Challenge.ContentItemIds | content_item_id %}
+{% assign challengeSelected = "" %}
 {% assign userId = User | user_id %}
 
 {% capture challengeObjects %}
