@@ -1,5 +1,7 @@
+using Microsoft.Extensions.DependencyInjection;
 using OrchardCore.ContentManagement.Records;
 using OrchardCore.Data.Migration;
+using OrchardCore.Environment.Shell.Scope;
 using OrchardCore.Users.Models;
 using System;
 using YesSql;
@@ -8,11 +10,11 @@ namespace StatCan.OrchardCore.Hackathon.Indexes
 {
     public class IndexMigrations : DataMigration
     {
-        private readonly ISession _session;
-        public IndexMigrations(ISession session)
-        {
-            _session = session;
-        }
+        // private readonly ISession _session;
+        // public IndexMigrations(ISession session)
+        // {
+        //     _session = session;
+        // }
 
         public int Create()
         {
@@ -55,15 +57,17 @@ namespace StatCan.OrchardCore.Hackathon.Indexes
             SchemaBuilder.AlterTable(nameof(HackathonItemsIndex), table => table
                 .CreateIndex("IDX_HackathonItemsIndex_DisplayText", "DisplayText")
             );
+
             SchemaBuilder.AlterTable(nameof(HackathonItemsIndex), table => table
                 .CreateIndex("IDX_HackathonItemsIndex_TeamContentItemId", "TeamContentItemId")
             );
+
             SchemaBuilder.AlterTable(nameof(HackathonItemsIndex), table => table
                 .CreateIndex("IDX_HackathonItemsIndex_CaseLocalizationSet", "CaseLocalizationSet")
             );
         }
 
-        private async void CreateHackathonUsersIndex()
+        private void CreateHackathonUsersIndex()
         {
             SchemaBuilder.CreateMapIndexTable(typeof(HackathonUsersIndex), table => table
                 .Column<string>("UserId", c => c.WithLength(26))
@@ -77,11 +81,14 @@ namespace StatCan.OrchardCore.Hackathon.Indexes
                 null
             );
 
-            var users = await _session.Query<User>().ListAsync();
-            foreach (var user in users)
-            {
-                _session.Save(user);
-            }
+            ShellScope.AddDeferredTask(async scope => {
+                var session = scope.ServiceProvider.GetRequiredService<ISession>();
+                var users = await session.Query<User>().ListAsync();
+                foreach (var user in users)
+                {
+                    session.Save(user);
+                }
+            });
         }
     }
 }
