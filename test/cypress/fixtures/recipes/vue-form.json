@@ -284,7 +284,7 @@
               "Text": "var data = requestFormAsJsonObject();\r\nvar strings = getLocalizedTextValues(getFormContentItem());\r\n\r\nif(data.name == \"\") {\r\n addError('name', strings.nameVal); \r\n}\r\n"
             },
             "OnSubmitted": {
-              "Text": "var data = requestFormAsJsonObject();\r\n\r\nvar item = createContentItem(\"PersonInfo\", true, {\r\n  \"PersonInfo\": {\r\n    \"Name\": {\r\n      \"Text\": data.name\r\n    },\r\n    \"Email\": {\r\n      \"Text\": data.email\r\n    },\r\n    \"Gender\": {\r\n      \"Text\": data.gender\r\n    }\r\n  }\r\n});\r\n\r\nhttpRedirect('Contents/ContentItems/' + item.ContentItemId);\r\n"
+              "Text": "var data = requestFormAsJsonObject();\r\n\r\nvar item = createContentItem(\"PersonInfo\", true, {\r\n  \"PersonInfo\": {\r\n    \"Name\": {\r\n      \"Text\": data.name\r\n    },\r\n    \"Email\": {\r\n      \"Text\": data.email\r\n    },\r\n    \"Gender\": {\r\n      \"Text\": data.gender\r\n    }\r\n  }\r\n});\r\n\r\nhttpRedirect('~/Contents/ContentItems/' + item.ContentItemId);\r\n"
             }
           },
           "LocalizedTextPart": {
