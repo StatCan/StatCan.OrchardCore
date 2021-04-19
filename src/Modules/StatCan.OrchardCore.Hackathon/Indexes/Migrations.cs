@@ -10,12 +10,6 @@ namespace StatCan.OrchardCore.Hackathon.Indexes
 {
     public class IndexMigrations : DataMigration
     {
-        // private readonly ISession _session;
-        // public IndexMigrations(ISession session)
-        // {
-        //     _session = session;
-        // }
-
         public int Create()
         {
             CreateHackathonItemsIndex();
