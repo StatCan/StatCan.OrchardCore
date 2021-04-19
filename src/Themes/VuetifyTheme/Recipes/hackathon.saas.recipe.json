@@ -58,7 +58,7 @@
         "OrchardCore.Users.Registration",
         "OrchardCore.Users.ResetPassword",
         "StatCan.OrchardCore.DisplayHelpers",
-        "StatCan.OrchardCore.ContentFields.MultiValueTextField",
+        "StatCan.OrchardCore.ContentFields.MultiTextField",
         "StatCan.OrchardCore.CommonTypes.Pages",
         "StatCan.OrchardCore.CommonTypes.SecurePage",
         "StatCan.OrchardCore.CommonTypes.Widgets",

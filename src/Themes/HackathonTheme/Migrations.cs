@@ -1,4 +1,5 @@
 
+using System.Threading.Tasks;
 using OrchardCore.Data.Migration;
 using OrchardCore.Environment.Extensions;
 using OrchardCore.Environment.Shell;
@@ -20,9 +21,9 @@ namespace StatCan.Themes.HackathonTheme
             _shellFeaturesManager = shellFeaturesManager;
         }
 
-        public int Create()
+        public async Task<int> CreateAsync()
         {
-            MigrateToVuetifyTheme();
+            await MigrateToVuetifyTheme();
             return 8;
         }
 
@@ -55,13 +56,13 @@ namespace StatCan.Themes.HackathonTheme
         {
             return 7;
         }
-        public int UpdateFrom7()
+        public async Task<int> UpdateFrom7()
         {
-            MigrateToVuetifyTheme();
+            await MigrateToVuetifyTheme();
             return 8;
         }
 
-        private async void MigrateToVuetifyTheme()
+        private async Task MigrateToVuetifyTheme()
         {
             var vuetify = _extensionManager.GetFeatures(new []{"VuetifyTheme"});
             await _shellFeaturesManager.EnableFeaturesAsync(vuetify);
