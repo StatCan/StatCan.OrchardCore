@@ -2,6 +2,8 @@ using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Localization;
+using OrchardCore.Contents;
+using OrchardCore.Contents.Security;
 using OrchardCore.Navigation;
 
 namespace StatCan.OrchardCore.VueForms
@@ -31,6 +33,7 @@ namespace StatCan.OrchardCore.VueForms
 
             builder.Add(S["Content"], design => design
                     .Add(S["Vue Forms"], S["Vue Forms"], menus => menus
+                        .Permission(ContentTypePermissionsHelper.CreateDynamicPermission(ContentTypePermissionsHelper.PermissionTemplates[CommonPermissions.EditOwnContent.Name], "VueForm"))
                         .Action("List", "Admin", rvd)
                         .LocalNav()
                         ));
