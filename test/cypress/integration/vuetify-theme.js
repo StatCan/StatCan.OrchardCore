@@ -7,8 +7,6 @@ describe("Vuetify theme tests", function() {
     const tenant = generateTenantInfo("vuetify-theme-setup", "Simple vuetify theme");
     cy.newTenant(tenant);
     cy.login(tenant);
-    cy.enableFeature(tenant, "StatCan_OrchardCore_Scheduling");
-
   })
 
   it("Vuetify SaaS recipe is successfull", function() {
@@ -16,6 +14,4 @@ describe("Vuetify theme tests", function() {
     cy.newTenant(tenant);
     cy.login(tenant);
   })
-
-
 });
