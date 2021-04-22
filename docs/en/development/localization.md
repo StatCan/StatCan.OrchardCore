@@ -12,10 +12,6 @@ See the [orchard documentation](https://orchardcore.readthedocs.io/en/dev/docs/g
 ## Where to place translated PO files
 
 
-## How to create translations
-
-I like to use POEdit to create the translation. Another good option is to upload the po file to Google [Translator Toolkit](https://translate.google.com/toolkit/list?hl=en#translations/active). Google automatically translates all strings in the file using Google Translate which makes it much easier than having to translate everything from scratch.
-
 ## How to sync changes to the pot files
 
 Generate new pot files using the command then either
