@@ -1,5 +1,6 @@
 {
     "FormattingOptions": {
+      "enableEditorConfigSupport": true,
       "NewLine": "\n",
       "UseTabs": false,
       "TabSize": 4,

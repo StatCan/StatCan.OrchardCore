@@ -258,9 +258,9 @@ namespace StatCan.Themes.VuetifyTheme
                     .WithPosition("0")
                     .WithSettings(new MultiTextFieldSettings
                     {
-                        Options = new MultiTextFieldValueOption[] { 
-                            new MultiTextFieldValueOption() {Name = "Dense", Value = "dense"}, 
-                            new MultiTextFieldValueOption() {Name = "No Gutters", Value = "no-gutters"} 
+                        Options = new MultiTextFieldValueOption[] {
+                            new MultiTextFieldValueOption() {Name = "Dense", Value = "dense"},
+                            new MultiTextFieldValueOption() {Name = "No Gutters", Value = "no-gutters"}
                         },
                     })
                 )
@@ -286,7 +286,7 @@ namespace StatCan.Themes.VuetifyTheme
                     .WithPosition("0")
                     .WithSettings(new MultiTextFieldSettings
                     {
-                        Options = new MultiTextFieldValueOption[] { 
+                        Options = new MultiTextFieldValueOption[] {
                             new MultiTextFieldValueOption() {Name = "Fluid", Value = "fluid"},
                         }
                     })
@@ -313,17 +313,17 @@ namespace StatCan.Themes.VuetifyTheme
                     .WithPosition("0")
                     .WithSettings(new MultiTextFieldSettings
                     {
-                        Options = new MultiTextFieldValueOption[] { 
-                            new MultiTextFieldValueOption() {Name = "Colored Border", Value = "colored-border"}, 
-                            new MultiTextFieldValueOption() {Name = "Dark", Value = "dark"}, 
-                            new MultiTextFieldValueOption() {Name = "Dense", Value = "dense"}, 
-                            new MultiTextFieldValueOption() {Name = "Dismissible", Value = "dismissible"}, 
-                            new MultiTextFieldValueOption() {Name = "Light", Value = "light"}, 
-                            new MultiTextFieldValueOption() {Name = "Outlined", Value = "outlined"}, 
-                            new MultiTextFieldValueOption() {Name = "Prominent", Value = "prominent"}, 
-                            new MultiTextFieldValueOption() {Name = "Shaped", Value = "shaped"}, 
-                            new MultiTextFieldValueOption() {Name = "Text", Value = "text"}, 
-                            new MultiTextFieldValueOption() {Name = "Tile", Value = "tile"} 
+                        Options = new MultiTextFieldValueOption[] {
+                            new MultiTextFieldValueOption() {Name = "Colored Border", Value = "colored-border"},
+                            new MultiTextFieldValueOption() {Name = "Dark", Value = "dark"},
+                            new MultiTextFieldValueOption() {Name = "Dense", Value = "dense"},
+                            new MultiTextFieldValueOption() {Name = "Dismissible", Value = "dismissible"},
+                            new MultiTextFieldValueOption() {Name = "Light", Value = "light"},
+                            new MultiTextFieldValueOption() {Name = "Outlined", Value = "outlined"},
+                            new MultiTextFieldValueOption() {Name = "Prominent", Value = "prominent"},
+                            new MultiTextFieldValueOption() {Name = "Shaped", Value = "shaped"},
+                            new MultiTextFieldValueOption() {Name = "Text", Value = "text"},
+                            new MultiTextFieldValueOption() {Name = "Tile", Value = "tile"}
                         },
                     })
                 )
@@ -491,19 +491,19 @@ namespace StatCan.Themes.VuetifyTheme
                     .WithPosition("0")
                     .WithSettings(new MultiTextFieldSettings
                     {
-                        Options = new MultiTextFieldValueOption[] { 
-                            new MultiTextFieldValueOption() {Name = "Accordion", Value = "accordion"}, 
-                            new MultiTextFieldValueOption() {Name = "Dark", Value = "dark"}, 
-                            new MultiTextFieldValueOption() {Name = "Disabled", Value = "disabled"}, 
-                            new MultiTextFieldValueOption() {Name = "Flat", Value = "flat"}, 
-                            new MultiTextFieldValueOption() {Name = "Focusable", Value = "focusable"}, 
-                            new MultiTextFieldValueOption() {Name = "Inset", Value = "inset"}, 
-                            new MultiTextFieldValueOption() {Name = "Light", Value = "light"}, 
-                            new MultiTextFieldValueOption() {Name = "Mandatory", Value = "mandatory"}, 
-                            new MultiTextFieldValueOption() {Name = "Multiple", Value = "multiple"}, 
-                            new MultiTextFieldValueOption() {Name = "Popout", Value = "popout"}, 
-                            new MultiTextFieldValueOption() {Name = "Read-Only", Value = "readonly"}, 
-                            new MultiTextFieldValueOption() {Name = "Tile", Value = "tile"} 
+                        Options = new MultiTextFieldValueOption[] {
+                            new MultiTextFieldValueOption() {Name = "Accordion", Value = "accordion"},
+                            new MultiTextFieldValueOption() {Name = "Dark", Value = "dark"},
+                            new MultiTextFieldValueOption() {Name = "Disabled", Value = "disabled"},
+                            new MultiTextFieldValueOption() {Name = "Flat", Value = "flat"},
+                            new MultiTextFieldValueOption() {Name = "Focusable", Value = "focusable"},
+                            new MultiTextFieldValueOption() {Name = "Inset", Value = "inset"},
+                            new MultiTextFieldValueOption() {Name = "Light", Value = "light"},
+                            new MultiTextFieldValueOption() {Name = "Mandatory", Value = "mandatory"},
+                            new MultiTextFieldValueOption() {Name = "Multiple", Value = "multiple"},
+                            new MultiTextFieldValueOption() {Name = "Popout", Value = "popout"},
+                            new MultiTextFieldValueOption() {Name = "Read-Only", Value = "readonly"},
+                            new MultiTextFieldValueOption() {Name = "Tile", Value = "tile"}
                             },
                     })
                 )
@@ -570,11 +570,11 @@ namespace StatCan.Themes.VuetifyTheme
                     .WithEditor("Picker")
                     .WithSettings(new MultiTextFieldSettings
                     {
-                        Options = new MultiTextFieldValueOption[] { 
-                            new MultiTextFieldValueOption() {Name = "Contain", Value = "contain"}, 
-                            new MultiTextFieldValueOption() {Name = "Dark", Value = "dark"}, 
-                            new MultiTextFieldValueOption() {Name = "Eager", Value = "eager"}, 
-                            new MultiTextFieldValueOption() {Name = "Light", Value = "light"} 
+                        Options = new MultiTextFieldValueOption[] {
+                            new MultiTextFieldValueOption() {Name = "Contain", Value = "contain"},
+                            new MultiTextFieldValueOption() {Name = "Dark", Value = "dark"},
+                            new MultiTextFieldValueOption() {Name = "Eager", Value = "eager"},
+                            new MultiTextFieldValueOption() {Name = "Light", Value = "light"}
                         },
                     })
                 )
@@ -605,12 +605,12 @@ namespace StatCan.Themes.VuetifyTheme
                     .WithPosition("0")
                     .WithSettings(new MultiTextFieldSettings
                     {
-                        Options = new MultiTextFieldValueOption[] { 
-                            new MultiTextFieldValueOption() {Name = "Align Top", Value = "align-top"}, 
-                            new MultiTextFieldValueOption() {Name = "Dark", Value = "dark"}, 
-                            new MultiTextFieldValueOption() {Name = "Dense", Value = "dense"}, 
-                            new MultiTextFieldValueOption() {Name = "Light", Value = "light"}, 
-                            new MultiTextFieldValueOption() {Name = "Reverse", Value = "reverse"} 
+                        Options = new MultiTextFieldValueOption[] {
+                            new MultiTextFieldValueOption() {Name = "Align Top", Value = "align-top"},
+                            new MultiTextFieldValueOption() {Name = "Dark", Value = "dark"},
+                            new MultiTextFieldValueOption() {Name = "Dense", Value = "dense"},
+                            new MultiTextFieldValueOption() {Name = "Light", Value = "light"},
+                            new MultiTextFieldValueOption() {Name = "Reverse", Value = "reverse"}
                         },
                     })
                 )
@@ -635,15 +635,15 @@ namespace StatCan.Themes.VuetifyTheme
                     .WithEditor("Picker")
                     .WithSettings(new MultiTextFieldSettings
                     {
-                        Options = new MultiTextFieldValueOption[] { 
-                            new MultiTextFieldValueOption() {Name = "Dark", Value = "dark"}, 
-                            new MultiTextFieldValueOption() {Name = "Fill Dot", Value = "fill-dot"}, 
-                            new MultiTextFieldValueOption() {Name = "Hide Dot", Value = "hide-dot"}, 
-                            new MultiTextFieldValueOption() {Name = "Large", Value = "large"}, 
-                            new MultiTextFieldValueOption() {Name = "Left", Value = "left"}, 
-                            new MultiTextFieldValueOption() {Name = "Light", Value = "light"}, 
-                            new MultiTextFieldValueOption() {Name = "Right", Value = "right"}, 
-                            new MultiTextFieldValueOption() {Name = "Small", Value = "small"} 
+                        Options = new MultiTextFieldValueOption[] {
+                            new MultiTextFieldValueOption() {Name = "Dark", Value = "dark"},
+                            new MultiTextFieldValueOption() {Name = "Fill Dot", Value = "fill-dot"},
+                            new MultiTextFieldValueOption() {Name = "Hide Dot", Value = "hide-dot"},
+                            new MultiTextFieldValueOption() {Name = "Large", Value = "large"},
+                            new MultiTextFieldValueOption() {Name = "Left", Value = "left"},
+                            new MultiTextFieldValueOption() {Name = "Light", Value = "light"},
+                            new MultiTextFieldValueOption() {Name = "Right", Value = "right"},
+                            new MultiTextFieldValueOption() {Name = "Small", Value = "small"}
                         },
                     })
                 )
@@ -750,29 +750,29 @@ namespace StatCan.Themes.VuetifyTheme
                     .WithPosition("0")
                     .WithSettings(new MultiTextFieldSettings
                     {
-                        Options = new MultiTextFieldValueOption[] { 
-                            new MultiTextFieldValueOption() {Name = "Absolute", Value = "absolute"}, 
-                            new MultiTextFieldValueOption() {Name = "Bottom", Value = "bottom"}, 
-                            new MultiTextFieldValueOption() {Name = "Collapse", Value = "collapse"}, 
-                            new MultiTextFieldValueOption() {Name = "Collapse On Scroll", Value = "collapse-on-scroll"}, 
-                            new MultiTextFieldValueOption() {Name = "Dark", Value = "dark"}, 
-                            new MultiTextFieldValueOption() {Name = "Dense", Value = "dense"}, 
-                            new MultiTextFieldValueOption() {Name = "Elevate On Scroll", Value = "elevate-on-scroll"}, 
-                            new MultiTextFieldValueOption() {Name = "Extended", Value = "extended"}, 
-                            new MultiTextFieldValueOption() {Name = "Fade Image On Scroll", Value = "fade-img-on-scroll"}, 
-                            new MultiTextFieldValueOption() {Name = "Fixed", Value = "fixed"}, 
-                            new MultiTextFieldValueOption() {Name = "Flat", Value = "flat"}, 
-                            new MultiTextFieldValueOption() {Name = "Floating", Value = "floating"}, 
-                            new MultiTextFieldValueOption() {Name = "Hide On Scroll", Value = "hide-on-scroll"}, 
-                            new MultiTextFieldValueOption() {Name = "Inverted Scroll", Value = "inverted-scroll"}, 
-                            new MultiTextFieldValueOption() {Name = "Light", Value = "light"}, 
-                            new MultiTextFieldValueOption() {Name = "Outlined", Value = "outlined"}, 
-                            new MultiTextFieldValueOption() {Name = "Prominent", Value = "prominent"}, 
-                            new MultiTextFieldValueOption() {Name = "Scroll Off Screen", Value = "scroll-off-screen"}, 
-                            new MultiTextFieldValueOption() {Name = "Shaped", Value = "shaped"}, 
-                            new MultiTextFieldValueOption() {Name = "Short", Value = "short"}, 
-                            new MultiTextFieldValueOption() {Name = "Shrink On Scroll", Value = "shrink-on-scroll"}, 
-                            new MultiTextFieldValueOption() {Name = "Tile", Value = "tile"} 
+                        Options = new MultiTextFieldValueOption[] {
+                            new MultiTextFieldValueOption() {Name = "Absolute", Value = "absolute"},
+                            new MultiTextFieldValueOption() {Name = "Bottom", Value = "bottom"},
+                            new MultiTextFieldValueOption() {Name = "Collapse", Value = "collapse"},
+                            new MultiTextFieldValueOption() {Name = "Collapse On Scroll", Value = "collapse-on-scroll"},
+                            new MultiTextFieldValueOption() {Name = "Dark", Value = "dark"},
+                            new MultiTextFieldValueOption() {Name = "Dense", Value = "dense"},
+                            new MultiTextFieldValueOption() {Name = "Elevate On Scroll", Value = "elevate-on-scroll"},
+                            new MultiTextFieldValueOption() {Name = "Extended", Value = "extended"},
+                            new MultiTextFieldValueOption() {Name = "Fade Image On Scroll", Value = "fade-img-on-scroll"},
+                            new MultiTextFieldValueOption() {Name = "Fixed", Value = "fixed"},
+                            new MultiTextFieldValueOption() {Name = "Flat", Value = "flat"},
+                            new MultiTextFieldValueOption() {Name = "Floating", Value = "floating"},
+                            new MultiTextFieldValueOption() {Name = "Hide On Scroll", Value = "hide-on-scroll"},
+                            new MultiTextFieldValueOption() {Name = "Inverted Scroll", Value = "inverted-scroll"},
+                            new MultiTextFieldValueOption() {Name = "Light", Value = "light"},
+                            new MultiTextFieldValueOption() {Name = "Outlined", Value = "outlined"},
+                            new MultiTextFieldValueOption() {Name = "Prominent", Value = "prominent"},
+                            new MultiTextFieldValueOption() {Name = "Scroll Off Screen", Value = "scroll-off-screen"},
+                            new MultiTextFieldValueOption() {Name = "Shaped", Value = "shaped"},
+                            new MultiTextFieldValueOption() {Name = "Short", Value = "short"},
+                            new MultiTextFieldValueOption() {Name = "Shrink On Scroll", Value = "shrink-on-scroll"},
+                            new MultiTextFieldValueOption() {Name = "Tile", Value = "tile"}
                         },
                     })
                 )
@@ -872,17 +872,17 @@ namespace StatCan.Themes.VuetifyTheme
                     .WithEditor("Picker")
                     .WithSettings(new MultiTextFieldSettings
                     {
-                        Options = new MultiTextFieldValueOption[] { 
-                            new MultiTextFieldValueOption() {Name = "Absolute", Value = "absolute"}, 
-                            new MultiTextFieldValueOption() {Name = "Bottom", Value = "bottom"}, 
-                            new MultiTextFieldValueOption() {Name = "Clipped", Value = "clipped"}, 
-                            new MultiTextFieldValueOption() {Name = "Dark", Value = "dark"}, 
-                            new MultiTextFieldValueOption() {Name = "Disable Resize Watcher", Value = "disable-resize-watcher"}, 
-                            new MultiTextFieldValueOption() {Name = "Disable Route Watcher", Value = "disable-route-watcher"}, 
-                            new MultiTextFieldValueOption() {Name = "Expand on Hover", Value = "expand-on-hover"}, 
-                            new MultiTextFieldValueOption() {Name = "Floating", Value = "floating"}, 
-                            new MultiTextFieldValueOption() {Name = "Hide Overlay", Value = "hide-overlay"}, 
-                            new MultiTextFieldValueOption() {Name = "Light", Value = "light"}, 
+                        Options = new MultiTextFieldValueOption[] {
+                            new MultiTextFieldValueOption() {Name = "Absolute", Value = "absolute"},
+                            new MultiTextFieldValueOption() {Name = "Bottom", Value = "bottom"},
+                            new MultiTextFieldValueOption() {Name = "Clipped", Value = "clipped"},
+                            new MultiTextFieldValueOption() {Name = "Dark", Value = "dark"},
+                            new MultiTextFieldValueOption() {Name = "Disable Resize Watcher", Value = "disable-resize-watcher"},
+                            new MultiTextFieldValueOption() {Name = "Disable Route Watcher", Value = "disable-route-watcher"},
+                            new MultiTextFieldValueOption() {Name = "Expand on Hover", Value = "expand-on-hover"},
+                            new MultiTextFieldValueOption() {Name = "Floating", Value = "floating"},
+                            new MultiTextFieldValueOption() {Name = "Hide Overlay", Value = "hide-overlay"},
+                            new MultiTextFieldValueOption() {Name = "Light", Value = "light"},
                             new MultiTextFieldValueOption() {Name = "Mini", Value = "mini-variant"},
                             new MultiTextFieldValueOption() {Name = "Permanent", Value = "permanent"},
                             new MultiTextFieldValueOption() {Name = "Right", Value = "right"},
@@ -1013,18 +1013,18 @@ namespace StatCan.Themes.VuetifyTheme
                     .WithEditor("Picker")
                     .WithSettings(new MultiTextFieldSettings
                     {
-                        Options = new MultiTextFieldValueOption[] { 
-                            new MultiTextFieldValueOption() {Name = "Absolute", Value = "absolute"}, 
-                            new MultiTextFieldValueOption() {Name = "App", Value = "app"}, 
-                            new MultiTextFieldValueOption() {Name = "Dark", Value = "dark"}, 
-                            new MultiTextFieldValueOption() {Name = "Fixed", Value = "fixed"}, 
-                            new MultiTextFieldValueOption() {Name = "Inset", Value = "inset"}, 
-                            new MultiTextFieldValueOption() {Name = "Light", Value = "light"}, 
-                            new MultiTextFieldValueOption() {Name = "Outlined", Value = "outline"}, 
-                            new MultiTextFieldValueOption() {Name = "Padless", Value = "padless"}, 
-                            new MultiTextFieldValueOption() {Name = "Rounded", Value = "rounded"}, 
-                            new MultiTextFieldValueOption() {Name = "Shaped", Value = "shaped"}, 
-                            new MultiTextFieldValueOption() {Name = "Tile", Value = "tile"} 
+                        Options = new MultiTextFieldValueOption[] {
+                            new MultiTextFieldValueOption() {Name = "Absolute", Value = "absolute"},
+                            new MultiTextFieldValueOption() {Name = "App", Value = "app"},
+                            new MultiTextFieldValueOption() {Name = "Dark", Value = "dark"},
+                            new MultiTextFieldValueOption() {Name = "Fixed", Value = "fixed"},
+                            new MultiTextFieldValueOption() {Name = "Inset", Value = "inset"},
+                            new MultiTextFieldValueOption() {Name = "Light", Value = "light"},
+                            new MultiTextFieldValueOption() {Name = "Outlined", Value = "outline"},
+                            new MultiTextFieldValueOption() {Name = "Padless", Value = "padless"},
+                            new MultiTextFieldValueOption() {Name = "Rounded", Value = "rounded"},
+                            new MultiTextFieldValueOption() {Name = "Shaped", Value = "shaped"},
+                            new MultiTextFieldValueOption() {Name = "Tile", Value = "tile"}
                         },
                     })
                 )
@@ -1032,7 +1032,7 @@ namespace StatCan.Themes.VuetifyTheme
         }
 
         private void UpdateToMultiTextField() {
-           
+
 
             _contentDefinitionManager.AlterPartDefinition("VAppBar", part => part
                             .RemoveField("Props")
@@ -1046,29 +1046,29 @@ namespace StatCan.Themes.VuetifyTheme
                     .WithPosition("0")
                     .WithSettings(new MultiTextFieldSettings
                     {
-                        Options = new MultiTextFieldValueOption[] { 
-                            new MultiTextFieldValueOption() {Name = "Absolute", Value = "absolute"}, 
-                            new MultiTextFieldValueOption() {Name = "Bottom", Value = "bottom"}, 
-                            new MultiTextFieldValueOption() {Name = "Collapse", Value = "collapse"}, 
-                            new MultiTextFieldValueOption() {Name = "Collapse On Scroll", Value = "collapse-on-scroll"}, 
-                            new MultiTextFieldValueOption() {Name = "Dark", Value = "dark"}, 
-                            new MultiTextFieldValueOption() {Name = "Dense", Value = "dense"}, 
-                            new MultiTextFieldValueOption() {Name = "Elevate On Scroll", Value = "elevate-on-scroll"}, 
-                            new MultiTextFieldValueOption() {Name = "Extended", Value = "extended"}, 
-                            new MultiTextFieldValueOption() {Name = "Fade Image On Scroll", Value = "fade-img-on-scroll"}, 
-                            new MultiTextFieldValueOption() {Name = "Fixed", Value = "fixed"}, 
-                            new MultiTextFieldValueOption() {Name = "Flat", Value = "flat"}, 
-                            new MultiTextFieldValueOption() {Name = "Floating", Value = "floating"}, 
-                            new MultiTextFieldValueOption() {Name = "Hide On Scroll", Value = "hide-on-scroll"}, 
-                            new MultiTextFieldValueOption() {Name = "Inverted Scroll", Value = "inverted-scroll"}, 
-                            new MultiTextFieldValueOption() {Name = "Light", Value = "light"}, 
-                            new MultiTextFieldValueOption() {Name = "Outlined", Value = "outlined"}, 
-                            new MultiTextFieldValueOption() {Name = "Prominent", Value = "prominent"}, 
-                            new MultiTextFieldValueOption() {Name = "Scroll Off Screen", Value = "scroll-off-screen"}, 
-                            new MultiTextFieldValueOption() {Name = "Shaped", Value = "shaped"}, 
-                            new MultiTextFieldValueOption() {Name = "Short", Value = "short"}, 
-                            new MultiTextFieldValueOption() {Name = "Shrink On Scroll", Value = "shrink-on-scroll"}, 
-                            new MultiTextFieldValueOption() {Name = "Tile", Value = "tile"} 
+                        Options = new MultiTextFieldValueOption[] {
+                            new MultiTextFieldValueOption() {Name = "Absolute", Value = "absolute"},
+                            new MultiTextFieldValueOption() {Name = "Bottom", Value = "bottom"},
+                            new MultiTextFieldValueOption() {Name = "Collapse", Value = "collapse"},
+                            new MultiTextFieldValueOption() {Name = "Collapse On Scroll", Value = "collapse-on-scroll"},
+                            new MultiTextFieldValueOption() {Name = "Dark", Value = "dark"},
+                            new MultiTextFieldValueOption() {Name = "Dense", Value = "dense"},
+                            new MultiTextFieldValueOption() {Name = "Elevate On Scroll", Value = "elevate-on-scroll"},
+                            new MultiTextFieldValueOption() {Name = "Extended", Value = "extended"},
+                            new MultiTextFieldValueOption() {Name = "Fade Image On Scroll", Value = "fade-img-on-scroll"},
+                            new MultiTextFieldValueOption() {Name = "Fixed", Value = "fixed"},
+                            new MultiTextFieldValueOption() {Name = "Flat", Value = "flat"},
+                            new MultiTextFieldValueOption() {Name = "Floating", Value = "floating"},
+                            new MultiTextFieldValueOption() {Name = "Hide On Scroll", Value = "hide-on-scroll"},
+                            new MultiTextFieldValueOption() {Name = "Inverted Scroll", Value = "inverted-scroll"},
+                            new MultiTextFieldValueOption() {Name = "Light", Value = "light"},
+                            new MultiTextFieldValueOption() {Name = "Outlined", Value = "outlined"},
+                            new MultiTextFieldValueOption() {Name = "Prominent", Value = "prominent"},
+                            new MultiTextFieldValueOption() {Name = "Scroll Off Screen", Value = "scroll-off-screen"},
+                            new MultiTextFieldValueOption() {Name = "Shaped", Value = "shaped"},
+                            new MultiTextFieldValueOption() {Name = "Short", Value = "short"},
+                            new MultiTextFieldValueOption() {Name = "Shrink On Scroll", Value = "shrink-on-scroll"},
+                            new MultiTextFieldValueOption() {Name = "Tile", Value = "tile"}
                         },
                     })
                 )
@@ -1086,7 +1086,7 @@ namespace StatCan.Themes.VuetifyTheme
                     .WithPosition("0")
                     .WithSettings(new MultiTextFieldSettings
                     {
-                        Options = new MultiTextFieldValueOption[] { 
+                        Options = new MultiTextFieldValueOption[] {
                             new MultiTextFieldValueOption() {Name = "Fluid", Value = "fluid"},
                         }
                     })
@@ -1105,19 +1105,19 @@ namespace StatCan.Themes.VuetifyTheme
                     .WithPosition("0")
                     .WithSettings(new MultiTextFieldSettings
                     {
-                        Options = new MultiTextFieldValueOption[] { 
-                            new MultiTextFieldValueOption() {Name = "Accordion", Value = "accordion"}, 
-                            new MultiTextFieldValueOption() {Name = "Dark", Value = "dark"}, 
-                            new MultiTextFieldValueOption() {Name = "Disabled", Value = "disabled"}, 
-                            new MultiTextFieldValueOption() {Name = "Flat", Value = "flat"}, 
-                            new MultiTextFieldValueOption() {Name = "Focusable", Value = "focusable"}, 
-                            new MultiTextFieldValueOption() {Name = "Inset", Value = "inset"}, 
-                            new MultiTextFieldValueOption() {Name = "Light", Value = "light"}, 
-                            new MultiTextFieldValueOption() {Name = "Mandatory", Value = "mandatory"}, 
-                            new MultiTextFieldValueOption() {Name = "Multiple", Value = "multiple"}, 
-                            new MultiTextFieldValueOption() {Name = "Popout", Value = "popout"}, 
-                            new MultiTextFieldValueOption() {Name = "Read-Only", Value = "readonly"}, 
-                            new MultiTextFieldValueOption() {Name = "Tile", Value = "tile"} 
+                        Options = new MultiTextFieldValueOption[] {
+                            new MultiTextFieldValueOption() {Name = "Accordion", Value = "accordion"},
+                            new MultiTextFieldValueOption() {Name = "Dark", Value = "dark"},
+                            new MultiTextFieldValueOption() {Name = "Disabled", Value = "disabled"},
+                            new MultiTextFieldValueOption() {Name = "Flat", Value = "flat"},
+                            new MultiTextFieldValueOption() {Name = "Focusable", Value = "focusable"},
+                            new MultiTextFieldValueOption() {Name = "Inset", Value = "inset"},
+                            new MultiTextFieldValueOption() {Name = "Light", Value = "light"},
+                            new MultiTextFieldValueOption() {Name = "Mandatory", Value = "mandatory"},
+                            new MultiTextFieldValueOption() {Name = "Multiple", Value = "multiple"},
+                            new MultiTextFieldValueOption() {Name = "Popout", Value = "popout"},
+                            new MultiTextFieldValueOption() {Name = "Read-Only", Value = "readonly"},
+                            new MultiTextFieldValueOption() {Name = "Tile", Value = "tile"}
                             },
                     })
                 )
@@ -1134,11 +1134,11 @@ namespace StatCan.Themes.VuetifyTheme
                     .WithEditor("Picker")
                     .WithSettings(new MultiTextFieldSettings
                     {
-                        Options = new MultiTextFieldValueOption[] { 
-                            new MultiTextFieldValueOption() {Name = "Contain", Value = "contain"}, 
-                            new MultiTextFieldValueOption() {Name = "Dark", Value = "dark"}, 
-                            new MultiTextFieldValueOption() {Name = "Eager", Value = "eager"}, 
-                            new MultiTextFieldValueOption() {Name = "Light", Value = "light"} 
+                        Options = new MultiTextFieldValueOption[] {
+                            new MultiTextFieldValueOption() {Name = "Contain", Value = "contain"},
+                            new MultiTextFieldValueOption() {Name = "Dark", Value = "dark"},
+                            new MultiTextFieldValueOption() {Name = "Eager", Value = "eager"},
+                            new MultiTextFieldValueOption() {Name = "Light", Value = "light"}
                         },
                     })
                 )
@@ -1148,7 +1148,34 @@ namespace StatCan.Themes.VuetifyTheme
                 .RemoveField("Props")
             );
 
-            
+            _contentDefinitionManager.AlterPartDefinition("VNavigationDrawer", part => part
+                .WithField("Props", field => field
+                    .OfType("MultiTextField")
+                    .WithDisplayName("Props")
+                    .WithEditor("Picker")
+                    .WithSettings(new MultiTextFieldSettings
+                    {
+                        Options = new MultiTextFieldValueOption[] {
+                            new MultiTextFieldValueOption() {Name = "Absolute", Value = "absolute"},
+                            new MultiTextFieldValueOption() {Name = "Bottom", Value = "bottom"},
+                            new MultiTextFieldValueOption() {Name = "Clipped", Value = "clipped"},
+                            new MultiTextFieldValueOption() {Name = "Dark", Value = "dark"},
+                            new MultiTextFieldValueOption() {Name = "Disable Resize Watcher", Value = "disable-resize-watcher"},
+                            new MultiTextFieldValueOption() {Name = "Disable Route Watcher", Value = "disable-route-watcher"},
+                            new MultiTextFieldValueOption() {Name = "Expand on Hover", Value = "expand-on-hover"},
+                            new MultiTextFieldValueOption() {Name = "Floating", Value = "floating"},
+                            new MultiTextFieldValueOption() {Name = "Hide Overlay", Value = "hide-overlay"},
+                            new MultiTextFieldValueOption() {Name = "Light", Value = "light"},
+                            new MultiTextFieldValueOption() {Name = "Mini", Value = "mini-variant"},
+                            new MultiTextFieldValueOption() {Name = "Permanent", Value = "permanent"},
+                            new MultiTextFieldValueOption() {Name = "Right", Value = "right"},
+                            new MultiTextFieldValueOption() {Name = "Stateless", Value = "stateless"},
+                            new MultiTextFieldValueOption() {Name = "Temporary", Value = "temporary"},
+                            new MultiTextFieldValueOption() {Name = "Touchless", Value = "touchless"}
+                        },
+                    })
+                )
+             );
 
             _contentDefinitionManager.AlterPartDefinition("VRow", part => part
                 .RemoveField("Props")
@@ -1162,9 +1189,9 @@ namespace StatCan.Themes.VuetifyTheme
                     .WithPosition("0")
                     .WithSettings(new MultiTextFieldSettings
                     {
-                        Options = new MultiTextFieldValueOption[] { 
-                            new MultiTextFieldValueOption() {Name = "Dense", Value = "dense"}, 
-                            new MultiTextFieldValueOption() {Name = "No Gutters", Value = "no-gutters"} 
+                        Options = new MultiTextFieldValueOption[] {
+                            new MultiTextFieldValueOption() {Name = "Dense", Value = "dense"},
+                            new MultiTextFieldValueOption() {Name = "No Gutters", Value = "no-gutters"}
                         },
                     })
                 )
@@ -1182,12 +1209,12 @@ namespace StatCan.Themes.VuetifyTheme
                     .WithPosition("0")
                     .WithSettings(new MultiTextFieldSettings
                     {
-                        Options = new MultiTextFieldValueOption[] { 
-                            new MultiTextFieldValueOption() {Name = "Align Top", Value = "align-top"}, 
-                            new MultiTextFieldValueOption() {Name = "Dark", Value = "dark"}, 
-                            new MultiTextFieldValueOption() {Name = "Dense", Value = "dense"}, 
-                            new MultiTextFieldValueOption() {Name = "Light", Value = "light"}, 
-                            new MultiTextFieldValueOption() {Name = "Reverse", Value = "reverse"} 
+                        Options = new MultiTextFieldValueOption[] {
+                            new MultiTextFieldValueOption() {Name = "Align Top", Value = "align-top"},
+                            new MultiTextFieldValueOption() {Name = "Dark", Value = "dark"},
+                            new MultiTextFieldValueOption() {Name = "Dense", Value = "dense"},
+                            new MultiTextFieldValueOption() {Name = "Light", Value = "light"},
+                            new MultiTextFieldValueOption() {Name = "Reverse", Value = "reverse"}
                         },
                     })
                 )
@@ -1204,15 +1231,15 @@ namespace StatCan.Themes.VuetifyTheme
                     .WithEditor("Picker")
                     .WithSettings(new MultiTextFieldSettings
                     {
-                        Options = new MultiTextFieldValueOption[] { 
-                            new MultiTextFieldValueOption() {Name = "Dark", Value = "dark"}, 
-                            new MultiTextFieldValueOption() {Name = "Fill Dot", Value = "fill-dot"}, 
-                            new MultiTextFieldValueOption() {Name = "Hide Dot", Value = "hide-dot"}, 
-                            new MultiTextFieldValueOption() {Name = "Large", Value = "large"}, 
-                            new MultiTextFieldValueOption() {Name = "Left", Value = "left"}, 
-                            new MultiTextFieldValueOption() {Name = "Light", Value = "light"}, 
-                            new MultiTextFieldValueOption() {Name = "Right", Value = "right"}, 
-                            new MultiTextFieldValueOption() {Name = "Small", Value = "small"} 
+                        Options = new MultiTextFieldValueOption[] {
+                            new MultiTextFieldValueOption() {Name = "Dark", Value = "dark"},
+                            new MultiTextFieldValueOption() {Name = "Fill Dot", Value = "fill-dot"},
+                            new MultiTextFieldValueOption() {Name = "Hide Dot", Value = "hide-dot"},
+                            new MultiTextFieldValueOption() {Name = "Large", Value = "large"},
+                            new MultiTextFieldValueOption() {Name = "Left", Value = "left"},
+                            new MultiTextFieldValueOption() {Name = "Light", Value = "light"},
+                            new MultiTextFieldValueOption() {Name = "Right", Value = "right"},
+                            new MultiTextFieldValueOption() {Name = "Small", Value = "small"}
                         },
                     })
                 )
@@ -1237,11 +1264,11 @@ namespace StatCan.Themes.VuetifyTheme
                     .WithPosition("0")
                     .WithSettings(new MultiTextFieldSettings
                     {
-                        Options = new MultiTextFieldValueOption[] { 
-                            new MultiTextFieldValueOption() {Name = "Dark", Value = "dark"}, 
-                            new MultiTextFieldValueOption() {Name = "Light", Value = "light"}, 
-                            new MultiTextFieldValueOption() {Name = "Rounded", Value = "rounded"}, 
-                            new MultiTextFieldValueOption() {Name = "Shaped", Value = "shaped"} 
+                        Options = new MultiTextFieldValueOption[] {
+                            new MultiTextFieldValueOption() {Name = "Dark", Value = "dark"},
+                            new MultiTextFieldValueOption() {Name = "Light", Value = "light"},
+                            new MultiTextFieldValueOption() {Name = "Rounded", Value = "rounded"},
+                            new MultiTextFieldValueOption() {Name = "Shaped", Value = "shaped"}
                         },
                     })
                 )

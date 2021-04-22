@@ -23,12 +23,15 @@ namespace StatCan.OrchardCore.Scripting
                 Name = "httpRedirect",
                 Method = serviceProvider => (Action<String>)((url) =>
                 {
-                    if(!url.StartsWith('/'))
+                    if(url.StartsWith("~/"))
                     {
-                        url =  "/" + url;
+                        url = httpContextAccessor.HttpContext.Request.PathBase + url[1..];
                     }
-                    var pathString = new PathString(url);
-                    httpContextAccessor.HttpContext.Response.Redirect(httpContextAccessor.HttpContext.Request.PathBase + pathString);
+                    if(url?.Length == 0)
+                    {
+                        url = httpContextAccessor.HttpContext.Request.PathBase;
+                    }
+                    httpContextAccessor.HttpContext.Response.Redirect(url);
                 }
                 )
             };

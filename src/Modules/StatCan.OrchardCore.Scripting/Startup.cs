@@ -22,6 +22,15 @@ namespace StatCan.OrchardCore.Scripting
         }
     }
 
+    [RequireFeatures("OrchardCore.Taxonomies")]
+    public class TaxonomyStartup : StartupBase
+    {
+        public override void ConfigureServices(IServiceCollection services)
+        {
+            services.AddSingleton<IGlobalMethodProvider, TaxonomyGlobalMethodsProvider>();
+        }
+    }
+
     [RequireFeatures("OrchardCore.ContentLocalization")]
     public class ContentLocalizationStartup : StartupBase
     {

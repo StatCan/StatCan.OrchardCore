@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <PackageReference Include="OrchardCore.ContentManagement.Abstractions" Version="$(OrchardCoreVersion)" />
+    <PackageReference Include="OrchardCore.Contents" Version="$(OrchardCoreVersion)" />
     <PackageReference Include="OrchardCore.DisplayManagement" Version="$(OrchardCoreVersion)" />
     <PackageReference Include="OrchardCore.Data.Abstractions" Version="$(OrchardCoreVersion)" />
     <PackageReference Include="OrchardCore.Flows" Version="$(OrchardCoreVersion)" />

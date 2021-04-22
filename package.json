@@ -20,7 +20,7 @@
     "install:digitaltheme": "cd src/Themes/DigitalTheme && npm install",
     "install:bootstraptheme": "cd src/Themes/BootstrapTheme && npm install",
     "install:vueforms": "cd src/Modules/StatCan.OrchardCore.VueForms && npm install",
-    "install:hackathontheme": "cd src/Themes/HackathonTheme && npm install"
+    "install:vuetifytheme": "cd src/Themes/VuetifyTheme && npm install"
   },
   "devDependencies": {
     "@babel/core": "^7.13.13",

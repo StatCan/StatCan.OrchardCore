@@ -748,6 +748,89 @@ $({ target: 'String', proto: true, forced: forcedStringHTMLMethod('anchor') }, {
 
 /***/ }),
 
+/***/ "18f2":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _default = {
+  badge: 'Badge',
+  close: 'Fermer',
+  dataIterator: {
+    noResultsText: 'Aucun enregistrement correspondant trouvé',
+    loadingText: "Chargement de l'\xE9l\xE9ment..."
+  },
+  dataTable: {
+    itemsPerPageText: 'Lignes par page :',
+    ariaLabel: {
+      sortDescending: 'Tri décroissant.',
+      sortAscending: 'Tri croissant.',
+      sortNone: 'Non trié.',
+      activateNone: 'Activer pour supprimer le tri.',
+      activateDescending: 'Activer pour trier par ordre décroissant.',
+      activateAscending: 'Activer pour trier par ordre croissant.'
+    },
+    sortBy: 'Trier par'
+  },
+  dataFooter: {
+    itemsPerPageText: 'Élements par page :',
+    itemsPerPageAll: 'Tous',
+    nextPage: 'Page suivante',
+    prevPage: 'Page précédente',
+    firstPage: 'Première page',
+    lastPage: 'Dernière page',
+    pageText: '{0}-{1} de {2}'
+  },
+  datePicker: {
+    itemsSelected: '{0} sélectionné(s)',
+    nextMonthAriaLabel: 'Le mois prochain',
+    nextYearAriaLabel: "L'ann\xE9e prochaine",
+    prevMonthAriaLabel: 'Le mois précédent',
+    prevYearAriaLabel: 'Année précédente'
+  },
+  noDataText: 'Aucune donnée disponible',
+  carousel: {
+    prev: 'Visuel précédent',
+    next: 'Visuel suivant',
+    ariaLabel: {
+      delimiter: 'Diapositive {0} de {1}'
+    }
+  },
+  calendar: {
+    moreEvents: '{0} de plus'
+  },
+  fileInput: {
+    counter: '{0} fichier(s)',
+    counterSize: '{0} fichier(s) ({1} au total)'
+  },
+  timePicker: {
+    am: 'AM',
+    pm: 'PM'
+  },
+  pagination: {
+    ariaLabel: {
+      wrapper: 'Navigation de pagination',
+      next: 'Page suivante',
+      previous: 'Page précédente',
+      page: 'Aller à la page {0}',
+      currentPage: 'Page actuelle, Page {0}'
+    }
+  },
+  rating: {
+    ariaLabel: {
+      icon: 'Rating {0} of {1}'
+    }
+  }
+};
+exports.default = _default;
+
+/***/ }),
+
 /***/ "19aa":
 /***/ (function(module, exports) {
 
@@ -13543,6 +13626,10 @@ if (typeof window !== 'undefined') {
 // EXTERNAL MODULE: external {"commonjs":"vue","commonjs2":"vue","root":"Vue"}
 var external_commonjs_vue_commonjs2_vue_root_Vue_ = __webpack_require__("8bbf");
 var external_commonjs_vue_commonjs2_vue_root_Vue_default = /*#__PURE__*/__webpack_require__.n(external_commonjs_vue_commonjs2_vue_root_Vue_);
+
+// EXTERNAL MODULE: ./node_modules/vuetify/es5/locale/fr.js
+var fr = __webpack_require__("18f2");
+var fr_default = /*#__PURE__*/__webpack_require__.n(fr);
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.for-each.js
 var es_array_for_each = __webpack_require__("4160");
@@ -45291,6 +45378,7 @@ function filterTreeItems(filter, item, search, idKey, textKey, childrenKey, excl
 // CONCATENATED MODULE: ./Assets/src/plugins/vuetify.js
 
 
+
 external_commonjs_vue_commonjs2_vue_root_Vue_default.a.use(framework_Vuetify, {
   components: {
     VApp: VApp_VApp,
@@ -45456,6 +45544,12 @@ external_commonjs_vue_commonjs2_vue_root_Vue_default.a.use(framework_Vuetify, {
   }
 });
 /* harmony default export */ var vuetify = (new framework_Vuetify({
+  lang: {
+    locales: {
+      frLang: fr_default.a
+    },
+    current: document.documentElement.lang
+  },
   theme: {
     dark: false
   }
