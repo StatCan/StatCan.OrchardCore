@@ -1,3 +1,4 @@
+using OrchardCore.Autoroute.Models;
 using OrchardCore.ContentFields.Settings;
 using OrchardCore.ContentManagement.Metadata;
 using OrchardCore.ContentManagement.Metadata.Settings;
@@ -7,6 +8,8 @@ using OrchardCore.Media.Settings;
 using OrchardCore.Title.Models;
 using StatCan.OrchardCore.Extensions;
 using StatCan.OrchardCore.ContentFields.PredefinedGroup.Settings;
+using OrchardCore.Lists.Models;
+
 
 namespace StatCan.Themes.VuetifyTheme
 {
@@ -40,6 +43,10 @@ namespace StatCan.Themes.VuetifyTheme
             CompatibilityBanner();
             VFooter();
             UpdateToMultiTextField();
+            VListTitle();
+            VListItem();
+            VList();
+            VDivider();
             return 1;
         }
 
@@ -1271,6 +1278,87 @@ namespace StatCan.Themes.VuetifyTheme
                             new MultiTextFieldValueOption() {Name = "Shaped", Value = "shaped"}
                         },
                     })
+                )
+            );
+        }
+
+        private void VListTitle() {
+            _contentDefinitionManager.AlterTypeDefinition("VListTitle", type => type
+                .DisplayedAs("VListTitle")
+                .WithPart("VListTitle", part => part
+                    .WithPosition("0")
+                )
+            );
+
+            _contentDefinitionManager.AlterPartDefinition("VListTitle", part => part
+                .WithField("Title", field => field
+                    .OfType("TextField")
+                    .WithDisplayName("Title")
+                    .WithPosition("0")
+                )
+            );
+        }
+        private void VListItem() {
+            _contentDefinitionManager.AlterTypeDefinition("VListItem", type => type
+                .DisplayedAs("VListItem")
+                .WithPart("VListItem", part => part
+                    .WithPosition("0")
+                )
+            );
+
+            _contentDefinitionManager.AlterPartDefinition("VListItem", part => part
+                .WithField("ItemTitle", field => field
+                    .OfType("TextField")
+                    .WithDisplayName("ItemTitle")
+                    .WithPosition("0")
+                )
+                .WithField("ItemSubTitle", field => field
+                    .OfType("TextField")
+                    .WithDisplayName("ItemSubTitle")
+                    .WithPosition("3")
+                )
+                .WithField("ItemText", field => field
+                    .OfType("TextField")
+                    .WithDisplayName("ItemText")
+                    .WithPosition("2")
+                )
+                .WithField("IconName", field => field
+                    .OfType("TextField")
+                    .WithDisplayName("IconName")
+                    .WithPosition("1")
+                )
+            );
+        }
+
+        private void VList() {
+            _contentDefinitionManager.AlterTypeDefinition("VList", type => type
+                .DisplayedAs("VList")
+                .Creatable()
+                .Listable()
+                .Draftable()
+                .Versionable()
+                .Securable()
+                .Stereotype("Widget")
+                .WithPart("VList", part => part
+                    .WithPosition("0")
+                )
+                .WithPart("Items", part => part
+                    .WithDisplayName("Items")
+                    .WithDescription("Provides a collection behavior for your content item where you can place other content items.")
+                    .WithPosition("1")
+                    .WithSettings(new BagPartSettings
+                    {
+                        ContainedContentTypes = new[] { "VDivider", "VListItem", "VListTitle" },
+                    })
+                )
+            );
+        }
+        private void VDivider() {
+            _contentDefinitionManager.AlterTypeDefinition("VDivider", type => type
+                .DisplayedAs("VDivider")
+                .Stereotype("Widget")
+                .WithPart("VDivider", part => part
+                    .WithPosition("0")
                 )
             );
         }
