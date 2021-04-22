@@ -1,0 +1,109 @@
+{
+    "canvas": {
+      "id": "ccOne",
+      "type": "Community Canvas",
+      "title": "Community Canvas One",
+      "author": "TBD",
+      "date": "TBD",
+      "description": "Minimum Viable Community"
+    },
+    "identity": [
+      {
+        "theme": "Purpose",
+        "keyQ": "Why does the community exist?",
+        "text": [
+          "They ran around the corner to find that they had traveled back in time.", 
+          "He drank life before spitting it out.",
+          "He went on a whiskey diet and immediately lost three days.", 
+          "She traveled because it cost the same as therapy and was a lot more enjoyable.",
+          "It took him a while to realize that everything he decided not to change, he was actually choosing.",
+          "I thought red would have felt warmer in summer but I didn't think about the equator.",
+          "There was coal in his stocking and he was thrilled.",
+          "Pat ordered a ghost pepper pie.",
+          "He picked up trash in his spare time to dump in his neighbor's yard."
+        ]
+        },
+      {
+        "theme": "Identity",
+        "keyQ": "Who is this for and what is our selection process?",
+        "text": [
+          "They ran around the corner to find that they had traveled back in time.", 
+          "He drank life before spitting it out.",
+          "He went on a whiskey diet and immediately lost three days."
+        ]
+      },
+      {
+        "theme": "Values",
+        "keyQ": "Which 3 principles are important to us?",
+        "text": [
+          "They ran around the corner to find that they had traveled back in time.", 
+          "He drank life before spitting it out.",
+          "He went on a whiskey diet and immediately lost three days."
+        ]
+      },
+      {
+        "theme": "Success Definition",
+        "keyQ": "In the next 12 months, what are 3 metrics that will define success for us?",
+        "text": [
+          "They ran around the corner to find that they had traveled back in time.", 
+          "He drank life before spitting it out.",
+          "He went on a whiskey diet and immediately lost three days."
+        ]
+      }
+    ],
+    "experience": [
+      {
+        "theme": "Experience",
+        "keyQ": "What happens in our community on a recurring basis that helps us achieve our goals and expresses our values in action? Also consider onboarding: how does the experience in the community start?",
+        "text": [
+          "They ran around the corner to find that they had traveled back in time.", 
+          "He drank life before spitting it out.",
+          "He went on a whiskey diet and immediately lost three days.", 
+          "She traveled because it cost the same as therapy and was a lot more enjoyable.",
+          "It took him a while to realize that everything he decided not to change, he was actually choosing.",
+          "I thought red would have felt warmer in summer but I didn't think about the equator.",
+          "There was coal in his stocking and he was thrilled.",
+          "Pat ordered a ghost pepper pie.",
+          "He picked up trash in his spare time to dump in his neighbor's yard."
+        ]
+        },
+      {
+        "theme": "Roles",
+        "keyQ": "What different roles can members play in our community? What’s the give/get relationship?",
+        "text": [
+          "They ran around the corner to find that they had traveled back in time.", 
+          "He drank life before spitting it out.",
+          "He went on a whiskey diet and immediately lost three days."
+        ]
+      },
+      {
+        "theme": "Rules",
+        "keyQ": "What guidelines and boundaries help us achieve our purpose and represent our values?",
+        "text": [
+          "They ran around the corner to find that they had traveled back in time.", 
+          "He drank life before spitting it out.",
+          "He went on a whiskey diet and immediately lost three days."
+        ]
+      }
+    ],
+    "structure": [
+      {
+        "theme": "Governance",
+        "keyQ": "How do we make decisions? Who gets to decide what?",
+        "text": [
+          "They ran around the corner to find that they had traveled back in time.", 
+          "He drank life before spitting it out.",
+          "He went on a whiskey diet and immediately lost three days."
+        ]
+      },
+      {
+        "theme": "Communication",
+        "keyQ": "What are the simplest channels for us to communicate with each other? What is a healthy rhythm?",
+        "text": [
+          "They ran around the corner to find that they had traveled back in time.", 
+          "He drank life before spitting it out.",
+          "He went on a whiskey diet and immediately lost three days."
+        ]
+      }
+    ]
+  }

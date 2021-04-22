@@ -1,0 +1,22 @@
+<div id="main" style="display:inline-block;width:100%;"></div>
+{% style name:"styles", src:"https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css", rel:"stylesheet" %}
+
+{% capture data %}
+    {{Model.ContentItem.Content.Canvas.Data.Text | raw}}
+{% endcapture %}
+
+{% assign colour = Model.ContentItem.Content.Canvas.Colour.Text %}
+{% assign json = data | jsonparse %}
+{% assign type = Model.ContentItem.Content.Canvas.CanvasType.Text %}
+
+{% assign business = "BusinessCanvas" | shape_new | shape_properties: data: data, json: json, colour: colour %}
+{% assign client = "ClientCanvas" | shape_new | shape_properties: data: data, json: json, colour: colour %}
+{% assign community = "CommunityCanvas" | shape_new | shape_properties: data: data, json: json, colour: colour %}
+
+{% if type == 'business' %}
+    {{ business | shape_render }}
+{% elsif type == 'client' %}
+    {{ client | shape_render }}
+{% else %}
+    {{ community | shape_render }}
+{% endif %}

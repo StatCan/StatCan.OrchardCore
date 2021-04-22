@@ -1,0 +1,114 @@
+{
+    "canvas": {
+      "id": "bcOne",
+      "type": "Business Canvas",
+      "title": "Open Source Office",
+      "author": "Jonathan Lam",
+      "date": "2019-09",
+      "description": "Business and Strategy placement for Open Source Program"
+    },
+  
+    "elements": [
+      {
+        "title": "KEY PARTNERS",
+        "image": "./images/users-solid.png",
+        "info": [
+          {
+            "text": "Chief Information Officer (CIO)",
+            "subtext": ["Strategic alignment and reporting", "Test One"]
+          },
+          { "text": "IT SOAR", "subtext": ["Policy Approvals", "Test"] }
+        ]
+      },
+      {
+        "title": "KEY ACTIVITIES",
+        "image": "./images/clipboard-list-solid.png",
+        "info": [
+          {
+            "text": "Chief Information Officer (CIO)",
+            "subtext": ["Strategic alignment and reporting", "test"]
+          },
+          { "text": "IT SOAR", "subtext": ["Policy Approval"] }
+        ]
+      },
+      {
+        "title": "KEY RESOURCES",
+        "image": "./images/key-solid.png",
+        "info": [
+          {
+            "text": "Chief Information Officer (CIO)",
+            "subtext": ["Strategic alignment and reporting"]
+          },
+          { "text": "IT SOAR", "subtext": ["Policy Approval"] }
+        ]
+      },
+      {
+        "title": "VALUE PROPOSITIONS",
+        "image": "./images/gift-solid.png",
+        "info": [
+          {
+            "text": "Chief Information Officer (CIO)",
+            "subtext": ["Strategic alignment and reporting"]
+          },
+          { "text": "IT SOAR", "subtext": ["Policy Approval"] }
+        ]
+      },
+      {
+        "title": "CLIENT RELATIONSHIP",
+        "image": "./images/handshake-solid.png",
+        "info": [
+          {
+            "text": "Chief Information Officer (CIO)",
+            "subtext": ["Strategic alignment and reporting"]
+          },
+          { "text": "IT SOAR", "subtext": ["Policy Approval"] }
+        ]
+      },
+  
+      {
+        "title": "CHANNELS",
+        "image": "./images/code-branch-solid.png",
+        "info": [
+          {
+            "text": "Chief Information Officer (CIO)",
+            "subtext": ["Strategic alignment and reporting"]
+          },
+          { "text": "IT SOAR", "subtext": ["Policy Approval", "test"] }
+        ]
+      },
+      {
+        "title": "KEY CLIENTS",
+        "image": "./images/user-check-solid.png",
+        "info": [
+          {
+            "text": "Chief Information Officer (CIO)",
+            "subtext": ["Strategic alignment and reporting"]
+          },
+          { "text": "IT SOAR", "subtext": ["Policy Approval"] }
+        ]
+      },
+      {
+        "title": "COST STRUCTURE",
+        "image": "./images/file-invoice-dollar-solid.png",
+        "info": [
+          {
+            "text": "Chief Information Officer (CIO)",
+            "subtext": ["Strategic alignment and reporting"]
+          },
+          { "text": "IT SOAR", "subtext": ["Policy Approval"] }
+        ]
+      },
+      {
+        "title": "BUDGET SOURCE",
+        "image": "./images/calculator-solid.png",
+        "info": [
+          {
+            "text": "Chief Information Officer (CIO)",
+            "subtext": ["Strategic alignment and reporting"]
+          },
+          { "text": "IT SOAR", "subtext": ["Policy Approval"] }
+        ]
+      }
+    ]
+  }
+  
