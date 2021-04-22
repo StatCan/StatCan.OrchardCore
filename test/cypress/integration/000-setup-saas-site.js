@@ -3,6 +3,7 @@
 const sassCreds = {
   name: "Testing SaaS",
   setupRecipe: "SaaS",
+  prefix: ""
 }
 
 describe("SaaS site setup", function() {
@@ -11,6 +12,7 @@ describe("SaaS site setup", function() {
     cy.siteSetup(sassCreds);
     cy.login(sassCreds);
     cy.setPageSize(sassCreds,"100");
+    cy.enableFeature(sassCreds, "StatCan_OrchardCore_SaaSConfiguration");
   });
 });
  

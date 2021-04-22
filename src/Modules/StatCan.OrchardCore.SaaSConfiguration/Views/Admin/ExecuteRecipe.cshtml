@@ -1,0 +1,50 @@
+@model StatCan.OrchardCore.SaaSConfiguration.ViewModels.ExecuteRecipeViewModel
+<zone Name="Title"><h1>@RenderTitleSegments(T["Execute Recipe for Tenants"])</h1></zone>
+
+<style asp-name="codemirror"></style>
+<script asp-name="codemirror" depends-on="admin" at="Foot"></script>
+<script asp-name="codemirror-addon-display-autorefresh" at="Foot"></script>
+<script asp-name="codemirror-mode-javascript" at="Foot"></script>
+
+@Html.ValidationSummary()
+
+<form asp-action="Json">
+
+  <div class="form-group" asp-validation-class-for="SelectedTenantNames">
+    <label asp-for="SelectedTenantNames">@T["Tenants"]</label>
+    <div class="row">
+      @for (var i = 0; i < Model.AllTenants.Count; i++)
+      {
+        var item = Model.AllTenants[i];
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="@Html.IdFor(m => m.AllTenants[i])" name="@Html.NameFor(m => m.SelectedTenantNames)" checked="@item.Selected" value="@item.Value">
+            <label class="custom-control-label" for="@Html.IdFor(m => m.AllTenants[i])">@item.Text</label>
+          </div>
+        </div>
+      }
+    </div>
+    <span asp-validation-for="SelectedTenantNames"></span>
+    <span class="hint">@T["Select the tenants for which this recipe should be run"]</span>
+  </div>
+
+    <div class="form-group">
+       <label asp-for="Json">@T["Recipe Json"]</label>
+      <textarea asp-for="Json" class="form-control mb-2" rows="20"></textarea>
+    </div>
+    <button class="btn btn-primary" type="submit">@T["Execute"]</button>
+</form>
+
+<script at="Foot">
+$(function () {
+    var textArea = document.getElementById('@Html.IdFor(x => x.Json)');
+
+    var editor = CodeMirror.fromTextArea(textArea, {
+        autoRefresh: true,
+        lineNumbers: true,
+        styleActiveLine: true,
+        matchBrackets: true,
+        mode: { name: "javascript" },
+    });
+});
+</script>
