@@ -8,7 +8,6 @@ using OrchardCore.Media.Settings;
 using OrchardCore.Title.Models;
 using StatCan.OrchardCore.Extensions;
 using StatCan.OrchardCore.ContentFields.PredefinedGroup.Settings;
-using OrchardCore.Lists.Models;
 
 
 namespace StatCan.Themes.VuetifyTheme
@@ -1307,26 +1306,10 @@ namespace StatCan.Themes.VuetifyTheme
             );
 
             _contentDefinitionManager.AlterPartDefinition("VListItem", part => part
-                .WithField("ItemTitle", field => field
-                    .OfType("TextField")
-                    .WithDisplayName("ItemTitle")
-                    .WithPosition("0")
-                )
-                .WithField("ItemSubTitle", field => field
-                    .OfType("TextField")
-                    .WithDisplayName("ItemSubTitle")
-                    .WithPosition("3")
-                )
-                .WithField("ItemText", field => field
-                    .OfType("TextField")
-                    .WithDisplayName("ItemText")
-                    .WithPosition("2")
-                )
-                .WithField("IconName", field => field
-                    .OfType("TextField")
-                    .WithDisplayName("IconName")
-                    .WithPosition("1")
-                )
+                .WithTextField("ItemTitle", "Item Title", "0")
+                .WithTextField("IconName", "Icon Name", "1")
+                .WithTextField("ItemSubTitle", "Item Subtitle", "2")
+                .WithTextField("ItemText", "Item Text", "3")
             );
         }
 
@@ -1342,7 +1325,7 @@ namespace StatCan.Themes.VuetifyTheme
                 .WithPart("VList", part => part
                     .WithPosition("0")
                 )
-                .WithPart("Items", part => part
+                .WithPart("Items", "BagPart", part => part
                     .WithDisplayName("Items")
                     .WithDescription("Provides a collection behavior for your content item where you can place other content items.")
                     .WithPosition("1")
@@ -1351,6 +1334,7 @@ namespace StatCan.Themes.VuetifyTheme
                         ContainedContentTypes = new[] { "VDivider", "VListItem", "VListTitle" },
                     })
                 )
+                
             );
         }
         private void VDivider() {
@@ -1362,5 +1346,17 @@ namespace StatCan.Themes.VuetifyTheme
                 )
             );
         }
+        public int UpdateFrom1() {
+            CompatibilityBanner();
+            VFooter();
+            UpdateToMultiTextField();
+            VListTitle();
+            VListItem();
+            VList();
+            VDivider();
+            return 2;
+        }
     }
 }
+
+  
