@@ -1310,6 +1310,7 @@ namespace StatCan.Themes.VuetifyTheme
                 .WithTextField("IconName", "Icon Name", "1")
                 .WithTextField("ItemSubTitle", "Item Subtitle", "2")
                 .WithTextField("ItemText", "Item Text", "3")
+                .WithTextField("URL", "URL", "4")
             );
         }
 
@@ -1334,7 +1335,6 @@ namespace StatCan.Themes.VuetifyTheme
                         ContainedContentTypes = new[] { "VDivider", "VListItem", "VListTitle" },
                     })
                 )
-                
             );
         }
         private void VDivider() {
