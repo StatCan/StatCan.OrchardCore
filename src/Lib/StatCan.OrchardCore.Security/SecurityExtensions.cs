@@ -57,7 +57,7 @@ namespace StatCan.OrchardCore.Security
                     .From("*.demdex.net") // adobe analytics
                     .From("cm.everesttech.net") // adobe analytics
                     .From("*.adobe.com"); // adobe analytics
-                builder.AddFrameSource().Self()
+                builder.AddFrameSrc().Self()
                 .From("canada.demdex.net")// adobe analytics
                 .From("https://www.google.com/recaptcha/");
             });
