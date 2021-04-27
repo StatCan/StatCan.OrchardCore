@@ -1,6 +1,6 @@
 # Assets asset (css, js) files
 
-When adding / modifying assets, we suggest you use the `gulp` script to transpile and copy the assets into the wwwroot folder. 
+When adding / modifying assets, you should use the `gulp` script to transpile and copy the assets into the wwwroot folder. 
 To install gulp, run `npm install` from the root of this solution.
 
 Use the `npm run watch` command to automatically rebuild assets when changes are detected.

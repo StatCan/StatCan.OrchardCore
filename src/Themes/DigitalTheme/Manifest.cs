@@ -6,5 +6,8 @@ using static StatCan.OrchardCore.Manifest.StatCanManifestConstants;
     Author = DigitalInnovationTeam,
     Website = DigitalInnovationWebsite,
     Version = Version,
-    Description = "Theme of Innovation Team website"
+    Description = "Theme of Innovation Team website",
+    Dependencies = new[] {
+        "OrchardCore.ContentTypes"
+    }
 )]
