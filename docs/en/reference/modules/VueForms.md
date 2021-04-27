@@ -90,13 +90,13 @@ createContentItem("PersonInfo", true, {
     }
   }
 });
-
-httpContext().Response.Redirect('/success')
+// redirects to the success page
+httpRedirect('~/success')
 ```
 
 #### Component Options object
 
-This is where you write the[VueJS component options object](https://012.vuejs.org/api/options.html) for the form component. At a minimum, you must define the data object. When the VueForm is submitted, the data object is serialized and sent to the server.
+This is where you write the[VueJS component options object](https://012.vuejs.org/api/options.html) for the form component. At a minimum, you must define the data object. By default, the entire data object is serialized and sent to the server when the form is submitted.
 
 ```javascript
 {
@@ -106,6 +106,22 @@ This is where you write the[VueJS component options object](https://012.vuejs.or
     email: "",
     gender: undefined
   })
+}
+```
+
+You can also overwrite the `submitData()` method to customize what is sent to the server. This can be very useful when your `data` object contains list of items for a dropdown. 
+
+```javascript
+{
+  data: () => ({
+    items: ["Female", "Male", "Other"],
+    name: "",
+    email: "",
+    gender: undefined
+  }),
+  submitData() {
+    return { name: this.name, email: this.email, gender: this.gender };
+  },
 }
 ```
 

@@ -118,8 +118,8 @@ namespace StatCan.OrchardCore.VueForms
                 .Stereotype("Widget"));
 
             AddVueFormReference();
-
-            return 3;
+            AddVTextField();
+            return 5;
         }
 
         public int UpdateFrom1()
@@ -177,7 +177,21 @@ namespace StatCan.OrchardCore.VueForms
 
         public int updateFrom3()
         {
-            _contentDefinitionManager.AlterTypeDefinition("VTextField", type => type
+            AddVTextField();
+            return 4;
+        }
+
+        public int UpdateFrom4()
+        {
+            _contentDefinitionManager.AlterTypeDefinition("VueForm", type =>
+                type.WithPart("ContentPermissionsPart", p => p.WithPosition("4"))
+            );
+            return 5;
+        }
+
+        public void AddVTextField()
+        {
+               _contentDefinitionManager.AlterTypeDefinition("VTextField", type => type
                 .DisplayedAs("VTextField")
                 .Stereotype("Widget")
                 .WithPart("VTextField", part => part
@@ -374,7 +388,6 @@ namespace StatCan.OrchardCore.VueForms
                     })
                 )
             );
-            return 4;
         }
 
         public void AddVueFormReference()

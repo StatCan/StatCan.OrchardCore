@@ -76,6 +76,7 @@ nav:
         - Themes:
              - DigitalAdmin: reference/themes/DigitalAdmin.md
              - PortalTheme: reference/themes/PortalTheme.md
+             - VuetifyTheme: reference/themes/VuetifyTheme.md
     - Support:
         - Contact: contact.md
 

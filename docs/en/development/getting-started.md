@@ -6,8 +6,8 @@ Hello fellow developer, Get started here !
 
 ### Dependencies
 
-- [Dotnet Core 3.1](https://dotnet.microsoft.com/download/dotnet-core/3.1)
-- [NodeJS 12+](https://nodejs.org/en/download/)
+- [Dotnet 5.0](https://dotnet.microsoft.com/download/dotnet/5.0)
+- [NodeJS 15+](https://nodejs.org/en/download/)
 - [VSCode](https://code.visualstudio.com/) or [Visual Studio 2019](https://visualstudio.microsoft.com/vs/)
 
 ### Recommended VSCode extensions
@@ -83,7 +83,7 @@ function ip {
 # Build & Run (Production)
 function ibp { 
   ib
-  dotnet .\bin\Debug\netcoreapp3.1\StatCan.OrchardCore.Cms.Web.dll
+  dotnet .\bin\Debug\net5.0\StatCan.OrchardCore.Cms.Web.dll
 }
 
 ```

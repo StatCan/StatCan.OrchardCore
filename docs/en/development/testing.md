@@ -8,9 +8,6 @@ From the `/test` folder in this solution, you can run the following commands to 
 
 - `npm run host` hosts a version of OC running in production mode (faster).
 - `npm run build` builds the application.
-- `npm run clean` Deletes `/src/StatCan.OrchardCore.Cms.Web/App_Data`.
 - `npm run test` hosts the site then runs cypress tests.
-- `npm run test:clean` **Deletes `/src/StatCan.OrchardCore.Cms.Web/App_Data`**, hosts the site, run cypress tests.
-- `npm run test:clean-build` cleans `App_Data`, builds the site, hosts the site and runs cypress tests. This is recommended.
 - `npm run cypress` opens cypress dashboard.
-- `npm run cypress:run` runs the cypress tests. Assumes a pre-running instance.
+- `npm run cypress:run` runs the cypress tests in the console. Assumes a pre-running site instance.
