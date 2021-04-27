@@ -10,7 +10,7 @@ namespace StatCan.Themes.PortalTheme
     {
         public override void ConfigureServices(IServiceCollection services)
         {
-             services.AddTransient<IConfigureOptions<ResourceManagementOptions>, ResourceManagementOptionsConfiguration>();
+            services.AddTransient<IConfigureOptions<ResourceManagementOptions>, ResourceManagementOptionsConfiguration>();
             services.AddScoped<IDataMigration, Migrations>();
         }
     }

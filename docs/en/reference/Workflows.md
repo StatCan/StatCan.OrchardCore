@@ -20,6 +20,8 @@ The following activities are available with the GitHub module
 | -------- | ---- | ----------- |
 | VueForm Submitted | Event | Triggerred when a VueForm is valid. Runs for all selected VueForms in the Event options. |
 
+The VueForm Submitted event includes the `VueForm` content item as an input and the correlationId of the form. You can access the Form data by using the `requestFormAsJsonObject()` scripting method.
+
 ## EmailTemplates (`StatCan.OrchardCore.EmailTemplates`)
 
 | Activity | Type | Description |
