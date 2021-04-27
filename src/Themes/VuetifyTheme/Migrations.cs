@@ -1347,11 +1347,6 @@ namespace StatCan.Themes.VuetifyTheme
         private void VList() {  
             _contentDefinitionManager.AlterTypeDefinition("VList", type => type
                 .DisplayedAs("VList")
-                .Creatable()
-                .Listable()
-                .Draftable()
-                .Versionable()
-                .Securable()
                 .Stereotype("Widget")
                 .WithPart("VList", part => part
                     .WithPosition("0")
