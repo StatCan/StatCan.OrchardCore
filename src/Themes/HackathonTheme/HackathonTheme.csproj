@@ -7,10 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="C:\Users\Arnaud Roy\.nuget\packages\orchardcore.module.targets\1.0.0-rc2-16105\build\Package.Build.props" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="OrchardCore.Themes" Version="$(OrchardCoreVersion)" />
   </ItemGroup>
 
