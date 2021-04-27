@@ -42,8 +42,15 @@ namespace StatCan.Themes.VuetifyTheme
             CompatibilityBanner();
             VFooter();
             UpdateToMultiTextField();
-            UpdateFrom1();
             return 1;
+        }
+
+        public int UpdateFrom1() {
+            VSubheader();
+            VListItem();
+            VList();
+            VDivider();
+            return 2;
         }
 
         private void AuthContentMenuItem()
@@ -1431,12 +1438,6 @@ namespace StatCan.Themes.VuetifyTheme
                 )
             );
         }
-        public int UpdateFrom1() {
-            VSubheader();
-            VListItem();
-            VList();
-            VDivider();
-            return 2;
-        }
+
     }
 }
