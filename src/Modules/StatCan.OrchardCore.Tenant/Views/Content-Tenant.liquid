@@ -1,17 +1,19 @@
-{% assign nameLength = Model.ContentItem.Content.Tenant.Name.Text | size %}
+{% assign nameLength = Model.ContentItem.Content.Tenant.Link.Text | size %}
 {% assign photo = Model.ContentItem.Content.Tenant.Poster.Paths.first | raw %}
 {% assign colors = "red pink purple deep-purple indigo blue light-blue cyan teal green light-green lime yellow amber orange deep-orange brown" | split: " " %}
 {% assign numColors = colors | size %}
 {% assign avatarColorNum = nameLength | modulo: numColors %}
 {% assign avatarColor = colors[avatarColorNum] %}
 <v-list-item
-    href="{{ Model.ContentItem.Content.Tenant.Home.Url }}"
+    href="{{ Model.ContentItem.Content.Tenant.Link.Url }}"
+    color="{{avatarColor}}"
+    dense
 >
     <v-list-item-icon>
         {% if photo != empty %}
             <v-avatar
                 color="primary"
-                size="48"
+                size="32"
             >
                 <img src="{{ photo | asset_url | resize_url: width:64, height:64, mode:'crop', anchor:anchor }}"  />
             </v-avatar>
@@ -19,19 +21,16 @@
             <v-avatar
                 color="{{ avatarColor }}"
                 dark
-                size="48" 
+                size="32" 
             >
-               <span class="white--text headline">{{ Model.ContentItem.Content.Tenant.Name.Text | slice: 0 | capitalize }}</span>
+               <span class="white--text text-h6">{{ Model.ContentItem.Content.Tenant.Link.Text | slice: 0 | capitalize }}</span>
             </v-avatar>
         {% endif %}
     </v-list-item-icon>
     <v-list-item-content>
-        <v-list-item-title>{{ Model.ContentItem.Content.Tenant.Name.Text }}</v-list-item-title>
+        <v-list-item-title>{{ Model.ContentItem.Content.Tenant.Link.Text }}</v-list-item-title>
         <v-list-item-subtitle>{{ Model.ContentItem.Content.Tenant.Description.Text }}</v-list-item-subtitle>
     </v-list-item-content>
     <v-list-item-action>
-        <v-btn large icon href="{{ Model.ContentItem.Content.Tenant.Home.Url | append: '/admin' }}">
-          <v-icon color="grey lighten-1">mdi-cog</v-icon>
-        </v-btn>
     </v-list-item-action>
 </v-list-item>
