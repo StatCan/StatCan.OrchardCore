@@ -12,12 +12,5 @@
       "node_modules/vue/dist/vue.min.js"
     ],
     "output": "wwwroot/Scripts/vue.min.js"
-  },
-    {
-    "copy": true,
-    "inputs": [
-      "node_modules/vuedraggable/dist/vuedraggable.umd.*"
-    ],
-    "output": "wwwroot/Scripts/@"
   }
 ]
