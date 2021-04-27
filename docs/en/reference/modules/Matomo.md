@@ -1,4 +1,5 @@
 # Matomo (`StatCan.OrchardCore.Matomo`)
 
+Integrates with [Matomo](https://matomo.org/) analytics.
 
-Todo: Document this module
+This module injects the matomo tracking script into the site's pages.

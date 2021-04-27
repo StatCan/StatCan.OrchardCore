@@ -1,4 +1,5 @@
 import Vue from 'vue';
+import frLang from 'vuetify/es5/locale/fr'
 import Vuetify, {
     VApp,
     VAppBar,
@@ -329,5 +330,9 @@ Vue.use(Vuetify,
   });
 
 export default new Vuetify({
+  lang: {
+    locales: { frLang },
+    current: document.documentElement.lang,
+  },
   theme: { dark: false }
 });

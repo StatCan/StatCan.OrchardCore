@@ -1,6 +1,4 @@
 # GCCollab (`StatCan.OrchardCore.GCCollab`)
 
-TODO
-
-This module add GCCollab Authentication to OrchardCore
+This module add GCCollab as an Authentication provider to OrchardCore.
 
