@@ -3,7 +3,6 @@
 <style asp-name="codemirror"></style>
 <script asp-name="codemirror" depends-on="admin" at="Foot"></script>
 <script asp-name="codemirror-mode-javascript" at="Foot"></script>
-<script asp-name="codemirror-mode-sql" at="Foot"></script>
 
 <zone Name="Title"><h1>@RenderTitleSegments(T["GraphQL Query"])</h1></zone>
 
@@ -69,10 +68,10 @@
 
 <script at="Foot">
     $(function () {
-        CodeMirror.fromTextArea(document.getElementById('@Html.IdFor(m => m.DecodedQuery)'), { mode: "text/x-pgsql", lineNumbers: true, viewportMargin: Infinity });
+        CodeMirror.fromTextArea(document.getElementById('@Html.IdFor(m => m.DecodedQuery)'), { mode: "javascript", lineNumbers: true, viewportMargin: Infinity });
         CodeMirror.fromTextArea(document.getElementById('@Html.IdFor(m => m.Parameters)'), { mode: "javascript", json: true, lineNumbers: true, viewportMargin: Infinity });
         if (RawGraphQL = document.getElementById('@Html.IdFor(m => m.RawGraphQL)')) {
-          CodeMirror.fromTextArea(RawGraphQL, { mode: "text/x-sql", lineNumbers: true, readonly: true, viewportMargin: Infinity });
+          CodeMirror.fromTextArea(RawGraphQL, { mode: "javascript", lineNumbers: true, readonly: true, viewportMargin: Infinity });
         }
     });
 </script>
