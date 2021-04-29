@@ -41,8 +41,7 @@ namespace StatCan.Themes.VuetifyTheme
             AuthContentMenuItem();
             CompatibilityBanner();
             VFooter();
-            UpdateToMultiTextField();
-            ScheduleEvent();
+            UpdateToMultiTextField();           
             return 1;
         }
 
@@ -52,6 +51,12 @@ namespace StatCan.Themes.VuetifyTheme
             VList();
             VDivider();
             return 2;
+        }
+
+        public int UpdateFrom2()
+        {
+            ScheduleEvent();
+            return 3;
         }
 
         private void AuthContentMenuItem()
