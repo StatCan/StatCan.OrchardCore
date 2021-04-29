@@ -3,6 +3,7 @@
 <style asp-name="codemirror"></style>
 <script asp-name="codemirror" depends-on="admin" at="Foot"></script>
 <script asp-name="codemirror-mode-javascript" at="Foot"></script>
+<script asp-name="codemirror-addon-selection-active-line" at="Foot"></script>
 
 <zone Name="Title"><h1>@RenderTitleSegments(T["GraphQL Query"])</h1></zone>
 
@@ -68,8 +69,8 @@
 
 <script at="Foot">
     $(function () {
-        CodeMirror.fromTextArea(document.getElementById('@Html.IdFor(m => m.DecodedQuery)'), { mode: "javascript", lineNumbers: true, viewportMargin: Infinity });
-        CodeMirror.fromTextArea(document.getElementById('@Html.IdFor(m => m.Parameters)'), { mode: "javascript", json: true, lineNumbers: true, viewportMargin: Infinity });
+        CodeMirror.fromTextArea(document.getElementById('@Html.IdFor(m => m.DecodedQuery)'), { mode: "javascript", styleActiveLine: true, lineNumbers: true, viewportMargin: Infinity });
+        CodeMirror.fromTextArea(document.getElementById('@Html.IdFor(m => m.Parameters)'), { mode: "javascript", styleActiveLine: true, json: true, lineNumbers: true, viewportMargin: Infinity });
         if (RawGraphQL = document.getElementById('@Html.IdFor(m => m.RawGraphQL)')) {
           CodeMirror.fromTextArea(RawGraphQL, { mode: "javascript", lineNumbers: true, readonly: true, viewportMargin: Infinity });
         }
