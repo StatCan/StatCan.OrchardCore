@@ -65,14 +65,13 @@ nav:
         - Workflows: reference/Workflows.md
         - Modules:
              - ContentFields: reference/modules/ContentFields.md
-             - DisplayHelpers: reference/modules/DisplayHelpers.md
              - EmailTemplates: reference/modules/EmailTemplates.md
              - GCCollab: reference/modules/GCCollab.md
              - GitHub: reference/modules/GitHub.md
+             - GraphQL: reference/modules/GraphQL.md
              - LocalizedText: reference/modules/LocalizedText.md
              - Matomo: reference/modules/Matomo.md
              - VueForms: reference/modules/VueForms.md
-             - WebpageCore: reference/modules/WebpageCore.md
         - Themes:
              - DigitalAdmin: reference/themes/DigitalAdmin.md
              - PortalTheme: reference/themes/PortalTheme.md
