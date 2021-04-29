@@ -56,11 +56,12 @@
 
 @if (Model.Documents.Any())
 {
+  <h2>@T["Query Results"]</h2>
     <span class="text-muted">@T["Query executed in {0} ms", Model.Elapsed.TotalMilliseconds]</span>
     <pre>
     @foreach (var document in Model.Documents)
     {
-        <code>@Json.Serialize(document, new Newtonsoft.Json.JsonSerializerSettings(){Formatting = Newtonsoft.Json.Formatting.Indented})</code>
+<code>@Json.Serialize(document, new Newtonsoft.Json.JsonSerializerSettings(){Formatting = Newtonsoft.Json.Formatting.Indented})</code>
     }
     </pre>
 

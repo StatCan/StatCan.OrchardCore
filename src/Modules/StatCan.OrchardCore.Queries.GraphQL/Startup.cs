@@ -12,6 +12,7 @@ using System;
 using OrchardCore.Admin;
 using OrchardCore.Mvc.Core.Utilities;
 using Microsoft.Extensions.Options;
+using StatCan.OrchardCore.Queries.GraphQL.Services;
 
 namespace StatCan.OrchardCore.Queries.GraphQL
 {
@@ -32,6 +33,7 @@ namespace StatCan.OrchardCore.Queries.GraphQL
             services.AddScoped<IPermissionProvider, Permissions>();
             services.AddScoped<IDisplayDriver<Query>, GraphQLQueryDisplayDriver>();
             services.AddScoped<IQuerySource, GraphQLQuerySource>();
+            services.AddScoped<IGraphQLQueryService, GraphQLQueryService>();
             services.AddScoped<INavigationProvider, AdminMenu>();
         }
 

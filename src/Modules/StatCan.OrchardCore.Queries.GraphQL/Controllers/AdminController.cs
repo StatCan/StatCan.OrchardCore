@@ -1,23 +1,14 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Threading.Tasks;
-using Fluid;
-using Fluid.Values;
-using GraphQL;
-using GraphQL.Execution;
-using GraphQL.Validation;
-using GraphQL.Validation.Complexity;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
-using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using OrchardCore.Apis.GraphQL;
-using OrchardCore.Liquid;
 using OrchardCore.Modules;
+using StatCan.OrchardCore.Queries.GraphQL.Services;
 using StatCan.OrchardCore.Queries.GraphQL.ViewModels;
 
 namespace StatCan.OrchardCore.Queries.GraphQL.Controllers
@@ -26,41 +17,25 @@ namespace StatCan.OrchardCore.Queries.GraphQL.Controllers
     public class AdminController : Controller
     {
         private readonly IAuthorizationService _authorizationService;
-        private readonly ILiquidTemplateManager _liquidTemplateManager;
         private readonly IStringLocalizer S;
-        private readonly IOptions<GraphQLSettings> _settingsAccessor;
-        private readonly IDocumentExecuter _executer;
-        private readonly IDocumentExecutionListener _dataLoaderDocumentListener;
-        private readonly IEnumerable<IValidationRule> _validationRules;
-        private readonly ISchemaFactory _schemaService;
-        private readonly TemplateOptions _templateOptions;
+        private readonly IGraphQLQueryService _queryService;
 
         public AdminController(
             IAuthorizationService authorizationService,
-            ILiquidTemplateManager liquidTemplateManager,
             IStringLocalizer<AdminController> stringLocalizer,
-            IOptions<TemplateOptions> templateOptions,
-            IOptions<GraphQLSettings> settingsAccessor,
-            IDocumentExecuter executer,
-            IDocumentExecutionListener dataLoaderDocumentListener,
-            IEnumerable<IValidationRule> validationRules,
-            ISchemaFactory schemaService)
+            IGraphQLQueryService queryService)
 
         {
             _authorizationService = authorizationService;
-            _liquidTemplateManager = liquidTemplateManager;
             S = stringLocalizer;
-            _settingsAccessor = settingsAccessor;
-            _executer = executer;
-            _dataLoaderDocumentListener = dataLoaderDocumentListener;
-            _validationRules = validationRules;
-            _schemaService = schemaService;
-            _templateOptions = templateOptions.Value;
+            _queryService = queryService;
         }
 
         public Task<IActionResult> Query(string query)
         {
             query = String.IsNullOrWhiteSpace(query) ? "" : System.Text.Encoding.UTF8.GetString(Convert.FromBase64String(query));
+
+            // this executes the query if any
             return Query(new AdminQueryViewModel
             {
                 DecodedQuery = query,
@@ -90,49 +65,24 @@ namespace StatCan.OrchardCore.Queries.GraphQL.Controllers
 
             var parameters = JsonConvert.DeserializeObject<Dictionary<string, object>>(model.Parameters);
 
-            var tokenizedQuery = await _liquidTemplateManager.RenderStringAsync(model.DecodedQuery, NullEncoder.Default, parameters.Select(x => new KeyValuePair<string, FluidValue>(x.Key, FluidValue.Create(x.Value, _templateOptions))));
-
-            model.RawGraphQL = tokenizedQuery;
             model.Parameters = JsonConvert.SerializeObject(parameters, Formatting.Indented);
 
             try
             {
-                var schema = await _schemaService.GetSchemaAsync();
-                var gqlSettings = _settingsAccessor.Value;
+                var gqlQueryResult = await _queryService.ExecuteQuery(model.DecodedQuery, parameters);
+                model.RawGraphQL = gqlQueryResult.TokenizedQuery;
 
-                var result = await _executer.ExecuteAsync(_ =>
+                if(gqlQueryResult.Result.Errors?.Count > 0)
                 {
-                    _.Schema = schema;
-                    _.Query = tokenizedQuery;
-                    _.UserContext = gqlSettings.BuildUserContext?.Invoke(HttpContext);
-                    _.ExposeExceptions = gqlSettings.ExposeExceptions;
-                    _.ValidationRules = DocumentValidator.CoreRules()
-                                        .Concat(_validationRules);
-                    _.ComplexityConfiguration = new ComplexityConfiguration
-                    {
-                        MaxDepth = gqlSettings.MaxDepth,
-                        MaxComplexity = gqlSettings.MaxComplexity,
-                        FieldImpact = gqlSettings.FieldImpact
-                    };
-                    _.Listeners.Add(_dataLoaderDocumentListener);
-                });
-
-                if(result.Errors?.Count > 0)
-                {
-                    foreach (var error in result.Errors)
+                    foreach (var error in gqlQueryResult.Result.Errors)
                     {
                         ModelState.AddModelError("", error.Message);
                     }
                 }
-
-                var results = new List<JObject>();
-
-                if(result.Data != null)
+                model.Documents =  new List<JObject>
                 {
-                    results.Add(JObject.FromObject(result.Data));
-                }
-
-                model.Documents = results;
+                    JObject.FromObject(gqlQueryResult.Result)
+                };
                 model.Elapsed = stopwatch.Elapsed;
             }
             catch(Exception ex)
