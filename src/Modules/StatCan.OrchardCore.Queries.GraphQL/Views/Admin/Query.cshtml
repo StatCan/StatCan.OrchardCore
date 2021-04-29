@@ -69,8 +69,8 @@
 
 <script at="Foot">
     $(function () {
-        CodeMirror.fromTextArea(document.getElementById('@Html.IdFor(m => m.DecodedQuery)'), { mode: "javascript", styleActiveLine: true, lineNumbers: true, viewportMargin: Infinity });
-        CodeMirror.fromTextArea(document.getElementById('@Html.IdFor(m => m.Parameters)'), { mode: "javascript", styleActiveLine: true, json: true, lineNumbers: true, viewportMargin: Infinity });
+        CodeMirror.fromTextArea(document.getElementById('@Html.IdFor(m => m.DecodedQuery)'), { mode: "javascript", styleActiveLine: true, lineNumbers: true, lineWrapping: true, viewportMargin: Infinity });
+        CodeMirror.fromTextArea(document.getElementById('@Html.IdFor(m => m.Parameters)'), { mode: "javascript", styleActiveLine: true, json: true, lineNumbers: true, lineWrapping: true, viewportMargin: Infinity });
         if (RawGraphQL = document.getElementById('@Html.IdFor(m => m.RawGraphQL)')) {
           CodeMirror.fromTextArea(RawGraphQL, { mode: "javascript", lineNumbers: true, readonly: true, viewportMargin: Infinity });
         }
