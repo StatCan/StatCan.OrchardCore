@@ -1,0 +1,77 @@
+@model StatCan.OrchardCore.Queries.GraphQL.ViewModels.AdminQueryViewModel
+
+<style asp-name="codemirror"></style>
+<script asp-name="codemirror" depends-on="admin" at="Foot"></script>
+<script asp-name="codemirror-mode-javascript" at="Foot"></script>
+<script asp-name="codemirror-mode-sql" at="Foot"></script>
+
+<zone Name="Title"><h1>@RenderTitleSegments(T["GraphQL Query"])</h1></zone>
+
+<div asp-validation-summary="All" class="text-danger"></div>
+
+<form asp-action="Query" method="post">
+    <div class="row">
+        <div class="col-md-6">
+
+            <div class="form-group">
+                <label asp-for="DecodedQuery">@T["Template"]</label>
+                <textarea asp-for="DecodedQuery" rows="12" class="form-control"></textarea>
+                <span class="hint">@T["You can use <a href=\"{0}\" target=\"_blank\">GraphiQL</a> ui to easily build the query.", Html.Raw(Url.Action("Index", "Admin", new { area = "OrchardCore.Apis.GraphQL" }))]</span>
+            </div>
+        </div>
+        <div class="col-md-6">
+
+            <div class="form-group">
+                <label asp-for="Parameters">@T["Parameters"]</label>
+                <textarea asp-for="Parameters" rows="1" class="form-control"></textarea>
+                <span class="hint">@T["An optional Json object containing the parameter values for this query."]</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">@T["Query"]</button>
+            </div>
+        </div>
+    </div>
+</form>
+@if (Model.Elapsed != TimeSpan.Zero)
+{
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="RawGraphQL">@T["Final GraphQL Query"]</label>
+                <textarea asp-for="RawGraphQL" rows="12" class="form-control"></textarea>
+                <span class="hint">@T["The query as it will be executed by the GraphQL engine."]</span>
+            </div>
+
+            <div class="form-group">
+                <a href="@Url.Action("Create", "Admin", new { area = "OrchardCore.Queries", id = "GraphQL", query = Model.DecodedQuery })" class="btn btn-success">@T["Create"]</a>
+            </div>
+        </div>
+    </div>
+}
+
+@if (Model.Documents.Any())
+{
+    <span class="text-muted">@T["Query executed in {0} ms", Model.Elapsed.TotalMilliseconds]</span>
+    <pre>
+    @foreach (var document in Model.Documents)
+    {
+        <code>@Json.Serialize(document, new Newtonsoft.Json.JsonSerializerSettings(){Formatting = Newtonsoft.Json.Formatting.Indented})</code>
+    }
+    </pre>
+
+}
+
+<script at="Foot">
+    $(function () {
+        CodeMirror.fromTextArea(document.getElementById('@Html.IdFor(m => m.DecodedQuery)'), { mode: "text/x-pgsql", lineNumbers: true, viewportMargin: Infinity });
+        CodeMirror.fromTextArea(document.getElementById('@Html.IdFor(m => m.Parameters)'), { mode: "javascript", json: true, lineNumbers: true, viewportMargin: Infinity });
+        if (RawGraphQL = document.getElementById('@Html.IdFor(m => m.RawGraphQL)')) {
+          CodeMirror.fromTextArea(RawGraphQL, { mode: "text/x-sql", lineNumbers: true, readonly: true, viewportMargin: Infinity });
+        }
+    });
+</script>

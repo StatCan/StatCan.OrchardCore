@@ -1,0 +1,29 @@
+@model StatCan.OrchardCore.Queries.GraphQL.ViewModels.GraphQLQueryViewModel
+
+<style asp-name="codemirror"></style>
+<style asp-name="codemirror-addon-hint-show-hint"></style>
+<script asp-name="codemirror" depends-on="admin" at="Foot"></script>
+<script asp-name="codemirror-addon-selection-active-line" at="Foot"></script>
+<script asp-name="codemirror-mode-javascript" at="Foot"></script>
+<script asp-name="codemirror-mode-sql" at="Foot"></script>
+<script asp-name="codemirror-addon-hint-sql-hint" at="Foot"></script>
+
+<div class="form-group">
+    <label asp-for="Query">@T["Query"]</label>
+    <textarea asp-for="Query" rows="12" class="form-control"></textarea>
+    <span class="hint">@T["The GraphQL query"]</span>
+</div>
+
+<script at="Foot">
+    $(function () {
+      // Hide the Query Schema as it's not useful or required for the GraphQL queries
+      $("#Query_Schema").closest('.form-group').hide();
+
+        CodeMirror.fromTextArea(document.getElementById('@Html.IdFor(x => x.Query)'), { mode: "text/x-pgsql",
+            indentWithTabs: true, smartIndent: true, matchBrackets : true, lineNumbers: true, styleActiveLine: true, viewportMargin: Infinity,
+            extraKeys: {"Ctrl-Space": "autocomplete"},
+            hintOptions: {tables: {
+              ContentItemIndex: ["DocumentId"]
+            }} });
+    });
+</script>
