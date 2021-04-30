@@ -1,0 +1,258 @@
+{
+  "steps": [
+    {
+      "name": "feature",
+      "disable": [],
+      "enable": [
+        "StatCan.OrchardCore.Queries.GraphQL"
+      ]
+    },
+    {
+      "name": "Queries",
+      "Queries": [
+        {
+          "Template": "query MyQuery {\r\n  contactRequest {\r\n    contentItemId\r\n    name\r\n    email\r\n    message\r\n    createdUtc\r\n  }\r\n}\r\n",
+          "Name": "AllContactRequests",
+          "Source": "GraphQL",
+          "Schema": null
+        }
+      ]
+    },
+    {
+      "name": "ContentDefinition",
+      "ContentTypes": [
+        {
+          "Name": "LiquidPage",
+          "DisplayName": "Liquid Page",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Creatable": true,
+              "Listable": true,
+              "Draftable": true,
+              "Versionable": true,
+              "Securable": true
+            }
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "LocalizationPart",
+              "Name": "LocalizationPart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            },
+            {
+              "PartName": "TitlePart",
+              "Name": "TitlePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                }
+              }
+            },
+            {
+              "PartName": "AutoroutePart",
+              "Name": "AutoroutePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "2"
+                },
+                "AutoroutePartSettings": {
+                  "AllowCustomPath": true,
+                  "Pattern": "{{ ContentItem | display_text | slugify }}",
+                  "ShowHomepageOption": true
+                }
+              }
+            },
+            {
+              "PartName": "LiquidPart",
+              "Name": "LiquidPart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "3"
+                }
+              }
+            },
+            {
+              "PartName": "LiquidPage",
+              "Name": "LiquidPage",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "4"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "ContactRequest",
+          "DisplayName": "ContactRequest",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Listable": true
+            },
+            "FullTextAspectSettings": {
+              "IncludeBodyAspect": false,
+              "IncludeDisplayText": false
+            }
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "ContactRequest",
+              "Name": "ContactRequest",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            },
+            {
+              "PartName": "TitlePart",
+              "Name": "TitlePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                },
+                "TitlePartSettings": {
+                  "Options": 2,
+                  "Pattern": "{{Model.ContentItem.Content.ContactRequest.Name.Email}}"
+                },
+                "ContentIndexSettings": {}
+              }
+            }
+          ]
+        }
+      ],
+      "ContentParts": [
+        {
+          "Name": "ContactRequest",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "TextField",
+              "Name": "Name",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Name",
+                  "Position": "0"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "Email",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Email",
+                  "Position": "1"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "Message",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Message",
+                  "Position": "2"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "content",
+      "data": [
+        {
+          "ContentItemId": "4e4ce8jg09dgg42jw25ptphgwj",
+          "ContentItemVersionId": "46shcsbqh5njgvgzqayx323nme",
+          "ContentType": "ContactRequest",
+          "DisplayText": "",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": "2021-04-29T15:34:05.4045545Z",
+          "PublishedUtc": "2021-04-29T15:34:05.4051998Z",
+          "CreatedUtc": "2021-04-29T15:34:05.4045545Z",
+          "Owner": "4vv1sk3b56hr32mrczp3w2temj",
+          "Author": "admin",
+          "ContactRequest": {
+            "Name": {
+              "Text": "Contact 1"
+            },
+            "Email": {
+              "Text": "admin@orchard.com"
+            },
+            "Message": {
+              "Text": "This is my contact message"
+            }
+          },
+          "TitlePart": {
+            "Title": ""
+          }
+        },
+        {
+          "ContentItemId": "4twvqztdaw0757733s6zmhsddn",
+          "ContentItemVersionId": "4nhpa1mct7ksfy80gq6qb9pbxf",
+          "ContentType": "ContactRequest",
+          "DisplayText": "",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": "2021-04-29T15:34:18.2095612Z",
+          "PublishedUtc": "2021-04-29T15:34:18.2101457Z",
+          "CreatedUtc": "2021-04-29T15:34:18.2095612Z",
+          "Owner": "4vv1sk3b56hr32mrczp3w2temj",
+          "Author": "admin",
+          "ContactRequest": {
+            "Name": {
+              "Text": "Contact 2"
+            },
+            "Email": {
+              "Text": "paul@newman.com"
+            },
+            "Message": {
+              "Text": "This is my second contact message"
+            }
+          },
+          "TitlePart": {
+            "Title": ""
+          }
+        },
+        {
+          "ContentItemId": "48rx8x6pm0nhjsrgek3wcsaycf",
+          "ContentItemVersionId": "41yh25ks807qxvd6wecw9s8dcq",
+          "ContentType": "LiquidPage",
+          "DisplayText": "ShowQuery",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": "2021-04-29T15:39:51.7874998Z",
+          "PublishedUtc": "2021-04-29T15:39:51.7918715Z",
+          "CreatedUtc": "2021-04-29T15:39:51.7874998Z",
+          "Owner": "4vv1sk3b56hr32mrczp3w2temj",
+          "Author": "admin",
+          "LocalizationPart": {
+            "LocalizationSet": "4dfwd15sx6r2zw0amgq7d5w04r",
+            "Culture": "en"
+          },
+          "TitlePart": {
+            "Title": "ShowQuery"
+          },
+          "AutoroutePart": {
+            "Path": "showquery",
+            "SetHomepage": false,
+            "Disabled": false,
+            "RouteContainedItems": false,
+            "Absolute": false
+          },
+          "LiquidPart": {
+            "Liquid": "{% assign results = Queries.AllContactRequests | query -%}\r\n<pre><code>{{results}}</code></pre>"
+          },
+          "LiquidPage": {}
+        }
+      ]
+    }
+  ]
+}
