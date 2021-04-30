@@ -41,7 +41,7 @@ namespace StatCan.Themes.VuetifyTheme
             AuthContentMenuItem();
             CompatibilityBanner();
             VFooter();
-            UpdateToMultiTextField();
+            UpdateToMultiTextField();           
             return 1;
         }
 
@@ -51,6 +51,12 @@ namespace StatCan.Themes.VuetifyTheme
             VList();
             VDivider();
             return 2;
+        }
+
+        public int UpdateFrom2()
+        {
+            ScheduleEvent();
+            return 3;
         }
 
         private void AuthContentMenuItem()
@@ -1253,6 +1259,25 @@ namespace StatCan.Themes.VuetifyTheme
                         },
                     })
                 )
+            );
+        }
+
+        private void ScheduleEvent()
+        {
+            _contentDefinitionManager.CreateBasicWidget("ScheduleList");
+            _contentDefinitionManager.AlterTypeDefinition("ScheduleList", t => t
+                .WithTitlePart("0")
+                .WithFlow("1", new string[] { "ScheduleEvent" })
+            );
+            _contentDefinitionManager.AlterPartDefinition("ScheduleEvent", p => p
+                .WithTextField("Time", "0")
+                .WithTextField("Location", "1")
+            );
+            _contentDefinitionManager.AlterTypeDefinition("ScheduleEvent", t => t
+                .Stereotype("Widget")
+                .WithTitlePart("0", TitlePartOptions.EditableRequired)
+                .WithPart("ScheduleEvent", p => p.WithPosition("1"))
+                .WithMarkdownBody("2")
             );
         }
 
