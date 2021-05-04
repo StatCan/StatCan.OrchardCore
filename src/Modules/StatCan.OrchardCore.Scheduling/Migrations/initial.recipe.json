@@ -94,9 +94,7 @@
                   "Position": "3"
                 },
                 "BagPartSettings": {
-                  "ContainedContentTypes": [
-                    "TimeSlot"
-                  ]
+                  "ContainedContentTypes": ["TimeSlot"]
                 },
                 "ContentIndexSettings": {}
               }
@@ -192,15 +190,18 @@
               }
             },
             {
-              "FieldName": "MarkdownField",
+              "FieldName": "TextField",
               "Name": "Comments",
               "Settings": {
                 "ContentPartFieldSettings": {
                   "DisplayName": "Comments",
-                  "Editor": "Wysiwyg",
+                  "Editor": "TextArea",
                   "Position": "6"
                 },
-                "MarkdownFieldSettings": {}
+                "TextFieldSettings": {
+                  "Hint": "These comments are visible to every other scheduler"
+                },
+                "ContentIndexSettings": {}
               }
             },
             {
@@ -213,8 +214,7 @@
                 },
                 "ContentPickerFieldSettings": {
                   "Multiple": true,
-                  "DisplayedContentTypes": [
-                  ]
+                  "DisplayedContentTypes": []
                 },
                 "ContentIndexSettings": {}
               }
