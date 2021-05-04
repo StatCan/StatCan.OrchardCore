@@ -95,7 +95,7 @@ namespace StatCan.OrchardCore.VueForms
                 .WithDescription("Script fields for AjaxForm"));
 
             _contentDefinitionManager.AlterTypeDefinition("VueForm", type => type
-                .Draftable().Securable()
+                .Draftable().Securable().Versionable()
                 .WithPart("TitlePart", p => p.WithPosition("0"))
                 .WithPart("VueForm", p => p.WithPosition("1"))
                 .WithPart("FlowPart", p => p.WithPosition("2"))
@@ -119,7 +119,7 @@ namespace StatCan.OrchardCore.VueForms
 
             AddVueFormReference();
             AddVTextField();
-            return 5;
+            return 6;
         }
 
         public int UpdateFrom1()
@@ -188,8 +188,13 @@ namespace StatCan.OrchardCore.VueForms
             );
             return 5;
         }
+        public int UpdateFrom5()
+        {
+            _contentDefinitionManager.AlterTypeDefinition("VueForm", type => type.Versionable());
+            return 6;
+        }
 
-        public void AddVTextField()
+        private void AddVTextField()
         {
                _contentDefinitionManager.AlterTypeDefinition("VTextField", type => type
                 .DisplayedAs("VTextField")
