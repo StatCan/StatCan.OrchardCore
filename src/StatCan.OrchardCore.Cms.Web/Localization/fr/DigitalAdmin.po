@@ -57,7 +57,7 @@ msgstr "Ajouter un widget à {0}"
 #. <a id="btn-darkmode" class="ml-3" data-toggle="tooltip" title="@(darkMode ? T["Light mode"] : T["Dark mode"])" role="button">
 msgctxt "DigitalAdmin.Views.Layout"
 msgid "Light mode"
-msgstr "Mode lumière"
+msgstr "Mode clair"
 
 #: DigitalAdmin\Views\Layout.cshtml:48
 #. <a id="btn-darkmode" class="ml-3" data-toggle="tooltip" title="@(darkMode ? T["Light mode"] : T["Dark mode"])" role="button">

@@ -9,7 +9,6 @@ using OrchardCore.DisplayManagement.Entities;
 using OrchardCore.DisplayManagement.Handlers;
 using OrchardCore.DisplayManagement.Views;
 using OrchardCore.Settings;
-using Org.BouncyCastle.Crypto.Modes;
 using StatCan.OrchardCore.GitHub.Settings;
 using StatCan.OrchardCore.GitHub.ViewModels;
 
