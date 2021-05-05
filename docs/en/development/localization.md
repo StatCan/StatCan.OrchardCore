@@ -2,20 +2,15 @@
 
 Orchard uses [PO](https://www.gnu.org/software/gettext/manual/html_node/PO-Files.html) files to support translation / pluralization of static strings.
 
-See the [orchard documentation](https://orchardcore.readthedocs.io/en/dev/docs/guides/install-localization-files/).
+See the [orchard documentation](https://orchardcore.readthedocs.io/en/dev/docs/guides/install-localization-files/)
 
-## How to generate POT files from our modules
+## Automatic translations
 
-1. Install the [po-extractor](https://github.com/lukaskabrt/PoExtractor) tool. `dotnet tool install --global PoExtractor.OrchardCore`
-2. Run `extractpo-oc C:\PathToRepo\src C:\temp\OrchardInno --liquid`
+We have a GitHub action [script](https://github.com/StatCan/StatCan.OrchardCore/blob/master/.github/workflows/translation.yml) that automates the translation process for us. 
 
-## Where to place translated PO files
+This action is triggerred manually by running the workflow from [here](https://github.com/StatCan/StatCan.OrchardCore/actions/workflows/translation.yml).
 
-
-## How to sync changes to the pot files
-
-Generate new pot files using the command then either
-
-- use POEdit to update every PO file from a corresponding POT file
-- OR
-- use the [msgmerge](https://www.gnu.org/software/gettext/manual/gettext.html#Updating) utility from the [gettext](https://www.gnu.org/software/gettext/) library.
+This script does the following:
+1. Extracts the translation in po files from the code with the [PoExtractor.OrchardCore](https://github.com/lukaskabrt/PoExtractor) dotnet tool.
+2. Runs our [translation_script](https://github.com/StatCan/StatCan.OrchardCore/blob/master/translation_script/po-gtranslator.js) that uses the free Google Translate api to get a best guess estimate of the translations.
+3. Creates a pull request with the new translations strings.
