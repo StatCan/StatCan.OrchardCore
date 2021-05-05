@@ -17,7 +17,7 @@ msgstr "Changer le mot de passe"
 #. <v-list-item-title>@T["Change Email"]</v-list-item-title>
 msgctxt "VuetifyTheme.Views.UserMenu"
 msgid "Change Email"
-msgstr "Changer l'e-mail"
+msgstr "Changer le courriel"
 
 #: VuetifyTheme\Views\UserMenu.cshtml:59
 #. <v-list-item-title>@T["External Logins"]</v-list-item-title>
@@ -135,13 +135,13 @@ msgstr "Créer un compte"
 #. <v-card-title>@T["Email confirmed"]</v-card-title>
 msgctxt "VuetifyTheme.Views.OrchardCore.Users.Registration.ConfirmEmail"
 msgid "Email confirmed"
-msgstr "Email confirmé"
+msgstr "Courriel confirmé"
 
 #: VuetifyTheme\Views\OrchardCore.Users\Registration\ConfirmEmail.cshtml:8
 #. <span>@T["Thank you for confirming your email."]</span>
 msgctxt "VuetifyTheme.Views.OrchardCore.Users.Registration.ConfirmEmail"
 msgid "Thank you for confirming your email."
-msgstr "Merci d'avoir confirmé votre email."
+msgstr "Merci d'avoir confirmé votre courriel."
 
 #: VuetifyTheme\Views\OrchardCore.Users\Registration\ConfirmEmail.cshtml:11
 #. <v-btn href="@Url.Content("~/")" x-large block color="success">@T["Home"]</v-btn>
@@ -173,7 +173,7 @@ msgstr "Nom d'utilisateur"
 #. <v-text-field id="Email" type="email" name="Email" label="@T["Email"]" value="@email?.AttemptedValue"
 msgctxt "VuetifyTheme.Views.OrchardCore.Users.Registration.Register"
 msgid "Email"
-msgstr "E-mail"
+msgstr "courriel"
 
 #: VuetifyTheme\Views\OrchardCore.Users\Registration\Register.cshtml:40
 #. <v-text-field id="Password" type="password" name="Password" label="@T["Password"]"
@@ -210,20 +210,20 @@ msgstr "Mot de passe oublié"
 msgctxt "VuetifyTheme.Views.OrchardCore.Users.ResetPassword.ForgotPassword"
 msgid "A recovery link will be sent to the email address tied to your account."
 msgstr ""
-"Un lien de récupération sera envoyé à l'adresse e-mail associée à votre "
+"Un lien de récupération sera envoyé à l'adresse courriel associée à votre "
 "compte."
 
 #: VuetifyTheme\Views\OrchardCore.Users\ResetPassword\ForgotPassword.cshtml:14
 #. label="@T["Enter your email to reset password."]" value="@email?.AttemptedValue" error-messages="@(email?.Errors.FirstOrDefault()?.ErrorMessage)"></v-text-field>
 msgctxt "VuetifyTheme.Views.OrchardCore.Users.ResetPassword.ForgotPassword"
 msgid "Enter your email to reset password."
-msgstr "Entrez votre e-mail pour réinitialiser le mot de passe."
+msgstr "Entrez votre courriel pour réinitialiser le mot de passe."
 
 #: VuetifyTheme\Views\OrchardCore.Users\ResetPassword\ForgotPassword.cshtml:18
 #. <v-btn type="submit" x-large block color="success">@T["Send recovery email"]</v-btn>
 msgctxt "VuetifyTheme.Views.OrchardCore.Users.ResetPassword.ForgotPassword"
 msgid "Send recovery email"
-msgstr "Envoyer un e-mail de récupération"
+msgstr "Envoyer un courriel de récupération"
 
 #: VuetifyTheme\Views\OrchardCore.Users\ResetPassword\ForgotPasswordConfirmation.cshtml:5
 #. <v-card-title>@T["Password recovery sent"]</v-card-title>
@@ -240,7 +240,7 @@ msgctxt ""
 "ForgotPasswordConfirmation"
 msgid "A recovery email has been sent to the email address tied to your account."
 msgstr ""
-"Un e-mail de récupération a été envoyé à l'adresse e-mail associée à votre "
+"Un courriel de récupération a été envoyé à l'adresse courriel associée à votre "
 "compte."
 
 #: VuetifyTheme\Views\OrchardCore.Users\ResetPassword\ForgotPasswordConfirmation.cshtml:11
@@ -269,7 +269,7 @@ msgstr "Définissez un nouveau mot de passe"
 #. <v-text-field id="Email" type="email" name="Email" label="@T["Email"]" value="@email?.AttemptedValue" error-messages="@(email?.Errors.FirstOrDefault()?.ErrorMessage)"></v-text-field>
 msgctxt "VuetifyTheme.Views.OrchardCore.Users.ResetPassword.ResetPassword"
 msgid "Email"
-msgstr "E-mail"
+msgstr "courriel"
 
 #: VuetifyTheme\Views\OrchardCore.Users\ResetPassword\ResetPassword.cshtml:31
 #. <v-text-field id="NewPassword" type="password" name="NewPassword" label="@T["New password"]" error-messages="@(newPassword?.Errors.FirstOrDefault()?.ErrorMessage)"></v-text-field>
