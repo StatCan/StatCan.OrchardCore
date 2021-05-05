@@ -27,7 +27,6 @@ if(! (projectId && po_source_path && po_path && target)) {
   showHelp()
   process.exit(-1)
 }
-
 if(! process.env.GOOGLE_APPLICATION_CREDENTIALS) {
   showGoogleHelp();
   process.exit(-1)
@@ -75,7 +74,7 @@ async function start() {
       return;
     }
 
-    console.log("Translating:", file);
+    console.log("Loading:", file);
     var input = fs.readFileSync(path.join(po_source_path, file));
     var po = gettextParser.po.parse(input, 'utf8');
     
@@ -85,6 +84,7 @@ async function start() {
       var output = fs.readFileSync(outputPath);
       var tpo = gettextParser.po.parse(output, 'utf8');
     }
+    
     
     for(let k in po.translations) {
       for(let l in po.translations[k]) {
@@ -97,8 +97,8 @@ async function start() {
           } 
           else 
           {
-            let translation = await tr(l);
             console.log(`Text: ${l}`);
+            let translation = await tr(l);
             console.log(`Translation: ${translation}`);
             po.translations[k][l].msgstr[0] = translation;
           }
@@ -109,6 +109,7 @@ async function start() {
     var output_po = gettextParser.po.compile(po);
 
     fs.writeFileSync(outputPath, output_po, "utf8");
+
 
   });
 }

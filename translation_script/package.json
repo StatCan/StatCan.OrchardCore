@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/GreenTreeLabs/po-gtranslator#readme",
   "dependencies": {
-    "@google-cloud/translate": "^5.1.2",
+    "@google-cloud/translate": "^6.2.0",
     "colors": "^1.4.0",
     "gettext-parser": "^4.0.2",
     "sleep": "^6.1.0",
