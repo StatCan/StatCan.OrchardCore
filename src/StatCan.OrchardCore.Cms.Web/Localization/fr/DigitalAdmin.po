@@ -53,37 +53,49 @@ msgctxt "DigitalAdmin.Views.FlowPart.Edit"
 msgid "Add Widget to {0}"
 msgstr "Ajouter un widget à {0}"
 
-#: DigitalAdmin\Views\Layout.cshtml:42
-#. <a id="btn-darkmode" class="btn btn-sm btn-light ml-2" title="@T["Dark mode"]"><i class="fas fa-moon"></i></a>
+#: DigitalAdmin\Views\Layout.cshtml:48
+#. <a id="btn-darkmode" class="ml-3" data-toggle="tooltip" title="@(darkMode ? T["Light mode"] : T["Dark mode"])" role="button">
+msgctxt "DigitalAdmin.Views.Layout"
+msgid "Light mode"
+msgstr "Mode lumière"
+
+#: DigitalAdmin\Views\Layout.cshtml:48
+#. <a id="btn-darkmode" class="ml-3" data-toggle="tooltip" title="@(darkMode ? T["Light mode"] : T["Dark mode"])" role="button">
 msgctxt "DigitalAdmin.Views.Layout"
 msgid "Dark mode"
 msgstr "Mode sombre"
 
-#: DigitalAdmin\Views\Layout.cshtml:55
+#: DigitalAdmin\Views\Layout.cshtml:59
+#. <a href="@Url.Content("~/")" class="ml-3" target="_blank" data-toggle="tooltip" title="@T["Visit Site"]" role="button">
+msgctxt "DigitalAdmin.Views.Layout"
+msgid "Visit Site"
+msgstr "Visitez le site"
+
+#: DigitalAdmin\Views\Layout.cshtml:76
 #. <button class="leftbar-compactor" type="button" title="@T["Collapse / expand menu"]"></button>
 msgctxt "DigitalAdmin.Views.Layout"
 msgid "Collapse / expand menu"
 msgstr "Réduire / développer le menu"
 
-#: DigitalAdmin\Views\Layout.cshtml:70
+#: DigitalAdmin\Views\Layout.cshtml:94
 #. <div id="confirmRemoveModalMetadata" data-title="@T["Delete"]" data-message="@T["Are you sure you want to remove this element?"]" data-ok-text="@T["Ok"]" data-cancel-text="@T["Cancel"]" data-ok-class="btn-danger" data-cancel-class="btn-secondary"></div>
 msgctxt "DigitalAdmin.Views.Layout"
 msgid "Delete"
 msgstr "Supprimer"
 
-#: DigitalAdmin\Views\Layout.cshtml:70
+#: DigitalAdmin\Views\Layout.cshtml:94
 #. <div id="confirmRemoveModalMetadata" data-title="@T["Delete"]" data-message="@T["Are you sure you want to remove this element?"]" data-ok-text="@T["Ok"]" data-cancel-text="@T["Cancel"]" data-ok-class="btn-danger" data-cancel-class="btn-secondary"></div>
 msgctxt "DigitalAdmin.Views.Layout"
 msgid "Are you sure you want to remove this element?"
 msgstr "Voulez-vous vraiment supprimer cet élément?"
 
-#: DigitalAdmin\Views\Layout.cshtml:70
+#: DigitalAdmin\Views\Layout.cshtml:94
 #. <div id="confirmRemoveModalMetadata" data-title="@T["Delete"]" data-message="@T["Are you sure you want to remove this element?"]" data-ok-text="@T["Ok"]" data-cancel-text="@T["Cancel"]" data-ok-class="btn-danger" data-cancel-class="btn-secondary"></div>
 msgctxt "DigitalAdmin.Views.Layout"
 msgid "Ok"
 msgstr "D'accord"
 
-#: DigitalAdmin\Views\Layout.cshtml:70
+#: DigitalAdmin\Views\Layout.cshtml:94
 #. <div id="confirmRemoveModalMetadata" data-title="@T["Delete"]" data-message="@T["Are you sure you want to remove this element?"]" data-ok-text="@T["Ok"]" data-cancel-text="@T["Cancel"]" data-ok-class="btn-danger" data-cancel-class="btn-secondary"></div>
 msgctxt "DigitalAdmin.Views.Layout"
 msgid "Cancel"

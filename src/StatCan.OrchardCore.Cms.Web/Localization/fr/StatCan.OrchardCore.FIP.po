@@ -1,0 +1,13 @@
+msgid ""
+msgstr "Content-Type: text/plain\n"
+
+#: StatCan.OrchardCore.FIP\Views\SymbolCanada.liquid:0
+msgctxt "StatCan.OrchardCore.FIP.Views.SymbolCanada"
+msgid "Symbol of the Government of Canada"
+msgstr "Symbole du gouvernement du Canada"
+
+#: StatCan.OrchardCore.FIP\Views\SymbolStatisticsCanada.liquid:0
+#: StatCan.OrchardCore.FIP\Views\SymbolStatisticsCanada.liquid:0
+msgctxt "StatCan.OrchardCore.FIP.Views.SymbolStatisticsCanada"
+msgid "Statistics Canada"
+msgstr "Statistique Canada"
