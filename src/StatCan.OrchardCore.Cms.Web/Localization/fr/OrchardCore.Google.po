@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
-"PO-Revision-Date: 2020-11-10 07:27\n"
+"PO-Revision-Date: 2021-04-14 09:13\n"
 
 #. builder.Add(S["Security"], security => security
 #: OrchardCore.Google\AdminMenu.cs:24
@@ -70,80 +70,104 @@ msgctxt "OrchardCore.Google.Authentication.ViewModels.GoogleAuthenticationSettin
 msgid "Invalid path"
 msgstr "Chemin invalide"
 
+#. @T["The current tenant will be reloaded when the settings are saved."]
+#: OrchardCore.Google\Views\GoogleAnalyticsSettings.Edit.cshtml:5
+msgctxt "OrchardCore.Google.Views.GoogleAnalyticsSettings.Edit"
+msgid "The current tenant will be reloaded when the settings are saved."
+msgstr "Le locataire actuel sera rechargé lorsque les paramètres seront sauvegardés."
+
+#. <a class="seedoc" href="@(OrchardCore.Admin.Constants.DocsUrl)reference/modules/Google/#google-analytics" target="_blank">@T["See documentation"]</a>
+#: OrchardCore.Google\Views\GoogleAnalyticsSettings.Edit.cshtml:6
+msgctxt "OrchardCore.Google.Views.GoogleAnalyticsSettings.Edit"
+msgid "See documentation"
+msgstr "Voir la documentation"
+
 #. <h3>@T["Google Analytics Settings"]</h3>
-#: OrchardCore.Google\Views\GoogleAnalyticsSettings.Edit.cshtml:4
+#: OrchardCore.Google\Views\GoogleAnalyticsSettings.Edit.cshtml:9
 msgctxt "OrchardCore.Google.Views.GoogleAnalyticsSettings.Edit"
 msgid "Google Analytics Settings"
 msgstr "Paramètres Google Analytics"
 
 #. <label asp-for="TrackingID">@T["Tracking ID"]</label>
-#: OrchardCore.Google\Views\GoogleAnalyticsSettings.Edit.cshtml:8
+#: OrchardCore.Google\Views\GoogleAnalyticsSettings.Edit.cshtml:13
 msgctxt "OrchardCore.Google.Views.GoogleAnalyticsSettings.Edit"
 msgid "Tracking ID"
 msgstr "ID de suivi"
 
 #. <span class="hint">@T["The tracking ID defined in your Google Analytics account."]</span>
-#: OrchardCore.Google\Views\GoogleAnalyticsSettings.Edit.cshtml:11
+#: OrchardCore.Google\Views\GoogleAnalyticsSettings.Edit.cshtml:16
 msgctxt "OrchardCore.Google.Views.GoogleAnalyticsSettings.Edit"
 msgid "The tracking ID defined in your Google Analytics account."
 msgstr "L'identifiant de suivi défini dans votre compte Google Analytics."
 
-#. <p class="alert alert-warning">@T["The current tenant will be reloaded when the settings are saved."]</p>
-#: OrchardCore.Google\Views\GoogleAuthenticationSettings.Edit.cshtml:4
+#. @T["The current tenant will be reloaded when the settings are saved."]
+#: OrchardCore.Google\Views\GoogleAuthenticationSettings.Edit.cshtml:5
 msgctxt "OrchardCore.Google.Views.GoogleAuthenticationSettings.Edit"
 msgid "The current tenant will be reloaded when the settings are saved."
 msgstr "Le locataire actuel sera rechargé lorsque les paramètres seront sauvegardés."
 
-#. <h3>@T["Google Authentication Settings"]</h3>
+#. <a class="seedoc" href="@(OrchardCore.Admin.Constants.DocsUrl)reference/modules/Google/#google-authentication" target="_blank">@T["See documentation"]</a>
 #: OrchardCore.Google\Views\GoogleAuthenticationSettings.Edit.cshtml:6
+msgctxt "OrchardCore.Google.Views.GoogleAuthenticationSettings.Edit"
+msgid "See documentation"
+msgstr "Voir la documentation"
+
+#. <p class="alert alert-danger">@T["An error occurred while decrypting a setting. Please apply and save."]</p>
+#: OrchardCore.Google\Views\GoogleAuthenticationSettings.Edit.cshtml:11
+msgctxt "OrchardCore.Google.Views.GoogleAuthenticationSettings.Edit"
+msgid "An error occurred while decrypting a setting. Please apply and save."
+msgstr "Une erreur s'est produite lors du déchiffrement d'un paramètre. Veuillez appliquer et sauvegarder."
+
+#. <h3>@T["Google Authentication Settings"]</h3>
+#: OrchardCore.Google\Views\GoogleAuthenticationSettings.Edit.cshtml:14
 msgctxt "OrchardCore.Google.Views.GoogleAuthenticationSettings.Edit"
 msgid "Google Authentication Settings"
 msgstr "Paramètres d'authentification Google"
 
 #. <label asp-for="ClientID">@T["Client ID"]</label>
-#: OrchardCore.Google\Views\GoogleAuthenticationSettings.Edit.cshtml:10
+#: OrchardCore.Google\Views\GoogleAuthenticationSettings.Edit.cshtml:18
 msgctxt "OrchardCore.Google.Views.GoogleAuthenticationSettings.Edit"
 msgid "Client ID"
 msgstr "ID Client"
 
 #. <span class="hint">@T["The client id defined in Google API console for the application."]</span>
-#: OrchardCore.Google\Views\GoogleAuthenticationSettings.Edit.cshtml:13
+#: OrchardCore.Google\Views\GoogleAuthenticationSettings.Edit.cshtml:21
 msgctxt "OrchardCore.Google.Views.GoogleAuthenticationSettings.Edit"
 msgid "The client id defined in Google API console for the application."
 msgstr "L'id client défini dans la console Google API pour l'application."
 
 #. <label asp-for="ClientSecret">@T["API secret key"]</label>
-#: OrchardCore.Google\Views\GoogleAuthenticationSettings.Edit.cshtml:19
+#: OrchardCore.Google\Views\GoogleAuthenticationSettings.Edit.cshtml:27
 msgctxt "OrchardCore.Google.Views.GoogleAuthenticationSettings.Edit"
 msgid "API secret key"
 msgstr "Clé secrète API"
 
 #. <span class="hint">@T["The client secret defined in Google API console for the application."]</span>
-#: OrchardCore.Google\Views\GoogleAuthenticationSettings.Edit.cshtml:22
+#: OrchardCore.Google\Views\GoogleAuthenticationSettings.Edit.cshtml:30
 msgctxt "OrchardCore.Google.Views.GoogleAuthenticationSettings.Edit"
 msgid "The client secret defined in Google API console for the application."
 msgstr "Le client secret défini dans la console Google API pour l'application."
 
 #. <label asp-for="CallbackPath">@T["CallbackPath"]</label>
-#: OrchardCore.Google\Views\GoogleAuthenticationSettings.Edit.cshtml:28
+#: OrchardCore.Google\Views\GoogleAuthenticationSettings.Edit.cshtml:36
 msgctxt "OrchardCore.Google.Views.GoogleAuthenticationSettings.Edit"
 msgid "CallbackPath"
 msgstr "Chemin de Callback"
 
 #. <span class="hint">@T["The request path within the application's base path where the user-agent will be returned. The middleware will process this request when it arrives."]</span>
-#: OrchardCore.Google\Views\GoogleAuthenticationSettings.Edit.cshtml:31
+#: OrchardCore.Google\Views\GoogleAuthenticationSettings.Edit.cshtml:39
 msgctxt "OrchardCore.Google.Views.GoogleAuthenticationSettings.Edit"
 msgid "The request path within the application's base path where the user-agent will be returned. The middleware will process this request when it arrives."
 msgstr "Le chemin de la requête dans le chemin de base de l'application où l'utilisateur-agent sera retourné. Le middleware va traiter cette requête lorsqu'elle arrive."
 
 #. <label class="custom-control-label" asp-for="SaveTokens">@T["Store tokens"]</label>
-#: OrchardCore.Google\Views\GoogleAuthenticationSettings.Edit.cshtml:38
+#: OrchardCore.Google\Views\GoogleAuthenticationSettings.Edit.cshtml:46
 msgctxt "OrchardCore.Google.Views.GoogleAuthenticationSettings.Edit"
 msgid "Store tokens"
 msgstr "Stocker les jetons"
 
 #. <span class="hint dashed">@T["Store external authentication tokens for reuse"]</span>
-#: OrchardCore.Google\Views\GoogleAuthenticationSettings.Edit.cshtml:39
+#: OrchardCore.Google\Views\GoogleAuthenticationSettings.Edit.cshtml:47
 msgctxt "OrchardCore.Google.Views.GoogleAuthenticationSettings.Edit"
 msgid "Store external authentication tokens for reuse"
 msgstr "Stocker les jetons d'authentification externes pour les réutiliser"

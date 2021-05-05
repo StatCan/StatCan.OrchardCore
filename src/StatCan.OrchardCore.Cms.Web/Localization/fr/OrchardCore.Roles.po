@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
-"PO-Revision-Date: 2020-11-10 07:27\n"
+"PO-Revision-Date: 2021-04-14 09:13\n"
 
 #. builder.Add(S["Security"], security => security
 #: OrchardCore.Roles\AdminMenu.cs:24
@@ -38,23 +38,23 @@ msgctxt "OrchardCore.Roles.Controllers.AdminController"
 msgid "The role is already used."
 msgstr "Ce rôle est déjà utilisé."
 
-#. _notifier.Success(H["Role created successfully"]);
+#. _notifier.Success(H["Role created successfully."]);
 #: OrchardCore.Roles\Controllers\AdminController.cs:109
 msgctxt "OrchardCore.Roles.Controllers.AdminController"
-msgid "Role created successfully"
-msgstr "Rôle créé avec succès"
+msgid "Role created successfully."
+msgstr "Rôle créé avec succès."
 
-#. _notifier.Success(H["Role deleted successfully"]);
+#. _notifier.Success(H["Role deleted successfully."]);
 #: OrchardCore.Roles\Controllers\AdminController.cs:144
 msgctxt "OrchardCore.Roles.Controllers.AdminController"
-msgid "Role deleted successfully"
-msgstr "Rôle supprimé avec succès"
+msgid "Role deleted successfully."
+msgstr "Rôle supprimé avec succès."
 
-#. _notifier.Error(H["Could not delete this role"]);
+#. _notifier.Error(H["Could not delete this role."]);
 #: OrchardCore.Roles\Controllers\AdminController.cs:150
 msgctxt "OrchardCore.Roles.Controllers.AdminController"
-msgid "Could not delete this role"
-msgstr "Impossible de supprimer ce rôle"
+msgid "Could not delete this role."
+msgstr "Impossible de supprimer ce rôle."
 
 #. _notifier.Success(H["Role updated successfully."]);
 #: OrchardCore.Roles\Controllers\AdminController.cs:222
@@ -80,7 +80,7 @@ msgctxt "OrchardCore.Roles.Views.NavigationItemText-roles.Id"
 msgid "Roles"
 msgstr "Rôles"
 
-#. <h1>@RenderTitleSegments(T["Create Role"])</h1>
+#. <zone Name="Title"><h1>@RenderTitleSegments(T["Create Role"])</h1></zone>
 #: OrchardCore.Roles\Views\Admin\Create.cshtml:4
 msgctxt "OrchardCore.Roles.Views.Admin.Create"
 msgid "Create Role"
@@ -116,7 +116,7 @@ msgctxt "OrchardCore.Roles.Views.Admin.Create"
 msgid "Cancel"
 msgstr "Annuler"
 
-#. <h1>@RenderTitleSegments(T["Edit Role {0}", Model.Name])</h1>
+#. <zone Name="Title"><h1>@RenderTitleSegments(T["Edit Role {0}", Model.Name])</h1></zone>
 #: OrchardCore.Roles\Views\Admin\Edit.cshtml:4
 msgctxt "OrchardCore.Roles.Views.Admin.Edit"
 msgid "Edit Role {0}"
@@ -204,20 +204,20 @@ msgctxt "OrchardCore.Roles.Views.Admin.Edit"
 msgid "Cancel"
 msgstr "Annuler"
 
-#. <h1>@RenderTitleSegments(T["Roles"])</h1>
-#: OrchardCore.Roles\Views\Admin\Index.cshtml:7
+#. <zone Name="Title"><h1>@RenderTitleSegments(T["Roles"])</h1></zone>
+#: OrchardCore.Roles\Views\Admin\Index.cshtml:5
 msgctxt "OrchardCore.Roles.Views.Admin.Index"
 msgid "Roles"
 msgstr "Rôles"
 
 #. <input id="search-box" class="form-control" placeholder="@T["Search"]" type="search" autofocus />
-#: OrchardCore.Roles\Views\Admin\Index.cshtml:14
+#: OrchardCore.Roles\Views\Admin\Index.cshtml:12
 msgctxt "OrchardCore.Roles.Views.Admin.Index"
 msgid "Search"
 msgstr "Recherche"
 
-#. <a asp-route-action="Create" class="btn btn-primary" role="button">@T["Add Role"]</a>
-#: OrchardCore.Roles\Views\Admin\Index.cshtml:19
+#. <a asp-route-action="Create" class="btn btn-sm btn-secondary float-right create" role="button">@T["Add Role"]</a>
+#: OrchardCore.Roles\Views\Admin\Index.cshtml:15
 msgctxt "OrchardCore.Roles.Views.Admin.Index"
 msgid "Add Role"
 msgstr "Ajouter un rôle"
@@ -228,25 +228,25 @@ msgid "Are you sure you want to delete this role?"
 msgstr "Êtes-vous sûr de vouloir supprimer ce rôle?"
 
 #. <a class="edit btn btn-primary btn-sm" role="button" asp-action="Edit" asp-route-id="@Model.RoleEntries[i].Name">@T["Edit"]</a>
-#: OrchardCore.Roles\Views\Admin\Index.cshtml:34
+#: OrchardCore.Roles\Views\Admin\Index.cshtml:30
 msgctxt "OrchardCore.Roles.Views.Admin.Index"
 msgid "Edit"
 msgstr "Modifier"
 
-#. <a class="delete btn btn-danger btn-sm" asp-route-id="@Model.RoleEntries[i].Name" role="button" asp-action="Delete" itemprop="UnsafeUrl RemoveUrl" data-title="@T["Delete Role"]" data-message="@message">@T["Delete"]</a>
-#: OrchardCore.Roles\Views\Admin\Index.cshtml:35
+#. <a class="delete btn btn-danger btn-sm" asp-route-id="@Model.RoleEntries[i].Name" role="button" asp-action="Delete" data-url-af="UnsafeUrl RemoveUrl" data-title="@T["Delete Role"]" data-message="@message">@T["Delete"]</a>
+#: OrchardCore.Roles\Views\Admin\Index.cshtml:31
 msgctxt "OrchardCore.Roles.Views.Admin.Index"
 msgid "Delete Role"
 msgstr "Supprimer le rôle"
 
-#. <a class="delete btn btn-danger btn-sm" asp-route-id="@Model.RoleEntries[i].Name" role="button" asp-action="Delete" itemprop="UnsafeUrl RemoveUrl" data-title="@T["Delete Role"]" data-message="@message">@T["Delete"]</a>
-#: OrchardCore.Roles\Views\Admin\Index.cshtml:35
+#. <a class="delete btn btn-danger btn-sm" asp-route-id="@Model.RoleEntries[i].Name" role="button" asp-action="Delete" data-url-af="UnsafeUrl RemoveUrl" data-title="@T["Delete Role"]" data-message="@message">@T["Delete"]</a>
+#: OrchardCore.Roles\Views\Admin\Index.cshtml:31
 msgctxt "OrchardCore.Roles.Views.Admin.Index"
 msgid "Delete"
 msgstr "Supprimer"
 
 #. @T["<strong>Nothing here!</strong> Your search returned no results."]
-#: OrchardCore.Roles\Views\Admin\Index.cshtml:45
+#: OrchardCore.Roles\Views\Admin\Index.cshtml:41
 msgctxt "OrchardCore.Roles.Views.Admin.Index"
 msgid "<strong>Nothing here!</strong> Your search returned no results."
 msgstr "<strong>Rien ici !</strong> Votre recherche n'a pas retourné de résultats."

@@ -10,22 +10,22 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
-"PO-Revision-Date: 2020-11-10 07:27\n"
+"PO-Revision-Date: 2021-04-14 09:13\n"
 
 #. <button type="button" title="@T["Insert Widget"]" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-#: OrchardCore.Widgets\Views\ContentCard-WidgetsListPart.Edit.cshtml:22
+#: OrchardCore.Widgets\Views\ContentCard-WidgetsListPart.Edit.cshtml:24
 msgctxt "OrchardCore.Widgets.Views.ContentCard-WidgetsListPart.Edit"
 msgid "Insert Widget"
 msgstr "Insérer un widget"
 
 #. <button type="button" class="btn btn-danger widget-list-delete" data-title="@T["Delete"]" data-message="@T["Are you sure you want to remove this item?"]"><i class="fa fa-trash" aria-hidden="true"></i></button>
-#: OrchardCore.Widgets\Views\ContentCard-WidgetsListPart.Edit.cshtml:46
+#: OrchardCore.Widgets\Views\ContentCard-WidgetsListPart.Edit.cshtml:47
 msgctxt "OrchardCore.Widgets.Views.ContentCard-WidgetsListPart.Edit"
 msgid "Delete"
 msgstr "Supprimer"
 
 #. <button type="button" class="btn btn-danger widget-list-delete" data-title="@T["Delete"]" data-message="@T["Are you sure you want to remove this item?"]"><i class="fa fa-trash" aria-hidden="true"></i></button>
-#: OrchardCore.Widgets\Views\ContentCard-WidgetsListPart.Edit.cshtml:46
+#: OrchardCore.Widgets\Views\ContentCard-WidgetsListPart.Edit.cshtml:47
 msgctxt "OrchardCore.Widgets.Views.ContentCard-WidgetsListPart.Edit"
 msgid "Are you sure you want to remove this item?"
 msgstr "Êtes-vous sûr de vouloir supprimer cet élément ?"
@@ -36,16 +36,8 @@ msgctxt "OrchardCore.Widgets.Views.ContentCard.Preview"
 msgid "{0} {1}"
 msgstr "{0} {1}"
 
-#. <a admin-for="@contentItem" asp-route-returnUrl="@FullRequestPath" /> - <small class="text-muted">@T["Widget"]</small>
-#. @contentItem - <small class="text-muted">@T["Widget"]</small>
-#: OrchardCore.Widgets\Views\Widget.SummaryAdmin.cshtml:17
-#: OrchardCore.Widgets\Views\Widget.SummaryAdmin.cshtml:23
-msgctxt "OrchardCore.Widgets.Views.Widget.SummaryAdmin"
-msgid "Widget"
-msgstr "Widget"
-
-#. @T["Actions"]
-#: OrchardCore.Widgets\Views\Widget.SummaryAdmin.cshtml:50
+#. <span>@T["Actions"]</span>
+#: OrchardCore.Widgets\Views\Widget.SummaryAdmin.cshtml:60
 msgctxt "OrchardCore.Widgets.Views.Widget.SummaryAdmin"
 msgid "Actions"
 msgstr "Actions"

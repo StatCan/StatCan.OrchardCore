@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
-"PO-Revision-Date: 2020-11-10 07:27\n"
+"PO-Revision-Date: 2021-04-14 09:13\n"
 
 #. .Add(S["Configuration"], design => design
 #: OrchardCore.Admin\AdminMenu.cs:26
@@ -54,31 +54,55 @@ msgstr "Bienvenue dans Orchard"
 #: OrchardCore.Admin\Views\AdminDashboard.cshtml:3
 msgctxt "OrchardCore.Admin.Views.AdminDashboard"
 msgid "Feel free to browse the menu and discover all its possibilities."
-msgstr "N'hésitez pas à naviguer dans le menu et à découvrez toutes ses possibilités."
-
-#. <label asp-for="DisplayMenuFilter" class="custom-control-label">@T["Enable Admin Menu filter"]</label>
-#: OrchardCore.Admin\Views\AdminSettings.Edit.cshtml:6
-msgctxt "OrchardCore.Admin.Views.AdminSettings.Edit"
-msgid "Enable Admin Menu filter"
-msgstr "Activer le filtre du menu Admin"
-
-#. <span class="hint">@T["Whether a quick search to filter the admin menu is displayed."]</span>
-#: OrchardCore.Admin\Views\AdminSettings.Edit.cshtml:8
-msgctxt "OrchardCore.Admin.Views.AdminSettings.Edit"
-msgid "Whether a quick search to filter the admin menu is displayed."
-msgstr "Si on affiche une recherche rapide pour filtrer le menu d'administration."
+msgstr "N'hésitez pas à naviguer dans le menu et à découvrir toutes ses possibilités."
 
 #. <label asp-for="DisplayDarkMode" class="custom-control-label">@T["Enable dark mode admin theme"]</label>
-#: OrchardCore.Admin\Views\AdminSettings.Edit.cshtml:14
+#: OrchardCore.Admin\Views\AdminSettings.Edit.cshtml:6
 msgctxt "OrchardCore.Admin.Views.AdminSettings.Edit"
 msgid "Enable dark mode admin theme"
 msgstr "Activer le mode sombre du thème admin"
 
 #. <span class="hint">@T["Whether a dark mode admin theme can be displayed."]</span>
-#: OrchardCore.Admin\Views\AdminSettings.Edit.cshtml:16
+#: OrchardCore.Admin\Views\AdminSettings.Edit.cshtml:8
 msgctxt "OrchardCore.Admin.Views.AdminSettings.Edit"
 msgid "Whether a dark mode admin theme can be displayed."
 msgstr "Si un mode sombre peut être affiché pour le thème admin."
+
+#. <label asp-for="DisplayMenuFilter" class="custom-control-label">@T["Enable Admin Menu filter"]</label>
+#: OrchardCore.Admin\Views\AdminSettings.Edit.cshtml:14
+msgctxt "OrchardCore.Admin.Views.AdminSettings.Edit"
+msgid "Enable Admin Menu filter"
+msgstr "Activer le filtre du menu Admin"
+
+#. <span class="hint">@T["Whether a quick search to filter the admin menu is displayed."]</span>
+#: OrchardCore.Admin\Views\AdminSettings.Edit.cshtml:16
+msgctxt "OrchardCore.Admin.Views.AdminSettings.Edit"
+msgid "Whether a quick search to filter the admin menu is displayed."
+msgstr "Si on affiche une recherche rapide pour filtrer le menu d'administration."
+
+#. <label asp-for="DisplayNewMenu" class="custom-control-label">@T["Display New menu"]</label>
+#: OrchardCore.Admin\Views\AdminSettings.Edit.cshtml:22
+msgctxt "OrchardCore.Admin.Views.AdminSettings.Edit"
+msgid "Display New menu"
+msgstr "Afficher le menu Nouveau"
+
+#. <span class="hint">@T["Whether a New menu is displayed in the admin menu."]</span>
+#: OrchardCore.Admin\Views\AdminSettings.Edit.cshtml:24
+msgctxt "OrchardCore.Admin.Views.AdminSettings.Edit"
+msgid "Whether a New menu is displayed in the admin menu."
+msgstr "Si un menu Nouveau est affiché dans le menu d'administration."
+
+#. <label asp-for="DisplayTitlesInTopbar" class="custom-control-label">@T["Display titles in top bar"]</label>
+#: OrchardCore.Admin\Views\AdminSettings.Edit.cshtml:30
+msgctxt "OrchardCore.Admin.Views.AdminSettings.Edit"
+msgid "Display titles in top bar"
+msgstr "Afficher les titres dans la barre du haut"
+
+#. <span class="hint">@T["Whether the titles are displayed in the top bar."]</span>
+#: OrchardCore.Admin\Views\AdminSettings.Edit.cshtml:32
+msgctxt "OrchardCore.Admin.Views.AdminSettings.Edit"
+msgid "Whether the titles are displayed in the top bar."
+msgstr "Si les titres sont affichés dans la barre du haut."
 
 #. <span class="icon"><i class="fa fa-tachometer" aria-hidden="true"></i></span><span class="title">@T["Admin"]</span>
 #: OrchardCore.Admin\Views\NavigationItemText-admin.Id.cshtml:1

@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
-"PO-Revision-Date: 2020-11-10 07:27\n"
+"PO-Revision-Date: 2021-04-14 09:13\n"
 
 #. .Add(S["Configuration"], configuration => configuration
 #: OrchardCore.Deployment\AdminMenu.cs:25
@@ -50,51 +50,51 @@ msgctxt "OrchardCore.Deployment.AdminMenu"
 msgid "JSON Import"
 msgstr "Import JSON"
 
-#. new SelectListItem() { Text = S["Delete"], Value = nameof(DeploymentPlansBulkAction.Delete) }
-#: OrchardCore.Deployment\Controllers\DeploymentPlanController.cs:112
+#. new SelectListItem() { Text = S["Delete"], Value = nameof(ContentsBulkAction.Delete) }
+#: OrchardCore.Deployment\Controllers\DeploymentPlanController.cs:107
 msgctxt "OrchardCore.Deployment.Controllers.DeploymentPlanController"
 msgid "Delete"
 msgstr "Supprimer"
 
-#. _notifier.Success(H["Deployment plan {0} successfully deleted.", item.Name]);
+#. _notifier.Success(H["Deployment plans successfully deleted."]);
 #: OrchardCore.Deployment\Controllers\DeploymentPlanController.cs:143
 msgctxt "OrchardCore.Deployment.Controllers.DeploymentPlanController"
-msgid "Deployment plan {0} successfully deleted."
-msgstr "Plan de déploiement {0} supprimé avec succès."
+msgid "Deployment plans successfully deleted."
+msgstr "Les plans de déploiement ont été supprimés avec succès."
 
 #. ModelState.AddModelError(nameof(CreateDeploymentPlanViewModel.Name), S["The name is mandatory."]);
 #. ModelState.AddModelError(nameof(EditDeploymentPlanViewModel.Name), S["The name is mandatory."]);
-#: OrchardCore.Deployment\Controllers\DeploymentPlanController.cs:219
-#: OrchardCore.Deployment\Controllers\DeploymentPlanController.cs:284
+#: OrchardCore.Deployment\Controllers\DeploymentPlanController.cs:218
+#: OrchardCore.Deployment\Controllers\DeploymentPlanController.cs:283
 msgctxt "OrchardCore.Deployment.Controllers.DeploymentPlanController"
 msgid "The name is mandatory."
 msgstr "Le nom est obligatoire."
 
 #. ModelState.AddModelError(nameof(CreateDeploymentPlanViewModel.Name), S["A deployment plan with the same name already exists."]);
 #. ModelState.AddModelError(nameof(CreateDeploymentPlanViewModel.Name), S["A deployment plan with the same name already exists."]);
-#: OrchardCore.Deployment\Controllers\DeploymentPlanController.cs:225
-#: OrchardCore.Deployment\Controllers\DeploymentPlanController.cs:291
+#: OrchardCore.Deployment\Controllers\DeploymentPlanController.cs:224
+#: OrchardCore.Deployment\Controllers\DeploymentPlanController.cs:290
 msgctxt "OrchardCore.Deployment.Controllers.DeploymentPlanController"
 msgid "A deployment plan with the same name already exists."
 msgstr "Un plan de déploiement avec le même nom existe déjà."
 
-#. _notifier.Success(H["Deployment plan updated successfully"]);
-#: OrchardCore.Deployment\Controllers\DeploymentPlanController.cs:302
+#. _notifier.Success(H["Deployment plan updated successfully."]);
+#: OrchardCore.Deployment\Controllers\DeploymentPlanController.cs:301
 msgctxt "OrchardCore.Deployment.Controllers.DeploymentPlanController"
-msgid "Deployment plan updated successfully"
-msgstr "Plan de déploiement mis à jour avec succès"
+msgid "Deployment plan updated successfully."
+msgstr "Plan de déploiement mis à jour avec succès."
 
-#. _notifier.Success(H["Deployment plan deleted successfully"]);
-#: OrchardCore.Deployment\Controllers\DeploymentPlanController.cs:328
+#. _notifier.Success(H["Deployment plan deleted successfully."]);
+#: OrchardCore.Deployment\Controllers\DeploymentPlanController.cs:327
 msgctxt "OrchardCore.Deployment.Controllers.DeploymentPlanController"
-msgid "Deployment plan deleted successfully"
-msgstr "Plan de déploiement supprimé avec succès"
+msgid "Deployment plan deleted successfully."
+msgstr "Plan de déploiement supprimé avec succès."
 
-#. _notifier.Error(H["Only zip or json files are supported"]);
+#. _notifier.Error(H["Only zip or json files are supported."]);
 #: OrchardCore.Deployment\Controllers\ImportController.cs:84
 msgctxt "OrchardCore.Deployment.Controllers.ImportController"
-msgid "Only zip or json files are supported"
-msgstr "Seuls les fichiers zip ou json sont pris en charge"
+msgid "Only zip or json files are supported."
+msgstr "Seuls les fichiers zip ou json sont pris en charge."
 
 #. _notifier.Success(H["Deployment package imported."]);
 #: OrchardCore.Deployment\Controllers\ImportController.cs:91
@@ -120,29 +120,29 @@ msgctxt "OrchardCore.Deployment.Controllers.ImportController"
 msgid "Recipe imported."
 msgstr "Recette importée."
 
-#. _notifier.Success(H["Deployment plan step added successfully"]);
+#. _notifier.Success(H["Deployment plan step added successfully."]);
 #: OrchardCore.Deployment\Controllers\StepController.cs:121
 msgctxt "OrchardCore.Deployment.Controllers.StepController"
-msgid "Deployment plan step added successfully"
-msgstr "Étape de plan de déploiement ajoutée avec succès"
+msgid "Deployment plan step added successfully."
+msgstr "L'étape du plan de déploiement a été ajoutée avec succès."
 
-#. _notifier.Success(H["Deployment plan step updated successfully"]);
+#. _notifier.Success(H["Deployment plan step updated successfully."]);
 #: OrchardCore.Deployment\Controllers\StepController.cs:194
 msgctxt "OrchardCore.Deployment.Controllers.StepController"
-msgid "Deployment plan step updated successfully"
-msgstr "Étape du plan de déploiement mise à jour avec succès"
+msgid "Deployment plan step updated successfully."
+msgstr "L'étape du plan de déploiement a été mise à jour avec succès."
 
-#. _notifier.Error(H["The deployment plan step has validation errors"]);
+#. _notifier.Error(H["The deployment plan step has validation errors."]);
 #: OrchardCore.Deployment\Controllers\StepController.cs:198
 msgctxt "OrchardCore.Deployment.Controllers.StepController"
-msgid "The deployment plan step has validation errors"
-msgstr "L'étape du plan de déploiement a des erreurs de validation"
+msgid "The deployment plan step has validation errors."
+msgstr "L'étape du plan de déploiement comporte des erreurs de validation."
 
-#. _notifier.Success(H["Deployment step deleted successfully"]);
+#. _notifier.Success(H["Deployment step deleted successfully."]);
 #: OrchardCore.Deployment\Controllers\StepController.cs:230
 msgctxt "OrchardCore.Deployment.Controllers.StepController"
-msgid "Deployment step deleted successfully"
-msgstr "Étape de déploiement supprimée avec succès"
+msgid "Deployment step deleted successfully."
+msgstr "L'étape de déploiement a été supprimée avec succès."
 
 #. name: S["File Download"],
 #: OrchardCore.Deployment\Services\FileDownloadDeploymentTargetProvider.cs:22
@@ -162,7 +162,7 @@ msgctxt "OrchardCore.Deployment.Views.DeploymentStep.Summary"
 msgid "Edit"
 msgstr "Modifier"
 
-#. itemprop="RemoveUrl UnsafeUrl">@T["Delete"]</a>
+#. data-url-af="RemoveUrl UnsafeUrl">@T["Delete"]</a>
 #: OrchardCore.Deployment\Views\DeploymentStep.Summary.cshtml:16
 msgctxt "OrchardCore.Deployment.Views.DeploymentStep.Summary"
 msgid "Delete"
@@ -174,7 +174,7 @@ msgctxt "OrchardCore.Deployment.Views.DeploymentStep.Thumbnail"
 msgid "Add"
 msgstr "Ajouter"
 
-#. <h1>@RenderTitleSegments(T["Create Deployment Plan"])</h1>
+#. <zone Name="Title"><h1>@RenderTitleSegments(T["Create Deployment Plan"])</h1></zone>
 #: OrchardCore.Deployment\Views\DeploymentPlan\Create.cshtml:3
 msgctxt "OrchardCore.Deployment.Views.DeploymentPlan.Create"
 msgid "Create Deployment Plan"
@@ -198,65 +198,71 @@ msgctxt "OrchardCore.Deployment.Views.DeploymentPlan.Create"
 msgid "Cancel"
 msgstr "Annuler"
 
-#. <h1>@RenderTitleSegments(T["Deployment Plan"])</h1>
-#: OrchardCore.Deployment\Views\DeploymentPlan\Display.cshtml:6
+#. <zone Name="Title"><h1>@RenderTitleSegments(T["Deployment Plan"])</h1></zone>
+#: OrchardCore.Deployment\Views\DeploymentPlan\Display.cshtml:12
 msgctxt "OrchardCore.Deployment.Views.DeploymentPlan.Display"
 msgid "Deployment Plan"
 msgstr "Plan de déploiement"
 
+#. <div class="d-none" id="stepOrderErrorMessage" data-message="@T["Error updating step order"]"></div>
+#: OrchardCore.Deployment\Views\DeploymentPlan\Display.cshtml:16
+msgctxt "OrchardCore.Deployment.Views.DeploymentPlan.Display"
+msgid "Error updating step order"
+msgstr "Erreur lors de la mise à jour de l'ordre de l'étape"
+
 #. @T["Execute"]
-#: OrchardCore.Deployment\Views\DeploymentPlan\Display.cshtml:12
+#: OrchardCore.Deployment\Views\DeploymentPlan\Display.cshtml:22
 msgctxt "OrchardCore.Deployment.Views.DeploymentPlan.Display"
 msgid "Execute"
 msgstr "Exécuter"
 
 #. @T["Add Step"]
-#: OrchardCore.Deployment\Views\DeploymentPlan\Display.cshtml:18
+#: OrchardCore.Deployment\Views\DeploymentPlan\Display.cshtml:28
 msgctxt "OrchardCore.Deployment.Views.DeploymentPlan.Display"
 msgid "Add Step"
 msgstr "Ajouter une étape"
 
 #. @T["<strong>Nothing here!</strong> There are no steps on this plan for the moment."]
-#: OrchardCore.Deployment\Views\DeploymentPlan\Display.cshtml:40
+#: OrchardCore.Deployment\Views\DeploymentPlan\Display.cshtml:53
 msgctxt "OrchardCore.Deployment.Views.DeploymentPlan.Display"
 msgid "<strong>Nothing here!</strong> There are no steps on this plan for the moment."
 msgstr "<strong>Rien ici !</strong> Il n'y a pas d'étape sur ce plan pour le moment."
 
 #. <h5 class="modal-title" id="available-steps-title">@T["Available Steps"]</h5>
-#: OrchardCore.Deployment\Views\DeploymentPlan\Display.cshtml:50
+#: OrchardCore.Deployment\Views\DeploymentPlan\Display.cshtml:63
 msgctxt "OrchardCore.Deployment.Views.DeploymentPlan.Display"
 msgid "Available Steps"
 msgstr "Étapes disponibles"
 
-#. <input class="form-control" id="search-box" type="search" placeholder="@T["Filter"]" aria-label="@T["Filter"]" autofocus>
-#. <input class="form-control" id="search-box" type="search" placeholder="@T["Filter"]" aria-label="@T["Filter"]" autofocus>
-#: OrchardCore.Deployment\Views\DeploymentPlan\Display.cshtml:57
-#: OrchardCore.Deployment\Views\DeploymentPlan\Display.cshtml:57
+#. <input class="form-control" id="search-box" type="search" placeholder="@T["Filter"]" aria-label="@T["Filter"]" autofocus />
+#. <input class="form-control" id="search-box" type="search" placeholder="@T["Filter"]" aria-label="@T["Filter"]" autofocus />
+#: OrchardCore.Deployment\Views\DeploymentPlan\Display.cshtml:70
+#: OrchardCore.Deployment\Views\DeploymentPlan\Display.cshtml:70
 msgctxt "OrchardCore.Deployment.Views.DeploymentPlan.Display"
 msgid "Filter"
 msgstr "Filtrer"
 
 #. <button type="button" class="btn btn-secondary" data-dismiss="modal">@T["Cancel"]</button>
 #. <button type="button" class="btn btn-secondary" data-dismiss="modal">@T["Cancel"]</button>
-#: OrchardCore.Deployment\Views\DeploymentPlan\Display.cshtml:72
-#: OrchardCore.Deployment\Views\DeploymentPlan\Display.cshtml:108
+#: OrchardCore.Deployment\Views\DeploymentPlan\Display.cshtml:85
+#: OrchardCore.Deployment\Views\DeploymentPlan\Display.cshtml:121
 msgctxt "OrchardCore.Deployment.Views.DeploymentPlan.Display"
 msgid "Cancel"
 msgstr "Annuler"
 
 #. <h5 class="modal-title" id="available-targets-title">@T["Available Targets"]</h5>
-#: OrchardCore.Deployment\Views\DeploymentPlan\Display.cshtml:82
+#: OrchardCore.Deployment\Views\DeploymentPlan\Display.cshtml:95
 msgctxt "OrchardCore.Deployment.Views.DeploymentPlan.Display"
 msgid "Available Targets"
 msgstr "Cibles disponibles"
 
-#. <a class="btn btn-primary btn-sm" href="@Url.RouteUrl(routeWithId)" itemprop="UnsafeUrl">@T["Select"]</a>
-#: OrchardCore.Deployment\Views\DeploymentPlan\Display.cshtml:100
+#. <a class="btn btn-primary btn-sm" href="@Url.RouteUrl(routeWithId)" data-url-af="UnsafeUrl">@T["Select"]</a>
+#: OrchardCore.Deployment\Views\DeploymentPlan\Display.cshtml:113
 msgctxt "OrchardCore.Deployment.Views.DeploymentPlan.Display"
 msgid "Select"
 msgstr "Sélectionner"
 
-#. <h1>@RenderTitleSegments(T["Edit Deployment Plan"])</h1>
+#. <zone Name="Title"><h1>@RenderTitleSegments(T["Edit Deployment Plan"])</h1></zone>
 #: OrchardCore.Deployment\Views\DeploymentPlan\Edit.cshtml:3
 msgctxt "OrchardCore.Deployment.Views.DeploymentPlan.Edit"
 msgid "Edit Deployment Plan"
@@ -280,32 +286,32 @@ msgctxt "OrchardCore.Deployment.Views.DeploymentPlan.Edit"
 msgid "Cancel"
 msgstr "Annuler"
 
-#. <h1>@RenderTitleSegments(T["Deployment Plans"])</h1>
-#: OrchardCore.Deployment\Views\DeploymentPlan\Index.cshtml:9
+#. <zone Name="Title"><h1>@RenderTitleSegments(T["Deployment Plans"])</h1></zone>
+#: OrchardCore.Deployment\Views\DeploymentPlan\Index.cshtml:8
 msgctxt "OrchardCore.Deployment.Views.DeploymentPlan.Index"
 msgid "Deployment Plans"
 msgstr "Plans de déploiement"
 
 #. <input asp-for="Options.Search" class="form-control" placeholder="@T["Search"]" type="search" autofocus />
-#: OrchardCore.Deployment\Views\DeploymentPlan\Index.cshtml:19
+#: OrchardCore.Deployment\Views\DeploymentPlan\Index.cshtml:20
 msgctxt "OrchardCore.Deployment.Views.DeploymentPlan.Index"
 msgid "Search"
 msgstr "Recherche"
 
-#. <a asp-route-action="Create" class="btn btn-primary float-right create">@T["Add Deployment Plan"]</a>
-#: OrchardCore.Deployment\Views\DeploymentPlan\Index.cshtml:24
+#. <a asp-route-action="Create" class="btn btn-sm btn-secondary float-right create" role="button">@T["Add Deployment Plan"]</a>
+#: OrchardCore.Deployment\Views\DeploymentPlan\Index.cshtml:23
 msgctxt "OrchardCore.Deployment.Views.DeploymentPlan.Index"
 msgid "Add Deployment Plan"
 msgstr "Ajouter un plan de déploiement"
 
 #. <label class="custom-control-label" for="select-all" id="select-all-label" title="@T["Select All"]"></label>
-#: OrchardCore.Deployment\Views\DeploymentPlan\Index.cshtml:35
+#: OrchardCore.Deployment\Views\DeploymentPlan\Index.cshtml:36
 msgctxt "OrchardCore.Deployment.Views.DeploymentPlan.Index"
 msgid "Select All"
 msgstr "Tout sélectionner"
 
 #. <label id="items" for="select-all">@T.Plural(Model.DeploymentPlans.Count, "1 item", "{0} items")<span class="text-muted" title="@T["Items {0} to {1}", startIndex, endIndex]">@T.Plural((int)Model.Pager.TotalItemCount, " / {0} item in total", " / {0} items in total")</span></label>
-#: OrchardCore.Deployment\Views\DeploymentPlan\Index.cshtml:36
+#: OrchardCore.Deployment\Views\DeploymentPlan\Index.cshtml:37
 msgctxt "OrchardCore.Deployment.Views.DeploymentPlan.Index"
 msgid "1 item"
 msgid_plural "{0} items"
@@ -313,13 +319,13 @@ msgstr[0] "1 élément"
 msgstr[1] "{0} éléments"
 
 #. <label id="items" for="select-all">@T.Plural(Model.DeploymentPlans.Count, "1 item", "{0} items")<span class="text-muted" title="@T["Items {0} to {1}", startIndex, endIndex]">@T.Plural((int)Model.Pager.TotalItemCount, " / {0} item in total", " / {0} items in total")</span></label>
-#: OrchardCore.Deployment\Views\DeploymentPlan\Index.cshtml:36
+#: OrchardCore.Deployment\Views\DeploymentPlan\Index.cshtml:37
 msgctxt "OrchardCore.Deployment.Views.DeploymentPlan.Index"
 msgid "Items {0} to {1}"
 msgstr "Éléments : {0} sur {1}"
 
 #. <label id="items" for="select-all">@T.Plural(Model.DeploymentPlans.Count, "1 item", "{0} items")<span class="text-muted" title="@T["Items {0} to {1}", startIndex, endIndex]">@T.Plural((int)Model.Pager.TotalItemCount, " / {0} item in total", " / {0} items in total")</span></label>
-#: OrchardCore.Deployment\Views\DeploymentPlan\Index.cshtml:36
+#: OrchardCore.Deployment\Views\DeploymentPlan\Index.cshtml:37
 msgctxt "OrchardCore.Deployment.Views.DeploymentPlan.Index"
 msgid " / {0} item in total"
 msgid_plural " / {0} items in total"
@@ -327,50 +333,50 @@ msgstr[0] " / {0} élément au total"
 msgstr[1] " / {0} éléments au total"
 
 #. @T["Actions"]
-#: OrchardCore.Deployment\Views\DeploymentPlan\Index.cshtml:43
+#: OrchardCore.Deployment\Views\DeploymentPlan\Index.cshtml:44
 msgctxt "OrchardCore.Deployment.Views.DeploymentPlan.Index"
 msgid "Actions"
 msgstr "Actions"
 
 #. <a class="dropdown-item" href="javascript:void(0)" data-action="@item.Value" data-title="@T["Bulk Action"]" data-message="@T["Are you sure you want to {0} these items?", @item.Text.ToLower()]">@item.Text</a>
-#: OrchardCore.Deployment\Views\DeploymentPlan\Index.cshtml:48
+#: OrchardCore.Deployment\Views\DeploymentPlan\Index.cshtml:49
 msgctxt "OrchardCore.Deployment.Views.DeploymentPlan.Index"
 msgid "Bulk Action"
 msgstr "Action par lot"
 
 #. <a class="dropdown-item" href="javascript:void(0)" data-action="@item.Value" data-title="@T["Bulk Action"]" data-message="@T["Are you sure you want to {0} these items?", @item.Text.ToLower()]">@item.Text</a>
-#: OrchardCore.Deployment\Views\DeploymentPlan\Index.cshtml:48
+#: OrchardCore.Deployment\Views\DeploymentPlan\Index.cshtml:49
 msgctxt "OrchardCore.Deployment.Views.DeploymentPlan.Index"
 msgid "Are you sure you want to {0} these items?"
 msgstr "Êtes-vous sûr de vouloir {0} ces éléments ?"
 
 #. <a asp-action="Edit" asp-route-id="@entry.DeploymentPlan.Id" class="btn btn-primary btn-sm">@T["Edit"]</a>
-#: OrchardCore.Deployment\Views\DeploymentPlan\Index.cshtml:63
+#: OrchardCore.Deployment\Views\DeploymentPlan\Index.cshtml:62
 msgctxt "OrchardCore.Deployment.Views.DeploymentPlan.Index"
 msgid "Edit"
 msgstr "Modifier"
 
-#. <a asp-action="Delete" asp-route-id="@entry.DeploymentPlan.Id" class="btn btn-danger btn-sm" itemprop="RemoveUrl UnsafeUrl">@T["Delete"]</a>
-#: OrchardCore.Deployment\Views\DeploymentPlan\Index.cshtml:64
+#. <a asp-action="Delete" asp-route-id="@entry.DeploymentPlan.Id" class="btn btn-danger btn-sm" data-url-af="RemoveUrl UnsafeUrl">@T["Delete"]</a>
+#: OrchardCore.Deployment\Views\DeploymentPlan\Index.cshtml:63
 msgctxt "OrchardCore.Deployment.Views.DeploymentPlan.Index"
 msgid "Delete"
 msgstr "Supprimer"
 
 #. @T["<strong>Nothing here!</strong> There are no deployment plans for the moment."]
-#: OrchardCore.Deployment\Views\DeploymentPlan\Index.cshtml:79
+#: OrchardCore.Deployment\Views\DeploymentPlan\Index.cshtml:78
 msgctxt "OrchardCore.Deployment.Views.DeploymentPlan.Index"
 msgid "<strong>Nothing here!</strong> There are no deployment plans for the moment."
 msgstr "<strong>Rien ici !</strong> Il n'y a pas de plan de déploiement pour le moment."
 
 #. selectedItems.text($(":checkbox[name='itemIds']:checked").length + ' @T["selected"]');
 #. selectedItems.text(selectedItemsCount + ' @T["selected"]');
-#: OrchardCore.Deployment\Views\DeploymentPlan\Index.cshtml:134
-#: OrchardCore.Deployment\Views\DeploymentPlan\Index.cshtml:145
+#: OrchardCore.Deployment\Views\DeploymentPlan\Index.cshtml:133
+#: OrchardCore.Deployment\Views\DeploymentPlan\Index.cshtml:144
 msgctxt "OrchardCore.Deployment.Views.DeploymentPlan.Index"
 msgid "selected"
 msgstr "sélectionné(s)"
 
-#. <h1>@RenderTitleSegments(T["Import Deployment Package"])</h1>
+#. <zone Name="Title"><h1>@RenderTitleSegments(T["Import Deployment Package"])</h1></zone>
 #: OrchardCore.Deployment\Views\Import\Index.cshtml:1
 msgctxt "OrchardCore.Deployment.Views.Import.Index"
 msgid "Import Deployment Package"
@@ -382,7 +388,7 @@ msgctxt "OrchardCore.Deployment.Views.Import.Index"
 msgid "Import"
 msgstr "Importer"
 
-#. <h1>@RenderTitleSegments(T["JSON Import"])</h1>
+#. <zone Name="Title"><h1>@RenderTitleSegments(T["JSON Import"])</h1></zone>
 #: OrchardCore.Deployment\Views\Import\Json.cshtml:2
 msgctxt "OrchardCore.Deployment.Views.Import.Json"
 msgid "JSON Import"
@@ -634,7 +640,7 @@ msgctxt "OrchardCore.Deployment.Views.Items.RecipeFileDeploymentStep.Fields.Thum
 msgid "Exports a recipe file."
 msgstr "Exporte un fichier de recette."
 
-#. <h1>@RenderTitleSegments(T["Create Step"])</h1>
+#. <zone Name="Title"><h1>@RenderTitleSegments(T["Create Step"])</h1></zone>
 #: OrchardCore.Deployment\Views\Step\Create.cshtml:3
 msgctxt "OrchardCore.Deployment.Views.Step.Create"
 msgid "Create Step"
@@ -652,7 +658,7 @@ msgctxt "OrchardCore.Deployment.Views.Step.Create"
 msgid "Cancel"
 msgstr "Annuler"
 
-#. <h1>@RenderTitleSegments(T["Edit Step"])</h1>
+#. <zone Name="Title"><h1>@RenderTitleSegments(T["Edit Step"])</h1></zone>
 #: OrchardCore.Deployment\Views\Step\Edit.cshtml:3
 msgctxt "OrchardCore.Deployment.Views.Step.Edit"
 msgid "Edit Step"
@@ -664,7 +670,7 @@ msgctxt "OrchardCore.Deployment.Views.Step.Edit"
 msgid "Save"
 msgstr "Enregistrer"
 
-#. itemprop="RemoveUrl UnsafeUrl">@T["Delete"]</a>
+#. data-url-af="RemoveUrl UnsafeUrl">@T["Delete"]</a>
 #: OrchardCore.Deployment\Views\Step\Edit.cshtml:22
 msgctxt "OrchardCore.Deployment.Views.Step.Edit"
 msgid "Delete"

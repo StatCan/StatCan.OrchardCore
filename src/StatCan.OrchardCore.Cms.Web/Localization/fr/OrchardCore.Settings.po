@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
-"PO-Revision-Date: 2020-11-10 07:27\n"
+"PO-Revision-Date: 2021-04-14 09:13\n"
 
 #. builder.Add(S["Configuration"], configuration => configuration
 #: OrchardCore.Settings\AdminMenu.cs:24
@@ -31,7 +31,7 @@ msgid "General"
 msgstr "Général"
 
 #. _notifier.Success(H["Site settings updated successfully."]);
-#: OrchardCore.Settings\Controllers\AdminController.cs:76
+#: OrchardCore.Settings\Controllers\AdminController.cs:86
 msgctxt "OrchardCore.Settings.Controllers.AdminController"
 msgid "Site settings updated successfully."
 msgstr "Paramètres du site mis à jour avec succès."
@@ -264,20 +264,20 @@ msgctxt "OrchardCore.Settings.Views.SiteSettings.SaveButton"
 msgid "Cancel"
 msgstr "Annuler"
 
-#. <h1>@RenderTitleSegments(T["Settings"])</h1>
+#. <zone Name="Title"><h1>@RenderTitleSegments(T["Settings"])</h1></zone>
 #: OrchardCore.Settings\Views\Admin\Index.cshtml:3
 msgctxt "OrchardCore.Settings.Views.Admin.Index"
 msgid "Settings"
 msgstr "Paramètres"
 
 #. <h5>@T["Site Settings"]</h5>
-#: OrchardCore.Settings\Views\Items\SiteSettingsDeploymentStep.Fields.Edit.cshtml:7
+#: OrchardCore.Settings\Views\Items\SiteSettingsDeploymentStep.Fields.Edit.cshtml:8
 msgctxt "OrchardCore.Settings.Views.Items.SiteSettingsDeploymentStep.Fields.Edit"
 msgid "Site Settings"
 msgstr "Paramètres du Site"
 
 #. <span class="hint">@T["The site settings to add as part of the plan."]</span>
-#: OrchardCore.Settings\Views\Items\SiteSettingsDeploymentStep.Fields.Edit.cshtml:10
+#: OrchardCore.Settings\Views\Items\SiteSettingsDeploymentStep.Fields.Edit.cshtml:11
 msgctxt "OrchardCore.Settings.Views.Items.SiteSettingsDeploymentStep.Fields.Edit"
 msgid "The site settings to add as part of the plan."
 msgstr "Les paramètres du site à ajouter au plan."

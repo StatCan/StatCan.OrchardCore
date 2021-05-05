@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
-"PO-Revision-Date: 2020-11-10 07:27\n"
+"PO-Revision-Date: 2021-04-14 09:13\n"
 
 #. Description = S["A BagPart allows to add content items directly within another content item"];
 #: OrchardCore.Flows\GraphQL\BagPartQueryObjectType.cs:16
@@ -61,49 +61,49 @@ msgid "The display type to use when rendering the content items. Default is Summ
 msgstr "Le type d'affichage à utiliser lors de l'affichage des éléments du contenu. Par défaut, Summary."
 
 #. @T["{0} <span class=\"hint dashed\">{1}</span>", contentItem.DisplayText, contentType]
-#: OrchardCore.Flows\Views\ContentCard-BagPart.Edit.cshtml:16
+#: OrchardCore.Flows\Views\ContentCard-BagPart.Edit.cshtml:18
 msgctxt "OrchardCore.Flows.Views.ContentCard-BagPart.Edit"
 msgid "{0} <span class=\"hint dashed\">{1}</span>"
 msgstr "{0} <span class=\"hint dashed\">{1}</span>"
 
 #. <button type="button" class="btn btn-danger widget-delete" data-title="@T["Delete"]" data-message="@T["Are you sure you want to remove this item?"]"><i class="fa fa-trash" aria-hidden="true"></i></button>
-#: OrchardCore.Flows\Views\ContentCard-BagPart.Edit.cshtml:21
+#: OrchardCore.Flows\Views\ContentCard-BagPart.Edit.cshtml:23
 msgctxt "OrchardCore.Flows.Views.ContentCard-BagPart.Edit"
 msgid "Delete"
 msgstr "Supprimer"
 
 #. <button type="button" class="btn btn-danger widget-delete" data-title="@T["Delete"]" data-message="@T["Are you sure you want to remove this item?"]"><i class="fa fa-trash" aria-hidden="true"></i></button>
-#: OrchardCore.Flows\Views\ContentCard-BagPart.Edit.cshtml:21
+#: OrchardCore.Flows\Views\ContentCard-BagPart.Edit.cshtml:23
 msgctxt "OrchardCore.Flows.Views.ContentCard-BagPart.Edit"
 msgid "Are you sure you want to remove this item?"
 msgstr "Êtes-vous sûr de vouloir supprimer cet élément ?"
 
 #. <span data-content-type-display-text="@contentTypeDisplayText" class="widget-editor-header-text">@T["{0} {1}", contentItemDisplayText, contentTypeDisplayText]</span>
-#: OrchardCore.Flows\Views\ContentCard-FlowPart.Edit.cshtml:22
+#: OrchardCore.Flows\Views\ContentCard-FlowPart.Edit.cshtml:23
 msgctxt "OrchardCore.Flows.Views.ContentCard-FlowPart.Edit"
 msgid "{0} {1}"
 msgstr "{0} {1}"
 
 #. <button class="toggleAll btn btn-secondary btn-sm" onclick="toggleWidgets(); return false;" title="@T["Toggle all widgets"]">
-#: OrchardCore.Flows\Views\ContentCard-FlowPart.Edit.cshtml:32
+#: OrchardCore.Flows\Views\ContentCard-FlowPart.Edit.cshtml:33
 msgctxt "OrchardCore.Flows.Views.ContentCard-FlowPart.Edit"
 msgid "Toggle all widgets"
 msgstr "Activer/désactiver tous les widgets"
 
 #. <button type="button" title="@T["Insert Widget"]" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-#: OrchardCore.Flows\Views\ContentCard-FlowPart.Edit.cshtml:35
+#: OrchardCore.Flows\Views\ContentCard-FlowPart.Edit.cshtml:36
 msgctxt "OrchardCore.Flows.Views.ContentCard-FlowPart.Edit"
 msgid "Insert Widget"
 msgstr "Insérer un widget"
 
 #. <button type="button" class="btn btn-danger widget-delete" data-title="@T["Delete"]" data-message="@T["Are you sure you want to remove this item?"]"><i class="fa fa-trash" aria-hidden="true"></i></button>
-#: OrchardCore.Flows\Views\ContentCard-FlowPart.Edit.cshtml:59
+#: OrchardCore.Flows\Views\ContentCard-FlowPart.Edit.cshtml:60
 msgctxt "OrchardCore.Flows.Views.ContentCard-FlowPart.Edit"
 msgid "Delete"
 msgstr "Supprimer"
 
 #. <button type="button" class="btn btn-danger widget-delete" data-title="@T["Delete"]" data-message="@T["Are you sure you want to remove this item?"]"><i class="fa fa-trash" aria-hidden="true"></i></button>
-#: OrchardCore.Flows\Views\ContentCard-FlowPart.Edit.cshtml:59
+#: OrchardCore.Flows\Views\ContentCard-FlowPart.Edit.cshtml:60
 msgctxt "OrchardCore.Flows.Views.ContentCard-FlowPart.Edit"
 msgid "Are you sure you want to remove this item?"
 msgstr "Êtes-vous sûr de vouloir supprimer cet élément ?"

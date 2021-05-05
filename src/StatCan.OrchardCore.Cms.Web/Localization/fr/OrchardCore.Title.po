@@ -10,13 +10,13 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
-"PO-Revision-Date: 2020-11-10 07:27\n"
+"PO-Revision-Date: 2021-04-14 09:13\n"
 
 #. updater.ModelState.AddModelError(Prefix, nameof(model.Title), S["A value is required for Title."]);
-#: OrchardCore.Title\Drivers\TitlePartDisplay.cs:60
-msgctxt "OrchardCore.Title.Drivers.TitlePartDisplay"
+#: OrchardCore.Title\Drivers\TitlePartDisplayDriver.cs:60
+msgctxt "OrchardCore.Title.Drivers.TitlePartDisplayDriver"
 msgid "A value is required for Title."
-msgstr "Une valeur est requise pour '{0}'."
+msgstr "Une valeur est requise pour le titre."
 
 #. context.Updater.ModelState.AddModelError(nameof(model.Pattern), S["Pattern doesn't contain a valid Liquid expression. Details: {0}", string.Join(" ", errors)]);
 #: OrchardCore.Title\Settings\TitlePartSettingsDisplayDriver.cs:59
@@ -36,17 +36,17 @@ msgctxt "OrchardCore.Title.Views.TitlePart.Edit"
 msgid "Title"
 msgstr "Titre"
 
-#. <span class="hint">@T["The title of the content item. Set empty to generate it using the pattern."]</span>
-#: OrchardCore.Title\Views\TitlePart.Edit.cshtml:18
+#. <span class="hint">@T["Leave empty to auto-generate the title using the pattern."]</span>
+#: OrchardCore.Title\Views\TitlePart.Edit.cshtml:21
 msgctxt "OrchardCore.Title.Views.TitlePart.Edit"
-msgid "The title of the content item. Set empty to generate it using the pattern."
-msgstr "Le titre de l'élément de contenu. Laissez à vide pour le générer en utilisant le modèle."
+msgid "Leave empty to auto-generate the title using the pattern."
+msgstr "Laisser vide pour générer automatiquement le titre en utilisant le modèle."
 
-#. <span class="hint">@T["The title of the content item. It will be automatically generated."]</span>
-#: OrchardCore.Title\Views\TitlePart.Edit.cshtml:22
+#. <span class="hint">@T["The title will be auto-generated using the pattern."]</span>
+#: OrchardCore.Title\Views\TitlePart.Edit.cshtml:24
 msgctxt "OrchardCore.Title.Views.TitlePart.Edit"
-msgid "The title of the content item. It will be automatically generated."
-msgstr "Le titre de l'élément de contenu. Il sera automatiquement généré."
+msgid "The title will be auto-generated using the pattern."
+msgstr "Le titre sera généré automatiquement en utilisant le modèle."
 
 #. <option value="" selected="@String.IsNullOrEmpty(currentEditor)">@T["Standard"]</option>
 #: OrchardCore.Title\Views\TitlePart.Option.cshtml:4

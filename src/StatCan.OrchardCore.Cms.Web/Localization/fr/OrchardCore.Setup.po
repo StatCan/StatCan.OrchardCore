@@ -10,45 +10,51 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
-"PO-Revision-Date: 2020-11-10 07:27\n"
+"PO-Revision-Date: 2021-04-14 09:13\n"
 
 #. ModelState.AddModelError(nameof(model.ConnectionString), S["The connection string is mandatory for this provider."]);
-#: OrchardCore.Setup\Controllers\SetupController.cs:105
+#: OrchardCore.Setup\Controllers\SetupController.cs:111
 msgctxt "OrchardCore.Setup.Controllers.SetupController"
 msgid "The connection string is mandatory for this provider."
 msgstr "La chaîne de connexion est obligatoire pour ce fournisseur."
 
 #. ModelState.AddModelError(nameof(model.Password), S["The password is required."]);
-#: OrchardCore.Setup\Controllers\SetupController.cs:111
+#: OrchardCore.Setup\Controllers\SetupController.cs:117
 msgctxt "OrchardCore.Setup.Controllers.SetupController"
 msgid "The password is required."
 msgstr "Le mot de passe est obligatoire."
 
 #. ModelState.AddModelError(nameof(model.PasswordConfirmation), S["The password confirmation doesn't match the password."]);
-#: OrchardCore.Setup\Controllers\SetupController.cs:116
+#: OrchardCore.Setup\Controllers\SetupController.cs:122
 msgctxt "OrchardCore.Setup.Controllers.SetupController"
 msgid "The password confirmation doesn't match the password."
 msgstr "La confirmation du mot de passe ne correspond pas à votre mot de passe."
 
 #. ModelState.AddModelError(nameof(model.RecipeName), S["Invalid recipe."]);
 #. ModelState.AddModelError(nameof(model.RecipeName), S["Invalid recipe."]);
-#: OrchardCore.Setup\Controllers\SetupController.cs:125
-#: OrchardCore.Setup\Controllers\SetupController.cs:130
+#: OrchardCore.Setup\Controllers\SetupController.cs:131
+#: OrchardCore.Setup\Controllers\SetupController.cs:136
 msgctxt "OrchardCore.Setup.Controllers.SetupController"
 msgid "Invalid recipe."
 msgstr "Recette invalide."
 
-#. ModelState.AddModelError(nameof(model.Email), S["Invalid email."]);
-#: OrchardCore.Setup\Controllers\SetupController.cs:135
+#. ModelState.AddModelError(nameof(model.Email), S["The email is invalid."]);
+#: OrchardCore.Setup\Controllers\SetupController.cs:142
 msgctxt "OrchardCore.Setup.Controllers.SetupController"
-msgid "Invalid email."
-msgstr "Email invalide."
+msgid "The email is invalid."
+msgstr "L’email est invalide."
 
-#. <title>@T["Orchard Setup"]</title>
+#. ModelState.AddModelError(nameof(model.UserName), S["User name '{0}' is invalid, can only contain letters or digits.", model.UserName]);
+#: OrchardCore.Setup\Controllers\SetupController.cs:147
+msgctxt "OrchardCore.Setup.Controllers.SetupController"
+msgid "User name '{0}' is invalid, can only contain letters or digits."
+msgstr "Le nom d'utilisateur '{0}' n'est pas valide, ne peut contenir que des lettres ou des chiffres."
+
+#. <title>@T["Setup"]</title>
 #: OrchardCore.Setup\Views\_Layout.cshtml:10
 msgctxt "OrchardCore.Setup.Views._Layout"
-msgid "Orchard Setup"
-msgstr "Configuration d'Orchard"
+msgid "Setup"
+msgstr "Configuration"
 
 #: OrchardCore.Setup\Views\Setup\Index.cshtml:0
 msgctxt "OrchardCore.Setup.Views.Setup.Index"
@@ -234,12 +240,6 @@ msgstr "Le super utilisateur possède tous les droits. Il doit être utilisé un
 msgctxt "OrchardCore.Setup.Views.Setup.Index"
 msgid "User name"
 msgstr "Nom d’utilisateur"
-
-#. <span asp-validation-for="UserName" class="text-danger">@T["The user name is required."]</span>
-#: OrchardCore.Setup\Views\Setup\Index.cshtml:201
-msgctxt "OrchardCore.Setup.Views.Setup.Index"
-msgid "The user name is required."
-msgstr "Le nom d’utilisateur est requis."
 
 #. <label for="Email">@T["Email"]</label>
 #: OrchardCore.Setup\Views\Setup\Index.cshtml:204
