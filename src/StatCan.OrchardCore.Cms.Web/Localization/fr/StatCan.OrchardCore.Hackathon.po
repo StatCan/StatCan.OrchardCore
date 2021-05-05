@@ -1,39 +1,51 @@
 msgid ""
 msgstr "Content-Type: text/plain\n"
 
-#: StatCan.OrchardCore.Hackathon\Controllers\TeamController.cs:80
+#: StatCan.OrchardCore.Hackathon\Controllers\TeamController.cs:69
 #. _notifier.Success(H["Successfully created team"]);
 msgctxt "StatCan.OrchardCore.Hackathon.Controllers.TeamController"
 msgid "Successfully created team"
 msgstr "Équipe créée avec succès"
 
-#: StatCan.OrchardCore.Hackathon\Controllers\TeamController.cs:98
+#: StatCan.OrchardCore.Hackathon\Controllers\TeamController.cs:87
 #. _notifier.Error(H["Enter a team ID"]);
 msgctxt "StatCan.OrchardCore.Hackathon.Controllers.TeamController"
 msgid "Enter a team ID"
 msgstr "Entrez un ID d'équipe"
 
-#: StatCan.OrchardCore.Hackathon\Controllers\TeamController.cs:113
+#: StatCan.OrchardCore.Hackathon\Controllers\TeamController.cs:102
 #. _notifier.Success(H["Successfully joined team"]);
 msgctxt "StatCan.OrchardCore.Hackathon.Controllers.TeamController"
 msgid "Successfully joined team"
 msgstr "A rejoint l'équipe avec succès"
 
-#: StatCan.OrchardCore.Hackathon\Controllers\TeamController.cs:115
+#: StatCan.OrchardCore.Hackathon\Controllers\TeamController.cs:104
 #. _notifier.Error(H["Team could not be found"]);
 msgctxt "StatCan.OrchardCore.Hackathon.Controllers.TeamController"
 msgid "Team could not be found"
 msgstr "L'équipe n'a pas pu être trouvée"
 
-#: StatCan.OrchardCore.Hackathon\Controllers\TeamController.cs:142
+#: StatCan.OrchardCore.Hackathon\Controllers\TeamController.cs:131
 #. _notifier.Success(H["Successfully left team"]);
 msgctxt "StatCan.OrchardCore.Hackathon.Controllers.TeamController"
 msgid "Successfully left team"
 msgstr "Équipe quittée avec succès"
 
-#: StatCan.OrchardCore.Hackathon\Services\HackathonService.cs:84
-#: StatCan.OrchardCore.Hackathon\Services\HackathonService.cs:119
-#: StatCan.OrchardCore.Hackathon\Services\HackathonService.cs:147
+#: StatCan.OrchardCore.Hackathon\Controllers\TeamController.cs:157
+#. _notifier.Success(H["Member successfully removed from the team"]);
+msgctxt "StatCan.OrchardCore.Hackathon.Controllers.TeamController"
+msgid "Member successfully removed from the team"
+msgstr "Membre supprimé de l'équipe avec succès"
+
+#: StatCan.OrchardCore.Hackathon\Controllers\TeamController.cs:183
+#. _notifier.Success(H["Team info successfully updated"]);
+msgctxt "StatCan.OrchardCore.Hackathon.Controllers.TeamController"
+msgid "Team info successfully updated"
+msgstr "Informations sur l'équipe mises à jour avec succès"
+
+#: StatCan.OrchardCore.Hackathon\Services\HackathonService.cs:94
+#: StatCan.OrchardCore.Hackathon\Services\HackathonService.cs:131
+#: StatCan.OrchardCore.Hackathon\Services\HackathonService.cs:164
 #. modelState.AddModelError("error", T["You are not a hacker"].Value);
 #. modelState.AddModelError("error", T["You are not a hacker"].Value);
 #. modelState.AddModelError("error", T["You are not a hacker"].Value);
@@ -41,35 +53,74 @@ msgctxt "StatCan.OrchardCore.Hackathon.Services.HackathonService"
 msgid "You are not a hacker"
 msgstr "Tu n'es pas un hacker"
 
-#: StatCan.OrchardCore.Hackathon\Services\HackathonService.cs:90
+#: StatCan.OrchardCore.Hackathon\Services\HackathonService.cs:100
 #. modelState.AddModelError("error", T["Already have a team"].Value);
 msgctxt "StatCan.OrchardCore.Hackathon.Services.HackathonService"
 msgid "Already have a team"
 msgstr "J'ai déjà une équipe"
 
-#: StatCan.OrchardCore.Hackathon\Services\HackathonService.cs:97
+#: StatCan.OrchardCore.Hackathon\Services\HackathonService.cs:107
 #. modelState.AddModelError("error", T["Team does not exist"].Value);
 msgctxt "StatCan.OrchardCore.Hackathon.Services.HackathonService"
 msgid "Team does not exist"
 msgstr "L'équipe n'existe pas"
 
-#: StatCan.OrchardCore.Hackathon\Services\HackathonService.cs:103
+#: StatCan.OrchardCore.Hackathon\Services\HackathonService.cs:113
 #. modelState.AddModelError("error", T["Team is full"]);
 msgctxt "StatCan.OrchardCore.Hackathon.Services.HackathonService"
 msgid "Team is full"
 msgstr "L'équipe est pleine"
 
-#: StatCan.OrchardCore.Hackathon\Services\HackathonService.cs:125
+#: StatCan.OrchardCore.Hackathon\Services\HackathonService.cs:137
 #. modelState.AddModelError("error", T["Already on a team"].Value);
 msgctxt "StatCan.OrchardCore.Hackathon.Services.HackathonService"
 msgid "Already on a team"
 msgstr "Déjà dans une équipe"
 
-#: StatCan.OrchardCore.Hackathon\Services\HackathonService.cs:153
+#: StatCan.OrchardCore.Hackathon\Services\HackathonService.cs:170
+#: StatCan.OrchardCore.Hackathon\Services\HackathonService.cs:395
+#: StatCan.OrchardCore.Hackathon\Services\HackathonService.cs:427
+#. modelState.AddModelError("error", T["You are not part of a team"].Value);
+#. modelState.AddModelError("error", T["You are not part of a team"].Value);
 #. modelState.AddModelError("error", T["You are not part of a team"].Value);
 msgctxt "StatCan.OrchardCore.Hackathon.Services.HackathonService"
 msgid "You are not part of a team"
 msgstr "Vous ne faites pas partie d'une équipe"
+
+#: StatCan.OrchardCore.Hackathon\Services\HackathonService.cs:401
+#: StatCan.OrchardCore.Hackathon\Services\HackathonService.cs:433
+#. modelState.AddModelError("error", T["You are not the team captain. Only the team captain can perform this action"].Value);
+#. modelState.AddModelError("error", T["You are not the team captain. Only the team captain can perform this action"].Value);
+msgctxt "StatCan.OrchardCore.Hackathon.Services.HackathonService"
+msgid "You are not the team captain. Only the team captain can perform this action"
+msgstr ""
+"Vous n'êtes pas le capitaine de l'équipe. Seul le capitaine de l'équipe "
+"peut effectuer cette action"
+
+#: StatCan.OrchardCore.Hackathon\Services\HackathonService.cs:421
+#. modelState.AddModelError("error", T["Team doesn't exist"].Value);
+msgctxt "StatCan.OrchardCore.Hackathon.Services.HackathonService"
+msgid "Team doesn't exist"
+msgstr "L'équipe n'existe pas"
+
+#: StatCan.OrchardCore.Hackathon\Views\UserFields.cshtml:11
+#. <span class="badge badge-info" title="@T["Role"]">
+msgctxt "StatCan.OrchardCore.Hackathon.Views.UserFields"
+msgid "Role"
+msgstr "Rôle"
+
+#: StatCan.OrchardCore.Hackathon\Views\UserFields.cshtml:18
+#: StatCan.OrchardCore.Hackathon\Views\UserFields.cshtml:19
+#. <span class="badge badge-danger ml-2" title="@T["Disabled"]">
+#. <i class="fas fa-user-alt-slash"></i> @T["Disabled"]
+msgctxt "StatCan.OrchardCore.Hackathon.Views.UserFields"
+msgid "Disabled"
+msgstr "Désactivée"
+
+#: StatCan.OrchardCore.Hackathon\Views\Content-Team-Buttons.SummaryAdmin.liquid:0
+msgctxt "StatCan.OrchardCore.Hackathon.Views.Content-Team-Buttons.SummaryAdmin"
+msgid "Team"
+msgstr "Équipe"
 
 #: StatCan.OrchardCore.Hackathon\Views\Widget-JudgingListWidget.liquid:0
 msgctxt "StatCan.OrchardCore.Hackathon.Views.Widget-JudgingListWidget"
@@ -88,18 +139,71 @@ msgstr "Équipe"
 
 #: StatCan.OrchardCore.Hackathon\Views\Widget-TeamDashboardWidget.liquid:0
 msgctxt "StatCan.OrchardCore.Hackathon.Views.Widget-TeamDashboardWidget"
-msgid "Team"
-msgstr "Équipe"
+msgid "My Team"
+msgstr "Mon équipe"
 
 #: StatCan.OrchardCore.Hackathon\Views\Widget-TeamDashboardWidget.liquid:0
 msgctxt "StatCan.OrchardCore.Hackathon.Views.Widget-TeamDashboardWidget"
-msgid "ID:"
-msgstr "ID:"
+msgid "Name"
+msgstr "Nom"
 
 #: StatCan.OrchardCore.Hackathon\Views\Widget-TeamDashboardWidget.liquid:0
 msgctxt "StatCan.OrchardCore.Hackathon.Views.Widget-TeamDashboardWidget"
-msgid "Copy team identification"
-msgstr "Copier l'identification de l'équipe"
+msgid "Description"
+msgstr "La description"
+
+#: StatCan.OrchardCore.Hackathon\Views\Widget-TeamDashboardWidget.liquid:0
+msgctxt "StatCan.OrchardCore.Hackathon.Views.Widget-TeamDashboardWidget"
+msgid "Identifier"
+msgstr "Identifier"
+
+#: StatCan.OrchardCore.Hackathon\Views\Widget-TeamDashboardWidget.liquid:0
+msgctxt "StatCan.OrchardCore.Hackathon.Views.Widget-TeamDashboardWidget"
+msgid ""
+"You are the team captain. Select a challenge, edit your team name and "
+"description using the form at the bottom of this page."
+msgstr ""
+"Vous êtes le capitaine de l'équipe. Sélectionnez un défi, modifiez le nom "
+"et la description de votre équipe à l'aide du formulaire en bas de cette "
+"page."
+
+#: StatCan.OrchardCore.Hackathon\Views\Widget-TeamDashboardWidget.liquid:0
+msgctxt "StatCan.OrchardCore.Hackathon.Views.Widget-TeamDashboardWidget"
+msgid "My Challenge"
+msgstr "Mon défi"
+
+#: StatCan.OrchardCore.Hackathon\Views\Widget-TeamDashboardWidget.liquid:0
+msgctxt "StatCan.OrchardCore.Hackathon.Views.Widget-TeamDashboardWidget"
+msgid ""
+"You have not yet selected a challenge, please ask your team captain to "
+"choose one"
+msgstr ""
+"Vous n'avez pas encore sélectionné de défi, veuillez demander à votre "
+"capitaine d'équipe d'en choisir un"
+
+#: StatCan.OrchardCore.Hackathon\Views\Widget-TeamDashboardWidget.liquid:0
+msgctxt "StatCan.OrchardCore.Hackathon.Views.Widget-TeamDashboardWidget"
+msgid "Team Members"
+msgstr "Membres de l'équipe"
+
+#: StatCan.OrchardCore.Hackathon\Views\Widget-TeamDashboardWidget.liquid:0
+msgctxt "StatCan.OrchardCore.Hackathon.Views.Widget-TeamDashboardWidget"
+msgid "Remove"
+msgstr "Supprimer"
+
+#: StatCan.OrchardCore.Hackathon\Views\Widget-TeamDashboardWidget.liquid:0
+msgctxt "StatCan.OrchardCore.Hackathon.Views.Widget-TeamDashboardWidget"
+msgid "Danger zone"
+msgstr "Zone dangereuse"
+
+#: StatCan.OrchardCore.Hackathon\Views\Widget-TeamDashboardWidget.liquid:0
+msgctxt "StatCan.OrchardCore.Hackathon.Views.Widget-TeamDashboardWidget"
+msgid ""
+"You are the team captain. Leaving the team will assign another member as "
+"the team captain."
+msgstr ""
+"Vous êtes le capitaine de l'équipe. Quitter l'équipe désignera un autre "
+"membre comme capitaine de l'équipe."
 
 #: StatCan.OrchardCore.Hackathon\Views\Widget-TeamDashboardWidget.liquid:0
 msgctxt "StatCan.OrchardCore.Hackathon.Views.Widget-TeamDashboardWidget"
@@ -108,8 +212,8 @@ msgstr "Quitter l'équipe"
 
 #: StatCan.OrchardCore.Hackathon\Views\Widget-TeamDashboardWidget.liquid:0
 msgctxt "StatCan.OrchardCore.Hackathon.Views.Widget-TeamDashboardWidget"
-msgid "Solo"
-msgstr "Seulement"
+msgid "Please create or join an existing team"
+msgstr "Veuillez créer ou rejoindre une équipe existante"
 
 #: StatCan.OrchardCore.Hackathon\Views\Widget-TeamDashboardWidget.liquid:0
 msgctxt "StatCan.OrchardCore.Hackathon.Views.Widget-TeamDashboardWidget"
@@ -118,23 +222,19 @@ msgstr "Créer une équipe"
 
 #: StatCan.OrchardCore.Hackathon\Views\Widget-TeamDashboardWidget.liquid:0
 msgctxt "StatCan.OrchardCore.Hackathon.Views.Widget-TeamDashboardWidget"
-msgid "or"
-msgstr "ou"
+msgid "Or"
+msgstr "Ou alors"
+
+#: StatCan.OrchardCore.Hackathon\Views\Widget-TeamDashboardWidget.liquid:0
+#: StatCan.OrchardCore.Hackathon\Views\Widget-TeamDashboardWidget.liquid:0
+msgctxt "StatCan.OrchardCore.Hackathon.Views.Widget-TeamDashboardWidget"
+msgid "Team Identifier"
+msgstr "Identifiant d'équipe"
 
 #: StatCan.OrchardCore.Hackathon\Views\Widget-TeamDashboardWidget.liquid:0
 msgctxt "StatCan.OrchardCore.Hackathon.Views.Widget-TeamDashboardWidget"
-msgid "Team ID"
-msgstr "ID d'équipe"
-
-#: StatCan.OrchardCore.Hackathon\Views\Widget-TeamDashboardWidget.liquid:0
-msgctxt "StatCan.OrchardCore.Hackathon.Views.Widget-TeamDashboardWidget"
-msgid "Team  identification"
-msgstr "Identification de l'équipe"
-
-#: StatCan.OrchardCore.Hackathon\Views\Widget-TeamDashboardWidget.liquid:0
-msgctxt "StatCan.OrchardCore.Hackathon.Views.Widget-TeamDashboardWidget"
-msgid "Join"
-msgstr "Joindre"
+msgid "Join team"
+msgstr "Rejoindre une équipe"
 
 #: StatCan.OrchardCore.Hackathon\Views\Widget-TeamJoinListWidget.liquid:0
 msgctxt "StatCan.OrchardCore.Hackathon.Views.Widget-TeamJoinListWidget"

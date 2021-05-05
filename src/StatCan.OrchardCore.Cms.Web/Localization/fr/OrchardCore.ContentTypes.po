@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
-"PO-Revision-Date: 2020-11-10 07:27\n"
+"PO-Revision-Date: 2021-04-14 09:13\n"
 
 #. builder.Add(S["Content"], content => content
 #: OrchardCore.ContentTypes\AdminMenu.cs:28
@@ -404,7 +404,7 @@ msgctxt "OrchardCore.ContentTypes.Views.NavigationItemText-contentdefinition.Id"
 msgid "Content Definition"
 msgstr "Définition de contenu"
 
-#. <h1>@RenderTitleSegments(T["Add New Field To \"{0}\"", Model.Part.DisplayName()])</h1>
+#. <zone Name="Title"><h1>@RenderTitleSegments(T["Add New Field To \"{0}\"", Model.Part.DisplayName()])</h1></zone>
 #: OrchardCore.ContentTypes\Views\Admin\AddFieldTo.cshtml:10
 msgctxt "OrchardCore.ContentTypes.Views.Admin.AddFieldTo"
 msgid "Add New Field To \"{0}\""
@@ -452,7 +452,7 @@ msgctxt "OrchardCore.ContentTypes.Views.Admin.AddFieldTo"
 msgid "Cancel"
 msgstr "Annuler"
 
-#. <h1>@T["Add Parts To \"{0}\"", Model.Type.DisplayName]</h1>
+#. <zone Name="Title"><h1>@T["Add Parts To \"{0}\"", Model.Type.DisplayName]</h1></zone>
 #: OrchardCore.ContentTypes\Views\Admin\AddPartsTo.cshtml:5
 msgctxt "OrchardCore.ContentTypes.Views.Admin.AddPartsTo"
 msgid "Add Parts To \"{0}\""
@@ -476,7 +476,7 @@ msgctxt "OrchardCore.ContentTypes.Views.Admin.AddPartsTo"
 msgid "Cancel"
 msgstr "Annuler"
 
-#. <h1>@T["Add Named Part To \"{0}\"", Model.Type.DisplayName]</h1>
+#. <zone Name="Title"><h1>@T["Add Named Part To \"{0}\"", Model.Type.DisplayName]</h1></zone>
 #: OrchardCore.ContentTypes\Views\Admin\AddReusablePartTo.cshtml:5
 msgctxt "OrchardCore.ContentTypes.Views.Admin.AddReusablePartTo"
 msgid "Add Named Part To \"{0}\""
@@ -536,7 +536,7 @@ msgctxt "OrchardCore.ContentTypes.Views.Admin.AddReusablePartTo"
 msgid "Cancel"
 msgstr "Annuler"
 
-#. <h1>@RenderTitleSegments(T["New Content Type"])</h1>
+#. <zone Name="Title"><h1>@RenderTitleSegments(T["New Content Type"])</h1></zone>
 #: OrchardCore.ContentTypes\Views\Admin\Create.cshtml:3
 msgctxt "OrchardCore.ContentTypes.Views.Admin.Create"
 msgid "New Content Type"
@@ -572,7 +572,7 @@ msgctxt "OrchardCore.ContentTypes.Views.Admin.Create"
 msgid "Create"
 msgstr "Créer"
 
-#. <h1>@RenderTitleSegments(T["New Content Part"])</h1>
+#. <zone Name="Title"><h1>@RenderTitleSegments(T["New Content Part"])</h1></zone>
 #: OrchardCore.ContentTypes\Views\Admin\CreatePart.cshtml:3
 msgctxt "OrchardCore.ContentTypes.Views.Admin.CreatePart"
 msgid "New Content Part"
@@ -596,77 +596,93 @@ msgctxt "OrchardCore.ContentTypes.Views.Admin.CreatePart"
 msgid "Create"
 msgstr "Créer"
 
-#. <h1>@RenderTitleSegments(T["Edit Content Type - {0}", Model.TypeDefinition.DisplayName])</h1>
+#. <zone Name="Title"><h1>@RenderTitleSegments(T["Edit Content Type - {0}", Model.TypeDefinition.DisplayName])</h1></zone>
 #: OrchardCore.ContentTypes\Views\Admin\Edit.cshtml:25
 msgctxt "OrchardCore.ContentTypes.Views.Admin.Edit"
 msgid "Edit Content Type - {0}"
 msgstr "Modifier la pièce de contenu - {0}"
 
 #. <h3>@T["Fields"]</h3>
-#: OrchardCore.ContentTypes\Views\Admin\Edit.cshtml:35
+#: OrchardCore.ContentTypes\Views\Admin\Edit.cshtml:42
 msgctxt "OrchardCore.ContentTypes.Views.Admin.Edit"
 msgid "Fields"
 msgstr "Champs"
 
 #. <a asp-route-action="EditField" asp-route-id="@Model.TypeDefinition.Name" asp-route-name="@field.Name" asp-route-returnUrl="@FullRequestPath" class="btn btn-primary btn-sm" role="button">@T["Edit"]</a>
 #. <a asp-route-action="EditTypePart" asp-route-id="@Model.TypeDefinition.Name" asp-route-name="@part.Name" class="btn btn-primary btn-sm" role="button">@T["Edit"]</a>
-#: OrchardCore.ContentTypes\Views\Admin\Edit.cshtml:45
-#: OrchardCore.ContentTypes\Views\Admin\Edit.cshtml:77
+#: OrchardCore.ContentTypes\Views\Admin\Edit.cshtml:52
+#: OrchardCore.ContentTypes\Views\Admin\Edit.cshtml:93
 msgctxt "OrchardCore.ContentTypes.Views.Admin.Edit"
 msgid "Edit"
 msgstr "Modifier"
 
-#. <a asp-route-action="RemoveFieldFrom" asp-route-id="@Model.TypeDefinition.Name" asp-route-name="@field.Name"  class="btn btn-danger btn-sm" role="button" itemprop="UnsafeUrl RemoveUrl">@T["Remove"]</a>
-#. <a asp-route-action="RemovePart" asp-route-id="@Model.TypeDefinition.Name" asp-route-name="@part.Name" class="btn btn-danger btn-sm" role="button" itemprop="UnsafeUrl RemoveUrl">@T["Remove"]</a>
-#: OrchardCore.ContentTypes\Views\Admin\Edit.cshtml:46
-#: OrchardCore.ContentTypes\Views\Admin\Edit.cshtml:78
+#. <a asp-route-action="RemoveFieldFrom" asp-route-id="@Model.TypeDefinition.Name" asp-route-name="@field.Name" class="btn btn-danger btn-sm" role="button" data-url-af="UnsafeUrl RemoveUrl">@T["Remove"]</a>
+#. <a asp-route-action="RemovePart" asp-route-id="@Model.TypeDefinition.Name" asp-route-name="@part.Name" class="btn btn-danger btn-sm" role="button" data-url-af="UnsafeUrl RemoveUrl">@T["Remove"]</a>
+#: OrchardCore.ContentTypes\Views\Admin\Edit.cshtml:53
+#: OrchardCore.ContentTypes\Views\Admin\Edit.cshtml:94
 msgctxt "OrchardCore.ContentTypes.Views.Admin.Edit"
 msgid "Remove"
 msgstr "Supprimer"
 
+#. <span class="badge ta-badge font-weight-normal" data-toggle="tooltip" title="@T["Display mode"]"><i class="fas fa-tv text-info"></i> @field.DisplayMode()</span>
+#. <span class="badge ta-badge font-weight-normal" data-toggle="tooltip" title="@T["Display mode"]"><i class="fas fa-tv text-info"></i> @part.DisplayMode()</span>
+#: OrchardCore.ContentTypes\Views\Admin\Edit.cshtml:59
+#: OrchardCore.ContentTypes\Views\Admin\Edit.cshtml:104
+msgctxt "OrchardCore.ContentTypes.Views.Admin.Edit"
+msgid "Display mode"
+msgstr "Mode d'affichage"
+
+#. <span class="badge ta-badge font-weight-normal" data-toggle="tooltip" title="@T["Editor"]"><i class="fa fa-edit text-info"></i> @field.Editor()</span>
+#. <span class="badge ta-badge font-weight-normal" data-toggle="tooltip" title="@T["Editor"]"><i class="fa fa-edit text-info"></i> @part.Editor()</span>
+#: OrchardCore.ContentTypes\Views\Admin\Edit.cshtml:63
+#: OrchardCore.ContentTypes\Views\Admin\Edit.cshtml:108
+msgctxt "OrchardCore.ContentTypes.Views.Admin.Edit"
+msgid "Editor"
+msgstr "Éditeur"
+
 #. <a asp-route-action="AddFieldTo" asp-route-id="@Model.TypeDefinition.Name" asp-route-returnUrl="@FullRequestPath" class="btn btn-info btn-sm" role="button">@T["Add Field"]</a>
-#: OrchardCore.ContentTypes\Views\Admin\Edit.cshtml:57
+#: OrchardCore.ContentTypes\Views\Admin\Edit.cshtml:73
 msgctxt "OrchardCore.ContentTypes.Views.Admin.Edit"
 msgid "Add Field"
 msgstr "Ajouter un champ"
 
 #. <h3>@T["Parts"]</h3>
-#: OrchardCore.ContentTypes\Views\Admin\Edit.cshtml:60
+#: OrchardCore.ContentTypes\Views\Admin\Edit.cshtml:76
 msgctxt "OrchardCore.ContentTypes.Views.Admin.Edit"
 msgid "Parts"
 msgstr "Pièces"
 
 #. <span class="hint dashed">@T["Contains the fields for the current type"]</span>
-#: OrchardCore.ContentTypes\Views\Admin\Edit.cshtml:83
+#: OrchardCore.ContentTypes\Views\Admin\Edit.cshtml:99
 msgctxt "OrchardCore.ContentTypes.Views.Admin.Edit"
 msgid "Contains the fields for the current type"
 msgstr "Contient les champs pour le type actuel"
 
 #. <a asp-route-action="AddPartsTo" asp-route-id="@Model.TypeDefinition.Name" class="btn btn-info btn-sm" role="button">@T["Add Parts"]</a>
-#: OrchardCore.ContentTypes\Views\Admin\Edit.cshtml:93
+#: OrchardCore.ContentTypes\Views\Admin\Edit.cshtml:118
 msgctxt "OrchardCore.ContentTypes.Views.Admin.Edit"
 msgid "Add Parts"
 msgstr "Ajouter des pièces"
 
 #. <a asp-route-action="AddReusablePartTo" asp-route-id="@Model.TypeDefinition.Name" class="btn btn-info btn-sm" role="button">@T["Add Named Part"]</a>
-#: OrchardCore.ContentTypes\Views\Admin\Edit.cshtml:94
+#: OrchardCore.ContentTypes\Views\Admin\Edit.cshtml:119
 msgctxt "OrchardCore.ContentTypes.Views.Admin.Edit"
 msgid "Add Named Part"
 msgstr "Ajouter une pièce nommée"
 
 #. <button class="btn btn-primary save" type="submit" name="submit.Save" value="Save">@T["Save"]</button>
-#: OrchardCore.ContentTypes\Views\Admin\Edit.cshtml:98
+#: OrchardCore.ContentTypes\Views\Admin\Edit.cshtml:123
 msgctxt "OrchardCore.ContentTypes.Views.Admin.Edit"
 msgid "Save"
 msgstr "Enregistrer"
 
-#. <button class="btn btn-danger delete" type="submit" name="submit.Delete" value="Delete" itemprop="RemoveUrl">@T["Delete"]</button>
-#: OrchardCore.ContentTypes\Views\Admin\Edit.cshtml:99
+#. <button class="btn btn-danger delete" type="submit" name="submit.Delete" value="Delete" data-url-af="RemoveUrl">@T["Delete"]</button>
+#: OrchardCore.ContentTypes\Views\Admin\Edit.cshtml:124
 msgctxt "OrchardCore.ContentTypes.Views.Admin.Edit"
 msgid "Delete"
 msgstr "Supprimer"
 
-#. <h1>@RenderTitleSegments(T["\"{0}\" settings for \"{1}\"", Model.DisplayName, Model.PartFieldDefinition.PartDefinition.DisplayName()])</h1>
+#. <zone Name="Title"><h1>@RenderTitleSegments(T["\"{0}\" settings for \"{1}\"", Model.DisplayName, Model.PartFieldDefinition.PartDefinition.DisplayName()])</h1></zone>
 #: OrchardCore.ContentTypes\Views\Admin\EditField.cshtml:19
 msgctxt "OrchardCore.ContentTypes.Views.Admin.EditField"
 msgid "\"{0}\" settings for \"{1}\""
@@ -697,30 +713,30 @@ msgid "Technical name of the field."
 msgstr "Nom technique du champ."
 
 #. <label asp-for="Editor">@T["What type of editor should be used?"]</label>
-#: OrchardCore.ContentTypes\Views\Admin\EditField.cshtml:49
+#: OrchardCore.ContentTypes\Views\Admin\EditField.cshtml:56
 msgctxt "OrchardCore.ContentTypes.Views.Admin.EditField"
 msgid "What type of editor should be used?"
 msgstr "Quel type d'éditeur doit être utilisé ?"
 
 #. <label asp-for="DisplayMode">@T["What type of display mode should be used?"]</label>
-#: OrchardCore.ContentTypes\Views\Admin\EditField.cshtml:70
+#: OrchardCore.ContentTypes\Views\Admin\EditField.cshtml:77
 msgctxt "OrchardCore.ContentTypes.Views.Admin.EditField"
 msgid "What type of display mode should be used?"
 msgstr "Quel type de mode d'affichage doit être utilisé ?"
 
 #. <button class="btn btn-primary save" type="submit" name="submit.Save" value="Save">@T["Save"]</button>
-#: OrchardCore.ContentTypes\Views\Admin\EditField.cshtml:89
+#: OrchardCore.ContentTypes\Views\Admin\EditField.cshtml:96
 msgctxt "OrchardCore.ContentTypes.Views.Admin.EditField"
 msgid "Save"
 msgstr "Enregistrer"
 
 #. <a class="btn btn-secondary cancel" role="button" href="@returnUrl">@T["Cancel"]</a>
-#: OrchardCore.ContentTypes\Views\Admin\EditField.cshtml:92
+#: OrchardCore.ContentTypes\Views\Admin\EditField.cshtml:99
 msgctxt "OrchardCore.ContentTypes.Views.Admin.EditField"
 msgid "Cancel"
 msgstr "Annuler"
 
-#. <h1>@RenderTitleSegments(T["Edit Content Part - {0}", Model.DisplayName])</h1>
+#. <zone Name="Title"><h1>@RenderTitleSegments(T["Edit Content Part - {0}", Model.DisplayName])</h1></zone>
 #: OrchardCore.ContentTypes\Views\Admin\EditPart.cshtml:12
 msgctxt "OrchardCore.ContentTypes.Views.Admin.EditPart"
 msgid "Edit Content Part - {0}"
@@ -739,42 +755,42 @@ msgid "Technical name of the part."
 msgstr "Nom technique de la pièce."
 
 #. <h3>@T["Fields"]</h3>
-#: OrchardCore.ContentTypes\Views\Admin\EditPart.cshtml:28
+#: OrchardCore.ContentTypes\Views\Admin\EditPart.cshtml:35
 msgctxt "OrchardCore.ContentTypes.Views.Admin.EditPart"
 msgid "Fields"
 msgstr "Champs"
 
 #. <a asp-route-action="EditField" asp-route-id="@Model.PartDefinition.Name" asp-route-name="@field.Name" asp-route-returnUrl="@FullRequestPath" class="btn btn-primary btn-sm" role="button">@T["Edit"]</a>
-#: OrchardCore.ContentTypes\Views\Admin\EditPart.cshtml:38
+#: OrchardCore.ContentTypes\Views\Admin\EditPart.cshtml:45
 msgctxt "OrchardCore.ContentTypes.Views.Admin.EditPart"
 msgid "Edit"
 msgstr "Modifier"
 
-#. <a asp-route-action="RemoveFieldFrom" asp-route-id="@Model.PartDefinition.Name" asp-route-name="@field.Name" class="btn btn-danger btn-sm" role="button" itemprop="UnsafeUrl RemoveUrl">@T["Remove"]</a>
-#: OrchardCore.ContentTypes\Views\Admin\EditPart.cshtml:39
+#. <a asp-route-action="RemoveFieldFrom" asp-route-id="@Model.PartDefinition.Name" asp-route-name="@field.Name" class="btn btn-danger btn-sm" role="button" data-url-af="UnsafeUrl RemoveUrl">@T["Remove"]</a>
+#: OrchardCore.ContentTypes\Views\Admin\EditPart.cshtml:46
 msgctxt "OrchardCore.ContentTypes.Views.Admin.EditPart"
 msgid "Remove"
 msgstr "Supprimer"
 
 #. <a asp-route-action="AddFieldTo" asp-route-id="@Model.PartDefinition.Name" asp-route-returnUrl="@FullRequestPath" class="btn btn-info btn-sm" role="button">@T["Add Field"]</a>
-#: OrchardCore.ContentTypes\Views\Admin\EditPart.cshtml:50
+#: OrchardCore.ContentTypes\Views\Admin\EditPart.cshtml:57
 msgctxt "OrchardCore.ContentTypes.Views.Admin.EditPart"
 msgid "Add Field"
 msgstr "Ajouter un champ"
 
 #. <button class="btn btn-primary save" type="submit" name="submit.Save" value="Save">@T["Save"]</button>
-#: OrchardCore.ContentTypes\Views\Admin\EditPart.cshtml:54
+#: OrchardCore.ContentTypes\Views\Admin\EditPart.cshtml:61
 msgctxt "OrchardCore.ContentTypes.Views.Admin.EditPart"
 msgid "Save"
 msgstr "Enregistrer"
 
-#. <button class="btn btn-danger delete" type="submit" name="submit.Delete" value="Delete" itemprop="RemoveUrl">@T["Delete"]</button>
-#: OrchardCore.ContentTypes\Views\Admin\EditPart.cshtml:55
+#. <button class="btn btn-danger delete" type="submit" name="submit.Delete" value="Delete" data-url-af="RemoveUrl">@T["Delete"]</button>
+#: OrchardCore.ContentTypes\Views\Admin\EditPart.cshtml:62
 msgctxt "OrchardCore.ContentTypes.Views.Admin.EditPart"
 msgid "Delete"
 msgstr "Supprimer"
 
-#. <h1>@RenderTitleSegments(T["Edit Part - {0}", Model.DisplayName])</h1>
+#. <zone Name="Title"><h1>@RenderTitleSegments(T["Edit Part - {0}", Model.DisplayName])</h1></zone>
 #: OrchardCore.ContentTypes\Views\Admin\EditTypePart.cshtml:16
 msgctxt "OrchardCore.ContentTypes.Views.Admin.EditTypePart"
 msgid "Edit Part - {0}"
@@ -811,85 +827,73 @@ msgid "The description of the part as it will be displayed in screens."
 msgstr "La description de la pièce telle qu'elle sera affichée dans les écrans."
 
 #. <label asp-for="Editor">@T["What type of editor should be used?"]</label>
-#: OrchardCore.ContentTypes\Views\Admin\EditTypePart.cshtml:54
+#: OrchardCore.ContentTypes\Views\Admin\EditTypePart.cshtml:61
 msgctxt "OrchardCore.ContentTypes.Views.Admin.EditTypePart"
 msgid "What type of editor should be used?"
 msgstr "Quel type d'éditeur doit être utilisé ?"
 
 #. <label asp-for="DisplayMode">@T["What type of display mode should be used?"]</label>
-#: OrchardCore.ContentTypes\Views\Admin\EditTypePart.cshtml:75
+#: OrchardCore.ContentTypes\Views\Admin\EditTypePart.cshtml:82
 msgctxt "OrchardCore.ContentTypes.Views.Admin.EditTypePart"
 msgid "What type of display mode should be used?"
 msgstr "Quel type de mode d'affichage doit être utilisé ?"
 
 #. <button class="btn btn-primary save" type="submit" name="submit.Save" value="Save">@T["Save"]</button>
-#: OrchardCore.ContentTypes\Views\Admin\EditTypePart.cshtml:94
+#: OrchardCore.ContentTypes\Views\Admin\EditTypePart.cshtml:101
 msgctxt "OrchardCore.ContentTypes.Views.Admin.EditTypePart"
 msgid "Save"
 msgstr "Enregistrer"
 
 #. <a class="btn btn-secondary cancel" role="button" asp-route-action="Edit" asp-route-id="@Model.TypePartDefinition.ContentTypeDefinition.Name">@T["Cancel"]</a>
-#: OrchardCore.ContentTypes\Views\Admin\EditTypePart.cshtml:95
+#: OrchardCore.ContentTypes\Views\Admin\EditTypePart.cshtml:102
 msgctxt "OrchardCore.ContentTypes.Views.Admin.EditTypePart"
 msgid "Cancel"
 msgstr "Annuler"
 
-#. <h1>@RenderTitleSegments(T["Content Types"])</h1>
-#: OrchardCore.ContentTypes\Views\Admin\List.cshtml:5
+#. <zone Name="Title"><h1>@RenderTitleSegments(T["Content Types"])</h1></zone>
+#: OrchardCore.ContentTypes\Views\Admin\List.cshtml:3
 msgctxt "OrchardCore.ContentTypes.Views.Admin.List"
 msgid "Content Types"
 msgstr "Types de contenus"
 
-#. <span class="input-group-text bg-secondary text-light">@T["Filter"]</span>
-#: OrchardCore.ContentTypes\Views\Admin\List.cshtml:13
-msgctxt "OrchardCore.ContentTypes.Views.Admin.List"
-msgid "Filter"
-msgstr "Filtrer"
-
 #. <input id="search-box" class="form-control" placeholder="@T["Search"]" type="search" autofocus />
-#: OrchardCore.ContentTypes\Views\Admin\List.cshtml:15
+#: OrchardCore.ContentTypes\Views\Admin\List.cshtml:9
 msgctxt "OrchardCore.ContentTypes.Views.Admin.List"
 msgid "Search"
 msgstr "Recherche"
 
 #. <a asp-route-action="Create" id="btnCreate" class="btn btn-sm btn-secondary d-inline-flex float-right create" role="button">@T["Create new type"]</a>
-#: OrchardCore.ContentTypes\Views\Admin\List.cshtml:17
+#: OrchardCore.ContentTypes\Views\Admin\List.cshtml:11
 msgctxt "OrchardCore.ContentTypes.Views.Admin.List"
 msgid "Create new type"
 msgstr "Créer un nouveau type"
 
 #. @T["<strong>Nothing here!</strong> Your search returned no results."]
-#: OrchardCore.ContentTypes\Views\Admin\List.cshtml:30
+#: OrchardCore.ContentTypes\Views\Admin\List.cshtml:24
 msgctxt "OrchardCore.ContentTypes.Views.Admin.List"
 msgid "<strong>Nothing here!</strong> Your search returned no results."
 msgstr "<strong>Rien ici !</strong> Votre recherche n'a pas retourné de résultats."
 
-#. <h1>@RenderTitleSegments(T["Content Parts"])</h1>
-#: OrchardCore.ContentTypes\Views\Admin\ListParts.cshtml:5
+#. <zone Name="Title"><h1>@RenderTitleSegments(T["Content Parts"])</h1></zone>
+#: OrchardCore.ContentTypes\Views\Admin\ListParts.cshtml:3
 msgctxt "OrchardCore.ContentTypes.Views.Admin.ListParts"
 msgid "Content Parts"
 msgstr "Pièces de contenu"
 
-#. <span class="input-group-text bg-secondary text-light">@T["Filter"]</span>
-#: OrchardCore.ContentTypes\Views\Admin\ListParts.cshtml:13
-msgctxt "OrchardCore.ContentTypes.Views.Admin.ListParts"
-msgid "Filter"
-msgstr "Filtrer"
-
-#. <input id="search-box" class="form-control" placeholder="@T["Search"]" type="search" autofocus="autofocus" />
-#: OrchardCore.ContentTypes\Views\Admin\ListParts.cshtml:15
+#. <input id="search-box" class="form-control" placeholder="@T["Search"]" type="search" autofocus />
+#: OrchardCore.ContentTypes\Views\Admin\ListParts.cshtml:9
 msgctxt "OrchardCore.ContentTypes.Views.Admin.ListParts"
 msgid "Search"
 msgstr "Recherche"
 
 #. <a asp-route-action="CreatePart" id="btnCreate" class="btn btn-sm btn-secondary d-inline-flex float-right create" role="button">@T["Create new part"]</a>
-#: OrchardCore.ContentTypes\Views\Admin\ListParts.cshtml:17
+#: OrchardCore.ContentTypes\Views\Admin\ListParts.cshtml:11
 msgctxt "OrchardCore.ContentTypes.Views.Admin.ListParts"
 msgid "Create new part"
 msgstr "Créer une nouvelle pièce"
 
 #. @T["<strong>Nothing here!</strong> Your search returned no results."]
-#: OrchardCore.ContentTypes\Views\Admin\ListParts.cshtml:30
+#: OrchardCore.ContentTypes\Views\Admin\ListParts.cshtml:24
 msgctxt "OrchardCore.ContentTypes.Views.Admin.ListParts"
 msgid "<strong>Nothing here!</strong> Your search returned no results."
 msgstr "<strong>Rien ici !</strong> Votre recherche n'a pas retourné de résultats."
@@ -923,6 +927,12 @@ msgstr "Les pièces de contenu à ajouter dans le plan."
 msgctxt "OrchardCore.ContentTypes.Views.Items.ContentDefinitionDeploymentStep.Fields.Summary"
 msgid "Update Content Definitions"
 msgstr "Mettre à jour les définitions de contenu"
+
+#. <span class="hint d-block">@T["Content Definitions should be placed before any content steps."]</span>
+#: OrchardCore.ContentTypes\Views\Items\ContentDefinitionDeploymentStep.Fields.Summary.cshtml:44
+msgctxt "OrchardCore.ContentTypes.Views.Items.ContentDefinitionDeploymentStep.Fields.Summary"
+msgid "Content Definitions should be placed before any content steps."
+msgstr "Les définitions de contenu doivent être placées avant toute étape de contenu."
 
 #. <h4 class="card-title">@T["Update Content Definitions"]</h4>
 #: OrchardCore.ContentTypes\Views\Items\ContentDefinitionDeploymentStep.Fields.Thumbnail.cshtml:1
@@ -1007,6 +1017,12 @@ msgstr "Les pièces de contenu à ajouter dans le plan."
 msgctxt "OrchardCore.ContentTypes.Views.Items.ReplaceContentDefinitionDeploymentStep.Fields.Summary"
 msgid "Replace Content Definitions"
 msgstr "Remplacer les définitions de contenu"
+
+#. <span class="hint d-block">@T["Content Definitions should be placed before any content steps."]</span>
+#: OrchardCore.ContentTypes\Views\Items\ReplaceContentDefinitionDeploymentStep.Fields.Summary.cshtml:44
+msgctxt "OrchardCore.ContentTypes.Views.Items.ReplaceContentDefinitionDeploymentStep.Fields.Summary"
+msgid "Content Definitions should be placed before any content steps."
+msgstr "Les définitions de contenu doivent être placées avant toute étape de contenu."
 
 #. <h4 class="card-title">@T["Replace Content Definitions"]</h4>
 #: OrchardCore.ContentTypes\Views\Items\ReplaceContentDefinitionDeploymentStep.Fields.Thumbnail.cshtml:1

@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
-"PO-Revision-Date: 2020-11-10 07:27\n"
+"PO-Revision-Date: 2021-04-14 09:13\n"
 
 #. .Add(S["Configuration"], configuration => configuration
 #: OrchardCore.Email\AdminMenu.cs:24
@@ -32,11 +32,11 @@ msgctxt "OrchardCore.Email.AdminMenu"
 msgid "Email"
 msgstr "Email"
 
-#. _notifier.Success(H["Message sent successfully"]);
+#. _notifier.Success(H["Message sent successfully."]);
 #: OrchardCore.Email\Controllers\AdminController.cs:65
 msgctxt "OrchardCore.Email.Controllers.AdminController"
-msgid "Message sent successfully"
-msgstr "Message envoyé avec succès"
+msgid "Message sent successfully."
+msgstr "Message envoyé avec succès."
 
 #. return SmtpResult.Failed(S["SMTP settings must be configured before an email can be sent."]);
 #: OrchardCore.Email\Services\SmtpService.cs:41
@@ -278,7 +278,7 @@ msgctxt "OrchardCore.Email.Views.SmtpSettings.TestButton"
 msgid "Test settings"
 msgstr "Tester les paramètres"
 
-#. <h1>@RenderTitleSegments(T["Settings"])</h1>
+#. <zone Name="Title"><h1>@RenderTitleSegments(T["Settings"])</h1></zone>
 #: OrchardCore.Email\Views\Admin\Index.cshtml:3
 msgctxt "OrchardCore.Email.Views.Admin.Index"
 msgid "Settings"

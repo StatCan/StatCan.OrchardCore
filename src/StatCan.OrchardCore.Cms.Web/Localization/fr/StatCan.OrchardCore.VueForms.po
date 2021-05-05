@@ -1,19 +1,25 @@
 msgid ""
 msgstr "Content-Type: text/plain\n"
 
-#: StatCan.OrchardCore.VueForms\AdminMenu.cs:32
+#: StatCan.OrchardCore.VueForms\AdminMenu.cs:34
 #. builder.Add(S["Content"], design => design
 msgctxt "StatCan.OrchardCore.VueForms.AdminMenu"
 msgid "Content"
 msgstr "Contenu"
 
-#: StatCan.OrchardCore.VueForms\AdminMenu.cs:33
-#: StatCan.OrchardCore.VueForms\AdminMenu.cs:33
+#: StatCan.OrchardCore.VueForms\AdminMenu.cs:35
+#: StatCan.OrchardCore.VueForms\AdminMenu.cs:35
 #. .Add(S["Vue Forms"], S["Vue Forms"], menus => menus
 #. .Add(S["Vue Forms"], S["Vue Forms"], menus => menus
 msgctxt "StatCan.OrchardCore.VueForms.AdminMenu"
 msgid "Vue Forms"
 msgstr "Vue Forms"
+
+#: StatCan.OrchardCore.VueForms\Controllers\VueFormController.cs:92
+#. ModelState.AddModelError("Unauthorized", S["You are unauthorized to view this form"]);
+msgctxt "StatCan.OrchardCore.VueForms.Controllers.VueFormController"
+msgid "You are unauthorized to view this form"
+msgstr "Vous n'êtes pas autorisé à consulter ce formulaire"
 
 #: StatCan.OrchardCore.VueForms\Workflows\VueFormSubmittedEvent.cs:24
 #. public override LocalizedString DisplayText => S["VueForm Submitted Event"];
@@ -32,6 +38,11 @@ msgstr "VueForm"
 msgctxt "StatCan.OrchardCore.VueForms.Workflows.VueFormSubmittedEvent"
 msgid "Done"
 msgstr "Terminé"
+
+#: StatCan.OrchardCore.VueForms\Views\Content-VueForm.cshtml:0
+msgctxt "StatCan.OrchardCore.VueForms.Views.Content-VueForm"
+msgid "You are unauthorized to view this form"
+msgstr "Vous n'êtes pas autorisé à consulter ce formulaire"
 
 #: StatCan.OrchardCore.VueForms\Views\Items\VueFormSubmittedEvent.Fields.Design.cshtml:5
 #. <h4><i class="fa fa-bolt"></i>@Model.Activity.GetTitleOrDefault(() => T["Vue Form submitted"])</h4>

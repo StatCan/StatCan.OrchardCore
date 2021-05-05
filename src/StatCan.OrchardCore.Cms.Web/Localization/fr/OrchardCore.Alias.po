@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
-"PO-Revision-Date: 2020-11-10 07:27\n"
+"PO-Revision-Date: 2021-04-14 09:13\n"
 
 #. Description = S["the alias part of the content item"];
 #: OrchardCore.Alias\GraphQL\AliasInputObjectType.cs:13
@@ -30,15 +30,15 @@ msgctxt "OrchardCore.Alias.GraphQL.AliasQueryObjectType"
 msgid "Alternative path for the content item"
 msgstr "Chemin alternatif pour l'élément de contenu"
 
-#. context.Fail(S["Your alias is too long. The alias can only be up to {0} characters.", AliasPartDisplayDriver.MaxAliasLength], nameof(part.Alias));
-#: OrchardCore.Alias\Handlers\AliasPartHandler.cs:52
-msgctxt "OrchardCore.Alias.Handlers.AliasPartHandler"
+#. yield return new ValidationResult(S["Your alias is too long. The alias can only be up to {0} characters.", AliasPart.MaxAliasLength], new string[] { nameof(part.Alias) });
+#: OrchardCore.Alias\Models\AliasPartExtensions.cs:19
+msgctxt "OrchardCore.Alias.Models.AliasPartExtensions"
 msgid "Your alias is too long. The alias can only be up to {0} characters."
 msgstr "Votre alias est trop long. L'alias ne peut être que de {0} caractères maximum."
 
-#. context.Fail(S["Your alias is already in use."], nameof(part.Alias));
-#: OrchardCore.Alias\Handlers\AliasPartHandler.cs:57
-msgctxt "OrchardCore.Alias.Handlers.AliasPartHandler"
+#. yield return new ValidationResult(S["Your alias is already in use."], new[] { nameof(part.Alias) });
+#: OrchardCore.Alias\Models\AliasPartExtensions.cs:24
+msgctxt "OrchardCore.Alias.Models.AliasPartExtensions"
 msgid "Your alias is already in use."
 msgstr "Votre alias est déjà utilisé."
 

@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
-"PO-Revision-Date: 2020-11-10 07:27\n"
+"PO-Revision-Date: 2021-04-14 09:13\n"
 
 #. builder.Add(S["Content"], design => design
 #: OrchardCore.Menu\AdminMenu.cs:33
@@ -26,11 +26,11 @@ msgctxt "OrchardCore.Menu.AdminMenu"
 msgid "Menus"
 msgstr "Menus"
 
-#. _notifier.Success(H["Menu item deleted successfully"]);
-#: OrchardCore.Menu\Controllers\AdminController.cs:279
+#. _notifier.Success(H["Menu item deleted successfully."]);
+#: OrchardCore.Menu\Controllers\AdminController.cs:282
 msgctxt "OrchardCore.Menu.Controllers.AdminController"
-msgid "Menu item deleted successfully"
-msgstr "Élément de menu supprimé avec succès"
+msgid "Menu item deleted successfully."
+msgstr "Élément de menu supprimé avec succès."
 
 #. <h5>@T["Content Menu Item"]</h5>
 #: OrchardCore.Menu\Views\ContentMenuItemPart.Edit.cshtml:3
@@ -55,6 +55,60 @@ msgstr "Élément de menu de contenu"
 msgctxt "OrchardCore.Menu.Views.ContentMenuItemPart.Thumbnail"
 msgid "Links to a Content url."
 msgstr "Lien vers une Url de contenu."
+
+#. <h5>@T["Html Menu Item"]</h5>
+#: OrchardCore.Menu\Views\HtmlMenuItemPart.Edit.cshtml:3
+msgctxt "OrchardCore.Menu.Views.HtmlMenuItemPart.Edit"
+msgid "Html Menu Item"
+msgstr "Élément de menu Html"
+
+#. <label asp-for="Name">@T["Name"]</label>
+#: OrchardCore.Menu\Views\HtmlMenuItemPart.Edit.cshtml:6
+msgctxt "OrchardCore.Menu.Views.HtmlMenuItemPart.Edit"
+msgid "Name"
+msgstr "Nom"
+
+#. <label asp-for="Url">@T["Url"]</label>
+#: OrchardCore.Menu\Views\HtmlMenuItemPart.Edit.cshtml:11
+msgctxt "OrchardCore.Menu.Views.HtmlMenuItemPart.Edit"
+msgid "Url"
+msgstr "Url"
+
+#. <label asp-for="Html">@T["Html"]</label>
+#: OrchardCore.Menu\Views\HtmlMenuItemPart.Edit.cshtml:16
+msgctxt "OrchardCore.Menu.Views.HtmlMenuItemPart.Edit"
+msgid "Html"
+msgstr "Html"
+
+#. <h4 class="card-title">@T["Html Menu Item"]</h4>
+#: OrchardCore.Menu\Views\HtmlMenuItemPart.Thumbnail.cshtml:1
+msgctxt "OrchardCore.Menu.Views.HtmlMenuItemPart.Thumbnail"
+msgid "Html Menu Item"
+msgstr "Élément de menu Html"
+
+#. <p>@T["Links to a custom url with HTML."]</p>
+#: OrchardCore.Menu\Views\HtmlMenuItemPart.Thumbnail.cshtml:2
+msgctxt "OrchardCore.Menu.Views.HtmlMenuItemPart.Thumbnail"
+msgid "Links to a custom url with HTML."
+msgstr "Liens vers une URL personnalisée en HTML."
+
+#. <label class="custom-control-label" asp-for="SanitizeHtml">@T["Sanitize Html"]</label>
+#: OrchardCore.Menu\Views\HtmlMenuItemPartSettings.Edit.cshtml:6
+msgctxt "OrchardCore.Menu.Views.HtmlMenuItemPartSettings.Edit"
+msgid "Sanitize Html"
+msgstr "Nettoyer le Html"
+
+#. @T["Whether the Html is sanitized to prevent custom scripts."]
+#: OrchardCore.Menu\Views\HtmlMenuItemPartSettings.Edit.cshtml:8
+msgctxt "OrchardCore.Menu.Views.HtmlMenuItemPartSettings.Edit"
+msgid "Whether the Html is sanitized to prevent custom scripts."
+msgstr "Si le Html est nettoyé pour empêcher les scripts personnalisés."
+
+#. <a class="seedoc" href="@(OrchardCore.Admin.Constants.DocsUrl)reference/core/Sanitizer" target="_blank">@T["See documentation"]</a>
+#: OrchardCore.Menu\Views\HtmlMenuItemPartSettings.Edit.cshtml:9
+msgctxt "OrchardCore.Menu.Views.HtmlMenuItemPartSettings.Edit"
+msgid "See documentation"
+msgstr "Voir la documentation"
 
 #. <h5>@T["Link Menu Item"]</h5>
 #: OrchardCore.Menu\Views\LinkMenuItemPart.Edit.cshtml:3
@@ -134,13 +188,13 @@ msgctxt "OrchardCore.Menu.Views.MenuPart.Edit"
 msgid "You have reordered the navigation."
 msgstr "Vous avez réorganisé la navigation."
 
-#. <h1>@RenderTitleSegments(T["New {0}", typeDisplayName])</h1>
+#. <zone Name="Title"><h1>@RenderTitleSegments(T["New {0}", typeDisplayName])</h1></zone>
 #: OrchardCore.Menu\Views\Admin\Create.cshtml:13
 msgctxt "OrchardCore.Menu.Views.Admin.Create"
 msgid "New {0}"
 msgstr "Nouveau {0}"
 
-#. <h1>@RenderTitleSegments(T["Edit {0}", typeDisplayName])</h1>
+#. <zone Name="Title"><h1>@RenderTitleSegments(T["Edit {0}", typeDisplayName])</h1></zone>
 #: OrchardCore.Menu\Views\Admin\Edit.cshtml:13
 msgctxt "OrchardCore.Menu.Views.Admin.Edit"
 msgid "Edit {0}"

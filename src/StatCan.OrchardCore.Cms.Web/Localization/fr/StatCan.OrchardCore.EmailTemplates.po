@@ -1,0 +1,812 @@
+msgid ""
+msgstr "Content-Type: text/plain\n"
+
+#: StatCan.OrchardCore.EmailTemplates\AdminMenu.cs:25
+#. .Add(S["Design"], design => design
+msgctxt "StatCan.OrchardCore.EmailTemplates.AdminMenu"
+msgid "Design"
+msgstr "Conception"
+
+#: StatCan.OrchardCore.EmailTemplates\AdminMenu.cs:26
+#. .Add(S["EmailTemplates"], "EmailTemplates", import => import
+msgctxt "StatCan.OrchardCore.EmailTemplates.AdminMenu"
+msgid "EmailTemplates"
+msgstr "Modèles de courriel"
+
+#: StatCan.OrchardCore.EmailTemplates\Controllers\EmailTemplateController.cs:108
+#. new SelectListItem() { Text = S["Delete"], Value = nameof(ContentsBulkAction.Remove) }
+msgctxt "StatCan.OrchardCore.EmailTemplates.Controllers.EmailTemplateController"
+msgid "Delete"
+msgstr "Effacer"
+
+#: StatCan.OrchardCore.EmailTemplates\Controllers\EmailTemplateController.cs:139
+#: StatCan.OrchardCore.EmailTemplates\Controllers\EmailTemplateController.cs:227
+#. ModelState.AddModelError(nameof(EmailTemplateViewModel.Name), S["An email template with the same name already exists."]);
+#. ModelState.AddModelError(nameof(EmailTemplateViewModel.Name), S["An email template with the same name already exists."]);
+msgctxt "StatCan.OrchardCore.EmailTemplates.Controllers.EmailTemplateController"
+msgid "An email template with the same name already exists."
+msgstr "Un modèle de courriel portant le même nom existe déjà."
+
+#: StatCan.OrchardCore.EmailTemplates\Controllers\EmailTemplateController.cs:163
+#. _notifier.Success(H["The \"{0}\" email template has been created.", model.Name]);
+msgctxt "StatCan.OrchardCore.EmailTemplates.Controllers.EmailTemplateController"
+msgid "The \"{0}\" email template has been created."
+msgstr "Le modèle de courriel \"{0}\" a été créé."
+
+#: StatCan.OrchardCore.EmailTemplates\Controllers\EmailTemplateController.cs:284
+#. _notifier.Success(H["Email template deleted successfully"]);
+msgctxt "StatCan.OrchardCore.EmailTemplates.Controllers.EmailTemplateController"
+msgid "Email template deleted successfully"
+msgstr "Le modèle de courriel a bien été supprimé"
+
+#: StatCan.OrchardCore.EmailTemplates\Controllers\EmailTemplateController.cs:312
+#. _notifier.Success(H["Email templates successfully removed."]);
+msgctxt "StatCan.OrchardCore.EmailTemplates.Controllers.EmailTemplateController"
+msgid "Email templates successfully removed."
+msgstr "Les modèles de courriel ont bien été supprimés."
+
+#: StatCan.OrchardCore.EmailTemplates\Controllers\EmailTemplateController.cs:382
+#. _notifier.Success(H["Message sent successfully"]);
+msgctxt "StatCan.OrchardCore.EmailTemplates.Controllers.EmailTemplateController"
+msgid "Message sent successfully"
+msgstr "message envoyé avec succès"
+
+#: StatCan.OrchardCore.EmailTemplates\Workflows\Activities\EmailTemplateTask.cs:62
+#. public override LocalizedString DisplayText => S["Email Template Task"];
+msgctxt "StatCan.OrchardCore.EmailTemplates.Workflows.Activities.EmailTemplateTask"
+msgid "Email Template Task"
+msgstr "Tâche de modèle de courriel"
+
+#: StatCan.OrchardCore.EmailTemplates\Workflows\Activities\EmailTemplateTask.cs:64
+#. public override LocalizedString Category => S["Messaging"];
+msgctxt "StatCan.OrchardCore.EmailTemplates.Workflows.Activities.EmailTemplateTask"
+msgid "Messaging"
+msgstr "Messagerie"
+
+#: StatCan.OrchardCore.EmailTemplates\Workflows\Activities\EmailTemplateTask.cs:68
+#. return Outcomes(S["Done"], S["Failed"]);
+msgctxt "StatCan.OrchardCore.EmailTemplates.Workflows.Activities.EmailTemplateTask"
+msgid "Done"
+msgstr "Fait"
+
+#: StatCan.OrchardCore.EmailTemplates\Workflows\Activities\EmailTemplateTask.cs:68
+#. return Outcomes(S["Done"], S["Failed"]);
+msgctxt "StatCan.OrchardCore.EmailTemplates.Workflows.Activities.EmailTemplateTask"
+msgid "Failed"
+msgstr "Manqué"
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplatePart.cshtml:12
+#. @T["Email Templates"]
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplatePart"
+msgid "Email Templates"
+msgstr "Modèles de courriel"
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplatePartSettings.Edit.cshtml:46
+#. label="displayText" placeholder="@T["Select Email Templates"]"
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplatePartSettings.Edit"
+msgid "Select Email Templates"
+msgstr "Sélectionnez les modèles de courriel"
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplatePartSettings.Edit.cshtml:51
+#. select-label="@T["Select"]" deselect-label="@T["Remove"]">
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplatePartSettings.Edit"
+msgid "Select"
+msgstr "Sélectionner"
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplatePartSettings.Edit.cshtml:51
+#. select-label="@T["Select"]" deselect-label="@T["Remove"]">
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplatePartSettings.Edit"
+msgid "Remove"
+msgstr "Supprimer"
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplatePartSettings.Edit.cshtml:56
+#. @T["No result found"]
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplatePartSettings.Edit"
+msgid "No result found"
+msgstr "Aucun résultat trouvé"
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\Create.cshtml:16
+#. <h1>@RenderTitleSegments(T["Create Template"])</h1>
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.Create"
+msgid "Create Template"
+msgstr "Créer un modèle"
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\Create.cshtml:22
+#. <label asp-for="Name">@T["Name"]</label>
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.Create"
+msgid "Name"
+msgstr "Nom"
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\Create.cshtml:25
+#. <span class="hint">@T["The name of the template."]</span>
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.Create"
+msgid "The name of the template."
+msgstr "Le nom du modèle."
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\Create.cshtml:29
+#. <label asp-for="Description">@T["Description"]</label>
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.Create"
+msgid "Description"
+msgstr "La description"
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\Create.cshtml:31
+#. <span class="hint">@T["The description of the template."]</span>
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.Create"
+msgid "The description of the template."
+msgstr "La description du modèle."
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\Create.cshtml:36
+#. <label asp-for="AuthorExpression">@T["From"]</label>
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.Create"
+msgid "From"
+msgstr "De"
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\Create.cshtml:39
+#. <span class="hint">@T["The author's email address that defines who the email is from. Leave blank to use the configured email address. With Liquid support."]</span>
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.Create"
+msgid ""
+"The author's email address that defines who the email is from. Leave blank "
+"to use the configured email address. With Liquid support."
+msgstr ""
+"L'adresse courriel de l'auteur qui définit de qui provient l'courriel. Laissez "
+"vide pour utiliser l'adresse courriel configurée. Avec support liquide."
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\Create.cshtml:43
+#. <label asp-for="SenderExpression">@T["Sender"]</label>
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.Create"
+msgid "Sender"
+msgstr "Expéditeur"
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\Create.cshtml:46
+#. <span class="hint">@T["The sender's email address. Required if not the same than the \"From\" email address. With Liquid support."]</span>
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.Create"
+msgid ""
+"The sender's email address. Required if not the same than the \"From\" "
+"email address. With Liquid support."
+msgstr ""
+"L'adresse courriel de l'expéditeur. Obligatoire si elle n'est pas la même que "
+"l'adresse courriel «De». Avec support liquide."
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\Create.cshtml:50
+#. <label asp-for="SenderExpression">@T["ReplyTo"]</label>
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.Create"
+msgid "ReplyTo"
+msgstr "Répondre à"
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\Create.cshtml:53
+#. <span class="hint">@T["The \"reply to\" email address. Required if you want email replies be sent to a different address than the \"From\" address. With Liquid support."]</span>
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.Create"
+msgid ""
+"The \"reply to\" email address. Required if you want email replies be sent "
+"to a different address than the \"From\" address. With Liquid support."
+msgstr ""
+"L'adresse courriel \"Répondre à\". Obligatoire si vous souhaitez que les "
+"réponses par courriel soient envoyées à une adresse différente de l'adresse "
+"\"De\" Avec support liquide."
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\Create.cshtml:57
+#. <label asp-for="RecipientsExpression">@T["Recipients"]</label>
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.Create"
+msgid "Recipients"
+msgstr "Bénéficiaires"
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\Create.cshtml:60
+#. <span class="hint">@T["The comma-separated list of recipient email addresses. With Liquid support."]</span>
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.Create"
+msgid "The comma-separated list of recipient email addresses. With Liquid support."
+msgstr ""
+"La liste des adresses courriel des destinataires, séparées par des virgules. "
+"Avec support liquide."
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\Create.cshtml:64
+#. <label asp-for="CCExpression">@T["CC"]</label>
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.Create"
+msgid "CC"
+msgstr "CC"
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\Create.cshtml:67
+#. <span class="hint">@T["The comma-separated list of CC recipient email addresses. With Liquid support."]</span>
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.Create"
+msgid ""
+"The comma-separated list of CC recipient email addresses. With Liquid "
+"support."
+msgstr ""
+"Liste des adresses courriel des destinataires CC, séparées par des virgules. "
+"Avec support liquide."
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\Create.cshtml:71
+#. <label asp-for="BCCExpression">@T["BCC"]</label>
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.Create"
+msgid "BCC"
+msgstr "BCC"
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\Create.cshtml:74
+#. <span class="hint">@T["The comma-separated list of BCC recipient email addresses. With Liquid support."]</span>
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.Create"
+msgid ""
+"The comma-separated list of BCC recipient email addresses. With Liquid "
+"support."
+msgstr ""
+"Liste des adresses courriel des destinataires Cci, séparées par des virgules. "
+"Avec support liquide."
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\Create.cshtml:78
+#. <label asp-for="SubjectExpression">@T["Subject"]</label>
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.Create"
+msgid "Subject"
+msgstr "Matière"
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\Create.cshtml:81
+#. <span class="hint">@T["The subject of the email message. With Liquid support."]</span>
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.Create"
+msgid "The subject of the email message. With Liquid support."
+msgstr "L'objet du message électronique. Avec support liquide."
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\Create.cshtml:85
+#. <label asp-for="Body">@T["Body"]</label>
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.Create"
+msgid "Body"
+msgstr "Corps"
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\Create.cshtml:88
+#. <span class="hint">@T["The body of the email message. With Liquid support."]</span>
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.Create"
+msgid "The body of the email message. With Liquid support."
+msgstr "Le corps du message électronique. Avec support liquide."
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\Create.cshtml:94
+#. <label class="custom-control-label" asp-for="IsBodyHtml">@T["Does the Body contain HTML?"]</label>
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.Create"
+msgid "Does the Body contain HTML?"
+msgstr "Le corps contient-il du HTML?"
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\Create.cshtml:95
+#. <span class="hint dashed">@T["If checked, indicates the body of the email message is HTML. If unchecked, indicates the body of the email message is plain text."]</span>
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.Create"
+msgid ""
+"If checked, indicates the body of the email message is HTML. If unchecked, "
+"indicates the body of the email message is plain text."
+msgstr ""
+"Si coché, indique que le corps du message électronique est HTML. Si elle "
+"n'est pas cochée, indique que le corps du message électronique est en texte "
+"brut."
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\Create.cshtml:103
+#. <button type="submit" name="submit" class="btn btn-primary save">@T["Save"]</button>
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.Create"
+msgid "Save"
+msgstr "Sauvegarder"
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\Create.cshtml:105
+#. <span class="sr-only">@T["Toggle Dropdown"]</span>
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.Create"
+msgid "Toggle Dropdown"
+msgstr "Basculer la liste déroulante"
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\Create.cshtml:108
+#. <button class="dropdown-item save-continue" name="submit" type="submit" value="SaveAndContinue">@T["and continue"]</button>
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.Create"
+msgid "and continue"
+msgstr "et continue"
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\Create.cshtml:114
+#. <a class="btn btn-secondary cancel" role="button" href="@returnUrl">@T["Cancel"]</a>
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.Create"
+msgid "Cancel"
+msgstr "Annuler"
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\Edit.cshtml:19
+#. <h1>@RenderTitleSegments(T["Edit Template"])</h1>
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.Edit"
+msgid "Edit Template"
+msgstr "Modifier le modèle"
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\Edit.cshtml:26
+#. <label asp-for="Name">@T["Name"]</label>
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.Edit"
+msgid "Name"
+msgstr "Nom"
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\Edit.cshtml:29
+#. <span class="hint">@T["The name of the template."]</span>
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.Edit"
+msgid "The name of the template."
+msgstr "Le nom du modèle."
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\Edit.cshtml:33
+#. <label asp-for="Description">@T["Description"]</label>
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.Edit"
+msgid "Description"
+msgstr "La description"
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\Edit.cshtml:35
+#. <span class="hint">@T["The description of the template."]</span>
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.Edit"
+msgid "The description of the template."
+msgstr "La description du modèle."
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\Edit.cshtml:40
+#. <label asp-for="AuthorExpression">@T["From"]</label>
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.Edit"
+msgid "From"
+msgstr "De"
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\Edit.cshtml:43
+#. <span class="hint">@T["The author's email address that defines who the email is from. Leave blank to use the configured email address. With Liquid support."]</span>
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.Edit"
+msgid ""
+"The author's email address that defines who the email is from. Leave blank "
+"to use the configured email address. With Liquid support."
+msgstr ""
+"L'adresse courriel de l'auteur qui définit de qui provient l'courriel. Laissez "
+"vide pour utiliser l'adresse courriel configurée. Avec support liquide."
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\Edit.cshtml:47
+#. <label asp-for="SenderExpression">@T["Sender"]</label>
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.Edit"
+msgid "Sender"
+msgstr "Expéditeur"
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\Edit.cshtml:50
+#. <span class="hint">@T["The sender's email address. Required if not the same than the \"From\" email address. With Liquid support."]</span>
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.Edit"
+msgid ""
+"The sender's email address. Required if not the same than the \"From\" "
+"email address. With Liquid support."
+msgstr ""
+"L'adresse courriel de l'expéditeur. Obligatoire si elle n'est pas la même que "
+"l'adresse courriel «De». Avec support liquide."
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\Edit.cshtml:54
+#. <label asp-for="SenderExpression">@T["ReplyTo"]</label>
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.Edit"
+msgid "ReplyTo"
+msgstr "Répondre à"
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\Edit.cshtml:57
+#. <span class="hint">@T["The \"reply to\" email address. Required if you want email replies be sent to a different address than the \"From\" address. With Liquid support."]</span>
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.Edit"
+msgid ""
+"The \"reply to\" email address. Required if you want email replies be sent "
+"to a different address than the \"From\" address. With Liquid support."
+msgstr ""
+"L'adresse courriel \"Répondre à\". Obligatoire si vous souhaitez que les "
+"réponses par courriel soient envoyées à une adresse différente de l'adresse "
+"\"De\" Avec support liquide."
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\Edit.cshtml:61
+#. <label asp-for="RecipientsExpression">@T["Recipients"]</label>
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.Edit"
+msgid "Recipients"
+msgstr "Bénéficiaires"
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\Edit.cshtml:64
+#. <span class="hint">@T["The comma-separated list of recipient email addresses. With Liquid support."]</span>
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.Edit"
+msgid "The comma-separated list of recipient email addresses. With Liquid support."
+msgstr ""
+"La liste des adresses courriel des destinataires, séparées par des virgules. "
+"Avec support liquide."
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\Edit.cshtml:68
+#. <label asp-for="CCExpression">@T["CC"]</label>
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.Edit"
+msgid "CC"
+msgstr "CC"
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\Edit.cshtml:71
+#. <span class="hint">@T["The comma-separated list of CC recipient email addresses. With Liquid support."]</span>
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.Edit"
+msgid ""
+"The comma-separated list of CC recipient email addresses. With Liquid "
+"support."
+msgstr ""
+"Liste des adresses courriel des destinataires CC, séparées par des virgules. "
+"Avec support liquide."
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\Edit.cshtml:75
+#. <label asp-for="BCCExpression">@T["BCC"]</label>
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.Edit"
+msgid "BCC"
+msgstr "BCC"
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\Edit.cshtml:78
+#. <span class="hint">@T["The comma-separated list of BCC recipient email addresses. With Liquid support."]</span>
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.Edit"
+msgid ""
+"The comma-separated list of BCC recipient email addresses. With Liquid "
+"support."
+msgstr ""
+"Liste des adresses courriel des destinataires Cci, séparées par des virgules. "
+"Avec support liquide."
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\Edit.cshtml:82
+#. <label asp-for="SubjectExpression">@T["Subject"]</label>
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.Edit"
+msgid "Subject"
+msgstr "Matière"
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\Edit.cshtml:85
+#. <span class="hint">@T["The subject of the email message. With Liquid support."]</span>
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.Edit"
+msgid "The subject of the email message. With Liquid support."
+msgstr "L'objet du message électronique. Avec support liquide."
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\Edit.cshtml:89
+#. <label asp-for="Body">@T["Body"]</label>
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.Edit"
+msgid "Body"
+msgstr "Corps"
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\Edit.cshtml:92
+#. <span class="hint">@T["The body of the email message. With Liquid support."]</span>
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.Edit"
+msgid "The body of the email message. With Liquid support."
+msgstr "Le corps du message électronique. Avec support liquide."
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\Edit.cshtml:98
+#. <label class="custom-control-label" asp-for="IsBodyHtml">@T["Does the Body contain HTML?"]</label>
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.Edit"
+msgid "Does the Body contain HTML?"
+msgstr "Le corps contient-il du HTML?"
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\Edit.cshtml:99
+#. <span class="hint dashed">@T["If checked, indicates the body of the email message is HTML. If unchecked, indicates the body of the email message is plain text."]</span>
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.Edit"
+msgid ""
+"If checked, indicates the body of the email message is HTML. If unchecked, "
+"indicates the body of the email message is plain text."
+msgstr ""
+"Si coché, indique que le corps du message électronique est HTML. Si elle "
+"n'est pas cochée, indique que le corps du message électronique est en texte "
+"brut."
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\Edit.cshtml:105
+#. <button type="submit" name="submit" class="btn btn-primary save">@T["Save"]</button>
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.Edit"
+msgid "Save"
+msgstr "Sauvegarder"
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\Edit.cshtml:107
+#. <span class="sr-only">@T["Toggle Dropdown"]</span>
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.Edit"
+msgid "Toggle Dropdown"
+msgstr "Basculer la liste déroulante"
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\Edit.cshtml:110
+#. <button class="dropdown-item save-continue" name="submit" type="submit" value="SaveAndContinue">@T["and continue"]</button>
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.Edit"
+msgid "and continue"
+msgstr "et continue"
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\Edit.cshtml:116
+#. <a class="btn btn-secondary cancel" role="button" href="@returnUrl">@T["Cancel"]</a>
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.Edit"
+msgid "Cancel"
+msgstr "Annuler"
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\Index.cshtml:8
+#. <h1>@RenderTitleSegments(T["Email Templates"])</h1>
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.Index"
+msgid "Email Templates"
+msgstr "Modèles de courriel"
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\Index.cshtml:21
+#. <span class="input-group-text bg-secondary text-light">@T["Filter"]</span>
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.Index"
+msgid "Filter"
+msgstr "Filtre"
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\Index.cshtml:23
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\Index.cshtml:25
+#. <input asp-for="Options.Search" class="form-control" placeholder="@T["Search"]" type="search" autofocus />
+#. <button type="submit" class="btn btn-sm btn-secondary">@T["Search"]</button>
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.Index"
+msgid "Search"
+msgstr "Rechercher"
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\Index.cshtml:29
+#. <a asp-route-action="Create" asp-route-returnUrl="@FullRequestPath" class="btn btn-sm btn-secondary float-right create" role="button">@T["Add Email Template"]</a>
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.Index"
+msgid "Add Email Template"
+msgstr "Ajouter un modèle de courriel"
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\Index.cshtml:42
+#. <label class="custom-control-label" for="select-all" id="select-all-label" title="@T["Select All"]"></label>
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.Index"
+msgid "Select All"
+msgstr "Tout sélectionner"
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\Index.cshtml:43
+#. <label id="items" for="select-all">@T.Plural(Model.Templates.Count, "1 item", "{0} items")<span class="text-muted" title="@T["Items {0} to {1}", startIndex, endIndex]">@T.Plural((int)Model.Pager.TotalItemCount, " / {0} item in total", " / {0} items in total")</span></label>
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.Index"
+msgid "1 item"
+msgid_plural "{0} items"
+msgstr[0] "1 article"
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\Index.cshtml:43
+#. <label id="items" for="select-all">@T.Plural(Model.Templates.Count, "1 item", "{0} items")<span class="text-muted" title="@T["Items {0} to {1}", startIndex, endIndex]">@T.Plural((int)Model.Pager.TotalItemCount, " / {0} item in total", " / {0} items in total")</span></label>
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.Index"
+msgid "Items {0} to {1}"
+msgstr "Éléments {0} à {1}"
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\Index.cshtml:43
+#. <label id="items" for="select-all">@T.Plural(Model.Templates.Count, "1 item", "{0} items")<span class="text-muted" title="@T["Items {0} to {1}", startIndex, endIndex]">@T.Plural((int)Model.Pager.TotalItemCount, " / {0} item in total", " / {0} items in total")</span></label>
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.Index"
+msgid " / {0} item in total"
+msgid_plural " / {0} items in total"
+msgstr[0] " / {0} élément au total"
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\Index.cshtml:50
+#. @T["Actions"]
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.Index"
+msgid "Actions"
+msgstr "Actions"
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\Index.cshtml:55
+#. <a class="dropdown-item" href="javascript:void(0)" data-action="@item.Value" data-title="@T["Bulk Action"]" data-message="@T["Are you sure you want to {0} these items?", @item.Text.ToLower()]">@item.Text</a>
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.Index"
+msgid "Bulk Action"
+msgstr "Action en masse"
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\Index.cshtml:55
+#. <a class="dropdown-item" href="javascript:void(0)" data-action="@item.Value" data-title="@T["Bulk Action"]" data-message="@T["Are you sure you want to {0} these items?", @item.Text.ToLower()]">@item.Text</a>
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.Index"
+msgid "Are you sure you want to {0} these items?"
+msgstr "Voulez-vous vraiment {0} ces éléments?"
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\Index.cshtml:71
+#. <a asp-action="SendEmail" asp-route-id="@entry.Id" asp-route-returnUrl="@FullRequestPath" class="btn btn-primary btn-sm">@T["Send Email"]</a>
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.Index"
+msgid "Send Email"
+msgstr "Envoyer un courriel"
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\Index.cshtml:72
+#. <a asp-action="Edit" asp-route-id="@entry.Id" asp-route-returnUrl="@FullRequestPath" class="btn btn-primary btn-sm">@T["Edit"]</a>
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.Index"
+msgid "Edit"
+msgstr "Éditer"
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\Index.cshtml:73
+#. <a asp-action="Delete" asp-route-id="@entry.Id" asp-route-returnUrl="@FullRequestPath" class="btn btn-danger btn-sm" itemprop="RemoveUrl UnsafeUrl">@T["Delete"]</a>
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.Index"
+msgid "Delete"
+msgstr "Effacer"
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\Index.cshtml:88
+#. @T["<strong>Nothing here!</strong> There are no templates for the moment."]
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.Index"
+msgid "<strong>Nothing here!</strong> There are no templates for the moment."
+msgstr "<strong>Rien ici!</strong> Il n&#39;y a pas de modèles pour le moment."
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\Index.cshtml:137
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\Index.cshtml:148
+#. selectedItems.text($(":checkbox[name='itemIds']:checked").length + ' @T["selected"]');
+#. selectedItems.text(selectedItemsCount + ' @T["selected"]');
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.Index"
+msgid "selected"
+msgstr "choisi"
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\SendEmail.cshtml:3
+#. <h1>@RenderTitleSegments(T["Send email from {0} template", Model.Name])</h1>
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.SendEmail"
+msgid "Send email from {0} template"
+msgstr "Envoyer un courriel à partir du modèle {0}"
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\SendEmail.cshtml:11
+#. <label asp-for="Author">@T["From"]</label>
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.SendEmail"
+msgid "From"
+msgstr "De"
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\SendEmail.cshtml:14
+#. <span class="hint">@T["The author's email address that defines who the email is from. Leave blank to use the configured email address."]</span>
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.SendEmail"
+msgid ""
+"The author's email address that defines who the email is from. Leave blank "
+"to use the configured email address."
+msgstr ""
+"L'adresse courriel de l'auteur qui définit de qui provient l'courriel. Laissez "
+"vide pour utiliser l'adresse courriel configurée."
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\SendEmail.cshtml:18
+#. <label asp-for="Sender">@T["Sender"]</label>
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.SendEmail"
+msgid "Sender"
+msgstr "Expéditeur"
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\SendEmail.cshtml:21
+#. <span class="hint">@T["The sender's email address. Required if not the same than the \"From\" email address."]</span>
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.SendEmail"
+msgid ""
+"The sender's email address. Required if not the same than the \"From\" "
+"email address."
+msgstr ""
+"L'adresse courriel de l'expéditeur. Obligatoire si elle n'est pas la même que "
+"l'adresse courriel «De»."
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\SendEmail.cshtml:25
+#. <label asp-for="ReplyTo">@T["ReplyTo"]</label>
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.SendEmail"
+msgid "ReplyTo"
+msgstr "Répondre à"
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\SendEmail.cshtml:28
+#. <span class="hint">@T["The \"reply to\" email address. Required if you want email replies be sent to a different address than the \"From\" address."]</span>
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.SendEmail"
+msgid ""
+"The \"reply to\" email address. Required if you want email replies be sent "
+"to a different address than the \"From\" address."
+msgstr ""
+"L'adresse courriel \"Répondre à\". Obligatoire si vous souhaitez que les "
+"réponses par courriel soient envoyées à une adresse différente de l'adresse "
+"\"De\""
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\SendEmail.cshtml:32
+#. <label asp-for="Recipients">@T["Recipients"]</label>
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.SendEmail"
+msgid "Recipients"
+msgstr "Bénéficiaires"
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\SendEmail.cshtml:35
+#. <span class="hint">@T["The comma-separated list of recipient email addresses."]</span>
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.SendEmail"
+msgid "The comma-separated list of recipient email addresses."
+msgstr "La liste des adresses courriel des destinataires, séparées par des virgules."
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\SendEmail.cshtml:39
+#. <label asp-for="CC">@T["CC"]</label>
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.SendEmail"
+msgid "CC"
+msgstr "CC"
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\SendEmail.cshtml:42
+#. <span class="hint">@T["The comma-separated list of CC recipient email addresses."]</span>
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.SendEmail"
+msgid "The comma-separated list of CC recipient email addresses."
+msgstr "Liste des adresses courriel des destinataires CC, séparées par des virgules."
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\SendEmail.cshtml:46
+#. <label asp-for="BCC">@T["BCC"]</label>
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.SendEmail"
+msgid "BCC"
+msgstr "BCC"
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\SendEmail.cshtml:49
+#. <span class="hint">@T["The comma-separated list of BCC recipient email addresses."]</span>
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.SendEmail"
+msgid "The comma-separated list of BCC recipient email addresses."
+msgstr "Liste des adresses courriel des destinataires Cci, séparées par des virgules."
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\SendEmail.cshtml:53
+#. <label asp-for="Subject">@T["Subject"]</label>
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.SendEmail"
+msgid "Subject"
+msgstr "Matière"
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\SendEmail.cshtml:56
+#. <span class="hint">@T["The subject of the email message."]</span>
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.SendEmail"
+msgid "The subject of the email message."
+msgstr "L'objet du message électronique."
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\SendEmail.cshtml:60
+#. <label asp-for="Body">@T["Body"]</label>
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.SendEmail"
+msgid "Body"
+msgstr "Corps"
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\SendEmail.cshtml:63
+#. <span class="hint">@T["The body of the email message."]</span>
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.SendEmail"
+msgid "The body of the email message."
+msgstr "Le corps du message électronique."
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\SendEmail.cshtml:69
+#. <label class="custom-control-label" asp-for="IsBodyHtml">@T["Does the Body contain HTML?"]</label>
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.SendEmail"
+msgid "Does the Body contain HTML?"
+msgstr "Le corps contient-il du HTML?"
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\SendEmail.cshtml:70
+#. <span class="hint dashed">@T["If checked, indicates the body of the email message is HTML. If unchecked, indicates the body of the email message is plain text."]</span>
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.SendEmail"
+msgid ""
+"If checked, indicates the body of the email message is HTML. If unchecked, "
+"indicates the body of the email message is plain text."
+msgstr ""
+"Si coché, indique que le corps du message électronique est HTML. Si elle "
+"n'est pas cochée, indique que le corps du message électronique est en texte "
+"brut."
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\SendEmail.cshtml:75
+#. <button type="submit" class="btn btn-primary">@T["Send"]</button>
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.SendEmail"
+msgid "Send"
+msgstr "Envoyer"
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\SendEmail.cshtml:76
+#. <a asp-action="Index" class="btn btn-secondary cancel" role="button">@T["Cancel"]</a>
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.SendEmail"
+msgid "Cancel"
+msgstr "Annuler"
+
+#: StatCan.OrchardCore.EmailTemplates\Views\Items\AllEmailTemplatesDeploymentStep.Edit.cshtml:3
+#. <h5>@T["All Email Templates"]</h5>
+msgctxt ""
+"StatCan.OrchardCore.EmailTemplates.Views.Items."
+"AllEmailTemplatesDeploymentStep.Edit"
+msgid "All Email Templates"
+msgstr "Tous les modèles de courriel"
+
+#: StatCan.OrchardCore.EmailTemplates\Views\Items\AllEmailTemplatesDeploymentStep.Summary.cshtml:3
+#. <h5>@T["All Email Templates"]</h5>
+msgctxt ""
+"StatCan.OrchardCore.EmailTemplates.Views.Items."
+"AllEmailTemplatesDeploymentStep.Summary"
+msgid "All Email Templates"
+msgstr "Tous les modèles de courriel"
+
+#: StatCan.OrchardCore.EmailTemplates\Views\Items\AllEmailTemplatesDeploymentStep.Summary.cshtml:5
+#. <span class="hint">@T["Adds all email templates to the plan."]</span>
+msgctxt ""
+"StatCan.OrchardCore.EmailTemplates.Views.Items."
+"AllEmailTemplatesDeploymentStep.Summary"
+msgid "Adds all email templates to the plan."
+msgstr "Ajoute tous les modèles de courriel au plan."
+
+#: StatCan.OrchardCore.EmailTemplates\Views\Items\AllEmailTemplatesDeploymentStep.Thumbnail.cshtml:3
+#. <h4 class="card-title">@T["All Email Templates"]</h4>
+msgctxt ""
+"StatCan.OrchardCore.EmailTemplates.Views.Items."
+"AllEmailTemplatesDeploymentStep.Thumbnail"
+msgid "All Email Templates"
+msgstr "Tous les modèles de courriel"
+
+#: StatCan.OrchardCore.EmailTemplates\Views\Items\AllEmailTemplatesDeploymentStep.Thumbnail.cshtml:4
+#. <p>@T["Exports Email templates."]</p>
+msgctxt ""
+"StatCan.OrchardCore.EmailTemplates.Views.Items."
+"AllEmailTemplatesDeploymentStep.Thumbnail"
+msgid "Exports Email templates."
+msgstr "Exporte des modèles de courriel."
+
+#: StatCan.OrchardCore.EmailTemplates\Views\Items\EmailTemplateTask.Fields.Design.cshtml:6
+#. <h4><i class="fa fa-envelope"></i>@Model.Activity.GetTitleOrDefault(() => T["Send Email With Template"])</h4>
+msgctxt ""
+"StatCan.OrchardCore.EmailTemplates.Views.Items.EmailTemplateTask.Fields."
+"Design"
+msgid "Send Email With Template"
+msgstr "Envoyer un courriel avec un modèle"
+
+#: StatCan.OrchardCore.EmailTemplates\Views\Items\EmailTemplateTask.Fields.Edit.cshtml:12
+#. <label asp-for="TemplateModelExpression">@T["Template Model Expression"]</label>
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.Items.EmailTemplateTask.Fields.Edit"
+msgid "Template Model Expression"
+msgstr "Expression du modèle de modèle"
+
+#: StatCan.OrchardCore.EmailTemplates\Views\Items\EmailTemplateTask.Fields.Edit.cshtml:15
+#. <span class="hint">@T["JavaScript expression that returns an object that will be used as the model of the template."]</span>
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.Items.EmailTemplateTask.Fields.Edit"
+msgid ""
+"JavaScript expression that returns an object that will be used as the model "
+"of the template."
+msgstr ""
+"Expression JavaScript qui renvoie un objet qui sera utilisé comme modèle du "
+"modèle."
+
+#: StatCan.OrchardCore.EmailTemplates\Views\Items\EmailTemplateTask.Fields.Thumbnail.cshtml:1
+#. <h4 class="card-title"><i class="fa fa-envelope"></i>@T["Send Email With Template"]</h4>
+msgctxt ""
+"StatCan.OrchardCore.EmailTemplates.Views.Items.EmailTemplateTask.Fields."
+"Thumbnail"
+msgid "Send Email With Template"
+msgstr "Envoyer un courriel avec un modèle"
+
+#: StatCan.OrchardCore.EmailTemplates\Views\Items\EmailTemplateTask.Fields.Thumbnail.cshtml:2
+#. <p>@T["Send an email with a template."]</p>
+msgctxt ""
+"StatCan.OrchardCore.EmailTemplates.Views.Items.EmailTemplateTask.Fields."
+"Thumbnail"
+msgid "Send an email with a template."
+msgstr "Envoyez un courriel avec un modèle."

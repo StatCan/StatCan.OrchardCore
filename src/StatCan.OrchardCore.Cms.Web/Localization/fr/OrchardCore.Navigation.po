@@ -10,38 +10,38 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
-"PO-Revision-Date: 2020-11-10 07:27\n"
+"PO-Revision-Date: 2021-04-14 09:13\n"
 
 #. var firstText = FirstText ?? S["<<"];
-#: OrchardCore.Navigation\PagerShapes.cs:191
+#: OrchardCore.Navigation\PagerShapes.cs:181
 msgctxt "OrchardCore.Navigation.PagerShapes"
 msgid "<<"
 msgstr "<<"
 
 #. var previousText = PreviousText ?? S["<"];
 #. var previousText = PreviousText ?? S["<"];
-#: OrchardCore.Navigation\PagerShapes.cs:192
-#: OrchardCore.Navigation\PagerShapes.cs:378
+#: OrchardCore.Navigation\PagerShapes.cs:182
+#: OrchardCore.Navigation\PagerShapes.cs:394
 msgctxt "OrchardCore.Navigation.PagerShapes"
 msgid "<"
 msgstr "<"
 
 #. var nextText = NextText ?? S[">"];
 #. var nextText = NextText ?? S[">"];
-#: OrchardCore.Navigation\PagerShapes.cs:193
-#: OrchardCore.Navigation\PagerShapes.cs:379
+#: OrchardCore.Navigation\PagerShapes.cs:183
+#: OrchardCore.Navigation\PagerShapes.cs:395
 msgctxt "OrchardCore.Navigation.PagerShapes"
 msgid ">"
 msgstr ">"
 
 #. var lastText = LastText ?? S[">>"];
-#: OrchardCore.Navigation\PagerShapes.cs:194
+#: OrchardCore.Navigation\PagerShapes.cs:184
 msgctxt "OrchardCore.Navigation.PagerShapes"
 msgid ">>"
 msgstr ">>"
 
 #. var gapText = GapText ?? S["..."];
-#: OrchardCore.Navigation\PagerShapes.cs:195
+#: OrchardCore.Navigation\PagerShapes.cs:185
 msgctxt "OrchardCore.Navigation.PagerShapes"
 msgid "..."
 msgstr "..."
