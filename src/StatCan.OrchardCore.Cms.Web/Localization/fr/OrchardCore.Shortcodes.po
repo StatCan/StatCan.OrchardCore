@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
-"PO-Revision-Date: 2020-11-10 07:27\n"
+"PO-Revision-Date: 2021-04-14 09:13\n"
 
 #. .Add(S["Design"], design => design
 #: OrchardCore.ShortCodes\AdminMenu.cs:25
@@ -24,41 +24,63 @@ msgctxt "OrchardCore.Shortcodes.AdminMenu"
 msgid "Shortcodes"
 msgstr "Shortcodes"
 
+#. new SelectListItem() { Text = S["Delete"], Value = nameof(ContentsBulkAction.Remove) }
+#: OrchardCore.ShortCodes\Controllers\AdminController.cs:94
+msgctxt "OrchardCore.Shortcodes.Controllers.AdminController"
+msgid "Delete"
+msgstr "Supprimer"
+
 #. ModelState.AddModelError(nameof(ShortcodeTemplateViewModel.Name), S["The name is mandatory."]);
 #. ModelState.AddModelError(nameof(ShortcodeTemplateViewModel.Name), S["The name is mandatory."]);
-#: OrchardCore.ShortCodes\Controllers\AdminController.cs:104
-#: OrchardCore.ShortCodes\Controllers\AdminController.cs:200
+#: OrchardCore.ShortCodes\Controllers\AdminController.cs:131
+#: OrchardCore.ShortCodes\Controllers\AdminController.cs:232
 msgctxt "OrchardCore.Shortcodes.Controllers.AdminController"
 msgid "The name is mandatory."
 msgstr "Le nom est obligatoire."
 
-#. ModelState.AddModelError(nameof(ShortcodeTemplateViewModel.Content), S["The template content is mandatory."]);
-#. ModelState.AddModelError(nameof(ShortcodeTemplateViewModel.Content), S["The template content is mandatory."]);
-#: OrchardCore.ShortCodes\Controllers\AdminController.cs:108
-#: OrchardCore.ShortCodes\Controllers\AdminController.cs:204
+#. ModelState.AddModelError(nameof(ShortcodeTemplateViewModel.Name), S["The name contains invalid characters."]);
+#. ModelState.AddModelError(nameof(ShortcodeTemplateViewModel.Name), S["The name contains invalid characters."]);
+#: OrchardCore.ShortCodes\Controllers\AdminController.cs:135
+#: OrchardCore.ShortCodes\Controllers\AdminController.cs:236
 msgctxt "OrchardCore.Shortcodes.Controllers.AdminController"
-msgid "The template content is mandatory."
-msgstr "Le contenu du modèle est obligatoire."
-
-#. ModelState.AddModelError(nameof(ShortcodeTemplateViewModel.Content), S["The template doesn't contain a valid Liquid expression. Details: {0}", string.Join(" ", errors)]);
-#. ModelState.AddModelError(nameof(ShortcodeTemplateViewModel.Content), S["The template doesn't contain a valid Liquid expression. Details: {0}", string.Join(" ", errors)]);
-#: OrchardCore.ShortCodes\Controllers\AdminController.cs:112
-#: OrchardCore.ShortCodes\Controllers\AdminController.cs:208
-msgctxt "OrchardCore.Shortcodes.Controllers.AdminController"
-msgid "The template doesn't contain a valid Liquid expression. Details: {0}"
-msgstr "Le modèle ne contient pas d'expression Liquid valide. Détails : {0}"
+msgid "The name contains invalid characters."
+msgstr "Le nom contient des caractères invalides."
 
 #. ModelState.AddModelError(nameof(ShortcodeTemplateViewModel.Name), S["A template with the same name already exists."]);
-#: OrchardCore.ShortCodes\Controllers\AdminController.cs:120
+#. ModelState.AddModelError(nameof(ShortcodeTemplateViewModel.Name), S["A template with the same name already exists."]);
+#: OrchardCore.ShortCodes\Controllers\AdminController.cs:143
+#: OrchardCore.ShortCodes\Controllers\AdminController.cs:241
 msgctxt "OrchardCore.Shortcodes.Controllers.AdminController"
 msgid "A template with the same name already exists."
 msgstr "Un template avec le même nom existe déjà."
 
-#. _notifier.Success(H["Template deleted successfully"]);
-#: OrchardCore.ShortCodes\Controllers\AdminController.cs:254
+#. ModelState.AddModelError(nameof(ShortcodeTemplateViewModel.Content), S["The template content is mandatory."]);
+#. ModelState.AddModelError(nameof(ShortcodeTemplateViewModel.Content), S["The template content is mandatory."]);
+#: OrchardCore.ShortCodes\Controllers\AdminController.cs:149
+#: OrchardCore.ShortCodes\Controllers\AdminController.cs:246
 msgctxt "OrchardCore.Shortcodes.Controllers.AdminController"
-msgid "Template deleted successfully"
-msgstr "Modèle supprimé avec succès"
+msgid "The template content is mandatory."
+msgstr "Le contenu du modèle est obligatoire."
+
+#. ModelState.AddModelError(nameof(ShortcodeTemplateViewModel.Content), S["The template doesn't contain a valid Liquid expression. Details: {0}", String.Join(" ", errors)]);
+#. ModelState.AddModelError(nameof(ShortcodeTemplateViewModel.Content), S["The template doesn't contain a valid Liquid expression. Details: {0}", String.Join(" ", errors)]);
+#: OrchardCore.ShortCodes\Controllers\AdminController.cs:153
+#: OrchardCore.ShortCodes\Controllers\AdminController.cs:250
+msgctxt "OrchardCore.Shortcodes.Controllers.AdminController"
+msgid "The template doesn't contain a valid Liquid expression. Details: {0}"
+msgstr "Le modèle ne contient pas d'expression Liquid valide. Détails : {0}"
+
+#. _notifier.Success(H["Shortcode template deleted successfully."]);
+#: OrchardCore.ShortCodes\Controllers\AdminController.cs:300
+msgctxt "OrchardCore.Shortcodes.Controllers.AdminController"
+msgid "Shortcode template deleted successfully."
+msgstr "Modèle de Shortcode supprimé avec succès."
+
+#. _notifier.Success(H["Shortcode templates successfully removed."]);
+#: OrchardCore.ShortCodes\Controllers\AdminController.cs:327
+msgctxt "OrchardCore.Shortcodes.Controllers.AdminController"
+msgid "Shortcode templates successfully removed."
+msgstr "Les modèles de Shortcode ont été supprimés avec succès."
 
 #. <button class="btn btn-primary btn-sm"  data-default-value="@Model.Value.DefaultValue" v-on:click="insertShortcode">@T["Add"]</button>
 #: OrchardCore.ShortCodes\Views\ShortcodeDescriptor-Button-Actions.SummaryAdmin.cshtml:2
@@ -67,26 +89,26 @@ msgid "Add"
 msgstr "Ajouter"
 
 #. <h5 class="modal-title" id="shortcodeModalLabel">@T["Available Shortcodes"]</h5>
-#: OrchardCore.ShortCodes\Views\ShortcodeModal.cshtml:41
+#: OrchardCore.ShortCodes\Views\ShortcodeModal.cshtml:42
 msgctxt "OrchardCore.ShortCodes.Views.ShortcodeModal"
 msgid "Available Shortcodes"
 msgstr "Shortcodes disponibles"
 
-#. <input class="form-control" type="search" placeholder="@T["Filter"]" aria-label="@T["Filter"]" v-model="filter" ref="filter" >
-#. <input class="form-control" type="search" placeholder="@T["Filter"]" aria-label="@T["Filter"]" v-model="filter" ref="filter" >
-#: OrchardCore.ShortCodes\Views\ShortcodeModal.cshtml:50
-#: OrchardCore.ShortCodes\Views\ShortcodeModal.cshtml:50
+#. <input class="form-control" type="search" placeholder="@T["Filter"]" aria-label="@T["Filter"]" v-model="filter" ref="filter" />
+#. <input class="form-control" type="search" placeholder="@T["Filter"]" aria-label="@T["Filter"]" v-model="filter" ref="filter" />
+#: OrchardCore.ShortCodes\Views\ShortcodeModal.cshtml:51
+#: OrchardCore.ShortCodes\Views\ShortcodeModal.cshtml:51
 msgctxt "OrchardCore.ShortCodes.Views.ShortcodeModal"
 msgid "Filter"
 msgstr "Filtrer"
 
 #. <button type="button" class="btn btn-secondary" data-dismiss="modal">@T["Cancel"]</button>
-#: OrchardCore.ShortCodes\Views\ShortcodeModal.cshtml:78
+#: OrchardCore.ShortCodes\Views\ShortcodeModal.cshtml:79
 msgctxt "OrchardCore.ShortCodes.Views.ShortcodeModal"
 msgid "Cancel"
 msgstr "Annuler"
 
-#. <h1>@RenderTitleSegments(T["Create Shortcode"])</h1>
+#. <zone Name="Title"><h1>@RenderTitleSegments(T["Create Shortcode"])</h1></zone>
 #: OrchardCore.ShortCodes\Views\Admin\Create.cshtml:36
 msgctxt "OrchardCore.ShortCodes.Views.Admin.Create"
 msgid "Create Shortcode"
@@ -178,10 +200,10 @@ msgctxt "OrchardCore.ShortCodes.Views.Admin.Create"
 msgid "Default Shortcode Value"
 msgstr "Valeur par défaut du Shortcode"
 
-#. <span class="hint">@T["The default value of the short code when selected. Defaults to [name]."]</span>
+#. <span class="hint">@T["The default value of the shortcode when selected. Defaults to [name]."]</span>
 #: OrchardCore.ShortCodes\Views\Admin\Create.cshtml:91
 msgctxt "OrchardCore.ShortCodes.Views.Admin.Create"
-msgid "The default value of the short code when selected. Defaults to [name]."
+msgid "The default value of the shortcode when selected. Defaults to [name]."
 msgstr "La valeur par défaut du shortcode lorsqu'il est sélectionné. Par défaut, [name]."
 
 #. <label asp-for="Content">@T["Content"]</label>
@@ -191,36 +213,36 @@ msgid "Content"
 msgstr "Contenu"
 
 #. <span class="hint">@T["The Shortcode Liquid template."]</span>
-#: OrchardCore.ShortCodes\Views\Admin\Create.cshtml:108
+#: OrchardCore.ShortCodes\Views\Admin\Create.cshtml:109
 msgctxt "OrchardCore.ShortCodes.Views.Admin.Create"
 msgid "The Shortcode Liquid template."
 msgstr "Le modèle Liquid du Shortcode."
 
-#. <button type="submit" name="submit" class="btn btn-success save">@T["Save"]</button>
-#: OrchardCore.ShortCodes\Views\Admin\Create.cshtml:115
+#. <button type="submit" name="submit" class="btn btn-primary save">@T["Save"]</button>
+#: OrchardCore.ShortCodes\Views\Admin\Create.cshtml:116
 msgctxt "OrchardCore.ShortCodes.Views.Admin.Create"
 msgid "Save"
 msgstr "Enregistrer"
 
 #. <span class="sr-only">@T["Toggle Dropdown"]</span>
-#: OrchardCore.ShortCodes\Views\Admin\Create.cshtml:117
+#: OrchardCore.ShortCodes\Views\Admin\Create.cshtml:118
 msgctxt "OrchardCore.ShortCodes.Views.Admin.Create"
 msgid "Toggle Dropdown"
 msgstr "Basculer la liste déroulante"
 
 #. <button class="dropdown-item save-continue" name="submit" type="submit" value="SaveAndContinue">@T["and continue"]</button>
-#: OrchardCore.ShortCodes\Views\Admin\Create.cshtml:120
+#: OrchardCore.ShortCodes\Views\Admin\Create.cshtml:121
 msgctxt "OrchardCore.ShortCodes.Views.Admin.Create"
 msgid "and continue"
 msgstr "et continuer"
 
 #. <a class="btn btn-secondary cancel" role="button" asp-route-action="Index">@T["Cancel"]</a>
-#: OrchardCore.ShortCodes\Views\Admin\Create.cshtml:124
+#: OrchardCore.ShortCodes\Views\Admin\Create.cshtml:125
 msgctxt "OrchardCore.ShortCodes.Views.Admin.Create"
 msgid "Cancel"
 msgstr "Annuler"
 
-#. <h1>@RenderTitleSegments(T["Edit Shortcode"])</h1>
+#. <zone Name="Title"><h1>@RenderTitleSegments(T["Edit Shortcode"])</h1></zone>
 #: OrchardCore.ShortCodes\Views\Admin\Edit.cshtml:37
 msgctxt "OrchardCore.ShortCodes.Views.Admin.Edit"
 msgid "Edit Shortcode"
@@ -312,10 +334,10 @@ msgctxt "OrchardCore.ShortCodes.Views.Admin.Edit"
 msgid "Default Shortcode Value"
 msgstr "Valeur par défaut du Shortcode"
 
-#. <span class="hint">@T["The default value of the short code when selected. Defaults to [name]."]</span>
+#. <span class="hint">@T["The default value of the shortcode when selected. Defaults to [name]."]</span>
 #: OrchardCore.ShortCodes\Views\Admin\Edit.cshtml:94
 msgctxt "OrchardCore.ShortCodes.Views.Admin.Edit"
-msgid "The default value of the short code when selected. Defaults to [name]."
+msgid "The default value of the shortcode when selected. Defaults to [name]."
 msgstr "La valeur par défaut du shortcode lorsqu'il est sélectionné. Par défaut, [name]."
 
 #. <label asp-for="Content">@T["Content"]</label>
@@ -325,49 +347,61 @@ msgid "Content"
 msgstr "Contenu"
 
 #. <span class="hint">@T["The Liquid template."]</span>
-#: OrchardCore.ShortCodes\Views\Admin\Edit.cshtml:117
+#: OrchardCore.ShortCodes\Views\Admin\Edit.cshtml:118
 msgctxt "OrchardCore.ShortCodes.Views.Admin.Edit"
 msgid "The Liquid template."
 msgstr "Le modèle Liquid."
 
-#. <button type="submit" name="submit" class="btn btn-success save">@T["Save"]</button>
-#: OrchardCore.ShortCodes\Views\Admin\Edit.cshtml:123
+#. <button type="submit" name="submit" class="btn btn-primary save">@T["Save"]</button>
+#: OrchardCore.ShortCodes\Views\Admin\Edit.cshtml:124
 msgctxt "OrchardCore.ShortCodes.Views.Admin.Edit"
 msgid "Save"
 msgstr "Enregistrer"
 
 #. <span class="sr-only">@T["Toggle Dropdown"]</span>
-#: OrchardCore.ShortCodes\Views\Admin\Edit.cshtml:125
+#: OrchardCore.ShortCodes\Views\Admin\Edit.cshtml:126
 msgctxt "OrchardCore.ShortCodes.Views.Admin.Edit"
 msgid "Toggle Dropdown"
 msgstr "Basculer la liste déroulante"
 
 #. <button class="dropdown-item save-continue" name="submit" type="submit" value="SaveAndContinue">@T["and continue"]</button>
-#: OrchardCore.ShortCodes\Views\Admin\Edit.cshtml:128
+#: OrchardCore.ShortCodes\Views\Admin\Edit.cshtml:129
 msgctxt "OrchardCore.ShortCodes.Views.Admin.Edit"
 msgid "and continue"
 msgstr "et continuer"
 
 #. <a class="btn btn-secondary cancel" role="button" asp-route-action="Index">@T["Cancel"]</a>
-#: OrchardCore.ShortCodes\Views\Admin\Edit.cshtml:132
+#: OrchardCore.ShortCodes\Views\Admin\Edit.cshtml:133
 msgctxt "OrchardCore.ShortCodes.Views.Admin.Edit"
 msgid "Cancel"
 msgstr "Annuler"
 
-#. <h1>@RenderTitleSegments(T["Shortcodes"])</h1>
-#: OrchardCore.ShortCodes\Views\Admin\Index.cshtml:12
+#. <zone Name="Title"><h1>@RenderTitleSegments(T["Shortcodes"])</h1></zone>
+#: OrchardCore.ShortCodes\Views\Admin\Index.cshtml:8
 msgctxt "OrchardCore.ShortCodes.Views.Admin.Index"
 msgid "Shortcodes"
 msgstr "Shortcodes"
 
-#. <a asp-route-action="Create" class="btn btn-primary" role="button">@T["Add Shortcode"]</a>
-#: OrchardCore.ShortCodes\Views\Admin\Index.cshtml:16
+#. <input asp-for="Options.Search" class="form-control" placeholder="@T["Search"]" type="search" autofocus />
+#: OrchardCore.ShortCodes\Views\Admin\Index.cshtml:21
+msgctxt "OrchardCore.ShortCodes.Views.Admin.Index"
+msgid "Search"
+msgstr "Recherche"
+
+#. <a asp-route-action="Create" class="btn btn-sm btn-secondary float-right create" role="button">@T["Add Shortcode"]</a>
+#: OrchardCore.ShortCodes\Views\Admin\Index.cshtml:24
 msgctxt "OrchardCore.ShortCodes.Views.Admin.Index"
 msgid "Add Shortcode"
 msgstr "Ajouter un Shortcode"
 
+#. <label class="custom-control-label" for="select-all" id="select-all-label" title="@T["Select All"]"></label>
+#: OrchardCore.ShortCodes\Views\Admin\Index.cshtml:37
+msgctxt "OrchardCore.ShortCodes.Views.Admin.Index"
+msgid "Select All"
+msgstr "Tout sélectionner"
+
 #. <label id="items" for="select-all">@T.Plural(Model.ShortcodeTemplates.Count, "1 item", "{0} items")<span class="text-muted" title="@T["Items {0} to {1}", startIndex, endIndex]">@T.Plural((int)Model.Pager.TotalItemCount, " / {0} item in total", " / {0} items in total")</span></label>
-#: OrchardCore.ShortCodes\Views\Admin\Index.cshtml:24
+#: OrchardCore.ShortCodes\Views\Admin\Index.cshtml:38
 msgctxt "OrchardCore.ShortCodes.Views.Admin.Index"
 msgid "1 item"
 msgid_plural "{0} items"
@@ -375,34 +409,96 @@ msgstr[0] "1 élément"
 msgstr[1] "{0} éléments"
 
 #. <label id="items" for="select-all">@T.Plural(Model.ShortcodeTemplates.Count, "1 item", "{0} items")<span class="text-muted" title="@T["Items {0} to {1}", startIndex, endIndex]">@T.Plural((int)Model.Pager.TotalItemCount, " / {0} item in total", " / {0} items in total")</span></label>
-#: OrchardCore.ShortCodes\Views\Admin\Index.cshtml:24
+#: OrchardCore.ShortCodes\Views\Admin\Index.cshtml:38
 msgctxt "OrchardCore.ShortCodes.Views.Admin.Index"
 msgid "Items {0} to {1}"
 msgstr "Éléments : {0} sur {1}"
 
 #. <label id="items" for="select-all">@T.Plural(Model.ShortcodeTemplates.Count, "1 item", "{0} items")<span class="text-muted" title="@T["Items {0} to {1}", startIndex, endIndex]">@T.Plural((int)Model.Pager.TotalItemCount, " / {0} item in total", " / {0} items in total")</span></label>
-#: OrchardCore.ShortCodes\Views\Admin\Index.cshtml:24
+#: OrchardCore.ShortCodes\Views\Admin\Index.cshtml:38
 msgctxt "OrchardCore.ShortCodes.Views.Admin.Index"
 msgid " / {0} item in total"
 msgid_plural " / {0} items in total"
 msgstr[0] " / {0} élément au total"
 msgstr[1] " / {0} éléments au total"
 
+#. @T["Actions"]
+#: OrchardCore.ShortCodes\Views\Admin\Index.cshtml:45
+msgctxt "OrchardCore.ShortCodes.Views.Admin.Index"
+msgid "Actions"
+msgstr "Actions"
+
+#. <a class="dropdown-item" href="javascript:void(0)" data-action="@item.Value" data-title="@T["Bulk Action"]" data-message="@T["Are you sure you want to {0} these items?", @item.Text.ToLower()]">@item.Text</a>
+#: OrchardCore.ShortCodes\Views\Admin\Index.cshtml:50
+msgctxt "OrchardCore.ShortCodes.Views.Admin.Index"
+msgid "Bulk Action"
+msgstr "Action par lot"
+
+#. <a class="dropdown-item" href="javascript:void(0)" data-action="@item.Value" data-title="@T["Bulk Action"]" data-message="@T["Are you sure you want to {0} these items?", @item.Text.ToLower()]">@item.Text</a>
+#: OrchardCore.ShortCodes\Views\Admin\Index.cshtml:50
+msgctxt "OrchardCore.ShortCodes.Views.Admin.Index"
+msgid "Are you sure you want to {0} these items?"
+msgstr "Êtes-vous sûr de vouloir {0} ces éléments ?"
+
 #. <a asp-action="Edit" asp-route-name="@entry.Name" class="btn btn-primary btn-sm">@T["Edit"]</a>
-#: OrchardCore.ShortCodes\Views\Admin\Index.cshtml:36
+#: OrchardCore.ShortCodes\Views\Admin\Index.cshtml:66
 msgctxt "OrchardCore.ShortCodes.Views.Admin.Index"
 msgid "Edit"
 msgstr "Modifier"
 
-#. <a asp-action="Delete" asp-route-name="@entry.Name" class="btn btn-danger btn-sm" itemprop="RemoveUrl UnsafeUrl">@T["Delete"]</a>
-#: OrchardCore.ShortCodes\Views\Admin\Index.cshtml:37
+#. <a asp-action="Delete" asp-route-name="@entry.Name" class="btn btn-danger btn-sm" data-url-af="RemoveUrl UnsafeUrl">@T["Delete"]</a>
+#: OrchardCore.ShortCodes\Views\Admin\Index.cshtml:67
 msgctxt "OrchardCore.ShortCodes.Views.Admin.Index"
 msgid "Delete"
 msgstr "Supprimer"
 
 #. @T["<strong>Nothing here!</strong> There are no shortcodes for the moment."]
-#: OrchardCore.ShortCodes\Views\Admin\Index.cshtml:52
+#: OrchardCore.ShortCodes\Views\Admin\Index.cshtml:82
 msgctxt "OrchardCore.ShortCodes.Views.Admin.Index"
 msgid "<strong>Nothing here!</strong> There are no shortcodes for the moment."
 msgstr "<strong>Rien ici !</strong> Il n'y a aucun shortcode pour le moment."
+
+#. <a class="seedoc" href="@(OrchardCore.Admin.Constants.DocsUrl)reference/modules/Shortcodes/#example-shortcode-templates" target="_blank">@T["See documentation"]</a>
+#: OrchardCore.ShortCodes\Views\Admin\Index.cshtml:83
+msgctxt "OrchardCore.ShortCodes.Views.Admin.Index"
+msgid "See documentation"
+msgstr "Voir la documentation"
+
+#. selectedItems.text($(":checkbox[name='itemIds']:checked").length + ' @T["selected"]');
+#. selectedItems.text(selectedItemsCount + ' @T["selected"]');
+#: OrchardCore.ShortCodes\Views\Admin\Index.cshtml:132
+#: OrchardCore.ShortCodes\Views\Admin\Index.cshtml:143
+msgctxt "OrchardCore.ShortCodes.Views.Admin.Index"
+msgid "selected"
+msgstr "sélectionné(s)"
+
+#. <h5>@T["All Shortcode Templates"]</h5>
+#: OrchardCore.ShortCodes\Views\Items\AllShortcodeTemplatesDeploymentStep.Edit.cshtml:3
+msgctxt "OrchardCore.ShortCodes.Views.Items.AllShortcodeTemplatesDeploymentStep.Edit"
+msgid "All Shortcode Templates"
+msgstr "Tous les modèles de Shortcode"
+
+#. <h5>@T["All Shortcode Templates"]</h5>
+#: OrchardCore.ShortCodes\Views\Items\AllShortcodeTemplatesDeploymentStep.Summary.cshtml:3
+msgctxt "OrchardCore.ShortCodes.Views.Items.AllShortcodeTemplatesDeploymentStep.Summary"
+msgid "All Shortcode Templates"
+msgstr "Tous les modèles de Shortcode"
+
+#. <span class="hint">@T["Adds all shortcode templates to the plan."]</span>
+#: OrchardCore.ShortCodes\Views\Items\AllShortcodeTemplatesDeploymentStep.Summary.cshtml:5
+msgctxt "OrchardCore.ShortCodes.Views.Items.AllShortcodeTemplatesDeploymentStep.Summary"
+msgid "Adds all shortcode templates to the plan."
+msgstr "Ajoute tous les modèles de shortcode au plan."
+
+#. <h4 class="card-title">@T["All Shortcode Templates"]</h4>
+#: OrchardCore.ShortCodes\Views\Items\AllShortcodeTemplatesDeploymentStep.Thumbnail.cshtml:3
+msgctxt "OrchardCore.ShortCodes.Views.Items.AllShortcodeTemplatesDeploymentStep.Thumbnail"
+msgid "All Shortcode Templates"
+msgstr "Tous les modèles de Shortcode"
+
+#. <p>@T["Exports all shortcode templates."]</p>
+#: OrchardCore.ShortCodes\Views\Items\AllShortcodeTemplatesDeploymentStep.Thumbnail.cshtml:4
+msgctxt "OrchardCore.ShortCodes.Views.Items.AllShortcodeTemplatesDeploymentStep.Thumbnail"
+msgid "Exports all shortcode templates."
+msgstr "Exporte tous les modèles de shortcode."
 

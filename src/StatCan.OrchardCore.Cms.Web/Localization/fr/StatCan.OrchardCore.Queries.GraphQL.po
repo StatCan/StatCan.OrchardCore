@@ -1,0 +1,137 @@
+msgid ""
+msgstr "Content-Type: text/plain\n"
+
+#: StatCan.OrchardCore.Queries.GraphQL\AdminMenu.cs:25
+#. .Add(S["Search"], search => search
+msgctxt "StatCan.OrchardCore.Queries.GraphQL.AdminMenu"
+msgid "Search"
+msgstr "Rechercher"
+
+#: StatCan.OrchardCore.Queries.GraphQL\AdminMenu.cs:26
+#: StatCan.OrchardCore.Queries.GraphQL\AdminMenu.cs:26
+#. .Add(S["Queries"], S["Queries"].PrefixPosition(), queries => queries
+#. .Add(S["Queries"], S["Queries"].PrefixPosition(), queries => queries
+msgctxt "StatCan.OrchardCore.Queries.GraphQL.AdminMenu"
+msgid "Queries"
+msgstr "Requêtes"
+
+#: StatCan.OrchardCore.Queries.GraphQL\AdminMenu.cs:27
+#: StatCan.OrchardCore.Queries.GraphQL\AdminMenu.cs:27
+#. .Add(S["Run GraphQL Query"], S["Run GraphQL Query"].PrefixPosition(), sql => sql
+#. .Add(S["Run GraphQL Query"], S["Run GraphQL Query"].PrefixPosition(), sql => sql
+msgctxt "StatCan.OrchardCore.Queries.GraphQL.AdminMenu"
+msgid "Run GraphQL Query"
+msgstr "Exécuter la requête GraphQL"
+
+#: StatCan.OrchardCore.Queries.GraphQL\Controllers\AdminController.cs:90
+#. ModelState.AddModelError("", S["An error occurred while executing the GraphQL query: {0}", ex.Message]);
+msgctxt "StatCan.OrchardCore.Queries.GraphQL.Controllers.AdminController"
+msgid "An error occurred while executing the GraphQL query: {0}"
+msgstr "Une erreur s'est produite lors de l'exécution de la requête GraphQL: {0}"
+
+#: StatCan.OrchardCore.Queries.GraphQL\Drivers\GraphQLQueryDisplayDriver.cs:59
+#. updater.ModelState.AddModelError(nameof(viewModel.Query), S["The query field is required"]);
+msgctxt "StatCan.OrchardCore.Queries.GraphQL.Drivers.GraphQLQueryDisplayDriver"
+msgid "The query field is required"
+msgstr "Le champ de requête est obligatoire"
+
+#: StatCan.OrchardCore.Queries.GraphQL\Views\GraphQLQuery.Buttons.SummaryAdmin.cshtml:11
+#. class="btn btn-success btn-sm">@T["Run"]</a>
+msgctxt "StatCan.OrchardCore.Queries.GraphQL.Views.GraphQLQuery.Buttons.SummaryAdmin"
+msgid "Run"
+msgstr "Cours"
+
+#: StatCan.OrchardCore.Queries.GraphQL\Views\GraphQLQuery.Edit.cshtml:9
+#. <label asp-for="Query">@T["Query"]</label>
+msgctxt "StatCan.OrchardCore.Queries.GraphQL.Views.GraphQLQuery.Edit"
+msgid "Query"
+msgstr "Mettre en doute"
+
+#: StatCan.OrchardCore.Queries.GraphQL\Views\GraphQLQuery.Edit.cshtml:11
+#. <span class="hint">@T["The GraphQL query with parameter support(liquid). You can use <a href=\"{0}\" target=\"_blank\">GraphiQL</a> ui to easily build the query.", Html.Raw(Url.Action("Index", "Admin", new { area = "OrchardCore.Apis.GraphQL" }))]</span>
+msgctxt "StatCan.OrchardCore.Queries.GraphQL.Views.GraphQLQuery.Edit"
+msgid ""
+"The GraphQL query with parameter support(liquid). You can use <a "
+"href=\"{0}\" target=\"_blank\">GraphiQL</a> ui to easily build the query."
+msgstr ""
+"La requête GraphQL avec prise en charge des paramètres (liquide). Vous "
+"pouvez utiliser <a href=\"{0}\" target=\"_blank\">GraphiQL</a> ui pour "
+"créer facilement la requête."
+
+#: StatCan.OrchardCore.Queries.GraphQL\Views\GraphQLQuery.SummaryAdmin.cshtml:3
+#. <span class="hint">@T["GraphQL query"]</span>
+msgctxt "StatCan.OrchardCore.Queries.GraphQL.Views.GraphQLQuery.SummaryAdmin"
+msgid "GraphQL query"
+msgstr "Requête GraphQL"
+
+#: StatCan.OrchardCore.Queries.GraphQL\Views\Admin\Query.cshtml:8
+#. <zone Name="Title"><h1>@RenderTitleSegments(T["GraphQL Query"])</h1></zone>
+msgctxt "StatCan.OrchardCore.Queries.GraphQL.Views.Admin.Query"
+msgid "GraphQL Query"
+msgstr "Requête GraphQL"
+
+#: StatCan.OrchardCore.Queries.GraphQL\Views\Admin\Query.cshtml:17
+#. <label asp-for="DecodedQuery">@T["Template"]</label>
+msgctxt "StatCan.OrchardCore.Queries.GraphQL.Views.Admin.Query"
+msgid "Template"
+msgstr "Modèle"
+
+#: StatCan.OrchardCore.Queries.GraphQL\Views\Admin\Query.cshtml:19
+#. <span class="hint">@T["You can use <a href=\"{0}\" target=\"_blank\">GraphiQL</a> ui to easily build the query.", Html.Raw(Url.Action("Index", "Admin", new { area = "OrchardCore.Apis.GraphQL" }))]</span>
+msgctxt "StatCan.OrchardCore.Queries.GraphQL.Views.Admin.Query"
+msgid ""
+"You can use <a href=\"{0}\" target=\"_blank\">GraphiQL</a> ui to easily "
+"build the query."
+msgstr ""
+"Vous pouvez utiliser <a href=\"{0}\" target=\"_blank\">GraphiQL</a> ui pour "
+"créer facilement la requête."
+
+#: StatCan.OrchardCore.Queries.GraphQL\Views\Admin\Query.cshtml:25
+#. <label asp-for="Parameters">@T["Parameters"]</label>
+msgctxt "StatCan.OrchardCore.Queries.GraphQL.Views.Admin.Query"
+msgid "Parameters"
+msgstr "Paramètres"
+
+#: StatCan.OrchardCore.Queries.GraphQL\Views\Admin\Query.cshtml:27
+#. <span class="hint">@T["An optional Json object containing the parameter values for this query."]</span>
+msgctxt "StatCan.OrchardCore.Queries.GraphQL.Views.Admin.Query"
+msgid "An optional Json object containing the parameter values for this query."
+msgstr ""
+"Un objet Json facultatif contenant les valeurs de paramètre pour cette "
+"requête."
+
+#: StatCan.OrchardCore.Queries.GraphQL\Views\Admin\Query.cshtml:35
+#. <button type="submit" class="btn btn-primary">@T["Query"]</button>
+msgctxt "StatCan.OrchardCore.Queries.GraphQL.Views.Admin.Query"
+msgid "Query"
+msgstr "Mettre en doute"
+
+#: StatCan.OrchardCore.Queries.GraphQL\Views\Admin\Query.cshtml:45
+#. <label asp-for="RawGraphQL">@T["Final GraphQL Query"]</label>
+msgctxt "StatCan.OrchardCore.Queries.GraphQL.Views.Admin.Query"
+msgid "Final GraphQL Query"
+msgstr "Requête finale GraphQL"
+
+#: StatCan.OrchardCore.Queries.GraphQL\Views\Admin\Query.cshtml:47
+#. <span class="hint">@T["The query as it will be executed by the GraphQL engine."]</span>
+msgctxt "StatCan.OrchardCore.Queries.GraphQL.Views.Admin.Query"
+msgid "The query as it will be executed by the GraphQL engine."
+msgstr "La requête telle qu'elle sera exécutée par le moteur GraphQL."
+
+#: StatCan.OrchardCore.Queries.GraphQL\Views\Admin\Query.cshtml:51
+#. <a href="@Url.Action("Create", "Admin", new { area = "OrchardCore.Queries", id = "GraphQL", query = Model.DecodedQuery })" class="btn btn-success">@T["Create"]</a>
+msgctxt "StatCan.OrchardCore.Queries.GraphQL.Views.Admin.Query"
+msgid "Create"
+msgstr "Créer"
+
+#: StatCan.OrchardCore.Queries.GraphQL\Views\Admin\Query.cshtml:59
+#. <h2>@T["Query Results"]</h2>
+msgctxt "StatCan.OrchardCore.Queries.GraphQL.Views.Admin.Query"
+msgid "Query Results"
+msgstr "Résultats de la requête"
+
+#: StatCan.OrchardCore.Queries.GraphQL\Views\Admin\Query.cshtml:60
+#. <span class="text-muted">@T["Query executed in {0} ms", Model.Elapsed.TotalMilliseconds]</span>
+msgctxt "StatCan.OrchardCore.Queries.GraphQL.Views.Admin.Query"
+msgid "Query executed in {0} ms"
+msgstr "Requête exécutée en {0} ms"

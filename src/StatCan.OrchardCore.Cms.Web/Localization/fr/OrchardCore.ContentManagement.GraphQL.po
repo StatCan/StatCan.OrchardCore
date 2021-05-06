@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
-"PO-Revision-Date: 2020-11-10 07:27\n"
+"PO-Revision-Date: 2021-04-14 09:09\n"
 
 #. Description = S["Content items are instances of content types, just like objects are instances of classes."],
 #: OrchardCore.ContentManagement.GraphQL\Queries\ContentItemQuery.cs:33
@@ -33,7 +33,7 @@ msgid "Represents a {0}."
 msgstr "Représente un {0}."
 
 #. description: S["Represents a {0}.", part.PartDefinition.Name],
-#: OrchardCore.ContentManagement.GraphQL\Queries\Types\DynamicContentTypeBuilder.cs:77
+#: OrchardCore.ContentManagement.GraphQL\Queries\Types\DynamicContentTypeBuilder.cs:104
 msgctxt "OrchardCore.ContentManagement.GraphQL.Queries.Types.DynamicContentTypeBuilder"
 msgid "Represents a {0}."
 msgstr "Représente un {0}."

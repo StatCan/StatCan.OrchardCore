@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
-"PO-Revision-Date: 2020-11-10 07:27\n"
+"PO-Revision-Date: 2021-04-14 09:09\n"
 
 #. context.Updater.ModelState.AddModelError(nameof(model.Pattern), S["Pattern doesn't contain a valid Liquid expression. Details: {0}", string.Join(" ", errors)]);
 #: OrchardCore.ContentPreview\Settings\PreviewPartSettingsDisplayDriver.cs:56
@@ -18,7 +18,7 @@ msgctxt "OrchardCore.ContentPreview.Settings.PreviewPartSettingsDisplayDriver"
 msgid "Pattern doesn't contain a valid Liquid expression. Details: {0}"
 msgstr "Le modèle ne contient pas une expression Liquid valide. Détails: {0}"
 
-#. <a id="previewButton" target="_blank" class="btn btn-info" href="@Url.Action("Index", "Preview", new { area = "OrchardCore.ContentPreview", id = previewId })">@T["Preview"]</a>
+#. <a id="previewButton" target="_blank" class="btn btn-sm btn-info" href="@Url.Action("Index", "Preview", new { area = "OrchardCore.ContentPreview", id = previewId })">@T["Preview"]</a>
 #: OrchardCore.ContentPreview\Views\ContentPreview.Button.cshtml:13
 msgctxt "OrchardCore.ContentPreview.Views.ContentPreview.Button"
 msgid "Preview"

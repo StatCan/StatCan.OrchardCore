@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
-"PO-Revision-Date: 2020-11-10 07:27\n"
+"PO-Revision-Date: 2021-04-14 09:13\n"
 
 #. .Add(S["Configuration"], NavigationConstants.AdminMenuConfigurationPosition, localization => localization
 #: OrchardCore.Localization\AdminMenu.cs:31
@@ -32,17 +32,29 @@ msgctxt "OrchardCore.Localization.AdminMenu"
 msgid "Cultures"
 msgstr "Cultures"
 
+#. return new SiteSettingsPropertyDeploymentStepDriver<LocalizationSettings>(S["Culture settings"], S["Exports the culture settings."]);
+#: OrchardCore.Localization\Startup.cs:68
+msgctxt "OrchardCore.Localization.LocalizationDeploymentStartup"
+msgid "Culture settings"
+msgstr "Paramètres de culture"
+
+#. return new SiteSettingsPropertyDeploymentStepDriver<LocalizationSettings>(S["Culture settings"], S["Exports the culture settings."]);
+#: OrchardCore.Localization\Startup.cs:68
+msgctxt "OrchardCore.Localization.LocalizationDeploymentStartup"
+msgid "Exports the culture settings."
+msgstr "Exporte les paramètres de culture."
+
 #. context.Updater.ModelState.AddModelError("SupportedCultures", S["A culture is required"]);
 #: OrchardCore.Localization\Drivers\LocalizationSettingsDisplayDriver.cs:104
 msgctxt "OrchardCore.Localization.Drivers.LocalizationSettingsDisplayDriver"
 msgid "A culture is required"
 msgstr "Une culture est nécessaire"
 
-#. _notifier.Warning(H["The site has been restarted for the settings to take effect"]);
-#: OrchardCore.Localization\Drivers\LocalizationSettingsDisplayDriver.cs:121
+#. _notifier.Warning(H["The site has been restarted for the settings to take effect."]);
+#: OrchardCore.Localization\Drivers\LocalizationSettingsDisplayDriver.cs:124
 msgctxt "OrchardCore.Localization.Drivers.LocalizationSettingsDisplayDriver"
-msgid "The site has been restarted for the settings to take effect"
-msgstr "Le site a été redémarré pour que les paramètres prennent effet"
+msgid "The site has been restarted for the settings to take effect."
+msgstr "Le site a été redémarré pour que les paramètres prennent effet."
 
 #. Description = S["The active cultures configured for the site."],
 #: OrchardCore.Localization\GraphQL\SiteCulturesQuery.cs:37

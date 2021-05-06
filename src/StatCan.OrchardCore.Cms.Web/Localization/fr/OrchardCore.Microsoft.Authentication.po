@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
-"PO-Revision-Date: 2020-11-10 07:27\n"
+"PO-Revision-Date: 2021-04-14 09:13\n"
 
 #. builder.Add(S["Security"], security => security
 #: OrchardCore.Microsoft.Authentication\AdminMenu.cs:24
@@ -53,31 +53,31 @@ msgid "Azure Active Directory"
 msgstr "Active Directory Azure"
 
 #. yield return new ValidationResult(S["DisplayName is required"], new string[] { nameof(settings.DisplayName) });
-#: OrchardCore.Microsoft.Authentication\Services\AzureADService.cs:58
+#: OrchardCore.Microsoft.Authentication\Services\AzureADService.cs:65
 msgctxt "OrchardCore.Microsoft.Authentication.Services.AzureADService"
 msgid "DisplayName is required"
 msgstr "Le nom d'affichage est requis"
 
 #. yield return new ValidationResult(S["AppId is required"], new string[] { nameof(settings.AppId) });
-#: OrchardCore.Microsoft.Authentication\Services\AzureADService.cs:63
+#: OrchardCore.Microsoft.Authentication\Services\AzureADService.cs:70
 msgctxt "OrchardCore.Microsoft.Authentication.Services.AzureADService"
 msgid "AppId is required"
 msgstr "L’AppId est requis"
 
 #. yield return new ValidationResult(S["TenantId is required"], new string[] { nameof(settings.TenantId) });
-#: OrchardCore.Microsoft.Authentication\Services\AzureADService.cs:68
+#: OrchardCore.Microsoft.Authentication\Services\AzureADService.cs:75
 msgctxt "OrchardCore.Microsoft.Authentication.Services.AzureADService"
 msgid "TenantId is required"
 msgstr "TenantId est requis"
 
 #. yield return new ValidationResult(S["AppId is required"], new string[] { nameof(settings.AppId) });
-#: OrchardCore.Microsoft.Authentication\Services\MicrosoftAccountService.cs:56
+#: OrchardCore.Microsoft.Authentication\Services\MicrosoftAccountService.cs:64
 msgctxt "OrchardCore.Microsoft.Authentication.Services.MicrosoftAccountService"
 msgid "AppId is required"
 msgstr "L’AppId est requis"
 
 #. yield return new ValidationResult(S["AppSecret is required"], new string[] { nameof(settings.AppSecret) });
-#: OrchardCore.Microsoft.Authentication\Services\MicrosoftAccountService.cs:61
+#: OrchardCore.Microsoft.Authentication\Services\MicrosoftAccountService.cs:69
 msgctxt "OrchardCore.Microsoft.Authentication.Services.MicrosoftAccountService"
 msgid "AppSecret is required"
 msgstr "L'App Secret est requis"
@@ -118,137 +118,161 @@ msgctxt "OrchardCore.Microsoft.Authentication.ViewModels.MicrosoftAccountSetting
 msgid "Invalid path"
 msgstr "Chemin invalide"
 
-#. <p class="alert alert-warning">@T["The current tenant will be reloaded when the settings are saved."]</p>
-#: OrchardCore.Microsoft.Authentication\Views\AzureADSettings.Edit.cshtml:4
+#. @T["The current tenant will be reloaded when the settings are saved."]
+#: OrchardCore.Microsoft.Authentication\Views\AzureADSettings.Edit.cshtml:5
 msgctxt "OrchardCore.Microsoft.Authentication.Views.AzureADSettings.Edit"
 msgid "The current tenant will be reloaded when the settings are saved."
 msgstr "Le locataire actuel sera rechargé lorsque les paramètres seront sauvegardés."
 
-#. <h3>@T["Azure AD Authentication Settings"]</h3>
+#. <a class="seedoc" href="@(OrchardCore.Admin.Constants.DocsUrl)reference/modules/Microsoft.Authentication/#azure-active-directory" target="_blank">@T["See documentation"]</a>
 #: OrchardCore.Microsoft.Authentication\Views\AzureADSettings.Edit.cshtml:6
+msgctxt "OrchardCore.Microsoft.Authentication.Views.AzureADSettings.Edit"
+msgid "See documentation"
+msgstr "Voir la documentation"
+
+#. <h3>@T["Azure AD Authentication Settings"]</h3>
+#: OrchardCore.Microsoft.Authentication\Views\AzureADSettings.Edit.cshtml:9
 msgctxt "OrchardCore.Microsoft.Authentication.Views.AzureADSettings.Edit"
 msgid "Azure AD Authentication Settings"
 msgstr "Paramètres d'authentification Azure AD"
 
 #. <label>@T["Display Name"]</label>
-#: OrchardCore.Microsoft.Authentication\Views\AzureADSettings.Edit.cshtml:9
+#: OrchardCore.Microsoft.Authentication\Views\AzureADSettings.Edit.cshtml:12
 msgctxt "OrchardCore.Microsoft.Authentication.Views.AzureADSettings.Edit"
 msgid "Display Name"
 msgstr "Nom d'affichage"
 
 #. <span class="hint">@T["The display name of the provider."]</span>
-#: OrchardCore.Microsoft.Authentication\Views\AzureADSettings.Edit.cshtml:12
+#: OrchardCore.Microsoft.Authentication\Views\AzureADSettings.Edit.cshtml:15
 msgctxt "OrchardCore.Microsoft.Authentication.Views.AzureADSettings.Edit"
 msgid "The display name of the provider."
 msgstr "Le nom d'affichage du fournisseur."
 
 #. <label>@T["AppId"]</label>
-#: OrchardCore.Microsoft.Authentication\Views\AzureADSettings.Edit.cshtml:16
+#: OrchardCore.Microsoft.Authentication\Views\AzureADSettings.Edit.cshtml:19
 msgctxt "OrchardCore.Microsoft.Authentication.Views.AzureADSettings.Edit"
 msgid "AppId"
 msgstr "AppId"
 
 #. <span class="hint">@T["The Application ID found on the Azure AD App registration parameters."]</span>
-#: OrchardCore.Microsoft.Authentication\Views\AzureADSettings.Edit.cshtml:19
+#: OrchardCore.Microsoft.Authentication\Views\AzureADSettings.Edit.cshtml:22
 msgctxt "OrchardCore.Microsoft.Authentication.Views.AzureADSettings.Edit"
 msgid "The Application ID found on the Azure AD App registration parameters."
 msgstr "L'identifiant d'application trouvé dans les paramètres d'enregistrement de l'application Azure AD."
 
 #. <label>@T["TenantId"]</label>
-#: OrchardCore.Microsoft.Authentication\Views\AzureADSettings.Edit.cshtml:23
+#: OrchardCore.Microsoft.Authentication\Views\AzureADSettings.Edit.cshtml:26
 msgctxt "OrchardCore.Microsoft.Authentication.Views.AzureADSettings.Edit"
 msgid "TenantId"
 msgstr "TenantId"
 
 #. <span class="hint">@T["The Tenant (Directory) ID found on the Azure AD App registration parameters."]</span>
-#: OrchardCore.Microsoft.Authentication\Views\AzureADSettings.Edit.cshtml:26
+#: OrchardCore.Microsoft.Authentication\Views\AzureADSettings.Edit.cshtml:29
 msgctxt "OrchardCore.Microsoft.Authentication.Views.AzureADSettings.Edit"
 msgid "The Tenant (Directory) ID found on the Azure AD App registration parameters."
 msgstr "L'ID du Tenant (Directory) trouvé dans les paramètres d'enregistrement de l'application Azure AD."
 
 #. <label>@T["CallbackPath"]</label>
-#: OrchardCore.Microsoft.Authentication\Views\AzureADSettings.Edit.cshtml:30
+#: OrchardCore.Microsoft.Authentication\Views\AzureADSettings.Edit.cshtml:33
 msgctxt "OrchardCore.Microsoft.Authentication.Views.AzureADSettings.Edit"
 msgid "CallbackPath"
 msgstr "Chemin de Callback"
 
 #. <span class="hint">@T["The request path within the application's base path where the user-agent will be returned. The middleware will process this request when it arrives."]</span>
-#: OrchardCore.Microsoft.Authentication\Views\AzureADSettings.Edit.cshtml:33
+#: OrchardCore.Microsoft.Authentication\Views\AzureADSettings.Edit.cshtml:36
 msgctxt "OrchardCore.Microsoft.Authentication.Views.AzureADSettings.Edit"
 msgid "The request path within the application's base path where the user-agent will be returned. The middleware will process this request when it arrives."
 msgstr "Le chemin de la requête dans le chemin de base de l'application où l'utilisateur-agent sera retourné. Le middleware va traiter cette requête lorsqu'elle arrive."
 
 #. <label class="custom-control-label" asp-for="SaveTokens">@T["Store tokens"]</label>
-#: OrchardCore.Microsoft.Authentication\Views\AzureADSettings.Edit.cshtml:39
+#: OrchardCore.Microsoft.Authentication\Views\AzureADSettings.Edit.cshtml:42
 msgctxt "OrchardCore.Microsoft.Authentication.Views.AzureADSettings.Edit"
 msgid "Store tokens"
 msgstr "Stocker les jetons"
 
 #. <span class="hint dashed">@T["Store external authentication tokens for reuse"]</span>
-#: OrchardCore.Microsoft.Authentication\Views\AzureADSettings.Edit.cshtml:40
+#: OrchardCore.Microsoft.Authentication\Views\AzureADSettings.Edit.cshtml:43
 msgctxt "OrchardCore.Microsoft.Authentication.Views.AzureADSettings.Edit"
 msgid "Store external authentication tokens for reuse"
 msgstr "Stocker les jetons d'authentification externes pour les réutiliser"
 
-#. <p class="alert alert-warning">@T["The current tenant will be reloaded when the settings are saved."]</p>
-#: OrchardCore.Microsoft.Authentication\Views\MicrosoftAccountSettings.Edit.cshtml:4
+#. @T["The current tenant will be reloaded when the settings are saved."]
+#: OrchardCore.Microsoft.Authentication\Views\MicrosoftAccountSettings.Edit.cshtml:5
 msgctxt "OrchardCore.Microsoft.Authentication.Views.MicrosoftAccountSettings.Edit"
 msgid "The current tenant will be reloaded when the settings are saved."
 msgstr "Le locataire actuel sera rechargé lorsque les paramètres seront sauvegardés."
 
-#. <h3>@T["Microsoft Account Authentication Settings"]</h3>
+#. <a class="seedoc" href="@(OrchardCore.Admin.Constants.DocsUrl)reference/modules/Microsoft.Authentication/#microsoft-account" target="_blank">@T["See documentation"]</a>
 #: OrchardCore.Microsoft.Authentication\Views\MicrosoftAccountSettings.Edit.cshtml:6
+msgctxt "OrchardCore.Microsoft.Authentication.Views.MicrosoftAccountSettings.Edit"
+msgid "See documentation"
+msgstr "Voir la documentation"
+
+#. <p class="alert alert-danger">@T["An error occurred while decrypting a setting. Please apply and save."]</p>
+#: OrchardCore.Microsoft.Authentication\Views\MicrosoftAccountSettings.Edit.cshtml:11
+msgctxt "OrchardCore.Microsoft.Authentication.Views.MicrosoftAccountSettings.Edit"
+msgid "An error occurred while decrypting a setting. Please apply and save."
+msgstr "Une erreur s'est produite lors du déchiffrement d'un paramètre. Veuillez appliquer et sauvegarder."
+
+#. <h3>@T["Microsoft Account Authentication Settings"]</h3>
+#: OrchardCore.Microsoft.Authentication\Views\MicrosoftAccountSettings.Edit.cshtml:14
 msgctxt "OrchardCore.Microsoft.Authentication.Views.MicrosoftAccountSettings.Edit"
 msgid "Microsoft Account Authentication Settings"
 msgstr "Paramètres d'authentification du compte Microsoft"
 
 #. <label>@T["AppId"]</label>
-#: OrchardCore.Microsoft.Authentication\Views\MicrosoftAccountSettings.Edit.cshtml:9
+#: OrchardCore.Microsoft.Authentication\Views\MicrosoftAccountSettings.Edit.cshtml:17
 msgctxt "OrchardCore.Microsoft.Authentication.Views.MicrosoftAccountSettings.Edit"
 msgid "AppId"
 msgstr "AppId"
 
 #. <span class="hint">@T["The Application ID found on the Microsoft developer portal parameters."]</span>
-#: OrchardCore.Microsoft.Authentication\Views\MicrosoftAccountSettings.Edit.cshtml:12
+#: OrchardCore.Microsoft.Authentication\Views\MicrosoftAccountSettings.Edit.cshtml:20
 msgctxt "OrchardCore.Microsoft.Authentication.Views.MicrosoftAccountSettings.Edit"
 msgid "The Application ID found on the Microsoft developer portal parameters."
 msgstr "L'ID de l'application trouvée dans les paramètres du portail développeur Microsoft."
 
 #. <label>@T["Secret Key"]</label>
-#: OrchardCore.Microsoft.Authentication\Views\MicrosoftAccountSettings.Edit.cshtml:16
+#: OrchardCore.Microsoft.Authentication\Views\MicrosoftAccountSettings.Edit.cshtml:24
 msgctxt "OrchardCore.Microsoft.Authentication.Views.MicrosoftAccountSettings.Edit"
 msgid "Secret Key"
 msgstr "Clé secrète"
 
 #. <span class="hint">@T["The Application secret key found on the Microsoft developer portal parameters."]</span>
-#: OrchardCore.Microsoft.Authentication\Views\MicrosoftAccountSettings.Edit.cshtml:19
+#: OrchardCore.Microsoft.Authentication\Views\MicrosoftAccountSettings.Edit.cshtml:27
 msgctxt "OrchardCore.Microsoft.Authentication.Views.MicrosoftAccountSettings.Edit"
 msgid "The Application secret key found on the Microsoft developer portal parameters."
 msgstr "La clé secrète de l'application trouvée dans les paramètres du portail développeur Microsoft."
 
 #. <label>@T["CallbackPath"]</label>
-#: OrchardCore.Microsoft.Authentication\Views\MicrosoftAccountSettings.Edit.cshtml:23
+#: OrchardCore.Microsoft.Authentication\Views\MicrosoftAccountSettings.Edit.cshtml:31
 msgctxt "OrchardCore.Microsoft.Authentication.Views.MicrosoftAccountSettings.Edit"
 msgid "CallbackPath"
 msgstr "Chemin de Callback"
 
 #. <span class="hint">@T["The request path within the application's base path where the user-agent will be returned. The middleware will process this request when it arrives."]</span>
-#: OrchardCore.Microsoft.Authentication\Views\MicrosoftAccountSettings.Edit.cshtml:26
+#: OrchardCore.Microsoft.Authentication\Views\MicrosoftAccountSettings.Edit.cshtml:34
 msgctxt "OrchardCore.Microsoft.Authentication.Views.MicrosoftAccountSettings.Edit"
 msgid "The request path within the application's base path where the user-agent will be returned. The middleware will process this request when it arrives."
 msgstr "Le chemin de la requête dans le chemin de base de l'application où l'utilisateur-agent sera retourné. Le middleware va traiter cette requête lorsqu'elle arrive."
 
 #. <label class="custom-control-label" asp-for="SaveTokens">@T["Store tokens"]</label>
-#: OrchardCore.Microsoft.Authentication\Views\MicrosoftAccountSettings.Edit.cshtml:32
+#: OrchardCore.Microsoft.Authentication\Views\MicrosoftAccountSettings.Edit.cshtml:40
 msgctxt "OrchardCore.Microsoft.Authentication.Views.MicrosoftAccountSettings.Edit"
 msgid "Store tokens"
 msgstr "Stocker les jetons"
 
 #. <span class="hint dashed">@T["Store external authentication tokens for reuse"]</span>
-#: OrchardCore.Microsoft.Authentication\Views\MicrosoftAccountSettings.Edit.cshtml:33
+#: OrchardCore.Microsoft.Authentication\Views\MicrosoftAccountSettings.Edit.cshtml:41
 msgctxt "OrchardCore.Microsoft.Authentication.Views.MicrosoftAccountSettings.Edit"
 msgid "Store external authentication tokens for reuse"
 msgstr "Stocker les jetons d'authentification externes pour les réutiliser"
+
+#. <span class="icon"><i class="fas fa-cloud" aria-hidden="true"></i></span><span class="title">@T["Azure Active Directory"]</span>
+#: OrchardCore.Microsoft.Authentication\Views\NavigationItemText-azuread.Id.cshtml:1
+msgctxt "OrchardCore.Microsoft.Authentication.Views.NavigationItemText-azuread.Id"
+msgid "Azure Active Directory"
+msgstr "Active Directory Azure"
 
 #. <span class="icon"><i class="fab fa-microsoft" aria-hidden="true"></i></span><span class="title">@T["Microsoft"]</span>
 #: OrchardCore.Microsoft.Authentication\Views\NavigationItemText-microsoft.Id.cshtml:1

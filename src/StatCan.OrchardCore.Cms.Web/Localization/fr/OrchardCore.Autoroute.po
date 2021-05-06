@@ -10,7 +10,13 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
-"PO-Revision-Date: 2020-11-10 07:27\n"
+"PO-Revision-Date: 2021-04-14 09:13\n"
+
+#. updater.ModelState.AddModelError(Prefix, nameof(model.Path), S["Your permalink is already in use."]);
+#: OrchardCore.Autoroute\Drivers\AutoroutePartDisplayDriver.cs:128
+msgctxt "OrchardCore.Autoroute.Drivers.AutoroutePartDisplayDriver"
+msgid "Your permalink is already in use."
+msgstr "Votre permalien est déjà utilisé."
 
 #. Description = S["the custom URL part of the content item"];
 #: OrchardCore.Autoroute\GraphQL\AutorouteInputObjectType.cs:13
@@ -36,29 +42,29 @@ msgctxt "OrchardCore.Autoroute.GraphQL.AutorouteQueryObjectType"
 msgid "The permalinks for your content item."
 msgstr "Les permaliens pour votre élément de contenu."
 
-#. context.Fail(S["Your permalink can't be set to the homepage, please use the homepage option instead."], nameof(part.Path));
-#: OrchardCore.Autoroute\Handlers\AutoroutePartHandler.cs:160
-msgctxt "OrchardCore.Autoroute.Handlers.AutoroutePartHandler"
-msgid "Your permalink can't be set to the homepage, please use the homepage option instead."
-msgstr "Votre permalien ne peut pas être défini sur la page d'accueil, veuillez utiliser l'option de page d'accueil à la place."
-
-#. context.Fail(S["Please do not use any of the following characters in your permalink: {0}. No spaces, or consecutive slashes, are allowed (please use dashes or underscores instead).", invalidCharactersForMessage], nameof(part.Path));
-#: OrchardCore.Autoroute\Handlers\AutoroutePartHandler.cs:166
-msgctxt "OrchardCore.Autoroute.Handlers.AutoroutePartHandler"
-msgid "Please do not use any of the following characters in your permalink: {0}. No spaces, or consecutive slashes, are allowed (please use dashes or underscores instead)."
-msgstr "Veuillez n’utiliser aucun des caractères suivants dans votre permalien : {0}. Aucun espace ou barre oblique n’est autorisé (Veuillez utiliser des tirets ou des traits de soulignement à la place)."
-
-#. context.Fail(S["Your permalink is too long. The permalink can only be up to {0} characters.", AutoroutePartDisplay.MaxPathLength], nameof(part.Path));
-#: OrchardCore.Autoroute\Handlers\AutoroutePartHandler.cs:171
-msgctxt "OrchardCore.Autoroute.Handlers.AutoroutePartHandler"
-msgid "Your permalink is too long. The permalink can only be up to {0} characters."
-msgstr "Votre permalien est trop long. Le permalien ne peut être que de {0} caractères maximum."
-
 #. context.Fail(S["Your permalink is already in use."], nameof(part.Path));
-#: OrchardCore.Autoroute\Handlers\AutoroutePartHandler.cs:176
+#: OrchardCore.Autoroute\Handlers\AutoroutePartHandler.cs:132
 msgctxt "OrchardCore.Autoroute.Handlers.AutoroutePartHandler"
 msgid "Your permalink is already in use."
 msgstr "Votre permalien est déjà utilisé."
+
+#. yield return new ValidationResult(S["Your permalink can't be set to the homepage, please use the homepage option instead."], new[] { nameof(autoroute.Path) });
+#: OrchardCore.Autoroute\Models\AutoroutePartExtensions.cs:14
+msgctxt "OrchardCore.Autoroute.Models.AutoroutePartExtensions"
+msgid "Your permalink can't be set to the homepage, please use the homepage option instead."
+msgstr "Votre permalien ne peut pas être défini sur la page d'accueil, veuillez utiliser l'option de page d'accueil à la place."
+
+#. yield return new ValidationResult(S["Please do not use any of the following characters in your permalink: {0}. No spaces, or consecutive slashes, are allowed (please use dashes or underscores instead).", invalidCharactersForMessage], new[] { nameof(autoroute.Path) });
+#: OrchardCore.Autoroute\Models\AutoroutePartExtensions.cs:20
+msgctxt "OrchardCore.Autoroute.Models.AutoroutePartExtensions"
+msgid "Please do not use any of the following characters in your permalink: {0}. No spaces, or consecutive slashes, are allowed (please use dashes or underscores instead)."
+msgstr "Veuillez n’utiliser aucun des caractères suivants dans votre permalien : {0}. Aucun espace ou barre oblique n’est autorisé (Veuillez utiliser des tirets ou des traits de soulignement à la place)."
+
+#. yield return new ValidationResult(S["Your permalink is too long. The permalink can only be up to {0} characters.", AutoroutePart.MaxPathLength], new[] { nameof(autoroute.Path) });
+#: OrchardCore.Autoroute\Models\AutoroutePartExtensions.cs:25
+msgctxt "OrchardCore.Autoroute.Models.AutoroutePartExtensions"
+msgid "Your permalink is too long. The permalink can only be up to {0} characters."
+msgstr "Votre permalien est trop long. Le permalien ne peut être que de {0} caractères maximum."
 
 #. context.Updater.ModelState.AddModelError(nameof(model.Pattern), S["Pattern doesn't contain a valid Liquid expression. Details: {0}", string.Join(" ", errors)]);
 #: OrchardCore.Autoroute\Settings\AutoroutePartSettingsDisplayDriver.cs:69
@@ -67,85 +73,85 @@ msgid "Pattern doesn't contain a valid Liquid expression. Details: {0}"
 msgstr "Le modèle ne contient pas d'expression Liquid valide. Détails : {0}"
 
 #. <label class="custom-control-label" asp-for="Disabled">@T["Disabled"]</label>
-#: OrchardCore.Autoroute\Views\AutoroutePart.Edit.cshtml:18
+#: OrchardCore.Autoroute\Views\AutoroutePart.Edit.cshtml:20
 msgctxt "OrchardCore.Autoroute.Views.AutoroutePart.Edit"
 msgid "Disabled"
 msgstr "Désactivé"
 
 #. <span class="hint dashed">@T["Check to disable autoroute for this content item."]</span>
-#: OrchardCore.Autoroute\Views\AutoroutePart.Edit.cshtml:19
+#: OrchardCore.Autoroute\Views\AutoroutePart.Edit.cshtml:21
 msgctxt "OrchardCore.Autoroute.Views.AutoroutePart.Edit"
 msgid "Check to disable autoroute for this content item."
 msgstr "Cochez cette case pour désactiver l'autoroute pour cet élément de contenu."
 
 #. <label asp-for="Path">@T["Permalink"]</label>
-#: OrchardCore.Autoroute\Views\AutoroutePart.Edit.cshtml:26
+#: OrchardCore.Autoroute\Views\AutoroutePart.Edit.cshtml:28
 msgctxt "OrchardCore.Autoroute.Views.AutoroutePart.Edit"
 msgid "Permalink"
 msgstr "Permalien"
 
 #. <span class="hint">@T["The url of the content item. Leave empty to auto-generate it."]</span>
-#: OrchardCore.Autoroute\Views\AutoroutePart.Edit.cshtml:39
+#: OrchardCore.Autoroute\Views\AutoroutePart.Edit.cshtml:47
 msgctxt "OrchardCore.Autoroute.Views.AutoroutePart.Edit"
 msgid "The url of the content item. Leave empty to auto-generate it."
 msgstr "L'url de l'élément de contenu. Laissez vide pour le générer automatiquement."
 
 #. <span class="hint">@T["The url of the content item. It will be automatically generated."]</span>
-#: OrchardCore.Autoroute\Views\AutoroutePart.Edit.cshtml:43
+#: OrchardCore.Autoroute\Views\AutoroutePart.Edit.cshtml:51
 msgctxt "OrchardCore.Autoroute.Views.AutoroutePart.Edit"
 msgid "The url of the content item. It will be automatically generated."
 msgstr "L'url de l'élément de contenu. Il sera automatiquement généré."
 
 #. <div class="alert alert-info">@T["This content item is the current homepage"]</div>
-#: OrchardCore.Autoroute\Views\AutoroutePart.Edit.cshtml:52
+#: OrchardCore.Autoroute\Views\AutoroutePart.Edit.cshtml:60
 msgctxt "OrchardCore.Autoroute.Views.AutoroutePart.Edit"
 msgid "This content item is the current homepage"
 msgstr "Cet élément de contenu est la page d’accueil actuelle"
 
 #. <label class="custom-control-label" asp-for="SetHomepage">@T["Set as homepage"]</label>
-#: OrchardCore.Autoroute\Views\AutoroutePart.Edit.cshtml:61
+#: OrchardCore.Autoroute\Views\AutoroutePart.Edit.cshtml:69
 msgctxt "OrchardCore.Autoroute.Views.AutoroutePart.Edit"
 msgid "Set as homepage"
 msgstr "Définir comme page d'accueil"
 
 #. <span class="hint dashed">@T["Check to set this content item as the homepage once published."]</span>
-#: OrchardCore.Autoroute\Views\AutoroutePart.Edit.cshtml:62
+#: OrchardCore.Autoroute\Views\AutoroutePart.Edit.cshtml:70
 msgctxt "OrchardCore.Autoroute.Views.AutoroutePart.Edit"
 msgid "Check to set this content item as the homepage once published."
 msgstr "Cocher pour définir cet élément de contenu comme page d'accueil une fois publiée."
 
 #. <label class="custom-control-label" asp-for="UpdatePath">@T["Refresh the path"]</label>
-#: OrchardCore.Autoroute\Views\AutoroutePart.Edit.cshtml:74
+#: OrchardCore.Autoroute\Views\AutoroutePart.Edit.cshtml:82
 msgctxt "OrchardCore.Autoroute.Views.AutoroutePart.Edit"
 msgid "Refresh the path"
 msgstr "Actualiser le chemin"
 
 #. <span class="hint dashed">@T["Check to refresh the path. Warning: the previous URL won't be accessible anymore."]</span>
-#: OrchardCore.Autoroute\Views\AutoroutePart.Edit.cshtml:75
+#: OrchardCore.Autoroute\Views\AutoroutePart.Edit.cshtml:83
 msgctxt "OrchardCore.Autoroute.Views.AutoroutePart.Edit"
 msgid "Check to refresh the path. Warning: the previous URL won't be accessible anymore."
 msgstr "Cocher pour rafraîchir le chemin d'accès. Attention : l'URL précédente ne sera plus accessible."
 
 #. <label class="custom-control-label" asp-for="RouteContainedItems">@T["Route contained items"]</label>
-#: OrchardCore.Autoroute\Views\AutoroutePart.Edit.cshtml:85
+#: OrchardCore.Autoroute\Views\AutoroutePart.Edit.cshtml:93
 msgctxt "OrchardCore.Autoroute.Views.AutoroutePart.Edit"
 msgid "Route contained items"
 msgstr "Eléments de routage contenus"
 
 #. <span class="hint dashed">@T["Check to enabling the routing of child content items."]</span>
-#: OrchardCore.Autoroute\Views\AutoroutePart.Edit.cshtml:86
+#: OrchardCore.Autoroute\Views\AutoroutePart.Edit.cshtml:94
 msgctxt "OrchardCore.Autoroute.Views.AutoroutePart.Edit"
 msgid "Check to enabling the routing of child content items."
 msgstr "Cocher cette case pour activer le routage des éléments de contenu enfants."
 
 #. <label class="custom-control-label" asp-for="Absolute">@T["Absolute"]</label>
-#: OrchardCore.Autoroute\Views\AutoroutePart.Edit.cshtml:96
+#: OrchardCore.Autoroute\Views\AutoroutePart.Edit.cshtml:104
 msgctxt "OrchardCore.Autoroute.Views.AutoroutePart.Edit"
 msgid "Absolute"
 msgstr "Absolu"
 
 #. <span class="hint dashed">@T["Check to specify that a child content item will be routed to an absolute path."]</span>
-#: OrchardCore.Autoroute\Views\AutoroutePart.Edit.cshtml:97
+#: OrchardCore.Autoroute\Views\AutoroutePart.Edit.cshtml:105
 msgctxt "OrchardCore.Autoroute.Views.AutoroutePart.Edit"
 msgid "Check to specify that a child content item will be routed to an absolute path."
 msgstr "Cocher pour spécifier qu'un élément de contenu enfant sera acheminé vers un chemin absolu."

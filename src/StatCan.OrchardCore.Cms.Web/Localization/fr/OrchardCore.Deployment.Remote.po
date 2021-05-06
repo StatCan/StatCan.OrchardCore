@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
-"PO-Revision-Date: 2020-11-10 07:27\n"
+"PO-Revision-Date: 2021-04-14 09:13\n"
 
 #. .Add(S["Configuration"], configuration => configuration
 #: OrchardCore.Deployment.Remote\AdminMenu.cs:25
@@ -52,80 +52,104 @@ msgctxt "OrchardCore.Deployment.Remote.Controllers.ExportRemoteInstanceControlle
 msgid "An error occurred while sending the deployment to the remote instance: \"{0} ({1})\""
 msgstr "Une erreur s'est produite lors de l'envoi du déploiement à l'instance distante : \"{0} ({1})\""
 
-#. _notifier.Success(H["Remote client created successfully"]);
-#: OrchardCore.Deployment.Remote\Controllers\RemoteClientController.cs:89
+#. new SelectListItem() { Text = S["Delete"], Value = nameof(ContentsBulkAction.Remove) }
+#: OrchardCore.Deployment.Remote\Controllers\RemoteClientController.cs:93
 msgctxt "OrchardCore.Deployment.Remote.Controllers.RemoteClientController"
-msgid "Remote client created successfully"
-msgstr "Client distant créé avec succès"
+msgid "Delete"
+msgstr "Supprimer"
 
-#. _notifier.Success(H["Remote client updated successfully"]);
-#: OrchardCore.Deployment.Remote\Controllers\RemoteClientController.cs:145
+#. _notifier.Success(H["Remote client created successfully."]);
+#: OrchardCore.Deployment.Remote\Controllers\RemoteClientController.cs:137
 msgctxt "OrchardCore.Deployment.Remote.Controllers.RemoteClientController"
-msgid "Remote client updated successfully"
-msgstr "Client distant mis à jour avec succès"
+msgid "Remote client created successfully."
+msgstr "Client distant créé avec succès."
 
-#. _notifier.Success(H["Remote client deleted successfully"]);
-#: OrchardCore.Deployment.Remote\Controllers\RemoteClientController.cs:171
+#. _notifier.Success(H["Remote client updated successfully."]);
+#: OrchardCore.Deployment.Remote\Controllers\RemoteClientController.cs:193
 msgctxt "OrchardCore.Deployment.Remote.Controllers.RemoteClientController"
-msgid "Remote client deleted successfully"
-msgstr "Client distant supprimé avec succès"
+msgid "Remote client updated successfully."
+msgstr "Client distant mis à jour avec succès."
+
+#. _notifier.Success(H["Remote client deleted successfully."]);
+#: OrchardCore.Deployment.Remote\Controllers\RemoteClientController.cs:219
+msgctxt "OrchardCore.Deployment.Remote.Controllers.RemoteClientController"
+msgid "Remote client deleted successfully."
+msgstr "Client distant supprimé avec succès."
+
+#. _notifier.Success(H["Remote clients successfully removed."]);
+#: OrchardCore.Deployment.Remote\Controllers\RemoteClientController.cs:247
+msgctxt "OrchardCore.Deployment.Remote.Controllers.RemoteClientController"
+msgid "Remote clients successfully removed."
+msgstr "Clients distants supprimés avec succès."
 
 #. ModelState.AddModelError(nameof(EditRemoteClientViewModel.ClientName), S["The client name is mandatory."]);
-#: OrchardCore.Deployment.Remote\Controllers\RemoteClientController.cs:180
+#: OrchardCore.Deployment.Remote\Controllers\RemoteClientController.cs:261
 msgctxt "OrchardCore.Deployment.Remote.Controllers.RemoteClientController"
 msgid "The client name is mandatory."
 msgstr "Le nom du client est obligatoire."
 
 #. ModelState.AddModelError(nameof(EditRemoteClientViewModel.ApiKey), S["The api key is mandatory."]);
-#: OrchardCore.Deployment.Remote\Controllers\RemoteClientController.cs:185
+#: OrchardCore.Deployment.Remote\Controllers\RemoteClientController.cs:266
 msgctxt "OrchardCore.Deployment.Remote.Controllers.RemoteClientController"
 msgid "The api key is mandatory."
 msgstr "La clé d'api est obligatoire."
 
-#. _notifier.Success(H["Remote instance created successfully"]);
-#: OrchardCore.Deployment.Remote\Controllers\RemoteInstanceController.cs:84
+#. new SelectListItem() { Text = S["Delete"], Value = nameof(ContentsBulkAction.Remove) }
+#: OrchardCore.Deployment.Remote\Controllers\RemoteInstanceController.cs:88
 msgctxt "OrchardCore.Deployment.Remote.Controllers.RemoteInstanceController"
-msgid "Remote instance created successfully"
-msgstr "Instance distante créée avec succès"
+msgid "Delete"
+msgstr "Supprimer"
 
-#. _notifier.Success(H["Remote instance updated successfully"]);
-#: OrchardCore.Deployment.Remote\Controllers\RemoteInstanceController.cs:142
+#. _notifier.Success(H["Remote instance created successfully."]);
+#: OrchardCore.Deployment.Remote\Controllers\RemoteInstanceController.cs:132
 msgctxt "OrchardCore.Deployment.Remote.Controllers.RemoteInstanceController"
-msgid "Remote instance updated successfully"
-msgstr "Instance distante mise à jour avec succès"
+msgid "Remote instance created successfully."
+msgstr "Instance distante créée avec succès."
 
-#. _notifier.Success(H["Remote instance deleted successfully"]);
-#: OrchardCore.Deployment.Remote\Controllers\RemoteInstanceController.cs:168
+#. _notifier.Success(H["Remote instance updated successfully."]);
+#: OrchardCore.Deployment.Remote\Controllers\RemoteInstanceController.cs:190
 msgctxt "OrchardCore.Deployment.Remote.Controllers.RemoteInstanceController"
-msgid "Remote instance deleted successfully"
-msgstr "Instance distante supprimée avec succès"
+msgid "Remote instance updated successfully."
+msgstr "Instance distante mise à jour avec succès."
+
+#. _notifier.Success(H["Remote instance deleted successfully."]);
+#: OrchardCore.Deployment.Remote\Controllers\RemoteInstanceController.cs:216
+msgctxt "OrchardCore.Deployment.Remote.Controllers.RemoteInstanceController"
+msgid "Remote instance deleted successfully."
+msgstr "Instance distante supprimée avec succès."
+
+#. _notifier.Success(H["Remote instances successfully removed."]);
+#: OrchardCore.Deployment.Remote\Controllers\RemoteInstanceController.cs:244
+msgctxt "OrchardCore.Deployment.Remote.Controllers.RemoteInstanceController"
+msgid "Remote instances successfully removed."
+msgstr "Instances distantes supprimées avec succès."
 
 #. ModelState.AddModelError(nameof(EditRemoteInstanceViewModel.Name), S["The name is mandatory."]);
-#: OrchardCore.Deployment.Remote\Controllers\RemoteInstanceController.cs:177
+#: OrchardCore.Deployment.Remote\Controllers\RemoteInstanceController.cs:258
 msgctxt "OrchardCore.Deployment.Remote.Controllers.RemoteInstanceController"
 msgid "The name is mandatory."
 msgstr "Le nom est obligatoire."
 
 #. ModelState.AddModelError(nameof(EditRemoteInstanceViewModel.ClientName), S["The client name is mandatory."]);
-#: OrchardCore.Deployment.Remote\Controllers\RemoteInstanceController.cs:182
+#: OrchardCore.Deployment.Remote\Controllers\RemoteInstanceController.cs:263
 msgctxt "OrchardCore.Deployment.Remote.Controllers.RemoteInstanceController"
 msgid "The client name is mandatory."
 msgstr "Le nom du client est obligatoire."
 
 #. ModelState.AddModelError(nameof(EditRemoteInstanceViewModel.ApiKey), S["The api key is mandatory."]);
-#: OrchardCore.Deployment.Remote\Controllers\RemoteInstanceController.cs:187
+#: OrchardCore.Deployment.Remote\Controllers\RemoteInstanceController.cs:268
 msgctxt "OrchardCore.Deployment.Remote.Controllers.RemoteInstanceController"
 msgid "The api key is mandatory."
 msgstr "La clé d'api est obligatoire."
 
 #. ModelState.AddModelError(nameof(EditRemoteInstanceViewModel.Url), S["The url is mandatory."]);
-#: OrchardCore.Deployment.Remote\Controllers\RemoteInstanceController.cs:192
+#: OrchardCore.Deployment.Remote\Controllers\RemoteInstanceController.cs:273
 msgctxt "OrchardCore.Deployment.Remote.Controllers.RemoteInstanceController"
 msgid "The url is mandatory."
 msgstr "L'url est obligatoire."
 
 #. ModelState.AddModelError(nameof(EditRemoteInstanceViewModel.Url), S["The url is invalid."]);
-#: OrchardCore.Deployment.Remote\Controllers\RemoteInstanceController.cs:199
+#: OrchardCore.Deployment.Remote\Controllers\RemoteInstanceController.cs:280
 msgctxt "OrchardCore.Deployment.Remote.Controllers.RemoteInstanceController"
 msgid "The url is invalid."
 msgstr "L'url est invalide."
@@ -172,7 +196,7 @@ msgctxt "OrchardCore.Deployment.Remote.Views.RemoteClient.Create"
 msgid "Cancel"
 msgstr "Annuler"
 
-#. <h1>@RenderTitleSegments(T["Edit Remote Client"])</h1>
+#. <zone Name="Title"><h1>@RenderTitleSegments(T["Edit Remote Client"])</h1></zone>
 #: OrchardCore.Deployment.Remote\Views\RemoteClient\Edit.cshtml:3
 msgctxt "OrchardCore.Deployment.Remote.Views.RemoteClient.Edit"
 msgid "Edit Remote Client"
@@ -214,43 +238,103 @@ msgctxt "OrchardCore.Deployment.Remote.Views.RemoteClient.Edit"
 msgid "Cancel"
 msgstr "Annuler"
 
-#. <h1>@RenderTitleSegments(T["Remote Clients"])</h1>
-#: OrchardCore.Deployment.Remote\Views\RemoteClient\Index.cshtml:3
+#. <zone Name="Title"><h1>@RenderTitleSegments(T["Remote Clients"])</h1></zone>
+#: OrchardCore.Deployment.Remote\Views\RemoteClient\Index.cshtml:7
 msgctxt "OrchardCore.Deployment.Remote.Views.RemoteClient.Index"
 msgid "Remote Clients"
 msgstr "Clients distants"
 
 #. @T["Url to use from client instances: <b>{0}</b>", Url.Action("Import", "ImportRemoteInstance", null, Context.Request.Scheme)]
-#: OrchardCore.Deployment.Remote\Views\RemoteClient\Index.cshtml:6
+#: OrchardCore.Deployment.Remote\Views\RemoteClient\Index.cshtml:10
 msgctxt "OrchardCore.Deployment.Remote.Views.RemoteClient.Index"
 msgid "Url to use from client instances: <b>{0}</b>"
 msgstr "Url à utiliser des instances clientes : <b>{0}</b>"
 
-#. <a asp-route-action="Create" class="btn btn-primary" role="button">@T["Add Remote Client"]</a>
-#: OrchardCore.Deployment.Remote\Views\RemoteClient\Index.cshtml:11
+#. <input asp-for="Options.Search" class="form-control" placeholder="@T["Search"]" type="search" autofocus />
+#: OrchardCore.Deployment.Remote\Views\RemoteClient\Index.cshtml:24
+msgctxt "OrchardCore.Deployment.Remote.Views.RemoteClient.Index"
+msgid "Search"
+msgstr "Recherche"
+
+#. <a asp-route-action="Create" class="btn btn-sm btn-secondary float-right create" role="button">@T["Add Remote Client"]</a>
+#: OrchardCore.Deployment.Remote\Views\RemoteClient\Index.cshtml:27
 msgctxt "OrchardCore.Deployment.Remote.Views.RemoteClient.Index"
 msgid "Add Remote Client"
 msgstr "Ajouter client distant"
 
+#. <label class="custom-control-label" for="select-all" id="select-all-label" title="@T["Select All"]"></label>
+#: OrchardCore.Deployment.Remote\Views\RemoteClient\Index.cshtml:40
+msgctxt "OrchardCore.Deployment.Remote.Views.RemoteClient.Index"
+msgid "Select All"
+msgstr "Tout sélectionner"
+
+#. <label id="items" for="select-all">@T.Plural(Model.RemoteClients.Count(), "1 item", "{0} items")<span class="text-muted" title="@T["Items {0} to {1}", startIndex, endIndex]">@T.Plural((int)Model.Pager.TotalItemCount, " / {0} item in total", " / {0} items in total")</span></label>
+#: OrchardCore.Deployment.Remote\Views\RemoteClient\Index.cshtml:41
+msgctxt "OrchardCore.Deployment.Remote.Views.RemoteClient.Index"
+msgid "1 item"
+msgid_plural "{0} items"
+msgstr[0] "1 élément"
+msgstr[1] "{0} éléments"
+
+#. <label id="items" for="select-all">@T.Plural(Model.RemoteClients.Count(), "1 item", "{0} items")<span class="text-muted" title="@T["Items {0} to {1}", startIndex, endIndex]">@T.Plural((int)Model.Pager.TotalItemCount, " / {0} item in total", " / {0} items in total")</span></label>
+#: OrchardCore.Deployment.Remote\Views\RemoteClient\Index.cshtml:41
+msgctxt "OrchardCore.Deployment.Remote.Views.RemoteClient.Index"
+msgid "Items {0} to {1}"
+msgstr "Éléments : {0} sur {1}"
+
+#. <label id="items" for="select-all">@T.Plural(Model.RemoteClients.Count(), "1 item", "{0} items")<span class="text-muted" title="@T["Items {0} to {1}", startIndex, endIndex]">@T.Plural((int)Model.Pager.TotalItemCount, " / {0} item in total", " / {0} items in total")</span></label>
+#: OrchardCore.Deployment.Remote\Views\RemoteClient\Index.cshtml:41
+msgctxt "OrchardCore.Deployment.Remote.Views.RemoteClient.Index"
+msgid " / {0} item in total"
+msgid_plural " / {0} items in total"
+msgstr[0] " / {0} éléments au total"
+msgstr[1] " / {0} éléments au total"
+
+#. @T["Actions"]
+#: OrchardCore.Deployment.Remote\Views\RemoteClient\Index.cshtml:48
+msgctxt "OrchardCore.Deployment.Remote.Views.RemoteClient.Index"
+msgid "Actions"
+msgstr "Actions"
+
+#. <a class="dropdown-item" href="javascript:void(0)" data-action="@item.Value" data-title="@T["Bulk Action"]" data-message="@T["Are you sure you want to {0} these items?", @item.Text.ToLower()]">@item.Text</a>
+#: OrchardCore.Deployment.Remote\Views\RemoteClient\Index.cshtml:53
+msgctxt "OrchardCore.Deployment.Remote.Views.RemoteClient.Index"
+msgid "Bulk Action"
+msgstr "Action par lot"
+
+#. <a class="dropdown-item" href="javascript:void(0)" data-action="@item.Value" data-title="@T["Bulk Action"]" data-message="@T["Are you sure you want to {0} these items?", @item.Text.ToLower()]">@item.Text</a>
+#: OrchardCore.Deployment.Remote\Views\RemoteClient\Index.cshtml:53
+msgctxt "OrchardCore.Deployment.Remote.Views.RemoteClient.Index"
+msgid "Are you sure you want to {0} these items?"
+msgstr "Êtes-vous sûr de vouloir {0} ces éléments ?"
+
 #. <a asp-action="Edit" asp-route-id="@entry.Id" class="btn btn-primary btn-sm">@T["Edit"]</a>
-#: OrchardCore.Deployment.Remote\Views\RemoteClient\Index.cshtml:24
+#: OrchardCore.Deployment.Remote\Views\RemoteClient\Index.cshtml:69
 msgctxt "OrchardCore.Deployment.Remote.Views.RemoteClient.Index"
 msgid "Edit"
 msgstr "Modifier"
 
-#. <a asp-action="Delete" asp-route-id="@entry.Id" class="btn btn-danger btn-sm" itemprop="RemoveUrl UnsafeUrl">@T["Delete"]</a>
-#: OrchardCore.Deployment.Remote\Views\RemoteClient\Index.cshtml:25
+#. <a asp-action="Delete" asp-route-id="@entry.Id" class="btn btn-danger btn-sm" data-url-af="RemoveUrl UnsafeUrl">@T["Delete"]</a>
+#: OrchardCore.Deployment.Remote\Views\RemoteClient\Index.cshtml:70
 msgctxt "OrchardCore.Deployment.Remote.Views.RemoteClient.Index"
 msgid "Delete"
 msgstr "Supprimer"
 
 #. @T["<strong>Nothing here!</strong> There are no remote clients for the moment."]
-#: OrchardCore.Deployment.Remote\Views\RemoteClient\Index.cshtml:36
+#: OrchardCore.Deployment.Remote\Views\RemoteClient\Index.cshtml:81
 msgctxt "OrchardCore.Deployment.Remote.Views.RemoteClient.Index"
 msgid "<strong>Nothing here!</strong> There are no remote clients for the moment."
 msgstr "<strong>Rien ici !</strong> Il n'y a pas de clients distants pour le moment."
 
-#. <h1>@RenderTitleSegments(T["Create Remote Instance"])</h1>
+#. selectedItems.text($(":checkbox[name='itemIds']:checked").length + ' @T["selected"]');
+#. selectedItems.text(selectedItemsCount + ' @T["selected"]');
+#: OrchardCore.Deployment.Remote\Views\RemoteClient\Index.cshtml:130
+#: OrchardCore.Deployment.Remote\Views\RemoteClient\Index.cshtml:141
+msgctxt "OrchardCore.Deployment.Remote.Views.RemoteClient.Index"
+msgid "selected"
+msgstr "sélectionné(s)"
+
+#. <zone Name="Title"><h1>@RenderTitleSegments(T["Create Remote Instance"])</h1></zone>
 #: OrchardCore.Deployment.Remote\Views\RemoteInstance\Create.cshtml:3
 msgctxt "OrchardCore.Deployment.Remote.Views.RemoteInstance.Create"
 msgid "Create Remote Instance"
@@ -316,7 +400,7 @@ msgctxt "OrchardCore.Deployment.Remote.Views.RemoteInstance.Create"
 msgid "Cancel"
 msgstr "Annuler"
 
-#. <h1>@RenderTitleSegments(T["Edit Remote Instance"])</h1>
+#. <zone Name="Title"><h1>@RenderTitleSegments(T["Edit Remote Instance"])</h1></zone>
 #: OrchardCore.Deployment.Remote\Views\RemoteInstance\Edit.cshtml:3
 msgctxt "OrchardCore.Deployment.Remote.Views.RemoteInstance.Edit"
 msgid "Edit Remote Instance"
@@ -382,33 +466,93 @@ msgctxt "OrchardCore.Deployment.Remote.Views.RemoteInstance.Edit"
 msgid "Cancel"
 msgstr "Annuler"
 
-#. <h1>@RenderTitleSegments(T["Remote Instances"])</h1>
-#: OrchardCore.Deployment.Remote\Views\RemoteInstance\Index.cshtml:3
+#. <zone Name="Title"><h1>@RenderTitleSegments(T["Remote Instances"])</h1></zone>
+#: OrchardCore.Deployment.Remote\Views\RemoteInstance\Index.cshtml:7
 msgctxt "OrchardCore.Deployment.Remote.Views.RemoteInstance.Index"
 msgid "Remote Instances"
 msgstr "Instances distantes"
 
-#. <a asp-route-action="Create" class="btn btn-primary" role="button">@T["Add Remote Instance"]</a>
-#: OrchardCore.Deployment.Remote\Views\RemoteInstance\Index.cshtml:7
+#. <input asp-for="Options.Search" class="form-control" placeholder="@T["Search"]" type="search" autofocus />
+#: OrchardCore.Deployment.Remote\Views\RemoteInstance\Index.cshtml:20
+msgctxt "OrchardCore.Deployment.Remote.Views.RemoteInstance.Index"
+msgid "Search"
+msgstr "Recherche"
+
+#. <a asp-route-action="Create" class="btn btn-sm btn-secondary float-right create" role="button">@T["Add Remote Instance"]</a>
+#: OrchardCore.Deployment.Remote\Views\RemoteInstance\Index.cshtml:23
 msgctxt "OrchardCore.Deployment.Remote.Views.RemoteInstance.Index"
 msgid "Add Remote Instance"
 msgstr "Ajouter une instance distante"
 
+#. <label class="custom-control-label" for="select-all" id="select-all-label" title="@T["Select All"]"></label>
+#: OrchardCore.Deployment.Remote\Views\RemoteInstance\Index.cshtml:36
+msgctxt "OrchardCore.Deployment.Remote.Views.RemoteInstance.Index"
+msgid "Select All"
+msgstr "Tout sélectionner"
+
+#. <label id="items" for="select-all">@T.Plural(Model.RemoteInstances.Count(), "1 item", "{0} items")<span class="text-muted" title="@T["Items {0} to {1}", startIndex, endIndex]">@T.Plural((int)Model.Pager.TotalItemCount, " / {0} item in total", " / {0} items in total")</span></label>
+#: OrchardCore.Deployment.Remote\Views\RemoteInstance\Index.cshtml:37
+msgctxt "OrchardCore.Deployment.Remote.Views.RemoteInstance.Index"
+msgid "1 item"
+msgid_plural "{0} items"
+msgstr[0] "1 élément"
+msgstr[1] "{0} éléments"
+
+#. <label id="items" for="select-all">@T.Plural(Model.RemoteInstances.Count(), "1 item", "{0} items")<span class="text-muted" title="@T["Items {0} to {1}", startIndex, endIndex]">@T.Plural((int)Model.Pager.TotalItemCount, " / {0} item in total", " / {0} items in total")</span></label>
+#: OrchardCore.Deployment.Remote\Views\RemoteInstance\Index.cshtml:37
+msgctxt "OrchardCore.Deployment.Remote.Views.RemoteInstance.Index"
+msgid "Items {0} to {1}"
+msgstr "Éléments : {0} sur {1}"
+
+#. <label id="items" for="select-all">@T.Plural(Model.RemoteInstances.Count(), "1 item", "{0} items")<span class="text-muted" title="@T["Items {0} to {1}", startIndex, endIndex]">@T.Plural((int)Model.Pager.TotalItemCount, " / {0} item in total", " / {0} items in total")</span></label>
+#: OrchardCore.Deployment.Remote\Views\RemoteInstance\Index.cshtml:37
+msgctxt "OrchardCore.Deployment.Remote.Views.RemoteInstance.Index"
+msgid " / {0} item in total"
+msgid_plural " / {0} items in total"
+msgstr[0] " / {0} éléments au total"
+msgstr[1] " / {0} éléments au total"
+
+#. @T["Actions"]
+#: OrchardCore.Deployment.Remote\Views\RemoteInstance\Index.cshtml:44
+msgctxt "OrchardCore.Deployment.Remote.Views.RemoteInstance.Index"
+msgid "Actions"
+msgstr "Actions"
+
+#. <a class="dropdown-item" href="javascript:void(0)" data-action="@item.Value" data-title="@T["Bulk Action"]" data-message="@T["Are you sure you want to {0} these items?", @item.Text.ToLower()]">@item.Text</a>
+#: OrchardCore.Deployment.Remote\Views\RemoteInstance\Index.cshtml:49
+msgctxt "OrchardCore.Deployment.Remote.Views.RemoteInstance.Index"
+msgid "Bulk Action"
+msgstr "Action par lot"
+
+#. <a class="dropdown-item" href="javascript:void(0)" data-action="@item.Value" data-title="@T["Bulk Action"]" data-message="@T["Are you sure you want to {0} these items?", @item.Text.ToLower()]">@item.Text</a>
+#: OrchardCore.Deployment.Remote\Views\RemoteInstance\Index.cshtml:49
+msgctxt "OrchardCore.Deployment.Remote.Views.RemoteInstance.Index"
+msgid "Are you sure you want to {0} these items?"
+msgstr "Êtes-vous sûr de vouloir {0} ces éléments ?"
+
 #. <a asp-action="Edit" asp-route-id="@entry.Id" class="btn btn-primary btn-sm">@T["Edit"]</a>
-#: OrchardCore.Deployment.Remote\Views\RemoteInstance\Index.cshtml:20
+#: OrchardCore.Deployment.Remote\Views\RemoteInstance\Index.cshtml:66
 msgctxt "OrchardCore.Deployment.Remote.Views.RemoteInstance.Index"
 msgid "Edit"
 msgstr "Modifier"
 
-#. <a asp-action="Delete" asp-route-id="@entry.Id" class="btn btn-danger btn-sm" itemprop="RemoveUrl UnsafeUrl">@T["Delete"]</a>
-#: OrchardCore.Deployment.Remote\Views\RemoteInstance\Index.cshtml:21
+#. <a asp-action="Delete" asp-route-id="@entry.Id" class="btn btn-danger btn-sm" data-url-af="RemoveUrl UnsafeUrl">@T["Delete"]</a>
+#: OrchardCore.Deployment.Remote\Views\RemoteInstance\Index.cshtml:67
 msgctxt "OrchardCore.Deployment.Remote.Views.RemoteInstance.Index"
 msgid "Delete"
 msgstr "Supprimer"
 
 #. @T["<strong>Nothing here!</strong> There are no remote instances for the moment."]
-#: OrchardCore.Deployment.Remote\Views\RemoteInstance\Index.cshtml:33
+#: OrchardCore.Deployment.Remote\Views\RemoteInstance\Index.cshtml:79
 msgctxt "OrchardCore.Deployment.Remote.Views.RemoteInstance.Index"
 msgid "<strong>Nothing here!</strong> There are no remote instances for the moment."
 msgstr "<strong>Rien ici !</strong> Il n'y a pas d'instances distantes pour le moment."
+
+#. selectedItems.text($(":checkbox[name='itemIds']:checked").length + ' @T["selected"]');
+#. selectedItems.text(selectedItemsCount + ' @T["selected"]');
+#: OrchardCore.Deployment.Remote\Views\RemoteInstance\Index.cshtml:128
+#: OrchardCore.Deployment.Remote\Views\RemoteInstance\Index.cshtml:139
+msgctxt "OrchardCore.Deployment.Remote.Views.RemoteInstance.Index"
+msgid "selected"
+msgstr "sélectionné(s)"
 

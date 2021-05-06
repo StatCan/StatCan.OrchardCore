@@ -2,10 +2,12 @@
 An node.js script for translating PO files using Google Translate API.
 
 
-## Usage:
+## Usage from powershell
 
-```javascript
-node po-gtranslator.js --project_id=oc-translation --po_source="C:\Users\jeanp\repos\statcan\StatCan.OrchardCore\translations\input" --po_dest="C:\Users\jeanp\repos\statcan\StatCan.OrchardCore\translations\fr" --lang=fr
+```powershell
+$env:GOOGLE_APPLICATION_CREDENTIALS="path-to-key"
+
+node po-gtranslator.js --project_id=oc-translation --po_source="C:\translations\extract" --po_dest="C:\...\StatCan.OrchardCore\src\StatCan.OrchardCore.Cms.Web\Localization\fr" --lang=fr
 
 ```
 

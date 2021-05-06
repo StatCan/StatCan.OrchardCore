@@ -10,11 +10,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
-"PO-Revision-Date: 2020-11-10 07:27\n"
+"PO-Revision-Date: 2021-04-14 09:13\n"
 
 #. updater.ModelState.AddModelError(Prefix, nameof(viewModel.Liquid), S["The Liquid Body doesn't contain a valid Liquid expression. Details: {0}", string.Join(" ", errors)]);
-#: OrchardCore.Liquid\Drivers\LiquidPartDisplay.cs:46
-msgctxt "OrchardCore.Liquid.Drivers.LiquidPartDisplay"
+#: OrchardCore.Liquid\Drivers\LiquidPartDisplayDriver.cs:46
+msgctxt "OrchardCore.Liquid.Drivers.LiquidPartDisplayDriver"
 msgid "The Liquid Body doesn't contain a valid Liquid expression. Details: {0}"
 msgstr "Le Liquid Body ne contient pas une expression Liquid valide. Détails: {0}"
 
@@ -24,9 +24,15 @@ msgctxt "OrchardCore.Liquid.Views.LiquidPart.Edit"
 msgid "Body"
 msgstr "Corps"
 
-#. <span class="hint">@T["The body of the content item, in Liquid format."]</span>
-#: OrchardCore.Liquid\Views\LiquidPart.Edit.cshtml:16
+#. @T["The body of the content item, in Liquid format."]
+#: OrchardCore.Liquid\Views\LiquidPart.Edit.cshtml:17
 msgctxt "OrchardCore.Liquid.Views.LiquidPart.Edit"
 msgid "The body of the content item, in Liquid format."
 msgstr "Le corps de l'élément de contenu, au format Liquid."
+
+#. <a class="seedoc" href="@(OrchardCore.Admin.Constants.DocsUrl)reference/modules/Liquid" target="_blank">@T["See documentation"]</a>
+#: OrchardCore.Liquid\Views\LiquidPart.Edit.cshtml:18
+msgctxt "OrchardCore.Liquid.Views.LiquidPart.Edit"
+msgid "See documentation"
+msgstr "Voir la documentation"
 

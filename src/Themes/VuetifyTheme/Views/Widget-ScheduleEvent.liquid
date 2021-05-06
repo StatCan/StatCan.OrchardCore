@@ -1,0 +1,12 @@
+<v-timeline-item color="red" small>
+  <v-row class="mt-n3">
+    <v-col cols="3">
+      <strong>{{ Model.ContentItem.Content.ScheduleEvent.Time.Text }}</strong>
+      <div>{{ Model.ContentItem.Content.ScheduleEvent.Location.Text }}</div>
+    </v-col>
+    <v-col>
+      <strong>{{ Model.ContentItem | display_text }}</strong>    
+      <div>{{ Model.Content.MarkdownBodyPart | shape_render }}</div>
+    </v-col>
+  </v-row>
+</v-timeline-item>

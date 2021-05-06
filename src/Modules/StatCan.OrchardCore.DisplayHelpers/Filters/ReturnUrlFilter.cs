@@ -24,7 +24,7 @@ namespace StatCan.OrchardCore.DisplayHelpers.Filters
         {
             var urlHelper = _urlHelperFactory.GetUrlHelper(context.ViewContext);
 
-            var returnPath = (_httpContext.Request.PathBase + _httpContext.Request.Path).ToString();
+            var returnPath = (_httpContext.Request.PathBase + _httpContext.Request.Path + _httpContext.Request.QueryString).ToString();
             if (arguments["type"].Or(arguments.At(0)).ToStringValue() != "")
             {
                 returnPath = arguments["type"].Or(arguments.At(0)).ToStringValue();

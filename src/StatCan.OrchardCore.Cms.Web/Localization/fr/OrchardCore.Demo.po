@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
-"PO-Revision-Date: 2020-11-10 07:27\n"
+"PO-Revision-Date: 2021-04-14 09:13\n"
 
 #. .Add(S["Demo"], "10", demo => demo
 #: OrchardCore.Demo\AdminMenu.cs:25
@@ -112,7 +112,7 @@ msgctxt "OrchardCore.Demo.Views.UserProfile.Edit"
 msgid "Age"
 msgstr "Age"
 
-#. <h1>@RenderTitleSegments(T["Edit {0}", (string)Model.ContentItem.ContentType])</h1>
+#. <zone Name="Title"><h1>@RenderTitleSegments(T["Edit {0}", (string)Model.ContentItem.ContentType])</h1></zone>
 #: OrchardCore.Demo\Views\Content\Edit.cshtml:2
 msgctxt "OrchardCore.Demo.Views.Content.Edit"
 msgid "Edit {0}"

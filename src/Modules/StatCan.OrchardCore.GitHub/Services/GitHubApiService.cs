@@ -2,7 +2,6 @@ using Microsoft.AspNetCore.DataProtection;
 using Octokit;
 using OrchardCore.Entities;
 using OrchardCore.Settings;
-using Org.BouncyCastle.Math.EC.Rfc7748;
 using StatCan.OrchardCore.GitHub.Settings;
 using System;
 using System.Collections.Generic;

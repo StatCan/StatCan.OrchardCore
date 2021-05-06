@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
-"PO-Revision-Date: 2020-11-10 07:27\n"
+"PO-Revision-Date: 2021-04-14 09:13\n"
 
 #: TheBlogTheme\Views\Blog-ListPart.liquid:0
 msgctxt "TheBlogTheme.Views.Blog-ListPart"
@@ -131,4 +131,9 @@ msgstr "suivant"
 msgctxt "TheBlogTheme.Views.Shared.NotFound"
 msgid "Page Not Found"
 msgstr "Page introuvable"
+
+#: TheBlogTheme\Views\Shared\Search.liquid:0
+msgctxt "TheBlogTheme.Views.Shared.Search"
+msgid "Search"
+msgstr "Recherche"
 

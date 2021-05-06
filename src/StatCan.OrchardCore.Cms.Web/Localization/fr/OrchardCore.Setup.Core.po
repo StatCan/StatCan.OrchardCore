@@ -10,10 +10,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
-"PO-Revision-Date: 2020-11-10 07:27\n"
+"PO-Revision-Date: 2021-04-14 09:13\n"
 
 #. context.Errors.Add("DatabaseProvider", S["An error occurred while initializing the datastore: {0}", e.Message]);
-#: OrchardCore.Setup.Core\SetupService.cs:174
+#: OrchardCore.Setup.Core\SetupService.cs:195
 msgctxt "OrchardCore.Setup.Services.SetupService"
 msgid "An error occurred while initializing the datastore: {0}"
 msgstr "Une erreur s'est produite lors de l'initialisation du datastore: {0}"
