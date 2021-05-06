@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <AspNetCoreTargetFramework>net5.0</AspNetCoreTargetFramework>
-    <OrchardCoreVersion>1.0.0-rc2-16169</OrchardCoreVersion>
+    <OrchardCoreVersion>1.0.0-rc2-16172</OrchardCoreVersion>
   </PropertyGroup>
 
   <ItemGroup>
