@@ -6,6 +6,7 @@ const contentIdHackerRegistrationForm = "4dj03mdaztzf8wg12gw56xkg43";
 const contentIdVolunteerRegistrationForm = "4jjje1q162zaay11nbf3w2634h";
 const contentIdScoringPageForm = "423fn7nvrwcdv2ksy8hww9qwdn";
 const TeamManagementPagePath = "test-page";
+const draggableContentId = "45a6j8rkq9z56xfhvxwm5hvgc7";
 const password = 'Inno111!';
 
 describe("Hackathon Tests", function() {    
@@ -190,6 +191,19 @@ describe("Hackathon Tests", function() {
     cy.get('button[name=btnSave]').click();
 
     cy.get('div[class=v-alert__content]').should('contain', 'Team info successfully updated');
+  })
+
+  it("Vue Component: Draggable list", function() {
+    cy.login(tenant);
+    cy.uploadRecipeJson(tenant, "recipes/draggable.json");
+    cy.visitContentPage(tenant, draggableContentId);
+
+    cy.get('div[name=title1]').should('contain', 'Title 1');
+    cy.get('div[name=hint1]').should('contain', 'Hint 1');
+    cy.get('span[id=error]').should('contain', 'Please select at least 3 options');
+
+    cy.get('div[name=title').should('contain', 'Title 1');
+    cy.get('div[name=hint]').should('contain', 'Hint 1');
   })
 
   // // Scoring Page Form  

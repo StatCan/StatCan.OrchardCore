@@ -1,0 +1,89 @@
+{
+  "steps": [
+    {
+      "name": "Content",
+      "data": [
+        {
+          "ContentItemId": "45a6j8rkq9z56xfhvxwm5hvgc7",
+          "ContentItemVersionId": "4b4hq011c8z6yttg7rs2cskhct",
+          "ContentType": "VueForm",
+          "DisplayText": "Draggable",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": "2021-04-15T13:33:27.684827Z",
+          "PublishedUtc": "2021-04-15T13:33:27.7042531Z",
+          "CreatedUtc": "2021-04-14T17:43:59.1530433Z",
+          "Owner": "470faeeca24w7y4wp6eavkynwp",
+          "Author": "admin",
+          "TitlePart": {
+            "Title": "Draggable"
+          },
+          "VueForm": {
+            "Enabled": {
+              "Value": true
+            },
+            "RenderAs": {
+              "Text": null
+            },
+            "DisabledHtml": {
+              "Html": ""
+            },
+            "SuccessMessage": {
+              "Text": null
+            }
+          },
+          "FlowPart": {
+            "Widgets": [
+              {
+                "ContentItemId": "41xwaps31mgnw46920k0ebtndj",
+                "ContentItemVersionId": null,
+                "ContentType": "VueComponent",
+                "DisplayText": "Draggable list",
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": "2021-04-15T13:33:27.6918269Z",
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": "",
+                "Author": "admin",
+                "TitlePart": {
+                  "Title": "Draggable list"
+                },
+                "VueComponent": {
+                  "Template": {
+                    "Text": "<v-container >\r\n  <v-card-text>\r\n    <v-row justify=\"center\">\r\n      <v-col cols=\"12\">\r\n        <two-lists-draggable :list1=\"list1\" \r\n                             :list2=\"list2\" \r\n                             title1=\"Title 1\"\r\n                             title2=\"Title 2\"\r\n                             hint1=\"Hint 1\"\r\n                             hint2=\"Hint 2\"\r\n                             :error-messages=\"errorMessages\">\r\n        </two-lists-draggable>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n        <sort-draggable :list=\"list1\"\r\n                        title=\"Title 1\"\r\n                        hint=\"Hint 1\">\r\n        </sort-draggable>\r\n      </v-col>\r\n    </v-row>\r\n  </v-card-text>\r\n</v-container>"
+                  }
+                },
+                "FlowMetadata": {
+                  "Alignment": 3,
+                  "Size": 100
+                }
+              }
+            ]
+          },
+          "VueFormScripts": {
+            "ClientInit": {
+              "Text": null
+            },
+            "ComponentOptions": {
+              "Text": "{\r\n  data: () => ({\r\n    list1: [\r\n        { name: \"John\", id: 0 },\r\n        { name: \"Joao\", id: 1 },\r\n        { name: \"Jean\", id: 2 }\r\n      ],\r\n    list2: [\r\n        { name: \"Jason\", id: 3 },\r\n        { name: \"Joey\", id: 4 },\r\n        { name: \"Jody\", id: 5 }\r\n      ],\r\n    title1: \"List Title One\",\r\n    title2: \"List Title Two\",\r\n    hint1: \"List Hint One\",\r\n    hint2: \"List Hint Two\",\r\n    errorMessages: [\"Please select at least 3 options\"]\r\n  })\r\n}"
+            },
+            "OnValidation": {
+              "Text": null
+            },
+            "OnSubmitted": {
+              "Text": null
+            }
+          },
+          "ContentPermissionsPart": {
+            "Roles": [],
+            "Enabled": false
+          },
+          "LocalizedTextPart": {
+            "Data": []
+          }
+        }
+      ]
+    }
+  ]
+}
