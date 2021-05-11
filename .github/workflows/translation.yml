@@ -50,8 +50,8 @@ jobs:
       with:
         commit-message: Update translations
         signoff: false
-        base: master
-        branch: update-localizations
+        base: ${{ github.ref }}
+        branch: auto-translation
         delete-branch: true
         title: '[Localization] Update translations'
         body: |
