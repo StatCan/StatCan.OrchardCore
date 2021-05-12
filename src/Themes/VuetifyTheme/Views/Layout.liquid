@@ -12,15 +12,25 @@
   <body dir="{{ Culture.Dir }}">
     <div id="page-top" v-cloak>
       <v-app>
-        <!-- Style this absolute in the middle, on top of app-bar -->
         <a class="d-sr-only-focusable" href="#main">{{ "Skip to main content" | t }}</a>
         {% render_section "NavigationDrawer", required: false %}
         {% render_section "Header", required: false %}
         <v-main id="main">
-          {% render_section "Breadcrumbs", required: false %}
-          <v-container class="py-4 px-4" fluid>
-            {% render_section "Messages", required: false %}
-            {% render_section "IEBanner", required: false %}
+          {% render_section "IEBanner", required: false %}
+          {% assign breadcrumbNotEmpty = "Breadcrumb" | section_not_empy %}
+          {% if breadcrumbNotEmpty %}
+            <v-container fluid>
+              {% render_section "Breadcrumb", required: false %}
+            </v-container> 
+          {% endif %}
+      
+          {% assign messagesNotEmpty = "Messages" | section_not_empy %}
+          {% if messagesNotEmpty %}
+            <v-container fluid>
+              {% render_section "Messages", required: false %}
+            </v-container>
+          {% endif %}
+          <v-container fluid>
             {% render_body %}
           </v-container>
         </v-main>
