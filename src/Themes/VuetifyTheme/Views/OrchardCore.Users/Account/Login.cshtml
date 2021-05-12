@@ -18,40 +18,31 @@
     ViewData.ModelState.TryGetValue("UserName", out var userName);
     ViewData.ModelState.TryGetValue("Password", out var password);
 }
-
 <v-card class="px-4">
   <v-card-title>@T["Log In"]</v-card-title>
   @if (!disableLocalLogin)
   {
     <v-card-text>
-      <v-row>
-        <v-col cols="12">
-          <form id="LoginForm" asp-controller="Account" asp-action="Login" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post">
-            @if(ViewData.ModelState.ErrorCount > 0) 
-            {
-              <v-alert color="red" type="error">
-                <ul>
-                  @foreach (var error in ViewData.ModelState.SelectMany(x => x.Value.Errors).Reverse())
-                  {
-                    <li>@error.ErrorMessage</li>
-                  }
-                </ul>
-              </v-alert>
-            }
-            <v-row>
-              <v-col cols="12">
-                <v-text-field id="UserName" name="UserName" label="@T["Username"]" value="@userName?.AttemptedValue" error-messages="@(userName?.Errors.FirstOrDefault()?.ErrorMessage)"></v-text-field>
-                <v-text-field id="Password" type="password" name="Password" label="@T["Password"]" error-messages="@(password?.Errors.FirstOrDefault()?.ErrorMessage)"></v-text-field>
-                <v-checkbox name="RememberMe" label="@T["Remember me"]" value="true"></v-checkbox>
-                @if (allowResetPassword)
-                {
-                  <a asp-controller="ResetPassword" asp-action="ForgotPassword" class="label-link">@T["Forgot your password?"]</a>
-                }
-              </v-col>
-            </v-row>
-          </form>
-        </v-col>
-      </v-row>
+      <form id="LoginForm" asp-controller="Account" asp-action="Login" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post">
+        @if(ViewData.ModelState.ErrorCount > 0) 
+        {
+          <v-alert color="red" type="error">
+            <ul>
+              @foreach (var error in ViewData.ModelState.SelectMany(x => x.Value.Errors).Reverse())
+              {
+                <li>@error.ErrorMessage</li>
+              }
+            </ul>
+          </v-alert>
+        }
+        <v-text-field id="UserName" name="UserName" label="@T["Username"]" value="@userName?.AttemptedValue" error-messages="@(userName?.Errors.FirstOrDefault()?.ErrorMessage)"></v-text-field>
+        <v-text-field id="Password" type="password" name="Password" label="@T["Password"]" error-messages="@(password?.Errors.FirstOrDefault()?.ErrorMessage)"></v-text-field>
+        <v-checkbox name="RememberMe" label="@T["Remember me"]" value="true"></v-checkbox>
+        @if (allowResetPassword)
+        {
+          <a asp-controller="ResetPassword" asp-action="ForgotPassword" class="label-link">@T["Forgot your password?"]</a>
+        }
+      </form>
     </v-card-text>
     <v-card-actions>
       @await RenderSectionAsync("AfterLogin", required: false)
