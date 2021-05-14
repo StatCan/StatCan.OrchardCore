@@ -148,7 +148,7 @@ msgid ""
 "The author's email address that defines who the email is from. Leave blank "
 "to use the configured email address. With Liquid support."
 msgstr ""
-"L'adresse courriel de l'auteur qui définit de qui provient l'courriel. "
+"L'adresse courriel de l'auteur qui définit de qui provient le courriel. "
 "Laissez vide pour utiliser l'adresse courriel configurée. Avec support "
 "liquide."
 
