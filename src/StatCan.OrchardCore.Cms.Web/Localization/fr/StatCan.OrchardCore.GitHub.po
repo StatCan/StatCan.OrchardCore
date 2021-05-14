@@ -117,13 +117,13 @@ msgctxt "StatCan.OrchardCore.GitHub.Activities.CreatePullRequestTask"
 msgid "Error"
 msgstr "Erreur"
 
-#: StatCan.OrchardCore.GitHub\Drivers\GitHubApiSettingsDisplayDriver.cs:86
+#: StatCan.OrchardCore.GitHub\Drivers\GitHubApiSettingsDisplayDriver.cs:85
 #. context.Updater.ModelState.AddModelError(Prefix, S["Please use unique token names"]);
 msgctxt "StatCan.OrchardCore.GitHub.Drivers.GitHubApiSettingsDisplayDriver"
 msgid "Please use unique token names"
 msgstr "Veuillez utiliser des noms de jetons uniques"
 
-#: StatCan.OrchardCore.GitHub\Drivers\GitHubApiSettingsDisplayDriver.cs:111
+#: StatCan.OrchardCore.GitHub\Drivers\GitHubApiSettingsDisplayDriver.cs:110
 #. context.Updater.ModelState.AddModelError(Prefix, S["The tokens are written in an incorrect format."]);
 msgctxt "StatCan.OrchardCore.GitHub.Drivers.GitHubApiSettingsDisplayDriver"
 msgid "The tokens are written in an incorrect format."

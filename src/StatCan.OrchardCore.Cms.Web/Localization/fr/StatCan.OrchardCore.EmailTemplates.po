@@ -148,8 +148,9 @@ msgid ""
 "The author's email address that defines who the email is from. Leave blank "
 "to use the configured email address. With Liquid support."
 msgstr ""
-"L'adresse courriel de l'auteur qui définit de qui provient l'courriel. Laissez "
-"vide pour utiliser l'adresse courriel configurée. Avec support liquide."
+"L'adresse courriel de l'auteur qui définit de qui provient l'courriel. "
+"Laissez vide pour utiliser l'adresse courriel configurée. Avec support "
+"liquide."
 
 #: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\Create.cshtml:43
 #. <label asp-for="SenderExpression">@T["Sender"]</label>
@@ -164,8 +165,8 @@ msgid ""
 "The sender's email address. Required if not the same than the \"From\" "
 "email address. With Liquid support."
 msgstr ""
-"L'adresse courriel de l'expéditeur. Obligatoire si elle n'est pas la même que "
-"l'adresse courriel «De». Avec support liquide."
+"L'adresse courriel de l'expéditeur. Obligatoire si elle n'est pas la même "
+"que l'adresse courriel «De». Avec support liquide."
 
 #: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\Create.cshtml:50
 #. <label asp-for="SenderExpression">@T["ReplyTo"]</label>
@@ -195,8 +196,8 @@ msgstr "Bénéficiaires"
 msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.Create"
 msgid "The comma-separated list of recipient email addresses. With Liquid support."
 msgstr ""
-"La liste des adresses courriel des destinataires, séparées par des virgules. "
-"Avec support liquide."
+"La liste des adresses courriel des destinataires, séparées par des "
+"virgules. Avec support liquide."
 
 #: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\Create.cshtml:64
 #. <label asp-for="CCExpression">@T["CC"]</label>
@@ -211,8 +212,8 @@ msgid ""
 "The comma-separated list of CC recipient email addresses. With Liquid "
 "support."
 msgstr ""
-"Liste des adresses courriel des destinataires CC, séparées par des virgules. "
-"Avec support liquide."
+"Liste des adresses courriel des destinataires CC, séparées par des "
+"virgules. Avec support liquide."
 
 #: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\Create.cshtml:71
 #. <label asp-for="BCCExpression">@T["BCC"]</label>
@@ -227,8 +228,8 @@ msgid ""
 "The comma-separated list of BCC recipient email addresses. With Liquid "
 "support."
 msgstr ""
-"Liste des adresses courriel des destinataires Cci, séparées par des virgules. "
-"Avec support liquide."
+"Liste des adresses courriel des destinataires Cci, séparées par des "
+"virgules. Avec support liquide."
 
 #: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\Create.cshtml:78
 #. <label asp-for="SubjectExpression">@T["Subject"]</label>
@@ -338,8 +339,9 @@ msgid ""
 "The author's email address that defines who the email is from. Leave blank "
 "to use the configured email address. With Liquid support."
 msgstr ""
-"L'adresse courriel de l'auteur qui définit de qui provient l'courriel. Laissez "
-"vide pour utiliser l'adresse courriel configurée. Avec support liquide."
+"L'adresse courriel de l'auteur qui définit de qui provient l'courriel. "
+"Laissez vide pour utiliser l'adresse courriel configurée. Avec support "
+"liquide."
 
 #: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\Edit.cshtml:47
 #. <label asp-for="SenderExpression">@T["Sender"]</label>
@@ -354,8 +356,8 @@ msgid ""
 "The sender's email address. Required if not the same than the \"From\" "
 "email address. With Liquid support."
 msgstr ""
-"L'adresse courriel de l'expéditeur. Obligatoire si elle n'est pas la même que "
-"l'adresse courriel «De». Avec support liquide."
+"L'adresse courriel de l'expéditeur. Obligatoire si elle n'est pas la même "
+"que l'adresse courriel «De». Avec support liquide."
 
 #: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\Edit.cshtml:54
 #. <label asp-for="SenderExpression">@T["ReplyTo"]</label>
@@ -385,8 +387,8 @@ msgstr "Bénéficiaires"
 msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.Edit"
 msgid "The comma-separated list of recipient email addresses. With Liquid support."
 msgstr ""
-"La liste des adresses courriel des destinataires, séparées par des virgules. "
-"Avec support liquide."
+"La liste des adresses courriel des destinataires, séparées par des "
+"virgules. Avec support liquide."
 
 #: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\Edit.cshtml:68
 #. <label asp-for="CCExpression">@T["CC"]</label>
@@ -401,8 +403,8 @@ msgid ""
 "The comma-separated list of CC recipient email addresses. With Liquid "
 "support."
 msgstr ""
-"Liste des adresses courriel des destinataires CC, séparées par des virgules. "
-"Avec support liquide."
+"Liste des adresses courriel des destinataires CC, séparées par des "
+"virgules. Avec support liquide."
 
 #: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\Edit.cshtml:75
 #. <label asp-for="BCCExpression">@T["BCC"]</label>
@@ -417,8 +419,8 @@ msgid ""
 "The comma-separated list of BCC recipient email addresses. With Liquid "
 "support."
 msgstr ""
-"Liste des adresses courriel des destinataires Cci, séparées par des virgules. "
-"Avec support liquide."
+"Liste des adresses courriel des destinataires Cci, séparées par des "
+"virgules. Avec support liquide."
 
 #: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\Edit.cshtml:82
 #. <label asp-for="SubjectExpression">@T["Subject"]</label>
@@ -606,8 +608,8 @@ msgid ""
 "The author's email address that defines who the email is from. Leave blank "
 "to use the configured email address."
 msgstr ""
-"L'adresse courriel de l'auteur qui définit de qui provient l'courriel. Laissez "
-"vide pour utiliser l'adresse courriel configurée."
+"L'adresse courriel de l'auteur qui définit de qui provient l'courriel. "
+"Laissez vide pour utiliser l'adresse courriel configurée."
 
 #: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\SendEmail.cshtml:18
 #. <label asp-for="Sender">@T["Sender"]</label>
@@ -622,8 +624,8 @@ msgid ""
 "The sender's email address. Required if not the same than the \"From\" "
 "email address."
 msgstr ""
-"L'adresse courriel de l'expéditeur. Obligatoire si elle n'est pas la même que "
-"l'adresse courriel «De»."
+"L'adresse courriel de l'expéditeur. Obligatoire si elle n'est pas la même "
+"que l'adresse courriel «De»."
 
 #: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\SendEmail.cshtml:25
 #. <label asp-for="ReplyTo">@T["ReplyTo"]</label>
@@ -676,7 +678,9 @@ msgstr "BCC"
 #. <span class="hint">@T["The comma-separated list of BCC recipient email addresses."]</span>
 msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.SendEmail"
 msgid "The comma-separated list of BCC recipient email addresses."
-msgstr "Liste des adresses courriel des destinataires Cci, séparées par des virgules."
+msgstr ""
+"Liste des adresses courriel des destinataires Cci, séparées par des "
+"virgules."
 
 #: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\SendEmail.cshtml:53
 #. <label asp-for="Subject">@T["Subject"]</label>
