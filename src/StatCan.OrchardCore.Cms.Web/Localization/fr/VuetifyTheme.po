@@ -81,51 +81,75 @@ msgctxt "VuetifyTheme.Views.OrchardCore.Users.Account.ChangePasswordConfirmation
 msgid "Home"
 msgstr "Domicile"
 
-#: VuetifyTheme\Views\OrchardCore.Users\Account\Login.cshtml:23
+#: VuetifyTheme\Views\OrchardCore.Users\Account\ExternalLogins.cshtml:13
+#. <v-card-title>@T["Registered Logins"]</v-card-title>
+msgctxt "VuetifyTheme.Views.OrchardCore.Users.Account.ExternalLogins"
+msgid "Registered Logins"
+msgstr "Connexions enregistrées"
+
+#: VuetifyTheme\Views\OrchardCore.Users\Account\ExternalLogins.cshtml:26
+#. <v-btn type="submit" class="btn btn-primary" title="@T["Remove this {0} login from your account", login.LoginProvider]" x-large>Remove</v-btn>
+msgctxt "VuetifyTheme.Views.OrchardCore.Users.Account.ExternalLogins"
+msgid "Remove this {0} login from your account"
+msgstr "Supprimer cette {0} connexion de votre compte"
+
+#: VuetifyTheme\Views\OrchardCore.Users\Account\ExternalLogins.cshtml:43
+#. <v-card-title>@T["Login with another provider"]</v-card-title>
+msgctxt "VuetifyTheme.Views.OrchardCore.Users.Account.ExternalLogins"
+msgid "Login with another provider"
+msgstr "Connectez-vous avec un autre fournisseur"
+
+#: VuetifyTheme\Views\OrchardCore.Users\Account\ExternalLogins.cshtml:53
+#. title="@T["Log in using your {0} account", provider.DisplayName]"
+msgctxt "VuetifyTheme.Views.OrchardCore.Users.Account.ExternalLogins"
+msgid "Log in using your {0} account"
+msgstr "Connectez-vous à l'aide de votre compte {0}"
+
+#: VuetifyTheme\Views\OrchardCore.Users\Account\Login.cshtml:22
 #. <v-card-title>@T["Log In"]</v-card-title>
 msgctxt "VuetifyTheme.Views.OrchardCore.Users.Account.Login"
 msgid "Log In"
 msgstr "Connexion"
 
-#: VuetifyTheme\Views\OrchardCore.Users\Account\Login.cshtml:43
+#: VuetifyTheme\Views\OrchardCore.Users\Account\Login.cshtml:38
 #. <v-text-field id="UserName" name="UserName" label="@T["Username"]" value="@userName?.AttemptedValue" error-messages="@(userName?.Errors.FirstOrDefault()?.ErrorMessage)"></v-text-field>
 msgctxt "VuetifyTheme.Views.OrchardCore.Users.Account.Login"
 msgid "Username"
 msgstr "Nom d'utilisateur"
 
-#: VuetifyTheme\Views\OrchardCore.Users\Account\Login.cshtml:44
+#: VuetifyTheme\Views\OrchardCore.Users\Account\Login.cshtml:39
 #. <v-text-field id="Password" type="password" name="Password" label="@T["Password"]" error-messages="@(password?.Errors.FirstOrDefault()?.ErrorMessage)"></v-text-field>
 msgctxt "VuetifyTheme.Views.OrchardCore.Users.Account.Login"
 msgid "Password"
 msgstr "Mot de passe"
 
-#: VuetifyTheme\Views\OrchardCore.Users\Account\Login.cshtml:45
+#: VuetifyTheme\Views\OrchardCore.Users\Account\Login.cshtml:40
 #. <v-checkbox name="RememberMe" label="@T["Remember me"]" value="true"></v-checkbox>
 msgctxt "VuetifyTheme.Views.OrchardCore.Users.Account.Login"
 msgid "Remember me"
 msgstr "Souviens-toi de moi"
 
-#: VuetifyTheme\Views\OrchardCore.Users\Account\Login.cshtml:48
+#: VuetifyTheme\Views\OrchardCore.Users\Account\Login.cshtml:43
 #. <a asp-controller="ResetPassword" asp-action="ForgotPassword" class="label-link">@T["Forgot your password?"]</a>
 msgctxt "VuetifyTheme.Views.OrchardCore.Users.Account.Login"
 msgid "Forgot your password?"
 msgstr "Mot de passe oublié?"
 
-#: VuetifyTheme\Views\OrchardCore.Users\Account\Login.cshtml:58
+#: VuetifyTheme\Views\OrchardCore.Users\Account\Login.cshtml:49
 #. <v-btn type="submit" form="LoginForm" x-large block color="success">@T["Log in"]</v-btn>
 msgctxt "VuetifyTheme.Views.OrchardCore.Users.Account.Login"
 msgid "Log in"
 msgstr "Connexion"
 
-#: VuetifyTheme\Views\OrchardCore.Users\Account\Login.cshtml:66
-#: VuetifyTheme\Views\OrchardCore.Users\Account\Login.cshtml:81
+#: VuetifyTheme\Views\OrchardCore.Users\Account\Login.cshtml:57
+#: VuetifyTheme\Views\OrchardCore.Users\Account\Login.cshtml:72
 #. <v-divider></v-divider><span class="px-2">@T["or"]</span><v-divider></v-divider>
 #. <v-divider></v-divider><span class="px-2">@T["or"]</span><v-divider></v-divider>
 msgctxt "VuetifyTheme.Views.OrchardCore.Users.Account.Login"
 msgid "or"
 msgstr "ou alors"
 
-#: VuetifyTheme\Views\OrchardCore.Users\Account\Login.cshtml:84
+#: VuetifyTheme\Views\OrchardCore.Users\Account\Login.cshtml:75
 #. <v-btn href="@Url.Action("Register", "Registration", new { Area = "OrchardCore.Users", returnUrl=ViewData["ReturnUrl"] })" x-large block color="grey lighten-2">@T["Create an account"]</v-btn>
 msgctxt "VuetifyTheme.Views.OrchardCore.Users.Account.Login"
 msgid "Create an account"
@@ -240,8 +264,8 @@ msgctxt ""
 "ForgotPasswordConfirmation"
 msgid "A recovery email has been sent to the email address tied to your account."
 msgstr ""
-"Un courriel de récupération a été envoyé à l'adresse courriel associée à votre "
-"compte."
+"Un courriel de récupération a été envoyé à l'adresse courriel associée à "
+"votre compte."
 
 #: VuetifyTheme\Views\OrchardCore.Users\ResetPassword\ForgotPasswordConfirmation.cshtml:11
 #. <v-btn href="@Url.Content("~/")" x-large block color="success">@T["Home"]</v-btn>
@@ -323,10 +347,30 @@ msgctxt "VuetifyTheme.Views.ContentCulturePickerContainer"
 msgid "Switch to"
 msgstr "Basculer vers"
 
+#: VuetifyTheme\Views\Layout-Login.liquid:0
+msgctxt "VuetifyTheme.Views.Layout-Login"
+msgid "Skip to main content"
+msgstr "Passer au contenu principal"
+
 #: VuetifyTheme\Views\Layout.liquid:0
 msgctxt "VuetifyTheme.Views.Layout"
 msgid "Skip to main content"
 msgstr "Passer au contenu principal"
+
+#: VuetifyTheme\Views\Widget-CompatibilityBanner.liquid:0
+msgctxt "VuetifyTheme.Views.Widget-CompatibilityBanner"
+msgid "OK"
+msgstr "d'accord"
+
+#: VuetifyTheme\Views\Widget-CompatibilityBanner.liquid:0
+msgctxt "VuetifyTheme.Views.Widget-CompatibilityBanner"
+msgid ""
+"Internet Explorer is not support because it is a legacy browser.<br>Try a "
+"modern browser instead such as HP SureClick, Edge, Chrome, or Firefox."
+msgstr ""
+"Internet Explorer n&#39;est pas pris en charge car il s&#39;agit d&#39;un "
+"navigateur désuet.<br> Essayez plutôt un navigateur moderne tel que HP "
+"SureClick, Edge, Chrome ou Firefox."
 
 #: VuetifyTheme\Views\Shared\NotFound.liquid:0
 msgctxt "VuetifyTheme.Views.Shared.NotFound"
