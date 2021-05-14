@@ -369,7 +369,7 @@ msgid ""
 "modern browser instead such as HP SureClick, Edge, Chrome, or Firefox."
 msgstr ""
 "Internet Explorer n&#39;est pas pris en charge car il s&#39;agit d&#39;un "
-"navigateur hérité.<br> Essayez plutôt un navigateur moderne tel que HP "
+"navigateur désuet.<br> Essayez plutôt un navigateur moderne tel que HP "
 "SureClick, Edge, Chrome ou Firefox."
 
 #: VuetifyTheme\Views\Shared\NotFound.liquid:0
