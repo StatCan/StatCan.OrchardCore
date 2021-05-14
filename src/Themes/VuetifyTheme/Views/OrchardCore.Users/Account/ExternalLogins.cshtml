@@ -10,7 +10,7 @@
 @if (Model.CurrentLogins?.Count > 0)
 {
     <v-card>
-        <v-card-title>Registered Logins</v-card-title>
+        <v-card-title>@T["Registered Logins"]</v-card-title>
         <v-card-text>
             @foreach (var login in Model.CurrentLogins)
             {
@@ -23,7 +23,7 @@
                                 <div>
                                     <input asp-for="@login.LoginProvider" name="LoginProvider" type="hidden" />
                                     <input asp-for="@login.ProviderKey" name="ProviderKey" type="hidden" />
-                                    <v-btn type="submit" class="btn btn-primary" title="Remove this @login.LoginProvider login from your account" x-large>Remove</v-btn>
+                                    <v-btn type="submit" class="btn btn-primary" title="@T["Remove this {0} login from your account", login.LoginProvider]" x-large>Remove</v-btn>
                                 </div>
                             </form>
                         }
@@ -40,7 +40,7 @@
 @if (Model.OtherLogins?.Count > 0)
 {
     <v-card>
-        <v-card-title>Login with another provider</v-card-title>
+        <v-card-title>@T["Login with another provider"]</v-card-title>
         <v-card-text>
             <form asp-action="LinkLogin" method="post">
                 <div id="socialLoginList">
@@ -50,7 +50,7 @@
                             block
                             color="success"
                             name="provider" 
-                            title="Log in using your @provider.DisplayName account"
+                            title="@T["Log in using your {0} account", provider.DisplayName]"
                             type="submit"
                             value="@provider.Name" 
                             x-large>

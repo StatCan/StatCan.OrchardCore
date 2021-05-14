@@ -2544,6 +2544,32 @@ module.exports = !$assign || fails(function () {
 
 /***/ }),
 
+/***/ "6544":
+/***/ (function(module, exports) {
+
+// IMPORTANT: Do NOT use ES2015 features in this file (except for modules).
+// This module is a runtime utility for cleaner component module output and will
+// be included in the final webpack user bundle.
+
+module.exports = function installComponents (component, components) {
+  var options = typeof component.exports === 'function'
+    ? component.exports.extendOptions
+    : component.options
+
+  if (typeof component.exports === 'function') {
+    options.components = component.exports.options.components
+  }
+
+  options.components = options.components || {}
+
+  for (var i in components) {
+    options.components[i] = options.components[i] || components[i]
+  }
+}
+
+
+/***/ }),
+
 /***/ "6547":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -39425,6 +39451,180 @@ external_commonjs_vue_commonjs2_vue_root_Vue_default.a.use(framework_Vuetify, {
     dark: false
   }
 }));
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"965762c6-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./Assets/src/components/IEBanner.vue?vue&type=template&id=54e2b9d2&
+var IEBannervue_type_template_id_54e2b9d2_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.isIE)?_c('v-banner',{attrs:{"single-line":"","rounded":"","outlined":""},scopedSlots:_vm._u([{key:"actions",fn:function(ref){
+var dismiss = ref.dismiss;
+return [_c('v-btn',{attrs:{"color":"primary","text":""},on:{"click":dismiss}},[_vm._v(" "+_vm._s(_vm.ok)+" ")])]}}],null,false,3849597524)},[_c('v-avatar',{attrs:{"slot":"icon","size":"40"},slot:"icon"},[_c('svg',{attrs:{"xmlns":"http://www.w3.org/2000/svg","viewBox":"0 0 256 256"}},[_c('path',{staticStyle:{"fill":"#1ebbee"},attrs:{"d":"M224.55,132.63A89,89,0,0,0,213.67,90C243.58,23,182,33,178.33,33a158.1,158.1,0,0,0-36.25,11.78c-41.69-.5-77.94,21.75-89.72,68C74.11,88.23,89.51,78.26,98.58,74.63c-1.91,1.73-3.81,3.54-5.71,5.35a268.73,268.73,0,0,0-36.25,44.41C48.91,138,40.3,149.76,35.77,165.17,11.3,254,88.34,216.83,99.21,210.48a86.24,86.24,0,0,0,39,9,87.59,87.59,0,0,0,82.47-58H174.43c-21.75,34.44-73.41,19-75.22-18.12H224.27a86.06,86.06,0,0,0,.73-10.88ZM208.23,46.54c7.53,5.08,13.6,12.69,3.18,39.88-10-16.32-24.47-29-42.6-35.35,8.07-3.9,28.1-11.78,39.88-4.53Zm-160.4,164c-6.17-6.25-7.25-21.75,6.34-49.84A85.77,85.77,0,0,0,92.23,207c-8.79,4.8-31.72,15.4-44.4,3ZM98.58,120C99.27,100,116.7,83.7,138.45,83.7s39,16.31,39.88,36.25H98.58Z"}}),_c('path',{staticStyle:{"fill":"#ff1f1f"},attrs:{"d":"M128,10a118,118,0,0,1,83.44,201.44A118,118,0,0,1,44.56,44.56,117.22,117.22,0,0,1,128,10m0-10A128,128,0,1,0,256,128,128,128,0,0,0,128,0Z"}}),_c('line',{staticStyle:{"fill":"none","stroke":"#ff1f1f","stroke-miterlimit":"10","stroke-width":"10px"},attrs:{"x1":"216.58","y1":"39.42","x2":"39.42","y2":"216.58"}})])]),_c('span',{domProps:{"innerHTML":_vm._s(_vm.ie)}})],1):_vm._e()}
+var staticRenderFns = []
+
+
+// CONCATENATED MODULE: ./Assets/src/components/IEBanner.vue?vue&type=template&id=54e2b9d2&
+
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./Assets/src/components/IEBanner.vue?vue&type=script&lang=js&
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ var IEBannervue_type_script_lang_js_ = ({
+  name: 'ie-banner',
+  props: ['ok', 'ie'],
+  computed: {
+    isIE: function isIE() {
+      return navigator.userAgent.indexOf("MSIE ") > -1 || navigator.userAgent.indexOf("Trident/") > -1;
+    }
+  }
+});
+// CONCATENATED MODULE: ./Assets/src/components/IEBanner.vue?vue&type=script&lang=js&
+ /* harmony default export */ var components_IEBannervue_type_script_lang_js_ = (IEBannervue_type_script_lang_js_); 
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib/runtime/componentNormalizer.js
+/* globals __VUE_SSR_CONTEXT__ */
+
+// IMPORTANT: Do NOT use ES2015 features in this file (except for modules).
+// This module is a runtime utility for cleaner component module output and will
+// be included in the final webpack user bundle.
+
+function normalizeComponent (
+  scriptExports,
+  render,
+  staticRenderFns,
+  functionalTemplate,
+  injectStyles,
+  scopeId,
+  moduleIdentifier, /* server only */
+  shadowMode /* vue-cli only */
+) {
+  // Vue.extend constructor export interop
+  var options = typeof scriptExports === 'function'
+    ? scriptExports.options
+    : scriptExports
+
+  // render functions
+  if (render) {
+    options.render = render
+    options.staticRenderFns = staticRenderFns
+    options._compiled = true
+  }
+
+  // functional template
+  if (functionalTemplate) {
+    options.functional = true
+  }
+
+  // scopedId
+  if (scopeId) {
+    options._scopeId = 'data-v-' + scopeId
+  }
+
+  var hook
+  if (moduleIdentifier) { // server build
+    hook = function (context) {
+      // 2.3 injection
+      context =
+        context || // cached call
+        (this.$vnode && this.$vnode.ssrContext) || // stateful
+        (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext) // functional
+      // 2.2 with runInNewContext: true
+      if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
+        context = __VUE_SSR_CONTEXT__
+      }
+      // inject component styles
+      if (injectStyles) {
+        injectStyles.call(this, context)
+      }
+      // register component module identifier for async chunk inferrence
+      if (context && context._registeredComponents) {
+        context._registeredComponents.add(moduleIdentifier)
+      }
+    }
+    // used by ssr in case component is cached and beforeCreate
+    // never gets called
+    options._ssrRegister = hook
+  } else if (injectStyles) {
+    hook = shadowMode
+      ? function () {
+        injectStyles.call(
+          this,
+          (options.functional ? this.parent : this).$root.$options.shadowRoot
+        )
+      }
+      : injectStyles
+  }
+
+  if (hook) {
+    if (options.functional) {
+      // for template-only hot-reload because in that case the render fn doesn't
+      // go through the normalizer
+      options._injectStyles = hook
+      // register for functional component in vue file
+      var originalRender = options.render
+      options.render = function renderWithStyleInjection (h, context) {
+        hook.call(context)
+        return originalRender(h, context)
+      }
+    } else {
+      // inject component registration as beforeCreate hook
+      var existing = options.beforeCreate
+      options.beforeCreate = existing
+        ? [].concat(existing, hook)
+        : [hook]
+    }
+  }
+
+  return {
+    exports: scriptExports,
+    options: options
+  }
+}
+
+// EXTERNAL MODULE: ./node_modules/vuetify-loader/lib/runtime/installComponents.js
+var installComponents = __webpack_require__("6544");
+var installComponents_default = /*#__PURE__*/__webpack_require__.n(installComponents);
+
+// CONCATENATED MODULE: ./Assets/src/components/IEBanner.vue
+
+
+
+
+
+/* normalize component */
+
+var IEBanner_component = normalizeComponent(
+  components_IEBannervue_type_script_lang_js_,
+  IEBannervue_type_template_id_54e2b9d2_render,
+  staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* harmony default export */ var IEBanner = (IEBanner_component.exports);
+
+/* vuetify-loader */
+
+
+
+
+installComponents_default()(IEBanner_component, {VAvatar: VAvatar_VAvatar,VBanner: VBanner_VBanner,VBtn: VBtn_VBtn})
+
 // EXTERNAL MODULE: ./Assets/src/styles.scss
 var src_styles = __webpack_require__("e19a");
 
@@ -39435,7 +39635,9 @@ var github_markdown = __webpack_require__("d575");
 
 
 
- // Sets the cookie based on the current html lang. This is to avoid potential issues when landing on a french page.
+
+
+external_commonjs_vue_commonjs2_vue_root_Vue_default.a.component('ie-banner', IEBanner); // Sets the cookie based on the current html lang. This is to avoid potential issues when landing on a french page.
 
 document.cookie = '.AspNetCore.Culture=c%3D' + document.documentElement.lang + '%7Cuic%3D' + document.documentElement.lang + ';path=/';
 document.addEventListener("DOMContentLoaded", function () {
