@@ -20,4 +20,13 @@ namespace StatCan.OrchardCore.DisplayHelpers
             services.AddLiquidFilter<B64DecodeFilter>("base64_decode");
         }
     }
+
+    [RequireFeatures("OrchardCore.Taxonomies")]
+     public class TaxonomiesStartup : StartupBase
+    {
+        public override void ConfigureServices(IServiceCollection services)
+        {
+            services.AddLiquidFilter<AllTaxonomyTermsFilter>("all_taxonomy_terms");
+        }
+    }
 }
