@@ -6,7 +6,8 @@ describe("Common types Test", function() {
     let tenant = generateTenantInfo("bootstrap-theme-setup", "Common Types module setup")
     cy.newTenant(tenant);
     cy.login(tenant);
-    cy.enableFeature(tenant, "StatCan_OrchardCore_CommonTypes_Pages");
+    cy.enableFeature(tenant, "StatCan_OrchardCore_CommonTypes_Page");
+    cy.enableFeature(tenant, "StatCan_OrchardCore_CommonTypes_AdditionalPages");
     cy.enableFeature(tenant, "StatCan_OrchardCore_CommonTypes_Widgets");
   })
 });
