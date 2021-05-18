@@ -1497,10 +1497,11 @@ namespace StatCan.Themes.VuetifyTheme
                         DisplayedContentTypes = new[] { "Taxonomy" },
                     })
                 )
+                .WithTextField("IconName", "Icon Name", "1")
                 .WithField("Expanded", field => field
                     .OfType("BooleanField")
                     .WithDisplayName("Expanded")
-                    .WithPosition("1")
+                    .WithPosition("2")
                 )
             );
         }

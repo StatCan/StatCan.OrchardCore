@@ -2,20 +2,57 @@
 {% for taxonomy in taxonomies %}
   {% assign path = taxonomy.Content.AutoroutePart.Path %}
   {% assign terms = taxonomy.Content.TaxonomyPart.Terms %}
-  <v-list-group value="{{ Model.ContentItem.Content.TaxonomyMenuItem.Expanded.Value }}">
+  <v-list-group 
+    no-action 
+    value="{{ Model.ContentItem.Content.TaxonomyMenuItem.Expanded.Value }}"
+    {%- if Model.ContentItem.Content.TaxonomyMenuItem.IconName.Text != nil %}
+      prepend-icon="item.action"
+    {% endif %}
+  >
     <template v-slot:activator>
-      <v-list-item-content>
-        <v-list-item-title>{{ taxonomy.Content.TitlePart.Title }}</v-list-item-title>
-      </v-list-item-content>
+        <v-list-item-content>
+          <v-list-item-title>{{ Model.ContentItem.DisplayText }}</v-list-item-title>
+        </v-list-item-content>
     </template>
     {% for term in terms %}
-      <v-list-item href="{{ '~/' | append: path | append: '/' | append: term.AutoroutePart.Path | href }}">
-          <v-list-item-content>
-            <v-list-item-title>
-              {{ term[term.ContentType].Name.Text }}
-            </v-list-item-title>
-          </v-list-item-content>
-      </v-list-item>
+    	{% assign termPath = '~/' | append: path | append: '/' | append: term.AutoroutePart.Path %}
+      {% if term.Terms != nil %}
+         <v-list-group
+              value="{{ Model.ContentItem.Content.TaxonomyMenuItem.Expanded.Value }}"
+              sub-group
+              no-action
+            >
+           <template v-slot:activator>
+             <v-list-item-content>
+               <v-list-item-title>{{ term.DisplayText }}</v-list-item-title>
+             </v-list-item-content>
+           </template>
+             <v-list-item href="{{ termPath | href }}">
+               <v-list-item-content>
+                 <v-list-item-title>
+                   {{ 'All' | t}} {{ term.DisplayText }}
+                 </v-list-item-title>
+               </v-list-item-content>
+           </v-list-item>
+           {% for subTerm in term.Terms %}
+             <v-list-item href="{{ termPath | append: '/' | append: subTerm.AutoroutePart.Path | href }}">
+               <v-list-item-content>
+                 <v-list-item-title>
+                   {{ subTerm.DisplayText }}
+                 </v-list-item-title>
+               </v-list-item-content>
+             </v-list-item>
+           {% endfor %}
+    	</v-list-group>
+      {% else %}
+        <v-list-item href="{{ termPath | href }}">
+            <v-list-item-content>
+              <v-list-item-title>
+                {{ term.DisplayText }}
+              </v-list-item-title>
+            </v-list-item-content>
+        </v-list-item>
+      {% endif %}
     {% endfor %}
   </v-list-group>
 {% endfor %}
