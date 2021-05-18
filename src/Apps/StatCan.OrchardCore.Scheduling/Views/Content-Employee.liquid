@@ -1,35 +1,22 @@
-{% block "script", type: "text/html", At: "Foot", id: "Employee" %}
 <v-container>
   <v-row>
     <v-col>
       <div class="text-h2">{{ Model.ContentItem.Content.Employee.FirstName.Text }} {{ Model.ContentItem.Content.Employee.LastName.Text }}</div> 
-      <div class="text-h4">{{Model.ContentItem.Content.Employee.Cohort | taxonomy_terms | first}}
+      <div class="text-h4">{{Model.ContentItem.Content.Employee.Cohort | taxonomy_terms | first}}</div>
       <div>
         <v-checkbox
           disabled
           hide-details
-          v-model="participating" 
+          value="{{ Model.ContentItem.Content.Employee.Participating.Value }}" 
           label="Participating"
         ></v-checkbox>
         <v-checkbox
           disabled
           hide-details
-          v-model="consent" 
+          value="{{ Model.ContentItem.Content.Employee.Consent.Value }}"
           label=" {{ "Consent" | t }}"
         ></v-checkbox>
       </div>
     </v-col>
   </v-row>
 </v-container>
-{% endblock %}
-<employee></employee>
-{%- comment -%}This should be refactored to not use a script block{%- endcomment -%}
-{% block "script", At: "Foot", depends_on: "vuejs" %}
-  Vue.component("employee", {
-      template:  "#Employee",
-      data: () => ({
-      consent: ,
-		  participating: {{ Model.ContentItem.Content.Employee.Participating.Value }},
-	  })
-  });
-{% endblock %}
