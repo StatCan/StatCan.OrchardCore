@@ -12,7 +12,7 @@
         'status': '{{ item.ContentItem.Content.Appointment.Status.Text }}',
         'employeeUrl': '{{employeeUrl}}',
         'editUrl': '{{ editUrl }}',
-		'cohort': '{{ item.ContentItem.DisplayText | split: ';' | last }}',
+		    'calendar': '{{ item.ContentItem.DisplayText | split: ';' | last }}',
     },
   {% endfor -%}
 ]
@@ -49,14 +49,12 @@
             {{ Model.PageTitle}}
           </v-toolbar-title>
           <v-spacer></v-spacer>
-          {% if Model.CohortId != nil %}
           <v-btn 
                  outlined 
                  color="grey darken-2"
                  :href="printUrl">
             {{ "Print" | t }}
           </v-btn>
-          {% endif %}
         </v-toolbar>
         <v-sheet height="64">
             <v-toolbar
@@ -184,8 +182,9 @@
               offset-x
               max-width="400"
             >
+            {%- comment -%}This should be injected via settings maybe?{%- endcomment -%}
             {% assign scheduleForm = Content.ContentItemId["4gbw4m0mz1sh45v9f2ztznktnw"] %}
-            {{ scheduleForm | shape_build_display | shape_properties: currentUrl: Model.CurrentUrl | shape_render }}
+            {{ scheduleForm | shape_build_display | shape_properties: currentUrl: Model.CurrentUrl, employees: Model.Employees, calendarTitle: Model.ContentItem.DisplayText | shape_render }}
           </v-dialog>
           <v-menu
             v-model="selectedOpen"
@@ -212,9 +211,11 @@
               <v-card-text>
                 <v-row>
                   <v-col cols="auto">
-                    <span class="subtitle-2">Status</span>
+                    <span class="subtitle-2">{{ 'Calendar' | t }}</span>
+                    <p>{%raw%}{{selectedEvent.calendar}}{%endraw%}</p>
+                    <span class="subtitle-2">{{ 'Status' | t }}</span>
                     <p>{%raw%}{{selectedEvent.status}}{%endraw%}</p>
-                    <span class="subtitle-2">Notes</span>
+                    <span class="subtitle-2">{{ 'Notes' | t }}</span>
                     <p>{%raw%}{{selectedEvent.comment}}{%endraw%}</p>
                   </v-col>
                 </v-row>
@@ -247,10 +248,10 @@
               </v-toolbar-title>
               <v-spacer></v-spacer>
               <v-btn
-                     class="ml-auto"
-                     outlined
-                     href="{{ '~/Admin/Contents/ContentTypes/Employee/Create?returnUrl=' | append: Model.CurrentUrl | href }}"     
-                     >
+                class="ml-auto"
+                outlined
+                href="{{ '~/Admin/Contents/ContentTypes/Employee/Create?returnUrl=' | append: Model.CurrentUrl | href }}"     
+              >
                 <v-icon>
                   mdi-plus
                 </v-icon>
@@ -307,7 +308,7 @@
           return this.cal ? this.cal.timeToY(this.cal.times.now) + 'px' : '-10px'
         },
         printUrl (url) {
-          return '{{ '~/appointments/print' | href }}?cohortId={{ Model.CohortId }}&cohortTitle={{ Model.ContentItem | display_text }}&startDate=' + this.startDate + '&endDate=' + this.endDate + '&type=' + this.type;
+          return '{{ '~/appointments/print' | href }}?calendarIds={{ Model.CalendarIds | url_encode | raw }}&calendarTitle={{ Model.ContentItem | display_text }}&startDate=' + this.startDate + '&endDate=' + this.endDate + '&type=' + this.type;
         },
       },
       mounted () {

@@ -42,8 +42,8 @@
           ]
         },
         {
-          "Name": "AppointmentLocation",
-          "DisplayName": "Appointment Location",
+          "Name": "AppointmentCalendar",
+          "DisplayName": "AppointmentCalendar",
           "Settings": {
             "ContentTypeSettings": {
               "Securable": true
@@ -52,8 +52,8 @@
           },
           "ContentTypePartDefinitionRecords": [
             {
-              "PartName": "AppointmentLocation",
-              "Name": "AppointmentLocation",
+              "PartName": "AppointmentCalendar",
+              "Name": "AppointmentCalendar",
               "Settings": {
                 "ContentTypePartSettings": {
                   "Position": "1"
@@ -66,11 +66,6 @@
               "Settings": {
                 "ContentTypePartSettings": {
                   "Position": "0"
-                },
-                "TitlePartSettings": {
-                  "Options": 2,
-                  "Pattern": "{{ContentItem.Content.AppointmentLocation.Name.Text}}",
-                  "RenderTitle": false
                 }
               }
             },
@@ -84,55 +79,6 @@
                 "AutoroutePartSettings": {
                   "ManageContainedItemRoutes": true,
                   "ShowHomepageOption": true
-                },
-                "ContentIndexSettings": {}
-              }
-            },
-            {
-              "PartName": "BagPart",
-              "Name": "TimeSlots",
-              "Settings": {
-                "ContentTypePartSettings": {
-                  "DisplayName": "TimeSlots",
-                  "Description": "The timeslots available for appointments at this location. This is used to assist in scheduling",
-                  "Position": "3"
-                },
-                "BagPartSettings": {
-                  "ContainedContentTypes": ["TimeSlot"]
-                },
-                "ContentIndexSettings": {}
-              }
-            }
-          ]
-        },
-        {
-          "Name": "TimeSlot",
-          "DisplayName": "TimeSlot",
-          "Settings": {
-            "ContentTypeSettings": {},
-            "FullTextAspectSettings": {}
-          },
-          "ContentTypePartDefinitionRecords": [
-            {
-              "PartName": "TimeSlot",
-              "Name": "TimeSlot",
-              "Settings": {
-                "ContentTypePartSettings": {
-                  "Position": "1"
-                }
-              }
-            },
-            {
-              "PartName": "TitlePart",
-              "Name": "TitlePart",
-              "Settings": {
-                "ContentTypePartSettings": {
-                  "Position": "0"
-                },
-                "TitlePartSettings": {
-                  "Options": 2,
-                  "Pattern": "{{ContentItem.Content.TimeSlot.StartTime.Value }} - {{ContentItem.Content.TimeSlot.EndTime.Value }}",
-                  "RenderTitle": false
                 },
                 "ContentIndexSettings": {}
               }
@@ -169,58 +115,7 @@
                 },
                 "TitlePartSettings": {
                   "Options": 1,
-                  "Pattern": "{{ContentItem.Content.Employee.FirstName.Text}} {{ContentItem.Content.Employee.LastName.Text}} - {{ContentItem.Content.Employee.Cohort | taxonomy_terms | first | display_text}} - \r\n{{ContentItem.Content.Employee.Location | taxonomy_terms | first | display_text}}"
-                },
-                "ContentIndexSettings": {}
-              }
-            }
-          ]
-        },
-        {
-          "Name": "Cohort",
-          "DisplayName": "Cohort",
-          "Settings": {
-            "ContentTypeSettings": {
-              "Securable": true
-            },
-            "FullTextAspectSettings": {
-              "IncludeBodyAspect": false,
-              "IncludeDisplayText": false
-            }
-          },
-          "ContentTypePartDefinitionRecords": [
-            {
-              "PartName": "Cohort",
-              "Name": "Cohort",
-              "Settings": {
-                "ContentTypePartSettings": {
-                  "Position": "1"
-                }
-              }
-            },
-            {
-              "PartName": "TitlePart",
-              "Name": "TitlePart",
-              "Settings": {
-                "ContentTypePartSettings": {
-                  "Position": "0"
-                },
-                "TitlePartSettings": {
-                  "Options": 1,
-                  "Pattern": "{{ContentItem.Content.Cohort.Name.Text}} - {{ContentItem.Content.Cohort.NumberofEmployees.Value}}"
-                },
-                "ContentIndexSettings": {}
-              }
-            },
-            {
-              "PartName": "AutoroutePart",
-              "Name": "AutoroutePart",
-              "Settings": {
-                "ContentTypePartSettings": {
-                  "Position": "2"
-                },
-                "AutoroutePartSettings": {
-                  "ManageContainedItemRoutes": true
+                  "Pattern": "{{ContentItem.Content.Employee.FirstName.Text}} {{ContentItem.Content.Employee.LastName.Text}} - {{ContentItem.Content.Employee.Cohort | taxonomy_terms | first | display_text}}"
                 },
                 "ContentIndexSettings": {}
               }
@@ -256,10 +151,10 @@
           "ContentPartFieldDefinitionRecords": [
             {
               "FieldName": "TaxonomyField",
-              "Name": "Location",
+              "Name": "Calendar",
               "Settings": {
                 "ContentPartFieldSettings": {
-                  "DisplayName": "Location",
+                  "DisplayName": "Calendar",
                   "Position": "2"
                 },
                 "TaxonomyFieldSettings": {
@@ -327,7 +222,9 @@
                 },
                 "ContentPickerFieldSettings": {
                   "Multiple": false,
-                  "DisplayedContentTypes": ["Employee"]
+                  "DisplayedContentTypes": [
+                    "Employee"
+                  ]
                 },
                 "ContentIndexSettings": {}
               }
@@ -368,60 +265,19 @@
           ]
         },
         {
-          "Name": "AppointmentLocation",
+          "Name": "AppointmentCalendar",
           "Settings": {},
           "ContentPartFieldDefinitionRecords": [
             {
               "FieldName": "TextField",
-              "Name": "Name",
+              "Name": "Color",
               "Settings": {
                 "ContentPartFieldSettings": {
-                  "DisplayName": "Name",
-                  "Position": "0"
-                }
-              }
-            },
-            {
-              "FieldName": "NumericField",
-              "Name": "Capacity",
-              "Settings": {
-                "ContentPartFieldSettings": {
-                  "DisplayName": "Capacity",
-                  "Position": "1"
+                  "DisplayName": "Color",
+                  "Editor": "Color",
+                  "Position": "2"
                 },
-                "NumericFieldSettings": {
-                  "Hint": "The number of concurrent appointments for each timeslot",
-                  "Minimum": 1.0,
-                  "Maximum": 50.0,
-                  "DefaultValue": "1"
-                },
-                "ContentIndexSettings": {}
-              }
-            }
-          ]
-        },
-        {
-          "Name": "TimeSlot",
-          "Settings": {},
-          "ContentPartFieldDefinitionRecords": [
-            {
-              "FieldName": "TimeField",
-              "Name": "StartTime",
-              "Settings": {
-                "ContentPartFieldSettings": {
-                  "DisplayName": "Start Time",
-                  "Position": "0"
-                }
-              }
-            },
-            {
-              "FieldName": "TimeField",
-              "Name": "EndTime",
-              "Settings": {
-                "ContentPartFieldSettings": {
-                  "DisplayName": "End Time",
-                  "Position": "1"
-                }
+                "TextFieldSettings": {}
               }
             }
           ]
@@ -486,78 +342,8 @@
                   "Position": "0"
                 },
                 "TaxonomyFieldSettings": {
-                  "TaxonomyContentItemId": "40wnmge1rdc3p3m7xf1pycvdx0",
-                  "Unique": true
-                }
-              }
-            },
-            {
-              "FieldName": "TaxonomyField",
-              "Name": "Location",
-              "Settings": {
-                "ContentPartFieldSettings": {
-                  "DisplayName": "Location",
-                  "Position": "1"
-                },
-                "ContentIndexSettings": {},
-                "TaxonomyFieldSettings": {
                   "TaxonomyContentItemId": "4wnw5cysybe8szzhehezz5b74b",
                   "Unique": true
-                },
-                "TaxonomyFieldTagsEditorSettings": {}
-              }
-            }
-          ]
-        },
-        {
-          "Name": "Cohort",
-          "Settings": {},
-          "ContentPartFieldDefinitionRecords": [
-            {
-              "FieldName": "TextField",
-              "Name": "Name",
-              "Settings": {
-                "ContentPartFieldSettings": {
-                  "DisplayName": "Name",
-                  "Position": "0"
-                }
-              }
-            },
-            {
-              "FieldName": "ContentPickerField",
-              "Name": "Supervisor",
-              "Settings": {
-                "ContentPartFieldSettings": {
-                  "DisplayName": "Supervisor",
-                  "Position": "1"
-                },
-                "ContentPickerFieldSettings": {
-                  "DisplayedContentTypes": ["Employee"]
-                }
-              }
-            },
-            {
-              "FieldName": "TextField",
-              "Name": "Color",
-              "Settings": {
-                "ContentPartFieldSettings": {
-                  "DisplayName": "Color",
-                  "Editor": "Color",
-                  "Position": "2"
-                },
-                "TextFieldSettings": {}
-              }
-            },
-            {
-              "FieldName": "NumericField",
-              "Name": "NumberofEmployees",
-              "Settings": {
-                "ContentPartFieldSettings": {
-                  "DisplayName": "Number of Employees",
-                  "Position": "3"
-                },
-                "NumericFieldSettings": {
-                  "DefaultValue": "10"
                 }
               }
             }
@@ -570,71 +356,45 @@
       "data": [
         {
           "ContentItemId": "4wnw5cysybe8szzhehezz5b74b",
-          "ContentItemVersionId": "[js: uuid()]",
+          "ContentItemVersionId": "42p43tpp922cn31wpfadcwxtn1",
           "ContentType": "Taxonomy",
-          "DisplayText": "Location",
+          "DisplayText": "Calendars",
           "Latest": true,
           "Published": true,
-          "Owner": "[js: parameters('AdminUserId')]",
-          "Author": "[js: parameters('AdminUsername')]",
+          "ModifiedUtc": "2021-05-18T17:22:49.2243686Z",
+          "PublishedUtc": "2021-05-18T17:22:49.2316346Z",
+          "CreatedUtc": "2021-05-18T17:04:12.2054281Z",
           "TitlePart": {
-            "Title": "Location"
+            "Title": "Calendars"
           },
           "AliasPart": {
-            "Alias": "location"
+            "Alias": "calendars"
           },
           "AutoroutePart": {
-            "Path": "location",
+            "Path": "calendars",
             "SetHomepage": false,
             "Disabled": false,
             "RouteContainedItems": true,
             "Absolute": false
           },
           "TaxonomyPart": {
-            "Terms": [],
-            "TermContentType": "AppointmentLocation"
-          }
-        },
-        {
-          "ContentItemId": "40wnmge1rdc3p3m7xf1pycvdx0",
-          "ContentItemVersionId": "[js: uuid()]",
-          "ContentType": "Taxonomy",
-          "DisplayText": "Cohorts",
-          "Latest": true,
-          "Published": true,
-          "ModifiedUtc": "2021-05-11T15:39:36.2442642Z",
-          "PublishedUtc": "2021-05-11T15:39:36.2508957Z",
-          "CreatedUtc": "2021-04-13T16:30:10.25072Z",
-          "Owner": "[js: parameters('AdminUserId')]",
-          "Author": "[js: parameters('AdminUsername')]",
-          "TitlePart": {
-            "Title": "Cohorts"
-          },
-          "AliasPart": {
-            "Alias": "cohorts"
-          },
-          "AutoroutePart": {
-            "Path": "cohorts",
-            "SetHomepage": false,
-            "Disabled": false,
-            "RouteContainedItems": true,
-            "Absolute": false
-          },
-          "TaxonomyPart": {
-            "Terms": [],
-            "TermContentType": "Cohort"
+            "Terms": [
+            ],
+            "TermContentType": "AppointmentCalendar"
           }
         },
         {
           "ContentItemId": "4gbw4m0mz1sh45v9f2ztznktnw",
-          "ContentItemVersionId": "43tcmjtjydh5h3pwf2ts5a7pw1",
+          "ContentItemVersionId": "41eytr03g1z67zp0d627pr4b58",
           "ContentType": "VueForm",
           "DisplayText": "Create appointment ",
           "Latest": true,
           "Published": true,
-          "ModifiedUtc": "2021-05-04T15:27:26.1022048Z",
-          "PublishedUtc": "2021-05-04T15:27:26.1084063Z",
+          "ModifiedUtc": "2021-05-18T17:49:36.4072455Z",
+          "PublishedUtc": "2021-05-18T17:49:36.4138456Z",
           "CreatedUtc": "2021-04-16T01:52:41.1799908Z",
+          "Owner": null,
+          "Author": "admin",
           "TitlePart": {
             "Title": "Create appointment "
           },
@@ -661,7 +421,7 @@
                 "DisplayText": "Form to create the appointment from the Calendar",
                 "Latest": false,
                 "Published": false,
-                "ModifiedUtc": "2021-05-04T15:27:26.1043881Z",
+                "ModifiedUtc": "2021-05-18T17:49:36.4093653Z",
                 "PublishedUtc": null,
                 "CreatedUtc": null,
                 "Owner": "",
@@ -671,7 +431,7 @@
                 },
                 "VueComponent": {
                   "Template": {
-                    "Text": "<v-card >\r\n  <v-card-title>{{ \"formTitle\" | localize }}</v-card-title>\r\n  <v-card-subtitle>\r\n    {% raw %}{{ startDate }}{% endraw %}<br>\r\n    10 minutes\r\n  </v-card-subtitle>\r\n  <v-card-text>\r\n    <v-row>\r\n      <v-col>\r\n        <validation-provider name=\"{{ \"employeeLabel\" | localize | downcase }}\" rules=\"required\" v-slot=\"{ errors, valid }\">\r\n          <v-autocomplete v-model=\"employee\" :items=\"employeeList\" item-text=\"DisplayText\" item-value=\"ContentItemId\" label=\"{{ \"employeeLabel\" | localize }}\" :success=\"valid\" :error-messages=\"errors\"></v-autocomplete>\r\n        </validation-provider>\r\n      </v-col>      \r\n    </v-row>\r\n    <v-alert type=\"success\" v-if=\"form.successMessage\">\r\n      {% raw %}{{ form.successMessage }}{% endraw %}\r\n    </v-alert>\r\n    <v-alert type=\"error\" v-if=\"form.serverValidationMessage\">\r\n      {% raw %}{{ form.serverValidationMessage[0] }}{% endraw %}\r\n    </v-alert>\r\n  </v-card-text>\r\n  <v-card-actions>\r\n    <v-btn\r\n           text\r\n           color=\"secondary\"\r\n           @click=\"close\"\r\n     >\r\n      {{ \"closeButton\" | localize }}\r\n    </v-btn>\r\n    <v-spacer></v-spacer>\r\n    <v-btn text color=\"primary\" type=\"submit\" @click=\"loadDataAndSubmit\" :disabled=\"form.submitting\">{{ \"buttonText\" | localize }}</v-btn>\r\n  </v-card-actions>\r\n</v-card>"
+                    "Text": "<v-card >\r\n  <v-card-title>{{ \"formTitle\" | localize }} {{Model.CalendarTitle}}</v-card-title>\r\n  <v-card-subtitle>\r\n    {% raw %}{{ startDate }}{% endraw %}<br>\r\n    10 minutes\r\n  </v-card-subtitle>\r\n  <v-card-text>\r\n    <v-row>\r\n      <v-col>\r\n        <validation-provider name=\"{{ \"employeeLabel\" | localize | downcase }}\" rules=\"required\" v-slot=\"{ errors, valid }\">\r\n          <v-autocomplete v-model=\"employee\" :items=\"employeeList\" item-text=\"DisplayText\" item-value=\"ContentItemId\" label=\"{{ \"employeeLabel\" | localize }}\" :success=\"valid\" :error-messages=\"errors\"></v-autocomplete>\r\n        </validation-provider>\r\n      </v-col>      \r\n    </v-row>\r\n    <v-alert type=\"success\" v-if=\"form.successMessage\">\r\n      {% raw %}{{ form.successMessage }}{% endraw %}\r\n    </v-alert>\r\n    <v-alert type=\"error\" v-if=\"form.serverValidationMessage\">\r\n      {% raw %}{{ form.serverValidationMessage[0] }}{% endraw %}\r\n    </v-alert>\r\n  </v-card-text>\r\n  <v-card-actions>\r\n    <v-btn\r\n           text\r\n           color=\"secondary\"\r\n           @click=\"close\"\r\n     >\r\n      {{ \"closeButton\" | localize }}\r\n    </v-btn>\r\n    <v-spacer></v-spacer>\r\n    <v-btn text color=\"primary\" type=\"submit\" @click=\"loadDataAndSubmit\" :disabled=\"form.submitting\">{{ \"buttonText\" | localize }}</v-btn>\r\n  </v-card-actions>\r\n</v-card>"
                   }
                 },
                 "FlowMetadata": {
@@ -686,17 +446,20 @@
               "Text": null
             },
             "ComponentOptions": {
-              "Text": "{% assign employees = Queries.AllEmployees | query %}\r\n{\r\n  data: () => ({\r\n      startDate: new Date(),\r\n      endDate: new Date(),\r\n      employee: \"\",\r\n      employeeList: {{employees | json | raw}}\r\n  }),\r\n  mounted() {\r\n    const self = this;\r\n    this.startDate = window.startDate;\r\n    this.endDate = window.endDate;\r\n    // comes from the Calendar \r\n    window.addEventListener('create_appointment', e => {\r\n      self.employee = \"\";\r\n      self.startDate = window.startDate;\r\n      self.endDate = window.endDate;\r\n    })\r\n  },\r\n  methods: {\r\n    close() {\r\n      let event = new CustomEvent('close_appointment_dialog');\r\n      window.dispatchEvent(event);\r\n    },\r\n    submitData() {\r\n      return { \r\n        returnUrl: \"{{Model.CurrentUrl}}\",\r\n        startDate: this.startDate.toUTCString(),\r\n       \tendDate: this.endDate.toUTCString(),\r\n        employee: this.employee,\r\n       };\r\n    },\r\n    loadDataAndSubmit(e){\r\n      e.preventDefault();\r\n      this.formHandleSubmit(e)      \r\n    }\r\n    \r\n  }\r\n}"
+              "Text": "{\r\n  data: () => ({\r\n      startDate: new Date(),\r\n      endDate: new Date(),\r\n      employee: \"\",\r\n      employeeList: {{Model.Employees | json | raw}}\r\n  }),\r\n  mounted() {\r\n    const self = this;\r\n    this.startDate = window.startDate;\r\n    this.endDate = window.endDate;\r\n    // comes from the Calendar \r\n    window.addEventListener('create_appointment', e => {\r\n      self.employee = \"\";\r\n      self.startDate = window.startDate;\r\n      self.endDate = window.endDate;\r\n    })\r\n  },\r\n  methods: {\r\n    close() {\r\n      let event = new CustomEvent('close_appointment_dialog');\r\n      window.dispatchEvent(event);\r\n    },\r\n    submitData() {\r\n      return { \r\n        returnUrl: \"{{Model.CurrentUrl}}\",\r\n        startDate: this.startDate.toUTCString(),\r\n       \tendDate: this.endDate.toUTCString(),\r\n        employee: this.employee,\r\n       };\r\n    },\r\n    loadDataAndSubmit(e){\r\n      e.preventDefault();\r\n      this.formHandleSubmit(e)      \r\n    }\r\n    \r\n  }\r\n}"
             },
             "OnValidation": {
               "Text": null
             },
             "OnSubmitted": {
-              "Text": "var localizedText = getLocalizedTextValues(getFormContentItem());\r\nvar data = requestFormAsJsonObject();\r\nvar employee = contentByItemId(data.employee);\r\nvar cohort = taxonomyTermsJobject(employee.Content.Employee.Cohort);\r\n\r\nvar color = \"#000000\"\r\nif(cohort != null)\r\n{\r\n  color = cohort[0].Content.Cohort.Color.Text;\r\n}\r\n\r\nvar item = createContentItem(\"Appointment\", true, {\r\n  \"Appointment\": {\r\n    \"Location\": employee.Content.Employee.Location,\r\n    \"Status\": {\r\n      \"Text\": \"UPCOMING\"\r\n    },\r\n    \"LinkedContent\": {\r\n      \"ContentItemIds\": [\r\n        data.employee\r\n      ]\r\n    },\r\n    \"StartDate\": {\r\n      \"Value\": data.startDate\r\n    },\r\n    \"EndDate\": {\r\n      \"Value\": data.endDate\r\n    },\r\n    \"Color\": {\r\n      \"Text\": color\r\n    }\r\n  }\r\n});\r\nnotify(\"Success\", localizedText.successMessage);\r\n\r\nhttpRedirect(data.returnUrl)\r\n"
+              "Text": "var localizedText = getLocalizedTextValues(getFormContentItem());\r\nvar data = requestFormAsJsonObject();\r\nvar employee = contentByItemId(data.employee);\r\nvar calendar = taxonomyTermsJobject(employee.Content.Employee.Cohort);\r\n\r\nvar color = \"#000000\"\r\nif(calendar != null)\r\n{\r\n  color = calendar[0].Content.AppointmentCalendar.Color.Text;\r\n}\r\n\r\nvar item = createContentItem(\"Appointment\", true, {\r\n  \"Appointment\": {\r\n    \"Calendar\": employee.Content.Employee.Cohort,\r\n    \"Status\": {\r\n      \"Text\": \"UPCOMING\"\r\n    },\r\n    \"LinkedContent\": {\r\n      \"ContentItemIds\": [\r\n        data.employee\r\n      ]\r\n    },\r\n    \"StartDate\": {\r\n      \"Value\": data.startDate\r\n    },\r\n    \"EndDate\": {\r\n      \"Value\": data.endDate\r\n    },\r\n    \"Color\": {\r\n      \"Text\": color\r\n    }\r\n  }\r\n});\r\nnotify(\"Success\", localizedText.successMessage);\r\n\r\nhttpRedirect(data.returnUrl)\r\n"
             }
           },
           "ContentPermissionsPart": {
-            "Roles": ["Scheduler", "Administrator"],
+            "Roles": [
+              "Administrator",
+              "Scheduler"
+            ],
             "Enabled": true
           },
           "LocalizedTextPart": {
@@ -706,11 +469,11 @@
                 "LocalizedItems": [
                   {
                     "Culture": "fr",
-                    "Value": "Créer un rendez-vous"
+                    "Value": "Créer un rendez-vous pour"
                   },
                   {
                     "Culture": "en",
-                    "Value": "Create Appointment"
+                    "Value": "Create Appointment for"
                   }
                 ]
               },
@@ -795,27 +558,6 @@
           "Schema": null
         },
         {
-          "Template": "SELECT DocumentId FROM TaxonomyIndex where ContentType = 'Appointment' and TermContentItemId = '{{termContentItemId}}'",
-          "ReturnDocuments": true,
-          "Name": "AllAppointmentsOfLocation",
-          "Source": "Sql",
-          "Schema": null
-        },
-        {
-          "Template": "SELECT DocumentId FROM TaxonomyIndex where ContentType = 'Employee' and TermContentItemId = '{{cohortId}}'",
-          "ReturnDocuments": true,
-          "Name": "AllEmployeesOfCohort",
-          "Source": "Sql",
-          "Schema": "{\r\n    \"type\": \"ContentItem/Employee\"\r\n}"
-        },
-        {
-          "Template": "SELECT DocumentId from AppointmentLinkedIndex where LinkedContentItemId in\r\n\r\n(SELECT ContentItemId FROM TaxonomyIndex where ContentType = 'Employee' and TermContentItemId = '{{cohortId}}')",
-          "ReturnDocuments": true,
-          "Name": "AppointmentsForCohort",
-          "Source": "Sql",
-          "Schema": null
-        },
-        {
           "Template": "SELECT DocumentId FROM ContentItemIndex where ContentType = 'Employee' and Published = true and Latest = true",
           "ReturnDocuments": true,
           "Name": "AllEmployees",
@@ -823,9 +565,29 @@
           "Schema": null
         },
         {
-          "Template": "SELECT AppointmentLinkedIndex.DocumentId \r\nFROM AppointmentLinkedIndex\r\n  JOIN AppointmentIndex \r\n  \tON AppointmentIndex.ContentItemId = AppointmentLinkedIndex.ContentItemId\r\n  \tWHERE \r\n\t AppointmentLinkedIndex.LinkedContentItemId\r\nIN\r\n  (SELECT TaxonomyIndex.ContentItemId FROM TaxonomyIndex where TaxonomyIndex.ContentType = 'Employee' \r\n   and TaxonomyIndex.TermContentItemId = '{{ cohortId }}') \r\nAND AppointmentIndex.StartDate BETWEEN '{{ startDate }}' AND '{{ endDate }}'\r\nORDER BY AppointmentIndex.StartDate ASC",
+          "Template": "SELECT DocumentId \r\nFROM AppointmentIndex\r\nWHERE AppointmentIndex.ContentItemId IN\r\n  (SELECT ContentItemId FROM TaxonomyIndex where ContentType = 'Appointment' and TermContentItemId in ({{calendarIds}})) \r\nAND StartDate BETWEEN '{{ startDate }}' AND '{{ endDate }}'\r\nORDER BY StartDate ASC",
           "ReturnDocuments": true,
-          "Name": "AppointmentsForCohortForDate",
+          "Name": "AppointmentsForCalendarsForDate",
+          "Source": "Sql",
+          "Schema": null
+        },
+        {
+          "Template": "query DataExport {\r\n  appointments: appointment {\r\n    contentItemId\r\n    contentItemVersionId\r\n    author\r\n    color\r\n    comments\r\n    modifiedUtc\r\n    startDate\r\n    endDate\r\n    status\r\n    linkedContent {\r\n      contentItemIds\r\n    }\r\n    calendar {\r\n      termContentItems {\r\n        ... on AppointmentCalendar {\r\n          displayText\r\n          contentItemId\r\n        }\r\n      }\r\n    }\r\n  }\r\n  employees: employee {\r\n    contentItemId\r\n    firstName\r\n    lastName\r\n    participating\r\n    consent\r\n    createdUtc\r\n    cohort {\r\n      termContentItems {\r\n        contentItemId\r\n        ... on AppointmentCalendar {\r\n          createdUtc\r\n          color\r\n          displayText\r\n        }\r\n      }\r\n    }\r\n  }\r\n}",
+          "Name": "DataExport",
+          "Source": "GraphQL",
+          "Schema": null
+        },
+        {
+          "Template": "SELECT DocumentId FROM TaxonomyIndex where ContentType = 'Employee' and TermContentItemId in ({{calendarIds}})",
+          "ReturnDocuments": true,
+          "Name": "EmployeesForCalendars",
+          "Source": "Sql",
+          "Schema": null
+        },
+        {
+          "Template": "SELECT DocumentId FROM TaxonomyIndex where ContentType = 'Appointment' and TermContentItemId in ({{calendarIds}})",
+          "ReturnDocuments": true,
+          "Name": "AppointmentForCalendars",
           "Source": "Sql",
           "Schema": null
         }

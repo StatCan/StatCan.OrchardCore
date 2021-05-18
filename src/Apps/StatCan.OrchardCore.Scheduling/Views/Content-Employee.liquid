@@ -4,7 +4,6 @@
     <v-col>
       <div class="text-h2">{{ Model.ContentItem.Content.Employee.FirstName.Text }} {{ Model.ContentItem.Content.Employee.LastName.Text }}</div> 
       <div class="text-h4">{{Model.ContentItem.Content.Employee.Cohort | taxonomy_terms | first}}
-        {{Model.ContentItem.Content.Employee.Location | taxonomy_terms | first}}</div>
       <div>
         <v-checkbox
           disabled
@@ -24,11 +23,12 @@
 </v-container>
 {% endblock %}
 <employee></employee>
+{%- comment -%}This should be refactored to not use a script block{%- endcomment -%}
 {% block "script", At: "Foot", depends_on: "vuejs" %}
   Vue.component("employee", {
       template:  "#Employee",
       data: () => ({
-      consent: {{ Model.ContentItem.Content.Employee.Consent.Value }},
+      consent: ,
 		  participating: {{ Model.ContentItem.Content.Employee.Participating.Value }},
 	  })
   });

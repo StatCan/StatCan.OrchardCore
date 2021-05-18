@@ -1,0 +1,15 @@
+{%- capture calendarIds -%}
+'{{Model.ContentItem.ContentItemId}}'
+{%- for term in Model.ContentItem.Content.Terms -%}
+{%- if forloop.last == false or forloop.first == true -%}
+,
+{%- endif -%}
+'{{term.ContentItemId}}'
+{%- endfor -%}
+{%- endcapture -%}
+{% assign appointments = Queries.AppointmentForCalendars | query: calendarIds: calendarIds %}
+{% assign employees = Queries.EmployeesForCalendars | query: calendarIds: calendarIds %}
+{% assign currentUrl = Model.ContentItem | display_url %}
+{% assign title = "All Appointments for {0}" | t: Model.ContentItem.DisplayText %}
+
+{{ "Calendar" | shape_new | shape_properties: contentItem: Model.ContentItem, currentUrl: currentUrl, appointments: appointments, employees: employees, pageTitle: title, calendarIds: calendarIds | shape_render }}

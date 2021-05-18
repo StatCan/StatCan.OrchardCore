@@ -1,9 +1,10 @@
 {% capture startDate %}{{ Request.Query.StartDate }}{% endcapture %}
 {% capture endDate %}{{ Request.Query.EndDate }} 23:59:59{% endcapture %}
 {% capture type %}{{ Request.Query.Type }}{% endcapture %}
-{% capture cohortTitle %}{{ Request.Query.CohortTitle }}{% endcapture %}
+{% capture calendarTitle %}{{ Request.Query.calendarTitle }}{% endcapture %}
 {% capture format %}{% if Culture.Name == "en" %}%B %d, %Y{% else %}%d %B %Y{% endif %}{% endcapture %}
-{% assign appointments = Queries.AppointmentsForCohortForDate | query: cohortId: Request.Query.CohortId, startDate: startDate, endDate: endDate %}
+{%- comment -%}todo{%- endcomment -%}
+{% assign appointments = Queries.AppointmentsForCalendarsForDate | query: calendarIds: Request.Query.CalendarIds, startDate: startDate, endDate: endDate %}
 {% block "style", at: "Head" %}
   #main {
   	padding: 0 !important;
@@ -45,7 +46,7 @@
       {% endif %}
     </p>
     <span class="text-h5">
-      {%if Culture.Name == "en"%}Cohort{%else%}Chohorte{%endif%} {{ cohortTitle }}
+      {%if Culture.Name == "en"%}Cohort{%else%}Chohorte{%endif%} {{ calendarTitle }}
     </span>
     <v-spacer class="mb-8"></v-spacer>
     {% if appointments == nil %}

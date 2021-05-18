@@ -1,7 +1,7 @@
 {
-  "name": "private-scheduling-app",
-  "displayName": "Private scheduling app setup recipe",
-  "description": "For the initial setup of a private scheduling application",
+  "name": "scheduling-app",
+  "displayName": "Scheduling app setup recipe",
+  "description": "For the initial setup of an appointment scheduling application",
   "author": "Digital Innovation Team",
   "website": "https://digital.statcan.gc.ca",
   "version": "0.1.0",
@@ -66,6 +66,7 @@
         "OrchardCore.Users.ResetPassword",
         "OrchardCore.Workflows",
         "OrchardCore.Workflows.Http",
+        "StatCan.OrchardCore.CommonTypes.Page",
         "StatCan.OrchardCore.ContentPermissions",
         "StatCan.OrchardCore.CommonTypes.SecurePage",
         "StatCan.OrchardCore.CommonTypes.Widgets",
@@ -76,7 +77,10 @@
         "StatCan.OrchardCore.VueForms",
         "StatCan.OrchardCore.VueForms.Localized",
         "StatCan.OrchardCore.Queries.GraphQL",
-        "StatCan.OrchardCore.Scheduling"
+        "StatCan.OrchardCore.Scheduling",
+        "TheAdmin",
+        "DigitalAdmin",
+        "VuetifyTheme"
       ]
     },
     {
@@ -350,298 +354,6 @@
           }
         },
         {
-          "ContentItemId": "4wekk6wcm1ack3c68x95m6dv5k",
-          "ContentItemVersionId": "4c5zx08vt2f5m1x8zcd3xa35nm",
-          "ContentType": "Menu",
-          "DisplayText": "Navigation Menu FR",
-          "Latest": true,
-          "Published": true,
-          "ModifiedUtc": "2021-04-23T17:45:01.5732423Z",
-          "PublishedUtc": "2021-04-23T17:45:01.5836544Z",
-          "CreatedUtc": "2021-04-23T17:44:46.1447351Z",
-          "Owner": "[js: parameters('AdminUserId')]",
-          "Author": "[js: parameters('AdminUsername')]",
-          "TitlePart": {
-            "Title": "Navigation Menu FR"
-          },
-          "AliasPart": {
-            "Alias": "navigation-drawer-fr"
-          },
-          "MenuPart": {},
-          "MenuItemsListPart": {
-            "MenuItems": [
-              {
-                "ContentItemId": "45kfyr6dj9ek01d301n831psn8",
-                "ContentItemVersionId": null,
-                "ContentType": "LinkMenuItem",
-                "DisplayText": "Rendez-vous",
-                "Latest": false,
-                "Published": false,
-                "ModifiedUtc": "2021-04-26T13:01:24.14465Z",
-                "PublishedUtc": null,
-                "CreatedUtc": null,
-                "Owner": null,
-                "Author": "admin",
-                "LinkMenuItemPart": {
-                  "Name": "Rendez-vous",
-                  "Url": null
-                },
-                "LinkMenuItem": {
-                  "IconName": {
-                    "Text": null
-                  }
-                }
-              },
-              {
-                "ContentItemId": "4gwk2vpgp868h33c5s3qgdstnc",
-                "ContentItemVersionId": null,
-                "ContentType": "TaxonomyMenuItem",
-                "DisplayText": "Cohorts",
-                "Latest": false,
-                "Published": false,
-                "ModifiedUtc": "2021-04-22T15:13:32.808932Z",
-                "PublishedUtc": null,
-                "CreatedUtc": null,
-                "Owner": null,
-                "Author": "admin",
-                "TaxonomyMenuItem": {
-                  "Expanded": {
-                    "Value": true
-                  },
-                  "Taxonomy": {
-                    "ContentItemIds": ["40wnmge1rdc3p3m7xf1pycvdx0"]
-                  }
-                },
-                "TitlePart": {
-                  "Title": "Cohorts"
-                },
-                "LinkMenuItemPart": {
-                  "Name": "Cohorts",
-                  "Url": null
-                }
-              },
-              {
-                "ContentItemId": "4derksqv47taz6pvgfvpkh2zwj",
-                "ContentItemVersionId": null,
-                "ContentType": "ContentMenuItem",
-                "DisplayText": "Rétroaction",
-                "Latest": false,
-                "Published": false,
-                "ModifiedUtc": "2021-04-23T17:44:36.7371328Z",
-                "PublishedUtc": null,
-                "CreatedUtc": null,
-                "Owner": null,
-                "Author": "admin",
-                "ContentMenuItemPart": {
-                  "Name": "Rétroaction",
-                  "SelectedContentItem": {
-                    "ContentItemIds": ["4ty56s2p8vfhmxp76p4f37b1c3"]
-                  }
-                },
-                "ContentMenuItem": {
-                  "IconName": {
-                    "Text": "mdi-comment-quote"
-                  }
-                }
-              }
-            ]
-          },
-          "@WeldedPartSettings": {
-            "MenuPart": {
-              "Position": "3"
-            },
-            "MenuItemsListPart": {
-              "Position": "4"
-            }
-          }
-        },
-        {
-          "ContentItemId": "4nm1vms5mbanyx2n23f88c7mn8",
-          "ContentItemVersionId": "4ds3xxyeb3cp22bx0jhndprfcs",
-          "ContentType": "Menu",
-          "DisplayText": "Navigation Menu EN",
-          "Latest": true,
-          "Published": true,
-          "ModifiedUtc": "2021-04-23T17:44:41.7172678Z",
-          "PublishedUtc": "2021-04-23T17:44:41.7381407Z",
-          "CreatedUtc": "2021-04-23T17:44:24.6263983Z",
-          "Owner": "[js: parameters('AdminUserId')]",
-          "Author": "[js: parameters('AdminUsername')]",
-          "TitlePart": {
-            "Title": "Navigation Menu EN"
-          },
-          "AliasPart": {
-            "Alias": "navigation-drawer-en"
-          },
-          "MenuPart": {},
-          "MenuItemsListPart": {
-            "MenuItems": [
-              {
-                "ContentItemId": "45kfyr6dj9ek01d301n831psn8",
-                "ContentItemVersionId": null,
-                "ContentType": "LinkMenuItem",
-                "DisplayText": "Appointments",
-                "Latest": false,
-                "Published": false,
-                "ModifiedUtc": "2021-04-26T13:01:24.14465Z",
-                "PublishedUtc": null,
-                "CreatedUtc": null,
-                "Owner": null,
-                "Author": "admin",
-                "LinkMenuItemPart": {
-                  "Name": "Appointments",
-                  "Url": null
-                },
-                "LinkMenuItem": {
-                  "IconName": {
-                    "Text": null
-                  }
-                }
-              },
-              {
-                "ContentItemId": "4gwk2vpgp868h33c5s3qgdstnc",
-                "ContentItemVersionId": null,
-                "ContentType": "TaxonomyMenuItem",
-                "DisplayText": "Cohorts",
-                "Latest": false,
-                "Published": false,
-                "ModifiedUtc": "2021-04-22T15:13:32.808932Z",
-                "PublishedUtc": null,
-                "CreatedUtc": null,
-                "Owner": null,
-                "Author": "admin",
-                "TaxonomyMenuItem": {
-                  "Expanded": {
-                    "Value": true
-                  },
-                  "Taxonomy": {
-                    "ContentItemIds": ["40wnmge1rdc3p3m7xf1pycvdx0"]
-                  }
-                },
-                "TitlePart": {
-                  "Title": "Cohorts"
-                },
-                "LinkMenuItemPart": {
-                  "Name": "Cohorts",
-                  "Url": null
-                }
-              },
-              {
-                "ContentItemId": "4derksqv47taz6pvgfvpkh2zwj",
-                "ContentItemVersionId": null,
-                "ContentType": "ContentMenuItem",
-                "DisplayText": "Feedback",
-                "Latest": false,
-                "Published": false,
-                "ModifiedUtc": "2021-04-23T17:44:36.7371328Z",
-                "PublishedUtc": null,
-                "CreatedUtc": null,
-                "Owner": null,
-                "Author": "inno_adm",
-                "ContentMenuItemPart": {
-                  "Name": "Feedback",
-                  "SelectedContentItem": {
-                    "ContentItemIds": ["4ty56s2p8vfhmxp76p4f37b1c3"]
-                  }
-                },
-                "ContentMenuItem": {
-                  "IconName": {
-                    "Text": "mdi-comment-quote"
-                  }
-                }
-              }
-            ]
-          },
-          "@WeldedPartSettings": {
-            "MenuPart": {
-              "Position": "3"
-            },
-            "MenuItemsListPart": {
-              "Position": "4"
-            }
-          }
-        },
-        {
-          "ContentItemId": "4w6xjvdezh00ctenheq70cg2nf",
-          "ContentItemVersionId": "4sw1rhany9zx65fq0y49jdpbdn",
-          "ContentType": "VueForm",
-          "DisplayText": "Load Employees",
-          "Latest": true,
-          "Published": true,
-          "ModifiedUtc": "2021-05-04T15:27:16.7331522Z",
-          "PublishedUtc": "2021-05-04T15:27:16.7418193Z",
-          "CreatedUtc": "2021-05-04T00:57:57.2184298Z",
-          "Owner": "[js: parameters('AdminUserId')]",
-          "Author": "[js: parameters('AdminUsername')]",
-          "TitlePart": {
-            "Title": "Load Employees"
-          },
-          "VueForm": {
-            "Enabled": {
-              "Value": true
-            },
-            "RenderAs": {
-              "Text": null
-            },
-            "DisabledHtml": {
-              "Html": "Importing employees has been disabled"
-            },
-            "SuccessMessage": {
-              "Text": "Employees have been successfully added"
-            }
-          },
-          "FlowPart": {
-            "Widgets": [
-              {
-                "ContentItemId": "4kx97ehcssm6b4w9q2bzdhjg44",
-                "ContentItemVersionId": null,
-                "ContentType": "VueComponent",
-                "DisplayText": "Form",
-                "Latest": false,
-                "Published": false,
-                "ModifiedUtc": "2021-05-04T15:27:16.7352413Z",
-                "PublishedUtc": null,
-                "CreatedUtc": null,
-                "Owner": "",
-                "Author": "admin",
-                "TitlePart": {
-                  "Title": "Form"
-                },
-                "VueComponent": {
-                  "Template": {
-                    "Text": "<v-container>\r\n  <h1>Bulk load Employees</h1>\r\n  <p class=\"font-weight-light\">\r\n    One employee per line, space seperated FirstName LastName\r\n  </p>\r\n  <v-textarea\r\n   v-model=\"employees\"\r\n    outlined\r\n    name=\"input-7-4\"\r\n    label=\"Employees\"\r\n    ></v-textarea>\r\n  <v-alert type=\"success\" v-if=\"form.successMessage\">\r\n    {% raw %}{{ form.successMessage }}{% endraw %}\r\n  </v-alert>\r\n  <v-alert type=\"error\" v-if=\"form.serverValidationMessage\">\r\n    {% raw %}{{ form.serverValidationMessage[0] }}{% endraw %}\r\n  </v-alert>\r\n  <v-btn type=\"submit\" :disabled=\"form.submitSuccess\" >Submit</v-btn>\r\n</v-container>"
-                  }
-                },
-                "FlowMetadata": {
-                  "Alignment": 3,
-                  "Size": 100
-                }
-              }
-            ]
-          },
-          "VueFormScripts": {
-            "ClientInit": {
-              "Text": null
-            },
-            "ComponentOptions": {
-              "Text": "{\r\n  data: () => ({\r\n    employees : \"\",\r\n  })\r\n}"
-            },
-            "OnValidation": {
-              "Text": null
-            },
-            "OnSubmitted": {
-              "Text": "let data = requestFormAsJsonObject();\r\n\r\nif(data.employees)\r\n{\r\n  \r\n  let lines = data.employees.ToString().split(\"\\n\");\r\n  for(let i=0; i < lines.length; i++)\r\n  {\r\n   \tlet names = lines[i].split(/[ \\t]+/); \r\n    createContentItem(\"Employee\", false, {\r\n      \"Employee\": {\r\n        \"FirstName\": {\r\n          \"Text\": names[0]\r\n        },\r\n        \"LastName\": {\r\n          \"Text\": names[1]\r\n        },\r\n        \"Consent\": {\r\n          \"Value\": false\r\n        },\r\n        \"Participating\": {\r\n          \"Value\": false\r\n        },\r\n        \"Location\": {\r\n          \"TaxonomyContentItemId\": \"4wnw5cysybe8szzhehezz5b74b\",\r\n          \"TermContentItemIds\": [\r\n            \"4ywm3wkc0gywc2z5ydc4x3tfc3\"\r\n          ]\r\n        }\r\n      }\r\n    });\r\n  }\r\n}\r\nelse{\r\n addError(\"errorMessage\", \"You did not provide any data\"); \r\n}\r\nreturn true;\r\n\r\n"
-            }
-          },
-          "ContentPermissionsPart": {
-            "Roles": ["Administrator"],
-            "Enabled": true
-          },
-          "LocalizedTextPart": {
-            "Data": []
-          }
-        },
-        {
           "ContentItemId": "4bmx4pb1mf6dnx0xs8yw54w1c0",
           "ContentItemVersionId": "4f5f5jwapph934sh45s8gckz4e",
           "ContentType": "SecurePage",
@@ -756,6 +468,298 @@
               "Html": ""
             }
           }
+        },
+        {
+          "ContentItemId": "4wekk6wcm1ack3c68x95m6dv5k",
+          "ContentItemVersionId": "4wbt1kpdccfxfwh2hffhpx4r5f",
+          "ContentType": "Menu",
+          "DisplayText": "Navigation Menu FR",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": "2021-05-18T19:16:21.9413804Z",
+          "PublishedUtc": "2021-05-18T19:16:21.943616Z",
+          "CreatedUtc": "2021-04-23T17:44:46.1447351Z",
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "TitlePart": {
+            "Title": "Navigation Menu FR"
+          },
+          "AliasPart": {
+            "Alias": "navigation-drawer-fr"
+          },
+          "MenuPart": {},
+          "MenuItemsListPart": {
+            "MenuItems": [
+              {
+                "ContentItemId": "45kfyr6dj9ek01d301n831psn8",
+                "ContentItemVersionId": null,
+                "ContentType": "LinkMenuItem",
+                "DisplayText": "Page Principale",
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": "2021-04-26T13:01:24.14465Z",
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": null,
+                "Author": "admin",
+                "LinkMenuItemPart": {
+                  "Name": "Page Principale",
+                  "Url": "~/"
+                },
+                "LinkMenuItem": {
+                  "IconName": {
+                    "Text": null
+                  }
+                }
+              },
+              {
+                "ContentItemId": "4gwk2vpgp868h33c5s3qgdstnc",
+                "ContentItemVersionId": null,
+                "ContentType": "TaxonomyMenuItem",
+                "DisplayText": "Calendriers",
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": "2021-04-22T15:13:32.808932Z",
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": null,
+                "Author": "admin",
+                "TaxonomyMenuItem": {
+                  "Expanded": {
+                    "Value": true
+                  },
+                  "Taxonomy": {
+                    "ContentItemIds": ["4wnw5cysybe8szzhehezz5b74b"]
+                  }
+                },
+                "TitlePart": {
+                  "Title": "Calendriers"
+                },
+                "LinkMenuItemPart": {
+                  "Name": "Cohorts",
+                  "Url": null
+                }
+              },
+              {
+                "ContentItemId": "4derksqv47taz6pvgfvpkh2zwj",
+                "ContentItemVersionId": null,
+                "ContentType": "ContentMenuItem",
+                "DisplayText": "Rétroaction",
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": "2021-04-23T17:44:36.7371328Z",
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": null,
+                "Author": "admin",
+                "ContentMenuItemPart": {
+                  "Name": "Rétroaction",
+                  "SelectedContentItem": {
+                    "ContentItemIds": ["4ty56s2p8vfhmxp76p4f37b1c3"]
+                  }
+                },
+                "ContentMenuItem": {
+                  "IconName": {
+                    "Text": "mdi-comment-quote"
+                  }
+                }
+              }
+            ]
+          },
+          "@WeldedPartSettings": {
+            "MenuPart": {
+              "Position": "3"
+            },
+            "MenuItemsListPart": {
+              "Position": "4"
+            }
+          }
+        },
+        {
+          "ContentItemId": "4nm1vms5mbanyx2n23f88c7mn8",
+          "ContentItemVersionId": "4cx8h0c7j4dqrzf9dgsdxtnsw7",
+          "ContentType": "Menu",
+          "DisplayText": "Navigation Menu EN",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": "2021-05-18T19:16:33.7967942Z",
+          "PublishedUtc": "2021-05-18T19:16:33.7989322Z",
+          "CreatedUtc": "2021-04-23T17:44:24.6263983Z",
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "TitlePart": {
+            "Title": "Navigation Menu EN"
+          },
+          "AliasPart": {
+            "Alias": "navigation-drawer-en"
+          },
+          "MenuPart": {},
+          "MenuItemsListPart": {
+            "MenuItems": [
+              {
+                "ContentItemId": "45kfyr6dj9ek01d301n831psn8",
+                "ContentItemVersionId": null,
+                "ContentType": "LinkMenuItem",
+                "DisplayText": "Page Principale",
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": "2021-04-26T13:01:24.14465Z",
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": null,
+                "Author": "admin",
+                "LinkMenuItemPart": {
+                  "Name": "Page Principale",
+                  "Url": "~/"
+                },
+                "LinkMenuItem": {
+                  "IconName": {
+                    "Text": null
+                  }
+                }
+              },
+              {
+                "ContentItemId": "4gwk2vpgp868h33c5s3qgdstnc",
+                "ContentItemVersionId": null,
+                "ContentType": "TaxonomyMenuItem",
+                "DisplayText": "Calendars",
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": "2021-04-22T15:13:32.808932Z",
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": null,
+                "Author": "admin",
+                "TaxonomyMenuItem": {
+                  "Expanded": {
+                    "Value": true
+                  },
+                  "Taxonomy": {
+                    "ContentItemIds": ["4wnw5cysybe8szzhehezz5b74b"]
+                  }
+                },
+                "TitlePart": {
+                  "Title": "Calendars"
+                },
+                "LinkMenuItemPart": {
+                  "Name": "Cohorts",
+                  "Url": null
+                }
+              },
+              {
+                "ContentItemId": "4derksqv47taz6pvgfvpkh2zwj",
+                "ContentItemVersionId": null,
+                "ContentType": "ContentMenuItem",
+                "DisplayText": "Feedback",
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": "2021-04-23T17:44:36.7371328Z",
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": null,
+                "Author": "inno_adm",
+                "ContentMenuItemPart": {
+                  "Name": "Feedback",
+                  "SelectedContentItem": {
+                    "ContentItemIds": ["4ty56s2p8vfhmxp76p4f37b1c3"]
+                  }
+                },
+                "ContentMenuItem": {
+                  "IconName": {
+                    "Text": "mdi-comment-quote"
+                  }
+                }
+              }
+            ]
+          },
+          "@WeldedPartSettings": {
+            "MenuPart": {
+              "Position": "3"
+            },
+            "MenuItemsListPart": {
+              "Position": "4"
+            }
+          }
+        },
+        {
+          "ContentItemId": "4w6xjvdezh00ctenheq70cg2nf",
+          "ContentItemVersionId": "4bh36b9dwhr6q2wvzk2d1awx4f",
+          "ContentType": "VueForm",
+          "DisplayText": "Load Employees",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": "2021-05-18T19:20:36.2948941Z",
+          "PublishedUtc": "2021-05-18T19:20:36.3011091Z",
+          "CreatedUtc": "2021-05-04T00:57:57.2184298Z",
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "TitlePart": {
+            "Title": "Load Employees"
+          },
+          "VueForm": {
+            "Enabled": {
+              "Value": true
+            },
+            "RenderAs": {
+              "Text": null
+            },
+            "DisabledHtml": {
+              "Html": "Importing employees has been disabled"
+            },
+            "SuccessMessage": {
+              "Text": "Employees have been successfully added"
+            }
+          },
+          "FlowPart": {
+            "Widgets": [
+              {
+                "ContentItemId": "4kx97ehcssm6b4w9q2bzdhjg44",
+                "ContentItemVersionId": null,
+                "ContentType": "VueComponent",
+                "DisplayText": "Form",
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": "2021-05-18T19:20:36.2969584Z",
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": "",
+                "Author": "admin",
+                "TitlePart": {
+                  "Title": "Form"
+                },
+                "VueComponent": {
+                  "Template": {
+                    "Text": "<v-container>\r\n  <v-col>\r\n    <h1>Bulk load Employees</h1>\r\n    <p class=\"font-weight-light\">\r\n      One employee per line, space seperated FirstName LastName\r\n    </p>\r\n  </v-col>\r\n  <v-col>\r\n    <validation-provider name=\"Cohort\" rules=\"required\" v-slot=\"{ errors, valid }\">\r\n      <v-autocomplete v-model=\"cohort\" :items=\"calendarList\" item-text=\"DisplayText\" item-value=\"ContentItemId\" label=\"Cohort\" :success=\"valid\" :error-messages=\"errors\"></v-autocomplete>\r\n    </validation-provider>\r\n  </v-col>\r\n  <v-col>\r\n  <v-textarea v-model=\"employees\" outlined label=\"Employees\"></v-textarea>\r\n  </v-col>\r\n  <v-col>\r\n    <v-alert type=\"success\" v-if=\"form.successMessage\">\r\n      {% raw %}{{ form.successMessage }}{% endraw %}\r\n      <a href=\"{{\"~/\" | href}}\">Go home</a>\r\n    </v-alert>\r\n    <v-alert type=\"error\" v-if=\"form.serverValidationMessage\">\r\n      {% raw %}{{ form.serverValidationMessage[0] }}{% endraw %}\r\n    </v-alert>\r\n  \t<v-btn type=\"submit\" :disabled=\"form.submitSuccess\" >Submit</v-btn>\r\n  </v-col>\r\n</v-container>"
+                  }
+                },
+                "FlowMetadata": {
+                  "Alignment": 3,
+                  "Size": 100
+                }
+              }
+            ]
+          },
+          "VueFormScripts": {
+            "ClientInit": {
+              "Text": null
+            },
+            "ComponentOptions": {
+              "Text": "{% assign calendarTerms = '4wnw5cysybe8szzhehezz5b74b' | all_taxonomy_terms  %}\r\n{\r\n  data: () => ({\r\n    employees : \"\",\r\n    cohort: \"\",\r\n    calendarList: {{calendarTerms | json | raw }}\r\n  })\r\n}"
+            },
+            "OnValidation": {
+              "Text": null
+            },
+            "OnSubmitted": {
+              "Text": "let data = requestFormAsJsonObject();\r\n\r\nif(data.employees)\r\n{\r\n  let lines = data.employees.ToString().split(\"\\n\");\r\n  for(let i=0; i < lines.length; i++)\r\n  {\r\n   \tlet names = lines[i].split(/[ \\t]+/); \r\n    if(names[0] === \"\" || names[1] === \"\")\r\n    {\r\n      continue;\r\n    }\r\n    createContentItem(\"Employee\", true, {\r\n      \"Employee\": {\r\n        \"FirstName\": {\r\n          \"Text\": names[0]\r\n        },\r\n        \"LastName\": {\r\n          \"Text\": names[1]\r\n        },\r\n        \"Consent\": {\r\n          \"Value\": false\r\n        },\r\n        \"Participating\": {\r\n          \"Value\": false\r\n        },\r\n        \"Cohort\": {\r\n          \"TaxonomyContentItemId\": \"4wnw5cysybe8szzhehezz5b74b\",\r\n          \"TermContentItemIds\": [\r\n            data.cohort\r\n          ]\r\n        }\r\n      }\r\n    });\r\n  }\r\n}\r\nelse{\r\n addError(\"errorMessage\", \"You did not provide any employees\"); \r\n}\r\nreturn true;\r\n\r\n"
+            }
+          },
+          "ContentPermissionsPart": {
+            "Roles": ["Administrator"],
+            "Enabled": true
+          },
+          "LocalizedTextPart": {
+            "Data": []
+          }
         }
       ]
     },
@@ -817,31 +821,11 @@
             },
             {
               "$type": "OrchardCore.AdminMenu.AdminNodes.LinkAdminNode, OrchardCore.AdminMenu",
-              "LinkText": "Cohorts",
-              "LinkUrl": "Admin/Contents/ContentItems/40wnmge1rdc3p3m7xf1pycvdx0/Edit",
-              "IconClass": "fas fa-users",
-              "PermissionNames": ["EditOwn_Cohort"],
-              "UniqueId": "96b2b704ee734937a21065c96ebc76b8",
-              "Enabled": true,
-              "Text": null,
-              "Id": null,
-              "Href": null,
-              "Url": null,
-              "Position": null,
-              "Priority": 0,
-              "LinkToFirstChild": true,
-              "LocalNav": false,
-              "Culture": null,
-              "Items": [],
-              "Classes": []
-            },
-            {
-              "$type": "OrchardCore.AdminMenu.AdminNodes.LinkAdminNode, OrchardCore.AdminMenu",
-              "LinkText": "Locations",
+              "LinkText": "Calendars",
               "LinkUrl": "Admin/Contents/ContentItems/4wnw5cysybe8szzhehezz5b74b/Edit",
-              "IconClass": "fas fa-map-marked-alt",
-              "PermissionNames": ["EditOwn_AppointmentLocation"],
-              "UniqueId": "33c16d724a3544568ad10e2cc2dee293",
+              "IconClass": "fas fa-users",
+              "PermissionNames": ["EditOwn_Calendar"],
+              "UniqueId": "96b2b704ee734937a21065c96ebc76b8",
               "Enabled": true,
               "Text": null,
               "Id": null,
@@ -868,12 +852,12 @@
             {
               "Type": "RecipeFileDeploymentStep",
               "Step": {
-                "name": "scheduling-app",
-                "displayName": "Schdeuling app setup recipe",
-                "description": "For the initial setup of the scheduling application",
-                "author": "Digital Innovation Team",
-                "website": "https://digital.statcan.gc.ca",
-                "version": "0.1.0",
+                "RecipeName": "scheduling-app",
+                "DisplayName": "Scheduling app setup recipe",
+                "Description": "For the initial setup of the scheduling application",
+                "Author": "Digital Innovation Team",
+                "WebSite": "https://digital.statcan.gc.ca",
+                "Version": "0.1.0",
                 "IsSetupRecipe": true,
                 "Categories": null,
                 "Tags": null,
@@ -893,25 +877,8 @@
               "Type": "ContentDefinitionDeploymentStep",
               "Step": {
                 "IncludeAll": false,
-                "ContentTypes": [
-                  "Appointment",
-                  "AppointmentLocation",
-                  "AppointmentPrint",
-                  "Cohort",
-                  "ContactRequest",
-                  "Employee",
-                  "Taxonomy",
-                  "TaxonomyMenuItem"
-                ],
-                "ContentParts": [
-                  "Appointment",
-                  "AppointmentLocation",
-                  "AppointmentPrint",
-                  "Cohort",
-                  "ContactRequest",
-                  "Employee",
-                  "TaxonomyMenuItem"
-                ],
+                "ContentTypes": ["ContactRequest"],
+                "ContentParts": ["ContactRequest"],
                 "Id": "556b8f0bdecc43a7acbf6debea9ddced",
                 "Name": "ContentDefinition"
               }
@@ -919,25 +886,10 @@
             {
               "Type": "ContentDeploymentStep",
               "Step": {
-                "ContentTypes": [
-                  "AppointmentLocation",
-                  "Cohort",
-                  "Menu",
-                  "Page",
-                  "SecurePage",
-                  "Taxonomy",
-                  "VueForm"
-                ],
+                "ContentTypes": ["Menu", "Page", "SecurePage", "VueForm"],
                 "ExportAsSetupRecipe": false,
                 "Id": "bf8a6aeaa5764bd781e5ad70d7d5e87c",
                 "Name": "ContentDeploymentStep"
-              }
-            },
-            {
-              "Type": "AllQueriesDeploymentStep",
-              "Step": {
-                "Id": "001a2b103e9b49e3a69f7e772ad62376",
-                "Name": "AllQueries"
               }
             },
             {
@@ -945,21 +897,6 @@
               "Step": {
                 "Id": "292e7ee7ed1e4c05b9da9c26ae8a6902",
                 "Name": "AdminMenu"
-              }
-            },
-            {
-              "Type": "TaxonomyContentsAdminListSettings_SiteSettingsPropertyDeploymentStep",
-              "Step": {
-                "Id": "c823efe81b5e4e4a9caad7cb398fbed8",
-                "Name": "TaxonomyContentsAdminListSettings_SiteSettingsPropertyDeploymentStep"
-              }
-            },
-            {
-              "Type": "AllTemplatesDeploymentStep",
-              "Step": {
-                "ExportAsFiles": true,
-                "Id": "3df75c9b6a164bfbba63c596e8516e05",
-                "Name": "AllTemplates"
               }
             },
             {
@@ -991,6 +928,47 @@
               "Step": {
                 "Id": "abe8cf3a502e45a5bd0062b796f4875c",
                 "Name": "AllWorkflowType"
+              }
+            }
+          ]
+        },
+        {
+          "Name": "Migration Recipe",
+          "Steps": [
+            {
+              "Type": "ContentDefinitionDeploymentStep",
+              "Step": {
+                "IncludeAll": false,
+                "ContentTypes": [
+                  "Appointment",
+                  "AppointmentCalendar",
+                  "AppointmentPrint",
+                  "Employee"
+                ],
+                "ContentParts": [
+                  "Appointment",
+                  "AppointmentCalendar",
+                  "AppointmentPrint",
+                  "Employee"
+                ],
+                "Id": "d3ff1dbb45ff455fb970efcf4de5715d",
+                "Name": "ContentDefinition"
+              }
+            },
+            {
+              "Type": "ContentDeploymentStep",
+              "Step": {
+                "ContentTypes": ["Taxonomy", "VueForm"],
+                "ExportAsSetupRecipe": false,
+                "Id": "3ca35f8e2dfd4b6eba2bcb0be767a213",
+                "Name": "ContentDeploymentStep"
+              }
+            },
+            {
+              "Type": "AllQueriesDeploymentStep",
+              "Step": {
+                "Id": "4596e6ac01aa4a12a3eefddf63949869",
+                "Name": "AllQueries"
               }
             }
           ]
@@ -1027,7 +1005,7 @@
             "View_Appointment",
             "ViewOwn_Appointment",
             "ListContent_Appointment",
-            "View_AppointmentLocation",
+            "View_AppointmentCalendar",
             "Publish_Employee",
             "PublishOwn_Employee",
             "Edit_Employee",
@@ -1037,20 +1015,30 @@
             "View_Employee",
             "ViewOwn_Employee",
             "ListContent_Employee",
-            "Publish_Cohort",
-            "Edit_Cohort",
-            "Delete_Cohort",
-            "View_Cohort",
+            "Publish_AppointmentCalendar",
+            "Edit_AppointmentCalendar",
+            "Delete_AppointmentCalendar",
+            "View_AppointmentCalendar",
             "AccessAdminPanel",
             "ViewAdminMenu_Scheduler Menu"
           ]
         },
         {
           "Name": "Data Exporter",
-          "Description": "For exporting the data to a json document for reporting",
+          "Description": "For exporting the data to a json document",
           "Permissions": ["View_Appointment", "View_Employee"]
         }
       ]
+    },
+    {
+      "name": "Settings",
+      "HomeRoute": {
+        "Area": "OrchardCore.Contents",
+        "Controller": "Item",
+        "Action": "Display",
+        "contentItemId": "4wnw5cysybe8szzhehezz5b74b",
+        "jsonPath": "TaxonomyPart.Terms[0]"
+      }
     },
     {
       "name": "WorkflowType",
