@@ -1,0 +1,21 @@
+{% assign taxonomies = Model.ContentItem.Content.TaxonomyMenuItem.Taxonomy.ContentItemIds | content_item_id %}
+{% for taxonomy in taxonomies %}
+  {% assign path = taxonomy.Content.AutoroutePart.Path %}
+  {% assign terms = taxonomy.Content.TaxonomyPart.Terms %}
+  <v-list-group value="{{ Model.ContentItem.Content.TaxonomyMenuItem.Expanded.Value }}">
+    <template v-slot:activator>
+      <v-list-item-content>
+        <v-list-item-title>{{ taxonomy.Content.TitlePart.Title }}</v-list-item-title>
+      </v-list-item-content>
+    </template>
+    {% for term in terms %}
+      <v-list-item href="{{ '~/' | append: path | append: '/' | append: term.AutoroutePart.Path | href }}">
+          <v-list-item-content>
+            <v-list-item-title>
+              {{ term[term.ContentType].Name.Text }}
+            </v-list-item-title>
+          </v-list-item-content>
+      </v-list-item>
+    {% endfor %}
+  </v-list-group>
+{% endfor %}

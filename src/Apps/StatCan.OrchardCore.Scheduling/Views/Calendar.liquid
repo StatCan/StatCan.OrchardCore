@@ -1,0 +1,427 @@
+{% capture jsonarr %}
+[
+  {% for item in Model.Appointments -%}
+    {% assign editUrl = '~/Admin/Contents/ContentItems/' | append: item.ContentItem.ContentItemId | append: '/Edit?returnUrl=' | append: Model.CurrentUrl | href -%}
+    {% assign employeeUrl = '~/Admin/Contents/ContentItems/' | append: item.ContentItem.Content.Appointment.LinkedContent.ContentItemIds | append: '/Edit?returnUrl=' | append: Model.CurrentUrl | href -%}
+    {
+        'name': '{{ item.ContentItem.DisplayText | split: ';' | first }}',
+        'start': '{{ item.ContentItem.Content.Appointment.StartDate.Value | local | date: "%Y-%m-%d %H:%M" }}',
+        'end': '{{ item.ContentItem.Content.Appointment.EndDate.Value | local | date: "%Y-%m-%d %H:%M" }}',
+        'color': '{{ item.ContentItem.Content.Appointment.Color.Text }}',
+        'comment': '{{ item.ContentItem.Content.Appointment.Comments.Text }}',
+        'status': '{{ item.ContentItem.Content.Appointment.Status.Text }}',
+        'employeeUrl': '{{employeeUrl}}',
+        'editUrl': '{{ editUrl }}',
+		'cohort': '{{ item.ContentItem.DisplayText | split: ';' | last }}',
+    },
+  {% endfor -%}
+]
+{% endcapture %}
+{% block "style", at: "Head" %}
+  .v-current-time {
+    height: 2px;
+    background-color: #ea4335;
+    position: absolute;
+    left: -1px;
+    right: 0;
+    pointer-events: none;
+  }
+  .v-current-time.first::before {
+    content: '';
+    position: absolute;
+    background-color: #ea4335;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-top: -5px;
+    margin-left: -6.5px;
+  }
+{% endblock %}
+<calendar></calendar>
+{% block "script", type:"text/html", At: "Foot", id: "Calendar" %}
+  <v-container>
+    <v-row>
+      <v-col cols="12" lg="8">
+        <v-toolbar
+                   flat
+                   >
+          <v-toolbar-title class="text-h6">
+            {{ Model.PageTitle}}
+          </v-toolbar-title>
+          <v-spacer></v-spacer>
+          {% if Model.CohortId != nil %}
+          <v-btn 
+                 outlined 
+                 color="grey darken-2"
+                 :href="printUrl">
+            {{ "Print" | t }}
+          </v-btn>
+          {% endif %}
+        </v-toolbar>
+        <v-sheet height="64">
+            <v-toolbar
+              flat
+            >
+              <v-btn
+                outlined
+                class="mr-4"
+                color="grey darken-2"
+                @click="setToday"
+              >
+                {{ "Today" | t }}
+              </v-btn>
+              <v-btn
+                fab
+                text
+                small
+                color="grey darken-2"
+                @click="prev"
+              >
+                <v-icon small>
+                  mdi-chevron-left
+                </v-icon>
+              </v-btn>
+              <v-spacer></v-spacer>
+              <v-toolbar-title v-if="$refs.calendar">
+                {% raw %}{{ $refs.calendar.title }}{% endraw %}
+              </v-toolbar-title>
+              <v-spacer></v-spacer>
+              <v-btn
+                class="mr-4"
+                fab
+                text
+                small
+                color="grey darken-2"
+                @click="next"
+              >
+                <v-icon small>
+                  mdi-chevron-right
+                </v-icon>
+              </v-btn>
+              <v-menu
+                  bottom
+                  right
+                  >
+                <template v-slot:activator="{ on, attrs }">
+                  <v-btn
+                         outlined
+                         color="grey darken-2"
+                         v-bind="attrs"
+                         v-on="on"
+                         >
+                    <span v-if="type == 'day'">{{ "Day" | t }}</span>
+                    <span v-if="type == 'week'">{{ "Week" | t }}</span>
+                    <span v-if="type == 'month'">{{ "Month" | t }}</span>
+                    <span v-if="type == '4day'">{{ "4 Days" | t }}</span>
+                    <v-icon right>
+                      mdi-menu-down
+                    </v-icon>
+                  </v-btn>
+                </template>
+                <v-list>
+                  <v-list-item @click="changeType('day')">
+                    <v-list-item-title>{{ "Day" | t }}</v-list-item-title>
+                  </v-list-item>
+                  <v-list-item @click="changeType('week')">
+                    <v-list-item-title>{{ "Week" | t }}</v-list-item-title>
+                  </v-list-item>
+                  <v-list-item @click="changeType('month')">
+                    <v-list-item-title>{{ "Month" | t }}</v-list-item-title>
+                  </v-list-item>
+                  <v-list-item @click="changeType('4day')">
+                    <v-list-item-title>{{ "4 Days" | t }}</v-list-item-title>
+                  </v-list-item>
+                </v-list>
+              </v-menu>
+            </v-toolbar>
+        </v-sheet>
+        <v-card :height="windowHeight">
+          <v-calendar
+              ref="calendar"
+              v-model="focus"
+              first-time="11:00"
+              event-overlap-mode="column"
+              :event-overlap-threshold="10"
+              :interval-count="60"
+              :interval-minutes="10"
+              color="primary"
+              :events="events"
+              :event-color="getEventColor"
+              :type="type"
+              :locale="locale"
+              @change="changed"
+              @click:event="showEvent"
+              @click:more="viewDay"
+              @click:date="viewDay"
+              @click:time="startTime"
+          >
+            <template v-slot:event="{event, eventParsed, timeSummary}">
+              <v-icon v-if="event.status == 'CANCELLED'">
+                mdi-calendar-remove
+              </v-icon>
+              <v-icon v-if="event.status == 'COMPLETED'">
+                mdi-calendar-check
+              </v-icon>
+              <v-icon v-if="event.status == 'UPCOMING'">
+                mdi-calendar-clock
+              </v-icon>
+              <v-icon v-if="event.status == 'NOSHOW'">
+                mdi-calendar-question
+              </v-icon>
+              <span v-html="event.name"></span>{%raw%} - {{timeSummary()}}{%endraw%}
+            </template>
+            <template v-slot:day-body="{ date, week }">
+              <div
+                class="v-current-time"
+                :class="{ first: date === week[0].date }"
+                :style="{ top: nowY }"
+                ></div>
+            </template>
+          </v-calendar>
+          <v-dialog
+              v-model="createdOpen"
+              :close-on-content-click="false"
+              offset-x
+              max-width="400"
+            >
+            {% assign scheduleForm = Content.ContentItemId["4gbw4m0mz1sh45v9f2ztznktnw"] %}
+            {{ scheduleForm | shape_build_display | shape_properties: currentUrl: Model.CurrentUrl | shape_render }}
+          </v-dialog>
+          <v-menu
+            v-model="selectedOpen"
+            :activator="selectedElement"
+            :close-on-content-click="false"
+            offset-x
+          >
+            <v-card
+              color="grey lighten-4"
+              min-width="400"
+              flat
+            >
+              <v-card-title>
+                <span v-html="selectedEvent.name"></span>
+                <v-btn
+                  icon
+                  color="selectedEvent.color"
+                  :href="selectedEvent.employeeUrl"
+                >
+                  <v-icon>mdi-pencil</v-icon>
+                </v-btn>
+              </v-card-title>
+              <v-card-subtitle>{%raw%}{{selectedEvent.start}}{%endraw%}<br>10 minutes</v-card-subtitle>
+              <v-card-text>
+                <v-row>
+                  <v-col cols="auto">
+                    <span class="subtitle-2">Status</span>
+                    <p>{%raw%}{{selectedEvent.status}}{%endraw%}</p>
+                    <span class="subtitle-2">Notes</span>
+                    <p>{%raw%}{{selectedEvent.comment}}{%endraw%}</p>
+                  </v-col>
+                </v-row>
+              </v-card-text>
+              <v-card-actions>
+                <v-btn
+                  text
+                  color="secondary"
+                  @click="selectedOpen = false"
+                >
+                  {{ "Close" | t }}
+                </v-btn>
+                <v-spacer></v-spacer>
+                <v-btn text color="primary" :href="selectedEvent.editUrl">
+                  {{ "Edit Appointment" | t }}
+                </v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-menu>
+        </v-card>
+      </v-col>
+      <v-col cols="12" lg="4">
+        <v-toolbar flat></v-toolbar>
+        <v-sheet height="64">
+          <v-toolbar
+              flat
+            >
+              <v-toolbar-title>
+                {{ "Employees" | t }}
+              </v-toolbar-title>
+              <v-spacer></v-spacer>
+              <v-btn
+                     class="ml-auto"
+                     outlined
+                     href="{{ '~/Admin/Contents/ContentTypes/Employee/Create?returnUrl=' | append: Model.CurrentUrl | href }}"     
+                     >
+                <v-icon>
+                  mdi-plus
+                </v-icon>
+              </v-btn>
+            </v-toolbar>
+        </v-sheet>
+        <v-card :height="windowHeight" style="overflow-y: auto">
+          <v-list>
+            {% for employee in Model.Employees %}
+            <v-list-item href="{{ '~/Admin/Contents/ContentItems/' | append: employee.ContentItem.ContentItemId | append: '/Edit?returnUrl=' | append: Model.CurrentUrl | href }}">
+              <v-list-item-title>
+                {{ employee.ContentItem.DisplayText }}
+              </v-list-item-title>
+              <v-list-item-action>
+                <v-icon v-if="{{ employee.ContentItem.Content.Employee.Consent.Value }}">mdi-check-decagram</v-icon>
+              </v-list-item-action>
+            </v-list-item>
+            {% endfor %}
+          </v-list>
+        </v-card>
+      </v-col>
+    </v-row>
+  </v-container>
+{% endblock %}
+{% block "script", At: "Foot", depends_on:"vuejs" %}
+  Vue.component("calendar", {
+      template:  "#Calendar",
+      data: () => ({
+          ready: false,
+          focus: '',
+          type: 'week',
+          startDate: '',
+          endDate: '',
+          typeToLabel: {
+              month: '{{ "Month" | t }}}',
+              week: '{{ "Week" | t }}',
+              day: '{{ "Day" | t }}',
+              '4day': '{{ "4 Day" | t }}',
+          },
+          selectedEvent: {},
+          selectedElement: null,
+          selectedOpen: false,
+          createdOpen: false,
+          locale:"en",
+		      events: {{jsonarr | raw}},
+          today: '{{ 'today' | local | date: "%Y-%m-%d" }}',
+          windowHeight: window.innerHeight - 250,
+      }),
+      computed: {
+        cal () {
+          return this.ready ? this.$refs.calendar : null
+        },
+        nowY () {
+          return this.cal ? this.cal.timeToY(this.cal.times.now) + 'px' : '-10px'
+        },
+        printUrl (url) {
+          return '{{ '~/appointments/print' | href }}?cohortId={{ Model.CohortId }}&cohortTitle={{ Model.ContentItem | display_text }}&startDate=' + this.startDate + '&endDate=' + this.endDate + '&type=' + this.type;
+        },
+      },
+      mounted () {
+        this.$refs.calendar.checkChange();
+        this.locale=document.documentElement.lang;
+        this.type = localStorage.getItem('calendarViewType') || "week";
+        window.addEventListener('close_appointment_dialog', e => {
+          this.createdOpen = false;
+        });
+        window.addEventListener('resize', e => {
+          this.windowHeight = window.innerHeight - 250;
+        });
+        this.ready = true;
+        this.focus = localStorage.getItem('currentFocus');
+        this.scrollToTime();
+        this.updateTime();
+      },
+      methods: {
+          changeType(type) {
+            this.type = type;
+            localStorage.setItem('calendarViewType', type);
+          },
+          viewDay ({ date }) {
+            this.focus = date
+            this.changeType('day')
+            localStorage.setItem('currentFocus', this.focus)
+          },
+          getEventColor (event) {
+            return event.color
+          },
+          setToday () {
+            this.focus = ''
+            localStorage.setItem('currentFocus', this.focus)
+          },
+          prev () {
+            this.cal.prev()
+            localStorage.setItem('currentFocus', this.focus)
+          },
+          next () {
+            this.cal.next()
+            localStorage.setItem('currentFocus', this.focus)
+          },
+          changed (event) {
+            this.startDate = event.start.date 
+            this.endDate = event.end.date
+          },
+          showEvent ({ nativeEvent, event }) {
+            const open = () => {
+              this.selectedEvent = event
+              this.selectedElement = nativeEvent.target
+              setTimeout(() => {
+                this.selectedOpen = true
+              }, 10)
+            }
+            if (this.selectedOpen) {
+              this.selectedOpen = false
+              setTimeout(open, 10)
+            } else {
+              open()
+            }
+            nativeEvent.stopPropagation()
+          },
+          startTime (tms) {
+            // skip opening the create modal if the appointment modal is already open
+            if(this.selectedOpen == true){return;}
+            const mouse = this.roundTime(this.toTime(tms))
+           
+            const open = () => {
+              setTimeout(() => {
+                window.startDate = new Date(mouse);
+                window.endDate = new Date(mouse+600000);
+                this.createdOpen = true;
+				localStorage.setItem('createAppointmentTime', window.startDate)
+                // create the event
+                let event = new CustomEvent('create_appointment');
+                // dispatch the event
+                window.dispatchEvent(event);
+              }, 10)
+            };
+            if (this.createdOpen) {
+              this.createdOpen = false
+              setTimeout(open, 10)
+            } else {
+              open()
+            }
+         },
+         toTime (tms) {
+            return new Date(tms.year, tms.month - 1, tms.day, tms.hour, tms.minute).getTime()
+         },
+         roundTime (time, down = true) {
+            const roundTo = 10 // minutes
+            const roundDownTime = roundTo * 60 * 1000
+            return down
+              ? time - time % roundDownTime
+              : time + (roundDownTime - (time % roundDownTime))
+         },
+         getCurrentTime () {
+            const currentTime = localStorage.getItem('createAppointmentTime')
+            if(currentTime != undefined)
+            {
+			  const dt = new Date(currentTime);
+              localStorage.removeItem('createAppointmentTime')
+              return dt.getHours() * 60 + dt.getMinutes()
+            }
+			return this.cal ? this.cal.times.now.hour * 60 + this.cal.times.now.minute : 0
+         },
+         scrollToTime () {
+            let time = this.getCurrentTime()
+            const first = Math.max(0, time - (time % 30) - 30)
+            this.cal.scrollToTime(first)
+         },
+         updateTime () {
+            setInterval(() => this.cal.updateTimes(), 60 * 1000)
+         },
+      },
+  });
+{% endblock %}

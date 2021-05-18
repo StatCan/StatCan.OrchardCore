@@ -1,0 +1,6 @@
+
+{% assign appointments = Queries.AppointmentsForCohort | query: cohortId: Model.ContentItem.ContentItemId %}
+{% assign employees = Queries.AllEmployeesOfCohort | query: cohortId: Model.ContentItem.ContentItemId %}
+{% assign currentUrl = Model.ContentItem | display_url %}
+{% capture title %}{{ "Appointments for Cohort {0}" | t: Model.ContentItem.DisplayText }}{% endcapture %}
+{{ "Calendar" | shape_new | shape_properties: currentUrl: currentUrl, appointments: appointments, employees: employees, pageTitle: title, cohortId: Model.ContentItem.ContentItemId, contentItem: Model.ContentItem | shape_render }}

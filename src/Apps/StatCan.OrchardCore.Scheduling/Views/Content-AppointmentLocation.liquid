@@ -1,0 +1,7 @@
+{%- comment -%}This is the template that get's rendered for each AppointmentLocation taxonomy term{%- endcomment -%}
+{% assign appointments = Queries.AllAppointments | query %}
+{% assign employees = Queries.AllEmployees | query %}
+{% assign currentUrl = Model.ContentItem | display_url %}
+{% capture title %}{{ "All Appointments for {0}" | t: Model.ContentItem.DisplayText }}{% endcapture %}
+
+{{ "Calendar" | shape_new | shape_properties: currentUrl: currentUrl, appointments: appointments, employees: employees, pageTitle: title | shape_render }}

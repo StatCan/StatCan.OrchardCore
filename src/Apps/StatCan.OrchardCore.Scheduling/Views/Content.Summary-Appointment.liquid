@@ -1,0 +1,14 @@
+{% assign employee = Model.ContentItem.Content.Appointment.LinkedContent.ContentItemIds | content_item_id | first %}
+{% capture format %}{% if Culture.Name == "en" %}%b %d, %Y %H:%M%P{% else %}%d %b %Y %kh%M{% endif %}{% endcapture %}
+<v-row class="pt-1">
+  <v-col cols="auto">
+  	<v-icon class="pt-2" large> mdi-crop-square </v-icon>
+  </v-col>
+  <v-col>
+    <span class="text-subtitle-1">{{ Model.ContentItem.Content.Appointment.StartDate.Value | date: format }}</span>
+    <p class="text-subtitle-2">{{ employee.Content.Employee.FirstName.Text }} {{ employee.Content.Employee.LastName.Text }}</p>
+  </v-col>
+  <v-col>
+    {{ Model.ContentItem.Content.Appointment.Comments.Text }}
+  </v-col>
+</v-row>
