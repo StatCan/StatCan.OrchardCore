@@ -10,7 +10,7 @@ namespace StatCan.OrchardCore.Scheduling.Indexing
         {
             SchemaBuilder.CreateMapIndexTable<AppointmentIndex>(table => table
                 .Column<string>("ContentItemId", column => column.WithLength(26))
-                .Column<string>("LocationTermContentItemId", column => column.WithLength(26))
+                .Column<string>("CalendarTermContentItemId", column => column.WithLength(26))
                 .Column<DateTime>("StartDate", column => column.Nullable())
                 .Column<TimeSpan>("StartTime", column => column.Nullable())
                 .Column<int>("StartDay", column => column.Nullable())
@@ -28,17 +28,17 @@ namespace StatCan.OrchardCore.Scheduling.Indexing
                 .CreateIndex("IDX_AptIndex_DocumentId",
                     "DocumentId",
                     "ContentItemId",
-                    "LocationTermContentItemId")
+                    "CalendarTermContentItemId")
             );
             SchemaBuilder.AlterIndexTable<AppointmentIndex>(table => table
-                .CreateIndex("IDX_AptIndex_DocumentId_LocationId",
+                .CreateIndex("IDX_AptIndex_DocumentId_CalendarId",
                     "DocumentId",
-                    "LocationTermContentItemId")
+                    "CalendarTermContentItemId")
             );
 
             SchemaBuilder.CreateMapIndexTable<AppointmentLinkedIndex>(table => table
                 .Column<string>("ContentItemId", column => column.WithLength(26))
-                .Column<string>("LocationTermContentItemId", column => column.WithLength(26))
+                .Column<string>("CalendarTermContentItemId", column => column.WithLength(26))
                 .Column<string>("LinkedContentItemId", column => column.WithLength(26))
             );
 
@@ -46,16 +46,64 @@ namespace StatCan.OrchardCore.Scheduling.Indexing
                 .CreateIndex("IDX_AptLinkedIndex_DocumentId",
                     "DocumentId",
                     "ContentItemId",
-                    "LocationTermContentItemId")
+                    "CalendarTermContentItemId")
             );
 
             SchemaBuilder.AlterIndexTable<AppointmentLinkedIndex>(table => table
                 .CreateIndex("IDX_AptLinkedIndex_DocumentId_LinkedId",
                     "DocumentId",
                     "LinkedContentItemId",
-                    "LocationTermContentItemId")
+                    "CalendarTermContentItemId")
             );
-            return 1;
+            return 2;
+        }
+
+        public int UpdateFrom1()
+        {
+            SchemaBuilder.AlterIndexTable<AppointmentIndex>(table => table
+                .RenameColumn("LocationTermContentItemId", "CalendarTermContentItemId")
+            );
+            SchemaBuilder.AlterIndexTable<AppointmentIndex>(table => table
+                .DropIndex("IDX_AptIndex_DocumentId")
+            );
+            SchemaBuilder.AlterIndexTable<AppointmentIndex>(table => table
+                .CreateIndex("IDX_AptIndex_DocumentId",
+                    "DocumentId",
+                    "ContentItemId",
+                    "CalendarTermContentItemId")
+            );
+            SchemaBuilder.AlterIndexTable<AppointmentIndex>(table => table
+                .DropIndex("IDX_AptIndex_DocumentId_CalendarId")
+            );
+            SchemaBuilder.AlterIndexTable<AppointmentIndex>(table => table
+                .CreateIndex("IDX_AptIndex_DocumentId_CalendarId",
+                    "DocumentId",
+                    "CalendarTermContentItemId")
+            );
+
+            SchemaBuilder.AlterIndexTable<AppointmentLinkedIndex>(table => table
+                 .RenameColumn("LocationTermContentItemId", "CalendarTermContentItemId")
+            );
+            SchemaBuilder.AlterIndexTable<AppointmentLinkedIndex>(table => table
+                .DropIndex("IDX_AptLinkedIndex_DocumentId")
+            );
+            SchemaBuilder.AlterIndexTable<AppointmentLinkedIndex>(table => table
+                .CreateIndex("IDX_AptLinkedIndex_DocumentId",
+                    "DocumentId",
+                    "ContentItemId",
+                    "CalendarTermContentItemId")
+            );
+            SchemaBuilder.AlterIndexTable<AppointmentLinkedIndex>(table => table
+                .DropIndex("IDX_AptLinkedIndex_DocumentId_LinkedId")
+            );
+            SchemaBuilder.AlterIndexTable<AppointmentLinkedIndex>(table => table
+                .CreateIndex("IDX_AptLinkedIndex_DocumentId_LinkedId",
+                    "DocumentId",
+                    "LinkedContentItemId",
+                    "CalendarTermContentItemId")
+            );
+
+            return 2;
         }
     }
 }

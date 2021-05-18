@@ -10,7 +10,7 @@ namespace StatCan.OrchardCore.Scheduling.Indexing
     {
         public string ContentItemId { get;set; }
         public string LinkedContentItemId { get; set; }
-        public string LocationTermContentItemId { get; set; }
+        public string CalendarTermContentItemId { get; set; }
     }
 
     public class AppointmentLinkedIndexProvider : IndexProvider<ContentItem>
@@ -41,7 +41,7 @@ namespace StatCan.OrchardCore.Scheduling.Indexing
                     foreach(var id in part.LinkedContent.ContentItemIds)
                     {
                         results.Add(new AppointmentLinkedIndex{
-                            LocationTermContentItemId = part.Location?.TermContentItemIds?.FirstOrDefault(),
+                            CalendarTermContentItemId = part.Calendar?.TermContentItemIds?.FirstOrDefault(),
                             ContentItemId = contentItem.ContentItemId,
                             LinkedContentItemId = id
                         });
