@@ -20,7 +20,7 @@ namespace StatCan.OrchardCore.Scheduling.Indexing
         public DateTime? StartDate { get; set; }
         public DateTime? EndDate { get; set; }
         public string Status { get; set; }
-        public string LocationTermContentItemId { get; set; }
+        public string CalendarTermContentItemId { get; set; }
     }
 
     public class AppointmentIndexProvider : IndexProvider<ContentItem>
@@ -45,7 +45,7 @@ namespace StatCan.OrchardCore.Scheduling.Indexing
                     return new AppointmentIndex
                     {
                         ContentItemId = contentItem.ContentItemId,
-                        LocationTermContentItemId = part.Location?.TermContentItemIds?.FirstOrDefault(),
+                        CalendarTermContentItemId = part.Calendar?.TermContentItemIds?.FirstOrDefault(),
                         StartTime = part.StartDate?.Value?.TimeOfDay,
                         StartDay = part.StartDate?.Value?.Day,
                         StartMonth = part.StartDate?.Value?.Month,

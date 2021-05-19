@@ -1,4 +1,3 @@
-using OrchardCore.Autoroute.Models;
 using OrchardCore.ContentFields.Settings;
 using OrchardCore.ContentManagement.Metadata;
 using OrchardCore.ContentManagement.Metadata.Settings;
@@ -8,7 +7,6 @@ using OrchardCore.Media.Settings;
 using OrchardCore.Title.Models;
 using StatCan.OrchardCore.Extensions;
 using StatCan.OrchardCore.ContentFields.PredefinedGroup.Settings;
-
 
 namespace StatCan.Themes.VuetifyTheme
 {
@@ -41,8 +39,14 @@ namespace StatCan.Themes.VuetifyTheme
             AuthContentMenuItem();
             CompatibilityBanner();
             VFooter();
-            UpdateToMultiTextField();           
-            return 1;
+            UpdateToMultiTextField();
+            VSubheader();
+            VListItem();
+            VList();
+            VDivider();
+            ScheduleEvent();
+            TaxonomyMenuItem();
+            return 4;
         }
 
         public int UpdateFrom1() {
@@ -58,6 +62,13 @@ namespace StatCan.Themes.VuetifyTheme
             ScheduleEvent();
             return 3;
         }
+        public int UpdateFrom3()
+        {
+            TaxonomyMenuItem();
+            return 4;
+        }
+
+        #region Private methods
 
         private void AuthContentMenuItem()
         {
@@ -1376,7 +1387,7 @@ namespace StatCan.Themes.VuetifyTheme
             );
         }
 
-        private void VList() {  
+        private void VList() {
             _contentDefinitionManager.AlterTypeDefinition("VList", type => type
                 .DisplayedAs("VList")
                 .Stereotype("Widget")
@@ -1415,7 +1426,7 @@ namespace StatCan.Themes.VuetifyTheme
                             new MultiTextFieldValueOption() {Name = "Shaped", Value = "shaped"},
                             new MultiTextFieldValueOption() {Name = "Subheader", Value = "subheader"},
                             new MultiTextFieldValueOption() {Name = "Tile", Value = "tile"},
-                    } 
+                    }
                     })
                 )
                 .WithTextField("Color", "Color", "1", new TextFieldSettings(){
@@ -1464,5 +1475,36 @@ namespace StatCan.Themes.VuetifyTheme
             );
         }
 
+        private void TaxonomyMenuItem(){
+            _contentDefinitionManager.AlterTypeDefinition("TaxonomyMenuItem", type => type
+                .DisplayedAs("Taxonomy Menu Item")
+                .Stereotype("MenuItem")
+                .WithPart("TitlePart", part => part
+                    .WithPosition("0")
+                )
+                .WithPart("TaxonomyMenuItem", part => part
+                    .WithPosition("1")
+                )
+            );
+
+            _contentDefinitionManager.AlterPartDefinition("TaxonomyMenuItem", part => part
+                .WithField("Taxonomy", field => field
+                    .OfType("ContentPickerField")
+                    .WithDisplayName("Taxonomy")
+                    .WithPosition("0")
+                    .WithSettings(new ContentPickerFieldSettings
+                    {
+                        DisplayedContentTypes = new[] { "Taxonomy" },
+                    })
+                )
+                .WithTextField("IconName", "Icon Name", "1")
+                .WithField("Expanded", field => field
+                    .OfType("BooleanField")
+                    .WithDisplayName("Expanded")
+                    .WithPosition("2")
+                )
+            );
+        }
+        #endregion
     }
 }

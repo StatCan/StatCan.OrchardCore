@@ -10,7 +10,6 @@
     <PackageReference Include="OrchardCore.Autoroute" Version="$(OrchardCoreVersion)" />
     <PackageReference Include="OrchardCore.ContentFields" Version="$(OrchardCoreVersion)" />
     <PackageReference Include="OrchardCore.ContentManagement" Version="$(OrchardCoreVersion)" />
-    <PackageReference Include="OrchardCore.Markdown" Version="$(OrchardCoreVersion)" />
     <PackageReference Include="OrchardCore.Taxonomies" Version="$(OrchardCoreVersion)" />
   </ItemGroup>
   

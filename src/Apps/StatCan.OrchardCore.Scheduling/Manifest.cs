@@ -8,17 +8,18 @@ using static StatCan.OrchardCore.Manifest.StatCanManifestConstants;
     Website = DigitalInnovationWebsite,
     Version = Version,
     Description = "Contains types and utilities to build scheduling systems",
-    Category = "Scheduling"
+    Category = "Applications"
 )]
 
 [assembly: Feature(
     Id = Constants.Features.Scheduling,
     Name = "Scheduling Appointments",
     Description = "Provides types and utilities useful for scheduling appointments",
-    Category = "Scheduling",
+    Category = "Applications",
     Dependencies = new []
     {
         "OrchardCore.Contents",
-        "OrchardCore.Taxonomies"
+        "OrchardCore.Taxonomies",
+        "StatCan.OrchardCore.VueForms",
     }
 )]

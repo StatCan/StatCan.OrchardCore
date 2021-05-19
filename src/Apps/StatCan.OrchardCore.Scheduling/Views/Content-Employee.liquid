@@ -1,0 +1,22 @@
+<v-container>
+  <v-row>
+    <v-col>
+      <div class="text-h2">{{ Model.ContentItem.Content.Employee.FirstName.Text }} {{ Model.ContentItem.Content.Employee.LastName.Text }}</div> 
+      <div class="text-h4">{{Model.ContentItem.Content.Employee.Cohort | taxonomy_terms | first}}</div>
+      <div>
+        <v-checkbox
+          disabled
+          hide-details
+          value="{{ Model.ContentItem.Content.Employee.Participating.Value }}" 
+          label="Participating"
+        ></v-checkbox>
+        <v-checkbox
+          disabled
+          hide-details
+          value="{{ Model.ContentItem.Content.Employee.Consent.Value }}"
+          label=" {{ "Consent" | t }}"
+        ></v-checkbox>
+      </div>
+    </v-col>
+  </v-row>
+</v-container>

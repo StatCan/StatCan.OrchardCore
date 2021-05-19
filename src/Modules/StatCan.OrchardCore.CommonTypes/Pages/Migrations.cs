@@ -6,10 +6,10 @@ using StatCan.OrchardCore.Extensions;
 
 namespace StatCan.OrchardCore.CommonTypes.Page
 {
-    public class Migrations : DataMigration
+    public class PageMigrations : DataMigration
     {
         private readonly IContentDefinitionManager _contentDefinitionManager;
-        public Migrations(IContentDefinitionManager contentDefinitionManager)
+        public PageMigrations(IContentDefinitionManager contentDefinitionManager)
         {
             _contentDefinitionManager = contentDefinitionManager;
         }
@@ -40,6 +40,19 @@ namespace StatCan.OrchardCore.CommonTypes.Page
                 )
                 .WithFlow("3")
             );
+           return 1;
+        }
+    }
+    public class AdditionalPagesMigrations : DataMigration
+    {
+        private readonly IContentDefinitionManager _contentDefinitionManager;
+        public AdditionalPagesMigrations(IContentDefinitionManager contentDefinitionManager)
+        {
+            _contentDefinitionManager = contentDefinitionManager;
+        }
+
+        public int Create()
+        {
             _contentDefinitionManager.AlterTypeDefinition("HtmlPage", type => type
                 .DisplayedAs("Html Page")
                 .Creatable()

@@ -55,7 +55,7 @@
         "OrchardCore.Users.Registration",
         "OrchardCore.Users.ResetPassword",
         "StatCan.OrchardCore.DisplayHelpers",
-        "StatCan.OrchardCore.CommonTypes.Pages",
+        "StatCan.OrchardCore.CommonTypes.Page",
         "StatCan.OrchardCore.CommonTypes.SecurePage",
         "StatCan.OrchardCore.CommonTypes.Widgets",
         "DigitalAdmin",

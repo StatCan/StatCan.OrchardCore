@@ -59,7 +59,7 @@
         "OrchardCore.Users.ResetPassword",
         "StatCan.OrchardCore.DisplayHelpers",
         "StatCan.OrchardCore.ContentFields.MultiTextField",
-        "StatCan.OrchardCore.CommonTypes.Pages",
+        "StatCan.OrchardCore.CommonTypes.Page",
         "StatCan.OrchardCore.CommonTypes.SecurePage",
         "StatCan.OrchardCore.CommonTypes.Widgets",
         "DigitalAdmin",

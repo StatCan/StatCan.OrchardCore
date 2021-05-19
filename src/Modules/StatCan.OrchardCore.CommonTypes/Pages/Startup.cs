@@ -5,9 +5,15 @@ using OrchardCore.Data.Migration;
 
 namespace StatCan.OrchardCore.CommonTypes.Page
 {
-    [Feature(FeatureIds.Pages)]
-    public class Startup : StartupBase
+    [Feature(FeatureIds.Page)]
+    public class PageStartup : StartupBase
     {
-        public override void ConfigureServices(IServiceCollection serviceCollection) => serviceCollection.AddScoped<IDataMigration, Migrations>();
+        public override void ConfigureServices(IServiceCollection serviceCollection) => serviceCollection.AddScoped<IDataMigration, PageMigrations>();
+    }
+
+    [Feature(FeatureIds.AdditionalPages)]
+    public class AdditionalPagesStartup : StartupBase
+    {
+        public override void ConfigureServices(IServiceCollection serviceCollection) => serviceCollection.AddScoped<IDataMigration, AdditionalPagesMigrations>();
     }
 }
