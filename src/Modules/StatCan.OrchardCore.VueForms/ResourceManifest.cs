@@ -30,16 +30,16 @@ namespace StatCan.OrchardCore.VueForms
                 .DefineScript("vuetify")
                 .SetDependencies("vuejs")
                 .SetUrl("~/StatCan.OrchardCore.VueForms/Scripts/vuetify.min.js", "~/StatCan.OrchardCore.VueForms/Scripts/vuetify.js")
-                .SetCdn("https://cdn.jsdelivr.net/npm/vuetify@2.3.16/dist/vuetify.min.js", "https://cdn.jsdelivr.net/npm/vuetify@2.3.16/dist/vuetify.js")
-                .SetCdnIntegrity("sha384-oWs61kcvUHUcvKDasUC1/NOLdo+TgLyQ6naS89TiEz+0/rM1YvEEwSQWQdfvgi8X", "sha384-KHkNwxwHw/d8M1bpUtFKyKgIbSGPUiZZRkN2MIoY/YTkFulpgXUGDD58NfaaMZm/")
-                .SetVersion("2.3.16");
+                .SetCdn("https://cdn.jsdelivr.net/npm/vuetify@2.5.0/dist/vuetify.min.js", "https://cdn.jsdelivr.net/npm/vuetify@2.5.0/dist/vuetify.js")
+                .SetCdnIntegrity("sha384-ZTKEVv47kt3G9r7yBdHQcgC+fNXqtLkdFR16db/FlOP6QV31arRRRCd2SWZtuRPM", "sha384-AtuJi0H+TrtLABhGFZqBHLt7T6TdRaqby6PfhzMb+Uo+v5ohuZQtA3QO/1nY+bMQ")
+                .SetVersion("2.5.0");
 
             _manifest
                 .DefineStyle("vuetify")
                 .SetUrl("~/StatCan.OrchardCore.VueForms/Styles/vuetify.min.css", "~/StatCan.OrchardCore.VueForms/Styles/vuetify.css")
-                .SetCdn("https://cdn.jsdelivr.net/npm/vuetify@2.3.16/dist/vuetify.min.css", "https://cdn.jsdelivr.net/npm/vuetify@2.3.16/dist/vuetify.css")
-                .SetCdnIntegrity("sha384-C0yQzReUZVYGwxgpET43LgD1tn0L3Hv2/HSL6RTcL1HLPCPHBf7QHY+Y+TPBGZxp", "sha384-aBPEGa60gC4/krAhSCZzRWSdXY4rLG2KWrugfUKftJNVdXcncArtH4LFesz5LaxF")
-                .SetVersion("2.3.16");
+                .SetCdn("https://cdn.jsdelivr.net/npm/vuetify@2.5.0/dist/vuetify.min.css", "https://cdn.jsdelivr.net/npm/vuetify@2.5.0/dist/vuetify.css")
+                .SetCdnIntegrity("sha384-dWWOZoIT5RMdoDxZhVcOa85D1WR4mwqLg5i1GnXkCMLfoly2SgbhIIhzMajvALfc", "sha384-3YRJqq9ESY6mL98bzdhaP0r0BauILz3QGLFJvhGW485VUWGC/C1BFoPM8b48SHzv")
+                .SetVersion("2.5.0");
 
             _manifest
                 .DefineStyle("vue-forms")
