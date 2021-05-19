@@ -6,6 +6,6 @@
   "dependencies": {
     "vee-validate": "^3.4.5",
     "vue": "^2.6.12",
-    "vuetify": "^2.4.3"
+    "vuetify": "^2.5.0"
   }
 }
