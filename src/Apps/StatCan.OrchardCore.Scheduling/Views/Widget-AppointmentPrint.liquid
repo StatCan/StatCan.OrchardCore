@@ -3,7 +3,6 @@
 {% capture type %}{{ Request.Query.Type }}{% endcapture %}
 {% capture calendarTitle %}{{ Request.Query.calendarTitle }}{% endcapture %}
 {% capture format %}{% if Culture.Name == "en" %}%B %d, %Y{% else %}%d %B %Y{% endif %}{% endcapture %}
-{%- comment -%}todo{%- endcomment -%}
 {% assign appointments = Queries.AppointmentsForCalendarsForDate | query: calendarIds: Request.Query.CalendarIds, startDate: startDate, endDate: endDate %}
 {% block "style", at: "Head" %}
   #main {
