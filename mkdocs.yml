@@ -59,10 +59,14 @@ nav:
         - Contributing: 
              - Committing: development/committing.md
              - Testing: development/testing.md
-    - Reference: 
-        - Liquid: reference/Liquid.md
-        - Scripting: reference/Scripting.md
-        - Workflows: reference/Workflows.md
+    - Reference:
+        - Applications: reference/applications.md
+        - Application Modules:
+             - Hackathon App: reference/modules/Hackathon.md 
+             - Scheduling App: reference/modules/Scheduling.md
+        - Liquid: reference/liquid.md
+        - Scripting: reference/scripting.md
+        - Workflows: reference/workflows.md
         - Modules:
              - ContentFields: reference/modules/ContentFields.md
              - EmailTemplates: reference/modules/EmailTemplates.md
