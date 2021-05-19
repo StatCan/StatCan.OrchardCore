@@ -189,6 +189,7 @@ node_modules/
 
 wwwroot
 **/Localization/**/*.po
+!src/Apps/**/wwwroot
 !src/Modules/**/wwwroot
 !src/Themes/**/wwwroot
 !src/Modules/**/Localization/**/*.po
