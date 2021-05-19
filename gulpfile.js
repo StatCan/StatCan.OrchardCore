@@ -444,6 +444,6 @@ function buildCopyPipeline(assetGroup, doRebuild) {
 function buildVuePipeline(assetGroup) {
   console.log(`Building ${assetGroup.file}`);
   return gulp.src(assetGroup.file)
-  .pipe(exec(`vue-cli-service build --target lib --name ${assetGroup.name} --formats umd,umd-min --dest ${assetGroup.outputPath} ${assetGroup.file} && rimraf ${assetGroup.outputPath}/demo.html`, {cwd: assetGroup.basePath}))
+  .pipe(exec(`vue-cli-service build --target lib --mode production --name ${assetGroup.name} --formats umd,umd-min --dest ${assetGroup.outputPath} ${assetGroup.file} && rimraf ${assetGroup.outputPath}/demo.html`))
   .pipe(exec.reporter());
 }

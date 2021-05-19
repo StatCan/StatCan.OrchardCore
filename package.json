@@ -64,9 +64,6 @@
     "vue-template-compiler": "^2.6.12",
     "vuetify-loader": "^1.7.2"
   },
-  "dependencies": {
-    "core-js": "^3.12.1"
-  },
   "browserslist": [
     "> 1%",
     "last 2 versions",
