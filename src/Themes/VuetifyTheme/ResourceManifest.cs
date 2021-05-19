@@ -11,9 +11,9 @@ namespace StatCan.Themes.VuetifyTheme
             _manifest = new ResourceManifest();
 
             _manifest
-                .DefineStyle("vuetifytheme-styles")
+                .DefineStyle("vuetify")
                 .SetUrl("~/VuetifyTheme/dist/vuetify-theme.css", "~/VuetifyTheme/dist/vuetify-theme.css")
-                .SetVersion("1.0.0");
+                .SetVersion("2.0.0");
             _manifest
                 .DefineScript("vuejs")
                 .SetUrl("~/VuetifyTheme/Scripts/vue.min.js", "~/VuetifyTheme/Scripts/vue.js")
@@ -21,10 +21,10 @@ namespace StatCan.Themes.VuetifyTheme
                 .SetCdnIntegrity("sha384-cwVe6U8Tq7F/3JIj6xeDzOwuqeChcmRcdYqDGfoYmdAurw7L3f4dFHhEJKfxv96A", "sha384-ma9ivURrHX5VOB4tNq+UiGNkJoANH4EAJmhxd1mmDq0gKOv88wkKZOfRDOpXynwh")
                 .SetVersion("2.6.12");
             _manifest
-                .DefineScript("vuetifytheme-scripts")
+                .DefineScript("vuetify")
                 .SetDependencies("vuejs")
                 .SetUrl("~/VuetifyTheme/dist/vuetify-theme.umd.min.js", "~/VuetifyTheme/dist/vuetify-theme.umd.js")
-                .SetVersion("1.0.0");
+                .SetVersion("2.0.0");
         }
 
         public void Configure(ResourceManagementOptions options)
