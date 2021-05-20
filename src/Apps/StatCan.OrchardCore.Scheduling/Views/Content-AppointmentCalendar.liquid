@@ -1,12 +1,10 @@
 {%- capture calendarIds -%}
 '{{Model.ContentItem.ContentItemId}}'
 {%- for term in Model.ContentItem.Content.Terms -%}
-{%- if forloop.last == false or forloop.first == true -%}
-,
-{%- endif -%}
-'{{term.ContentItemId}}'
+,'{{term.ContentItemId}}'
 {%- endfor -%}
 {%- endcapture -%}
+
 {% assign appointments = Queries.AppointmentForCalendars | query: calendarIds: calendarIds %}
 {% assign employees = Queries.EmployeesForCalendars | query: calendarIds: calendarIds %}
 {% assign currentUrl = Model.ContentItem | display_url %}
