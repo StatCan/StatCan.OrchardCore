@@ -357,6 +357,11 @@ msgctxt "VuetifyTheme.Views.Layout"
 msgid "Skip to main content"
 msgstr "Passer au contenu principal"
 
+#: VuetifyTheme\Views\MenuItem-TaxonomyMenuItem.liquid:0
+msgctxt "VuetifyTheme.Views.MenuItem-TaxonomyMenuItem"
+msgid "All"
+msgstr "Tout"
+
 #: VuetifyTheme\Views\Widget-CompatibilityBanner.liquid:0
 msgctxt "VuetifyTheme.Views.Widget-CompatibilityBanner"
 msgid "OK"
@@ -365,11 +370,11 @@ msgstr "d'accord"
 #: VuetifyTheme\Views\Widget-CompatibilityBanner.liquid:0
 msgctxt "VuetifyTheme.Views.Widget-CompatibilityBanner"
 msgid ""
-"Internet Explorer is not support because it is a legacy browser.<br>Try a "
+"Internet Explorer is not supported because it is a legacy browser.<br>Try a "
 "modern browser instead such as HP SureClick, Edge, Chrome, or Firefox."
 msgstr ""
 "Internet Explorer n&#39;est pas pris en charge car il s&#39;agit d&#39;un "
-"navigateur désuet.<br> Essayez plutôt un navigateur moderne tel que HP "
+"navigateur hérité.<br> Essayez plutôt un navigateur moderne tel que HP "
 "SureClick, Edge, Chrome ou Firefox."
 
 #: VuetifyTheme\Views\Shared\NotFound.liquid:0
