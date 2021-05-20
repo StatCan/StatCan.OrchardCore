@@ -1,5 +1,5 @@
 /**
-  * vee-validate v3.4.4
+  * vee-validate v3.4.5
   * (c) 2020 Abdelrahman Awad
   * @license MIT
   */
@@ -901,8 +901,8 @@
       params: params$j
   };
 
-  var validate$r = function (value, _a) {
-      var _b = _a === void 0 ? {} : _a, _c = _b.decimals, decimals = _c === void 0 ? 0 : _c, _d = _b.separator, separator = _d === void 0 ? 'dot' : _d;
+  var validate$r = function (value, params) {
+      var _a = params || {}, _b = _a.decimals, decimals = _b === void 0 ? 0 : _b, _c = _a.separator, separator = _c === void 0 ? 'dot' : _c;
       var separators = {
           dot: '.',
           comma: ','
@@ -2754,7 +2754,7 @@
       return hoc;
   }
 
-  var version = '3.4.4';
+  var version = '3.4.5';
   // Install all rules.
   var RulesAsList = Object.keys(Rules).map(function (key) { return ({ schema: Rules[key], name: key }); });
   RulesAsList.forEach(function (_a) {

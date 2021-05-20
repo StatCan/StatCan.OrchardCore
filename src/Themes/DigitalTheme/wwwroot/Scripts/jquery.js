@@ -3451,7 +3451,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     readyList.then(fn) // Wrap jQuery.readyException in a function so that the lookup
     // happens at the time of error handling instead of callback
     // registration.
-    ["catch"](function (error) {
+    .catch(function (error) {
       jQuery.readyException(error);
     });
     return this;
@@ -5767,10 +5767,10 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 
 
   function finalPropName(name) {
-    var _final = jQuery.cssProps[name] || vendorProps[name];
+    var final = jQuery.cssProps[name] || vendorProps[name];
 
-    if (_final) {
-      return _final;
+    if (final) {
+      return final;
     }
 
     if (name in emptyStyle) {
@@ -8098,7 +8098,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 
           if (conv !== true) {
             // Unless errors are allowed to bubble, catch and return them
-            if (conv && s["throws"]) {
+            if (conv && s.throws) {
               response = conv(response);
             } else {
               try {
