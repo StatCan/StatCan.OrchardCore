@@ -38,7 +38,7 @@ function initVueMultiselect(element) {
     var debouncedSearch = debounce(function (vm, query) {
       vm.isLoading = true;
     }, 250);
-    var vueMultiselect = Vue.component('vue-multiselect', window.VueMultiselect["default"]);
+    var vueMultiselect = Vue.component('vue-multiselect', window.VueMultiselect.default);
     var vm = new Vue({
       el: '#' + elementId,
       components: {
