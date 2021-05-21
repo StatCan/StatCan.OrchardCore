@@ -42,39 +42,21 @@
   <v-container>
     <v-row>
       <v-col cols="12" lg="8">
-        <v-toolbar
-                   flat
-                   >
+        <v-toolbar flat>
           <v-toolbar-title class="text-h6">
             {{ Model.PageTitle}}
           </v-toolbar-title>
           <v-spacer></v-spacer>
-          <v-btn 
-                 outlined 
-                 color="grey darken-2"
-                 :href="printUrl">
+          <v-btn outlined color="grey darken-2" :href="printUrl">
             {{ "Print" | t }}
           </v-btn>
         </v-toolbar>
         <v-sheet height="64">
-            <v-toolbar
-              flat
-            >
-              <v-btn
-                outlined
-                class="mr-4"
-                color="grey darken-2"
-                @click="setToday"
-              >
+            <v-toolbar flat>
+              <v-btn outlined class="mr-4" color="grey darken-2" @click="setToday">
                 {{ "Today" | t }}
               </v-btn>
-              <v-btn
-                fab
-                text
-                small
-                color="grey darken-2"
-                @click="prev"
-              >
+              <v-btn fab text small color="grey darken-2" @click="prev"              >
                 <v-icon small>
                   mdi-chevron-left
                 </v-icon>
@@ -84,29 +66,14 @@
                 {% raw %}{{ $refs.calendar.title }}{% endraw %}
               </v-toolbar-title>
               <v-spacer></v-spacer>
-              <v-btn
-                class="mr-4"
-                fab
-                text
-                small
-                color="grey darken-2"
-                @click="next"
-              >
+              <v-btn class="mr-4" fab text small color="grey darken-2" @click="next">
                 <v-icon small>
                   mdi-chevron-right
                 </v-icon>
               </v-btn>
-              <v-menu
-                  bottom
-                  right
-                  >
+              <v-menu bottom right>
                 <template v-slot:activator="{ on, attrs }">
-                  <v-btn
-                         outlined
-                         color="grey darken-2"
-                         v-bind="attrs"
-                         v-on="on"
-                         >
+                  <v-btn outlined color="grey darken-2" v-bind="attrs" v-on="on">
                     <span v-if="type == 'day'">{{ "Day" | t }}</span>
                     <span v-if="type == 'week'">{{ "Week" | t }}</span>
                     <span v-if="type == 'month'">{{ "Month" | t }}</span>
@@ -137,11 +104,11 @@
           <v-calendar
               ref="calendar"
               v-model="focus"
-              first-time="11:00"
+              first-time="{{ Site.Properties.CalendarSettings.CalendarSettings.FirstTime.Text | default: '8:00' }}"
               event-overlap-mode="column"
-              :event-overlap-threshold="10"
-              :interval-count="60"
-              :interval-minutes="10"
+              :event-overlap-threshold="{{ Site.Properties.CalendarSettings.CalendarSettings.IntervalMinutes.Text | default: '10' }}"
+              :interval-count="{{ Site.Properties.CalendarSettings.CalendarSettings.IntervalCount.Text | default: '54' }}"
+              :interval-minutes="{{ Site.Properties.CalendarSettings.CalendarSettings.IntervalMinutes.Text | default: '10' }}"
               color="primary"
               :events="events"
               :event-color="getEventColor"
@@ -169,41 +136,19 @@
               <span v-html="event.name"></span>{%raw%} - {{timeSummary()}}{%endraw%}
             </template>
             <template v-slot:day-body="{ date, week }">
-              <div
-                class="v-current-time"
-                :class="{ first: date === week[0].date }"
-                :style="{ top: nowY }"
-                ></div>
+              <div class="v-current-time" :class="{ first: date === week[0].date }" :style="{ top: nowY }"></div>
             </template>
           </v-calendar>
-          <v-dialog
-              v-model="createdOpen"
-              :close-on-content-click="false"
-              offset-x
-              max-width="400"
-            >
+          <v-dialog v-model="createdOpen" :close-on-content-click="false" offset-x max-width="400">
             {%- comment -%}This should be injected via settings maybe?{%- endcomment -%}
             {% assign scheduleForm = Content.ContentItemId["4gbw4m0mz1sh45v9f2ztznktnw"] %}
             {{ scheduleForm | shape_build_display | shape_properties: currentUrl: Model.CurrentUrl, employees: Model.Employees, calendarTitle: Model.ContentItem.DisplayText | shape_render }}
           </v-dialog>
-          <v-menu
-            v-model="selectedOpen"
-            :activator="selectedElement"
-            :close-on-content-click="false"
-            offset-x
-          >
-            <v-card
-              color="grey lighten-4"
-              min-width="400"
-              flat
-            >
+          <v-menu v-model="selectedOpen" :activator="selectedElement" :close-on-content-click="false" offset-x>
+            <v-card color="grey lighten-4" min-width="400" flat            >
               <v-card-title>
                 <span v-html="selectedEvent.name"></span>
-                <v-btn
-                  icon
-                  color="selectedEvent.color"
-                  :href="selectedEvent.employeeUrl"
-                >
+                <v-btn icon color="selectedEvent.color" :href="selectedEvent.employeeUrl">
                   <v-icon>mdi-pencil</v-icon>
                 </v-btn>
               </v-card-title>
@@ -221,11 +166,7 @@
                 </v-row>
               </v-card-text>
               <v-card-actions>
-                <v-btn
-                  text
-                  color="secondary"
-                  @click="selectedOpen = false"
-                >
+                <v-btn text color="secondary" @click="selectedOpen = false">
                   {{ "Close" | t }}
                 </v-btn>
                 <v-spacer></v-spacer>
@@ -240,18 +181,12 @@
       <v-col cols="12" lg="4">
         <v-toolbar flat></v-toolbar>
         <v-sheet height="64">
-          <v-toolbar
-              flat
-            >
+          <v-toolbar flat>
               <v-toolbar-title>
                 {{ "Employees" | t }}
               </v-toolbar-title>
               <v-spacer></v-spacer>
-              <v-btn
-                class="ml-auto"
-                outlined
-                href="{{ '~/Admin/Contents/ContentTypes/Employee/Create?returnUrl=' | append: Model.CurrentUrl | href }}"     
-              >
+              <v-btn class="ml-auto" outlined href="{{ '~/Admin/Contents/ContentTypes/Employee/Create?returnUrl=' | append: Model.CurrentUrl | href }}">
                 <v-icon>
                   mdi-plus
                 </v-icon>
