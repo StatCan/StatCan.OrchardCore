@@ -1,0 +1,39 @@
+{% style name:"styles", src:"https://cdnjs.cloudflare.com/ajax/libs/chartist/0.11.0/chartist.min.css", rel:"stylesheet" %}
+{% script name:"chartist", src:"https://unpkg.com/chartist@0.9.8/dist/chartist.js", at: "Foot"%}
+{% script name: "chartist-legend", src: "https://cdnjs.cloudflare.com/ajax/libs/chartist-plugin-legend/0.6.2/chartist-plugin-legend.min.js" , at: "Foot" %}
+
+{% assign data = Model.ContentItem.Content.Chartist.Data.Text | jsonparse %}
+{% assign deviceBrand = data[0].content | jsonparse %}
+
+<div class="flex flex-col m-4">
+
+    <div class="font-bold text-2xl inline-block self-start">{{ Model.ContentItem.Content.Chartist.Title.Text }} </div>
+
+    <div class="font-bold text-s inline-block self-start m-4">{{data[0].id}} </div>
+    <div class="ct-chart" id="chart" style="display:inline-block;width:100%;"></div>
+
+{% block "script", at: "Foot", depends-on: "chartist",  "chartist-legend" %}
+
+var chart = new Chartist.Bar("#chart", {
+    labels: [{% for label in deviceBrand %}
+              '{{label.label}}',
+            {%endfor%}],
+    series: [ [ {% for nbVisits in deviceBrand %}
+                '{{nbVisits.nb_visits}}',
+               {% endfor %} ],
+              [ {% for nbActions in deviceBrand %}
+                '{{nbActions.nb_actions}}',
+               {% endfor %} ],
+               [ {% for sumDailyUsers in deviceBrand %}
+               '{{sumDailyUsers.sum_daily_nb_users}}',
+              {% endfor %} ],
+              [ {% for sumDailyVisitors in deviceBrand %}
+              '{{sumDailyVisitors.sum_daily_nb_uniq_visitors}}',
+             {% endfor %} ] ],
+}, {
+  plugins: [ Chartist.plugins.legend('ct-legend', {
+        legendNames: ['Number of Visits', 'Number of Actions', 'Sum of Daily Users', 'Sum of Daily Visitors'],
+    }) ]
+});
+ 
+{% endblock %}

@@ -1,0 +1,6 @@
+  [
+    {
+      "inputs": [ "Assets/scss/chartist.scss" ],
+      "output": "wwwroot/css/chartist.scss"
+    }
+  ]
