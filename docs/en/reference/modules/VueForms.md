@@ -18,6 +18,14 @@ The form submission is handled via an ajax call to a generic controller that ret
 | DisabledHtml | Html displayed when the form is disabled. |
 | SuccessMessage | The success message returned to the client when the form is valid and no redirect is specified after submission. With Liquid support. |
 
+*Note about RenderAs*: When rendering the Form as a `VueComponent`, you need to define a Zone in your layout called `DynamicComponentZone`. This zone must be rendered anywhere before the `FootScript` resource zone. 
+This is required because the div that defines the VueForm component needs to be defined outside of the Vue App. Please look at our open source [VuetifyTheme](https://github.com/StatCan/StatCan.OrchardCore/blob/master/src/Themes/VuetifyTheme/Views/Layout.liquid) layout for an example.
+
+```
+{% render_section "DynamicComponentZone", required: false %}
+{% resources type: "FootScript" %}
+```
+
 ### VueFormScripts Part
 
 | Field  | Definition |

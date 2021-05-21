@@ -8,6 +8,7 @@
 @{
   var contentItem = (ContentItem)Model.ContentItem;
   var formPart = contentItem.As<VueForm>();
+  Model.Properties.Add("ComponentName", "c-" + Guid.NewGuid().ToString("N"));
 }
 
 @if (!ContentPermissionsService.CanAccess(Model.ContentItem))
@@ -22,7 +23,7 @@ else if (formPart.Enabled?.Value == true)
     Model.Metadata.Type = "VueForm__" + formPart.RenderAs?.Text;
     @await DisplayAsync(Model)
   }else {
-    Model.Metadata.Type = "VueForm__CommonTemplate";
+    Model.Metadata.Type = "VueForm__VueComponent";
     @await DisplayAsync(Model)
   } 
 }
