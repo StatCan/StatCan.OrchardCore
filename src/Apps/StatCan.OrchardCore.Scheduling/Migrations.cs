@@ -19,21 +19,21 @@ namespace StatCan.OrchardCore.Scheduling
 
         public async Task<int> CreateAsync()
         {
-            await _recipeMigrator.ExecuteAsync("initial.recipe.json", this);
+            await _recipeMigrator.ExecuteAsync("types.recipe.json", this);
+            await _recipeMigrator.ExecuteAsync("queries.recipe.json", this);
+            await _recipeMigrator.ExecuteAsync("content.recipe.json", this);
             _contentDefinitionManager.AlterTypeDefinition("Taxonomy", t=>t.Securable());
             return 3;
         }
         public async Task<int> UpdateFrom1Async()
         {
-            // re-run the recipe for existing deployments
-            await _recipeMigrator.ExecuteAsync("initial.recipe.json", this);
+            await _recipeMigrator.ExecuteAsync("types.recipe.json", this);
             _contentDefinitionManager.AlterTypeDefinition("Taxonomy", t=>t.Securable());
             return 2;
         }
         public async Task<int> UpdateFrom2Async()
         {
-            // re-run the recipe for existing deployments
-            await _recipeMigrator.ExecuteAsync("initial.recipe.json", this);
+            await _recipeMigrator.ExecuteAsync("types.recipe.json", this);
             return 3;
         }
     }
