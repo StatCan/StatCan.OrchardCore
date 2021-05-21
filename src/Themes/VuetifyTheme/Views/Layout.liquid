@@ -37,6 +37,11 @@
         {% render_section "Footer", required: false %}
       </v-app>
     </div>
+    {%- comment -%}
+      This zone is required by the VueForms module for this theme.
+      This is required because the div that defines the VueForm needs to be outside of the VueApp of this theme.
+    {%- endcomment -%}
+    {% render_section "DynamicComponentZone", required: false %}
     {% resources type: "FootScript" %}
   </body>
 </html>
