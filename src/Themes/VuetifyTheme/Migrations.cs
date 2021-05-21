@@ -68,6 +68,12 @@ namespace StatCan.Themes.VuetifyTheme
             return 4;
         }
 
+        public int UpdateFrom4()
+        {
+            VRow();
+            return 5;
+        }
+
         #region Private methods
 
         private void AuthContentMenuItem()
@@ -237,44 +243,47 @@ namespace StatCan.Themes.VuetifyTheme
                 )
                 .WithFlow("1", new[] { "VCol" })
             );
-            var jutifySettings = new TextFieldPredefinedListEditorSettings()
-            {
-                Editor = EditorOption.Dropdown,
-                Options = new ListValueOption[] {
-                        new ListValueOption(){Name = "Default", Value = ""},
-                        new ListValueOption(){Name = "Start", Value = "start"},
-                        new ListValueOption(){Name = "Center", Value = "center"},
-                        new ListValueOption(){Name = "End", Value = "end"},
-                        new ListValueOption(){Name = "Between", Value = "space-between"},
-                        new ListValueOption(){Name = "Around", Value = "space-around"},
-                    }
+
+            var justifyOptions = new ListValueOption[] { 
+                new ListValueOption() {
+                    Name = "Start",
+                    Value = "start"
+                }, 
+                new ListValueOption() {
+                    Name = "End",
+                    Value = "end"
+                }, 
+                new ListValueOption() {
+                    Name = "Center",
+                    Value = "center"
+                }, 
+                new ListValueOption() {
+                    Name = "Space-Around",
+                    Value = "space-around"
+                } 
             };
 
-            var alignContentSettings = new TextFieldPredefinedListEditorSettings()
-            {
-                Editor = EditorOption.Dropdown,
-                Options = new ListValueOption[] {
-                        new ListValueOption(){Name = "Default", Value = ""},
-                        new ListValueOption(){Name = "Start", Value = "start"},
-                        new ListValueOption(){Name = "Center", Value = "center"},
-                        new ListValueOption(){Name = "End", Value = "end"},
-                        new ListValueOption(){Name = "Between", Value = "space-between"},
-                        new ListValueOption(){Name = "Around", Value = "space-around"},
-                        new ListValueOption(){Name = "Stretch", Value = "stretch"},
-                    }
-            };
-
-            var alignItemsSettings = new TextFieldPredefinedListEditorSettings()
-            {
-                Editor = EditorOption.Dropdown,
-                Options = new ListValueOption[] {
-                        new ListValueOption(){Name = "Default", Value = ""},
-                        new ListValueOption(){Name = "Start", Value = "start"},
-                        new ListValueOption(){Name = "Center", Value = "center"},
-                        new ListValueOption(){Name = "End", Value = "end"},
-                        new ListValueOption(){Name = "Baseline", Value = "baseline"},
-                        new ListValueOption(){Name = "Stretch", Value = "stretch"}
-                    }
+            var alignOptions = new ListValueOption[] { 
+                new ListValueOption() {
+                    Name = "Start",
+                    Value = "start"
+                }, 
+                new ListValueOption() {
+                    Name = "Center",
+                    Value = "center"
+                }, 
+                new ListValueOption() {
+                    Name = "End",
+                    Value = "end"
+                }, 
+                new ListValueOption() {
+                    Name = "Baseline",
+                    Value = "baseline"
+                },
+                new ListValueOption() {
+                    Name = "Stretch",
+                    Value = "stretch"
+                }  
             };
 
             _contentDefinitionManager.AlterPartDefinition("VRow", part => part
@@ -291,6 +300,216 @@ namespace StatCan.Themes.VuetifyTheme
                         },
                     })
                 )
+                .WithField("JustifyContent", field => field
+                .OfType("TextField")
+                .WithDisplayName("JustifyContent")
+                .WithEditor("PredefinedList")
+                .WithPosition("1")
+                .WithSettings(new TextFieldPredefinedListEditorSettings()
+                {
+                    DefaultValue = "start",
+                    Editor = EditorOption.Dropdown,
+                    Options = justifyOptions
+                })
+                .WithSettings(new TextFieldSettings() {
+                    Hint = "Applies the justify-content css property. Available options are start, center, end, space-between and space-around."
+                }))
+                .WithField("JustifySm", field => field
+                .OfType("TextField")
+                .WithDisplayName("JustifySm")
+                .WithEditor("PredefinedList")
+                .WithPosition("2")
+                .WithSettings(new TextFieldPredefinedListEditorSettings()
+                {
+                    DefaultValue = "start",
+                    Editor = EditorOption.Dropdown,
+                    Options = justifyOptions
+                })
+                .WithSettings(new TextFieldSettings() {
+                    Hint = "Changes the justify-content property on small and greater breakpoints."
+                }))
+                .WithField("JustifyMd", field => field
+                .OfType("TextField")
+                .WithDisplayName("JustifyMd")
+                .WithEditor("PredefinedList")
+                .WithPosition("3")
+                .WithSettings(new TextFieldPredefinedListEditorSettings()
+                {
+                    DefaultValue = "start",
+                    Editor = EditorOption.Dropdown,
+                    Options = justifyOptions
+                })
+                .WithSettings(new TextFieldSettings() {
+                    Hint = "Changes the justify-content property on medium and greater breakpoints."
+                }))
+                .WithField("JustifyLg", field => field
+                .OfType("TextField")
+                .WithDisplayName("JustifyLg")
+                .WithEditor("PredefinedList")
+                .WithPosition("4")
+                .WithSettings(new TextFieldPredefinedListEditorSettings()
+                {
+                    DefaultValue = "start",
+                    Editor = EditorOption.Dropdown,
+                    Options = justifyOptions
+                })
+                .WithSettings(new TextFieldSettings() {
+                    Hint = "Changes the justify-content property on large and greater breakpoints."
+                }))
+                .WithField("JustifyXl", field => field
+                .OfType("TextField")
+                .WithDisplayName("JustifyXl")
+                .WithEditor("PredefinedList")
+                .WithPosition("5")
+                .WithSettings(new TextFieldPredefinedListEditorSettings()
+                {
+                    DefaultValue = "start",
+                    Editor = EditorOption.Dropdown,
+                    Options = justifyOptions
+                })
+                .WithSettings(new TextFieldSettings() {
+                    Hint = "Changes the justify-content property on extra large and greater breakpoints."
+                }))
+                .WithField("AlignItems", field => field
+                .OfType("TextField")
+                .WithDisplayName("AlignItems")
+                .WithEditor("PredefinedList")
+                .WithPosition("6")
+                .WithSettings(new TextFieldPredefinedListEditorSettings()
+                {
+                    DefaultValue = "start",
+                    Editor = EditorOption.Dropdown,
+                    Options = alignOptions
+                })
+                .WithSettings(new TextFieldSettings() {
+                    Hint = "Applies the align-items css property. Available options are start, center, end, baseline, and stretch."
+                }))
+                .WithField("AlignSm", field => field
+                .OfType("TextField")
+                .WithDisplayName("AlignSm")
+                .WithEditor("PredefinedList")
+                .WithPosition("7")
+                .WithSettings(new TextFieldPredefinedListEditorSettings()
+                {
+                    DefaultValue = "start",
+                    Editor = EditorOption.Dropdown,
+                    Options = alignOptions
+                })
+                .WithSettings(new TextFieldSettings() {
+                    Hint = "Changes the align-items property on small and greater breakpoints."
+                }))
+                .WithField("AlignMd", field => field
+                .OfType("TextField")
+                .WithDisplayName("AlignMd")
+                .WithEditor("PredefinedList")
+                .WithPosition("8")
+                .WithSettings(new TextFieldPredefinedListEditorSettings()
+                {
+                    DefaultValue = "start",
+                    Editor = EditorOption.Dropdown,
+                    Options = alignOptions
+                })
+                .WithSettings(new TextFieldSettings() {
+                    Hint = "Changes the align-items property on medium and greater breakpoints."
+                }))
+                .WithField("AlignLg", field => field
+                .OfType("TextField")
+                .WithDisplayName("AlignLg")
+                .WithEditor("PredefinedList")
+                .WithPosition("9")
+                .WithSettings(new TextFieldPredefinedListEditorSettings()
+                {
+                    DefaultValue = "start",
+                    Editor = EditorOption.Dropdown,
+                    Options = alignOptions
+                })
+                .WithSettings(new TextFieldSettings() {
+                    Hint = "Changes the align-items property on large and greater breakpoints."
+                }))
+                .WithField("AlignXl", field => field
+                .OfType("TextField")
+                .WithDisplayName("AlignXl")
+                .WithEditor("PredefinedList")
+                .WithPosition("10")
+                .WithSettings(new TextFieldPredefinedListEditorSettings()
+                {
+                    DefaultValue = "start",
+                    Editor = EditorOption.Dropdown,
+                    Options = alignOptions
+                })
+                .WithSettings(new TextFieldSettings() {
+                    Hint = "Changes the align-items property on extra large and greater breakpoints."
+                }))
+                .WithField("AlignContent", field => field
+                .OfType("TextField")
+                .WithDisplayName("AlignContent")
+                .WithEditor("PredefinedList")
+                .WithPosition("11")
+                .WithSettings(new TextFieldPredefinedListEditorSettings()
+                {
+                    DefaultValue = "start",
+                    Editor = EditorOption.Dropdown,
+                    Options = alignOptions
+                })
+                .WithSettings(new TextFieldSettings() {
+                    Hint = "Applies the align-content css property. Available options are start, center, end, baseline, and stretch."
+                }))
+                .WithField("AlignContentSm", field => field
+                .OfType("TextField")
+                .WithDisplayName("AlignContentSm")
+                .WithEditor("PredefinedList")
+                .WithPosition("12")
+                .WithSettings(new TextFieldPredefinedListEditorSettings()
+                {
+                    DefaultValue = "start",
+                    Editor = EditorOption.Dropdown,
+                    Options = alignOptions
+                })
+                .WithSettings(new TextFieldSettings() {
+                    Hint = "Changes the align-items property on small and greater breakpoints."
+                }))
+                .WithField("AlignContentMd", field => field
+                .OfType("TextField")
+                .WithDisplayName("AlignContentMd")
+                .WithEditor("PredefinedList")
+                .WithPosition("13")
+                .WithSettings(new TextFieldPredefinedListEditorSettings()
+                {
+                    DefaultValue = "start",
+                    Editor = EditorOption.Dropdown,
+                    Options = alignOptions
+                })
+                .WithSettings(new TextFieldSettings() {
+                    Hint = "Changes the align-items property on medium and greater breakpoints."
+                }))
+                .WithField("AlignContentLg", field => field
+                .OfType("TextField")
+                .WithDisplayName("AlignContentLg")
+                .WithEditor("PredefinedList")
+                .WithPosition("14")
+                .WithSettings(new TextFieldPredefinedListEditorSettings()
+                {
+                    DefaultValue = "start",
+                    Editor = EditorOption.Dropdown,
+                    Options = alignOptions
+                })
+                .WithSettings(new TextFieldSettings() {
+                    Hint = "Changes the align-items property on large and greater breakpoints."
+                }))
+                .WithField("AlignContentXl", field => field
+                .OfType("TextField")
+                .WithDisplayName("AlignContentXl")
+                .WithEditor("PredefinedList")
+                .WithPosition("15")
+                .WithSettings(new TextFieldPredefinedListEditorSettings()
+                {
+                    DefaultValue = "start",
+                    Editor = EditorOption.Dropdown,
+                    Options = alignOptions
+                })
+                .WithSettings(new TextFieldSettings() {
+                    Hint = "Changes the align-items property on extra large and greater breakpoints."
+                }))
             );
         }
 
