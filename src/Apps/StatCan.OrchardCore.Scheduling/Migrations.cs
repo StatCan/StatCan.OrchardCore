@@ -21,7 +21,7 @@ namespace StatCan.OrchardCore.Scheduling
         {
             await _recipeMigrator.ExecuteAsync("initial.recipe.json", this);
             _contentDefinitionManager.AlterTypeDefinition("Taxonomy", t=>t.Securable());
-            return 2;
+            return 3;
         }
         public async Task<int> UpdateFrom1Async()
         {
@@ -29,6 +29,12 @@ namespace StatCan.OrchardCore.Scheduling
             await _recipeMigrator.ExecuteAsync("initial.recipe.json", this);
             _contentDefinitionManager.AlterTypeDefinition("Taxonomy", t=>t.Securable());
             return 2;
+        }
+        public async Task<int> UpdateFrom2Async()
+        {
+            // re-run the recipe for existing deployments
+            await _recipeMigrator.ExecuteAsync("initial.recipe.json", this);
+            return 3;
         }
     }
 }

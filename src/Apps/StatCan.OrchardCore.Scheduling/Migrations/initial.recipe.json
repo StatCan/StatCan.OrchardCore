@@ -142,6 +142,27 @@
               }
             }
           ]
+        },
+        {
+          "Name": "CalendarSettings",
+          "DisplayName": "Calendar Settings",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Stereotype": "CustomSettings"
+            },
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "CalendarSettings",
+              "Name": "CalendarSettings",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            }
+          ]
         }
       ],
       "ContentParts": [
@@ -292,7 +313,7 @@
               "Settings": {
                 "ContentPartFieldSettings": {
                   "DisplayName": "FirstName",
-                  "Position": "2"
+                  "Position": "1"
                 }
               }
             },
@@ -302,7 +323,7 @@
               "Settings": {
                 "ContentPartFieldSettings": {
                   "DisplayName": "Last Name",
-                  "Position": "3"
+                  "Position": "2"
                 }
               }
             },
@@ -312,7 +333,7 @@
               "Settings": {
                 "ContentPartFieldSettings": {
                   "DisplayName": "Consent",
-                  "Position": "5"
+                  "Position": "4"
                 },
                 "BooleanFieldSettings": {
                   "Hint": "Consent form has been signed by the employee"
@@ -326,7 +347,7 @@
               "Settings": {
                 "ContentPartFieldSettings": {
                   "DisplayName": "Participating",
-                  "Position": "4"
+                  "Position": "3"
                 },
                 "BooleanFieldSettings": {
                   "Hint": "The employee is participating in the testing"
@@ -348,41 +369,57 @@
               }
             }
           ]
+        },
+        {
+          "Name": "CalendarSettings",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "TextField",
+              "Name": "FirstTime",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "First Time",
+                  "Position": "0"
+                },
+                "TextFieldSettings": {
+                  "Hint": "First time displayed in the calendar HH:mm format. See https://vuetifyjs.com/en/api/v-calendar/#props-first-time "
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "IntervalCount",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Interval Count",
+                  "Position": "1"
+                },
+                "TextFieldSettings": {
+                  "Hint": "The number of intervals to display. https://vuetifyjs.com/en/api/v-calendar/#props-interval-count "
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "IntervalMinutes",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Interval Minutes",
+                  "Position": "2"
+                },
+                "TextFieldSettings": {
+                  "Hint": "The number of minutes the intervals are. \r\nhttps://vuetifyjs.com/en/api/v-calendar/#props-interval-minutes"
+                }
+              }
+            }
+          ]
         }
       ]
     },
     {
       "name": "content",
       "data": [
-        {
-          "ContentItemId": "4wnw5cysybe8szzhehezz5b74b",
-          "ContentItemVersionId": "42p43tpp922cn31wpfadcwxtn1",
-          "ContentType": "Taxonomy",
-          "DisplayText": "Calendars",
-          "Latest": true,
-          "Published": true,
-          "ModifiedUtc": "2021-05-18T17:22:49.2243686Z",
-          "PublishedUtc": "2021-05-18T17:22:49.2316346Z",
-          "CreatedUtc": "2021-05-18T17:04:12.2054281Z",
-          "TitlePart": {
-            "Title": "Calendars"
-          },
-          "AliasPart": {
-            "Alias": "calendars"
-          },
-          "AutoroutePart": {
-            "Path": "calendars",
-            "SetHomepage": false,
-            "Disabled": false,
-            "RouteContainedItems": true,
-            "Absolute": false
-          },
-          "TaxonomyPart": {
-            "Terms": [
-            ],
-            "TermContentType": "AppointmentCalendar"
-          }
-        },
         {
           "ContentItemId": "4gbw4m0mz1sh45v9f2ztznktnw",
           "ContentItemVersionId": "41eytr03g1z67zp0d627pr4b58",
@@ -543,6 +580,72 @@
                 ]
               }
             ]
+          }
+        },
+        {
+          "ContentItemId": "4wnw5cysybe8szzhehezz5b74b",
+          "ContentItemVersionId": "470gbw6nd2cqzrtc4mcs37dac2",
+          "ContentType": "Taxonomy",
+          "DisplayText": "Calendars",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": "2021-05-20T19:06:47.9459677Z",
+          "PublishedUtc": "2021-05-20T19:06:47.9505872Z",
+          "CreatedUtc": "2021-05-18T17:04:12.2054281Z",
+          "Owner": null,
+          "Author": "scheduler",
+          "TitlePart": {
+            "Title": "Calendars"
+          },
+          "AliasPart": {
+            "Alias": "calendars"
+          },
+          "AutoroutePart": {
+            "Path": "calendars",
+            "SetHomepage": false,
+            "Disabled": false,
+            "RouteContainedItems": true,
+            "Absolute": false
+          },
+          "TaxonomyPart": {
+            "Terms": [
+              {
+                "ContentItemId": "4qb36abcfn35004p3fsrcwned3",
+                "ContentItemVersionId": null,
+                "ContentType": "AppointmentCalendar",
+                "DisplayText": "Default",
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": "2021-05-20T12:57:31.9350107Z",
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": null,
+                "Author": "admin",
+                "AppointmentCalendar": {
+                  "Color": {
+                    "Text": "#8b1313"
+                  }
+                },
+                "TitlePart": {
+                  "Title": "Default"
+                },
+                "AutoroutePart": {
+                  "Path": "default",
+                  "SetHomepage": true,
+                  "Disabled": false,
+                  "RouteContainedItems": false,
+                  "Absolute": false
+                },
+                "TermPart": {
+                  "TaxonomyContentItemId": "4wnw5cysybe8szzhehezz5b74b"
+                },
+                "@WeldedPartSettings": {
+                  "TermPart": {}
+                },
+                "Terms": []
+              }
+            ],
+            "TermContentType": "AppointmentCalendar"
           }
         }
       ]
