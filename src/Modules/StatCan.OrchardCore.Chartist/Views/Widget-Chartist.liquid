@@ -1,39 +1,217 @@
-{% style name:"styles", src:"https://cdnjs.cloudflare.com/ajax/libs/chartist/0.11.0/chartist.min.css", rel:"stylesheet" %}
-{% script name:"chartist", src:"https://unpkg.com/chartist@0.9.8/dist/chartist.js", at: "Foot"%}
+{% style name:"chartist-style", src:"https://cdnjs.cloudflare.com/ajax/libs/chartist/0.11.4/chartist.min.css", rel:"stylesheet" %}
+{% style name:"chartist-legend-style", src:"~/StatCan.OrchardCore.Chartist/css/chartist.css", debug_src:"~/StatCan.OrchardCore.Chartist/css/chartist.css" %}
+
+{% script name:"chartist", src:"https://cdnjs.cloudflare.com/ajax/libs/chartist/0.11.4/chartist.min.js", at: "Foot"%}
 {% script name: "chartist-legend", src: "https://cdnjs.cloudflare.com/ajax/libs/chartist-plugin-legend/0.6.2/chartist-plugin-legend.min.js" , at: "Foot" %}
 
 {% assign data = Model.ContentItem.Content.Chartist.Data.Text | jsonparse %}
 {% assign deviceBrand = data[0].content | jsonparse %}
+{% assign deviceBrowser = data[1].content | jsonparse %}
+{% assign deviceBrowserEngine = data[2].content | jsonparse %}
+{% assign deviceBrowserVersion = data[3].content | jsonparse %}
+{% assign deviceModel = data[4].content | jsonparse %}
+{% assign deviceOSFamily = data[5].content | jsonparse %}
+{% assign deviceOSVersion = data[6].content | jsonparse %}
+{% assign deviceType = data[7].content | jsonparse %}
+{% assign generalMetrics = data[8].content | jsonparse %}
 
-<div class="flex flex-col m-4">
-
-    <div class="font-bold text-2xl inline-block self-start">{{ Model.ContentItem.Content.Chartist.Title.Text }} </div>
-
-    <div class="font-bold text-s inline-block self-start m-4">{{data[0].id}} </div>
-    <div class="ct-chart" id="chart" style="display:inline-block;width:100%;"></div>
+<div style="margin:20px">
+  <div style="font-weight:bold;font-size:20px">{{ Model.ContentItem.Content.Chartist.Title.Text }} </div>
+  <div style="padding:15px">
+    <div style="padding-bottom:20px">Device Brand</div>
+    <div id="deviceBrand" style="display:inline-block;width:100%;padding:10px;"></div>
+    <div style="padding-bottom:20px">Device Browser</div>
+    <div id="deviceBrowser" style="display:inline-block;width:100%;padding:10px;"></div>
+    <div style="padding-bottom:20px">Device Browser Engine</div>
+    <div id="deviceBrowserEngine" style="display:inline-block;width:100%;padding:10px;"></div>
+    <div style="padding-bottom:20px">Device Browser Version</div>
+    <div id="deviceBrowserVersion" style="display:inline-block;width:100%;"></div>
+    <div style="padding-bottom:20px">Device Model</div>
+    <div id="deviceModel" style="display:inline-block;width:100%;"></div>
+    <div style="padding-bottom:20px">Device OS Family</div>
+    <div id="deviceOSFamily" style="display:inline-block;width:100%;"></div>
+    <div style="padding-bottom:20px">Device OS Version</div>
+    <div id="deviceOSVersion" style="display:inline-block;width:100%;"></div>
+    <div style="padding-bottom:20px">Device Type</div>
+    <div id="deviceType" style="display:inline-block;width:100%;"></div>
+  </div>
+</div>
 
 {% block "script", at: "Foot", depends-on: "chartist",  "chartist-legend" %}
-
-var chart = new Chartist.Bar("#chart", {
-    labels: [{% for label in deviceBrand %}
-              '{{label.label}}',
-            {%endfor%}],
-    series: [ [ {% for nbVisits in deviceBrand %}
-                '{{nbVisits.nb_visits}}',
-               {% endfor %} ],
-              [ {% for nbActions in deviceBrand %}
-                '{{nbActions.nb_actions}}',
-               {% endfor %} ],
-               [ {% for sumDailyUsers in deviceBrand %}
-               '{{sumDailyUsers.sum_daily_nb_users}}',
-              {% endfor %} ],
-              [ {% for sumDailyVisitors in deviceBrand %}
-              '{{sumDailyVisitors.sum_daily_nb_uniq_visitors}}',
-             {% endfor %} ] ],
+var chart = new Chartist.Bar("#deviceBrand", {
+  labels: [{% for label in deviceBrand %}
+            '{{label.label}}',
+          {%endfor%}],
+  series: [ [ {% for nbVisits in deviceBrand %}
+              '{{nbVisits.nb_visits}}',
+             {% endfor %} ],
+            [ {% for nbActions in deviceBrand %}
+              '{{nbActions.nb_actions}}',
+             {% endfor %} ],
+             [ {% for sumDailyUsers in deviceBrand %}
+             '{{sumDailyUsers.sum_daily_nb_users}}',
+            {% endfor %} ],
+            [ {% for sumDailyVisitors in deviceBrand %}
+            '{{sumDailyVisitors.sum_daily_nb_uniq_visitors}}',
+           {% endfor %} ] ],
 }, {
-  plugins: [ Chartist.plugins.legend('ct-legend', {
-        legendNames: ['Number of Visits', 'Number of Actions', 'Sum of Daily Users', 'Sum of Daily Visitors'],
-    }) ]
+plugins: [ Chartist.plugins.legend( {
+      legendNames: ['Number of Visits', 'Number of Actions', 'Sum of Daily Users', 'Sum of Daily Visitors'],
+  }) ]
 });
- 
+
+var chart = new Chartist.Bar("#deviceBrowser", {
+labels: [{% for label in deviceBrowser %}
+          '{{label.label}}',
+        {%endfor%}],
+series: [ [ {% for nbVisits in deviceBrowser %}
+            '{{nbVisits.nb_visits}}',
+           {% endfor %} ],
+          [ {% for nbActions in deviceBrowser %}
+            '{{nbActions.nb_actions}}',
+           {% endfor %} ],
+           [ {% for sumDailyUsers in deviceBrowser %}
+           '{{sumDailyUsers.sum_daily_nb_users}}',
+          {% endfor %} ],
+          [ {% for sumDailyVisitors in deviceBrowser %}
+          '{{sumDailyVisitors.sum_daily_nb_uniq_visitors}}',
+         {% endfor %} ] ],
+}, {
+plugins: [ Chartist.plugins.legend( {
+    legendNames: ['Number of Visits', 'Number of Actions', 'Sum of Daily Users', 'Sum of Daily Visitors'],
+}) ]
+});
+
+var chart = new Chartist.Bar("#deviceBrowserEngine", {
+labels: [{% for label in deviceBrowserEngine %}
+          '{{label.label}}',
+        {%endfor%}],
+series: [ [ {% for nbVisits in deviceBrowserEngine %}
+            '{{nbVisits.nb_visits}}',
+           {% endfor %} ],
+          [ {% for nbActions in deviceBrowserEngine %}
+            '{{nbActions.nb_actions}}',
+           {% endfor %} ],
+           [ {% for sumDailyUsers in deviceBrowserEngine %}
+           '{{sumDailyUsers.sum_daily_nb_users}}',
+          {% endfor %} ],
+          [ {% for sumDailyVisitors in deviceBrowserEngine %}
+          '{{sumDailyVisitors.sum_daily_nb_uniq_visitors}}',
+         {% endfor %} ] ],
+}, {
+plugins: [ Chartist.plugins.legend( {
+    legendNames: ['Number of Visits', 'Number of Actions', 'Sum of Daily Users', 'Sum of Daily Visitors'],
+}) ]
+});
+
+var chart = new Chartist.Bar("#deviceBrowserVersion", {
+labels: [{% for label in deviceBrowserVersion %}
+          '{{label.label}}',
+        {%endfor%}],
+series: [ [ {% for nbVisits in deviceBrowserVersion %}
+            '{{nbVisits.nb_visits}}',
+           {% endfor %} ],
+          [ {% for nbActions in deviceBrowserVersion %}
+            '{{nbActions.nb_actions}}',
+           {% endfor %} ],
+           [ {% for sumDailyUsers in deviceBrowserVersion %}
+           '{{sumDailyUsers.sum_daily_nb_users}}',
+          {% endfor %} ],
+          [ {% for sumDailyVisitors in deviceBrowserVersion %}
+          '{{sumDailyVisitors.sum_daily_nb_uniq_visitors}}',
+         {% endfor %} ] ],
+}, {
+plugins: [ Chartist.plugins.legend( {
+    legendNames: ['Number of Visits', 'Number of Actions', 'Sum of Daily Users', 'Sum of Daily Visitors'],
+}) ]
+});
+
+var chart = new Chartist.Bar("#deviceModel", {
+labels: [{% for label in deviceModel %}
+          '{{label.label}}',
+        {%endfor%}],
+series: [ [ {% for nbVisits in deviceModel %}
+            '{{nbVisits.nb_visits}}',
+           {% endfor %} ],
+          [ {% for nbActions in deviceModel %}
+            '{{nbActions.nb_actions}}',
+           {% endfor %} ],
+           [ {% for sumDailyUsers in deviceModel %}
+           '{{sumDailyUsers.sum_daily_nb_users}}',
+          {% endfor %} ],
+          [ {% for sumDailyVisitors in deviceModel %}
+          '{{sumDailyVisitors.sum_daily_nb_uniq_visitors}}',
+         {% endfor %} ] ],
+}, {
+plugins: [ Chartist.plugins.legend( {
+    legendNames: ['Number of Visits', 'Number of Actions', 'Sum of Daily Users', 'Sum of Daily Visitors'],
+}) ]
+});
+
+var chart = new Chartist.Bar("#deviceOSFamily", {
+labels: [{% for label in deviceOSFamily %}
+          '{{label.label}}',
+        {%endfor%}],
+series: [ [ {% for nbVisits in deviceOSFamily %}
+            '{{nbVisits.nb_visits}}',
+           {% endfor %} ],
+          [ {% for nbActions in deviceOSFamily %}
+            '{{nbActions.nb_actions}}',
+           {% endfor %} ],
+           [ {% for sumDailyUsers in deviceOSFamily %}
+           '{{sumDailyUsers.sum_daily_nb_users}}',
+          {% endfor %} ],
+          [ {% for sumDailyVisitors in deviceOSFamily %}
+          '{{sumDailyVisitors.sum_daily_nb_uniq_visitors}}',
+         {% endfor %} ] ],
+}, {
+plugins: [ Chartist.plugins.legend({
+    legendNames: ['Number of Visits', 'Number of Actions', 'Sum of Daily Users', 'Sum of Daily Visitors'],
+}) ]
+});
+
+var chart = new Chartist.Bar("#deviceOSVersion", {
+labels: [{% for label in deviceBrowserVersion %}
+          '{{label.label}}',
+        {%endfor%}],
+series: [ [ {% for nbVisits in deviceOSVersion %}
+            '{{nbVisits.nb_visits}}',
+           {% endfor %} ],
+          [ {% for nbActions in deviceOSVersion %}
+            '{{nbActions.nb_actions}}',
+           {% endfor %} ],
+           [ {% for sumDailyUsers in deviceOSVersion %}
+           '{{sumDailyUsers.sum_daily_nb_users}}',
+          {% endfor %} ],
+          [ {% for sumDailyVisitors in deviceOSVersion %}
+          '{{sumDailyVisitors.sum_daily_nb_uniq_visitors}}',
+         {% endfor %} ] ],
+}, {
+plugins: [ Chartist.plugins.legend( {
+    legendNames: ['Number of Visits', 'Number of Actions', 'Sum of Daily Users', 'Sum of Daily Visitors'],
+}) ]
+});
+
+var chart = new Chartist.Bar("#deviceType", {
+labels: [{% for label in deviceType %}
+          '{{label.label}}',
+        {%endfor%}],
+series: [ [ {% for nbVisits in deviceType %}
+            '{{nbVisits.nb_visits}}',
+           {% endfor %} ],
+          [ {% for nbActions in deviceType %}
+            '{{nbActions.nb_actions}}',
+           {% endfor %} ],
+           [ {% for sumDailyUsers in deviceType %}
+           '{{sumDailyUsers.sum_daily_nb_users}}',
+          {% endfor %} ],
+          [ {% for sumDailyVisitors in deviceType %}
+          '{{sumDailyVisitors.sum_daily_nb_uniq_visitors}}',
+         {% endfor %} ] ],
+}, {
+plugins: [ Chartist.plugins.legend( {
+    legendNames: ['Number of Visits', 'Number of Actions', 'Sum of Daily Users', 'Sum of Daily Visitors'],
+}) ]
+});
+
 {% endblock %}
