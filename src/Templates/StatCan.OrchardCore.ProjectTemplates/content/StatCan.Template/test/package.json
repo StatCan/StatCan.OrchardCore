@@ -1,0 +1,14 @@
+{
+  "devDependencies": {
+    "cypress": "^7.4.0",
+    "cypress-orchardcore": "0.4.7",
+    "rimraf": "3.0.2"
+  },
+  "scripts": {
+    "build": "node -e \"require('cypress-orchardcore/dist/test-runner').build('../src/Statcan.Template.Cms.Web')\"",
+    "host": "node -e \"require('cypress-orchardcore/dist/test-runner').host('../src/Statcan.Template.Cms.Web', 'Statcan.Template.Cms.Web.dll', {dotnetVersion:'net5.0'})\"",
+    "test": "node -e \"require('cypress-orchardcore/dist/test-runner').e2e('../src/Statcan.Template.Cms.Web', 'Statcan.Template.Cms.Web.dll',  {dotnetVersion:'net5.0'})\"",
+    "cypress:run": "cypress run",
+    "cypress": "cypress open"
+  }
+}
