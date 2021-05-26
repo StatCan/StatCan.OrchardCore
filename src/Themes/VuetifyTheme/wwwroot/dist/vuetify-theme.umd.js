@@ -47424,9 +47424,7 @@ var github_markdown = __webpack_require__("015e");
 
 
 
-external_commonjs_vue_commonjs2_vue_root_Vue_default.a.component('ie-banner', IEBanner); // Sets the cookie based on the current html lang. This is to avoid potential issues when landing on a french page.
-
-document.cookie = '.AspNetCore.Culture=c%3D' + document.documentElement.lang + '%7Cuic%3D' + document.documentElement.lang + ';path=/';
+external_commonjs_vue_commonjs2_vue_root_Vue_default.a.component('ie-banner', IEBanner);
 document.addEventListener("DOMContentLoaded", function () {
   new external_commonjs_vue_commonjs2_vue_root_Vue_default.a({
     vuetify: vuetify,
