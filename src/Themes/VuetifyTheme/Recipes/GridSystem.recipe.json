@@ -1,0 +1,45 @@
+{
+    "name": "Grid System Shortcodes",
+    "displayName": "Grid System Shortcodes",
+    "description": "Adds shortcode capabilities for a grid system.",
+    "author": "StatCan Digital Innovation",
+    "website": "digital.statcan.gc.ca",
+    "version": "1.0.0",
+    "issetuprecipe": false,
+    "categories": [],
+    "tags": [],
+    "steps": [
+        {
+          "name": "ShortcodeTemplates",
+          "ShortcodeTemplates": {
+            "vcol": {
+              "Content": "{% if Args.Text != nil %}\r\n<v-col>{{Args.Text | sanitize | raw }}</v-col>\r\n{% else %}\r\n<v-col>{{ Content | sanitize | raw }}</v-col>\r\n{% endif %}",
+              "Hint": "Adds a v-col in a grid system",
+              "Usage": null,
+              "DefaultValue": null,
+              "Categories": [
+                "HTML Content"
+              ]
+            },
+            "vrow": {
+              "Content": "{% if Args.Text != nil %}\r\n<v-row>{{Args.Text}}</v-row>\r\n{% else %}\r\n<v-row>{{Content | sanitize | raw }}</v-row>\r\n{% endif %}",
+              "Hint": "Adds a v-row in a grid system",
+              "Usage": null,
+              "DefaultValue": null,
+              "Categories": [
+                "HTML Content"
+              ]
+            },
+            "vcontainer": {
+              "Content": "{% if Args.Text != nil %}\r\n<v-container>{{Args.Text}}</v-container>\r\n{% else %}\r\n<v-container>{{ Content | sanitize | raw }}</v-container>\r\n{% endif %}",
+              "Hint": "Adds a v-container for a Grid system",
+              "Usage": null,
+              "DefaultValue": null,
+              "Categories": [
+                "HTML Content"
+              ]
+            }
+          }
+        }
+      ]
+    }
