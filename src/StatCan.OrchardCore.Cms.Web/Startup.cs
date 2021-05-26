@@ -27,7 +27,9 @@ namespace web
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddOrchardCms().ConfigureServices(tenantServices => tenantServices.ConfigureHtmlSanitizer(sanitizer => sanitizer.AllowedSchemes.Add("mailto")));
+            services.AddOrchardCms()
+                .ConfigureServices(tenantServices => tenantServices.ConfigureHtmlSanitizer(sanitizer => sanitizer.AllowedSchemes.Add("mailto")))
+                .AddGlobalFeatures("StatCan.OrchardCore.Overrides");
             services.Configure<IdentityOptions>(options => Configuration.GetSection("IdentityOptions").Bind(options));
             services.Configure<GzipCompressionProviderOptions>(options => options.Level = System.IO.Compression.CompressionLevel.Optimal);
             services.AddResponseCompression(options =>
