@@ -25,7 +25,6 @@
   "devDependencies": {
     "@babel/core": "^7.14.2",
     "@babel/preset-env": "^7.14.2",
-    "@babel/preset-flow": "7.13.13",
     "@vue/cli-plugin-babel": "~4.5.13",
     "@vue/cli-service": "~4.5.13",
     "es6-promise": "4.2.8",

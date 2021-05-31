@@ -7,7 +7,9 @@ This repository houses a collection of custom Orchard Core resources, modules an
 Nightly (master):
 
 ![Nightly build](https://github.com/StatCan/StatCan.OrchardCore/workflows/Nightly%20build/badge.svg)
-[![Latest Version @ Cloudsmith](https://api-prd.cloudsmith.io/badges/version/statcan-digitalinnovation/statcan-orchardcore/nuget/StatCan.OrchardCore.Application.Targets/latest/x/?render=true&badge_token=gAAAAABfdxH6m77MW-BAV88OzcnBYogkQkz-9UGxGe3tKAO5j2o_zhK9bs8K-zdIfR8Js2G37dZ6ZaXqKJ7k-z1oh1kBDSVxeEk-OqZpRruKsZOucGSh9Us%3D)](https://cloudsmith.io/~statcan-digitalinnovation/repos/statcan-orchardcore/packages/detail/nuget/StatCan.OrchardCore.Application.Targets/latest/)
+
+Latest release deployed on [Cloudsmith](https://cloudsmith.io/~statcan-digitalinnovation/repos/statcan-orchardcore/packages/).
+
 
 
 ### Documentation

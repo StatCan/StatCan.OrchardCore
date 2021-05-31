@@ -147,15 +147,18 @@ function initForm(app) {
 document.querySelectorAll(".vue-form").forEach(initForm);
 
 document.addEventListener("DOMContentLoaded", function (event) {
+
   document.querySelectorAll(".vue-app-instance").forEach(function (elem) {
     new Vue({
       el: elem,
     });
   });
+
   document.querySelectorAll(".vuetify-app-instance").forEach(function (elem) {
     new Vue({
       el: elem,
       vuetify: new Vuetify(),
     });
   });
+
 });

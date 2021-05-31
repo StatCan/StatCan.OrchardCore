@@ -6,7 +6,7 @@
 *.user
 *.sln.docstates
 *.sln.ide/
-
+*.nupkg
 # Build results
 
 [Dd]ebug/
@@ -189,9 +189,14 @@ node_modules/
 
 wwwroot
 **/Localization/**/*.po
+!src/Apps/**/wwwroot
 !src/Modules/**/wwwroot
 !src/Themes/**/wwwroot
 !src/Modules/**/Localization/**/*.po
 !src/Themes/**/Localization/**/*.po
 !src/StatCan.OrchardCore.Cms.Web/Localization/fr/*.po
+!src/Templates/**/content/**
+src/Templates/**/content/**/[Bb]in/
+src/Templates/**/content/**/[Oo]bj/
+.template.config/
 

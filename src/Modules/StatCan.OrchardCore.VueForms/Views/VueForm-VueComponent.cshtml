@@ -1,0 +1,8 @@
+@{
+    Model.Metadata.Alternates.Clear();
+    Model.Metadata.Type = "VueForm__CommonTemplate";
+}
+@Tag(Model, Model.Properties["ComponentName"])
+<zone name="DynamicComponentZone">
+  @await DisplayAsync(Model)
+</zone>

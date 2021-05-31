@@ -9,6 +9,7 @@
 
 <div class="vuetify-app-instance">
   <v-app>
-    @await DisplayAsync(Model)
+    @Tag(Model, Model.Properties["ComponentName"])
   </v-app>
 </div>
+@await DisplayAsync(Model)

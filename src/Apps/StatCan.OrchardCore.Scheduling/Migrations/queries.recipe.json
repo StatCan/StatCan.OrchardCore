@@ -1,0 +1,50 @@
+{
+  "steps": [
+    {
+      "name": "Queries",
+      "Queries": [
+        {
+          "Template": "SELECT DocumentId FROM ContentItemIndex where ContentType = 'Appointment' and Published = true",
+          "ReturnDocuments": true,
+          "Name": "AllAppointments",
+          "Source": "Sql",
+          "Schema": null
+        },
+        {
+          "Template": "SELECT DocumentId FROM ContentItemIndex where ContentType = 'Employee' and Published = true and Latest = true",
+          "ReturnDocuments": true,
+          "Name": "AllEmployees",
+          "Source": "Sql",
+          "Schema": null
+        },
+        {
+          "Template": "SELECT DocumentId \r\nFROM AppointmentIndex\r\nWHERE AppointmentIndex.ContentItemId IN\r\n  (SELECT ContentItemId FROM TaxonomyIndex where ContentType = 'Appointment' and TermContentItemId in ({{calendarIds}})) \r\nAND StartDate BETWEEN '{{ startDate }}' AND '{{ endDate }}'\r\nORDER BY StartDate ASC",
+          "ReturnDocuments": true,
+          "Name": "AppointmentsForCalendarsForDate",
+          "Source": "Sql",
+          "Schema": null
+        },
+        {
+          "Template": "query DataExport {\r\n  appointments: appointment {\r\n    contentItemId\r\n    contentItemVersionId\r\n    author\r\n    color\r\n    comments\r\n    modifiedUtc\r\n    startDate\r\n    endDate\r\n    status\r\n    linkedContent {\r\n      contentItemIds\r\n    }\r\n    calendar {\r\n      termContentItems {\r\n        ... on AppointmentCalendar {\r\n          displayText\r\n          contentItemId\r\n        }\r\n      }\r\n    }\r\n  }\r\n  employees: employee {\r\n    contentItemId\r\n    firstName\r\n    lastName\r\n    participating\r\n    consent\r\n    createdUtc\r\n    cohort {\r\n      termContentItems {\r\n        contentItemId\r\n        ... on AppointmentCalendar {\r\n          createdUtc\r\n          color\r\n          displayText\r\n        }\r\n      }\r\n    }\r\n  }\r\n}",
+          "Name": "DataExport",
+          "Source": "GraphQL",
+          "Schema": null
+        },
+        {
+          "Template": "SELECT DocumentId FROM TaxonomyIndex where ContentType = 'Employee' and TermContentItemId in ({{calendarIds}})",
+          "ReturnDocuments": true,
+          "Name": "EmployeesForCalendars",
+          "Source": "Sql",
+          "Schema": null
+        },
+        {
+          "Template": "SELECT DocumentId FROM TaxonomyIndex where ContentType = 'Appointment' and TermContentItemId in ({{calendarIds}})",
+          "ReturnDocuments": true,
+          "Name": "AppointmentForCalendars",
+          "Source": "Sql",
+          "Schema": null
+        }
+      ]
+    }
+  ]
+}
