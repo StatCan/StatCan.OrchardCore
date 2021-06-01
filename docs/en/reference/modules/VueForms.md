@@ -67,12 +67,6 @@ if(data.name == "") {
 }
 ```
 
-You can also add to a list of "global" error messages by passing the 'serverValidationMessage' name to the `addError()` function. 
-``` javascript
-addError('serverValidationMessage', 'This is a validation message that is not tied to any input!!'); 
-addError('serverValidationMessage', 'You can add many, they will come as an array via the "form.serverValidationMessage" prop!'); 
-```
-
 All errors are also available on the VueJS component options object's via the `form.responseData.errors` property
 
 #### OnSubmitted script

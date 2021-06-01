@@ -14,6 +14,16 @@ using OrchardCore;
 
 namespace StatCan.OrchardCore.Scripting
 {
+
+    public class SaveMediaResult
+    {
+        public string name { get; set; }
+        public long size { get; set; }
+        public string folder { get; set; }
+        public string mediaPath { get; set; }
+        public bool hasError { get; set; } = false;
+        public string errorMessage { get; set; }
+    }
     public class MediaGlobalMethodsProvider : IGlobalMethodProvider
     {
         private readonly GlobalMethod _saveMedia;
@@ -23,7 +33,7 @@ namespace StatCan.OrchardCore.Scripting
              _saveMedia = new GlobalMethod
             {
                 Name = "saveMedia",
-                Method = serviceProvider => (Func<string, bool, object>)((path, generateFileNames) => {
+                Method = serviceProvider => (Func<string, bool, SaveMediaResult[]>)((path, generateFileNames) => {
                     var mediaFileStore = serviceProvider.GetRequiredService<IMediaFileStore>();
                     var httpContextAccessor = serviceProvider.GetRequiredService<IHttpContextAccessor>();
                     var mediaOptions = serviceProvider.GetRequiredService<IOptions<MediaOptions>>().Value;
@@ -36,7 +46,7 @@ namespace StatCan.OrchardCore.Scripting
                         path = "";
                     }
 
-                    var result = new List<object>();
+                    var result = new List<SaveMediaResult>();
 
                     // Loop through each file in the request
                     foreach (var file in files)
@@ -44,12 +54,13 @@ namespace StatCan.OrchardCore.Scripting
                         var extension = Path.GetExtension(file.FileName);
                         if (!mediaOptions.AllowedFileExtensions.Contains(extension, StringComparer.OrdinalIgnoreCase))
                         {
-                            result.Add(new
+                            result.Add(new SaveMediaResult()
                             {
                                 name = file.FileName,
                                 size = file.Length,
                                 folder = path,
-                                error = S["This file extension is not allowed: {0}", extension].ToString()
+                                hasError = true,
+                                errorMessage = S["This file extension is not allowed: {0}", extension].ToString()
                             });
 
                             continue;
@@ -58,7 +69,7 @@ namespace StatCan.OrchardCore.Scripting
                         var fileName = "";
                         if (generateFileNames)
                         {
-                            fileName =  IdGenerator.GenerateId() + extension;
+                            fileName = IdGenerator.GenerateId() + extension;
                         }
                         else
                         {
@@ -75,25 +86,24 @@ namespace StatCan.OrchardCore.Scripting
                             var mediaFile = mediaFileStore.GetFileInfoAsync(mediaFilePath).GetAwaiter().GetResult();
 
                             result.Add(
-                                new {
+                                new SaveMediaResult() {
                                     name = mediaFile.Name,
                                     size = mediaFile.Length,
-                                    lastModify = mediaFile.LastModifiedUtc.Subtract(new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc)).TotalMilliseconds,
                                     folder = mediaFile.DirectoryPath,
                                     mediaPath = mediaFile.Path,
-                                    mediaText = String.Empty,
-                                    anchor = new { x = 0.5f, y = 0.5f }
                                 }
                             );
                         }
                         catch (Exception ex)
                         {
-                            result.Add(new
+                            result.Add(new SaveMediaResult()
                             {
                                 name = fileName,
                                 size = file.Length,
                                 folder = path,
-                                error = ex.Message
+                                hasError = true,
+                                // should be careful when returning these values to the client, they may have internal path / file disclosures
+                                errorMessage = ex.Message
                             });
                         }
                         finally
@@ -101,8 +111,7 @@ namespace StatCan.OrchardCore.Scripting
                             stream?.Dispose();
                         }
                     }
-
-                    return new { files = result.ToArray() };
+                    return result.ToArray();
                 })
             };
         }

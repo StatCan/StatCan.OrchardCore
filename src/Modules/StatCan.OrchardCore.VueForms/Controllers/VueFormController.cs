@@ -89,8 +89,7 @@ namespace StatCan.OrchardCore.VueForms.Controllers
 
             if (!_contentPermissionsService.CanAccess(form))
             {
-                ModelState.AddModelError("Unauthorized", S["You are unauthorized to view this form"]);
-                return Json(new { validationError = true, errors = GetErrorDictionary() });
+                return NotFound();
             }
 
             var scriptingProvider = new VueFormMethodsProvider(form);
