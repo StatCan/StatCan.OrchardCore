@@ -57,4 +57,13 @@ namespace StatCan.OrchardCore.Scripting
             services.AddSingleton<IGlobalMethodProvider, RecipeGlobalMethodsProvider>();
         }
     }
+
+    [RequireFeatures("OrchardCore.Media")]
+    public class MediaStartup : StartupBase
+    {
+        public override void ConfigureServices(IServiceCollection services)
+        {
+            services.AddSingleton<IGlobalMethodProvider, MediaGlobalMethodsProvider>();
+        }
+    }
 }

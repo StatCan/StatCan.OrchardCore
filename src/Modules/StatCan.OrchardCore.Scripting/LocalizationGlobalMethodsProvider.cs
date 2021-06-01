@@ -23,7 +23,6 @@ namespace StatCan.OrchardCore.Scripting
                   }
                 )
             };
-            
         }
 
         public IEnumerable<GlobalMethod> GetMethods()

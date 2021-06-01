@@ -10,6 +10,11 @@ using OrchardCore.ReCaptcha.Services;
 using OrchardCore.DisplayManagement.ModelBinding;
 using OrchardCore.DisplayManagement.Notify;
 using Microsoft.AspNetCore.Mvc.Localization;
+using OrchardCore.Media;
+using System.IO;
+using Microsoft.Extensions.Localization;
+using OrchardCore.FileStorage;
+using Microsoft.Extensions.Logging;
 
 namespace StatCan.OrchardCore.Scripting
 {
@@ -31,6 +36,7 @@ namespace StatCan.OrchardCore.Scripting
                     updateModelAccessor.ModelUpdater.ModelState.AddModelError(name, text);
                 })
             };
+
             _hasErrors = new GlobalMethod
             {
                 Name = "hasErrors",
@@ -39,6 +45,7 @@ namespace StatCan.OrchardCore.Scripting
                     return updateModelAccessor.ModelUpdater.ModelState.ErrorCount > 0;
                 })
             };
+
             _formAsJsonObject = new GlobalMethod
             {
                 Name = "requestFormAsJsonObject",
@@ -61,6 +68,7 @@ namespace StatCan.OrchardCore.Scripting
                 }
                 )
             };
+
             _validateReCaptcha = new GlobalMethod
             {
                 Name = "validateReCaptcha",
@@ -69,7 +77,8 @@ namespace StatCan.OrchardCore.Scripting
                     return recaptchaService.VerifyCaptchaResponseAsync(reCaptchaResponse).GetAwaiter().GetResult();
                 })
             };
-             _notify = new GlobalMethod
+
+            _notify = new GlobalMethod
             {
                 Name = "notify",
                 Method = serviceProvider => (Func<string, string, bool>)((type, message ) => {

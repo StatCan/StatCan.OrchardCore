@@ -80,22 +80,38 @@ function initForm(app) {
           observer.validate().then((valid) => {
             if (valid) {
               const action = vm.$refs.form.getAttribute("action");
-              let frmData = vm.submitData();
-              frmData.__RequestVerificationToken = vm.$refs.form.querySelector(
-                'input[name="__RequestVerificationToken"]'
-              ).value;
-              if (typeof grecaptcha == "object") {
-                frmData.recaptcha = grecaptcha.getResponse();
-              }
-
+              
+              // set form vue data
               vm.form.submitting = true;
+
+              let formData = new FormData();
+              formData.append("__RequestVerificationToken", vm.$refs.form.querySelector(
+                'input[name="__RequestVerificationToken"]'
+              ).value)
+              if (typeof grecaptcha == "object") {
+                formData.append("recaptcha", grecaptcha.getResponse());
+              }
+                
+              let submitData = vm.submitData();
+              for (const key in submitData) {
+                formData.append(key, submitData[key]);
+              }
+              
+              // iterate all file inputs and add the files to the request
+              $(this.$refs.form).find("input[type=file]").each(function(){
+                for (const file of this.files) {
+                  formData.append(file.name, file)
+                }
+              });
 
               $.ajax({
                 type: "POST",
                 url: action,
-                data: frmData,
+                data: formData,
                 cache: false,
-                dataType: "json",
+                dataType: "json", // expect json from the server
+                processData: false, //tell jquery not to process data
+                contentType: false, //tell jquery not to set content-type
                 success: function (data) {
                   vm.form = { ...defaultFormData };
                   vm.form.responseData = data;
