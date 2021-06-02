@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using AngleSharp.Common;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.Extensions.DependencyInjection;
 using OrchardCore.ContentManagement;
@@ -23,6 +24,14 @@ namespace StatCan.OrchardCore.VueForms.Scripting
             {
                 Name = "getFormContentItem",
                 Method = serviceProvider => (Func<ContentItem>)(() => form)
+            };
+            _getFormContentItem = new GlobalMethod
+            {
+                Name = "addSuccessMessage",
+                Method = serviceProvider => (Action<string>)((message) => {
+                    var httpContextAccessor = serviceProvider.GetRequiredService<IHttpContextAccessor>();
+                    httpContextAccessor.HttpContext.Items.Add(Constants.VueFormSuccessMessage, message);
+                })
             };
         }
 

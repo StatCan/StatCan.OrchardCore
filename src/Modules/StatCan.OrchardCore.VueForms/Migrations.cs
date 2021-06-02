@@ -6,32 +6,36 @@ using OrchardCore.Data.Migration;
 using OrchardCore.Title.Models;
 using StatCan.OrchardCore.Extensions;
 using StatCan.OrchardCore.ContentFields.MultiValueTextField.Settings;
+using OrchardCore.ContentManagement;
+using YesSql;
+using System.Threading.Tasks;
+using OrchardCore.ContentManagement.Records;
+using OrchardCore.Flows.Models;
+using System.Text;
+using StatCan.OrchardCore.VueForms.Models;
 
 namespace StatCan.OrchardCore.VueForms
 {
     public class Migrations : DataMigration
     {
         private readonly IContentDefinitionManager _contentDefinitionManager;
-        public Migrations(IContentDefinitionManager contentDefinitionManager)
+        private readonly ISession _session;
+
+        public Migrations(IContentDefinitionManager contentDefinitionManager, ISession session)
         {
             _contentDefinitionManager = contentDefinitionManager;
+            _session = session;
         }
 
         public int Create()
         {
             // Form
             _contentDefinitionManager.AlterPartDefinition("VueForm", part => part
-                .WithBooleanField("Enabled", "Form enabled", "1",
-                    new BooleanFieldSettings()
-                    {
-                        Hint = "The form accepts submissions if is enabled"
-                    }
-                )
                 .WithField("RenderAs", field => field
                     .OfType("TextField")
                     .WithDisplayName("Render as")
                     .WithEditor("PredefinedList")
-                    .WithPosition("2")
+                    .WithPosition("0")
                     .WithSettings(new TextFieldPredefinedListEditorSettings
                     {
                         Options = new ListValueOption[] { new ListValueOption() {
@@ -50,16 +54,25 @@ namespace StatCan.OrchardCore.VueForms
                         Hint = "Render this form as a Vue component, a standalone vue app or a vuetify app (wrapping with v-app)"
                     })
                 )
+                .WithBooleanField("Disabled", "Disable the form", "1",
+                    new BooleanFieldSettings()
+                    {
+                        Hint = "If disabled, the Disabled Html field will be rendered in place of the form "
+                    }
+                )
                 .WithField("DisabledHtml", f => f
                     .OfType(nameof(HtmlField))
                     .WithDisplayName("Disabled Html")
                     .WithSettings(new HtmlFieldSettings() { Hint = "Html displayed when someone tries to render a disabled form.", SanitizeHtml = true})
                     .WithPosition("2")
                 )
-                .WithTextField("SuccessMessage", "Success Message", "3", new TextFieldSettings()
-                {
-                    Hint = "(optional) The message returned to the client if validation passed and no redirect has been set. With liquid support."
-                })
+                .WithField("Template", f => f
+                   .OfType(nameof(TextField))
+                   .WithDisplayName("Template")
+                   .WithSettings(new TextFieldSettings() { Required = true, Hint = "The form's template. VeeValidate v3(https://logaretm.github.io/vee-validate/guide/basics.html) is used for client side validation support. With liquid support." })
+                   .WithPosition("3")
+                   .WithEditor("CodeMirrorLiquid")
+                )
                 .WithDescription("Turns your content items into a vue form."));
 
             _contentDefinitionManager.AlterPartDefinition("VueFormScripts", part => part
@@ -73,14 +86,14 @@ namespace StatCan.OrchardCore.VueForms
                 .WithField("ComponentOptions", f => f
                    .OfType(nameof(TextField))
                    .WithDisplayName("Component Options object")
-                   .WithSettings(new TextFieldSettings() {  Required = true, Hint = "The form's vue component options object. The component's data object is sent to the server. With liquid support." })
+                   .WithSettings(new TextFieldSettings() { Hint = "The form's vue component options object. The component's data object is sent to the server. With liquid support." })
                    .WithPosition("1")
                    .WithEditor("CodeMirrorJS")
                 )
-                .WithField("OnValidation", f => f
+                .WithField("ZodValidation", f => f
                     .OfType(nameof(TextField))
                     .WithDisplayName("On Validation")
-                    .WithSettings(new TextFieldSettings() { Hint = "(Optional) Script that runs server side to validate your form."})
+                    .WithSettings(new TextFieldSettings() { Hint = "(Optional) Zod schema (https://github.com/colinhacks/zod#defining-schemas) used for client and server side validation."})
                     .WithPosition("2")
                     .WithEditor("CodeMirrorJS")
                 )
@@ -98,28 +111,12 @@ namespace StatCan.OrchardCore.VueForms
                 .Draftable().Securable().Versionable()
                 .WithPart("TitlePart", p => p.WithPosition("0"))
                 .WithPart("VueForm", p => p.WithPosition("1"))
-                .WithPart("FlowPart", p => p.WithPosition("2"))
+                .WithPart("AliasPart", p => p.WithPosition("2"))
                 .WithPart("VueFormScripts", p => p.WithPosition("3"))
                 .WithPart("ContentPermissionsPart", p => p.WithPosition("4")));
 
-            // Vue component
-            _contentDefinitionManager.AlterPartDefinition("VueComponent", part => part
-               .WithField("Template", f => f
-                   .OfType(nameof(TextField))
-                   .WithDisplayName("Template")
-                   .WithSettings(new TextFieldSettings() { Required = true, Hint = "VueJS Component template. Need to return a single node. The VeeValidate(https://logaretm.github.io/vee-validate/guide/basics.html) library is used for client / server side validaiton support. With liquid support." })
-                   .WithPosition("1")
-                   .WithEditor("CodeMirrorLiquid")
-            ));
-
-            _contentDefinitionManager.AlterTypeDefinition("VueComponent", type => type
-                .WithPart("TitlePart", p => p.WithPosition("0"))
-                .WithPart("VueComponent", p => p.WithPosition("1"))
-                .Stereotype("Widget"));
-
             AddVueFormReference();
-            AddVTextField();
-            return 6;
+            return 7;
         }
 
         public int UpdateFrom1()
@@ -145,8 +142,7 @@ namespace StatCan.OrchardCore.VueForms
                 .RemoveField("Script")
             );
 
-
-             _contentDefinitionManager.AlterPartDefinition("VueForm", part => part
+            _contentDefinitionManager.AlterPartDefinition("VueForm", part => part
                 .RemoveField("ErrorMessage")
                 .WithField("RenderAs", field => field
                     .OfType("TextField")
@@ -170,7 +166,8 @@ namespace StatCan.OrchardCore.VueForms
                     .WithSettings(new TextFieldSettings() {
                         Hint = "Render this form as a Vue component, a standalone vue app or a vuetify app (wrapping with v-app)"
                     })
-                ));
+                )
+            );
             _contentDefinitionManager.AlterTypeDefinition("VueForm", type => type.Securable());
             return 3;
         }
@@ -192,6 +189,139 @@ namespace StatCan.OrchardCore.VueForms
         {
             _contentDefinitionManager.AlterTypeDefinition("VueForm", type => type.Versionable());
             return 6;
+        }
+        public async Task<int> UpdateFrom6Async()
+        {
+            _contentDefinitionManager.AlterPartDefinition("VueForm", part => part
+                .RemoveField("Enabled")
+                .WithTextField("SuccessMessage", "Success Message", "3", new TextFieldSettings()
+                {
+                    Hint = "(deprecated) Use the setSuccessMessage() function in the server side script to set the validation message."
+                })
+                .WithField("RenderAs", field => field
+                    .OfType("TextField")
+                    .WithDisplayName("Render as")
+                    .WithEditor("PredefinedList")
+                    .WithPosition("0")
+                    .WithSettings(new TextFieldPredefinedListEditorSettings
+                    {
+                        Options = new ListValueOption[] { new ListValueOption() {
+                            Name= "Vue Component",
+                            Value= ""
+                            }, new ListValueOption() {
+                            Name= "Vue App",
+                            Value= "VueApp"
+                            }, new ListValueOption() {
+                            Name= "Vuetify App",
+                            Value= "VuetifyApp"
+                            } },
+                        Editor = EditorOption.Dropdown,
+                    })
+                    .WithSettings(new TextFieldSettings() {
+                        Hint = "Render this form as a Vue component, a standalone vue app or a vuetify app (wrapping with v-app)"
+                    })
+                )
+                .WithBooleanField("Disabled", "Disable the form", "1",
+                    new BooleanFieldSettings()
+                    {
+                        Hint = "If disabled, the Disabled Html field will be rendered in place of the form "
+                    }
+                )
+                .WithField("DisabledHtml", f => f
+                    .OfType(nameof(HtmlField))
+                    .WithDisplayName("Disabled Html")
+                    .WithSettings(new HtmlFieldSettings() { Hint = "Html displayed when someone tries to render a disabled form.", SanitizeHtml = true})
+                    .WithPosition("2")
+                )
+                .WithField("Template", f => f
+                   .OfType(nameof(TextField))
+                   .WithDisplayName("Template")
+                   .WithSettings(new TextFieldSettings() { Required = true, Hint = "The form's template. VeeValidate v3(https://logaretm.github.io/vee-validate/guide/basics.html) is used for client side validation support. With liquid support." })
+                   .WithPosition("3")
+                   .WithEditor("CodeMirrorLiquid")
+                )
+                .WithDescription("Turns your content items into a vue form."));
+
+            _contentDefinitionManager.AlterTypeDefinition("VueForm", type => type
+                .RemovePart("FlowPart")
+                .WithPart("AliasPart", p => p.WithPosition("2")));
+
+            _contentDefinitionManager.AlterPartDefinition("VueFormScripts", part => part
+                .RemoveField("OnValidation")
+                .WithField("ClientInit", f => f
+                    .OfType(nameof(TextField))
+                    .WithDisplayName("Client Init")
+                    .WithSettings(new TextFieldSettings() { Hint = "(Optional) Script that runs client side to set various options for your form (such as setup the VeeValidate locales). With liquid support." })
+                    .WithPosition("0")
+                    .WithEditor("CodeMirrorJS")
+                )
+                .WithField("ComponentOptions", f => f
+                   .OfType(nameof(TextField))
+                   .WithDisplayName("Component Options object")
+                   .WithSettings(new TextFieldSettings() { Hint = "The form's vue component options object. The component's data object is sent to the server. With liquid support." })
+                   .WithPosition("1")
+                   .WithEditor("CodeMirrorJS")
+                )
+                .WithField("ZodValidation", f => f
+                    .OfType(nameof(TextField))
+                    .WithDisplayName("On Validation")
+                    .WithSettings(new TextFieldSettings() { Hint = "(Optional) Zod schema (https://github.com/colinhacks/zod#defining-schemas) used for client and server side validation."})
+                    .WithPosition("2")
+                    .WithEditor("CodeMirrorJS")
+                )
+                .WithField("OnSubmitted", f => f
+                    .OfType(nameof(TextField))
+                    .WithDisplayName("On Submitted")
+                    .WithSettings(new TextFieldSettings() { Hint = "(Optional) Script that runs server side after the form has been validated. " })
+                    .WithPosition("3")
+                    .WithEditor("CodeMirrorJS")
+                )
+                .Attachable()
+                .WithDescription("Script fields for AjaxForm")
+            );
+
+            // migrate existing data
+            var forms = await _session.Query<ContentItem, ContentItemIndex>(c => c.ContentType == "VueForm").ListAsync();
+
+            foreach (var form in forms)
+            {
+                var onValidation = (string)form.Content.VueFormScripts.OnValidation?.Text;
+                if(!string.IsNullOrEmpty(onValidation))
+                {
+                    var onSubmitted = (string)form.Content?.VueFormScripts?.OnSubmitted?.Text;
+
+                    form.Content.VueFormScripts.OnSubmitted.Text = "function Validate() { \n //Moved from the OnValidation script \n" + onValidation + "\n} Validate();\n" + onSubmitted;
+                }
+                form.Content.VueFormScripts.OnValidation = null;
+
+                var flow = form.As<FlowPart>();
+                var templateBuilder = new StringBuilder();
+                foreach (var widget in flow.Widgets)
+                {
+                    if(widget.ContentType == "VueComponent")
+                    {
+                        templateBuilder.Append((string)widget.Content.VueComponent.Template.Text);
+                        templateBuilder.AppendLine();
+                    }
+                }
+                form.Remove("FlowPart");
+
+                var isDisabled = false;
+                if(form.Content?.VueForm?.Enabled?.Value != null)
+                {
+                    isDisabled = !(bool)form.Content.VueForm.Enabled.Value;
+                }
+                form.Content.VueForm.Enabled = null;
+
+                form.Alter<VueForm>(v =>
+                {
+                    v.Disabled = new BooleanField(){ Value = isDisabled };
+                    v.Template = new TextField(){ Text = templateBuilder.ToString() };
+                });
+                _session.Save(form);
+            }
+
+            return 7;
         }
 
         private void AddVTextField()

@@ -82,7 +82,7 @@ namespace StatCan.OrchardCore.VueForms.Controllers
             var formPart = form.As<VueForm>();
 
             // Verify if the form is enabled
-            if (!formPart.Enabled.Value)
+            if (formPart.Disabled.Value)
             {
                 return NotFound();
             }
@@ -95,26 +95,19 @@ namespace StatCan.OrchardCore.VueForms.Controllers
             var scriptingProvider = new VueFormMethodsProvider(form);
 
             var script = form.As<VueFormScripts>();
-            if (!string.IsNullOrEmpty(script?.OnValidation?.Text))
-            {
-                _scriptingManager.EvaluateJs(script.OnValidation.Text, scriptingProvider);
-            }
 
-            if (ModelState.ErrorCount > 0)
-            {
-                return Json(new { validationError = true, errors = GetErrorDictionary() });
-            }
-
-            object submitResult = null;
+            // This object holds the return value of the OnSubmitted script.
+            object serverScriptResult = null;
 
             if (!string.IsNullOrEmpty(script?.OnSubmitted?.Text))
             {
-                submitResult = _scriptingManager.EvaluateJs(script.OnSubmitted.Text, scriptingProvider);
+                serverScriptResult = _scriptingManager.EvaluateJs(script.OnSubmitted.Text, scriptingProvider);
             }
 
+            // The check is performed here to avoid running the workflow unless the form state is valid
             if (ModelState.ErrorCount > 0)
             {
-                return Json(new { validationError = true, errors = GetErrorDictionary(), submitResult });
+                return Json(new { validationError = true, errors = GetErrorDictionary(), serverScriptResult });
             }
 
             // _workflow manager is null if workflow feature is not enabled
@@ -126,10 +119,10 @@ namespace StatCan.OrchardCore.VueForms.Controllers
                 );
             }
 
-            // workflow added errors, return them here
+            // if the workflow added errors, return them here
             if (ModelState.ErrorCount > 0)
             {
-                return Json(new { validationError = true, errors = GetErrorDictionary(), submitResult });
+                return Json(new { validationError = true, errors = GetErrorDictionary(), serverScriptResult });
             }
 
             // Handle the redirects with ajax requests.
@@ -142,16 +135,14 @@ namespace StatCan.OrchardCore.VueForms.Controllers
                 return Json(returnValue);
             }
 
-            // This get's set by either the HttpRedirectTask or HttpResponseTask
+            // This get's set by either the workflow's HttpRedirectTask or HttpResponseTask
             if(HttpContext.Items[WorkflowHttpResult.Instance] != null)
             {
                 // Let the HttpResponseTask control the response. This will fail on the client if it's anything other than json
                 return new EmptyResult();
             }
-            var formSuccessMessage = await _liquidTemplateManager.RenderStringAsync(formPart.SuccessMessage?.Text, _htmlEncoder);
-            formSuccessMessage = await _shortcodeService.ProcessAsync(formSuccessMessage);
             // everything worked fine. send the success signal to the client
-            return Json(new { successMessage = formSuccessMessage, submitResult });
+            return Json(new { successMessage = HttpContext.Items[Constants.VueFormSuccessMessage], serverScriptResult });
         }
         private Dictionary<string, string[]> GetErrorDictionary()
         {
