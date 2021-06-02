@@ -29,6 +29,8 @@ These methods are added when the `OrchardCore.Contents` module is enabled
 | Function | Description 
 | -------- | ----------- |
 |`contentByItemId(contentItemId: String): ContentItem`| Returns the ContentItem with the specified contentItemId |
+|`contentByItemIdVersion(contentItemId: String, version: String): ContentItem`| Returns the ContentItem with the specified contentItemId and specific version. Version can be one of these: `Published`, `Latest`, `Draft`, `DraftRequired`. If version is blank, the Published version is returned |
+|`contentByVersionId(versionId: String): ContentItem`| Returns the ContentItem with the specified versionId |
 |`ownContentByType(type: String): ContentItem`| Returns all ContentItems of type where the owner is the current user |
 
 
