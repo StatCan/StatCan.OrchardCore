@@ -1,0 +1,413 @@
+{% assign data = Model.Data | jsonparse %}
+{% assign title = Model.Title %}
+
+{% assign deviceBrand = data[0].content | jsonparse %}
+{% assign deviceBrowser = data[1].content | jsonparse %}
+{% assign deviceBrowserEngine = data[2].content | jsonparse %}
+{% assign deviceBrowserVersion = data[3].content | jsonparse %}
+{% assign deviceModel = data[4].content | jsonparse %}
+{% assign deviceOSFamily = data[5].content | jsonparse %}
+{% assign deviceOSVersion = data[6].content | jsonparse %}
+{% assign deviceType = data[7].content | jsonparse %}
+
+<div style="margin:20px">
+    <div style="font-weight:bold;font-size:20px">{{ title }} </div>
+    <div style="padding:15px">
+        <canvas id="deviceBrand" style="width:200px;height:50px;padding:20px 50px 20px 50px;"></canvas>
+        <canvas id="deviceBrowser" style="width:200px;height:50px;padding:20px 50px 20px 50px;"></canvas>
+        <canvas id="deviceBrowserEngine" style="width:200px;height:50px;padding:20px 50px 20px 50px;""></canvas>
+        <canvas id="deviceBrowserVersion" style="width:200px;height:50px;padding:20px 50px 20px 50px;"></canvas>
+        <canvas id="deviceModel" style="width:200px;height:50px;padding:20px 50px 20px 50px;"></canvas>
+        <canvas id="deviceOSFamily" style="width:200px;height:50px;padding:20px 50px 20px 50px;"></canvas>
+        <canvas id="deviceOSVersion" style="width:200px;height:50px;padding:20px 50px 20px 50px;"></canvas>
+        <canvas id="devicetype" style="width:200px;height:50px;padding:20px 50px 20px 50px;"></canvas>
+    </div>
+  </div>
+  
+  {% block "script", at: "Foot", depends-on:  "chartJS" %}
+  
+  new Chart(document.getElementById("deviceBrand"), {
+    type: 'line',
+    data: {
+      labels: [{% for label in deviceBrand %}
+                '{{label.label}}',
+              {%endfor%}],
+      datasets: [
+      {
+        label: "Number of Visits",
+        backgroundColor: "pink",
+        borderColor: "red",
+        borderWidth: .5,
+        data: [ {% for nbVisits in deviceBrand %}
+        '{{nbVisits.nb_visits}}',
+       {% endfor %} ]
+      },
+      {
+        label: "Number of Actions",
+        backgroundColor: "lightblue",
+        borderColor: "blue",
+        borderWidth: 1,
+        data: [ {% for nbActions in deviceBrand %}
+        '{{nbActions.nb_actions}}',
+       {% endfor %} ]
+      },
+      {
+        label: "Sum of Daily Users",
+        backgroundColor: "lightgreen",
+        borderColor: "green",
+        borderWidth: 1,
+        data: [ {% for sumDailyUsers in deviceBrand %}
+        '{{sumDailyUsers.sum_daily_nb_users}}',
+       {% endfor %} ]
+      },
+      {
+        label: "Sum of daily Visitors",
+        backgroundColor: "yellow",
+        borderColor: "orange",
+        borderWidth: 1,
+        data: [ {% for sumDailyVisitors in deviceBrand %}
+        '{{sumDailyVisitors.sum_daily_nb_uniq_visitors}}',
+       {% endfor %} ]
+      }
+    ]
+    },
+    options: {
+      plugins: {
+        title: {
+            display: true,
+            text: 'Device Brand'
+        }
+    }
+    }
+  });
+  
+  new Chart(document.getElementById("deviceBrowser"), {
+    type: 'line',
+    data: {
+      labels: [{% for label in deviceBrowser %}
+                '{{label.label}}',
+              {%endfor%}],
+      datasets: [
+      {
+        label: "Number of Visits",
+        backgroundColor: "pink",
+        borderColor: "red",
+        borderWidth: .5,
+        data: [ {% for nbVisits in deviceBrowser %}
+        '{{nbVisits.nb_visits}}',
+       {% endfor %} ]
+      },
+      {
+        label: "Number of Actions",
+        backgroundColor: "lightblue",
+        borderColor: "blue",
+        borderWidth: 1,
+        data: [ {% for nbActions in deviceBrowser %}
+        '{{nbActions.nb_actions}}',
+       {% endfor %} ]
+      },
+      {
+        label: "Sum of Daily Users",
+        backgroundColor: "lightgreen",
+        borderColor: "green",
+        borderWidth: 1,
+        data: [ {% for sumDailyUsers in deviceBrowser %}
+        '{{sumDailyUsers.sum_daily_nb_users}}',
+       {% endfor %} ]
+      },
+      {
+        label: "Sum of daily Visitors",
+        backgroundColor: "yellow",
+        borderColor: "orange",
+        borderWidth: 1,
+        data: [ {% for sumDailyVisitors in deviceBrowser %}
+        '{{sumDailyVisitors.sum_daily_nb_uniq_visitors}}',
+       {% endfor %} ]
+      }
+    ]
+    },
+    options: {
+      plugins: {
+        title: {
+            display: true,
+            text: 'Device Browser'
+        }
+    }
+    }
+  });
+  
+  new Chart(document.getElementById("deviceBrowserEngine"), {
+    type: 'line',
+    data: {
+      labels: [{% for label in deviceBrowserEngine %}
+                '{{label.label}}',
+              {%endfor%}],
+      datasets: [
+      {
+        label: "Number of Visits",
+        backgroundColor: "pink",
+        borderColor: "red",
+        borderWidth: .5,
+        data: [ {% for nbVisits in deviceBrowserEngine %}
+        '{{nbVisits.nb_visits}}',
+       {% endfor %} ]
+      },
+      {
+        label: "Number of Actions",
+        backgroundColor: "lightblue",
+        borderColor: "blue",
+        borderWidth: 1,
+        data: [ {% for nbActions in deviceBrowserEngine %}
+        '{{nbActions.nb_actions}}',
+       {% endfor %} ]
+      },
+      {
+        label: "Sum of Daily Users",
+        backgroundColor: "lightgreen",
+        borderColor: "green",
+        borderWidth: 1,
+        data: [ {% for sumDailyUsers in deviceBrowserEngine %}
+        '{{sumDailyUsers.sum_daily_nb_users}}',
+       {% endfor %} ]
+      },
+      {
+        label: "Sum of daily Visitors",
+        backgroundColor: "yellow",
+        borderColor: "orange",
+        borderWidth: 1,
+        data: [ {% for sumDailyVisitors in deviceBrowserEngine %}
+        '{{sumDailyVisitors.sum_daily_nb_uniq_visitors}}',
+       {% endfor %} ]
+      }
+    ]
+    },
+    options: {
+      plugins: {
+        title: {
+            display: true,
+            text: 'Device Browser Engine'
+        }
+    }
+    }
+  });
+  
+  new Chart(document.getElementById("deviceBrowserVersion"), {
+    type: 'line',
+    data: {
+      labels: [{% for label in deviceBrowserVersion %}
+                '{{label.label}}',
+              {%endfor%}],
+      datasets: [
+      {
+        label: "Number of Visits",
+        backgroundColor: "pink",
+        borderColor: "red",
+        borderWidth: .5,
+        data: [ {% for nbVisits in deviceBrowserVersion %}
+        '{{nbVisits.nb_visits}}',
+       {% endfor %} ]
+      },
+      {
+        label: "Number of Actions",
+        backgroundColor: "lightblue",
+        borderColor: "blue",
+        borderWidth: 1,
+        data: [ {% for nbActions in deviceBrowserVersion %}
+        '{{nbActions.nb_actions}}',
+       {% endfor %} ]
+      },
+      {
+        label: "Sum of Daily Users",
+        backgroundColor: "lightgreen",
+        borderColor: "green",
+        borderWidth: 1,
+        data: [ {% for sumDailyUsers in deviceBrowserVersion %}
+        '{{sumDailyUsers.sum_daily_nb_users}}',
+       {% endfor %} ]
+      },
+      {
+        label: "Sum of daily Visitors",
+        backgroundColor: "yellow",
+        borderColor: "orange",
+        borderWidth: 1,
+        data: [ {% for sumDailyVisitors in deviceBrowserVersion %}
+        '{{sumDailyVisitors.sum_daily_nb_uniq_visitors}}',
+       {% endfor %} ]
+      }
+    ]
+    },
+    options: {
+      plugins: {
+        title: {
+            display: true,
+            text: 'Device Browser Version'
+        }
+    }
+    }
+  });
+  
+  new Chart(document.getElementById("deviceModel"), {
+    type: 'line',
+    data: {
+      labels: [{% for label in deviceModel %}
+                '{{label.label}}',
+              {%endfor%}],
+      datasets: [
+      {
+        label: "Number of Visits",
+        backgroundColor: "pink",
+        borderColor: "red",
+        borderWidth: .5,
+        data: [ {% for nbVisits in deviceModel %}
+        '{{nbVisits.nb_visits}}',
+       {% endfor %} ]
+      },
+      {
+        label: "Number of Actions",
+        backgroundColor: "lightblue",
+        borderColor: "blue",
+        borderWidth: 1,
+        data: [ {% for nbActions in deviceModel %}
+        '{{nbActions.nb_actions}}',
+       {% endfor %} ]
+      },
+      {
+        label: "Sum of Daily Users",
+        backgroundColor: "lightgreen",
+        borderColor: "green",
+        borderWidth: 1,
+        data: [ {% for sumDailyUsers in deviceModel %}
+        '{{sumDailyUsers.sum_daily_nb_users}}',
+       {% endfor %} ]
+      },
+      {
+        label: "Sum of daily Visitors",
+        backgroundColor: "yellow",
+        borderColor: "orange",
+        borderWidth: 1,
+        data: [ {% for sumDailyVisitors in deviceModel %}
+        '{{sumDailyVisitors.sum_daily_nb_uniq_visitors}}',
+       {% endfor %} ]
+      }
+    ]
+    },
+    options: {
+      plugins: {
+        title: {
+            display: true,
+            text: 'Device Model'
+        }
+    }
+    }
+  });
+  
+  new Chart(document.getElementById("deviceOSFamily"), {
+    type: 'line',
+    data: {
+      labels: [{% for label in deviceOSFamily %}
+                '{{label.label}}',
+              {%endfor%}],
+      datasets: [
+      {
+        label: "Number of Visits",
+        backgroundColor: "pink",
+        borderColor: "red",
+        borderWidth: .5,
+        data: [ {% for nbVisits in deviceOSFamily %}
+        '{{nbVisits.nb_visits}}',
+       {% endfor %} ]
+      },
+      {
+        label: "Number of Actions",
+        backgroundColor: "lightblue",
+        borderColor: "blue",
+        borderWidth: 1,
+        data: [ {% for nbActions in deviceOSFamily %}
+        '{{nbActions.nb_actions}}',
+       {% endfor %} ]
+      },
+      {
+        label: "Sum of Daily Users",
+        backgroundColor: "lightgreen",
+        borderColor: "green",
+        borderWidth: 1,
+        data: [ {% for sumDailyUsers in deviceOSFamily %}
+        '{{sumDailyUsers.sum_daily_nb_users}}',
+       {% endfor %} ]
+      },
+      {
+        label: "Sum of daily Visitors",
+        backgroundColor: "yellow",
+        borderColor: "orange",
+        borderWidth: 1,
+        data: [ {% for sumDailyVisitors in deviceOSFamily %}
+        '{{sumDailyVisitors.sum_daily_nb_uniq_visitors}}',
+       {% endfor %} ]
+      }
+    ]
+    },
+    options: {
+      plugins: {
+        title: {
+            display: true,
+            text: 'Device OS Family'
+        }
+    }
+    }
+  });
+  
+  new Chart(document.getElementById("deviceOSVersion"), {
+    type: 'line',
+    data: {
+      labels: [{% for label in deviceOSVersion %}
+                '{{label.label}}',
+              {%endfor%}],
+      datasets: [
+      {
+        label: "Number of Visits",
+        backgroundColor: "pink",
+        borderColor: "red",
+        borderWidth: .5,
+        data: [ {% for nbVisits in deviceOSVersion %}
+        '{{nbVisits.nb_visits}}',
+       {% endfor %} ]
+      },
+      {
+        label: "Number of Actions",
+        backgroundColor: "lightblue",
+        borderColor: "blue",
+        borderWidth: 1,
+        data: [ {% for nbActions in deviceOSVersion %}
+        '{{nbActions.nb_actions}}',
+       {% endfor %} ]
+      },
+      {
+        label: "Sum of Daily Users",
+        backgroundColor: "lightgreen",
+        borderColor: "green",
+        borderWidth: 1,
+        data: [ {% for sumDailyUsers in deviceOSVersion %}
+        '{{sumDailyUsers.sum_daily_nb_users}}',
+       {% endfor %} ]
+      },
+      {
+        label: "Sum of daily Visitors",
+        backgroundColor: "yellow",
+        borderColor: "orange",
+        borderWidth: 1,
+        data: [ {% for sumDailyVisitors in deviceOSVersion %}
+        '{{sumDailyVisitors.sum_daily_nb_uniq_visitors}}',
+       {% endfor %} ]
+      }
+    ]
+    },
+    options: {
+      plugins: {
+        title: {
+            display: true,
+            text: 'Device OS Version'
+        }
+    }
+    }
+  });
+  {% endblock %}

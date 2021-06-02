@@ -15,7 +15,7 @@
     <ProjectReference Include="..\StatCan.OrchardCore.Security\StatCan.OrchardCore.Security.csproj" PrivateAssets="none" />
     
     <!-- Modules -->
-    <ProjectReference Include="..\..\Modules\StatCan.OrchardCore.Chartist\StatCan.OrchardCore.Chartist.csproj" PrivateAssets="none" />
+    <ProjectReference Include="..\..\Modules\StatCan.OrchardCore.ChartJS\StatCan.OrchardCore.ChartJS.csproj" PrivateAssets="none" />
     <ProjectReference Include="..\..\Modules\StatCan.OrchardCore.CommonTypes\StatCan.OrchardCore.CommonTypes.csproj" PrivateAssets="none" />
     <ProjectReference Include="..\..\Modules\StatCan.OrchardCore.ContentFields\StatCan.OrchardCore.ContentFields.csproj" PrivateAssets="none" />
     <ProjectReference Include="..\..\Modules\StatCan.OrchardCore.DisplayHelpers\StatCan.OrchardCore.DisplayHelpers.csproj" PrivateAssets="none" />

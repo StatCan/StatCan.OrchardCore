@@ -3,9 +3,9 @@ using OrchardCore.Modules;
 using OrchardCore.ResourceManagement;
 using OrchardCore.Data.Migration;
 
-namespace StatCan.OrchardCore.Chartist
+namespace StatCan.OrchardCore.ChartJS
 {
-    [Feature(FeatureIds.Chartist)]
+    [Feature(FeatureIds.ChartJS)]
     public class Startup : StartupBase
     {
         public override void ConfigureServices(IServiceCollection serviceCollection) => serviceCollection.AddScoped<IDataMigration, Migrations>();

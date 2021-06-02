@@ -4,7 +4,7 @@ using OrchardCore.Data.Migration;
 using OrchardCore.Title.Models;
 using StatCan.OrchardCore.Extensions;
 
-namespace StatCan.OrchardCore.Chartist
+namespace StatCan.OrchardCore.ChartJS
 {
     public class Migrations : DataMigration
     {

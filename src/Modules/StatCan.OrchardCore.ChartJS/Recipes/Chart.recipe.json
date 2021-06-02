@@ -1,0 +1,111 @@
+{
+    "name": "ChartJS",
+    "displayName": "ChartJS",
+    "description": "WIP - Adds a chart widget",
+    "author": "StatCan Digital Innovation",
+    "website": "digital.statcan.gc.ca",
+    "version": "1.0.0",
+    "issetuprecipe": false,
+    "categories": [],
+    "tags": [],
+    "steps": [
+      {
+        "name": "ContentDefinition",
+        "ContentTypes": [
+          {
+            "Name": "ChartJS",
+            "DisplayName": "ChartJS",
+            "Settings": {
+              "ContentTypeSettings": {
+                "Creatable": true,
+                "Listable": true,
+                "Draftable": true,
+                "Versionable": true,
+                "Stereotype": "Widget",
+                "Securable": true
+              },
+              "FullTextAspectSettings": {}
+            },
+            "ContentTypePartDefinitionRecords": [
+              {
+                "PartName": "ChartJS",
+                "Name": "ChartJS",
+                "Settings": {
+                  "ContentTypePartSettings": {
+                    "Position": "0"
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "ContentParts": [
+          {
+            "Name": "ChartJS",
+            "Settings": {},
+            "ContentPartFieldDefinitionRecords": [
+              {
+                "FieldName": "TextField",
+                "Name": "Title",
+                "Settings": {
+                  "ContentPartFieldSettings": {
+                    "DisplayName": "Title",
+                    "Position": "0"
+                  },
+                  "TextFieldSettings": {
+                    "Hint": "Enter a title for the chart"
+                  }
+                }
+              },
+              {
+                "FieldName": "TextField",
+                "Name": "Type",
+                "Settings": {
+                  "ContentPartFieldSettings": {
+                    "DisplayName": "Type",
+                    "Editor": "PredefinedList",
+                    "Position": "2"
+                  },
+                  "TextFieldSettings": {
+                    "Hint": "Select one of the following options: Bar, Line or Pie.",
+                    "Required": true
+                  },
+                  "TextFieldPredefinedListEditorSettings": {
+                    "Options": [
+                      {
+                        "name": "Bar",
+                        "value": "bar"
+                      },
+                      {
+                        "name": "Line",
+                        "value": "line"
+                      },
+                      {
+                        "name": "Pie",
+                        "value": "pie"
+                      }
+                    ]
+                  }
+                }
+              },
+              {
+                "FieldName": "TextField",
+                "Name": "Data",
+                "Settings": {
+                  "ContentPartFieldSettings": {
+                    "DisplayName": "Data",
+                    "Editor": "CodeMirror",
+                    "Position": "1"
+                  },
+                  "TextFieldSettings": {
+                    "Hint": "Enter the JSON here",
+                    "Required": true
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }

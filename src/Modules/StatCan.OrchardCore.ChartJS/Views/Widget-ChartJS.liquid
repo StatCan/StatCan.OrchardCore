@@ -1,0 +1,22 @@
+{% script name: "chartJS", src: "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.3.2/chart.min.js", at: "Foot" %}
+{% style name:"styles", src:"https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css", rel:"stylesheet" %}
+
+{% capture data %}
+{{Model.ContentItem.Content.ChartJS.Data.Text | raw}}
+{% endcapture %}
+
+{% assign type = Model.ContentItem.Content.ChartJS.Type.Text %}
+{% assign title = Model.ContentItem.Content.ChartJS.Title.Text | raw %}
+
+{% assign bar = "BarChart" | shape_new | shape_properties: data: data, title: title %}
+{% assign line = "LineChart" | shape_new | shape_properties: data: data, title: title  %}
+{% assign pie = "PieChart" | shape_new | shape_properties: data: data, title: title  %}
+
+{% if type == 'bar' %}
+    {{ bar | shape_render }}
+{% elsif type == 'line' %}
+    {{ line | shape_render }}
+{% else %}
+    {{ pie | shape_render }}
+{% endif %}
+
