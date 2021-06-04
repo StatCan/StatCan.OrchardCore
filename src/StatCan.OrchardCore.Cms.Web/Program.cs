@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
-using OrchardCore.Logging;
+using Serilog;
 
 namespace web
 {
@@ -16,8 +16,12 @@ namespace web
         public static IHost BuildHost(string[] args) =>
             Host.CreateDefaultBuilder(args)
                 .ConfigureLogging(logging => logging.ClearProviders())
+                .UseSerilog((hostingContext, configBuilder) =>
+                    {
+                        configBuilder.ReadFrom.Configuration(hostingContext.Configuration)
+                        .Enrich.FromLogContext();
+                    })
                 .ConfigureWebHostDefaults(webBuilder => webBuilder
-                    .UseNLogWeb()
                     .UseStartup<Startup>()
                 ).Build();
     }
