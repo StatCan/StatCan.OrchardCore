@@ -11,6 +11,8 @@ using OrchardCore.FileStorage;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using OrchardCore;
+using OrchardCore.DisplayManagement.ModelBinding;
+using System.Text;
 
 namespace StatCan.OrchardCore.Scripting
 {
@@ -27,9 +29,73 @@ namespace StatCan.OrchardCore.Scripting
     public class MediaGlobalMethodsProvider : IGlobalMethodProvider
     {
         private readonly GlobalMethod _saveMedia;
+        private readonly GlobalMethod _setMediaErrors;
+        private readonly GlobalMethod _hasMediaError;
+        private readonly GlobalMethod _getMediaErrors;
+        private readonly GlobalMethod _getMediaPaths;
 
         public MediaGlobalMethodsProvider(IStringLocalizer<FormsGlobalMethodsProvider> S)
         {
+             _hasMediaError = new GlobalMethod
+            {
+                Name = "hasMediaError",
+                Method = serviceProvider => (Func<SaveMediaResult[], bool>)((mediaResults) => mediaResults.Any(r => r.hasError))
+            };
+
+            _setMediaErrors = new GlobalMethod
+            {
+                Name = "setMediaError",
+                Method = serviceProvider => (Action<string, SaveMediaResult[]>)((name, mediaResults) => {
+                    var updateModelAccessor = serviceProvider.GetRequiredService<IUpdateModelAccessor>();
+
+                    var errorBuilder = new StringBuilder();
+
+                    foreach (var mediaResult in mediaResults)
+                    {
+                        if(mediaResult.hasError)
+                        {
+                            errorBuilder.AppendLine(mediaResult.errorMessage);
+                        }
+                    }
+
+                    updateModelAccessor.ModelUpdater.ModelState.AddModelError(name, errorBuilder.ToString());
+                })
+            };
+
+            _getMediaErrors = new GlobalMethod
+            {
+                Name = "getMediaErrors",
+                Method = serviceProvider => (Func<SaveMediaResult[], string[]>)(( mediaResults) => {
+                    var result = new List<string>();
+
+                    foreach (var mediaResult in mediaResults)
+                    {
+                        if(mediaResult.hasError)
+                        {
+                            result.Add(mediaResult.errorMessage);
+                        }
+                    }
+
+                    return result.ToArray();
+                })
+            };
+
+            _getMediaPaths = new GlobalMethod
+            {
+                Name = "getMediaPaths",
+                Method = serviceProvider => (Func<SaveMediaResult[], string[]>)((mediaResults) => {
+                    var result = new List<string>();
+                    foreach (var mediaResult in mediaResults)
+                    {
+                        if(!string.IsNullOrEmpty(mediaResult.mediaPath))
+                        {
+                            result.Add(mediaResult.mediaPath);
+                        }
+                    }
+                    return result.ToArray();
+                })
+            };
+
              _saveMedia = new GlobalMethod
             {
                 Name = "saveMedia",
@@ -118,7 +184,7 @@ namespace StatCan.OrchardCore.Scripting
 
         public IEnumerable<GlobalMethod> GetMethods()
         {
-            return new[] { _saveMedia };
+            return new[] { _saveMedia, _getMediaPaths, _setMediaErrors, _hasMediaError, _getMediaErrors };
         }
     }
 }
