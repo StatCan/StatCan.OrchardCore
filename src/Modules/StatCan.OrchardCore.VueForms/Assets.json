@@ -5,7 +5,7 @@
     "output": "wwwroot/Styles/vue-forms.css"
   },
   {
-    "inputs": [ "Assets/veevalidate-setup.js", "Assets/vue-forms.js" ],
+    "inputs": [ "Assets/objectToFormData.js", "Assets/veevalidate-setup.js", "Assets/vue-forms.js" ],
     "output": "wwwroot/Scripts/vue-forms.js"
   },
   {

@@ -80,23 +80,20 @@ function initForm(app) {
           observer.validate().then((valid) => {
             if (valid) {
               const action = vm.$refs.form.getAttribute("action");
-              
+               
               // set form vue data
               vm.form.submitting = true;
 
-              let formData = new FormData();
-              formData.append("__RequestVerificationToken", vm.$refs.form.querySelector(
+              let frmData = vm.submitData();
+              frmData.__RequestVerificationToken = vm.$refs.form.querySelector(
                 'input[name="__RequestVerificationToken"]'
-              ).value)
+              ).value;
               if (typeof grecaptcha == "object") {
-                formData.append("recaptcha", grecaptcha.getResponse());
+                frmData.recaptcha = grecaptcha.getResponse();
               }
-                
-              let submitData = vm.submitData();
-              for (const key in submitData) {
-                formData.append(key, submitData[key]);
-              }
-              
+
+              let formData = $.serializeToFormData(frmData);
+
               // iterate all file inputs and add the files to the request
               $(this.$refs.form).find("input[type=file]").each(function(){
                 for (const file of this.files) {
