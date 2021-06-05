@@ -16,14 +16,14 @@
     },
     {
       "differentiator": "VueForm-SuccessMessage",
-      "place" : "Parts:1#Server;8",
+      "place" : "Parts:20#Server;8",
       "contentType": [
           "VueForm"
       ]
     },
     {
-      "differentiator": "VueFormScripts-ZodValidation",
-      "place" : "Parts:0#Validation;10",
+      "differentiator": "VueFormScripts-OnValidation",
+      "place" : "Parts:5#Server;8",
       "contentType": [
           "VueForm"
       ]
@@ -44,7 +44,7 @@
     },
     {
       "differentiator": "VueFormScripts-OnSubmitted",
-      "place" : "Parts:5#Server;8",
+      "place" : "Parts:10#Server;8",
       "contentType": [
           "VueForm"
       ]
@@ -86,6 +86,13 @@
   "BooleanField_Edit" : [
     {
       "differentiator": "VueForm-Disabled",
+      "place" : "Parts:10#Options;20",
+      "contentType": [
+          "VueForm"
+      ]
+    },
+    {
+      "differentiator": "VueForm-Debug",
       "place" : "Parts:10#Options;20",
       "contentType": [
           "VueForm"

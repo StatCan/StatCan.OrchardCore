@@ -21,6 +21,9 @@ using System.Linq;
 using OrchardCore.Workflows.Http;
 using Etch.OrchardCore.ContentPermissions.Services;
 using Microsoft.Extensions.Localization;
+using System;
+using System.Text.Json;
+using Newtonsoft.Json;
 
 namespace StatCan.OrchardCore.VueForms.Controllers
 {
@@ -81,7 +84,6 @@ namespace StatCan.OrchardCore.VueForms.Controllers
 
             var formPart = form.As<VueForm>();
 
-            // Verify if the form is enabled
             if (formPart.Disabled.Value)
             {
                 return NotFound();
@@ -96,18 +98,21 @@ namespace StatCan.OrchardCore.VueForms.Controllers
 
             var script = form.As<VueFormScripts>();
 
-            // This object holds the return value of the OnSubmitted script.
-            object serverScriptResult = null;
+            // This object holds the return value of the script
+            object serverScriptResult = EvaluateScript(script?.OnValidation?.Text, scriptingProvider, formPart, "OnValidation");
 
-            if (!string.IsNullOrEmpty(script?.OnSubmitted?.Text))
-            {
-                serverScriptResult = _scriptingManager.EvaluateJs(script.OnSubmitted.Text, scriptingProvider);
-            }
-
-            // The check is performed here to avoid running the workflow unless the form state is valid
+            // Return if any errors are returned in the OnValidation script
             if (ModelState.ErrorCount > 0)
             {
-                return Json(new { validationError = true, errors = GetErrorDictionary(), serverScriptResult });
+                return Json(new VueFormSubmitResult(GetErrorDictionary(), serverScriptResult, GetDebugLogs(formPart)));
+            }
+
+            serverScriptResult = EvaluateScript(script?.OnSubmitted?.Text, scriptingProvider, formPart, "OnSubmitted");
+
+            // Return if any errors are returned from the OnSubmitted script
+            if (ModelState.ErrorCount > 0)
+            {
+                return Json(new VueFormSubmitResult(GetErrorDictionary(), serverScriptResult, GetDebugLogs(formPart)));
             }
 
             // _workflow manager is null if workflow feature is not enabled
@@ -119,10 +124,10 @@ namespace StatCan.OrchardCore.VueForms.Controllers
                 );
             }
 
-            // if the workflow added errors, return them here
+            // Return if any errors are returned from the Workflow
             if (ModelState.ErrorCount > 0)
             {
-                return Json(new { validationError = true, errors = GetErrorDictionary(), serverScriptResult });
+                return Json(new VueFormSubmitResult(GetErrorDictionary(), serverScriptResult, GetDebugLogs(formPart)));
             }
 
             // Handle the redirects with ajax requests.
@@ -141,8 +146,23 @@ namespace StatCan.OrchardCore.VueForms.Controllers
                 // Let the HttpResponseTask control the response. This will fail on the client if it's anything other than json
                 return new EmptyResult();
             }
-            // everything worked fine. send the success signal to the client
-            return Json(new { successMessage = HttpContext.Items[Constants.VueFormSuccessMessage], serverScriptResult });
+
+            //try to get the message from the http context as set by the addSuccessMessage() scripting function
+            var successMessage = string.Empty;
+            if(HttpContext.Items[Constants.VueFormSuccessMessage] != null)
+            {
+               successMessage = (string)HttpContext.Items[Constants.VueFormSuccessMessage];
+            }
+            else
+            {
+                if(!string.IsNullOrWhiteSpace(formPart.SuccessMessage?.Text))
+                {
+                    var formSuccessMessage = await _liquidTemplateManager.RenderStringAsync(formPart.SuccessMessage.Text, _htmlEncoder);
+                    successMessage = await _shortcodeService.ProcessAsync(formSuccessMessage);
+                }
+            }
+
+            return Json(new VueFormSubmitResult(successMessage, serverScriptResult, GetDebugLogs(formPart)));
         }
         private Dictionary<string, string[]> GetErrorDictionary()
         {
@@ -153,5 +173,64 @@ namespace StatCan.OrchardCore.VueForms.Controllers
                     kvp => kvp.Value.Errors.Select(e => e.ErrorMessage).ToArray()
                 );
         }
+        private Dictionary<string, string> GetDebugLogs(VueForm form)
+        {
+            if(form.Debug.Value)
+            {
+                return HttpContext.Items
+                    .Where(x => ((string)x.Key).StartsWith(Constants.VueFormDebugLog))
+                    .ToDictionary(kvp=> (string)kvp.Key, kvp=> kvp.Value.ToString()
+                );
+            }
+            return null;
+        }
+
+        private object EvaluateScript(string script,  VueFormMethodsProvider scriptingProvider, VueForm form, string scriptName)
+        {
+            object result = null;
+            if(!string.IsNullOrWhiteSpace(script))
+            {
+                try
+                {
+                    result = _scriptingManager.EvaluateJs(script, scriptingProvider);
+                }
+                catch(Exception ex)
+                {
+                     _logger.LogError(ex, $"An error occurred evaluating the {scriptName} script");
+
+                    if(form.Debug.Value)
+                    {
+                        HttpContext.Items.TryAdd($"{Constants.VueFormDebugLog}Script_{scriptName}", ex.ToString());
+                    }
+                    ModelState.AddModelError("serverErrorMessage", S["A unhandled error occured while executing your request."].ToString());
+                }
+            }
+            return result;
+        }
+    }
+
+    public class VueFormSubmitResult
+    {
+        public VueFormSubmitResult(string successMessage, object scriptResult, Dictionary<string,string> debug)
+        {
+            SuccessMessage = successMessage;
+            ServerScriptResult = scriptResult;
+            Debug = debug;
+        }
+        public VueFormSubmitResult(Dictionary<string, string[]> errors, object scriptResult, Dictionary<string,string> debug)
+        {
+            Errors = errors;
+            ValidationError = true;
+            ServerScriptResult = scriptResult;
+            Debug = debug;
+        }
+        public string SuccessMessage { get; }
+
+        public object ServerScriptResult { get; }
+
+        public bool ValidationError { get; }
+
+        public Dictionary<string, string[]> Errors { get; }
+        public Dictionary<string, string> Debug { get; }
     }
 }

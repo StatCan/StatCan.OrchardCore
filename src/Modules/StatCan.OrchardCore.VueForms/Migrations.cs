@@ -60,6 +60,12 @@ namespace StatCan.OrchardCore.VueForms
                         Hint = "If disabled, the Disabled Html field will be rendered in place of the form "
                     }
                 )
+                .WithBooleanField("Debug", "Debug", "2",
+                    new BooleanFieldSettings()
+                    {
+                        Hint = "Debug mode is meant to be used when developping VueForms and will return additional debug information to the client along with the response"
+                    }
+                )
                 .WithField("DisabledHtml", f => f
                     .OfType(nameof(HtmlField))
                     .WithDisplayName("Disabled Html")
@@ -90,10 +96,10 @@ namespace StatCan.OrchardCore.VueForms
                    .WithPosition("1")
                    .WithEditor("CodeMirrorJS")
                 )
-                .WithField("ZodValidation", f => f
+                .WithField("OnValidation", f => f
                     .OfType(nameof(TextField))
                     .WithDisplayName("On Validation")
-                    .WithSettings(new TextFieldSettings() { Hint = "(Optional) Zod schema (https://github.com/colinhacks/zod#defining-schemas) used for client and server side validation."})
+                    .WithSettings(new TextFieldSettings() { Hint = "(Optional) Script that runs server side to validate your form."})
                     .WithPosition("2")
                     .WithEditor("CodeMirrorJS")
                 )
@@ -227,6 +233,12 @@ namespace StatCan.OrchardCore.VueForms
                         Hint = "If disabled, the Disabled Html field will be rendered in place of the form "
                     }
                 )
+                .WithBooleanField("Debug", "Debug", "2",
+                    new BooleanFieldSettings()
+                    {
+                        Hint = "Debug mode is meant to be used when developping VueForms and will return additional debug information to the client along with the response"
+                    }
+                )
                 .WithField("DisabledHtml", f => f
                     .OfType(nameof(HtmlField))
                     .WithDisplayName("Disabled Html")
@@ -246,53 +258,20 @@ namespace StatCan.OrchardCore.VueForms
                 .RemovePart("FlowPart")
                 .WithPart("AliasPart", p => p.WithPosition("2")));
 
-            _contentDefinitionManager.AlterPartDefinition("VueFormScripts", part => part
-                .RemoveField("OnValidation")
-                .WithField("ClientInit", f => f
-                    .OfType(nameof(TextField))
-                    .WithDisplayName("Client Init")
-                    .WithSettings(new TextFieldSettings() { Hint = "(Optional) Script that runs client side to set various options for your form (such as setup the VeeValidate locales). With liquid support." })
-                    .WithPosition("0")
-                    .WithEditor("CodeMirrorJS")
-                )
-                .WithField("ComponentOptions", f => f
-                   .OfType(nameof(TextField))
-                   .WithDisplayName("Component Options object")
-                   .WithSettings(new TextFieldSettings() { Hint = "The form's vue component options object. The component's data object is sent to the server. With liquid support." })
-                   .WithPosition("1")
-                   .WithEditor("CodeMirrorJS")
-                )
-                .WithField("ZodValidation", f => f
-                    .OfType(nameof(TextField))
-                    .WithDisplayName("On Validation")
-                    .WithSettings(new TextFieldSettings() { Hint = "(Optional) Zod schema (https://github.com/colinhacks/zod#defining-schemas) used for client and server side validation."})
-                    .WithPosition("2")
-                    .WithEditor("CodeMirrorJS")
-                )
-                .WithField("OnSubmitted", f => f
-                    .OfType(nameof(TextField))
-                    .WithDisplayName("On Submitted")
-                    .WithSettings(new TextFieldSettings() { Hint = "(Optional) Script that runs server side after the form has been validated. " })
-                    .WithPosition("3")
-                    .WithEditor("CodeMirrorJS")
-                )
-                .Attachable()
-                .WithDescription("Script fields for AjaxForm")
-            );
 
             // migrate existing data
             var forms = await _session.Query<ContentItem, ContentItemIndex>(c => c.ContentType == "VueForm").ListAsync();
 
             foreach (var form in forms)
             {
-                var onValidation = (string)form.Content.VueFormScripts.OnValidation?.Text;
-                if(!string.IsNullOrEmpty(onValidation))
-                {
-                    var onSubmitted = (string)form.Content?.VueFormScripts?.OnSubmitted?.Text;
+                // var onValidation = (string)form.Content.VueFormScripts.OnValidation?.Text;
+                // if(!string.IsNullOrEmpty(onValidation))
+                // {
+                //     var onSubmitted = (string)form.Content?.VueFormScripts?.OnSubmitted?.Text;
 
-                    form.Content.VueFormScripts.OnSubmitted.Text = "function Validate() { \n //Moved from the OnValidation script \n" + onValidation + "\n} Validate();\n" + onSubmitted;
-                }
-                form.Content.VueFormScripts.OnValidation = null;
+                //     form.Content.VueFormScripts.OnSubmitted.Text = "function Validate() { \n //Moved from the OnValidation script \n" + onValidation + "\n} Validate();\n" + onSubmitted;
+                // }
+                // form.Content.VueFormScripts.OnValidation = null;
 
                 var flow = form.As<FlowPart>();
                 var templateBuilder = new StringBuilder();

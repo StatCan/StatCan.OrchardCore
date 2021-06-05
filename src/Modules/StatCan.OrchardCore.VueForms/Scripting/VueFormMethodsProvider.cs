@@ -33,6 +33,14 @@ namespace StatCan.OrchardCore.VueForms.Scripting
                     httpContextAccessor.HttpContext.Items.Add(Constants.VueFormSuccessMessage, message);
                 })
             };
+            _getFormContentItem = new GlobalMethod
+            {
+                Name = "debugLog",
+                Method = serviceProvider => (Action<string, object>)((key, obj) => {
+                    var httpContextAccessor = serviceProvider.GetRequiredService<IHttpContextAccessor>();
+                    httpContextAccessor.HttpContext.Items.TryAdd(Constants.VueFormDebugLog + key, obj.ToString());
+                })
+            };
         }
 
         public IEnumerable<GlobalMethod> GetMethods()

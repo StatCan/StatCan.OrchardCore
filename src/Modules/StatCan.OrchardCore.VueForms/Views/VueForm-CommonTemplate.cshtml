@@ -29,6 +29,11 @@
           novalidate>
       @Html.AntiForgeryToken()
       @Html.Raw(await Orchard.LiquidShortcodesAsync(formPart.Template.Text, (object)Model))
+      @if(formPart.Debug.Value)
+      {
+        <span>@T["Your VueForm is in debug mode"]</span>
+        <pre v-html="form.debug"></pre>
+      }
     </form>
   </validation-observer>
 </script>

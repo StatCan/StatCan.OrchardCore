@@ -47,6 +47,7 @@ function initForm(app) {
     serverValidationMessage: undefined,
     serverErrorMessage: undefined,
     responseData: undefined,
+    debug: undefined,
   };
 
   Vue.component(app.dataset.name, function (resolve) {
@@ -112,6 +113,11 @@ function initForm(app) {
                 success: function (data) {
                   vm.form = { ...defaultFormData };
                   vm.form.responseData = data;
+                  if(data.debug)
+                  {
+                    console.log(data.debug);
+                    vm.form.debug = data.debug;
+                  }
                   // if there are validation errors on the form, display them.
                   if (data.validationError) {
                     //legacy

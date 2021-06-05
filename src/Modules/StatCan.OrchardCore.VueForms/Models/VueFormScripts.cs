@@ -17,9 +17,9 @@ namespace StatCan.OrchardCore.VueForms.Models
         public TextField ComponentOptions { get; set; }
 
         /// <summary>
-        /// Zod validation object used to validate the data client and server side
+        /// Script that runs everytime the form is submitted, to validate data
         /// </summary>
-        public TextField ZodValidation { get; set; }
+        public TextField OnValidation { get; set; }
         /// <summary>
         /// Script that runs after validation. you can
         /// </summary>
