@@ -15,8 +15,8 @@ namespace StatCan.OrchardCore.VueForms.Scripting
     /// </summary>
     public class VueFormMethodsProvider : IGlobalMethodProvider
     {
-
         private readonly GlobalMethod _getFormContentItem;
+        private readonly GlobalMethod _debug;
 
         public VueFormMethodsProvider(ContentItem form)
         {
@@ -25,15 +25,7 @@ namespace StatCan.OrchardCore.VueForms.Scripting
                 Name = "getFormContentItem",
                 Method = serviceProvider => (Func<ContentItem>)(() => form)
             };
-            _getFormContentItem = new GlobalMethod
-            {
-                Name = "addSuccessMessage",
-                Method = serviceProvider => (Action<string>)((message) => {
-                    var httpContextAccessor = serviceProvider.GetRequiredService<IHttpContextAccessor>();
-                    httpContextAccessor.HttpContext.Items.Add(Constants.VueFormSuccessMessage, message);
-                })
-            };
-            _getFormContentItem = new GlobalMethod
+            _debug = new GlobalMethod
             {
                 Name = "debug",
                 Method = serviceProvider => (Action<string, object>)((key, obj) => {
@@ -48,7 +40,7 @@ namespace StatCan.OrchardCore.VueForms.Scripting
 
         public IEnumerable<GlobalMethod> GetMethods()
         {
-            return new[] { _getFormContentItem };
+            return new[] { _getFormContentItem, _debug };
         }
     }
 }

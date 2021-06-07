@@ -30,7 +30,7 @@
       @Html.AntiForgeryToken()
       @Html.Raw(await Orchard.LiquidShortcodesAsync(formPart.Template?.Text, (object)Model))
     </form>
-@if(formPart.Debug.Value)
+@if(formPart.Debug?.Value == true)
 { 
   <style at="Head">
     .debug-mode pre {

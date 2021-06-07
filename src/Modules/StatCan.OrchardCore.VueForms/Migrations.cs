@@ -50,7 +50,8 @@ namespace StatCan.OrchardCore.VueForms
                             } },
                         Editor = EditorOption.Dropdown,
                     })
-                    .WithSettings(new TextFieldSettings() {
+                    .WithSettings(new TextFieldSettings()
+                    {
                         Hint = "Render this form as a Vue component, a standalone vue app or a vuetify app (wrapping with v-app)"
                     })
                 )
@@ -69,15 +70,20 @@ namespace StatCan.OrchardCore.VueForms
                 .WithField("DisabledHtml", f => f
                     .OfType(nameof(HtmlField))
                     .WithDisplayName("Disabled Html")
-                    .WithSettings(new HtmlFieldSettings() { Hint = "Html displayed when someone tries to render a disabled form.", SanitizeHtml = true})
+                    .WithSettings(new HtmlFieldSettings() { Hint = "Html displayed when someone tries to render a disabled form.", SanitizeHtml = true })
                     .WithPosition("2")
                 )
                 .WithField("Template", f => f
-                   .OfType(nameof(TextField))
-                   .WithDisplayName("Template")
-                   .WithSettings(new TextFieldSettings() { Required = true, Hint = "The form's template. VeeValidate v3(https://logaretm.github.io/vee-validate/guide/basics.html) is used for client side validation support. With liquid support." })
-                   .WithPosition("3")
-                   .WithEditor("CodeMirrorLiquid")
+                    .OfType(nameof(TextField))
+                    .WithDisplayName("Template")
+                    .WithSettings(new TextFieldSettings() { Required = true, Hint = "The form's template. VeeValidate v3(https://logaretm.github.io/vee-validate/guide/basics.html) is used for client side validation support. With liquid support." })
+                    .WithPosition("3")
+                    .WithEditor("Monaco")
+                    .WithSettings(
+                        new TextFieldMonacoEditorSettings()
+                        {
+                            Options = "{\"language\": \"html\"}"
+                        })
                 )
                 .WithDescription("Turns your content items into a vue form."));
 
@@ -87,31 +93,51 @@ namespace StatCan.OrchardCore.VueForms
                     .WithDisplayName("Client Init")
                     .WithSettings(new TextFieldSettings() { Hint = "(Optional) Script that runs client side to set various options for your form (such as setup the VeeValidate locales). With liquid support." })
                     .WithPosition("0")
-                    .WithEditor("CodeMirrorJS")
+                    .WithEditor("Monaco")
+                    .WithSettings(
+                        new TextFieldMonacoEditorSettings()
+                        {
+                            Options = "{\"language\": \"javascript\"}"
+                        })
                 )
                 .WithField("ComponentOptions", f => f
                    .OfType(nameof(TextField))
                    .WithDisplayName("Component Options object")
                    .WithSettings(new TextFieldSettings() { Hint = "The form's vue component options object. The component's data object is sent to the server. With liquid support." })
                    .WithPosition("1")
-                   .WithEditor("CodeMirrorJS")
+                .WithEditor("Monaco")
+                    .WithSettings(
+                        new TextFieldMonacoEditorSettings()
+                        {
+                            Options = "{\"language\": \"javascript\"}"
+                        })
                 )
                 .WithField("OnValidation", f => f
                     .OfType(nameof(TextField))
                     .WithDisplayName("On Validation")
-                    .WithSettings(new TextFieldSettings() { Hint = "(Optional) Script that runs server side to validate your form."})
+                    .WithSettings(new TextFieldSettings() { Hint = "(Optional) Script that runs server side to validate your form." })
                     .WithPosition("2")
-                    .WithEditor("CodeMirrorJS")
+                    .WithEditor("Monaco")
+                    .WithSettings(
+                        new TextFieldMonacoEditorSettings()
+                        {
+                            Options = "{\"language\": \"javascript\"}"
+                        })
                 )
                 .WithField("OnSubmitted", f => f
                     .OfType(nameof(TextField))
                     .WithDisplayName("On Submitted")
                     .WithSettings(new TextFieldSettings() { Hint = "(Optional) Script that runs server side after form validation has passed, before the workflow event is triggerred." })
                     .WithPosition("3")
-                    .WithEditor("CodeMirrorJS")
+                    .WithEditor("Monaco")
+                    .WithSettings(
+                        new TextFieldMonacoEditorSettings()
+                        {
+                            Options = "{\"language\": \"javascript\"}"
+                        })
                 )
                 .Attachable()
-                .WithDescription("Script fields for AjaxForm"));
+                .WithDescription("Script fields for VueForms"));
 
             _contentDefinitionManager.AlterTypeDefinition("VueForm", type => type
                 .Draftable().Securable().Versionable()
@@ -138,7 +164,7 @@ namespace StatCan.OrchardCore.VueForms
                 .WithField("ComponentOptions", f => f
                    .OfType(nameof(TextField))
                    .WithDisplayName("Component Options object")
-                   .WithSettings(new TextFieldSettings() {  Required = true, Hint = "The form's vue component options object. With liquid support." })
+                   .WithSettings(new TextFieldSettings() { Required = true, Hint = "The form's vue component options object. With liquid support." })
                    .WithPosition("1")
                    .WithEditor("CodeMirrorJS")
                )
@@ -169,7 +195,8 @@ namespace StatCan.OrchardCore.VueForms
                             } },
                         Editor = EditorOption.Dropdown,
                     })
-                    .WithSettings(new TextFieldSettings() {
+                    .WithSettings(new TextFieldSettings()
+                    {
                         Hint = "Render this form as a Vue component, a standalone vue app or a vuetify app (wrapping with v-app)"
                     })
                 )
@@ -223,7 +250,8 @@ namespace StatCan.OrchardCore.VueForms
                             } },
                         Editor = EditorOption.Dropdown,
                     })
-                    .WithSettings(new TextFieldSettings() {
+                    .WithSettings(new TextFieldSettings()
+                    {
                         Hint = "Render this form as a Vue component, a standalone vue app or a vuetify app (wrapping with v-app)"
                     })
                 )
@@ -242,7 +270,7 @@ namespace StatCan.OrchardCore.VueForms
                 .WithField("DisabledHtml", f => f
                     .OfType(nameof(HtmlField))
                     .WithDisplayName("Disabled Html")
-                    .WithSettings(new HtmlFieldSettings() { Hint = "Html displayed when someone tries to render a disabled form.", SanitizeHtml = true})
+                    .WithSettings(new HtmlFieldSettings() { Hint = "Html displayed when someone tries to render a disabled form.", SanitizeHtml = true })
                     .WithPosition("2")
                 )
                 .WithField("Template", f => f
@@ -250,14 +278,72 @@ namespace StatCan.OrchardCore.VueForms
                    .WithDisplayName("Template")
                    .WithSettings(new TextFieldSettings() { Required = true, Hint = "The form's template. VeeValidate v3(https://logaretm.github.io/vee-validate/guide/basics.html) is used for client side validation support. With liquid support." })
                    .WithPosition("3")
-                   .WithEditor("CodeMirrorLiquid")
+                   .WithEditor("Monaco")
+                   .WithSettings(
+                        new TextFieldMonacoEditorSettings()
+                        {
+                            Options = "{\"language\": \"html\"}"
+                        })
                 )
                 .WithDescription("Turns your content items into a vue form."));
 
+            // add alias to VueForm and remove FlowPart
             _contentDefinitionManager.AlterTypeDefinition("VueForm", type => type
                 .RemovePart("FlowPart")
                 .WithPart("AliasPart", p => p.WithPosition("2")));
 
+            // switch the editors to monaco
+            _contentDefinitionManager.AlterPartDefinition("VueFormScripts", part => part
+                .WithField("ClientInit", f => f
+                    .OfType(nameof(TextField))
+                    .WithDisplayName("Client Init")
+                    .WithSettings(new TextFieldSettings() { Hint = "(Optional) Script that runs client side to set various options for your form (such as setup the VeeValidate locales). With liquid support." })
+                    .WithPosition("0")
+                    .WithEditor("Monaco")
+                    .WithSettings(
+                        new TextFieldMonacoEditorSettings()
+                        {
+                            Options = "{\"language\": \"javascript\"}"
+                        })
+                )
+                .WithField("ComponentOptions", f => f
+                   .OfType(nameof(TextField))
+                   .WithDisplayName("Component Options object")
+                   .WithSettings(new TextFieldSettings() { Hint = "The form's vue component options object. The component's data object is sent to the server. With liquid support." })
+                   .WithPosition("1")
+                .WithEditor("Monaco")
+                    .WithSettings(
+                        new TextFieldMonacoEditorSettings()
+                        {
+                            Options = "{\"language\": \"javascript\"}"
+                        })
+                )
+                .WithField("OnValidation", f => f
+                    .OfType(nameof(TextField))
+                    .WithDisplayName("On Validation")
+                    .WithSettings(new TextFieldSettings() { Hint = "(Optional) Script that runs server side to validate your form." })
+                    .WithPosition("2")
+                    .WithEditor("Monaco")
+                    .WithSettings(
+                        new TextFieldMonacoEditorSettings()
+                        {
+                            Options = "{\"language\": \"javascript\"}"
+                        })
+                )
+                .WithField("OnSubmitted", f => f
+                    .OfType(nameof(TextField))
+                    .WithDisplayName("On Submitted")
+                    .WithSettings(new TextFieldSettings() { Hint = "(Optional) Script that runs server side after form validation has passed, before the workflow event is triggerred." })
+                    .WithPosition("3")
+                    .WithEditor("Monaco")
+                    .WithSettings(
+                        new TextFieldMonacoEditorSettings()
+                        {
+                            Options = "{\"language\": \"javascript\"}"
+                        })
+                )
+                .Attachable()
+                .WithDescription("Script fields for VueForms"));
 
             // migrate existing data
             var forms = await _session.Query<ContentItem, ContentItemIndex>(c => c.ContentType == "VueForm").ListAsync();
@@ -277,7 +363,7 @@ namespace StatCan.OrchardCore.VueForms
                 var templateBuilder = new StringBuilder();
                 foreach (var widget in flow.Widgets)
                 {
-                    if(widget.ContentType == "VueComponent")
+                    if (widget.ContentType == "VueComponent")
                     {
                         templateBuilder.Append((string)widget.Content.VueComponent.Template.Text);
                         templateBuilder.AppendLine();
@@ -286,7 +372,7 @@ namespace StatCan.OrchardCore.VueForms
                 form.Remove("FlowPart");
 
                 var isDisabled = false;
-                if(form.Content?.VueForm?.Enabled?.Value != null)
+                if (form.Content?.VueForm?.Enabled?.Value != null)
                 {
                     isDisabled = !(bool)form.Content.VueForm.Enabled.Value;
                 }
@@ -294,8 +380,8 @@ namespace StatCan.OrchardCore.VueForms
 
                 form.Alter<VueForm>(v =>
                 {
-                    v.Disabled = new BooleanField(){ Value = isDisabled };
-                    v.Template = new TextField(){ Text = templateBuilder.ToString() };
+                    v.Disabled = new BooleanField() { Value = isDisabled };
+                    v.Template = new TextField() { Text = templateBuilder.ToString() };
                 });
                 _session.Save(form);
             }
@@ -305,14 +391,14 @@ namespace StatCan.OrchardCore.VueForms
 
         private void AddVTextField()
         {
-               _contentDefinitionManager.AlterTypeDefinition("VTextField", type => type
-                .DisplayedAs("VTextField")
-                .Stereotype("Widget")
-                .WithPart("VTextField", part => part
-                    .WithPosition("1")
-                )
-                .WithTitlePart("0", TitlePartOptions.GeneratedDisabled, "{{ Model.ContentItem.Content.VExpansionPanel.Header.Text }}")
-            );
+            _contentDefinitionManager.AlterTypeDefinition("VTextField", type => type
+             .DisplayedAs("VTextField")
+             .Stereotype("Widget")
+             .WithPart("VTextField", part => part
+                 .WithPosition("1")
+             )
+             .WithTitlePart("0", TitlePartOptions.GeneratedDisabled, "{{ Model.ContentItem.Content.VExpansionPanel.Header.Text }}")
+         );
 
             _contentDefinitionManager.AlterPartDefinition("VTextField", part => part
                 .WithField("Model", field => field

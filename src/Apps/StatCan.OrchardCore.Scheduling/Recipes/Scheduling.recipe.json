@@ -193,8 +193,11 @@
             "Title": "Contact Us"
           },
           "VueForm": {
-            "Enabled": {
-              "Value": true
+            "Disabled": {
+              "Value": false
+            },
+            "Debug": {
+              "Value": false
             },
             "RenderAs": {
               "Text": null
@@ -205,38 +208,9 @@
             "SuccessMessage": {
               "Text": "{{ \"successMessage\" | localize }}"
             },
-            "ErrorMessage": {
-              "Text": "Please correct the errors above."
+            "Template": {
+              "Text": "<v-container >\r\n  <v-card-title>{{'Feedback' | localize}}</v-card-title>\r\n  <v-card-text>\r\n    <v-row>\r\n      <v-col cols=\"8\">\r\n        <validation-provider name=\"{{ \"nameLabel\" | localize | downcase }}\" rules=\"required\" v-slot=\"{ errors, valid }\">\r\n          <v-text-field v-model=\"name\" :success=\"valid\" :error-messages=\"errors\" filled=\"filled\" label=\"{{ \"nameLabel\" | localize }}\"></v-text-field>\r\n        </validation-provider>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n        <validation-provider name=\"{{ \"emailLabel\" | localize | downcase }}\" rules=\"required|email\" v-slot=\"{ errors, valid }\">\r\n          <v-text-field v-model=\"email\" :success=\"valid\" :error-messages=\"errors\" filled=\"filled\" label=\"{{ \"emailLabel\" | localize }}\"></v-text-field>\r\n        </validation-provider>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n        <validation-provider name=\"{{ \"messageLabel\" | localize | downcase }}\" rules=\"required\" v-slot=\"{ errors, valid }\">\r\n       \t  <v-textarea v-model=\"message\" :success=\"valid\" :error-messages=\"errors\" counter=\"true\" filled=\"filled\" label=\"{{ \"messageLabel\" | localize }}\" rows=\"5\">\r\n          </v-textarea>\r\n    \t</validation-provider>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n        <v-alert type=\"success\" v-if=\"form.successMessage\">\r\n          {% raw %}{{ form.successMessage }}{% endraw %}\r\n        </v-alert>\r\n        <v-alert type=\"error\" v-if=\"form.serverValidationMessage\">\r\n          {% raw %}{{ form.serverValidationMessage[0] }}{% endraw %}\r\n        </v-alert>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n    \t<v-btn type=\"submit\" depressed block @click=\"formHandleSubmit\" :disabled=\"form.submitting\">{{ \"submitLabel\" | localize }}</v-btn>\r\n      </v-col>\r\n    </v-row>\r\n  </v-card-text>\r\n</v-container>"
             }
-          },
-          "FlowPart": {
-            "Widgets": [
-              {
-                "ContentItemId": "44wyajnahrbgq4an4rpz45cgc1",
-                "ContentItemVersionId": null,
-                "ContentType": "VueComponent",
-                "DisplayText": "Contact Us",
-                "Latest": false,
-                "Published": false,
-                "ModifiedUtc": "2021-05-04T15:27:08.8917443Z",
-                "PublishedUtc": null,
-                "CreatedUtc": null,
-                "Owner": "",
-                "Author": "admin",
-                "TitlePart": {
-                  "Title": "Contact Us"
-                },
-                "VueComponent": {
-                  "Template": {
-                    "Text": "<v-container >\r\n  <v-card-title>{{'Feedback' | localize}}</v-card-title>\r\n  <v-card-text>\r\n    <v-row>\r\n      <v-col cols=\"8\">\r\n        <validation-provider name=\"{{ \"nameLabel\" | localize | downcase }}\" rules=\"required\" v-slot=\"{ errors, valid }\">\r\n          <v-text-field v-model=\"name\" :success=\"valid\" :error-messages=\"errors\" filled=\"filled\" label=\"{{ \"nameLabel\" | localize }}\"></v-text-field>\r\n        </validation-provider>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n        <validation-provider name=\"{{ \"emailLabel\" | localize | downcase }}\" rules=\"required|email\" v-slot=\"{ errors, valid }\">\r\n          <v-text-field v-model=\"email\" :success=\"valid\" :error-messages=\"errors\" filled=\"filled\" label=\"{{ \"emailLabel\" | localize }}\"></v-text-field>\r\n        </validation-provider>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n        <validation-provider name=\"{{ \"messageLabel\" | localize | downcase }}\" rules=\"required\" v-slot=\"{ errors, valid }\">\r\n       \t  <v-textarea v-model=\"message\" :success=\"valid\" :error-messages=\"errors\" counter=\"true\" filled=\"filled\" label=\"{{ \"messageLabel\" | localize }}\" rows=\"5\">\r\n          </v-textarea>\r\n    \t</validation-provider>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n        <v-alert type=\"success\" v-if=\"form.successMessage\">\r\n          {% raw %}{{ form.successMessage }}{% endraw %}\r\n        </v-alert>\r\n        <v-alert type=\"error\" v-if=\"form.serverValidationMessage\">\r\n          {% raw %}{{ form.serverValidationMessage[0] }}{% endraw %}\r\n        </v-alert>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n    \t<v-btn type=\"submit\" depressed block @click=\"formHandleSubmit\" :disabled=\"form.submitting\">{{ \"submitLabel\" | localize }}</v-btn>\r\n      </v-col>\r\n    </v-row>\r\n  </v-card-text>\r\n</v-container>"
-                  }
-                },
-                "FlowMetadata": {
-                  "Alignment": 3,
-                  "Size": 100
-                }
-              }
-            ]
           },
           "VueFormScripts": {
             "ClientInit": {
@@ -252,7 +226,6 @@
               "Text": "var data = requestFormAsJsonObject();\r\n\r\nvar item = createContentItem(\"ContactRequest\", true, {\r\n  \"ContactRequest\": {\r\n    \"Name\": {\r\n      \"Text\": data.name\r\n    },\r\n    \"Email\": {\r\n      \"Text\": data.email\r\n    },\r\n    \"Message\": {\r\n      \"Text\": data.message\r\n    }\r\n  }\r\n});"
             }
           },
-          "LocalizedText": {},
           "LocalizedTextPart": {
             "Data": [
               {
@@ -697,8 +670,11 @@
             "Title": "Load Employees"
           },
           "VueForm": {
-            "Enabled": {
-              "Value": true
+            "Disabled": {
+              "Value": false
+            },
+            "Debug": {
+              "Value": false
             },
             "RenderAs": {
               "Text": null
@@ -708,36 +684,10 @@
             },
             "SuccessMessage": {
               "Text": "Employees have been successfully added"
+            },
+            "Template": {
+              "Text": "<v-container>\r\n  <v-col>\r\n    <h1>Bulk load Employees</h1>\r\n    <p class=\"font-weight-light\">\r\n      One employee per line, space seperated FirstName LastName\r\n    </p>\r\n  </v-col>\r\n  <v-col>\r\n    <validation-provider name=\"Cohort\" rules=\"required\" v-slot=\"{ errors, valid }\">\r\n      <v-autocomplete v-model=\"cohort\" :items=\"calendarList\" item-text=\"DisplayText\" item-value=\"ContentItemId\" label=\"Cohort\" :success=\"valid\" :error-messages=\"errors\"></v-autocomplete>\r\n    </validation-provider>\r\n  </v-col>\r\n  <v-col>\r\n  <v-textarea v-model=\"employees\" outlined label=\"Employees\"></v-textarea>\r\n  </v-col>\r\n  <v-col>\r\n    <v-alert type=\"success\" v-if=\"form.successMessage\">\r\n      {% raw %}{{ form.successMessage }}{% endraw %}\r\n      <a href=\"{{\"~/\" | href}}\">Go home</a>\r\n    </v-alert>\r\n    <v-alert type=\"error\" v-if=\"form.serverValidationMessage\">\r\n      {% raw %}{{ form.serverValidationMessage[0] }}{% endraw %}\r\n    </v-alert>\r\n  \t<v-btn type=\"submit\" :disabled=\"form.submitSuccess\" >Submit</v-btn>\r\n  </v-col>\r\n</v-container>"
             }
-          },
-          "FlowPart": {
-            "Widgets": [
-              {
-                "ContentItemId": "4kx97ehcssm6b4w9q2bzdhjg44",
-                "ContentItemVersionId": null,
-                "ContentType": "VueComponent",
-                "DisplayText": "Form",
-                "Latest": false,
-                "Published": false,
-                "ModifiedUtc": "2021-05-18T19:20:36.2969584Z",
-                "PublishedUtc": null,
-                "CreatedUtc": null,
-                "Owner": "",
-                "Author": "admin",
-                "TitlePart": {
-                  "Title": "Form"
-                },
-                "VueComponent": {
-                  "Template": {
-                    "Text": "<v-container>\r\n  <v-col>\r\n    <h1>Bulk load Employees</h1>\r\n    <p class=\"font-weight-light\">\r\n      One employee per line, space seperated FirstName LastName\r\n    </p>\r\n  </v-col>\r\n  <v-col>\r\n    <validation-provider name=\"Cohort\" rules=\"required\" v-slot=\"{ errors, valid }\">\r\n      <v-autocomplete v-model=\"cohort\" :items=\"calendarList\" item-text=\"DisplayText\" item-value=\"ContentItemId\" label=\"Cohort\" :success=\"valid\" :error-messages=\"errors\"></v-autocomplete>\r\n    </validation-provider>\r\n  </v-col>\r\n  <v-col>\r\n  <v-textarea v-model=\"employees\" outlined label=\"Employees\"></v-textarea>\r\n  </v-col>\r\n  <v-col>\r\n    <v-alert type=\"success\" v-if=\"form.successMessage\">\r\n      {% raw %}{{ form.successMessage }}{% endraw %}\r\n      <a href=\"{{\"~/\" | href}}\">Go home</a>\r\n    </v-alert>\r\n    <v-alert type=\"error\" v-if=\"form.serverValidationMessage\">\r\n      {% raw %}{{ form.serverValidationMessage[0] }}{% endraw %}\r\n    </v-alert>\r\n  \t<v-btn type=\"submit\" :disabled=\"form.submitSuccess\" >Submit</v-btn>\r\n  </v-col>\r\n</v-container>"
-                  }
-                },
-                "FlowMetadata": {
-                  "Alignment": 3,
-                  "Size": 100
-                }
-              }
-            ]
           },
           "VueFormScripts": {
             "ClientInit": {

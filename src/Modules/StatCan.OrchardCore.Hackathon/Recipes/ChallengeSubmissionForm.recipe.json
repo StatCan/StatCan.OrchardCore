@@ -25,8 +25,8 @@
             "Title": "Challenge Submission"
           },
           "VueForm": {
-            "Enabled": {
-              "Value": true
+            "Disabled": {
+              "Value": false
             },
             "DisabledHtml": {
               "Html": "<div class=\"container text-center mt-2\">\n  [locale en]The challenge submission form is currently disabled.[/locale]\n  [locale fr]Le formulaire de soumission de défi est présentement désactivé[/locale]\n</div>"
@@ -34,44 +34,12 @@
             "SuccessMessage": {
               "Text": "{{ \"successMessage\" | localize }}"
             },
-            "ErrorMessage": {
-              "Text": "Please correct the errors above"
-            },
             "RenderAs": {
               "Text": null
+            },
+            "Template": {
+              "Text": "<v-container >\r\n  <v-card-text>\r\n    <v-row justify=\"center\">\r\n      <v-col cols=\"8\">\r\n        <h1>[locale en]Challenge submission[/locale][locale fr]Soumission de défi[/locale]</h1>\r\n      </v-col>\r\n{% if User.Identity.Name == null %}\r\n      <v-col cols=\"8\">\r\n        [locale en]Please <a href=\"{{ '~/login' | return_url }}\">login</a> before submitting a challenge[/locale]\r\n        [locale fr]Veuillez vous <a href=\"{{ '~/login' | return_url }}\">connecter</a> avant de soumettre un défi[/locale]\r\n      </v-col>\r\n{% else %}\r\n      <v-col cols=\"8\">\r\n        <validation-provider name=\"name\" rules=\"required\" v-slot=\"{ errors, valid }\">\r\n          <v-text-field name=\"name\" v-model=\"name\" :error-messages=\"errors\" filled=\"filled\" label=\"{{ \"nameLabel\" | localize }}\"></v-text-field>\r\n        </validation-provider>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n        <validation-provider name=\"shortDescription\" rules=\"required\" v-slot=\"{ errors, valid }\">\r\n          <v-text-field name=\"shortDescription\" v-model=\"shortDescription\" :error-messages=\"errors\" filled=\"filled\" label=\"{{ \"shortDescriptionLabel\" | localize }}\"></v-text-field>\r\n        </validation-provider>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n        <validation-provider name=\"description\" rules=\"required\" v-slot=\"{ errors, valid }\">\r\n       \t  <v-textarea name=\"description\" v-model=\"description\" :error-messages=\"errors\" counter=\"true\" filled=\"filled\" label=\"{{ \"descriptionLabel\" | localize }}\" rows=\"5\">\r\n          </v-textarea>\r\n    \t</validation-provider>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n        <v-alert type=\"success\" v-if=\"form.successMessage\">\r\n          {% raw %}{{ form.successMessage }}{% endraw %}\r\n        </v-alert>\r\n        <v-alert type=\"error\" v-if=\"form.errorMessage\">\r\n          {% raw %}{{ form.errorMessage }}{% endraw %}\r\n        </v-alert>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n    \t<v-btn type=\"submit\" depressed block @click=\"formHandleSubmit\" :disabled=\"form.submitting\">{{ \"submitLabel\" | localize }}</v-btn>\r\n      </v-col>\r\n{% endif %}\r\n    </v-row>\r\n  </v-card-text>\r\n</v-container>"
             }
-          },
-          "FlowPart": {
-            "Widgets": [
-              {
-                "ContentItemId": "4yrfj7je3y674srn95mqeg33mx",
-                "ContentItemVersionId": null,
-                "ContentType": "VueComponent",
-                "DisplayText": "Challenge Submission",
-                "Latest": false,
-                "Published": false,
-                "ModifiedUtc": "2021-01-12T19:20:26.8722353Z",
-                "PublishedUtc": null,
-                "CreatedUtc": null,
-                "Owner": "",
-                "Author": "admin",
-                "TitlePart": {
-                  "Title": "Challenge Submission"
-                },
-                "VueComponent": {
-                  "Template": {
-                    "Text": "<v-container >\r\n  <v-card-text>\r\n    <v-row justify=\"center\">\r\n      <v-col cols=\"8\">\r\n        <h1>[locale en]Challenge submission[/locale][locale fr]Soumission de défi[/locale]</h1>\r\n      </v-col>\r\n{% if User.Identity.Name == null %}\r\n      <v-col cols=\"8\">\r\n        [locale en]Please <a href=\"{{ '~/login' | return_url }}\">login</a> before submitting a challenge[/locale]\r\n        [locale fr]Veuillez vous <a href=\"{{ '~/login' | return_url }}\">connecter</a> avant de soumettre un défi[/locale]\r\n      </v-col>\r\n{% else %}\r\n      <v-col cols=\"8\">\r\n        <validation-provider name=\"name\" rules=\"required\" v-slot=\"{ errors, valid }\">\r\n          <v-text-field name=\"name\" v-model=\"name\" :error-messages=\"errors\" filled=\"filled\" label=\"{{ \"nameLabel\" | localize }}\"></v-text-field>\r\n        </validation-provider>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n        <validation-provider name=\"shortDescription\" rules=\"required\" v-slot=\"{ errors, valid }\">\r\n          <v-text-field name=\"shortDescription\" v-model=\"shortDescription\" :error-messages=\"errors\" filled=\"filled\" label=\"{{ \"shortDescriptionLabel\" | localize }}\"></v-text-field>\r\n        </validation-provider>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n        <validation-provider name=\"description\" rules=\"required\" v-slot=\"{ errors, valid }\">\r\n       \t  <v-textarea name=\"description\" v-model=\"description\" :error-messages=\"errors\" counter=\"true\" filled=\"filled\" label=\"{{ \"descriptionLabel\" | localize }}\" rows=\"5\">\r\n          </v-textarea>\r\n    \t</validation-provider>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n        <v-alert type=\"success\" v-if=\"form.successMessage\">\r\n          {% raw %}{{ form.successMessage }}{% endraw %}\r\n        </v-alert>\r\n        <v-alert type=\"error\" v-if=\"form.errorMessage\">\r\n          {% raw %}{{ form.errorMessage }}{% endraw %}\r\n        </v-alert>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n    \t<v-btn type=\"submit\" depressed block @click=\"formHandleSubmit\" :disabled=\"form.submitting\">{{ \"submitLabel\" | localize }}</v-btn>\r\n      </v-col>\r\n{% endif %}\r\n    </v-row>\r\n  </v-card-text>\r\n</v-container>"
-                  },
-                  "Script": {
-                    "Text": "{\r\n  data: () => ({\r\n    name: \"\",\r\n\tshortDescription: \"\",\r\n    description: \"\",\r\n  })\r\n}"
-                  }
-                },
-                "FlowMetadata": {
-                  "Alignment": 3,
-                  "Size": 100
-                }
-              }
-            ]
           },
           "VueFormScripts": {
             "ClientInit": {
