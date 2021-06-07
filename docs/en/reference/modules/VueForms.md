@@ -28,10 +28,9 @@ This is required because the div that defines the VueForm component needs to be 
 {% resources type: "FootScript" %}
 ```
 
-
-The VueComponent widget allows you to write VueJS markup that will be included in your VueForm component
-
 #### Template
+
+The template of the vue component
 
 Example:
 

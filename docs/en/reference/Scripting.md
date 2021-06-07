@@ -87,7 +87,7 @@ You can get the values stored in the LocalizedTextPart inside a script.
 | `debug(name: String, value: Object)` | Outputs the object in the debug response when the VueForm is in debug mode |
 
 
-## Media methods 
+## Media
 
 These methods are added when the `OrchardCore.Media` module is enabled
 
