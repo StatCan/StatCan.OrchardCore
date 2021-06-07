@@ -20,7 +20,6 @@ namespace StatCan.OrchardCore.VueForms
         {
             services.AddContentPart<VueForm>();
             services.AddContentPart<VueFormScripts>();
-            services.AddContentPart<VueComponent>();
 
             services.AddScoped<IDataMigration, Migrations>();
             services.AddScoped<INavigationProvider, AdminMenu>();

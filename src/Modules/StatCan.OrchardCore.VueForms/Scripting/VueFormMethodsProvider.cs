@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using AngleSharp.Common;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.Extensions.DependencyInjection;
 using OrchardCore.ContentManagement;
@@ -14,8 +15,8 @@ namespace StatCan.OrchardCore.VueForms.Scripting
     /// </summary>
     public class VueFormMethodsProvider : IGlobalMethodProvider
     {
-
         private readonly GlobalMethod _getFormContentItem;
+        private readonly GlobalMethod _debug;
 
         public VueFormMethodsProvider(ContentItem form)
         {
@@ -24,11 +25,22 @@ namespace StatCan.OrchardCore.VueForms.Scripting
                 Name = "getFormContentItem",
                 Method = serviceProvider => (Func<ContentItem>)(() => form)
             };
+            _debug = new GlobalMethod
+            {
+                Name = "debug",
+                Method = serviceProvider => (Action<string, object>)((key, obj) => {
+                    if(form.As<Models.VueForm>()?.Debug?.Value == true)
+                    {
+                        var httpContextAccessor = serviceProvider.GetRequiredService<IHttpContextAccessor>();
+                        httpContextAccessor.HttpContext.Items.TryAdd(Constants.VueFormDebugLog + key, obj);
+                    }
+                })
+            };
         }
 
         public IEnumerable<GlobalMethod> GetMethods()
         {
-            return new[] { _getFormContentItem };
+            return new[] { _getFormContentItem, _debug };
         }
     }
 }

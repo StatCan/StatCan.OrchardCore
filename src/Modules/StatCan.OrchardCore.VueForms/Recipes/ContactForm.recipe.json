@@ -33,50 +33,24 @@
             "Title": "Contact Us"
           },
           "VueForm": {
-            "Enabled": {
-              "Value": true
+            "Disabled": {
+              "Value": false
             },
-            "RenderAs": {
-              "Text": "VuetifyApp"
+            "Debug": {
+              "Value": false
             },
             "DisabledHtml": {
               "Html": "<div class=\"container text-center mt-2\">\nThe contact form is currently disabled.\n</div>"
             },
+            "RenderAs": {
+              "Text": "VuetifyApp"
+            },
             "SuccessMessage": {
               "Text": "{{ \"successMessage\" | localize }}"
             },
-            "ErrorMessage": {
-              "Text": "Please correct the errors above."
+            "Template": {
+              "Text": "<v-container >\r\n  <v-card-text>\r\n    <v-row justify=\"center\">\r\n      <v-col cols=\"8\">\r\n        <validation-provider name=\"{{ \"nameLabel\" | localize | downcase }}\" rules=\"required\" v-slot=\"{ errors, valid }\">\r\n          <v-text-field v-model=\"name\" :success=\"valid\" :error-messages=\"errors\" filled=\"filled\" label=\"{{ \"nameLabel\" | localize }}\"></v-text-field>\r\n        </validation-provider>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n        <validation-provider name=\"{{ \"emailLabel\" | localize | downcase }}\" rules=\"required|email\" v-slot=\"{ errors, valid }\">\r\n          <v-text-field v-model=\"email\" :success=\"valid\" :error-messages=\"errors\" filled=\"filled\" label=\"{{ \"emailLabel\" | localize }}\"></v-text-field>\r\n        </validation-provider>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n        <validation-provider name=\"{{ \"messageLabel\" | localize | downcase }}\" rules=\"required\" v-slot=\"{ errors, valid }\">\r\n       \t  <v-textarea v-model=\"message\" :success=\"valid\" :error-messages=\"errors\" counter=\"true\" filled=\"filled\" label=\"{{ \"messageLabel\" | localize }}\" rows=\"5\">\r\n          </v-textarea>\r\n    \t</validation-provider>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n        <v-alert type=\"success\" v-if=\"form.successMessage\">\r\n          {% raw %}{{ form.successMessage }}{% endraw %}\r\n        </v-alert>\r\n        <v-alert type=\"error\" v-if=\"form.serverValidationMessage\">\r\n          {% raw %}{{ form.serverValidationMessage[0] }}{% endraw %}\r\n        </v-alert>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n    \t<v-btn type=\"submit\" depressed block @click=\"formHandleSubmit\" :disabled=\"form.submitting\">{{ \"submitLabel\" | localize }}</v-btn>\r\n      </v-col>\r\n    </v-row>\r\n  </v-card-text>\r\n</v-container>"
             }
-          },
-          "FlowPart": {
-            "Widgets": [
-              {
-                "ContentItemId": "44wyajnahrbgq4an4rpz45cgc1",
-                "ContentItemVersionId": null,
-                "ContentType": "VueComponent",
-                "DisplayText": "Contact Us",
-                "Latest": false,
-                "Published": false,
-                "ModifiedUtc": "2020-11-17T16:31:46.0169115Z",
-                "PublishedUtc": null,
-                "CreatedUtc": null,
-                "Owner": "",
-                "Author": "admin",
-                "TitlePart": {
-                  "Title": "Contact Us"
-                },
-                "VueComponent": {
-                  "Template": {
-                    "Text": "<v-container >\r\n  <v-card-text>\r\n    <v-row justify=\"center\">\r\n      <v-col cols=\"8\">\r\n        <validation-provider name=\"{{ \"nameLabel\" | localize | downcase }}\" rules=\"required\" v-slot=\"{ errors, valid }\">\r\n          <v-text-field v-model=\"name\" :success=\"valid\" :error-messages=\"errors\" filled=\"filled\" label=\"{{ \"nameLabel\" | localize }}\"></v-text-field>\r\n        </validation-provider>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n        <validation-provider name=\"{{ \"emailLabel\" | localize | downcase }}\" rules=\"required|email\" v-slot=\"{ errors, valid }\">\r\n          <v-text-field v-model=\"email\" :success=\"valid\" :error-messages=\"errors\" filled=\"filled\" label=\"{{ \"emailLabel\" | localize }}\"></v-text-field>\r\n        </validation-provider>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n        <validation-provider name=\"{{ \"messageLabel\" | localize | downcase }}\" rules=\"required\" v-slot=\"{ errors, valid }\">\r\n       \t  <v-textarea v-model=\"message\" :success=\"valid\" :error-messages=\"errors\" counter=\"true\" filled=\"filled\" label=\"{{ \"messageLabel\" | localize }}\" rows=\"5\">\r\n          </v-textarea>\r\n    \t</validation-provider>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n        <v-alert type=\"success\" v-if=\"form.successMessage\">\r\n          {% raw %}{{ form.successMessage }}{% endraw %}\r\n        </v-alert>\r\n        <v-alert type=\"error\" v-if=\"form.serverValidationMessage\">\r\n          {% raw %}{{ form.serverValidationMessage[0] }}{% endraw %}\r\n        </v-alert>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n    \t<v-btn type=\"submit\" depressed block @click=\"formHandleSubmit\" :disabled=\"form.submitting\">{{ \"submitLabel\" | localize }}</v-btn>\r\n      </v-col>\r\n    </v-row>\r\n  </v-card-text>\r\n</v-container>"
-                  }
-                },
-                "FlowMetadata": {
-                  "Alignment": 3,
-                  "Size": 100
-                }
-              }
-            ]
           },
           "VueFormScripts": {
             "ClientInit": {
@@ -89,10 +63,9 @@
               "Text": "var data = requestFormAsJsonObject();\r\nvar localizedText = getLocalizedTextValues(getFormContentItem());\r\n\r\nif(data.name == \"\" || data.email == \"\" || data.message == \"\" || !validateEmail(data.email)) {\r\n  addError('serverValidationMessage', localizedText.serverValidationError);\r\n}"
             },
             "OnSubmitted": {
-              "Text": "var data = requestFormAsJsonObject();\r\n\r\nvar item = createContentItem(\"ContactRequest\", true, {\r\n  \"ContactRequest\": {\r\n    \"Name\": {\r\n      \"Text\": data.name\r\n    },\r\n    \"Email\": {\r\n      \"Text\": data.email\r\n    },\r\n    \"Message\": {\r\n      \"Text\": data.message\r\n    }\r\n  }\r\n});"
+              "Text": "var data = requestFormAsJsonObject();\r\n\r\nvar item = createContentItem(\"ContactRequest\", true, {\r\n  \"ContactRequest\": {\r\n    \"Name\": {\r\n      \"Text\": data.name\r\n    },\r\n    \"Email\": {\r\n      \"Text\": data.email\r\n    },\r\n    \"Message\": {\r\n      \"Text\": data.message\r\n    }\r\n  }\r\n}); \r\n addSuccessMessage("
             }
           },
-          "LocalizedText": {},
           "LocalizedTextPart": {
             "Data": [
               {

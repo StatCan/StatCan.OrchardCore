@@ -17,7 +17,7 @@ namespace StatCan.OrchardCore.VueForms.Models
         public TextField ComponentOptions { get; set; }
 
         /// <summary>
-        /// Script that runs everytime the form is submitted, to validate the values.
+        /// Script that runs everytime the form is submitted, to validate data
         /// </summary>
         public TextField OnValidation { get; set; }
         /// <summary>
