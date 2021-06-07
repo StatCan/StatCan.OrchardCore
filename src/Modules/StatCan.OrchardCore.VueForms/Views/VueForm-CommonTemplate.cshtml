@@ -28,7 +28,7 @@
           method="post"
           novalidate>
       @Html.AntiForgeryToken()
-      @Html.Raw(await Orchard.LiquidShortcodesAsync(formPart.Template.Text, (object)Model))
+      @Html.Raw(await Orchard.LiquidShortcodesAsync(formPart.Template?.Text, (object)Model))
     </form>
 @if(formPart.Debug.Value)
 { 
