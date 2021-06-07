@@ -205,7 +205,7 @@ namespace StatCan.OrchardCore.VueForms
             return 3;
         }
 
-        public int updateFrom3()
+        public int UpdateFrom3()
         {
             AddVTextField();
             return 4;
