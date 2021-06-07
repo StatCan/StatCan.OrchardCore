@@ -91,25 +91,25 @@ namespace StatCan.OrchardCore.VueForms
                 .WithField("ClientInit", f => f
                     .OfType(nameof(TextField))
                     .WithDisplayName("Client Init")
-                    .WithSettings(new TextFieldSettings() { Hint = "(Optional) Script that runs client side to set various options for your form (such as setup the VeeValidate locales). With liquid support." })
+                    .WithSettings(new TextFieldSettings() { Hint = "(Optional) Script that runs client side to set various options for your form (such as setup the VeeValidate locales). Liquid is evaluated before passing the script to the client." })
                     .WithPosition("0")
                     .WithEditor("Monaco")
                     .WithSettings(
                         new TextFieldMonacoEditorSettings()
                         {
-                            Options = "{\"language\": \"javascript\"}"
+                            Options = "{\"language\": \"javascript\", \"renderValidationDecorations\": \"off\"}"
                         })
                 )
                 .WithField("ComponentOptions", f => f
                    .OfType(nameof(TextField))
                    .WithDisplayName("Component Options object")
-                   .WithSettings(new TextFieldSettings() { Hint = "The form's vue component options object. The component's data object is sent to the server. With liquid support." })
+                   .WithSettings(new TextFieldSettings() { Hint = "The form's vue component options object. The component's data object is sent to the server. Liquid is evaluated before passing the script to the client." })
                    .WithPosition("1")
                 .WithEditor("Monaco")
                     .WithSettings(
                         new TextFieldMonacoEditorSettings()
                         {
-                            Options = "{\"language\": \"javascript\"}"
+                            Options = "{\"language\": \"javascript\", \"renderValidationDecorations\": \"off\"}"
                         })
                 )
                 .WithField("OnValidation", f => f
@@ -297,25 +297,25 @@ namespace StatCan.OrchardCore.VueForms
                 .WithField("ClientInit", f => f
                     .OfType(nameof(TextField))
                     .WithDisplayName("Client Init")
-                    .WithSettings(new TextFieldSettings() { Hint = "(Optional) Script that runs client side to set various options for your form (such as setup the VeeValidate locales). With liquid support." })
+                    .WithSettings(new TextFieldSettings() { Hint = "(Optional) Script that runs client side to set various options for your form (such as setup the VeeValidate locales). Liquid is evaluated before passing the script to the client." })
                     .WithPosition("0")
                     .WithEditor("Monaco")
                     .WithSettings(
                         new TextFieldMonacoEditorSettings()
                         {
-                            Options = "{\"language\": \"javascript\"}"
+                            Options = "{\"language\": \"javascript\", \"renderValidationDecorations\": \"off\"}"
                         })
                 )
                 .WithField("ComponentOptions", f => f
                    .OfType(nameof(TextField))
                    .WithDisplayName("Component Options object")
-                   .WithSettings(new TextFieldSettings() { Hint = "The form's vue component options object. The component's data object is sent to the server. With liquid support." })
+                   .WithSettings(new TextFieldSettings() { Hint = "The form's vue component options object. The component's data object is sent to the server. Liquid is evaluated before passing the script to the client." })
                    .WithPosition("1")
                 .WithEditor("Monaco")
                     .WithSettings(
                         new TextFieldMonacoEditorSettings()
                         {
-                            Options = "{\"language\": \"javascript\"}"
+                            Options = "{\"language\": \"javascript\", \"renderValidationDecorations\": \"off\"}"
                         })
                 )
                 .WithField("OnValidation", f => f
