@@ -84,9 +84,10 @@ You can get the values stored in the LocalizedTextPart inside a script.
 | Function | Description 
 | -------- | ----------- |
 | `getFormContentItem(): ContentItem` | Only available in the VueForm server side scripts. Returns the current VueForm ContentItem instance. |
+| `debug(name: String, value: Object)` | Outputs the object in the debug response when the VueForm is in debug mode |
 
 
-## Media 
+## Media methods 
 
 These methods are added when the `OrchardCore.Media` module is enabled
 
