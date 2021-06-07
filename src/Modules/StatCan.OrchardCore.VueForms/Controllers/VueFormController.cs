@@ -232,13 +232,15 @@ namespace StatCan.OrchardCore.VueForms.Controllers
             ServerScriptResult = scriptResult;
             Debug = debug;
         }
+        [JsonProperty(NullValueHandling=NullValueHandling.Ignore)]
         public string SuccessMessage { get; }
-
+        [JsonProperty(NullValueHandling=NullValueHandling.Ignore)]
         public object ServerScriptResult { get; }
-
+        [JsonProperty(NullValueHandling=NullValueHandling.Ignore)]
         public bool ValidationError { get; }
-
+        [JsonProperty(NullValueHandling=NullValueHandling.Ignore)]
         public Dictionary<string, string[]> Errors { get; }
+        [JsonProperty(NullValueHandling=NullValueHandling.Ignore)]
         public Dictionary<string, object> Debug { get; }
     }
 }

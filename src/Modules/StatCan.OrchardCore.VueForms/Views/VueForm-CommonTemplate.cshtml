@@ -32,24 +32,41 @@
     </form>
 @if(formPart.Debug.Value)
 { 
+  <style at="Head">
+    .debug-mode pre {
+        background: #f4f4f4;
+        border: 1px solid #ddd;
+        border-left: 3px solid #f36d33;
+        color: #666;
+        page-break-inside: avoid;
+        max-width: 100%;
+        overflow: auto;
+        padding: 1em;
+        display: block;
+        word-wrap: break-word;
+    }
+    .debug-mode code {
+      background-color: #f4f4f4 !important ;
+    }
+  </style>
 <div class="debug-mode">
   <h3 class="warning">@T["Your VueForm is in debug Mode"]</h3>
   <details>
     <summary>@T["form object"]</summary>
 <pre>
-<code v-html="form" class="hljs language-json"></code>
+<code v-html="form"></code>
 </pre>
   </details>
   <details>
     <summary>@T["VeeValidate observer data"]</summary>
 <pre>
-<code v-html="obs" class="hljs language-json"></code>
+<code v-html="obs"></code>
 </pre>
   </details>
   <details>
     <summary>@T["Complete component data"]</summary>
 <pre>
-<code v-html="$data" class="hljs language-json"></code>
+<code v-html="$data"></code>
 </pre>
   </details>
 </div>
