@@ -28,6 +28,9 @@
             "Disabled": {
               "Value": false
             },
+            "Debug": {
+              "Value": false
+            },
             "DisabledHtml": {
               "Html": "<div class=\"container text-center mt-2\">\n  [locale en]The challenge submission form is currently disabled.[/locale]\n  [locale fr]Le formulaire de soumission de défi est présentement désactivé[/locale]\n</div>"
             },

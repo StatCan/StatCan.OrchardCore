@@ -29,7 +29,7 @@ namespace StatCan.OrchardCore.VueForms.Scripting
             {
                 Name = "debug",
                 Method = serviceProvider => (Action<string, object>)((key, obj) => {
-                    if(form.As<Models.VueForm>()?.Debug.Value == true)
+                    if(form.As<Models.VueForm>()?.Debug?.Value == true)
                     {
                         var httpContextAccessor = serviceProvider.GetRequiredService<IHttpContextAccessor>();
                         httpContextAccessor.HttpContext.Items.TryAdd(Constants.VueFormDebugLog + key, obj);

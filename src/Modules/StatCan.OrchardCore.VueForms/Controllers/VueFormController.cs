@@ -175,7 +175,7 @@ namespace StatCan.OrchardCore.VueForms.Controllers
         }
         private Dictionary<string, object> GetDebugLogs(VueForm form)
         {
-            if(form.Debug.Value)
+            if(form.Debug?.Value == true)
             {
                 var debugDictionary = HttpContext.Items
                     .Where(x => (x.Key as string)?.StartsWith(Constants.VueFormDebugLog) == true)
