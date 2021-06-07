@@ -92,7 +92,7 @@ function initForm(app) {
                 frmData.recaptcha = grecaptcha.getResponse();
               }
 
-              let formData = $.serializeToFormData(frmData);
+              let formData = window.serializeToFormData(frmData);
 
               // iterate all file inputs and add the files to the request
               $(this.$refs.form).find("input[type=file]").each(function(){

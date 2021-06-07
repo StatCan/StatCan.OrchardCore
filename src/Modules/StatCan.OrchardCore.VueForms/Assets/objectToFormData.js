@@ -1,4 +1,4 @@
-(function (jQuery) {
+(function () {
   const isUndefined = (value) => value === undefined;
 
   const isNull = (value) => value === null;
@@ -86,5 +86,5 @@
 
     return fd;
   };
-  jQuery.serializeToFormData = serialize;
-})($);
+  window.serializeToFormData = serialize;
+})();
