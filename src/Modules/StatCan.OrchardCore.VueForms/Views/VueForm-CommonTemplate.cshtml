@@ -1,3 +1,5 @@
+@using Cysharp.Text
+@using Microsoft.AspNetCore.Razor.TagHelpers
 @using OrchardCore.ContentManagement
 @using OrchardCore.Flows.Models
 @using System.Globalization
@@ -12,64 +14,17 @@
 
   var initScript = await Orchard.LiquidShortcodesAsync(scripts.ClientInit?.Text, (object)Model);
   var options = await Orchard.LiquidShortcodesAsync(scripts.ComponentOptions?.Text, (object)Model);
-
+  var template = await Orchard.ShapeStringify((IShape)(await New.VueFormWrapperTemplate(ContentItem: contentItem)));
 }
+
 <style asp-name="vue-forms"></style>
 <script asp-name="vue-forms" at="Foot"></script>
 
-<div class="vue-form" data-name="@Model.Properties["ComponentName"]" data-init-script="@Orchard.B64Encode(initScript)" data-options="@Orchard.B64Encode(options)" data-lang="@CultureInfo.CurrentUICulture.TwoLetterISOLanguageName"></div>
-<script at="Foot" type="text/html" id="@Model.Properties["ComponentName"]">
-  <validation-observer ref="obs" slim v-slot="obs">
-    <form v-cloak
-          ref="form"
-          id="@formPart.ContentItem.ContentItemId"
-          v-on:submit.prevent="formHandleSubmit"
-          action="@Url.Action("Submit", "VueForm", new {area="StatCan.OrchardCore.VueForms" , formId=contentItem.ContentItemId })"
-          method="post"
-          novalidate>
-      @Html.AntiForgeryToken()
-      @Html.Raw(await Orchard.LiquidShortcodesAsync(formPart.Template?.Text, (object)Model))
-    </form>
-@if(formPart.Debug?.Value == true)
-{ 
-  <style at="Head">
-    .debug-mode pre {
-        background: #f4f4f4;
-        border: 1px solid #ddd;
-        border-left: 3px solid #f36d33;
-        color: #666;
-        page-break-inside: avoid;
-        max-width: 100%;
-        overflow: auto;
-        padding: 1em;
-        display: block;
-        word-wrap: break-word;
-    }
-    .debug-mode code {
-      background-color: #f4f4f4 !important ;
-    }
-  </style>
-<div class="debug-mode">
-  <h3 class="warning">@T["Your VueForm is in debug Mode"]</h3>
-  <details>
-    <summary>@T["form object"]</summary>
-<pre>
-<code v-html="form"></code>
-</pre>
-  </details>
-  <details>
-    <summary>@T["VeeValidate observer data"]</summary>
-<pre>
-<code v-html="obs"></code>
-</pre>
-  </details>
-  <details>
-    <summary>@T["Complete component data"]</summary>
-<pre>
-<code v-html="$data"></code>
-</pre>
-  </details>
+<div class="vue-form" 
+  data-name="@Model.Properties["ComponentName"]" 
+  data-init-script="@Orchard.B64Encode(initScript)" 
+  data-options="@Orchard.B64Encode(options)" 
+  data-lang="@CultureInfo.CurrentUICulture.TwoLetterISOLanguageName" 
+  data-template="@Orchard.B64Encode(template)"> 
+  >
 </div>
-}
-  </validation-observer>
-</script>

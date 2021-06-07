@@ -49,11 +49,13 @@ function initForm(app) {
     responseData: undefined,
   };
 
+  const componentTemplate = decodeUnicode(app.dataset.template);
+
   Vue.component(app.dataset.name, function (resolve) {
     resolve({
       // First because the elements below will override
       ...parsedRest,
-      template: `#${app.dataset.name}`,
+      template: `${componentTemplate}`,
       data: function () {
         return {
           ...objData,
