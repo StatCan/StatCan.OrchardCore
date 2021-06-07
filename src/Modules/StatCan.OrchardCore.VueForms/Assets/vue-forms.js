@@ -47,7 +47,6 @@ function initForm(app) {
     serverValidationMessage: undefined,
     serverErrorMessage: undefined,
     responseData: undefined,
-    debug: undefined,
   };
 
   Vue.component(app.dataset.name, function (resolve) {
@@ -58,14 +57,16 @@ function initForm(app) {
       data: function () {
         return {
           ...objData,
-          form: { ...defaultFormData },
+          form: { ...defaultFormData }
         };
       },
       methods: {
         // default method that return the data to be submitted to the server
         // this was added first to allow the Administrator to edit this function on the OC Admin
         submitData() {
-          return { ...this.$data };
+          let clonedData = { ...this.$data };
+          delete clonedData.form;
+          return clonedData;
         },
         ...parsedMethods,
         formReset() {
@@ -110,47 +111,49 @@ function initForm(app) {
                 dataType: "json", // expect json from the server
                 processData: false, //tell jquery not to process data
                 contentType: false, //tell jquery not to set content-type
-                success: function (data) {
+                success: function (responseData) {
                   vm.form = { ...defaultFormData };
-                  vm.form.responseData = data;
-                  if(data.debug)
+                  vm.form.responseData = responseData;
+
+                  if(responseData.debug)
                   {
-                    console.log(data.debug);
-                    vm.form.debug = data.debug;
+                    console.log("Debug object: ", responseData.debug);
                   }
+
                   // if there are validation errors on the form, display them.
-                  if (data.validationError) {
+                  if (responseData.validationError) {
                     //legacy
-                    if (data.errors["serverValidationMessage"] != null) {
+                    if (responseData.errors["serverValidationMessage"] != null) {
                       vm.form.serverValidationMessage =
-                        data.errors["serverValidationMessage"];
+                        responseData.errors["serverValidationMessage"];
                     }
                     vm.form.submitValidationError = true;
-                    observer.setErrors(data.errors);
+                    observer.setErrors(responseData.errors);
                     return;
                   }
 
                   // if the server sends a redirect, reload the window
-                  if (data.redirect) {
-                    window.location.href = data.redirect;
+                  if (responseData.redirect) {
+                    window.location.href = responseData.redirect;
                     return;
                   }
 
                   vm.form.submitSuccess = true;
-                  vm.form.successMessage = data.successMessage;
+                  vm.form.successMessage = responseData.successMessage;
                   return;
                 },
                 error: function (xhr, statusText) {
                   vm.form = { ...defaultFormData };
                   vm.form.submitError = true;
                   vm.form.serverErrorMessage = `${xhr.status} ${statusText}`;
+                  console.log("An error occurred while executing the request", xhr.responseText);
                 },
               });
             }
           });
           return false;
         },
-      },
+      }
     });
   });
 

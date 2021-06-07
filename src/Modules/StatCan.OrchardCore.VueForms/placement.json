@@ -93,7 +93,7 @@
     },
     {
       "differentiator": "VueForm-Debug",
-      "place" : "Parts:10#Options;20",
+      "place" : "Parts:8#Options;20",
       "contentType": [
           "VueForm"
       ]

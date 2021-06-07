@@ -173,14 +173,22 @@ namespace StatCan.OrchardCore.VueForms.Controllers
                     kvp => kvp.Value.Errors.Select(e => e.ErrorMessage).ToArray()
                 );
         }
-        private Dictionary<string, string> GetDebugLogs(VueForm form)
+        private Dictionary<string, object> GetDebugLogs(VueForm form)
         {
             if(form.Debug.Value)
             {
-                return HttpContext.Items
-                    .Where(x => ((string)x.Key).StartsWith(Constants.VueFormDebugLog))
-                    .ToDictionary(kvp=> (string)kvp.Key, kvp=> kvp.Value.ToString()
-                );
+                var debugDictionary = HttpContext.Items
+                    .Where(x => (x.Key as string)?.StartsWith(Constants.VueFormDebugLog) == true)
+                    .ToDictionary(kvp=> ((string)kvp.Key).Replace(Constants.VueFormDebugLog, ""), kvp => kvp.Value);
+
+                var files = Request.Form.Files.Select(f => new {
+                    f.FileName,
+                    f.Name,
+                    f.ContentType,
+                    f.Length
+                });
+                debugDictionary.Add("Request.Files", files);
+                return debugDictionary;
             }
             return null;
         }
@@ -211,13 +219,13 @@ namespace StatCan.OrchardCore.VueForms.Controllers
 
     public class VueFormSubmitResult
     {
-        public VueFormSubmitResult(string successMessage, object scriptResult, Dictionary<string,string> debug)
+        public VueFormSubmitResult(string successMessage, object scriptResult, Dictionary<string, object> debug)
         {
             SuccessMessage = successMessage;
             ServerScriptResult = scriptResult;
             Debug = debug;
         }
-        public VueFormSubmitResult(Dictionary<string, string[]> errors, object scriptResult, Dictionary<string,string> debug)
+        public VueFormSubmitResult(Dictionary<string, string[]> errors, object scriptResult, Dictionary<string, object> debug)
         {
             Errors = errors;
             ValidationError = true;
@@ -231,6 +239,6 @@ namespace StatCan.OrchardCore.VueForms.Controllers
         public bool ValidationError { get; }
 
         public Dictionary<string, string[]> Errors { get; }
-        public Dictionary<string, string> Debug { get; }
+        public Dictionary<string, object> Debug { get; }
     }
 }

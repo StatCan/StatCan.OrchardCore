@@ -20,11 +20,10 @@
 </div>
 
 <script asp-name="monaco" depends-on="admin" at="Foot"></script>
-@* Temporary code until my pr is merged in OC *@
+@* TODO: remove this code when pr https://github.com/OrchardCMS/OrchardCore/pull/9623 is merged in OC *@
 <script at="Foot" depends-on="monaco">
 
 const $document = $(document);
-
 
 $document.ready(function () {
     function debounce(func, wait, immediate) {
