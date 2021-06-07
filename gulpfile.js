@@ -421,6 +421,7 @@ function buildJsPipeline(assetGroup, doConcat, doRebuild) {
 
 function buildCopyPipeline(assetGroup, doRebuild) {
   var stream = gulp.src(assetGroup.inputPaths);
+  console.log("Copy:", assetGroup.inputPaths);
 
   if (!doRebuild) {
     stream = stream.pipe(newer(assetGroup.outputDir));
