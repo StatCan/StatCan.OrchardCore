@@ -93,7 +93,7 @@ You can access these properties in your templates or in the component options ob
 
 #### Debug mode
 
-Debug mode is typically used when developping a form. Additional information is returned by the server and any data output by the `debug()` scripting method is also output and returned with the HttpResponse.
+Debug mode is typically used when developping a form. Additional information is returned by the server and any data output by the `debug()` scripting method is also output and returned with the HttpResponse. This mode does not work when previewing the form.
 
 
 ### VueFormScripts Part

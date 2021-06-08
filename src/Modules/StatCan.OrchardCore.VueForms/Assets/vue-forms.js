@@ -148,7 +148,8 @@ function initForm(app) {
                   vm.form = { ...defaultFormData };
                   vm.form.submitError = true;
                   vm.form.serverErrorMessage = `${xhr.status} ${statusText}`;
-                  console.log("An error occurred while executing the request", xhr.responseText);
+                  const regex = /\\n|\\r\\n|\\n\\r|\\r/g;
+                  vm.form.serverResponseError = xhr.responseText.replace(regex, '<br>');
                 },
               });
             }
