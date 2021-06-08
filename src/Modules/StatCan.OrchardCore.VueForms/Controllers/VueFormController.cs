@@ -24,6 +24,9 @@ using Microsoft.Extensions.Localization;
 using System;
 using System.Text.Json;
 using Newtonsoft.Json;
+using OrchardCore.Contents.Security;
+using OrchardCore.Contents;
+using Microsoft.AspNetCore.Authorization;
 
 namespace StatCan.OrchardCore.VueForms.Controllers
 {
@@ -38,6 +41,7 @@ namespace StatCan.OrchardCore.VueForms.Controllers
         private readonly ILiquidTemplateManager _liquidTemplateManager;
         private readonly HtmlEncoder _htmlEncoder;
         private readonly IShortcodeService _shortcodeService;
+        private readonly IAuthorizationService _authorizationService;
         private readonly IContentPermissionsService _contentPermissionsService;
         private readonly IStringLocalizer S;
         private readonly IWorkflowManager _workflowManager;
@@ -45,6 +49,7 @@ namespace StatCan.OrchardCore.VueForms.Controllers
         public VueFormController(
             ILogger<VueFormController> logger,
             IContentManager contentManager,
+            IAuthorizationService authorizationService,
             IContentDefinitionManager contentDefinitionManager,
             IContentItemDisplayManager contentItemDisplayManager,
             IUpdateModelAccessor updateModelAccessor,
@@ -69,12 +74,20 @@ namespace StatCan.OrchardCore.VueForms.Controllers
             _contentPermissionsService = contentPermissionsService;
             S = stringLocalizer;
             _workflowManager = workflowManager;
+            _authorizationService = authorizationService;
         }
 
         [ValidateAntiForgeryToken]
         [HttpPost]
         public async Task<IActionResult> Submit(string formId)
         {
+            var canView = ContentTypePermissionsHelper.CreateDynamicPermission(ContentTypePermissionsHelper.PermissionTemplates[CommonPermissions.ViewContent.Name], "VueForm");
+
+            if (!await _authorizationService.AuthorizeAsync(User, canView))
+            {
+                return NotFound();
+            }
+
             var form = await _contentManager.GetAsync(formId, VersionOptions.Published);
 
             if(form == null)
@@ -206,7 +219,7 @@ namespace StatCan.OrchardCore.VueForms.Controllers
                 {
                      _logger.LogError(ex, $"An error occurred evaluating the {scriptName} script");
 
-                    if(form.Debug.Value)
+                    if(form.Debug?.Value == true)
                     {
                         HttpContext.Items.TryAdd($"{Constants.VueFormDebugLog}Script_{scriptName}", ex.ToString());
                     }
