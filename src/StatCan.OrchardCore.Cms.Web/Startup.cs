@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Identity;
 using StatCan.OrchardCore.Security;
 using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Http;
+using OrchardCore.Logging;
 using Microsoft.AspNetCore.ResponseCompression;
 
 namespace web
@@ -14,20 +15,17 @@ namespace web
     {
         public IConfiguration Configuration { get; }
 
-        public Startup(IWebHostEnvironment env)
+        public Startup(IConfiguration configuration)
         {
-            var builder = new ConfigurationBuilder()
-                .SetBasePath(env.ContentRootPath)
-                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true, reloadOnChange: true)
-                .AddEnvironmentVariables();
-
-            Configuration = builder.Build();
+            Configuration = configuration;
         }
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddOrchardCms().ConfigureServices(tenantServices => tenantServices.ConfigureHtmlSanitizer(sanitizer => sanitizer.AllowedSchemes.Add("mailto")));
+            services.AddOrchardCms().ConfigureServices(tenantServices =>
+                tenantServices.ConfigureHtmlSanitizer(sanitizer => sanitizer.AllowedSchemes.Add("mailto"))
+            );
+            // This configuration applies to all tenants.
             services.Configure<IdentityOptions>(options => Configuration.GetSection("IdentityOptions").Bind(options));
             services.Configure<GzipCompressionProviderOptions>(options => options.Level = System.IO.Compression.CompressionLevel.Optimal);
             services.AddResponseCompression(options =>
@@ -68,10 +66,12 @@ namespace web
                 app.UseDeveloperExceptionPage();
             }
             app.UseResponseCompression();
-            app.UseStatCanSecurityHeaders()
-                .UseStaticFiles()
-                .UseOrchardCore(builder => builder
-                    .UseStatCanCookiePolicy());
+            app.UseStatCanSecurityHeaders();
+            app.UseStaticFiles();
+            app.UseOrchardCore(c => c
+                .UseSerilogTenantNameLogging()
+                .UseStatCanCookiePolicy()
+            );
         }
     }
 }

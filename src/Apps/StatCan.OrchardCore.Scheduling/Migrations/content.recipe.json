@@ -19,8 +19,11 @@
             "Title": "Create appointment "
           },
           "VueForm": {
-            "Enabled": {
-              "Value": true
+            "Disabled": {
+              "Value": false
+            },
+            "Debug": {
+              "Value": false
             },
             "RenderAs": {
               "Text": null
@@ -30,36 +33,10 @@
             },
             "SuccessMessage": {
               "Text": "Your appointment was created successfully."
+            },
+            "Template": {
+              "Text": "<v-card >\r\n  <v-card-title>{{ \"formTitle\" | localize }} {{Model.CalendarTitle}}</v-card-title>\r\n  <v-card-subtitle>\r\n    {% raw %}{{ startDate }}{% endraw %}<br>\r\n    10 minutes\r\n  </v-card-subtitle>\r\n  <v-card-text>\r\n    <v-row>\r\n      <v-col>\r\n        <validation-provider name=\"{{ \"employeeLabel\" | localize | downcase }}\" rules=\"required\" v-slot=\"{ errors, valid }\">\r\n          <v-autocomplete v-model=\"employee\" :items=\"employeeList\" item-text=\"DisplayText\" item-value=\"ContentItemId\" label=\"{{ \"employeeLabel\" | localize }}\" :success=\"valid\" :error-messages=\"errors\"></v-autocomplete>\r\n        </validation-provider>\r\n      </v-col>      \r\n    </v-row>\r\n    <v-alert type=\"success\" v-if=\"form.successMessage\">\r\n      {% raw %}{{ form.successMessage }}{% endraw %}\r\n    </v-alert>\r\n    <v-alert type=\"error\" v-if=\"form.serverValidationMessage\">\r\n      {% raw %}{{ form.serverValidationMessage[0] }}{% endraw %}\r\n    </v-alert>\r\n  </v-card-text>\r\n  <v-card-actions>\r\n    <v-btn\r\n           text\r\n           color=\"secondary\"\r\n           @click=\"close\"\r\n     >\r\n      {{ \"closeButton\" | localize }}\r\n    </v-btn>\r\n    <v-spacer></v-spacer>\r\n    <v-btn text color=\"primary\" type=\"submit\" @click=\"loadDataAndSubmit\" :disabled=\"form.submitting\">{{ \"buttonText\" | localize }}</v-btn>\r\n  </v-card-actions>\r\n</v-card>"
             }
-          },
-          "FlowPart": {
-            "Widgets": [
-              {
-                "ContentItemId": "4a3hpsgsjkv2y1essvr0zp26c4",
-                "ContentItemVersionId": null,
-                "ContentType": "VueComponent",
-                "DisplayText": "Form to create the appointment from the Calendar",
-                "Latest": false,
-                "Published": false,
-                "ModifiedUtc": "2021-05-18T17:49:36.4093653Z",
-                "PublishedUtc": null,
-                "CreatedUtc": null,
-                "Owner": "",
-                "Author": "admin",
-                "TitlePart": {
-                  "Title": "Form to create the appointment from the Calendar"
-                },
-                "VueComponent": {
-                  "Template": {
-                    "Text": "<v-card >\r\n  <v-card-title>{{ \"formTitle\" | localize }} {{Model.CalendarTitle}}</v-card-title>\r\n  <v-card-subtitle>\r\n    {% raw %}{{ startDate }}{% endraw %}<br>\r\n    10 minutes\r\n  </v-card-subtitle>\r\n  <v-card-text>\r\n    <v-row>\r\n      <v-col>\r\n        <validation-provider name=\"{{ \"employeeLabel\" | localize | downcase }}\" rules=\"required\" v-slot=\"{ errors, valid }\">\r\n          <v-autocomplete v-model=\"employee\" :items=\"employeeList\" item-text=\"DisplayText\" item-value=\"ContentItemId\" label=\"{{ \"employeeLabel\" | localize }}\" :success=\"valid\" :error-messages=\"errors\"></v-autocomplete>\r\n        </validation-provider>\r\n      </v-col>      \r\n    </v-row>\r\n    <v-alert type=\"success\" v-if=\"form.successMessage\">\r\n      {% raw %}{{ form.successMessage }}{% endraw %}\r\n    </v-alert>\r\n    <v-alert type=\"error\" v-if=\"form.serverValidationMessage\">\r\n      {% raw %}{{ form.serverValidationMessage[0] }}{% endraw %}\r\n    </v-alert>\r\n  </v-card-text>\r\n  <v-card-actions>\r\n    <v-btn\r\n           text\r\n           color=\"secondary\"\r\n           @click=\"close\"\r\n     >\r\n      {{ \"closeButton\" | localize }}\r\n    </v-btn>\r\n    <v-spacer></v-spacer>\r\n    <v-btn text color=\"primary\" type=\"submit\" @click=\"loadDataAndSubmit\" :disabled=\"form.submitting\">{{ \"buttonText\" | localize }}</v-btn>\r\n  </v-card-actions>\r\n</v-card>"
-                  }
-                },
-                "FlowMetadata": {
-                  "Alignment": 3,
-                  "Size": 100
-                }
-              }
-            ]
           },
           "VueFormScripts": {
             "ClientInit": {

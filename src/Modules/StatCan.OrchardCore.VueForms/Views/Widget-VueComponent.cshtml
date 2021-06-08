@@ -1,6 +1,4 @@
-@using StatCan.OrchardCore.VueForms.Models
 @{
     var contentItem = ((ContentItem)Model.ContentItem);
-    var vueComponent = contentItem.As<VueComponent>();
 }
-@Html.Raw(await Orchard.LiquidShortcodesAsync(vueComponent.Template.Text, (object)Model))
+@Html.Raw(await Orchard.LiquidShortcodesAsync((string)contentItem.Content.VueComponent.Template.Text, (object)Model))

@@ -26,6 +26,7 @@ namespace StatCan.OrchardCore.VueForms
 
             var rvd = new RouteValueDictionary
             {
+                { "contentTypeId", "VueForm" },
                 { "Area", "OrchardCore.Contents" },
                 { "Options.SelectedContentType", "VueForm" },
                 { "Options.CanCreateSelectedContentType", true }

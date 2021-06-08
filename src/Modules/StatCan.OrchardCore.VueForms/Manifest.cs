@@ -21,6 +21,7 @@ using StatCan.OrchardCore.VueForms;
         "OrchardCore.Title",
         "OrchardCore.Contents",
         "OrchardCore.Flows",
+        "OrchardCore.Alias",
         "OrchardCore.Liquid",
         "StatCan.OrchardCore.Scripting",
         "StatCan.OrchardCore.ContentFields",

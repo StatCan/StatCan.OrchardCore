@@ -1,3 +1,5 @@
+@using Cysharp.Text
+@using Microsoft.AspNetCore.Razor.TagHelpers
 @using OrchardCore.ContentManagement
 @using OrchardCore.Flows.Models
 @using System.Globalization
@@ -8,41 +10,21 @@
 @{
   var contentItem = ((ContentItem)Model.ContentItem);
   var formPart = contentItem.As<VueForm>();
-  var flowPart = contentItem.As<FlowPart>();
   var scripts = contentItem.As<VueFormScripts>();
 
   var initScript = await Orchard.LiquidShortcodesAsync(scripts.ClientInit?.Text, (object)Model);
   var options = await Orchard.LiquidShortcodesAsync(scripts.ComponentOptions?.Text, (object)Model);
-
+  var template = await Orchard.ShapeStringify((IShape)(await New.VueFormWrapperTemplate(ContentItem: contentItem)));
 }
+
 <style asp-name="vue-forms"></style>
 <script asp-name="vue-forms" at="Foot"></script>
 
-<div class="vue-form" data-name="@Model.Properties["ComponentName"]" data-init-script="@Orchard.B64Encode(initScript)" data-options="@Orchard.B64Encode(options)" data-lang="@CultureInfo.CurrentUICulture.TwoLetterISOLanguageName"></div>
-<script at="Foot" type="text/html" id="@Model.Properties["ComponentName"]">
-  <validation-observer ref="obs" slim v-slot="obs">
-    <form v-cloak
-          ref="form"
-          id="@formPart.ContentItem.ContentItemId"
-          v-on:submit.prevent="formHandleSubmit"
-          action="@Url.Action("Submit", "VueForm", new {area="StatCan.OrchardCore.VueForms" , formId=contentItem.ContentItemId })"
-          method="post"
-          novalidate>
-      @Html.AntiForgeryToken()
-      @foreach (var widget in flowPart.Widgets)
-      {
-        var widgetContent = await ContentItemDisplayManager.BuildDisplayAsync(widget, updateModelAccessor.ModelUpdater);
-        // Properties come from the widget that displays the forms.
-        // This allows a page where the form is rendered to pass a value down to the form so it can be dynamically preloaded with data
-        foreach (var prop in ((IShape)Model).Properties)
-        {
-          if (!widgetContent.Properties.ContainsKey(prop.Key))
-          {
-            widgetContent.Properties.Add(prop.Key, prop.Value);
-          }
-        }
-        @await DisplayAsync(widgetContent)
-      }
-      </form>
-  </validation-observer>
-</script>
+<div class="vue-form" 
+  data-name="@Model.Properties["ComponentName"]" 
+  data-init-script="@Orchard.B64Encode(initScript)" 
+  data-options="@Orchard.B64Encode(options)" 
+  data-lang="@CultureInfo.CurrentUICulture.TwoLetterISOLanguageName" 
+  data-template="@Orchard.B64Encode(template)"> 
+  >
+</div>

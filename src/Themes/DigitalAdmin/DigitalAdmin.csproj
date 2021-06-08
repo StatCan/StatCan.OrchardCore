@@ -16,6 +16,7 @@
     <PackageReference Include="OrchardCore.Admin" Version="$(OrchardCoreVersion)" />
     <PackageReference Include="OrchardCore.Themes" Version="$(OrchardCoreVersion)" />
     <PackageReference Include="OrchardCore.ContentLocalization.Abstractions" Version="$(OrchardCoreVersion)" />
+    <PackageReference Include="OrchardCore.ContentFields" Version="$(OrchardCoreVersion)" />
   </ItemGroup>
 
 </Project>

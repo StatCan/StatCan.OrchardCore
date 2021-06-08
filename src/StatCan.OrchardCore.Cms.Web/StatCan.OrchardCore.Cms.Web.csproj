@@ -8,7 +8,6 @@
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
     <PreserveCompilationReferences>true</PreserveCompilationReferences>
     <CodeAnalysisRuleSet>..\..\roslynator.ruleset</CodeAnalysisRuleSet>
-    <StartupObject>web.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Folder Include="wwwroot\" />
@@ -16,15 +15,9 @@
   </ItemGroup>  
 
   <ItemGroup>
-    <Content Update="NLog.config">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Lib\StatCan.OrchardCore.Application.Targets\StatCan.OrchardCore.Application.Targets.csproj" />
     <PackageReference Include="OrchardCore.Application.Cms.Core.Targets" Version="$(OrchardCoreVersion)"/>
-    <PackageReference Include="OrchardCore.Logging.NLog" Version="$(OrchardCoreVersion)"/>
+    <PackageReference Include="OrchardCore.Logging.Serilog" Version="$(OrchardCoreVersion)" />
     
     <!-- OrchardCore Themes -->
     <PackageReference Include="TheTheme" Version="$(OrchardCoreVersion)"/>
