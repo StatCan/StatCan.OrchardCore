@@ -67,6 +67,10 @@ namespace StatCan.OrchardCore.VueForms
                         Hint = "Debug mode is meant to be used when developping VueForms and will return additional debug information to the client along with the response"
                     }
                 )
+                .WithTextField("SuccessMessage", "Success Message", "3", new TextFieldSettings()
+                {
+                    Hint = "Message returned to the client when everything completed successfully"
+                })
                 .WithField("DisabledHtml", f => f
                     .OfType(nameof(HtmlField))
                     .WithDisplayName("Disabled Html")
@@ -103,7 +107,7 @@ namespace StatCan.OrchardCore.VueForms
                 .WithField("ComponentOptions", f => f
                    .OfType(nameof(TextField))
                    .WithDisplayName("Component Options object")
-                   .WithSettings(new TextFieldSettings() { Hint = "The form's vue component options object. The component's data object is sent to the server. Liquid is evaluated before passing the script to the client." })
+                   .WithSettings(new TextFieldSettings() { Hint = "The form's vue component options object (https://vuejs.org/v2/api/#Options-Data). The component's data object is sent to the server. Liquid is evaluated before passing the script to the client." })
                    .WithPosition("1")
                 .WithEditor("Monaco")
                     .WithSettings(
@@ -229,7 +233,7 @@ namespace StatCan.OrchardCore.VueForms
                 .RemoveField("Enabled")
                 .WithTextField("SuccessMessage", "Success Message", "3", new TextFieldSettings()
                 {
-                    Hint = "(deprecated) Use the setSuccessMessage() function in the server side script to set the validation message."
+                    Hint = "Message returned to the client when everything completed successfully"
                 })
                 .WithField("RenderAs", field => field
                     .OfType("TextField")
@@ -309,7 +313,7 @@ namespace StatCan.OrchardCore.VueForms
                 .WithField("ComponentOptions", f => f
                    .OfType(nameof(TextField))
                    .WithDisplayName("Component Options object")
-                   .WithSettings(new TextFieldSettings() { Hint = "The form's vue component options object. The component's data object is sent to the server. Liquid is evaluated before passing the script to the client." })
+                   .WithSettings(new TextFieldSettings() { Hint = "The form's vue component options object (https://vuejs.org/v2/api/#Options-Data). The component's data object is sent to the server. Liquid is evaluated before passing the script to the client." })
                    .WithPosition("1")
                 .WithEditor("Monaco")
                     .WithSettings(
