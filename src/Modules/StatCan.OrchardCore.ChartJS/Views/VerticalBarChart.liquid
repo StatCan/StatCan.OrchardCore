@@ -19,9 +19,9 @@
 {% assign deviceType = data[7].content | jsonparse %}
 
 <div style="margin:20px">
-  <div class="font-semibold text-xl text-gray-700 px-10">{{ title }}</div>
+  <div class="font-semibold text-xl text-gray-700 px-10">{{ title }} </div>
   <div class="space-y-7">
-      <canvas id="deviceBrand"  class="w-5 max-h-96 px-12"></canvas>
+      <canvas id="deviceBrand" class="w-5 max-h-96 px-12"></canvas>
       <canvas id="deviceBrowser" class="w-5 max-h-96 px-12"></canvas>
       <canvas id="deviceBrowserEngine" class="w-5 max-h-96 px-12"></canvas>
       <canvas id="deviceBrowserVersion" class="w-5 max-h-96 px-12"></canvas>
@@ -33,7 +33,7 @@
 </div>
   
   {% block "script", at: "Foot", depends-on:  "chartJS" %}
-
+  
   {% if deviceBrandContent == true %}
   new Chart(document.getElementById("deviceBrand"), {
     type: 'bar',
@@ -73,7 +73,8 @@
     ]
     },
     options: {
-      plugins: {
+    indexAxis: 'y',
+        plugins: {
         title: {
             display: true,
             text: 'Device Brand'
@@ -81,8 +82,8 @@
     }
     }
   });
+  
   {% endif %}
-
   {% if deviceBrowserContent == true %}
   new Chart(document.getElementById("deviceBrowser"), {
     type: 'bar',
@@ -122,11 +123,12 @@
     ]
     },
     options: {
-      plugins: {
-        title: {
-            display: true,
-            text: 'Device Browser'
-        }
+        indexAxis: 'y',
+        plugins: {
+            title: {
+                display: true,
+                text: 'Device Browser'
+            }
     }
     }
   });
@@ -171,11 +173,12 @@
     ]
     },
     options: {
-      plugins: {
-        title: {
-            display: true,
-            text: 'Device Browser Engine'
-        }
+        indexAxis: 'y',
+        plugins: {
+            title: {
+                display: true,
+                text: 'Device Browser Engine'
+            }
     }
     }
   });
@@ -220,10 +223,11 @@
     ]
     },
     options: {
-      plugins: {
-        title: {
-            display: true,
-            text: 'Device Browser Version'
+        indexAxis: 'y',
+        plugins: {
+            title: {
+                display: true,
+                text: 'Device Browser Version'
         }
     }
     }
@@ -269,11 +273,12 @@
     ]
     },
     options: {
-      plugins: {
-        title: {
-            display: true,
-            text: 'Device Model'
-        }
+        indexAxis: 'y',
+        plugins: {
+            title: {
+                display: true,
+                text: 'Device Model'
+            }
     }
     }
   });
@@ -318,11 +323,12 @@
     ]
     },
     options: {
-      plugins: {
-        title: {
-            display: true,
-            text: 'Device OS Family'
-        }
+        indexAxis: 'y',
+        plugins: {
+            title: {
+                display: true,
+                text: 'Device OS Family'
+            }
     }
     }
   });
@@ -367,16 +373,17 @@
     ]
     },
     options: {
-      plugins: {
-        title: {
-            display: true,
-            text: 'Device OS Version'
-        }
+        indexAxis: 'y',
+        plugins: {
+            title: {
+                display: true,
+                text: 'Device OS Version'
+            }
     }
     }
   });
   {% endif %}
-  
+
   {% if deviceTypeContent == true %}
   new Chart(document.getElementById("deviceType"), {
     type: 'bar',
@@ -416,11 +423,12 @@
     ]
     },
     options: {
-      plugins: {
-        title: {
-            display: true,
-            text: 'Device Type'
-        }
+        indexAxis: 'y',
+        plugins: {
+            title: {
+                display: true,
+                text: 'Device Type'
+            }
     }
     }
   });

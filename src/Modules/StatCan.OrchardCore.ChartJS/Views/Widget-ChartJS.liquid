@@ -7,16 +7,61 @@
 
 {% assign type = Model.ContentItem.Content.ChartJS.Type.Text %}
 {% assign title = Model.ContentItem.Content.ChartJS.Title.Text | raw %}
+{% assign contents = Model.ContentItem.Content.ChartJS.Contents.Values | join: ',' | raw %}
+{% assign deviceBrandContent = Model.ContentItem.Content.ChartJS.DeviceBrand.Value %}
+{% assign deviceBrowserContent = Model.ContentItem.Content.ChartJS.DeviceBrowser.Value %}
+{% assign deviceBrowserEngineContent = Model.ContentItem.Content.ChartJS.DeviceBrowserEngine.Value %}
+{% assign deviceBrowserVersionContent = Model.ContentItem.Content.ChartJS.DeviceBrowserVersion.Value %}
+{% assign deviceModelContent = Model.ContentItem.Content.ChartJS.DeviceModel.Value %}
+{% assign deviceOSFamilyContent = Model.ContentItem.Content.ChartJS.DeviceOSFamily.Value %}
+{% assign deviceOSVersionContent = Model.ContentItem.Content.ChartJS.DeviceOSVersion.Value %}
+{% assign deviceTypeContent = Model.ContentItem.Content.ChartJS.DeviceType.Value %}
 
-{% assign bar = "BarChart" | shape_new | shape_properties: data: data, title: title %}
-{% assign line = "LineChart" | shape_new | shape_properties: data: data, title: title  %}
+{% assign bar = "BarChart" | shape_new | shape_properties: 
+    data: data, 
+    title: title, 
+    deviceBrandContent: deviceBrandContent,  
+    deviceBrowserContent: deviceBrowserContent,
+    deviceBrowserEngineContent: deviceBrowserEngineContent,
+    deviceBrowserVersionContent: deviceBrowserVersionContent,
+    deviceModelContent: deviceModelContent,
+    deviceOSFamilyContent: deviceOSFamilyContent,
+    deviceOSVersionContent: deviceOSVersionContent,
+    deviceTypeContent: deviceTypeContent
+%}
+
+{% assign line = "LineChart" | shape_new | shape_properties: 
+    data: data, 
+    title: title, 
+    deviceBrandContent: deviceBrandContent,  
+    deviceBrowserContent: deviceBrowserContent,
+    deviceBrowserEngineContent: deviceBrowserEngineContent,
+    deviceBrowserVersionContent: deviceBrowserVersionContent,
+    deviceModelContent: deviceModelContent,
+    deviceOSFamilyContent: deviceOSFamilyContent,
+    deviceOSVersionContent: deviceOSVersionContent,
+    deviceTypeContent: deviceTypeContent  
+%}
 {% assign pie = "PieChart" | shape_new | shape_properties: data: data, title: title  %}
+{% assign verticalBar = "VerticalBarChart" | shape_new | shape_properties: 
+    data: data, 
+    title: title, 
+    deviceBrandContent: deviceBrandContent,  
+    deviceBrowserContent: deviceBrowserContent,
+    deviceBrowserEngineContent: deviceBrowserEngineContent,
+    deviceBrowserVersionContent: deviceBrowserVersionContent,
+    deviceModelContent: deviceModelContent,
+    deviceOSFamilyContent: deviceOSFamilyContent,
+    deviceOSVersionContent: deviceOSVersionContent,
+    deviceTypeContent: deviceTypeContent  
+%}
 
 {% if type == 'bar' %}
     {{ bar | shape_render }}
 {% elsif type == 'line' %}
     {{ line | shape_render }}
-{% else %}
+{% elsif type == 'pie' %}
     {{ pie | shape_render }}
+{% else %}
+    {{ verticalBar | shape_render }}
 {% endif %}
-

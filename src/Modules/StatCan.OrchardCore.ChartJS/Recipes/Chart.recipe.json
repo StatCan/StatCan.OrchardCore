@@ -17,12 +17,7 @@
             "DisplayName": "ChartJS",
             "Settings": {
               "ContentTypeSettings": {
-                "Creatable": true,
-                "Listable": true,
-                "Draftable": true,
-                "Versionable": true,
-                "Stereotype": "Widget",
-                "Securable": true
+                "Stereotype": "Widget"
               },
               "FullTextAspectSettings": {}
             },
@@ -64,7 +59,7 @@
                   "ContentPartFieldSettings": {
                     "DisplayName": "Type",
                     "Editor": "PredefinedList",
-                    "Position": "2"
+                    "Position": "1"
                   },
                   "TextFieldSettings": {
                     "Hint": "Select one of the following options: Bar, Line or Pie.",
@@ -83,6 +78,10 @@
                       {
                         "name": "Pie",
                         "value": "pie"
+                      },
+                      {
+                        "name": "Vertical Bar",
+                        "value": "verticalBar"
                       }
                     ]
                   }
@@ -95,11 +94,123 @@
                   "ContentPartFieldSettings": {
                     "DisplayName": "Data",
                     "Editor": "CodeMirror",
-                    "Position": "1"
+                    "Position": "2"
                   },
                   "TextFieldSettings": {
                     "Hint": "Enter the JSON here",
                     "Required": true
+                  }
+                }
+              },
+              {
+                "FieldName": "BooleanField",
+                "Name": "DeviceBrand",
+                "Settings": {
+                  "ContentPartFieldSettings": {
+                    "DisplayName": "Device Brand",
+                    "Position": "3"
+                  },
+                  "BooleanFieldSettings": {
+                    "Hint": "Select this content to chart Device Brand.",
+                    "Label": "Device Brand"
+                  }
+                }
+              },
+              {
+                "FieldName": "BooleanField",
+                "Name": "DeviceBrowser",
+                "Settings": {
+                  "ContentPartFieldSettings": {
+                    "DisplayName": "Device Browser",
+                    "Position": "4"
+                  },
+                  "BooleanFieldSettings": {
+                    "Hint": "Select this content to chart Device Browser",
+                    "Label": "Device Browser"
+                  }
+                }
+              },
+              {
+                "FieldName": "BooleanField",
+                "Name": "DeviceBrowserEngine",
+                "Settings": {
+                  "ContentPartFieldSettings": {
+                    "DisplayName": "Device Browser Engine",
+                    "Position": "5"
+                  },
+                  "BooleanFieldSettings": {
+                    "Hint": "Select this content to chart Device Browser Engine",
+                    "Label": "Device Browser Engine"
+                  }
+                }
+              },
+              {
+                "FieldName": "BooleanField",
+                "Name": "DeviceBrowserVersion",
+                "Settings": {
+                  "ContentPartFieldSettings": {
+                    "DisplayName": "Device Browser Version",
+                    "Position": "6"
+                  },
+                  "BooleanFieldSettings": {
+                    "Hint": "Select this content to chart Device Browser Version.",
+                    "Label": "Device Browser Version"
+                  }
+                }
+              },
+              {
+                "FieldName": "BooleanField",
+                "Name": "DeviceModel",
+                "Settings": {
+                  "ContentPartFieldSettings": {
+                    "DisplayName": "Device Model",
+                    "Position": "7"
+                  },
+                  "BooleanFieldSettings": {
+                    "Hint": "Select this content to chart Device Model.",
+                    "Label": "Device Model"
+                  }
+                }
+              },
+              {
+                "FieldName": "BooleanField",
+                "Name": "DeviceOSFamily",
+                "Settings": {
+                  "ContentPartFieldSettings": {
+                    "DisplayName": "Device OS Family",
+                    "Position": "8"
+                  },
+                  "BooleanFieldSettings": {
+                    "Hint": "Select this content to chart Device OS Family.",
+                    "Label": "Device OS Family"
+                  }
+                }
+              },
+              {
+                "FieldName": "BooleanField",
+                "Name": "DeviceOSVersion",
+                "Settings": {
+                  "ContentPartFieldSettings": {
+                    "DisplayName": "Device OS Version",
+                    "Position": "9"
+                  },
+                  "BooleanFieldSettings": {
+                    "Hint": "Select this content to chart Device OS Version",
+                    "Label": "Device OS Version"
+                  }
+                }
+              },
+              {
+                "FieldName": "BooleanField",
+                "Name": "DeviceType",
+                "Settings": {
+                  "ContentPartFieldSettings": {
+                    "DisplayName": "Device Type",
+                    "Position": "10"
+                  },
+                  "BooleanFieldSettings": {
+                    "Hint": "Select this content to chart Device Type.",
+                    "Label": "Device Type"
                   }
                 }
               }

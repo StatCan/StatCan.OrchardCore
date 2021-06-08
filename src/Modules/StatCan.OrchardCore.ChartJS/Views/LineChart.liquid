@@ -1,5 +1,13 @@
 {% assign data = Model.Data | jsonparse %}
 {% assign title = Model.Title %}
+{% assign deviceBrandContent = Model.DeviceBrandContent %}
+{% assign deviceBrowserContent = Model.DeviceBrowserContent %}
+{% assign deviceBrowserEngineContent = Model.DeviceBrowserEngineContent  %}
+{% assign deviceBrowserVersionContent = Model.DeviceBrowserVersionContent  %}
+{% assign deviceModelContent = Model.DeviceModelContent %}
+{% assign deviceOSFamilyContent = Model.DeviceOSFamilyContent %}
+{% assign deviceOSVersionContent = Model.DeviceOSVersionContent %}
+{% assign deviceTypeContent = Model.DeviceTypeContent %}
 
 {% assign deviceBrand = data[0].content | jsonparse %}
 {% assign deviceBrowser = data[1].content | jsonparse %}
@@ -11,21 +19,21 @@
 {% assign deviceType = data[7].content | jsonparse %}
 
 <div style="margin:20px">
-    <div style="font-weight:bold;font-size:20px">{{ title }} </div>
-    <div style="padding:15px">
-        <canvas id="deviceBrand" style="width:200px;height:50px;padding:20px 50px 20px 50px;"></canvas>
-        <canvas id="deviceBrowser" style="width:200px;height:50px;padding:20px 50px 20px 50px;"></canvas>
-        <canvas id="deviceBrowserEngine" style="width:200px;height:50px;padding:20px 50px 20px 50px;""></canvas>
-        <canvas id="deviceBrowserVersion" style="width:200px;height:50px;padding:20px 50px 20px 50px;"></canvas>
-        <canvas id="deviceModel" style="width:200px;height:50px;padding:20px 50px 20px 50px;"></canvas>
-        <canvas id="deviceOSFamily" style="width:200px;height:50px;padding:20px 50px 20px 50px;"></canvas>
-        <canvas id="deviceOSVersion" style="width:200px;height:50px;padding:20px 50px 20px 50px;"></canvas>
-        <canvas id="devicetype" style="width:200px;height:50px;padding:20px 50px 20px 50px;"></canvas>
+    <div class="font-semibold text-xl text-gray-700 px-10">{{title}}</div>
+    <div class="space-y-7">
+        <canvas id="deviceBrand" class="w-5 max-h-96 px-10"></canvas>
+        <canvas id="deviceBrowser" class="w-5 max-h-96 px-10"></canvas>
+        <canvas id="deviceBrowserEngine" class="w-5 max-h-96 px-10"></canvas>
+        <canvas id="deviceBrowserVersion" class="w-5 max-h-96 px-10"></canvas>
+        <canvas id="deviceModel" class="w-5 max-h-96 px-10"></canvas>
+        <canvas id="deviceOSFamily" class="w-5 max-h-96 px-10"></canvas>
+        <canvas id="deviceOSVersion" class="w-5 max-h-96 px-10"></canvas>
+        <canvas id="deviceType" class="w-5 max-h-96 px-10"></canvas>
     </div>
   </div>
   
   {% block "script", at: "Foot", depends-on:  "chartJS" %}
-  
+  {% if deviceBrandContent == true %}
   new Chart(document.getElementById("deviceBrand"), {
     type: 'line',
     data: {
@@ -36,8 +44,6 @@
       {
         label: "Number of Visits",
         backgroundColor: "pink",
-        borderColor: "red",
-        borderWidth: .5,
         data: [ {% for nbVisits in deviceBrand %}
         '{{nbVisits.nb_visits}}',
        {% endfor %} ]
@@ -45,8 +51,6 @@
       {
         label: "Number of Actions",
         backgroundColor: "lightblue",
-        borderColor: "blue",
-        borderWidth: 1,
         data: [ {% for nbActions in deviceBrand %}
         '{{nbActions.nb_actions}}',
        {% endfor %} ]
@@ -54,8 +58,6 @@
       {
         label: "Sum of Daily Users",
         backgroundColor: "lightgreen",
-        borderColor: "green",
-        borderWidth: 1,
         data: [ {% for sumDailyUsers in deviceBrand %}
         '{{sumDailyUsers.sum_daily_nb_users}}',
        {% endfor %} ]
@@ -63,8 +65,6 @@
       {
         label: "Sum of daily Visitors",
         backgroundColor: "yellow",
-        borderColor: "orange",
-        borderWidth: 1,
         data: [ {% for sumDailyVisitors in deviceBrand %}
         '{{sumDailyVisitors.sum_daily_nb_uniq_visitors}}',
        {% endfor %} ]
@@ -80,7 +80,9 @@
     }
     }
   });
-  
+  {% endif %}
+
+  {% if deviceBrowserContent == true %}
   new Chart(document.getElementById("deviceBrowser"), {
     type: 'line',
     data: {
@@ -91,8 +93,6 @@
       {
         label: "Number of Visits",
         backgroundColor: "pink",
-        borderColor: "red",
-        borderWidth: .5,
         data: [ {% for nbVisits in deviceBrowser %}
         '{{nbVisits.nb_visits}}',
        {% endfor %} ]
@@ -100,8 +100,6 @@
       {
         label: "Number of Actions",
         backgroundColor: "lightblue",
-        borderColor: "blue",
-        borderWidth: 1,
         data: [ {% for nbActions in deviceBrowser %}
         '{{nbActions.nb_actions}}',
        {% endfor %} ]
@@ -109,8 +107,6 @@
       {
         label: "Sum of Daily Users",
         backgroundColor: "lightgreen",
-        borderColor: "green",
-        borderWidth: 1,
         data: [ {% for sumDailyUsers in deviceBrowser %}
         '{{sumDailyUsers.sum_daily_nb_users}}',
        {% endfor %} ]
@@ -118,8 +114,6 @@
       {
         label: "Sum of daily Visitors",
         backgroundColor: "yellow",
-        borderColor: "orange",
-        borderWidth: 1,
         data: [ {% for sumDailyVisitors in deviceBrowser %}
         '{{sumDailyVisitors.sum_daily_nb_uniq_visitors}}',
        {% endfor %} ]
@@ -135,7 +129,9 @@
     }
     }
   });
-  
+  {% endif %}
+
+  {% if deviceBrowserEngineContent == true %}
   new Chart(document.getElementById("deviceBrowserEngine"), {
     type: 'line',
     data: {
@@ -146,8 +142,6 @@
       {
         label: "Number of Visits",
         backgroundColor: "pink",
-        borderColor: "red",
-        borderWidth: .5,
         data: [ {% for nbVisits in deviceBrowserEngine %}
         '{{nbVisits.nb_visits}}',
        {% endfor %} ]
@@ -155,8 +149,6 @@
       {
         label: "Number of Actions",
         backgroundColor: "lightblue",
-        borderColor: "blue",
-        borderWidth: 1,
         data: [ {% for nbActions in deviceBrowserEngine %}
         '{{nbActions.nb_actions}}',
        {% endfor %} ]
@@ -164,8 +156,6 @@
       {
         label: "Sum of Daily Users",
         backgroundColor: "lightgreen",
-        borderColor: "green",
-        borderWidth: 1,
         data: [ {% for sumDailyUsers in deviceBrowserEngine %}
         '{{sumDailyUsers.sum_daily_nb_users}}',
        {% endfor %} ]
@@ -173,8 +163,6 @@
       {
         label: "Sum of daily Visitors",
         backgroundColor: "yellow",
-        borderColor: "orange",
-        borderWidth: 1,
         data: [ {% for sumDailyVisitors in deviceBrowserEngine %}
         '{{sumDailyVisitors.sum_daily_nb_uniq_visitors}}',
        {% endfor %} ]
@@ -190,7 +178,9 @@
     }
     }
   });
-  
+  {% endif %}
+
+  {% if deviceBrowserVersionContent == true %}
   new Chart(document.getElementById("deviceBrowserVersion"), {
     type: 'line',
     data: {
@@ -201,8 +191,6 @@
       {
         label: "Number of Visits",
         backgroundColor: "pink",
-        borderColor: "red",
-        borderWidth: .5,
         data: [ {% for nbVisits in deviceBrowserVersion %}
         '{{nbVisits.nb_visits}}',
        {% endfor %} ]
@@ -210,8 +198,6 @@
       {
         label: "Number of Actions",
         backgroundColor: "lightblue",
-        borderColor: "blue",
-        borderWidth: 1,
         data: [ {% for nbActions in deviceBrowserVersion %}
         '{{nbActions.nb_actions}}',
        {% endfor %} ]
@@ -219,8 +205,6 @@
       {
         label: "Sum of Daily Users",
         backgroundColor: "lightgreen",
-        borderColor: "green",
-        borderWidth: 1,
         data: [ {% for sumDailyUsers in deviceBrowserVersion %}
         '{{sumDailyUsers.sum_daily_nb_users}}',
        {% endfor %} ]
@@ -228,8 +212,6 @@
       {
         label: "Sum of daily Visitors",
         backgroundColor: "yellow",
-        borderColor: "orange",
-        borderWidth: 1,
         data: [ {% for sumDailyVisitors in deviceBrowserVersion %}
         '{{sumDailyVisitors.sum_daily_nb_uniq_visitors}}',
        {% endfor %} ]
@@ -245,7 +227,9 @@
     }
     }
   });
-  
+  {% endif %}
+
+  {% if deviceModelContent == true %}
   new Chart(document.getElementById("deviceModel"), {
     type: 'line',
     data: {
@@ -256,8 +240,6 @@
       {
         label: "Number of Visits",
         backgroundColor: "pink",
-        borderColor: "red",
-        borderWidth: .5,
         data: [ {% for nbVisits in deviceModel %}
         '{{nbVisits.nb_visits}}',
        {% endfor %} ]
@@ -265,8 +247,6 @@
       {
         label: "Number of Actions",
         backgroundColor: "lightblue",
-        borderColor: "blue",
-        borderWidth: 1,
         data: [ {% for nbActions in deviceModel %}
         '{{nbActions.nb_actions}}',
        {% endfor %} ]
@@ -274,8 +254,6 @@
       {
         label: "Sum of Daily Users",
         backgroundColor: "lightgreen",
-        borderColor: "green",
-        borderWidth: 1,
         data: [ {% for sumDailyUsers in deviceModel %}
         '{{sumDailyUsers.sum_daily_nb_users}}',
        {% endfor %} ]
@@ -283,8 +261,6 @@
       {
         label: "Sum of daily Visitors",
         backgroundColor: "yellow",
-        borderColor: "orange",
-        borderWidth: 1,
         data: [ {% for sumDailyVisitors in deviceModel %}
         '{{sumDailyVisitors.sum_daily_nb_uniq_visitors}}',
        {% endfor %} ]
@@ -300,7 +276,9 @@
     }
     }
   });
-  
+  {% endif %}
+
+  {% if deviceOSFamilyContent == true %}
   new Chart(document.getElementById("deviceOSFamily"), {
     type: 'line',
     data: {
@@ -311,8 +289,6 @@
       {
         label: "Number of Visits",
         backgroundColor: "pink",
-        borderColor: "red",
-        borderWidth: .5,
         data: [ {% for nbVisits in deviceOSFamily %}
         '{{nbVisits.nb_visits}}',
        {% endfor %} ]
@@ -320,8 +296,6 @@
       {
         label: "Number of Actions",
         backgroundColor: "lightblue",
-        borderColor: "blue",
-        borderWidth: 1,
         data: [ {% for nbActions in deviceOSFamily %}
         '{{nbActions.nb_actions}}',
        {% endfor %} ]
@@ -329,8 +303,6 @@
       {
         label: "Sum of Daily Users",
         backgroundColor: "lightgreen",
-        borderColor: "green",
-        borderWidth: 1,
         data: [ {% for sumDailyUsers in deviceOSFamily %}
         '{{sumDailyUsers.sum_daily_nb_users}}',
        {% endfor %} ]
@@ -338,8 +310,6 @@
       {
         label: "Sum of daily Visitors",
         backgroundColor: "yellow",
-        borderColor: "orange",
-        borderWidth: 1,
         data: [ {% for sumDailyVisitors in deviceOSFamily %}
         '{{sumDailyVisitors.sum_daily_nb_uniq_visitors}}',
        {% endfor %} ]
@@ -355,7 +325,9 @@
     }
     }
   });
-  
+  {% endif %}
+
+  {% if deviceOSVersionContent == true %}
   new Chart(document.getElementById("deviceOSVersion"), {
     type: 'line',
     data: {
@@ -366,8 +338,6 @@
       {
         label: "Number of Visits",
         backgroundColor: "pink",
-        borderColor: "red",
-        borderWidth: .5,
         data: [ {% for nbVisits in deviceOSVersion %}
         '{{nbVisits.nb_visits}}',
        {% endfor %} ]
@@ -375,8 +345,6 @@
       {
         label: "Number of Actions",
         backgroundColor: "lightblue",
-        borderColor: "blue",
-        borderWidth: 1,
         data: [ {% for nbActions in deviceOSVersion %}
         '{{nbActions.nb_actions}}',
        {% endfor %} ]
@@ -384,8 +352,6 @@
       {
         label: "Sum of Daily Users",
         backgroundColor: "lightgreen",
-        borderColor: "green",
-        borderWidth: 1,
         data: [ {% for sumDailyUsers in deviceOSVersion %}
         '{{sumDailyUsers.sum_daily_nb_users}}',
        {% endfor %} ]
@@ -393,8 +359,6 @@
       {
         label: "Sum of daily Visitors",
         backgroundColor: "yellow",
-        borderColor: "orange",
-        borderWidth: 1,
         data: [ {% for sumDailyVisitors in deviceOSVersion %}
         '{{sumDailyVisitors.sum_daily_nb_uniq_visitors}}',
        {% endfor %} ]
@@ -410,4 +374,54 @@
     }
     }
   });
+  {% endif %}
+
+  {% if deviceTypeContent == true %}
+  new Chart(document.getElementById("deviceType"), {
+    type: 'line',
+    data: {
+      labels: [{% for label in deviceType %}
+                '{{label.label}}',
+              {%endfor%}],
+      datasets: [
+      {
+        label: "Number of Visits",
+        backgroundColor: "pink",
+        data: [ {% for nbVisits in deviceType %}
+        '{{nbVisits.nb_visits}}',
+       {% endfor %} ]
+      },
+      {
+        label: "Number of Actions",
+        backgroundColor: "lightblue",
+        data: [ {% for nbActions in deviceType %}
+        '{{nbActions.nb_actions}}',
+       {% endfor %} ]
+      },
+      {
+        label: "Sum of Daily Users",
+        backgroundColor: "lightgreen",
+        data: [ {% for sumDailyUsers in deviceType %}
+        '{{sumDailyUsers.sum_daily_nb_users}}',
+       {% endfor %} ]
+      },
+      {
+        label: "Sum of daily Visitors",
+        backgroundColor: "yellow",
+        data: [ {% for sumDailyVisitors in deviceType %}
+        '{{sumDailyVisitors.sum_daily_nb_uniq_visitors}}',
+       {% endfor %} ]
+      }
+    ]
+    },
+    options: {
+      plugins: {
+        title: {
+            display: true,
+            text: 'Device Type'
+        }
+    }
+    }
+  });
+  {% endif %}
   {% endblock %}
