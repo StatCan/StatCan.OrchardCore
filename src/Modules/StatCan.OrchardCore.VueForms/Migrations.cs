@@ -364,29 +364,37 @@ namespace StatCan.OrchardCore.VueForms
                 // form.Content.VueFormScripts.OnValidation = null;
 
                 var flow = form.As<FlowPart>();
-                var templateBuilder = new StringBuilder();
-                foreach (var widget in flow.Widgets)
+                if (flow != null)
                 {
-                    if (widget.ContentType == "VueComponent")
+                    var templateBuilder = new StringBuilder();
+                    foreach (var widget in flow.Widgets)
                     {
-                        templateBuilder.Append((string)widget.Content.VueComponent.Template.Text);
-                        templateBuilder.AppendLine();
+                        if (widget.ContentType == "VueComponent")
+                        {
+                            templateBuilder.Append((string)widget.Content.VueComponent.Template.Text);
+                            templateBuilder.AppendLine();
+                        }
                     }
+                    form.Remove("FlowPart");
+                    form.Alter<VueForm>(v =>
+                    {
+                        v.Template = new TextField() { Text = templateBuilder.ToString() };
+                    });
                 }
-                form.Remove("FlowPart");
-
-                var isDisabled = false;
-                if (form.Content?.VueForm?.Enabled?.Value != null)
+                if(form.Content?.VueForm?.Disabled == null)
                 {
-                    isDisabled = !(bool)form.Content.VueForm.Enabled.Value;
+                    var isDisabled = false;
+                    if (form.Content?.VueForm?.Enabled?.Value != null)
+                    {
+                        isDisabled = !(bool)form.Content.VueForm.Enabled.Value;
+                    }
+                    form.Content.VueForm.Enabled = null;
+
+                    form.Alter<VueForm>(v =>
+                    {
+                        v.Disabled = new BooleanField() { Value = isDisabled };
+                    });
                 }
-                form.Content.VueForm.Enabled = null;
-
-                form.Alter<VueForm>(v =>
-                {
-                    v.Disabled = new BooleanField() { Value = isDisabled };
-                    v.Template = new TextField() { Text = templateBuilder.ToString() };
-                });
                 _session.Save(form);
             }
 
