@@ -481,7 +481,7 @@
                 },
                 "LinkMenuItem": {
                   "IconName": {
-                    "Text": null
+                    "Text": "mdi-home"
                   }
                 }
               },
@@ -503,6 +503,9 @@
                   },
                   "Taxonomy": {
                     "ContentItemIds": ["4wnw5cysybe8szzhehezz5b74b"]
+                  },
+                  "IconName": {
+                    "Text": "mdi-calendar"
                   }
                 },
                 "TitlePart": {
@@ -550,16 +553,16 @@
         },
         {
           "ContentItemId": "4nm1vms5mbanyx2n23f88c7mn8",
-          "ContentItemVersionId": "4cx8h0c7j4dqrzf9dgsdxtnsw7",
+          "ContentItemVersionId": "4t9gwmrw73vxzr5eavsgxxdfdq",
           "ContentType": "Menu",
           "DisplayText": "Navigation Menu EN",
           "Latest": true,
           "Published": true,
-          "ModifiedUtc": "2021-05-18T19:16:33.7967942Z",
-          "PublishedUtc": "2021-05-18T19:16:33.7989322Z",
+          "ModifiedUtc": "2021-06-09T00:45:40.9829204Z",
+          "PublishedUtc": "2021-06-09T00:45:40.9854811Z",
           "CreatedUtc": "2021-04-23T17:44:24.6263983Z",
-          "Owner": "[js: parameters('AdminUserId')]",
-          "Author": "[js: parameters('AdminUsername')]",
+          "Owner": "4dtgvzw6m75944r84m07brxhnx",
+          "Author": "admin",
           "TitlePart": {
             "Title": "Navigation Menu EN"
           },
@@ -573,7 +576,7 @@
                 "ContentItemId": "45kfyr6dj9ek01d301n831psn8",
                 "ContentItemVersionId": null,
                 "ContentType": "LinkMenuItem",
-                "DisplayText": "Page Principale",
+                "DisplayText": "HomePage",
                 "Latest": false,
                 "Published": false,
                 "ModifiedUtc": "2021-04-26T13:01:24.14465Z",
@@ -582,12 +585,12 @@
                 "Owner": null,
                 "Author": "admin",
                 "LinkMenuItemPart": {
-                  "Name": "Page Principale",
+                  "Name": "HomePage",
                   "Url": "~/"
                 },
                 "LinkMenuItem": {
                   "IconName": {
-                    "Text": null
+                    "Text": "mdi-home"
                   }
                 }
               },
@@ -608,7 +611,12 @@
                     "Value": true
                   },
                   "Taxonomy": {
-                    "ContentItemIds": ["4wnw5cysybe8szzhehezz5b74b"]
+                    "ContentItemIds": [
+                      "4wnw5cysybe8szzhehezz5b74b"
+                    ]
+                  },
+                  "IconName": {
+                    "Text": "mdi-calendar"
                   }
                 },
                 "TitlePart": {
@@ -634,12 +642,66 @@
                 "ContentMenuItemPart": {
                   "Name": "Feedback",
                   "SelectedContentItem": {
-                    "ContentItemIds": ["4ty56s2p8vfhmxp76p4f37b1c3"]
+                    "ContentItemIds": [
+                      "4ty56s2p8vfhmxp76p4f37b1c3"
+                    ]
                   }
                 },
                 "ContentMenuItem": {
                   "IconName": {
                     "Text": "mdi-comment-quote"
+                  }
+                }
+              },
+              {
+                "ContentItemId": "4fx1gta04gafm50wck4z3xahdk",
+                "ContentItemVersionId": null,
+                "ContentType": "ContentMenuItem",
+                "DisplayText": "Bulk create appointments",
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": "2021-06-09T00:35:51.4367176Z",
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": null,
+                "Author": "admin",
+                "ContentMenuItemPart": {
+                  "Name": "Bulk create appointments",
+                  "SelectedContentItem": {
+                    "ContentItemIds": [
+                      "430c4dnz5d7616rz32jd7h6dxz"
+                    ]
+                  }
+                },
+                "ContentMenuItem": {
+                  "IconName": {
+                    "Text": "mdi-file-multiple"
+                  }
+                }
+              },
+              {
+                "ContentItemId": "416wq3yv92mq8vsdqbmghajv4s",
+                "ContentItemVersionId": null,
+                "ContentType": "ContentMenuItem",
+                "DisplayText": "Bulk create employees",
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": "2021-06-09T00:36:49.6284002Z",
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": null,
+                "Author": "admin",
+                "ContentMenuItemPart": {
+                  "Name": "Bulk create employees",
+                  "SelectedContentItem": {
+                    "ContentItemIds": [
+                      "4w6xjvdezh00ctenheq70cg2nf"
+                    ]
+                  }
+                },
+                "ContentMenuItem": {
+                  "IconName": {
+                    "Text": "mdi-account-group"
                   }
                 }
               }
@@ -709,6 +771,70 @@
           },
           "LocalizedTextPart": {
             "Data": []
+          }
+        },
+        {
+          "ContentItemId": "430c4dnz5d7616rz32jd7h6dxz",
+          "ContentItemVersionId": "4j46hpzj5rtc760xsk5haxp7wn",
+          "ContentType": "VueForm",
+          "DisplayText": "Bulk Create Appointments",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": "2021-06-09T01:04:05.8262608Z",
+          "PublishedUtc": "2021-06-09T01:04:05.8311116Z",
+          "CreatedUtc": "2021-06-02T18:54:00.2291058Z",
+          "Owner": "4dtgvzw6m75944r84m07brxhnx",
+          "Author": "admin",
+          "TitlePart": {
+            "Title": "Bulk Create Appointments"
+          },
+          "VueForm": {
+            "Enabled": null,
+            "RenderAs": {
+              "Text": null
+            },
+            "DisabledHtml": {
+              "Html": "Bulk create form has been disabled"
+            },
+            "SuccessMessage": {
+              "Text": "Appointments have been successfully created."
+            },
+            "Template": {
+              "Text": "<v-container>\r\n  <v-row>\r\n    <v-col>\r\n      <h1>Bulk create appointments for cohort</h1>\r\n      <p class=\"font-weight-light\">\r\n        Creates appointments for all employees of a cohort. Starting at the selected date / time.\r\n      </p>\r\n    </v-col>\r\n  </v-row>\r\n  <v-row>\r\n    <v-col cols=\"12\" sm=\"6\" md=\"4\">\r\n      <validation-provider name=\"cohort\" rules=\"required\" v-slot=\"{ errors, valid }\">\r\n        <v-autocomplete v-model=\"cohort\" :items=\"calendarList\" item-text=\"DisplayText\" item-value=\"ContentItemId\" label=\"Cohort\" :success=\"valid\" :error-messages=\"errors\"></v-autocomplete>\r\n      </validation-provider>\r\n    </v-col>\r\n  </v-row>\r\n  <v-row>\r\n    <v-col cols=\"12\" sm=\"6\" md=\"4\">\r\n      <validation-provider rules=\"required\" v-slot=\"{ errors, valid }\">\r\n        <v-select :items=\"items\" v-model=\"amount\" :error-messages=\"errors\" :success=\"valid\" label=\"Appointments per 10 minutes\" hint=\"The number of appointments to create in a 10 minute slot\" persistent-hint></v-select>\r\n      </validation-provider>\r\n    </v-col>\r\n  </v-row>\r\n  <v-row>\r\n    <v-col cols=\"12\" sm=\"6\" md=\"4\">\r\n      <v-menu\r\n        v-model=\"menu\"\r\n        :close-on-content-click=\"false\"\r\n        :nudge-right=\"40\"\r\n        transition=\"scale-transition\"\r\n        offset-y\r\n        min-width=\"auto\"\r\n      >\r\n        <template v-slot:activator=\"{ on, attrs }\">\r\n          <validation-provider name=\"date\" rules=\"required\" v-slot=\"{ errors, valid }\">\r\n            <v-text-field\r\n              v-model=\"date\"\r\n              label=\"Date\"\r\n\t\t\t  :success=\"valid\"\r\n              :error-messages=\"errors\"\r\n              prepend-icon=\"mdi-calendar\"\r\n              readonly\r\n              v-bind=\"attrs\"\r\n              v-on=\"on\"\r\n            ></v-text-field>\r\n          </validation-provider>\r\n        </template>\r\n        <v-date-picker v-model=\"date\" @input=\"menu = false\"></v-date-picker>\r\n      </v-menu>\r\n    </v-col>\r\n\r\n    <v-col cols=\"12\" sm=\"6\" md=\"4\">\r\n      <v-menu \r\n        ref=\"timeMenu\"\r\n        v-model=\"menu2\"\r\n        :close-on-content-click=\"false\"\r\n        :nudge-right=\"40\"\r\n        :return-value.sync=\"time\"\r\n        transition=\"scale-transition\"\r\n        offset-y\r\n        max-width=\"290px\"\r\n        min-width=\"290px\"\r\n      >\r\n        <template v-slot:activator=\"{ on, attrs }\">\r\n          <validation-provider name=\"time\" rules=\"required\" v-slot=\"{ errors, valid }\">\r\n            <v-text-field\r\n              v-model=\"time\"\r\n              label=\"Time\"\r\n\t\t\t  :success=\"valid\"\r\n              :error-messages=\"errors\"\r\n              prepend-icon=\"mdi-clock-time-four-outline\"\r\n              readonly\r\n              v-bind=\"attrs\"\r\n              v-on=\"on\"\r\n            ></v-text-field>\r\n          </validation-provider>\r\n        </template>\r\n        <v-time-picker\r\n          v-if=\"menu2\"\r\n          v-model=\"time\"\r\n          format=\"24hr\"\r\n          full-width\r\n\t\t  :allowed-minutes=\"allowedMinutes\"\r\n          @click:minute=\"$refs.timeMenu.save(time)\"\r\n        ></v-time-picker>\r\n      </v-menu>\r\n    </v-col>\r\n\r\n  </v-row>\r\n  <v-row>\r\n    <v-col>\r\n      <v-alert type=\"success\" v-if=\"form.successMessage\">\r\n        {% raw %}{{ form.successMessage }}{% endraw %}\r\n        <a href=\"{{\"~/\" | href}}\">Go home</a>\r\n      </v-alert>\r\n      <v-alert type=\"error\" v-if=\"form.serverValidationMessage\">\r\n        {% raw %}{{ form.serverValidationMessage[0] }}{% endraw %}\r\n      </v-alert>\r\n      <!-- <v-btn type=\"submit\" :disabled=\"form.submitting || form.submitSuccess\" >Submit</v-btn> -->\r\n      <v-btn type=\"submit\" >Submit</v-btn>\r\n    </v-col>\r\n  </v-row>\r\n</v-container>\r\n"
+            },
+            "Disabled": {
+              "Value": false
+            },
+            "Debug": {
+              "Value": false
+            }
+          },
+          "VueFormScripts": {
+            "ClientInit": {
+              "Text": null
+            },
+            "ComponentOptions": {
+              "Text": "{% assign calendarTerms = '4wnw5cysybe8szzhehezz5b74b' | all_taxonomy_terms  %}\r\n{\r\n  data: () => ({\r\n    date: \"\",\r\n    time: \"\",\r\n    cohort: \"\",\r\n    amount: \"\",\r\n    items: [1,2,3,4,5,6,7,8,9,10],\r\n    calendarList: {{calendarTerms | json | raw }},\r\n    menu: false,\r\n    menu2: false,\r\n  }),\r\n  methods:{\r\n    allowedMinutes: m => m % 5 === 0,\r\n    submitData() {\r\n        return {\r\n            date: this.date,\r\n            time: this.time,\r\n            cohort: this.cohort,\r\n            amount: this.amount,\r\n        }\r\n    }\r\n  },\r\n  \r\n  \r\n}"
+            },
+            "OnValidation": {
+              "Text": null
+            },
+            "OnSubmitted": {
+              "Text": "let data = requestFormAsJsonObject();\r\ndebug(\"data\", data);\r\n\r\nif(data.cohort)\r\n{\r\n    // get employees for the selected calendar (or cohort)\r\n    let employees = executeQuery(\"EmployeesForCalendars\", {calendarIds: `'${data.cohort}'`});\r\n    var calendar = taxonomyTerms(\"4wnw5cysybe8szzhehezz5b74b\", [data.cohort]);\r\n\r\n    var color = \"#000000\"\r\n    if(calendar != null)\r\n    {\r\n        color = calendar[0].Content.AppointmentCalendar.Color.Text;\r\n    }\r\n    debug(\"employees\", employees.length);\r\n\r\n    // create the date object from what the user input\r\n    let dt = new Date(`${data.date} ${data.time}`);\r\n    let et = new Date(dt);\r\n    et.setMinutes(et.getMinutes() + 10);\r\n\r\n    debug(\"start-date\", dt);\r\n    debug(\"end-date\", et);\r\n\r\n    let counter = 0;\r\n    for(let i=0; i < employees.length; i++)\r\n    {\r\n        let employee = employees[i];\r\n        debug(\"employee\"+i, employee);\r\n        if(counter >= data.amount)\r\n        {\r\n            dt.setMinutes(dt.getMinutes() + 10);\r\n            et.setMinutes(et.getMinutes() + 10);\r\n            counter = 0;\r\n        }\r\n        // create appointment\r\n        var item = createContentItem(\"Appointment\", true, {\r\n            \"Appointment\": {\r\n                \"Calendar\": employee.Content.Employee.Cohort,\r\n                \"Status\": {\r\n                    \"Text\": \"UPCOMING\"\r\n                },\r\n                \"LinkedContent\": {\r\n                    \"ContentItemIds\": [\r\n                        employee.ContentItemId\r\n                    ]\r\n                },\r\n                \"StartDate\": {\r\n                    \"Value\": dt\r\n                },\r\n                \"EndDate\": {\r\n                    \"Value\": et\r\n                },\r\n                \"Color\": {\r\n                    \"Text\": color\r\n                }\r\n            }\r\n        });\r\n        debug(\"a\"+item.ContentItemId, item);\r\n\r\n        counter++;\r\n    }\r\n}\r\nelse {\r\n    addError(\"No cohort was specified\")\r\n}\r\n\r\n\r\n"
+            }
+          },
+          "ContentPermissionsPart": {
+            "Roles": [
+              "Administrator",
+              "Scheduler"
+            ],
+            "Enabled": true
+          },
+          "LocalizedTextPart": {
+            "Data": []
+          },
+          "AliasPart": {
+            "Alias": "bulk-create-appointments"
           }
         }
       ]
