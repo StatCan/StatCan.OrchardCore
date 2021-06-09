@@ -5,8 +5,8 @@
   <v-list-group 
     no-action 
     value="{{ Model.ContentItem.Content.TaxonomyMenuItem.Expanded.Value }}"
-    {%- if Model.ContentItem.Content.TaxonomyMenuItem.IconName.Text != nil %}
-      prepend-icon="item.action"
+    {%- if Model.ContentItem.Content.TaxonomyMenuItem.IconName.Text != blank %}
+      prepend-icon="{{Model.ContentItem.Content.TaxonomyMenuItem.IconName.Text}}"
     {% endif %}
   >
     <template v-slot:activator>
@@ -34,15 +34,15 @@
                  </v-list-item-title>
                </v-list-item-content>
            </v-list-item>
-           {% for subTerm in term.Terms %}
-             <v-list-item href="{{ termPath | append: '/' | append: subTerm.AutoroutePart.Path | href }}">
-               <v-list-item-content>
-                 <v-list-item-title>
-                   {{ subTerm.DisplayText }}
-                 </v-list-item-title>
-               </v-list-item-content>
-             </v-list-item>
-           {% endfor %}
+            {% for subTerm in term.Terms %}
+              <v-list-item href="{{ termPath | append: '/' | append: subTerm.AutoroutePart.Path | href }}">
+                <v-list-item-content>
+                  <v-list-item-title>
+                    {{ subTerm.DisplayText }}
+                  </v-list-item-title>
+                </v-list-item-content>
+              </v-list-item>
+            {% endfor %}
     	</v-list-group>
       {% else %}
         <v-list-item href="{{ termPath | href }}">
