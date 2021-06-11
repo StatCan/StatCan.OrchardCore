@@ -18,13 +18,8 @@ namespace StatCan.OrchardCore.DisplayHelpers.Filters
     {
         public async ValueTask<FluidValue> ProcessAsync(FluidValue input, FilterArguments arguments, LiquidTemplateContext ctx)
         {
-            if (!ctx.AmbientValues.TryGetValue("Services", out var services))
-            {
-                throw new ArgumentException("Services missing while invoking 'UsersByRoleFilter'");
-            }
-
-            var session = ((IServiceProvider)services).GetRequiredService<ISession>();
-            var roleManager = ((IServiceProvider)services).GetRequiredService<RoleManager<IRole>>();
+            var session = ctx.Services.GetRequiredService<ISession>();
+            var roleManager = ctx.Services.GetRequiredService<RoleManager<IRole>>();
 
             if (input.Type == FluidValues.Array)
             {
