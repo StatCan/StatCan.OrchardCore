@@ -5,9 +5,11 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Identity;
 using StatCan.OrchardCore.Security;
 using Microsoft.Extensions.Configuration;
-using Microsoft.AspNetCore.Http;
 using OrchardCore.Logging;
 using Microsoft.AspNetCore.ResponseCompression;
+using StatCan.OrchardCore.Configuration;
+using OrchardCore.Environment.Shell;
+using OrchardCore.Modules;
 
 namespace web
 {
@@ -22,8 +24,23 @@ namespace web
 
         public void ConfigureServices(IServiceCollection services)
         {
+            // these apply to all tenants
             services.AddOrchardCms().ConfigureServices(tenantServices =>
-                tenantServices.ConfigureHtmlSanitizer(sanitizer => sanitizer.AllowedSchemes.Add("mailto"))
+                {
+                    tenantServices.AddScoped<SmtpSettingsUpdater>();
+                    tenantServices.AddScoped<IFeatureEventHandler>(sp => sp.GetRequiredService<SmtpSettingsUpdater>());
+                    tenantServices.AddScoped<IModularTenantEvents>(sp => sp.GetRequiredService<SmtpSettingsUpdater>());
+
+                    tenantServices.AddScoped<ReverseProxySettingsUpdater>();
+                    tenantServices.AddScoped<IFeatureEventHandler>(sp => sp.GetRequiredService<ReverseProxySettingsUpdater>());
+                    tenantServices.AddScoped<IModularTenantEvents>(sp => sp.GetRequiredService<ReverseProxySettingsUpdater>());
+
+                    tenantServices.AddScoped<HttpsSettingsUpdater>();
+                    tenantServices.AddScoped<IFeatureEventHandler>(sp => sp.GetRequiredService<HttpsSettingsUpdater>());
+                    tenantServices.AddScoped<IModularTenantEvents>(sp => sp.GetRequiredService<HttpsSettingsUpdater>());
+
+                    tenantServices.ConfigureHtmlSanitizer(sanitizer => sanitizer.AllowedSchemes.Add("mailto"));
+                }
             );
             // This configuration applies to all tenants.
             services.Configure<IdentityOptions>(options => Configuration.GetSection("IdentityOptions").Bind(options));

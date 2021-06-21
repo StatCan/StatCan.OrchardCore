@@ -94,6 +94,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Apps", "Apps", "{E8DD6EC8-A
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StatCan.OrchardCore.Scheduling", "src\Apps\StatCan.OrchardCore.Scheduling\StatCan.OrchardCore.Scheduling.csproj", "{56F32388-650F-433C-919F-8C265F99411D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StatCan.OrchardCore.Abstractions", "src\Lib\StatCan.OrchardCore.Configuration\StatCan.OrchardCore.Abstractions.csproj", "{DEA6A849-3230-43DE-A9A0-3C22DA8E316E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -452,6 +454,18 @@ Global
 		{56F32388-650F-433C-919F-8C265F99411D}.Release|x64.Build.0 = Release|Any CPU
 		{56F32388-650F-433C-919F-8C265F99411D}.Release|x86.ActiveCfg = Release|Any CPU
 		{56F32388-650F-433C-919F-8C265F99411D}.Release|x86.Build.0 = Release|Any CPU
+		{DEA6A849-3230-43DE-A9A0-3C22DA8E316E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DEA6A849-3230-43DE-A9A0-3C22DA8E316E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DEA6A849-3230-43DE-A9A0-3C22DA8E316E}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{DEA6A849-3230-43DE-A9A0-3C22DA8E316E}.Debug|x64.Build.0 = Debug|Any CPU
+		{DEA6A849-3230-43DE-A9A0-3C22DA8E316E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{DEA6A849-3230-43DE-A9A0-3C22DA8E316E}.Debug|x86.Build.0 = Debug|Any CPU
+		{DEA6A849-3230-43DE-A9A0-3C22DA8E316E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DEA6A849-3230-43DE-A9A0-3C22DA8E316E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DEA6A849-3230-43DE-A9A0-3C22DA8E316E}.Release|x64.ActiveCfg = Release|Any CPU
+		{DEA6A849-3230-43DE-A9A0-3C22DA8E316E}.Release|x64.Build.0 = Release|Any CPU
+		{DEA6A849-3230-43DE-A9A0-3C22DA8E316E}.Release|x86.ActiveCfg = Release|Any CPU
+		{DEA6A849-3230-43DE-A9A0-3C22DA8E316E}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -491,6 +505,7 @@ Global
 		{B6EAD8A3-58BE-4E21-93EF-D6322A69D63E} = {8BEC45F6-4F23-4994-9959-50C1DB93ABC3}
 		{E8DD6EC8-AA09-440F-937A-1901293389E1} = {8EA5EBF0-41C6-11EA-890A-ED68CBADDC1F}
 		{56F32388-650F-433C-919F-8C265F99411D} = {E8DD6EC8-AA09-440F-937A-1901293389E1}
+		{DEA6A849-3230-43DE-A9A0-3C22DA8E316E} = {5E638520-41E8-11EA-885A-BDD3BB7B4F92}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8FF197F3-C3E2-4D83-80AC-D59BE36DD4AF}
