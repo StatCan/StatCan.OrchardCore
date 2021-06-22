@@ -94,7 +94,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Apps", "Apps", "{E8DD6EC8-A
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StatCan.OrchardCore.Scheduling", "src\Apps\StatCan.OrchardCore.Scheduling\StatCan.OrchardCore.Scheduling.csproj", "{56F32388-650F-433C-919F-8C265F99411D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StatCan.OrchardCore.Abstractions", "src\Lib\StatCan.OrchardCore.Configuration\StatCan.OrchardCore.Abstractions.csproj", "{DEA6A849-3230-43DE-A9A0-3C22DA8E316E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StatCan.OrchardCore.Configuration", "src\Modules\StatCan.OrchardCore.Configuration\StatCan.OrchardCore.Configuration.csproj", "{DEA6A849-3230-43DE-A9A0-3C22DA8E316E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
