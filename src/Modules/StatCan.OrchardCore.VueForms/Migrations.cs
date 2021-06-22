@@ -89,18 +89,6 @@ namespace StatCan.OrchardCore.VueForms
                             Options = "{\"language\": \"html\"}"
                         })
                 )
-                .WithField("SurveyJson", f => f
-                    .OfType(nameof(TextField))
-                    .WithDisplayName("SurveyJson")
-                    .WithSettings(new TextFieldSettings() { Hint = "Json output of the SurveyJs Creator (https://surveyjs.io/create-survey). With liquid support." })
-                    .WithPosition("4")
-                    .WithEditor("Monaco")
-                    .WithSettings(
-                        new TextFieldMonacoEditorSettings()
-                        {
-                            Options = "{\"language\": \"json\"}"
-                        })
-                )
                 .WithDescription("Turns your content items into a vue form."));
 
             _contentDefinitionManager.AlterPartDefinition("VueFormScripts", part => part
