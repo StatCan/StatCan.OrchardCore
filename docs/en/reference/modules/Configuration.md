@@ -7,6 +7,12 @@ The `StatCan.OrchardCore.Configuration` library adds support for configuring per
 ```json
 {
   "OrchardCore": {
+    "Features": [
+      "StatCan.OrchardCore.Configuration",
+      "OrchardCore.Email",
+      "OrchardCore.ReverseProxy",
+      "OrchardCore.Https"
+    ],
     "StatCan_Configuration": {
       "OverwriteSmtpSettings": true,
       "OverwriteReverseProxySettings": true,
@@ -36,10 +42,6 @@ The `StatCan.OrchardCore.Configuration` library adds support for configuring per
       "EnableXForwardedHost": true,
       "EnableXForwardedProto": true
     },
-    "StatCan_PersistentFeatures": [
-      "StatCan.OrchardCore.DisplayHelpers",
-      "StatCan.OrchardCore.Scripting"
-    ]
   }
 }
 ```
@@ -58,9 +60,6 @@ This section will update Orchard's [https module configuration](https://docs.orc
 
 ### StatCan_ReverseProxy
 This section will update Orchard's [reverse proxy module configuration](https://docs.orchardcore.net/en/dev/docs/reference/modules/ReverseProxy). 
-
-### StatCan_PersistentFeatures
-This section defines a list of features that will be enabled by default when a tenant is activated, and that will re-enable themselves then disabled. Support for this should make it's way in Orchard's repository eventually.
 
 
 ## Environment variables
@@ -97,21 +96,25 @@ OrchardCore__StatCan_ReverseProxy__EnableXForwardedFor
 OrchardCore__StatCan_ReverseProxy__EnableXForwardedHost
 OrchardCore__StatCan_ReverseProxy__EnableXForwardedProto
 
-# PersistentFeatures
-OrchardCore__StatCan_PersistentFeatures__0
-OrchardCore__StatCan_PersistentFeatures__1
+# Features
+OrchardCore__Features__0
+OrchardCore__Features__1
 
 ```
 
 Here is an example on how to set these environment variables with powershell
 ```powershell
+$env:OrchardCore__Features__0="StatCan.OrchardCore.Configuration"
+$env:OrchardCore__Features__1="OrchardCore.ReverseProxy"
+$env:OrchardCore__Features__2="OrchardCore.Https"
+
+
 $env:OrchardCore__StatCan_Configuration__OverwriteReverseProxySettings="true"
 $env:OrchardCore__StatCan_ReverseProxy__EnableXForwardedFor="true"
 $env:OrchardCore__StatCan_ReverseProxy__EnableXForwardedHost="true"
 $env:OrchardCore__StatCan_ReverseProxy__EnableXForwardedProto="true"
-$env:OrchardCore__StatCan_Https__RequireHttps="true"
+
 $env:OrchardCore__StatCan_Configuration__OverwriteHttpsSettings="true"
-$env:OrchardCore__StatCan_PersistentFeatures__0="OrchardCore.ReverseProxy"
-$env:OrchardCore__StatCan_PersistentFeatures__1="OrchardCore.Https"
+$env:OrchardCore__StatCan_Https__RequireHttps="true"
 
 ```

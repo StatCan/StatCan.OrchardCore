@@ -18,6 +18,6 @@ using static StatCan.OrchardCore.Manifest.StatCanManifestConstants;
     Dependencies = new[]
     {
        "OrchardCore.Features",
-    },
-    IsAlwaysEnabled = true
+       "OrchardCore.Settings",
+    }
 )]
