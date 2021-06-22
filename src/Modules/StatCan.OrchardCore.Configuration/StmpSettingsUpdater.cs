@@ -52,14 +52,7 @@ namespace StatCan.OrchardCore.Configuration
 
             if(section.GetValue<bool>("OverwriteSmtpSettings"))
             {
-                var siteSettings = await _siteService.LoadSiteSettingsAsync();
-                if(NeedsUpdate(siteSettings))
-                {
-                    SetConfiguration(siteSettings);
-                    SetHash(siteSettings);
-                    await _siteService.UpdateSiteSettingsAsync(siteSettings);
-                    await _shellHost.ReleaseShellContextAsync(_shellSettings);
-                }
+                await UpdateConfiguration();
             }
         }
 
@@ -85,11 +78,19 @@ namespace StatCan.OrchardCore.Configuration
             {
                 return;
             }
+            await UpdateConfiguration();
+        }
+
+        private async Task UpdateConfiguration()
+        {
             var siteSettings = await _siteService.LoadSiteSettingsAsync();
-            SetConfiguration(siteSettings);
-            await _siteService.UpdateSiteSettingsAsync(siteSettings);
-            // since we modified settings that affect the shell, reload it on the next request
-            await _shellHost.ReleaseShellContextAsync(_shellSettings);
+            if(NeedsUpdate(siteSettings))
+            {
+                SetConfiguration(siteSettings);
+                SetHash(siteSettings);
+                await _siteService.UpdateSiteSettingsAsync(siteSettings);
+                await _shellHost.ReleaseShellContextAsync(_shellSettings);
+            }
         }
 
         private void SetConfiguration(ISite siteSettings)
