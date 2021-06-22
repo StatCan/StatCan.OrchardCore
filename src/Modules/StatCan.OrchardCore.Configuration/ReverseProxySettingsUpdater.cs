@@ -8,23 +8,32 @@ using Microsoft.Extensions.Configuration;
 using OrchardCore.Modules;
 using OrchardCore.ReverseProxy.Settings;
 using Microsoft.AspNetCore.HttpOverrides;
+using System.Security.Cryptography;
+using System.Text;
+using Microsoft.AspNetCore.WebUtilities;
 
 namespace StatCan.OrchardCore.Configuration
 {
     /// <summary>
-    /// Updates the Https settings based on a configuration
+    /// Updates the ReverseProxy settings based on a configuration
     /// </summary>
     public class ReverseProxySettingsUpdater : ModularTenantEvents, IFeatureEventHandler
     {
+        private readonly ShellSettings _shellSettings;
+        private readonly IShellHost _shellHost;
         private readonly ISiteService _siteService;
         private readonly IShellConfiguration _shellConfiguration;
 
         public ReverseProxySettingsUpdater(
             ISiteService siteService,
-            IShellConfiguration shellConfiguration)
+            IShellConfiguration shellConfiguration,
+            IShellHost shellHost,
+            ShellSettings shellSettings)
         {
             _siteService = siteService;
             _shellConfiguration = shellConfiguration;
+            _shellHost = shellHost;
+            _shellSettings = shellSettings;
         }
 
         // for existing sites, update settings from configuration when tenant activates
@@ -35,8 +44,13 @@ namespace StatCan.OrchardCore.Configuration
             if(section.GetValue<bool>("OverwriteReverseProxySettings"))
             {
                 var siteSettings = await _siteService.LoadSiteSettingsAsync();
-                SetConfiguration(siteSettings);
-                await _siteService.UpdateSiteSettingsAsync(siteSettings);
+                if(NeedsUpdate(siteSettings))
+                {
+                    SetConfiguration(siteSettings);
+                    SetHash(siteSettings);
+                    await _siteService.UpdateSiteSettingsAsync(siteSettings);
+                    await _shellHost.ReleaseShellContextAsync(_shellSettings);
+                }
             }
         }
 
@@ -46,7 +60,7 @@ namespace StatCan.OrchardCore.Configuration
 
         Task IFeatureEventHandler.EnablingAsync(IFeatureInfo feature) => Task.CompletedTask;
 
-        Task IFeatureEventHandler.EnabledAsync(IFeatureInfo feature) => SetConfiguredHttpsSettings(feature);
+        Task IFeatureEventHandler.EnabledAsync(IFeatureInfo feature) => SetConfiguredReverseProxySettings(feature);
 
         Task IFeatureEventHandler.DisablingAsync(IFeatureInfo feature) => Task.CompletedTask;
 
@@ -56,7 +70,7 @@ namespace StatCan.OrchardCore.Configuration
 
         Task IFeatureEventHandler.UninstalledAsync(IFeatureInfo feature) => Task.CompletedTask;
 
-        private async Task SetConfiguredHttpsSettings(IFeatureInfo feature)
+        private async Task SetConfiguredReverseProxySettings(IFeatureInfo feature)
         {
             if (feature.Id != "OrchardCore.ReverseProxy")
             {
@@ -65,6 +79,8 @@ namespace StatCan.OrchardCore.Configuration
             var siteSettings = await _siteService.LoadSiteSettingsAsync();
             SetConfiguration(siteSettings);
             await _siteService.UpdateSiteSettingsAsync(siteSettings);
+            // since we modified settings that affect the shell, reload it on the next request
+            await _shellHost.ReleaseShellContextAsync(_shellSettings);
         }
 
         private void SetConfiguration(ISite siteSettings)
@@ -89,6 +105,37 @@ namespace StatCan.OrchardCore.Configuration
             }
 
             siteSettings.Put(reverseProxySettings);
+        }
+
+        private static bool NeedsUpdate(ISite settings)
+        {
+            var configSettings = settings.As<ConfigurationSettings>();
+            if(!string.IsNullOrEmpty(configSettings.ReverseProxySettingsHash))
+            {
+                var encValue = EncryptSettings(settings);
+                if(configSettings.ReverseProxySettingsHash == encValue)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        private static void SetHash(ISite settings)
+        {
+            var configSettings = settings.As<ConfigurationSettings>();
+            configSettings.ReverseProxySettingsHash = EncryptSettings(settings);
+            settings.Put(configSettings);
+        }
+
+        private static string EncryptSettings(ISite settings)
+        {
+            using var sha256 = SHA256.Create();
+            if (settings.Properties.TryGetValue(nameof(ReverseProxySettings), out var value))
+            {
+                return WebEncoders.Base64UrlEncode(sha256.ComputeHash(Encoding.UTF8.GetBytes(value.ToString())));
+            }
+            return string.Empty;
         }
     }
 }

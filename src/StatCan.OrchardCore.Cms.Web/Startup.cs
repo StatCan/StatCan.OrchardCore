@@ -10,9 +10,13 @@ using Microsoft.AspNetCore.ResponseCompression;
 using StatCan.OrchardCore.Configuration;
 using OrchardCore.Environment.Shell;
 using OrchardCore.Modules;
+using OrchardCore.Data.Migration;
 
 namespace web
 {
+
+
+
     public class Startup
     {
         public IConfiguration Configuration { get; }
@@ -27,18 +31,6 @@ namespace web
             // these apply to all tenants
             services.AddOrchardCms().ConfigureServices(tenantServices =>
                 {
-                    tenantServices.AddScoped<SmtpSettingsUpdater>();
-                    tenantServices.AddScoped<IFeatureEventHandler>(sp => sp.GetRequiredService<SmtpSettingsUpdater>());
-                    tenantServices.AddScoped<IModularTenantEvents>(sp => sp.GetRequiredService<SmtpSettingsUpdater>());
-
-                    tenantServices.AddScoped<ReverseProxySettingsUpdater>();
-                    tenantServices.AddScoped<IFeatureEventHandler>(sp => sp.GetRequiredService<ReverseProxySettingsUpdater>());
-                    tenantServices.AddScoped<IModularTenantEvents>(sp => sp.GetRequiredService<ReverseProxySettingsUpdater>());
-
-                    tenantServices.AddScoped<HttpsSettingsUpdater>();
-                    tenantServices.AddScoped<IFeatureEventHandler>(sp => sp.GetRequiredService<HttpsSettingsUpdater>());
-                    tenantServices.AddScoped<IModularTenantEvents>(sp => sp.GetRequiredService<HttpsSettingsUpdater>());
-
                     tenantServices.ConfigureHtmlSanitizer(sanitizer => sanitizer.AllowedSchemes.Add("mailto"));
                 }
             );

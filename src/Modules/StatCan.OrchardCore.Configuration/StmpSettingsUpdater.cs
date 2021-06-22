@@ -11,6 +11,9 @@ using OrchardCore.Environment.Shell.Configuration;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using OrchardCore.Modules;
+using System.Security.Cryptography;
+using System.Text;
+using Microsoft.AspNetCore.WebUtilities;
 
 namespace StatCan.OrchardCore.Configuration
 {
@@ -19,6 +22,8 @@ namespace StatCan.OrchardCore.Configuration
     /// </summary>
     public class SmtpSettingsUpdater : ModularTenantEvents, IFeatureEventHandler
     {
+        private readonly ShellSettings _shellSettings;
+        private readonly IShellHost _shellHost;
         private readonly ISiteService _siteService;
         private readonly IDataProtectionProvider _dataProtectionProvider;
         private readonly IShellConfiguration _shellConfiguration;
@@ -28,12 +33,16 @@ namespace StatCan.OrchardCore.Configuration
             ISiteService siteService,
             IDataProtectionProvider dataProtectionProvider,
             IShellConfiguration shellConfiguration,
-            ILogger<SmtpSettingsUpdater> logger)
+            ILogger<SmtpSettingsUpdater> logger,
+            ShellSettings shellSettings,
+            IShellHost shellHost)
         {
             _siteService = siteService;
             _dataProtectionProvider = dataProtectionProvider;
             _shellConfiguration = shellConfiguration;
             _logger = logger;
+            _shellSettings = shellSettings;
+            _shellHost = shellHost;
         }
 
         // for existing sites, update settings from configuration once
@@ -44,8 +53,13 @@ namespace StatCan.OrchardCore.Configuration
             if(section.GetValue<bool>("OverwriteSmtpSettings"))
             {
                 var siteSettings = await _siteService.LoadSiteSettingsAsync();
-                SetConfiguration(siteSettings);
-                await _siteService.UpdateSiteSettingsAsync(siteSettings);
+                if(NeedsUpdate(siteSettings))
+                {
+                    SetConfiguration(siteSettings);
+                    SetHash(siteSettings);
+                    await _siteService.UpdateSiteSettingsAsync(siteSettings);
+                    await _shellHost.ReleaseShellContextAsync(_shellSettings);
+                }
             }
         }
 
@@ -74,6 +88,8 @@ namespace StatCan.OrchardCore.Configuration
             var siteSettings = await _siteService.LoadSiteSettingsAsync();
             SetConfiguration(siteSettings);
             await _siteService.UpdateSiteSettingsAsync(siteSettings);
+            // since we modified settings that affect the shell, reload it on the next request
+            await _shellHost.ReleaseShellContextAsync(_shellSettings);
         }
 
         private void SetConfiguration(ISite siteSettings)
@@ -125,6 +141,37 @@ namespace StatCan.OrchardCore.Configuration
                 }
             }
             siteSettings.Put(smtpSettings);
+        }
+
+        private static bool NeedsUpdate(ISite settings)
+        {
+            var configSettings = settings.As<ConfigurationSettings>();
+            if(!string.IsNullOrEmpty(configSettings.SmtpSettingsHash))
+            {
+                var encValue = EncryptSettings(settings);
+                if(configSettings.SmtpSettingsHash == encValue)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        private static void SetHash(ISite settings)
+        {
+            var configSettings = settings.As<ConfigurationSettings>();
+            configSettings.SmtpSettingsHash = EncryptSettings(settings);
+            settings.Put(configSettings);
+        }
+
+        private static string EncryptSettings(ISite settings)
+        {
+            using var sha256 = SHA256.Create();
+            if (settings.Properties.TryGetValue(nameof(SmtpSettings), out var value))
+            {
+                return WebEncoders.Base64UrlEncode(sha256.ComputeHash(Encoding.UTF8.GetBytes(value.ToString())));
+            }
+            return string.Empty;
         }
     }
 }
