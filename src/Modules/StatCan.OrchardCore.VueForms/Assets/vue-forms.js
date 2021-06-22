@@ -16,6 +16,7 @@ function initForm(app) {
   // Set VeeValidate language based on the lang parameter
   VeeValidate.localize(app.dataset.lang);
 
+  // options object coming from the OC admin
   let componentOptions = app.dataset.options;
 
   let parsedOptions = {};
@@ -32,12 +33,14 @@ function initForm(app) {
   const {
     data: parsedData,
     methods: parsedMethods,
+    created: parsedCreated,
     ...parsedRest
   } = parsedOptions;
   let objData = parsedData;
   if (typeof parsedData === "function") {
     objData = parsedData();
   }
+
   const defaultFormData = {
     submitting: false,
     submitSuccess: false,
@@ -62,13 +65,36 @@ function initForm(app) {
           form: { ...defaultFormData }
         };
       },
+      created () {
+        if(app.dataset.surveyJson)
+        {
+          var survey = new Survey.Model(decodeUnicode(app.dataset.surveyJson));
+          survey.locale = app.dataset.lang;
+          survey.onComplete.add((options) => {
+            // todo add logic that hides the button
+            this.submitToServer(options.showDataSavingSuccess, options.showDataSavingError);
+          });
+          this.survey = survey;
+        }
+        // execute the created function created in the admin
+        if (typeof parsedCreated === "function") {
+          parsedCreated();
+        }
+      },
       methods: {
         // default method that return the data to be submitted to the server
         // this was added first to allow the Administrator to edit this function on the OC Admin
         submitData() {
-          let clonedData = { ...this.$data };
-          delete clonedData.form;
-          return clonedData;
+          const {
+            form: parsedForm,
+            survey: parsedSurvey,
+            ...clonedData
+          } = this.$data;
+          if(app.dataset.surveyJson)
+          {
+            clonedData["__surveyData__"] = JSON.stringify(this.survey.data);
+          }
+          return clonedData
         },
         ...parsedMethods,
         formReset() {
@@ -78,6 +104,10 @@ function initForm(app) {
         },
         formHandleSubmit(e) {
           e.preventDefault();
+          this.submitToServer();
+          return false;
+        },
+        submitToServer(onSuccess = () => {}, onError = () => {}) {
           const vm = this;
           // keep a reference to the VeeValidate observer
           const observer = vm.$refs.obs;
@@ -114,20 +144,21 @@ function initForm(app) {
                 processData: false, //tell jquery not to process data
                 contentType: false, //tell jquery not to set content-type
                 success: function (responseData) {
-                  vm.form = { ...defaultFormData };
-                  vm.form.responseData = responseData;
-
+                  
                   if(responseData.debug)
                   {
                     console.log("Debug object: ", responseData.debug);
                   }
-
+                  vm.form = { ...defaultFormData };
+                  vm.form.responseData = responseData;
+                  
                   // if there are validation errors on the form, display them.
                   if (responseData.validationError) {
                     //legacy
                     if (responseData.errors["serverValidationMessage"] != null) {
                       vm.form.serverValidationMessage =
                         responseData.errors["serverValidationMessage"];
+                      onError(vm.form.serverValidationMessage);
                     }
                     vm.form.submitValidationError = true;
                     observer.setErrors(responseData.errors);
@@ -142,6 +173,7 @@ function initForm(app) {
 
                   vm.form.submitSuccess = true;
                   vm.form.successMessage = responseData.successMessage;
+                  onSuccess(vm.form.successMessage);
                   return;
                 },
                 error: function (xhr, statusText) {
@@ -150,12 +182,12 @@ function initForm(app) {
                   vm.form.serverErrorMessage = `${xhr.status} ${statusText}`;
                   const regex = /\\n|\\r\\n|\\n\\r|\\r/g;
                   vm.form.serverResponseError = xhr.responseText.replace(regex, '<br>');
+                  onError(vm.form.serverResponseError);
                 },
               });
             }
           });
-          return false;
-        },
+        }
       }
     });
   });

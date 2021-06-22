@@ -85,6 +85,7 @@ You can get the values stored in the LocalizedTextPart inside a script.
 | -------- | ----------- |
 | `getFormContentItem(): ContentItem` | Only available in the VueForm server side scripts. Returns the current VueForm ContentItem instance. |
 | `debug(name: String, value: Object)` | Outputs the object in the debug response when the VueForm is in debug mode |
+| `getSurveyData(): JObject` | Returns the output of the Survey data as a JObject |
 
 
 ## Media

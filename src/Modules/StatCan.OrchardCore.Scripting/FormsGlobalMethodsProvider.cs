@@ -10,11 +10,6 @@ using OrchardCore.ReCaptcha.Services;
 using OrchardCore.DisplayManagement.ModelBinding;
 using OrchardCore.DisplayManagement.Notify;
 using Microsoft.AspNetCore.Mvc.Localization;
-using OrchardCore.Media;
-using System.IO;
-using Microsoft.Extensions.Localization;
-using OrchardCore.FileStorage;
-using Microsoft.Extensions.Logging;
 
 namespace StatCan.OrchardCore.Scripting
 {

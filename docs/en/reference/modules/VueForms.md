@@ -215,6 +215,26 @@ While you can use Orchard's [LocalizationPart](https://docs.orchardcore.net/en/d
 
 The `[locale]` shortcode is also useful to use in your views to localize simple text fields.
 
+
+## Survey (`StatCan.OrchardCore.VueForms.Survey`)
+
+Adds [SurveyJS](https://surveyjs.io/) support to VueForms. 
+This adds a part to the VueForm where you can specify the [SurveyJS creator](https://surveyjs.io/create-survey) json object. 
+
+In the Template, simply write this to output a Survey that uses the SurveyJS  json object
+
+```html
+<survey :survey="survey"></survey>
+```
+
+To get the json output of the survey on your server side scripts, simply use the `getSurveyData()` method.
+
+```javascript
+const surveyData = getSurveyData();
+debug('surveyData', surveyData);
+```
+
+
 ## Examples
 
 The following example forms are provided with the VueForms module as recipes:
