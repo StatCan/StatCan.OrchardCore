@@ -15,6 +15,13 @@
       ]
     },
     {
+      "differentiator": "VueFormSurvey-SurveyJson",
+      "place" : "Parts:0#Survey;17",
+      "contentType": [
+          "VueForm"
+      ]
+    },
+    {
       "differentiator": "VueForm-SuccessMessage",
       "place" : "Parts:20#Server;8",
       "contentType": [

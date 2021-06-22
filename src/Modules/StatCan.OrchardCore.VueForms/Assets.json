@@ -77,6 +77,13 @@
       "node_modules/vee-validate/dist/vee-validate.full.min.js"
     ],
     "output": "wwwroot/Scripts/vee-validate.full.min.js"
+  },
+  {
+    "copy": true,
+    "inputs": [
+      "node_modules/survey-vue/*"
+    ],
+    "output": "wwwroot/survey-vue/@"
   }
 
 ]

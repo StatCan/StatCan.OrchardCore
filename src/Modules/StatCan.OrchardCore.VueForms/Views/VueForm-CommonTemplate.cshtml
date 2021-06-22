@@ -1,7 +1,4 @@
-@using Cysharp.Text
-@using Microsoft.AspNetCore.Razor.TagHelpers
 @using OrchardCore.ContentManagement
-@using OrchardCore.Flows.Models
 @using System.Globalization
 @using StatCan.OrchardCore.VueForms.Models
 @inject OrchardCore.ContentManagement.Display.IContentItemDisplayManager ContentItemDisplayManager
@@ -10,21 +7,36 @@
 @{
   var contentItem = ((ContentItem)Model.ContentItem);
   var formPart = contentItem.As<VueForm>();
+  var surveyPart = contentItem.As<VueFormSurvey>();
   var scripts = contentItem.As<VueFormScripts>();
 
   var initScript = await Orchard.LiquidShortcodesAsync(scripts.ClientInit?.Text, (object)Model);
   var options = await Orchard.LiquidShortcodesAsync(scripts.ComponentOptions?.Text, (object)Model);
   var template = await Orchard.ShapeStringify((IShape)(await New.VueFormWrapperTemplate(ContentItem: contentItem)));
+  var surveyJson = string.Empty;
+  if(!string.IsNullOrWhiteSpace(surveyPart?.SurveyJson?.Text))
+  {
+    surveyJson = await Orchard.LiquidShortcodesAsync(surveyPart.SurveyJson?.Text, (object)Model);
+  }
+}
+@if(!string.IsNullOrWhiteSpace(surveyJson))
+{
+  <style asp-name="vue-forms"></style>
+  <style asp-name="survey-vue"></style>
+  <script asp-name="survey-vue" at="Foot"></script>
+  <script asp-name="vue-forms" at="Foot" depends-on="survey-vue"></script>
+} 
+else {
+  <style asp-name="vue-forms"></style>
+  <script asp-name="vue-forms" at="Foot"></script>
 }
 
-<style asp-name="vue-forms"></style>
-<script asp-name="vue-forms" at="Foot"></script>
 
 <div class="vue-form" 
   data-name="@Model.Properties["ComponentName"]" 
   data-init-script="@Orchard.B64Encode(initScript)" 
   data-options="@Orchard.B64Encode(options)" 
   data-lang="@CultureInfo.CurrentUICulture.TwoLetterISOLanguageName" 
-  data-template="@Orchard.B64Encode(template)"> 
-  >
+  data-template="@Orchard.B64Encode(template)"
+  data-survey-json="@Orchard.B64Encode(surveyJson)">
 </div>

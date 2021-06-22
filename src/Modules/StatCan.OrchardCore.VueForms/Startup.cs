@@ -20,6 +20,7 @@ namespace StatCan.OrchardCore.VueForms
         {
             services.AddContentPart<VueForm>();
             services.AddContentPart<VueFormScripts>();
+            services.AddContentPart<VueFormSurvey>();
 
             services.AddScoped<IDataMigration, Migrations>();
             services.AddScoped<INavigationProvider, AdminMenu>();
@@ -53,6 +54,15 @@ namespace StatCan.OrchardCore.VueForms
         public override void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<IDataMigration, LocalizationMigrations>();
+        }
+    }
+
+    [Feature(Constants.Features.Survey)]
+    public class SurveyStartup : StartupBase
+    {
+        public override void ConfigureServices(IServiceCollection services)
+        {
+            services.AddScoped<IDataMigration, SurveyMigrations>();
         }
     }
 }

@@ -42,6 +42,21 @@ namespace StatCan.OrchardCore.VueForms
                 .SetVersion("2.5.0");
 
             _manifest
+                .DefineScript("survey-vue")
+                .SetDependencies("vuejs")
+                .SetUrl("~/StatCan.OrchardCore.VueForms/survey-vue/survey.vue.min.js", "~/StatCan.OrchardCore.VueForms/survey-vue/survey.vue.js")
+                .SetCdn("https://unpkg.com/survey-vue@1.8.52/survey.vue.min.js", "https://unpkg.com/survey-vue@1.8.52/survey.vue.js")
+                .SetCdnIntegrity("sha384-zTTLU5YHyWOn9DGD7m4eTnR0uoLdIE0GP2vLtu4TjI3kNwvZbtgyBGtY75uQ0w0R", "sha384-dTyJXjGgOjOM6Wl9DFQ7lN4ncnsqtkivCrj2HCnf/Im1w3s2ZKEyNFCINj2EmVML")
+                .SetVersion("1.8.52");
+
+            _manifest
+                .DefineStyle("survey-vue")
+                .SetUrl("~/StatCan.OrchardCore.VueForms/survey-vue/survey.min.css", "~/StatCan.OrchardCore.VueForms/survey-vue/survey.css")
+                .SetCdn("https://unpkg.com/survey-vue@1.8.52/survey.min.css", "https://unpkg.com/survey-vue@1.8.52/survey.css")
+                .SetCdnIntegrity("sha384-BC2lcl/MWN+1nHauBJAhb6bdeq7WtirVfhm1QXtDDEvTKkR8lhC9JylQbg59B6u5", "sha384-LKNggg64onQrbdK2rzxAHydgahQPxI28kyocDPpMDMGjnAooQNkslxacSd4vx73L")
+                .SetVersion("1.8.52");
+
+            _manifest
                 .DefineStyle("vue-forms")
                 .SetUrl("~/StatCan.OrchardCore.VueForms/Styles/vue-forms.min.css", "~/StatCan.OrchardCore.VueForms/Styles/vue-forms.css")
                 .SetVersion("1.0.0");
