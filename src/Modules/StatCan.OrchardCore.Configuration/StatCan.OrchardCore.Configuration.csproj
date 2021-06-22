@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>$(AspNetCoreTargetFramework)</TargetFramework>
+    <CodeAnalysisRuleSet>..\..\..\roslynator.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="OrchardCore.Abstractions" Version="$(OrchardCoreVersion)" />
+    <PackageReference Include="OrchardCore.Email" Version="$(OrchardCoreVersion)" />
+    <PackageReference Include="OrchardCore.Https" Version="$(OrchardCoreVersion)" />
+    <PackageReference Include="OrchardCore.Infrastructure.Abstractions" Version="$(OrchardCoreVersion)" />
+    <PackageReference Include="OrchardCore.ReverseProxy" Version="$(OrchardCoreVersion)" />
+  </ItemGroup>
+  
+
+</Project>

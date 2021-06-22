@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Lib\StatCan.OrchardCore.Application.Targets\StatCan.OrchardCore.Application.Targets.csproj" />
+    <ProjectReference Include="..\Modules\StatCan.OrchardCore.Configuration\StatCan.OrchardCore.Configuration.csproj" />
     <PackageReference Include="OrchardCore.Application.Cms.Core.Targets" Version="$(OrchardCoreVersion)"/>
     <PackageReference Include="OrchardCore.Logging.Serilog" Version="$(OrchardCoreVersion)" />
     

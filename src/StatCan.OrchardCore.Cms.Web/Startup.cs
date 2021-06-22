@@ -5,12 +5,18 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Identity;
 using StatCan.OrchardCore.Security;
 using Microsoft.Extensions.Configuration;
-using Microsoft.AspNetCore.Http;
 using OrchardCore.Logging;
 using Microsoft.AspNetCore.ResponseCompression;
+using StatCan.OrchardCore.Configuration;
+using OrchardCore.Environment.Shell;
+using OrchardCore.Modules;
+using OrchardCore.Data.Migration;
 
 namespace web
 {
+
+
+
     public class Startup
     {
         public IConfiguration Configuration { get; }
@@ -22,8 +28,11 @@ namespace web
 
         public void ConfigureServices(IServiceCollection services)
         {
+            // these apply to all tenants
             services.AddOrchardCms().ConfigureServices(tenantServices =>
-                tenantServices.ConfigureHtmlSanitizer(sanitizer => sanitizer.AllowedSchemes.Add("mailto"))
+                {
+                    tenantServices.ConfigureHtmlSanitizer(sanitizer => sanitizer.AllowedSchemes.Add("mailto"));
+                }
             );
             // This configuration applies to all tenants.
             services.Configure<IdentityOptions>(options => Configuration.GetSection("IdentityOptions").Bind(options));
