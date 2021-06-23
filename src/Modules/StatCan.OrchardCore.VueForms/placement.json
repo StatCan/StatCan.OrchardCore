@@ -9,14 +9,14 @@
     },
     {
       "differentiator": "VueForm-Template",
-      "place" : "Parts:0#Content;5",
+      "place" : "Parts:0#Content;3",
       "contentType": [
           "VueForm"
       ]
     },
     {
       "differentiator": "VueFormSurvey-SurveyJson",
-      "place" : "Parts:0#Survey;17",
+      "place" : "Parts:0#Survey;6",
       "contentType": [
           "VueForm"
       ]
@@ -37,14 +37,14 @@
     },
     {
       "differentiator": "VueFormScripts-ClientInit",
-      "place" : "Parts:5#Content;5",
+      "place" : "Parts:5#Content;3",
       "contentType": [
           "VueForm"
       ]
     },
     {
       "differentiator": "VueFormScripts-ComponentOptions",
-      "place" : "Parts:10#Content;5",
+      "place" : "Parts:10#Content;3",
       "contentType": [
           "VueForm"
       ]

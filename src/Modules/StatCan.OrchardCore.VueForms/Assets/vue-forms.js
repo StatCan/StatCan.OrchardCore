@@ -53,22 +53,27 @@ function initForm(app) {
   };
 
   const componentTemplate = decodeUnicode(app.dataset.template);
-
+  const surveyJson = decodeUnicode(app.dataset.surveyJson)
   Vue.component(app.dataset.name, function (resolve) {
     resolve({
       // First because the elements below will override
       ...parsedRest,
       template: `${componentTemplate}`,
       data: function () {
-        return {
+        const dataObj = {
           ...objData,
           form: { ...defaultFormData }
         };
+        if(surveyJson)
+        {
+          dataObj.survey = null;
+        }
+        return dataObj;
       },
       created () {
-        if(app.dataset.surveyJson)
+        if(surveyJson)
         {
-          var survey = new Survey.Model(decodeUnicode(app.dataset.surveyJson));
+          var survey = new Survey.Model(surveyJson);
           survey.locale = app.dataset.lang;
           survey.onComplete.add((options) => {
             // todo add logic that hides the button
@@ -90,7 +95,7 @@ function initForm(app) {
             survey: parsedSurvey,
             ...clonedData
           } = this.$data;
-          if(app.dataset.surveyJson)
+          if(surveyJson)
           {
             clonedData["__surveyData__"] = JSON.stringify(this.survey.data);
           }

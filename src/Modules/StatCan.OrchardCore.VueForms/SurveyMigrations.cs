@@ -22,7 +22,7 @@ namespace StatCan.OrchardCore.VueForms
                 .WithField("SurveyJson", f => f
                     .OfType(nameof(TextField))
                     .WithDisplayName("SurveyJson")
-                    .WithSettings(new TextFieldSettings() { Hint = "Json output of the SurveyJs Creator (https://surveyjs.io/create-survey). With liquid support." })
+                    .WithSettings(new TextFieldSettings() { Hint = "Leave blank if not using SurveyJS. Json output of the SurveyJs Creator (https://surveyjs.io/create-survey). With liquid support." })
                     .WithPosition("4")
                     .WithEditor("Monaco")
                     .WithSettings(
