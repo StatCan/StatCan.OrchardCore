@@ -19,9 +19,9 @@ The `StatCan.OrchardCore.Configuration` library adds support for configuring per
       "OverwriteHttpsSettings": true
     },
     "StatCan_Smtp": {
-      "DefaultSender": "no-reply@cloud.statcan.ca",
+      "DefaultSender": "no-reply@statcan.ca",
       "DeliveryMethod": 0,
-      "Host": "smtp.cloud.statcan.ca",
+      "Host": "smtp.statcan.ca",
       "PickupDirectoryLocation": null,
       "AutoSelectEncryption": false,
       "EncryptionMethod": 2,
@@ -115,5 +115,18 @@ $env:OrchardCore__StatCan_ReverseProxy__EnableXForwardedProto="true"
 
 $env:OrchardCore__StatCan_Configuration__OverwriteHttpsSettings="true"
 $env:OrchardCore__StatCan_Https__RequireHttps="true"
+
+
+$env:OrchardCore__StatCan_Configuration__OverwriteSmtpSettings="true"
+$env:OrchardCore__StatCan_Smtp__DefaultSender="no-reply@statcan.ca"
+$env:OrchardCore__StatCan_Smtp__DeliveryMethod="0"
+$env:OrchardCore__StatCan_Smtp__Host="smtp.jp.com"
+$env:OrchardCore__StatCan_Smtp__AutoSelectEncryption="false"
+$env:OrchardCore__StatCan_Smtp__EncryptionMethod="2"
+$env:OrchardCore__StatCan_Smtp__Port="25"
+$env:OrchardCore__StatCan_Smtp__RequireCredentials="true"
+$env:OrchardCore__StatCan_Smtp__UseDefaultCredentials="false"
+$env:OrchardCore__StatCan_Smtp__UserName="myusername"
+$env:OrchardCore__StatCan_Smtp__Password="mysmtppassword"
 
 ```
