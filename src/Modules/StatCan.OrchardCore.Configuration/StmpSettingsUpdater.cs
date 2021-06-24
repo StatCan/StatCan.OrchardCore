@@ -96,7 +96,7 @@ namespace StatCan.OrchardCore.Configuration
         private void SetConfiguration(ISite siteSettings)
         {
             var smtpSettings = siteSettings.As<SmtpSettings>();
-            var section = _shellConfiguration.GetSection("StatCan_OrchardCore_Smtp");
+            var section = _shellConfiguration.GetSection("StatCan_Smtp");
 
             smtpSettings.DefaultSender = section.GetValue("DefaultSender", string.Empty);
 
