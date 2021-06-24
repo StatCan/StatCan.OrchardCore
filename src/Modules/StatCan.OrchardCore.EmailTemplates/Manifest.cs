@@ -12,6 +12,6 @@ using StatCan.OrchardCore.Manifest;
     Id = "StatCan.OrchardCore.EmailTemplates",
     Name = "EmailTemplates",
     Description = "The EmailTemplates module provides a way to manage email templates",
-    Dependencies = new[] { "OrchardCore.Liquid", "OrchardCore.Email" },
+    Dependencies = new[] { "OrchardCore.Liquid", "OrchardCore.Email", "OrchardCore.ContentTypes" },
     Category = "Email"
 )]
