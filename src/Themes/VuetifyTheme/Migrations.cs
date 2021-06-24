@@ -7,6 +7,7 @@ using OrchardCore.Media.Settings;
 using OrchardCore.Title.Models;
 using StatCan.OrchardCore.Extensions;
 using StatCan.OrchardCore.ContentFields.PredefinedGroup.Settings;
+using OrchardCore.ContentFields.Fields;
 
 namespace StatCan.Themes.VuetifyTheme
 {
@@ -46,7 +47,7 @@ namespace StatCan.Themes.VuetifyTheme
             VDivider();
             ScheduleEvent();
             TaxonomyMenuItem();
-            return 4;
+            return 5;
         }
 
         public int UpdateFrom1() {
@@ -66,6 +67,11 @@ namespace StatCan.Themes.VuetifyTheme
         {
             TaxonomyMenuItem();
             return 4;
+        }
+        public int UpdateFrom4()
+        {
+            VuetifyThemeSettings();
+            return 5;
         }
 
         #region Private methods
@@ -113,6 +119,20 @@ namespace StatCan.Themes.VuetifyTheme
                     .OfType("MediaField")
                     .WithDisplayName("Logo")
                     .WithPosition("1")
+                )
+                .WithBooleanField("DarkModeToggle", "DarkModeToggle", "2", new BooleanFieldSettings(){DefaultValue = true, Hint = "Display the dark mode toggle in the AppBar"})
+                .WithTextField("ThemeOptions", "Theme options", "3", new TextFieldSettings(){ Hint = "Vuetify theme options", })
+                .WithField("ThemeOptions", f => f
+                    .OfType(nameof(TextField))
+                    .WithDisplayName("Template")
+                    .WithSettings(new TextFieldSettings() { Hint = "The Vuetify 'themes' object that defines the colors of both lite and dark theme" })
+                    .WithPosition("3")
+                    .WithEditor("Monaco")
+                    .WithSettings(
+                        new TextFieldMonacoEditorSettings()
+                        {
+                            Options = "{\"language\": \"json\"}"
+                        })
                 )
             );
         }

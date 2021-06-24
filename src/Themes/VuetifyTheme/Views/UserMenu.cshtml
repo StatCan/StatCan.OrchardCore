@@ -19,10 +19,15 @@
 @if (User.Identity.IsAuthenticated)
 {
   <v-menu>
-    <template v-slot:activator="{ on, attrs }">
-      <v-btn icon v-bind="attrs" v-on="on" title="@T["User menu"]">
-        <v-icon>mdi-account</v-icon>
-      </v-btn>
+    <template v-slot:activator="{ on: onMenu, attrs }">
+       <v-tooltip bottom>
+        <template v-slot:activator="{ on: onTooltip }">
+           <v-btn icon v-bind="attrs" v-on="{ ...onMenu, ...onTooltip }">
+            <v-icon>mdi-account</v-icon>
+          </v-btn>
+        </template>
+        <span>@T["User menu"]</span>
+      </v-tooltip>
     </template>
     <v-list>
       <v-list-item>

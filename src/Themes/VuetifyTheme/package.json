@@ -4,8 +4,9 @@
   "private": true,
   "dependencies": {
     "core-js": "3.12.1",
+    "minify-css-string": "^1.0.0",
     "regenerator-runtime": "^0.13.7",
     "vue": "^2.6.12",
-    "vuetify": "^2.5.0"
+    "vuetify": "^2.5.5"
   }
 }

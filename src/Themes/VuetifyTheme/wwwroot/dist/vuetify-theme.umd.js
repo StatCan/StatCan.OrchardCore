@@ -5527,6 +5527,22 @@ $({ target: 'String', proto: true, forced: !MDN_POLYFILL_BUG && !CORRECT_IS_REGE
 
 /***/ }),
 
+/***/ "7586":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (css) {
+  return css.replace(/\n/g, '').replace(/\s\s+/g, ' ');
+};
+
+/***/ }),
+
 /***/ "758e":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -15103,6 +15119,10 @@ var external_commonjs_vue_commonjs2_vue_root_Vue_default = /*#__PURE__*/__webpac
 // EXTERNAL MODULE: ./src/Themes/VuetifyTheme/node_modules/vuetify/es5/locale/fr.js
 var fr = __webpack_require__("9549");
 var fr_default = /*#__PURE__*/__webpack_require__.n(fr);
+
+// EXTERNAL MODULE: ./src/Themes/VuetifyTheme/node_modules/minify-css-string/dist/index.js
+var dist = __webpack_require__("7586");
+var dist_default = /*#__PURE__*/__webpack_require__.n(dist);
 
 // CONCATENATED MODULE: ./src/Themes/VuetifyTheme/node_modules/vuetify/lib/util/console.js
 /* eslint-disable no-console */
@@ -47061,6 +47081,8 @@ function VTreeview_defineProperty(obj, key, value) { if (key in obj) { Object.de
 
 
 
+
+
 external_commonjs_vue_commonjs2_vue_root_Vue_default.a.use(framework_Vuetify, {
   components: {
     VApp: VApp_VApp,
@@ -47225,6 +47247,14 @@ external_commonjs_vue_commonjs2_vue_root_Vue_default.a.use(framework_Vuetify, {
     VExpandXTransition: VExpandXTransition
   }
 });
+var darkModeEnabled = localStorage.getItem("VuetifyThemeDarkMode") === 'true';
+var appElement = document.getElementById("vuetify-theme-app");
+var themes = {};
+
+if (appElement.dataset.theme) {
+  themes = atob(appElement.dataset.theme);
+}
+
 /* harmony default export */ var vuetify = (new framework_Vuetify({
   lang: {
     locales: {
@@ -47233,7 +47263,16 @@ external_commonjs_vue_commonjs2_vue_root_Vue_default.a.use(framework_Vuetify, {
     current: document.documentElement.lang
   },
   theme: {
-    dark: false
+    themes: themes,
+    dark: darkModeEnabled,
+    options: {
+      minifyTheme: dist_default.a,
+      customProperties: true // themeCache: {
+      //   get: key => {console.log(key); return localStorage.getItem(key)},
+      //   set: (key, value) => localStorage.setItem(key, value),
+      // },
+
+    }
   }
 }));
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"3a049dea-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/Themes/VuetifyTheme/Assets/src/components/IEBanner.vue?vue&type=template&id=00ce104c&
@@ -47434,8 +47473,14 @@ document.addEventListener("DOMContentLoaded", function () {
       return {
         drawer: null
       };
+    },
+    methods: {
+      darkMode: function darkMode() {
+        this.$vuetify.theme.dark = !this.$vuetify.theme.dark;
+        localStorage.setItem("VuetifyThemeDarkMode", this.$vuetify.theme.dark);
+      }
     }
-  }).$mount('#page-top');
+  }).$mount('#vuetify-theme-app');
 });
 // CONCATENATED MODULE: ./node_modules/@vue/cli-service/lib/commands/build/entry-lib-no-default.js
 

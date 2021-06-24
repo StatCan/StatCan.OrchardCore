@@ -17,5 +17,11 @@ document.addEventListener("DOMContentLoaded", function() {
   new Vue({
     vuetify,
     data: () => ({ drawer: null }),
-  }).$mount('#page-top')
-});
+    methods: {
+      darkMode() {
+        this.$vuetify.theme.dark = !this.$vuetify.theme.dark;
+        localStorage.setItem("VuetifyThemeDarkMode", this.$vuetify.theme.dark);
+      }
+    },
+  }).$mount('#vuetify-theme-app')
+}); 
