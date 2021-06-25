@@ -879,6 +879,16 @@ namespace StatCan.Themes.VuetifyTheme
                         Maximum = 9999,
                     })
                 )
+                .WithField("Logo", field => field
+                    .OfType("MediaField")
+                    .WithDisplayName("Logo")
+                    .WithPosition("1")
+                    .WithSettings(new MediaFieldSettings
+                    {
+                        Hint = "Sets the logo for the page.",
+                        AllowAnchors = true,
+                    })
+                )
             );
         }
 

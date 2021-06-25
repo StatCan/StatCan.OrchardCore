@@ -5,6 +5,7 @@
 {% assign scrollThreshold = Model.ContentItem.Content.VAppBar.ScrollThreshold.Value %}
 {% assign height = Model.ContentItem.Content.VAppBar.Height.Value %}
 {% assign width = Model.ContentItem.Content.VAppBar.Width.Value %}
+{% assign logo = Model.ContentItem.Content.VAppBar.Logo.Paths.first  %}
 
 <v-app-bar app clipped-left
   {{ Model.ContentItem.Content.VAppBar.Props.Values | join: ' ' | raw }}
@@ -14,7 +15,9 @@
   {% if empty != scrollThreshold %}scroll-threshold="{{ scrollThreshold }}"{% endif %}
   {% if empty != height %}height="{{ height }}"{% endif %}
   {% if empty != width %}width="{{ width }}"{% endif %}>
-  <v-app-bar-nav-icon class="hidden-lg-and-up" @click="drawer = !drawer"></v-app-bar-nav-icon>
+  {% if logo != null %}
+  <img src="{{logo | asset_url }}" style="max-height:50px; max-width:250px; padding-right:20px;"></img>
+  {% endif %}
   {% if Site.Properties.VuetifyThemeSettings.VuetifyThemeSettings.Logo.Paths.first %}
     <v-img src="{{ Site.Properties.VuetifyThemeSettings.VuetifyThemeSettings.Logo.Paths.first | asset_url | resize_url: width:160, height:160 }}" max-height="32" max-width="32" alt="logo" class="mr-2"></v-img>
   {% endif %}
