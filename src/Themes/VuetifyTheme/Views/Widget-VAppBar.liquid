@@ -14,14 +14,13 @@
   {% if empty != scrollThreshold %}scroll-threshold="{{ scrollThreshold }}"{% endif %}
   {% if empty != height %}height="{{ height }}"{% endif %}
   {% if empty != width %}width="{{ width }}"{% endif %}>
+  {% comment %} This icon allows the show/hide of the drawer in mobile mode {% endcomment %}
   <v-app-bar-nav-icon class="hidden-lg-and-up" @click="drawer = !drawer"></v-app-bar-nav-icon>
   {% if Site.Properties.VuetifyThemeSettings.VuetifyThemeSettings.Logo.Paths.first != blank %}
-    <v-img src="{{ Site.Properties.VuetifyThemeSettings.VuetifyThemeSettings.Logo.Paths.first | asset_url | resize_url: width:160, height:160 }}" max-height="32" max-width="32" alt="logo" class="mr-2"></v-img>
+    <v-img src="{{ Site.Properties.VuetifyThemeSettings.VuetifyThemeSettings.Logo.Paths.first | asset_url | resize_url: width:250, height:64 }}" max-height="64" max-width="250" alt="logo" class="mr-2"></v-img>
   {% endif %}
   {% if Site.Properties.VuetifyThemeSettings.VuetifyThemeSettings.DisplayName.Text %}
     <v-toolbar-title>{{ Site.Properties.VuetifyThemeSettings.VuetifyThemeSettings.DisplayName.Text | shortcode }}</v-toolbar-title>
-  {% else %}
-    <v-toolbar-title>{{ Site.SiteName | shortcode }}</v-toolbar-title>
   {% endif %}
   <v-spacer></v-spacer>
   {% if Site.Properties.VuetifyThemeSettings.VuetifyThemeSettings.DisplayMode.Text == 'picker' %}
