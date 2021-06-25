@@ -9,11 +9,11 @@
 
 <v-navigation-drawer app v-model="drawer"
   {{ Model.ContentItem.Content.VNavigationDrawer.Props.Values | join: ' ' | raw }}
-  {% if empty != backgroundImage %}src="{{ backgroundImage | asset_url }}"{% endif %}
-  {% if empty != color %}color="{{ color }}"{% endif %}
+  {% if blank != backgroundImage %}src="{{ backgroundImage | asset_url }}"{% endif %}
+  {% if blank != color %}color="{{ color }}"{% endif %}
   {% if empty != miniVariantWidth %}mini-variant-width="{{ miniVariantWidth }}"{% endif %}
   {% if empty != mobileBreakpoint %}mobile-breakpoint="{{ mobileBreakpoint }}"{% endif %}
-  {% if empty != overlayColor %}overlay-color="{{ overlayColor }}"{% endif %}
+  {% if blank != overlayColor %}overlay-color="{{ overlayColor }}"{% endif %}
   {% if empty != overlayOpacity %}overlay-opacity="{{ overlayOpacity }}"{% endif %}
   {% if empty == height %}height="100%"{% else %}height="{{ height }}"{% endif %}
   {% if empty == width %}width="256"{% else %}width="{{ width }}"{% endif %}

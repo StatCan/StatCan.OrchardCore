@@ -3,8 +3,13 @@
     {% if culture.Name != Model.CurrentCulture.Name %}
         {% capture targetCultureLongName %}{% if culture.Name contains 'fr' %}Français{% else %}English{% endif %}{% endcapture %}
         {% capture targetCultureUrl %}{{ culture.Name | switch_culture_url }}{% endcapture %}
-        <v-btn icon href="{{ targetCultureUrl }}" lang="{{culture.Name}}" aria-label="{{targetCultureLongName}}" title="{{"Switch to" | t}} {{targetCultureLongName}}">
-          {{ culture.Name }}
-        </v-btn>
+        <v-tooltip bottom>
+          <template v-slot:activator="{ on }">
+            <v-btn icon href="{{ targetCultureUrl }}" lang="{{culture.Name}}" aria-label="{{targetCultureLongName}}" v-on="on">
+               {{ culture.Name }}
+            </v-btn>
+          </template>
+          <span>{{"Switch to" | t}} {{targetCultureLongName}}</span>
+        </v-tooltip>
     {% endif %}
 {% endfor %}

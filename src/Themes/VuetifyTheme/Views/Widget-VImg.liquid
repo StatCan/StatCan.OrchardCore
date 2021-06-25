@@ -4,6 +4,7 @@
 {% assign height = Model.ContentItem.Content.VImg.Height.Text %}
 {% assign width = Model.ContentItem.Content.VImg.Width.Text %}
 
+{% if Model.ContentItem.Content.VImg.Source.Paths.first != blank %}
 <v-img src="{{ Model.ContentItem.Content.VImg.Source.Paths.first | asset_url }}"
   {{ Model.ContentItem.Content.VImg.Props.Values | join: ' ' | raw }}
   {% if empty != alternateText %}alt="{{ alternateText }}"{% endif %}
@@ -25,3 +26,4 @@
     </v-row>
   </template>
 </v-img>
+{% endif %}

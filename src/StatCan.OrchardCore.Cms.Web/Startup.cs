@@ -56,6 +56,7 @@ namespace web
                     // Fonts
                     "font/otf",
                     "font/ttf",
+                    "font/woff2",
                     "application/x-font",
                     "application/x-font-opentype",
                     "application/x-font-truetype",
