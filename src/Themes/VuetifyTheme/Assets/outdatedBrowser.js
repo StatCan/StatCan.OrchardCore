@@ -22,7 +22,7 @@ outdatedBrowser({
 				web: `Please use a modern browser view this website correctly.
           Supported browsers include:
           <ul>
-            <li>Chrome & chromium</li>
+            <li>Chrome & Chromium</li>
             <li>Firefox</li>
             <li>Edge</li>
             <li>Safari</li>
@@ -40,7 +40,7 @@ outdatedBrowser({
 				web: `Veuillez utiliser un navigateur moderne pour visualiser correctement ce site web.
         Les navigateurs suivants sont supportés:
         <ul>
-          <li>Chrome & chromium</li>
+          <li>Chrome et Chromium</li>
           <li>Firefox</li>
           <li>Edge</li>
           <li>Safari</li>

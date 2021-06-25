@@ -12,7 +12,7 @@ namespace StatCan.Themes.VuetifyTheme
 
             _manifest
                 .DefineScript("vuejs")
-                .SetUrl("~/StatCan.OrchardCore.VueForms/Scripts/vue.min.js", "~/StatCan.OrchardCore.VueForms/Scripts/vue.js")
+                .SetUrl("~/VuetifyTheme/Scripts/vue.min.js", "~/VuetifyTheme/Scripts/vue.js")
                 .SetCdn("https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js", "https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js")
                 .SetCdnIntegrity("sha384-ULpZhk1pvhc/UK5ktA9kwb2guy9ovNSTyxPNHANnA35YjBQgdwI+AhLkixDvdlw4", "sha384-t1tHLsbM7bYMJCXlhr0//00jSs7ZhsAhxgm191xFsyzvieTMCbUWKMhFg9I6ci8q")
                 .SetVersion("2.6.14");
