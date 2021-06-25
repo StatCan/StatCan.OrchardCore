@@ -120,12 +120,25 @@ namespace StatCan.Themes.VuetifyTheme
                     .WithDisplayName("Logo")
                     .WithPosition("1")
                 )
-                .WithBooleanField("DarkModeToggle", "DarkModeToggle", "2", new BooleanFieldSettings(){DefaultValue = true, Hint = "Display the dark mode toggle in the AppBar"})
-                .WithTextField("ThemeOptions", "Theme options", "3", new TextFieldSettings(){ Hint = "Vuetify theme options", })
+             .WithField("DisplayMode", field => field
+                .OfType("TextField")
+                .WithDisplayName("Display Mode")
+                .WithEditor("PredefinedList")
+                .WithPosition("2")
+                .WithSettings(
+                    new TextFieldPredefinedListEditorSettings
+                        {
+                            Options = new ListValueOption[] {
+                                new ListValueOption(){Name = "Light Mode", Value= "light"},
+                                new ListValueOption(){Name = "Dark Mode", Value= "dark"},
+                                new ListValueOption(){Name = "Picker", Value= "picker"},
+                        },
+                }))
+
                 .WithField("ThemeOptions", f => f
                     .OfType(nameof(TextField))
                     .WithDisplayName("Template")
-                    .WithSettings(new TextFieldSettings() { Hint = "The Vuetify 'themes' object that defines the colors of both lite and dark theme" })
+                    .WithSettings(new TextFieldSettings() { Hint = "The Vuetify 'themes' object that defines the colors of both lite and dark theme. See https://vuetifyjs.com/en/features/theme/" })
                     .WithPosition("3")
                     .WithEditor("Monaco")
                     .WithSettings(

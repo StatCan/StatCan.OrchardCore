@@ -47,16 +47,16 @@
             {{ Model.PageTitle}}
           </v-toolbar-title>
           <v-spacer></v-spacer>
-          <v-btn outlined color="grey darken-2" :href="printUrl">
+          <v-btn outlined color="darken-2" :href="printUrl">
             {{ "Print" | t }}
           </v-btn>
         </v-toolbar>
         <v-sheet height="64">
             <v-toolbar flat>
-              <v-btn outlined class="mr-4" color="grey darken-2" @click="setToday">
+              <v-btn outlined class="mr-4" color="darken-2" @click="setToday">
                 {{ "Today" | t }}
               </v-btn>
-              <v-btn fab text small color="grey darken-2" @click="prev"              >
+              <v-btn fab text small color="darken-2" @click="prev"              >
                 <v-icon small>
                   mdi-chevron-left
                 </v-icon>
@@ -66,14 +66,14 @@
                 {% raw %}{{ $refs.calendar.title }}{% endraw %}
               </v-toolbar-title>
               <v-spacer></v-spacer>
-              <v-btn class="mr-4" fab text small color="grey darken-2" @click="next">
+              <v-btn class="mr-4" fab text small color="darken-2" @click="next">
                 <v-icon small>
                   mdi-chevron-right
                 </v-icon>
               </v-btn>
               <v-menu bottom right>
                 <template v-slot:activator="{ on, attrs }">
-                  <v-btn outlined color="grey darken-2" v-bind="attrs" v-on="on">
+                  <v-btn outlined color="darken-2" v-bind="attrs" v-on="on">
                     <span v-if="type == 'day'">{{ "Day" | t }}</span>
                     <span v-if="type == 'week'">{{ "Week" | t }}</span>
                     <span v-if="type == 'month'">{{ "Month" | t }}</span>
@@ -145,7 +145,7 @@
             {{ scheduleForm | shape_build_display | shape_properties: currentUrl: Model.CurrentUrl, employees: Model.Employees, calendarTitle: Model.ContentItem.DisplayText | shape_render }}
           </v-dialog>
           <v-menu v-model="selectedOpen" :activator="selectedElement" :close-on-content-click="false" offset-x>
-            <v-card color="grey lighten-4" min-width="400" flat            >
+            <v-card color="lighten-4" min-width="400" flat            >
               <v-card-title>
                 <span v-html="selectedEvent.name"></span>
                 <v-btn icon color="selectedEvent.color" :href="selectedEvent.employeeUrl">

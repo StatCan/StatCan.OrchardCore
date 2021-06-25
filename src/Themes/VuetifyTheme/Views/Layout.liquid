@@ -10,7 +10,10 @@
     {% resources type: "HeadScript" %}
   </head>
   <body dir="{{ Culture.Dir }}">
-    <div id="vuetify-theme-app" v-cloak data-theme="{{ Site.Properties.VuetifyThemeSettings.VuetifyThemeSettings.ThemeOptions.Text | base64_encode }}">
+    <div id="outdated"></div>
+    <div id="vuetify-theme-app" v-cloak
+      data-display-mode="{{ Site.Properties.VuetifyThemeSettings.VuetifyThemeSettings.DisplayMode.Text }}"
+      data-theme="{{ Site.Properties.VuetifyThemeSettings.VuetifyThemeSettings.ThemeOptions.Text | base64_encode }}">
       <v-app>
         <a class="d-sr-only-focusable" href="#main">{{ "Skip to main content" | t }}</a>
         {% render_section "NavigationDrawer", required: false %}

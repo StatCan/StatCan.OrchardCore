@@ -23,9 +23,6 @@ var fs = require("graceful-fs"),
   postcss = require("gulp-postcss"),
   babel = require("gulp-babel");
 
-// For compat with older versions of Node.js.
-require("es6-promise").polyfill();
-
 // To suppress memory leak warning from gulp.watch().
 require("events").EventEmitter.prototype._maxListeners = 100;
 
