@@ -5,6 +5,7 @@
   "dependencies": {
     "@fontsource/roboto": "^4.4.5",
     "@mdi/font": "^5.9.55",
+    "@primer/css": "^17.3.0",
     "minify-css-string": "^1.0.0",
     "outdated-browser-rework": "^3.0.1",
     "vue": "^2.6.14",

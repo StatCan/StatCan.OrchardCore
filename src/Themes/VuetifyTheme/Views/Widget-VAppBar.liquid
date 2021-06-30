@@ -17,7 +17,7 @@
   {% comment %} This icon allows the show/hide of the drawer in mobile mode {% endcomment %}
   <v-app-bar-nav-icon class="hidden-lg-and-up" @click="drawer = !drawer"></v-app-bar-nav-icon>
   {% if Site.Properties.VuetifyThemeSettings.VuetifyThemeSettings.Logo.Paths.first != blank %}
-    <v-img src="{{ Site.Properties.VuetifyThemeSettings.VuetifyThemeSettings.Logo.Paths.first | asset_url | resize_url: width:250, height:64 }}" max-height="64" max-width="250" alt="logo" class="mr-2"></v-img>
+    <img src="{{ Site.Properties.VuetifyThemeSettings.VuetifyThemeSettings.Logo.Paths.first | asset_url | resize_url: width:250, height:64 }}" style="max-height:64px; max-width:250px;" alt="logo" class="mr-2">
   {% endif %}
   {% if Site.Properties.VuetifyThemeSettings.VuetifyThemeSettings.DisplayName.Text %}
     <v-toolbar-title>{{ Site.Properties.VuetifyThemeSettings.VuetifyThemeSettings.DisplayName.Text | shortcode }}</v-toolbar-title>

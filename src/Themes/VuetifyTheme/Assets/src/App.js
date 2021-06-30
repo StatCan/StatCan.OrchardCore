@@ -8,15 +8,12 @@ import "@fontsource/roboto/400.css"
 import "@fontsource/roboto/500.css"
 import "@fontsource/roboto/700.css"
 import "@fontsource/roboto/900.css"
-import "@mdi/font/css/materialdesignicons.css"
+import "@mdi/font/css/materialdesignicons.css" 
 
-import './styles.scss'
-import './sass/github-markdown.scss'
+import './sass/styles.scss' 
 
 Vue.component('ie-banner', IEBanner);
-
-// Sets the cookie based on the current html lang. This is to avoid potential issues when landing on a french page.
-document.cookie = '.AspNetCore.Culture=c%3D'+document.documentElement.lang+'%7Cuic%3D'+document.documentElement.lang +';path=/';
+ 
 document.addEventListener("DOMContentLoaded", function() {
   new Vue({
     vuetify,

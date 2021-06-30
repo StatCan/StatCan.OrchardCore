@@ -1,6 +1,6 @@
 /**
-  * vee-validate v3.4.5
-  * (c) 2020 Abdelrahman Awad
+  * vee-validate v3.4.10
+  * (c) 2021 Abdelrahman Awad
   * @license MIT
   */
 (function (global, factory) {
@@ -42,7 +42,7 @@
   	size: "The {_field_} field size must be less than {size}KB",
   	double: "The {_field_} field must be a valid decimal"
   };
-  var en = {
+  var en$1 = {
   	code: code,
   	messages: messages
   };
@@ -52,7 +52,7 @@
    * https://github.com/chriso/validator.js/blob/master/src/lib/alpha.js
    */
   /* eslint-disable no-misleading-character-class */
-  var alpha = {
+  var alpha$1 = {
       en: /^[A-Z]*$/i,
       cs: /^[A-ZÁČĎÉĚÍŇÓŘŠŤÚŮÝŽ]*$/i,
       da: /^[A-ZÆØÅ]*$/i,
@@ -75,7 +75,8 @@
       uk: /^[А-ЩЬЮЯЄІЇҐ]*$/i,
       ar: /^[ءآأؤإئابةتثجحخدذرزسشصضطظعغفقكلمنهوىيًٌٍَُِّْٰ]*$/,
       az: /^[A-ZÇƏĞİıÖŞÜ]*$/i,
-      el: /^[Α-ώ]*$/i
+      el: /^[Α-ώ]*$/i,
+      ja: /^[A-Z\u3000-\u303F\u3040-\u309F\u30A0-\u30FF\uFF00-\uFFEF\u4E00-\u9FAF]*$/i
   };
   var alphaSpaces = {
       en: /^[A-Z\s]*$/i,
@@ -100,7 +101,8 @@
       uk: /^[А-ЩЬЮЯЄІЇҐ\s]*$/i,
       ar: /^[ءآأؤإئابةتثجحخدذرزسشصضطظعغفقكلمنهوىيًٌٍَُِّْٰ\s]*$/,
       az: /^[A-ZÇƏĞİıÖŞÜ\s]*$/i,
-      el: /^[Α-ώ\s]*$/i
+      el: /^[Α-ώ\s]*$/i,
+      ja: /^[A-Z\u3000-\u303F\u3040-\u309F\u30A0-\u30FF\uFF00-\uFFEF\u4E00-\u9FAF\s]*$/i
   };
   var alphanumeric = {
       en: /^[0-9A-Z]*$/i,
@@ -125,7 +127,8 @@
       uk: /^[0-9А-ЩЬЮЯЄІЇҐ]*$/i,
       ar: /^[٠١٢٣٤٥٦٧٨٩0-9ءآأؤإئابةتثجحخدذرزسشصضطظعغفقكلمنهوىيًٌٍَُِّْٰ]*$/,
       az: /^[0-9A-ZÇƏĞİıÖŞÜ]*$/i,
-      el: /^[0-9Α-ώ]*$/i
+      el: /^[0-9Α-ώ]*$/i,
+      ja: /^[0-9A-Z\u3000-\u303F\u3040-\u309F\u30A0-\u30FF\uFF00-\uFFEF\u4E00-\u9FAF]*$/i
   };
   var alphaDash = {
       en: /^[0-9A-Z_-]*$/i,
@@ -150,34 +153,35 @@
       uk: /^[0-9А-ЩЬЮЯЄІЇҐ_-]*$/i,
       ar: /^[٠١٢٣٤٥٦٧٨٩0-9ءآأؤإئابةتثجحخدذرزسشصضطظعغفقكلمنهوىيًٌٍَُِّْٰ_-]*$/,
       az: /^[0-9A-ZÇƏĞİıÖŞÜ_-]*$/i,
-      el: /^[0-9Α-ώ_-]*$/i
+      el: /^[0-9Α-ώ_-]*$/i,
+      ja: /^[0-9A-Z\u3000-\u303F\u3040-\u309F\u30A0-\u30FF\uFF00-\uFFEF\u4E00-\u9FAF_-]*$/i
   };
 
-  var validate = function (value, _a) {
+  var validate$s = function (value, _a) {
       var _b = (_a === void 0 ? {} : _a).locale, locale = _b === void 0 ? '' : _b;
       if (Array.isArray(value)) {
-          return value.every(function (val) { return validate(val, { locale: locale }); });
+          return value.every(function (val) { return validate$s(val, { locale: locale }); });
       }
       // Match at least one locale.
       if (!locale) {
-          return Object.keys(alpha).some(function (loc) { return alpha[loc].test(value); });
+          return Object.keys(alpha$1).some(function (loc) { return alpha$1[loc].test(value); });
       }
-      return (alpha[locale] || alpha.en).test(value);
+      return (alpha$1[locale] || alpha$1.en).test(value);
   };
-  var params = [
+  var params$k = [
       {
           name: 'locale'
       }
   ];
-  var alpha$1 = {
-      validate: validate,
-      params: params
+  var alpha = {
+      validate: validate$s,
+      params: params$k
   };
 
-  var validate$1 = function (value, _a) {
+  var validate$r = function (value, _a) {
       var _b = (_a === void 0 ? {} : _a).locale, locale = _b === void 0 ? '' : _b;
       if (Array.isArray(value)) {
-          return value.every(function (val) { return validate$1(val, { locale: locale }); });
+          return value.every(function (val) { return validate$r(val, { locale: locale }); });
       }
       // Match at least one locale.
       if (!locale) {
@@ -185,20 +189,20 @@
       }
       return (alphaDash[locale] || alphaDash.en).test(value);
   };
-  var params$1 = [
+  var params$j = [
       {
           name: 'locale'
       }
   ];
   var alpha_dash = {
-      validate: validate$1,
-      params: params$1
+      validate: validate$r,
+      params: params$j
   };
 
-  var validate$2 = function (value, _a) {
+  var validate$q = function (value, _a) {
       var _b = (_a === void 0 ? {} : _a).locale, locale = _b === void 0 ? '' : _b;
       if (Array.isArray(value)) {
-          return value.every(function (val) { return validate$2(val, { locale: locale }); });
+          return value.every(function (val) { return validate$q(val, { locale: locale }); });
       }
       // Match at least one locale.
       if (!locale) {
@@ -206,20 +210,20 @@
       }
       return (alphanumeric[locale] || alphanumeric.en).test(value);
   };
-  var params$2 = [
+  var params$i = [
       {
           name: 'locale'
       }
   ];
   var alpha_num = {
-      validate: validate$2,
-      params: params$2
+      validate: validate$q,
+      params: params$i
   };
 
-  var validate$3 = function (value, _a) {
+  var validate$p = function (value, _a) {
       var _b = (_a === void 0 ? {} : _a).locale, locale = _b === void 0 ? '' : _b;
       if (Array.isArray(value)) {
-          return value.every(function (val) { return validate$3(val, { locale: locale }); });
+          return value.every(function (val) { return validate$p(val, { locale: locale }); });
       }
       // Match at least one locale.
       if (!locale) {
@@ -227,24 +231,24 @@
       }
       return (alphaSpaces[locale] || alphaSpaces.en).test(value);
   };
-  var params$3 = [
+  var params$h = [
       {
           name: 'locale'
       }
   ];
   var alpha_spaces = {
-      validate: validate$3,
-      params: params$3
+      validate: validate$p,
+      params: params$h
   };
 
-  var validate$4 = function (value, _a) {
+  var validate$o = function (value, _a) {
       var _b = _a === void 0 ? {} : _a, min = _b.min, max = _b.max;
       if (Array.isArray(value)) {
-          return value.every(function (val) { return !!validate$4(val, { min: min, max: max }); });
+          return value.every(function (val) { return !!validate$o(val, { min: min, max: max }); });
       }
       return Number(min) <= value && Number(max) >= value;
   };
-  var params$4 = [
+  var params$g = [
       {
           name: 'min'
       },
@@ -253,34 +257,34 @@
       }
   ];
   var between = {
-      validate: validate$4,
-      params: params$4
+      validate: validate$o,
+      params: params$g
   };
 
-  var validate$5 = function (value, _a) {
+  var validate$n = function (value, _a) {
       var target = _a.target;
       return String(value) === String(target);
   };
-  var params$5 = [
+  var params$f = [
       {
           name: 'target',
           isTarget: true
       }
   ];
   var confirmed = {
-      validate: validate$5,
-      params: params$5
+      validate: validate$n,
+      params: params$f
   };
 
-  var validate$6 = function (value, _a) {
+  var validate$m = function (value, _a) {
       var length = _a.length;
       if (Array.isArray(value)) {
-          return value.every(function (val) { return validate$6(val, { length: length }); });
+          return value.every(function (val) { return validate$m(val, { length: length }); });
       }
       var strVal = String(value);
       return /^[0-9]*$/.test(strVal) && strVal.length === length;
   };
-  var params$6 = [
+  var params$e = [
       {
           name: 'length',
           cast: function (value) {
@@ -289,8 +293,8 @@
       }
   ];
   var digits = {
-      validate: validate$6,
-      params: params$6
+      validate: validate$m,
+      params: params$e
   };
 
   var validateImage = function (file, width, height) {
@@ -302,7 +306,7 @@
           image.src = URL.createObjectURL(file);
       });
   };
-  var validate$7 = function (files, _a) {
+  var validate$l = function (files, _a) {
       var width = _a.width, height = _a.height;
       var list = [];
       files = Array.isArray(files) ? files : [files];
@@ -317,7 +321,7 @@
           return values.every(function (v) { return v; });
       });
   };
-  var params$7 = [
+  var params$d = [
       {
           name: 'width',
           cast: function (value) {
@@ -332,11 +336,11 @@
       }
   ];
   var dimensions = {
-      validate: validate$7,
-      params: params$7
+      validate: validate$l,
+      params: params$d
   };
 
-  var validate$8 = function (value, _a) {
+  var validate$k = function (value, _a) {
       var multiple = (_a === void 0 ? {} : _a).multiple;
       // eslint-disable-next-line
       var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -350,15 +354,15 @@
       }
       return re.test(String(value));
   };
-  var params$8 = [
+  var params$c = [
       {
           name: 'multiple',
           default: false
       }
   ];
   var email = {
-      validate: validate$8,
-      params: params$8
+      validate: validate$k,
+      params: params$c
   };
 
   function isNaN$1(value) {
@@ -384,34 +388,6 @@
       }
       return lhs === rhs;
   }
-  /**
-   * Shallow object comparison.
-   */
-  function isEqual(lhs, rhs) {
-      if (lhs instanceof RegExp && rhs instanceof RegExp) {
-          return isEqual(lhs.source, rhs.source) && isEqual(lhs.flags, rhs.flags);
-      }
-      if (Array.isArray(lhs) && Array.isArray(rhs)) {
-          if (lhs.length !== rhs.length)
-              return false;
-          for (var i = 0; i < lhs.length; i++) {
-              if (!isEqual(lhs[i], rhs[i])) {
-                  return false;
-              }
-          }
-          return true;
-      }
-      // if both are objects, compare each key recursively.
-      if (isObject(lhs) && isObject(rhs)) {
-          return (Object.keys(lhs).every(function (key) {
-              return isEqual(lhs[key], rhs[key]);
-          }) &&
-              Object.keys(rhs).every(function (key) {
-                  return isEqual(lhs[key], rhs[key]);
-              }));
-      }
-      return isRefEqual(lhs, rhs);
-  }
   // Checks if a given value is not an empty string or null or undefined.
   function isSpecified(val) {
       if (val === '') {
@@ -419,6 +395,7 @@
       }
       return !isNullOrUndefined(val);
   }
+  // eslint-disable-next-line @typescript-eslint/ban-types
   function isCallable(fn) {
       return typeof fn === 'function';
   }
@@ -551,9 +528,9 @@
       });
   }
 
-  var validate$9 = function (value, options) {
+  var validate$j = function (value, options) {
       if (Array.isArray(value)) {
-          return value.every(function (val) { return validate$9(val, options); });
+          return value.every(function (val) { return validate$j(val, options); });
       }
       return toArray(options).some(function (item) {
           // eslint-disable-next-line
@@ -561,17 +538,17 @@
       });
   };
   var oneOf = {
-      validate: validate$9
+      validate: validate$j
   };
 
-  var validate$a = function (value, args) {
-      return !validate$9(value, args);
+  var validate$i = function (value, args) {
+      return !validate$j(value, args);
   };
   var excluded = {
-      validate: validate$a
+      validate: validate$i
   };
 
-  var validate$b = function (files, extensions) {
+  var validate$h = function (files, extensions) {
       var regex = new RegExp(".(" + extensions.join('|') + ")$", 'i');
       if (Array.isArray(files)) {
           return files.every(function (file) { return regex.test(file.name); });
@@ -579,10 +556,10 @@
       return regex.test(files.name);
   };
   var ext = {
-      validate: validate$b
+      validate: validate$h
   };
 
-  var validate$c = function (files) {
+  var validate$g = function (files) {
       var regex = /\.(jpg|svg|jpeg|png|bmp|gif|webp)$/i;
       if (Array.isArray(files)) {
           return files.every(function (file) { return regex.test(file.name); });
@@ -590,34 +567,34 @@
       return regex.test(files.name);
   };
   var image = {
-      validate: validate$c
+      validate: validate$g
   };
 
-  var validate$d = function (value) {
+  var validate$f = function (value) {
       if (Array.isArray(value)) {
           return value.every(function (val) { return /^-?[0-9]+$/.test(String(val)); });
       }
       return /^-?[0-9]+$/.test(String(value));
   };
   var integer = {
-      validate: validate$d
+      validate: validate$f
   };
 
   var validate$e = function (value, _a) {
       var other = _a.other;
       return value === other;
   };
-  var params$9 = [
+  var params$b = [
       {
           name: 'other'
       }
   ];
   var is = {
       validate: validate$e,
-      params: params$9
+      params: params$b
   };
 
-  var validate$f = function (value, _a) {
+  var validate$d = function (value, _a) {
       var other = _a.other;
       return value !== other;
   };
@@ -627,11 +604,11 @@
       }
   ];
   var is_not = {
-      validate: validate$f,
+      validate: validate$d,
       params: params$a
   };
 
-  var validate$g = function (value, _a) {
+  var validate$c = function (value, _a) {
       var length = _a.length;
       if (isNullOrUndefined(value)) {
           return false;
@@ -647,28 +624,28 @@
       }
       return value.length === length;
   };
-  var params$b = [
+  var params$9 = [
       {
           name: 'length',
           cast: function (value) { return Number(value); }
       }
   ];
   var length = {
-      validate: validate$g,
-      params: params$b
+      validate: validate$c,
+      params: params$9
   };
 
-  var validate$h = function (value, _a) {
+  var validate$b = function (value, _a) {
       var length = _a.length;
       if (isNullOrUndefined(value)) {
           return length >= 0;
       }
       if (Array.isArray(value)) {
-          return value.every(function (val) { return validate$h(val, { length: length }); });
+          return value.every(function (val) { return validate$b(val, { length: length }); });
       }
       return String(value).length <= length;
   };
-  var params$c = [
+  var params$8 = [
       {
           name: 'length',
           cast: function (value) {
@@ -677,21 +654,21 @@
       }
   ];
   var max = {
-      validate: validate$h,
-      params: params$c
+      validate: validate$b,
+      params: params$8
   };
 
-  var validate$i = function (value, _a) {
+  var validate$a = function (value, _a) {
       var max = _a.max;
       if (isNullOrUndefined(value) || value === '') {
           return false;
       }
       if (Array.isArray(value)) {
-          return value.length > 0 && value.every(function (val) { return validate$i(val, { max: max }); });
+          return value.length > 0 && value.every(function (val) { return validate$a(val, { max: max }); });
       }
       return Number(value) <= max;
   };
-  var params$d = [
+  var params$7 = [
       {
           name: 'max',
           cast: function (value) {
@@ -700,11 +677,11 @@
       }
   ];
   var max_value = {
-      validate: validate$i,
-      params: params$d
+      validate: validate$a,
+      params: params$7
   };
 
-  var validate$j = function (files, mimes) {
+  var validate$9 = function (files, mimes) {
       var regex = new RegExp(mimes.join('|').replace('*', '.+') + "$", 'i');
       if (Array.isArray(files)) {
           return files.every(function (file) { return regex.test(file.type); });
@@ -712,20 +689,20 @@
       return regex.test(files.type);
   };
   var mimes = {
-      validate: validate$j
+      validate: validate$9
   };
 
-  var validate$k = function (value, _a) {
+  var validate$8 = function (value, _a) {
       var length = _a.length;
       if (isNullOrUndefined(value)) {
           return false;
       }
       if (Array.isArray(value)) {
-          return value.every(function (val) { return validate$k(val, { length: length }); });
+          return value.every(function (val) { return validate$8(val, { length: length }); });
       }
       return String(value).length >= length;
   };
-  var params$e = [
+  var params$6 = [
       {
           name: 'length',
           cast: function (value) {
@@ -734,21 +711,21 @@
       }
   ];
   var min = {
-      validate: validate$k,
-      params: params$e
+      validate: validate$8,
+      params: params$6
   };
 
-  var validate$l = function (value, _a) {
+  var validate$7 = function (value, _a) {
       var min = _a.min;
       if (isNullOrUndefined(value) || value === '') {
           return false;
       }
       if (Array.isArray(value)) {
-          return value.length > 0 && value.every(function (val) { return validate$l(val, { min: min }); });
+          return value.length > 0 && value.every(function (val) { return validate$7(val, { min: min }); });
       }
       return Number(value) >= min;
   };
-  var params$f = [
+  var params$5 = [
       {
           name: 'min',
           cast: function (value) {
@@ -757,16 +734,16 @@
       }
   ];
   var min_value = {
-      validate: validate$l,
-      params: params$f
+      validate: validate$7,
+      params: params$5
   };
 
   var ar = /^[٠١٢٣٤٥٦٧٨٩]+$/;
-  var en$1 = /^[0-9]+$/;
-  var validate$m = function (value) {
+  var en = /^[0-9]+$/;
+  var validate$6 = function (value) {
       var testValue = function (val) {
           var strValue = String(val);
-          return en$1.test(strValue) || ar.test(strValue);
+          return en.test(strValue) || ar.test(strValue);
       };
       if (Array.isArray(value)) {
           return value.every(testValue);
@@ -774,17 +751,17 @@
       return testValue(value);
   };
   var numeric = {
-      validate: validate$m
+      validate: validate$6
   };
 
-  var validate$n = function (value, _a) {
+  var validate$5 = function (value, _a) {
       var regex = _a.regex;
       if (Array.isArray(value)) {
-          return value.every(function (val) { return validate$n(val, { regex: regex }); });
+          return value.every(function (val) { return validate$5(val, { regex: regex }); });
       }
       return regex.test(String(value));
   };
-  var params$g = [
+  var params$4 = [
       {
           name: 'regex',
           cast: function (value) {
@@ -796,11 +773,11 @@
       }
   ];
   var regex = {
-      validate: validate$n,
-      params: params$g
+      validate: validate$5,
+      params: params$4
   };
 
-  var validate$o = function (value, _a) {
+  var validate$4 = function (value, _a) {
       var allowFalse = (_a === void 0 ? { allowFalse: true } : _a).allowFalse;
       var result = {
           valid: false,
@@ -816,23 +793,23 @@
       result.valid = !!String(value).trim().length;
       return result;
   };
-  var computesRequired = true;
-  var params$h = [
+  var computesRequired$1 = true;
+  var params$3 = [
       {
           name: 'allowFalse',
           default: true
       }
   ];
   var required = {
-      validate: validate$o,
-      params: params$h,
-      computesRequired: computesRequired
+      validate: validate$4,
+      params: params$3,
+      computesRequired: computesRequired$1
   };
 
   var testEmpty = function (value) {
       return isEmptyArray(value) || includes([false, null, undefined], value) || !String(value).trim().length;
   };
-  var validate$p = function (value, _a) {
+  var validate$3 = function (value, _a) {
       var target = _a.target, values = _a.values;
       var required;
       if (values && values.length) {
@@ -856,7 +833,7 @@
           required: required
       };
   };
-  var params$i = [
+  var params$2 = [
       {
           name: 'target',
           isTarget: true
@@ -865,14 +842,14 @@
           name: 'values'
       }
   ];
-  var computesRequired$1 = true;
+  var computesRequired = true;
   var required_if = {
-      validate: validate$p,
-      params: params$i,
-      computesRequired: computesRequired$1
+      validate: validate$3,
+      params: params$2,
+      computesRequired: computesRequired
   };
 
-  var validate$q = function (files, _a) {
+  var validate$2 = function (files, _a) {
       var size = _a.size;
       if (isNaN(size)) {
           return false;
@@ -888,7 +865,7 @@
       }
       return true;
   };
-  var params$j = [
+  var params$1 = [
       {
           name: 'size',
           cast: function (value) {
@@ -897,11 +874,11 @@
       }
   ];
   var size = {
-      validate: validate$q,
-      params: params$j
+      validate: validate$2,
+      params: params$1
   };
 
-  var validate$r = function (value, params) {
+  var validate$1 = function (value, params) {
       var _a = params || {}, _b = _a.decimals, decimals = _b === void 0 ? 0 : _b, _c = _a.separator, separator = _c === void 0 ? 'dot' : _c;
       var separators = {
           dot: '.',
@@ -911,7 +888,7 @@
       var regex = new RegExp("^-?\\d+\\" + (separators[separator] || '.') + "\\d" + regexPart + "$");
       return Array.isArray(value) ? value.every(function (val) { return regex.test(String(val)); }) : regex.test(String(value));
   };
-  var params$k = [
+  var params = [
       {
           name: 'decimals',
           default: 0
@@ -922,8 +899,8 @@
       }
   ];
   var double = {
-      validate: validate$r,
-      params: params$k
+      validate: validate$1,
+      params: params
   };
 
   /* eslint-disable camelcase */
@@ -933,7 +910,7 @@
     alpha_dash: alpha_dash,
     alpha_num: alpha_num,
     alpha_spaces: alpha_spaces,
-    alpha: alpha$1,
+    alpha: alpha,
     between: between,
     confirmed: confirmed,
     digits: digits,
@@ -1386,7 +1363,7 @@
   /**
    * Validates a value against the rules.
    */
-  function validate$s(value, rules, options) {
+  function validate(value, rules, options) {
       if (options === void 0) { options = {}; }
       return __awaiter(this, void 0, void 0, function () {
           var shouldBail, skipIfEmpty, field, result, errors, failedRules, regenerateMap;
@@ -1419,6 +1396,7 @@
                       });
                       return [2 /*return*/, {
                               valid: result.valid,
+                              required: result.required,
                               errors: errors,
                               failedRules: failedRules,
                               regenerateMap: regenerateMap
@@ -1433,15 +1411,16 @@
   function _validate(field, value, _a) {
       var _b = (_a === void 0 ? {} : _a).isInitial, isInitial = _b === void 0 ? false : _b;
       return __awaiter(this, void 0, void 0, function () {
-          var _c, shouldSkip, errors, rules, length, i, rule, result;
+          var _c, shouldSkip, required, errors, rules, length, i, rule, result;
           return __generator(this, function (_d) {
               switch (_d.label) {
                   case 0: return [4 /*yield*/, _shouldSkip(field, value)];
                   case 1:
-                      _c = _d.sent(), shouldSkip = _c.shouldSkip, errors = _c.errors;
+                      _c = _d.sent(), shouldSkip = _c.shouldSkip, required = _c.required, errors = _c.errors;
                       if (shouldSkip) {
                           return [2 /*return*/, {
                                   valid: !errors.length,
+                                  required: required,
                                   errors: errors
                               }];
                       }
@@ -1466,6 +1445,7 @@
                           if (field.bails) {
                               return [2 /*return*/, {
                                       valid: false,
+                                      required: required,
                                       errors: errors
                                   }];
                           }
@@ -1476,6 +1456,7 @@
                       return [3 /*break*/, 2];
                   case 5: return [2 /*return*/, {
                           valid: !errors.length,
+                          required: required,
                           errors: errors
                       }];
               }
@@ -1493,7 +1474,6 @@
                       errors = [];
                       isEmpty = isNullOrUndefined(value) || value === '' || isEmptyArray(value);
                       isEmptyAndOptional = isEmpty && field.skipIfEmpty;
-                      isRequired = false;
                       i = 0;
                       _a.label = 1;
                   case 1:
@@ -1508,8 +1488,8 @@
                       if (!isObject(result)) {
                           throw new Error('Require rules has to return an object (see docs)');
                       }
-                      if (result.required) {
-                          isRequired = true;
+                      if (result.required !== undefined) {
+                          isRequired = result.required;
                       }
                       if (!result.valid && result.error) {
                           errors.push(result.error);
@@ -1517,6 +1497,7 @@
                           if (field.bails) {
                               return [2 /*return*/, {
                                       shouldSkip: true,
+                                      required: result.required,
                                       errors: errors
                                   }];
                           }
@@ -1529,6 +1510,7 @@
                       if (isEmpty && !isRequired && !field.skipIfEmpty) {
                           return [2 /*return*/, {
                                   shouldSkip: false,
+                                  required: isRequired,
                                   errors: errors
                               }];
                       }
@@ -1536,12 +1518,14 @@
                       if (!field.bails && !isEmptyAndOptional) {
                           return [2 /*return*/, {
                                   shouldSkip: false,
+                                  required: isRequired,
                                   errors: errors
                               }];
                       }
                       // skip if the field is not required and has an empty value.
                       return [2 /*return*/, {
                               shouldSkip: !isRequired && isEmpty,
+                              required: isRequired,
                               errors: errors
                           }];
               }
@@ -1686,6 +1670,51 @@
       });
       return values;
   }
+
+  // do not edit .js files directly - edit src/index.jst
+
+
+
+  var fastDeepEqual = function equal(a, b) {
+    if (a === b) return true;
+
+    if (a && b && typeof a == 'object' && typeof b == 'object') {
+      if (a.constructor !== b.constructor) return false;
+
+      var length, i, keys;
+      if (Array.isArray(a)) {
+        length = a.length;
+        if (length != b.length) return false;
+        for (i = length; i-- !== 0;)
+          if (!equal(a[i], b[i])) return false;
+        return true;
+      }
+
+
+
+      if (a.constructor === RegExp) return a.source === b.source && a.flags === b.flags;
+      if (a.valueOf !== Object.prototype.valueOf) return a.valueOf() === b.valueOf();
+      if (a.toString !== Object.prototype.toString) return a.toString() === b.toString();
+
+      keys = Object.keys(a);
+      length = keys.length;
+      if (length !== Object.keys(b).length) return false;
+
+      for (i = length; i-- !== 0;)
+        if (!Object.prototype.hasOwnProperty.call(b, keys[i])) return false;
+
+      for (i = length; i-- !== 0;) {
+        var key = keys[i];
+
+        if (!equal(a[key], b[key])) return false;
+      }
+
+      return true;
+    }
+
+    // true if both NaN, false otherwise
+    return a!==a && b!==b;
+  };
 
   var isEvent = function (evt) {
       if (!evt) {
@@ -2081,7 +2110,7 @@
   }
 
   var PROVIDER_COUNTER = 0;
-  function data() {
+  function data$1() {
       var errors = [];
       var fieldName = '';
       var defaultValues = {
@@ -2098,6 +2127,7 @@
       return defaultValues;
   }
   var ValidationProvider = Vue__default['default'].extend({
+      name: 'ValidationProvider',
       inject: {
           $_veeObserver: {
               from: '$_veeObserver',
@@ -2171,11 +2201,11 @@
           rules: {
               deep: true,
               handler: function (val, oldVal) {
-                  this._needsValidation = !isEqual(val, oldVal);
+                  this._needsValidation = !fastDeepEqual(val, oldVal);
               }
           }
       },
-      data: data,
+      data: data$1,
       computed: {
           fieldDeps: function () {
               var _this = this;
@@ -2255,7 +2285,7 @@
                           return;
                       }
                       var resolved = getConfig().useConstraintAttrs ? resolveRules(input) : {};
-                      if (!isEqual(_this._resolvedRules, resolved)) {
+                      if (!fastDeepEqual(_this._resolvedRules, resolved)) {
                           _this._needsValidation = true;
                       }
                       if (isHTMLNode(input)) {
@@ -2288,7 +2318,7 @@
           syncValue: function (v) {
               var value = normalizeEventValue(v);
               this.value = value;
-              this.flags.changed = this.initialValue !== value;
+              this.flags.changed = !fastDeepEqual(this.initialValue, value);
           },
           reset: function () {
               var _this = this;
@@ -2333,7 +2363,7 @@
                                   enumerable: false,
                                   configurable: false
                               });
-                              return [4 /*yield*/, validate$s(this.value, rules, __assign(__assign({ name: this.name || this.fieldName }, createLookup(this)), { bails: this.bails, skipIfEmpty: this.skipIfEmpty, isInitial: !this.initialized, customMessages: this.customMessages }))];
+                              return [4 /*yield*/, validate(this.value, rules, __assign(__assign({ name: this.name || this.fieldName }, createLookup(this)), { bails: this.bails, skipIfEmpty: this.skipIfEmpty, isInitial: !this.initialized, customMessages: this.customMessages }))];
                           case 1:
                               result = _a.sent();
                               this.setFlags({
@@ -2341,6 +2371,11 @@
                                   valid: result.valid,
                                   invalid: !result.valid
                               });
+                              if (result.required !== undefined) {
+                                  this.setFlags({
+                                      required: result.required
+                                  });
+                              }
                               return [2 /*return*/, result];
                       }
                   });
@@ -2360,11 +2395,16 @@
                   invalid: !!errors.length,
                   failed: !!errors.length,
                   validated: true,
-                  changed: this.value !== this.initialValue
+                  changed: !fastDeepEqual(this.value, this.initialValue)
               });
           },
           registerField: function () {
               updateRenderingContextRefs(this);
+          },
+          checkComputesRequiredState: function () {
+              var rules = __assign(__assign({}, this._resolvedRules), this.normalizedRules);
+              var isRequired = Object.keys(rules).some(RuleContainer.isRequireRule);
+              return isRequired;
           }
       }
   });
@@ -2465,9 +2505,14 @@
       }
       if (!isCallable(ctx._veeWatchers[depName]) && providers[depName]) {
           ctx._veeWatchers[depName] = providers[depName].$watch('value', function () {
+              var isComputesRequired = ctx.checkComputesRequiredState();
               if (ctx.flags.validated) {
                   ctx._needsValidation = true;
                   ctx.validate();
+              }
+              // Validate dependent field silently if it has rules with computesRequired
+              if (isComputesRequired && !ctx.flags.validated) {
+                  ctx.validateSilent();
               }
           });
       }
@@ -2487,7 +2532,7 @@
       ['failed', 'some']
   ];
   var OBSERVER_COUNTER = 0;
-  function data$1() {
+  function data() {
       var refs = {};
       var errors = {};
       var flags = createObserverFlags();
@@ -2542,7 +2587,7 @@
               default: false
           }
       },
-      data: data$1,
+      data: data,
       created: function () {
           var _this = this;
           this.id = this.vid;
@@ -2754,7 +2799,7 @@
       return hoc;
   }
 
-  var version = '3.4.5';
+  var version = '3.4.10';
   // Install all rules.
   var RulesAsList = Object.keys(Rules).map(function (key) { return ({ schema: Rules[key], name: key }); });
   RulesAsList.forEach(function (_a) {
@@ -2762,7 +2807,7 @@
       extend(name, schema);
   });
   // Install locale
-  localize('en', en);
+  localize('en', en$1);
 
   exports.Rules = Rules;
   exports.ValidationObserver = ValidationObserver;
@@ -2773,7 +2818,7 @@
   exports.localize = localize;
   exports.normalizeRules = normalizeRules;
   exports.setInteractionMode = setInteractionMode;
-  exports.validate = validate$s;
+  exports.validate = validate;
   exports.version = version;
   exports.withValidation = withValidation;
 

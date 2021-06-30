@@ -110,7 +110,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ }),
 
-/***/ "015e":
+/***/ "0159":
 /***/ (function(module, exports, __webpack_require__) {
 
 // extracted by mini-css-extract-plugin
@@ -917,13 +917,6 @@ exports.default = _default;
 /***/ }),
 
 /***/ "ce87":
-/***/ (function(module, exports, __webpack_require__) {
-
-// extracted by mini-css-extract-plugin
-
-/***/ }),
-
-/***/ "cf36":
 /***/ (function(module, exports, __webpack_require__) {
 
 // extracted by mini-css-extract-plugin
@@ -32701,11 +32694,8 @@ var _900 = __webpack_require__("f4d8");
 // EXTERNAL MODULE: ./src/Themes/VuetifyTheme/node_modules/@mdi/font/css/materialdesignicons.css
 var materialdesignicons = __webpack_require__("3796");
 
-// EXTERNAL MODULE: ./src/Themes/VuetifyTheme/Assets/src/styles.scss
-var src_styles = __webpack_require__("cf36");
-
-// EXTERNAL MODULE: ./src/Themes/VuetifyTheme/Assets/src/sass/github-markdown.scss
-var github_markdown = __webpack_require__("015e");
+// EXTERNAL MODULE: ./src/Themes/VuetifyTheme/Assets/src/sass/styles.scss
+var sass_styles = __webpack_require__("0159");
 
 // CONCATENATED MODULE: ./src/Themes/VuetifyTheme/Assets/src/App.js
 
@@ -32719,10 +32709,7 @@ var github_markdown = __webpack_require__("015e");
 
 
 
-
-external_commonjs_vue_commonjs2_vue_root_Vue_default.a.component('ie-banner', IEBanner); // Sets the cookie based on the current html lang. This is to avoid potential issues when landing on a french page.
-
-document.cookie = '.AspNetCore.Culture=c%3D' + document.documentElement.lang + '%7Cuic%3D' + document.documentElement.lang + ';path=/';
+external_commonjs_vue_commonjs2_vue_root_Vue_default.a.component('ie-banner', IEBanner);
 document.addEventListener("DOMContentLoaded", function () {
   new external_commonjs_vue_commonjs2_vue_root_Vue_default.a({
     vuetify: vuetify,

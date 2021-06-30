@@ -1549,7 +1549,7 @@ outdated_browser_rework_default()({
     en: {
       outOfDate: "Your browser is no longer supported!",
       update: {
-        web: "Please use a modern browser view this website correctly.\n          Supported browsers include:\n          <ul>\n            <li>Chrome & chromium</li>\n            <li>Firefox</li>\n            <li>Edge</li>\n            <li>Safari</li>\n          </ul>\n        \n        ",
+        web: "Please use a modern browser view this website correctly.\n          Supported browsers include:\n          <ul>\n            <li>Chrome & Chromium</li>\n            <li>Firefox</li>\n            <li>Edge</li>\n            <li>Safari</li>\n          </ul>\n        \n        ",
         googlePlay: "Please install Chrome from Google Play",
         appStore: "Please update iOS from the Settings App"
       },
@@ -1558,7 +1558,7 @@ outdated_browser_rework_default()({
     fr: {
       outOfDate: "Votre navigateur n'est pas supporté!",
       update: {
-        web: "Veuillez utiliser un navigateur moderne pour visualiser correctement ce site web.\n        Les navigateurs suivants sont support\xE9s:\n        <ul>\n          <li>Chrome & chromium</li>\n          <li>Firefox</li>\n          <li>Edge</li>\n          <li>Safari</li>\n        </ul>\n        ",
+        web: "Veuillez utiliser un navigateur moderne pour visualiser correctement ce site web.\n        Les navigateurs suivants sont support\xE9s:\n        <ul>\n          <li>Chrome et Chromium</li>\n          <li>Firefox</li>\n          <li>Edge</li>\n          <li>Safari</li>\n        </ul>\n        ",
         googlePlay: "Merci d'installer Chrome depuis le Google Play Store",
         appStore: "Merci de mettre à jour iOS depuis l'application Réglages"
       },
