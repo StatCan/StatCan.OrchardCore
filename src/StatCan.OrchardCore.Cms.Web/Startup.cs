@@ -14,9 +14,6 @@ using OrchardCore.Data.Migration;
 
 namespace web
 {
-
-
-
     public class Startup
     {
         public IConfiguration Configuration { get; }
