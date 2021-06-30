@@ -7,10 +7,7 @@ using StatCan.OrchardCore.Security;
 using Microsoft.Extensions.Configuration;
 using OrchardCore.Logging;
 using Microsoft.AspNetCore.ResponseCompression;
-using StatCan.OrchardCore.Configuration;
-using OrchardCore.Environment.Shell;
-using OrchardCore.Modules;
-using OrchardCore.Data.Migration;
+using Serilog;
 
 namespace web
 {
@@ -77,6 +74,7 @@ namespace web
             app.UseStaticFiles();
             app.UseOrchardCore(c => c
                 .UseSerilogTenantNameLogging()
+                .UseSerilogRequestLogging()
                 .UseStatCanCookiePolicy()
             );
         }
