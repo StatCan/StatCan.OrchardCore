@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Etch.OrchardCore.Blocks.Services
+namespace StatCan.OrchardCore.Blocks.Services
 {
     public interface IContentSearchResultsProvider
     {

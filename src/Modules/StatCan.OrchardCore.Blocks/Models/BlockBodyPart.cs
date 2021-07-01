@@ -1,6 +1,6 @@
 ﻿using OrchardCore.ContentManagement;
 
-namespace Etch.OrchardCore.Blocks.Models
+namespace StatCan.OrchardCore.Blocks.Models
 {
     public class BlockBodyPart : ContentPart
     {

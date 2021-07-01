@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using YesSql;
 using YesSql.Services;
 
-namespace Etch.OrchardCore.Blocks.Services
+namespace StatCan.OrchardCore.Blocks.Services
 {
     public class DefaultContentSearchResultsProvider : IContentSearchResultsProvider
     {
@@ -22,17 +22,15 @@ namespace Etch.OrchardCore.Blocks.Services
 
         private readonly IContentManager _contentManager;
         private readonly ISession _session;
-        private readonly IUrlHelperFactory _urlHelperFactory;
 
         #endregion
 
         #region Constructor
 
-        public DefaultContentSearchResultsProvider(IContentManager contentManager, ISession session, IUrlHelperFactory urlHelperFactory)
+        public DefaultContentSearchResultsProvider(IContentManager contentManager, ISession session)
         {
             _contentManager = contentManager;
             _session = session;
-            _urlHelperFactory = urlHelperFactory;
         }
 
         #endregion
@@ -55,9 +53,6 @@ namespace Etch.OrchardCore.Blocks.Services
 
             foreach (var contentItem in contentItems)
             {
-                var metadata = await _contentManager.PopulateAspectAsync<ContentItemMetadata>(contentItem);
-
-
                 results.Add(new ContentSearchResult
                 {
                     ContentItemId = contentItem.ContentItemId,

@@ -1,15 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk.Razor">
 
   <PropertyGroup>
-    <TargetFramework>$(AspNetCoreTargetFramework)</TargetFramework>
+    <TargetFramework>net5.0</TargetFramework>
     <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>0.3.3-rc2</Version>
-    <PackageId>StatCan.OrchardCore.Blocks</PackageId>
-    <Title>Editor.js</Title>
-    <Authors>Etch UK</Authors>
-    <Description>Orchard Core module enables content to be defined with a block based editor.</Description>
-    <PackageTags>orchardcore;etchuk</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
@@ -27,6 +20,5 @@
   <ItemGroup>
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
   </ItemGroup>
-  
 
 </Project>

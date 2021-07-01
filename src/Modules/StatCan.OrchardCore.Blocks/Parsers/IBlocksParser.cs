@@ -1,9 +1,9 @@
-﻿using Etch.OrchardCore.Blocks.Fields;
-using Etch.OrchardCore.Blocks.Models;
+﻿using StatCan.OrchardCore.Blocks.Fields;
+using StatCan.OrchardCore.Blocks.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Etch.OrchardCore.Blocks.Parsers
+namespace StatCan.OrchardCore.Blocks.Parsers
 {
     public interface IBlocksParser
     {

@@ -1,11 +1,12 @@
 ﻿using System.Threading.Tasks;
-using Etch.OrchardCore.Blocks.EditorJS.Parsers.Models;
-using Etch.OrchardCore.Blocks.ViewModels.Blocks;
+using StatCan.OrchardCore.Blocks.EditorJS.Parsers.Models;
+using StatCan.OrchardCore.Blocks.ViewModels.Blocks;
 
-namespace Etch.OrchardCore.Blocks.EditorJS.Parsers.Blocks
+namespace StatCan.OrchardCore.Blocks.EditorJS.Parsers.Blocks
 {
     public class EmbedBlockParser : IBlockParser
     {
+        public string Name { get{ return "embed"; } }
         public async Task<dynamic> RenderAsync(BlockParserContext context, Block block)
         {
             return await context.ShapeFactory.New.Block__Embed(

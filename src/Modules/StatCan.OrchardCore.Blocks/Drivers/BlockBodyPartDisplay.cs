@@ -1,13 +1,13 @@
-﻿using Etch.OrchardCore.Blocks.Models;
-using Etch.OrchardCore.Blocks.Parsers;
-using Etch.OrchardCore.Blocks.ViewModels;
+﻿using StatCan.OrchardCore.Blocks.Models;
+using StatCan.OrchardCore.Blocks.Parsers;
+using StatCan.OrchardCore.Blocks.ViewModels;
 using OrchardCore.ContentManagement.Display.ContentDisplay;
 using OrchardCore.ContentManagement.Display.Models;
 using OrchardCore.DisplayManagement.ModelBinding;
 using OrchardCore.DisplayManagement.Views;
 using System.Threading.Tasks;
 
-namespace Etch.OrchardCore.Blocks.Drivers
+namespace StatCan.OrchardCore.Blocks.Drivers
 {
     public class BlockBodyPartDisplay : ContentPartDisplayDriver<BlockBodyPart>
     {

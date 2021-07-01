@@ -2,7 +2,7 @@
 using OrchardCore.ContentManagement.Metadata.Settings;
 using OrchardCore.Data.Migration;
 
-namespace Etch.OrchardCore.Blocks
+namespace StatCan.OrchardCore.Blocks
 {
     public class Migrations : DataMigration
     {

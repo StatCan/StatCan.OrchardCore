@@ -1,6 +1,6 @@
-﻿namespace Etch.OrchardCore.Blocks.EditorJS.Parsers
+﻿namespace StatCan.OrchardCore.Blocks.EditorJS.Parsers
 {
-    public class BlockParserHelper
+    public static class BlockParserHelper
     {
         public static string AddPathBaseToRelativeLinks(string requestPathBase, string content)
         {

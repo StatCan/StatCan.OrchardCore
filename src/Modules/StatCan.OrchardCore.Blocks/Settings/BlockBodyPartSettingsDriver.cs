@@ -1,40 +1,45 @@
-﻿using Etch.OrchardCore.Blocks.Models;
-using Etch.OrchardCore.Blocks.ViewModels;
+﻿using StatCan.OrchardCore.Blocks.Models;
+using StatCan.OrchardCore.Blocks.ViewModels;
 using OrchardCore.ContentManagement.Metadata.Models;
 using OrchardCore.ContentTypes.Editors;
 using OrchardCore.DisplayManagement.Views;
 using System;
 using System.Threading.Tasks;
 
-namespace Etch.OrchardCore.Blocks.Settings
+namespace StatCan.OrchardCore.Blocks.Settings
 {
     public class BlockBodyPartSettingsDriver : ContentTypePartDefinitionDisplayDriver
     {
-        public override IDisplayResult Edit(ContentTypePartDefinition contentTypePartDefinition)
+        public override IDisplayResult Edit(ContentTypePartDefinition model)
         {
-            if (!string.Equals(nameof(BlockBodyPart), contentTypePartDefinition.PartDefinition.Name, StringComparison.Ordinal))
+            if (!string.Equals(nameof(BlockBodyPart), model.PartDefinition.Name, StringComparison.Ordinal))
             {
                 return null;
             }
 
-            return Initialize<BlockBodyPartSettingsViewModel>("BlockBodyPartSettings_Edit", model =>
+            return Initialize<BlockBodyPartSettingsViewModel>("BlockBodyPartSettings_Edit", settings =>
             {
-                var settings = contentTypePartDefinition.GetSettings<BlockBodyPartSettings>();
+                var blockBodyPartSettings = model.GetSettings<BlockBodyPartSettings>();
 
-                model.LinkableContentTypes = settings.LinkableContentTypes;
-                model.BlockBodyPartSettings = settings;
+                settings.LinkableContentTypes = blockBodyPartSettings.LinkableContentTypes;
+                settings.BlockBodyPartSettings = blockBodyPartSettings;
             }).Location("Content");
         }
 
-        public override async Task<IDisplayResult> UpdateAsync(ContentTypePartDefinition contentTypePartDefinition, UpdateTypePartEditorContext context)
+        public override async Task<IDisplayResult> UpdateAsync(ContentTypePartDefinition model, UpdateTypePartEditorContext context)
         {
-            var model = new BlockBodyPartSettings();
+            if (!string.Equals(nameof(BlockBodyPart), model.PartDefinition.Name, StringComparison.Ordinal))
+            {
+                return null;
+            }
 
-            await context.Updater.TryUpdateModelAsync(model, Prefix);
+            var settings = new BlockBodyPartSettings();
 
-            context.Builder.WithSettings(model);
+            await context.Updater.TryUpdateModelAsync(settings, Prefix);
 
-            return Edit(contentTypePartDefinition);
+            context.Builder.WithSettings(settings);
+
+            return Edit(model);
         }
     }
 }

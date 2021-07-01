@@ -1,4 +1,4 @@
-﻿namespace Etch.OrchardCore.Blocks.ViewModels.Blocks
+﻿namespace StatCan.OrchardCore.Blocks.ViewModels.Blocks
 {
     public class RawBlockViewModel
     {

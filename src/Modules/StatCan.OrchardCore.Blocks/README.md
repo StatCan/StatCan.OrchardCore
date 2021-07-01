@@ -1,8 +1,14 @@
 # Etch.OrchardCore.Blocks
 
-This module is copied from https://github.com/EtchUK/Etch.OrchardCore.Blocks/commit/4c5dc3d895158c18868cecc63ac1167122b95848
-
 Orchard Core module providing WYSIWYG editor via [Editor.js](https://editorjs.io/).
+
+## Build Status
+
+[![Build Status](https://secure.travis-ci.org/etchuk/Etch.OrchardCore.Blocks.png?branch=master)](http://travis-ci.org/etchuk/Etch.OrchardCore.Blocks) [![NuGet](https://img.shields.io/nuget/v/Etch.OrchardCore.Blocks.svg)](https://www.nuget.org/packages/Etch.OrchardCore.Blocks)
+
+## Orchard Core Reference
+
+This module is referencing the RC2 build of Orchard Core ([`1.0.0-rc2-13450`](https://www.nuget.org/packages/OrchardCore.Module.Targets/1.0.0-rc2-13450)).
 
 ## Installing
 

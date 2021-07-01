@@ -1,4 +1,4 @@
-﻿namespace Etch.OrchardCore.Blocks.Settings
+﻿namespace StatCan.OrchardCore.Blocks.Settings
 {
     public class BlockFieldSettings
     {

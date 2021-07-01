@@ -1,6 +1,6 @@
 ﻿@using OrchardCore.ContentManagement.Metadata.Models
 
-@model Etch.OrchardCore.Blocks.ViewModels.EditBlockFieldViewModel
+@model StatCan.OrchardCore.Blocks.ViewModels.EditBlockFieldViewModel
 
 @inject OrchardCore.Environment.Shell.IShellFeaturesManager ShellFeaturesManager
 
@@ -28,11 +28,11 @@
         initializeEditorJS('@tenantPath', '@Html.IdFor(m => m)', '@Html.IdFor(m => m.Data)', '', '@partName', '@fieldName');
     </script>
 
-    <fieldset class="form-group">
+    <div class="form-group">
         <h5>@Model.PartFieldDefinition.DisplayName()</h5>
         <div id="@Html.IdFor(m => m)"></div>
         @Html.HiddenFor(m => m.Data)
-    </fieldset>
+    </div>
 
     <div class="modal" id="@Html.IdFor(m => m)-ModalBody">
         <div class="modal-dialog modal-lg media-modal" role="document">

@@ -1,6 +1,6 @@
 ﻿using OrchardCore.ContentManagement;
 
-namespace Etch.OrchardCore.Blocks.Fields
+namespace StatCan.OrchardCore.Blocks.Fields
 {
     public class BlockField : ContentField
     {

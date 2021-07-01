@@ -1,6 +1,6 @@
-﻿using Etch.OrchardCore.Blocks.Settings;
+﻿using StatCan.OrchardCore.Blocks.Settings;
 
-namespace Etch.OrchardCore.Blocks.ViewModels
+namespace StatCan.OrchardCore.Blocks.ViewModels
 {
     public class BlockBodyPartSettingsViewModel
     {

@@ -1,11 +1,10 @@
-﻿using Etch.OrchardCore.Blocks.Fields;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using OrchardCore.ContentManagement;
 using OrchardCore.DisplayManagement;
 using OrchardCore.Liquid;
 using OrchardCore.Media;
 
-namespace Etch.OrchardCore.Blocks.EditorJS.Parsers.Blocks
+namespace StatCan.OrchardCore.Blocks.EditorJS.Parsers.Blocks
 {
     public class BlockParserContext
     {

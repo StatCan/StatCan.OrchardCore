@@ -1,8 +1,8 @@
-﻿using Etch.OrchardCore.Blocks.Fields;
+﻿using StatCan.OrchardCore.Blocks.Fields;
 using OrchardCore.ContentManagement;
 using OrchardCore.ContentManagement.Metadata.Models;
 
-namespace Etch.OrchardCore.Blocks.ViewModels
+namespace StatCan.OrchardCore.Blocks.ViewModels
 {
     public class EditBlockFieldViewModel
     {

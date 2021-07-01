@@ -1,20 +1,20 @@
-﻿using Etch.OrchardCore.Blocks.Fields;
+﻿using StatCan.OrchardCore.Blocks.Fields;
 using OrchardCore.ContentManagement.Metadata.Models;
 using OrchardCore.ContentTypes.Editors;
 using OrchardCore.DisplayManagement.Views;
 using System.Threading.Tasks;
 
-namespace Etch.OrchardCore.Blocks.Settings
+namespace StatCan.OrchardCore.Blocks.Settings
 {
     public class BlockFieldSettingsDriver : ContentPartFieldDefinitionDisplayDriver<BlockField>
     {
-        public override IDisplayResult Edit(ContentPartFieldDefinition partFieldDefinition)
+        public override IDisplayResult Edit(ContentPartFieldDefinition model)
         {
-            return Initialize<BlockFieldSettings>("BlockFieldSettings_Edit", model => partFieldDefinition.PopulateSettings(model))
+            return Initialize<BlockFieldSettings>("BlockFieldSettings_Edit", settings => model.PopulateSettings(settings))
                 .Location("Content");
         }
 
-        public override async Task<IDisplayResult> UpdateAsync(ContentPartFieldDefinition partFieldDefinition, UpdatePartFieldEditorContext context)
+        public override async Task<IDisplayResult> UpdateAsync(ContentPartFieldDefinition model, UpdatePartFieldEditorContext context)
         {
             var settings = new BlockFieldSettings();
 
@@ -23,7 +23,7 @@ namespace Etch.OrchardCore.Blocks.Settings
                 context.Builder.WithSettings(settings);
             }
 
-            return Edit(partFieldDefinition);
+            return Edit(model);
         }
     }
 }

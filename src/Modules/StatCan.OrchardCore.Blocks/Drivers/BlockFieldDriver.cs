@@ -1,13 +1,13 @@
-﻿using Etch.OrchardCore.Blocks.Fields;
-using Etch.OrchardCore.Blocks.Parsers;
-using Etch.OrchardCore.Blocks.ViewModels;
+﻿using StatCan.OrchardCore.Blocks.Fields;
+using StatCan.OrchardCore.Blocks.Parsers;
+using StatCan.OrchardCore.Blocks.ViewModels;
 using OrchardCore.ContentManagement.Display.ContentDisplay;
 using OrchardCore.ContentManagement.Display.Models;
 using OrchardCore.DisplayManagement.ModelBinding;
 using OrchardCore.DisplayManagement.Views;
 using System.Threading.Tasks;
 
-namespace Etch.OrchardCore.Blocks.Drivers
+namespace StatCan.OrchardCore.Blocks.Drivers
 {
     public class BlockFieldDriver : ContentFieldDisplayDriver<BlockField>
     {
@@ -26,20 +26,20 @@ namespace Etch.OrchardCore.Blocks.Drivers
 
         #endregion
 
-        public override async Task<IDisplayResult> DisplayAsync(BlockField field, BuildFieldDisplayContext context)
+        public override async Task<IDisplayResult> DisplayAsync(BlockField field, BuildFieldDisplayContext fieldDisplayContext)
         {
-            if (context.DisplayType != "Detail")
+            if (fieldDisplayContext.DisplayType != "Detail")
             {
                 return null;
             }
 
             var blocks = await _blocksParser.RenderAsync(field);
 
-            return Initialize<DisplayBlockFieldViewModel>(GetDisplayShapeType(context), model =>
+            return Initialize<DisplayBlockFieldViewModel>(GetDisplayShapeType(fieldDisplayContext), model =>
             {
                 model.Field = field;
-                model.Part = context.ContentPart;
-                model.PartFieldDefinition = context.PartFieldDefinition;
+                model.Part = fieldDisplayContext.ContentPart;
+                model.PartFieldDefinition = fieldDisplayContext.PartFieldDefinition;
                 model.Html = field.Html;
                 model.Blocks = blocks;
             })

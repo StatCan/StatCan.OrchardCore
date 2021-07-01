@@ -1,5 +1,5 @@
-﻿using Etch.OrchardCore.Blocks.Services;
-using Etch.OrchardCore.Blocks.Settings;
+﻿using StatCan.OrchardCore.Blocks.Services;
+using StatCan.OrchardCore.Blocks.Settings;
 using Microsoft.AspNetCore.Mvc;
 using OrchardCore.Admin;
 using OrchardCore.ContentManagement.Metadata;
@@ -7,7 +7,7 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Etch.OrchardCore.Blocks.Controllers
+namespace StatCan.OrchardCore.Blocks.Controllers
 {
     [Admin]
     public class LinkContentAdminController : Controller
@@ -45,7 +45,7 @@ namespace Etch.OrchardCore.Blocks.Controllers
                     ContentTypes = GetLinkableTypes(type, part, field),
                     Query = query
                 }));
-            } 
+            }
             catch (Exception ex)
             {
                 return BadRequest(ex.Message);

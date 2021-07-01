@@ -76,6 +76,9 @@ window.initializeEditorJS = (
             paragraph: {
                 class: Paragraph,
                 inlineToolbar: true,
+                config: {
+                    preserveBlank: true,
+                },
             },
             quote: Quote,
             raw: Raw,
@@ -86,23 +89,23 @@ window.initializeEditorJS = (
         onChange: () => {
             editor
                 .save()
-                .then(outputData => {
+                .then((outputData) => {
                     $hiddenField.value = JSON.stringify(outputData);
                     document.dispatchEvent(new Event('contentpreview:render'));
                 })
-                .catch(error => {});
+                .catch((error) => {});
         },
     });
 
-    const onSubmit = e => {
+    const onSubmit = (e) => {
         editor
             .save()
-            .then(outputData => {
+            .then((outputData) => {
                 $hiddenField.value = JSON.stringify(outputData);
                 $form.removeEventListener('submit', onSubmit);
                 $form.submit();
             })
-            .catch(error => {});
+            .catch((error) => {});
     };
 
     $form.addEventListener('submit', onSubmit);

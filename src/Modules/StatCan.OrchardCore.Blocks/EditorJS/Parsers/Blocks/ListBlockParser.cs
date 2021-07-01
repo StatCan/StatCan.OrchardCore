@@ -1,12 +1,13 @@
-﻿using Etch.OrchardCore.Blocks.EditorJS.Parsers.Models;
-using Etch.OrchardCore.Blocks.ViewModels.Blocks;
+﻿using StatCan.OrchardCore.Blocks.EditorJS.Parsers.Models;
+using StatCan.OrchardCore.Blocks.ViewModels.Blocks;
 using Newtonsoft.Json.Linq;
 using System.Threading.Tasks;
 
-namespace Etch.OrchardCore.Blocks.EditorJS.Parsers.Blocks
+namespace StatCan.OrchardCore.Blocks.EditorJS.Parsers.Blocks
 {
     public class ListBlockParser : IBlockParser
     {
+        public string Name { get{ return "list"; } }
         public async Task<dynamic> RenderAsync(BlockParserContext context, Block block)
         {
             return await context.ShapeFactory.New.Block__List(

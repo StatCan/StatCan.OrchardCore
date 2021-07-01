@@ -1,7 +1,7 @@
-﻿using Etch.OrchardCore.Blocks.Models;
+﻿using StatCan.OrchardCore.Blocks.Models;
 using OrchardCore.ContentManagement.Metadata.Models;
 
-namespace Etch.OrchardCore.Blocks.ViewModels
+namespace StatCan.OrchardCore.Blocks.ViewModels
 {
     public class EditBlockBodyPartViewModel
     {
