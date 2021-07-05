@@ -176,3 +176,25 @@ Returns a list of Users that have the role(s) passed as a parameter of the filte
   {{user.Email}}
 {% endfor %}
 ```
+
+## Shortcodes filters
+
+### to_html_attributes filter
+
+Convert shortcode arguments to html attributes. The first argument of the filter is a comma delimited whitelist of arguments to convert. If no whitelist is provided, all arguments will be output.
+
+```liquid
+<!-- This is the liquid in the Shortcode template -->
+<v-container {{ Args | to_html_attributes: "id,fluid,tag" | raw }}>{{ Content | raw }}</v-container>
+
+--
+
+<!-- This is the shortcode in your html template -->
+[container id='my-id' other='other']Some html content[/container]
+
+--
+
+<!-- This is the output -->
+<v-container id="my-id">Some html content</v-container>
+
+```
