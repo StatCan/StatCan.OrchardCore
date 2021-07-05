@@ -1,4 +1,4 @@
-{% assign justifyContent = Model.ContentItem.Content.VRow.Justify.Text %}
+{% assign justify = Model.ContentItem.Content.VRow.Justify.Text %}
 {% assign justifySm = Model.ContentItem.Content.VRow.JustifySm.Text %}
 {% assign justifyMd = Model.ContentItem.Content.VRow.JustifyMd.Text %}
 {% assign justifyLg = Model.ContentItem.Content.VRow.JustifyLg.Text %}
@@ -17,20 +17,20 @@
 {% assign alignContentXl = Model.ContentItem.Content.VRow.AlignContentXl.Text %}
 
 <v-row {{ Model.ContentItem.Content.VRow.Props.Values | join: ' ' | raw }} 
-  {% if empty != justifyContent %}justify="{{ justifyContent }}"{% endif %}
-  {% if empty != justifySm %}justify-sm="{{ justifySm }}"{% endif %}
-  {% if empty != justifyMd %}justify-md="{{ justifyMd }}"{% endif %}
-  {% if empty != justifyLg %}justify-lg="{{ justifyLg }}"{% endif %}
-  {% if empty != justifyXl %}justify-xl="{{ justifyXl }}"{% endif %}
-  {% if empty != alignItems %}align="{{ alignItems }}"{% endif %}
-  {% if empty != alignSm %}align-sm="{{ alignSm }}"{% endif %}
-  {% if empty != alignMd %}align-md="{{ alignMd }}"{% endif %}
-  {% if empty != alignLg %}align-lg="{{ alignLg }}"{% endif %}
-  {% if empty != alignXl %}align-xl="{{ alignXl }}"{% endif %}
-  {% if empty != alignContent %}align-content="{{ alignContent }}"{% endif %}
-  {% if empty != alignContentSm %}align-content-sm="{{ alignContentSm }}"{% endif %}
-  {% if empty != alignContentMd %}align-content-md="{{ alignContentMd }}"{% endif %}
-  {% if empty != alignContentLg %}align-content-lg="{{ alignContentLg }}"{% endif %}
-  {% if empty != alignContentXl %}align-content-xl="{{ alignContentXl }}"{% endif %}>
+  {% if blank != justify %}justify="{{ justify }}"{% endif %}
+  {% if blank != justifySm %}justify-sm="{{ justifySm }}"{% endif %}
+  {% if blank != justifyMd %}justify-md="{{ justifyMd }}"{% endif %}
+  {% if blank != justifyLg %}justify-lg="{{ justifyLg }}"{% endif %}
+  {% if blank != justifyXl %}justify-xl="{{ justifyXl }}"{% endif %}
+  {% if blank != alignItems %}align="{{ alignItems }}"{% endif %}
+  {% if blank != alignSm %}align-sm="{{ alignSm }}"{% endif %}
+  {% if blank != alignMd %}align-md="{{ alignMd }}"{% endif %}
+  {% if blank != alignLg %}align-lg="{{ alignLg }}"{% endif %}
+  {% if blank != alignXl %}align-xl="{{ alignXl }}"{% endif %}
+  {% if blank != alignContent %}align-content="{{ alignContent }}"{% endif %}
+  {% if blank != alignContentSm %}align-content-sm="{{ alignContentSm }}"{% endif %}
+  {% if blank != alignContentMd %}align-content-md="{{ alignContentMd }}"{% endif %}
+  {% if blank != alignContentLg %}align-content-lg="{{ alignContentLg }}"{% endif %}
+  {% if blank != alignContentXl %}align-content-xl="{{ alignContentXl }}"{% endif %}>
   {{ Model.Content.FlowPart | shape_render }}
 </v-row>
