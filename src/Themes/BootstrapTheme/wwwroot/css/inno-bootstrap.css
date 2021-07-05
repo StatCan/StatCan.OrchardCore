@@ -10390,7 +10390,7 @@ skew to change the 'thickness' of the glitch.*/
     transform: skew(3deg);
   }
   100% {
-    transform: skew(3deg);
+    transform: skew(2deg);
   }
 }
 /*Fix alignment of x button in kendo-combobox */
