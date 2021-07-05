@@ -1,0 +1,59 @@
+{
+    "name": "vuetify-grid-system-shortcodes",
+    "displayName": "Vuetify Grid System Shortcodes",
+    "description": "Adds the container, row, col and divider shortcodes to allow easier ",
+    "author": "Digital Innovation Team",
+    "website": "https://digital.statcan.gc.ca",
+    "version": "1.0",
+    "issetuprecipe": false,
+    "categories": ["vuetify"],
+    "tags": ["shortcodes", "grid"],
+    "steps": [
+      {
+        "name": "Feature",
+        "enable": [
+          "OrchardCore.Shortcodes.Templates",
+          "StatCan.OrchardCore.DisplayHelpers"
+        ]
+      },
+      {
+        "name": "ShortcodeTemplates",
+        "ShortcodeTemplates": {
+          "col": {
+            "Content": "{% capture cols -%}\r\n{% if Args['cols'] != blank %}\r\ncols=\"{{ Args['cols'] }}\"\r\n{% elsif Args[0] != blank %}\r\ncols=\"{{ Args[0] }}\"\r\n{% endif %}\r\n{% endcapture -%}\r\n<v-col {{ cols | raw }} {{ Args | to_html_attributes: \"align-self,lg,md,offset,offset-lg,offset-md,offset-sm,offset-xl,order,order-lg,order-md,order-sm,order-xl,sm,tag,xl\" | raw }}>{{ Content | raw }}</v-col>",
+            "Hint": "Renders a column. to be used inside a [row] shortcode. Please see the https://vuetifyjs.com/en/api/v-col/#api-props docs for available properties. The cols property can be passed as the first argument",
+            "Usage": "[col 12 md=8 lg=6][/col]",
+            "DefaultValue": "[col][/col]",
+            "Categories": [
+              "HTML Content"
+            ]
+          },
+          "row": {
+            "Content": "<v-row {{ Args | to_html_attributes: \"align,align-content,align-content-lg,align-content-md,align-content-sm,align-content-xl,align-lg,align-md,align-sm,align-xl,dense,justify,justify-lg,justify-md,justify-sm,justify-xl,no-gutters,tag\" | raw }}>{{ Content | raw }}</v-row>",
+            "Hint": "Renders a row. Please see the https://vuetifyjs.com/en/api/v-row/#api-props docs for available properties.",
+            "Usage": "[row][/row]",
+            "DefaultValue": "[row][/row]",
+            "Categories": [
+              "HTML Content"
+            ]
+          },
+          "container": {
+            "Content": "<v-container {{ Args | to_html_attributes: \"id,fluid,tag\" | raw }}>{{ Content | raw }}</v-container>",
+            "Hint": "Renders a container. Please see the https://vuetifyjs.com/en/api/v-container/#api-props docs for available properties.",
+            "Usage": "[container][/container]",
+            "DefaultValue": "[container][/container]",
+            "Categories": [
+              "HTML Content"
+            ]
+          },
+          "spacer": {
+            "Content": "<v-spacer></v-spacer>",
+            "Hint": "renders a v-spacer. See https://vuetifyjs.com/en/components/grids/#v-spacer for docs.",
+            "Usage": "[spacer]",
+            "DefaultValue": "[spacer]",
+            "Categories": []
+          }
+        }
+      }
+    ]
+  }
