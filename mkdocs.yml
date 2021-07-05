@@ -65,9 +65,11 @@ nav:
              - Hackathon App: reference/modules/Hackathon.md 
              - Scheduling App: reference/modules/Scheduling.md
         - Liquid: reference/Liquid.md
+        - Logging: reference/Logging.md
         - Scripting: reference/Scripting.md
         - Workflows: reference/Workflows.md
         - Modules:
+             - Configuration: reference/modules/Configuration.md 
              - ContentFields: reference/modules/ContentFields.md
              - EmailTemplates: reference/modules/EmailTemplates.md
              - GCCollab: reference/modules/GCCollab.md

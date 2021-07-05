@@ -93,7 +93,7 @@ You can access these properties in your templates or in the component options ob
 
 #### Debug mode
 
-Debug mode is typically used when developping a form. Additional information is returned by the server and any data output by the `debug()` scripting method is also output and returned with the HttpResponse.
+Debug mode is typically used when developping a form. Additional information is returned by the server and any data output by the `debug()` scripting method is also output and returned with the HttpResponse. This mode does not work when previewing the form.
 
 
 ### VueFormScripts Part
@@ -214,6 +214,26 @@ If you do use a workflow, you can use the `addError("name", "message");` script 
 While you can use Orchard's [LocalizationPart](https://docs.orchardcore.net/en/dev/docs/reference/modules/ContentLocalization/#localizationpart) to localize your forms. We suggest you use the [LocalizedText](LocalizedText.md) feature to implement i18n in your forms. This part is what we weld to your VueForm content type when you enable this feature.
 
 The `[locale]` shortcode is also useful to use in your views to localize simple text fields.
+
+
+## Survey (`StatCan.OrchardCore.VueForms.Survey`)
+
+Adds [SurveyJS](https://surveyjs.io/) support to VueForms. 
+This adds a part to the VueForm where you can specify the [SurveyJS creator](https://surveyjs.io/create-survey) json object. 
+
+In the Template, simply write this to output a Survey that uses the SurveyJS  json object
+
+```html
+<survey :survey="survey"></survey>
+```
+
+To get the json output of the survey on your server side scripts, simply use the `getSurveyData()` method.
+
+```javascript
+const surveyData = getSurveyData();
+debug('surveyData', surveyData);
+```
+
 
 ## Examples
 

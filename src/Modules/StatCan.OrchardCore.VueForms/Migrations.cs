@@ -67,6 +67,10 @@ namespace StatCan.OrchardCore.VueForms
                         Hint = "Debug mode is meant to be used when developping VueForms and will return additional debug information to the client along with the response"
                     }
                 )
+                .WithTextField("SuccessMessage", "Success Message", "3", new TextFieldSettings()
+                {
+                    Hint = "Message returned to the client when everything completed successfully"
+                })
                 .WithField("DisabledHtml", f => f
                     .OfType(nameof(HtmlField))
                     .WithDisplayName("Disabled Html")
@@ -103,7 +107,7 @@ namespace StatCan.OrchardCore.VueForms
                 .WithField("ComponentOptions", f => f
                    .OfType(nameof(TextField))
                    .WithDisplayName("Component Options object")
-                   .WithSettings(new TextFieldSettings() { Hint = "The form's vue component options object. The component's data object is sent to the server. Liquid is evaluated before passing the script to the client." })
+                   .WithSettings(new TextFieldSettings() { Hint = "The form's vue component options object (https://vuejs.org/v2/api/#Options-Data). The component's data object is sent to the server. Liquid is evaluated before passing the script to the client." })
                    .WithPosition("1")
                 .WithEditor("Monaco")
                     .WithSettings(
@@ -229,7 +233,7 @@ namespace StatCan.OrchardCore.VueForms
                 .RemoveField("Enabled")
                 .WithTextField("SuccessMessage", "Success Message", "3", new TextFieldSettings()
                 {
-                    Hint = "(deprecated) Use the setSuccessMessage() function in the server side script to set the validation message."
+                    Hint = "Message returned to the client when everything completed successfully"
                 })
                 .WithField("RenderAs", field => field
                     .OfType("TextField")
@@ -309,7 +313,7 @@ namespace StatCan.OrchardCore.VueForms
                 .WithField("ComponentOptions", f => f
                    .OfType(nameof(TextField))
                    .WithDisplayName("Component Options object")
-                   .WithSettings(new TextFieldSettings() { Hint = "The form's vue component options object. The component's data object is sent to the server. Liquid is evaluated before passing the script to the client." })
+                   .WithSettings(new TextFieldSettings() { Hint = "The form's vue component options object (https://vuejs.org/v2/api/#Options-Data). The component's data object is sent to the server. Liquid is evaluated before passing the script to the client." })
                    .WithPosition("1")
                 .WithEditor("Monaco")
                     .WithSettings(
@@ -360,29 +364,37 @@ namespace StatCan.OrchardCore.VueForms
                 // form.Content.VueFormScripts.OnValidation = null;
 
                 var flow = form.As<FlowPart>();
-                var templateBuilder = new StringBuilder();
-                foreach (var widget in flow.Widgets)
+                if (flow != null)
                 {
-                    if (widget.ContentType == "VueComponent")
+                    var templateBuilder = new StringBuilder();
+                    foreach (var widget in flow.Widgets)
                     {
-                        templateBuilder.Append((string)widget.Content.VueComponent.Template.Text);
-                        templateBuilder.AppendLine();
+                        if (widget.ContentType == "VueComponent")
+                        {
+                            templateBuilder.Append((string)widget.Content.VueComponent.Template.Text);
+                            templateBuilder.AppendLine();
+                        }
                     }
+                    form.Remove("FlowPart");
+                    form.Alter<VueForm>(v =>
+                    {
+                        v.Template = new TextField() { Text = templateBuilder.ToString() };
+                    });
                 }
-                form.Remove("FlowPart");
-
-                var isDisabled = false;
-                if (form.Content?.VueForm?.Enabled?.Value != null)
+                if(form.Content?.VueForm?.Disabled == null)
                 {
-                    isDisabled = !(bool)form.Content.VueForm.Enabled.Value;
+                    var isDisabled = false;
+                    if (form.Content?.VueForm?.Enabled?.Value != null)
+                    {
+                        isDisabled = !(bool)form.Content.VueForm.Enabled.Value;
+                    }
+                    form.Content.VueForm.Enabled = null;
+
+                    form.Alter<VueForm>(v =>
+                    {
+                        v.Disabled = new BooleanField() { Value = isDisabled };
+                    });
                 }
-                form.Content.VueForm.Enabled = null;
-
-                form.Alter<VueForm>(v =>
-                {
-                    v.Disabled = new BooleanField() { Value = isDisabled };
-                    v.Template = new TextField() { Text = templateBuilder.ToString() };
-                });
                 _session.Save(form);
             }
 
@@ -609,26 +621,6 @@ namespace StatCan.OrchardCore.VueForms
                     })
                 )
             );
-        }
-    }
-
-    public class LocalizationMigrations : DataMigration
-    {
-        private readonly IContentDefinitionManager _contentDefinitionManager;
-
-        public LocalizationMigrations(IContentDefinitionManager contentDefinitionManager)
-        {
-            _contentDefinitionManager = contentDefinitionManager;
-        }
-
-        public int Create()
-        {
-            // Weld the LocalizedText part
-            _contentDefinitionManager.AlterTypeDefinition("VueForm", type => type
-                 .WithPart("LocalizedTextPart", p => p.WithPosition("4"))
-            );
-
-            return 1;
         }
     }
 }

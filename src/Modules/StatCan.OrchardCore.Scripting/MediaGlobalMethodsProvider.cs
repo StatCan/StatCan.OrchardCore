@@ -8,11 +8,10 @@ using OrchardCore.Media;
 using System.IO;
 using Microsoft.Extensions.Localization;
 using OrchardCore.FileStorage;
-using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using OrchardCore;
 using OrchardCore.DisplayManagement.ModelBinding;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace StatCan.OrchardCore.Scripting
 {
@@ -99,7 +98,7 @@ namespace StatCan.OrchardCore.Scripting
              _saveMedia = new GlobalMethod
             {
                 Name = "saveMedia",
-                Method = serviceProvider => (Func<string, bool, SaveMediaResult[]>)((path, generateFileNames) => {
+                Method = serviceProvider => (Func<string, bool, SaveMediaResult[]>)((path, renameIfExists) => {
                     var mediaFileStore = serviceProvider.GetRequiredService<IMediaFileStore>();
                     var httpContextAccessor = serviceProvider.GetRequiredService<IHttpContextAccessor>();
                     var mediaOptions = serviceProvider.GetRequiredService<IOptions<MediaOptions>>().Value;
@@ -132,20 +131,36 @@ namespace StatCan.OrchardCore.Scripting
                             continue;
                         }
 
-                        var fileName = "";
-                        if (generateFileNames)
-                        {
-                            fileName = IdGenerator.GenerateId() + extension;
-                        }
-                        else
-                        {
-                            fileName = mediaNameNormalizerService.NormalizeFileName(file.FileName);
-                        }
+                        var fileName = mediaNameNormalizerService.NormalizeFileName(file.FileName);
 
                         Stream stream = null;
                         try
                         {
                             var mediaFilePath = mediaFileStore.Combine(path, fileName);
+
+                            // automatically generate the file name if exists
+                            if (renameIfExists && mediaFileStore.GetFileInfoAsync(mediaFilePath).GetAwaiter().GetResult() != null)
+                            {
+                                int number = 0;
+
+                                Match regex = Regex.Match(fileName, @"^(.+) \((\d+)\)$");
+
+                                if (regex.Success)
+                                {
+                                    fileName = regex.Groups[1].Value;
+                                    number = int.Parse(regex.Groups[2].Value);
+                                    number++;
+                                }
+
+                                do
+                                {
+                                    string newFileName = $"{fileName}({number}){extension}";
+                                    mediaFilePath = mediaFileStore.Combine(path, newFileName);
+                                    number++;
+                                }
+                                while (mediaFileStore.GetFileInfoAsync(mediaFilePath).GetAwaiter().GetResult() != null);
+                            }
+
                             stream = file.OpenReadStream();
                             mediaFilePath = mediaFileStore.CreateFileFromStreamAsync(mediaFilePath, stream).GetAwaiter().GetResult();
 

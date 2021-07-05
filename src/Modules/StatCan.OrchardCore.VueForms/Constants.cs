@@ -8,6 +8,7 @@ namespace StatCan.OrchardCore.VueForms
         {
             public const string VueForms = "StatCan.OrchardCore.VueForms";
             public const string Localized = "StatCan.OrchardCore.VueForms.Localized";
+            public const string Survey = "StatCan.OrchardCore.VueForms.Survey";
         }
     }
 }

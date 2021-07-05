@@ -47,9 +47,5 @@
     "copy": true,
     "inputs": [ "node_modules/@fortawesome/fontawesome-free/webfonts/*" ],
     "output": "wwwroot/Vendor/fontawesome-free/webfonts/@"
-  },
-  {
-    "inputs": [ "Assets/js/setCookie.js" ],
-    "output": "wwwroot/Scripts/setCookie.js"
   }
 ]

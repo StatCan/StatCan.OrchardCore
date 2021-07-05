@@ -7,6 +7,7 @@ using OrchardCore.Media.Settings;
 using OrchardCore.Title.Models;
 using StatCan.OrchardCore.Extensions;
 using StatCan.OrchardCore.ContentFields.PredefinedGroup.Settings;
+using OrchardCore.ContentFields.Fields;
 
 namespace StatCan.Themes.VuetifyTheme
 {
@@ -46,7 +47,7 @@ namespace StatCan.Themes.VuetifyTheme
             VDivider();
             ScheduleEvent();
             TaxonomyMenuItem();
-            return 4;
+            return 5;
         }
 
         public int UpdateFrom1() {
@@ -66,6 +67,11 @@ namespace StatCan.Themes.VuetifyTheme
         {
             TaxonomyMenuItem();
             return 4;
+        }
+        public int UpdateFrom4()
+        {
+            VuetifyThemeSettings();
+            return 5;
         }
 
         public int UpdateFrom4()
@@ -119,6 +125,33 @@ namespace StatCan.Themes.VuetifyTheme
                     .OfType("MediaField")
                     .WithDisplayName("Logo")
                     .WithPosition("1")
+                )
+             .WithField("DisplayMode", field => field
+                .OfType("TextField")
+                .WithDisplayName("Display Mode")
+                .WithEditor("PredefinedList")
+                .WithPosition("2")
+                .WithSettings(
+                    new TextFieldPredefinedListEditorSettings
+                        {
+                            Options = new ListValueOption[] {
+                                new ListValueOption(){Name = "Light Mode", Value= "light"},
+                                new ListValueOption(){Name = "Dark Mode", Value= "dark"},
+                                new ListValueOption(){Name = "Picker", Value= "picker"},
+                        },
+                }))
+
+                .WithField("ThemeOptions", f => f
+                    .OfType(nameof(TextField))
+                    .WithDisplayName("Template")
+                    .WithSettings(new TextFieldSettings() { Hint = "The Vuetify 'themes' object that defines the colors of both lite and dark theme. See https://vuetifyjs.com/en/features/theme/" })
+                    .WithPosition("3")
+                    .WithEditor("Monaco")
+                    .WithSettings(
+                        new TextFieldMonacoEditorSettings()
+                        {
+                            Options = "{\"language\": \"json\"}"
+                        })
                 )
             );
         }

@@ -22,10 +22,7 @@
 <script asp-name="monaco" depends-on="admin" at="Foot"></script>
 @* TODO: remove this code when pr https://github.com/OrchardCMS/OrchardCore/pull/9623 is merged in OC *@
 <script at="Foot" depends-on="monaco">
-
-const $document = $(document);
-
-$document.ready(function () {
+$(document).ready(function () {
     function debounce(func, wait, immediate) {
         var timeout;
         return function() {
@@ -41,7 +38,7 @@ $document.ready(function () {
         };
     };
     require(['vs/editor/editor.main'], function () {
-
+        const $document = $(document);
         // set the theme from the html element
         const html = document.getElementsByTagName("html")[0];
         const mutationObserver = new MutationObserver(setTheme);
@@ -69,8 +66,8 @@ $document.ready(function () {
             const defaultSettings = {
                 "scrollBeyondLastLine": false,
                 "scrollbar": {
-                    // allow the page to scroll when bottom of editor is  scrolling
-                    "alwaysConsumeMouseWheel": false,
+                  // allow the page to scroll when bottom of editor is  scrolling
+                  "alwaysConsumeMouseWheel": false,
                 }
             }
 
@@ -102,10 +99,10 @@ $document.ready(function () {
             // trigger preview when content changes (debounced)
             editor.getModel().onDidChangeContent(debouncedOnChange);
 
-            // dynamically update the height of the monaco editor to a max of 800px 
+            // dynamically update the height of the monaco editor to a max of 700px 
             const updateHeight = () => {
                 let width = el.parentElement.clientWidth;
-                const contentHeight = Math.min(800, editor.getContentHeight());
+                const contentHeight = Math.min(700, editor.getContentHeight());
                 el.style.width = `${width}px`;
                 el.style.height = `${contentHeight + 20}px`;
                 editor.layout({ width: width - 20,  height: contentHeight });
@@ -114,12 +111,10 @@ $document.ready(function () {
             updateHeight();
 
             // dynamically set the width when the browser is resized.
-            const debouncedUpdateHeight = debounce(updateHeight,150);
+            const debouncedUpdateHeight = debounce(updateHeight, 150);
             window.addEventListener('resize', debouncedUpdateHeight);
             
             // include the shortcodes action for html editors
-            if(el.dataset.shortcodes)
-            {
                 const shortcodesAction = {
                     id: "shortcodes",
                     label: "Add Shortcode",
@@ -141,7 +136,7 @@ $document.ready(function () {
                     ]
                 }
                 editor.addAction(shortcodesAction);
-            }
+            
 
             // set the jQuery monaco data to the dom node. 
             // The data object is used to allow other components to use the editor functions or updateHeight function

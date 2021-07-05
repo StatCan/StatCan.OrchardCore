@@ -19,12 +19,26 @@
 @if (User.Identity.IsAuthenticated)
 {
   <v-menu>
-    <template v-slot:activator="{ on, attrs }">
-      <v-btn icon v-bind="attrs" v-on="on">
-        <v-icon>mdi-account</v-icon>
-      </v-btn>
+    <template v-slot:activator="{ on: onMenu, attrs }">
+       <v-tooltip bottom v-bind="attrs">
+        <template v-slot:activator="{ on: onTooltip }">
+          <v-btn icon v-bind="attrs" v-on="{...onTooltip,  ...onMenu }">
+            <v-icon>mdi-account</v-icon>
+          </v-btn>
+        </template>
+        <span>@User.Identity.Name</span>
+      </v-tooltip>
     </template>
     <v-list>
+      <v-list-item>
+        <v-list-item-icon>
+          <v-icon>mdi-account-circle</v-icon>
+        </v-list-item-icon>
+        <v-list-item-content>
+          <v-list-item-title>@T["Signed in as "]<span class="font-weight-bold">@User.Identity.Name</span></v-list-item-title>
+        </v-list-item-content>
+      </v-list-item>
+      <v-divider></v-divider>
       @if(canAccessAdmin) 
       {
       <v-list-item href="@Url.Action("Index", "Admin", new { Area = "OrchardCore.Admin" })">
@@ -73,7 +87,12 @@
 }
 else
 {
-  <v-btn icon href="@Url.Action("Login", "Account", new { Area = "OrchardCore.Users" })" title="@T["Log in"]">
-    <v-icon>mdi-login</v-icon>
-  </v-btn>
+  <v-tooltip bottom>
+    <template v-slot:activator="{ on }">
+      <v-btn icon href="@Url.Action("Login", "Account", new { Area = "OrchardCore.Users" })" v-on="on">
+        <v-icon>mdi-login</v-icon>
+      </v-btn>
+    </template>
+    <span>@T["Log in"]</span>
+  </v-tooltip>
 }

@@ -18,5 +18,11 @@
     "file": "Assets/src/App.js",
     "output": "wwwroot/dist",
     "name": "vuetify-theme"
+  },
+  {
+    "vue": true,
+    "file": "Assets/outdatedBrowser.js",
+    "output": "wwwroot/outdated",
+    "name": "outdated"
   }
 ]

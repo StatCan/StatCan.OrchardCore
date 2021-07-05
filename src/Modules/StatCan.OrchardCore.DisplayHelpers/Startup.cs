@@ -29,4 +29,12 @@ namespace StatCan.OrchardCore.DisplayHelpers
             services.AddLiquidFilter<AllTaxonomyTermsFilter>("all_taxonomy_terms");
         }
     }
+    [RequireFeatures("OrchardCore.Shortcodes")]
+     public class ShortcodesStartup : StartupBase
+    {
+        public override void ConfigureServices(IServiceCollection services)
+        {
+            services.AddLiquidFilter<ShortcodeArgsToString>("to_html_attributes");
+        }
+    }
 }

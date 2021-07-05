@@ -29,6 +29,7 @@
         padding: 1em;
         display: block;
         word-wrap: break-word;
+        max-height: 700px;
     }
     .debug-mode code {
       background-color: #f4f4f4 !important ;
@@ -36,6 +37,12 @@
   </style>
 <div class="debug-mode container">
   <h3 class="warning">@T["Your VueForm is in debug Mode"]</h3>
+  <details v-if="form.serverResponseError">
+    <summary>@T["Server Error"]</summary>
+<pre>
+<code v-html="form.serverResponseError"></code>
+</pre>
+  </details>
   <details>
     <summary>@T["form object"]</summary>
 <pre>

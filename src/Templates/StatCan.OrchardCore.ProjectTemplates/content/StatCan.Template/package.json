@@ -22,7 +22,6 @@
     "@babel/preset-env": "^7.14.2",
     "@vue/cli-plugin-babel": "~4.5.13",
     "@vue/cli-service": "~4.5.13",
-    "es6-promise": "4.2.8",
     "glob": "^7.1.7",
     "graceful-fs": "4.2.6",
     "gulp": "4.0.2",

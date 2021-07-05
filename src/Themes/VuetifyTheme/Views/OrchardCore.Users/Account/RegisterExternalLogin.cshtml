@@ -1,0 +1,77 @@
+@using Microsoft.AspNetCore.Mvc.ModelBinding
+@model OrchardCore.Users.ViewModels.RegisterExternalLoginViewModel
+
+@{
+    ViewLayout = "Layout__Login";
+}
+
+<v-card class="px-4">
+  <form asp-controller="Account" asp-action="RegisterExternalLogin" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post">
+    <v-card-title>@T["Create a new account."]</v-card-title>
+    <v-card-subtitle>@T["You've successfully authenticated with <strong>{0}</strong>. Please fill the form below and click the Register button to complete the registration.", ViewData["LoginProvider"]]</v-card-subtitle>
+    <v-card-text>
+      <v-row>
+        <v-col>
+            @if (ViewData.ModelState.ErrorCount > 0)
+            {
+              <v-alert color="red" type="error">
+                <ul>
+                  @foreach (var error in ViewData.ModelState.SelectMany(x => x.Value.Errors).Reverse())
+                  {
+                    <li>@error.ErrorMessage</li>
+                  }
+                </ul>
+              </v-alert>
+            }
+            
+            @if (!Model.NoUsername || String.IsNullOrWhiteSpace(Model.UserName) || ViewData.ModelState.GetFieldValidationState("UserName") == ModelValidationState.Invalid)
+            {
+              ViewData.ModelState.TryGetValue("UserName", out var userName);
+              <v-text-field
+                id="UserName"
+                name="UserName"
+                label="@T["Username"]"
+                value="@userName?.AttemptedValue"
+                error-messages="@(userName?.Errors.FirstOrDefault()?.ErrorMessage)">
+              </v-text-field>
+            }
+            @if (!Model.NoEmail || String.IsNullOrWhiteSpace(Model.Email) || ViewData.ModelState.GetFieldValidationState("Email") == ModelValidationState.Invalid)
+            {
+              ViewData.ModelState.TryGetValue("Email", out var email);
+              <v-text-field
+                id="Email"
+                type="email"
+                name="Email"
+                label="@T["Email"]"
+                value="@email?.AttemptedValue"
+                error-messages="@(email?.Errors.FirstOrDefault()?.ErrorMessage)">
+              </v-text-field>
+            }
+            @if (!Model.NoPassword)
+            {
+              ViewData.ModelState.TryGetValue("Password", out var password);
+              ViewData.ModelState.TryGetValue("ConfirmPassword", out var confirmPassword);
+              <v-text-field
+                id="Password"
+                type="password"
+                name="Password"
+                label="@T["Password"]"
+                error-messages="@(password?.Errors.FirstOrDefault()?.ErrorMessage)">
+              </v-text-field>
+              <v-text-field
+                id="ConfirmPassword"
+                type="password"
+                name="ConfirmPassword"
+                label="@T["Confirm password"]"
+                error-messages="@(confirmPassword?.Errors.FirstOrDefault()?.ErrorMessage)">
+              </v-text-field>
+            }
+        </v-col>
+      </v-row>
+    </v-card-text>
+    <v-card-actions>
+      @await RenderSectionAsync("AfterRegister", required: false)
+      <v-btn type="submit" x-large block color="success">@T["Create account"]</v-btn>
+    </v-card-actions>
+  </form>
+</v-card>

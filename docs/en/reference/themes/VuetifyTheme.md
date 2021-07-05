@@ -265,3 +265,10 @@ This widget is best used in the **Navigation Drawer** zone.
 | Light | Applies the light theme variant to the component. |
 | Right | Explicitly set the item to a right orientation. |
 | Small | Small size dot. |
+
+
+## Shortcodes
+
+A collection of shortcodes are available as a recipe for the vuetify theme. 
+
+The container, row, col and divider shortcodes are available if you execute the `Vuetify Grid System Shortcodes` recipe.
