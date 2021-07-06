@@ -113,7 +113,7 @@
       "name": "Content",
       "data": [
         {
-          "ContentItemId": "[js: uuid()]",
+          "ContentItemId": "4ew99htaqr7tkwjnap15wd15n1",
           "ContentType": "VAppBar",
           "DisplayText": "App Bar",
           "Latest": true,
@@ -155,7 +155,7 @@
           }
         },
         {
-          "ContentItemId": "[js: uuid()]",
+          "ContentItemId": "46ns553f5amf1s2g4z9jfaq9d1",
           "ContentType": "VNavigationDrawer",
           "DisplayText": "Navigation Drawer",
           "Latest": true,
@@ -199,25 +199,6 @@
             "Zone": "NavigationDrawer",
             "RenderTitle": false,
             "Layer": "All"
-          }
-        },
-        {
-          "ContentItemId": "[js: uuid()]",
-          "ContentType": "CompatibilityBanner",
-          "DisplayText": "Compatibility Banner",
-          "Latest": true,
-          "Published": true,
-          "ModifiedUtc": "2021-01-26T15:39:01.656923Z",
-          "PublishedUtc": "2021-01-26T15:39:01.658717Z",
-          "CreatedUtc": "2021-01-26T15:26:33.688292Z",
-          "Owner": "[js: parameters('AdminUserId')]",
-          "Author": "[js: parameters('AdminUsername')]",
-          "CompatibilityBanner": {},
-          "LayerMetadata": {
-            "Position": 1.0,
-            "Zone": "IEBanner",
-            "Layer": "All",
-            "RenderTitle": false
           }
         }
       ]
