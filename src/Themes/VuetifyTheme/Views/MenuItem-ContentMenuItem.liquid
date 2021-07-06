@@ -1,5 +1,5 @@
 {% if Model.HasItems %}
-  <v-list-group {% if Model.ContentItem.Content.ContentMenuItem.IconName.Text != null %}prepend-icon="{{Model.ContentItem.Content.ContentMenuItem.IconName.Text}}"{% endif %}>
+  <v-list-group {% if Model.ContentItem.Content.ContentMenuItem.IconName.Text != blank %}prepend-icon="{{Model.ContentItem.Content.ContentMenuItem.IconName.Text}}"{% endif %}>
     <template v-slot:activator>
       <v-list-item-content>
         <v-list-item-title>{{ Model.ContentItem.Content.ContentMenuItemPart.Name }}</v-list-item-title>

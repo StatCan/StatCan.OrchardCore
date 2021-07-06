@@ -13,21 +13,21 @@
 {% assign offsetXl = Model.ContentItem.Content.VCol.OffsetXl.Text %}
 
 <v-col 
-  {% if empty != alignSelf %}align-self="{{ alignSelf }}"{% endif %}
-  {% if empty != colsXs %}cols="{{ colsXs }}"{% endif %}
-  {% if empty != colsSm %}sm="{{ colsSm }}"{% endif %}
-  {% if empty != colsMd %}md="{{ colsMd }}"{% endif %}
-  {% if empty != colsLg %}lg="{{ colsLg }}"{% endif %}
-  {% if empty != colsXl %}xl="{{ colsXl }}"{% endif %}
-  {% if empty != offsetXs %}offset="{{ offsetXs }}"{% endif %}
-  {% if empty != offsetSm %}offset-sm="{{ offsetSm }}"{% endif %}
-  {% if empty != offsetMd %}offset-md="{{ offsetMd }}"{% endif %}
-  {% if empty != offsetLg %}offset-lg="{{ offsetLg }}"{% endif %}
-  {% if empty != offsetXl %}offset-xl="{{ offsetXl }}"{% endif %}
-  {% if empty != orderXs %}order="{{ orderXs }}"{% endif %}
-  {% if empty != orderSm %}order-sm="{{ orderSm }}"{% endif %}
-  {% if empty != orderMd %}order-md="{{ orderMd }}"{% endif %}
-  {% if empty != orderLg %}order-lg="{{ orderLg }}"{% endif %}
-  {% if empty != orderXl %}order-xl="{{ orderXl }}"{% endif %}>
+  {% if blank != alignSelf %}align-self="{{ alignSelf }}"{% endif %}
+  {% if blank != colsXs %}cols="{{ colsXs }}"{% endif %}
+  {% if blank != colsSm %}sm="{{ colsSm }}"{% endif %}
+  {% if blank != colsMd %}md="{{ colsMd }}"{% endif %}
+  {% if blank != colsLg %}lg="{{ colsLg }}"{% endif %}
+  {% if blank != colsXl %}xl="{{ colsXl }}"{% endif %}
+  {% if blank != offsetXs %}offset="{{ offsetXs }}"{% endif %}
+  {% if blank != offsetSm %}offset-sm="{{ offsetSm }}"{% endif %}
+  {% if blank != offsetMd %}offset-md="{{ offsetMd }}"{% endif %}
+  {% if blank != offsetLg %}offset-lg="{{ offsetLg }}"{% endif %}
+  {% if blank != offsetXl %}offset-xl="{{ offsetXl }}"{% endif %}
+  {% if blank != orderXs %}order="{{ orderXs }}"{% endif %}
+  {% if blank != orderSm %}order-sm="{{ orderSm }}"{% endif %}
+  {% if blank != orderMd %}order-md="{{ orderMd }}"{% endif %}
+  {% if blank != orderLg %}order-lg="{{ orderLg }}"{% endif %}
+  {% if blank != orderXl %}order-xl="{{ orderXl }}"{% endif %}>
   {{ Model.Content.FlowPart | shape_render }}
 </v-col>

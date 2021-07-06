@@ -7,11 +7,11 @@
 {% if Model.ContentItem.Content.VImg.Source.Paths.first != blank %}
 <v-img src="{{ Model.ContentItem.Content.VImg.Source.Paths.first | asset_url }}"
   {{ Model.ContentItem.Content.VImg.Props.Values | join: ' ' | raw }}
-  {% if empty != alternateText %}alt="{{ alternateText }}"{% endif %}
-  {% if empty != aspectRatio %}aspect-ratio="{{ aspectRatio }}"{% endif %}
-  {% if empty != gradient %}gradient="{{ gradient }}"{% endif %}
-  {% if empty != height %}height="{{ height }}"{% endif %}
-  {% if empty != width %}width="{{ width }}"{% endif %}
+  {% if blank != alternateText %}alt="{{ alternateText }}"{% endif %}
+  {% if blank != aspectRatio %}aspect-ratio="{{ aspectRatio }}"{% endif %}
+  {% if blank != gradient %}gradient="{{ gradient }}"{% endif %}
+  {% if blank != height %}height="{{ height }}"{% endif %}
+  {% if blank != width %}width="{{ width }}"{% endif %}
 >
   <template v-slot:placeholder>
     <v-row

@@ -9,15 +9,15 @@
 {% assign value = Model.ContentItem.Content.VListItem.Value.Text %}
 
 <v-list-item {{ Model.ContentItem.Content.VListItem.Props.Values | join: ' ' | raw }}
-  {% if empty != activeClass %}activeClass="{{ activeClass }}"{% endif %}
-  {% if empty != color %}color="{{ color }}"{% endif %}
-  {% if empty != exactActiveClass %}exactActiveClass="{{ exactActiveClass }}"{% endif %}
-  {% if empty != href %}href="{{ href }}"{% endif %}
-  {% if empty != inputValue %}inputValue="{{ inputValue }}"{% endif %}
-  {% if empty != tag %}tag="{{ tag }}"{% endif %}
-  {% if empty != target %}target="{{ target }}"{% endif %}
-  {% if empty != to %}to="{{ to }}"{% endif %}
-  {% if empty != value %}value="{{ value }}"{% endif %}
+  {% if blank != activeClass %}activeClass="{{ activeClass }}"{% endif %}
+  {% if blank != color %}color="{{ color }}"{% endif %}
+  {% if blank != exactActiveClass %}exactActiveClass="{{ exactActiveClass }}"{% endif %}
+  {% if blank != href %}href="{{ href }}"{% endif %}
+  {% if blank != inputValue %}inputValue="{{ inputValue }}"{% endif %}
+  {% if blank != tag %}tag="{{ tag }}"{% endif %}
+  {% if blank != target %}target="{{ target }}"{% endif %}
+  {% if blank != to %}to="{{ to }}"{% endif %}
+  {% if blank != value %}value="{{ value }}"{% endif %}
   >
   <v-list-item-icon>
     <v-icon>{{Model.ContentItem.Content.VListItem.IconName.Text}}</v-icon>

@@ -19,7 +19,7 @@
   {% if Site.Properties.VuetifyThemeSettings.VuetifyThemeSettings.Logo.Paths.first != blank %}
     <img src="{{ Site.Properties.VuetifyThemeSettings.VuetifyThemeSettings.Logo.Paths.first | asset_url | resize_url: width:250, height:64 }}" style="max-height:64px; max-width:250px;" alt="logo" class="mr-2">
   {% endif %}
-  {% if Site.Properties.VuetifyThemeSettings.VuetifyThemeSettings.DisplayName.Text %}
+  {% if Site.Properties.VuetifyThemeSettings.VuetifyThemeSettings.DisplayName.Text != blank %}
     <v-toolbar-title>{{ Site.Properties.VuetifyThemeSettings.VuetifyThemeSettings.DisplayName.Text | shortcode }}</v-toolbar-title>
   {% endif %}
   <v-spacer></v-spacer>
