@@ -80,6 +80,13 @@ namespace StatCan.Themes.VuetifyTheme
             return 6;
         }
 
+        public int UpdateFrom6()
+        {
+            VRow();
+            VCol();
+            return 7;
+        }
+
         #region Private methods
 
         private void AuthContentMenuItem()
@@ -194,28 +201,29 @@ namespace StatCan.Themes.VuetifyTheme
             var colsSettings = new TextFieldPredefinedListEditorSettings()
             {
                 Editor = EditorOption.Dropdown,
-                DefaultValue = "12",
+                DefaultValue = "None",
                 Options = new ListValueOption[] {
-                                        new ListValueOption(){Name = "Auto", Value = "auto"},
-                                        new ListValueOption(){Name = "1", Value = "1"},
-                                        new ListValueOption(){Name = "2", Value = "2"},
-                                        new ListValueOption(){Name = "3", Value = "3"},
-                                        new ListValueOption(){Name = "4", Value = "4"},
-                                        new ListValueOption(){Name = "5", Value = "5"},
-                                        new ListValueOption(){Name = "6", Value = "6"},
-                                        new ListValueOption(){Name = "7", Value = "7"},
-                                        new ListValueOption(){Name = "8", Value = "8"},
-                                        new ListValueOption(){Name = "9", Value = "9"},
-                                        new ListValueOption(){Name = "10", Value = "10"},
-                                        new ListValueOption(){Name = "11", Value = "11"},
-                                        new ListValueOption(){Name = "12", Value = "12"},
-                                    }
+                    new ListValueOption(){Name = "None", Value = ""},
+                    new ListValueOption(){Name = "Auto", Value = "auto"},
+                    new ListValueOption(){Name = "1", Value = "1"},
+                    new ListValueOption(){Name = "2", Value = "2"},
+                    new ListValueOption(){Name = "3", Value = "3"},
+                    new ListValueOption(){Name = "4", Value = "4"},
+                    new ListValueOption(){Name = "5", Value = "5"},
+                    new ListValueOption(){Name = "6", Value = "6"},
+                    new ListValueOption(){Name = "7", Value = "7"},
+                    new ListValueOption(){Name = "8", Value = "8"},
+                    new ListValueOption(){Name = "9", Value = "9"},
+                    new ListValueOption(){Name = "10", Value = "10"},
+                    new ListValueOption(){Name = "11", Value = "11"},
+                    new ListValueOption(){Name = "12", Value = "12"},
+                }
             };
 
             var offsetSettings = new TextFieldPredefinedListEditorSettings()
             {
                 Editor = EditorOption.Dropdown,
-
+                DefaultValue = "",
                 Options = new ListValueOption[] {
                     new ListValueOption(){Name = "None", Value = ""},
                     new ListValueOption(){Name = "1", Value = "1"},
@@ -237,8 +245,9 @@ namespace StatCan.Themes.VuetifyTheme
                 .WithTextFieldPredefinedList("AlignSelf", "Align Self", "0", new TextFieldPredefinedListEditorSettings()
                     {
                         Editor = EditorOption.Dropdown,
+                        DefaultValue = "",
                         Options = new ListValueOption[] {
-                                        new ListValueOption(){Name = "Default", Value = ""},
+                                        new ListValueOption(){Name = "None", Value = ""},
                                         new ListValueOption(){Name = "Start", Value = "start"},
                                         new ListValueOption(){Name = "Center", Value = "center"},
                                         new ListValueOption(){Name = "End", Value = "end"},
@@ -278,6 +287,7 @@ namespace StatCan.Themes.VuetifyTheme
             );
 
             var justifyOptions = new ListValueOption[] {
+                new ListValueOption(){Name = "None", Value = ""},
                 new ListValueOption() {
                     Name = "Start",
                     Value = "start"
@@ -301,6 +311,7 @@ namespace StatCan.Themes.VuetifyTheme
             };
 
             var alignOptions = new ListValueOption[] {
+                new ListValueOption(){Name = "None", Value = ""},
                 new ListValueOption() {
                     Name = "Start",
                     Value = "start"
@@ -324,6 +335,7 @@ namespace StatCan.Themes.VuetifyTheme
             };
 
             var alignContentOptions = new ListValueOption[] {
+                new ListValueOption(){Name = "None", Value = ""},
                 new ListValueOption() {
                     Name = "Start",
                     Value = "start"
@@ -371,7 +383,7 @@ namespace StatCan.Themes.VuetifyTheme
                     .WithPosition("1")
                     .WithSettings(new TextFieldPredefinedListEditorSettings()
                     {
-                        DefaultValue = "start",
+                        DefaultValue = "",
                         Editor = EditorOption.Dropdown,
                         Options = justifyOptions
                     })
@@ -385,7 +397,7 @@ namespace StatCan.Themes.VuetifyTheme
                     .WithPosition("2")
                     .WithSettings(new TextFieldPredefinedListEditorSettings()
                     {
-                        DefaultValue = "start",
+                        DefaultValue = "",
                         Editor = EditorOption.Dropdown,
                         Options = justifyOptions
                     })
@@ -399,7 +411,7 @@ namespace StatCan.Themes.VuetifyTheme
                     .WithPosition("3")
                     .WithSettings(new TextFieldPredefinedListEditorSettings()
                     {
-                        DefaultValue = "start",
+                        DefaultValue = "",
                         Editor = EditorOption.Dropdown,
                         Options = justifyOptions
                     })
@@ -413,7 +425,7 @@ namespace StatCan.Themes.VuetifyTheme
                     .WithPosition("4")
                     .WithSettings(new TextFieldPredefinedListEditorSettings()
                     {
-                        DefaultValue = "start",
+                        DefaultValue = "",
                         Editor = EditorOption.Dropdown,
                         Options = justifyOptions
                     })
@@ -427,7 +439,7 @@ namespace StatCan.Themes.VuetifyTheme
                     .WithPosition("5")
                     .WithSettings(new TextFieldPredefinedListEditorSettings()
                     {
-                        DefaultValue = "start",
+                        DefaultValue = "",
                         Editor = EditorOption.Dropdown,
                         Options = justifyOptions
                     })
@@ -441,7 +453,7 @@ namespace StatCan.Themes.VuetifyTheme
                     .WithPosition("6")
                     .WithSettings(new TextFieldPredefinedListEditorSettings()
                     {
-                        DefaultValue = "start",
+                        DefaultValue = "",
                         Editor = EditorOption.Dropdown,
                         Options = alignOptions
                     })
@@ -455,7 +467,7 @@ namespace StatCan.Themes.VuetifyTheme
                     .WithPosition("7")
                     .WithSettings(new TextFieldPredefinedListEditorSettings()
                     {
-                        DefaultValue = "start",
+                        DefaultValue = "",
                         Editor = EditorOption.Dropdown,
                         Options = alignOptions
                     })
@@ -469,7 +481,7 @@ namespace StatCan.Themes.VuetifyTheme
                     .WithPosition("8")
                     .WithSettings(new TextFieldPredefinedListEditorSettings()
                     {
-                        DefaultValue = "start",
+                        DefaultValue = "",
                         Editor = EditorOption.Dropdown,
                         Options = alignOptions
                     })
@@ -483,7 +495,7 @@ namespace StatCan.Themes.VuetifyTheme
                     .WithPosition("9")
                     .WithSettings(new TextFieldPredefinedListEditorSettings()
                     {
-                        DefaultValue = "start",
+                        DefaultValue = "",
                         Editor = EditorOption.Dropdown,
                         Options = alignOptions
                     })
@@ -497,7 +509,7 @@ namespace StatCan.Themes.VuetifyTheme
                     .WithPosition("10")
                     .WithSettings(new TextFieldPredefinedListEditorSettings()
                     {
-                        DefaultValue = "start",
+                        DefaultValue = "",
                         Editor = EditorOption.Dropdown,
                         Options = alignOptions
                     })
@@ -511,7 +523,7 @@ namespace StatCan.Themes.VuetifyTheme
                     .WithPosition("11")
                     .WithSettings(new TextFieldPredefinedListEditorSettings()
                     {
-                        DefaultValue = "start",
+                        DefaultValue = "",
                         Editor = EditorOption.Dropdown,
                         Options = alignContentOptions
                     })
@@ -525,7 +537,7 @@ namespace StatCan.Themes.VuetifyTheme
                     .WithPosition("12")
                     .WithSettings(new TextFieldPredefinedListEditorSettings()
                     {
-                        DefaultValue = "start",
+                        DefaultValue = "",
                         Editor = EditorOption.Dropdown,
                         Options = alignContentOptions
                     })
@@ -539,7 +551,7 @@ namespace StatCan.Themes.VuetifyTheme
                     .WithPosition("13")
                     .WithSettings(new TextFieldPredefinedListEditorSettings()
                     {
-                        DefaultValue = "start",
+                        DefaultValue = "",
                         Editor = EditorOption.Dropdown,
                         Options = alignContentOptions
                     })
@@ -553,7 +565,7 @@ namespace StatCan.Themes.VuetifyTheme
                     .WithPosition("14")
                     .WithSettings(new TextFieldPredefinedListEditorSettings()
                     {
-                        DefaultValue = "start",
+                        DefaultValue = "",
                         Editor = EditorOption.Dropdown,
                         Options = alignContentOptions
                     })
@@ -567,7 +579,7 @@ namespace StatCan.Themes.VuetifyTheme
                     .WithPosition("15")
                     .WithSettings(new TextFieldPredefinedListEditorSettings()
                     {
-                        DefaultValue = "start",
+                        DefaultValue = "",
                         Editor = EditorOption.Dropdown,
                         Options = alignContentOptions
                     })
@@ -1572,35 +1584,6 @@ namespace StatCan.Themes.VuetifyTheme
                 .WithTitlePart("0", TitlePartOptions.EditableRequired)
                 .WithPart("ScheduleEvent", p => p.WithPosition("1"))
                 .WithMarkdownBody("2")
-            );
-        }
-
-        private void CreateFip()
-        {
-            _contentDefinitionManager.AlterTypeDefinition("FIP", type => type
-                .DisplayedAs("FIP")
-                .Stereotype("Widget")
-                .WithPart("FIP", part => part
-                    .WithPosition("0")
-                )
-            );
-
-            _contentDefinitionManager.AlterPartDefinition("FIP", part => part
-                .WithField("Props", field => field
-                    .OfType("MultiTextField")
-                    .WithDisplayName("Props")
-                    .WithEditor("Picker")
-                    .WithPosition("0")
-                    .WithSettings(new MultiTextFieldSettings
-                    {
-                        Options = new MultiTextFieldValueOption[] {
-                            new MultiTextFieldValueOption() {Name = "Dark", Value = "dark"},
-                            new MultiTextFieldValueOption() {Name = "Light", Value = "light"},
-                            new MultiTextFieldValueOption() {Name = "Rounded", Value = "rounded"},
-                            new MultiTextFieldValueOption() {Name = "Shaped", Value = "shaped"}
-                        },
-                    })
-                )
             );
         }
 
