@@ -15,18 +15,26 @@ namespace StatCan.OrchardCore.DisplayHelpers.Filters
         public ValueTask<FluidValue> ProcessAsync(FluidValue input, FilterArguments arguments, LiquidTemplateContext ctx)
         {
             var inputObj = input.ToObjectValue();
+            var whitelist = arguments.At(0)?.ToStringValue()?.Split(',');
 
-            if(inputObj is Arguments shortcodeArgs)
+            if(inputObj is Arguments shortcodeArgs && whitelist?.Length > 0)
             {
                 using var sb = ZString.CreateStringBuilder();
                 sb.Append(" ");
-                var whitelist = arguments.At(0)?.ToStringValue()?.Split(',');
 
                 foreach(var arg in shortcodeArgs)
                 {
-                    if(whitelist?.Contains(arg.Key) == true)
+                    // todo: remove this when OC supports - in shortcode arguments
+                    // temporary code to support arguments that contain a - since OC currently does not support
+                    var key = arg.Key.Replace('_', '-');
+                    if(whitelist.Contains(key))
                     {
-                        sb.Append($"{arg.Key}=\"{arg.Value}\" ");
+                        sb.Append($"{key}=\"{arg.Value}\" ");
+                    }
+                    else if (whitelist.Contains(arg.Value))
+                    {
+                        // for boolean arguments that are valid for vue.js
+                        sb.Append($"{arg.Value} ");
                     }
                 }
                 return new StringValue(sb.ToString());
