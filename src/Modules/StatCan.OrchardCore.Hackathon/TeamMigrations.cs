@@ -5,6 +5,7 @@ using OrchardCore.ContentFields.Settings;
 using OrchardCore.Title.Models;
 using OrchardCore.ContentFields.Fields;
 using StatCan.OrchardCore.Extensions;
+using OrchardCore.Media.Settings;
 
 namespace StatCan.OrchardCore.Hackathon
 {
@@ -42,6 +43,16 @@ namespace StatCan.OrchardCore.Hackathon
                 .WithTextField("Description", "Team Description", "TextArea", "1")
                 .WithChallengeField("2")
                 .WithTeamCaptainField("3")
+                .WithField("TeamLogo", field => field
+                    .OfType("MediaField")
+                    .WithDisplayName("Team Logo")
+                    .WithPosition("1")
+                    .WithSettings(new MediaFieldSettings
+                    {
+                        Hint = "Upload a photo of your team's logo or a generic one will be provided for you.",
+                        AllowAnchors = true,
+                    })
+                )
             );
 
             _contentDefinitionManager.AlterTypeDefinition("Team", t => t
