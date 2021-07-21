@@ -58,6 +58,7 @@
         "StatCan.OrchardCore.CommonTypes.Page",
         "StatCan.OrchardCore.CommonTypes.SecurePage",
         "StatCan.OrchardCore.CommonTypes.Widgets",
+        "StatCan.OrchardCore.Menu",
         "DigitalAdmin",
         "VuetifyTheme"
       ]

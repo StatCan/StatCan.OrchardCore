@@ -8,22 +8,31 @@ using OrchardCore.Title.Models;
 using StatCan.OrchardCore.Extensions;
 using StatCan.OrchardCore.ContentFields.PredefinedGroup.Settings;
 using OrchardCore.ContentFields.Fields;
+using OrchardCore.Menu.Models;
+using System.Collections.Generic;
+using OrchardCore.ContentManagement;
+using Newtonsoft.Json.Linq;
+using OrchardCore.ContentManagement.Records;
+using YesSql;
+using System.Threading.Tasks;
 
 namespace StatCan.Themes.VuetifyTheme
 {
     public class Migrations : DataMigration
     {
         private readonly IContentDefinitionManager _contentDefinitionManager;
-        public Migrations(IContentDefinitionManager contentDefinitionManager)
+        private readonly ISession _session;
+        public Migrations(IContentDefinitionManager contentDefinitionManager, ISession session)
         {
             _contentDefinitionManager = contentDefinitionManager;
+            _session = session;
         }
 
         public int Create()
         {
             VuetifyThemeSettings();
             Tabs();
-            MenuItems();
+
             VContainer();
             VRow();
             VCol();
@@ -37,7 +46,7 @@ namespace StatCan.Themes.VuetifyTheme
             VContainerRow();
             VAppBar();
             VNavigationDrawer();
-            AuthContentMenuItem();
+
             CompatibilityBanner();
             VFooter();
             UpdateToMultiTextField();
@@ -46,8 +55,8 @@ namespace StatCan.Themes.VuetifyTheme
             VList();
             VDivider();
             ScheduleEvent();
-            TaxonomyMenuItem();
-            return 5;
+            InitialMenuItems();
+            return 8;
         }
 
         public int UpdateFrom1() {
@@ -65,7 +74,7 @@ namespace StatCan.Themes.VuetifyTheme
         }
         public int UpdateFrom3()
         {
-            TaxonomyMenuItem();
+            InitialMenuItems();
             return 4;
         }
         public int UpdateFrom4()
@@ -87,34 +96,29 @@ namespace StatCan.Themes.VuetifyTheme
             return 7;
         }
 
-        #region Private methods
-
-        private void AuthContentMenuItem()
+        public async Task<int> UpdateFrom7Async()
         {
-            _contentDefinitionManager.AlterTypeDefinition("AuthContentMenuItem", type => type
-                .DisplayedAs("Authenticated Content Menu Item")
-                .Stereotype("MenuItem")
-                .WithTitlePart("0")
-                .WithPart("AuthContentMenuItem", part => part
-                    .WithPosition("1")
-                )
-                .WithContentPermission("2")
-            );
+            MenuTypesMigration();
+            var menus = await _session.Query<ContentItem, ContentItemIndex>(x => x.ContentType == "Menu").ListAsync();
 
-            _contentDefinitionManager.AlterPartDefinition("AuthContentMenuItem", part => part
-                .WithTextField("IconName","Icon Name" , "0")
-                .WithField("SelectedContentItem", field => field
-                    .OfType("ContentPickerField")
-                    .WithDisplayName("Selected Content Item")
-                    .WithPosition("1")
-                    .WithSettings(new ContentPickerFieldSettings
-                    {
-                        Required = true,
-                        DisplayAllContentTypes = true
-                    })
-                )
-            );
+            foreach (var menu in menus)
+            {
+                var menuItemsListPart = menu.As<MenuItemsListPart>();
+                if (menuItemsListPart != null)
+                {
+                    MigrateMenuItems(menuItemsListPart.MenuItems);
+                    menu.Apply(menuItemsListPart);
+                }
+
+                _session.Save(menu);
+            }
+
+            _contentDefinitionManager.DeleteTypeDefinition("AuthContentMenuItem");
+
+            return 8;
         }
+
+        #region Private methods
 
         private void VuetifyThemeSettings()
         {
@@ -177,13 +181,114 @@ namespace StatCan.Themes.VuetifyTheme
             );
         }
 
-        private void MenuItems()
+        private static void MigrateMenuItems(List<ContentItem> menuItems)
         {
-            _contentDefinitionManager.AlterPartDefinition("ContentMenuItem", part => part
+            foreach (var menuItem in menuItems)
+            {
+                if (menuItem.ContentType == "ContentMenuItem" && menuItem.Content.ContentMenuItem?.IconName?.Text != null)
+                {
+                    menuItem.Content.CommonMenuItemPart = JObject.FromObject(new { IconName = new { Text = menuItem.Content.ContentMenuItem.IconName.Text } });
+                }
+                if (menuItem.ContentType == "LinkMenuItem" && menuItem.Content.LinkMenuItem?.IconName?.Text != null)
+                {
+                    menuItem.Content.CommonMenuItemPart = JObject.FromObject(new { IconName = new { Text = menuItem.Content.LinkMenuItem.IconName.Text } });
+                }
+                if (menuItem.ContentType == "TaxonomyMenuItem" && menuItem.Content.TaxonomyMenuItem?.IconName?.Text != null)
+                {
+                    menuItem.Content.CommonMenuItemPart = JObject.FromObject(new { IconName = new { Text = menuItem.Content.TaxonomyMenuItem?.IconName?.Text } });
+                }
+                if (menuItem.ContentType == "AuthContentMenuItem" && menuItem.Content.AuthContentMenuItem != null)
+                {
+                    menuItem.ContentType = "ContentMenuItem";
+                    menuItem.Content.ContentMenuItemPart = JObject.FromObject(new { SelectedContentItem = menuItem.Content.AuthContentMenuItem.SelectedContentItem });
+                    menuItem.Content.CommonMenuItemPart = JObject.FromObject(new { IconName = new { Text = menuItem.Content.AuthContentMenuItem?.IconName?.Text } });
+                    menuItem.Content.AuthContentMenuItem = null;
+                }
+                var menuItemsListPart = menuItem.As<MenuItemsListPart>();
+                if (menuItemsListPart != null)
+                {
+                    MigrateMenuItems(menuItemsListPart.MenuItems);
+                    menuItem.Apply(menuItemsListPart);
+                }
+            }
+        }
+
+        private void InitialMenuItems()
+        {
+            _contentDefinitionManager.AlterPartDefinition("CommonMenuItemPart", part => part
                 .WithTextField("IconName","Icon Name" , "0")
+                .Attachable()
+            );
+
+            _contentDefinitionManager.AlterTypeDefinition("ContentMenuItem", t => t
+                .WithPart("CommonMenuItemPart", p=>p.WithPosition("4"))
+                .WithContentPermission("6")
+            );
+            _contentDefinitionManager.AlterTypeDefinition("LinkMenuItem", t => t
+                .WithPart("CommonMenuItemPart", p=>p.WithPosition("4"))
+                .WithContentPermission("6")
+            );
+
+             _contentDefinitionManager.AlterTypeDefinition("TaxonomyMenuItem", type => type
+                .DisplayedAs("Taxonomy Menu Item")
+                .Stereotype("MenuItem")
+                .WithPart("TitlePart", part => part
+                    .WithPosition("0")
+                )
+                .WithPart("CommonMenuItemPart", part => part
+                    .WithPosition("1")
+                )
+                .WithPart("TaxonomyMenuItem", part => part
+                    .WithPosition("2")
+                )
+                .WithContentPermission("6")
+            );
+
+            _contentDefinitionManager.AlterPartDefinition("TaxonomyMenuItem", part => part
+                .WithField("Taxonomy", field => field
+                    .OfType("ContentPickerField")
+                    .WithDisplayName("Taxonomy")
+                    .WithPosition("0")
+                    .WithSettings(new ContentPickerFieldSettings
+                    {
+                        DisplayedContentTypes = new[] { "Taxonomy" },
+                    })
+                )
+                .WithField("Expanded", field => field
+                    .OfType("BooleanField")
+                    .WithDisplayName("Expanded")
+                    .WithPosition("2")
+                )
+            );
+        }
+        private void MenuTypesMigration()
+        {
+            _contentDefinitionManager.AlterPartDefinition("CommonMenuItemPart", part => part
+                .WithTextField("IconName","Icon Name" , "0")
+                .Attachable()
+            );
+            _contentDefinitionManager.AlterPartDefinition("ContentMenuItem", part => part
+                .RemoveField("IconName")
             );
             _contentDefinitionManager.AlterPartDefinition("LinkMenuItem", part => part
-                .WithTextField("IconName", "Icon Name", "0")
+                .RemoveField("IconName")
+            );
+            _contentDefinitionManager.AlterTypeDefinition("ContentMenuItem", t => t
+                .WithPart("CommonMenuItemPart", p=>p.WithPosition("1"))
+                .WithContentPermission("6")
+            );
+            _contentDefinitionManager.AlterTypeDefinition("LinkMenuItem", t => t
+                .WithPart("CommonMenuItemPart", p=>p.WithPosition("1"))
+                .WithContentPermission("6")
+            );
+
+            _contentDefinitionManager.AlterTypeDefinition("TaxonomyMenuItem", type => type
+                .WithPart("CommonMenuItemPart", part => part.WithPosition("1"))
+                .WithContentPermission("6")
+            );
+
+            _contentDefinitionManager.AlterPartDefinition("TaxonomyMenuItem", part => part
+                .RemoveField("IconName")
             );
         }
 
@@ -1737,37 +1842,6 @@ namespace StatCan.Themes.VuetifyTheme
                         new MultiTextFieldValueOption() {Name = "Vertical", Value = "vertical"},
                     },
                     })
-                )
-            );
-        }
-
-        private void TaxonomyMenuItem(){
-            _contentDefinitionManager.AlterTypeDefinition("TaxonomyMenuItem", type => type
-                .DisplayedAs("Taxonomy Menu Item")
-                .Stereotype("MenuItem")
-                .WithPart("TitlePart", part => part
-                    .WithPosition("0")
-                )
-                .WithPart("TaxonomyMenuItem", part => part
-                    .WithPosition("1")
-                )
-            );
-
-            _contentDefinitionManager.AlterPartDefinition("TaxonomyMenuItem", part => part
-                .WithField("Taxonomy", field => field
-                    .OfType("ContentPickerField")
-                    .WithDisplayName("Taxonomy")
-                    .WithPosition("0")
-                    .WithSettings(new ContentPickerFieldSettings
-                    {
-                        DisplayedContentTypes = new[] { "Taxonomy" },
-                    })
-                )
-                .WithTextField("IconName", "Icon Name", "1")
-                .WithField("Expanded", field => field
-                    .OfType("BooleanField")
-                    .WithDisplayName("Expanded")
-                    .WithPosition("2")
                 )
             );
         }
