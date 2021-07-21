@@ -10,9 +10,9 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
-"PO-Revision-Date: 2021-04-14 09:13\n"
+"PO-Revision-Date: 2021-07-14 14:11\n"
 
-#. itemprop="RemoveUrl UnsafeUrl" data-title="@T["Delete"]" data-message="@T["Are you sure you want to delete this content item?"]"
+#. data-url-af="RemoveUrl UnsafeUrl" data-title="@T["Delete"]" data-message="@T["Are you sure you want to delete this content item?"]"
 #. data-ok-text="@T["Ok"]" data-cancel-text="@T["Cancel"]">@T["Delete"]</a>
 #: OrchardCore.AdminDashboard\Views\Dashboard.DeleteButton.cshtml:3
 #: OrchardCore.AdminDashboard\Views\Dashboard.DeleteButton.cshtml:4
@@ -20,7 +20,7 @@ msgctxt "OrchardCore.AdminDashboard.Views.Dashboard.DeleteButton"
 msgid "Delete"
 msgstr "Supprimer"
 
-#. itemprop="RemoveUrl UnsafeUrl" data-title="@T["Delete"]" data-message="@T["Are you sure you want to delete this content item?"]"
+#. data-url-af="RemoveUrl UnsafeUrl" data-title="@T["Delete"]" data-message="@T["Are you sure you want to delete this content item?"]"
 #: OrchardCore.AdminDashboard\Views\Dashboard.DeleteButton.cshtml:3
 msgctxt "OrchardCore.AdminDashboard.Views.Dashboard.DeleteButton"
 msgid "Are you sure you want to delete this content item?"

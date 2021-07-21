@@ -1,38 +1,44 @@
 msgid ""
 msgstr "Content-Type: text/plain\n"
 
-#: VuetifyTheme\Views\UserMenu.cshtml:34
+#: VuetifyTheme\Views\UserMenu.cshtml:38
+#. <v-list-item-title>@T["Signed in as "]<span class="font-weight-bold">@User.Identity.Name</span></v-list-item-title>
+msgctxt "VuetifyTheme.Views.UserMenu"
+msgid "Signed in as "
+msgstr "Connecté en tant que"
+
+#: VuetifyTheme\Views\UserMenu.cshtml:48
 #. <v-list-item-title>@T["Dashboard"]</v-list-item-title>
 msgctxt "VuetifyTheme.Views.UserMenu"
 msgid "Dashboard"
 msgstr "Tableau de bord"
 
-#: VuetifyTheme\Views\UserMenu.cshtml:42
+#: VuetifyTheme\Views\UserMenu.cshtml:56
 #. <v-list-item-title>@T["Change Password"]</v-list-item-title>
 msgctxt "VuetifyTheme.Views.UserMenu"
 msgid "Change Password"
 msgstr "Changer le mot de passe"
 
-#: VuetifyTheme\Views\UserMenu.cshtml:50
+#: VuetifyTheme\Views\UserMenu.cshtml:64
 #. <v-list-item-title>@T["Change Email"]</v-list-item-title>
 msgctxt "VuetifyTheme.Views.UserMenu"
 msgid "Change Email"
 msgstr "Changer le courriel"
 
-#: VuetifyTheme\Views\UserMenu.cshtml:59
+#: VuetifyTheme\Views\UserMenu.cshtml:73
 #. <v-list-item-title>@T["External Logins"]</v-list-item-title>
 msgctxt "VuetifyTheme.Views.UserMenu"
 msgid "External Logins"
 msgstr "Connexions externes"
 
-#: VuetifyTheme\Views\UserMenu.cshtml:68
+#: VuetifyTheme\Views\UserMenu.cshtml:82
 #. <v-list-item-title class="text-left">@T["Log off"]</v-list-item-title>
 msgctxt "VuetifyTheme.Views.UserMenu"
 msgid "Log off"
 msgstr "Se déconnecter"
 
-#: VuetifyTheme\Views\UserMenu.cshtml:76
-#. <v-btn icon href="@Url.Action("Login", "Account", new { Area = "OrchardCore.Users" })" title="@T["Log in"]">
+#: VuetifyTheme\Views\UserMenu.cshtml:96
+#. <span>@T["Log in"]</span>
 msgctxt "VuetifyTheme.Views.UserMenu"
 msgid "Log in"
 msgstr "Connexion"
@@ -150,9 +156,56 @@ msgid "or"
 msgstr "ou alors"
 
 #: VuetifyTheme\Views\OrchardCore.Users\Account\Login.cshtml:75
-#. <v-btn href="@Url.Action("Register", "Registration", new { Area = "OrchardCore.Users", returnUrl=ViewData["ReturnUrl"] })" x-large block color="grey lighten-2">@T["Create an account"]</v-btn>
+#. <v-btn href="@Url.Action("Register", "Registration", new { Area = "OrchardCore.Users", returnUrl=ViewData["ReturnUrl"] })" x-large block color="secondary">@T["Create an account"]</v-btn>
 msgctxt "VuetifyTheme.Views.OrchardCore.Users.Account.Login"
 msgid "Create an account"
+msgstr "Créer un compte"
+
+#: VuetifyTheme\Views\OrchardCore.Users\Account\RegisterExternalLogin.cshtml:10
+#. <v-card-title>@T["Create a new account."]</v-card-title>
+msgctxt "VuetifyTheme.Views.OrchardCore.Users.Account.RegisterExternalLogin"
+msgid "Create a new account."
+msgstr "Créer un nouveau compte."
+
+#: VuetifyTheme\Views\OrchardCore.Users\Account\RegisterExternalLogin.cshtml:11
+#. <v-card-subtitle>@T["You've successfully authenticated with <strong>{0}</strong>. Please fill the form below and click the Register button to complete the registration.", ViewData["LoginProvider"]]</v-card-subtitle>
+msgctxt "VuetifyTheme.Views.OrchardCore.Users.Account.RegisterExternalLogin"
+msgid ""
+"You've successfully authenticated with <strong>{0}</strong>. Please fill "
+"the form below and click the Register button to complete the registration."
+msgstr ""
+"Vous vous êtes correctement connecté avec <strong>{0}</strong> . "
+"Veuillez remplir le formulaire ci-dessous et cliquez sur le bouton "
+"S&#39;inscrire pour terminer l&#39;inscription."
+
+#: VuetifyTheme\Views\OrchardCore.Users\Account\RegisterExternalLogin.cshtml:33
+#. label="@T["Username"]"
+msgctxt "VuetifyTheme.Views.OrchardCore.Users.Account.RegisterExternalLogin"
+msgid "Username"
+msgstr "Nom d'utilisateur"
+
+#: VuetifyTheme\Views\OrchardCore.Users\Account\RegisterExternalLogin.cshtml:45
+#. label="@T["Email"]"
+msgctxt "VuetifyTheme.Views.OrchardCore.Users.Account.RegisterExternalLogin"
+msgid "Email"
+msgstr "E-mail"
+
+#: VuetifyTheme\Views\OrchardCore.Users\Account\RegisterExternalLogin.cshtml:58
+#. label="@T["Password"]"
+msgctxt "VuetifyTheme.Views.OrchardCore.Users.Account.RegisterExternalLogin"
+msgid "Password"
+msgstr "Mot de passe"
+
+#: VuetifyTheme\Views\OrchardCore.Users\Account\RegisterExternalLogin.cshtml:65
+#. label="@T["Confirm password"]"
+msgctxt "VuetifyTheme.Views.OrchardCore.Users.Account.RegisterExternalLogin"
+msgid "Confirm password"
+msgstr "Confirmez le mot de passe"
+
+#: VuetifyTheme\Views\OrchardCore.Users\Account\RegisterExternalLogin.cshtml:74
+#. <v-btn type="submit" x-large block color="success">@T["Create account"]</v-btn>
+msgctxt "VuetifyTheme.Views.OrchardCore.Users.Account.RegisterExternalLogin"
+msgid "Create account"
 msgstr "Créer un compte"
 
 #: VuetifyTheme\Views\OrchardCore.Users\Registration\ConfirmEmail.cshtml:5
@@ -352,30 +405,15 @@ msgctxt "VuetifyTheme.Views.Layout-Login"
 msgid "Skip to main content"
 msgstr "Passer au contenu principal"
 
-#: VuetifyTheme\Views\Layout.liquid:0
-msgctxt "VuetifyTheme.Views.Layout"
-msgid "Skip to main content"
-msgstr "Passer au contenu principal"
+#: VuetifyTheme\Views\Widget-VAppBar.liquid:0
+msgctxt "VuetifyTheme.Views.Widget-VAppBar"
+msgid "Dark mode"
+msgstr "Mode sombre"
 
-#: VuetifyTheme\Views\MenuItem-TaxonomyMenuItem.liquid:0
-msgctxt "VuetifyTheme.Views.MenuItem-TaxonomyMenuItem"
-msgid "All"
-msgstr "Tout"
-
-#: VuetifyTheme\Views\Widget-CompatibilityBanner.liquid:0
-msgctxt "VuetifyTheme.Views.Widget-CompatibilityBanner"
-msgid "OK"
-msgstr "d'accord"
-
-#: VuetifyTheme\Views\Widget-CompatibilityBanner.liquid:0
-msgctxt "VuetifyTheme.Views.Widget-CompatibilityBanner"
-msgid ""
-"Internet Explorer is not supported because it is a legacy browser.<br>Try a "
-"modern browser instead such as HP SureClick, Edge, Chrome, or Firefox."
-msgstr ""
-"Internet Explorer n&#39;est pas pris en charge car il s&#39;agit d&#39;un "
-"navigateur désuet.<br> Essayez plutôt un navigateur moderne tel que HP "
-"SureClick, Edge, Chrome ou Firefox."
+#: VuetifyTheme\Views\Widget-VAppBar.liquid:0
+msgctxt "VuetifyTheme.Views.Widget-VAppBar"
+msgid "Light mode"
+msgstr "Mode lumière"
 
 #: VuetifyTheme\Views\Shared\NotFound.liquid:0
 msgctxt "VuetifyTheme.Views.Shared.NotFound"

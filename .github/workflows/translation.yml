@@ -16,7 +16,7 @@ jobs:
         dotnet-version: 3.1.404
     - name: Extract translations using PoExtractor
       run: |
-        dotnet tool install --global PoExtractor.OrchardCore --version 0.4.0-rc1-13272
+        dotnet tool install --global PoExtractor.OrchardCore --version 0.5.0-rc2-16220
         mkdir /tmp/translation_workdir
         extractpo-oc ${{github.workspace}}/src /tmp/translation_workdir/extract
     - uses: actions/upload-artifact@v2
