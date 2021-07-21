@@ -1,25 +1,25 @@
 msgid ""
 msgstr "Content-Type: text/plain\n"
 
-#: StatCan.OrchardCore.VueForms\AdminMenu.cs:34
+#: StatCan.OrchardCore.VueForms\AdminMenu.cs:35
 #. builder.Add(S["Content"], design => design
 msgctxt "StatCan.OrchardCore.VueForms.AdminMenu"
 msgid "Content"
 msgstr "Contenu"
 
-#: StatCan.OrchardCore.VueForms\AdminMenu.cs:35
-#: StatCan.OrchardCore.VueForms\AdminMenu.cs:35
+#: StatCan.OrchardCore.VueForms\AdminMenu.cs:36
+#: StatCan.OrchardCore.VueForms\AdminMenu.cs:36
 #. .Add(S["Vue Forms"], S["Vue Forms"], menus => menus
 #. .Add(S["Vue Forms"], S["Vue Forms"], menus => menus
 msgctxt "StatCan.OrchardCore.VueForms.AdminMenu"
 msgid "Vue Forms"
 msgstr "Vue Forms"
 
-#: StatCan.OrchardCore.VueForms\Controllers\VueFormController.cs:92
-#. ModelState.AddModelError("Unauthorized", S["You are unauthorized to view this form"]);
+#: StatCan.OrchardCore.VueForms\Controllers\VueFormController.cs:226
+#. ModelState.AddModelError("serverErrorMessage", S["A unhandled error occured while executing your request."].ToString());
 msgctxt "StatCan.OrchardCore.VueForms.Controllers.VueFormController"
-msgid "You are unauthorized to view this form"
-msgstr "Vous n'êtes pas autorisé à consulter ce formulaire"
+msgid "A unhandled error occured while executing your request."
+msgstr "Une erreur non gérée s'est produite lors de l'exécution de votre demande."
 
 #: StatCan.OrchardCore.VueForms\Workflows\VueFormSubmittedEvent.cs:24
 #. public override LocalizedString DisplayText => S["VueForm Submitted Event"];
@@ -41,8 +41,38 @@ msgstr "Terminé"
 
 #: StatCan.OrchardCore.VueForms\Views\Content-VueForm.cshtml:0
 msgctxt "StatCan.OrchardCore.VueForms.Views.Content-VueForm"
-msgid "You are unauthorized to view this form"
-msgstr "Vous n'êtes pas autorisé à consulter ce formulaire"
+msgid "You are unauthorized to access this form"
+msgstr "Vous n'êtes pas autorisé à accéder à ce formulaire"
+
+#: StatCan.OrchardCore.VueForms\Views\VueFormWrapperTemplate.cshtml:39
+#. <h3 class="warning">@T["Your VueForm is in debug Mode"]</h3>
+msgctxt "StatCan.OrchardCore.VueForms.Views.VueFormWrapperTemplate"
+msgid "Your VueForm is in debug Mode"
+msgstr "Votre VueForm est en mode débogage"
+
+#: StatCan.OrchardCore.VueForms\Views\VueFormWrapperTemplate.cshtml:41
+#. <summary>@T["Server Error"]</summary>
+msgctxt "StatCan.OrchardCore.VueForms.Views.VueFormWrapperTemplate"
+msgid "Server Error"
+msgstr "erreur du serveur"
+
+#: StatCan.OrchardCore.VueForms\Views\VueFormWrapperTemplate.cshtml:47
+#. <summary>@T["form object"]</summary>
+msgctxt "StatCan.OrchardCore.VueForms.Views.VueFormWrapperTemplate"
+msgid "form object"
+msgstr "objet de formulaire"
+
+#: StatCan.OrchardCore.VueForms\Views\VueFormWrapperTemplate.cshtml:53
+#. <summary>@T["VeeValidate observer data"]</summary>
+msgctxt "StatCan.OrchardCore.VueForms.Views.VueFormWrapperTemplate"
+msgid "VeeValidate observer data"
+msgstr "Données d'observateur VeeValidate"
+
+#: StatCan.OrchardCore.VueForms\Views\VueFormWrapperTemplate.cshtml:59
+#. <summary>@T["Complete component data"]</summary>
+msgctxt "StatCan.OrchardCore.VueForms.Views.VueFormWrapperTemplate"
+msgid "Complete component data"
+msgstr "Données complètes des composants"
 
 #: StatCan.OrchardCore.VueForms\Views\Items\VueFormSubmittedEvent.Fields.Design.cshtml:5
 #. <h4><i class="fa fa-bolt"></i>@Model.Activity.GetTitleOrDefault(() => T["Vue Form submitted"])</h4>
