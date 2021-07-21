@@ -10,10 +10,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
-"PO-Revision-Date: 2021-04-14 09:13\n"
+"PO-Revision-Date: 2021-07-14 14:11\n"
 
 #. updater.ModelState.AddModelError(Prefix, nameof(model.Path), S["Your permalink is already in use."]);
-#: OrchardCore.Autoroute\Drivers\AutoroutePartDisplayDriver.cs:128
+#: OrchardCore.Autoroute\Drivers\AutoroutePartDisplayDriver.cs:125
 msgctxt "OrchardCore.Autoroute.Drivers.AutoroutePartDisplayDriver"
 msgid "Your permalink is already in use."
 msgstr "Votre permalien est déjà utilisé."
@@ -67,7 +67,7 @@ msgid "Your permalink is too long. The permalink can only be up to {0} character
 msgstr "Votre permalien est trop long. Le permalien ne peut être que de {0} caractères maximum."
 
 #. context.Updater.ModelState.AddModelError(nameof(model.Pattern), S["Pattern doesn't contain a valid Liquid expression. Details: {0}", string.Join(" ", errors)]);
-#: OrchardCore.Autoroute\Settings\AutoroutePartSettingsDisplayDriver.cs:69
+#: OrchardCore.Autoroute\Settings\AutoroutePartSettingsDisplayDriver.cs:58
 msgctxt "OrchardCore.Autoroute.Settings.AutoroutePartSettingsDisplayDriver"
 msgid "Pattern doesn't contain a valid Liquid expression. Details: {0}"
 msgstr "Le modèle ne contient pas d'expression Liquid valide. Détails : {0}"

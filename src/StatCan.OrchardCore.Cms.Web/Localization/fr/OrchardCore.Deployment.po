@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
-"PO-Revision-Date: 2021-04-14 09:13\n"
+"PO-Revision-Date: 2021-07-14 14:11\n"
 
 #. .Add(S["Configuration"], configuration => configuration
 #: OrchardCore.Deployment\AdminMenu.cs:25
@@ -199,65 +199,65 @@ msgid "Cancel"
 msgstr "Annuler"
 
 #. <zone Name="Title"><h1>@RenderTitleSegments(T["Deployment Plan"])</h1></zone>
-#: OrchardCore.Deployment\Views\DeploymentPlan\Display.cshtml:12
+#: OrchardCore.Deployment\Views\DeploymentPlan\Display.cshtml:11
 msgctxt "OrchardCore.Deployment.Views.DeploymentPlan.Display"
 msgid "Deployment Plan"
 msgstr "Plan de déploiement"
 
 #. <div class="d-none" id="stepOrderErrorMessage" data-message="@T["Error updating step order"]"></div>
-#: OrchardCore.Deployment\Views\DeploymentPlan\Display.cshtml:16
+#: OrchardCore.Deployment\Views\DeploymentPlan\Display.cshtml:15
 msgctxt "OrchardCore.Deployment.Views.DeploymentPlan.Display"
 msgid "Error updating step order"
 msgstr "Erreur lors de la mise à jour de l'ordre de l'étape"
 
 #. @T["Execute"]
-#: OrchardCore.Deployment\Views\DeploymentPlan\Display.cshtml:22
+#: OrchardCore.Deployment\Views\DeploymentPlan\Display.cshtml:21
 msgctxt "OrchardCore.Deployment.Views.DeploymentPlan.Display"
 msgid "Execute"
 msgstr "Exécuter"
 
 #. @T["Add Step"]
-#: OrchardCore.Deployment\Views\DeploymentPlan\Display.cshtml:28
+#: OrchardCore.Deployment\Views\DeploymentPlan\Display.cshtml:27
 msgctxt "OrchardCore.Deployment.Views.DeploymentPlan.Display"
 msgid "Add Step"
 msgstr "Ajouter une étape"
 
 #. @T["<strong>Nothing here!</strong> There are no steps on this plan for the moment."]
-#: OrchardCore.Deployment\Views\DeploymentPlan\Display.cshtml:53
+#: OrchardCore.Deployment\Views\DeploymentPlan\Display.cshtml:52
 msgctxt "OrchardCore.Deployment.Views.DeploymentPlan.Display"
 msgid "<strong>Nothing here!</strong> There are no steps on this plan for the moment."
 msgstr "<strong>Rien ici !</strong> Il n'y a pas d'étape sur ce plan pour le moment."
 
 #. <h5 class="modal-title" id="available-steps-title">@T["Available Steps"]</h5>
-#: OrchardCore.Deployment\Views\DeploymentPlan\Display.cshtml:63
+#: OrchardCore.Deployment\Views\DeploymentPlan\Display.cshtml:62
 msgctxt "OrchardCore.Deployment.Views.DeploymentPlan.Display"
 msgid "Available Steps"
 msgstr "Étapes disponibles"
 
 #. <input class="form-control" id="search-box" type="search" placeholder="@T["Filter"]" aria-label="@T["Filter"]" autofocus />
 #. <input class="form-control" id="search-box" type="search" placeholder="@T["Filter"]" aria-label="@T["Filter"]" autofocus />
-#: OrchardCore.Deployment\Views\DeploymentPlan\Display.cshtml:70
-#: OrchardCore.Deployment\Views\DeploymentPlan\Display.cshtml:70
+#: OrchardCore.Deployment\Views\DeploymentPlan\Display.cshtml:69
+#: OrchardCore.Deployment\Views\DeploymentPlan\Display.cshtml:69
 msgctxt "OrchardCore.Deployment.Views.DeploymentPlan.Display"
 msgid "Filter"
 msgstr "Filtrer"
 
 #. <button type="button" class="btn btn-secondary" data-dismiss="modal">@T["Cancel"]</button>
 #. <button type="button" class="btn btn-secondary" data-dismiss="modal">@T["Cancel"]</button>
-#: OrchardCore.Deployment\Views\DeploymentPlan\Display.cshtml:85
-#: OrchardCore.Deployment\Views\DeploymentPlan\Display.cshtml:121
+#: OrchardCore.Deployment\Views\DeploymentPlan\Display.cshtml:84
+#: OrchardCore.Deployment\Views\DeploymentPlan\Display.cshtml:120
 msgctxt "OrchardCore.Deployment.Views.DeploymentPlan.Display"
 msgid "Cancel"
 msgstr "Annuler"
 
 #. <h5 class="modal-title" id="available-targets-title">@T["Available Targets"]</h5>
-#: OrchardCore.Deployment\Views\DeploymentPlan\Display.cshtml:95
+#: OrchardCore.Deployment\Views\DeploymentPlan\Display.cshtml:94
 msgctxt "OrchardCore.Deployment.Views.DeploymentPlan.Display"
 msgid "Available Targets"
 msgstr "Cibles disponibles"
 
 #. <a class="btn btn-primary btn-sm" href="@Url.RouteUrl(routeWithId)" data-url-af="UnsafeUrl">@T["Select"]</a>
-#: OrchardCore.Deployment\Views\DeploymentPlan\Display.cshtml:113
+#: OrchardCore.Deployment\Views\DeploymentPlan\Display.cshtml:112
 msgctxt "OrchardCore.Deployment.Views.DeploymentPlan.Display"
 msgid "Select"
 msgstr "Sélectionner"

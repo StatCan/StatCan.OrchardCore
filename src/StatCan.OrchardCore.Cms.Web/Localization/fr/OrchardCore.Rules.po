@@ -10,52 +10,52 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
-"PO-Revision-Date: 2021-04-14 09:13\n"
+"PO-Revision-Date: 2021-07-14 14:11\n"
 
-#. DisplayText = S["Equals"],
-#: OrchardCore.Rules\Services\ConditionOperatorConfigureOptions.cs:24
+#. (S) => S["Equals"],
+#: OrchardCore.Rules\Services\ConditionOperatorConfigureOptions.cs:14
 msgctxt "OrchardCore.Rules.Services.ConditionOperatorConfigureOptions"
 msgid "Equals"
 msgstr "Égal à"
 
-#. DisplayText = S["Does not equal"],
-#: OrchardCore.Rules\Services\ConditionOperatorConfigureOptions.cs:31
+#. (S) => S["Does not equal"],
+#: OrchardCore.Rules\Services\ConditionOperatorConfigureOptions.cs:20
 msgctxt "OrchardCore.Rules.Services.ConditionOperatorConfigureOptions"
 msgid "Does not equal"
 msgstr "N'est pas égal"
 
-#. DisplayText = S["Starts with"],
-#: OrchardCore.Rules\Services\ConditionOperatorConfigureOptions.cs:38
+#. (S) => S["Starts with"],
+#: OrchardCore.Rules\Services\ConditionOperatorConfigureOptions.cs:26
 msgctxt "OrchardCore.Rules.Services.ConditionOperatorConfigureOptions"
 msgid "Starts with"
 msgstr "Commence par"
 
-#. DisplayText = S["Does not start with"],
-#: OrchardCore.Rules\Services\ConditionOperatorConfigureOptions.cs:45
+#. (S) => S["Does not start with"],
+#: OrchardCore.Rules\Services\ConditionOperatorConfigureOptions.cs:32
 msgctxt "OrchardCore.Rules.Services.ConditionOperatorConfigureOptions"
 msgid "Does not start with"
 msgstr "Ne commence pas par"
 
-#. DisplayText = S["Ends with"],
-#: OrchardCore.Rules\Services\ConditionOperatorConfigureOptions.cs:52
+#. (S) => S["Ends with"],
+#: OrchardCore.Rules\Services\ConditionOperatorConfigureOptions.cs:38
 msgctxt "OrchardCore.Rules.Services.ConditionOperatorConfigureOptions"
 msgid "Ends with"
 msgstr "Se termine par"
 
-#. DisplayText = S["Does not end with"],
-#: OrchardCore.Rules\Services\ConditionOperatorConfigureOptions.cs:59
+#. (S) => S["Does not end with"],
+#: OrchardCore.Rules\Services\ConditionOperatorConfigureOptions.cs:44
 msgctxt "OrchardCore.Rules.Services.ConditionOperatorConfigureOptions"
 msgid "Does not end with"
 msgstr "Ne se termine pas par"
 
-#. DisplayText = S["Contains"],
-#: OrchardCore.Rules\Services\ConditionOperatorConfigureOptions.cs:66
+#. (S) => S["Contains"],
+#: OrchardCore.Rules\Services\ConditionOperatorConfigureOptions.cs:50
 msgctxt "OrchardCore.Rules.Services.ConditionOperatorConfigureOptions"
 msgid "Contains"
 msgstr "Contient"
 
-#. DisplayText = S["Does not contain"],
-#: OrchardCore.Rules\Services\ConditionOperatorConfigureOptions.cs:73
+#. (S) => S["Does not contain"],
+#: OrchardCore.Rules\Services\ConditionOperatorConfigureOptions.cs:56
 msgctxt "OrchardCore.Rules.Services.ConditionOperatorConfigureOptions"
 msgid "Does not contain"
 msgstr "Ne contient pas"

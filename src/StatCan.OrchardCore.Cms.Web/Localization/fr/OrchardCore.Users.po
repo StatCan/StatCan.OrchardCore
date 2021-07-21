@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
-"PO-Revision-Date: 2021-04-14 09:13\n"
+"PO-Revision-Date: 2021-07-14 14:11\n"
 
 #. builder.Add(S["Security"], NavigationConstants.AdminMenuSecurityPosition, security => security
 #: OrchardCore.Users\AdminMenu.cs:27
@@ -101,49 +101,49 @@ msgid "User Reset password"
 msgstr "Réinitialisation du mot de passe d'utilisateur"
 
 #. return new SiteSettingsPropertyDeploymentStepDriver<LoginSettings>(S["Login settings"], S["Exports the Login settings."]);
-#: OrchardCore.Users\Startup.cs:282
+#: OrchardCore.Users\Startup.cs:309
 msgctxt "OrchardCore.Users.LoginDeploymentStartup"
 msgid "Login settings"
 msgstr "Paramètres de connexion"
 
 #. return new SiteSettingsPropertyDeploymentStepDriver<LoginSettings>(S["Login settings"], S["Exports the Login settings."]);
-#: OrchardCore.Users\Startup.cs:282
+#: OrchardCore.Users\Startup.cs:309
 msgctxt "OrchardCore.Users.LoginDeploymentStartup"
 msgid "Exports the Login settings."
 msgstr "Exporte les paramètres de connexion."
 
 #. return new SiteSettingsPropertyDeploymentStepDriver<ChangeEmailSettings>(S["Change Email settings"], S["Exports the Change Email settings."]);
-#: OrchardCore.Users\Startup.cs:333
+#: OrchardCore.Users\Startup.cs:360
 msgctxt "OrchardCore.Users.ChangeEmailDeploymentStartup"
 msgid "Change Email settings"
 msgstr "Paramètres de changement d'email"
 
 #. return new SiteSettingsPropertyDeploymentStepDriver<ChangeEmailSettings>(S["Change Email settings"], S["Exports the Change Email settings."]);
-#: OrchardCore.Users\Startup.cs:333
+#: OrchardCore.Users\Startup.cs:360
 msgctxt "OrchardCore.Users.ChangeEmailDeploymentStartup"
 msgid "Exports the Change Email settings."
 msgstr "Exporte les paramètres de changement d'email."
 
 #. return new SiteSettingsPropertyDeploymentStepDriver<RegistrationSettings>(S["Registration settings"], S["Exports the Registration settings."]);
-#: OrchardCore.Users\Startup.cs:376
+#: OrchardCore.Users\Startup.cs:419
 msgctxt "OrchardCore.Users.RegistrationDeploymentStartup"
 msgid "Registration settings"
 msgstr "Paramètres d'inscription"
 
 #. return new SiteSettingsPropertyDeploymentStepDriver<RegistrationSettings>(S["Registration settings"], S["Exports the Registration settings."]);
-#: OrchardCore.Users\Startup.cs:376
+#: OrchardCore.Users\Startup.cs:419
 msgctxt "OrchardCore.Users.RegistrationDeploymentStartup"
 msgid "Exports the Registration settings."
 msgstr "Exporte les paramètres d'inscription."
 
 #. return new SiteSettingsPropertyDeploymentStepDriver<ResetPasswordSettings>(S["Reset Password settings"], S["Exports the Reset Password settings."]);
-#: OrchardCore.Users\Startup.cs:440
+#: OrchardCore.Users\Startup.cs:483
 msgctxt "OrchardCore.Users.ResetPasswordDeploymentStartup"
 msgid "Reset Password settings"
 msgstr "Paramètres de réinitialisation du mot de passe"
 
 #. return new SiteSettingsPropertyDeploymentStepDriver<ResetPasswordSettings>(S["Reset Password settings"], S["Exports the Reset Password settings."]);
-#: OrchardCore.Users\Startup.cs:440
+#: OrchardCore.Users\Startup.cs:483
 msgctxt "OrchardCore.Users.ResetPasswordDeploymentStartup"
 msgid "Exports the Reset Password settings."
 msgstr "Exporte les paramètres de réinitialisation du mot de passe."
@@ -155,182 +155,200 @@ msgid "User created successfully"
 msgstr "Utilisateur créé avec succès"
 
 #. ModelState.AddModelError(string.Empty, S["You must confirm your email."]);
-#: OrchardCore.Users\Controllers\AccountController.cs:164
+#: OrchardCore.Users\Controllers\AccountController.cs:162
 msgctxt "OrchardCore.Users.Controllers.AccountController"
 msgid "You must confirm your email."
 msgstr "Vous devez confirmer votre adresse email."
 
 #. ModelState.AddModelError(String.Empty, S["The specified user is not allowed to sign in."]);
-#: OrchardCore.Users\Controllers\AccountController.cs:178
+#: OrchardCore.Users\Controllers\AccountController.cs:176
 msgctxt "OrchardCore.Users.Controllers.AccountController"
 msgid "The specified user is not allowed to sign in."
 msgstr "L'utilisateur spécifié n'est pas autorisé à se connecter."
 
 #. ModelState.AddModelError("", S["Local login is disabled."]);
-#: OrchardCore.Users\Controllers\AccountController.cs:200
+#: OrchardCore.Users\Controllers\AccountController.cs:198
 msgctxt "OrchardCore.Users.Controllers.AccountController"
 msgid "Local login is disabled."
 msgstr "La connexion locale est désactivée."
+
+#. ModelState.AddModelError(string.Empty, S["The account is locked out"]);
+#: OrchardCore.Users\Controllers\AccountController.cs:226
+msgctxt "OrchardCore.Users.Controllers.AccountController"
+msgid "The account is locked out"
+msgstr "Le compte est verrouillé."
 
 #. ModelState.AddModelError(string.Empty, S["Invalid login attempt."]);
 #. ModelState.AddModelError(string.Empty, S["Invalid login attempt."]);
 #. ModelState.AddModelError(string.Empty, S["Invalid login attempt."]);
 #. ModelState.AddModelError(string.Empty, S["Invalid login attempt."]);
-#: OrchardCore.Users\Controllers\AccountController.cs:229
-#: OrchardCore.Users\Controllers\AccountController.cs:430
-#: OrchardCore.Users\Controllers\AccountController.cs:506
-#: OrchardCore.Users\Controllers\AccountController.cs:639
+#: OrchardCore.Users\Controllers\AccountController.cs:235
+#: OrchardCore.Users\Controllers\AccountController.cs:411
+#: OrchardCore.Users\Controllers\AccountController.cs:501
+#: OrchardCore.Users\Controllers\AccountController.cs:649
 msgctxt "OrchardCore.Users.Controllers.AccountController"
 msgid "Invalid login attempt."
 msgstr "Tentative de connexion non valide."
 
 #. _notifier.Success(H["Your password has been changed successfully."]);
-#: OrchardCore.Users\Controllers\AccountController.cs:266
+#: OrchardCore.Users\Controllers\AccountController.cs:274
 msgctxt "OrchardCore.Users.Controllers.AccountController"
 msgid "Your password has been changed successfully."
 msgstr "Votre mot de passe a été modifié avec succès."
 
 #. ModelState.AddModelError("", S["An error occurred in external provider."]);
 #. ModelState.AddModelError("", S["An error occurred in external provider."]);
-#: OrchardCore.Users\Controllers\AccountController.cs:402
-#: OrchardCore.Users\Controllers\AccountController.cs:410
+#: OrchardCore.Users\Controllers\AccountController.cs:383
+#: OrchardCore.Users\Controllers\AccountController.cs:391
 msgctxt "OrchardCore.Users.Controllers.AccountController"
 msgid "An error occurred in external provider."
 msgstr "Une erreur est survenue dans le fournisseur externe."
 
 #. string message = S["Site does not allow user registration."];
-#: OrchardCore.Users\Controllers\AccountController.cs:457
+#: OrchardCore.Users\Controllers\AccountController.cs:438
 msgctxt "OrchardCore.Users.Controllers.AccountController"
 msgid "Site does not allow user registration."
 msgstr "Le site ne permet pas l'inscription d’utilisateur."
 
 #. }, S["Confirm your account"], _logger);
-#. user = await this.RegisterUser(new RegisterViewModel() { UserName = model.UserName, Email = model.Email, Password = model.Password, ConfirmPassword = model.ConfirmPassword }, S["Confirm your account"], _logger);
-#: OrchardCore.Users\Controllers\AccountController.cs:487
-#: OrchardCore.Users\Controllers\AccountController.cs:582
+#. iUser = await this.RegisterUser(new RegisterViewModel() { UserName = model.UserName, Email = model.Email, Password = model.Password, ConfirmPassword = model.ConfirmPassword }, S["Confirm your account"], _logger);
+#: OrchardCore.Users\Controllers\AccountController.cs:468
+#: OrchardCore.Users\Controllers\AccountController.cs:578
 msgctxt "OrchardCore.Users.Controllers.AccountController"
 msgid "Confirm your account"
 msgstr "Confirmer votre compte"
 
-#. new SelectListItem() { Text = S["All Users"], Value = nameof(UsersFilter.All) },
-#: OrchardCore.Users\Controllers\AdminController.cs:129
+#. new SelectListItem() { Text = S["All Users"], Value = nameof(UsersFilter.All), Selected = (options.Filter == UsersFilter.All) },
+#: OrchardCore.Users\Controllers\AdminController.cs:145
 msgctxt "OrchardCore.Users.Controllers.AdminController"
 msgid "All Users"
 msgstr "Tous les utilisateurs"
 
-#. new SelectListItem() { Text = S["Enabled Users"], Value = nameof(UsersFilter.Enabled) },
-#: OrchardCore.Users\Controllers\AdminController.cs:130
+#. new SelectListItem() { Text = S["Enabled Users"], Value = nameof(UsersFilter.Enabled), Selected = (options.Filter == UsersFilter.Enabled) },
+#: OrchardCore.Users\Controllers\AdminController.cs:146
 msgctxt "OrchardCore.Users.Controllers.AdminController"
 msgid "Enabled Users"
 msgstr "Utilisateurs activés"
 
-#. new SelectListItem() { Text = S["Disabled Users"], Value = nameof(UsersFilter.Disabled) }
-#: OrchardCore.Users\Controllers\AdminController.cs:131
+#. new SelectListItem() { Text = S["Disabled Users"], Value = nameof(UsersFilter.Disabled), Selected = (options.Filter == UsersFilter.Disabled) }
+#: OrchardCore.Users\Controllers\AdminController.cs:147
 msgctxt "OrchardCore.Users.Controllers.AdminController"
 msgid "Disabled Users"
 msgstr "Utilisateurs désactivés"
 
-#. new SelectListItem() { Text = S["Name"], Value = nameof(UsersOrder.Name) },
-#: OrchardCore.Users\Controllers\AdminController.cs:139
+#. new SelectListItem() { Text = S["Name"], Value = nameof(UsersOrder.Name), Selected = (options.Order == UsersOrder.Name) },
+#: OrchardCore.Users\Controllers\AdminController.cs:155
 msgctxt "OrchardCore.Users.Controllers.AdminController"
 msgid "Name"
 msgstr "Nom"
 
-#. new SelectListItem() { Text = S["Email"], Value = nameof(UsersOrder.Email) },
-#: OrchardCore.Users\Controllers\AdminController.cs:140
+#. new SelectListItem() { Text = S["Email"], Value = nameof(UsersOrder.Email), Selected = (options.Order == UsersOrder.Email) },
+#: OrchardCore.Users\Controllers\AdminController.cs:156
 msgctxt "OrchardCore.Users.Controllers.AdminController"
 msgid "Email"
 msgstr "Email"
 
 #. new SelectListItem() { Text = S["Approve"], Value = nameof(UsersBulkAction.Approve) },
-#: OrchardCore.Users\Controllers\AdminController.cs:147
+#: OrchardCore.Users\Controllers\AdminController.cs:163
 msgctxt "OrchardCore.Users.Controllers.AdminController"
 msgid "Approve"
 msgstr "Approuver"
 
 #. new SelectListItem() { Text = S["Enable"], Value = nameof(UsersBulkAction.Enable) },
-#: OrchardCore.Users\Controllers\AdminController.cs:148
+#: OrchardCore.Users\Controllers\AdminController.cs:164
 msgctxt "OrchardCore.Users.Controllers.AdminController"
 msgid "Enable"
 msgstr "Activer"
 
 #. new SelectListItem() { Text = S["Disable"], Value = nameof(UsersBulkAction.Disable) },
-#: OrchardCore.Users\Controllers\AdminController.cs:149
+#: OrchardCore.Users\Controllers\AdminController.cs:165
 msgctxt "OrchardCore.Users.Controllers.AdminController"
 msgid "Disable"
 msgstr "Désactiver"
 
 #. new SelectListItem() { Text = S["Delete"], Value = nameof(UsersBulkAction.Delete) }
-#: OrchardCore.Users\Controllers\AdminController.cs:150
+#: OrchardCore.Users\Controllers\AdminController.cs:166
 msgctxt "OrchardCore.Users.Controllers.AdminController"
 msgid "Delete"
 msgstr "Supprimer"
 
-#. new SelectListItem() { Text = S["All roles"], Value = String.Empty },
-#: OrchardCore.Users\Controllers\AdminController.cs:158
+#. new SelectListItem() { Text = S["All roles"], Value = String.Empty, Selected = (options.SelectedRole == String.Empty) },
+#: OrchardCore.Users\Controllers\AdminController.cs:174
 msgctxt "OrchardCore.Users.Controllers.AdminController"
 msgid "All roles"
 msgstr "Tous les rôles"
 
-#. new SelectListItem() { Text = S["Authenticated (no roles)"], Value = "Authenticated" }
-#: OrchardCore.Users\Controllers\AdminController.cs:159
+#. new SelectListItem() { Text = S["Authenticated (no roles)"], Value = "Authenticated", Selected = (String.Equals(options.SelectedRole, "Authenticated", StringComparison.OrdinalIgnoreCase)) }
+#: OrchardCore.Users\Controllers\AdminController.cs:175
 msgctxt "OrchardCore.Users.Controllers.AdminController"
 msgid "Authenticated (no roles)"
 msgstr "Authentifiés (sans rôles)"
 
 #. _notifier.Success(H["User {0} successfully approved.", user.UserName]);
-#: OrchardCore.Users\Controllers\AdminController.cs:231
+#: OrchardCore.Users\Controllers\AdminController.cs:257
 msgctxt "OrchardCore.Users.Controllers.AdminController"
 msgid "User {0} successfully approved."
 msgstr "Utilisateur {0} approuvé avec succès."
 
 #. _notifier.Success(H["User {0} successfully deleted.", user.UserName]);
-#: OrchardCore.Users\Controllers\AdminController.cs:243
+#: OrchardCore.Users\Controllers\AdminController.cs:269
 msgctxt "OrchardCore.Users.Controllers.AdminController"
 msgid "User {0} successfully deleted."
 msgstr "Utilisateur {0} supprimé avec succès."
 
 #. _notifier.Success(H["User {0} successfully disabled.", user.UserName]);
-#: OrchardCore.Users\Controllers\AdminController.cs:255
+#: OrchardCore.Users\Controllers\AdminController.cs:281
 msgctxt "OrchardCore.Users.Controllers.AdminController"
 msgid "User {0} successfully disabled."
 msgstr "Utilisateur {0} désactivé avec succès."
 
 #. _notifier.Success(H["User {0} successfully enabled.", user.UserName]);
-#: OrchardCore.Users\Controllers\AdminController.cs:267
+#: OrchardCore.Users\Controllers\AdminController.cs:293
 msgctxt "OrchardCore.Users.Controllers.AdminController"
 msgid "User {0} successfully enabled."
 msgstr "Utilisateur {0} activé avec succès."
 
 #. _notifier.Success(H["User created successfully."]);
-#: OrchardCore.Users\Controllers\AdminController.cs:316
+#: OrchardCore.Users\Controllers\AdminController.cs:342
 msgctxt "OrchardCore.Users.Controllers.AdminController"
 msgid "User created successfully."
 msgstr "Utilisateur créé avec succès."
 
 #. _notifier.Success(H["User updated successfully."]);
-#: OrchardCore.Users\Controllers\AdminController.cs:404
+#: OrchardCore.Users\Controllers\AdminController.cs:430
 msgctxt "OrchardCore.Users.Controllers.AdminController"
 msgid "User updated successfully."
 msgstr "Utilisateur mis à jour avec succès."
 
 #. _notifier.Success(H["User deleted successfully."]);
-#: OrchardCore.Users\Controllers\AdminController.cs:445
+#: OrchardCore.Users\Controllers\AdminController.cs:471
 msgctxt "OrchardCore.Users.Controllers.AdminController"
 msgid "User deleted successfully."
 msgstr "Utilisateur supprimé avec succès."
 
 #. _notifier.Error(H["Could not delete the user."]);
-#: OrchardCore.Users\Controllers\AdminController.cs:451
+#: OrchardCore.Users\Controllers\AdminController.cs:477
 msgctxt "OrchardCore.Users.Controllers.AdminController"
 msgid "Could not delete the user."
 msgstr "Impossible de supprimer l'utilisateur."
 
 #. _notifier.Success(H["Password updated correctly."]);
-#: OrchardCore.Users\Controllers\AdminController.cs:502
+#: OrchardCore.Users\Controllers\AdminController.cs:528
 msgctxt "OrchardCore.Users.Controllers.AdminController"
 msgid "Password updated correctly."
 msgstr "Mot de passe correctement mis à jour."
+
+#. _notifier.Success(H["User unlocked successfully."]);
+#: OrchardCore.Users\Controllers\AdminController.cs:557
+msgctxt "OrchardCore.Users.Controllers.AdminController"
+msgid "User unlocked successfully."
+msgstr "Utilisateur déverrouillé avec succès."
+
+#. _notifier.Error(H["Could not unlock the user."]);
+#: OrchardCore.Users\Controllers\AdminController.cs:563
+msgctxt "OrchardCore.Users.Controllers.AdminController"
+msgid "Could not unlock the user."
+msgstr "Impossible de déverrouiller l'utilisateur."
 
 #. ModelState.AddModelError("Email", S["This email is already your current one."]);
 #: OrchardCore.Users\Controllers\ChangeEmailController.cs:67
@@ -362,16 +380,16 @@ msgctxt "OrchardCore.Users.Controllers.RegistrationController"
 msgid "Invalid email."
 msgstr "Email invalide."
 
-#. if (await this.RegisterUser(model, S["Confirm your account"], _logger) != null)
+#. var iUser = await this.RegisterUser(model, S["Confirm your account"], _logger);
 #. await this.SendEmailConfirmationTokenAsync(user, S["Confirm your account"]);
-#: OrchardCore.Users\Controllers\RegistrationController.cs:102
-#: OrchardCore.Users\Controllers\RegistrationController.cs:151
+#: OrchardCore.Users\Controllers\RegistrationController.cs:101
+#: OrchardCore.Users\Controllers\RegistrationController.cs:171
 msgctxt "OrchardCore.Users.Controllers.RegistrationController"
 msgid "Confirm your account"
 msgstr "Confirmer votre compte"
 
 #. _notifier.Success(H["Verification email sent."]);
-#: OrchardCore.Users\Controllers\RegistrationController.cs:153
+#: OrchardCore.Users\Controllers\RegistrationController.cs:173
 msgctxt "OrchardCore.Users.Controllers.RegistrationController"
 msgid "Verification email sent."
 msgstr "Email de vérification envoyé."
@@ -431,13 +449,13 @@ msgid "Invalid Email."
 msgstr "Email invalide."
 
 #. yield return new ValidationResult(S["Email is required."], new[] { nameof(Email) });
-#: OrchardCore.Users\ViewModels\ForgotPasswordViewModel.cs:22
+#: OrchardCore.Users\ViewModels\ForgotPasswordViewModel.cs:21
 msgctxt "OrchardCore.Users.ViewModels.ForgotPasswordViewModel"
 msgid "Email is required."
 msgstr "L'email est obligatoire."
 
 #. yield return new ValidationResult(S["Invalid Email."], new[] { nameof(Email) });
-#: OrchardCore.Users\ViewModels\ForgotPasswordViewModel.cs:26
+#: OrchardCore.Users\ViewModels\ForgotPasswordViewModel.cs:25
 msgctxt "OrchardCore.Users.ViewModels.ForgotPasswordViewModel"
 msgid "Invalid Email."
 msgstr "Email invalide."
@@ -497,58 +515,208 @@ msgid "Password must be between {0} and {1} characters"
 msgstr "Le mot de passe doit contenir entre {0} et {1} caractères"
 
 #. yield return new ValidationResult(S["Username is required."], new[] { nameof(UserName) });
-#: OrchardCore.Users\ViewModels\RegisterViewModel.cs:29
+#: OrchardCore.Users\ViewModels\RegisterViewModel.cs:28
 msgctxt "OrchardCore.Users.ViewModels.RegisterViewModel"
 msgid "Username is required."
 msgstr "Nom d'utilisateur requis."
 
 #. yield return new ValidationResult(S["Email is required."], new[] { nameof(Email) });
-#: OrchardCore.Users\ViewModels\RegisterViewModel.cs:34
+#: OrchardCore.Users\ViewModels\RegisterViewModel.cs:33
 msgctxt "OrchardCore.Users.ViewModels.RegisterViewModel"
 msgid "Email is required."
 msgstr "L'email est obligatoire."
 
 #. yield return new ValidationResult(S["Invalid Email."], new[] { nameof(Email) });
-#: OrchardCore.Users\ViewModels\RegisterViewModel.cs:38
+#: OrchardCore.Users\ViewModels\RegisterViewModel.cs:37
 msgctxt "OrchardCore.Users.ViewModels.RegisterViewModel"
 msgid "Invalid Email."
 msgstr "Email invalide."
 
 #. yield return new ValidationResult(S["Password is required."], new[] { nameof(Password) });
-#: OrchardCore.Users\ViewModels\RegisterViewModel.cs:43
+#: OrchardCore.Users\ViewModels\RegisterViewModel.cs:42
 msgctxt "OrchardCore.Users.ViewModels.RegisterViewModel"
 msgid "Password is required."
 msgstr "Le mot de passe est requis."
 
 #. yield return new ValidationResult(S["The new password and confirmation password do not match."], new[] { nameof(ConfirmPassword) });
-#: OrchardCore.Users\ViewModels\RegisterViewModel.cs:48
+#: OrchardCore.Users\ViewModels\RegisterViewModel.cs:47
 msgctxt "OrchardCore.Users.ViewModels.RegisterViewModel"
 msgid "The new password and confirmation password do not match."
 msgstr "Le nouveau mot de passe et le mot de passe de confirmation ne correspondent pas."
 
 #. yield return new ValidationResult(S["Email is required."], new[] { nameof(Email) });
-#: OrchardCore.Users\ViewModels\ResetPasswordViewModel.cs:29
+#: OrchardCore.Users\ViewModels\ResetPasswordViewModel.cs:28
 msgctxt "OrchardCore.Users.ViewModels.ResetPasswordViewModel"
 msgid "Email is required."
 msgstr "L'email est obligatoire."
 
 #. yield return new ValidationResult(S["Invalid Email."], new[] { nameof(Email) });
-#: OrchardCore.Users\ViewModels\ResetPasswordViewModel.cs:33
+#: OrchardCore.Users\ViewModels\ResetPasswordViewModel.cs:32
 msgctxt "OrchardCore.Users.ViewModels.ResetPasswordViewModel"
 msgid "Invalid Email."
 msgstr "Email invalide."
 
 #. yield return new ValidationResult(S["New password is required."], new[] { nameof(NewPassword) });
-#: OrchardCore.Users\ViewModels\ResetPasswordViewModel.cs:38
+#: OrchardCore.Users\ViewModels\ResetPasswordViewModel.cs:37
 msgctxt "OrchardCore.Users.ViewModels.ResetPasswordViewModel"
 msgid "New password is required."
 msgstr "Le nouveau mot de passe est requis."
 
 #. yield return new ValidationResult(S["The new password and confirmation password do not match."], new[] { nameof(PasswordConfirmation) });
-#: OrchardCore.Users\ViewModels\ResetPasswordViewModel.cs:43
+#: OrchardCore.Users\ViewModels\ResetPasswordViewModel.cs:42
 msgctxt "OrchardCore.Users.ViewModels.ResetPasswordViewModel"
 msgid "The new password and confirmation password do not match."
 msgstr "Le nouveau mot de passe et le mot de passe de confirmation ne correspondent pas."
+
+#. options.For<UserRegistrationAuditTrailEventConfiguration>(User, S => S["User"])
+#: OrchardCore.Users\AuditTrail\Registration\UserRegistrationAuditTrailEventConfiguration.cs:13
+msgctxt "OrchardCore.Users.AuditTrail.Registration.UserRegistrationAuditTrailEventConfiguration"
+msgid "User"
+msgstr "Utilisateur"
+
+#. .WithEvent(Registered, S => S["Registered"], S => S["A user was successfully registered."], true);
+#: OrchardCore.Users\AuditTrail\Registration\UserRegistrationAuditTrailEventConfiguration.cs:14
+msgctxt "OrchardCore.Users.AuditTrail.Registration.UserRegistrationAuditTrailEventConfiguration"
+msgid "Registered"
+msgstr "Enregistré"
+
+#. .WithEvent(Registered, S => S["Registered"], S => S["A user was successfully registered."], true);
+#: OrchardCore.Users\AuditTrail\Registration\UserRegistrationAuditTrailEventConfiguration.cs:14
+msgctxt "OrchardCore.Users.AuditTrail.Registration.UserRegistrationAuditTrailEventConfiguration"
+msgid "A user was successfully registered."
+msgstr "Un utilisateur a été enregistré avec succès."
+
+#. options.For<UserResetPasswordAuditTrailEventConfiguration>(User, S => S["User"])
+#: OrchardCore.Users\AuditTrail\ResetPassword\UserResetPasswordAuditTrailEventConfiguration.cs:14
+msgctxt "OrchardCore.Users.AuditTrail.ResetPassword.UserResetPasswordAuditTrailEventConfiguration"
+msgid "User"
+msgstr "Utilisateur"
+
+#. .WithEvent(PasswordReset, S => S["Password reset"], S => S["A user successfully reset the password."], true)
+#: OrchardCore.Users\AuditTrail\ResetPassword\UserResetPasswordAuditTrailEventConfiguration.cs:15
+msgctxt "OrchardCore.Users.AuditTrail.ResetPassword.UserResetPasswordAuditTrailEventConfiguration"
+msgid "Password reset"
+msgstr "Réinitialisation du mot de passe"
+
+#. .WithEvent(PasswordReset, S => S["Password reset"], S => S["A user successfully reset the password."], true)
+#: OrchardCore.Users\AuditTrail\ResetPassword\UserResetPasswordAuditTrailEventConfiguration.cs:15
+msgctxt "OrchardCore.Users.AuditTrail.ResetPassword.UserResetPasswordAuditTrailEventConfiguration"
+msgid "A user successfully reset the password."
+msgstr "Un utilisateur a réinitialisé son mot de passe avec succès."
+
+#. .WithEvent(PasswordRecovered, S => S["Password recovered"], S => S["A user successfully recovered the password."], true);
+#: OrchardCore.Users\AuditTrail\ResetPassword\UserResetPasswordAuditTrailEventConfiguration.cs:16
+msgctxt "OrchardCore.Users.AuditTrail.ResetPassword.UserResetPasswordAuditTrailEventConfiguration"
+msgid "Password recovered"
+msgstr "Mot de passe récupéré"
+
+#. .WithEvent(PasswordRecovered, S => S["Password recovered"], S => S["A user successfully recovered the password."], true);
+#: OrchardCore.Users\AuditTrail\ResetPassword\UserResetPasswordAuditTrailEventConfiguration.cs:16
+msgctxt "OrchardCore.Users.AuditTrail.ResetPassword.UserResetPasswordAuditTrailEventConfiguration"
+msgid "A user successfully recovered the password."
+msgstr "Un utilisateur a récupéré son mot de passe avec succès."
+
+#. options.For<UserAuditTrailEventConfiguration>(User, S => S["User"])
+#: OrchardCore.Users\AuditTrail\Services\UserAuditTrailEventConfiguration.cs:21
+msgctxt "OrchardCore.Users.AuditTrail.Services.UserAuditTrailEventConfiguration"
+msgid "User"
+msgstr "Utilisateur"
+
+#. .WithEvent(LoggedIn, S => S["Logged in"], S => S["A user was successfully logged in."], true)
+#: OrchardCore.Users\AuditTrail\Services\UserAuditTrailEventConfiguration.cs:22
+msgctxt "OrchardCore.Users.AuditTrail.Services.UserAuditTrailEventConfiguration"
+msgid "Logged in"
+msgstr "Connecté"
+
+#. .WithEvent(LoggedIn, S => S["Logged in"], S => S["A user was successfully logged in."], true)
+#: OrchardCore.Users\AuditTrail\Services\UserAuditTrailEventConfiguration.cs:22
+msgctxt "OrchardCore.Users.AuditTrail.Services.UserAuditTrailEventConfiguration"
+msgid "A user was successfully logged in."
+msgstr "Un utilisateur s'est connecté avec succès."
+
+#. .WithEvent(LogInFailed, S => S["Login failed"], S => S["An attempt to login failed."], false) // Intentionally not enabled by default.
+#: OrchardCore.Users\AuditTrail\Services\UserAuditTrailEventConfiguration.cs:23
+msgctxt "OrchardCore.Users.AuditTrail.Services.UserAuditTrailEventConfiguration"
+msgid "Login failed"
+msgstr "Échec de connexion"
+
+#. .WithEvent(LogInFailed, S => S["Login failed"], S => S["An attempt to login failed."], false) // Intentionally not enabled by default.
+#: OrchardCore.Users\AuditTrail\Services\UserAuditTrailEventConfiguration.cs:23
+msgctxt "OrchardCore.Users.AuditTrail.Services.UserAuditTrailEventConfiguration"
+msgid "An attempt to login failed."
+msgstr "Une tentative de connexion a échoué."
+
+#. .WithEvent(LogInIsLockedOut, S => S["Login account locked"], S => S["An attempt to login failed because the user is locked out."], true)
+#: OrchardCore.Users\AuditTrail\Services\UserAuditTrailEventConfiguration.cs:24
+msgctxt "OrchardCore.Users.AuditTrail.Services.UserAuditTrailEventConfiguration"
+msgid "Login account locked"
+msgstr "Compte verrouillé"
+
+#. .WithEvent(LogInIsLockedOut, S => S["Login account locked"], S => S["An attempt to login failed because the user is locked out."], true)
+#: OrchardCore.Users\AuditTrail\Services\UserAuditTrailEventConfiguration.cs:24
+msgctxt "OrchardCore.Users.AuditTrail.Services.UserAuditTrailEventConfiguration"
+msgid "An attempt to login failed because the user is locked out."
+msgstr "Une tentative de connexion a échoué car l'utilisateur est bloqué."
+
+#. .WithEvent(Enabled, S => S["Enabled"], S => S["A user was enabled."], true)
+#: OrchardCore.Users\AuditTrail\Services\UserAuditTrailEventConfiguration.cs:25
+msgctxt "OrchardCore.Users.AuditTrail.Services.UserAuditTrailEventConfiguration"
+msgid "Enabled"
+msgstr "Activé"
+
+#. .WithEvent(Enabled, S => S["Enabled"], S => S["A user was enabled."], true)
+#: OrchardCore.Users\AuditTrail\Services\UserAuditTrailEventConfiguration.cs:25
+msgctxt "OrchardCore.Users.AuditTrail.Services.UserAuditTrailEventConfiguration"
+msgid "A user was enabled."
+msgstr "Un utilisateur a été activé."
+
+#. .WithEvent(Disabled, S => S["Disabled"], S => S["A user was disabled."], true)
+#: OrchardCore.Users\AuditTrail\Services\UserAuditTrailEventConfiguration.cs:26
+msgctxt "OrchardCore.Users.AuditTrail.Services.UserAuditTrailEventConfiguration"
+msgid "Disabled"
+msgstr "Désactivé"
+
+#. .WithEvent(Disabled, S => S["Disabled"], S => S["A user was disabled."], true)
+#: OrchardCore.Users\AuditTrail\Services\UserAuditTrailEventConfiguration.cs:26
+msgctxt "OrchardCore.Users.AuditTrail.Services.UserAuditTrailEventConfiguration"
+msgid "A user was disabled."
+msgstr "Un utilisateur a été désactivé."
+
+#. .WithEvent(Created, S => S["Created"], S => S["A user was created."], true)
+#: OrchardCore.Users\AuditTrail\Services\UserAuditTrailEventConfiguration.cs:27
+msgctxt "OrchardCore.Users.AuditTrail.Services.UserAuditTrailEventConfiguration"
+msgid "Created"
+msgstr "Créé"
+
+#. .WithEvent(Created, S => S["Created"], S => S["A user was created."], true)
+#: OrchardCore.Users\AuditTrail\Services\UserAuditTrailEventConfiguration.cs:27
+msgctxt "OrchardCore.Users.AuditTrail.Services.UserAuditTrailEventConfiguration"
+msgid "A user was created."
+msgstr "Un utilisateur a été créé."
+
+#. .WithEvent(Updated, S => S["Updated"], S => S["A user was updated."], true)
+#: OrchardCore.Users\AuditTrail\Services\UserAuditTrailEventConfiguration.cs:28
+msgctxt "OrchardCore.Users.AuditTrail.Services.UserAuditTrailEventConfiguration"
+msgid "Updated"
+msgstr "Mis à jour"
+
+#. .WithEvent(Updated, S => S["Updated"], S => S["A user was updated."], true)
+#: OrchardCore.Users\AuditTrail\Services\UserAuditTrailEventConfiguration.cs:28
+msgctxt "OrchardCore.Users.AuditTrail.Services.UserAuditTrailEventConfiguration"
+msgid "A user was updated."
+msgstr "Un utilisateur a été mis à jour."
+
+#. .WithEvent(Deleted, S => S["Deleted"], S => S["A user was deleted."], true);
+#: OrchardCore.Users\AuditTrail\Services\UserAuditTrailEventConfiguration.cs:29
+msgctxt "OrchardCore.Users.AuditTrail.Services.UserAuditTrailEventConfiguration"
+msgid "Deleted"
+msgstr "Supprimé"
+
+#. .WithEvent(Deleted, S => S["Deleted"], S => S["A user was deleted."], true);
+#: OrchardCore.Users\AuditTrail\Services\UserAuditTrailEventConfiguration.cs:29
+msgctxt "OrchardCore.Users.AuditTrail.Services.UserAuditTrailEventConfiguration"
+msgid "A user was deleted."
+msgstr "Un utilisateur a été désactivé."
 
 #. public override LocalizedString DisplayText => S["Assign User Role Task"];
 #: OrchardCore.Users\Workflows\Activities\AssignUserRoleTask.cs:31
@@ -580,32 +748,32 @@ msgctxt "OrchardCore.Users.Workflows.Activities.RegisterUserTask"
 msgid "Register User Task"
 msgstr "Tâche inscrire un utilisateur"
 
-#. public override LocalizedString Category => S["Content"];
+#. public override LocalizedString Category => S["User"];
 #: OrchardCore.Users\Workflows\Activities\RegisterUserTask.cs:58
 msgctxt "OrchardCore.Users.Workflows.Activities.RegisterUserTask"
-msgid "Content"
-msgstr "Contenu"
+msgid "User"
+msgstr "Utilisateur"
 
 #. return Outcomes(S["Done"], S["Valid"], S["Invalid"]);
-#: OrchardCore.Users\Workflows\Activities\RegisterUserTask.cs:83
+#: OrchardCore.Users\Workflows\Activities\RegisterUserTask.cs:88
 msgctxt "OrchardCore.Users.Workflows.Activities.RegisterUserTask"
 msgid "Done"
 msgstr "Terminé"
 
 #. return Outcomes(S["Done"], S["Valid"], S["Invalid"]);
-#: OrchardCore.Users\Workflows\Activities\RegisterUserTask.cs:83
+#: OrchardCore.Users\Workflows\Activities\RegisterUserTask.cs:88
 msgctxt "OrchardCore.Users.Workflows.Activities.RegisterUserTask"
 msgid "Valid"
 msgstr "Valide"
 
 #. return Outcomes(S["Done"], S["Valid"], S["Invalid"]);
-#: OrchardCore.Users\Workflows\Activities\RegisterUserTask.cs:83
+#: OrchardCore.Users\Workflows\Activities\RegisterUserTask.cs:88
 msgctxt "OrchardCore.Users.Workflows.Activities.RegisterUserTask"
 msgid "Invalid"
 msgstr "Invalide"
 
 #. updater.ModelState.TryAddModelError("", S["No email service is available"]);
-#: OrchardCore.Users\Workflows\Activities\RegisterUserTask.cs:148
+#: OrchardCore.Users\Workflows\Activities\RegisterUserTask.cs:155
 msgctxt "OrchardCore.Users.Workflows.Activities.RegisterUserTask"
 msgid "No email service is available"
 msgstr "Aucun service de courriel n'est disponible"
@@ -796,80 +964,86 @@ msgctxt "OrchardCore.Users.Views.RegistrationSettings.Edit"
 msgid "The users whose email address has not been confirmed will not be able to login or reset their password."
 msgstr "Les utilisateurs dont l'adresse e-mail n'a pas été confirmée ne pourront pas se connecter ou réinitialiser leur mot de passe."
 
-#. <label class="custom-control-label" asp-for="UseSiteTheme">@T["Use site theme for registration page"]</label>
+#. <label class="custom-control-label" asp-for="UsersAreModerated">@T["Users must be approved before they can log in"]</label>
 #: OrchardCore.Users\Views\RegistrationSettings.Edit.cshtml:45
+msgctxt "OrchardCore.Users.Views.RegistrationSettings.Edit"
+msgid "Users must be approved before they can log in"
+msgstr "Les utilisateurs doivent être approuvés avant de pouvoir se connecter"
+
+#. <label class="custom-control-label" asp-for="UseSiteTheme">@T["Use site theme for registration page"]</label>
+#: OrchardCore.Users\Views\RegistrationSettings.Edit.cshtml:53
 msgctxt "OrchardCore.Users.Views.RegistrationSettings.Edit"
 msgid "Use site theme for registration page"
 msgstr "Utiliser le thème du site pour la page d'inscription"
 
 #. <span class="hint dashed">@T["Requires an active site theme."]</span>
-#: OrchardCore.Users\Views\RegistrationSettings.Edit.cshtml:46
+#: OrchardCore.Users\Views\RegistrationSettings.Edit.cshtml:54
 msgctxt "OrchardCore.Users.Views.RegistrationSettings.Edit"
 msgid "Requires an active site theme."
 msgstr "Nécessite un thème actif."
 
 #. <h5 class="form-group">@T["External Authentication"]<span class="hint dashed">@T["Settings when registering with external authentication providers"]</span></h5>
-#: OrchardCore.Users\Views\RegistrationSettings.Edit.cshtml:50
+#: OrchardCore.Users\Views\RegistrationSettings.Edit.cshtml:58
 msgctxt "OrchardCore.Users.Views.RegistrationSettings.Edit"
 msgid "External Authentication"
 msgstr "Authentification externe"
 
 #. <h5 class="form-group">@T["External Authentication"]<span class="hint dashed">@T["Settings when registering with external authentication providers"]</span></h5>
-#: OrchardCore.Users\Views\RegistrationSettings.Edit.cshtml:50
+#: OrchardCore.Users\Views\RegistrationSettings.Edit.cshtml:58
 msgctxt "OrchardCore.Users.Views.RegistrationSettings.Edit"
 msgid "Settings when registering with external authentication providers"
 msgstr "Paramètres lors de l'inscription avec les fournisseurs d'authentification externes"
 
 #. <label class="custom-control-label" asp-for="UseScriptToGenerateUsername">@T["Use a script to generate userName based on external provider claims"]</label>
-#: OrchardCore.Users\Views\RegistrationSettings.Edit.cshtml:56
+#: OrchardCore.Users\Views\RegistrationSettings.Edit.cshtml:64
 msgctxt "OrchardCore.Users.Views.RegistrationSettings.Edit"
 msgid "Use a script to generate userName based on external provider claims"
 msgstr "Utiliser un script pour générer le nom d'utilisateur en fonction des claims du fournisseur externe"
 
 #. <span class="hint dashed">@T["If selected, any IExternalLoginEventHandlers defined in modules are not triggered"]</span>
-#: OrchardCore.Users\Views\RegistrationSettings.Edit.cshtml:57
+#: OrchardCore.Users\Views\RegistrationSettings.Edit.cshtml:65
 msgctxt "OrchardCore.Users.Views.RegistrationSettings.Edit"
 msgid "If selected, any IExternalLoginEventHandlers defined in modules are not triggered"
 msgstr "Si sélectionné, les IExternalLoginEventHandlers définis dans les modules ne sont pas déclenchés"
 
 #. <button type="button" class="btn btn-secondary mb-2" onclick="resetScript()">@T["Reset Script"]</button>
-#: OrchardCore.Users\Views\RegistrationSettings.Edit.cshtml:85
+#: OrchardCore.Users\Views\RegistrationSettings.Edit.cshtml:94
 msgctxt "OrchardCore.Users.Views.RegistrationSettings.Edit"
 msgid "Reset Script"
 msgstr "Script Reset"
 
 #. <label class="custom-control-label" asp-for="NoUsernameForExternalUsers">@T["Do not ask username"]</label>
-#: OrchardCore.Users\Views\RegistrationSettings.Edit.cshtml:93
+#: OrchardCore.Users\Views\RegistrationSettings.Edit.cshtml:102
 msgctxt "OrchardCore.Users.Views.RegistrationSettings.Edit"
 msgid "Do not ask username"
 msgstr "Ne pas demander de nom d'utilisateur"
 
 #. <span class="hint dashed">@T["When a new user logs in with an external provider, they are not required to provide a local username. You can customize how it works by providing an IExternalLoginEventHandler or writing a script."]</span>
-#: OrchardCore.Users\Views\RegistrationSettings.Edit.cshtml:94
+#: OrchardCore.Users\Views\RegistrationSettings.Edit.cshtml:103
 msgctxt "OrchardCore.Users.Views.RegistrationSettings.Edit"
 msgid "When a new user logs in with an external provider, they are not required to provide a local username. You can customize how it works by providing an IExternalLoginEventHandler or writing a script."
 msgstr "Lorsqu'un nouvel utilisateur se connecte avec un fournisseur externe, il n'est pas tenu de fournir un nom d'utilisateur local. Vous pouvez personnaliser son fonctionnement en fournissant un IExternalLoginEventHandler ou en écrivant un script."
 
 #. <label class="custom-control-label" asp-for="NoEmailForExternalUsers">@T["Do not ask email address"]</label>
-#: OrchardCore.Users\Views\RegistrationSettings.Edit.cshtml:101
+#: OrchardCore.Users\Views\RegistrationSettings.Edit.cshtml:110
 msgctxt "OrchardCore.Users.Views.RegistrationSettings.Edit"
 msgid "Do not ask email address"
 msgstr "Ne pas demander l'adresse email"
 
 #. <span class="hint dashed">@T["When a new user logs in with an external provider and the email claim is defined, they are not required to provide a local email address."]</span>
-#: OrchardCore.Users\Views\RegistrationSettings.Edit.cshtml:102
+#: OrchardCore.Users\Views\RegistrationSettings.Edit.cshtml:111
 msgctxt "OrchardCore.Users.Views.RegistrationSettings.Edit"
 msgid "When a new user logs in with an external provider and the email claim is defined, they are not required to provide a local email address."
 msgstr "Lorsqu'un nouvel utilisateur se connecte avec un fournisseur externe et que le claim email est défini, ils ne sont pas tenus de fournir une adresse email locale."
 
 #. <label class="custom-control-label" asp-for="NoPasswordForExternalUsers">@T["Do not create local password for external users"]</label>
-#: OrchardCore.Users\Views\RegistrationSettings.Edit.cshtml:109
+#: OrchardCore.Users\Views\RegistrationSettings.Edit.cshtml:118
 msgctxt "OrchardCore.Users.Views.RegistrationSettings.Edit"
 msgid "Do not create local password for external users"
 msgstr "Ne pas créer de mot de passe local pour les utilisateurs externes"
 
 #. <span class="hint dashed">@T["When a new user logs in with an external provider, they are not required to provide a local password."]</span>
-#: OrchardCore.Users\Views\RegistrationSettings.Edit.cshtml:110
+#: OrchardCore.Users\Views\RegistrationSettings.Edit.cshtml:119
 msgctxt "OrchardCore.Users.Views.RegistrationSettings.Edit"
 msgid "When a new user logs in with an external provider, they are not required to provide a local password."
 msgstr "Lorsqu'un nouvel utilisateur se connecte avec un fournisseur externe, il n'est pas tenu de fournir un mot de passe local."
@@ -935,25 +1109,43 @@ msgid "Thank you"
 msgstr "Merci"
 
 #. <a asp-action="Edit" asp-route-id="@user.UserId" class="btn btn-primary btn-sm">@T["Edit"]</a>
-#: OrchardCore.Users\Views\UserButtons.cshtml:10
+#: OrchardCore.Users\Views\UserButtons.cshtml:14
 msgctxt "OrchardCore.Users.Views.UserButtons"
 msgid "Edit"
 msgstr "Modifier"
 
 #. <a class="btn btn-danger btn-sm" asp-action="Delete" asp-route-id="@user.UserId" data-url-af="RemoveUrl UnsafeUrl" >@T["Delete"]</a>
-#: OrchardCore.Users\Views\UserButtons.cshtml:16
+#: OrchardCore.Users\Views\UserButtons.cshtml:20
 msgctxt "OrchardCore.Users.Views.UserButtons"
 msgid "Delete"
 msgstr "Supprimer"
 
 #. <a asp-action="EditPassword" asp-route-id="@user.UserId" class="btn btn-secondary btn-sm">@T["Edit Password"]</a>
-#: OrchardCore.Users\Views\UserButtons.cshtml:18
+#: OrchardCore.Users\Views\UserButtons.cshtml:22
 msgctxt "OrchardCore.Users.Views.UserButtons"
 msgid "Edit Password"
 msgstr "Modifier le mot de passe"
 
-#. <button asp-action="SendVerificationEmail" asp-controller="Registration" class="btn btn-info btn-sm">@T["Send verification email"]</button>
+#. <a asp-action="Unlock" asp-route-id="@user.UserId" class="btn btn-danger btn-sm" data-url-af="RemoveUrl UnsafeUrl" data-title="@T["Unlock user"]" data-message="@T["Are you sure you want to unlock this user?"]">@T["Unlock"]</a>
 #: OrchardCore.Users\Views\UserButtons.cshtml:25
+msgctxt "OrchardCore.Users.Views.UserButtons"
+msgid "Unlock user"
+msgstr "Déverrouiller l'utilisateur"
+
+#. <a asp-action="Unlock" asp-route-id="@user.UserId" class="btn btn-danger btn-sm" data-url-af="RemoveUrl UnsafeUrl" data-title="@T["Unlock user"]" data-message="@T["Are you sure you want to unlock this user?"]">@T["Unlock"]</a>
+#: OrchardCore.Users\Views\UserButtons.cshtml:25
+msgctxt "OrchardCore.Users.Views.UserButtons"
+msgid "Are you sure you want to unlock this user?"
+msgstr "Êtes-vous sûr de vouloir déverrouiller cet utilisateur ?"
+
+#. <a asp-action="Unlock" asp-route-id="@user.UserId" class="btn btn-danger btn-sm" data-url-af="RemoveUrl UnsafeUrl" data-title="@T["Unlock user"]" data-message="@T["Are you sure you want to unlock this user?"]">@T["Unlock"]</a>
+#: OrchardCore.Users\Views\UserButtons.cshtml:25
+msgctxt "OrchardCore.Users.Views.UserButtons"
+msgid "Unlock"
+msgstr "Déverrouiller"
+
+#. <button asp-action="SendVerificationEmail" asp-controller="Registration" class="btn btn-info btn-sm">@T["Send verification email"]</button>
+#: OrchardCore.Users\Views\UserButtons.cshtml:33
 msgctxt "OrchardCore.Users.Views.UserButtons"
 msgid "Send verification email"
 msgstr "Envoyer un email de vérification"
@@ -967,19 +1159,19 @@ msgid "Disabled"
 msgstr "Désactivé"
 
 #. <label class="custom-control-label" asp-for="EmailConfirmed">@T["Email confirmed"]</label>
-#: OrchardCore.Users\Views\UserFields.Edit.cshtml:14
+#: OrchardCore.Users\Views\UserFields.Edit.cshtml:10
 msgctxt "OrchardCore.Users.Views.UserFields.Edit"
 msgid "Email confirmed"
 msgstr "Email confirmé"
 
 #. <label asp-for="IsEnabled" class="custom-control-label cursor-pointer">@T["Is enabled?"]</label>
-#: OrchardCore.Users\Views\UserFields.Edit.cshtml:22
+#: OrchardCore.Users\Views\UserFields.Edit.cshtml:18
 msgctxt "OrchardCore.Users.Views.UserFields.Edit"
 msgid "Is enabled?"
 msgstr "Est activé ?"
 
 #. <span class="hint dashed">@T["Uncheck to disable this user account."]</span>
-#: OrchardCore.Users\Views\UserFields.Edit.cshtml:23
+#: OrchardCore.Users\Views\UserFields.Edit.cshtml:19
 msgctxt "OrchardCore.Users.Views.UserFields.Edit"
 msgid "Uncheck to disable this user account."
 msgstr "Décocher pour désactiver ce compte utilisateur."
@@ -1112,11 +1304,135 @@ msgctxt "OrchardCore.Users.Views.UsersAdminListFilters"
 msgid "Sort"
 msgstr "Trier"
 
-#. <input asp-for="Search" class="form-control" placeholder="@T["Search"]" type="search" autofocus />
-#: OrchardCore.Users\Views\UsersAdminListSearch.cshtml:4
+#. <i class="fa fa-filter" title="@T["Filters"]"></i>
+#: OrchardCore.Users\Views\UsersAdminListSearch.cshtml:12
+msgctxt "OrchardCore.Users.Views.UsersAdminListSearch"
+msgid "Filters"
+msgstr "Filtres"
+
+#. <a class="dropdown-item" href="?q=status:Enabled">@T["Only enabled users"]</a>
+#: OrchardCore.Users\Views\UsersAdminListSearch.cshtml:16
+msgctxt "OrchardCore.Users.Views.UsersAdminListSearch"
+msgid "Only enabled users"
+msgstr "Uniquement les utilisateurs activés"
+
+#. <a class="dropdown-item" href="?q=status:Disabled">@T["Only disabled users"]</a>
+#: OrchardCore.Users\Views\UsersAdminListSearch.cshtml:17
+msgctxt "OrchardCore.Users.Views.UsersAdminListSearch"
+msgid "Only disabled users"
+msgstr "Uniquement les utilisateurs désactivés"
+
+#. <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modalUserIndexOptionsFilterSyntax">@T["Filter syntax"]</a>
+#. <h4>@T["Filter syntax"]</h4>
+#: OrchardCore.Users\Views\UsersAdminListSearch.cshtml:18
+#: OrchardCore.Users\Views\UsersAdminListSearch.cshtml:48
+msgctxt "OrchardCore.Users.Views.UsersAdminListSearch"
+msgid "Filter syntax"
+msgstr "Syntaxe de filtre"
+
+#. <label asp-for="SearchText" class="sr-only">@T["Search"]</label>
+#. <input asp-for="SearchText" class="form-control" placeholder="@T["Search"]" inputmode="search" type="search"
+#: OrchardCore.Users\Views\UsersAdminListSearch.cshtml:23
+#: OrchardCore.Users\Views\UsersAdminListSearch.cshtml:25
 msgctxt "OrchardCore.Users.Views.UsersAdminListSearch"
 msgid "Search"
 msgstr "Recherche"
+
+#. <h5 class="modal-title" id="user-filters-syntax-title">@T["Available Filters"]</h5>
+#: OrchardCore.Users\Views\UsersAdminListSearch.cshtml:35
+msgctxt "OrchardCore.Users.Views.UsersAdminListSearch"
+msgid "Available Filters"
+msgstr "Filtres disponibles"
+
+#. <span class="hint">@T["Default"]</span>
+#: OrchardCore.Users\Views\UsersAdminListSearch.cshtml:52
+msgctxt "OrchardCore.Users.Views.UsersAdminListSearch"
+msgid "Default"
+msgstr "Par défaut"
+
+#. <span class="hint dashed">@T["may be entered with or without the term name"]</span>
+#: OrchardCore.Users\Views\UsersAdminListSearch.cshtml:53
+msgctxt "OrchardCore.Users.Views.UsersAdminListSearch"
+msgid "may be entered with or without the term name"
+msgstr "peuvent être saisis avec ou sans le terme"
+
+#. <span class="hint">@T["Single"]</span>
+#: OrchardCore.Users\Views\UsersAdminListSearch.cshtml:57
+msgctxt "OrchardCore.Users.Views.UsersAdminListSearch"
+msgid "Single"
+msgstr "Simple"
+
+#. <span class="hint dashed">@T["A single value can be entered"]</span>
+#: OrchardCore.Users\Views\UsersAdminListSearch.cshtml:58
+msgctxt "OrchardCore.Users.Views.UsersAdminListSearch"
+msgid "A single value can be entered"
+msgstr "Une seule valeur peut être saisie"
+
+#. <span class="hint">@T["Multiple"]</span>
+#: OrchardCore.Users\Views\UsersAdminListSearch.cshtml:62
+msgctxt "OrchardCore.Users.Views.UsersAdminListSearch"
+msgid "Multiple"
+msgstr "Multiple"
+
+#. <span class="hint dashed">@T["Logical operators and groups are supported"]
+#: OrchardCore.Users\Views\UsersAdminListSearch.cshtml:63
+msgctxt "OrchardCore.Users.Views.UsersAdminListSearch"
+msgid "Logical operators and groups are supported"
+msgstr "Les opérateurs logiques et les groupes sont pris en charge"
+
+#. <span class="hint dashed">@T["The default operator when whitespace is found, e.g."]&nbsp text:foo bar -> text:foo OR bar</span>
+#: OrchardCore.Users\Views\UsersAdminListSearch.cshtml:68
+msgctxt "OrchardCore.Users.Views.UsersAdminListSearch"
+msgid "The default operator when whitespace is found, e.g."
+msgstr "L'opérateur par défaut lorsque des espaces sont trouvés, ex :"
+
+#. <span class="hint dashed">@T["Combines, e.g."]&nbsp text:foo AND bar</span>
+#: OrchardCore.Users\Views\UsersAdminListSearch.cshtml:72
+msgctxt "OrchardCore.Users.Views.UsersAdminListSearch"
+msgid "Combines, e.g."
+msgstr "Combine, ex :"
+
+#. <span class="hint dashed">@T["Negates, e.g."]&nbsp text:foo NOT bar</span>
+#: OrchardCore.Users\Views\UsersAdminListSearch.cshtml:76
+msgctxt "OrchardCore.Users.Views.UsersAdminListSearch"
+msgid "Negates, e.g."
+msgstr "Négation, ex :"
+
+#. <span class="hint">@T["Groups operators, e.g."]&nbsp text:((foo OR bar) NOT baz)</span>
+#: OrchardCore.Users\Views\UsersAdminListSearch.cshtml:80
+msgctxt "OrchardCore.Users.Views.UsersAdminListSearch"
+msgid "Groups operators, e.g."
+msgstr "Opérateurs de groupes, ex :"
+
+#. <span class="hint">@T["Escape operators, e.g."]&nbsp text:"foo bar"</span>
+#: OrchardCore.Users\Views\UsersAdminListSearch.cshtml:84
+msgctxt "OrchardCore.Users.Views.UsersAdminListSearch"
+msgid "Escape operators, e.g."
+msgstr "Opérateurs d'échappement, ex :"
+
+#. <h4>@T["Current filter"]</h4>
+#: OrchardCore.Users\Views\UsersAdminListSearch.cshtml:93
+msgctxt "OrchardCore.Users.Views.UsersAdminListSearch"
+msgid "Current filter"
+msgstr "Filtre actuel"
+
+#. <span class="hint dashed">@T["including all implied groups and operators"]</span>
+#: OrchardCore.Users\Views\UsersAdminListSearch.cshtml:98
+msgctxt "OrchardCore.Users.Views.UsersAdminListSearch"
+msgid "including all implied groups and operators"
+msgstr "y compris tous les groupes et opérateurs implicites"
+
+#. <p class="alert alert-info mt-3 mb-0">@T["No current filter applied"]</p>
+#: OrchardCore.Users\Views\UsersAdminListSearch.cshtml:102
+msgctxt "OrchardCore.Users.Views.UsersAdminListSearch"
+msgid "No current filter applied"
+msgstr "Aucun filtre actuel appliqué"
+
+#. <button type="button" class="btn btn-secondary" data-dismiss="modal">@T["Close"]</button>
+#: OrchardCore.Users\Views\UsersAdminListSearch.cshtml:108
+msgctxt "OrchardCore.Users.Views.UsersAdminListSearch"
+msgid "Close"
+msgstr "Fermer"
 
 #. <label class="custom-control-label" for="select-all" id="select-all-label" title="@T["Select All"]"></label>
 #: OrchardCore.Users\Views\UsersAdminListSummary.cshtml:6
@@ -1301,43 +1617,43 @@ msgid "Log in using your {0} account"
 msgstr "Connectez-vous à l'aide de votre compte {0}"
 
 #. <h4>@T["Create a new account."]</h4>
-#: OrchardCore.Users\Views\Account\RegisterExternalLogin.cshtml:8
+#: OrchardCore.Users\Views\Account\RegisterExternalLogin.cshtml:9
 msgctxt "OrchardCore.Users.Views.Account.RegisterExternalLogin"
 msgid "Create a new account."
 msgstr "Créer un nouveau compte."
 
 #. @T["You've successfully authenticated with <strong>{0}</strong>. Please fill the form below and click the Register button to complete the registration.", ViewData["LoginProvider"]]
-#: OrchardCore.Users\Views\Account\RegisterExternalLogin.cshtml:10
+#: OrchardCore.Users\Views\Account\RegisterExternalLogin.cshtml:11
 msgctxt "OrchardCore.Users.Views.Account.RegisterExternalLogin"
 msgid "You've successfully authenticated with <strong>{0}</strong>. Please fill the form below and click the Register button to complete the registration."
 msgstr "Vous vous êtes authentifié avec succès avec <strong>{0}</strong>. Veuillez remplir le formulaire ci-dessous et cliquez sur le bouton S'inscrire pour terminer l'inscription."
 
 #. <label asp-for="UserName" class="col-md-3 control-label">@T["Username"]</label>
-#: OrchardCore.Users\Views\Account\RegisterExternalLogin.cshtml:18
+#: OrchardCore.Users\Views\Account\RegisterExternalLogin.cshtml:19
 msgctxt "OrchardCore.Users.Views.Account.RegisterExternalLogin"
 msgid "Username"
 msgstr "Nom d'utilisateur"
 
 #. <label asp-for="Email" class="col-md-3 control-label">@T["Email"]</label>
-#: OrchardCore.Users\Views\Account\RegisterExternalLogin.cshtml:29
+#: OrchardCore.Users\Views\Account\RegisterExternalLogin.cshtml:30
 msgctxt "OrchardCore.Users.Views.Account.RegisterExternalLogin"
 msgid "Email"
 msgstr "Email"
 
 #. <label asp-for="Password" class="col-md-3 control-label">@T["Password"]</label>
-#: OrchardCore.Users\Views\Account\RegisterExternalLogin.cshtml:40
+#: OrchardCore.Users\Views\Account\RegisterExternalLogin.cshtml:41
 msgctxt "OrchardCore.Users.Views.Account.RegisterExternalLogin"
 msgid "Password"
 msgstr "Mot de passe"
 
 #. <label asp-for="ConfirmPassword" class="col-md-3 control-label">@T["Confirm password"]</label>
-#: OrchardCore.Users\Views\Account\RegisterExternalLogin.cshtml:48
+#: OrchardCore.Users\Views\Account\RegisterExternalLogin.cshtml:49
 msgctxt "OrchardCore.Users.Views.Account.RegisterExternalLogin"
 msgid "Confirm password"
 msgstr "Confirmer le mot de passe"
 
 #. <button type="submit" class="btn btn-primary">@T["Register"]</button>
-#: OrchardCore.Users\Views\Account\RegisterExternalLogin.cshtml:60
+#: OrchardCore.Users\Views\Account\RegisterExternalLogin.cshtml:61
 msgctxt "OrchardCore.Users.Views.Account.RegisterExternalLogin"
 msgid "Register"
 msgstr "S’inscrire"
@@ -1468,6 +1784,18 @@ msgctxt "OrchardCore.Users.Views.Items.AssignUserRoleTask.Fields.Thumbnail"
 msgid "Assigns a user to a role."
 msgstr "Assigne un utilisateur à un rôle."
 
+#. <th class="border-top-0 w-25">@T["User Id"]</th>
+#: OrchardCore.Users\Views\Items\AuditTrailUserEventDetail.DetailAdmin.cshtml:6
+msgctxt "OrchardCore.Users.Views.Items.AuditTrailUserEventDetail.DetailAdmin"
+msgid "User Id"
+msgstr "Identifiant de l'utilisateur"
+
+#. <th>@T["User Name"]</th>
+#: OrchardCore.Users\Views\Items\AuditTrailUserEventDetail.DetailAdmin.cshtml:10
+msgctxt "OrchardCore.Users.Views.Items.AuditTrailUserEventDetail.DetailAdmin"
+msgid "User Name"
+msgstr "Nom d'utilisateur"
+
 #. <h4><i class="fa @icon"></i>@Model.Activity.GetTitleOrDefault(() => T["Register User"])</h4>
 #: OrchardCore.Users\Views\Items\RegisterUserTask.Fields.Design.cshtml:11
 msgctxt "OrchardCore.Users.Views.Items.RegisterUserTask.Fields.Design"
@@ -1503,6 +1831,12 @@ msgstr "Modèle pour l’email de confirmation"
 msgctxt "OrchardCore.Users.Views.Items.RegisterUserTask.Fields.Edit"
 msgid "The message to send. Access email confirmation url with Workflow.Properties.EmailConfirmationUrl liquid property."
 msgstr "Le message à envoyer. Accédez à l'url de confirmation par email avec la propriété Liquid Workflow.Properties.EmailConfirmationUrl."
+
+#. <label asp-for="RequireModeration" class="form-check-label">@T["Users must be approved before they can log in"]</label>
+#: OrchardCore.Users\Views\Items\RegisterUserTask.Fields.Edit.cshtml:29
+msgctxt "OrchardCore.Users.Views.Items.RegisterUserTask.Fields.Edit"
+msgid "Users must be approved before they can log in"
+msgstr "Les utilisateurs doivent être approuvés avant de pouvoir se connecter"
 
 #. <h4 class="card-title"><i class="fa fa-user"></i>@T["Register User"]</h4>
 #: OrchardCore.Users\Views\Items\RegisterUserTask.Fields.Thumbnail.cshtml:1
@@ -1606,6 +1940,36 @@ msgctxt "OrchardCore.Users.Views.Items.UserLoggedInEvent.Fields.Thumbnail"
 msgid "User Logged in."
 msgstr "Utilisateur connecté."
 
+#. <p>@T["Filters on the email address of a user."]</p>
+#: OrchardCore.Users\Views\Items\UsersAdminFilters-Email.Thumbnail.cshtml:9
+msgctxt "OrchardCore.Users.Views.Items.UsersAdminFilters-Email.Thumbnail"
+msgid "Filters on the email address of a user."
+msgstr "Filtre sur l'adresse email d'un utilisateur."
+
+#. <p>@T["Filters on the name of a user."]</p>
+#: OrchardCore.Users\Views\Items\UsersAdminFilters-Name.Thumbnail.cshtml:9
+msgctxt "OrchardCore.Users.Views.Items.UsersAdminFilters-Name.Thumbnail"
+msgid "Filters on the name of a user."
+msgstr "Filtre sur le nom d'un utilisateur."
+
+#. <p>@T["Filters on a role name."]</p>
+#: OrchardCore.Users\Views\Items\UsersAdminFilters-Role.Thumbnail.cshtml:8
+msgctxt "OrchardCore.Users.Views.Items.UsersAdminFilters-Role.Thumbnail"
+msgid "Filters on a role name."
+msgstr "Filtre sur un nom de rôle."
+
+#. <p>@T["Orders by a user value."]</p>
+#: OrchardCore.Users\Views\Items\UsersAdminFilters-Sort.Thumbnail.cshtml:8
+msgctxt "OrchardCore.Users.Views.Items.UsersAdminFilters-Sort.Thumbnail"
+msgid "Orders by a user value."
+msgstr "Trie par utilisateur."
+
+#. <p>@T["Filters on a user status."]</p>
+#: OrchardCore.Users\Views\Items\UsersAdminFilters-Status.Thumbnail.cshtml:8
+msgctxt "OrchardCore.Users.Views.Items.UsersAdminFilters-Status.Thumbnail"
+msgid "Filters on a user status."
+msgstr "Filtre sur un statut d'utilisateur."
+
 #. <h4><i class="fa fa-user-edit"></i>@Model.Activity.GetTitleOrDefault(() => T["User Updated"])</h4>
 #: OrchardCore.Users\Views\Items\UserUpdatedEvent.Fields.Design.cshtml:4
 msgctxt "OrchardCore.Users.Views.Items.UserUpdatedEvent.Fields.Design"
@@ -1678,6 +2042,30 @@ msgctxt "OrchardCore.Users.Views.Registration.ConfirmEmail"
 msgid "Home"
 msgstr "Accueil"
 
+#. <h2>@T["Email confirmation sent"]</h2>
+#: OrchardCore.Users\Views\Registration\ConfirmEmailSent.cshtml:6
+msgctxt "OrchardCore.Users.Views.Registration.ConfirmEmailSent"
+msgid "Email confirmation sent"
+msgstr "Email de confirmation envoyé"
+
+#. @T["An email has been sent to you. Please click on the link it contains in order to have access on this site."]
+#: OrchardCore.Users\Views\Registration\ConfirmEmailSent.cshtml:9
+msgctxt "OrchardCore.Users.Views.Registration.ConfirmEmailSent"
+msgid "An email has been sent to you. Please click on the link it contains in order to have access on this site."
+msgstr "Un email vous a été envoyé. Veuillez cliquer sur le lien qu'il contient pour avoir accès à ce site."
+
+#. <a href="@returnUrl">@T["Previous Page"]</a>
+#: OrchardCore.Users\Views\Registration\ConfirmEmailSent.cshtml:14
+msgctxt "OrchardCore.Users.Views.Registration.ConfirmEmailSent"
+msgid "Previous Page"
+msgstr "Page précédente"
+
+#. <a href="@Url.Content("~/")">@T["Home"]</a>
+#: OrchardCore.Users\Views\Registration\ConfirmEmailSent.cshtml:18
+msgctxt "OrchardCore.Users.Views.Registration.ConfirmEmailSent"
+msgid "Home"
+msgstr "Accueil"
+
 #. <h2>@T["Register"]</h2>
 #. <button type="submit" class="btn btn-primary">@T["Register"]</button>
 #: OrchardCore.Users\Views\Registration\Register.cshtml:7
@@ -1715,6 +2103,30 @@ msgstr "Mot de passe"
 msgctxt "OrchardCore.Users.Views.Registration.Register"
 msgid "Confirm password"
 msgstr "Confirmer le mot de passe"
+
+#. <h2>@T["User Registration Pending"]</h2>
+#: OrchardCore.Users\Views\Registration\RegistrationPending.cshtml:7
+msgctxt "OrchardCore.Users.Views.Registration.RegistrationPending"
+msgid "User Registration Pending"
+msgstr "Inscription utilisateur en attente"
+
+#. <p>@T["Your user account has been created but has to be approved before it can be used."]</p>
+#: OrchardCore.Users\Views\Registration\RegistrationPending.cshtml:9
+msgctxt "OrchardCore.Users.Views.Registration.RegistrationPending"
+msgid "Your user account has been created but has to be approved before it can be used."
+msgstr "Votre compte utilisateur a été créé mais doit être approuvé avant de pouvoir être utilisé."
+
+#. <a href="@returnUrl">@T["Previous Page"]</a>
+#: OrchardCore.Users\Views\Registration\RegistrationPending.cshtml:13
+msgctxt "OrchardCore.Users.Views.Registration.RegistrationPending"
+msgid "Previous Page"
+msgstr "Page précédente"
+
+#. <a href="@Url.Content("~/")">@T["Home"]</a>
+#: OrchardCore.Users\Views\Registration\RegistrationPending.cshtml:17
+msgctxt "OrchardCore.Users.Views.Registration.RegistrationPending"
+msgid "Home"
+msgstr "Accueil"
 
 #. <h2>@T["Forgot password?"]</h2>
 #: OrchardCore.Users\Views\ResetPassword\ForgotPassword.cshtml:7

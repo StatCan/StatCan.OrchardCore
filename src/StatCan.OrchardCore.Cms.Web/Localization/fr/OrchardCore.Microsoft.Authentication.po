@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
-"PO-Revision-Date: 2021-04-14 09:13\n"
+"PO-Revision-Date: 2021-07-14 14:11\n"
 
 #. builder.Add(S["Security"], security => security
 #: OrchardCore.Microsoft.Authentication\AdminMenu.cs:24
@@ -279,4 +279,34 @@ msgstr "Active Directory Azure"
 msgctxt "OrchardCore.Microsoft.Authentication.Views.NavigationItemText-microsoft.Id"
 msgid "Microsoft"
 msgstr "Microsoft"
+
+#. <h5>@T["Azure AD Settings"]</h5>
+#: OrchardCore.Microsoft.Authentication\Views\Items\AzureADDeploymentStep.Edit.cshtml:3
+msgctxt "OrchardCore.Microsoft.Authentication.Views.Items.AzureADDeploymentStep.Edit"
+msgid "Azure AD Settings"
+msgstr "Paramètres Azure AD"
+
+#. <h5>@T["Azure AD Settings"]</h5>
+#: OrchardCore.Microsoft.Authentication\Views\Items\AzureADDeploymentStep.Summary.cshtml:3
+msgctxt "OrchardCore.Microsoft.Authentication.Views.Items.AzureADDeploymentStep.Summary"
+msgid "Azure AD Settings"
+msgstr "Paramètres Azure AD"
+
+#. <span class="hint">@T["Adds Azure AD settings to the plan."]</span>
+#: OrchardCore.Microsoft.Authentication\Views\Items\AzureADDeploymentStep.Summary.cshtml:5
+msgctxt "OrchardCore.Microsoft.Authentication.Views.Items.AzureADDeploymentStep.Summary"
+msgid "Adds Azure AD settings to the plan."
+msgstr "Ajoute les paramètres Azure AD au plan."
+
+#. <h4 class="card-title">@T["Azure AD Settings"]</h4>
+#: OrchardCore.Microsoft.Authentication\Views\Items\AzureADDeploymentStep.Thumbnail.cshtml:3
+msgctxt "OrchardCore.Microsoft.Authentication.Views.Items.AzureADDeploymentStep.Thumbnail"
+msgid "Azure AD Settings"
+msgstr "Paramètres Azure AD"
+
+#. <p>@T["Exports the Azure AD settings."]</p>
+#: OrchardCore.Microsoft.Authentication\Views\Items\AzureADDeploymentStep.Thumbnail.cshtml:4
+msgctxt "OrchardCore.Microsoft.Authentication.Views.Items.AzureADDeploymentStep.Thumbnail"
+msgid "Exports the Azure AD settings."
+msgstr "Exporte les paramètres Azure AD."
 

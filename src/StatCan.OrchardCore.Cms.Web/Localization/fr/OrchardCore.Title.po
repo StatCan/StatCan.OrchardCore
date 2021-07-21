@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
-"PO-Revision-Date: 2021-04-14 09:13\n"
+"PO-Revision-Date: 2021-07-14 14:11\n"
 
 #. updater.ModelState.AddModelError(Prefix, nameof(model.Title), S["A value is required for Title."]);
 #: OrchardCore.Title\Drivers\TitlePartDisplayDriver.cs:60
@@ -19,7 +19,7 @@ msgid "A value is required for Title."
 msgstr "Une valeur est requise pour le titre."
 
 #. context.Updater.ModelState.AddModelError(nameof(model.Pattern), S["Pattern doesn't contain a valid Liquid expression. Details: {0}", string.Join(" ", errors)]);
-#: OrchardCore.Title\Settings\TitlePartSettingsDisplayDriver.cs:59
+#: OrchardCore.Title\Settings\TitlePartSettingsDisplayDriver.cs:48
 msgctxt "OrchardCore.Title.Settings.TitlePartSettingsDisplayDriver"
 msgid "Pattern doesn't contain a valid Liquid expression. Details: {0}"
 msgstr "Le modèle ne contient pas une expression Liquid valide. Détails: {0}"

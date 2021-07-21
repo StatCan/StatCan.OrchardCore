@@ -10,37 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
-"PO-Revision-Date: 2021-04-14 09:13\n"
-
-#. throw new InvalidOperationException(S["Switch \"{0}\" was not found", commandSwitch.Key]);
-#: OrchardCore.Infrastructure\Commands\DefaultCommandHandler.cs:45
-msgctxt "OrchardCore.Environment.Commands.DefaultCommandHandler"
-msgid "Switch \"{0}\" was not found"
-msgstr "Le switch \"{0}\" n'a pas été trouvé"
-
-#. throw new InvalidOperationException(S["A property \"{0}\" exists but is not decorated with \"{1}\"", commandSwitch.Key, typeof(OrchardSwitchAttribute).Name]);
-#: OrchardCore.Infrastructure\Commands\DefaultCommandHandler.cs:49
-msgctxt "OrchardCore.Environment.Commands.DefaultCommandHandler"
-msgid "A property \"{0}\" exists but is not decorated with \"{1}\""
-msgstr "Une propriété \"{0}\" existe mais n'a pas été décorée avec \"{1}\""
-
-#. string message = S["Error converting value \"{0}\" to \"{1}\" for switch \"{2}\"",
-#: OrchardCore.Infrastructure\Commands\DefaultCommandHandler.cs:61
-msgctxt "OrchardCore.Environment.Commands.DefaultCommandHandler"
-msgid "Error converting value \"{0}\" to \"{1}\" for switch \"{2}\""
-msgstr "Erreur lors de la conversion de la valeur \"{0}\" à \"{1}\" pour le switch \"{2}\""
-
-#. throw new InvalidOperationException(S["Command arguments \"{0}\" don't match command definition", string.Join(" ", arguments)]);
-#: OrchardCore.Infrastructure\Commands\DefaultCommandHandler.cs:77
-msgctxt "OrchardCore.Environment.Commands.DefaultCommandHandler"
-msgid "Command arguments \"{0}\" don't match command definition"
-msgstr "Les arguments de commande \"{0}\" ne correspondent pas à la définition de la commande"
-
-#. throw new InvalidOperationException(S["Method \"{0}\" does not support switch \"{1}\".", methodInfo.Name, commandSwitch]);
-#: OrchardCore.Infrastructure\Commands\DefaultCommandHandler.cs:168
-msgctxt "OrchardCore.Environment.Commands.DefaultCommandHandler"
-msgid "Method \"{0}\" does not support switch \"{1}\"."
-msgstr "La méthode \"{0}\" ne prend pas en charge le switch \"{1}\"."
+"PO-Revision-Date: 2021-07-14 14:11\n"
 
 #. throw new Exception(S["Multiple commands found matching arguments \"{0}\". Commands available: {1}.",
 #: OrchardCore.Infrastructure\Commands\DefaultCommandManager.cs:38
