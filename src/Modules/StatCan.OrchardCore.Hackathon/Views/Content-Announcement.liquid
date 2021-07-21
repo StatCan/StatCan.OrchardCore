@@ -1,0 +1,16 @@
+{% assign dateTime = "DateTime" | shape_new: utc: Model.ContentItem.CreatedUtc, format: format | shape_stringify %}
+<v-container >
+    <v-row justify="center">
+        <v-col cols="12" xl="8">
+        <v-card >
+            <v-card-title class="text-h4">{{Model.ContentItem.Content.Announcement.Title.Text}}</v-card-title>
+            <v-card-subtitle class="pt-0 font-italic">by {{ Model.ContentItem.Author }} {{dateTime}}</v-card-subtitle>
+            <v-divider class="mx-3"></v-divider>
+            <v-card-text>
+                {{ Model.Content.MarkdownBodyPart | shape_render }}
+            </v-card-text>
+        </v-card>
+    </v-col>
+</v-cpntainer>
+
+
