@@ -9,6 +9,7 @@ using static StatCan.OrchardCore.Manifest.StatCanManifestConstants;
     Description = "Vuetify platform theme",
     Dependencies = new[] {
         "OrchardCore.ContentTypes",
-        "StatCan.OrchardCore.DisplayHelpers"
+        "StatCan.OrchardCore.DisplayHelpers",
+        "StatCan.OrchardCore.Menu"
     }
 )]

@@ -32710,6 +32710,43 @@ var sass_styles = __webpack_require__("0159");
 
 
 external_commonjs_vue_commonjs2_vue_root_Vue_default.a.component('ie-banner', IEBanner);
+
+function higlightMenu() {
+  // highlight the current menu tree in the drawer if present.
+  var currentUrl = window.location.pathname;
+  var menus = document.querySelectorAll('[data-menu="item"]'); //console.log("menu list: ", menus);
+
+  for (var i = 0; i < menus.length; i++) {
+    var menu = menus[i]; // console.log("menu: ", menu);
+
+    var href = menu.getAttribute('href');
+
+    if (href) {
+      if (currentUrl == href) {
+        // console.log("match");
+        menu.setAttribute("input-value", "true"); // iterate through all parents and set the active class of all groups
+
+        var parent = menu.parentNode;
+
+        while (parent && typeof parent.hasAttribute === "function") {
+          // console.log("parent", parent);
+          if (parent.hasAttribute("data-menu")) {
+            if (parent.dataset.menu == 'group') {
+              parent.setAttribute("value", "true");
+            }
+          }
+
+          parent = parent.parentNode;
+        } //break out of for loop, we are done
+
+
+        break;
+      }
+    }
+  }
+}
+
+higlightMenu();
 document.addEventListener("DOMContentLoaded", function () {
   new external_commonjs_vue_commonjs2_vue_root_Vue_default.a({
     vuetify: vuetify,
