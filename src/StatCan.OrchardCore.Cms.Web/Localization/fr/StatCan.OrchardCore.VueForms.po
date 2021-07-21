@@ -54,7 +54,7 @@ msgstr "Votre VueForm est en mode débogage"
 #. <summary>@T["Server Error"]</summary>
 msgctxt "StatCan.OrchardCore.VueForms.Views.VueFormWrapperTemplate"
 msgid "Server Error"
-msgstr "erreur du serveur"
+msgstr "Erreur du serveur"
 
 #: StatCan.OrchardCore.VueForms\Views\VueFormWrapperTemplate.cshtml:47
 #. <summary>@T["form object"]</summary>

@@ -174,7 +174,7 @@ msgid ""
 "You've successfully authenticated with <strong>{0}</strong>. Please fill "
 "the form below and click the Register button to complete the registration."
 msgstr ""
-"Vous vous êtes correctement authentifié avec <strong>{0}</strong> . "
+"Vous vous êtes correctement connecté avec <strong>{0}</strong> . "
 "Veuillez remplir le formulaire ci-dessous et cliquez sur le bouton "
 "S&#39;inscrire pour terminer l&#39;inscription."
 
