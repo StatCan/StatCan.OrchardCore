@@ -1,0 +1,10 @@
+<v-list-item data-menu="item" href="{{ Model.ContentItem.Content.LinkMenuItemPart.Url | href }}">
+  {% if Model.ContentItem.Content.CommonMenuItemPart.IconName.Text != blank %}
+  <v-list-item-icon>
+    <v-icon>{{ Model.ContentItem.Content.CommonMenuItemPart.IconName.Text }}</v-icon>
+  </v-list-item-icon>
+  {% endif %}
+  <v-list-item-content>
+    <v-list-item-title>{{ Model.ContentItem.DisplayText }}</v-list-item-title>
+  </v-list-item-content>
+</v-list-item>

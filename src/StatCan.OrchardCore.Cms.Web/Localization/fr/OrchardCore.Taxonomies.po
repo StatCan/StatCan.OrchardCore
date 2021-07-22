@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
-"PO-Revision-Date: 2021-04-14 09:13\n"
+"PO-Revision-Date: 2021-07-14 14:11\n"
 
 #. builder.Add(S["Configuration"], configuration => configuration
 #: OrchardCore.Taxonomies\AdminMenu.cs:25
@@ -45,19 +45,19 @@ msgid "Exports the Taxonomy filters settings."
 msgstr "Exporte les paramètres des filtres de taxonomie."
 
 #. _notifier.Success(H["Taxonomy item deleted successfully."]);
-#: OrchardCore.Taxonomies\Controllers\AdminController.cs:287
+#: OrchardCore.Taxonomies\Controllers\AdminController.cs:288
 msgctxt "OrchardCore.Taxonomies.Controllers.AdminController"
 msgid "Taxonomy item deleted successfully."
 msgstr "Élément de taxonomie supprimé avec succès."
 
-#. new SelectListItem() { Text = S["Clear filter"], Value = ""  },
-#: OrchardCore.Taxonomies\Drivers\TaxonomyContentsAdminListDisplayDriver.cs:82
+#. new SelectListItem { Text = S["Clear filter"], Value = ""  },
+#: OrchardCore.Taxonomies\Drivers\TaxonomyContentsAdminListDisplayDriver.cs:83
 msgctxt "OrchardCore.Taxonomies.Drivers.TaxonomyContentsAdminListDisplayDriver"
 msgid "Clear filter"
 msgstr "Effacer le filtre"
 
-#. new SelectListItem() { Text = S["Show all"], Value = "Taxonomy:" + taxonomy.ContentItemId }
-#: OrchardCore.Taxonomies\Drivers\TaxonomyContentsAdminListDisplayDriver.cs:83
+#. new SelectListItem { Text = S["Show all"], Value = "Taxonomy:" + taxonomy.ContentItemId }
+#: OrchardCore.Taxonomies\Drivers\TaxonomyContentsAdminListDisplayDriver.cs:84
 msgctxt "OrchardCore.Taxonomies.Drivers.TaxonomyContentsAdminListDisplayDriver"
 msgid "Show all"
 msgstr "Tout afficher"

@@ -28,8 +28,11 @@
             "Title": "HackerRegistrationForm"
           },
           "VueForm": {
-            "Enabled": {
-              "Value": true
+            "Disabled": {
+              "Value": false
+            },
+            "Debug": {
+              "Value": false
             },
             "DisabledHtml": {
               "Html": "<div class=\"container text-center mt-2\">\n  [locale en]The Hacker registration form is currently disabled.[/locale]\n  [locale fr]Le formulaire d'enreigstrement est présentement désactivé[/locale]\n</div>"
@@ -39,36 +42,10 @@
             },
             "RenderAs": {
               "Text": null
+            },
+            "Template": {
+              "Text": "<v-container >\r\n  <v-card-text>\r\n    <v-row justify=\"center\">\r\n      <v-col cols=\"8\">\r\n        <h1>[locale en]Participant registration form[/locale][locale fr]Formulaire de participation[/locale]</h1>\r\n      </v-col>\r\n{% assign isInRole = User | is_in_role: \"Hacker\" %}\r\n{% if User.Identity.Name == null %}\r\n      <v-col cols=\"8\">\r\n        [locale en]Please <a href=\"{{ '~/login' | return_url }}\">login</a> before registering to this event[/locale]\r\n        [locale fr]Veuillez vous <a href=\"{{ '~/login' | return_url }}\">connecter</a> avant de vous enregistrer a cet événement[/locale]\r\n      </v-col>\r\n{% elsif isInRole %}\r\n      <v-col cols=\"8\">\r\n        [locale en]You are already registered to this event[/locale]\r\n        [locale fr]Vous êtes déjà enregistré a cet événement[/locale]\r\n      </v-col>\r\n{% else %}\r\n      <v-col cols=\"8\">\r\n        <validation-provider name=\"{{ \"firstNameLabel\" | localize }}\" rules=\"required\" v-slot=\"{ errors, valid }\">\r\n          <v-text-field name=\"firstName\" v-model=\"firstName\" :success=\"valid\" :error-messages=\"errors\" filled=\"filled\" label=\"{{ \"firstNameLabel\" | localize }}\" ></v-text-field>\r\n        </validation-provider>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n        <validation-provider name=\"{{ \"lastNameLabel\" | localize  }}\" rules=\"required\" v-slot=\"{ errors, valid }\">\r\n          <v-text-field name=\"lastName\" v-model=\"lastName\" :success=\"valid\" :error-messages=\"errors\" filled=\"filled\" label=\"{{ \"lastNameLabel\" | localize }}\" ></v-text-field>\r\n        </validation-provider>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n        <validation-provider name=\"{{ \"emailLabel\" | localize }}\" rules=\"required|email\" v-slot=\"{ errors, valid }\">\r\n          <v-text-field name=\"email\" v-model=\"email\" :success=\"valid\" :error-messages=\"errors\" filled=\"filled\" label=\"{{ \"emailLabel\" | localize }}\"></v-text-field>\r\n        </validation-provider>\r\n      </v-col>\r\n      <v-col cols=\"8\">      \r\n        <p>{{ \"languageLabel\" | localize }}</p>\r\n        <v-radio-group name=\"language\" v-model=\"language\" row >\r\n          <v-radio label=\"{{ \"languageEnglishLabel\" | localize }}\" value=\"en\" ></v-radio>\r\n          <v-radio label=\"{{ \"languageFrenchLabel\" | localize }}\" value=\"fr\" ></v-radio>\r\n          <v-radio label=\"{{ \"languageBothLabel\" | localize }}\" value=\"both\" ></v-radio>\r\n        </v-radio-group>    \r\n      </v-col>\r\n        <v-col cols=\"8\">\r\n          <v-alert type=\"success\" v-if=\"form.successMessage\">\r\n            {% raw %}{{ form.successMessage }}{% endraw %}\r\n          </v-alert>\r\n          <v-alert type=\"error\" v-if=\"form.serverValidationMessage\">\r\n            {% raw %}{{ form.serverValidationMessage[0] }}{% endraw %}\r\n          </v-alert>\r\n        </v-col>\r\n        <v-col cols=\"8\">\r\n    \t  <v-btn type=\"submit\" depressed block @click=\"formHandleSubmit\" :disabled=\"form.submitting\">[locale en]Register[/locale][locale fr]S'enregistrer[/locale]</v-btn>\r\n        </v-col>\r\n{% endif %}\r\n    </v-row>\r\n  </v-card-text>\r\n</v-container>"
             }
-          },
-          "FlowPart": {
-            "Widgets": [
-              {
-                "ContentItemId": "4mmte48bye7c2wmjpdwjctz0m9",
-                "ContentItemVersionId": null,
-                "ContentType": "VueComponent",
-                "DisplayText": "Hacker Registration",
-                "Latest": false,
-                "Published": false,
-                "ModifiedUtc": "2021-01-13T13:22:39.3555801Z",
-                "PublishedUtc": null,
-                "CreatedUtc": null,
-                "Owner": "",
-                "Author": "admin",
-                "TitlePart": {
-                  "Title": "Hacker Registration"
-                },
-                "VueComponent": {
-                  "Template": {
-                    "Text": "<v-container >\r\n  <v-card-text>\r\n    <v-row justify=\"center\">\r\n      <v-col cols=\"8\">\r\n        <h1>[locale en]Participant registration form[/locale][locale fr]Formulaire de participation[/locale]</h1>\r\n      </v-col>\r\n{% assign isInRole = User | is_in_role: \"Hacker\" %}\r\n{% if User.Identity.Name == null %}\r\n      <v-col cols=\"8\">\r\n        [locale en]Please <a href=\"{{ '~/login' | return_url }}\">login</a> before registering to this event[/locale]\r\n        [locale fr]Veuillez vous <a href=\"{{ '~/login' | return_url }}\">connecter</a> avant de vous enregistrer a cet événement[/locale]\r\n      </v-col>\r\n{% elsif isInRole %}\r\n      <v-col cols=\"8\">\r\n        [locale en]You are already registered to this event[/locale]\r\n        [locale fr]Vous êtes déjà enregistré a cet événement[/locale]\r\n      </v-col>\r\n{% else %}\r\n      <v-col cols=\"8\">\r\n        <validation-provider name=\"{{ \"firstNameLabel\" | localize }}\" rules=\"required\" v-slot=\"{ errors, valid }\">\r\n          <v-text-field name=\"firstName\" v-model=\"firstName\" :success=\"valid\" :error-messages=\"errors\" filled=\"filled\" label=\"{{ \"firstNameLabel\" | localize }}\" ></v-text-field>\r\n        </validation-provider>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n        <validation-provider name=\"{{ \"lastNameLabel\" | localize  }}\" rules=\"required\" v-slot=\"{ errors, valid }\">\r\n          <v-text-field name=\"lastName\" v-model=\"lastName\" :success=\"valid\" :error-messages=\"errors\" filled=\"filled\" label=\"{{ \"lastNameLabel\" | localize }}\" ></v-text-field>\r\n        </validation-provider>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n        <validation-provider name=\"{{ \"emailLabel\" | localize }}\" rules=\"required|email\" v-slot=\"{ errors, valid }\">\r\n          <v-text-field name=\"email\" v-model=\"email\" :success=\"valid\" :error-messages=\"errors\" filled=\"filled\" label=\"{{ \"emailLabel\" | localize }}\"></v-text-field>\r\n        </validation-provider>\r\n      </v-col>\r\n      <v-col cols=\"8\">      \r\n        <p>{{ \"languageLabel\" | localize }}</p>\r\n        <v-radio-group name=\"language\" v-model=\"language\" row >\r\n          <v-radio label=\"{{ \"languageEnglishLabel\" | localize }}\" value=\"en\" ></v-radio>\r\n          <v-radio label=\"{{ \"languageFrenchLabel\" | localize }}\" value=\"fr\" ></v-radio>\r\n          <v-radio label=\"{{ \"languageBothLabel\" | localize }}\" value=\"both\" ></v-radio>\r\n        </v-radio-group>    \r\n      </v-col>\r\n        <v-col cols=\"8\">\r\n          <v-alert type=\"success\" v-if=\"form.successMessage\">\r\n            {% raw %}{{ form.successMessage }}{% endraw %}\r\n          </v-alert>\r\n          <v-alert type=\"error\" v-if=\"form.serverValidationMessage\">\r\n            {% raw %}{{ form.serverValidationMessage[0] }}{% endraw %}\r\n          </v-alert>\r\n        </v-col>\r\n        <v-col cols=\"8\">\r\n    \t  <v-btn type=\"submit\" depressed block @click=\"formHandleSubmit\" :disabled=\"form.submitting\">[locale en]Register[/locale][locale fr]S'enregistrer[/locale]</v-btn>\r\n        </v-col>\r\n{% endif %}\r\n    </v-row>\r\n  </v-card-text>\r\n</v-container>"
-                  }
-                },
-                "FlowMetadata": {
-                  "Alignment": 3,
-                  "Size": 100
-                }
-              }
-            ]
           },
           "VueFormScripts": {
             "ClientInit": {

@@ -5,10 +5,10 @@
 {% assign border = Model.ContentItem.Content.VAlert.Border.Text %}
 
 <v-alert {{ Model.ContentItem.Content.VAlert.Props.Values | join: ' ' | raw }}
-  {% if empty != color %}color="{{ color }}"{% endif %}
-  {% if empty != type %}type="{{ type }}"{% endif %}
+  {% if blank != color %}color="{{ color }}"{% endif %}
+  {% if blank != type %}type="{{ type }}"{% endif %}
   {% if empty != elevation %}elevation="{{ elevation }}"{% endif %}
-  {% if empty != icon %}icon="{{ icon }}"{% endif %}
-  {% if empty != border %}border="{{ border }}"{% endif %}>
+  {% if blank != icon %}icon="{{ icon }}"{% endif %}
+  {% if blank != border %}border="{{ border }}"{% endif %}>
   {{ Model.Content.FlowPart | shape_render }}
 </v-alert>

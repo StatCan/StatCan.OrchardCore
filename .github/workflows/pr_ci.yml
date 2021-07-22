@@ -19,7 +19,7 @@ jobs:
     name: Build & Test
     runs-on: ubuntu-latest
     container:
-      image: cypress/included:6.0.0
+      image: cypress/included:7.2.0
     services:
       postgres:
         image: postgres:11
@@ -41,7 +41,7 @@ jobs:
     - name: Setup .NET Core 5.0
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 5.0.100
+        dotnet-version: 5.0.*
     - name: Fix nuget restore issue
       run: |
           apt update && apt --only-upgrade install ca-certificates -y

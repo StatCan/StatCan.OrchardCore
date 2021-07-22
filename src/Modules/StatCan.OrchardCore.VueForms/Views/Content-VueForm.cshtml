@@ -1,32 +1,30 @@
 @using OrchardCore.ContentManagement
 @using StatCan.OrchardCore.VueForms.Models
-@inject OrchardCore.ContentManagement.Display.IContentItemDisplayManager ContentItemDisplayManager
-@inject OrchardCore.DisplayManagement.ModelBinding.IUpdateModelAccessor updateModelAccessor
 @inject Etch.OrchardCore.ContentPermissions.Services.IContentPermissionsService ContentPermissionsService
-
 
 @{
   var contentItem = (ContentItem)Model.ContentItem;
   var formPart = contentItem.As<VueForm>();
+  Model.Properties.Add("ComponentName", "c-" + Guid.NewGuid().ToString("N"));
 }
 
 @if (!ContentPermissionsService.CanAccess(Model.ContentItem))
 {
-  @T["You are unauthorized to view this form"];
+  @T["You are unauthorized to access this form"];
 }
-else if (formPart.Enabled?.Value == true)
+else if (formPart.Disabled?.Value == true)
 {  
+  @await DisplayAsync(Model.Content.Named("VueForm-DisabledHtml"))
+}
+else
+{
   Model.Metadata.Alternates.Clear();
   @if(!string.IsNullOrEmpty(formPart.RenderAs?.Text))
   {
     Model.Metadata.Type = "VueForm__" + formPart.RenderAs?.Text;
     @await DisplayAsync(Model)
   }else {
-    Model.Metadata.Type = "VueForm__CommonTemplate";
+    Model.Metadata.Type = "VueForm__VueComponent";
     @await DisplayAsync(Model)
   } 
-}
-else
-{
-  @await DisplayAsync(Model.Content.Named("VueForm-DisabledHtml"))
 }

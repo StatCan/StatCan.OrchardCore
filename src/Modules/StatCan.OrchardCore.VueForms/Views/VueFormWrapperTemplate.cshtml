@@ -1,0 +1,66 @@
+  @using StatCan.OrchardCore.VueForms.Models
+  @{
+  var contentItem = ((ContentItem)Model.ContentItem);
+  var formPart = contentItem.As<VueForm>();
+}
+  
+<validation-observer ref="obs" slim v-slot="obs">
+  <form v-cloak
+        ref="form"
+        id="@contentItem.ContentItemId"
+        v-on:submit.prevent="formHandleSubmit"
+        action="@Url.Action("Submit", "VueForm", new {area="StatCan.OrchardCore.VueForms" , formId=contentItem.ContentItemId })"
+        method="post"
+        novalidate>
+    @Html.AntiForgeryToken()
+    @Html.Raw(await Orchard.LiquidShortcodesAsync(formPart.Template?.Text, (object)Model))
+  </form>
+@if(formPart.Debug?.Value == true)
+{ 
+  <style at="Head">
+    .debug-mode pre {
+        background: #f4f4f4;
+        border: 1px solid #ddd;
+        border-left: 3px solid #f36d33;
+        color: #666;
+        page-break-inside: avoid;
+        max-width: 100%;
+        overflow: auto;
+        padding: 1em;
+        display: block;
+        word-wrap: break-word;
+        max-height: 700px;
+    }
+    .debug-mode code {
+      background-color: #f4f4f4 !important ;
+    }
+  </style>
+<div class="debug-mode container">
+  <h3 class="warning">@T["Your VueForm is in debug Mode"]</h3>
+  <details v-if="form.serverResponseError">
+    <summary>@T["Server Error"]</summary>
+<pre>
+<code v-html="form.serverResponseError"></code>
+</pre>
+  </details>
+  <details>
+    <summary>@T["form object"]</summary>
+<pre>
+<code v-html="form"></code>
+</pre>
+  </details>
+  <details>
+    <summary>@T["VeeValidate observer data"]</summary>
+<pre>
+<code v-html="obs"></code>
+</pre>
+  </details>
+  <details>
+    <summary>@T["Complete component data"]</summary>
+<pre>
+<code v-html="$data"></code>
+</pre>
+  </details>
+</div>
+}
+</validation-observer>

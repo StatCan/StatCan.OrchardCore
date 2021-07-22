@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
-"PO-Revision-Date: 2021-04-14 09:13\n"
+"PO-Revision-Date: 2021-07-14 14:11\n"
 
 #. <label class="custom-control-label" asp-for="Show">@T["Show"]</label>
 #: OrchardCore.ProjectTemplates\content\OrchardCore.Templates.Cms.Module\Views\MyTestPart.Edit.cshtml:6

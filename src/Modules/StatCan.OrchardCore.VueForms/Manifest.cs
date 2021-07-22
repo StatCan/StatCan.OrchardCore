@@ -20,7 +20,7 @@ using StatCan.OrchardCore.VueForms;
     {
         "OrchardCore.Title",
         "OrchardCore.Contents",
-        "OrchardCore.Flows",
+        "OrchardCore.Alias",
         "OrchardCore.Liquid",
         "StatCan.OrchardCore.Scripting",
         "StatCan.OrchardCore.ContentFields",
@@ -34,4 +34,12 @@ using StatCan.OrchardCore.VueForms;
     Description = "Welds the LocalizedText part to your VueForms ",
     Category = "Form",
     Dependencies = new[] { Constants.Features.VueForms, "StatCan.OrchardCore.LocalizedText" }
+)]
+
+[assembly: Feature(
+    Id = Constants.Features.Survey,
+    Name = "VueForms SurveyJS integration",
+    Description = "Adds SurveyJS support to VueForms",
+    Category = "Form",
+    Dependencies = new[] { Constants.Features.VueForms }
 )]

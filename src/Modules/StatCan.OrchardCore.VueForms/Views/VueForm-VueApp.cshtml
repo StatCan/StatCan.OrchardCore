@@ -4,5 +4,6 @@
 }
 
 <div class="vue-app-instance">
-  @await DisplayAsync(Model)
+  @Tag(Model, Model.Properties["ComponentName"])
 </div>
+@await DisplayAsync(Model)

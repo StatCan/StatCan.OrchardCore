@@ -1,0 +1,110 @@
+{% capture startDate %}{{ Request.Query.StartDate }}{% endcapture %}
+{% capture endDate %}{{ Request.Query.EndDate }} 23:59:59{% endcapture %}
+{% capture type %}{{ Request.Query.Type }}{% endcapture %}
+{% capture calendarTitle %}{{ Request.Query.calendarTitle }}{% endcapture %}
+{% capture format %}{% if Culture.Name == "en" %}%B %d, %Y{% else %}%d %B %Y{% endif %}{% endcapture %}
+{% capture ids %}{{Request.Query.CalendarIds}}{% endcapture %}
+{% assign appointments = Queries.AppointmentsForCalendarsForDate | query: calendarIds: ids, startDate: startDate, endDate: endDate %}
+{% block "style", at: "Head" %}
+  #main {
+  	padding: 0 !important;
+  }
+  header {
+  	visibility: hidden;
+  }
+  nav {
+  	visibility: hidden;
+  }
+{% endblock %}
+
+<print></print>
+{% block "script", type:"text/html", At: "Foot", id: "PrintView" %}
+  <v-container>
+    <p class="text-h4">
+      {% if Culture.Name == "en" %}
+         Appointments
+      	{% if type == 'day' %}
+          for {{ startDate | date: format }}
+        {% elsif type == 'week' %}
+          for the week of {{ startDate | date: format }}
+        {% elsif type == 'month' %}
+          for the month of {{ startDate | date: '%B, %Y' }}
+        {% else %}
+          for the period starting {{ startDate | date: format }}
+        {% endif %}
+      {% else %}
+      	 Rendez-vous
+        {% if type == 'day' %}
+          pour le {{ startDate | date: format }}
+        {% elsif type == 'week' %}
+          pour la semaine du {{ startDate | date: format }}
+        {% elsif type == 'month' %}
+          pour le mois de {{ startDate | date: '%B, %Y' }}
+        {% else %}
+          pour la période commençant le {{ startDate | date: format }}
+        {% endif %}
+      {% endif %}
+    </p>
+    <span class="text-h5">
+      {%if Culture.Name == "en"%}Cohort{%else%}Chohorte{%endif%} {{ calendarTitle }}
+    </span>
+    <v-spacer class="mb-8"></v-spacer>
+    {% if appointments == nil %}
+      {% if Culture.Name == "en" %}
+        <p>No appointments at this time.</p>
+      {% else %}
+    	<p>Aucun rendez-vous pour cette période.</p>
+      {% endif %}
+    {% endif %}
+    
+    {% for appointment in appointments %}
+      {{ appointment | shape_build_display: 'Summary' | shape_render }}
+      {% if forloop.last == false %}<v-divider></v-divider>{% endif %}
+    {% endfor %}
+    
+    <v-btn
+           class="hidden-print-only"
+           color="secondary"
+           dark
+           absolute
+           top
+           right
+           fab
+           small
+           @click="back" 
+           style="top: 32px; right: 24px;"
+           >
+      <v-icon>mdi-close</v-icon>
+    </v-btn>
+    <v-btn
+           class="hidden-print-only"
+           color="primary"
+           dark
+           fixed
+           bottom
+           right
+           fab
+           @click="print"
+           {% if appointments == nil %}disabled{% endif %}
+           >
+      <v-icon>mdi-printer</v-icon>
+    </v-btn>
+  </v-container>
+{% endblock %}
+{% block "script", At: "Foot", depends_on:"vuejs" %}
+  Vue.component("print", {
+      template:  "#PrintView",
+      data: () => ({
+      }),
+      mounted () {
+      },
+      methods: {
+		print () {
+		  window.print();
+		},
+		back () {
+		  window.history.back();
+		}
+      },
+  });
+{% endblock %}

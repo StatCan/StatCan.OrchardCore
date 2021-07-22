@@ -29,6 +29,8 @@ These methods are added when the `OrchardCore.Contents` module is enabled
 | Function | Description 
 | -------- | ----------- |
 |`contentByItemId(contentItemId: String): ContentItem`| Returns the ContentItem with the specified contentItemId |
+|`contentByItemIdVersion(contentItemId: String, version: String): ContentItem`| Returns the ContentItem with the specified contentItemId and specific version. Version can be one of these: `Published`, `Latest`, `Draft`, `DraftRequired`. If version is blank, the Published version is returned |
+|`contentByVersionId(versionId: String): ContentItem`| Returns the ContentItem with the specified versionId |
 |`ownContentByType(type: String): ContentItem`| Returns all ContentItems of type where the owner is the current user |
 
 
@@ -69,7 +71,7 @@ These methods are added when the `OrchardCore.Taxonomies` module is enabled
 | -------- | ----------- |
 |`taxonomyTerms(taxonomyContentItemId: String, termContentItemIds: String[]): ContentItem[]`| Returns the Taxonomy Term ContentItems that are listed in the `termContentItemIds` for the taxonomy with id `taxonomyContentItemId`. |
 |`taxonomyTermsJson(termObject: JObject): ContentItem[]`| Returns all the taxonomy terms that are listed on the termObject. The termObject is the object output by the TaxonomyPicker field and should contain a `TaxonomyContentItemId` string and a `TermContentItemIds` array. |
-## LocalizedText module (`StatCan.OrchardCore.LocalizedText)
+## LocalizedText module (`StatCan.OrchardCore.LocalizedText`)
 
 You can get the values stored in the LocalizedTextPart inside a script.
 
@@ -77,8 +79,54 @@ You can get the values stored in the LocalizedTextPart inside a script.
 | -------- | ----------- |
 | `getLocalizedTextValues(contentItem: ContentItem): JObject` | Returns a JObject representation of the LocalizedTextPart for the current thread culture |
 
-## VueForms module (`StatCan.OrchardCore.VueForms)
+## VueForms module (`StatCan.OrchardCore.VueForms`)
 
 | Function | Description 
 | -------- | ----------- |
 | `getFormContentItem(): ContentItem` | Only available in the VueForm server side scripts. Returns the current VueForm ContentItem instance. |
+| `debug(name: String, value: Object)` | Outputs the object in the debug response when the VueForm is in debug mode |
+| `getSurveyData(): JObject` | Returns the output of the Survey data as a JObject |
+
+
+## Media
+
+These methods are added when the `OrchardCore.Media` module is enabled
+
+The `SaveMediaResult` object has the following shape. 
+```javascript
+{ 
+  name: String, 
+  size: long, 
+  folder: String, 
+  mediaPath: String, 
+  hasError: Boolean, 
+  errorMessage: String 
+}
+```
+
+| Function | Description 
+| -------- | ----------- |
+| `saveMedia(folder: String, renameIfExists: Boolean): SaveMediaResult[]` | Saves all files present on the HttpRequest to a specific folder. A number is appended to the file name if the file already exists. |
+|`hasMediaError(mediaResults: SaveMediaResult[]): Boolean ` | returns true if one of the items in the SaveMediaResult array has an error  |
+|`getMediaErrors(mediaResults: SaveMediaResult[]): String[]` | Gets the list of media paths as an array of strings  |
+|`setMediaError(name: String, mediaResults: SaveMediaResult[])` | Sets the ModelError with the specified name to the concatenation of all media errors in the SaveMediaResult array. A newline is inserted between each error |
+|`getMediaPaths( mediaResults: SaveMediaResult[]): String[]` | Gets the list of media paths as an array of strings |
+
+
+### The `saveMedia` method usage
+
+The `saveMedia` method returns an array of `SaveMediaResult` objects. Each object in the array represents a file that was uploaded. 
+If an error occurs when trying to save a file, the `hasError` boolean property will be set to `true` and the `errorMessage` property will be populated with the error message. 
+If no errors occurs, the `mediaPath` property will be set to the path of the image as saved in the media library.
+
+For example, you can iterate through all the `SaveMediaResult` objects like this:
+```javascript
+const result = saveMedia('test', true);
+
+for (const file of result) {
+  log('Information', `${file.mediaPath}`); 
+}
+
+```
+
+

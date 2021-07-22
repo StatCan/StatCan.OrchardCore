@@ -12,5 +12,17 @@
       "node_modules/vue/dist/vue.min.js"
     ],
     "output": "wwwroot/Scripts/vue.min.js"
+  },
+  {
+    "vue": true,
+    "file": "Assets/src/App.js",
+    "output": "wwwroot/dist",
+    "name": "vuetify-theme"
+  },
+  {
+    "vue": true,
+    "file": "Assets/outdatedBrowser.js",
+    "output": "wwwroot/outdated",
+    "name": "outdated"
   }
 ]

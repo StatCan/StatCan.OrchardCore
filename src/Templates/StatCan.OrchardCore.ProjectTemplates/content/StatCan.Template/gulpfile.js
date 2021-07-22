@@ -1,4 +1,5 @@
-var fs = require("file-system"),
+var fs = require("graceful-fs"),
+  exec = require("gulp-exec")
   glob = require("glob"),
   path = require("path-posix"),
   merge = require("merge-stream"),
@@ -10,7 +11,7 @@ var fs = require("file-system"),
   plumber = require("gulp-plumber"),
   sourcemaps = require("gulp-sourcemaps"),
   less = require("gulp-less"),
-  scss = require("gulp-sass"),
+  scss = require("gulp-dart-sass"),
   minify = require("gulp-minifier"),
   typescript = require("gulp-typescript"),
   terser = require("gulp-terser"),
@@ -20,11 +21,7 @@ var fs = require("file-system"),
   eol = require("gulp-eol"),
   util = require("gulp-util"),
   postcss = require("gulp-postcss"),
-  rtl = require("postcss-rtl"),
   babel = require("gulp-babel");
-
-// For compat with older versions of Node.js.
-require("es6-promise").polyfill();
 
 // To suppress memory leak warning from gulp.watch().
 require("events").EventEmitter.prototype._maxListeners = 100;
@@ -36,7 +33,7 @@ require("events").EventEmitter.prototype._maxListeners = 100;
 // Incremental build (each asset group is built only if one or more inputs are newer than the output).
 gulp.task("build", function () {
   var assetGroupTasks = getAllAssetGroups().map(function (assetGroup) {
-    var doRebuild = false;
+    var doRebuild = true;
     return createAssetGroupTask(assetGroup, doRebuild);
   });
   return merge(assetGroupTasks);
@@ -54,9 +51,15 @@ gulp.task("rebuild", function () {
 
 function watchAssetGroup(assetGroup, assetManifestPath) {
   resolveAssetGroupPaths(assetGroup, assetManifestPath);
+  let watchPaths = [];
+  watchPaths = watchPaths.concat(assetGroup.watchPaths)
   // watch the input and watchPaths  
-  var watchPaths = assetGroup.inputPaths.concat(assetGroup.watchPaths);
-
+  if (assetGroup.inputPaths) {
+    watchPaths = watchPaths.concat(assetGroup.inputPaths);
+  }
+  else if (assetGroup.file) {
+    watchPaths.push(assetGroup.file);
+  }
   var inputWatcher = gulp.watch(watchPaths);
   inputWatcher.on("change", function (watchedPath) {
     var isConcat =
@@ -120,6 +123,7 @@ gulp.task("watch", function () {
       );
     });
   });
+
   console.log("Waiting for file changes");
 });
 
@@ -153,7 +157,7 @@ function getAllAssetGroups() {
 
 function getAssetsJsonPaths() {
   return glob.sync(
-    "./src/{Modules,Themes}/*/Assets.json",
+    "./src/{Modules,Themes, Apps}/*/Assets.json",
     {}
   );
 }
@@ -161,11 +165,15 @@ function getAssetsJsonPaths() {
 function resolveAssetGroupPaths(assetGroup, assetManifestPath) {
   assetGroup.manifestPath = assetManifestPath;
   assetGroup.basePath = path.dirname(assetManifestPath);
-  assetGroup.inputPaths = assetGroup.inputs.map(function (inputPath) {
-    return path
-      .resolve(path.join(assetGroup.basePath, inputPath))
-      .replace(/\\/g, "/");
-  });
+  if(assetGroup.inputs) {
+    assetGroup.inputPaths = assetGroup.inputs.map(function (inputPath) {
+      return path
+        .resolve(path.join(assetGroup.basePath, inputPath))
+        .replace(/\\/g, "/");
+    });
+  } else if(assetGroup.file){
+    assetGroup.file = path.resolve(path.join(assetGroup.basePath, assetGroup.file)).replace(/\\/g, "/");
+  }
   assetGroup.watchPaths = [];
   if (!!assetGroup.watch) {
     assetGroup.watchPaths = assetGroup.watch.map(function (watchPath) {
@@ -197,6 +205,8 @@ function createAssetGroupTask(assetGroup, doRebuild) {
 
   if (assetGroup.copy === true) {
     return buildCopyPipeline(assetGroup, doRebuild);
+  } else if(assetGroup.vue === true) {
+    return buildVuePipeline(assetGroup);
   } else {
     switch (outputExt) {
       case ".css":
@@ -224,9 +234,6 @@ function buildCssPipeline(assetGroup, doConcat, doRebuild) {
   var generateSourceMaps = assetGroup.hasOwnProperty("generateSourceMaps")
     ? assetGroup.generateSourceMaps
     : true;
-  var generateRTL = assetGroup.hasOwnProperty("generateRTL")
-    ? assetGroup.generateRTL
-    : false;
   var containsLessOrScss = assetGroup.inputPaths.some(function (inputPath) {
     var ext = path.extname(inputPath).toLowerCase();
     return ext === ".less" || ext === ".scss";
@@ -262,7 +269,6 @@ function buildCssPipeline(assetGroup, doConcat, doRebuild) {
       )
     )
     .pipe(gulpif(doConcat, concat(assetGroup.outputFileName)))
-    .pipe(gulpif(generateRTL, postcss([rtl()])))
     .pipe(
       minify({
         minify: true,
@@ -320,7 +326,6 @@ function buildCssPipeline(assetGroup, doConcat, doRebuild) {
         "*/\n\n"
       )
     )
-    .pipe(gulpif(generateRTL, postcss([rtl()])))
     .pipe(gulpif(generateSourceMaps, sourcemaps.write()))
     .pipe(eol())
     .pipe(gulp.dest(assetGroup.outputDir));
@@ -383,17 +388,7 @@ function buildJsPipeline(assetGroup, doConcat, doRebuild) {
         )
       )
       .pipe(
-        babel({
-          presets: [
-            [
-              "@babel/preset-env",
-              {
-                modules: false
-              },
-              "@babel/preset-flow"
-            ]
-          ]
-        })
+        babel()
       )
       .pipe(gulpif(doConcat, concat(assetGroup.outputFileName)))
       .pipe(
@@ -437,4 +432,15 @@ function buildCopyPipeline(assetGroup, doRebuild) {
   //.pipe(gulp.dest(assetGroup.webroot));
 
   return stream;
+}
+
+/**
+ * Uses the vue-cli-service to build vue components / libs
+ * @param {object} assetGroup 
+ */
+function buildVuePipeline(assetGroup) {
+  console.log(`Building ${assetGroup.file}`);
+  return gulp.src(assetGroup.file)
+  .pipe(exec(`vue-cli-service build --target lib --mode production --name ${assetGroup.name} --formats umd,umd-min --dest ${assetGroup.outputPath} ${assetGroup.file} && rimraf ${assetGroup.outputPath}/demo.html`))
+  .pipe(exec.reporter());
 }

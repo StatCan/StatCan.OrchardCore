@@ -1,0 +1,31 @@
+:root {
+  --color-bg-primary: #22272e;
+  --color-bg-tertiary: #2d333b;
+  --color-markdown-code-bg: rgba(205,217,229,0.15);
+  --color-bg-tertiary: #2d333b;
+  --color-text-primary: #adbac7;
+  --color-border-primary: #444c56;
+  --color-border-secondary: #373e47;
+  --color-markdown-frame-border: #4f5864;
+  --color-markdown-blockquote-border: #4f5864;
+  --color-markdown-table-border: #4f5864;
+  --color-markdown-table-tr-border: #3a424a;
+}
+
+.theme--light {
+  --color-bg-primary: #fff;
+  --color-bg-tertiary: #f6f8fa;
+  --color-markdown-code-bg: rgba(27,31,35,0.05);
+  --color-bg-tertiary: #f6f8fa;
+  --color-text-primary: #24292e;
+  --color-border-secondary: #ebedef;
+  --color-border-primary: #e1e4e8;
+  --color-markdown-frame-border: #e0e3e6;
+  --color-markdown-blockquote-border: #e0e3e6;
+  --color-markdown-table-border: #e0e3e6;
+  --color-markdown-table-tr-border: #c6cbd2;
+}
+
+@import "./markdown/index.scss";
+
+[v-cloak] > * { display:none; }

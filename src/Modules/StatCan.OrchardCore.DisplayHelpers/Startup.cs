@@ -15,6 +15,26 @@ namespace StatCan.OrchardCore.DisplayHelpers
             services.AddLiquidFilter<GetClaimLiquidFilter>("get_claim");
             services.AddLiquidFilter<ReturnUrlFilter>("return_url");
             services.AddLiquidFilter<UsersByRoleFilter>("users_by_role");
+            services.AddLiquidFilter<SectionIsNotEmpty>("section_not_empy");
+            services.AddLiquidFilter<B64EncodeFilter>("base64_encode");
+            services.AddLiquidFilter<B64DecodeFilter>("base64_decode");
+        }
+    }
+
+    [RequireFeatures("OrchardCore.Taxonomies")]
+     public class TaxonomiesStartup : StartupBase
+    {
+        public override void ConfigureServices(IServiceCollection services)
+        {
+            services.AddLiquidFilter<AllTaxonomyTermsFilter>("all_taxonomy_terms");
+        }
+    }
+    [RequireFeatures("OrchardCore.Shortcodes")]
+     public class ShortcodesStartup : StartupBase
+    {
+        public override void ConfigureServices(IServiceCollection services)
+        {
+            services.AddLiquidFilter<ShortcodeArgsToString>("to_html_attributes");
         }
     }
 }

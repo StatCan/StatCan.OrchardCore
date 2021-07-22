@@ -10,10 +10,24 @@ using static StatCan.OrchardCore.CommonTypes.FeatureIds;
 )]
 
 [assembly: Feature(
-    Id = Pages,
-    Name = "StatCan.CommonTypes - Pages",
+    Id = Page,
+    Name = "StatCan.CommonTypes - Page",
     Category = "Content",
-    Description = "Adds generic page content types such as Page, Liquid Page, Html Page and MarkdownPage",
+    Description = "Adds generic Page content type",
+    Dependencies = new[]
+    {
+        "OrchardCore.Autoroute",
+        "OrchardCore.Flows",
+        "OrchardCore.Liquid",
+        "OrchardCore.Title"
+    }
+)]
+
+[assembly: Feature(
+    Id = AdditionalPages,
+    Name = "StatCan.CommonTypes - Additional Pages",
+    Category = "Content",
+    Description = "Adds generic page content types such as Liquid Page, Html Page and MarkdownPage",
     Dependencies = new[]
     {
         "OrchardCore.Autoroute",
@@ -50,7 +64,6 @@ using static StatCan.OrchardCore.CommonTypes.FeatureIds;
         "OrchardCore.Autoroute",
         "OrchardCore.Flows",
         "OrchardCore.Title",
-        "OrchardCore.Html",
         "StatCan.OrchardCore.ContentPermissions"
     }
 )]

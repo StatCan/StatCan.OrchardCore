@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
-"PO-Revision-Date: 2021-04-14 09:13\n"
+"PO-Revision-Date: 2021-07-14 14:11\n"
 
 #. builder.Add(S["Workflows"], NavigationConstants.AdminMenuWorkflowsPosition, workflow => workflow
 #: OrchardCore.Workflows\AdminMenu.cs:24
@@ -357,7 +357,7 @@ msgid "Workflow {0} has been deleted."
 msgstr "Le workflow {0} a été supprimé."
 
 #. _notifier.Success(H["Workflow has been saved."]);
-#: OrchardCore.Workflows\Controllers\WorkflowTypeController.cs:465
+#: OrchardCore.Workflows\Controllers\WorkflowTypeController.cs:464
 msgctxt "OrchardCore.Workflows.Controllers.WorkflowTypeController"
 msgid "Workflow has been saved."
 msgstr "Le workflow a été enregistré."
@@ -387,19 +387,19 @@ msgid "Done"
 msgstr "Terminé"
 
 #. public override LocalizedString DisplayText => S["Http Redirect Task"];
-#: OrchardCore.Workflows\Http\Activities\HttpRedirectTask.cs:35
+#: OrchardCore.Workflows\Http\Activities\HttpRedirectTask.cs:33
 msgctxt "OrchardCore.Workflows.Http.Activities.HttpRedirectTask"
 msgid "Http Redirect Task"
 msgstr "Tâche de redirection Http"
 
 #. public override LocalizedString Category => S["HTTP"];
-#: OrchardCore.Workflows\Http\Activities\HttpRedirectTask.cs:37
+#: OrchardCore.Workflows\Http\Activities\HttpRedirectTask.cs:35
 msgctxt "OrchardCore.Workflows.Http.Activities.HttpRedirectTask"
 msgid "HTTP"
 msgstr "HTTP"
 
 #. return Outcomes(S["Done"]);
-#: OrchardCore.Workflows\Http\Activities\HttpRedirectTask.cs:53
+#: OrchardCore.Workflows\Http\Activities\HttpRedirectTask.cs:51
 msgctxt "OrchardCore.Workflows.Http.Activities.HttpRedirectTask"
 msgid "Done"
 msgstr "Terminé"
@@ -513,19 +513,19 @@ msgid "Not authorized to trigger '{0}'."
 msgstr "Non autorisé à déclencher '{0}'."
 
 #. <a class="btn btn-outline-secondary activity-start-action" href="#" data-toggle="button" title="@T["Startup task"]"><i class="fa fa-power-off"></i></a>
-#: OrchardCore.Workflows\Views\Activity.Design.cshtml:25
+#: OrchardCore.Workflows\Views\Activity.Design.cshtml:27
 msgctxt "OrchardCore.Workflows.Views.Activity.Design"
 msgid "Startup task"
 msgstr "Tâche de démarrage"
 
 #. <a class="btn btn-primary activity-edit-action" asp-action="Edit" asp-controller="Activity" asp-route-workflowtypeid="@Model.WorkflowTypeId" asp-route-activityid="@activityRecord.ActivityId" asp-route-returnurl="@Model.ReturnUrl" data-persist-workflow="true" title="@T["Edit"]"><i class="fa fa-pencil"></i></a>
-#: OrchardCore.Workflows\Views\Activity.Design.cshtml:28
+#: OrchardCore.Workflows\Views\Activity.Design.cshtml:30
 msgctxt "OrchardCore.Workflows.Views.Activity.Design"
 msgid "Edit"
 msgstr "Modifier"
 
 #. <a class="btn btn-danger activity-delete-action" href="#" title="@T["Delete"]"><i class="fa fa-trash"></i></a>
-#: OrchardCore.Workflows\Views\Activity.Design.cshtml:30
+#: OrchardCore.Workflows\Views\Activity.Design.cshtml:32
 msgctxt "OrchardCore.Workflows.Views.Activity.Design"
 msgid "Delete"
 msgstr "Supprimer"

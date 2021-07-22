@@ -1,10 +1,13 @@
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
+using Cysharp.Text;
 using Fluid;
 using Ganss.XSS;
 using Microsoft.AspNetCore.Html;
+using Microsoft.AspNetCore.Razor.TagHelpers;
 using Microsoft.Extensions.DependencyInjection;
 using OrchardCore;
+using OrchardCore.DisplayManagement;
 using OrchardCore.Liquid;
 using OrchardCore.Shortcodes.Services;
 
@@ -83,6 +86,28 @@ public static class LiquidRazorHelperExtensions
         html = await shortcodeService.ProcessAsync(html);
 
         return html;
+    }
+
+    public static ValueTask<string> ShapeStringify(this IOrchardHelper orchardHelper, IShape shape)
+    {
+        var displayHelper = orchardHelper.HttpContext.RequestServices.GetRequiredService<IDisplayHelper>();
+
+         static async ValueTask<string> Awaited(Task<IHtmlContent> task)
+            {
+                using var writer = new ZStringWriter();
+                (await task).WriteTo(writer, NullHtmlEncoder.Default);
+                return writer.ToString();
+            }
+
+            var task = displayHelper.ShapeExecuteAsync(shape);
+            if (!task.IsCompletedSuccessfully)
+            {
+                return Awaited(task);
+            }
+
+            using var writer = new ZStringWriter();
+            task.Result.WriteTo(writer, NullHtmlEncoder.Default);
+            return new ValueTask<string>(writer.ToString());
     }
 }
 

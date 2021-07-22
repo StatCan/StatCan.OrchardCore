@@ -6,12 +6,12 @@
 {% assign width = Model.ContentItem.Content.VList.Width.Text %}
 
 <v-list {{ Model.ContentItem.Content.VList.Props.Values | join: ' ' | raw }}
-  {% if empty != color %}color="{{ color }}"{% endif %}
-  {% if empty != elevation %}elevation="{{ elevation }}"{% endif %}
-  {% if empty != height %}height="{{ height }}"{% endif %}
-  {% if empty != rounded %}rounded="{{ rounded }}"{% endif %}
-  {% if empty != tag %}tag="{{ tag }}"{% endif %}
-  {% if empty != width %}width="{{ width }}"{% endif %}
+  {% if blank != color %}color="{{ color }}"{% endif %}
+  {% if blank != elevation %}elevation="{{ elevation }}"{% endif %}
+  {% if blank != height %}height="{{ height }}"{% endif %}
+  {% if blank != rounded %}rounded="{{ rounded }}"{% endif %}
+  {% if blank != tag %}tag="{{ tag }}"{% endif %}
+  {% if blank != width %}width="{{ width }}"{% endif %}
   >
   {% for item in Model.Content.ListPart.ContentItems %}
       {{ item | shape_build_display | shape_render }}

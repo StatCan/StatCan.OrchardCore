@@ -1,0 +1,14 @@
+msgid ""
+msgstr "Content-Type: text/plain\n"
+
+#: StatCan.OrchardCore.Menu\Views\CommonMenuItemPart.Thumbnail.cshtml:3
+#. <h4 class="card-title">@T["Taxonomy Menu Item"]</h4>
+msgctxt "StatCan.OrchardCore.Menu.Views.CommonMenuItemPart.Thumbnail"
+msgid "Taxonomy Menu Item"
+msgstr "Élément de menu de taxonomie"
+
+#: StatCan.OrchardCore.Menu\Views\CommonMenuItemPart.Thumbnail.cshtml:4
+#. <p>@T["Create links to terms of a taxonomy."]</p>
+msgctxt "StatCan.OrchardCore.Menu.Views.CommonMenuItemPart.Thumbnail"
+msgid "Create links to terms of a taxonomy."
+msgstr "Créer des liens vers les termes d'une taxonomie."

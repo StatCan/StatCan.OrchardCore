@@ -1,4 +1,3 @@
-using OrchardCore.Autoroute.Models;
 using OrchardCore.ContentFields.Settings;
 using OrchardCore.ContentManagement.Metadata;
 using OrchardCore.ContentManagement.Metadata.Settings;
@@ -8,23 +7,32 @@ using OrchardCore.Media.Settings;
 using OrchardCore.Title.Models;
 using StatCan.OrchardCore.Extensions;
 using StatCan.OrchardCore.ContentFields.PredefinedGroup.Settings;
-
+using OrchardCore.ContentFields.Fields;
+using OrchardCore.Menu.Models;
+using System.Collections.Generic;
+using OrchardCore.ContentManagement;
+using Newtonsoft.Json.Linq;
+using OrchardCore.ContentManagement.Records;
+using YesSql;
+using System.Threading.Tasks;
 
 namespace StatCan.Themes.VuetifyTheme
 {
     public class Migrations : DataMigration
     {
         private readonly IContentDefinitionManager _contentDefinitionManager;
-        public Migrations(IContentDefinitionManager contentDefinitionManager)
+        private readonly ISession _session;
+        public Migrations(IContentDefinitionManager contentDefinitionManager, ISession session)
         {
             _contentDefinitionManager = contentDefinitionManager;
+            _session = session;
         }
 
         public int Create()
         {
             VuetifyThemeSettings();
             Tabs();
-            MenuItems();
+
             VContainer();
             VRow();
             VCol();
@@ -38,11 +46,17 @@ namespace StatCan.Themes.VuetifyTheme
             VContainerRow();
             VAppBar();
             VNavigationDrawer();
-            AuthContentMenuItem();
+
             CompatibilityBanner();
             VFooter();
-            UpdateToMultiTextField();           
-            return 1;
+            UpdateToMultiTextField();
+            VSubheader();
+            VListItem();
+            VList();
+            VDivider();
+            ScheduleEvent();
+            InitialMenuItems();
+            return 8;
         }
 
         public int UpdateFrom1() {
@@ -58,33 +72,53 @@ namespace StatCan.Themes.VuetifyTheme
             ScheduleEvent();
             return 3;
         }
-
-        private void AuthContentMenuItem()
+        public int UpdateFrom3()
         {
-            _contentDefinitionManager.AlterTypeDefinition("AuthContentMenuItem", type => type
-                .DisplayedAs("Authenticated Content Menu Item")
-                .Stereotype("MenuItem")
-                .WithTitlePart("0")
-                .WithPart("AuthContentMenuItem", part => part
-                    .WithPosition("1")
-                )
-                .WithContentPermission("2")
-            );
-
-            _contentDefinitionManager.AlterPartDefinition("AuthContentMenuItem", part => part
-                .WithTextField("IconName","Icon Name" , "0")
-                .WithField("SelectedContentItem", field => field
-                    .OfType("ContentPickerField")
-                    .WithDisplayName("Selected Content Item")
-                    .WithPosition("1")
-                    .WithSettings(new ContentPickerFieldSettings
-                    {
-                        Required = true,
-                        DisplayAllContentTypes = true
-                    })
-                )
-            );
+            InitialMenuItems();
+            return 4;
         }
+        public int UpdateFrom4()
+        {
+            VuetifyThemeSettings();
+            return 5;
+        }
+
+        public int UpdateFrom5()
+        {
+            VRow();
+            return 6;
+        }
+
+        public int UpdateFrom6()
+        {
+            VRow();
+            VCol();
+            return 7;
+        }
+
+        public async Task<int> UpdateFrom7Async()
+        {
+            MenuTypesMigration();
+            var menus = await _session.Query<ContentItem, ContentItemIndex>(x => x.ContentType == "Menu").ListAsync();
+
+            foreach (var menu in menus)
+            {
+                var menuItemsListPart = menu.As<MenuItemsListPart>();
+                if (menuItemsListPart != null)
+                {
+                    MigrateMenuItems(menuItemsListPart.MenuItems);
+                    menu.Apply(menuItemsListPart);
+                }
+
+                _session.Save(menu);
+            }
+
+            _contentDefinitionManager.DeleteTypeDefinition("AuthContentMenuItem");
+
+            return 8;
+        }
+
+        #region Private methods
 
         private void VuetifyThemeSettings()
         {
@@ -103,6 +137,33 @@ namespace StatCan.Themes.VuetifyTheme
                     .WithDisplayName("Logo")
                     .WithPosition("1")
                 )
+             .WithField("DisplayMode", field => field
+                .OfType("TextField")
+                .WithDisplayName("Display Mode")
+                .WithEditor("PredefinedList")
+                .WithPosition("2")
+                .WithSettings(
+                    new TextFieldPredefinedListEditorSettings
+                        {
+                            Options = new ListValueOption[] {
+                                new ListValueOption(){Name = "Light Mode", Value= "light"},
+                                new ListValueOption(){Name = "Dark Mode", Value= "dark"},
+                                new ListValueOption(){Name = "Picker", Value= "picker"},
+                        },
+                }))
+
+                .WithField("ThemeOptions", f => f
+                    .OfType(nameof(TextField))
+                    .WithDisplayName("Template")
+                    .WithSettings(new TextFieldSettings() { Hint = "The Vuetify 'themes' object that defines the colors of both lite and dark theme. See https://vuetifyjs.com/en/features/theme/" })
+                    .WithPosition("3")
+                    .WithEditor("Monaco")
+                    .WithSettings(
+                        new TextFieldMonacoEditorSettings()
+                        {
+                            Options = "{\"language\": \"json\"}"
+                        })
+                )
             );
         }
 
@@ -120,13 +181,114 @@ namespace StatCan.Themes.VuetifyTheme
             );
         }
 
-        private void MenuItems()
+        private static void MigrateMenuItems(List<ContentItem> menuItems)
         {
-            _contentDefinitionManager.AlterPartDefinition("ContentMenuItem", part => part
+            foreach (var menuItem in menuItems)
+            {
+                if (menuItem.ContentType == "ContentMenuItem" && menuItem.Content.ContentMenuItem?.IconName?.Text != null)
+                {
+                    menuItem.Content.CommonMenuItemPart = JObject.FromObject(new { IconName = new { Text = menuItem.Content.ContentMenuItem.IconName.Text } });
+                }
+                if (menuItem.ContentType == "LinkMenuItem" && menuItem.Content.LinkMenuItem?.IconName?.Text != null)
+                {
+                    menuItem.Content.CommonMenuItemPart = JObject.FromObject(new { IconName = new { Text = menuItem.Content.LinkMenuItem.IconName.Text } });
+                }
+                if (menuItem.ContentType == "TaxonomyMenuItem" && menuItem.Content.TaxonomyMenuItem?.IconName?.Text != null)
+                {
+                    menuItem.Content.CommonMenuItemPart = JObject.FromObject(new { IconName = new { Text = menuItem.Content.TaxonomyMenuItem?.IconName?.Text } });
+                }
+                if (menuItem.ContentType == "AuthContentMenuItem" && menuItem.Content.AuthContentMenuItem != null)
+                {
+                    menuItem.ContentType = "ContentMenuItem";
+                    menuItem.Content.ContentMenuItemPart = JObject.FromObject(new { SelectedContentItem = menuItem.Content.AuthContentMenuItem.SelectedContentItem });
+                    menuItem.Content.CommonMenuItemPart = JObject.FromObject(new { IconName = new { Text = menuItem.Content.AuthContentMenuItem?.IconName?.Text } });
+                    menuItem.Content.AuthContentMenuItem = null;
+                }
+                var menuItemsListPart = menuItem.As<MenuItemsListPart>();
+                if (menuItemsListPart != null)
+                {
+                    MigrateMenuItems(menuItemsListPart.MenuItems);
+                    menuItem.Apply(menuItemsListPart);
+                }
+            }
+        }
+
+        private void InitialMenuItems()
+        {
+            _contentDefinitionManager.AlterPartDefinition("CommonMenuItemPart", part => part
                 .WithTextField("IconName","Icon Name" , "0")
+                .Attachable()
+            );
+
+            _contentDefinitionManager.AlterTypeDefinition("ContentMenuItem", t => t
+                .WithPart("CommonMenuItemPart", p=>p.WithPosition("4"))
+                .WithContentPermission("6")
+            );
+            _contentDefinitionManager.AlterTypeDefinition("LinkMenuItem", t => t
+                .WithPart("CommonMenuItemPart", p=>p.WithPosition("4"))
+                .WithContentPermission("6")
+            );
+
+             _contentDefinitionManager.AlterTypeDefinition("TaxonomyMenuItem", type => type
+                .DisplayedAs("Taxonomy Menu Item")
+                .Stereotype("MenuItem")
+                .WithPart("TitlePart", part => part
+                    .WithPosition("0")
+                )
+                .WithPart("CommonMenuItemPart", part => part
+                    .WithPosition("1")
+                )
+                .WithPart("TaxonomyMenuItem", part => part
+                    .WithPosition("2")
+                )
+                .WithContentPermission("6")
+            );
+
+            _contentDefinitionManager.AlterPartDefinition("TaxonomyMenuItem", part => part
+                .WithField("Taxonomy", field => field
+                    .OfType("ContentPickerField")
+                    .WithDisplayName("Taxonomy")
+                    .WithPosition("0")
+                    .WithSettings(new ContentPickerFieldSettings
+                    {
+                        DisplayedContentTypes = new[] { "Taxonomy" },
+                    })
+                )
+                .WithField("Expanded", field => field
+                    .OfType("BooleanField")
+                    .WithDisplayName("Expanded")
+                    .WithPosition("2")
+                )
+            );
+        }
+        private void MenuTypesMigration()
+        {
+            _contentDefinitionManager.AlterPartDefinition("CommonMenuItemPart", part => part
+                .WithTextField("IconName","Icon Name" , "0")
+                .Attachable()
+            );
+            _contentDefinitionManager.AlterPartDefinition("ContentMenuItem", part => part
+                .RemoveField("IconName")
             );
             _contentDefinitionManager.AlterPartDefinition("LinkMenuItem", part => part
-                .WithTextField("IconName", "Icon Name", "0")
+                .RemoveField("IconName")
+            );
+            _contentDefinitionManager.AlterTypeDefinition("ContentMenuItem", t => t
+                .WithPart("CommonMenuItemPart", p=>p.WithPosition("1"))
+                .WithContentPermission("6")
+            );
+            _contentDefinitionManager.AlterTypeDefinition("LinkMenuItem", t => t
+                .WithPart("CommonMenuItemPart", p=>p.WithPosition("1"))
+                .WithContentPermission("6")
+            );
+
+            _contentDefinitionManager.AlterTypeDefinition("TaxonomyMenuItem", type => type
+                .WithPart("CommonMenuItemPart", part => part.WithPosition("1"))
+                .WithContentPermission("6")
+            );
+
+            _contentDefinitionManager.AlterPartDefinition("TaxonomyMenuItem", part => part
+                .RemoveField("IconName")
             );
         }
 
@@ -144,28 +306,29 @@ namespace StatCan.Themes.VuetifyTheme
             var colsSettings = new TextFieldPredefinedListEditorSettings()
             {
                 Editor = EditorOption.Dropdown,
-                DefaultValue = "12",
+                DefaultValue = "None",
                 Options = new ListValueOption[] {
-                                        new ListValueOption(){Name = "Auto", Value = "auto"},
-                                        new ListValueOption(){Name = "1", Value = "1"},
-                                        new ListValueOption(){Name = "2", Value = "2"},
-                                        new ListValueOption(){Name = "3", Value = "3"},
-                                        new ListValueOption(){Name = "4", Value = "4"},
-                                        new ListValueOption(){Name = "5", Value = "5"},
-                                        new ListValueOption(){Name = "6", Value = "6"},
-                                        new ListValueOption(){Name = "7", Value = "7"},
-                                        new ListValueOption(){Name = "8", Value = "8"},
-                                        new ListValueOption(){Name = "9", Value = "9"},
-                                        new ListValueOption(){Name = "10", Value = "10"},
-                                        new ListValueOption(){Name = "11", Value = "11"},
-                                        new ListValueOption(){Name = "12", Value = "12"},
-                                    }
+                    new ListValueOption(){Name = "None", Value = ""},
+                    new ListValueOption(){Name = "Auto", Value = "auto"},
+                    new ListValueOption(){Name = "1", Value = "1"},
+                    new ListValueOption(){Name = "2", Value = "2"},
+                    new ListValueOption(){Name = "3", Value = "3"},
+                    new ListValueOption(){Name = "4", Value = "4"},
+                    new ListValueOption(){Name = "5", Value = "5"},
+                    new ListValueOption(){Name = "6", Value = "6"},
+                    new ListValueOption(){Name = "7", Value = "7"},
+                    new ListValueOption(){Name = "8", Value = "8"},
+                    new ListValueOption(){Name = "9", Value = "9"},
+                    new ListValueOption(){Name = "10", Value = "10"},
+                    new ListValueOption(){Name = "11", Value = "11"},
+                    new ListValueOption(){Name = "12", Value = "12"},
+                }
             };
 
             var offsetSettings = new TextFieldPredefinedListEditorSettings()
             {
                 Editor = EditorOption.Dropdown,
-
+                DefaultValue = "",
                 Options = new ListValueOption[] {
                     new ListValueOption(){Name = "None", Value = ""},
                     new ListValueOption(){Name = "1", Value = "1"},
@@ -187,8 +350,9 @@ namespace StatCan.Themes.VuetifyTheme
                 .WithTextFieldPredefinedList("AlignSelf", "Align Self", "0", new TextFieldPredefinedListEditorSettings()
                     {
                         Editor = EditorOption.Dropdown,
+                        DefaultValue = "",
                         Options = new ListValueOption[] {
-                                        new ListValueOption(){Name = "Default", Value = ""},
+                                        new ListValueOption(){Name = "None", Value = ""},
                                         new ListValueOption(){Name = "Start", Value = "start"},
                                         new ListValueOption(){Name = "Center", Value = "center"},
                                         new ListValueOption(){Name = "End", Value = "end"},
@@ -226,44 +390,81 @@ namespace StatCan.Themes.VuetifyTheme
                 )
                 .WithFlow("1", new[] { "VCol" })
             );
-            var jutifySettings = new TextFieldPredefinedListEditorSettings()
-            {
-                Editor = EditorOption.Dropdown,
-                Options = new ListValueOption[] {
-                        new ListValueOption(){Name = "Default", Value = ""},
-                        new ListValueOption(){Name = "Start", Value = "start"},
-                        new ListValueOption(){Name = "Center", Value = "center"},
-                        new ListValueOption(){Name = "End", Value = "end"},
-                        new ListValueOption(){Name = "Between", Value = "space-between"},
-                        new ListValueOption(){Name = "Around", Value = "space-around"},
-                    }
+
+            var justifyOptions = new ListValueOption[] {
+                new ListValueOption(){Name = "None", Value = ""},
+                new ListValueOption() {
+                    Name = "Start",
+                    Value = "start"
+                },
+                new ListValueOption() {
+                    Name = "End",
+                    Value = "end"
+                },
+                new ListValueOption() {
+                    Name = "Center",
+                    Value = "center"
+                },
+                new ListValueOption() {
+                    Name = "Space-Around",
+                    Value = "space-around"
+                },
+                new ListValueOption() {
+                    Name = "Space-between",
+                    Value = "space-between"
+                }
             };
 
-            var alignContentSettings = new TextFieldPredefinedListEditorSettings()
-            {
-                Editor = EditorOption.Dropdown,
-                Options = new ListValueOption[] {
-                        new ListValueOption(){Name = "Default", Value = ""},
-                        new ListValueOption(){Name = "Start", Value = "start"},
-                        new ListValueOption(){Name = "Center", Value = "center"},
-                        new ListValueOption(){Name = "End", Value = "end"},
-                        new ListValueOption(){Name = "Between", Value = "space-between"},
-                        new ListValueOption(){Name = "Around", Value = "space-around"},
-                        new ListValueOption(){Name = "Stretch", Value = "stretch"},
-                    }
+            var alignOptions = new ListValueOption[] {
+                new ListValueOption(){Name = "None", Value = ""},
+                new ListValueOption() {
+                    Name = "Start",
+                    Value = "start"
+                },
+                new ListValueOption() {
+                    Name = "Center",
+                    Value = "center"
+                },
+                new ListValueOption() {
+                    Name = "End",
+                    Value = "end"
+                },
+                new ListValueOption() {
+                    Name = "Baseline",
+                    Value = "baseline"
+                },
+                new ListValueOption() {
+                    Name = "Stretch",
+                    Value = "stretch"
+                }
             };
 
-            var alignItemsSettings = new TextFieldPredefinedListEditorSettings()
-            {
-                Editor = EditorOption.Dropdown,
-                Options = new ListValueOption[] {
-                        new ListValueOption(){Name = "Default", Value = ""},
-                        new ListValueOption(){Name = "Start", Value = "start"},
-                        new ListValueOption(){Name = "Center", Value = "center"},
-                        new ListValueOption(){Name = "End", Value = "end"},
-                        new ListValueOption(){Name = "Baseline", Value = "baseline"},
-                        new ListValueOption(){Name = "Stretch", Value = "stretch"}
-                    }
+            var alignContentOptions = new ListValueOption[] {
+                new ListValueOption(){Name = "None", Value = ""},
+                new ListValueOption() {
+                    Name = "Start",
+                    Value = "start"
+                },
+                new ListValueOption() {
+                    Name = "Center",
+                    Value = "center"
+                },
+                new ListValueOption() {
+                    Name = "End",
+                    Value = "end"
+                },
+                new ListValueOption() {
+                    Name = "Space-between",
+                    Value = "space-between"
+                },
+                new ListValueOption() {
+                    Name = "Space-around",
+                    Value = "space-around"
+                },
+                new ListValueOption() {
+                    Name = "Stretch",
+                    Value = "stretch"
+                }
             };
 
             _contentDefinitionManager.AlterPartDefinition("VRow", part => part
@@ -280,6 +481,216 @@ namespace StatCan.Themes.VuetifyTheme
                         },
                     })
                 )
+                .WithField("Justify", field => field
+                    .OfType("TextField")
+                    .WithDisplayName("Justify")
+                    .WithEditor("PredefinedList")
+                    .WithPosition("1")
+                    .WithSettings(new TextFieldPredefinedListEditorSettings()
+                    {
+                        DefaultValue = "",
+                        Editor = EditorOption.Dropdown,
+                        Options = justifyOptions
+                    })
+                    .WithSettings(new TextFieldSettings() {
+                        Hint = "Applies the justify-content css property. Available options are start, center, end, space-between and space-around."
+                    }))
+                .WithField("JustifySm", field => field
+                    .OfType("TextField")
+                    .WithDisplayName("JustifySm")
+                    .WithEditor("PredefinedList")
+                    .WithPosition("2")
+                    .WithSettings(new TextFieldPredefinedListEditorSettings()
+                    {
+                        DefaultValue = "",
+                        Editor = EditorOption.Dropdown,
+                        Options = justifyOptions
+                    })
+                    .WithSettings(new TextFieldSettings() {
+                        Hint = "Changes the justify-content property on small and greater breakpoints."
+                    }))
+                .WithField("JustifyMd", field => field
+                    .OfType("TextField")
+                    .WithDisplayName("JustifyMd")
+                    .WithEditor("PredefinedList")
+                    .WithPosition("3")
+                    .WithSettings(new TextFieldPredefinedListEditorSettings()
+                    {
+                        DefaultValue = "",
+                        Editor = EditorOption.Dropdown,
+                        Options = justifyOptions
+                    })
+                    .WithSettings(new TextFieldSettings() {
+                        Hint = "Changes the justify-content property on medium and greater breakpoints."
+                    }))
+                .WithField("JustifyLg", field => field
+                    .OfType("TextField")
+                    .WithDisplayName("JustifyLg")
+                    .WithEditor("PredefinedList")
+                    .WithPosition("4")
+                    .WithSettings(new TextFieldPredefinedListEditorSettings()
+                    {
+                        DefaultValue = "",
+                        Editor = EditorOption.Dropdown,
+                        Options = justifyOptions
+                    })
+                    .WithSettings(new TextFieldSettings() {
+                        Hint = "Changes the justify-content property on large and greater breakpoints."
+                    }))
+                .WithField("JustifyXl", field => field
+                    .OfType("TextField")
+                    .WithDisplayName("JustifyXl")
+                    .WithEditor("PredefinedList")
+                    .WithPosition("5")
+                    .WithSettings(new TextFieldPredefinedListEditorSettings()
+                    {
+                        DefaultValue = "",
+                        Editor = EditorOption.Dropdown,
+                        Options = justifyOptions
+                    })
+                    .WithSettings(new TextFieldSettings() {
+                        Hint = "Changes the justify-content property on extra large and greater breakpoints."
+                    }))
+                .WithField("Align", field => field
+                    .OfType("TextField")
+                    .WithDisplayName("Align")
+                    .WithEditor("PredefinedList")
+                    .WithPosition("6")
+                    .WithSettings(new TextFieldPredefinedListEditorSettings()
+                    {
+                        DefaultValue = "",
+                        Editor = EditorOption.Dropdown,
+                        Options = alignOptions
+                    })
+                    .WithSettings(new TextFieldSettings() {
+                        Hint = "Applies the align-items css property. Available options are start, center, end, baseline, and stretch."
+                    }))
+                .WithField("AlignSm", field => field
+                    .OfType("TextField")
+                    .WithDisplayName("AlignSm")
+                    .WithEditor("PredefinedList")
+                    .WithPosition("7")
+                    .WithSettings(new TextFieldPredefinedListEditorSettings()
+                    {
+                        DefaultValue = "",
+                        Editor = EditorOption.Dropdown,
+                        Options = alignOptions
+                    })
+                    .WithSettings(new TextFieldSettings() {
+                        Hint = "Changes the align-items property on small and greater breakpoints."
+                    }))
+                .WithField("AlignMd", field => field
+                    .OfType("TextField")
+                    .WithDisplayName("AlignMd")
+                    .WithEditor("PredefinedList")
+                    .WithPosition("8")
+                    .WithSettings(new TextFieldPredefinedListEditorSettings()
+                    {
+                        DefaultValue = "",
+                        Editor = EditorOption.Dropdown,
+                        Options = alignOptions
+                    })
+                    .WithSettings(new TextFieldSettings() {
+                        Hint = "Changes the align-items property on medium and greater breakpoints."
+                    }))
+                .WithField("AlignLg", field => field
+                    .OfType("TextField")
+                    .WithDisplayName("AlignLg")
+                    .WithEditor("PredefinedList")
+                    .WithPosition("9")
+                    .WithSettings(new TextFieldPredefinedListEditorSettings()
+                    {
+                        DefaultValue = "",
+                        Editor = EditorOption.Dropdown,
+                        Options = alignOptions
+                    })
+                    .WithSettings(new TextFieldSettings() {
+                        Hint = "Changes the align-items property on large and greater breakpoints."
+                    }))
+                .WithField("AlignXl", field => field
+                    .OfType("TextField")
+                    .WithDisplayName("AlignXl")
+                    .WithEditor("PredefinedList")
+                    .WithPosition("10")
+                    .WithSettings(new TextFieldPredefinedListEditorSettings()
+                    {
+                        DefaultValue = "",
+                        Editor = EditorOption.Dropdown,
+                        Options = alignOptions
+                    })
+                    .WithSettings(new TextFieldSettings() {
+                        Hint = "Changes the align-items property on extra large and greater breakpoints."
+                    }))
+                .WithField("AlignContent", field => field
+                    .OfType("TextField")
+                    .WithDisplayName("AlignContent")
+                    .WithEditor("PredefinedList")
+                    .WithPosition("11")
+                    .WithSettings(new TextFieldPredefinedListEditorSettings()
+                    {
+                        DefaultValue = "",
+                        Editor = EditorOption.Dropdown,
+                        Options = alignContentOptions
+                    })
+                    .WithSettings(new TextFieldSettings() {
+                        Hint = "Applies the align-content css property. Available options are start, center, end, baseline, and stretch."
+                    }))
+                .WithField("AlignContentSm", field => field
+                    .OfType("TextField")
+                    .WithDisplayName("AlignContentSm")
+                    .WithEditor("PredefinedList")
+                    .WithPosition("12")
+                    .WithSettings(new TextFieldPredefinedListEditorSettings()
+                    {
+                        DefaultValue = "",
+                        Editor = EditorOption.Dropdown,
+                        Options = alignContentOptions
+                    })
+                    .WithSettings(new TextFieldSettings() {
+                        Hint = "Changes the align-items property on small and greater breakpoints."
+                    }))
+                .WithField("AlignContentMd", field => field
+                    .OfType("TextField")
+                    .WithDisplayName("AlignContentMd")
+                    .WithEditor("PredefinedList")
+                    .WithPosition("13")
+                    .WithSettings(new TextFieldPredefinedListEditorSettings()
+                    {
+                        DefaultValue = "",
+                        Editor = EditorOption.Dropdown,
+                        Options = alignContentOptions
+                    })
+                    .WithSettings(new TextFieldSettings() {
+                        Hint = "Changes the align-items property on medium and greater breakpoints."
+                    }))
+                .WithField("AlignContentLg", field => field
+                    .OfType("TextField")
+                    .WithDisplayName("AlignContentLg")
+                    .WithEditor("PredefinedList")
+                    .WithPosition("14")
+                    .WithSettings(new TextFieldPredefinedListEditorSettings()
+                    {
+                        DefaultValue = "",
+                        Editor = EditorOption.Dropdown,
+                        Options = alignContentOptions
+                    })
+                    .WithSettings(new TextFieldSettings() {
+                        Hint = "Changes the align-items property on large and greater breakpoints."
+                    }))
+                .WithField("AlignContentXl", field => field
+                    .OfType("TextField")
+                    .WithDisplayName("AlignContentXl")
+                    .WithEditor("PredefinedList")
+                    .WithPosition("15")
+                    .WithSettings(new TextFieldPredefinedListEditorSettings()
+                    {
+                        DefaultValue = "",
+                        Editor = EditorOption.Dropdown,
+                        Options = alignContentOptions
+                    })
+                    .WithSettings(new TextFieldSettings() {
+                        Hint = "Changes the align-items property on extra large and greater breakpoints."
+                    }))
             );
         }
 
@@ -1281,35 +1692,6 @@ namespace StatCan.Themes.VuetifyTheme
             );
         }
 
-        private void CreateFip()
-        {
-            _contentDefinitionManager.AlterTypeDefinition("FIP", type => type
-                .DisplayedAs("FIP")
-                .Stereotype("Widget")
-                .WithPart("FIP", part => part
-                    .WithPosition("0")
-                )
-            );
-
-            _contentDefinitionManager.AlterPartDefinition("FIP", part => part
-                .WithField("Props", field => field
-                    .OfType("MultiTextField")
-                    .WithDisplayName("Props")
-                    .WithEditor("Picker")
-                    .WithPosition("0")
-                    .WithSettings(new MultiTextFieldSettings
-                    {
-                        Options = new MultiTextFieldValueOption[] {
-                            new MultiTextFieldValueOption() {Name = "Dark", Value = "dark"},
-                            new MultiTextFieldValueOption() {Name = "Light", Value = "light"},
-                            new MultiTextFieldValueOption() {Name = "Rounded", Value = "rounded"},
-                            new MultiTextFieldValueOption() {Name = "Shaped", Value = "shaped"}
-                        },
-                    })
-                )
-            );
-        }
-
         private void VSubheader() {
             _contentDefinitionManager.AlterTypeDefinition("VSubheader", type => type
                 .DisplayedAs("VSubheader")
@@ -1376,7 +1758,7 @@ namespace StatCan.Themes.VuetifyTheme
             );
         }
 
-        private void VList() {  
+        private void VList() {
             _contentDefinitionManager.AlterTypeDefinition("VList", type => type
                 .DisplayedAs("VList")
                 .Stereotype("Widget")
@@ -1415,7 +1797,7 @@ namespace StatCan.Themes.VuetifyTheme
                             new MultiTextFieldValueOption() {Name = "Shaped", Value = "shaped"},
                             new MultiTextFieldValueOption() {Name = "Subheader", Value = "subheader"},
                             new MultiTextFieldValueOption() {Name = "Tile", Value = "tile"},
-                    } 
+                    }
                     })
                 )
                 .WithTextField("Color", "Color", "1", new TextFieldSettings(){
@@ -1463,6 +1845,6 @@ namespace StatCan.Themes.VuetifyTheme
                 )
             );
         }
-
+        #endregion
     }
 }

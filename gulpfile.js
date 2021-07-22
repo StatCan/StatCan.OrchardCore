@@ -1,5 +1,5 @@
-const { exec } = require("child_process");
 var fs = require("graceful-fs"),
+  exec = require("gulp-exec")
   glob = require("glob"),
   path = require("path-posix"),
   merge = require("merge-stream"),
@@ -23,9 +23,6 @@ var fs = require("graceful-fs"),
   postcss = require("gulp-postcss"),
   babel = require("gulp-babel");
 
-// For compat with older versions of Node.js.
-require("es6-promise").polyfill();
-
 // To suppress memory leak warning from gulp.watch().
 require("events").EventEmitter.prototype._maxListeners = 100;
 
@@ -36,11 +33,9 @@ require("events").EventEmitter.prototype._maxListeners = 100;
 // Incremental build (each asset group is built only if one or more inputs are newer than the output).
 gulp.task("build", function () {
   var assetGroupTasks = getAllAssetGroups().map(function (assetGroup) {
-    var doRebuild = false;
+    var doRebuild = true;
     return createAssetGroupTask(assetGroup, doRebuild);
   });
-
-  vuetifyTheme("build"); 
   return merge(assetGroupTasks);
 });
 
@@ -50,16 +45,21 @@ gulp.task("rebuild", function () {
     var doRebuild = true;
     return createAssetGroupTask(assetGroup, doRebuild);
   });
-  vuetifyTheme("build"); 
   return merge(assetGroupTasks);
 });
 
 
 function watchAssetGroup(assetGroup, assetManifestPath) {
   resolveAssetGroupPaths(assetGroup, assetManifestPath);
+  let watchPaths = [];
+  watchPaths = watchPaths.concat(assetGroup.watchPaths)
   // watch the input and watchPaths  
-  var watchPaths = assetGroup.inputPaths.concat(assetGroup.watchPaths);
-
+  if (assetGroup.inputPaths) {
+    watchPaths = watchPaths.concat(assetGroup.inputPaths);
+  }
+  else if (assetGroup.file) {
+    watchPaths.push(assetGroup.file);
+  }
   var inputWatcher = gulp.watch(watchPaths);
   inputWatcher.on("change", function (watchedPath) {
     var isConcat =
@@ -123,7 +123,6 @@ gulp.task("watch", function () {
       );
     });
   });
-  vuetifyTheme("watch"); 
 
   console.log("Waiting for file changes");
 });
@@ -139,23 +138,6 @@ gulp.task("help", function () {
       watch     Continuous watch (each asset group is built whenever one of its inputs changes).
     `);
 });
-
-function vuetifyTheme(command) {
-
-  const hackWatch = exec(`npm run ${command}`, {cwd: './src/Themes/VuetifyTheme' });
-
-  hackWatch.stdout.on("data", data => {
-      console.log(`VuetifyTheme: ${data}`);
-  });
-  hackWatch.on('error', (error) => {
-      console.error(`VuetifyTheme: ${error.message}`);
-  });
-  hackWatch.on("close", code => {
-      console.log(`VuetifyTheme ${command} exited with code ${code}`);
-  });
-
-  console.log("Watching Vuetify Theme")
-}
 
 /*
  ** ASSET GROUPS
@@ -175,7 +157,7 @@ function getAllAssetGroups() {
 
 function getAssetsJsonPaths() {
   return glob.sync(
-    "./src/{Modules,Themes}/*/Assets.json",
+    "./src/{Modules,Themes, Apps}/*/Assets.json",
     {}
   );
 }
@@ -183,11 +165,15 @@ function getAssetsJsonPaths() {
 function resolveAssetGroupPaths(assetGroup, assetManifestPath) {
   assetGroup.manifestPath = assetManifestPath;
   assetGroup.basePath = path.dirname(assetManifestPath);
-  assetGroup.inputPaths = assetGroup.inputs.map(function (inputPath) {
-    return path
-      .resolve(path.join(assetGroup.basePath, inputPath))
-      .replace(/\\/g, "/");
-  });
+  if(assetGroup.inputs) {
+    assetGroup.inputPaths = assetGroup.inputs.map(function (inputPath) {
+      return path
+        .resolve(path.join(assetGroup.basePath, inputPath))
+        .replace(/\\/g, "/");
+    });
+  } else if(assetGroup.file){
+    assetGroup.file = path.resolve(path.join(assetGroup.basePath, assetGroup.file)).replace(/\\/g, "/");
+  }
   assetGroup.watchPaths = [];
   if (!!assetGroup.watch) {
     assetGroup.watchPaths = assetGroup.watch.map(function (watchPath) {
@@ -219,6 +205,8 @@ function createAssetGroupTask(assetGroup, doRebuild) {
 
   if (assetGroup.copy === true) {
     return buildCopyPipeline(assetGroup, doRebuild);
+  } else if(assetGroup.vue === true) {
+    return buildVuePipeline(assetGroup);
   } else {
     switch (outputExt) {
       case ".css":
@@ -400,17 +388,7 @@ function buildJsPipeline(assetGroup, doConcat, doRebuild) {
         )
       )
       .pipe(
-        babel({
-          presets: [
-            [
-              "@babel/preset-env",
-              {
-                modules: false
-              },
-              "@babel/preset-flow"
-            ]
-          ]
-        })
+        babel()
       )
       .pipe(gulpif(doConcat, concat(assetGroup.outputFileName)))
       .pipe(
@@ -440,6 +418,7 @@ function buildJsPipeline(assetGroup, doConcat, doRebuild) {
 
 function buildCopyPipeline(assetGroup, doRebuild) {
   var stream = gulp.src(assetGroup.inputPaths);
+  console.log("Copy:", assetGroup.inputPaths);
 
   if (!doRebuild) {
     stream = stream.pipe(newer(assetGroup.outputDir));
@@ -454,4 +433,15 @@ function buildCopyPipeline(assetGroup, doRebuild) {
   //.pipe(gulp.dest(assetGroup.webroot));
 
   return stream;
+}
+
+/**
+ * Uses the vue-cli-service to build vue components / libs
+ * @param {object} assetGroup 
+ */
+function buildVuePipeline(assetGroup) {
+  console.log(`Building ${assetGroup.file}`);
+  return gulp.src(assetGroup.file)
+  .pipe(exec(`vue-cli-service build --target lib --mode production --name ${assetGroup.name} --formats umd,umd-min --dest ${assetGroup.outputPath} ${assetGroup.file} && rimraf ${assetGroup.outputPath}/demo.html`))
+  .pipe(exec.reporter());
 }

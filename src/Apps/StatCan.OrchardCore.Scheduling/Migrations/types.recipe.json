@@ -1,0 +1,421 @@
+{
+  "steps": [
+    {
+      "name": "ContentDefinition",
+      "ContentTypes": [
+        {
+          "Name": "Appointment",
+          "DisplayName": "Appointment",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Creatable": true,
+              "Listable": true,
+              "Securable": true
+            },
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "Appointment",
+              "Name": "Appointment",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                }
+              }
+            },
+            {
+              "PartName": "TitlePart",
+              "Name": "TitlePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                },
+                "TitlePartSettings": {
+                  "Options": 1,
+                  "Pattern": "{% assign employee = ContentItem.Content.Appointment.LinkedContent.ContentItemIds | content_item_id | first %}\r\n{{employee.Content.Employee.FirstName.Text }} {{employee.Content.Employee.LastName.Text }}; {{ContentItem.Content.Appointment.StartDate.Value | local | date: \"%D %R\"}} - {{ContentItem.Content.Appointment.EndDate.Value | local | date: \"%R\" }}; {{ employee.Content.Employee.Cohort | taxonomy_terms | first | display_text}}",
+                  "RenderTitle": false
+                },
+                "ContentIndexSettings": {}
+              }
+            }
+          ]
+        },
+        {
+          "Name": "AppointmentCalendar",
+          "DisplayName": "AppointmentCalendar",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Securable": true
+            },
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "AppointmentCalendar",
+              "Name": "AppointmentCalendar",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                }
+              }
+            },
+            {
+              "PartName": "TitlePart",
+              "Name": "TitlePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            },
+            {
+              "PartName": "AutoroutePart",
+              "Name": "AutoroutePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "2"
+                },
+                "AutoroutePartSettings": {
+                  "ManageContainedItemRoutes": true,
+                  "ShowHomepageOption": true
+                },
+                "ContentIndexSettings": {}
+              }
+            }
+          ]
+        },
+        {
+          "Name": "Employee",
+          "DisplayName": "Employee",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Creatable": true,
+              "Listable": true,
+              "Securable": true
+            },
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "Employee",
+              "Name": "Employee",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                }
+              }
+            },
+            {
+              "PartName": "TitlePart",
+              "Name": "TitlePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                },
+                "TitlePartSettings": {
+                  "Options": 1,
+                  "Pattern": "{{ContentItem.Content.Employee.FirstName.Text}} {{ContentItem.Content.Employee.LastName.Text}} - {{ContentItem.Content.Employee.Cohort | taxonomy_terms | first | display_text}}"
+                },
+                "ContentIndexSettings": {}
+              }
+            }
+          ]
+        },
+        {
+          "Name": "AppointmentPrint",
+          "DisplayName": "Appointment Print",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Stereotype": "Widget"
+            },
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "AppointmentPrint",
+              "Name": "AppointmentPrint",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "CalendarSettings",
+          "DisplayName": "Calendar Settings",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Stereotype": "CustomSettings"
+            },
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "CalendarSettings",
+              "Name": "CalendarSettings",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "ContentParts": [
+        {
+          "Name": "Appointment",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "TaxonomyField",
+              "Name": "Calendar",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Calendar",
+                  "Position": "2"
+                },
+                "TaxonomyFieldSettings": {
+                  "TaxonomyContentItemId": "4wnw5cysybe8szzhehezz5b74b",
+                  "Unique": true
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "Status",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Status",
+                  "Editor": "PredefinedList",
+                  "Position": "5"
+                },
+                "TextFieldSettings": {},
+                "TextFieldPredefinedListEditorSettings": {
+                  "Options": [
+                    {
+                      "name": "Upcoming",
+                      "value": "UPCOMING"
+                    },
+                    {
+                      "name": "Cancelled",
+                      "value": "CANCELLED"
+                    },
+                    {
+                      "name": "Completed",
+                      "value": "COMPLETED"
+                    },
+                    {
+                      "name": "No show",
+                      "value": "NOSHOW"
+                    }
+                  ],
+                  "DefaultValue": "UPCOMING"
+                },
+                "ContentIndexSettings": {}
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "Comments",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Comments",
+                  "Editor": "TextArea",
+                  "Position": "6"
+                },
+                "TextFieldSettings": {
+                  "Hint": "These comments are visible to every other scheduler"
+                },
+                "ContentIndexSettings": {}
+              }
+            },
+            {
+              "FieldName": "ContentPickerField",
+              "Name": "LinkedContent",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Linked Content",
+                  "Position": "4"
+                },
+                "ContentPickerFieldSettings": {
+                  "Multiple": false,
+                  "DisplayedContentTypes": [
+                    "Employee"
+                  ]
+                },
+                "ContentIndexSettings": {}
+              }
+            },
+            {
+              "FieldName": "DateTimeField",
+              "Name": "StartDate",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Start Date",
+                  "Position": "0"
+                }
+              }
+            },
+            {
+              "FieldName": "DateTimeField",
+              "Name": "EndDate",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "End Date",
+                  "Position": "1"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "Color",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Color",
+                  "Editor": "Color",
+                  "Position": "3"
+                },
+                "TextFieldSettings": {},
+                "ContentIndexSettings": {}
+              }
+            }
+          ]
+        },
+        {
+          "Name": "AppointmentCalendar",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "TextField",
+              "Name": "Color",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Color",
+                  "Editor": "Color",
+                  "Position": "2"
+                },
+                "TextFieldSettings": {}
+              }
+            }
+          ]
+        },
+        {
+          "Name": "Employee",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "TextField",
+              "Name": "FirstName",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "FirstName",
+                  "Position": "1"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "LastName",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Last Name",
+                  "Position": "2"
+                }
+              }
+            },
+            {
+              "FieldName": "BooleanField",
+              "Name": "Consent",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Consent",
+                  "Position": "4"
+                },
+                "BooleanFieldSettings": {
+                  "Hint": "Consent form has been signed by the employee"
+                },
+                "ContentIndexSettings": {}
+              }
+            },
+            {
+              "FieldName": "BooleanField",
+              "Name": "Participating",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Participating",
+                  "Position": "3"
+                },
+                "BooleanFieldSettings": {
+                  "Hint": "The employee is participating in the testing"
+                }
+              }
+            },
+            {
+              "FieldName": "TaxonomyField",
+              "Name": "Cohort",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Cohort",
+                  "Position": "0"
+                },
+                "TaxonomyFieldSettings": {
+                  "TaxonomyContentItemId": "4wnw5cysybe8szzhehezz5b74b",
+                  "Unique": true
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "CalendarSettings",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "TextField",
+              "Name": "FirstTime",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "First Time",
+                  "Position": "0"
+                },
+                "TextFieldSettings": {
+                  "Hint": "First time displayed in the calendar HH:mm format. See https://vuetifyjs.com/en/api/v-calendar/#props-first-time "
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "IntervalCount",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Interval Count",
+                  "Position": "1"
+                },
+                "TextFieldSettings": {
+                  "Hint": "The number of intervals to display. https://vuetifyjs.com/en/api/v-calendar/#props-interval-count "
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "IntervalMinutes",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Interval Minutes",
+                  "Position": "2"
+                },
+                "TextFieldSettings": {
+                  "Hint": "The number of minutes the intervals are. \r\nhttps://vuetifyjs.com/en/api/v-calendar/#props-interval-minutes"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

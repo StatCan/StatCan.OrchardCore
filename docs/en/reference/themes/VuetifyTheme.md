@@ -86,6 +86,15 @@ This widget is best used in the **Header** zone.
 | Fluid | Removes viewport maximum-width size breakpoints. |
 | Flow | Any number of `VRow`s can be added to the component |
 
+### VDivider
+
+| Field  | Definition |
+|--------|------------|
+| Dark | Applies the dark theme variant to the component. |
+| Inset | Adds indentation (72px) for normal dividers, reduces max height for vertical. |
+| Light | Applies the light theme variant to the component. |
+| Vertical | Displays dividers vertically |
+
 ### VExpansionPanel
 
 | Field  | Definition |
@@ -147,6 +156,41 @@ This widget is best used in the **Footer** zone.
 | Source | The image. This field is mandatory. |
 | Width | Sets the width for the component. |
 
+### VList
+
+| Field  | Definition |
+|--------|------------|
+| Color | Applies specified color to the control - it can be the name of material color (for example success or purple) or css color (#033 or rgba(255, 0, 0, 0.5)). |
+| Dark | Applies the dark theme variant to the component. |
+| Dense | Lowers max height of list tiles.|
+| Disabled | Disables all children **v-list-item** components |
+| Elevation | Designates an elevation applied to the component between 0 and 24.  |
+| Expand | Will only collapse when explicitly closed |
+| Flat | Remove the highlighted background on active **v-list-items** |
+| Height | Sets the height for the component. |
+| Light | Applies the light theme variant to the component. |
+| Nav | An alternative styling that reduces v-list-item width and rounds the corners. |
+| Outlines | Removes elevation (box-shadow) and adds a thin border. |
+| Rounded | Rounds the v-list-item edges. |
+| Shaped | Provides an alternative active style for v-list-item. |
+| Subheader | Removes top padding. Used when previous sibling is a header. |
+| Tag | Specify a custom tag used on the root element. |
+| Tile | Removes the component’s border-radius. |
+| Width | Sets the width for the component. |
+
+### VListItem
+
+| Field  | Definition |
+|--------|------------|
+| Active-Class | Configure the active CSS class applied when the link is active. |
+| Color | Applies specified color to the control when in an active state or input-value is true - it can be the name of material color (for example success or purple) or css color (#033 or rgba(255, 0, 0, 0.5)) |
+| Exact-Active-Class | Configure the active CSS class applied when the link is active with exact match. |
+| Href | Designates the component as anchor and applies the href attribute. |
+| Icon Name | Designates a specific icon. |
+| Input-Value | Controls the active state of the item. This is typically used to highlight the component. |
+| Target | Designates the target attribute. This should only be applied when using the href prop. |
+| To | Denotes the target route of the link. |
+
 ### VNavigationDrawer
 
 This widget is best used in the **Navigation Drawer** zone.
@@ -187,3 +231,44 @@ This widget is best used in the **Navigation Drawer** zone.
 | Justify [Breakpoint] | Applies the [justify-content](https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content) css property. Available options are **start**, **center**, **end**, **space-between** and **space-around**. |
 | No Gutter | Removes the gutter between `VCol`s. |
 | Flow | Any number of `VCol`s can be added to the component. |
+
+### VSubheader
+
+| Field  | Definition |
+|--------|------------|
+| Dark | Applies the dark theme variant to the component. |
+| Inset | Adds indentation (72px) |
+| Light | Applies the light theme variant to the component. |
+
+### VTimeLine
+
+| Field  | Definition |
+|--------|------------|
+| Align-Top | Align caret and dot of timeline items to the top. |
+| Dark | Applies the dark theme variant to the component. |
+| Dense | Hide opposite slot content, and position all items to one side of timeline. |
+| Light | Applies the light theme variant to the component. |
+| Reverse | Reverse direction of timeline items. |
+
+### VTimeLineItem
+
+| Field  | Definition |
+|--------|------------|
+| Color | Applies specified color to the control - it can be the name of material color (for example success or purple) or css color (#033 or rgba(255, 0, 0, 0.5)). |
+| Dark | Applies the dark theme variant to the component. |
+| Icon | Specify icon for dot container |
+| Icon-Color | Applies specified color to the control - it can be the name of material color (for example success or purple) or css color (#033 or rgba(255, 0, 0, 0.5)). |
+| Fill-Dot | Remove padding from dot container |
+| Hide-Dot | Hide display of timeline dot |
+| Large | Large size dot |
+| Left | Explicitly set the item to a left orientation |
+| Light | Applies the light theme variant to the component. |
+| Right | Explicitly set the item to a right orientation. |
+| Small | Small size dot. |
+
+
+## Shortcodes
+
+A collection of shortcodes are available as a recipe for the vuetify theme. 
+
+The container, row, col and divider shortcodes are available if you execute the `Vuetify Grid System Shortcodes` recipe.

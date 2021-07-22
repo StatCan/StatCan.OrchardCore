@@ -1,0 +1,1351 @@
+{
+  "name": "scheduling-app",
+  "displayName": "Scheduling app setup recipe",
+  "description": "For the initial setup of an appointment scheduling application",
+  "author": "Digital Innovation Team",
+  "website": "https://digital.statcan.gc.ca",
+  "version": "0.1.0",
+  "issetuprecipe": true,
+  "categories": [],
+  "tags": [],
+  "steps": [
+    {
+      "name": "Feature",
+      "enable": [
+        "Application.Default",
+        "OrchardCore.Resources",
+        "Lombiq.HelpfulExtensions.CodeGeneration",
+        "OrchardCore.Liquid",
+        "OrchardCore.Settings",
+        "OrchardCore.Contents",
+        "OrchardCore.ContentTypes",
+        "OrchardCore.Autoroute",
+        "OrchardCore.Widgets",
+        "OrchardCore.Flows",
+        "OrchardCore.Title",
+        "OrchardCore.Shortcodes",
+        "OrchardCore.Html",
+        "OrchardCore.Admin",
+        "OrchardCore.AdminMenu",
+        "OrchardCore.Templates",
+        "OrchardCore.AdminTemplates",
+        "OrchardCore.Alias",
+        "OrchardCore.Apis.GraphQL",
+        "OrchardCore.Features",
+        "OrchardCore.Scripting",
+        "OrchardCore.Recipes",
+        "OrchardCore.ContentFields",
+        "OrchardCore.Users",
+        "OrchardCore.Localization",
+        "OrchardCore.ContentLocalization",
+        "OrchardCore.ContentLocalization.ContentCulturePicker",
+        "OrchardCore.ContentPreview",
+        "OrchardCore.Deployment",
+        "OrchardCore.Contents.Deployment.Download",
+        "OrchardCore.CustomSettings",
+        "OrchardCore.Diagnostics",
+        "OrchardCore.DynamicCache",
+        "OrchardCore.Email",
+        "OrchardCore.Feeds",
+        "OrchardCore.HomeRoute",
+        "OrchardCore.Indexing",
+        "OrchardCore.Rules",
+        "OrchardCore.Layers",
+        "OrchardCore.Lists",
+        "OrchardCore.Markdown",
+        "OrchardCore.Media",
+        "OrchardCore.Menu",
+        "OrchardCore.Navigation",
+        "OrchardCore.Queries",
+        "OrchardCore.Queries.Sql",
+        "OrchardCore.Roles",
+        "OrchardCore.Taxonomies",
+        "OrchardCore.Taxonomies.ContentsAdminList",
+        "OrchardCore.Themes",
+        "OrchardCore.Users.Registration",
+        "OrchardCore.Users.ResetPassword",
+        "OrchardCore.Workflows",
+        "OrchardCore.Workflows.Http",
+        "StatCan.OrchardCore.CommonTypes.Page",
+        "StatCan.OrchardCore.ContentPermissions",
+        "StatCan.OrchardCore.CommonTypes.SecurePage",
+        "StatCan.OrchardCore.CommonTypes.Widgets",
+        "StatCan.OrchardCore.ContentFields",
+        "StatCan.OrchardCore.DisplayHelpers",
+        "StatCan.OrchardCore.LocalizedText",
+        "StatCan.OrchardCore.Scripting",
+        "StatCan.OrchardCore.VueForms",
+        "StatCan.OrchardCore.VueForms.Localized",
+        "StatCan.OrchardCore.Queries.GraphQL",
+        "StatCan.OrchardCore.Scheduling",
+        "TheAdmin",
+        "DigitalAdmin",
+        "VuetifyTheme"
+      ]
+    },
+    {
+      "name": "recipes",
+      "Values": [
+        {
+          "executionid": "VuetifyTheme",
+          "name": "vuetify-theme-setup"
+        }
+      ]
+    },
+    {
+      "name": "ContentDefinition",
+      "ContentTypes": [
+        {
+          "Name": "ContactRequest",
+          "DisplayName": "ContactRequest",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Listable": true
+            },
+            "FullTextAspectSettings": {
+              "IncludeBodyAspect": false,
+              "IncludeDisplayText": false
+            }
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "ContactRequest",
+              "Name": "ContactRequest",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            },
+            {
+              "PartName": "TitlePart",
+              "Name": "TitlePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                },
+                "TitlePartSettings": {
+                  "Options": 2,
+                  "Pattern": "{{Model.ContentItem.Content.ContactRequest.Name.Text}}"
+                },
+                "ContentIndexSettings": {},
+                "GraphQLContentTypePartSettings": {}
+              }
+            }
+          ]
+        }
+      ],
+      "ContentParts": [
+        {
+          "Name": "ContactRequest",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "TextField",
+              "Name": "Name",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Name",
+                  "Position": "0"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "Email",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Email",
+                  "Position": "1"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "Message",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Message",
+                  "Position": "2"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "content",
+      "data": [
+        {
+          "ContentItemId": "4ty56s2p8vfhmxp76p4f37b1c3",
+          "ContentItemVersionId": "485ekvx99njnp2eb7rrsnw2p4j",
+          "ContentType": "VueForm",
+          "DisplayText": "Contact Us",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": "2021-05-04T15:27:08.8750082Z",
+          "PublishedUtc": "2021-05-04T15:27:08.8967945Z",
+          "CreatedUtc": "2021-04-22T14:33:05.8932046Z",
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "TitlePart": {
+            "Title": "Contact Us"
+          },
+          "VueForm": {
+            "Disabled": {
+              "Value": false
+            },
+            "Debug": {
+              "Value": false
+            },
+            "RenderAs": {
+              "Text": null
+            },
+            "DisabledHtml": {
+              "Html": "<div class=\"container text-center mt-2\">\nThe contact form is currently disabled.\n</div>"
+            },
+            "SuccessMessage": {
+              "Text": "{{ \"successMessage\" | localize }}"
+            },
+            "Template": {
+              "Text": "<v-container >\r\n  <v-card-title>{{'Feedback' | localize}}</v-card-title>\r\n  <v-card-text>\r\n    <v-row>\r\n      <v-col cols=\"8\">\r\n        <validation-provider name=\"{{ \"nameLabel\" | localize | downcase }}\" rules=\"required\" v-slot=\"{ errors, valid }\">\r\n          <v-text-field v-model=\"name\" :success=\"valid\" :error-messages=\"errors\" filled=\"filled\" label=\"{{ \"nameLabel\" | localize }}\"></v-text-field>\r\n        </validation-provider>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n        <validation-provider name=\"{{ \"emailLabel\" | localize | downcase }}\" rules=\"required|email\" v-slot=\"{ errors, valid }\">\r\n          <v-text-field v-model=\"email\" :success=\"valid\" :error-messages=\"errors\" filled=\"filled\" label=\"{{ \"emailLabel\" | localize }}\"></v-text-field>\r\n        </validation-provider>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n        <validation-provider name=\"{{ \"messageLabel\" | localize | downcase }}\" rules=\"required\" v-slot=\"{ errors, valid }\">\r\n       \t  <v-textarea v-model=\"message\" :success=\"valid\" :error-messages=\"errors\" counter=\"true\" filled=\"filled\" label=\"{{ \"messageLabel\" | localize }}\" rows=\"5\">\r\n          </v-textarea>\r\n    \t</validation-provider>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n        <v-alert type=\"success\" v-if=\"form.successMessage\">\r\n          {% raw %}{{ form.successMessage }}{% endraw %}\r\n        </v-alert>\r\n        <v-alert type=\"error\" v-if=\"form.serverValidationMessage\">\r\n          {% raw %}{{ form.serverValidationMessage[0] }}{% endraw %}\r\n        </v-alert>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n    \t<v-btn type=\"submit\" depressed block @click=\"formHandleSubmit\" :disabled=\"form.submitting\">{{ \"submitLabel\" | localize }}</v-btn>\r\n      </v-col>\r\n    </v-row>\r\n  </v-card-text>\r\n</v-container>"
+            }
+          },
+          "VueFormScripts": {
+            "ClientInit": {
+              "Text": null
+            },
+            "ComponentOptions": {
+              "Text": "{\r\n  data: () => ({\r\n    name: \"\",\r\n\temail: \"{{User | user_email}}\",\r\n    message: \"\",\r\n  })\r\n}"
+            },
+            "OnValidation": {
+              "Text": "var data = requestFormAsJsonObject();\r\nvar localizedText = getLocalizedTextValues(getFormContentItem());\r\n\r\nif(data.name == \"\" || data.email == \"\" || data.message == \"\" || !validateEmail(data.email)) {\r\n  addError('serverValidationMessage', localizedText.serverValidationError);\r\n}"
+            },
+            "OnSubmitted": {
+              "Text": "var data = requestFormAsJsonObject();\r\n\r\nvar item = createContentItem(\"ContactRequest\", true, {\r\n  \"ContactRequest\": {\r\n    \"Name\": {\r\n      \"Text\": data.name\r\n    },\r\n    \"Email\": {\r\n      \"Text\": data.email\r\n    },\r\n    \"Message\": {\r\n      \"Text\": data.message\r\n    }\r\n  }\r\n});"
+            }
+          },
+          "LocalizedTextPart": {
+            "Data": [
+              {
+                "Name": "nameLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Nom"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Name"
+                  }
+                ]
+              },
+              {
+                "Name": "emailLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Adresse courriel"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Email Address"
+                  }
+                ]
+              },
+              {
+                "Name": "messageLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Message"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Message"
+                  }
+                ]
+              },
+              {
+                "Name": "submitLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Envoyer"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Send"
+                  }
+                ]
+              },
+              {
+                "Name": "successMessage",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Vôtre rétroaction a été reçu avec succès"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Your feedback was successfully received"
+                  }
+                ]
+              },
+              {
+                "Name": "serverValidationError",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Une erreure est survenue."
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "An error occured."
+                  }
+                ]
+              },
+              {
+                "Name": "Feedback",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Rétroaction"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Feedback"
+                  }
+                ]
+              }
+            ]
+          },
+          "ContentPermissionsPart": {
+            "Roles": ["Authenticated"],
+            "Enabled": true
+          }
+        },
+        {
+          "ContentItemId": "4bmx4pb1mf6dnx0xs8yw54w1c0",
+          "ContentItemVersionId": "4f5f5jwapph934sh45s8gckz4e",
+          "ContentType": "SecurePage",
+          "DisplayText": "Rendez-vous print",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": "2021-05-06T18:38:18.8145826Z",
+          "PublishedUtc": "2021-05-06T18:38:18.8193795Z",
+          "CreatedUtc": "2021-05-06T18:00:18.4823716Z",
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "LocalizationPart": {
+            "LocalizationSet": "4m8wvkm1rxj26tn1qv8yam5zx3",
+            "Culture": "fr"
+          },
+          "TitlePart": {
+            "Title": "Rendez-vous print"
+          },
+          "AutoroutePart": {
+            "Path": "rendez-vous/imprimer",
+            "SetHomepage": false,
+            "Disabled": false,
+            "RouteContainedItems": false,
+            "Absolute": false
+          },
+          "FlowPart": {
+            "Widgets": [
+              {
+                "ContentItemId": "4dzkcyqq6d0s37wydej61ga3mm",
+                "ContentItemVersionId": null,
+                "ContentType": "AppointmentPrint",
+                "DisplayText": "",
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": "2021-05-06T18:38:18.8170467Z",
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": "",
+                "Author": "admin",
+                "AppointmentPrint": {},
+                "FlowMetadata": {
+                  "Alignment": 3,
+                  "Size": 100
+                }
+              }
+            ]
+          },
+          "ContentPermissionsPart": {
+            "Roles": ["Administrator", "Scheduler"],
+            "Enabled": true
+          },
+          "SecurePage": {
+            "UnauthorizedHtml": {
+              "Html": ""
+            }
+          }
+        },
+        {
+          "ContentItemId": "4s7f5j4hak1k65y3gnt3vdzewp",
+          "ContentItemVersionId": "4nb7kss96bdj5zg9k9zvnn8d52",
+          "ContentType": "SecurePage",
+          "DisplayText": "Appointments Print",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": "2021-05-06T18:38:25.4256673Z",
+          "PublishedUtc": "2021-05-06T18:38:25.4310799Z",
+          "CreatedUtc": "2021-05-06T18:00:03.1807731Z",
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "LocalizationPart": {
+            "LocalizationSet": "4m8wvkm1rxj26tn1qv8yam5zx3",
+            "Culture": "en"
+          },
+          "TitlePart": {
+            "Title": "Appointments Print"
+          },
+          "AutoroutePart": {
+            "Path": "appointments/print",
+            "SetHomepage": false,
+            "Disabled": false,
+            "RouteContainedItems": false,
+            "Absolute": false
+          },
+          "FlowPart": {
+            "Widgets": [
+              {
+                "ContentItemId": "4dzkcyqq6d0s37wydej61ga3mm",
+                "ContentItemVersionId": null,
+                "ContentType": "AppointmentPrint",
+                "DisplayText": "",
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": "2021-05-06T18:38:25.4281384Z",
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": "",
+                "Author": "admin",
+                "AppointmentPrint": {},
+                "FlowMetadata": {
+                  "Alignment": 3,
+                  "Size": 100
+                }
+              }
+            ]
+          },
+          "ContentPermissionsPart": {
+            "Roles": ["Administrator", "Scheduler"],
+            "Enabled": true
+          },
+          "SecurePage": {
+            "UnauthorizedHtml": {
+              "Html": ""
+            }
+          }
+        },
+        {
+          "ContentItemId": "4wekk6wcm1ack3c68x95m6dv5k",
+          "ContentItemVersionId": "4wbt1kpdccfxfwh2hffhpx4r5f",
+          "ContentType": "Menu",
+          "DisplayText": "Navigation Menu FR",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": "2021-05-18T19:16:21.9413804Z",
+          "PublishedUtc": "2021-05-18T19:16:21.943616Z",
+          "CreatedUtc": "2021-04-23T17:44:46.1447351Z",
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "TitlePart": {
+            "Title": "Navigation Menu FR"
+          },
+          "AliasPart": {
+            "Alias": "navigation-drawer-fr"
+          },
+          "MenuPart": {},
+          "MenuItemsListPart": {
+            "MenuItems": [
+              {
+                "ContentItemId": "45kfyr6dj9ek01d301n831psn8",
+                "ContentItemVersionId": null,
+                "ContentType": "LinkMenuItem",
+                "DisplayText": "Page Principale",
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": "2021-04-26T13:01:24.14465Z",
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": null,
+                "Author": "admin",
+                "LinkMenuItemPart": {
+                  "Name": "Page Principale",
+                  "Url": "~/"
+                },
+                "LinkMenuItem": {
+                  "IconName": {
+                    "Text": "mdi-home"
+                  }
+                }
+              },
+              {
+                "ContentItemId": "4gwk2vpgp868h33c5s3qgdstnc",
+                "ContentItemVersionId": null,
+                "ContentType": "TaxonomyMenuItem",
+                "DisplayText": "Calendriers",
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": "2021-04-22T15:13:32.808932Z",
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": null,
+                "Author": "admin",
+                "TaxonomyMenuItem": {
+                  "Expanded": {
+                    "Value": true
+                  },
+                  "Taxonomy": {
+                    "ContentItemIds": ["4wnw5cysybe8szzhehezz5b74b"]
+                  },
+                  "IconName": {
+                    "Text": "mdi-calendar"
+                  }
+                },
+                "TitlePart": {
+                  "Title": "Calendriers"
+                },
+                "LinkMenuItemPart": {
+                  "Name": "Cohorts",
+                  "Url": null
+                }
+              },
+              {
+                "ContentItemId": "4derksqv47taz6pvgfvpkh2zwj",
+                "ContentItemVersionId": null,
+                "ContentType": "ContentMenuItem",
+                "DisplayText": "Rétroaction",
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": "2021-04-23T17:44:36.7371328Z",
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": null,
+                "Author": "admin",
+                "ContentMenuItemPart": {
+                  "Name": "Rétroaction",
+                  "SelectedContentItem": {
+                    "ContentItemIds": ["4ty56s2p8vfhmxp76p4f37b1c3"]
+                  }
+                },
+                "ContentMenuItem": {
+                  "IconName": {
+                    "Text": "mdi-comment-quote"
+                  }
+                }
+              }
+            ]
+          },
+          "@WeldedPartSettings": {
+            "MenuPart": {
+              "Position": "3"
+            },
+            "MenuItemsListPart": {
+              "Position": "4"
+            }
+          }
+        },
+        {
+          "ContentItemId": "4nm1vms5mbanyx2n23f88c7mn8",
+          "ContentItemVersionId": "4t9gwmrw73vxzr5eavsgxxdfdq",
+          "ContentType": "Menu",
+          "DisplayText": "Navigation Menu EN",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": "2021-06-09T00:45:40.9829204Z",
+          "PublishedUtc": "2021-06-09T00:45:40.9854811Z",
+          "CreatedUtc": "2021-04-23T17:44:24.6263983Z",
+          "Owner": "4dtgvzw6m75944r84m07brxhnx",
+          "Author": "admin",
+          "TitlePart": {
+            "Title": "Navigation Menu EN"
+          },
+          "AliasPart": {
+            "Alias": "navigation-drawer-en"
+          },
+          "MenuPart": {},
+          "MenuItemsListPart": {
+            "MenuItems": [
+              {
+                "ContentItemId": "45kfyr6dj9ek01d301n831psn8",
+                "ContentItemVersionId": null,
+                "ContentType": "LinkMenuItem",
+                "DisplayText": "HomePage",
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": "2021-04-26T13:01:24.14465Z",
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": null,
+                "Author": "admin",
+                "LinkMenuItemPart": {
+                  "Name": "HomePage",
+                  "Url": "~/"
+                },
+                "LinkMenuItem": {
+                  "IconName": {
+                    "Text": "mdi-home"
+                  }
+                }
+              },
+              {
+                "ContentItemId": "4gwk2vpgp868h33c5s3qgdstnc",
+                "ContentItemVersionId": null,
+                "ContentType": "TaxonomyMenuItem",
+                "DisplayText": "Calendars",
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": "2021-04-22T15:13:32.808932Z",
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": null,
+                "Author": "admin",
+                "TaxonomyMenuItem": {
+                  "Expanded": {
+                    "Value": true
+                  },
+                  "Taxonomy": {
+                    "ContentItemIds": [
+                      "4wnw5cysybe8szzhehezz5b74b"
+                    ]
+                  },
+                  "IconName": {
+                    "Text": "mdi-calendar"
+                  }
+                },
+                "TitlePart": {
+                  "Title": "Calendars"
+                },
+                "LinkMenuItemPart": {
+                  "Name": "Cohorts",
+                  "Url": null
+                }
+              },
+              {
+                "ContentItemId": "4derksqv47taz6pvgfvpkh2zwj",
+                "ContentItemVersionId": null,
+                "ContentType": "ContentMenuItem",
+                "DisplayText": "Feedback",
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": "2021-04-23T17:44:36.7371328Z",
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": null,
+                "Author": "inno_adm",
+                "ContentMenuItemPart": {
+                  "Name": "Feedback",
+                  "SelectedContentItem": {
+                    "ContentItemIds": [
+                      "4ty56s2p8vfhmxp76p4f37b1c3"
+                    ]
+                  }
+                },
+                "ContentMenuItem": {
+                  "IconName": {
+                    "Text": "mdi-comment-quote"
+                  }
+                }
+              },
+              {
+                "ContentItemId": "4fx1gta04gafm50wck4z3xahdk",
+                "ContentItemVersionId": null,
+                "ContentType": "ContentMenuItem",
+                "DisplayText": "Bulk create appointments",
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": "2021-06-09T00:35:51.4367176Z",
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": null,
+                "Author": "admin",
+                "ContentMenuItemPart": {
+                  "Name": "Bulk create appointments",
+                  "SelectedContentItem": {
+                    "ContentItemIds": [
+                      "430c4dnz5d7616rz32jd7h6dxz"
+                    ]
+                  }
+                },
+                "ContentMenuItem": {
+                  "IconName": {
+                    "Text": "mdi-file-multiple"
+                  }
+                }
+              },
+              {
+                "ContentItemId": "416wq3yv92mq8vsdqbmghajv4s",
+                "ContentItemVersionId": null,
+                "ContentType": "ContentMenuItem",
+                "DisplayText": "Bulk create employees",
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": "2021-06-09T00:36:49.6284002Z",
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": null,
+                "Author": "admin",
+                "ContentMenuItemPart": {
+                  "Name": "Bulk create employees",
+                  "SelectedContentItem": {
+                    "ContentItemIds": [
+                      "4w6xjvdezh00ctenheq70cg2nf"
+                    ]
+                  }
+                },
+                "ContentMenuItem": {
+                  "IconName": {
+                    "Text": "mdi-account-group"
+                  }
+                }
+              }
+            ]
+          },
+          "@WeldedPartSettings": {
+            "MenuPart": {
+              "Position": "3"
+            },
+            "MenuItemsListPart": {
+              "Position": "4"
+            }
+          }
+        },
+        {
+          "ContentItemId": "4w6xjvdezh00ctenheq70cg2nf",
+          "ContentItemVersionId": "4bh36b9dwhr6q2wvzk2d1awx4f",
+          "ContentType": "VueForm",
+          "DisplayText": "Load Employees",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": "2021-05-18T19:20:36.2948941Z",
+          "PublishedUtc": "2021-05-18T19:20:36.3011091Z",
+          "CreatedUtc": "2021-05-04T00:57:57.2184298Z",
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "TitlePart": {
+            "Title": "Load Employees"
+          },
+          "VueForm": {
+            "Disabled": {
+              "Value": false
+            },
+            "Debug": {
+              "Value": false
+            },
+            "RenderAs": {
+              "Text": null
+            },
+            "DisabledHtml": {
+              "Html": "Importing employees has been disabled"
+            },
+            "SuccessMessage": {
+              "Text": "Employees have been successfully added"
+            },
+            "Template": {
+              "Text": "<v-container>\r\n  <v-col>\r\n    <h1>Bulk load Employees</h1>\r\n    <p class=\"font-weight-light\">\r\n      One employee per line, space seperated FirstName LastName\r\n    </p>\r\n  </v-col>\r\n  <v-col>\r\n    <validation-provider name=\"Cohort\" rules=\"required\" v-slot=\"{ errors, valid }\">\r\n      <v-autocomplete v-model=\"cohort\" :items=\"calendarList\" item-text=\"DisplayText\" item-value=\"ContentItemId\" label=\"Cohort\" :success=\"valid\" :error-messages=\"errors\"></v-autocomplete>\r\n    </validation-provider>\r\n  </v-col>\r\n  <v-col>\r\n  <v-textarea v-model=\"employees\" outlined label=\"Employees\"></v-textarea>\r\n  </v-col>\r\n  <v-col>\r\n    <v-alert type=\"success\" v-if=\"form.successMessage\">\r\n      {% raw %}{{ form.successMessage }}{% endraw %}\r\n      <a href=\"{{\"~/\" | href}}\">Go home</a>\r\n    </v-alert>\r\n    <v-alert type=\"error\" v-if=\"form.serverValidationMessage\">\r\n      {% raw %}{{ form.serverValidationMessage[0] }}{% endraw %}\r\n    </v-alert>\r\n  \t<v-btn type=\"submit\" :disabled=\"form.submitSuccess\" >Submit</v-btn>\r\n  </v-col>\r\n</v-container>"
+            }
+          },
+          "VueFormScripts": {
+            "ClientInit": {
+              "Text": null
+            },
+            "ComponentOptions": {
+              "Text": "{% assign calendarTerms = '4wnw5cysybe8szzhehezz5b74b' | all_taxonomy_terms  %}\r\n{\r\n  data: () => ({\r\n    employees : \"\",\r\n    cohort: \"\",\r\n    calendarList: {{calendarTerms | json | raw }}\r\n  })\r\n}"
+            },
+            "OnValidation": {
+              "Text": null
+            },
+            "OnSubmitted": {
+              "Text": "let data = requestFormAsJsonObject();\r\n\r\nif(data.employees)\r\n{\r\n  let lines = data.employees.ToString().split(\"\\n\");\r\n  for(let i=0; i < lines.length; i++)\r\n  {\r\n   \tlet names = lines[i].split(/[ \\t]+/); \r\n    if(names[0] === \"\" || names[1] === \"\")\r\n    {\r\n      continue;\r\n    }\r\n    createContentItem(\"Employee\", true, {\r\n      \"Employee\": {\r\n        \"FirstName\": {\r\n          \"Text\": names[0]\r\n        },\r\n        \"LastName\": {\r\n          \"Text\": names[1]\r\n        },\r\n        \"Consent\": {\r\n          \"Value\": false\r\n        },\r\n        \"Participating\": {\r\n          \"Value\": false\r\n        },\r\n        \"Cohort\": {\r\n          \"TaxonomyContentItemId\": \"4wnw5cysybe8szzhehezz5b74b\",\r\n          \"TermContentItemIds\": [\r\n            data.cohort\r\n          ]\r\n        }\r\n      }\r\n    });\r\n  }\r\n}\r\nelse{\r\n addError(\"errorMessage\", \"You did not provide any employees\"); \r\n}\r\nreturn true;\r\n\r\n"
+            }
+          },
+          "ContentPermissionsPart": {
+            "Roles": ["Administrator"],
+            "Enabled": true
+          },
+          "LocalizedTextPart": {
+            "Data": []
+          }
+        },
+        {
+          "ContentItemId": "430c4dnz5d7616rz32jd7h6dxz",
+          "ContentItemVersionId": "4j46hpzj5rtc760xsk5haxp7wn",
+          "ContentType": "VueForm",
+          "DisplayText": "Bulk Create Appointments",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": "2021-06-09T01:04:05.8262608Z",
+          "PublishedUtc": "2021-06-09T01:04:05.8311116Z",
+          "CreatedUtc": "2021-06-02T18:54:00.2291058Z",
+          "Owner": "4dtgvzw6m75944r84m07brxhnx",
+          "Author": "admin",
+          "TitlePart": {
+            "Title": "Bulk Create Appointments"
+          },
+          "VueForm": {
+            "Enabled": null,
+            "RenderAs": {
+              "Text": null
+            },
+            "DisabledHtml": {
+              "Html": "Bulk create form has been disabled"
+            },
+            "SuccessMessage": {
+              "Text": "Appointments have been successfully created."
+            },
+            "Template": {
+              "Text": "<v-container>\r\n  <v-row>\r\n    <v-col>\r\n      <h1>Bulk create appointments for cohort</h1>\r\n      <p class=\"font-weight-light\">\r\n        Creates appointments for all employees of a cohort. Starting at the selected date / time.\r\n      </p>\r\n    </v-col>\r\n  </v-row>\r\n  <v-row>\r\n    <v-col cols=\"12\" sm=\"6\" md=\"4\">\r\n      <validation-provider name=\"cohort\" rules=\"required\" v-slot=\"{ errors, valid }\">\r\n        <v-autocomplete v-model=\"cohort\" :items=\"calendarList\" item-text=\"DisplayText\" item-value=\"ContentItemId\" label=\"Cohort\" :success=\"valid\" :error-messages=\"errors\"></v-autocomplete>\r\n      </validation-provider>\r\n    </v-col>\r\n  </v-row>\r\n  <v-row>\r\n    <v-col cols=\"12\" sm=\"6\" md=\"4\">\r\n      <validation-provider rules=\"required\" v-slot=\"{ errors, valid }\">\r\n        <v-select :items=\"items\" v-model=\"amount\" :error-messages=\"errors\" :success=\"valid\" label=\"Appointments per 10 minutes\" hint=\"The number of appointments to create in a 10 minute slot\" persistent-hint></v-select>\r\n      </validation-provider>\r\n    </v-col>\r\n  </v-row>\r\n  <v-row>\r\n    <v-col cols=\"12\" sm=\"6\" md=\"4\">\r\n      <v-menu\r\n        v-model=\"menu\"\r\n        :close-on-content-click=\"false\"\r\n        :nudge-right=\"40\"\r\n        transition=\"scale-transition\"\r\n        offset-y\r\n        min-width=\"auto\"\r\n      >\r\n        <template v-slot:activator=\"{ on, attrs }\">\r\n          <validation-provider name=\"date\" rules=\"required\" v-slot=\"{ errors, valid }\">\r\n            <v-text-field\r\n              v-model=\"date\"\r\n              label=\"Date\"\r\n\t\t\t  :success=\"valid\"\r\n              :error-messages=\"errors\"\r\n              prepend-icon=\"mdi-calendar\"\r\n              readonly\r\n              v-bind=\"attrs\"\r\n              v-on=\"on\"\r\n            ></v-text-field>\r\n          </validation-provider>\r\n        </template>\r\n        <v-date-picker v-model=\"date\" @input=\"menu = false\"></v-date-picker>\r\n      </v-menu>\r\n    </v-col>\r\n\r\n    <v-col cols=\"12\" sm=\"6\" md=\"4\">\r\n      <v-menu \r\n        ref=\"timeMenu\"\r\n        v-model=\"menu2\"\r\n        :close-on-content-click=\"false\"\r\n        :nudge-right=\"40\"\r\n        :return-value.sync=\"time\"\r\n        transition=\"scale-transition\"\r\n        offset-y\r\n        max-width=\"290px\"\r\n        min-width=\"290px\"\r\n      >\r\n        <template v-slot:activator=\"{ on, attrs }\">\r\n          <validation-provider name=\"time\" rules=\"required\" v-slot=\"{ errors, valid }\">\r\n            <v-text-field\r\n              v-model=\"time\"\r\n              label=\"Time\"\r\n\t\t\t  :success=\"valid\"\r\n              :error-messages=\"errors\"\r\n              prepend-icon=\"mdi-clock-time-four-outline\"\r\n              readonly\r\n              v-bind=\"attrs\"\r\n              v-on=\"on\"\r\n            ></v-text-field>\r\n          </validation-provider>\r\n        </template>\r\n        <v-time-picker\r\n          v-if=\"menu2\"\r\n          v-model=\"time\"\r\n          format=\"24hr\"\r\n          full-width\r\n\t\t  :allowed-minutes=\"allowedMinutes\"\r\n          @click:minute=\"$refs.timeMenu.save(time)\"\r\n        ></v-time-picker>\r\n      </v-menu>\r\n    </v-col>\r\n\r\n  </v-row>\r\n  <v-row>\r\n    <v-col>\r\n      <v-alert type=\"success\" v-if=\"form.successMessage\">\r\n        {% raw %}{{ form.successMessage }}{% endraw %}\r\n        <a href=\"{{\"~/\" | href}}\">Go home</a>\r\n      </v-alert>\r\n      <v-alert type=\"error\" v-if=\"form.serverValidationMessage\">\r\n        {% raw %}{{ form.serverValidationMessage[0] }}{% endraw %}\r\n      </v-alert>\r\n      <!-- <v-btn type=\"submit\" :disabled=\"form.submitting || form.submitSuccess\" >Submit</v-btn> -->\r\n      <v-btn type=\"submit\" >Submit</v-btn>\r\n    </v-col>\r\n  </v-row>\r\n</v-container>\r\n"
+            },
+            "Disabled": {
+              "Value": false
+            },
+            "Debug": {
+              "Value": false
+            }
+          },
+          "VueFormScripts": {
+            "ClientInit": {
+              "Text": null
+            },
+            "ComponentOptions": {
+              "Text": "{% assign calendarTerms = '4wnw5cysybe8szzhehezz5b74b' | all_taxonomy_terms  %}\r\n{\r\n  data: () => ({\r\n    date: \"\",\r\n    time: \"\",\r\n    cohort: \"\",\r\n    amount: \"\",\r\n    items: [1,2,3,4,5,6,7,8,9,10],\r\n    calendarList: {{calendarTerms | json | raw }},\r\n    menu: false,\r\n    menu2: false,\r\n  }),\r\n  methods:{\r\n    allowedMinutes: m => m % 5 === 0,\r\n    submitData() {\r\n        return {\r\n            date: this.date,\r\n            time: this.time,\r\n            cohort: this.cohort,\r\n            amount: this.amount,\r\n        }\r\n    }\r\n  },\r\n  \r\n  \r\n}"
+            },
+            "OnValidation": {
+              "Text": null
+            },
+            "OnSubmitted": {
+              "Text": "let data = requestFormAsJsonObject();\r\ndebug(\"data\", data);\r\n\r\nif(data.cohort)\r\n{\r\n    // get employees for the selected calendar (or cohort)\r\n    let employees = executeQuery(\"EmployeesForCalendars\", {calendarIds: `'${data.cohort}'`});\r\n    var calendar = taxonomyTerms(\"4wnw5cysybe8szzhehezz5b74b\", [data.cohort]);\r\n\r\n    var color = \"#000000\"\r\n    if(calendar != null)\r\n    {\r\n        color = calendar[0].Content.AppointmentCalendar.Color.Text;\r\n    }\r\n    debug(\"employees\", employees.length);\r\n\r\n    // create the date object from what the user input\r\n    let dt = new Date(`${data.date} ${data.time}`);\r\n    let et = new Date(dt);\r\n    et.setMinutes(et.getMinutes() + 10);\r\n\r\n    debug(\"start-date\", dt);\r\n    debug(\"end-date\", et);\r\n\r\n    let counter = 0;\r\n    for(let i=0; i < employees.length; i++)\r\n    {\r\n        let employee = employees[i];\r\n        debug(\"employee\"+i, employee);\r\n        if(counter >= data.amount)\r\n        {\r\n            dt.setMinutes(dt.getMinutes() + 10);\r\n            et.setMinutes(et.getMinutes() + 10);\r\n            counter = 0;\r\n        }\r\n        // create appointment\r\n        var item = createContentItem(\"Appointment\", true, {\r\n            \"Appointment\": {\r\n                \"Calendar\": employee.Content.Employee.Cohort,\r\n                \"Status\": {\r\n                    \"Text\": \"UPCOMING\"\r\n                },\r\n                \"LinkedContent\": {\r\n                    \"ContentItemIds\": [\r\n                        employee.ContentItemId\r\n                    ]\r\n                },\r\n                \"StartDate\": {\r\n                    \"Value\": dt\r\n                },\r\n                \"EndDate\": {\r\n                    \"Value\": et\r\n                },\r\n                \"Color\": {\r\n                    \"Text\": color\r\n                }\r\n            }\r\n        });\r\n        debug(\"a\"+item.ContentItemId, item);\r\n\r\n        counter++;\r\n    }\r\n}\r\nelse {\r\n    addError(\"No cohort was specified\")\r\n}\r\n\r\n\r\n"
+            }
+          },
+          "ContentPermissionsPart": {
+            "Roles": [
+              "Administrator",
+              "Scheduler"
+            ],
+            "Enabled": true
+          },
+          "LocalizedTextPart": {
+            "Data": []
+          },
+          "AliasPart": {
+            "Alias": "bulk-create-appointments"
+          }
+        }
+      ]
+    },
+    {
+      "name": "AdminMenu",
+      "data": [
+        {
+          "Id": "47f721c32324468f9aedf5ff4bb25b57",
+          "Name": "Scheduler Menu",
+          "Enabled": true,
+          "MenuItems": [
+            {
+              "$type": "OrchardCore.AdminMenu.AdminNodes.LinkAdminNode, OrchardCore.AdminMenu",
+              "LinkText": "Back to calendar",
+              "LinkUrl": "~/",
+              "IconClass": "fas fa-arrow-left",
+              "PermissionNames": [],
+              "UniqueId": "eff2141db7624f2fb03cf6b9f8110a79",
+              "Enabled": true,
+              "Text": null,
+              "Id": null,
+              "Href": null,
+              "Url": null,
+              "Position": null,
+              "Priority": 0,
+              "LinkToFirstChild": true,
+              "LocalNav": false,
+              "Culture": null,
+              "Items": [],
+              "Classes": []
+            },
+            {
+              "$type": "OrchardCore.Contents.AdminNodes.ContentTypesAdminNode, OrchardCore.Contents",
+              "ShowAll": false,
+              "IconClass": null,
+              "ContentTypes": [
+                {
+                  "ContentTypeId": "Appointment",
+                  "IconClass": "far fa-calendar-alt"
+                },
+                {
+                  "ContentTypeId": "Employee",
+                  "IconClass": "fas fa-user"
+                }
+              ],
+              "UniqueId": "e6de46c62dc849a6a9839d814aa7ee03",
+              "Enabled": true,
+              "Text": null,
+              "Id": null,
+              "Href": null,
+              "Url": null,
+              "Position": null,
+              "Priority": 0,
+              "LinkToFirstChild": true,
+              "LocalNav": false,
+              "Culture": null,
+              "Items": [],
+              "Classes": []
+            },
+            {
+              "$type": "OrchardCore.AdminMenu.AdminNodes.LinkAdminNode, OrchardCore.AdminMenu",
+              "LinkText": "Calendars",
+              "LinkUrl": "Admin/Contents/ContentItems/4wnw5cysybe8szzhehezz5b74b/Edit",
+              "IconClass": "fas fa-users",
+              "PermissionNames": ["EditOwn_Calendar"],
+              "UniqueId": "96b2b704ee734937a21065c96ebc76b8",
+              "Enabled": true,
+              "Text": null,
+              "Id": null,
+              "Href": null,
+              "Url": null,
+              "Position": null,
+              "Priority": 0,
+              "LinkToFirstChild": true,
+              "LocalNav": false,
+              "Culture": null,
+              "Items": [],
+              "Classes": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "deployment",
+      "Plans": [
+        {
+          "Name": "Complete Export",
+          "Steps": [
+            {
+              "Type": "RecipeFileDeploymentStep",
+              "Step": {
+                "RecipeName": "scheduling-app",
+                "DisplayName": "Scheduling app setup recipe",
+                "Description": "For the initial setup of the scheduling application",
+                "Author": "Digital Innovation Team",
+                "WebSite": "https://digital.statcan.gc.ca",
+                "Version": "0.1.0",
+                "IsSetupRecipe": true,
+                "Categories": null,
+                "Tags": null,
+                "Id": "24212d92044748659c9a9cfc83587b95",
+                "Name": "RecipeFileDeploymentStep"
+              }
+            },
+            {
+              "Type": "AllFeaturesDeploymentStep",
+              "Step": {
+                "IgnoreDisabledFeatures": true,
+                "Id": "077e3ef1e7254d829e46956f2b88c69e",
+                "Name": "AllFeatures"
+              }
+            },
+            {
+              "Type": "ContentDefinitionDeploymentStep",
+              "Step": {
+                "IncludeAll": false,
+                "ContentTypes": ["ContactRequest"],
+                "ContentParts": ["ContactRequest"],
+                "Id": "556b8f0bdecc43a7acbf6debea9ddced",
+                "Name": "ContentDefinition"
+              }
+            },
+            {
+              "Type": "ContentDeploymentStep",
+              "Step": {
+                "ContentTypes": ["Menu", "Page", "SecurePage", "VueForm"],
+                "ExportAsSetupRecipe": false,
+                "Id": "bf8a6aeaa5764bd781e5ad70d7d5e87c",
+                "Name": "ContentDeploymentStep"
+              }
+            },
+            {
+              "Type": "AdminMenuDeploymentStep",
+              "Step": {
+                "Id": "292e7ee7ed1e4c05b9da9c26ae8a6902",
+                "Name": "AdminMenu"
+              }
+            },
+            {
+              "Type": "DeploymentPlanDeploymentStep",
+              "Step": {
+                "IncludeAll": true,
+                "DeploymentPlanNames": [],
+                "Id": "1b26db3b0894468abd0006716527a28f",
+                "Name": "DeploymentPlan"
+              }
+            },
+            {
+              "Type": "AllRolesDeploymentStep",
+              "Step": {
+                "Id": "81d6c535c96749ce83f40f7aac78d278",
+                "Name": "AllRoles"
+              }
+            },
+            {
+              "Type": "SiteSettingsDeploymentStep",
+              "Step": {
+                "Settings": ["HomeRoute"],
+                "Id": "9200f269471b4b1a9b61280a3317f04a",
+                "Name": "SiteSettings"
+              }
+            },
+            {
+              "Type": "AllWorkflowTypeDeploymentStep",
+              "Step": {
+                "Id": "abe8cf3a502e45a5bd0062b796f4875c",
+                "Name": "AllWorkflowType"
+              }
+            }
+          ]
+        },
+        {
+          "Name": "Migration Recipe",
+          "Steps": [
+            {
+              "Type": "ContentDefinitionDeploymentStep",
+              "Step": {
+                "IncludeAll": false,
+                "ContentTypes": [
+                  "Appointment",
+                  "AppointmentCalendar",
+                  "AppointmentPrint",
+                  "Employee"
+                ],
+                "ContentParts": [
+                  "Appointment",
+                  "AppointmentCalendar",
+                  "AppointmentPrint",
+                  "Employee"
+                ],
+                "Id": "d3ff1dbb45ff455fb970efcf4de5715d",
+                "Name": "ContentDefinition"
+              }
+            },
+            {
+              "Type": "ContentDeploymentStep",
+              "Step": {
+                "ContentTypes": ["Taxonomy", "VueForm"],
+                "ExportAsSetupRecipe": false,
+                "Id": "3ca35f8e2dfd4b6eba2bcb0be767a213",
+                "Name": "ContentDeploymentStep"
+              }
+            },
+            {
+              "Type": "AllQueriesDeploymentStep",
+              "Step": {
+                "Id": "4596e6ac01aa4a12a3eefddf63949869",
+                "Name": "AllQueries"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Roles",
+      "Roles": [
+        {
+          "Name": "Anonymous",
+          "Description": "Anonymous role",
+          "Permissions": []
+        },
+        {
+          "Name": "Authenticated",
+          "Description": "Authenticated role",
+          "Permissions": ["View_VueForm"]
+        },
+        {
+          "Name": "Scheduler",
+          "Description": "Scheduler role, has access to the schedule, employees, taxonomies",
+          "Permissions": [
+            "View_Page",
+            "View_SecurePage",
+            "Publish_Taxonomy",
+            "Edit_Taxonomy",
+            "View_Taxonomy",
+            "View_VueForm",
+            "Publish_Appointment",
+            "PublishOwn_Appointment",
+            "Edit_Appointment",
+            "EditOwn_Appointment",
+            "View_Appointment",
+            "ViewOwn_Appointment",
+            "ListContent_Appointment",
+            "View_AppointmentCalendar",
+            "Publish_Employee",
+            "PublishOwn_Employee",
+            "Edit_Employee",
+            "EditOwn_Employee",
+            "Delete_Employee",
+            "DeleteOwn_Employee",
+            "View_Employee",
+            "ViewOwn_Employee",
+            "ListContent_Employee",
+            "Publish_AppointmentCalendar",
+            "Edit_AppointmentCalendar",
+            "Delete_AppointmentCalendar",
+            "View_AppointmentCalendar",
+            "AccessAdminPanel",
+            "ViewAdminMenu_Scheduler Menu",
+            "ManageTaxonomy"
+          ]
+        },
+        {
+          "Name": "Data Exporter",
+          "Description": "For exporting the data to a json document",
+          "Permissions": ["View_Appointment", "View_Employee"]
+        }
+      ]
+    },
+    {
+      "name": "Settings",
+      "HomeRoute": {
+        "Area": "OrchardCore.Contents",
+        "Controller": "Item",
+        "Action": "Display",
+        "contentItemId": "4wnw5cysybe8szzhehezz5b74b",
+        "jsonPath": "TaxonomyPart.Terms[0]"
+      }
+    },
+    {
+      "name": "WorkflowType",
+      "data": [
+        {
+          "WorkflowTypeId": "48pb1zmn3wcf9wdkc4dc86r3da",
+          "Name": "Data Export",
+          "IsEnabled": true,
+          "IsSingleton": false,
+          "LockTimeout": 0,
+          "LockExpiration": 0,
+          "DeleteFinishedWorkflows": false,
+          "Activities": [
+            {
+              "ActivityId": "45zvz90bg9k680dtf2ffwhwnng",
+              "Name": "HttpResponseTask",
+              "X": 850,
+              "Y": 50,
+              "IsStart": false,
+              "Properties": {
+                "ActivityMetadata": {
+                  "Title": "Return all appointments"
+                },
+                "HttpStatusCode": 200,
+                "Content": {
+                  "Expression": "{% assign output = Queries.DataExport | query %}\r\n{{output}}"
+                },
+                "ContentType": {
+                  "Expression": "application/x-www-form-urlencoded"
+                },
+                "Headers": {
+                  "Expression": "Content-Disposition: attachment; filename=\"Appointments.json\""
+                }
+              }
+            },
+            {
+              "ActivityId": "4rf3szcstc98823knfjwttjmmn",
+              "Name": "HttpRequestEvent",
+              "X": 50,
+              "Y": 70,
+              "IsStart": true,
+              "Properties": {
+                "ActivityMetadata": {
+                  "Title": null
+                },
+                "HttpMethod": "GET",
+                "TokenLifeSpan": 0
+              }
+            },
+            {
+              "ActivityId": "48waj14rnh2pcrmjg95r668sc5",
+              "Name": "ValidateUserTask",
+              "X": 510,
+              "Y": 100,
+              "IsStart": false,
+              "Properties": {
+                "Roles": ["Administrator", "Data Exporter"],
+                "SetUserName": false,
+                "ActivityMetadata": {
+                  "Title": "Validate Roles"
+                }
+              }
+            },
+            {
+              "ActivityId": "4b1xfe3nkvkqavcq0meczjahx8",
+              "Name": "HttpResponseTask",
+              "X": 880,
+              "Y": 300,
+              "IsStart": false,
+              "Properties": {
+                "ActivityMetadata": {
+                  "Title": null
+                },
+                "HttpStatusCode": 404,
+                "Content": {
+                  "Expression": null
+                },
+                "ContentType": {
+                  "Expression": "application/json"
+                },
+                "Headers": {
+                  "Expression": null
+                }
+              }
+            },
+            {
+              "ActivityId": "4xfykat75vna722xjmbvweaqmy",
+              "Name": "HttpRedirectTask",
+              "X": 300,
+              "Y": 360,
+              "IsStart": false,
+              "Properties": {
+                "ActivityMetadata": {
+                  "Title": null
+                },
+                "Location": {
+                  "Expression": "{{\"~/login\" | return_url | href | raw }}"
+                },
+                "Permanent": false
+              }
+            }
+          ],
+          "Transitions": [
+            {
+              "Id": 0,
+              "SourceActivityId": "48waj14rnh2pcrmjg95r668sc5",
+              "SourceOutcomeName": "InRole",
+              "DestinationActivityId": "45zvz90bg9k680dtf2ffwhwnng"
+            },
+            {
+              "Id": 0,
+              "SourceActivityId": "48waj14rnh2pcrmjg95r668sc5",
+              "SourceOutcomeName": "Anonymous",
+              "DestinationActivityId": "4xfykat75vna722xjmbvweaqmy"
+            },
+            {
+              "Id": 0,
+              "SourceActivityId": "4rf3szcstc98823knfjwttjmmn",
+              "SourceOutcomeName": "Done",
+              "DestinationActivityId": "48waj14rnh2pcrmjg95r668sc5"
+            },
+            {
+              "Id": 0,
+              "SourceActivityId": "48waj14rnh2pcrmjg95r668sc5",
+              "SourceOutcomeName": "Authenticated",
+              "DestinationActivityId": "4b1xfe3nkvkqavcq0meczjahx8"
+            }
+          ]
+        },
+        {
+          "WorkflowTypeId": "40nkaraf717epw9mzw5cse215e",
+          "Name": "UserLogging",
+          "IsEnabled": true,
+          "IsSingleton": false,
+          "LockTimeout": 0,
+          "LockExpiration": 0,
+          "DeleteFinishedWorkflows": false,
+          "Activities": [
+            {
+              "ActivityId": "4ny378bfaw85g20mgwrx8daw46",
+              "Name": "HttpRequestFilterEvent",
+              "X": 50,
+              "Y": 40,
+              "IsStart": true,
+              "Properties": {
+                "ActivityMetadata": {
+                  "Title": "User Attempt Login"
+                },
+                "HttpMethod": "POST",
+                "RouteValues": {
+                  "controller": "Account",
+                  "action": "Login",
+                  "area": "OrchardCore.Users"
+                }
+              }
+            },
+            {
+              "ActivityId": "4ebxbhntqdd4rr8k5c0ebnhmw4",
+              "Name": "LogTask",
+              "X": 490,
+              "Y": 80,
+              "IsStart": false,
+              "Properties": {
+                "ActivityMetadata": {
+                  "Title": "Log Attempted login"
+                },
+                "LogLevel": 0,
+                "Text": {
+                  "Expression": "{{Request.Form.UserName}} Attempted login"
+                }
+              }
+            }
+          ],
+          "Transitions": [
+            {
+              "Id": 0,
+              "SourceActivityId": "4ny378bfaw85g20mgwrx8daw46",
+              "SourceOutcomeName": "Matched",
+              "DestinationActivityId": "4ebxbhntqdd4rr8k5c0ebnhmw4"
+            }
+          ]
+        },
+        {
+          "WorkflowTypeId": "42dxnmhcx495a23e7ngnwyj0n4",
+          "Name": "User Logged in success",
+          "IsEnabled": true,
+          "IsSingleton": false,
+          "LockTimeout": 0,
+          "LockExpiration": 0,
+          "DeleteFinishedWorkflows": false,
+          "Activities": [
+            {
+              "ActivityId": "4f05qbpwfhy1c40b1k20excgx4",
+              "Name": "UserLoggedInEvent",
+              "X": 40,
+              "Y": 60,
+              "IsStart": true,
+              "Properties": {
+                "ActivityMetadata": {
+                  "Title": null
+                }
+              }
+            },
+            {
+              "ActivityId": "4txq879jjck502ft1me1c51ynx",
+              "Name": "LogTask",
+              "X": 330,
+              "Y": 60,
+              "IsStart": false,
+              "Properties": {
+                "ActivityMetadata": {
+                  "Title": "User Logged in"
+                },
+                "LogLevel": 0,
+                "Text": {
+                  "Expression": "{{User.Identity.Name}} logged in successfully"
+                }
+              }
+            }
+          ],
+          "Transitions": [
+            {
+              "Id": 0,
+              "SourceActivityId": "4f05qbpwfhy1c40b1k20excgx4",
+              "SourceOutcomeName": "Done",
+              "DestinationActivityId": "4txq879jjck502ft1me1c51ynx"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

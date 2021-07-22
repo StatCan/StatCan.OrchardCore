@@ -1,5 +1,4 @@
 @using OrchardCore.ContentManagement
-@using OrchardCore.Flows.Models
 @using System.Globalization
 @using StatCan.OrchardCore.VueForms.Models
 @inject OrchardCore.ContentManagement.Display.IContentItemDisplayManager ContentItemDisplayManager
@@ -8,49 +7,36 @@
 @{
   var contentItem = ((ContentItem)Model.ContentItem);
   var formPart = contentItem.As<VueForm>();
-  var flowPart = contentItem.As<FlowPart>();
+  var surveyPart = contentItem.As<VueFormSurvey>();
   var scripts = contentItem.As<VueFormScripts>();
 
   var initScript = await Orchard.LiquidShortcodesAsync(scripts.ClientInit?.Text, (object)Model);
   var options = await Orchard.LiquidShortcodesAsync(scripts.ComponentOptions?.Text, (object)Model);
-
-  var componentName = "c-" + Guid.NewGuid().ToString("N");
+  var template = await Orchard.ShapeStringify((IShape)(await New.VueFormWrapperTemplate(ContentItem: contentItem)));
+  var surveyJson = string.Empty;
+  if(!string.IsNullOrWhiteSpace(surveyPart?.SurveyJson?.Text))
+  {
+    surveyJson = await Orchard.LiquidShortcodesAsync(surveyPart.SurveyJson?.Text, (object)Model);
+  }
 }
-<style asp-name="vue-forms"></style>
-<script asp-name="vue-forms" at="Foot"></script>
-@*
-  Render the div that holds the component data in the Content zone. 
-  This allows VueForms to be used inside another component's template
-*@
-<zone name="Content">
-  <div class="vue-form" data-name="@componentName" data-init-script="@Orchard.B64Encode(initScript)" data-options="@Orchard.B64Encode(options)" data-lang="@CultureInfo.CurrentUICulture.TwoLetterISOLanguageName"></div>
-</zone>
+@if(!string.IsNullOrWhiteSpace(surveyJson))
+{
+  <style asp-name="vue-forms"></style>
+  <style asp-name="survey-vue"></style>
+  <script asp-name="survey-vue" at="Foot"></script>
+  <script asp-name="vue-forms" at="Foot" depends-on="survey-vue"></script>
+} 
+else {
+  <style asp-name="vue-forms"></style>
+  <script asp-name="vue-forms" at="Foot"></script>
+}
 
-@Tag(Model, componentName)
-<script at="Foot" type="text/html" id="@componentName">
-  <validation-observer ref="obs" slim v-slot="obs">
-    <form v-cloak
-          ref="form"
-          id="@formPart.ContentItem.ContentItemId"
-          v-on:submit.prevent="formHandleSubmit"
-          action="@Url.Action("Submit", "VueForm", new {area="StatCan.OrchardCore.VueForms" , formId=contentItem.ContentItemId })"
-          method="post"
-          novalidate>
-      @Html.AntiForgeryToken()
-      @foreach (var widget in flowPart.Widgets)
-      {
-        var widgetContent = await ContentItemDisplayManager.BuildDisplayAsync(widget, updateModelAccessor.ModelUpdater);
-        // Properties come from the widget that displays the forms.
-        // This allows a page where the form is rendered to pass a value down to the form so it can be dynamically preloaded with data
-        foreach (var prop in ((IShape)Model).Properties)
-        {
-          if (!widgetContent.Properties.ContainsKey(prop.Key))
-          {
-            widgetContent.Properties.Add(prop.Key, prop.Value);
-          }
-        }
-        @await DisplayAsync(widgetContent)
-      }
-      </form>
-  </validation-observer>
-</script>
+
+<div class="vue-form" 
+  data-name="@Model.Properties["ComponentName"]" 
+  data-init-script="@Orchard.B64Encode(initScript)" 
+  data-options="@Orchard.B64Encode(options)" 
+  data-lang="@CultureInfo.CurrentUICulture.TwoLetterISOLanguageName" 
+  data-template="@Orchard.B64Encode(template)"
+  data-survey-json="@Orchard.B64Encode(surveyJson)">
+</div>

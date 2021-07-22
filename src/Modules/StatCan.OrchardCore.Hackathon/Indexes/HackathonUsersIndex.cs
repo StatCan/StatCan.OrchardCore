@@ -1,9 +1,4 @@
-using Microsoft.Extensions.DependencyInjection;
-using Newtonsoft.Json.Linq;
-using OrchardCore.ContentFields.Fields;
 using OrchardCore.ContentManagement;
-using OrchardCore.ContentManagement.Metadata;
-using OrchardCore.Data;
 using OrchardCore.Users.Models;
 using System;
 using YesSql.Indexes;
@@ -62,7 +57,7 @@ namespace StatCan.OrchardCore.Hackathon.Indexes
                     }
 
                     return hackathonUsersIndex;
-                });            
+                });
         }
     }
 }

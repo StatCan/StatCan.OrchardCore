@@ -1,10 +1,10 @@
 {% assign numberOfActions = Model.ContentItem.Content.Actions | size %}
 
 <v-card>
-  {% if Model.ContentItem.Content.VCard.Title.Text %}
+  {% if Model.ContentItem.Content.VCard.Title.Text != blank %}
     <v-card-title>{{ Model.ContentItem.Content.VCard.Title.Text }}</v-card-title>
   {% endif %}
-  {% if Model.ContentItem.Content.VCard.Subtitle.Text %}
+  {% if Model.ContentItem.Content.VCard.Subtitle.Text != blank %}
     <v-card-subtitle>{{ Model.ContentItem.Content.VCard.Subtitle.Text }}</v-card-subtitle>
   {% endif %}
   <v-card-text>

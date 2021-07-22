@@ -31,6 +31,7 @@ namespace StatCan.OrchardCore.Scripting
                     updateModelAccessor.ModelUpdater.ModelState.AddModelError(name, text);
                 })
             };
+
             _hasErrors = new GlobalMethod
             {
                 Name = "hasErrors",
@@ -39,6 +40,7 @@ namespace StatCan.OrchardCore.Scripting
                     return updateModelAccessor.ModelUpdater.ModelState.ErrorCount > 0;
                 })
             };
+
             _formAsJsonObject = new GlobalMethod
             {
                 Name = "requestFormAsJsonObject",
@@ -61,6 +63,7 @@ namespace StatCan.OrchardCore.Scripting
                 }
                 )
             };
+
             _validateReCaptcha = new GlobalMethod
             {
                 Name = "validateReCaptcha",
@@ -69,7 +72,8 @@ namespace StatCan.OrchardCore.Scripting
                     return recaptchaService.VerifyCaptchaResponseAsync(reCaptchaResponse).GetAwaiter().GetResult();
                 })
             };
-             _notify = new GlobalMethod
+
+            _notify = new GlobalMethod
             {
                 Name = "notify",
                 Method = serviceProvider => (Func<string, string, bool>)((type, message ) => {

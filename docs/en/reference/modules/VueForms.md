@@ -13,10 +13,88 @@ The form submission is handled via an ajax call to a generic controller that ret
 
 | Field  | Definition |
 |--------|------------|
-| Enabled | If disabled, the DisplayHtml field value will be displayed and the VueFormController will return a 404 for form submissions. |
+| Disabled | If disabled, the `DisabledHtml` field value will be displayed instead of the form |
 | RenderAs | Render the Form as a Vue Component, a Vue App or Vuetify app |
 | DisabledHtml | Html displayed when the form is disabled. |
 | SuccessMessage | The success message returned to the client when the form is valid and no redirect is specified after submission. With Liquid support. |
+| Template | The component template. With Liquid support. |
+| Debug mode | Enables debug mode on the form. |
+
+*Note about RenderAs*: When rendering the Form as a `VueComponent`, you need to define a Zone in your layout called `DynamicComponentZone`. This zone must be rendered anywhere before the `FootScript` resource zone. 
+This is required because the div that defines the VueForm component needs to be defined outside of the Vue App. Please look at our open source [VuetifyTheme](https://github.com/StatCan/StatCan.OrchardCore/blob/master/src/Themes/VuetifyTheme/Views/Layout.liquid) layout for an example.
+
+```
+{% render_section "DynamicComponentZone", required: false %}
+{% resources type: "FootScript" %}
+```
+
+#### Template
+
+The template of the vue component
+
+Example:
+
+```html
+<v-container >
+  <v-card-text>
+    <v-row justify="center">
+      <v-col cols="8">
+        <validation-provider name="{{ "nameLabel" | localize | downcase }}" rules="required" v-slot="{ errors }">
+          <v-text-field v-model="name" :error-messages="errors" filled="filled" label="{{ "nameLabel" | localize }}"></v-text-field>
+        </validation-provider>
+      </v-col>
+      <v-col cols="8">
+        <validation-provider name="{{ "emailLabel" | localize | downcase }}" rules="required|email" v-slot="{ errors }">
+          <v-text-field v-model="email" :error-messages="errors" filled="filled" label="{{ "emailLabel" | localize }}"></v-text-field>
+        </validation-provider>
+      </v-col>
+      <v-col cols="8">
+        <validation-provider name="{{ "messageLabel" | localize | downcase }}" rules="required" v-slot="{ errors }">
+       	  <v-textarea v-model="message" :error-messages="errors" counter="true" filled="filled" label="{{ "messageLabel" | localize }}" rows="5">
+          </v-textarea>
+    	</validation-provider>
+      </v-col>
+      <v-col cols="8">
+        <v-alert type="success" v-if="form.successMessage">
+          {% raw %}{{ form.successMessage }}{% endraw %}
+        </v-alert>
+        <v-alert type="error" v-if="form.errorMessage">
+          {% raw %}{{ form.errorMessage }}{% endraw %}
+        </v-alert>
+      </v-col>
+      <v-col cols="8">
+    	<v-btn type="submit" depressed block @click="formHandleSubmit" :disabled="form.submitting">{{ "submitLabel" | localize }}</v-btn>
+      </v-col>
+    </v-row>
+  </v-card-text>
+</v-container>
+```
+
+
+##### Available Props
+
+The VueForm component has some default properties and methods.
+
+You can access these properties in your templates or in the component options object.
+
+|  Name  | Definition |
+|--------|------------|
+| obs.* | All props available on the v-slot of the [ValidationObserver](https://logaretm.github.io/vee-validate/api/validation-observer.html#scoped-slot-props) are available. |
+| formReset | A method that resets the form.* properties to the initial state. Does not reset your component's data. `() => void` |
+| formHandleSubmit | A method that calls the `validate()` method and then, if valid, sends an ajax request to our controller `() => void` |
+| form.submitting | Set to true when the form is being submitted. |
+| form.submitSuccess | Set to true when no redirect is specified and the submission was a success. |
+| form.successMessage | The success message returned from the server as specified in the [VueForm](#vueform-part) |
+| form.submitValidationError | Set to true when a server validation error occus. |
+| form.serverValidationMessage | Array of errors set by the server with the `addError('serverValidationMessage', 'Message')` scripting method. |
+| form.responseData | The raw response data recieved from the server. Useful if you want to return additional data to the form via a workflow. |
+| form.submitError | Set to true when a server error, ajax error or unhandled error occurs. |
+| form.serverErrorMessage | An error message set with the ajax error status code and text. Only set when a server errors occur. |
+
+#### Debug mode
+
+Debug mode is typically used when developping a form. Additional information is returned by the server and any data output by the `debug()` scripting method is also output and returned with the HttpResponse. This mode does not work when previewing the form.
+
 
 ### VueFormScripts Part
 
@@ -59,20 +137,14 @@ if(data.name == "") {
 }
 ```
 
-You can also add to a list of "global" error messages by passing the 'serverValidationMessage' name to the `addError()` function. 
-``` javascript
-addError('serverValidationMessage', 'This is a validation message that is not tied to any input!!'); 
-addError('serverValidationMessage', 'You can add many, they will come as an array via the "form.serverValidationMessage" prop!'); 
-```
-
-All errors are also available on the VueJS component options object's via the `form.responseData.errors` property
+All errors are also available to the client Vue component via the `form.responseData.errors` property
 
 #### OnSubmitted script
 
 The OnSubmitted script is executed after the OnValidation script, only if the form is valid. 
 This is where you would typically create a contentItem from the form data or redirect the user to another page.
 
-Here is an example OnSubmitted script that redirects the user to a success page after having created the PersonInfo content item. **Note**: the `OrchardCore.Workflow.Http` module must be enabled to have access to the `httpContext()` method.
+Here is an example OnSubmitted script that redirects the user to a success page after having created the PersonInfo content item.
 
 ``` javascript 
 var data = requestFormAsJsonObject();
@@ -125,76 +197,6 @@ You can also overwrite the `submitData()` method to customize what is sent to th
 }
 ```
 
-
-### VueComponent Widget
-
-The VueComponent widget allows you to write VueJS markup that will be included in your VueForm component
-
-#### Template
-
-**Important implementation notes:**
-- This field should return a **single** vue / html node.
-
-Example:
-
-```html
-<v-container >
-  <v-card-text>
-    <v-row justify="center">
-      <v-col cols="8">
-        <validation-provider name="{{ "nameLabel" | localize | downcase }}" rules="required" v-slot="{ errors }">
-          <v-text-field v-model="name" :error-messages="errors" filled="filled" label="{{ "nameLabel" | localize }}"></v-text-field>
-        </validation-provider>
-      </v-col>
-      <v-col cols="8">
-        <validation-provider name="{{ "emailLabel" | localize | downcase }}" rules="required|email" v-slot="{ errors }">
-          <v-text-field v-model="email" :error-messages="errors" filled="filled" label="{{ "emailLabel" | localize }}"></v-text-field>
-        </validation-provider>
-      </v-col>
-      <v-col cols="8">
-        <validation-provider name="{{ "messageLabel" | localize | downcase }}" rules="required" v-slot="{ errors }">
-       	  <v-textarea v-model="message" :error-messages="errors" counter="true" filled="filled" label="{{ "messageLabel" | localize }}" rows="5">
-          </v-textarea>
-    	</validation-provider>
-      </v-col>
-      <v-col cols="8">
-        <v-alert type="success" v-if="form.successMessage">
-          {% raw %}{{ form.successMessage }}{% endraw %}
-        </v-alert>
-        <v-alert type="error" v-if="form.errorMessage">
-          {% raw %}{{ form.errorMessage }}{% endraw %}
-        </v-alert>
-      </v-col>
-      <v-col cols="8">
-    	<v-btn type="submit" depressed block @click="formHandleSubmit" :disabled="form.submitting">{{ "submitLabel" | localize }}</v-btn>
-      </v-col>
-    </v-row>
-  </v-card-text>
-</v-container>
-```
-
-
-## Available Props
-
-The VueForm component has some default properties and methods.
-
-You can access these properties in your templates or in the component options object.
-
-|  Name  | Definition |
-|--------|------------|
-| obs.* | All props available on the v-slot of the [ValidationObserver](https://logaretm.github.io/vee-validate/api/validation-observer.html#scoped-slot-props) are available. |
-| formReset | A method that resets the form.* properties to the initial state. Does not reset your component's data. `() => void` |
-| formHandleSubmit | A method that calls the `validate()` method and then, if valid, sends an ajax request to our controller `() => void` |
-| form.submitting | Set to true when the form is being submitted. |
-| form.submitSuccess | Set to true when no redirect is specified and the submission was a success. |
-| form.successMessage | The success message returned from the server as specified in the [VueForm](#vueform-part) |
-| form.submitValidationError | Set to true when a server validation error occus. |
-| form.serverValidationMessage | Array of errors set by the server with the `addError('serverValidationMessage', 'Message')` scripting method. |
-| form.responseData | The raw response data recieved from the server. Useful if you want to return additional data to the form via a workflow. |
-| form.submitError | Set to true when a server error, ajax error or unhandled error occurs. |
-| form.serverErrorMessage | An error message set with the ajax error status code and text. Only set when a server errors occur. |
-
-
 ## Scripting
 
 Please see the [scripting](../Scripting.md#vueforms-module-statcanorchardcorevueforms) documentation.
@@ -205,13 +207,33 @@ Although this module does not require a workflow to handle the form submissions,
 
 Please see the [workflow](../Workflows.md#vueforms-statcanorchardcorevueforms) documentation.
 
-If you do use a workflow, you can use the `addError("name", "message");` script to add form errors. You can also use the `HttpRedirect` or `HttpResponse` workflow tasks to redirect or return a custom set of data to the client. All data returned by the HttpResponse task is available via the `form.responseData` object.
+If you do use a workflow, you can use the `addError("name", "message");` script to add form errors. You can also use the `HttpRedirect` or `HttpResponse` workflow tasks to redirect or return a custom set of data to the client. All data returned by the HttpResponse task is available via the `form.responseData` object. You should also be able to use the `debug()` scripting method to return debugging data to the client.
 
 ## Localization (`StatCan.OrchardCore.VueForms.Localized`)
 
 While you can use Orchard's [LocalizationPart](https://docs.orchardcore.net/en/dev/docs/reference/modules/ContentLocalization/#localizationpart) to localize your forms. We suggest you use the [LocalizedText](LocalizedText.md) feature to implement i18n in your forms. This part is what we weld to your VueForm content type when you enable this feature.
 
 The `[locale]` shortcode is also useful to use in your views to localize simple text fields.
+
+
+## Survey (`StatCan.OrchardCore.VueForms.Survey`)
+
+Adds [SurveyJS](https://surveyjs.io/) support to VueForms. 
+This adds a part to the VueForm where you can specify the [SurveyJS creator](https://surveyjs.io/create-survey) json object. 
+
+In the Template, simply write this to output a Survey that uses the SurveyJS  json object
+
+```html
+<survey :survey="survey"></survey>
+```
+
+To get the json output of the survey on your server side scripts, simply use the `getSurveyData()` method.
+
+```javascript
+const surveyData = getSurveyData();
+debug('surveyData', surveyData);
+```
+
 
 ## Examples
 

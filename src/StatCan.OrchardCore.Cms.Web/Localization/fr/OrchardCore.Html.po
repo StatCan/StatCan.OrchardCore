@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
-"PO-Revision-Date: 2021-04-14 09:13\n"
+"PO-Revision-Date: 2021-07-14 14:11\n"
 
 #. updater.ModelState.AddModelError(Prefix, nameof(viewModel.Html), S["{0} doesn't contain a valid Liquid expression. Details: {1}", partName, string.Join(" ", errors)]);
 #: OrchardCore.Html\Drivers\HtmlBodyPartDisplayDriver.cs:74
@@ -31,13 +31,13 @@ msgid "the HTML content"
 msgstr "le contenu HTML"
 
 #. context.Updater.ModelState.AddModelError(Prefix + "." + nameof(MonacoSettingsViewModel.Options), S["The options are written in an incorrect format."]);
-#: OrchardCore.Html\Settings\HtmlBodyPartMonacoEditorSettingsDriver.cs:60
+#: OrchardCore.Html\Settings\HtmlBodyPartMonacoEditorSettingsDriver.cs:49
 msgctxt "OrchardCore.Html.Settings.HtmlBodyPartMonacoEditorSettingsDriver"
 msgid "The options are written in an incorrect format."
 msgstr "Les options sont écrites dans un format incorrect."
 
 #. context.Updater.ModelState.AddModelError(Prefix + "." + nameof(TrumbowygSettingsViewModel.Options), S["The options are written in an incorrect format."]);
-#: OrchardCore.Html\Settings\HtmlBodyPartTrumbowygEditorSettingsDriver.cs:56
+#: OrchardCore.Html\Settings\HtmlBodyPartTrumbowygEditorSettingsDriver.cs:45
 msgctxt "OrchardCore.Html.Settings.HtmlBodyPartTrumbowygEditorSettingsDriver"
 msgid "The options are written in an incorrect format."
 msgstr "Les options sont écrites dans un format incorrect."

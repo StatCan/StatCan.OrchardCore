@@ -1,0 +1,214 @@
+{
+  "steps": [
+    {
+      "name": "content",
+      "data": [
+        {
+          "ContentItemId": "4gbw4m0mz1sh45v9f2ztznktnw",
+          "ContentItemVersionId": "41eytr03g1z67zp0d627pr4b58",
+          "ContentType": "VueForm",
+          "DisplayText": "Create appointment ",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": "2021-05-18T17:49:36.4072455Z",
+          "PublishedUtc": "2021-05-18T17:49:36.4138456Z",
+          "CreatedUtc": "2021-04-16T01:52:41.1799908Z",
+          "Owner": null,
+          "Author": "admin",
+          "TitlePart": {
+            "Title": "Create appointment "
+          },
+          "VueForm": {
+            "Disabled": {
+              "Value": false
+            },
+            "Debug": {
+              "Value": false
+            },
+            "RenderAs": {
+              "Text": null
+            },
+            "DisabledHtml": {
+              "Html": ""
+            },
+            "SuccessMessage": {
+              "Text": "Your appointment was created successfully."
+            },
+            "Template": {
+              "Text": "<v-card >\r\n  <v-card-title>{{ \"formTitle\" | localize }} {{Model.CalendarTitle}}</v-card-title>\r\n  <v-card-subtitle>\r\n    {% raw %}{{ startDate }}{% endraw %}<br>\r\n    10 minutes\r\n  </v-card-subtitle>\r\n  <v-card-text>\r\n    <v-row>\r\n      <v-col>\r\n        <validation-provider name=\"{{ \"employeeLabel\" | localize | downcase }}\" rules=\"required\" v-slot=\"{ errors, valid }\">\r\n          <v-autocomplete v-model=\"employee\" :items=\"employeeList\" item-text=\"DisplayText\" item-value=\"ContentItemId\" label=\"{{ \"employeeLabel\" | localize }}\" :success=\"valid\" :error-messages=\"errors\"></v-autocomplete>\r\n        </validation-provider>\r\n      </v-col>      \r\n    </v-row>\r\n    <v-alert type=\"success\" v-if=\"form.successMessage\">\r\n      {% raw %}{{ form.successMessage }}{% endraw %}\r\n    </v-alert>\r\n    <v-alert type=\"error\" v-if=\"form.serverValidationMessage\">\r\n      {% raw %}{{ form.serverValidationMessage[0] }}{% endraw %}\r\n    </v-alert>\r\n  </v-card-text>\r\n  <v-card-actions>\r\n    <v-btn\r\n           text\r\n           color=\"secondary\"\r\n           @click=\"close\"\r\n     >\r\n      {{ \"closeButton\" | localize }}\r\n    </v-btn>\r\n    <v-spacer></v-spacer>\r\n    <v-btn text color=\"primary\" type=\"submit\" @click=\"loadDataAndSubmit\" :disabled=\"form.submitting\">{{ \"buttonText\" | localize }}</v-btn>\r\n  </v-card-actions>\r\n</v-card>"
+            }
+          },
+          "VueFormScripts": {
+            "ClientInit": {
+              "Text": null
+            },
+            "ComponentOptions": {
+              "Text": "{\r\n  data: () => ({\r\n      startDate: new Date(),\r\n      endDate: new Date(),\r\n      employee: \"\",\r\n      employeeList: {{Model.Employees | json | raw}}\r\n  }),\r\n  mounted() {\r\n    const self = this;\r\n    this.startDate = window.startDate;\r\n    this.endDate = window.endDate;\r\n    // comes from the Calendar \r\n    window.addEventListener('create_appointment', e => {\r\n      self.employee = \"\";\r\n      self.startDate = window.startDate;\r\n      self.endDate = window.endDate;\r\n    })\r\n  },\r\n  methods: {\r\n    close() {\r\n      let event = new CustomEvent('close_appointment_dialog');\r\n      window.dispatchEvent(event);\r\n    },\r\n    submitData() {\r\n      return { \r\n        returnUrl: \"{{Model.CurrentUrl}}\",\r\n        startDate: this.startDate.toUTCString(),\r\n       \tendDate: this.endDate.toUTCString(),\r\n        employee: this.employee,\r\n       };\r\n    },\r\n    loadDataAndSubmit(e){\r\n      e.preventDefault();\r\n      this.formHandleSubmit(e)      \r\n    }\r\n    \r\n  }\r\n}"
+            },
+            "OnValidation": {
+              "Text": null
+            },
+            "OnSubmitted": {
+              "Text": "var localizedText = getLocalizedTextValues(getFormContentItem());\r\nvar data = requestFormAsJsonObject();\r\nvar employee = contentByItemId(data.employee);\r\nvar calendar = taxonomyTermsJobject(employee.Content.Employee.Cohort);\r\n\r\nvar color = \"#000000\"\r\nif(calendar != null)\r\n{\r\n  color = calendar[0].Content.AppointmentCalendar.Color.Text;\r\n}\r\n\r\nvar item = createContentItem(\"Appointment\", true, {\r\n  \"Appointment\": {\r\n    \"Calendar\": employee.Content.Employee.Cohort,\r\n    \"Status\": {\r\n      \"Text\": \"UPCOMING\"\r\n    },\r\n    \"LinkedContent\": {\r\n      \"ContentItemIds\": [\r\n        data.employee\r\n      ]\r\n    },\r\n    \"StartDate\": {\r\n      \"Value\": data.startDate\r\n    },\r\n    \"EndDate\": {\r\n      \"Value\": data.endDate\r\n    },\r\n    \"Color\": {\r\n      \"Text\": color\r\n    }\r\n  }\r\n});\r\nnotify(\"Success\", localizedText.successMessage);\r\n\r\nhttpRedirect(data.returnUrl)\r\n"
+            }
+          },
+          "ContentPermissionsPart": {
+            "Roles": [
+              "Administrator",
+              "Scheduler"
+            ],
+            "Enabled": true
+          },
+          "LocalizedTextPart": {
+            "Data": [
+              {
+                "Name": "formTitle",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Créer un rendez-vous pour"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Create Appointment for"
+                  }
+                ]
+              },
+              {
+                "Name": "buttonText",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Créer un rendez-vous"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Create Appointment"
+                  }
+                ]
+              },
+              {
+                "Name": "employeeLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Employé"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Employee"
+                  }
+                ]
+              },
+              {
+                "Name": "",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": ""
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": ""
+                  }
+                ]
+              },
+              {
+                "Name": "successMessage",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Vôtre rendez-vous a été crée avec succès"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Your appointment has been successfully created"
+                  }
+                ]
+              },
+              {
+                "Name": "closeButton",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Annuler"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Cancel"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "ContentItemId": "4wnw5cysybe8szzhehezz5b74b",
+          "ContentItemVersionId": "470gbw6nd2cqzrtc4mcs37dac2",
+          "ContentType": "Taxonomy",
+          "DisplayText": "Calendars",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": "2021-05-20T19:06:47.9459677Z",
+          "PublishedUtc": "2021-05-20T19:06:47.9505872Z",
+          "CreatedUtc": "2021-05-18T17:04:12.2054281Z",
+          "Owner": null,
+          "Author": "scheduler",
+          "TitlePart": {
+            "Title": "Calendars"
+          },
+          "AliasPart": {
+            "Alias": "calendars"
+          },
+          "AutoroutePart": {
+            "Path": "calendars",
+            "SetHomepage": false,
+            "Disabled": false,
+            "RouteContainedItems": true,
+            "Absolute": false
+          },
+          "TaxonomyPart": {
+            "Terms": [
+              {
+                "ContentItemId": "4qb36abcfn35004p3fsrcwned3",
+                "ContentItemVersionId": null,
+                "ContentType": "AppointmentCalendar",
+                "DisplayText": "Default",
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": "2021-05-20T12:57:31.9350107Z",
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": null,
+                "Author": "admin",
+                "AppointmentCalendar": {
+                  "Color": {
+                    "Text": "#8b1313"
+                  }
+                },
+                "TitlePart": {
+                  "Title": "Default"
+                },
+                "AutoroutePart": {
+                  "Path": "default",
+                  "SetHomepage": true,
+                  "Disabled": false,
+                  "RouteContainedItems": false,
+                  "Absolute": false
+                },
+                "TermPart": {
+                  "TaxonomyContentItemId": "4wnw5cysybe8szzhehezz5b74b"
+                },
+                "@WeldedPartSettings": {
+                  "TermPart": {}
+                },
+                "Terms": []
+              }
+            ],
+            "TermContentType": "AppointmentCalendar"
+          }
+        }
+      ]
+    }
+  ]
+}

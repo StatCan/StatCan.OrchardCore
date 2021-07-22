@@ -1,10 +1,9 @@
 {
   "devDependencies": {
-    "cypress": "^6.0.0",
-    "cypress-orchardcore": "0.4.5",
+    "cypress": "^7.2.0",
+    "cypress-orchardcore": "0.4.7",
     "rimraf": "3.0.2"
   },
-  "dependencies": {},
   "scripts": {
     "build": "node -e \"require('cypress-orchardcore/dist/test-runner').build('../src/StatCan.OrchardCore.Cms.Web')\"",
     "host": "node -e \"require('cypress-orchardcore/dist/test-runner').host('../src/StatCan.OrchardCore.Cms.Web', 'StatCan.OrchardCore.Cms.Web.dll', {dotnetVersion:'net5.0'})\"",

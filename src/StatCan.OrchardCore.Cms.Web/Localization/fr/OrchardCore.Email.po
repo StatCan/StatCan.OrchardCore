@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
-"PO-Revision-Date: 2021-04-14 09:13\n"
+"PO-Revision-Date: 2021-07-14 14:11\n"
 
 #. .Add(S["Configuration"], configuration => configuration
 #: OrchardCore.Email\AdminMenu.cs:24
@@ -38,18 +38,6 @@ msgctxt "OrchardCore.Email.Controllers.AdminController"
 msgid "Message sent successfully."
 msgstr "Message envoyé avec succès."
 
-#. return SmtpResult.Failed(S["SMTP settings must be configured before an email can be sent."]);
-#: OrchardCore.Email\Services\SmtpService.cs:41
-msgctxt "OrchardCore.Email.Services.SmtpService"
-msgid "SMTP settings must be configured before an email can be sent."
-msgstr "Les paramètres SMTP doivent être configurés avant d'envoyer un email."
-
-#. return SmtpResult.Failed(S["An error occurred while sending an email: '{0}'", ex.Message]);
-#: OrchardCore.Email\Services\SmtpService.cs:69
-msgctxt "OrchardCore.Email.Services.SmtpService"
-msgid "An error occurred while sending an email: '{0}'"
-msgstr "Une erreur s'est produite lors de l'envoi d'un email : '{0}'"
-
 #. public override LocalizedString DisplayText => S["Email Task"];
 #: OrchardCore.Email\Workflows\Activities\EmailTask.cs:34
 msgctxt "OrchardCore.Email.Workflows.Activities.EmailTask"
@@ -63,13 +51,13 @@ msgid "Messaging"
 msgstr "Messagerie"
 
 #. return Outcomes(S["Done"], S["Failed"]);
-#: OrchardCore.Email\Workflows\Activities\EmailTask.cs:82
+#: OrchardCore.Email\Workflows\Activities\EmailTask.cs:94
 msgctxt "OrchardCore.Email.Workflows.Activities.EmailTask"
 msgid "Done"
 msgstr "Terminé"
 
 #. return Outcomes(S["Done"], S["Failed"]);
-#: OrchardCore.Email\Workflows\Activities\EmailTask.cs:82
+#: OrchardCore.Email\Workflows\Activities\EmailTask.cs:94
 msgctxt "OrchardCore.Email.Workflows.Activities.EmailTask"
 msgid "Failed"
 msgstr "Echec"
@@ -404,29 +392,53 @@ msgctxt "OrchardCore.Email.Views.Items.EmailTask.Fields.Edit"
 msgid "The subject of the email message. With Liquid support."
 msgstr "Le sujet du message électronique. Avec support de Liquid."
 
+#. <label class="custom-control-label" asp-for="IsBodyHtml">@T["Does the Body contain HTML?"]</label>
+#: OrchardCore.Email\Views\Items\EmailTask.Fields.Edit.cshtml:42
+msgctxt "OrchardCore.Email.Views.Items.EmailTask.Fields.Edit"
+msgid "Does the Body contain HTML?"
+msgstr "Le message contient-il du HTML ?"
+
+#. <span class="hint dashed">@T["If checked, indicates the body of the email message will be sent as HTML."]</span>
+#: OrchardCore.Email\Views\Items\EmailTask.Fields.Edit.cshtml:43
+msgctxt "OrchardCore.Email.Views.Items.EmailTask.Fields.Edit"
+msgid "If checked, indicates the body of the email message will be sent as HTML."
+msgstr "Si coché, indique que le corps du message sera envoyé en HTML."
+
+#. <label class="custom-control-label" asp-for="IsBodyText">@T["Does the Body contain plain text?"]</label>
+#: OrchardCore.Email\Views\Items\EmailTask.Fields.Edit.cshtml:50
+msgctxt "OrchardCore.Email.Views.Items.EmailTask.Fields.Edit"
+msgid "Does the Body contain plain text?"
+msgstr "Le corps contient-il du texte brut ?"
+
+#. <span class="hint dashed">@T["If checked, indicates the body of the email message will be sent as plain text."]</span>
+#: OrchardCore.Email\Views\Items\EmailTask.Fields.Edit.cshtml:51
+msgctxt "OrchardCore.Email.Views.Items.EmailTask.Fields.Edit"
+msgid "If checked, indicates the body of the email message will be sent as plain text."
+msgstr "Si coché, indique que le corps du message sera envoyé en texte brut."
+
 #. <label asp-for="Body">@T["Body"]</label>
-#: OrchardCore.Email\Views\Items\EmailTask.Fields.Edit.cshtml:40
+#: OrchardCore.Email\Views\Items\EmailTask.Fields.Edit.cshtml:56
 msgctxt "OrchardCore.Email.Views.Items.EmailTask.Fields.Edit"
 msgid "Body"
 msgstr "Message"
 
 #. <span class="hint">@T["The body of the email message. With Liquid support."]</span>
-#: OrchardCore.Email\Views\Items\EmailTask.Fields.Edit.cshtml:42
+#: OrchardCore.Email\Views\Items\EmailTask.Fields.Edit.cshtml:58
 msgctxt "OrchardCore.Email.Views.Items.EmailTask.Fields.Edit"
 msgid "The body of the email message. With Liquid support."
 msgstr "Le corps du message e-mail. Avec support de Liquid."
 
-#. <label class="custom-control-label" asp-for="IsBodyHtml">@T["Does the Body contain HTML?"]</label>
-#: OrchardCore.Email\Views\Items\EmailTask.Fields.Edit.cshtml:48
+#. <label asp-for="Body">@T["Body Plain Text"]</label>
+#: OrchardCore.Email\Views\Items\EmailTask.Fields.Edit.cshtml:62
 msgctxt "OrchardCore.Email.Views.Items.EmailTask.Fields.Edit"
-msgid "Does the Body contain HTML?"
-msgstr "Le message contient-il du HTML ?"
+msgid "Body Plain Text"
+msgstr "Texte du corps brut"
 
-#. <span class="hint dashed">@T["If checked, indicates the body of the email message is HTML. If unchecked, indicates the body of the email message is plain text."]</span>
-#: OrchardCore.Email\Views\Items\EmailTask.Fields.Edit.cshtml:49
+#. <span class="hint">@T["The plain text body of the email message. With Liquid support."]</span>
+#: OrchardCore.Email\Views\Items\EmailTask.Fields.Edit.cshtml:64
 msgctxt "OrchardCore.Email.Views.Items.EmailTask.Fields.Edit"
-msgid "If checked, indicates the body of the email message is HTML. If unchecked, indicates the body of the email message is plain text."
-msgstr "Si coché, indique que le corps du message de courriel est en HTML. Si décoché, indique que le corps du message de courriel est du texte en clair."
+msgid "The plain text body of the email message. With Liquid support."
+msgstr "Le corps en texte brut du message électronique. Avec prise en charge de la syntaxe Liquid."
 
 #. <h4 class="card-title"><i class="fa fa-envelope"></i>@T["Send Email"]</h4>
 #: OrchardCore.Email\Views\Items\EmailTask.Fields.Thumbnail.cshtml:1

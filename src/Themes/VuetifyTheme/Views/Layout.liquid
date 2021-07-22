@@ -10,23 +10,41 @@
     {% resources type: "HeadScript" %}
   </head>
   <body dir="{{ Culture.Dir }}">
-    <div id="page-top" v-cloak>
+    <div id="outdated"></div>
+    <div id="vuetify-theme-app" v-cloak
+      data-display-mode="{{ Site.Properties.VuetifyThemeSettings.VuetifyThemeSettings.DisplayMode.Text }}"
+      data-theme="{{ Site.Properties.VuetifyThemeSettings.VuetifyThemeSettings.ThemeOptions.Text | base64_encode }}">
       <v-app>
-        <!-- Style this absolute in the middle, on top of app-bar -->
         <a class="d-sr-only-focusable" href="#main">{{ "Skip to main content" | t }}</a>
         {% render_section "NavigationDrawer", required: false %}
         {% render_section "Header", required: false %}
         <v-main id="main">
-          {% render_section "Breadcrumbs", required: false %}
-          <v-container class="py-4 px-4" fluid>
-            {% render_section "Messages", required: false %}
-            {% render_section "IEBanner", required: false %}
+          {% render_section "IEBanner", required: false %}
+          {% assign breadcrumbNotEmpty = "Breadcrumb" | section_not_empy %}
+          {% if breadcrumbNotEmpty %}
+            <v-container fluid>
+              {% render_section "Breadcrumb", required: false %}
+            </v-container> 
+          {% endif %}
+      
+          {% assign messagesNotEmpty = "Messages" | section_not_empy %}
+          {% if messagesNotEmpty %}
+            <v-container fluid>
+              {% render_section "Messages", required: false %}
+            </v-container>
+          {% endif %}
+          <v-container fluid>
             {% render_body %}
           </v-container>
         </v-main>
         {% render_section "Footer", required: false %}
       </v-app>
     </div>
+    {%- comment -%}
+      This zone is required by the VueForms module for this theme.
+      This is required because the div that defines the VueForm needs to be outside of the VueApp of this theme.
+    {%- endcomment -%}
+    {% render_section "DynamicComponentZone", required: false %}
     {% resources type: "FootScript" %}
   </body>
 </html>
