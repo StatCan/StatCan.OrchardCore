@@ -1,6 +1,8 @@
 import Vue from 'vue';
 import frLang from 'vuetify/es5/locale/fr'
 import minifyTheme from 'minify-css-string'
+import IsDarkMode from './darkMode';
+
 import Vuetify, {
   VApp,
   VAppBar,
@@ -330,25 +332,11 @@ Vue.use(Vuetify,
     }
   });
 
-const appElement = document.getElementById("vuetify-theme-app");
-
 let themes = {};
-if (appElement.dataset.theme)
+if (document.documentElement.dataset.theme)
 {
-  themes = JSON.parse(atob(appElement.dataset.theme));
+  themes = JSON.parse(atob(document.documentElement.dataset.theme));
 }
-
-let darkModeEnabled = false;
-
-if (appElement.dataset.displayMode == 'picker') 
-{
-  darkModeEnabled = localStorage.getItem("VuetifyThemeDarkMode") === 'true';
-} 
-else if (appElement.dataset.displayMode == 'dark') 
-{
-  darkModeEnabled = true;
-}
-
 
 export default new Vuetify({
   lang: {
@@ -357,7 +345,7 @@ export default new Vuetify({
   },
   theme: {
     themes,
-    dark: darkModeEnabled,
+    dark: IsDarkMode(),
     options: {
       minifyTheme,
       customProperties: true,

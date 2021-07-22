@@ -4,9 +4,9 @@
 	else if(typeof define === 'function' && define.amd)
 		define([], factory);
 	else if(typeof exports === 'object')
-		exports["outdated"] = factory();
+		exports["head"] = factory();
 	else
-		root["outdated"] = factory();
+		root["head"] = factory();
 })((typeof self !== 'undefined' ? self : this), function() {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
@@ -1528,9 +1528,28 @@ var outdated_browser_rework_default = /*#__PURE__*/__webpack_require__.n(outdate
 // EXTERNAL MODULE: ./src/Themes/VuetifyTheme/node_modules/outdated-browser-rework/dist/style.css
 var style = __webpack_require__("02bb");
 
-// CONCATENATED MODULE: ./src/Themes/VuetifyTheme/Assets/outdatedBrowser.js
+// CONCATENATED MODULE: ./src/Themes/VuetifyTheme/Assets/src/plugins/darkMode.js
+function IsDarkMode() {
+  var darkModeEnabled = false;
+
+  if (document.documentElement.dataset.displayMode == 'picker') {
+    darkModeEnabled = localStorage.getItem("VuetifyThemeDarkMode") === 'true';
+  } else if (document.documentElement.dataset.displayMode == 'dark') {
+    darkModeEnabled = true;
+  }
+
+  return darkModeEnabled;
+}
+// CONCATENATED MODULE: ./src/Themes/VuetifyTheme/Assets/src/header_scripts.js
 
 
+ // set the body's background to be dark if DarkMode is currently enabled. To avoid a flash.
+
+window.addEventListener('load', function () {
+  if (IsDarkMode()) {
+    document.body.style.backgroundColor = "#121212";
+  }
+});
 outdated_browser_rework_default()({
   browserSupport: {
     Chrome: 57,
@@ -1575,4 +1594,4 @@ outdated_browser_rework_default()({
 
 /******/ });
 });
-//# sourceMappingURL=outdated.umd.js.map
+//# sourceMappingURL=head.umd.js.map
