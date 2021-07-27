@@ -7289,6 +7289,18 @@ var fr_default = /*#__PURE__*/__webpack_require__.n(fr);
 var dist = __webpack_require__("7586");
 var dist_default = /*#__PURE__*/__webpack_require__.n(dist);
 
+// CONCATENATED MODULE: ./src/Themes/VuetifyTheme/Assets/src/plugins/darkMode.js
+function IsDarkMode() {
+  var darkModeEnabled = false;
+
+  if (document.documentElement.dataset.displayMode == 'picker') {
+    darkModeEnabled = localStorage.getItem("VuetifyThemeDarkMode") === 'true';
+  } else if (document.documentElement.dataset.displayMode == 'dark') {
+    darkModeEnabled = true;
+  }
+
+  return darkModeEnabled;
+}
 // CONCATENATED MODULE: ./src/Themes/VuetifyTheme/node_modules/vuetify/lib/util/console.js
 /* eslint-disable no-console */
 
@@ -38512,6 +38524,7 @@ function filterTreeItems(filter, item, search, idKey, textKey, childrenKey, excl
 
 
 
+
 external_commonjs_vue_commonjs2_vue_root_Vue_default.a.use(framework_Vuetify, {
   components: {
     VApp: VApp_VApp,
@@ -38676,19 +38689,10 @@ external_commonjs_vue_commonjs2_vue_root_Vue_default.a.use(framework_Vuetify, {
     VExpandXTransition: VExpandXTransition
   }
 });
-var appElement = document.getElementById("vuetify-theme-app");
 var themes = {};
 
-if (appElement.dataset.theme) {
-  themes = JSON.parse(atob(appElement.dataset.theme));
-}
-
-var darkModeEnabled = false;
-
-if (appElement.dataset.displayMode == 'picker') {
-  darkModeEnabled = localStorage.getItem("VuetifyThemeDarkMode") === 'true';
-} else if (appElement.dataset.displayMode == 'dark') {
-  darkModeEnabled = true;
+if (document.documentElement.dataset.theme) {
+  themes = JSON.parse(atob(document.documentElement.dataset.theme));
 }
 
 /* harmony default export */ var vuetify = (new framework_Vuetify({
@@ -38700,7 +38704,7 @@ if (appElement.dataset.displayMode == 'picker') {
   },
   theme: {
     themes: themes,
-    dark: darkModeEnabled,
+    dark: IsDarkMode(),
     options: {
       minifyTheme: dist_default.a,
       customProperties: true

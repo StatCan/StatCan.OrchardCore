@@ -18,6 +18,19 @@
   {% if empty == height %}height="100%"{% else %}height="{{ height }}"{% endif %}
   {% if empty == width %}width="256"{% else %}width="{{ width }}"{% endif %}
 >
+  <div class="d-sm-none">
+    {% if Site.Properties.VuetifyThemeSettings.VuetifyThemeSettings.Logo.Paths.first != blank %}
+    <a class="d-inline-block mt-2 " href="{{ '~/' | href }}">
+      <img src="{{ Site.Properties.VuetifyThemeSettings.VuetifyThemeSettings.Logo.Paths.first | asset_url }}" style="max-height:56px; width:245px;" alt="logo" class="mr-2">
+    </a>
+    {% endif %}
+    {% if Site.Properties.VuetifyThemeSettings.VuetifyThemeSettings.DisplayName.Text != blank %}
+      <v-toolbar-title>
+        {{ Site.Properties.VuetifyThemeSettings.VuetifyThemeSettings.DisplayName.Text | shortcode }}
+      </v-toolbar-title>
+    {% endif %}
+    <v-divider></v-divider>
+  </div>
   {% assign drawerAlias = "alias:navigation-drawer-" | append: Culture.Name %}
   {% shape "menu", alias: drawerAlias, cache_id: drawerAlias, cache_fixed_duration: "00:00:01", cache_tag: menuAlias %}
 </v-navigation-drawer>

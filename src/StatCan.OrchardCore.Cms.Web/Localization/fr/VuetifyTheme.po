@@ -2,9 +2,9 @@ msgid ""
 msgstr "Content-Type: text/plain\n"
 
 #: VuetifyTheme\Views\UserMenu.cshtml:38
-#. <v-list-item-title>@T["Signed in as "]<span class="font-weight-bold">@User.Identity.Name</span></v-list-item-title>
+#. <v-list-item-title>@T["Signed in as"]<span class="font-weight-bold"> @User.Identity.Name</span></v-list-item-title>
 msgctxt "VuetifyTheme.Views.UserMenu"
-msgid "Signed in as "
+msgid "Signed in as"
 msgstr "Connecté en tant que"
 
 #: VuetifyTheme\Views\UserMenu.cshtml:48

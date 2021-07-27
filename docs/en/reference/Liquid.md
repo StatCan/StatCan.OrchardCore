@@ -1,5 +1,24 @@
 # Liquid
 
+## js_encode filter
+
+The `js_encode` filter encodes a string for javascript.
+
+Input
+
+my_value = Hello world " ' " 
+
+```liquid
+{{ my_value | js_encode }}
+```
+
+Output
+
+```text
+Hello world /" /' /" 
+```
+
+
 ## LocalizedText (`StatCan.OrchardCore.LocalizedText`) 
 
 Use the `localize` liquid filter to reference and output a value that matches the current culture and name provided. 
