@@ -5,13 +5,13 @@
       "data": [
         {
           "ContentItemId": "45a6j8rkq9z56xfhvxwm5hvgc7",
-          "ContentItemVersionId": "4b4hq011c8z6yttg7rs2cskhct",
+          "ContentItemVersionId": "4gtrc6r3vbpzryhrps0eq5bvmt",
           "ContentType": "VueForm",
           "DisplayText": "Draggable",
           "Latest": true,
           "Published": true,
-          "ModifiedUtc": "2021-04-15T13:33:27.684827Z",
-          "PublishedUtc": "2021-04-15T13:33:27.7042531Z",
+          "ModifiedUtc": "2021-07-22T15:24:48.8179088Z",
+          "PublishedUtc": "2021-07-22T15:24:48.8298654Z",
           "CreatedUtc": "2021-04-14T17:43:59.1530433Z",
           "Owner": "470faeeca24w7y4wp6eavkynwp",
           "Author": "admin",
@@ -30,6 +30,15 @@
             },
             "SuccessMessage": {
               "Text": null
+            },
+            "Disabled": {
+              "Value": false
+            },
+            "Debug": {
+              "Value": false
+            },
+            "Template": {
+              "Text": "<v-container >\r\n    <v-card-text>\r\n        <v-row justify=\"center\">\r\n            <v-col cols=\"12\">\r\n                <two-lists-draggable :list1=\"list1\" \r\n                                     :list2=\"list2\"\r\n                                     title1=\"Title 1\"\r\n                                     title2=\"Title 2\"\r\n                                     hint1=\"Hint 1\"\r\n                                     hint2=\"Hint 2\"\r\n                                     :error-messages=\"errorMessages\">\r\n                </two-lists-draggable>\r\n            </v-col>\r\n            <v-col cols=\"8\">\r\n                <sort-draggable :list=\"list1\"\r\n                                title=\"Title 1\"\r\n                                hint=\"Hint 1\">\r\n                </sort-draggable>\r\n            </v-col>\r\n        </v-row>\r\n    </v-card-text>\r\n</v-container>\r\n                  "
             }
           },
           "FlowPart": {
@@ -81,6 +90,9 @@
           },
           "LocalizedTextPart": {
             "Data": []
+          },
+          "AliasPart": {
+            "Alias": "draggable"
           }
         }
       ]
