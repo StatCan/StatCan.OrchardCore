@@ -16,7 +16,8 @@
 {% assign alignContentLg = Model.ContentItem.Content.VRow.AlignContentLg.Text %}
 {% assign alignContentXl = Model.ContentItem.Content.VRow.AlignContentXl.Text %}
 
-<v-row {{ Model.ContentItem.Content.VRow.Props.Values | join: ' ' | raw }} 
+<v-row class="{{ Model.Classes | join: ' ' }}"
+  {{ Model.ContentItem.Content.VRow.Props.Values | join: ' ' | raw }} 
   {% if blank != justify %}justify="{{ justify }}"{% endif %}
   {% if blank != justifySm %}justify-sm="{{ justifySm }}"{% endif %}
   {% if blank != justifyMd %}justify-md="{{ justifyMd }}"{% endif %}

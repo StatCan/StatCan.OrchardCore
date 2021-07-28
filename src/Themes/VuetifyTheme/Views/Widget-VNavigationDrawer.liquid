@@ -8,6 +8,7 @@
 {% assign width = Model.ContentItem.Content.VNavigationDrawer.Width.Value %}
 
 <v-navigation-drawer app v-model="drawer"
+  class="{{ Model.Classes | join: ' ' }}"
   {{ Model.ContentItem.Content.VNavigationDrawer.Props.Values | join: ' ' | raw }}
   {% if blank != backgroundImage %}src="{{ backgroundImage | asset_url }}"{% endif %}
   {% if blank != color %}color="{{ color }}"{% endif %}

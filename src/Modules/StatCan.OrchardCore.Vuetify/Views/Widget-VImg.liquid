@@ -5,7 +5,8 @@
 {% assign width = Model.ContentItem.Content.VImg.Width.Text %}
 
 {% if Model.ContentItem.Content.VImg.Source.Paths.first != blank %}
-<v-img src="{{ Model.ContentItem.Content.VImg.Source.Paths.first | asset_url }}"
+<v-img class="{{ Model.Classes | join: ' ' }}"
+  src="{{ Model.ContentItem.Content.VImg.Source.Paths.first | asset_url }}"
   {{ Model.ContentItem.Content.VImg.Props.Values | join: ' ' | raw }}
   {% if blank != alternateText %}alt="{{ alternateText }}"{% endif %}
   {% if blank != aspectRatio %}aspect-ratio="{{ aspectRatio }}"{% endif %}

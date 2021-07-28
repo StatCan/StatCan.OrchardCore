@@ -3,7 +3,7 @@
 {% assign height = Model.ContentItem.Content.VFooter.Height.Text %}
 {% assign width = Model.ContentItem.Content.VFooter.Width.Text %}
 
-<v-footer 
+<v-footer class="{{ Model.Classes | join: ' ' }}"
   {{ Model.ContentItem.Content.VFooter.Props.Values | join: ' ' | raw }}
   {% if blank != color %}color="{{ color }}"{% endif %}
   {% if blank != elevation %}elevation="{{ elevation }}"{% endif %}
