@@ -7,28 +7,38 @@
 {% assign width = Model.ContentItem.Content.VAppBar.Width.Value %}
 
 <v-app-bar app clipped-left
+  class="{{ Model.Classes | join: ' ' }}"
   {{ Model.ContentItem.Content.VAppBar.Props.Values | join: ' ' | raw }}
   {% if blank != backgroundImage %}src="{{ backgroundImage | asset_url }}"{% endif %}
   {% if blank != color %}color="{{ color }}"{% endif %}
   {% if empty !=  extensionHeight %}extension-height="{{ extensionHeight }}"{% endif %}
   {% if empty != scrollThreshold %}scroll-threshold="{{ scrollThreshold }}"{% endif %}
   {% if empty != height %}height="{{ height }}"{% endif %}
-  {% if empty != width %}width="{{ width }}"{% endif %}>
+  {% if empty != width %}width="{{ width }}"{% endif %}
+>
   {% comment %} This icon allows the show/hide of the drawer in mobile mode {% endcomment %}
   <v-app-bar-nav-icon class="hidden-lg-and-up" @click="drawer = !drawer"></v-app-bar-nav-icon>
   
-  <div class="d-none d-sm-flex">
-    {% if Site.Properties.VuetifyThemeSettings.VuetifyThemeSettings.Logo.Paths.first != blank %}
-    <a class="d-inline-block mt-2 " href="{{ '~/' | href }}">
-      <img src="{{ Site.Properties.VuetifyThemeSettings.VuetifyThemeSettings.Logo.Paths.first | asset_url }}" style="max-height:56px; width:245px;" alt="logo" class="mr-2">
-    </a>
-    {% endif %}
-    {% if Site.Properties.VuetifyThemeSettings.VuetifyThemeSettings.DisplayName.Text != blank %}
-      <v-toolbar-title>
-        {{ Site.Properties.VuetifyThemeSettings.VuetifyThemeSettings.DisplayName.Text | shortcode }}
-      </v-toolbar-title>
-    {% endif %}
+
+  {% if Site.Properties.VuetifyThemeSettings.VuetifyThemeSettings.Logo.Paths.first != blank %}
+    <div class="d-none d-sm-flex">
+      <a class="d-inline-block mt-2 " href="{{ '~/' | href }}">
+        <img src="{{ Site.Properties.VuetifyThemeSettings.VuetifyThemeSettings.Logo.Paths.first | asset_url }}" style="max-height:56px; width:245px;" alt="logo" class="mr-2">
+      </a>
   </div>
+  {% endif %}
+  {% if Site.Properties.VuetifyThemeSettings.VuetifyThemeSettings.MobileLogo.Paths.first != blank %}
+    <div class="d-flex d-sm-none">
+      <a class="d-inline-block mt-2 " href="{{ '~/' | href }}">
+        <img src="{{ Site.Properties.VuetifyThemeSettings.VuetifyThemeSettings.MobileLogo.Paths.first | asset_url }}" style="max-height:56px; width:150px;" alt="logo" class="mr-2">
+      </a>
+  </div>
+  {% endif %}
+  {% if Site.Properties.VuetifyThemeSettings.VuetifyThemeSettings.DisplayName.Text != blank %}
+    <v-toolbar-title>
+      {{ Site.Properties.VuetifyThemeSettings.VuetifyThemeSettings.DisplayName.Text | shortcode }}
+    </v-toolbar-title>
+  {% endif %}
   <v-spacer></v-spacer>
   {% if Site.Properties.VuetifyThemeSettings.VuetifyThemeSettings.DisplayMode.Text == 'picker' %}
   <v-tooltip v-if="!$vuetify.theme.dark" bottom>

@@ -18,7 +18,6 @@
     <PackageReference Include="OrchardCore.Title" Version="$(OrchardCoreVersion)" />
     <ProjectReference Include="..\..\Lib\StatCan.OrchardCore.Extensions\StatCan.OrchardCore.Extensions.csproj" />
     <ProjectReference Include="..\..\Modules\StatCan.OrchardCore.ContentFields\StatCan.OrchardCore.ContentFields.csproj" />
-    <ProjectReference Include="..\..\Modules\StatCan.OrchardCore.Vuetify\StatCan.OrchardCore.Vuetify.csproj" />
   </ItemGroup>
 
 <!-- For content Migrations -->
@@ -33,10 +32,6 @@
 
   <ItemGroup>
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Remove="**\*.less;**\*.scss;" />
   </ItemGroup>
 
 </Project>

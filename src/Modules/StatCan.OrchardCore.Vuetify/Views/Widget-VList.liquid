@@ -1,4 +1,4 @@
-<v-list>
+<v-list class="{{ Model.Classes | join: ' ' }}">
   {% for item in Model.ContentItem.Content.Items.ContentItems %}
       {{ item | shape_build_display | shape_render }}
   {% endfor %}

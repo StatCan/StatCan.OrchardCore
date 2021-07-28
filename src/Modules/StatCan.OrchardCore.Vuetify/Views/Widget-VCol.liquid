@@ -12,7 +12,7 @@
 {% assign offsetLg = Model.ContentItem.Content.VCol.OffsetLg.Text %}
 {% assign offsetXl = Model.ContentItem.Content.VCol.OffsetXl.Text %}
 
-<v-col 
+<v-col class="{{ Model.Classes | join: ' ' }}"
   {% if blank != alignSelf %}align-self="{{ alignSelf }}"{% endif %}
   {% if blank != colsXs %}cols="{{ colsXs }}"{% endif %}
   {% if blank != colsSm %}sm="{{ colsSm }}"{% endif %}

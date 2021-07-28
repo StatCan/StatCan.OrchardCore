@@ -1,15 +1,15 @@
 {% assign prefix = Model.ContentItem.DisplayText | slugify %}
 
-<v-tabs>
+<v-tabs class="{{ Model.Classes | join: ' ' }}">
 {% for tab in Model.ContentItem.Content.FlowPart.Widgets %}
-  {% capture tabId %}{{prefix}}{{tab.DisplayText | slugify}}{% endcapture %}
+  {% comment %} {% capture tabId %}{{prefix}}{{tab.DisplayText | slugify}}{% endcapture %} {% endcomment %}
   <v-tab>
     {{ tab.DisplayText }}
   </v-tab>
 {% endfor %}
 
 {% for tab in Model.ContentItem.Content.FlowPart.Widgets %}
-  {% capture tabId %}{{prefix}}{{tab.DisplayText | slugify}}{% endcapture %}
+  {% comment %} {% capture tabId %}{{prefix}}{{tab.DisplayText | slugify}}{% endcapture %} {% endcomment %}
   <v-tab-item transition="false" reverse-transition="false">
     {{ tab | shape_build_display | shape_render }}
   </v-tab-item>
