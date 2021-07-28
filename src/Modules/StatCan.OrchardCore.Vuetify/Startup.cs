@@ -15,15 +15,6 @@ namespace StatCan.OrchardCore.Vuetify
     {
         public override void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<IDataMigration, AlertMigrations>();
-            services.AddScoped<IDataMigration, CardMigrations>();
-            services.AddScoped<IDataMigration, ExpansionPanelMigrations>();
-            services.AddScoped<IDataMigration, GridMigrations>();
-            services.AddScoped<IDataMigration, ImageMigrations>();
-            services.AddScoped<IDataMigration, ListMigrations>();
-            services.AddScoped<IDataMigration, ScheduleMigrations>();
-            services.AddScoped<IDataMigration, TabsMigrations>();
-            services.AddScoped<IDataMigration, TimelineMigrations>();
            // services.AddScoped<IDataMigration, VuetifyMigrations>();
 
             services.AddScoped<IContentDisplayDriver, WidgetStylingPartDisplay>();
