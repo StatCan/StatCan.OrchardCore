@@ -1,6 +1,6 @@
 
 /* Display the labels for fields that are in columns*/
-.widget-editor-body > div > .edit-container div.form-group:only-of-type > label 
+.settings-modal label 
 {
-  display: inline-block;
+  display: inline-block !important;
 }
