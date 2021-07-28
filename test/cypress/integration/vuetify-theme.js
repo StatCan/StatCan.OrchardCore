@@ -8,10 +8,4 @@ describe("Vuetify theme tests", function() {
     cy.newTenant(tenant);
     cy.login(tenant);
   })
-
-  it("Vuetify SaaS recipe is successfull", function() {
-    const tenant = generateTenantInfo("vuetify-saas-setup");
-    cy.newTenant(tenant);
-    cy.login(tenant);
-  })
 });
