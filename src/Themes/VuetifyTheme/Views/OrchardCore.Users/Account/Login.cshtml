@@ -35,7 +35,7 @@
             </ul>
           </v-alert>
         }
-        <v-text-field id="UserName" name="UserName" label="@T["Username"]" value="@userName?.AttemptedValue" error-messages="@(userName?.Errors.FirstOrDefault()?.ErrorMessage)"></v-text-field>
+        <v-text-field id="UserName" name="UserName" label="@T["Email or username"]" value="@userName?.AttemptedValue" error-messages="@(userName?.Errors.FirstOrDefault()?.ErrorMessage)"></v-text-field>
         <v-text-field id="Password" type="password" name="Password" label="@T["Password"]" error-messages="@(password?.Errors.FirstOrDefault()?.ErrorMessage)"></v-text-field>
         <v-checkbox name="RememberMe" label="@T["Remember me"]" value="true"></v-checkbox>
         @if (allowResetPassword)

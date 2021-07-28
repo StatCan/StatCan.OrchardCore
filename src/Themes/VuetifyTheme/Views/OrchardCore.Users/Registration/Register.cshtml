@@ -18,7 +18,6 @@
 <v-card class="px-4">
   <form id="form" asp-controller="Registration" asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post">
     <v-card-title>@T["Create account"]</v-card-title>
-    <v-card-subtitle>@T["Register for your vuetify account here"]</v-card-subtitle>
     <v-card-text>
       <v-row>
         <v-col>
@@ -58,7 +57,7 @@
       </div>
       @* <span>@T["Already have an account?"]</span> *@
       <v-card-actions>
-        <v-btn href="@Url.Action("Login", "Account", new { Area = "OrchardCore.Users", returnUrl=ViewData["ReturnUrl"] })" x-large block color="grey lighten-2">@T["Log in"]</v-btn>
+        <v-btn href="@Url.Action("Login", "Account", new { Area = "OrchardCore.Users", returnUrl=ViewData["ReturnUrl"] })" x-large block color="secondary">@T["Log in"]</v-btn>
       </v-card-actions>
     }
   </form>
