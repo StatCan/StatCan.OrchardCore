@@ -4,7 +4,7 @@
 
   <PropertyGroup>
     <VersionPrefix>1.0.0</VersionPrefix>
-    <VersionSuffix>rc3</VersionSuffix>
+    <VersionSuffix></VersionSuffix>
     <VersionSuffix Condition="'$(VersionSuffix)'!='' AND '$(BuildNumber)' != ''">$(VersionSuffix)-$(BuildNumber)</VersionSuffix>
     <!-- This overrides the prefix and suffix specified above -->
     <Version Condition="'$(Version)'!=''">$(Version)</Version>
