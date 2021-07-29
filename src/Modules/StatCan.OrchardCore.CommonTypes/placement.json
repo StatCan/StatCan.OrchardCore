@@ -3,7 +3,8 @@
     {
       "place": "Parts#Security:15",
       "contentType": [
-        "SecurePage"
+        "SecurePage",
+        "Page"
       ],
       "differentiator": "SecurePage-UnauthorizedHtml"
     }
@@ -12,7 +13,8 @@
     {
       "place": "Parts#Security:10",
       "contentType": [
-        "SecurePage"
+        "SecurePage",
+        "Page"
       ]
     }
   ]
