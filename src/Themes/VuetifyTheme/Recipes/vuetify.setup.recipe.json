@@ -36,7 +36,6 @@
         "OrchardCore.ContentTypes",
         "OrchardCore.CustomSettings",
         "OrchardCore.Deployment",
-        "OrchardCore.Feeds",
         "OrchardCore.Indexing",
         "OrchardCore.Layers",
         "OrchardCore.Localization",
@@ -56,8 +55,7 @@
         "OrchardCore.Users.ResetPassword",
         "StatCan.OrchardCore.DisplayHelpers",
         "StatCan.OrchardCore.CommonTypes.Page",
-        "StatCan.OrchardCore.CommonTypes.SecurePage",
-        "StatCan.OrchardCore.CommonTypes.Widgets",
+        "StatCan.OrchardCore.CommonTypes.MarkdownWidget",
         "StatCan.OrchardCore.Menu",
         "DigitalAdmin",
         "VuetifyTheme"
@@ -107,100 +105,6 @@
           "Name": "All",
           "Rule": "true",
           "Description": null
-        }
-      ]
-    },
-    {
-      "name": "Content",
-      "data": [
-        {
-          "ContentItemId": "4ew99htaqr7tkwjnap15wd15n1",
-          "ContentType": "VAppBar",
-          "DisplayText": "App Bar",
-          "Latest": true,
-          "Published": true,
-          "Owner": "[js: parameters('AdminUserId')]",
-          "Author": "[js: parameters('AdminUsername')]",
-          "VAppBar": {
-            "Props": {
-              "Values": []
-            },
-            "Color": {
-              "Text": null
-            },
-            "Elevation": {
-              "Value": null
-            },
-            "ExtensionHeight": {
-              "Value": null
-            },
-            "ScrollThreshold": {
-              "Value": null
-            },
-            "BackgroundImage": {
-              "Paths": [],
-              "MediaTexts": []
-            },
-            "Height": {
-              "Value": null
-            },
-            "Width": {
-              "Value": null
-            }
-          },
-          "LayerMetadata": {
-            "Position": 1.0,
-            "Zone": "Header",
-            "RenderTitle": false,
-            "Layer": "All"
-          }
-        },
-        {
-          "ContentItemId": "46ns553f5amf1s2g4z9jfaq9d1",
-          "ContentType": "VNavigationDrawer",
-          "DisplayText": "Navigation Drawer",
-          "Latest": true,
-          "Published": true,
-          "Owner": "[js: parameters('AdminUserId')]",
-          "Author": "[js: parameters('AdminUsername')]",
-          "VNavigationDrawer": {
-            "Props": {
-              "Values": [
-                "clipped"
-              ]
-            },
-            "BackgroundImage": {
-              "Paths": [],
-              "MediaTexts": []
-            },
-            "Color": {
-              "Text": null
-            },
-            "MiniVariantWidth": {
-              "Value": null
-            },
-            "MobileBreakpoint": {
-              "Value": null
-            },
-            "OverlayColor": {
-              "Text": null
-            },
-            "OverlayOpacity": {
-              "Value": null
-            },
-            "Height": {
-              "Value": null
-            },
-            "Width": {
-              "Value": null
-            }
-          },
-          "LayerMetadata": {
-            "Position": 1.0,
-            "Zone": "NavigationDrawer",
-            "RenderTitle": false,
-            "Layer": "All"
-          }
         }
       ]
     }
