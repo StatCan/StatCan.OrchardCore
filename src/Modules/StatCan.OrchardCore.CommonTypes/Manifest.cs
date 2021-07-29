@@ -23,6 +23,20 @@ using static StatCan.OrchardCore.CommonTypes.FeatureIds;
         "OrchardCore.Title"
     }
 )]
+[assembly: Feature(
+    Id = SecurePage,
+    Name = "StatCan.CommonTypes - Secure Page",
+    Category = "Content",
+    Description = "(DEPRECATED) Adds a page content types that has the ContentPermission part attached to it.",
+    Dependencies = new[]
+    {
+        "OrchardCore.Autoroute",
+        "StatCan.OrchardCore.ContentPermissions",
+        "OrchardCore.Flows",
+        "OrchardCore.Title",
+        "OrchardCore.Liquid"
+    }
+)]
 
 [assembly: Feature(
     Id = AdditionalPages,
