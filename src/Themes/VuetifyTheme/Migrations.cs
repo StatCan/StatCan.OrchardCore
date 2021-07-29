@@ -113,7 +113,6 @@ namespace StatCan.Themes.VuetifyTheme
         public async Task<int> UpdateFrom8Async()
         {
             await SwitchToVuetifyModule();
-            VuetifyThemeSettings();
             return 9;
         }
 
@@ -151,12 +150,6 @@ namespace StatCan.Themes.VuetifyTheme
                     .OfType("MediaField")
                     .WithDisplayName("Logo")
                     .WithPosition("5")
-                )
-                .WithField("MobileLogo", field => field
-                    .OfType("MediaField")
-                    .WithDisplayName("Mobile Logo")
-                    .WithSettings(new MediaFieldSettings(){ Hint = "Logo for sm and smaller breakpoints"})
-                    .WithPosition("10")
                 )
                 .WithField("DisplayMode", field => field
                     .OfType("TextField")
