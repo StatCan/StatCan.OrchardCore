@@ -17,6 +17,7 @@ using static StatCan.OrchardCore.CommonTypes.FeatureIds;
     Dependencies = new[]
     {
         "OrchardCore.Autoroute",
+        "StatCan.OrchardCore.ContentPermissions",
         "OrchardCore.Flows",
         "OrchardCore.Liquid",
         "OrchardCore.Title"
@@ -58,7 +59,7 @@ using static StatCan.OrchardCore.CommonTypes.FeatureIds;
     Id = SecurePage,
     Name = "StatCan.CommonTypes - Secure Page",
     Category = "Content",
-    Description = "Adds a page content types that has the ContentPermission part attached to it.",
+    Description = "(DEPRECATED) Adds a page content types that has the ContentPermission part attached to it.",
     Dependencies = new[]
     {
         "OrchardCore.Autoroute",
