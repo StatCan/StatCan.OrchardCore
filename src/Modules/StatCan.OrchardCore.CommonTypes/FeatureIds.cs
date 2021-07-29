@@ -9,6 +9,6 @@ namespace StatCan.OrchardCore.CommonTypes
         public const string SecurePage = FeatureIdPrefix + nameof(SecurePage);
         public const string HtmlWidget = FeatureIdPrefix + "HtmlWidget";
         public const string LiquidWidget = FeatureIdPrefix + "LiquidWidget";
-        public const string MarkdownWidget = FeatureIdPrefix + "MakrdownWidget";
+        public const string MarkdownWidget = FeatureIdPrefix + "MarkdownWidget";
     }
 }
