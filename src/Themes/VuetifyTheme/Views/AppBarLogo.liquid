@@ -1,0 +1,10 @@
+{% if Site.Properties.VuetifyThemeSettings.VuetifyThemeSettings.Logo.Paths.first != blank %}
+    <a class="d-inline-block" href="{{ '~/' | href }}">
+      <img src="{{ Site.Properties.VuetifyThemeSettings.VuetifyThemeSettings.Logo.Paths.first | asset_url }}" style="max-height:42px; width:100%;" alt="logo" class="mr-2 mt-1">
+    </a>
+{% endif %}
+{% if Site.Properties.VuetifyThemeSettings.VuetifyThemeSettings.DisplayName.Text != blank %}
+  <v-toolbar-title>
+    {{ Site.Properties.VuetifyThemeSettings.VuetifyThemeSettings.DisplayName.Text | shortcode }}
+  </v-toolbar-title>
+{% endif %}
