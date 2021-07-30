@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import vuetify from './plugins/vuetify'
 import IEBanner from './components/IEBanner.vue'
+import Draggable from './components/Draggable.vue'
+import TwoListsDraggable from './components/TwoListsDraggable.vue'
 
 import "@fontsource/roboto/100.css"
 import "@fontsource/roboto/300.css"
@@ -13,6 +15,8 @@ import "@mdi/font/css/materialdesignicons.css"
 import './sass/styles.scss' 
 
 Vue.component('ie-banner', IEBanner);
+Vue.component('sort-draggable', Draggable);
+Vue.component('two-lists-draggable', TwoListsDraggable);
 
 function higlightMenu() {
    // highlight the current menu tree in the drawer if present.
