@@ -1,5 +1,11 @@
 import outdatedBrowser from "outdated-browser-rework";
 import "outdated-browser-rework/dist/style.css";
+import IsDarkMode from './plugins/darkMode';
+
+// set the body's background to be dark if DarkMode is currently enabled. To avoid a flash.
+if(IsDarkMode()) {
+  document.documentElement.style.backgroundColor = "#121212";
+}
 
 outdatedBrowser({
 	browserSupport: {

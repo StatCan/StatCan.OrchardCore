@@ -32713,7 +32713,6 @@ var sass_styles = __webpack_require__("0159");
 
 
 
-
 external_commonjs_vue_commonjs2_vue_root_Vue_default.a.component('ie-banner', IEBanner);
 
 function higlightMenu() {
@@ -32752,12 +32751,7 @@ function higlightMenu() {
   }
 }
 
-higlightMenu(); // set the body's background to be dark if DarkMode is currently enabled. To avoid a flash.
-
-if (IsDarkMode()) {
-  document.body.style.backgroundColor = "#121212";
-}
-
+higlightMenu();
 document.addEventListener("DOMContentLoaded", function () {
   // console.log("loaded");
   new external_commonjs_vue_commonjs2_vue_root_Vue_default.a({
