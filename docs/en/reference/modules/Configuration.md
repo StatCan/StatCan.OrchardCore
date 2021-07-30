@@ -130,3 +130,42 @@ $env:OrchardCore__StatCan_Smtp__UserName="myusername"
 $env:OrchardCore__StatCan_Smtp__Password="mysmtppassword"
 
 ```
+
+# Other Configuration
+
+This is how you can configure environment variables for the AllowedFileExtensions of media files
+
+```powershell
+$env:OrchardCore__OrchardCore_Media__AllowedFileExtensions__1=".jpeg"
+$env:OrchardCore__OrchardCore_Media__AllowedFileExtensions__2=".png"
+$env:OrchardCore__OrchardCore_Media__AllowedFileExtensions__3=".gif"
+$env:OrchardCore__OrchardCore_Media__AllowedFileExtensions__4=".ico"
+$env:OrchardCore__OrchardCore_Media__AllowedFileExtensions__5=".svg"
+$env:OrchardCore__OrchardCore_Media__AllowedFileExtensions__6=".pdf"
+$env:OrchardCore__OrchardCore_Media__AllowedFileExtensions__7=".doc"
+$env:OrchardCore__OrchardCore_Media__AllowedFileExtensions__8=".docx"
+$env:OrchardCore__OrchardCore_Media__AllowedFileExtensions__9=".ppt"
+$env:OrchardCore__OrchardCore_Media__AllowedFileExtensions__10=".pptx"
+$env:OrchardCore__OrchardCore_Media__AllowedFileExtensions__11=".pps"
+$env:OrchardCore__OrchardCore_Media__AllowedFileExtensions__12=".ppsx"
+$env:OrchardCore__OrchardCore_Media__AllowedFileExtensions__13=".odt"
+$env:OrchardCore__OrchardCore_Media__AllowedFileExtensions__14=".xls"
+$env:OrchardCore__OrchardCore_Media__AllowedFileExtensions__15=".xlsx"
+$env:OrchardCore__OrchardCore_Media__AllowedFileExtensions__16=".psd"
+$env:OrchardCore__OrchardCore_Media__AllowedFileExtensions__17=".mp3"
+$env:OrchardCore__OrchardCore_Media__AllowedFileExtensions__18=".m4a"
+$env:OrchardCore__OrchardCore_Media__AllowedFileExtensions__19=".ogg"
+$env:OrchardCore__OrchardCore_Media__AllowedFileExtensions__20=".wav"
+$env:OrchardCore__OrchardCore_Media__AllowedFileExtensions__21=".mp4"
+$env:OrchardCore__OrchardCore_Media__AllowedFileExtensions__22=".m4v"
+$env:OrchardCore__OrchardCore_Media__AllowedFileExtensions__23=".mov"
+$env:OrchardCore__OrchardCore_Media__AllowedFileExtensions__24=".wmv"
+$env:OrchardCore__OrchardCore_Media__AllowedFileExtensions__25=".avi"
+$env:OrchardCore__OrchardCore_Media__AllowedFileExtensions__26=".mpg"
+$env:OrchardCore__OrchardCore_Media__AllowedFileExtensions__27=".ogv"
+$env:OrchardCore__OrchardCore_Media__AllowedFileExtensions__28=".3gp"
+
+$env:OrchardCore__OrchardCore_Media__AllowedFileExtensions__29=".csv"
+$env:OrchardCore__OrchardCore_Media__AllowedFileExtensions__30=".msg"
+
+```
