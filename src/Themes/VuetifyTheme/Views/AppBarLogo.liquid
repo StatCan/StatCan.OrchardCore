@@ -1,0 +1,13 @@
+{% if Site.Properties.VuetifyThemeSettings.VuetifyThemeSettings.Logo.Paths.first != blank %}
+    <a class="d-none d-sm-flex" href="{{ '~/' | href }}">
+      <img src="{{ Site.Properties.VuetifyThemeSettings.VuetifyThemeSettings.Logo.Paths.first | asset_url }}" style="max-height:56px; width:240px;" alt="logo">
+    </a>
+    <a class="d-flex d-sm-none" href="{{ '~/' | href }}">
+      <img src="{{ Site.Properties.VuetifyThemeSettings.VuetifyThemeSettings.Logo.Paths.first | asset_url }}" style="max-height:48px; width:170px;" alt="logo" >
+    </a>
+{% endif %}
+{% if Site.Properties.VuetifyThemeSettings.VuetifyThemeSettings.DisplayName.Text != blank %}
+  <v-toolbar-title>
+    {{ Site.Properties.VuetifyThemeSettings.VuetifyThemeSettings.DisplayName.Text | shortcode }}
+  </v-toolbar-title>
+{% endif %}

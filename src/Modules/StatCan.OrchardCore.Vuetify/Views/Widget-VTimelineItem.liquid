@@ -3,7 +3,8 @@
 {% assign iconColor = Model.ContentItem.Content.VTimelineItem.IconColor.Text %}
 {% assign color = Model.ContentItem.Content.VTimelineItem.Color.Text %}
 
-<v-timeline-item {{ Model.ContentItem.Content.VTimeline.Props.Values | join: ' ' | raw }}
+<v-timeline-item class="{{ Model.Classes | join: ' ' }}"
+  {{ Model.ContentItem.Content.VTimeline.Props.Values | join: ' ' | raw }}
   {% if blank != color %}color="{{ color }}"{% endif %}
   {% if blank != icon %}icon="{{ icon }}"{% endif %}
   {% if blank != iconColor %}icon-color="{{ iconColor }}"{% endif %}>

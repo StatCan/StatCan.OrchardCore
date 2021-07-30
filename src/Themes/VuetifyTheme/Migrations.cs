@@ -15,6 +15,9 @@ using Newtonsoft.Json.Linq;
 using OrchardCore.ContentManagement.Records;
 using YesSql;
 using System.Threading.Tasks;
+using OrchardCore.Environment.Extensions;
+using OrchardCore.Environment.Shell;
+using StatCan.OrchardCore.Vuetify;
 
 namespace StatCan.Themes.VuetifyTheme
 {
@@ -22,44 +25,33 @@ namespace StatCan.Themes.VuetifyTheme
     {
         private readonly IContentDefinitionManager _contentDefinitionManager;
         private readonly ISession _session;
-        public Migrations(IContentDefinitionManager contentDefinitionManager, ISession session)
+        private readonly IExtensionManager _extensionManager;
+        private readonly IShellFeaturesManager _shellFeaturesManager;
+        public Migrations(
+            IContentDefinitionManager contentDefinitionManager,
+            ISession session,
+            IExtensionManager extensionManager,
+            IShellFeaturesManager shellFeaturesManager
+        )
         {
             _contentDefinitionManager = contentDefinitionManager;
             _session = session;
+            _extensionManager = extensionManager;
+            _shellFeaturesManager = shellFeaturesManager;
         }
 
         public int Create()
         {
             VuetifyThemeSettings();
-            Tabs();
-
-            VContainer();
-            VRow();
-            VCol();
-            VAlert();
-            VCard();
-            VExpansionPanel();
-            VExpansionPanels();
-            VImg();
-            VTimeline();
-            VTimelineItem();
-            VContainerRow();
             VAppBar();
             VNavigationDrawer();
-
-            CompatibilityBanner();
             VFooter();
-            UpdateToMultiTextField();
-            VSubheader();
-            VListItem();
-            VList();
-            VDivider();
-            ScheduleEvent();
             InitialMenuItems();
-            return 8;
+            return 9;
         }
 
-        public int UpdateFrom1() {
+        public int UpdateFrom1()
+        {
             VSubheader();
             VListItem();
             VList();
@@ -118,8 +110,30 @@ namespace StatCan.Themes.VuetifyTheme
             return 8;
         }
 
+        public async Task<int> UpdateFrom8Async()
+        {
+            await SwitchToVuetifyModule();
+            return 9;
+        }
+
         #region Private methods
 
+        private async Task SwitchToVuetifyModule()
+        {
+            var vuetifyModule = _extensionManager.GetFeatures(new []{
+                Constants.Features.Vuetify,
+                Constants.Features.Alert,
+                Constants.Features .Card,
+                Constants.Features .ExpansionPanel,
+                Constants.Features.Grid,
+                Constants.Features.Image,
+                Constants.Features.List,
+                Constants.Features.Schedule,
+                Constants.Features.Tabs,
+                Constants.Features.Timeline,
+            });
+            await _shellFeaturesManager.EnableFeaturesAsync(vuetifyModule, true);
+        }
         private void VuetifyThemeSettings()
         {
             _contentDefinitionManager.AlterTypeDefinition("VuetifyThemeSettings", type => type
@@ -135,34 +149,36 @@ namespace StatCan.Themes.VuetifyTheme
                 .WithField("Logo", field => field
                     .OfType("MediaField")
                     .WithDisplayName("Logo")
-                    .WithPosition("1")
+                    .WithPosition("5")
                 )
-             .WithField("DisplayMode", field => field
-                .OfType("TextField")
-                .WithDisplayName("Display Mode")
-                .WithEditor("PredefinedList")
-                .WithPosition("2")
-                .WithSettings(
-                    new TextFieldPredefinedListEditorSettings
+                .WithField("DisplayMode", field => field
+                    .OfType("TextField")
+                    .WithDisplayName("Display Mode")
+                    .WithEditor("PredefinedList")
+                    .WithPosition("15")
+                    .WithSettings(
+                        new TextFieldPredefinedListEditorSettings
                         {
                             Options = new ListValueOption[] {
-                                new ListValueOption(){Name = "Light Mode", Value= "light"},
-                                new ListValueOption(){Name = "Dark Mode", Value= "dark"},
-                                new ListValueOption(){Name = "Picker", Value= "picker"},
-                        },
-                }))
-
+                                    new ListValueOption(){Name = "Light Mode", Value= "light"},
+                                    new ListValueOption(){Name = "Dark Mode", Value= "dark"},
+                                    new ListValueOption(){Name = "Picker", Value= "picker"},
+                            },
+                        }
+                    )
+                )
                 .WithField("ThemeOptions", f => f
                     .OfType(nameof(TextField))
                     .WithDisplayName("Template")
                     .WithSettings(new TextFieldSettings() { Hint = "The Vuetify 'themes' object that defines the colors of both lite and dark theme. See https://vuetifyjs.com/en/features/theme/" })
-                    .WithPosition("3")
+                    .WithPosition("20")
                     .WithEditor("Monaco")
                     .WithSettings(
                         new TextFieldMonacoEditorSettings()
                         {
                             Options = "{\"language\": \"json\"}"
-                        })
+                        }
+                    )
                 )
             );
         }
@@ -216,33 +232,33 @@ namespace StatCan.Themes.VuetifyTheme
         private void InitialMenuItems()
         {
             _contentDefinitionManager.AlterPartDefinition("CommonMenuItemPart", part => part
-                .WithTextField("IconName","Icon Name" , "0")
+                .WithTextField("IconName", "Icon Name", "0")
                 .Attachable()
             );
 
             _contentDefinitionManager.AlterTypeDefinition("ContentMenuItem", t => t
-                .WithPart("CommonMenuItemPart", p=>p.WithPosition("4"))
+                .WithPart("CommonMenuItemPart", p => p.WithPosition("4"))
                 .WithContentPermission("6")
             );
             _contentDefinitionManager.AlterTypeDefinition("LinkMenuItem", t => t
-                .WithPart("CommonMenuItemPart", p=>p.WithPosition("4"))
+                .WithPart("CommonMenuItemPart", p => p.WithPosition("4"))
                 .WithContentPermission("6")
             );
 
-             _contentDefinitionManager.AlterTypeDefinition("TaxonomyMenuItem", type => type
-                .DisplayedAs("Taxonomy Menu Item")
-                .Stereotype("MenuItem")
-                .WithPart("TitlePart", part => part
-                    .WithPosition("0")
-                )
-                .WithPart("CommonMenuItemPart", part => part
-                    .WithPosition("1")
-                )
-                .WithPart("TaxonomyMenuItem", part => part
-                    .WithPosition("2")
-                )
-                .WithContentPermission("6")
-            );
+            _contentDefinitionManager.AlterTypeDefinition("TaxonomyMenuItem", type => type
+               .DisplayedAs("Taxonomy Menu Item")
+               .Stereotype("MenuItem")
+               .WithPart("TitlePart", part => part
+                   .WithPosition("0")
+               )
+               .WithPart("CommonMenuItemPart", part => part
+                   .WithPosition("1")
+               )
+               .WithPart("TaxonomyMenuItem", part => part
+                   .WithPosition("2")
+               )
+               .WithContentPermission("6")
+           );
 
             _contentDefinitionManager.AlterPartDefinition("TaxonomyMenuItem", part => part
                 .WithField("Taxonomy", field => field
@@ -264,7 +280,7 @@ namespace StatCan.Themes.VuetifyTheme
         private void MenuTypesMigration()
         {
             _contentDefinitionManager.AlterPartDefinition("CommonMenuItemPart", part => part
-                .WithTextField("IconName","Icon Name" , "0")
+                .WithTextField("IconName", "Icon Name", "0")
                 .Attachable()
             );
             _contentDefinitionManager.AlterPartDefinition("ContentMenuItem", part => part
@@ -274,11 +290,11 @@ namespace StatCan.Themes.VuetifyTheme
                 .RemoveField("IconName")
             );
             _contentDefinitionManager.AlterTypeDefinition("ContentMenuItem", t => t
-                .WithPart("CommonMenuItemPart", p=>p.WithPosition("1"))
+                .WithPart("CommonMenuItemPart", p => p.WithPosition("1"))
                 .WithContentPermission("6")
             );
             _contentDefinitionManager.AlterTypeDefinition("LinkMenuItem", t => t
-                .WithPart("CommonMenuItemPart", p=>p.WithPosition("1"))
+                .WithPart("CommonMenuItemPart", p => p.WithPosition("1"))
                 .WithContentPermission("6")
             );
 
@@ -348,10 +364,10 @@ namespace StatCan.Themes.VuetifyTheme
 
             _contentDefinitionManager.AlterPartDefinition("VCol", part => part
                 .WithTextFieldPredefinedList("AlignSelf", "Align Self", "0", new TextFieldPredefinedListEditorSettings()
-                    {
-                        Editor = EditorOption.Dropdown,
-                        DefaultValue = "",
-                        Options = new ListValueOption[] {
+                {
+                    Editor = EditorOption.Dropdown,
+                    DefaultValue = "",
+                    Options = new ListValueOption[] {
                                         new ListValueOption(){Name = "None", Value = ""},
                                         new ListValueOption(){Name = "Start", Value = "start"},
                                         new ListValueOption(){Name = "Center", Value = "center"},
@@ -360,7 +376,7 @@ namespace StatCan.Themes.VuetifyTheme
                                         new ListValueOption(){Name = "Baseline", Value = "baseline"},
                                         new ListValueOption(){Name = "Stretch", Value = "stretch"}
                                     }
-                    }
+                }
                 )
                 .WithTextFieldPredefinedList("Cols", "Cols Xs", "1", colsSettings)
                 .WithTextFieldPredefinedList("ColsSm", "Cols Sm", "2", colsSettings)
@@ -492,7 +508,8 @@ namespace StatCan.Themes.VuetifyTheme
                         Editor = EditorOption.Dropdown,
                         Options = justifyOptions
                     })
-                    .WithSettings(new TextFieldSettings() {
+                    .WithSettings(new TextFieldSettings()
+                    {
                         Hint = "Applies the justify-content css property. Available options are start, center, end, space-between and space-around."
                     }))
                 .WithField("JustifySm", field => field
@@ -506,7 +523,8 @@ namespace StatCan.Themes.VuetifyTheme
                         Editor = EditorOption.Dropdown,
                         Options = justifyOptions
                     })
-                    .WithSettings(new TextFieldSettings() {
+                    .WithSettings(new TextFieldSettings()
+                    {
                         Hint = "Changes the justify-content property on small and greater breakpoints."
                     }))
                 .WithField("JustifyMd", field => field
@@ -520,7 +538,8 @@ namespace StatCan.Themes.VuetifyTheme
                         Editor = EditorOption.Dropdown,
                         Options = justifyOptions
                     })
-                    .WithSettings(new TextFieldSettings() {
+                    .WithSettings(new TextFieldSettings()
+                    {
                         Hint = "Changes the justify-content property on medium and greater breakpoints."
                     }))
                 .WithField("JustifyLg", field => field
@@ -534,7 +553,8 @@ namespace StatCan.Themes.VuetifyTheme
                         Editor = EditorOption.Dropdown,
                         Options = justifyOptions
                     })
-                    .WithSettings(new TextFieldSettings() {
+                    .WithSettings(new TextFieldSettings()
+                    {
                         Hint = "Changes the justify-content property on large and greater breakpoints."
                     }))
                 .WithField("JustifyXl", field => field
@@ -548,7 +568,8 @@ namespace StatCan.Themes.VuetifyTheme
                         Editor = EditorOption.Dropdown,
                         Options = justifyOptions
                     })
-                    .WithSettings(new TextFieldSettings() {
+                    .WithSettings(new TextFieldSettings()
+                    {
                         Hint = "Changes the justify-content property on extra large and greater breakpoints."
                     }))
                 .WithField("Align", field => field
@@ -562,7 +583,8 @@ namespace StatCan.Themes.VuetifyTheme
                         Editor = EditorOption.Dropdown,
                         Options = alignOptions
                     })
-                    .WithSettings(new TextFieldSettings() {
+                    .WithSettings(new TextFieldSettings()
+                    {
                         Hint = "Applies the align-items css property. Available options are start, center, end, baseline, and stretch."
                     }))
                 .WithField("AlignSm", field => field
@@ -576,7 +598,8 @@ namespace StatCan.Themes.VuetifyTheme
                         Editor = EditorOption.Dropdown,
                         Options = alignOptions
                     })
-                    .WithSettings(new TextFieldSettings() {
+                    .WithSettings(new TextFieldSettings()
+                    {
                         Hint = "Changes the align-items property on small and greater breakpoints."
                     }))
                 .WithField("AlignMd", field => field
@@ -590,7 +613,8 @@ namespace StatCan.Themes.VuetifyTheme
                         Editor = EditorOption.Dropdown,
                         Options = alignOptions
                     })
-                    .WithSettings(new TextFieldSettings() {
+                    .WithSettings(new TextFieldSettings()
+                    {
                         Hint = "Changes the align-items property on medium and greater breakpoints."
                     }))
                 .WithField("AlignLg", field => field
@@ -604,7 +628,8 @@ namespace StatCan.Themes.VuetifyTheme
                         Editor = EditorOption.Dropdown,
                         Options = alignOptions
                     })
-                    .WithSettings(new TextFieldSettings() {
+                    .WithSettings(new TextFieldSettings()
+                    {
                         Hint = "Changes the align-items property on large and greater breakpoints."
                     }))
                 .WithField("AlignXl", field => field
@@ -618,7 +643,8 @@ namespace StatCan.Themes.VuetifyTheme
                         Editor = EditorOption.Dropdown,
                         Options = alignOptions
                     })
-                    .WithSettings(new TextFieldSettings() {
+                    .WithSettings(new TextFieldSettings()
+                    {
                         Hint = "Changes the align-items property on extra large and greater breakpoints."
                     }))
                 .WithField("AlignContent", field => field
@@ -632,7 +658,8 @@ namespace StatCan.Themes.VuetifyTheme
                         Editor = EditorOption.Dropdown,
                         Options = alignContentOptions
                     })
-                    .WithSettings(new TextFieldSettings() {
+                    .WithSettings(new TextFieldSettings()
+                    {
                         Hint = "Applies the align-content css property. Available options are start, center, end, baseline, and stretch."
                     }))
                 .WithField("AlignContentSm", field => field
@@ -646,7 +673,8 @@ namespace StatCan.Themes.VuetifyTheme
                         Editor = EditorOption.Dropdown,
                         Options = alignContentOptions
                     })
-                    .WithSettings(new TextFieldSettings() {
+                    .WithSettings(new TextFieldSettings()
+                    {
                         Hint = "Changes the align-items property on small and greater breakpoints."
                     }))
                 .WithField("AlignContentMd", field => field
@@ -660,7 +688,8 @@ namespace StatCan.Themes.VuetifyTheme
                         Editor = EditorOption.Dropdown,
                         Options = alignContentOptions
                     })
-                    .WithSettings(new TextFieldSettings() {
+                    .WithSettings(new TextFieldSettings()
+                    {
                         Hint = "Changes the align-items property on medium and greater breakpoints."
                     }))
                 .WithField("AlignContentLg", field => field
@@ -674,7 +703,8 @@ namespace StatCan.Themes.VuetifyTheme
                         Editor = EditorOption.Dropdown,
                         Options = alignContentOptions
                     })
-                    .WithSettings(new TextFieldSettings() {
+                    .WithSettings(new TextFieldSettings()
+                    {
                         Hint = "Changes the align-items property on large and greater breakpoints."
                     }))
                 .WithField("AlignContentXl", field => field
@@ -688,7 +718,8 @@ namespace StatCan.Themes.VuetifyTheme
                         Editor = EditorOption.Dropdown,
                         Options = alignContentOptions
                     })
-                    .WithSettings(new TextFieldSettings() {
+                    .WithSettings(new TextFieldSettings()
+                    {
                         Hint = "Changes the align-items property on extra large and greater breakpoints."
                     }))
             );
@@ -1458,7 +1489,8 @@ namespace StatCan.Themes.VuetifyTheme
             );
         }
 
-        private void UpdateToMultiTextField() {
+        private void UpdateToMultiTextField()
+        {
 
 
             _contentDefinitionManager.AlterPartDefinition("VAppBar", part => part
@@ -1692,7 +1724,8 @@ namespace StatCan.Themes.VuetifyTheme
             );
         }
 
-        private void VSubheader() {
+        private void VSubheader()
+        {
             _contentDefinitionManager.AlterTypeDefinition("VSubheader", type => type
                 .DisplayedAs("VSubheader")
                 .WithPart("VSubheader", part => part
@@ -1721,7 +1754,8 @@ namespace StatCan.Themes.VuetifyTheme
                 )
             );
         }
-        private void VListItem() {
+        private void VListItem()
+        {
             _contentDefinitionManager.AlterTypeDefinition("VListItem", type => type
                 .DisplayedAs("VListItem")
                 .WithPart("VListItem", part => part
@@ -1734,31 +1768,39 @@ namespace StatCan.Themes.VuetifyTheme
                 .WithTextField("IconName", "Icon Name", "1")
                 .WithTextField("ItemSubTitle", "Item Subtitle", "2")
                 .WithTextField("ItemText", "Item Text", "3")
-                .WithTextField("ActiveClass", "Active Class", "4", new TextFieldSettings(){
+                .WithTextField("ActiveClass", "Active Class", "4", new TextFieldSettings()
+                {
                     Hint = "Configure the active CSS class applied when the link is active."
                 })
-                .WithTextField("Color", "Color", "5", new TextFieldSettings(){
+                .WithTextField("Color", "Color", "5", new TextFieldSettings()
+                {
                     Hint = "Applies specified color to the control when in an active state or input-value is true - it can be the name of material color (for example success or purple) or css color (#033 or rgba(255, 0, 0, 0.5))"
                 })
-                .WithTextField("ExactActiveClass", "Exact Active Class", "6", new TextFieldSettings(){
+                .WithTextField("ExactActiveClass", "Exact Active Class", "6", new TextFieldSettings()
+                {
                     Hint = "Configure the active CSS class applied when the link is active with exact match."
                 })
-                .WithTextField("Href", "Href", "7", new TextFieldSettings(){
+                .WithTextField("Href", "Href", "7", new TextFieldSettings()
+                {
                     Hint = "Designates the component as anchor and applies the href attribute."
                 })
-                .WithTextField("InputValue", "Input Value", "8", new TextFieldSettings(){
+                .WithTextField("InputValue", "Input Value", "8", new TextFieldSettings()
+                {
                     Hint = "Controls the active state of the item. This is typically used to highlight the component"
                 })
-                .WithTextField("Target", "Target", "9", new TextFieldSettings(){
+                .WithTextField("Target", "Target", "9", new TextFieldSettings()
+                {
                     Hint = "Designates the target attribute. This should only be applied when using the href prop."
                 })
-                .WithTextField("To", "To", "10", new TextFieldSettings(){
+                .WithTextField("To", "To", "10", new TextFieldSettings()
+                {
                     Hint = "Denotes the target route of the link."
                 })
             );
         }
 
-        private void VList() {
+        private void VList()
+        {
             _contentDefinitionManager.AlterTypeDefinition("VList", type => type
                 .DisplayedAs("VList")
                 .Stereotype("Widget")
@@ -1800,26 +1842,32 @@ namespace StatCan.Themes.VuetifyTheme
                     }
                     })
                 )
-                .WithTextField("Color", "Color", "1", new TextFieldSettings(){
+                .WithTextField("Color", "Color", "1", new TextFieldSettings()
+                {
                     Hint = "Applies specified color to the control - it can be the name of material color (for example success or purple) or css color (#033 or rgba(255, 0, 0, 0.5))."
                 })
-                .WithTextField("Rounded", "Rounded", "2", new TextFieldSettings() {
+                .WithTextField("Rounded", "Rounded", "2", new TextFieldSettings()
+                {
                     Hint = "Designates the border-radius applied to the component."
                 })
-                .WithNumericField("Elevation", "3", new NumericFieldSettings() {
+                .WithNumericField("Elevation", "3", new NumericFieldSettings()
+                {
                     Hint = "Designates an elevation applied to the component between 0 and 24. ",
                     Minimum = 0,
                     Maximum = 24
                 })
-                .WithNumericField("Height", "4", new NumericFieldSettings() {
+                .WithNumericField("Height", "4", new NumericFieldSettings()
+                {
                     Hint = "Sets the height for the component.",
                 })
-                .WithNumericField("Width", "5", new NumericFieldSettings() {
+                .WithNumericField("Width", "5", new NumericFieldSettings()
+                {
                     Hint = "Sets the width for the component.",
                 })
             );
         }
-        private void VDivider() {
+        private void VDivider()
+        {
             _contentDefinitionManager.AlterTypeDefinition("VDivider", type => type
                 .DisplayedAs("VDivider")
                 .Stereotype("Widget")

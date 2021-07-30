@@ -1,6 +1,6 @@
 {% assign numberOfActions = Model.ContentItem.Content.Actions | size %}
 
-<v-card>
+<v-card class="{{ Model.Classes | join: ' ' }}">
   {% if Model.ContentItem.Content.VCard.Title.Text != blank %}
     <v-card-title>{{ Model.ContentItem.Content.VCard.Title.Text }}</v-card-title>
   {% endif %}

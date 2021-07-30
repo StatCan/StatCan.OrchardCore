@@ -8,6 +8,8 @@ describe("Common types Test", function() {
     cy.login(tenant);
     cy.enableFeature(tenant, "StatCan_OrchardCore_CommonTypes_Page");
     cy.enableFeature(tenant, "StatCan_OrchardCore_CommonTypes_AdditionalPages");
-    cy.enableFeature(tenant, "StatCan_OrchardCore_CommonTypes_Widgets");
+    cy.enableFeature(tenant, "StatCan_OrchardCore_CommonTypes_HtmlWidget");
+    cy.enableFeature(tenant, "StatCan_OrchardCore_CommonTypes_MarkdownWidget");
+    cy.enableFeature(tenant, "StatCan_OrchardCore_CommonTypes_LiquidWidget");
   })
 });

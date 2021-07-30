@@ -26,7 +26,7 @@ jobs:
     - name: Deploy nuget packages on cloudsmith
       run: |
         echo $Version
-        dotnet pack -c Release -o build-output 
+        dotnet pack -c Release -o build-output -p:TreatWarningsAsErrors=false
         dotnet nuget push './build-output/*.nupkg' -k ${{secrets.NUGET_APIKEY}} -n true -s https://nuget.cloudsmith.io/statcan-digitalinnovation/statcan-orchardcore/v3/index.json  --skip-duplicate
     - name: Login to DockerHub
       uses: docker/login-action@v1

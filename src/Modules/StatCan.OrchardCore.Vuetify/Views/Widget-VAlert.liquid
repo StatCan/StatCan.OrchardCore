@@ -4,7 +4,7 @@
 {% assign icon = Model.ContentItem.Content.VAlert.Icon.Text %}
 {% assign border = Model.ContentItem.Content.VAlert.Border.Text %}
 
-<v-alert {{ Model.ContentItem.Content.VAlert.Props.Values | join: ' ' | raw }}
+<v-alert class="{{ Model.Classes | join: ' ' }}" {{ Model.ContentItem.Content.VAlert.Props.Values | join: ' ' | raw }}
   {% if blank != color %}color="{{ color }}"{% endif %}
   {% if blank != type %}type="{{ type }}"{% endif %}
   {% if empty != elevation %}elevation="{{ elevation }}"{% endif %}

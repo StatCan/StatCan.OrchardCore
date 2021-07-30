@@ -1,0 +1,6 @@
+@model StatCan.OrchardCore.Vuetify.Models.WidgetStylingPart
+
+<div class="form-group">
+    <label asp-for="CustomClasses" class="form-check-label">@T["Custom classes"]</label>
+    <input class="form-control form-control-sm" asp-for="CustomClasses" type="text" value="@Model.CustomClasses" />
+</div>

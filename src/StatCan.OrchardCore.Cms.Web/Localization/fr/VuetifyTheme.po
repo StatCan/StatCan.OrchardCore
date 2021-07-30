@@ -118,10 +118,10 @@ msgid "Log In"
 msgstr "Connexion"
 
 #: VuetifyTheme\Views\OrchardCore.Users\Account\Login.cshtml:38
-#. <v-text-field id="UserName" name="UserName" label="@T["Username"]" value="@userName?.AttemptedValue" error-messages="@(userName?.Errors.FirstOrDefault()?.ErrorMessage)"></v-text-field>
+#. <v-text-field id="UserName" name="UserName" label="@T["Email or username"]" value="@userName?.AttemptedValue" error-messages="@(userName?.Errors.FirstOrDefault()?.ErrorMessage)"></v-text-field>
 msgctxt "VuetifyTheme.Views.OrchardCore.Users.Account.Login"
-msgid "Username"
-msgstr "Nom d'utilisateur"
+msgid "Email or username"
+msgstr "Addresse courriel ou nom d'utilisateur"
 
 #: VuetifyTheme\Views\OrchardCore.Users\Account\Login.cshtml:39
 #. <v-text-field id="Password" type="password" name="Password" label="@T["Password"]" error-messages="@(password?.Errors.FirstOrDefault()?.ErrorMessage)"></v-text-field>
@@ -188,7 +188,7 @@ msgstr "Nom d'utilisateur"
 #. label="@T["Email"]"
 msgctxt "VuetifyTheme.Views.OrchardCore.Users.Account.RegisterExternalLogin"
 msgid "Email"
-msgstr "E-mail"
+msgstr "Addresse courriel"
 
 #: VuetifyTheme\Views\OrchardCore.Users\Account\RegisterExternalLogin.cshtml:58
 #. label="@T["Password"]"
@@ -200,7 +200,7 @@ msgstr "Mot de passe"
 #. label="@T["Confirm password"]"
 msgctxt "VuetifyTheme.Views.OrchardCore.Users.Account.RegisterExternalLogin"
 msgid "Confirm password"
-msgstr "Confirmez le mot de passe"
+msgstr "Confirmer le mot de passe"
 
 #: VuetifyTheme\Views\OrchardCore.Users\Account\RegisterExternalLogin.cshtml:74
 #. <v-btn type="submit" x-large block color="success">@T["Create account"]</v-btn>
@@ -262,7 +262,7 @@ msgstr "Mot de passe"
 #. <v-text-field id="ConfirmPassword" type="password" name="ConfirmPassword" label="@T["Confirm password"]"
 msgctxt "VuetifyTheme.Views.OrchardCore.Users.Registration.Register"
 msgid "Confirm password"
-msgstr "Confirmez le mot de passe"
+msgstr "Confirmer le mot de passe"
 
 #: VuetifyTheme\Views\OrchardCore.Users\Registration\Register.cshtml:56
 #. <v-divider></v-divider><span class="px-2">@T["or"]</span>
@@ -346,7 +346,7 @@ msgstr "Définissez un nouveau mot de passe"
 #. <v-text-field id="Email" type="email" name="Email" label="@T["Email"]" value="@email?.AttemptedValue" error-messages="@(email?.Errors.FirstOrDefault()?.ErrorMessage)"></v-text-field>
 msgctxt "VuetifyTheme.Views.OrchardCore.Users.ResetPassword.ResetPassword"
 msgid "Email"
-msgstr "courriel"
+msgstr "Addresse courriel"
 
 #: VuetifyTheme\Views\OrchardCore.Users\ResetPassword\ResetPassword.cshtml:31
 #. <v-text-field id="NewPassword" type="password" name="NewPassword" label="@T["New password"]" error-messages="@(newPassword?.Errors.FirstOrDefault()?.ErrorMessage)"></v-text-field>

@@ -1,0 +1,140 @@
+{
+  "name": "vuetify-layer-widgets",
+  "displayName": "Vuetify Layer widgets",
+  "description": "Setup the Vuetify AppBar and Navigation Drawer in the layers",
+  "author": "Digital Innovation Team",
+  "website": "https://digital.statcan.gc.ca",
+  "version": "1.0",
+  "issetuprecipe": false,
+  "categories": ["vuetify"],
+  "tags": ["innovation", "inno"],
+  "steps": [
+    {
+      "name": "feature",
+      "disable": [],
+      "enable": [
+        "StatCan.OrchardCore.FIP"
+      ]
+    },
+    {
+      "name": "Content",
+      "data": [
+        {
+          "ContentItemId": "4ew99htaqr7tkwjnap15wd15n1",
+          "ContentType": "VAppBar",
+          "DisplayText": "App Bar",
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "VAppBar": {
+            "Props": {
+              "Values": []
+            },
+            "Color": {
+              "Text": null
+            },
+            "Elevation": {
+              "Value": null
+            },
+            "ExtensionHeight": {
+              "Value": null
+            },
+            "ScrollThreshold": {
+              "Value": null
+            },
+            "BackgroundImage": {
+              "Paths": [],
+              "MediaTexts": []
+            },
+            "Height": {
+              "Value": null
+            },
+            "Width": {
+              "Value": null
+            }
+          },
+          "LayerMetadata": {
+            "Position": 1.0,
+            "Zone": "Header",
+            "RenderTitle": false,
+            "Layer": "All"
+          }
+        },
+        {
+          "ContentItemId": "46ns553f5amf1s2g4z9jfaq9d1",
+          "ContentType": "VNavigationDrawer",
+          "DisplayText": "Navigation Drawer",
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "VNavigationDrawer": {
+            "Props": {
+              "Values": [
+                "clipped"
+              ]
+            },
+            "BackgroundImage": {
+              "Paths": [],
+              "MediaTexts": []
+            },
+            "Color": {
+              "Text": null
+            },
+            "MiniVariantWidth": {
+              "Value": null
+            },
+            "MobileBreakpoint": {
+              "Value": null
+            },
+            "OverlayColor": {
+              "Text": null
+            },
+            "OverlayOpacity": {
+              "Value": null
+            },
+            "Height": {
+              "Value": null
+            },
+            "Width": {
+              "Value": null
+            }
+          },
+          "LayerMetadata": {
+            "Position": 1.0,
+            "Zone": "NavigationDrawer",
+            "RenderTitle": false,
+            "Layer": "All"
+          }
+        },
+        {
+          "ContentItemId": "49ghbcj5dqa7jvcrz55h24z4dq",
+          "ContentType": "FIP",
+          "DisplayText": null,
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "FIP": {
+            "Props": {
+              "Values": []
+            }
+          },
+          "WidgetStylingPart": {
+            "CustomClasses": null
+          },
+          "@WeldedPartSettings": {
+            "WidgetStylingPart": {}
+          },
+          "LayerMetadata": {
+            "RenderTitle": false,
+            "Position": 2.0,
+            "Zone": "Footer",
+            "Layer": "All"
+          }
+        }
+      ]
+    }
+  ]
+}

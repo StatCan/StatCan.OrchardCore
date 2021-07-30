@@ -39143,6 +39143,7 @@ function higlightMenu() {
           // console.log("parent", parent);
           if (parent.hasAttribute("data-menu")) {
             if (parent.dataset.menu == 'group') {
+              // console.log("parentMatch");
               parent.setAttribute("value", "true");
             }
           }
@@ -39159,6 +39160,7 @@ function higlightMenu() {
 
 higlightMenu();
 document.addEventListener("DOMContentLoaded", function () {
+  // console.log("loaded");
   new external_commonjs_vue_commonjs2_vue_root_Vue_default.a({
     vuetify: vuetify,
     data: function data() {
