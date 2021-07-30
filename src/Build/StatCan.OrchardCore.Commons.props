@@ -11,6 +11,8 @@
     <LangVersion>latest</LangVersion>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <WarningsNotAsErrors>612,618</WarningsNotAsErrors>
+    <NoWarn>$(NoWarn);CS1591</NoWarn>
     <DebugType>portable</DebugType>
     <NetStandardImplicitPackageVersion>2.0.0-*</NetStandardImplicitPackageVersion>
     <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
