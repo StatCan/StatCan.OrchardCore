@@ -1,14 +1,13 @@
-{% assign announcements = Queries.GetItemsForHackathon | query: type: "Announcement" %}
-{% assign dateTime = "DateTime" | shape_new: utc: Model.ContentItem.CreatedUtc, format: format | shape_stringify %}
+{% assign announcements = Queries.GetItemsForHackathon  | query: type: "Announcement" | sort: "ModifiedUtc" | reverse %}
 
-<div class="text-h3 font-weight-black pb-3">Team Announcements</div>
-<v-row class="px-3">
+<div class="text-h3 font-weight-black pb-3 ">Team Announcements</div>
+<v-container>
     <v-col cols="10">
         <v-expansion-panels multiple >
             {% for announcement in announcements %}
+            {% assign dateTime = "DateTime" | shape_new: utc: announcement.ModifiedUtc, format: format | shape_stringify  %}
             {% assign aShape = announcement.ContentItem | shape_build_display %}
                 {% if announcement.Published == true %}
-
                     <v-expansion-panel>
                     <v-expansion-panel-header class="justify-start">
                         <div>
@@ -31,4 +30,4 @@
             {% endfor %}
         </v-expansion-panels>
     </v-col>
-</v-row>
+</v-container>
