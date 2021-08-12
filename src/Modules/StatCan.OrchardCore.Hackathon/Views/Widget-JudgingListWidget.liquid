@@ -1,13 +1,10 @@
 {% assign userInRole = User | is_in_role: "Judge"%}
-{% assign team =  Content.ContentItemId[teamContentItemId] %}
 {% assign teamLogo = team.ContentItem.Content.Team.TeamLogo.Paths.first %}
 
 {% if userInRole %}
   {% if Site.Properties.HackathonCustomSettings.JudgingCustomSettings.JudgingInProgress.Value != true %}
       <h3>{{"No active Judging round" | t}}</h3>
   {%else%}
-
-  {% capture test  %} {{Queries.GetItemsForHackathon | query: type: "Team"}} {% endcapture %}
 
     {% assign teams = Queries.GetItemsForHackathon | query: type: "Team" %}
     {% assign selectedTeam = teams | first %}
