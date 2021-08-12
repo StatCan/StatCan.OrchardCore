@@ -1,26 +1,33 @@
 {% assign userInRole = User | is_in_role: "Judge"%}
+{% assign team =  Content.ContentItemId[teamContentItemId] %}
+{% assign teamLogo = team.ContentItem.Content.Team.TeamLogo.Paths.first %}
+
 {% if userInRole %}
   {% if Site.Properties.HackathonCustomSettings.JudgingCustomSettings.JudgingInProgress.Value != true %}
       <h3>{{"No active Judging round" | t}}</h3>
   {%else%}
 
+  {% capture test  %} {{Queries.GetItemsForHackathon | query: type: "Team"}} {% endcapture %}
+
     {% assign teams = Queries.GetItemsForHackathon | query: type: "Team" %}
     {% assign selectedTeam = teams | first %}
 
-      <div class="row justify-content-center">
-        <div class="col-6 d-flex flex-column">
+    <div class="column justify-content-center"> 
+      <div class="col-6 d-flex flex-column">
+        <h2>Team List</h2>
+        {% if teams == blank %}
+          <i class="fas fa-signature fa-3x text-muted pt-5 pl-5">{{ 'There are no teams.' | t }}</i>
+        {% else %}
           {% for team in teams %}
-          {% if forloop.length <= 0 %}
-          <div class="d-flex flex-fill align-items-center justify-content-center">
-            <i class="fas fa-signature fa-3x text-muted" aria-label="{{ 'Empty' | t }}"></i>
-          </div>
-          {% endif %}
-          <div class="d-flex mb-1">
-            <a class="btn btn-primary col-12" href="{{ '~/ScoringPage' | href }}?teamId={{team.ContentItemId}}">{{ "Team" | t }} {{ team.Id }}</a>
-          </div>
+            <v-container class="pt-5 pl-5">
+              <v-row align="center">
+                <v-btn class="m-5" outlined text href="{{ '~/ScoringPage' | href }}?teamId={{team.ContentItemId}}">Score</v-btn> 
+                <v-subheader >{{ "Team" | t }} {{ team.DisplayText }}</v-subheader> 
+              </v-row>
+            </v-container>
           {% endfor %}
+        {% endif %}
         </div>
       </div>
-
   {% endif %}
 {% endif %}
