@@ -1,0 +1,30 @@
+{% assign activeClass = Model.ContentItem.Content.VListItem.Color.Text %}
+{% assign color = Model.ContentItem.Content.VListItem.Color.Text %}
+{% assign exactActiveClass = Model.ContentItem.Content.VListItem.Exact-Active-Class.Text %}
+{% assign href = Model.ContentItem.Content.VListItem.Href.Text %}
+{% assign inputValue = Model.ContentItem.Content.VListItem.Input-Value.Text %}
+{% assign tag = Model.ContentItem.Content.VListItem.Tag.Text %}
+{% assign target = Model.ContentItem.Content.VListItem.Target.Text %}
+{% assign to = Model.ContentItem.Content.VListItem.To.Text %}
+{% assign value = Model.ContentItem.Content.VListItem.Value.Text %}
+
+<v-list-item {{ Model.ContentItem.Content.VListItem.Props.Values | join: ' ' | raw }}
+  {% if blank != activeClass %}activeClass="{{ activeClass }}"{% endif %}
+  {% if blank != color %}color="{{ color }}"{% endif %}
+  {% if blank != exactActiveClass %}exactActiveClass="{{ exactActiveClass }}"{% endif %}
+  {% if blank != href %}href="{{ href }}"{% endif %}
+  {% if blank != inputValue %}inputValue="{{ inputValue }}"{% endif %}
+  {% if blank != tag %}tag="{{ tag }}"{% endif %}
+  {% if blank != target %}target="{{ target }}"{% endif %}
+  {% if blank != to %}to="{{ to }}"{% endif %}
+  {% if blank != value %}value="{{ value }}"{% endif %}
+  >
+  <v-list-item-icon>
+    <v-icon>{{Model.ContentItem.Content.VListItem.IconName.Text}}</v-icon>
+  </v-list-item-icon>
+  <v-list-item-content>
+    <v-list-item-title> {{Model.ContentItem.Content.VListItem.ItemTitle.Text}}</v-list-item-title>
+    <v-list-item-subtitle class="text--primary">{{Model.ContentItem.Content.VListItem.ItemSubTitle.Text}}</v-list-item-subtitle>
+    <v-list-item-subtitle>{{Model.ContentItem.Content.VListItem.ItemText.Text}}</v-list-item-subtitle>
+  </v-list-item-content>
+</v-list-item>

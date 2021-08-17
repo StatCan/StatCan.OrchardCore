@@ -7,21 +7,18 @@
 {% assign width = Model.ContentItem.Content.VAppBar.Width.Value %}
 
 <v-app-bar app clipped-left
+  class="{{ Model.Classes | join: ' ' }}"
   {{ Model.ContentItem.Content.VAppBar.Props.Values | join: ' ' | raw }}
   {% if blank != backgroundImage %}src="{{ backgroundImage | asset_url }}"{% endif %}
   {% if blank != color %}color="{{ color }}"{% endif %}
   {% if empty !=  extensionHeight %}extension-height="{{ extensionHeight }}"{% endif %}
   {% if empty != scrollThreshold %}scroll-threshold="{{ scrollThreshold }}"{% endif %}
   {% if empty != height %}height="{{ height }}"{% endif %}
-  {% if empty != width %}width="{{ width }}"{% endif %}>
+  {% if empty != width %}width="{{ width }}"{% endif %}
+>
   {% comment %} This icon allows the show/hide of the drawer in mobile mode {% endcomment %}
   <v-app-bar-nav-icon class="hidden-lg-and-up" @click="drawer = !drawer"></v-app-bar-nav-icon>
-  {% if Site.Properties.VuetifyThemeSettings.VuetifyThemeSettings.Logo.Paths.first != blank %}
-    <img src="{{ Site.Properties.VuetifyThemeSettings.VuetifyThemeSettings.Logo.Paths.first | asset_url | resize_url: width:250, height:64 }}" style="max-height:64px; max-width:250px;" alt="logo" class="mr-2">
-  {% endif %}
-  {% if Site.Properties.VuetifyThemeSettings.VuetifyThemeSettings.DisplayName.Text %}
-    <v-toolbar-title>{{ Site.Properties.VuetifyThemeSettings.VuetifyThemeSettings.DisplayName.Text | shortcode }}</v-toolbar-title>
-  {% endif %}
+  {{ "AppBarLogo" | shape_new | shape_render }}
   <v-spacer></v-spacer>
   {% if Site.Properties.VuetifyThemeSettings.VuetifyThemeSettings.DisplayMode.Text == 'picker' %}
   <v-tooltip v-if="!$vuetify.theme.dark" bottom>
@@ -30,7 +27,7 @@
         <v-icon class="mr-1">mdi-moon-waxing-crescent</v-icon>
       </v-btn>
     </template>
-    <span>{{"Dark mode" | t }}</span>
+    <span>{{ "Dark mode" | t }}</span>
   </v-tooltip>
   <v-tooltip v-else bottom>
     <template v-slot:activator="{ on }">

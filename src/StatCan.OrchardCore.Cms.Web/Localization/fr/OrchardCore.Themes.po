@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
-"PO-Revision-Date: 2021-04-14 09:13\n"
+"PO-Revision-Date: 2021-07-14 14:11\n"
 
 #. .Add(S["Design"], NavigationConstants.AdminMenuDesignPosition, design => design
 #: OrchardCore.Themes\AdminMenu.cs:25
@@ -18,7 +18,9 @@ msgctxt "OrchardCore.Themes.AdminMenu"
 msgid "Design"
 msgstr "Design"
 
-#. .Add(S["Themes"], "Themes", installed => installed
+#. .Add(S["Themes"], S["Themes"].PrefixPosition(), installed => installed
+#. .Add(S["Themes"], S["Themes"].PrefixPosition(), installed => installed
+#: OrchardCore.Themes\AdminMenu.cs:27
 #: OrchardCore.Themes\AdminMenu.cs:27
 msgctxt "OrchardCore.Themes.AdminMenu"
 msgid "Themes"

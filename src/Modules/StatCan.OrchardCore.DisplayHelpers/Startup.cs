@@ -18,6 +18,7 @@ namespace StatCan.OrchardCore.DisplayHelpers
             services.AddLiquidFilter<SectionIsNotEmpty>("section_not_empy");
             services.AddLiquidFilter<B64EncodeFilter>("base64_encode");
             services.AddLiquidFilter<B64DecodeFilter>("base64_decode");
+            services.AddLiquidFilter<JavascriptEncodeFilter>("js_encode");
         }
     }
 

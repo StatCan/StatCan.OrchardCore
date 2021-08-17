@@ -1,3 +1,7 @@
 {% for widget in Model.FlowPart.Widgets %}
-  {{ widget | shape_build_display | shape_render }}
+{% assign wShape = widget | shape_build_display %}
+  {% if widget.ContentItem.Content.WidgetStylingPart.CustomClasses != blank %}
+    {% shape_add_classes wShape widget.ContentItem.Content.WidgetStylingPart.CustomClasses  %}
+  {% endif %}
+  {{ wShape | shape_render }}
 {% endfor %}

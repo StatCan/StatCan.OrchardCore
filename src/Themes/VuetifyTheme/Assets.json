@@ -21,8 +21,8 @@
   },
   {
     "vue": true,
-    "file": "Assets/outdatedBrowser.js",
-    "output": "wwwroot/outdated",
-    "name": "outdated"
+    "file": "Assets/src/header_scripts.js",
+    "output": "wwwroot/header_scripts",
+    "name": "head"
   }
 ]

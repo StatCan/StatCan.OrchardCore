@@ -1,0 +1,26 @@
+{% assign numberOfActions = Model.ContentItem.Content.Actions | size %}
+
+<v-card class="{{ Model.Classes | join: ' ' }}">
+  {% if Model.ContentItem.Content.VCard.Title.Text != blank %}
+    <v-card-title>{{ Model.ContentItem.Content.VCard.Title.Text }}</v-card-title>
+  {% endif %}
+  {% if Model.ContentItem.Content.VCard.Subtitle.Text != blank %}
+    <v-card-subtitle>{{ Model.ContentItem.Content.VCard.Subtitle.Text }}</v-card-subtitle>
+  {% endif %}
+  <v-card-text>
+    {{ Model.Content.FlowPart | shape_render }}
+  </v-card-text>
+  {% if numberOfActions > 0 %}
+    <v-card-actions>
+      {% assign contentItems = Model.ContentItem.Content.Actions.ContentItems %}
+      {% for contentItem in contentItems %}
+        <v-btn href="{{ contentItem.LinkMenuItemPart.Url }}"> 
+          {% if contentItem.LinkMenuItem.IconName.Text %}
+            <v-icon>{{ contentItem.LinkMenuItem.IconName.Text }}</v-icon> 
+          {% endif %}
+          {{ contentItem.LinkMenuItemPart.Name }}
+        </v-btn>
+      {% endfor %}
+    </v-card-actions>
+  {% endif %}
+</v-card>

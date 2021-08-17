@@ -1,0 +1,23 @@
+{%comment%}Can be removed in a future version. Replaced by adding the ContentPermissionPart directly on the ContentMenuItem{%endcomment%}
+{% assign canView = Model.ContentItem | user_can_view %}
+{% if canView %}
+  {% if Model.HasItems %}
+    <v-list-group 
+      data-menu="group"
+      {% if Model.ContentItem.Content.CommonMenuItemPart.IconName.Text != blank %}prepend-icon="{{Model.ContentItem.Content.CommonMenuItemPart.IconName.Text}}"{% endif %}
+    >
+      <template v-slot:activator>
+        <v-list-item-content>
+          <v-list-item-title>{{ Model.ContentItem.DisplayText }}</v-list-item-title>
+        </v-list-item-content>
+      </template>
+      {% for item in Model.Items %}
+        {{ item | shape_render }}
+      {% endfor %}
+    </v-list-group>
+  {% else %}
+    {% shape_clear_alternates Model %}
+    {% shape_type Model "MenuItemLink" %}
+    {{ Model | shape_render }}
+  {% endif %}
+{% endif %}

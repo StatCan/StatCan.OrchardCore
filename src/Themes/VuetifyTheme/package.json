@@ -9,6 +9,7 @@
     "minify-css-string": "^1.0.0",
     "outdated-browser-rework": "^3.0.1",
     "vue": "^2.6.14",
+    "vuedraggable": "^2.24.3",
     "vuetify": "^2.5.5"
   }
 }

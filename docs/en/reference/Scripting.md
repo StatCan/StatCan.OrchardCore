@@ -106,8 +106,8 @@ The `SaveMediaResult` object has the following shape.
 
 | Function | Description 
 | -------- | ----------- |
-| `saveMedia(folder: String, renameIfExists: Boolean): SaveMediaResult[]` | Saves all files present on the HttpRequest to a specific folder. A number is appended to the file name if the file already exists. |
-|`hasMediaError(mediaResults: SaveMediaResult[]): Boolean ` | returns true if one of the items in the SaveMediaResult array has an error  |
+| `saveMedia(folder: String, renameIfExists: Boolean): SaveMediaResult[]` | Saves all files present on the HttpRequest to a specific folder. The renameIfExists parameter controls if we  append a number to the file name if it already exists. |
+|`hasMediaError(mediaResults: SaveMediaResult[]): Boolean ` | Returns true if one of the items in the SaveMediaResult array has an errors  |
 |`getMediaErrors(mediaResults: SaveMediaResult[]): String[]` | Gets the list of media paths as an array of strings  |
 |`setMediaError(name: String, mediaResults: SaveMediaResult[])` | Sets the ModelError with the specified name to the concatenation of all media errors in the SaveMediaResult array. A newline is inserted between each error |
 |`getMediaPaths( mediaResults: SaveMediaResult[]): String[]` | Gets the list of media paths as an array of strings |

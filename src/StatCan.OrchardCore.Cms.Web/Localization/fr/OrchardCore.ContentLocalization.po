@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
-"PO-Revision-Date: 2021-04-14 09:10\n"
+"PO-Revision-Date: 2021-07-14 14:11\n"
 
 #. .Add(S["Configuration"], localization => localization
 #: OrchardCore.ContentLocalization\AdminMenu.cs:28
@@ -24,10 +24,24 @@ msgctxt "OrchardCore.ContentLocalization.AdminMenu"
 msgid "Settings"
 msgstr "Paramètres"
 
+#. .Add(S["Localization"], localization => localization
+#: OrchardCore.ContentLocalization\AdminMenu.cs:30
+msgctxt "OrchardCore.ContentLocalization.AdminMenu"
+msgid "Localization"
+msgstr "Localisation"
+
+#. .Add(S["Content Request Culture Provider"], S["Content Request Culture Provider"].PrefixPosition(), registration => registration
+#. .Add(S["Content Request Culture Provider"], S["Content Request Culture Provider"].PrefixPosition(), registration => registration
+#: OrchardCore.ContentLocalization\AdminMenu.cs:31
+#: OrchardCore.ContentLocalization\AdminMenu.cs:31
+msgctxt "OrchardCore.ContentLocalization.AdminMenu"
+msgid "Content Request Culture Provider"
+msgstr "Content Request Culture Provider"
+
 #. .Add(S["Content Culture Picker"], S["Content Culture Picker"].PrefixPosition(), registration => registration
 #. .Add(S["Content Culture Picker"], S["Content Culture Picker"].PrefixPosition(), registration => registration
-#: OrchardCore.ContentLocalization\AdminMenu.cs:30
-#: OrchardCore.ContentLocalization\AdminMenu.cs:30
+#: OrchardCore.ContentLocalization\AdminMenu.cs:37
+#: OrchardCore.ContentLocalization\AdminMenu.cs:37
 msgctxt "OrchardCore.ContentLocalization.AdminMenu"
 msgid "Content Culture Picker"
 msgstr "Sélecteur de culture"
@@ -50,8 +64,8 @@ msgctxt "OrchardCore.ContentLocalization.Controllers.AdminController"
 msgid "Could not create localized version of the content item."
 msgstr "Impossible de créer la version localisée de l'élément de contenu."
 
-#. new SelectListItem() { Text = S["All cultures"], Value = "" }
-#: OrchardCore.ContentLocalization\Drivers\LocalizationContentsAdminListDisplayDriver.cs:40
+#. new SelectListItem() { Text = S["All cultures"], Value = "", Selected = String.IsNullOrEmpty(m.SelectedCulture) }
+#: OrchardCore.ContentLocalization\Drivers\LocalizationContentsAdminListDisplayDriver.cs:45
 msgctxt "OrchardCore.ContentLocalization.Drivers.LocalizationContentsAdminListDisplayDriver"
 msgid "All cultures"
 msgstr "Toutes les cultures"
@@ -121,6 +135,18 @@ msgstr "Redirection page d'accueil "
 msgctxt "OrchardCore.ContentLocalization.Views.ContentCulturePickerSettings.Edit"
 msgid "Redirects to the homepage of the target culture if the ContentItem of the target culture does not exist."
 msgstr "Redirige vers la page d'accueil de la culture cible si le contenu de la culture cible n'existe pas."
+
+#. <label class="custom-control-label" asp-for="SetCookie">@T["Set Cookie"]</label>
+#: OrchardCore.ContentLocalization\Views\ContentRequestCultureProviderSettings.Edit.cshtml:7
+msgctxt "OrchardCore.ContentLocalization.Views.ContentRequestCultureProviderSettings.Edit"
+msgid "Set Cookie"
+msgstr "Définir le cookie"
+
+#. <span class="hint dashed">@T["Sets the localization cookie based on the LocalizationPart culture when accessing a page in the frontend."]</span>
+#: OrchardCore.ContentLocalization\Views\ContentRequestCultureProviderSettings.Edit.cshtml:8
+msgctxt "OrchardCore.ContentLocalization.Views.ContentRequestCultureProviderSettings.Edit"
+msgid "Sets the localization cookie based on the LocalizationPart culture when accessing a page in the frontend."
+msgstr "Définit le cookie de localisation en fonction de la culture LocalizationPart lors de l'accès à une page du site."
 
 #. <select asp-for="SelectedCulture" asp-items="Model.Cultures" class="selectpicker culture-selectpicker show-tick mr-2" data-header="@T["Filter by culture"]" data-live-search="true" data-selected-text-format="static" data-width="fit" title="@T["Culture"]" data-style="btn-sm">
 #: OrchardCore.ContentLocalization\Views\ContentsAdminList-LocalizationPartFilter.cshtml:5
@@ -195,9 +221,9 @@ msgctxt "OrchardCore.ContentLocalization.Views.LocalizationPart.SummaryAdminLink
 msgid "Create {0}"
 msgstr "Créer {0}"
 
-#. <span class="icon"><i class="fa fa-language" aria-hidden="true"></i></span><span class="title">@T["Content Culture Picker"]</span>
-#: OrchardCore.ContentLocalization\Views\NavigationItemText-contentculturepicker.Id.cshtml:1
-msgctxt "OrchardCore.ContentLocalization.Views.NavigationItemText-contentculturepicker.Id"
-msgid "Content Culture Picker"
-msgstr "Sélecteur de culture de contenu"
+#. <p>@T["Filters on a content items localization culture."]</p>
+#: OrchardCore.ContentLocalization\Views\Items\ContentsAdminFilters-Culture.Thumbnail.cshtml:8
+msgctxt "OrchardCore.ContentLocalization.Views.Items.ContentsAdminFilters-Culture.Thumbnail"
+msgid "Filters on a content items localization culture."
+msgstr "Filtre sur une culture de localisation des éléments de contenu."
 

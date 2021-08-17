@@ -1,0 +1,33 @@
+{% assign alignSelf = Model.ContentItem.Content.VCol.AlignSelf.Text %}
+
+{% assign colsXs = Model.ContentItem.Content.VCol.Cols.Text %}
+{% assign colsSm = Model.ContentItem.Content.VCol.ColsSm.Text %}
+{% assign colsMd = Model.ContentItem.Content.VCol.ColsMd.Text %}
+{% assign colsLg = Model.ContentItem.Content.VCol.ColsLg.Text %}
+{% assign colsXl = Model.ContentItem.Content.VCol.ColsXl.Text %}
+
+{% assign offsetXs = Model.ContentItem.Content.VCol.Offset.Text %}
+{% assign offsetSm = Model.ContentItem.Content.VCol.OffsetSm.Text %}
+{% assign offsetMd = Model.ContentItem.Content.VCol.OffsetMd.Text %}
+{% assign offsetLg = Model.ContentItem.Content.VCol.OffsetLg.Text %}
+{% assign offsetXl = Model.ContentItem.Content.VCol.OffsetXl.Text %}
+
+<v-col class="{{ Model.Classes | join: ' ' }}"
+  {% if blank != alignSelf %}align-self="{{ alignSelf }}"{% endif %}
+  {% if blank != colsXs %}cols="{{ colsXs }}"{% endif %}
+  {% if blank != colsSm %}sm="{{ colsSm }}"{% endif %}
+  {% if blank != colsMd %}md="{{ colsMd }}"{% endif %}
+  {% if blank != colsLg %}lg="{{ colsLg }}"{% endif %}
+  {% if blank != colsXl %}xl="{{ colsXl }}"{% endif %}
+  {% if blank != offsetXs %}offset="{{ offsetXs }}"{% endif %}
+  {% if blank != offsetSm %}offset-sm="{{ offsetSm }}"{% endif %}
+  {% if blank != offsetMd %}offset-md="{{ offsetMd }}"{% endif %}
+  {% if blank != offsetLg %}offset-lg="{{ offsetLg }}"{% endif %}
+  {% if blank != offsetXl %}offset-xl="{{ offsetXl }}"{% endif %}
+  {% if blank != orderXs %}order="{{ orderXs }}"{% endif %}
+  {% if blank != orderSm %}order-sm="{{ orderSm }}"{% endif %}
+  {% if blank != orderMd %}order-md="{{ orderMd }}"{% endif %}
+  {% if blank != orderLg %}order-lg="{{ orderLg }}"{% endif %}
+  {% if blank != orderXl %}order-xl="{{ orderXl }}"{% endif %}>
+  {{ Model.Content.FlowPart | shape_render }}
+</v-col>

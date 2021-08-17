@@ -1,0 +1,6 @@
+<v-expansion-panel class="{{ Model.Classes | join: ' ' }}">
+  <v-expansion-panel-header>{{ Model.ContentItem.Content.VExpansionPanel.Header.Text }}</v-expansion-panel-header>
+  <v-expansion-panel-content>
+    {{ Model.Content.FlowPart | shape_render }}
+  </v-expansion-panel-content>
+</v-expansion-panel>

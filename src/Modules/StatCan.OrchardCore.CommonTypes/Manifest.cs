@@ -17,9 +17,24 @@ using static StatCan.OrchardCore.CommonTypes.FeatureIds;
     Dependencies = new[]
     {
         "OrchardCore.Autoroute",
+        "StatCan.OrchardCore.ContentPermissions",
         "OrchardCore.Flows",
         "OrchardCore.Liquid",
         "OrchardCore.Title"
+    }
+)]
+[assembly: Feature(
+    Id = SecurePage,
+    Name = "StatCan.CommonTypes - Secure Page",
+    Category = "Content",
+    Description = "(DEPRECATED) Adds a page content types that has the ContentPermission part attached to it.",
+    Dependencies = new[]
+    {
+        "OrchardCore.Autoroute",
+        "StatCan.OrchardCore.ContentPermissions",
+        "OrchardCore.Flows",
+        "OrchardCore.Title",
+        "OrchardCore.Liquid"
     }
 )]
 
@@ -40,30 +55,33 @@ using static StatCan.OrchardCore.CommonTypes.FeatureIds;
 )]
 
 [assembly: Feature(
-    Id = Widgets,
-    Name = "StatCan.CommonTypes - Widgets",
+    Id = HtmlWidget,
+    Name = "StatCan.CommonTypes - HtmlWidget",
     Category = "Content",
-    Description = "Adds generic widget content types such as Liquid, Html, Markdown and Container widgets",
+    Description = "",
     Dependencies = new[]
     {
         "OrchardCore.Html",
-        "OrchardCore.Flows",
-        "OrchardCore.Liquid",
-        "OrchardCore.Title",
+    }
+)]
+[assembly: Feature(
+    Id = MarkdownWidget,
+    Name = "StatCan.CommonTypes - MarkdownWidget",
+    Category = "Content",
+    Description = "",
+    Dependencies = new[]
+    {
         "OrchardCore.Markdown",
     }
 )]
-
 [assembly: Feature(
-    Id = SecurePage,
-    Name = "StatCan.CommonTypes - Secure Page",
+    Id = LiquidWidget,
+    Name = "StatCan.CommonTypes - LiquidWidget",
     Category = "Content",
-    Description = "Adds a page content types that has the ContentPermission part attached to it.",
+    Description = "",
     Dependencies = new[]
     {
-        "OrchardCore.Autoroute",
-        "OrchardCore.Flows",
-        "OrchardCore.Title",
-        "StatCan.OrchardCore.ContentPermissions"
+        "OrchardCore.Liquid",
     }
 )]
+

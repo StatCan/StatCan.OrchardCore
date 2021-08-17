@@ -1,6 +1,5 @@
 using Microsoft.Extensions.DependencyInjection;
 using OrchardCore.Modules;
-using OrchardCore.ResourceManagement;
 using OrchardCore.Data.Migration;
 
 namespace StatCan.OrchardCore.CommonTypes.Page

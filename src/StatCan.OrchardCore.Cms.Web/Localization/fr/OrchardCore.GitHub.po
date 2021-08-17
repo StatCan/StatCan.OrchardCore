@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
-"PO-Revision-Date: 2021-04-14 09:13\n"
+"PO-Revision-Date: 2021-07-14 14:11\n"
 
 #. builder.Add(S["Security"], security => security
 #: OrchardCore.GitHub\AdminMenu.cs:23
@@ -33,13 +33,13 @@ msgid "GitHub"
 msgstr "GitHub"
 
 #. yield return new ValidationResult(S["ClientID is required"], new string[] { nameof(settings.ClientID) });
-#: OrchardCore.GitHub\Services\GithubAuthenticationService.cs:56
+#: OrchardCore.GitHub\Services\GithubAuthenticationService.cs:64
 msgctxt "OrchardCore.GitHub.Services.GitHubAuthenticationService"
 msgid "ClientID is required"
 msgstr "Le ClientID est requis"
 
 #. yield return new ValidationResult(S["ClientSecret is required"], new string[] { nameof(settings.ClientSecret) });
-#: OrchardCore.GitHub\Services\GithubAuthenticationService.cs:61
+#: OrchardCore.GitHub\Services\GithubAuthenticationService.cs:69
 msgctxt "OrchardCore.GitHub.Services.GitHubAuthenticationService"
 msgid "ClientSecret is required"
 msgstr "Le ClientSecret est requis"
@@ -62,53 +62,77 @@ msgctxt "OrchardCore.GitHub.ViewModels.GitHubAuthenticationSettingsViewModel"
 msgid "Invalid path"
 msgstr "Chemin invalide"
 
-#. <p class="alert alert-warning">@T["The current tenant will be reloaded when the settings are saved."]</p>
-#: OrchardCore.GitHub\Views\GithubAuthenticationSettings.Edit.cshtml:4
+#. @T["The current tenant will be reloaded when the settings are saved."]
+#: OrchardCore.GitHub\Views\GithubAuthenticationSettings.Edit.cshtml:5
 msgctxt "OrchardCore.GitHub.Views.GithubAuthenticationSettings.Edit"
 msgid "The current tenant will be reloaded when the settings are saved."
 msgstr "Le locataire actuel sera rechargé lorsque les paramètres seront sauvegardés."
 
-#. <h3>@T["GitHub Authentication Settings"]</h3>
+#. <a class="seedoc" href="@(OrchardCore.Admin.Constants.DocsUrl)reference/modules/GitHub/#authenticate-with-github" target="_blank">@T["See documentation"]</a>
 #: OrchardCore.GitHub\Views\GithubAuthenticationSettings.Edit.cshtml:6
+msgctxt "OrchardCore.GitHub.Views.GithubAuthenticationSettings.Edit"
+msgid "See documentation"
+msgstr "Voir la documentation"
+
+#. <p class="alert alert-danger">@T["An error occurred while decrypting a setting. Please apply and save."]</p>
+#: OrchardCore.GitHub\Views\GithubAuthenticationSettings.Edit.cshtml:11
+msgctxt "OrchardCore.GitHub.Views.GithubAuthenticationSettings.Edit"
+msgid "An error occurred while decrypting a setting. Please apply and save."
+msgstr "Une erreur s'est produite lors du déchiffrement d'un paramètre. Veuillez appliquer et sauvegarder."
+
+#. <h3>@T["GitHub Authentication Settings"]</h3>
+#: OrchardCore.GitHub\Views\GithubAuthenticationSettings.Edit.cshtml:14
 msgctxt "OrchardCore.GitHub.Views.GithubAuthenticationSettings.Edit"
 msgid "GitHub Authentication Settings"
 msgstr "Paramètres d'authentification GitHub"
 
 #. <label asp-for="ClientID">@T["Client ID"]</label>
-#: OrchardCore.GitHub\Views\GithubAuthenticationSettings.Edit.cshtml:10
+#: OrchardCore.GitHub\Views\GithubAuthenticationSettings.Edit.cshtml:18
 msgctxt "OrchardCore.GitHub.Views.GithubAuthenticationSettings.Edit"
 msgid "Client ID"
 msgstr "Client ID"
 
 #. <span class="hint">@T["The Client ID defined in the general tab of your <a target=\"_blank\" href=\"https://github.com/settings/apps\">GitHub App</a>."]</span>
-#: OrchardCore.GitHub\Views\GithubAuthenticationSettings.Edit.cshtml:13
+#: OrchardCore.GitHub\Views\GithubAuthenticationSettings.Edit.cshtml:21
 msgctxt "OrchardCore.GitHub.Views.GithubAuthenticationSettings.Edit"
 msgid "The Client ID defined in the general tab of your <a target=\"_blank\" href=\"https://github.com/settings/apps\">GitHub App</a>."
 msgstr "Le Client ID définit dans l'onglet général de votre <a target=\"_blank\" href=\"https://github.com/settings/apps\">Application GitHub</a>."
 
 #. <label asp-for="ClientSecret">@T["Client secret"]</label>
-#: OrchardCore.GitHub\Views\GithubAuthenticationSettings.Edit.cshtml:19
+#: OrchardCore.GitHub\Views\GithubAuthenticationSettings.Edit.cshtml:27
 msgctxt "OrchardCore.GitHub.Views.GithubAuthenticationSettings.Edit"
 msgid "Client secret"
 msgstr "Client Secret"
 
 #. <span class="hint">@T["The secret for your app."]</span>
-#: OrchardCore.GitHub\Views\GithubAuthenticationSettings.Edit.cshtml:22
+#: OrchardCore.GitHub\Views\GithubAuthenticationSettings.Edit.cshtml:30
 msgctxt "OrchardCore.GitHub.Views.GithubAuthenticationSettings.Edit"
 msgid "The secret for your app."
 msgstr "Le Client secret de votre application."
 
 #. <label asp-for="CallbackUrl">@T["CallbackPath"]</label>
-#: OrchardCore.GitHub\Views\GithubAuthenticationSettings.Edit.cshtml:28
+#: OrchardCore.GitHub\Views\GithubAuthenticationSettings.Edit.cshtml:36
 msgctxt "OrchardCore.GitHub.Views.GithubAuthenticationSettings.Edit"
 msgid "CallbackPath"
 msgstr "Chemin de Callback"
 
 #. <span class="hint">@T["The request path within the application's base path where the user-agent will be returned. The middleware will process this request when it arrives."]</span>
-#: OrchardCore.GitHub\Views\GithubAuthenticationSettings.Edit.cshtml:31
+#: OrchardCore.GitHub\Views\GithubAuthenticationSettings.Edit.cshtml:39
 msgctxt "OrchardCore.GitHub.Views.GithubAuthenticationSettings.Edit"
 msgid "The request path within the application's base path where the user-agent will be returned. The middleware will process this request when it arrives."
 msgstr "Le chemin de requête dans le chemin de base de l'application où l'utilisateur-agent sera retourné. Le middleware traitera cette requête quand elle arrivera."
+
+#. <label class="custom-control-label" asp-for="SaveTokens">@T["Store tokens"]</label>
+#: OrchardCore.GitHub\Views\GithubAuthenticationSettings.Edit.cshtml:46
+msgctxt "OrchardCore.GitHub.Views.GithubAuthenticationSettings.Edit"
+msgid "Store tokens"
+msgstr "Stocker les jetons"
+
+#. <span class="hint dashed">@T["Store external authentication tokens for reuse"]</span>
+#: OrchardCore.GitHub\Views\GithubAuthenticationSettings.Edit.cshtml:47
+msgctxt "OrchardCore.GitHub.Views.GithubAuthenticationSettings.Edit"
+msgid "Store external authentication tokens for reuse"
+msgstr "Stocker les jetons d'authentification externes pour les réutiliser"
 
 #. <span class="icon"><i class="fab fa-github" aria-hidden="true"></i></span><span class="title">@T["GitHub"]</span>
 #: OrchardCore.GitHub\Views\NavigationItemText-github.Id.cshtml:1

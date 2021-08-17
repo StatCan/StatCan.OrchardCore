@@ -1,0 +1,8 @@
+msgid ""
+msgstr "Content-Type: text/plain\n"
+
+#: StatCan.OrchardCore.Scripting\MediaGlobalMethodsProvider.cs:128
+#. errorMessage = S["This file extension is not allowed: {0}", extension].ToString()
+msgctxt "StatCan.OrchardCore.Scripting.MediaGlobalMethodsProvider"
+msgid "This file extension is not allowed: {0}"
+msgstr "Cette extension de fichier n'est pas autorisée : {0}"

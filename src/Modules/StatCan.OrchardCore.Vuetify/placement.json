@@ -1,0 +1,493 @@
+{
+  "WidgetStylingPart_Edit": [
+    {
+      "place": "Settings|Styling_12;15"
+    }
+  ],
+  "MultiTextField_Edit": [
+    {
+      "differentiator": "VRow-Props",
+      "place": "Settings|Content_12;10",
+      "contentType": [
+        "VRow"
+      ]
+    },
+    {
+      "differentiator": "VContainer-Props",
+      "place": "Settings|Content_12;10",
+      "contentType": [
+        "VContainer"
+      ]
+    },
+    {
+      "differentiator": "VAlert-Props",
+      "place": "Settings|Md_6;4",
+      "contentType": [
+        "VAlert"
+      ]
+    },
+    {
+      "differentiator": "VExpansionPanels-Props",
+      "place": "Settings|Content_12;10",
+      "contentType": [
+        "VExpansionPanels"
+      ]
+    },
+    {
+      "differentiator": "VImg-Props",
+      "place": "Settings|Content_12;10",
+      "contentType": [
+        "VImg"
+      ]
+    },
+    {
+      "differentiator": "VTimeline-Props",
+      "place": "Settings|Content_12;10",
+      "contentType": [
+        "VTimeline"
+      ]
+    },
+    {
+      "differentiator": "VTimelineItem-Props",
+      "place": "Settings|Content_12;10",
+      "contentType": [
+        "VTimelineItem"
+      ]
+    },
+    {
+      "differentiator": "VAppBar-Props",
+      "place": "settings|Md_5;12",
+      "contentType": [
+        "VAppBar"
+      ]
+    },
+    {
+      "differentiator": "VNavigationDrawer-Props",
+      "place": "Settings|Md_5;12",
+      "contentType": [
+        "VNavigationDrawer"
+      ]
+    }
+  ],
+  "TextField_Edit": [
+    {
+      "differentiator": "VCol-AlignSelf",
+      "place": "Settings",
+      "contentType": [
+          "VCol"
+      ]
+    },
+    {
+      "differentiator": "VCol-Cols",
+      "place": "Settings|Xs_2;0",
+      "contentType": [
+          "VCol"
+      ]
+    },
+    {
+      "differentiator": "VCol-ColsSm",
+      "place": "Settings|Sm_2;1",
+      "contentType": [
+          "VCol"
+      ]
+    },
+    {
+      "differentiator": "VCol-ColsMd",
+      "place": "Settings|Md_2;2",
+      "contentType": [
+          "VCol"
+      ]
+    },
+    {
+      "differentiator": "VCol-ColsLg",
+      "place": "Settings|Lg_2;3",
+      "contentType": [
+          "VCol"
+      ]
+    },
+    {
+      "differentiator": "VCol-ColsXl",
+      "place": "Settings|Xl_2;4",
+      "contentType": [
+          "VCol"
+      ]
+    },
+    {
+      "differentiator": "VCol-Offset",
+      "place": "Settings|Xs_2;0",
+      "contentType": [
+          "VCol"
+      ]
+    },
+    {
+      "differentiator": "VCol-OffsetSm",
+      "place": "Settings|Sm_2;1",
+      "contentType": [
+          "VCol"
+      ]
+    },
+    {
+      "differentiator": "VCol-OffsetMd",
+      "place": "Settings|Md_2;2",
+      "contentType": [
+          "VCol"
+      ]
+    },
+    {
+      "differentiator": "VCol-OffsetLg",
+      "place": "Settings|Lg_2;3",
+      "contentType": [
+          "VCol"
+      ]
+    },
+    {
+      "differentiator": "VCol-OffsetXl",
+      "place": "Settings|Xl_2;4",
+      "contentType": [
+          "VCol"
+      ]
+    },
+    {
+      "differentiator": "VRow-Justify",
+      "place": "Settings|Xs_2;0",
+      "contentType": [
+          "VRow"
+      ]
+    },
+    {
+      "differentiator": "VRow-JustifySm",
+      "place": "Settings|Sm_2;1",
+      "contentType": [
+          "VRow"
+      ]
+    },
+    {
+      "differentiator": "VRow-JustifyMd",
+      "place": "Settings|Md_2;2",
+      "contentType": [
+          "VRow"
+      ]
+    },
+    {
+      "differentiator": "VRow-JustifyLg",
+      "place": "Settings|Lg_2;3",
+      "contentType": [
+          "VRow"
+      ]
+    },
+    {
+      "differentiator": "VRow-JustifyXl",
+      "place": "Settings|Xl_2;4",
+      "contentType": [
+          "VRow"
+      ]
+    },
+    {
+      "differentiator": "VRow-Align",
+      "place": "Settings|Xs_2;0",
+      "contentType": [
+          "VRow"
+      ]
+    },
+    {
+      "differentiator": "VRow-AlignSm",
+      "place": "Settings|Sm_2;1",
+      "contentType": [
+          "VRow"
+      ]
+    },
+    {
+      "differentiator": "VRow-AlignMd",
+      "place": "Settings|Md_2;2",
+      "contentType": [
+          "VRow"
+      ]
+    },
+    {
+      "differentiator": "VRow-AlignLg",
+      "place": "Settings|Lg_2;3",
+      "contentType": [
+          "VRow"
+      ]
+    },
+    {
+      "differentiator": "VRow-AlignXl",
+      "place": "Settings|Xl_2;4",
+      "contentType": [
+          "VRow"
+      ]
+    },
+    {
+      "differentiator": "VRow-AlignContent",
+      "place": "Settings|Xs_2;0",
+      "contentType": [
+          "VRow"
+      ]
+    },
+    {
+      "differentiator": "VRow-AlignContentSm",
+      "place": "Settings|Sm_2;1",
+      "contentType": [
+          "VRow"
+      ]
+    },
+    {
+      "differentiator": "VRow-AlignContentMd",
+      "place": "Settings|Md_2;2",
+      "contentType": [
+          "VRow"
+      ]
+    },
+    {
+      "differentiator": "VRow-AlignContentLg",
+      "place": "Settings|Lg_2;3",
+      "contentType": [
+          "VRow"
+      ]
+    },
+    {
+      "differentiator": "VRow-AlignContentXl",
+      "place": "Settings|Xl_2;4",
+      "contentType": [
+          "VRow"
+      ]
+    },
+    {
+      "differentiator": "VAlert-Color",
+      "place": "Settings|12",
+      "contentType": [
+        "VAlert"
+      ]
+    },
+    {
+      "differentiator": "VAlert-Icon",
+      "place": "Settings|12",
+      "contentType": [
+        "VAlert"
+      ]
+    },
+    {
+      "differentiator": "VAlert-Type",
+      "place": "Settings|12",
+      "contentType": [
+        "VAlert"
+      ]
+    },
+    {
+      "differentiator": "VAlert-Border",
+      "place": "Settings",
+      "contentType": [
+        "VAlert"
+      ]
+    },
+    {
+      "differentiator": "VContainerRow-Layout",
+      "place": "Settings",
+      "contentType": [
+          "VContainerRow"
+      ]
+    },
+    {
+      "differentiator": "VTimelineItem-Color",
+      "place": "Settings|Xs_8;0",
+      "contentType": [
+          "VTimelineItem"
+      ]
+    },
+    {
+      "differentiator": "VTimelineItem-Icon",
+      "place": "Settings|Xs_8;0",
+      "contentType": [
+          "VTimelineItem"
+      ]
+    },
+    {
+      "differentiator": "VTimelineItem-IconColor",
+      "place": "Settings|Xs_8;0",
+      "contentType": [
+          "VTimelineItem"
+      ]
+    },
+    {
+      "differentiator": "VImg-Gradient",
+      "place": "Settings|Xs_8;0",
+      "contentType": [
+          "VImg"
+      ]
+    },
+    {
+      "place": "Content",
+      "displayType": null,
+      "differentiator": "VAppBar-Color",
+      "contentType": [
+        "VAppBar"
+      ]
+    },
+    {
+      "place": "Content",
+      "differentiator": "VNavigationDrawer-Color",
+      "contentType": [
+        "VNavigationDrawer"
+      ]
+    },
+    {
+      "place": "Content",
+      "differentiator": "VNavigationDrawer-OverlayColor",
+      "contentType": [
+        "VNavigationDrawer"
+      ]
+    }
+
+  ],
+  "NumericField_Edit": [
+    {
+      "differentiator": "VCol-Order",
+      "place": "Settings|Xs_2;0",
+      "contentType": [
+          "VCol"
+      ]
+    },
+    {
+      "differentiator": "VCol-OrderSm",
+      "place": "Settings|Sm_2;1",
+      "contentType": [
+          "VCol"
+      ]
+    },
+    {
+      "differentiator": "VCol-OrderMd",
+      "place": "Settings|Md_2;2",
+      "contentType": [
+          "VCol"
+      ]
+    },
+    {
+      "differentiator": "VCol-OrderLg",
+      "place": "Settings|Lg_2;3",
+      "contentType": [
+          "VCol"
+      ]
+    },
+    {
+      "differentiator": "VCol-OrderXl",
+      "place": "Settings|Xl_2;4",
+      "contentType": [
+          "VCol"
+      ]
+    },
+    {
+      "differentiator": "VAlert-Elevation",
+      "place": "Settings",
+      "contentType": [
+        "VAlert"
+      ]
+    },
+    {
+      "differentiator": "VImg-AspectRatio",
+      "place": "Settings|Xs_8;0",
+      "contentType": [
+          "VImg"
+      ]
+    },
+    {
+      "differentiator": "VImg-Height",
+      "place": "Settings|Xs_8;0",
+      "contentType": [
+          "VImg"
+      ]
+    },
+    {
+      "differentiator": "VImg-Width",
+      "place": "Settings|Xs_8;0",
+      "contentType": [
+          "VImg"
+      ]
+    },
+    {
+      "place": "Content",
+      "differentiator": "VAppBar-ExtensionHeight",
+      "contentType": [
+        "VAppBar"
+      ]
+    },
+    {
+      "place": "Content",
+      "differentiator": "VAppBar-ScrollThreshold",
+      "contentType": [
+        "VAppBar"
+      ]
+    },
+    {
+      "place": "Content",
+      "differentiator": "VAppBar-Elevation",
+      "contentType": [
+        "VAppBar"
+      ]
+    },
+    {
+      "place": "Content",
+      "differentiator": "VAppBar-Height",
+      "contentType": [
+        "VAppBar"
+      ]
+    },
+    {
+      "place": "Content",
+      "differentiator": "VAppBar-Width",
+      "contentType": [
+        "VAppBar"
+      ]
+    },
+    {
+      "place": "Content",
+      "differentiator": "VNavigationDrawer-MiniVariantWidth",
+      "contentType": [
+        "VNavigationDrawer"
+      ]
+    },
+    {
+      "place": "Content",
+      "differentiator": "VNavigationDrawer-MobileBreakpoint",
+      "contentType": [
+        "VNavigationDrawer"
+      ]
+    },
+    {
+      "place": "Content",
+      "differentiator": "VNavigationDrawer-OverlayOpacity",
+      "contentType": [
+        "VNavigationDrawer"
+      ]
+    },
+    {
+      "place": "Content",
+      "differentiator": "VNavigationDrawer-Height",
+      "contentType": [
+        "VNavigationDrawer"
+      ]
+    },
+    {
+      "place": "Content",
+      "differentiator": "VNavigationDrawer-Width",
+      "contentType": [
+        "VNavigationDrawer"
+      ]
+    }
+  ],
+  "MediaField_Edit": [
+    {
+      "place": "Content",
+      "differentiator": "VAppBar-BackgroundImage",
+      "contentType": [
+        "VAppBar"
+      ]
+    },
+    {
+      "place": "Content",
+      "differentiator": "VNavigationDrawer-BackgroundImage",
+      "contentType": [
+        "VNavigationDrawer"
+      ]
+    }
+  ]
+} 

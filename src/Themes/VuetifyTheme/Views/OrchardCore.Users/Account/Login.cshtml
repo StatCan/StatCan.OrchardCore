@@ -35,7 +35,7 @@
             </ul>
           </v-alert>
         }
-        <v-text-field id="UserName" name="UserName" label="@T["Username"]" value="@userName?.AttemptedValue" error-messages="@(userName?.Errors.FirstOrDefault()?.ErrorMessage)"></v-text-field>
+        <v-text-field id="UserName" name="UserName" label="@T["Email or username"]" value="@userName?.AttemptedValue" error-messages="@(userName?.Errors.FirstOrDefault()?.ErrorMessage)"></v-text-field>
         <v-text-field id="Password" type="password" name="Password" label="@T["Password"]" error-messages="@(password?.Errors.FirstOrDefault()?.ErrorMessage)"></v-text-field>
         <v-checkbox name="RememberMe" label="@T["Remember me"]" value="true"></v-checkbox>
         @if (allowResetPassword)
@@ -72,7 +72,7 @@
       <v-divider></v-divider><span class="px-2">@T["or"]</span><v-divider></v-divider>
     </div>
     <v-card-actions>
-      <v-btn href="@Url.Action("Register", "Registration", new { Area = "OrchardCore.Users", returnUrl=ViewData["ReturnUrl"] })" x-large block color="grey lighten-2">@T["Create an account"]</v-btn>
+      <v-btn href="@Url.Action("Register", "Registration", new { Area = "OrchardCore.Users", returnUrl=ViewData["ReturnUrl"] })" x-large block color="secondary">@T["Create an account"]</v-btn>
     </v-card-actions>
   }
 </v-card>

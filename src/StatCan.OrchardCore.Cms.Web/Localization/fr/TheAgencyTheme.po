@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
-"PO-Revision-Date: 2021-04-14 09:13\n"
+"PO-Revision-Date: 2021-07-14 14:11\n"
 
 #: TheAgencyTheme\Views\Layout.liquid:0
 msgctxt "TheAgencyTheme.Views.Layout"
@@ -34,8 +34,8 @@ msgstr "Il n'y a aucun résultat."
 
 #: TheAgencyTheme\Views\Shared\NotFound.liquid:0
 msgctxt "TheAgencyTheme.Views.Shared.NotFound"
-msgid "404 Page Not Found"
-msgstr "404 Page introuvable"
+msgid "Page Not Found"
+msgstr "Page introuvable"
 
 #: TheAgencyTheme\Views\Shared\NotFound.liquid:0
 msgctxt "TheAgencyTheme.Views.Shared.NotFound"

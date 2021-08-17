@@ -36,7 +36,6 @@
         "OrchardCore.ContentTypes",
         "OrchardCore.CustomSettings",
         "OrchardCore.Deployment",
-        "OrchardCore.Feeds",
         "OrchardCore.Indexing",
         "OrchardCore.Layers",
         "OrchardCore.Localization",
@@ -56,8 +55,8 @@
         "OrchardCore.Users.ResetPassword",
         "StatCan.OrchardCore.DisplayHelpers",
         "StatCan.OrchardCore.CommonTypes.Page",
-        "StatCan.OrchardCore.CommonTypes.SecurePage",
-        "StatCan.OrchardCore.CommonTypes.Widgets",
+        "StatCan.OrchardCore.CommonTypes.MarkdownWidget",
+        "StatCan.OrchardCore.Menu",
         "DigitalAdmin",
         "VuetifyTheme"
       ]
@@ -106,119 +105,6 @@
           "Name": "All",
           "Rule": "true",
           "Description": null
-        }
-      ]
-    },
-    {
-      "name": "Content",
-      "data": [
-        {
-          "ContentItemId": "[js: uuid()]",
-          "ContentType": "VAppBar",
-          "DisplayText": "App Bar",
-          "Latest": true,
-          "Published": true,
-          "Owner": "[js: parameters('AdminUserId')]",
-          "Author": "[js: parameters('AdminUsername')]",
-          "VAppBar": {
-            "Props": {
-              "Values": []
-            },
-            "Color": {
-              "Text": null
-            },
-            "Elevation": {
-              "Value": null
-            },
-            "ExtensionHeight": {
-              "Value": null
-            },
-            "ScrollThreshold": {
-              "Value": null
-            },
-            "BackgroundImage": {
-              "Paths": [],
-              "MediaTexts": []
-            },
-            "Height": {
-              "Value": null
-            },
-            "Width": {
-              "Value": null
-            }
-          },
-          "LayerMetadata": {
-            "Position": 1.0,
-            "Zone": "Header",
-            "RenderTitle": false,
-            "Layer": "All"
-          }
-        },
-        {
-          "ContentItemId": "[js: uuid()]",
-          "ContentType": "VNavigationDrawer",
-          "DisplayText": "Navigation Drawer",
-          "Latest": true,
-          "Published": true,
-          "Owner": "[js: parameters('AdminUserId')]",
-          "Author": "[js: parameters('AdminUsername')]",
-          "VNavigationDrawer": {
-            "Props": {
-              "Values": [
-                "clipped"
-              ]
-            },
-            "BackgroundImage": {
-              "Paths": [],
-              "MediaTexts": []
-            },
-            "Color": {
-              "Text": null
-            },
-            "MiniVariantWidth": {
-              "Value": null
-            },
-            "MobileBreakpoint": {
-              "Value": null
-            },
-            "OverlayColor": {
-              "Text": null
-            },
-            "OverlayOpacity": {
-              "Value": null
-            },
-            "Height": {
-              "Value": null
-            },
-            "Width": {
-              "Value": null
-            }
-          },
-          "LayerMetadata": {
-            "Position": 1.0,
-            "Zone": "NavigationDrawer",
-            "RenderTitle": false,
-            "Layer": "All"
-          }
-        },
-        {
-          "ContentItemId": "[js: uuid()]",
-          "ContentType": "CompatibilityBanner",
-          "DisplayText": "Compatibility Banner",
-          "Latest": true,
-          "Published": true,
-          "ModifiedUtc": "2021-01-26T15:39:01.656923Z",
-          "PublishedUtc": "2021-01-26T15:39:01.658717Z",
-          "CreatedUtc": "2021-01-26T15:26:33.688292Z",
-          "Owner": "[js: parameters('AdminUserId')]",
-          "Author": "[js: parameters('AdminUsername')]",
-          "CompatibilityBanner": {},
-          "LayerMetadata": {
-            "Position": 1.0,
-            "Zone": "IEBanner",
-            "Layer": "All",
-            "RenderTitle": false
-          }
         }
       ]
     }

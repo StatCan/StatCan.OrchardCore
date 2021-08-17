@@ -1,0 +1,30 @@
+{% assign alternateText = Model.ContentItem.Content.VImg.AlternateText.Text %}
+{% assign aspectRatio = Model.ContentItem.Content.VImg.AspectRatio.Text %}
+{% assign gradient = Model.ContentItem.Content.VImg.Gradient.Text %}
+{% assign height = Model.ContentItem.Content.VImg.Height.Text %}
+{% assign width = Model.ContentItem.Content.VImg.Width.Text %}
+
+{% if Model.ContentItem.Content.VImg.Source.Paths.first != blank %}
+<v-img class="{{ Model.Classes | join: ' ' }}"
+  src="{{ Model.ContentItem.Content.VImg.Source.Paths.first | asset_url }}"
+  {{ Model.ContentItem.Content.VImg.Props.Values | join: ' ' | raw }}
+  {% if blank != alternateText %}alt="{{ alternateText }}"{% endif %}
+  {% if blank != aspectRatio %}aspect-ratio="{{ aspectRatio }}"{% endif %}
+  {% if blank != gradient %}gradient="{{ gradient }}"{% endif %}
+  {% if blank != height %}height="{{ height }}"{% endif %}
+  {% if blank != width %}width="{{ width }}"{% endif %}
+>
+  <template v-slot:placeholder>
+    <v-row
+      class="fill-height ma-0"
+      align="center"
+      justify="center"
+    >
+      <v-progress-circular
+        indeterminate
+        color="grey lighten-5"
+      ></v-progress-circular>
+    </v-row>
+  </template>
+</v-img>
+{% endif %}

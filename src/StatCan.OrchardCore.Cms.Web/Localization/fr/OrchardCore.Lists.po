@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
-"PO-Revision-Date: 2021-04-14 09:13\n"
+"PO-Revision-Date: 2021-07-14 14:11\n"
 
 #. Description = S["the list part of the content item"];
 #: OrchardCore.Lists\GraphQL\ContainedInputObjectType.cs:13
@@ -57,7 +57,7 @@ msgid "The username or e-mail or password provided is incorrect."
 msgstr "Le nom d'utilisateur ou l'email ou le mot de passe fourni est incorrect."
 
 #. context.Updater.ModelState.AddModelError(nameof(model.ContainedContentTypes), S["At least one content type must be selected."]);
-#: OrchardCore.Lists\Settings\ListPartSettingsDisplayDriver.cs:68
+#: OrchardCore.Lists\Settings\ListPartSettingsDisplayDriver.cs:58
 msgctxt "OrchardCore.Lists.Settings.ListPartSettingsDisplayDriver"
 msgid "At least one content type must be selected."
 msgstr "Au moins un type de contenu doit être sélectionné."
@@ -68,85 +68,79 @@ msgctxt "OrchardCore.Lists.Views.ListPart"
 msgid "The list is empty"
 msgstr "La liste est vide"
 
-#. <a asp-action="EditTypePart" asp-controller="Admin" asp-route-area="OrchardCore.ContentTypes" asp-route-id="@Model.ListPart.ContentItem.ContentType" asp-route-name="ListPart">@T["Please specify at least one contained content type."]</a>
-#: OrchardCore.Lists\Views\ListPart.DetailAdmin.cshtml:23
-msgctxt "OrchardCore.Lists.Views.ListPart.DetailAdmin"
-msgid "Please specify at least one contained content type."
-msgstr "Veuillez spécifier au moins un type de contenu."
-
-#. <i class="fa fa-filter" title="@T["Filters"]"></i>
-#: OrchardCore.Lists\Views\ListPart.DetailAdmin.cshtml:35
-msgctxt "OrchardCore.Lists.Views.ListPart.DetailAdmin"
-msgid "Filters"
-msgstr "Filtres"
-
-#. <a class="dropdown-item" href="?Status=Draft">@T["Only draft items"]</a>
-#: OrchardCore.Lists\Views\ListPart.DetailAdmin.cshtml:39
-msgctxt "OrchardCore.Lists.Views.ListPart.DetailAdmin"
-msgid "Only draft items"
-msgstr "Uniquement les brouillons"
-
-#. <a class="dropdown-item" href="?Status=Published">@T["Only published items"]</a>
-#: OrchardCore.Lists\Views\ListPart.DetailAdmin.cshtml:40
-msgctxt "OrchardCore.Lists.Views.ListPart.DetailAdmin"
-msgid "Only published items"
-msgstr "Uniquement les éléments publiés"
-
-#. <a class="dropdown-item" href="?Status=Owner">@T["Owned by me"]</a>
-#: OrchardCore.Lists\Views\ListPart.DetailAdmin.cshtml:41
-msgctxt "OrchardCore.Lists.Views.ListPart.DetailAdmin"
-msgid "Owned by me"
-msgstr "Créés par moi"
-
-#. <input name="@nameof(ListPartFilterViewModel.DisplayText)" value="@Model.ListPartFilterViewModel.DisplayText" class="form-control" placeholder="@T["Search"]" type="search" autofocus />
-#: OrchardCore.Lists\Views\ListPart.DetailAdmin.cshtml:46
-msgctxt "OrchardCore.Lists.Views.ListPart.DetailAdmin"
-msgid "Search"
-msgstr "Recherche"
-
-#. @T["Edit {0}", @Model.ListPart.ContentItem.DisplayText]
-#. @T["Edit {0}", @Model.ListPart.ContentItem.DisplayText]
-#: OrchardCore.Lists\Views\ListPart.DetailAdmin.cshtml:55
-#: OrchardCore.Lists\Views\ListPart.DetailAdmin.cshtml:64
-msgctxt "OrchardCore.Lists.Views.ListPart.DetailAdmin"
-msgid "Edit {0}"
-msgstr "Modifier {0}"
-
-#. @T["Create {0}", contentTypeDefinition.DisplayName]
-#: OrchardCore.Lists\Views\ListPart.DetailAdmin.cshtml:58
-msgctxt "OrchardCore.Lists.Views.ListPart.DetailAdmin"
-msgid "Create {0}"
-msgstr "Créer {0}"
-
-#. @T["Create"]
-#: OrchardCore.Lists\Views\ListPart.DetailAdmin.cshtml:67
-msgctxt "OrchardCore.Lists.Views.ListPart.DetailAdmin"
-msgid "Create"
-msgstr "Créer"
-
-#. <div id="update-order-error-message" class="d-none" data-message="@T["There was an error when updating the order of the items."]" />
-#: OrchardCore.Lists\Views\ListPart.DetailAdmin.cshtml:110
-msgctxt "OrchardCore.Lists.Views.ListPart.DetailAdmin"
-msgid "There was an error when updating the order of the items."
-msgstr "Une erreur s'est produite lors de la mise à jour de l'ordre des éléments."
-
-#. <p class="alert alert-warning">@T["The list is empty."]</p>
-#: OrchardCore.Lists\Views\ListPart.DetailAdmin.cshtml:115
-msgctxt "OrchardCore.Lists.Views.ListPart.DetailAdmin"
-msgid "The list is empty."
-msgstr "La liste est vide."
-
 #. <option value="" selected="@String.IsNullOrEmpty(currentDisplayMode)">@T["Standard"]</option>
 #: OrchardCore.Lists\Views\ListPart.DisplayOption.cshtml:4
 msgctxt "OrchardCore.Lists.Views.ListPart.DisplayOption"
 msgid "Standard"
 msgstr "Standard"
 
-#. <a class="btn btn-sm btn-secondary" admin-for="@Model.ContentItem">@T["List Items"]</a>
-#: OrchardCore.Lists\Views\ListPart.SummaryAdmin.cshtml:3
-msgctxt "OrchardCore.Lists.Views.ListPart.SummaryAdmin"
-msgid "List Items"
-msgstr "Lister les éléments"
+#. <a asp-action="EditTypePart" asp-controller="Admin" asp-route-area="OrchardCore.ContentTypes" asp-route-id="@Model.ListPart.ContentItem.ContentType" asp-route-name="ListPart">@T["Please specify at least one contained content type."]</a>
+#: OrchardCore.Lists\Views\ListPartDetailAdmin.cshtml:23
+msgctxt "OrchardCore.Lists.Views.ListPartDetailAdmin"
+msgid "Please specify at least one contained content type."
+msgstr "Veuillez spécifier au moins un type de contenu."
+
+#. <i class="fa fa-filter" title="@T["Filters"]"></i>
+#: OrchardCore.Lists\Views\ListPartDetailAdmin.cshtml:35
+msgctxt "OrchardCore.Lists.Views.ListPartDetailAdmin"
+msgid "Filters"
+msgstr "Filtres"
+
+#. <a class="dropdown-item" href="?Status=Draft">@T["Only draft items"]</a>
+#: OrchardCore.Lists\Views\ListPartDetailAdmin.cshtml:39
+msgctxt "OrchardCore.Lists.Views.ListPartDetailAdmin"
+msgid "Only draft items"
+msgstr "Uniquement les brouillons"
+
+#. <a class="dropdown-item" href="?Status=Published">@T["Only published items"]</a>
+#: OrchardCore.Lists\Views\ListPartDetailAdmin.cshtml:40
+msgctxt "OrchardCore.Lists.Views.ListPartDetailAdmin"
+msgid "Only published items"
+msgstr "Uniquement les éléments publiés"
+
+#. <a class="dropdown-item" href="?Status=Owner">@T["Owned by me"]</a>
+#: OrchardCore.Lists\Views\ListPartDetailAdmin.cshtml:41
+msgctxt "OrchardCore.Lists.Views.ListPartDetailAdmin"
+msgid "Owned by me"
+msgstr "Créés par moi"
+
+#. <input name="@nameof(ListPartFilterViewModel.DisplayText)" value="@Model.ListPartFilterViewModel.DisplayText" class="form-control" placeholder="@T["Search"]" type="search" autofocus />
+#: OrchardCore.Lists\Views\ListPartDetailAdmin.cshtml:46
+msgctxt "OrchardCore.Lists.Views.ListPartDetailAdmin"
+msgid "Search"
+msgstr "Recherche"
+
+#. @T["Edit {0}", @Model.ListPart.ContentItem.DisplayText]
+#. @T["Edit {0}", @Model.ListPart.ContentItem.DisplayText]
+#: OrchardCore.Lists\Views\ListPartDetailAdmin.cshtml:55
+#: OrchardCore.Lists\Views\ListPartDetailAdmin.cshtml:64
+msgctxt "OrchardCore.Lists.Views.ListPartDetailAdmin"
+msgid "Edit {0}"
+msgstr "Modifier {0}"
+
+#. @T["Create {0}", contentTypeDefinition.DisplayName]
+#: OrchardCore.Lists\Views\ListPartDetailAdmin.cshtml:58
+msgctxt "OrchardCore.Lists.Views.ListPartDetailAdmin"
+msgid "Create {0}"
+msgstr "Créer {0}"
+
+#. @T["Create"]
+#: OrchardCore.Lists\Views\ListPartDetailAdmin.cshtml:67
+msgctxt "OrchardCore.Lists.Views.ListPartDetailAdmin"
+msgid "Create"
+msgstr "Créer"
+
+#. <div id="update-order-error-message" class="d-none" data-message="@T["There was an error when updating the order of the items."]" />
+#: OrchardCore.Lists\Views\ListPartDetailAdmin.cshtml:110
+msgctxt "OrchardCore.Lists.Views.ListPartDetailAdmin"
+msgid "There was an error when updating the order of the items."
+msgstr "Une erreur s'est produite lors de la mise à jour de l'ordre des éléments."
+
+#. <p class="alert alert-warning">@T["The list is empty."]</p>
+#: OrchardCore.Lists\Views\ListPartDetailAdmin.cshtml:115
+msgctxt "OrchardCore.Lists.Views.ListPartDetailAdmin"
+msgid "The list is empty."
+msgstr "La liste est vide."
 
 #. <label asp-for="FeedProxyUrl">@T["Feed proxy Url"]</label>
 #: OrchardCore.Lists\Views\ListPartFeed.Edit.cshtml:5
@@ -213,6 +207,12 @@ msgstr "Types de contenu contenus"
 msgctxt "OrchardCore.Lists.Views.ListPartSettings.Edit"
 msgid "The content types that this list can contain, e.g. Blog Post for a Blog."
 msgstr "Les types de contenu que cette liste peut contenir, par exemple Blog Post pour un Blog."
+
+#. <a class="btn btn-sm btn-secondary" admin-for="@Model.ContentItem">@T["List Items"]</a>
+#: OrchardCore.Lists\Views\ListPartSummaryAdmin.cshtml:3
+msgctxt "OrchardCore.Lists.Views.ListPartSummaryAdmin"
+msgid "List Items"
+msgstr "Lister les éléments"
 
 #. <h5>@T["Lists"]</h5>
 #: OrchardCore.Lists\Views\Items\ListsAdminNode.Fields.TreeEdit.cshtml:8

@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
-"PO-Revision-Date: 2021-04-14 09:13\n"
+"PO-Revision-Date: 2021-07-14 14:11\n"
 
 #. context.ModelState.AddModelError("ReCaptcha", S["Failed to validate captcha"]);
 #: OrchardCore.ReCaptcha.Core\ActionFilters\ValidateReCaptchaAttribute.cs:44
@@ -19,7 +19,7 @@ msgid "Failed to validate captcha"
 msgstr "Impossible de valider le captcha"
 
 #. reportError("ReCaptcha", S["Failed to validate captcha"]);
-#: OrchardCore.ReCaptcha.Core\Services\ReCaptchaService.cs:83
+#: OrchardCore.ReCaptcha.Core\Services\ReCaptchaService.cs:96
 msgctxt "OrchardCore.ReCaptcha.Services.ReCaptchaService"
 msgid "Failed to validate captcha"
 msgstr "Impossible de valider le captcha"

@@ -1,0 +1,26 @@
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Crowdin-Project: orchard-core\n"
+"X-Crowdin-Project-ID: 307044\n"
+"X-Crowdin-Language: fr\n"
+"X-Crowdin-File: /dev/Localization/OrchardCore.Email.Core.pot\n"
+"X-Crowdin-File-ID: 688\n"
+"Project-Id-Version: orchard-core\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language-Team: French\n"
+"Language: fr_FR\n"
+"PO-Revision-Date: 2021-07-14 14:11\n"
+
+#. return SmtpResult.Failed(S["SMTP settings must be configured before an email can be sent."]);
+#: OrchardCore.Email.Core\Services\SmtpService.cs:41
+msgctxt "OrchardCore.Email.Services.SmtpService"
+msgid "SMTP settings must be configured before an email can be sent."
+msgstr "Les paramètres SMTP doivent être configurés avant d'envoyer un email."
+
+#. return SmtpResult.Failed(S["An error occurred while sending an email: '{0}'", ex.Message]);
+#: OrchardCore.Email.Core\Services\SmtpService.cs:69
+msgctxt "OrchardCore.Email.Services.SmtpService"
+msgid "An error occurred while sending an email: '{0}'"
+msgstr "Une erreur s'est produite lors de l'envoi d'un email : '{0}'"
+

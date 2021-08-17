@@ -1,0 +1,12 @@
+{% assign pattern = Model.ContentItem.Content.VContainerRow.Layout.Text | split: '-' %}
+{% assign patternLength = pattern | size %}
+<v-container class="{{ Model.Classes | join: ' ' }}" {{ Model.ContentItem.Content.VContainerRow.ContainerProps.Values | join: ' ' | raw }}>
+  <v-row {{ Model.ContentItem.Content.VContainerRow.RowProps.Values | join: ' ' | raw }}>
+    {% for col in Model.ContentItem.Content.FlowPart.Widgets %}
+      {% assign patternIndex = forloop.index | minus: 1 | modulo: patternLength %}
+      <v-col cols="12" md="{{ pattern[patternIndex] }}">
+        {{ Model.Content.FlowPart | shape_render }}
+      </v-col>
+    {% endfor %}
+  </v-row>
+</v-container>

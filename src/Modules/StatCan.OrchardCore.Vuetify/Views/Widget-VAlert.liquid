@@ -1,0 +1,14 @@
+{% assign color = Model.ContentItem.Content.VAlert.Color.Text %}
+{% assign type = Model.ContentItem.Content.VAlert.Type.Text %}
+{% assign elevation = Model.ContentItem.Content.VAlert.Elevation.Value %}
+{% assign icon = Model.ContentItem.Content.VAlert.Icon.Text %}
+{% assign border = Model.ContentItem.Content.VAlert.Border.Text %}
+
+<v-alert class="{{ Model.Classes | join: ' ' }}" {{ Model.ContentItem.Content.VAlert.Props.Values | join: ' ' | raw }}
+  {% if blank != color %}color="{{ color }}"{% endif %}
+  {% if blank != type %}type="{{ type }}"{% endif %}
+  {% if empty != elevation %}elevation="{{ elevation }}"{% endif %}
+  {% if blank != icon %}icon="{{ icon }}"{% endif %}
+  {% if blank != border %}border="{{ border }}"{% endif %}>
+  {{ Model.Content.FlowPart | shape_render }}
+</v-alert>

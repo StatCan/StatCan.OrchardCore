@@ -18,6 +18,7 @@
     <PackageReference Include="OrchardCore.Title" Version="$(OrchardCoreVersion)" />
     <ProjectReference Include="..\..\Lib\StatCan.OrchardCore.Extensions\StatCan.OrchardCore.Extensions.csproj" />
     <ProjectReference Include="..\..\Modules\StatCan.OrchardCore.ContentFields\StatCan.OrchardCore.ContentFields.csproj" />
+    <ProjectReference Include="..\..\Modules\StatCan.OrchardCore.Vuetify\StatCan.OrchardCore.Vuetify.csproj" />
   </ItemGroup>
 
 <!-- For content Migrations -->
@@ -27,6 +28,7 @@
     <PackageReference Include="OrchardCore.Autoroute" Version="$(OrchardCoreVersion)" />
     <PackageReference Include="OrchardCore.Media" Version="$(OrchardCoreVersion)" />
     <PackageReference Include="OrchardCore.Flows" Version="$(OrchardCoreVersion)" />
+    <PackageReference Include="OrchardCore.Menu" Version="$(OrchardCoreVersion)" />
   </ItemGroup>
 
   <ItemGroup>

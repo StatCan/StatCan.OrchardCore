@@ -1,0 +1,61 @@
+{%- comment -%}This menu item does not currently support highlighting{%- endcomment -%}
+{% assign taxonomies = Model.ContentItem.Content.TaxonomyMenuItem.Taxonomy.ContentItemIds | content_item_id %}
+{% for taxonomy in taxonomies %}
+  {% assign path = taxonomy.Content.AutoroutePart.Path %}
+  {% assign terms = taxonomy.Content.TaxonomyPart.Terms %}
+  <v-list-group 
+    data-menu="group"
+    no-action 
+    value="{{ Model.ContentItem.Content.TaxonomyMenuItem.Expanded.Value }}"
+    {%- if Model.ContentItem.Content.CommonMenuItemPart.IconName.Text != blank %}
+      prepend-icon="{{Model.ContentItem.Content.CommonMenuItemPart.IconName.Text}}"
+    {% endif %}
+  >
+    <template v-slot:activator>
+      <v-list-item-content>
+        <v-list-item-title>{{ Model.ContentItem.DisplayText }}</v-list-item-title>
+      </v-list-item-content>
+    </template>
+    {% for term in terms %}
+    	{% assign termPath = '~/' | append: path | append: '/' | append: term.AutoroutePart.Path %}
+      {% if term.Terms != nil %}
+         <v-list-group
+            data-menu="group"
+            value="{{ Model.ContentItem.Content.TaxonomyMenuItem.Expanded.Value }}"
+            sub-group
+            no-action
+          >
+           <template v-slot:activator>
+             <v-list-item-content>
+               <v-list-item-title>{{ term.DisplayText }}</v-list-item-title>
+             </v-list-item-content>
+           </template>
+             <v-list-item data-menu="item" href="{{ termPath | href }}">
+               <v-list-item-content>
+                 <v-list-item-title>
+                   {{ 'All' | t}} {{ term.DisplayText }}
+                 </v-list-item-title>
+               </v-list-item-content>
+           </v-list-item>
+            {% for subTerm in term.Terms %}
+              <v-list-item data-menu="item" href="{{ termPath | append: '/' | append: subTerm.AutoroutePart.Path | href }}">
+                <v-list-item-content>
+                  <v-list-item-title>
+                    {{ subTerm.DisplayText }}
+                  </v-list-item-title>
+                </v-list-item-content>
+              </v-list-item>
+            {% endfor %}
+    	</v-list-group>
+      {% else %}
+        <v-list-item data-menu="item" href="{{ termPath | href }}">
+            <v-list-item-content>
+              <v-list-item-title>
+                {{ term.DisplayText }}
+              </v-list-item-title>
+            </v-list-item-content>
+        </v-list-item>
+      {% endif %}
+    {% endfor %}
+  </v-list-group>
+{% endfor %}

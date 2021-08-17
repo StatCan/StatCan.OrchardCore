@@ -3,12 +3,12 @@
 {% assign height = Model.ContentItem.Content.VFooter.Height.Text %}
 {% assign width = Model.ContentItem.Content.VFooter.Width.Text %}
 
-<v-footer 
+<v-footer class="{{ Model.Classes | join: ' ' }}"
   {{ Model.ContentItem.Content.VFooter.Props.Values | join: ' ' | raw }}
-  {% if empty != color %}color="{{ color }}"{% endif %}
-  {% if empty != elevation %}elevation="{{ elevation }}"{% endif %}
-  {% if empty != height %}height="{{ height }}"{% endif %}
-  {% if empty != width %}width="{{ width }}"{% endif %}
+  {% if blank != color %}color="{{ color }}"{% endif %}
+  {% if blank != elevation %}elevation="{{ elevation }}"{% endif %}
+  {% if blank != height %}height="{{ height }}"{% endif %}
+  {% if blank != width %}width="{{ width }}"{% endif %}
 >
   {{ Model.Content.FlowPart | shape_render }}
 </v-footer>

@@ -16,6 +16,10 @@ namespace StatCan.OrchardCore.CommonTypes.Page
 
         public int Create()
         {
+            _contentDefinitionManager.AlterPartDefinition("Page", p => p
+                .WithDisplayName("Page")
+                .WithHtmlField("UnauthorizedHtml", "Unauthorized Html", "Displayed when no redirect is provided and the user is not authorized", "0")
+            );
             _contentDefinitionManager.AlterTypeDefinition("Page", type => type
                 .DisplayedAs("Page")
                 .Creatable()
@@ -39,8 +43,23 @@ namespace StatCan.OrchardCore.CommonTypes.Page
                     })
                 )
                 .WithFlow("3")
+                .WithContentPermission("4")
+                .WithPart("Page", p => p.WithPosition("5"))
             );
-           return 1;
+            return 2;
+        }
+
+        public int UpdateFrom1()
+        {
+            _contentDefinitionManager.AlterPartDefinition("Page", p => p
+                .WithDisplayName("Page")
+                .WithHtmlField("UnauthorizedHtml", "Unauthorized Html", "Displayed when no redirect is provided and the user is not authorized", "0")
+            );
+            _contentDefinitionManager.AlterTypeDefinition("Page", type => type
+                .WithContentPermission("4")
+                .WithPart("Page", p => p.WithPosition("5"))
+            );
+            return 2;
         }
     }
     public class AdditionalPagesMigrations : DataMigration
