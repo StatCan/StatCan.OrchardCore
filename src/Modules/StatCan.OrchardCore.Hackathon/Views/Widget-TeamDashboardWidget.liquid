@@ -10,8 +10,6 @@
   {% assign isTeamCaptain = team.ContentItem.Content.Team.TeamCaptain.UserIds.first != null and team.ContentItem.Content.Team.TeamCaptain.UserIds.first == user.UserId %}
   {% assign isTeamEditable = Site.Properties.HackathonCustomSettings.TeamCustomSettings.TeamEditable.Value == true %}
   {% assign challengeSelected =  team.ContentItem.Content.Team.Challenge.ContentItemIds | content_item_id | first %}
-  {% assign teamLogo = team.ContentItem.Content.Team.TeamLogo.Paths.first %}
-  {% assign teamLogoAnchor = team.ContentItem.Content.Team.Anchors.Paths.first %}
   {% assign teamCaptain = team.ContentItem.Content.Team.TeamCaptain.UserIds.first %}
 
   {% if user.Properties.Hacker.Hacker.Team.ContentItemIds.first != null %}
