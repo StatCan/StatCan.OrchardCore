@@ -154,7 +154,8 @@ describe("Hackathon Tests", function() {
   it("Team Management: Leave Team", function() {
     cy.loginAs(tenant.prefix, 'Frank', password);
     cy.visit(`${tenant.prefix}/${TeamManagementPagePath}`)
-  
+    
+    cy.get('button[name=btnLeaveModal]').click();
     cy.get('button[name=btnLeave]').click();
 
     cy.get('div[class=v-alert__content]').should('contain', 'Successfully left team');
@@ -186,7 +187,7 @@ describe("Hackathon Tests", function() {
     cy.visit(`${tenant.prefix}/${TeamManagementPagePath}`)
   
     cy.get('div[class=v-select__selections]').click();
-    cy.get('div[class=v-list-item__title]').click();
+    cy.get('div[class=v-list-item__content]').click();
 
     cy.get('button[name=btnSave]').click();
 
