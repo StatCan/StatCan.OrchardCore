@@ -116,6 +116,11 @@ namespace StatCan.Themes.VuetifyTheme
             return 9;
         }
 
+        public int UpdateFrom9() {
+            VuetifyThemeSettings();
+            return 10;
+        }
+
         #region Private methods
 
         private async Task SwitchToVuetifyModule()
@@ -179,6 +184,14 @@ namespace StatCan.Themes.VuetifyTheme
                             Options = "{\"language\": \"json\"}"
                         }
                     )
+                )
+
+            );
+            _contentDefinitionManager.AlterPartDefinition("VuetifyThemeSettings", part => part
+            .WithField("BackgroundColor", field => field
+                    .OfType("TextField")
+                    .WithDisplayName("Background Color")
+                    .WithPosition("4")
                 )
             );
         }
@@ -1726,6 +1739,35 @@ namespace StatCan.Themes.VuetifyTheme
 
         private void VSubheader()
         {
+            _contentDefinitionManager.AlterTypeDefinition("FIP", type => type
+                .DisplayedAs("FIP")
+                .Stereotype("Widget")
+                .WithPart("FIP", part => part
+                    .WithPosition("0")
+                )
+            );
+
+            _contentDefinitionManager.AlterPartDefinition("FIP", part => part
+                .WithField("Props", field => field
+                    .OfType("MultiTextField")
+                    .WithDisplayName("Props")
+                    .WithEditor("Picker")
+                    .WithPosition("0")
+                    .WithSettings(new MultiTextFieldSettings
+                    {
+                        Options = new MultiTextFieldValueOption[] {
+                            new MultiTextFieldValueOption() {Name = "Dark", Value = "dark"},
+                            new MultiTextFieldValueOption() {Name = "Light", Value = "light"},
+                            new MultiTextFieldValueOption() {Name = "Rounded", Value = "rounded"},
+                            new MultiTextFieldValueOption() {Name = "Shaped", Value = "shaped"}
+                        },
+                    })
+                )
+            );
+        }
+
+        private void VSubheader()
+        {
             _contentDefinitionManager.AlterTypeDefinition("VSubheader", type => type
                 .DisplayedAs("VSubheader")
                 .WithPart("VSubheader", part => part
@@ -1890,6 +1932,38 @@ namespace StatCan.Themes.VuetifyTheme
                         new MultiTextFieldValueOption() {Name = "Vertical", Value = "vertical"},
                     },
                     })
+                )
+            );
+        }
+
+        private void TaxonomyMenuItem()
+        {
+            _contentDefinitionManager.AlterTypeDefinition("TaxonomyMenuItem", type => type
+                .DisplayedAs("Taxonomy Menu Item")
+                .Stereotype("MenuItem")
+                .WithPart("TitlePart", part => part
+                    .WithPosition("0")
+                )
+                .WithPart("TaxonomyMenuItem", part => part
+                    .WithPosition("1")
+                )
+            );
+
+            _contentDefinitionManager.AlterPartDefinition("TaxonomyMenuItem", part => part
+                .WithField("Taxonomy", field => field
+                    .OfType("ContentPickerField")
+                    .WithDisplayName("Taxonomy")
+                    .WithPosition("0")
+                    .WithSettings(new ContentPickerFieldSettings
+                    {
+                        DisplayedContentTypes = new[] { "Taxonomy" },
+                    })
+                )
+                .WithTextField("IconName", "Icon Name", "1")
+                .WithField("Expanded", field => field
+                    .OfType("BooleanField")
+                    .WithDisplayName("Expanded")
+                    .WithPosition("2")
                 )
             );
         }

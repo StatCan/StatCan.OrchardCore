@@ -38711,7 +38711,7 @@ if (document.documentElement.dataset.theme) {
     }
   }
 }));
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"b1143254-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/Themes/VuetifyTheme/Assets/src/components/IEBanner.vue?vue&type=template&id=00ce104c&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"538d78bd-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/Themes/VuetifyTheme/Assets/src/components/IEBanner.vue?vue&type=template&id=00ce104c&
 var IEBannervue_type_template_id_00ce104c_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.isIE)?_c('v-banner',{attrs:{"single-line":"","rounded":"","outlined":""},scopedSlots:_vm._u([{key:"actions",fn:function(ref){
 var dismiss = ref.dismiss;
 return [_c('v-btn',{attrs:{"color":"primary","text":""},on:{"click":dismiss}},[_vm._v(" "+_vm._s(_vm.ok)+" ")])]}}],null,false,3849597524)},[_c('v-avatar',{attrs:{"slot":"icon","size":"40"},slot:"icon"},[_c('svg',{attrs:{"xmlns":"http://www.w3.org/2000/svg","viewBox":"0 0 256 256"}},[_c('path',{staticStyle:{"fill":"#1ebbee"},attrs:{"d":"M224.55,132.63A89,89,0,0,0,213.67,90C243.58,23,182,33,178.33,33a158.1,158.1,0,0,0-36.25,11.78c-41.69-.5-77.94,21.75-89.72,68C74.11,88.23,89.51,78.26,98.58,74.63c-1.91,1.73-3.81,3.54-5.71,5.35a268.73,268.73,0,0,0-36.25,44.41C48.91,138,40.3,149.76,35.77,165.17,11.3,254,88.34,216.83,99.21,210.48a86.24,86.24,0,0,0,39,9,87.59,87.59,0,0,0,82.47-58H174.43c-21.75,34.44-73.41,19-75.22-18.12H224.27a86.06,86.06,0,0,0,.73-10.88ZM208.23,46.54c7.53,5.08,13.6,12.69,3.18,39.88-10-16.32-24.47-29-42.6-35.35,8.07-3.9,28.1-11.78,39.88-4.53Zm-160.4,164c-6.17-6.25-7.25-21.75,6.34-49.84A85.77,85.77,0,0,0,92.23,207c-8.79,4.8-31.72,15.4-44.4,3ZM98.58,120C99.27,100,116.7,83.7,138.45,83.7s39,16.31,39.88,36.25H98.58Z"}}),_c('path',{staticStyle:{"fill":"#ff1f1f"},attrs:{"d":"M128,10a118,118,0,0,1,83.44,201.44A118,118,0,0,1,44.56,44.56,117.22,117.22,0,0,1,128,10m0-10A128,128,0,1,0,256,128,128,128,0,0,0,128,0Z"}}),_c('line',{staticStyle:{"fill":"none","stroke":"#ff1f1f","stroke-miterlimit":"10","stroke-width":"10px"},attrs:{"x1":"216.58","y1":"39.42","x2":"39.42","y2":"216.58"}})])]),_c('span',{domProps:{"innerHTML":_vm._s(_vm.ie)}})],1):_vm._e()}
@@ -39105,7 +39105,6 @@ var materialdesignicons = __webpack_require__("3796");
 var sass_styles = __webpack_require__("0159");
 
 // CONCATENATED MODULE: ./src/Themes/VuetifyTheme/Assets/src/App.js
-
 
 
 

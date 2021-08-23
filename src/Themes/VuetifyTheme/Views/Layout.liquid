@@ -13,14 +13,14 @@
     {% render_section "HeadMeta", required: false %}
     {% resources type: "HeadScript" %}
   </head>
-  <body dir="{{ Culture.Dir }}">
+  <body dir="{{ Culture.Dir }}" style="background-color: {{Site.Properties.VuetifyThemeSettings.VuetifyThemeSettings.BackgroundColor.Text}}">
     <div id="outdated"></div>
     <div id="vuetify-theme-app" v-cloak>
       <v-app>
         <a class="d-sr-only-focusable" href="#main">{{ "Skip to main content" | t }}</a>
         {% render_section "NavigationDrawer", required: false %}
         {% render_section "Header", required: false %}
-        <v-main id="main">
+        <v-main id="main" style="background-color: {{Site.Properties.VuetifyThemeSettings.VuetifyThemeSettings.BackgroundColor.Text}}">
           {% render_section "IEBanner", required: false %}
           {% assign breadcrumbNotEmpty = "Breadcrumb" | section_not_empy %}
           {% if breadcrumbNotEmpty %}
