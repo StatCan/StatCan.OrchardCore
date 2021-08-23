@@ -5,7 +5,6 @@ using OrchardCore.ContentFields.Settings;
 using OrchardCore.Title.Models;
 using OrchardCore.ContentFields.Fields;
 using StatCan.OrchardCore.Extensions;
-using OrchardCore.Media.Settings;
 
 namespace StatCan.OrchardCore.Hackathon
 {
