@@ -78,6 +78,7 @@ namespace StatCan.Themes.VuetifyTheme
         public int UpdateFrom5()
         {
             VRow();
+            VuetifyThemeSettings();
             return 6;
         }
 
@@ -119,6 +120,23 @@ namespace StatCan.Themes.VuetifyTheme
         public int UpdateFrom9() {
             VuetifyThemeSettings();
             return 10;
+        }
+
+            await SwitchToVuetifyModule();
+            _contentDefinitionManager.AlterPartDefinition("AuthContentMenuItem", part => part
+                .WithTextField("IconName", "Icon Name", "0")
+                .WithField("SelectedContentItem", field => field
+                    .OfType("ContentPickerField")
+                    .WithDisplayName("Selected Content Item")
+                    .WithPosition("1")
+                    .WithSettings(new ContentPickerFieldSettings
+                    {
+                        Required = true,
+                        DisplayAllContentTypes = true
+                    })
+                )
+            );
+            return 9;
         }
 
         #region Private methods
@@ -298,6 +316,7 @@ namespace StatCan.Themes.VuetifyTheme
             );
             _contentDefinitionManager.AlterPartDefinition("ContentMenuItem", part => part
                 .RemoveField("IconName")
+                .WithTextField("IconName", "Icon Name", "0")
             );
             _contentDefinitionManager.AlterPartDefinition("LinkMenuItem", part => part
                 .RemoveField("IconName")
