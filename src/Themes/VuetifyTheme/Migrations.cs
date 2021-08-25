@@ -122,6 +122,7 @@ namespace StatCan.Themes.VuetifyTheme
             return 10;
         }
 
+        public async Task<int> UpdateFrom10() {
             await SwitchToVuetifyModule();
             _contentDefinitionManager.AlterPartDefinition("AuthContentMenuItem", part => part
                 .WithTextField("IconName", "Icon Name", "0")
@@ -136,8 +137,10 @@ namespace StatCan.Themes.VuetifyTheme
                     })
                 )
             );
-            return 9;
+            return 11;
+
         }
+        
 
         #region Private methods
 
@@ -1753,35 +1756,6 @@ namespace StatCan.Themes.VuetifyTheme
                 .WithTitlePart("0", TitlePartOptions.EditableRequired)
                 .WithPart("ScheduleEvent", p => p.WithPosition("1"))
                 .WithMarkdownBody("2")
-            );
-        }
-
-        private void VSubheader()
-        {
-            _contentDefinitionManager.AlterTypeDefinition("FIP", type => type
-                .DisplayedAs("FIP")
-                .Stereotype("Widget")
-                .WithPart("FIP", part => part
-                    .WithPosition("0")
-                )
-            );
-
-            _contentDefinitionManager.AlterPartDefinition("FIP", part => part
-                .WithField("Props", field => field
-                    .OfType("MultiTextField")
-                    .WithDisplayName("Props")
-                    .WithEditor("Picker")
-                    .WithPosition("0")
-                    .WithSettings(new MultiTextFieldSettings
-                    {
-                        Options = new MultiTextFieldValueOption[] {
-                            new MultiTextFieldValueOption() {Name = "Dark", Value = "dark"},
-                            new MultiTextFieldValueOption() {Name = "Light", Value = "light"},
-                            new MultiTextFieldValueOption() {Name = "Rounded", Value = "rounded"},
-                            new MultiTextFieldValueOption() {Name = "Shaped", Value = "shaped"}
-                        },
-                    })
-                )
             );
         }
 
