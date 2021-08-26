@@ -78,6 +78,7 @@ namespace StatCan.Themes.VuetifyTheme
         public int UpdateFrom5()
         {
             VRow();
+            VuetifyThemeSettings();
             return 6;
         }
 
@@ -115,6 +116,31 @@ namespace StatCan.Themes.VuetifyTheme
             await SwitchToVuetifyModule();
             return 9;
         }
+
+        public int UpdateFrom9() {
+            VuetifyThemeSettings();
+            return 10;
+        }
+
+        public async Task<int> UpdateFrom10() {
+            await SwitchToVuetifyModule();
+            _contentDefinitionManager.AlterPartDefinition("AuthContentMenuItem", part => part
+                .WithTextField("IconName", "Icon Name", "0")
+                .WithField("SelectedContentItem", field => field
+                    .OfType("ContentPickerField")
+                    .WithDisplayName("Selected Content Item")
+                    .WithPosition("1")
+                    .WithSettings(new ContentPickerFieldSettings
+                    {
+                        Required = true,
+                        DisplayAllContentTypes = true
+                    })
+                )
+            );
+            return 11;
+
+        }
+        
 
         #region Private methods
 
@@ -179,6 +205,14 @@ namespace StatCan.Themes.VuetifyTheme
                             Options = "{\"language\": \"json\"}"
                         }
                     )
+                )
+
+            );
+            _contentDefinitionManager.AlterPartDefinition("VuetifyThemeSettings", part => part
+            .WithField("BackgroundColor", field => field
+                    .OfType("TextField")
+                    .WithDisplayName("Background Color")
+                    .WithPosition("4")
                 )
             );
         }
@@ -285,6 +319,7 @@ namespace StatCan.Themes.VuetifyTheme
             );
             _contentDefinitionManager.AlterPartDefinition("ContentMenuItem", part => part
                 .RemoveField("IconName")
+                .WithTextField("IconName", "Icon Name", "0")
             );
             _contentDefinitionManager.AlterPartDefinition("LinkMenuItem", part => part
                 .RemoveField("IconName")
@@ -1890,6 +1925,38 @@ namespace StatCan.Themes.VuetifyTheme
                         new MultiTextFieldValueOption() {Name = "Vertical", Value = "vertical"},
                     },
                     })
+                )
+            );
+        }
+
+        private void TaxonomyMenuItem()
+        {
+            _contentDefinitionManager.AlterTypeDefinition("TaxonomyMenuItem", type => type
+                .DisplayedAs("Taxonomy Menu Item")
+                .Stereotype("MenuItem")
+                .WithPart("TitlePart", part => part
+                    .WithPosition("0")
+                )
+                .WithPart("TaxonomyMenuItem", part => part
+                    .WithPosition("1")
+                )
+            );
+
+            _contentDefinitionManager.AlterPartDefinition("TaxonomyMenuItem", part => part
+                .WithField("Taxonomy", field => field
+                    .OfType("ContentPickerField")
+                    .WithDisplayName("Taxonomy")
+                    .WithPosition("0")
+                    .WithSettings(new ContentPickerFieldSettings
+                    {
+                        DisplayedContentTypes = new[] { "Taxonomy" },
+                    })
+                )
+                .WithTextField("IconName", "Icon Name", "1")
+                .WithField("Expanded", field => field
+                    .OfType("BooleanField")
+                    .WithDisplayName("Expanded")
+                    .WithPosition("2")
                 )
             );
         }

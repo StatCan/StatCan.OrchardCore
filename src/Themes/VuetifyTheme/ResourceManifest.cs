@@ -27,6 +27,10 @@ namespace StatCan.Themes.VuetifyTheme
                 .SetDependencies("vuejs")
                 .SetUrl("~/VuetifyTheme/dist/vuetify-theme.umd.min.js", "~/VuetifyTheme/dist/vuetify-theme.umd.js")
                 .SetVersion("1.0.0");
+            _manifest
+                .DefineStyle("ethos-css")
+                .SetUrl("~/VuetifyTheme/css/ethos.min.css", "~/VuetifyTheme/css/ethos.css")
+                .SetVersion("1.0.0");
         }
 
         public void Configure(ResourceManagementOptions options)

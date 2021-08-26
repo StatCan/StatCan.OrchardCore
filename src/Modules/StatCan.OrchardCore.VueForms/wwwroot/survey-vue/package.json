@@ -1,16 +1,39 @@
 {
-  "name": "survey-vue",
-  "version": "1.8.52",
-  "description": "survey.js is a JavaScript Survey Library. It is a modern way to add a survey to your website. It uses JSON for survey metadata and results.",
-  "keywords": [
-    "Survey",
-    "JavaScript",
-    "Bootstrap",
-    "Library",
-    "vue"
+  "_args": [
+    [
+      "survey-vue@1.8.52",
+      "C:\\Users\\scrat\\Documents\\StatcanWork\\StatCan.OrchardCore\\src\\Modules\\StatCan.OrchardCore.VueForms"
+    ]
   ],
-  "homepage": "https://surveyjs.io/",
-  "license": "MIT",
+  "_from": "survey-vue@1.8.52",
+  "_id": "survey-vue@1.8.52",
+  "_inBundle": false,
+  "_integrity": "sha512-FKhE87khWSwOvsWBitPcC+jg08hD9F419+k+cgPLzX45G1OEg3HaAJ8az1VnCjngAzK07O55CHUDNT8hMSIPKg==",
+  "_location": "/survey-vue",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "survey-vue@1.8.52",
+    "name": "survey-vue",
+    "escapedName": "survey-vue",
+    "rawSpec": "1.8.52",
+    "saveSpec": null,
+    "fetchSpec": "1.8.52"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/survey-vue/-/survey-vue-1.8.52.tgz",
+  "_spec": "1.8.52",
+  "_where": "C:\\Users\\scrat\\Documents\\StatcanWork\\StatCan.OrchardCore\\src\\Modules\\StatCan.OrchardCore.VueForms",
+  "bugs": {
+    "url": "https://github.com/surveyjs/surveyjs/issues"
+  },
+  "dependencies": {
+    "vue": "^2.1.10"
+  },
+  "description": "survey.js is a JavaScript Survey Library. It is a modern way to add a survey to your website. It uses JSON for survey metadata and results.",
   "files": [
     "survey.css",
     "survey.min.css",
@@ -20,13 +43,21 @@
     "survey.vue.js",
     "survey.vue.min.js"
   ],
+  "homepage": "https://surveyjs.io/",
+  "keywords": [
+    "Survey",
+    "JavaScript",
+    "Bootstrap",
+    "Library",
+    "vue"
+  ],
+  "license": "MIT",
   "main": "survey-vue.js",
+  "name": "survey-vue",
   "repository": {
     "type": "git",
-    "url": "https://github.com/surveyjs/surveyjs.git"
+    "url": "git+https://github.com/surveyjs/surveyjs.git"
   },
   "typings": "survey.vue.d.ts",
-  "dependencies": {
-    "vue": "^2.1.10"
-  }
+  "version": "1.8.52"
 }
