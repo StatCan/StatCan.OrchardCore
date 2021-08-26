@@ -24,5 +24,9 @@
     "file": "Assets/src/header_scripts.js",
     "output": "wwwroot/header_scripts",
     "name": "head"
+  },
+  {
+    "inputs": ["Assets/scss/Ethos.scss"],
+    "output": "wwwroot/css/ethos.css"
   }
 ]
