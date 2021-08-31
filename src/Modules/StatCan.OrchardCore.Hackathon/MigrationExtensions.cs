@@ -19,6 +19,12 @@ namespace StatCan.OrchardCore.Hackathon
                     .WithDisplayName("Team")
                     .WithPosition(position)
                     .WithSettings(new ContentPickerFieldSettings() { DisplayedContentTypes = new string[] { "Team" } })
+                    
+                )
+                    .WithField("Attendance", field => field
+                    .OfType("BooleanField")
+                    .WithDisplayName("Attendance")
+                    .WithPosition("1")
                 );
         }
 
