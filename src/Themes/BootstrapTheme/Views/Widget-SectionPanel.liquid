@@ -1,0 +1,17 @@
+<article id="{{ Model.ContentItem.DisplayText | slugify }}" class="d-flex flex-column flex-fill">
+  <div class="section-panel">
+    <header class="section-panel-header">
+      <h2>{{ Model.ContentItem.DisplayText }}</h2>
+      <h3 class="h4">{{ Model.ContentItem.Content.SectionPanel.Subtitle.Text }}</h3>
+    </header>
+    <nav class="mt-5">
+      <ul class="row mb-0 is-horizontal-list flex-fill justify-content-start">
+      {% for widget in Model.ContentItem.Content.FlowPart.Widgets %}
+        <li class="col-lg-4 col-md-6"> 
+          {{widget | shape_build_display | shape_render}}
+        </li>
+      {% endfor %}
+      </ul>
+    </nav>
+  </div>
+</article>

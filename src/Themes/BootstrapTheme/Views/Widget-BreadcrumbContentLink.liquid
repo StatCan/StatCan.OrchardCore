@@ -1,0 +1,3 @@
+{% assign displayUrl = Model.ContentItem.Content.BreadcrumbContentLink.LinkedContent.ContentItemIds.first | display_url %}
+<li class="breadcrumb-item"><a href="{{ displayUrl }}">{{ Model.ContentItem.DisplayText }}</a></li>
+

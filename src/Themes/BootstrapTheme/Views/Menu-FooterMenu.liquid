@@ -1,0 +1,12 @@
+{% capture renderedItems %}
+  {% for item in Model.Items %}
+    {{ item | shape_render}}
+  {% endfor %}
+{% endcapture %}
+
+<ul class="list-inline d-none d-lg-block mb-0">
+  {{renderedItems}}
+</ul>
+<ul class="d-block d-lg-none mb-3">
+  {{renderedItems}}
+</ul>

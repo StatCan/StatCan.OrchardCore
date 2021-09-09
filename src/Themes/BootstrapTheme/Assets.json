@@ -1,25 +1,27 @@
 [
   {
-    "inputs": ["Assets/scss/inno-bootstrap.scss"],
+    "inputs": [ "Assets/scss/bootstrap-theme.scss" ],
     "watch": [
-      "Assets/scss/_404.scss",
-      "Assets/scss/_base.scss",
       "Assets/scss/_bootstrap.scss",
-      "Assets/scss/_font-sizes.scss",
-      "Assets/scss/_layout.scss",
-      "Assets/scss/_messages.scss",
-      "Assets/scss/_mixin-override.scss",
+      "Assets/scss/_feedback.scss",
+      "Assets/scss/_details-summary.scss",
+      "Assets/scss/_fip.scss",
+      "Assets/scss/_footer.scss",
+      "Assets/scss/_global.scss",
+      "Assets/scss/_hero.scss",
+      "Assets/scss/_login.scss",
       "Assets/scss/_mixins.scss",
-      "Assets/scss/_variables.scss",
-      "Assets/scss/_partials.scss",
-      "Assets/scss/_forms.scss"
-
+      "Assets/scss/_modal.scss",
+      "Assets/scss/_section-panel.scss",
+      "Assets/scss/_section.scss",
+      "Assets/scss/_tab-panel.scss",
+      "Assets/scss/_toast-message.scss"
     ],
-    "output": "wwwroot/css/inno-bootstrap.css"
+    "output": "wwwroot/css/bootstrap-theme.css"
   },
   {
-    "inputs": ["Assets/js/header.js"],
-    "output": "wwwroot/js/header.js"
+    "inputs": [ "node_modules/details-element-polyfill/dist/details-element-polyfill.js" ],
+    "output": "wwwroot/Scripts/details-element-polyfill.js"
   },
   {
     "inputs": [ "node_modules/jquery/dist/jquery.js" ],
@@ -47,5 +49,20 @@
     "copy": true,
     "inputs": [ "node_modules/@fortawesome/fontawesome-free/webfonts/*" ],
     "output": "wwwroot/Vendor/fontawesome-free/webfonts/@"
+  },
+  {
+    "copy": true,
+    "inputs": [ "node_modules/@mdi/font/fonts/*" ],
+    "output": "wwwroot/Vendor/mdi-icons/fonts/@"
+  },
+  {
+    "copy": true,
+    "inputs": [ "node_modules/@mdi/font/css/*" ],
+    "output": "wwwroot/Vendor/mdi-icons/css/@"
+  },
+  {
+    "copy": true,
+    "inputs": [ "node_modules/@mdi/font/css/*" ],
+    "output": "wwwroot/Vendor/mdi-icons/css/@"
   }
 ]

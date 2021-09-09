@@ -1,0 +1,12 @@
+<div class="section-panel panel-background mt-5 mb-3 p-5">
+  <!-- <pre>{{ Model.ContentItem.Content }}</pre> -->
+  <nav class="navbar navbar-expand-lg justify-content-center p-0" role="navigation">   
+    <ul class="navbar-nav align-items-center">
+      {% for item in Model.ContentItem.Content.BagPart.ContentItems %}
+      <li class="nav-item">
+        {{ item | shape_build_display | shape_render }}
+      </li>
+      {% endfor %}
+    </ul>
+  </nav>  
+</div>

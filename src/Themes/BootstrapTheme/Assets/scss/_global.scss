@@ -1,0 +1,328 @@
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: $background;
+  color: $text;
+  font-weight: 300;
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  font-family: "Fira Sans", sans-serif;
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+  @include browser(Android) {
+    min-height: 92vh;
+  }
+}
+
+.skip-navigation {
+  @include sr-only;
+  @include sr-only-focusable;
+  z-index: 1500;
+  color: $text;
+}
+
+h1,
+.h1 {
+  @include rfs(56);
+  font-weight: 400;
+  color: $secondary-dark;
+}
+h2,
+.h2 {
+  @include rfs(48);
+  font-weight: 400;
+  color: $secondary-dark;
+}
+h3,
+.h3 {
+  @include rfs(32);
+  font-weight: 400;
+  color: $secondary-dark;
+}
+h4,
+.h4 {
+  @include rfs(24);
+  font-weight: 400;
+  color: $secondary-dark;
+}
+h5,
+.h5 {
+  @include rfs(18);
+  font-weight: 200;
+}
+h6,
+.h6 {
+  @include rfs(16);
+  font-weight: 200;
+}
+p, .p {
+  @include rfs(16);
+  line-height: 1.5rem;
+  font-weight: 300;
+}
+.small {
+  @include rfs(12);
+  font-weight: 300;
+}
+
+a.lnk-underline {
+  color: inherit;
+  text-decoration: underline;
+}
+
+label {
+  @include rfs(17);
+  font-weight: 200;
+}
+
+.container-full-width {
+  margin: 0;
+  padding: 0 1.5rem;
+  @include media-breakpoint-up(sm) {
+    margin: 0 2rem ;
+  }
+}
+
+#content {
+  flex: 1 1 auto;
+}
+
+.btn {
+  &.is-circle {
+    align-items: center;
+    border-radius: 1.3rem;
+    display: flex;
+    justify-content: center;
+    padding: 0.3rem 0;
+    width: 2.6rem;
+    height: 2.6rem;
+  }
+  &.icon-btn {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    i {
+      padding-right: 0.5rem;
+      font-size: 1.25rem;
+    }
+  }
+  &.btn-light {
+    background-color: white;
+    color: #5F6368;
+    border: none;
+    &:focus {
+      background-color: transparentize($light-grey, 0.6);
+    }
+  } 
+}
+
+.btn-sm {
+  &.is-circle {
+    border-radius: 1rem;
+    padding: 0.22rem 0;
+    width: 2rem;
+    height: 2rem;
+  }
+  &.is-rounded {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    letter-spacing: 0.3px;
+  }
+}
+
+.btn-lg {  
+  font-size: 1rem;
+  padding: 14px;  
+  &.is-rounded {
+    padding-left: 3rem !important;
+    padding-right: 3rem !important;
+  }
+  &.fixed-width {
+    width: 240px;
+    @include media-breakpoint-up(md) {
+      width: 320px;
+    }
+    @include media-breakpoint-up(xl) {
+      width: 560px;
+    }
+  }
+}
+
+.btn-default {
+  background-color: $light-grey;
+}
+
+.is-rounded {
+  border-radius: 10rem;
+}
+
+.input-validation-error {
+  border: 1px solid #f78308; /*red, not primary cuz it's error. full red is gross */
+}
+.text-danger {
+  color: $error !important;
+}
+.text-error {
+  color: $error;
+}
+.text-secondary {
+  color: $secondary;
+}
+.text-white {
+  color: #ffffff;
+}
+.fa-md {
+  font-size: 1.5rem;
+}
+
+hr {
+  border-top: 1px solid $border;
+}
+
+details {
+  list-style: none;
+}
+
+.breadcrumb {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  margin-bottom: 0;
+  width: 100%;
+  background-color: #ffffff;
+  border-radius: 0;
+  padding-left: 1.5rem;  
+  @include media-breakpoint-up(sm) {
+    padding-left: 3rem;
+  }
+  .breadcrumb-item {
+    color: $text;
+    &::before {
+      color: $text;
+    }
+    a {
+      text-decoration: underline;
+      color: $text;
+    }
+  }
+}
+
+ul.list-dense {
+  li {
+    padding: 0;
+  }
+}
+
+ul.list-inline {
+  li {
+    display: inline-block;
+    margin-left: 0.5rem;
+  }
+  li:not(:first-child):before {
+    content: "\2022";
+    margin-right: 0.5rem;
+  }
+}
+
+.popover {
+  .popover-body {
+    padding: 16px;
+  }
+}
+
+.dropdown-menu {
+  background-color: lighten($background, 5%);
+  border: 1px solid transparentize($primary, 0.62);
+  box-shadow: 0 0.25rem 0.5rem 0.5rem $background;
+  .dropdown-divider {
+    border-top: 1px solid transparentize($primary, 0.81);
+  }
+  .dropdown-item {
+    color: $text;
+    font-weight: 300;
+    &:hover,
+    &:focus {
+      background-color: transparentize($primary, 0.62);
+    }
+  }
+}
+
+.form-control {
+  // background: transparentize($text, 0.75);
+  border-color: transparentize($text, 0.42);
+  color: $text;
+  font-weight: 300;
+  &:focus {
+    // background: transparentize($text, 0.75);
+    border-color: transparentize($text, 0.42);
+    color: $text;
+  }
+  &[aria-invalid="true"] {
+    border-color: $error;
+  }
+  &::placeholder {
+    color: #ffffff;
+  }
+}
+
+abbr[title], acronym[title] {
+  text-decoration: none;
+}
+
+// .form-check {
+//   .form-check-input {
+//     position: absolute;
+//     opacity: 0;
+//     cursor: pointer;
+//   }
+// }
+
+.powered-by-di {
+  padding-top: 1rem;
+  padding-bottom: 0.25rem;
+  font-weight: 300;
+}
+
+// .account-page {
+  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#000000+0,000000+100&0+0,0.62+38,0.62+62,0+100 */
+  // background: -moz-linear-gradient(
+  //   top,
+  //   rgba(0, 0, 0, 0) 0%,
+  //   rgba(0, 0, 0, 0.62) 38%,
+  //   rgba(0, 0, 0, 0.62) 62%,
+  //   rgba(0, 0, 0, 0) 100%
+  // ); /* FF3.6-15 */
+  // background: -webkit-linear-gradient(
+  //   top,
+  //   rgba(0, 0, 0, 0) 0%,
+  //   rgba(0, 0, 0, 0.62) 38%,
+  //   rgba(0, 0, 0, 0.62) 62%,
+  //   rgba(0, 0, 0, 0) 100%
+  // ); /* Chrome10-25,Safari5.1-6 */
+  // background: linear-gradient(
+  //   to bottom,
+  //   rgba(0, 0, 0, 0) 0%,
+  //   rgba(0, 0, 0, 0.62) 38%,
+  //   rgba(0, 0, 0, 0.62) 62%,
+  //   rgba(0, 0, 0, 0) 100%
+  // ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  // filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */
+// }
+
+@include media-breakpoint-up(lg) {
+  .btn {
+    &.btn-primary {
+      transition-property: transform;
+      transition-duration: 300ms;
+      transition-timing-function: ease-out;
+      &:hover {
+        transform: translateY(-5px);
+      }
+      &:focus {
+        transform: translateY(-5px);
+      }
+    }
+  }
+}

@@ -1,0 +1,57 @@
+@using Microsoft.AspNetCore.Mvc.ModelBinding
+@model OrchardCore.Users.ViewModels.RegisterExternalLoginViewModel
+
+@{
+    ViewLayout = "Layout__Login";
+}
+<shape type="SharedLoginHeader" title="@T["Your Azure account has been linked!"]" subtitle="@T["Final step"]" prompt="@T["To receive updates and as a final step, please provide us with the email address associated with your Azure cloud account. This is a one-time request (you will not be asked again the next time you sign in)."]" ></shape>
+
+<form asp-controller="Account" asp-action="RegisterExternalLogin" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+     @if (!Model.NoUsername || String.IsNullOrWhiteSpace(Model.UserName) || ViewData.ModelState.GetFieldValidationState("UserName") == ModelValidationState.Invalid)
+    {
+        <div class="form-group">
+            <label asp-for="UserName" class="d-flex justify-content-center control-label">@T["Username"]</label>
+            <input asp-for="UserName" class="form-control" autofocus />
+            <span asp-validation-for="UserName" class="text-danger"></span>
+        </div>
+    }
+
+    @if (!Model.NoEmail || String.IsNullOrWhiteSpace(Model.Email) || ViewData.ModelState.GetFieldValidationState("Email") == ModelValidationState.Invalid)
+    {
+        <div class="form-group">
+            <label asp-for="Email" class="col-md-3 control-label">@T["Email"]</label>
+            <input asp-for="Email" class="form-control" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+    }
+
+    @if (!Model.NoPassword)
+    {
+        <div class="row">
+            <div class="col-6">
+                <div class="form-group">
+                    <label asp-for="Password" class="control-label">@T["Password"]</label>
+                    <input asp-for="Password" class="form-control" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ConfirmPassword" class="control-label">@T["Confirm password"]</label>
+                    <input asp-for="ConfirmPassword" class="form-control" />
+                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-6 d-flex align-items-center">
+                <shape type="SharedPasswordRequirementText"></shape>
+            </div>
+        </div>
+    }
+
+    @await RenderSectionAsync("AfterRegister", required: false)
+
+    <div class="form-group d-flex justify-content-center mt-5">
+        <button type="submit" class="btn btn-lg btn-primary is-rounded">@T["Create account"]</button>
+    </div>
+</form>
+<shape type="SharedLoginFooter"></shape>

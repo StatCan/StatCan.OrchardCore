@@ -1,0 +1,54 @@
+@using Microsoft.AspNetCore.Identity
+@using Microsoft.Extensions.Options
+@using OrchardCore.Admin
+@using OrchardCore.Entities
+@using OrchardCore.Settings
+@using OrchardCore.Users
+@using OrchardCore.Users.Models
+@using Microsoft.AspNetCore.Authorization
+@inject ISiteService SiteService
+@inject SignInManager<IUser> SignInManager
+@inject IOptions<AdminOptions> AdminOptions
+@inject Microsoft.AspNetCore.Authorization.IAuthorizationService authorizationService
+
+@{
+    var allowChangeEmail = (await SiteService.GetSiteSettingsAsync()).As<ChangeEmailSettings>().AllowChangeEmail;
+    var canAccessAdmin = await authorizationService.AuthorizeAsync(User, OrchardCore.Admin.Permissions.AccessAdminPanel);
+    var externalAuthenticationSchemes = await SignInManager.GetExternalAuthenticationSchemesAsync();
+}
+@if (User.Identity.IsAuthenticated)
+{
+    <shape type="ModalProfile"></shape>
+    <form asp-route-area="OrchardCore.Users" asp-controller="Account" asp-action="LogOff" method="post">
+        <button type="submit" class="dropdown-item d-xl-none d-flex">@T["Sign out"]</button>
+    </form>
+    <div class="d-xl-flex d-none">
+        <a class="nav-link dropdown-toggle" href="#" id="accountMenu" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            @User.Identity.Name
+        </a>
+        <div class="dropdown-menu" aria-labelledby="accountMenu">
+          @if(canAccessAdmin) 
+          {
+            <a class="dropdown-item" asp-route-area="OrchardCore.Admin" asp-controller="Admin" asp-action="Index"><i class="mdi mdi-desktop-mac"></i> @T["Dashboard"]</a>
+          }
+          @if (allowChangeEmail)
+          {
+            <a class="dropdown-item" asp-route-area="OrchardCore.Users" asp-controller="ChangeEmail" asp-action="Index"><i class="mdi mdi-email"></i> @T["Change Email"]</a>
+          }
+          @* @if (externalAuthenticationSchemes.Count() > 0)
+          {
+              <a class="dropdown-item" asp-route-area="OrchardCore.Users" asp-controller="Account" asp-action="ExternalLogins"><i class="fa fa-user-lock fa-fw"></i> @T["External Logins"]</a>
+          } *@
+          <a class="dropdown-item" href="#" data-toggle="modal" data-target="#profile-modal"><i class="mdi mdi-account"></i> @T["Profile"]</a>
+          <form asp-route-area="OrchardCore.Users" asp-controller="Account" asp-action="LogOff" method="post">
+              <button type="submit" class="btn btn-link navbar-btn dropdown-item"><i class="mdi mdi-logout"></i> @T["Sign out"]</button>
+          </form>
+
+        </div>
+    </div>
+}
+else
+{
+<a href="@Url.Action("Login", "Account", new { Area = "OrchardCore.Users" })" class="dropdown-item d-xl-none d-flex">@T["Sign in"]</a>
+<a href="@Url.Action("Login", "Account", new { Area = "OrchardCore.Users" })" class="btn btn-primary icon-btn d-xl-flex align-items-center d-none"><i class="mdi mdi-account-circle"></i>@T["Sign in"]</a>
+}

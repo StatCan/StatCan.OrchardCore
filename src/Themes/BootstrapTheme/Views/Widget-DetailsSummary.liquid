@@ -1,0 +1,8 @@
+<details id="{{Model.ContentItem.DisplayText | slugify}}" class="accordion mb-3" {{Model.ContentItem.Content.DetailsSummary.TextAlign.Text}}>
+  <summary>{{Model.ContentItem.DisplayText}}</summary>
+  <ul class="mt-3 mb-0 list-unstyled align-self-center {{Model.ContentItem.Content.DetailsSummary.TextAlign.Text}} list-dense">
+    {% for item in Model.ContentItem.Content.Items.ContentItems %}
+    <li>{{item.DisplayText}}</li>
+    {% endfor %}
+  </ul>
+</details>
