@@ -1,0 +1,8 @@
+<a class="info-link btn-link"
+    href="{{ Model.ContentItem.Content.SimpleLink.Url.Text | shortcode }}"
+    target="_blank" 
+    rel="noopener noreferrer" 
+    aria-label="{{ 'Open {0} in a new tab' | t: Model.ContentItem.DisplayText }}"
+  >
+  <span aria-hidden="true"><i class="{{ Model.ActionIconClass }}"></i></span>
+</a>

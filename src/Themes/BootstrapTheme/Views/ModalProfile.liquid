@@ -1,0 +1,24 @@
+<a href="#" data-toggle="modal" data-target="#profile-modal" class="dropdown-item d-xl-none d-flex">{{ "Profile" | t }}</a>
+{% zone "Modal" %}
+<div id="profile-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered di-modal" role="document">
+        <div class="modal-content section-panel di-modal">
+            <div class="modal-header di-modal align-items-center">
+                <div class="modal-title">
+                  <h2 class="h2 mb-0">{{ "Profile" | t }}</h2>
+                </div>
+                <button type="button" class="btn btn-light btn-close" data-dismiss="modal" aria-label="{{ 'Close' | t }}">
+                  <span aria-hidden="true"><i class="mdi mdi-close fa-lg"></i></span>
+                </button>      
+                <hr /> 
+              </div>
+          <div class="modal-body di-modal">
+            <p class="h3 text-secondary">{{ "Contact email" | t }}</p>
+            <p class="h4 mb-4">{{ User | user_email }}</p>
+            <p class="h3 text-secondary">{{ "Username" | t }}</p>
+            <p class="h4">{{ User.Identity.Name }}</p>
+          </div>
+        </div>
+    </div>
+</div>
+{% endzone %}

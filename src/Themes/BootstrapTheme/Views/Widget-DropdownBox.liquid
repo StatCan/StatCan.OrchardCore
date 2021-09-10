@@ -1,0 +1,16 @@
+  <details style="border-radius: 10px;" {{Model.ContentItem.Content.DropdownBox.Expanded.Text}} class="border-{{Model.ContentItem.Content.DropdownBox.Colour.Text}}">
+    <summary style="border-radius: 8px;" class="bg-{{Model.ContentItem.Content.DropdownBox.Colour.Text}} text-{{Model.ContentItem.Content.DropdownBox.TextColour.Text}}">
+      {{Model.ContentItem.Content.TitlePart.Title}}
+    </summary>
+    <div class="row">
+      <div class="col-12 col-lg-3 col-md-4 col-sm-6">
+        {% for image in Model.ContentItem.Content.DropdownBox.BiographyImage.Paths %}
+        {{ image | asset_url | resize_url: width:600, height:600 | img_tag: alt: Model.ContentItem.Content.DropdownBox.BiographyName.Text, class:"img-thumbnail" }}
+        {% endfor %}
+      </div>
+      <div class="col-12 col-lg-9 col-md-8 col-sm-6">                     
+        <h3 class="text-center text-sm-left mt-0">{{Model.ContentItem.Content.DropdownBox.BiographyName.Text}}</h3>
+        {{ Model.ContentItem.Content.HtmlBodyPart.Html | liquid }}                     
+      </div>
+    </div>
+  </details>

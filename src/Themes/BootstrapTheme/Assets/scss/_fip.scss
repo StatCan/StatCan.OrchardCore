@@ -1,0 +1,74 @@
+.fip {
+  align-items: flex-end;
+  justify-content: space-between;
+  &:not(.fip-footer) {
+    margin: 1.125rem 0.75rem;
+    padding: 0.375rem 0.75rem;
+    @include media-breakpoint-up(sm) {
+      margin: 1.125rem 2.25rem;
+    }
+    @include media-breakpoint-up(xl) {
+      margin: 1.125rem 0rem 1.125rem 1.5rem;
+      padding: 0.375rem 1.5rem;
+    }
+  }
+  .fip-flag {
+    fill: #e33445;
+  }
+  .fip-text {
+    fill: $black;
+  }
+  &.mono {
+    .fip-flag {
+      fill: $black;
+    }
+  }
+  &.dark {
+    .fip-flag {
+      fill: #e33445;
+    }
+    .fip-text {
+      fill: $white;
+    }
+    &.mono {
+      .fip-flag {
+        fill: $white;
+      }
+    }
+  }
+  &.mono-dark {
+    .fip-flag {
+      fill: $white;
+    }
+    .fip-text {
+      fill: $white;
+    }
+    &.mono {
+      .fip-flag {
+        fill: $white;
+      }
+    }
+  }
+}
+
+.sig > svg {
+  height: 1.5rem;
+  // @include media-breakpoint-up(md) {
+  //   height: 1.3rem;
+  // }
+  // @include media-breakpoint-up(lg) {
+  //   height: 1.5rem;
+  // }
+}
+.wmms > svg {
+  height: 1.5rem;
+  @include media-breakpoint-up(md) {
+    height: 2.25rem;
+  }
+  @include media-breakpoint-up(lg) {
+    height: 3rem;
+  }
+}
+.fip-spacer {
+  width: 15vw;
+}

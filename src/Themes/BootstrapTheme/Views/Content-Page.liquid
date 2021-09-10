@@ -1,0 +1,7 @@
+{% assign userCanView = Model.ContentItem | user_can_view%}
+{% if userCanView %}
+  {{Model.Content.FlowPart | shape_render}}
+  {% httpcontext_add_items PageModified: Model.ContentItem.ModifiedUtc %}
+{% else %}
+  {{Model.Content.Page__UnauthorizedHtml | shape_render}}
+{% endif %}

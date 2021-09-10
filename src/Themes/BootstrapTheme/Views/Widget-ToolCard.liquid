@@ -1,0 +1,44 @@
+{% assign toolCard = Model.ContentItem.Content.ToolCard%}
+<div id="{{ Model.ContentItem.DisplayText | slugify }}" class="w-100 h-100 col-md-12 d-inline-flex flex-grow-1 justify-content-center">
+  <div class="section-panel-link d-flex {% if toolCard.ProminentLink.Value == true %}link-prominent{% endif %}">
+      {% if toolCard.IconImage.Paths.first != blank %}
+        <div class="section-panel-link-icon">
+          <img src="{{ toolCard.IconImage.Paths.first | asset_url }}" alt=""/>
+        </div>
+      {% elsif toolCard.IconClass.Text != blank %}
+        <div class="section-panel-link-icon">
+          <i class="fa-2x {{ toolCard.IconClass.Text }}"></i>
+        </div>
+      {% endif %}
+    <div>
+      <a href="{{ toolCard.Url.Text | shortcode }}" 
+        {% if toolCard.OpenInNewTab.Value == true %} 
+          target="_blank" aria-label="{{ 'Open {0} in a new tab' | t: Model.ContentItem.DisplayText }}"
+        {% else %}
+          aria-label="{{Model.ContentItem.DisplayText}}"
+        {% endif %}
+      >
+        <h4 class="section-panel-link-header w-75 mb-2">{{Model.Content.ToolCard-DisplayTitle | shape_render}}</h4>
+      </a>
+      <p class="mb-0">{{ Model.Content.HtmlBodyPart | shape_render }}</p>
+    </div>
+  </div>
+</div>
+{% assign linkSize = Model.ContentItem.Content.ActionLinks.ContentItems | size %}
+{% if linkSize > 0 %}
+{% comment %}We sometimes want to display a single link in a dropdown, so checking for the ActionLinksAsDropdown first{% endcomment %}
+  {% if toolCard.ActionLinksAsDropdown.Value == true or linkSize > 1 %}
+    <div class="nav-item dropdown">
+      <a class="btn-link" href="" aria-label="{{Model.ContentItem.DisplayText}} options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="{{ toolCard.ActionIconClass.Text }}"></i>
+      </a>
+      <div class="dropdown-menu dropdown-menu-right">
+        {% for link in Model.ContentItem.Content.ActionLinks.ContentItems %}
+          {{ link | shape_build_display: 'Dropdown' | shape_render }}
+        {% endfor %}
+      </div>
+    </div>
+  {% elsif linkSize == 1 %}
+    {{ Model.ContentItem.Content.ActionLinks.ContentItems.first | shape_build_display: 'Single' | shape_properties: ActionIconClass: toolCard.ActionIconClass.Text | shape_render }}
+  {% endif %}
+{% endif%}

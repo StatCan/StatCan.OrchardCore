@@ -1,0 +1,7 @@
+<a href="{{ Model.ContentItem.Content.LinkButton.Url.Text | shortcode }}" class="btn btn-lg fixed-width
+  {% if Model.ContentItem.Content.LinkButton.Primary.Value == true %}btn-primary
+  {% elsif Model.ContentItem.Content.LinkButton.Outlined.Value == true %}btn-outline-light
+  {% else %}btn-default
+  {% endif %}">
+  {{ Model.ContentItem.DisplayText }}
+</a>

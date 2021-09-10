@@ -1,0 +1,100 @@
+.di-modal {
+  &.section-panel {
+    background-color: white;
+    border: 1px solid $dark-grey;
+    padding: 1.5rem;
+  }
+  &.modal-dialog.modal-lg {
+    max-width: 100vw;
+    @include media-breakpoint-up(sm) {
+      max-width: 90vw;
+    }
+    @include media-breakpoint-up(md) {
+      max-width: 80vw;
+    }
+    @include media-breakpoint-up(lg) {
+      max-width: 800px;
+    }
+  }
+  &.modal-dialog {
+    max-width: 100vw;
+    @include media-breakpoint-up(sm) {
+      max-width: 90vw;
+    }
+    @include media-breakpoint-up(md) {
+      max-width: 80vw;
+    }
+    @include media-breakpoint-up(lg) {
+      max-width: 640px;
+    }
+  }
+  &.modal-header {
+    border-bottom: none;
+    padding: 0;
+    flex-wrap: wrap;
+    @include media-breakpoint-up(md) {
+      padding: 0;
+    }
+    position: relative;
+    .modal-title {
+      flex: 1 1 auto;
+      line-height: 1;
+    }
+    .modal-prompt {
+      flex: 1 1 auto;
+      line-height: 1;
+      margin: 0;
+      > span {
+        letter-spacing: 0.5px;
+      }
+    }
+    hr {
+      flex-basis: 100%;
+      margin-top: 1.5rem;
+      margin-bottom: 0;
+    }
+  }
+  &.modal-body {
+    flex-wrap: wrap;
+    padding: 1rem 0.5rem 1rem 0;
+    margin: 0.5rem 0;
+    .icon {
+      color: $primary;
+      @include rfs(128);
+      padding: 1rem;
+    }
+    overflow-y: auto;
+    // max-height: 70vh;
+    hr {
+      margin: 1.5rem 0;
+    }
+  }
+  &.modal-footer {
+    border-top: none;
+    display: flex;
+    padding: 0;
+    .btn.btn-lg {
+      width: 120px;
+      @include media-breakpoint-up(md) {
+        width: 160px;
+      }
+      margin: 0;
+    }
+    hr {
+      flex-basis: 100%;
+      margin: 0 0 1.5rem 0;
+    }
+  }
+}
+
+.help-modal.modal-dialog {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  margin: 0;
+  .modal-content {
+    max-height: 100vh;
+    height: 100%;
+  }
+}
