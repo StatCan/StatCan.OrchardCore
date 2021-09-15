@@ -1,4 +1,4 @@
 ﻿{% assign link = Model.ContentItem.Content.LinkMenuItemPart %}
 {% assign displayUrl = link.Url | href %}
-<a href="{{ displayUrl }}" class="dropdown-item d-xl-none d-flex">{{ Model.ContentItem.DisplayText }}</a>
-<a href="{{ displayUrl }}" class="btn btn-light icon-btn d-xl-flex d-none" >{% if Model.ContentItem.Content.LinkMenuItem.IconClass.Text != blank%}<i class="{{Model.ContentItem.Content.LinkMenuItem.IconClass.Text}}"></i>{% endif %}{{ Model.ContentItem.DisplayText }}</a>
+<a href="{{ displayUrl }}" class="dropdown-item d-lg-none d-flex">{{ Model.ContentItem.DisplayText }}</a>
+<a href="{{ displayUrl }}" class="btn btn-light icon-btn d-lg-flex d-none" >{% if Model.ContentItem.Content.LinkMenuItem.IconClass.Text != blank%}<i class="{{Model.ContentItem.Content.LinkMenuItem.IconClass.Text}}"></i>{% endif %}{{ Model.ContentItem.DisplayText }}</a>
