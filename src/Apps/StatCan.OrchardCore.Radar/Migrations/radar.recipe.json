@@ -1,0 +1,1138 @@
+{
+  "steps": [
+    {
+      "name": "ContentDefinition",
+      "ContentTypes": [
+        {
+          "Name": "Topic",
+          "DisplayName": "Topic",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Listable": true,
+              "Draftable": true,
+              "Versionable": true,
+              "Securable": true
+            },
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "Topic",
+              "Name": "Topic",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "2"
+                }
+              }
+            },
+            {
+              "PartName": "TitlePart",
+              "Name": "TitlePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                },
+                "TitlePartSettings": {
+                  "Options": 1,
+                  "Pattern": "{{ ContentItem.Content.Topic.Name.Text }}"
+                },
+                "ContentIndexSettings": {}
+              }
+            }
+          ]
+        },
+        {
+          "Name": "Proposal",
+          "DisplayName": "Proposal",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Creatable": true,
+              "Listable": true,
+              "Draftable": true,
+              "Versionable": true,
+              "Securable": true
+            },
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "Proposal",
+              "Name": "Proposal",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "2"
+                }
+              }
+            },
+            {
+              "PartName": "RadarEntity",
+              "Name": "RadarEntity",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                }
+              }
+            },
+            {
+              "PartName": "TitlePart",
+              "Name": "TitlePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                },
+                "TitlePartSettings": {
+                  "Options": 2,
+                  "Pattern": "{{ ContentItem.Content.RadarEntityPart.Name.Text }}"
+                },
+                "ContentIndexSettings": {}
+              }
+            },
+            {
+              "PartName": "ContentPermissionsPart",
+              "Name": "ContentPermissionsPart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "3"
+                }
+              }
+            },
+            {
+              "PartName": "BagPart",
+              "Name": "Workspace",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "DisplayName": "Workspace",
+                  "Description": "Add an Artifact to your workspace of this proposal",
+                  "Position": "4"
+                },
+                "BagPartSettings": {
+                  "ContainedContentTypes": [
+                    "Artifact"
+                  ]
+                },
+                "ContentIndexSettings": {}
+              }
+            }
+          ]
+        },
+        {
+          "Name": "ProjectType",
+          "DisplayName": "ProjectType",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Listable": true,
+              "Draftable": true,
+              "Versionable": true,
+              "Securable": true
+            },
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "ProjectType",
+              "Name": "ProjectType",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                }
+              }
+            },
+            {
+              "PartName": "TitlePart",
+              "Name": "TitlePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                },
+                "TitlePartSettings": {
+                  "Options": 2,
+                  "Pattern": "{{ ContentItem.Content.ProjectType.Name.Text }}"
+                },
+                "ContentIndexSettings": {}
+              }
+            }
+          ]
+        },
+        {
+          "Name": "ProposalType",
+          "DisplayName": "ProposalType",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Listable": true,
+              "Draftable": true,
+              "Versionable": true,
+              "Securable": true
+            },
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "ProposalType",
+              "Name": "ProposalType",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                }
+              }
+            },
+            {
+              "PartName": "TitlePart",
+              "Name": "TitlePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                },
+                "TitlePartSettings": {
+                  "Options": 2,
+                  "Pattern": "{{ ContentItem.Content.ProposalType.Name.Text }}"
+                },
+                "ContentIndexSettings": {}
+              }
+            }
+          ]
+        },
+        {
+          "Name": "CommunityType",
+          "DisplayName": "CommunityType",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Listable": true,
+              "Draftable": true,
+              "Versionable": true,
+              "Securable": true
+            },
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "CommunityType",
+              "Name": "CommunityType",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                }
+              }
+            },
+            {
+              "PartName": "TitlePart",
+              "Name": "TitlePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                },
+                "TitlePartSettings": {
+                  "Options": 2,
+                  "Pattern": "{{ ContentItem.Content.CommunityType.Name.Text }}"
+                },
+                "ContentIndexSettings": {}
+              }
+            }
+          ]
+        },
+        {
+          "Name": "Artifact",
+          "DisplayName": "Artifact",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Creatable": true,
+              "Listable": true,
+              "Draftable": true,
+              "Versionable": true,
+              "Securable": true
+            },
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "Artifact",
+              "Name": "Artifact",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                }
+              }
+            },
+            {
+              "PartName": "TitlePart",
+              "Name": "TitlePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "Event",
+          "DisplayName": "Event",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Creatable": true,
+              "Listable": true,
+              "Draftable": true,
+              "Versionable": true,
+              "Securable": true
+            },
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "Event",
+              "Name": "Event",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                }
+              }
+            },
+            {
+              "PartName": "ContentPermissionsPart",
+              "Name": "ContentPermissionsPart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "5"
+                }
+              }
+            },
+            {
+              "PartName": "RadarEntity",
+              "Name": "RadarEntity",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "2"
+                }
+              }
+            },
+            {
+              "PartName": "TitlePart",
+              "Name": "TitlePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                },
+                "TitlePartSettings": {
+                  "Options": 2,
+                  "Pattern": "{{ ContentItem.Content.RadarEntityPart.Name.Text }}"
+                },
+                "ContentIndexSettings": {}
+              }
+            },
+            {
+              "PartName": "BagPart",
+              "Name": "EventOrganizer",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "DisplayName": "EventOrganizer",
+                  "Description": "Event Organizer",
+                  "Position": "3"
+                },
+                "BagPartSettings": {
+                  "ContainedContentTypes": [
+                    "EventOrganizer"
+                  ]
+                },
+                "ContentIndexSettings": {}
+              }
+            },
+            {
+              "PartName": "BagPart",
+              "Name": "Workspace",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "DisplayName": "Workspace",
+                  "Description": "Add an Artifact to your workspace of this event",
+                  "Position": "4"
+                },
+                "BagPartSettings": {
+                  "ContainedContentTypes": [
+                    "Artifact"
+                  ]
+                },
+                "ContentIndexSettings": {}
+              }
+            }
+          ]
+        },
+        {
+          "Name": "EventOrganizer",
+          "DisplayName": "EventOrganizer",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Creatable": true,
+              "Listable": true,
+              "Draftable": true,
+              "Versionable": true,
+              "Securable": true
+            },
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "EventOrganizer",
+              "Name": "EventOrganizer",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                }
+              }
+            },
+            {
+              "PartName": "TitlePart",
+              "Name": "TitlePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                },
+                "TitlePartSettings": {
+                  "Options": 1,
+                  "Pattern": "{% assign users = ContentItem.Content.EventOrganier.UserPicker.UserIds | users_by_id %}\r\n{% for user in users %}\r\n    {{ user.UserName }} - {{ user.Email }}\r\n{% endfor %}"
+                },
+                "ContentIndexSettings": {}
+              }
+            }
+          ]
+        },
+        {
+          "Name": "CommunityMember",
+          "DisplayName": "CommunityMember",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Creatable": true,
+              "Listable": true,
+              "Draftable": true,
+              "Versionable": true,
+              "Securable": true
+            },
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "CommunityMember",
+              "Name": "CommunityMember",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                }
+              }
+            },
+            {
+              "PartName": "TitlePart",
+              "Name": "TitlePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                },
+                "TitlePartSettings": {
+                  "Options": 1,
+                  "Pattern": "{% assign users = ContentItem.Content.EventOrganier.UserPicker.UserIds | users_by_id %}\r\n{% for user in users %}\r\n    {{ user.UserName }} - {{ user.Email }}\r\n{% endfor %}"
+                },
+                "ContentIndexSettings": {}
+              }
+            }
+          ]
+        },
+        {
+          "Name": "Community",
+          "DisplayName": "Community",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Creatable": true,
+              "Listable": true,
+              "Draftable": true,
+              "Versionable": true,
+              "Securable": true
+            },
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "Community",
+              "Name": "Community",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "4"
+                }
+              }
+            },
+            {
+              "PartName": "TitlePart",
+              "Name": "TitlePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                },
+                "TitlePartSettings": {
+                  "Options": 2,
+                  "Pattern": "{{ ContentItem.Content.RadarEntity.Name.Text }}"
+                },
+                "ContentIndexSettings": {}
+              }
+            },
+            {
+              "PartName": "RadarEntity",
+              "Name": "RadarEntity",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                }
+              }
+            },
+            {
+              "PartName": "ContentPermissionsPart",
+              "Name": "ContentPermissionsPart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "5"
+                }
+              }
+            },
+            {
+              "PartName": "BagPart",
+              "Name": "Workspace",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "DisplayName": "Workspace",
+                  "Description": "Add an Artifact to your workspace of this community",
+                  "Position": "2"
+                },
+                "BagPartSettings": {
+                  "ContainedContentTypes": [
+                    "Artifact"
+                  ]
+                },
+                "ContentIndexSettings": {}
+              }
+            },
+            {
+              "PartName": "BagPart",
+              "Name": "CommunityMember",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "DisplayName": "Community Member",
+                  "Description": "Add a member to this community",
+                  "Position": "3"
+                },
+                "BagPartSettings": {
+                  "ContainedContentTypes": [
+                    "CommunityMember"
+                  ]
+                },
+                "ContentIndexSettings": {}
+              }
+            }
+          ]
+        },
+        {
+          "Name": "ProjectMember",
+          "DisplayName": "ProjectMember",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Creatable": true,
+              "Listable": true,
+              "Draftable": true,
+              "Versionable": true,
+              "Securable": true
+            },
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "ProjectMember",
+              "Name": "ProjectMember",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                }
+              }
+            },
+            {
+              "PartName": "TitlePart",
+              "Name": "TitlePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                },
+                "TitlePartSettings": {
+                  "Options": 1,
+                  "Pattern": "{% assign users = ContentItem.Content.EventOrganier.UserPicker.UserIds | users_by_id %}\r\n{% for user in users %}\r\n    {{ user.UserName }} - {{ user.Email }}\r\n{% endfor %}"
+                },
+                "ContentIndexSettings": {}
+              }
+            }
+          ]
+        },
+        {
+          "Name": "Project",
+          "DisplayName": "Project",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Creatable": true,
+              "Listable": true,
+              "Draftable": true,
+              "Versionable": true,
+              "Securable": true
+            },
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "Project",
+              "Name": "Project",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "4"
+                }
+              }
+            },
+            {
+              "PartName": "RadarEntity",
+              "Name": "RadarEntity",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                }
+              }
+            },
+            {
+              "PartName": "TitlePart",
+              "Name": "TitlePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                },
+                "TitlePartSettings": {
+                  "Options": 2,
+                  "Pattern": "{{ ContentItem.Content.RadarEntity.Name.Text }}"
+                },
+                "ContentIndexSettings": {}
+              }
+            },
+            {
+              "PartName": "ContentPermissionsPart",
+              "Name": "ContentPermissionsPart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "5"
+                }
+              }
+            },
+            {
+              "PartName": "BagPart",
+              "Name": "Workspace",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "DisplayName": "Workspace",
+                  "Description": "Add an Artifact to your workspace of this project",
+                  "Position": "2"
+                },
+                "BagPartSettings": {
+                  "ContainedContentTypes": [
+                    "Artifact"
+                  ]
+                },
+                "ContentIndexSettings": {}
+              }
+            },
+            {
+              "PartName": "BagPart",
+              "Name": "ProjectMember",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "DisplayName": "Project Member",
+                  "Description": "Add a member to this project",
+                  "Position": "3"
+                },
+                "BagPartSettings": {
+                  "ContainedContentTypes": [
+                    "ProjectMember"
+                  ]
+                },
+                "ContentIndexSettings": {}
+              }
+            }
+          ]
+        }
+      ],
+      "ContentParts": [
+        {
+          "Name": "RadarEntity",
+          "Settings": {
+            "ContentPartSettings": {
+              "Attachable": true
+            }
+          },
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "TextField",
+              "Name": "Name",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Name",
+                  "Position": "0"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "Description",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Description",
+                  "Position": "1"
+                }
+              }
+            },
+            {
+              "FieldName": "ContentPickerField",
+              "Name": "RelatedEntity",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Related Entity",
+                  "Position": "3"
+                },
+                "ContentPickerFieldSettings": {
+                  "Multiple": true,
+                  "DisplayedContentTypes": [
+                    "Proposal"
+                  ]
+                },
+                "ContentIndexSettings": {}
+              }
+            },
+            {
+              "FieldName": "TaxonomyField",
+              "Name": "Topics",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Topics",
+                  "Editor": "Tags",
+                  "DisplayMode": "Tags",
+                  "Position": "2"
+                },
+                "ContentIndexSettings": {},
+                "TaxonomyFieldSettings": {
+                  "TaxonomyContentItemId": "43p29bmfpe85a319g7t98waa40",
+                  "Unique": true
+                },
+                "TaxonomyFieldTagsEditorSettings": {
+                  "Open": false
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "Topic",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "TextField",
+              "Name": "Name",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Name"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "Description",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Description"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "Proposal",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "TaxonomyField",
+              "Name": "Type",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Type",
+                  "Editor": "Tags",
+                  "DisplayMode": "Tags",
+                  "Position": "0"
+                },
+                "ContentIndexSettings": {},
+                "TaxonomyFieldSettings": {
+                  "Required": true,
+                  "TaxonomyContentItemId": "4fn9mss5kdqfmy0b7qwbnneb5s",
+                  "Unique": true
+                },
+                "TaxonomyFieldTagsEditorSettings": {
+                  "Open": false
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "ProjectType",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "TextField",
+              "Name": "Name",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Name",
+                  "Position": "0"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "Description",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Description",
+                  "Position": "1"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "ProposalType",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "TextField",
+              "Name": "Name",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Name",
+                  "Position": "0"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "Description",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Description",
+                  "Position": "1"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "CommunityType",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "TextField",
+              "Name": "Name",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Name",
+                  "Position": "0"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "Description",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Description",
+                  "Position": "1"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "Event",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "UserPickerField",
+              "Name": "Attendees",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Attendees",
+                  "Position": "0"
+                }
+              }
+            },
+            {
+              "FieldName": "DateTimeField",
+              "Name": "StartDate",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Start Date",
+                  "Position": "1"
+                }
+              }
+            },
+            {
+              "FieldName": "DateTimeField",
+              "Name": "EndDate",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "End Date",
+                  "Position": "2"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "EventOrganizer",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "UserPickerField",
+              "Name": "Organizer",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Organizer",
+                  "Position": "0"
+                },
+                "UserPickerFieldSettings": {
+                  "Required": true,
+                  "DisplayAllUsers": true,
+                  "DisplayedRoles": []
+                },
+                "ContentIndexSettings": {}
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "Role",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Role",
+                  "Position": "1"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "CommunityMember",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "UserPickerField",
+              "Name": "Member",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Member",
+                  "Position": "0"
+                },
+                "UserPickerFieldSettings": {
+                  "Required": true,
+                  "DisplayAllUsers": true,
+                  "DisplayedRoles": []
+                },
+                "ContentIndexSettings": {}
+              }
+            }
+          ]
+        },
+        {
+          "Name": "Community",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "TaxonomyField",
+              "Name": "Type",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Type",
+                  "Position": "0"
+                },
+                "ContentIndexSettings": {},
+                "TaxonomyFieldSettings": {
+                  "Required": true,
+                  "TaxonomyContentItemId": "4be7bdq6y7k9f1wpf1q6h8kwd9",
+                  "Unique": true
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "ProjectMember",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "UserPickerField",
+              "Name": "Member",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Member",
+                  "Position": "0"
+                },
+                "UserPickerFieldSettings": {
+                  "Required": true,
+                  "DisplayAllUsers": true,
+                  "DisplayedRoles": []
+                },
+                "ContentIndexSettings": {}
+              }
+            }
+          ]
+        },
+        {
+          "Name": "Project",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "TaxonomyField",
+              "Name": "Type",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Type",
+                  "Position": "0"
+                },
+                "ContentIndexSettings": {},
+                "TaxonomyFieldSettings": {
+                  "Required": true,
+                  "TaxonomyContentItemId": "4fg74m81qafx3zp342n8csj2wm",
+                  "Unique": true
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "content",
+      "data": [
+        {
+          "ContentItemId": "43p29bmfpe85a319g7t98waa40",
+          "ContentItemVersionId": "496gng475pa3r2s6w4v724zjxz",
+          "ContentType": "Taxonomy",
+          "DisplayText": "Topics",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": "2021-09-15T13:22:03.8522685Z",
+          "PublishedUtc": "2021-09-15T13:22:03.8580812Z",
+          "CreatedUtc": "2021-09-15T13:22:03.8522685Z",
+          "Owner": "4rbm0rzcxcvx7xndye0hp63nw3",
+          "Author": "admin",
+          "TitlePart": {
+            "Title": "Topics"
+          },
+          "AliasPart": {
+            "Alias": "topics"
+          },
+          "AutoroutePart": {
+            "Path": "topics",
+            "SetHomepage": false,
+            "Disabled": false,
+            "RouteContainedItems": false,
+            "Absolute": false
+          },
+          "TaxonomyPart": {
+            "TermContentType": "Topic",
+            "Terms": []
+          }
+        },
+        {
+          "ContentItemId": "4fg74m81qafx3zp342n8csj2wm",
+          "ContentItemVersionId": "47q1vnrggydfj7ah65mqahj5cn",
+          "ContentType": "Taxonomy",
+          "DisplayText": "ProjectType",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": "2021-09-15T13:42:45.0701723Z",
+          "PublishedUtc": "2021-09-15T13:42:45.0777122Z",
+          "CreatedUtc": "2021-09-15T13:42:45.0701723Z",
+          "Owner": "4rbm0rzcxcvx7xndye0hp63nw3",
+          "Author": "admin",
+          "TitlePart": {
+            "Title": "ProjectType"
+          },
+          "AliasPart": {
+            "Alias": "projecttype"
+          },
+          "AutoroutePart": {
+            "Path": "projecttype",
+            "SetHomepage": false,
+            "Disabled": false,
+            "RouteContainedItems": false,
+            "Absolute": false
+          },
+          "TaxonomyPart": {
+            "TermContentType": "ProjectType",
+            "Terms": []
+          }
+        },
+        {
+          "ContentItemId": "4fn9mss5kdqfmy0b7qwbnneb5s",
+          "ContentItemVersionId": "4k50x7trga6cn4rpsmwsc92qmx",
+          "ContentType": "Taxonomy",
+          "DisplayText": "ProposalType",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": "2021-09-15T13:46:00.5646917Z",
+          "PublishedUtc": "2021-09-15T13:46:00.5693251Z",
+          "CreatedUtc": "2021-09-15T13:46:00.5646917Z",
+          "Owner": "4rbm0rzcxcvx7xndye0hp63nw3",
+          "Author": "admin",
+          "TitlePart": {
+            "Title": "ProposalType"
+          },
+          "AliasPart": {
+            "Alias": "proposaltype"
+          },
+          "AutoroutePart": {
+            "Path": "proposaltype",
+            "SetHomepage": false,
+            "Disabled": false,
+            "RouteContainedItems": false,
+            "Absolute": false
+          },
+          "TaxonomyPart": {
+            "TermContentType": "ProposalType",
+            "Terms": []
+          }
+        },
+        {
+          "ContentItemId": "4be7bdq6y7k9f1wpf1q6h8kwd9",
+          "ContentItemVersionId": "44gxhx8fymzh54vvf64nnwma4a",
+          "ContentType": "Taxonomy",
+          "DisplayText": "CommunityType",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": "2021-09-15T14:45:27.1221385Z",
+          "PublishedUtc": "2021-09-15T14:45:27.1263705Z",
+          "CreatedUtc": "2021-09-15T14:45:27.1221385Z",
+          "Owner": "4rbm0rzcxcvx7xndye0hp63nw3",
+          "Author": "admin",
+          "TitlePart": {
+            "Title": "CommunityType"
+          },
+          "AliasPart": {
+            "Alias": "communitytype"
+          },
+          "AutoroutePart": {
+            "Path": "communitytype",
+            "SetHomepage": false,
+            "Disabled": false,
+            "RouteContainedItems": false,
+            "Absolute": false
+          },
+          "TaxonomyPart": {
+            "TermContentType": "CommunityType",
+            "Terms": []
+          }
+        }
+      ]
+    }
+  ]
+}
