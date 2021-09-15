@@ -82,7 +82,7 @@
                 },
                 "TitlePartSettings": {
                   "Options": 2,
-                  "Pattern": "{{ ContentItem.Content.RadarEntityPart.Name.Text }}"
+                  "Pattern": "{{ ContentItem.Content.RadarEntity.Name.Text }}"
                 },
                 "ContentIndexSettings": {}
               }
@@ -313,7 +313,7 @@
                 },
                 "TitlePartSettings": {
                   "Options": 2,
-                  "Pattern": "{{ ContentItem.Content.RadarEntityPart.Name.Text }}"
+                  "Pattern": "{{ ContentItem.Content.RadarEntity.Name.Text }}"
                 },
                 "ContentIndexSettings": {}
               }
@@ -1046,7 +1046,7 @@
           "ContentItemId": "4fg74m81qafx3zp342n8csj2wm",
           "ContentItemVersionId": "47q1vnrggydfj7ah65mqahj5cn",
           "ContentType": "Taxonomy",
-          "DisplayText": "ProjectType",
+          "DisplayText": "Project Type",
           "Latest": true,
           "Published": true,
           "ModifiedUtc": "2021-09-15T13:42:45.0701723Z",
@@ -1055,7 +1055,7 @@
           "Owner": "4rbm0rzcxcvx7xndye0hp63nw3",
           "Author": "admin",
           "TitlePart": {
-            "Title": "ProjectType"
+            "Title": "Project Type"
           },
           "AliasPart": {
             "Alias": "projecttype"
@@ -1076,7 +1076,7 @@
           "ContentItemId": "4fn9mss5kdqfmy0b7qwbnneb5s",
           "ContentItemVersionId": "4k50x7trga6cn4rpsmwsc92qmx",
           "ContentType": "Taxonomy",
-          "DisplayText": "ProposalType",
+          "DisplayText": "Proposal Type",
           "Latest": true,
           "Published": true,
           "ModifiedUtc": "2021-09-15T13:46:00.5646917Z",
@@ -1085,7 +1085,7 @@
           "Owner": "4rbm0rzcxcvx7xndye0hp63nw3",
           "Author": "admin",
           "TitlePart": {
-            "Title": "ProposalType"
+            "Title": "Proposal Type"
           },
           "AliasPart": {
             "Alias": "proposaltype"
@@ -1106,7 +1106,7 @@
           "ContentItemId": "4be7bdq6y7k9f1wpf1q6h8kwd9",
           "ContentItemVersionId": "44gxhx8fymzh54vvf64nnwma4a",
           "ContentType": "Taxonomy",
-          "DisplayText": "CommunityType",
+          "DisplayText": "Community Type",
           "Latest": true,
           "Published": true,
           "ModifiedUtc": "2021-09-15T14:45:27.1221385Z",
@@ -1115,7 +1115,7 @@
           "Owner": "4rbm0rzcxcvx7xndye0hp63nw3",
           "Author": "admin",
           "TitlePart": {
-            "Title": "CommunityType"
+            "Title": "Community Type"
           },
           "AliasPart": {
             "Alias": "communitytype"
