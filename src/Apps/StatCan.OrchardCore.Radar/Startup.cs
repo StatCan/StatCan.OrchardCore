@@ -13,6 +13,7 @@ namespace StatCan.OrchardCore.Radar
         public override void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<IDataMigration, TaxonomyMigrations>();
+            services.AddScoped<IDataMigration, ArtifactMigration>();
         }
 
         public override void Configure(IApplicationBuilder builder, IEndpointRouteBuilder routes, IServiceProvider serviceProvider)

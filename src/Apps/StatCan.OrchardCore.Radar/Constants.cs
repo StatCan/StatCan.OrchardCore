@@ -14,6 +14,9 @@ namespace StatCan.OrchardCore.Radar
             public const string ProposalType = "ProposalType";
             public const string ProjectType = "ProjectType";
             public const string CommunityType = "CommunityType";
+
+            // Entities
+            public const string Aritifact = "Aritifact";
         }
     }
 }
