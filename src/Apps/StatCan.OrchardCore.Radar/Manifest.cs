@@ -20,6 +20,7 @@ using static StatCan.OrchardCore.Manifest.StatCanManifestConstants;
     {
         "OrchardCore.Autoroute",
         "OrchardCore.Contents",
+        "OrhcardCore.ContentManagement",
         "OrchardCore.ContentFields",
         "OrchardCore.Flows",
         "OrchardCore.Taxonomies",

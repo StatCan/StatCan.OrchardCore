@@ -12,9 +12,12 @@
     <PackageReference Include="OrchardCore.ContentTypes.Abstractions" Version="$(OrchardCoreVersion)" />
     <PackageReference Include="OrchardCore.DisplayManagement" Version="$(OrchardCoreVersion)" />
   </ItemGroup>
-
+  
+  <!--Migrations-->
   <ItemGroup>
     <PackageReference Include="OrchardCore.Autoroute" Version="$(OrchardCoreVersion)" />
+    <PackageReference Include="OrchardCore.ContentFields" Version="$(OrchardCoreVersion)" />
+    <PackageReference Include="OrchardCore.Flows" Version="$(OrchardCoreVersion)" />
     <PackageReference Include="OrchardCore.Taxonomies" Version="$(OrchardCoreVersion)" />
     <PackageReference Include="OrchardCore.Title" Version="$(OrchardCoreVersion)" />
   </ItemGroup>
