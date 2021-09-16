@@ -1,0 +1,57 @@
+{
+  "name": "radar-setup",
+  "displayName": "Radar Setup",
+  "description": "Recipe used to set the Radar application.",
+  "author": "Digital Innovation Team",
+  "website": "https://digital.statcan.gc.ca",
+  "version": "1.0",
+  "issetuprecipe": false,
+  "categories": [ "radar" ],
+  "tags": [ "innovation", "inno" ],
+  "steps": [
+    {
+      "name": "media",
+      "Files": [
+        {
+          "SourcePath": "../wwwroot/assets/images/radar-icon-white.svg",
+          "TargetPath": "radar-icon-white.svg"
+        }
+      ]
+    },
+    {
+      "name": "custom-settings",
+      "VuetifyThemeSettings": {
+        "ContentItemId": "[js: uuid()]",
+        "ContentItemVersionId": null,
+        "ContentType": "VuetifyThemeSettings",
+        "DisplayText": "",
+        "Latest": false,
+        "Published": false,
+        "ModifiedUtc": null,
+        "PublishedUtc": null,
+        "CreatedUtc": null,
+        "Owner": "[js: parameters('AdminUserId')]",
+        "Author": "[js: parameters('AdminUsername')]",
+        "VuetifyThemeSettings": {
+          "DisplayName": {
+            "Text": "Radar"
+          },
+          "Logo": {
+            "Paths": [
+              "radar-icon-white.svg"
+            ],
+            "MediaTexts": [
+              ""
+            ]
+          },
+          "DisplayMode": {
+            "Text": "light"
+          },
+          "ThemeOptions": {
+            "Text": null
+          }
+        }
+      }
+    }
+  ]
+}
