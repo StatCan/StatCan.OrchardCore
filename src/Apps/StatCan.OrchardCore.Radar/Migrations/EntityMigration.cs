@@ -13,16 +13,16 @@ using OrchardCore.Taxonomies.Fields;
 using OrchardCore.Taxonomies.Settings;
 using OrchardCore.Flows.Models;
 
-namespace StatCan.OrchardCore.Radar
+namespace StatCan.OrchardCore.Radar.Migrations
 {
-    public class Migrations : DataMigration
+    public class EntityMigration : DataMigration
     {
         private readonly IContentDefinitionManager _contentDefinitionManager;
         private readonly IContentManager _contentManager;
 
         private readonly Dictionary<string, string> _taxonomyIds;
 
-        public Migrations(IContentDefinitionManager contentDefinitionManager, IContentManager contentManager)
+        public EntityMigration(IContentDefinitionManager contentDefinitionManager, IContentManager contentManager)
         {
             _contentDefinitionManager = contentDefinitionManager;
             _contentManager = contentManager;
