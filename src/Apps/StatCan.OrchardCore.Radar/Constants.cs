@@ -17,6 +17,17 @@ namespace StatCan.OrchardCore.Radar
 
             // Entities
             public const string Aritifact = "Aritifact";
+            public const string Proposal = "Proposal";
+            public const string Project = "Project";
+            public const string Event = "Event";
+            public const string Community = "Community";
+
+            public const string ProjectMember = "ProjectMember";
+            public const string EventOrganizer = "EventOrganizer";
+            public const string CommunityMember = "CommunityMember";
+
+            // Parts
+            public const string RadarEntity = "RadarEntity";
         }
     }
 }
