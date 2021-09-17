@@ -10,6 +10,14 @@
   "tags": [ "innovation", "inno" ],
   "steps": [
     {
+      "name": "feature",
+      "disable": [],
+      "enable": [
+        "StatCan.OrchardCore.Vuetify.Grid",
+        "StatCan.OrchardCore.Vuetify.Image"
+      ]
+    },
+    {
       "name": "recipes",
       "Values": [
         {
@@ -22,7 +30,7 @@
       "name": "media",
       "Files": [
         {
-          "SourcePath": "../wwwroot/assets/images/radar-icon-white.svg",
+          "SourcePath": "../wwwroot/images/radar-icon-white.svg",
           "TargetPath": "radar-icon-white.svg"
         }
       ]
