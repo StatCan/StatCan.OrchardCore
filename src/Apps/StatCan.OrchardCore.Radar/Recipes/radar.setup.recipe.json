@@ -10,53 +10,13 @@
   "tags": [ "innovation", "inno" ],
   "steps": [
     {
-      "name": "feature",
-      "enable": [
-        "Application.Default",
-        "StatCan.OrchardCore.Cms.Web",
-        "OrchardCore.Resources",
-        "OrchardCore.Liquid",
-        "OrchardCore.Settings",
-        "OrchardCore.Contents",
-        "OrchardCore.ContentTypes",
-        "OrchardCore.Autoroute",
-        "OrchardCore.Widgets",
-        "OrchardCore.Flows",
-        "OrchardCore.Title",
-        "OrchardCore.Shortcodes",
-        "OrchardCore.Admin",
-        "OrchardCore.Alias",
-        "OrchardCore.Features",
-        "OrchardCore.Scripting",
-        "OrchardCore.Recipes",
-        "OrchardCore.ContentFields",
-        "OrchardCore.Users",
-        "OrchardCore.Localization",
-        "OrchardCore.Deployment",
-        "OrchardCore.CustomSettings",
-        "OrchardCore.Diagnostics",
-        "OrchardCore.DynamicCache",
-        "OrchardCore.HomeRoute",
-        "OrchardCore.Rules",
-        "OrchardCore.Layers",
-        "OrchardCore.Media",
-        "OrchardCore.Menu",
-        "OrchardCore.Navigation",
-        "OrchardCore.Roles",
-        "OrchardCore.Tenants",
-        "OrchardCore.Themes",
-        "StatCan.OrchardCore.ContentFields",
-        "StatCan.OrchardCore.DisplayHelpers",
-        "StatCan.OrchardCore.Menu",
-        "StatCan.OrchardCore.Vuetify",
-        "TheAdmin",
-        "VuetifyTheme"
+      "name": "recipes",
+      "Values": [
+        {
+          "executionid": "ThemeSetup",
+          "name": "vuetify-theme-setup"
+        }
       ]
-    },
-    {
-      "name": "themes",
-      "admin": "TheAdmin",
-      "site": "VuetifyTheme"
     },
     {
       "name": "media",
@@ -101,6 +61,59 @@
           }
         }
       }
+    },
+    {
+      "name": "content",
+      "data": [
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentItemVersionId": null,
+          "ContentType": "VAppBar",
+          "DisplayText": null,
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": null,
+          "PublishedUtc": null,
+          "CreatedUtc": null,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "VAppBar": {
+            "Props": {
+              "Values": [
+                "dark"
+              ]
+            },
+            "Color": {
+              "Text": "#009688"
+            },
+            "Elevation": {
+              "Value": 10.0
+            },
+            "ExtensionHeight": {
+              "Value": 48.0
+            },
+            "ScrollThreshold": {
+              "Value": null
+            },
+            "BackgroundImage": {
+              "Paths": [],
+              "MediaTexts": []
+            },
+            "Height": {
+              "Value": null
+            },
+            "Width": {
+              "Value": null
+            }
+          },
+          "LayerMetadata": {
+            "RenderTitle": false,
+            "Position": 1.0,
+            "Zone": "Header",
+            "Layer": "All"
+          }
+        }
+      ]
     }
   ]
 }
