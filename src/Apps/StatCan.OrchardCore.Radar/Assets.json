@@ -1,0 +1,9 @@
+[
+  {
+    "copy": true,
+    "inputs": [
+      "Assets/css/*.css"
+    ],
+    "output": "wwwroot/css/index.css"
+  }
+]
