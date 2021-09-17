@@ -41,6 +41,8 @@ namespace StatCan.OrchardCore.Radar
             CreateEvent();
             CreateCommunity();
 
+            CreateLandingPage();
+
             return 1;
         }
 
@@ -666,6 +668,49 @@ namespace StatCan.OrchardCore.Radar
                     {
                         Open = false,
                     })
+                )
+            );
+        }
+
+        private void CreateLandingPage()
+        {
+            _contentDefinitionManager.AlterTypeDefinition(Constants.ContentTypes.LandingPage, type => type
+                .DisplayedAs("LandingPage")
+                .Creatable()
+                .Listable()
+                .Draftable()
+                .Versionable()
+                .Securable()
+                .WithPart(Constants.ContentTypes.LandingPage, part => part
+                    .WithPosition("3")
+                )
+                .WithPart("AutoroutePart", part => part
+                    .WithPosition("2")
+                )
+                .WithPart("LocalizationPart", part => part
+                    .WithPosition("0")
+                )
+                .WithPart("TitlePart", part => part
+                    .WithPosition("1")
+                )
+                .WithPart("FlowPart", part => part
+                    .WithPosition("5")
+                )
+                .WithPart("HtmlBodyPart", part => part
+                    .WithPosition("4")
+                )
+            );
+
+            _contentDefinitionManager.AlterPartDefinition(Constants.ContentTypes.LandingPage, part => part
+                .WithField("HeaderImage", field => field
+                    .OfType("MediaField")
+                    .WithDisplayName("Header Image")
+                    .WithPosition("0")
+                )
+                .WithField("Description", field => field
+                    .OfType("TextField")
+                    .WithDisplayName("Description")
+                    .WithPosition("1")
                 )
             );
         }

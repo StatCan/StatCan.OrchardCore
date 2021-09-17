@@ -12,8 +12,8 @@ namespace StatCan.OrchardCore.Radar
             _manifest = new ResourceManifest();
 
             _manifest
-                .DefineStyle("Radar Stylesheet")
-                .SetUrl("~/StatCan.OrchardCore.Radar/css/index.css", "~/StatCan.OrchardCore.Radar/css/index.css")
+                .DefineStyle("landing-page-style")
+                .SetUrl("~/StatCan.OrchardCore.Radar/css/landing-page.css", "~/StatCan.OrchardCore.Radar/css/landing-page.css")
                 .SetVersion("1.0.0");
         }
 
