@@ -1,0 +1,11 @@
+{% assign url =  Model.ContentItem | display_url  %}
+<div class="card" >
+  <a href="{{ url }}">{{ Model.ContentItem.Content.ToolkitArticle.Image.Paths | asset_url | img_tag: alt: Model.ContentItem.Content.ToolkitArticle.Image.MediaTexts.first, class: 'card-img-top img-fluid' }}</a> 
+  <div class="card-body d-flex flex-column">                    
+    <h5 class="card-title">{{Model.ContentItem.Content.TitlePart.Title}}</h5>
+    <div class="mb-5">
+      <p class="card-text">{{Model.Content.ToolkitArticle__ShortDescription | shape_render }}</p>
+    </div>
+    <a href="{{ url }}" class="btn btn-primary align-items-end mt-auto" role="button">{{ 'Read more' | t }}</a>
+  </div>
+</div>

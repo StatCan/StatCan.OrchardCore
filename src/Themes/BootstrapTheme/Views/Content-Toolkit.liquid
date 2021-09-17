@@ -1,0 +1,11 @@
+{% httpcontext_add_items PageModified: Model.ContentItem.ModifiedUtc %}
+<div class="jumbotron">
+  <div class="container">
+    <h1>{{ Model.ContentItem.DisplayText }}</h1>
+  </div>
+</div>
+<div class="container">
+
+  {{ Model.Content.FlowPart | shape_render }}
+  {{ Model.Content.ListPart | shape_render }}
+</div>
