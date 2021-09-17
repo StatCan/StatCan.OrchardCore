@@ -13,16 +13,16 @@ using OrchardCore.Taxonomies.Fields;
 using OrchardCore.Taxonomies.Settings;
 using OrchardCore.Flows.Models;
 
-namespace StatCan.OrchardCore.Radar.Migrations
+namespace StatCan.OrchardCore.Radar
 {
-    public class EntityMigration : DataMigration
+    public class Migrations : DataMigration
     {
         private readonly IContentDefinitionManager _contentDefinitionManager;
         private readonly IContentManager _contentManager;
 
         private readonly Dictionary<string, string> _taxonomyIds;
 
-        public EntityMigration(IContentDefinitionManager contentDefinitionManager, IContentManager contentManager)
+        public Migrations(IContentDefinitionManager contentDefinitionManager, IContentManager contentManager)
         {
             _contentDefinitionManager = contentDefinitionManager;
             _contentManager = contentManager;
@@ -33,7 +33,7 @@ namespace StatCan.OrchardCore.Radar.Migrations
         public async Task<int> CreateAsync()
         {
             CreateTaxonomies();
-            await CreateTaxonomyItems(); 
+            await CreateTaxonomyItems();
             CreateArtifact();
             CreateRadarEntityPart();
             CreateProposal();
