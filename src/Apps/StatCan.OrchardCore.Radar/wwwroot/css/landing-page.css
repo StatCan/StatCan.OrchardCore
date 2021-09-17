@@ -1,3 +1,43 @@
+.center-text {
+  text-align: center;
+}
+
+.landing-page-header {
+  width: 100%;
+}
+
+.header-text {
+  width: 600px;
+  margin: auto;
+}
+
+.light-font {
+  font-weight: lighter;
+  color: #000000DE;
+  opacity: 1;
+}
+
+.name {
+  font-size: 47px;
+  color: #005247;
+  font-weight: 300;
+  white-space: nowrap;
+}
+
+.description {
+  font-size: 25px;
+    font-weight: 300;
+    margin: auto;
+    width: 60%;
+    line-height: normal;
+}
+
+.list {
+  margin: 2rem auto 2rem auto;
+  white-space: nowrap;
+  width: fit-content;
+}
+
 .zigzag {
   position: relative;
   padding: 8px 8px 32px 8px;
@@ -18,18 +58,10 @@
     height: 32px;
   }
 
-.ripple {
-  background-color: #227069;
-  background-image: url(../Icons/ripples.svg);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center bottom -623px;
-}
-
 .rippleFront {
   background-color: #cfece9;
-  background-image: url(../Icons/ripples-white.svg);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center bottom -590px;
+  padding: 8rem 0rem 3rem 0rem;
 }

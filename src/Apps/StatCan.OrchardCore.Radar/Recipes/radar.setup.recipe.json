@@ -32,6 +32,10 @@
         {
           "SourcePath": "../wwwroot/images/radar-icon-white.svg",
           "TargetPath": "radar-icon-white.svg"
+        },
+        {
+          "SourcePath": "../wwwroot/images/ripples-white.svg",
+          "TargetPath": "ripples-white.svg"
         }
       ]
     },
@@ -73,6 +77,52 @@
     {
       "name": "content",
       "data": [
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentItemVersionId": null,
+          "ContentType": "LandingPage",
+          "DisplayText": "Digital Radar",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": null,
+          "PublishedUtc": null,
+          "CreatedUtc": null,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "LandingPage": {
+            "HeaderImage": {
+              "Paths": [
+                "ripples-white.svg"
+              ],
+              "MediaTexts": [
+                ""
+              ]
+            },
+            "Description": {
+              "Text": "Explore, manage and discover insights across your projects"
+            }
+          },
+          "AutoroutePart": {
+            "Path": "digital-radar",
+            "SetHomepage": true,
+            "Disabled": false,
+            "RouteContainedItems": false,
+            "Absolute": false
+          },
+          "FlowPart": {
+            "Widgets": []
+          },
+          "LocalizationPart": {
+            "LocalizationSet": "4xwnrm19d4119rg6szffxkfpwt",
+            "Culture": "en"
+          },
+          "TitlePart": {
+            "Title": "Digital Radar"
+          },
+          "HtmlBodyPart": {
+            "Html": "\n  <ul>\n    <li>\n    \tDiscover pathfinding projects\n    </li>\n    <li>\n    \tExplore technologies and topics\n    </li>\n    <li>\n    \tShare your team's work\n    </li>\n  </ul>\n"
+          }
+        },
         {
           "ContentItemId": "[js: uuid()]",
           "ContentItemVersionId": null,

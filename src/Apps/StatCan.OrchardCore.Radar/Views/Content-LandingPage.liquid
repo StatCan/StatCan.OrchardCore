@@ -1,0 +1,26 @@
+{% style name:"landing-page-style" %}
+
+{% zone "Header" %}
+
+{% assign imagePath = Model.ContentItem.Content.LandingPage.HeaderImage.Paths.first %}
+<div class="landing-page-header">
+    <div class="zigzag">
+        <div class="rippleFront" style="background-image: url('{{ imagePath | asset_url }}')">
+            <div class="header-text">
+                <div class="name light-font center-text">
+                {{ Model.ContentItem | display_text }}
+                </div>
+                <div class="description light-font center-text">
+                    {{ Model.ContentItem.Content.LandingPage.Description.Text }}
+                </div>
+                <div class="list">
+                    {{ Model.Content.HtmlBodyPart | shape_render }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endzone %}
+
+<!-- {{ Model.Content | shape_render }} -->
