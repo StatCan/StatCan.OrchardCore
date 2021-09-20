@@ -90,14 +90,6 @@
           "Owner": "[js: parameters('AdminUserId')]",
           "Author": "[js: parameters('AdminUsername')]",
           "LandingPage": {
-            "HeaderImage": {
-              "Paths": [
-                "ripples-white.svg"
-              ],
-              "MediaTexts": [
-                ""
-              ]
-            },
             "Description": {
               "Text": "Explore, manage and discover insights across your projects"
             }

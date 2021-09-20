@@ -5,17 +5,47 @@
 {% assign imagePath = Model.ContentItem.Content.LandingPage.HeaderImage.Paths.first %}
 <div class="landing-page-header">
     <div class="zigzag">
-        <div class="rippleFront" style="background-image: url('{{ imagePath | asset_url }}')">
+        <div class="rippleFront" style="background-image: url('{{ "~/StatCan.OrchardCore.Radar/images/ripples-white.svg" | href }}')">
             <div class="header-text">
-                <div class="name light-font center-text">
-                {{ Model.ContentItem | display_text }}
-                </div>
-                <div class="description light-font center-text">
-                    {{ Model.ContentItem.Content.LandingPage.Description.Text }}
-                </div>
-                <div class="list">
-                    {{ Model.Content.HtmlBodyPart | shape_render }}
-                </div>
+                <v-container>
+                    <v-row>
+                        <v-col md="12">
+                            <div class="name light-font center-text">
+                                {{ Model.ContentItem | display_text }}
+                            </div>
+                        </v-col>
+                    </v-row>
+                    <v-row>
+                        <v-col md="12">
+                            <div class="description light-font center-text">
+                                {{ Model.ContentItem.Content.LandingPage.Description.Text }}
+                            </div>
+                        </v-col>
+                    </v-row>
+                    <v-row>
+                        <v-col md="12">
+                            <div class="list">
+                                {{ Model.Content.HtmlBodyPart | shape_render }}
+                            </div>
+                        </v-col>
+                    </v-row>
+                    <v-row>
+                        <v-col md="12">
+                            <div class="header-footer">
+                                <v-img
+                                    src="{{ "~/StatCan.OrchardCore.Radar/images/canada.svg" | href }}"
+                                    max-width="172"
+                                    max-height="41"
+                                ></v-img>
+                                <v-img
+                                    src="{{ "~/StatCan.OrchardCore.Radar/images/goc.svg" | href }}"
+                                    max-width="293"
+                                    max-height="28"
+                                ></v-img>
+                            </div>
+                        </v-col>
+                    </v-row>
+                </v-container>
             </div>
         </div>
     </div>
@@ -23,4 +53,7 @@
 
 {% endzone %}
 
-<!-- {{ Model.Content | shape_render }} -->
+{% shape_remove_item Model.Content "HtmlBodyPart" %}
+{% shape_remove_item Model.Content "LandingPage-Description" %}
+
+{{ Model.Content | shape_render }}

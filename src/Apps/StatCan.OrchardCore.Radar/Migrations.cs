@@ -675,7 +675,7 @@ namespace StatCan.OrchardCore.Radar
         private void CreateLandingPage()
         {
             _contentDefinitionManager.AlterTypeDefinition(Constants.ContentTypes.LandingPage, type => type
-                .DisplayedAs("LandingPage")
+                .DisplayedAs("Landing Page")
                 .Creatable()
                 .Listable()
                 .Draftable()
@@ -702,11 +702,6 @@ namespace StatCan.OrchardCore.Radar
             );
 
             _contentDefinitionManager.AlterPartDefinition(Constants.ContentTypes.LandingPage, part => part
-                .WithField("HeaderImage", field => field
-                    .OfType("MediaField")
-                    .WithDisplayName("Header Image")
-                    .WithPosition("0")
-                )
                 .WithField("Description", field => field
                     .OfType("TextField")
                     .WithDisplayName("Description")
