@@ -1,0 +1,99 @@
+{% assign challenges = Queries.GetItemsForHackathon | query: type: "Challenge" %}
+{% assign teamMembers = Queries.GetHackersForTeam | query: teamContentItemId: Model.ContentItem.ContentItemId %}
+{% assign challengeSelected =  Model.ContentItem.Content.Team.Challenge.ContentItemIds | content_item_id %}
+{% assign userId = User | user_id %}
+
+{% capture challengeObjects %}
+[
+  {% for challenge in challenges %}
+    {% if challenge.Published == true %}
+      {
+        text: "{{challenge.DisplayText}}",
+        value: "{{challenge.ContentItemId}}"
+      }
+      {% if forloop.last != true %}
+      ,
+      {% endif %}
+    {% endif %}
+  {%endfor%}
+]
+{% endcapture %}
+
+<team-component></team-component>
+
+
+{% block "script", At: "Foot", depends_on:"vuejs" %}
+Vue.component("team-component", {
+  template:  "#TeamComponent",
+  data: function () { 
+    return {
+      challenges: {{challengeObjects}}
+    };
+  }
+});
+{% endblock %}
+
+{% block "script", type:"text/html", At: "Foot", id: "TeamComponent" %}
+  {% if Model.ContentItem.Content.Team.TeamCaptain.UserIds.first == userId and Site.Properties.HackathonCustomSettings.TeamCustomSettings.TeamEditable.Value == true %}
+    <v-container fluid>
+      <form method="post" action="{{ "~/team/save" | href }}">
+        <v-row justify="center">
+          <v-col cols="8">
+            <v-card>
+              <v-card-title>
+                {{ Model.ContentItem.Content.Team.Name.Text }} {{ "Description" | t }}
+              </v-card-title>
+              <v-card-text>
+                <v-textarea solo name="teamDescription" label="Edit team description" value="{{ Model.ContentItem.Content.Team.Description.Text }}"></v-textarea>
+              </v-card-text>
+            </v-card>
+          </v-col>
+        
+          <v-col cols="8">
+            <v-card>
+              <v-card-title>
+                {{ "Challenge" | t }}
+              </v-card-title>
+              <v-card-text>
+                <v-select solo label="{{ challengeSelected }}" name="challenge" :items="challenges" item-text="text" item-value="value" ></v-select>
+              </v-card-text>
+            </v-card>  
+          </v-col>
+      
+          <v-col cols="8">
+            <v-btn type="submit" depressed block>{{ "Save" | t }}</v-btn>
+          </v-col>
+          {% antiforgerytoken %}
+          <input type="hidden" name="returnUrl" value="{{Request.Path}}">
+        </v-row>
+      </form>
+      
+      <v-row justify="center">
+        <v-col cols="8">
+          <v-card>
+            <v-card-title>{{ "Team Members" | t }}</v-card-title>
+            <v-container fluid>
+              <v-row>
+                {% for teamMember in teamMembers %}
+                  <v-col>
+                    <v-card>
+                      <v-card-title>{{ teamMember.FirstName }} {{ teamMember.LastName }}</v-card-title>
+                      <form method="post" action="{{ "~/team/remove" | href }}">
+                        <v-card-text>
+                          <v-btn {% if Model.ContentItem.Content.Team.TeamCaptain.UserIds.first == teamMember.UserId %} disabled {% endif %} type="submit">{{ "Remove" | t }}</v-btn>
+                        </v-card-text>
+                        {% antiforgerytoken %}
+                        <input type="hidden" name="hackerContentItemId" value="{{teamMember.UserId}}">
+                        <input type="hidden" name="returnUrl" value="{{Request.Path}}">
+                      </form>
+                    </v-card>
+                  </v-col>
+                {% endfor %}
+              </v-row>
+            </v-container>
+          </v-card>
+        </v-col>
+      </v-row>
+    </v-container>
+  {% endif %}
+{% endblock %}
