@@ -1,5 +1,5 @@
-.center-text {
-  text-align: center;
+.max-wdith {
+  max-width: 1200px;
 }
 
 .header-text {
@@ -32,16 +32,39 @@
   justify-content: center;
 }
 
+.section-title {
+  color: #005247;
+}
+
+.section-background {
+  background: #009C880A;
+}
+
+.front-footer {
+  background: #009C88;
+}
+
 .header-footer {
   display: flex;
   justify-content: space-between;
   padding: 0 10rem 0 10rem;
 }
 
+.card-background {
+  background-color: #F6FCFB;
+}
+
+.zigzag-light {
+  background: #cfece9 0% 0% no-repeat;
+}
+
+.zigzag-dark {
+  background: #009C88 0% 0% no-repeat;
+}
+
 .zigzag {
   position: relative;
   padding: 8px 8px 32px 8px;
-  background: #cfece9;
 }
 
   .zigzag:after {
