@@ -24,7 +24,6 @@
   font-weight: 300;
   margin: auto;
   line-height: normal;
-  padding: 0 20rem 0 20rem;
 }
 
 .list {
@@ -40,6 +39,10 @@
   background: #009C880A;
 }
 
+.card-title {
+  display: flex;
+}
+
 .front-footer {
   background: #009C88;
 }
@@ -50,36 +53,53 @@
   padding: 0 10rem 0 10rem;
 }
 
-.card-background {
+.card-background-light {
   background-color: #F6FCFB;
 }
 
-.zigzag-light {
+.card-background-dark {
   background: #cfece9 0% 0% no-repeat;
 }
 
-.zigzag-dark {
+.card-title {
   background: #009C88 0% 0% no-repeat;
 }
 
-.zigzag {
+.zigzag-container {
   position: relative;
-  padding: 8px 8px 32px 8px;
+  width: 100%;
 }
 
-  .zigzag:after {
-    background: linear-gradient(-40deg, hsl(0, 0%, 100%) 16px, transparent 0), linear-gradient(40deg, #ffffff 16px, transparent 0);
-    background-position: left bottom;
-    background-repeat: repeat-x;
-    background-size: 32px 32px;
-    content: ' ';
-    display: block;
-    position: absolute;
-    bottom: 0px;
-    left: 0px;
-    width: 100%;
-    height: 32px;
-  }
+.zigzag {
+  content: ' ';
+  display: block;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+  height: 32px;
+}
+
+.zigzag-white {
+  background: linear-gradient(-40deg, #FFFFFF 16px, transparent 0), linear-gradient(40deg, #FFFFFF 16px, transparent 0);
+  background-position: left bottom;
+  background-repeat: repeat-x;
+  background-size: 32px 32px;
+}
+
+.zigzag-light {
+  background: linear-gradient(-40deg, #F6FCFB 16px, transparent 0), linear-gradient(40deg, #F6FCFB 16px, transparent 0);
+  background-position: left bottom;
+  background-repeat: repeat-x;
+  background-size: 32px 32px;
+}
+
+.zigzag-dark {
+  background: linear-gradient(-40deg, #cfece9 16px, transparent 0), linear-gradient(40deg, #cfece9 16px, transparent 0);
+  background-position: left bottom;
+  background-repeat: repeat-x;
+  background-size: 32px 32px;
+}
 
 .rippleFront {
   background-color: #cfece9;
