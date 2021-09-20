@@ -5,5 +5,12 @@
       "Assets/css/*.css"
     ],
     "output": "wwwroot/css/index.css"
+  },
+  {
+    "copy": true,
+    "inputs": [
+      "Assets/images/*"
+    ],
+    "output": "wwwroot/images/@"
   }
 ]

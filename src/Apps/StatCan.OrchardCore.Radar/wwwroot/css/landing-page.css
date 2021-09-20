@@ -2,13 +2,8 @@
   text-align: center;
 }
 
-.landing-page-header {
-  width: 100%;
-}
-
 .header-text {
-  width: 600px;
-  margin: auto;
+  padding: 0 24rem 0 24rem;
 }
 
 .light-font {
@@ -26,16 +21,21 @@
 
 .description {
   font-size: 25px;
-    font-weight: 300;
-    margin: auto;
-    width: 60%;
-    line-height: normal;
+  font-weight: 300;
+  margin: auto;
+  line-height: normal;
+  padding: 0 20rem 0 20rem;
 }
 
 .list {
-  margin: 2rem auto 2rem auto;
-  white-space: nowrap;
-  width: fit-content;
+  display: flex;
+  justify-content: center;
+}
+
+.header-footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10rem 0 10rem;
 }
 
 .zigzag {
