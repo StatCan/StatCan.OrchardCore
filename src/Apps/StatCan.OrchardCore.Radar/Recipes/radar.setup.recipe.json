@@ -14,7 +14,7 @@
       "disable": [],
       "enable": [
         "StatCan.OrchardCore.Vuetify.Grid",
-        "StatCan.OrchardCore.Vuetify.Image"
+        "StatCan.OrchardCore.Vuetify.Card"
       ]
     },
     {
@@ -32,10 +32,6 @@
         {
           "SourcePath": "../wwwroot/images/radar-icon-white.svg",
           "TargetPath": "radar-icon-white.svg"
-        },
-        {
-          "SourcePath": "../wwwroot/images/ripples-white.svg",
-          "TargetPath": "ripples-white.svg"
         }
       ]
     },
@@ -92,6 +88,46 @@
           "LandingPage": {
             "Description": {
               "Text": "Explore, manage and discover insights across your projects"
+            },
+            "Section1": {
+              "Text": "Recent activity"
+            },
+            "Section2": {
+              "Text": "Recent trends"
+            },
+            "Activity1": {
+              "Text": "Projects",
+              "Html": "<div class=\"text-h5\">\n  Projects\n</div>\n<div class=\"text-h6\">\n  In-flight projects\n</div>"
+            },
+            "Activity2": {
+              "Text": "Proposals",
+              "Html": "<div class=\"text-h5\">\n  Committees\n</div>\n<div class=\"text-h6\">\n  Latest committees\n</div>"
+            },
+            "Activity3": {
+              "Text": null,
+              "Html": "<div class=\"text-h5\">\n  Events\n</div>\n<div class=\"text-h6\">\n  Upcoming events\n</div>"
+            },
+            "Activity4": {
+              "Text": null,
+              "Html": "<div class=\"text-h5\">\n  Proposals\n</div>\n<div class=\"text-h6\">\n  Current proposals\n</div>"
+            },
+            "Trend1": {
+              "Html": "<div class=\"text-h5\">\n  Topics\n</div>\n<div class=\"text-h6\">\n  Most used topics across all activities\n</div>"
+            },
+            "Activities": {
+              "Text": "Recent activities"
+            },
+            "Trends": {
+              "Text": "Recent trends"
+            },
+            "Userguide": {
+              "Html": "<div class=\"text-h4\">\n  User Guide\n</div>\n<div class=\"text-p\">\n  Learn more about the Radar\n</div>"
+            },
+            "Contactus": {
+              "Html": "<div class=\"text-h4\">\n  Contact Us\n</div>\n<div class=\"text-p\">\n  Ask questions and send feedback\n</div>"
+            },
+            "Headerlist": {
+              "Html": "\n  <ul>\n    <li>\n    \tDiscover pathfinding projects\n    </li>\n    <li>\n    \tExplore technologies and topics\n    </li>\n    <li>\n    \tShare your team's work\n    </li>\n  </ul>\n"
             }
           },
           "AutoroutePart": {
@@ -101,18 +137,12 @@
             "RouteContainedItems": false,
             "Absolute": false
           },
-          "FlowPart": {
-            "Widgets": []
-          },
           "LocalizationPart": {
             "LocalizationSet": "4xwnrm19d4119rg6szffxkfpwt",
             "Culture": "en"
           },
           "TitlePart": {
             "Title": "Digital Radar"
-          },
-          "HtmlBodyPart": {
-            "Html": "\n  <ul>\n    <li>\n    \tDiscover pathfinding projects\n    </li>\n    <li>\n    \tExplore technologies and topics\n    </li>\n    <li>\n    \tShare your team's work\n    </li>\n  </ul>\n"
           }
         },
         {

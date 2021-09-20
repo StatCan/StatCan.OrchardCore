@@ -2,7 +2,7 @@
   {
     "copy": true,
     "inputs": [
-      "Assets/css/*.css"
+      "Assets/css/*"
     ],
     "output": "wwwroot/css/index.css"
   },

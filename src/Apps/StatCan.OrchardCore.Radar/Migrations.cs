@@ -693,19 +693,63 @@ namespace StatCan.OrchardCore.Radar
                 .WithPart("TitlePart", part => part
                     .WithPosition("1")
                 )
-                .WithPart("FlowPart", part => part
-                    .WithPosition("5")
-                )
-                .WithPart("HtmlBodyPart", part => part
-                    .WithPosition("4")
-                )
             );
 
             _contentDefinitionManager.AlterPartDefinition(Constants.ContentTypes.LandingPage, part => part
                 .WithField("Description", field => field
                     .OfType("TextField")
                     .WithDisplayName("Description")
+                    .WithPosition("8")
+                )
+                .WithField("Activity1", field => field
+                    .OfType("HtmlField")
+                    .WithDisplayName("Activity1")
+                    .WithPosition("2")
+                )
+                .WithField("Activity2", field => field
+                    .OfType("HtmlField")
+                    .WithDisplayName("Activity2")
+                    .WithPosition("3")
+                )
+                .WithField("Activity3", field => field
+                    .OfType("HtmlField")
+                    .WithDisplayName("Activity3")
+                    .WithPosition("4")
+                )
+                .WithField("Activity4", field => field
+                    .OfType("HtmlField")
+                    .WithDisplayName("Activity4")
+                    .WithPosition("5")
+                )
+                .WithField("Trend1", field => field
+                    .OfType("HtmlField")
+                    .WithDisplayName("Trend1")
+                    .WithPosition("7")
+                )
+                .WithField("Activities", field => field
+                    .OfType("TextField")
+                    .WithDisplayName("Activities")
                     .WithPosition("1")
+                )
+                .WithField("Trends", field => field
+                    .OfType("TextField")
+                    .WithDisplayName("Trends")
+                    .WithPosition("6")
+                )
+                .WithField("Userguide", field => field
+                    .OfType("HtmlField")
+                    .WithDisplayName("User guide")
+                    .WithPosition("9")
+                )
+                .WithField("Contactus", field => field
+                    .OfType("HtmlField")
+                    .WithDisplayName("Contact us")
+                    .WithPosition("10")
+                )
+                .WithField("Headerlist", field => field
+                    .OfType("HtmlField")
+                    .WithDisplayName("Header list")
+                    .WithPosition("0")
                 )
             );
         }
