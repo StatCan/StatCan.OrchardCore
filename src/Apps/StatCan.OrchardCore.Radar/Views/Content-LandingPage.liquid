@@ -2,7 +2,7 @@
 
 {% assign imagePath = Model.ContentItem.Content.LandingPage.HeaderImage.Paths.first %}
 <div class="landing-page-header">
-    <div class="zigzag zigzag-light">
+    <div>
         <div class="rippleFront" style="background-image: url('{{ "~/StatCan.OrchardCore.Radar/images/ripples-white.svg" | href }}')">
             <div class="header-text">
                 <v-container style="max-width: 1200px">
@@ -15,7 +15,7 @@
                     </v-row>
                     <v-row>
                         <v-col md="12">
-                            <div class="description light-font text-center">
+                            <div class="description light-font text-center pr-10 pl-10">
                                 {{ Model.ContentItem.Content.LandingPage.Description.Text }}
                             </div>
                         </v-col>
@@ -29,22 +29,25 @@
                     </v-row>
                     <v-row>
                         <v-col md="12">
-                            <div class="header-footer">
-                                <v-img
-                                    src="{{ "~/StatCan.OrchardCore.Radar/images/canada.svg" | href }}"
-                                    max-width="172"
-                                    max-height="41"
-                                ></v-img>
+                            <div class="header-footer mt-7">
                                 <v-img
                                     src="{{ "~/StatCan.OrchardCore.Radar/images/goc.svg" | href }}"
                                     max-width="293"
                                     max-height="28"
+                                ></v-img>
+                                <v-img
+                                    src="{{ "~/StatCan.OrchardCore.Radar/images/canada.svg" | href }}"
+                                    max-width="172"
+                                    max-height="41"
                                 ></v-img>
                             </div>
                         </v-col>
                     </v-row>
                 </v-container>
             </div>
+        </div>
+        <div class="zigzag-container">
+            <div class="zigzag zigzag-white"></div>
         </div>
     </div>
 </div>
@@ -60,53 +63,85 @@
         </v-row>
         <v-row>
             <v-col md="6">
-                <v-card elevation=0 outlined class="card-background">
-                    <v-card-title class="zigzag zigzag-dark">
-                        <div class="white--text mb-5">
-                            {{ Model.ContentItem.Content.LandingPage.Activity1.Html | raw }}
+                <v-card elevation=0>
+                    <v-card-title class="card-title" style="padding: 0;">
+                        <div class="card-title ml-5 mt-5 mb-8">
+                            <v-icon color="white" class="mr-5" style="font-size: 65px;">
+                                mdi-flask-outline
+                            </v-icon>
+                            <div class="white--text">
+                                {{ Model.ContentItem.Content.LandingPage.Activity1.Html | raw }}
+                            </div>
+                        </div>
+                        <div class="zigzag-container">
+                            <div class="zigzag zigzag-light"></div>
                         </div>
                     </v-card-title>
-                    <v-card-text>
+                    <div class="card-background-light">
                         
-                    </v-card-text>
+                    </div>
                 </v-card>
             </v-col>
             <v-col>
-                <v-card elevation=0 outlined class="card-background">
-                    <v-card-title class="zigzag zigzag-dark">
-                        <div class="white--text mb-5">
-                            {{ Model.ContentItem.Content.LandingPage.Activity2.Html | raw }}
+                <v-card elevation=0>
+                    <v-card-title class="card-title" style="padding: 0;">
+                        <div class="card-title ml-5 mt-5 mb-8">
+                            <v-icon color="white" class="mr-5" style="font-size: 65px;">
+                                mdi-account-multiple
+                            </v-icon>
+                            <div class="white--text">
+                                {{ Model.ContentItem.Content.LandingPage.Activity2.Html | raw }}
+                            </div>
+                        </div>
+                        <div class="zigzag-container">
+                            <div class="zigzag zigzag-light"></div>
                         </div>
                     </v-card-title>
-                    <v-card-text>
+                    <div class="card-background-light">
                         
-                    </v-card-text>
+                    </div>
                 </v-card>
             </v-col>
         </v-row>
         <v-row>
             <v-col md="6">
-                <v-card elevation=0 outlined class="card-background">
-                    <v-card-title class="zigzag zigzag-dark">
-                        <div class="white--text mb-5">
-                            {{ Model.ContentItem.Content.LandingPage.Activity3.Html | raw }}
+                <v-card elevation=0>
+                    <v-card-title class="card-title" style="padding: 0;">
+                        <div class="card-title ml-5 mt-5 mb-8">
+                            <v-icon color="white" class="mr-5" style="font-size: 65px;">
+                                mdi-calendar
+                            </v-icon>
+                            <div class="white--text">
+                                {{ Model.ContentItem.Content.LandingPage.Activity3.Html | raw }}
+                            </div>
+                        </div>
+                        <div class="zigzag-container">
+                            <div class="zigzag zigzag-light"></div>
                         </div>
                     </v-card-title>
-                    <v-card-text>
+                    <div class="card-background-light">
                         
-                    </v-card-text>
+                    </div>
                 </v-card>
             </v-col>
             <v-col>
-                <v-card elevation=0 outlined class="card-background">
-                    <v-card-title class="zigzag zigzag-dark">
-                        <div class="white--text mb-5">
-                            {{ Model.ContentItem.Content.LandingPage.Activity4.Html | raw }}
+                <v-card elevation=0>
+                    <v-card-title class="card-title" style="padding: 0;">
+                        <div class="card-title ml-5 mt-5 mb-8">
+                            <v-icon color="white" class="mr-5" style="font-size: 65px;">
+                                mdi-alert-circle-outline
+                            </v-icon>
+                            <div class="white--text">
+                                {{ Model.ContentItem.Content.LandingPage.Activity4.Html | raw }}
+                            </div>
+                        </div>
+                        <div class="zigzag-container">
+                            <div class="zigzag zigzag-light"></div>
                         </div>
                     </v-card-title>
-                    <v-card-text>
+                    <div class="card-background-light">
                         
-                    </v-card-text>
+                    </div>
                 </v-card>
             </v-col>
         </v-row>
@@ -124,15 +159,23 @@
         </v-row>
         <v-row>
             <v-col md="6">
-                <v-card elevation=0 outlined class="card-background">
-                    <v-card-title class="zigzag zigzag-dark">
-                        <div class="white--text mb-5">
-                            {{ Model.ContentItem.Content.LandingPage.Trend1.Html | raw }}
+                <v-card elevation=0>
+                    <v-card-title class="card-title" style="padding: 0;">
+                        <div class="card-title ml-5 mt-5 mb-8">
+                            <v-icon color="white" class="mr-5" style="font-size: 65px;">
+                                mdi-pound
+                            </v-icon>
+                            <div class="white--text">
+                                {{ Model.ContentItem.Content.LandingPage.Trend1.Html | raw }}
+                            </div>
+                        </div>
+                        <div class="zigzag-container">
+                            <div class="zigzag zigzag-dark"></div>
                         </div>
                     </v-card-title>
-                    <v-card-text>
+                    <div class="card-background-dark">
                         
-                    </v-card-text>
+                    </div>
                 </v-card>
             </v-col>
         </v-row>
@@ -143,16 +186,26 @@
     <v-container style="max-width: 1200px">
         <v-row justify="space-around">
             <v-col md="4">
-                <v-card elevation=0>
-                    <div class="white--text text-center front-footer">
-                        {{ Model.ContentItem.Content.LandingPage.Userguide.Html | raw }}
+                <v-card elevation=0 to="#">
+                    <div class="white--text text-center front-footer pb-6 pt-7">
+                        <v-icon color="white" class="mb-5" style="font-size: 120px;">
+                            mdi-book-open-variant
+                        </v-icon>
+                        <div>
+                            {{ Model.ContentItem.Content.LandingPage.Userguide.Html | raw }}
+                        </div>
                     </div>
                 </v-card>
             </v-col>
             <v-col md="4">
-                <v-card elevation=0>
-                    <div class="white--text text-center front-footer">
-                        {{ Model.ContentItem.Content.LandingPage.Contactus.Html | raw }}
+                <v-card elevation=0 to="#">
+                    <div class="white--text text-center front-footer pb-6 pt-7">
+                        <v-icon color="white" class="mb-5" style="font-size: 120px;">
+                            mdi-email
+                        </v-icon>
+                        <div>
+                            {{ Model.ContentItem.Content.LandingPage.Contactus.Html | raw }}
+                        </div>
                     </div>
                 </v-card>
             </v-col>
