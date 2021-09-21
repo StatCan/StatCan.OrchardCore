@@ -1,13 +1,18 @@
 {% style src:"~/StatCan.OrchardCore.Radar/css/list-view.css" %}
 
+{% assign proposals = Queries.AllProposalsSQL | query %}
+
 {% zone "Header" %}
-<div class="pt-15">
+<div class="pt-12">
     <div class="list-header">
         <v-container >
             <v-row justify="space-between">
                 <v-col md="4">
-                    <div>
+                    <div class="title-container">
                         <div class="text-h2">{{ Model.ContentItem | display_text }}</div>
+                        <div class="bubble">
+                            <div class="bubble-text">{{ proposals | size }}</div>
+                        </div>
                     </div>
                     <div></div>
                 </v-col>
@@ -27,3 +32,35 @@
     </div>
 </div>
 {% endzone %}
+
+<div class="table-container">
+    <table class="table">
+        <thead class="table-header">
+            <tr>
+                <th class="name-col" >{{ "Name" | t }}</th>
+                <th>{{ "Updated" | t }}</th>
+                <th>{{ "Registrar" | t }}</th>
+                <th>{{ "Visibility" | t }}</th>
+                <th>{{ "Created" | t }}</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for proposal in proposals %}
+                <tr class="table-row">
+                    <td class="name-col">{{ proposal | display_text }}</td>
+                    <td class="table-col">{{ proposal.ModifiedUtc |  local | date: "%b %d, %Y" }}</td>
+                    <td class="table-col">{{ proposal.Owner }}</td>
+                    <td class="table-col">
+                        {% if proposal.Published %}
+                            {{ "Published" | t }}
+                        {% else %}
+                            {{ "Draft" | t }}
+                        {% endif %}
+                    </td>
+                    <td class="table-col">{{ proposal.CreatedUtc |  local | date: "%b %d, %Y" }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+</div>
