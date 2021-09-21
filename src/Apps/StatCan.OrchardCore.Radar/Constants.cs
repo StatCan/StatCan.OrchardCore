@@ -30,6 +30,9 @@ namespace StatCan.OrchardCore.Radar
             public const string RadarEntity = "RadarEntity";
 
             public const string LandingPage = "LandingPage";
+            public const string Activity = "Activity";
+            public const string Trend = "Trend";
+            public const string LandingPageFooterCard = "LandingPageFooterCard";
         }
     }
 }

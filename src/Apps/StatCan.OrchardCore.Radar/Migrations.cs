@@ -12,6 +12,7 @@ using OrchardCore.ContentFields.Settings;
 using OrchardCore.Taxonomies.Fields;
 using OrchardCore.Taxonomies.Settings;
 using OrchardCore.Flows.Models;
+using OrchardCore.Contents.Models;
 
 namespace StatCan.OrchardCore.Radar
 {
@@ -674,6 +675,113 @@ namespace StatCan.OrchardCore.Radar
 
         private void CreateLandingPage()
         {
+            // Sections on the landing page
+            _contentDefinitionManager.AlterTypeDefinition(Constants.ContentTypes.Activity, type => type
+                .DisplayedAs("Activity")
+                .WithSettings(new FullTextAspectSettings
+                {
+                    IncludeBodyAspect = false,
+                    IncludeDisplayText = false,
+                })
+                .WithPart(Constants.ContentTypes.Activity, part => part
+                    .WithPosition("1")
+                )
+                .WithPart("HtmlBodyPart", part => part
+                    .WithPosition("2")
+                )
+                .WithPart("LiquidPart", part => part
+                    .WithPosition("3")
+                )
+                .WithPart("TitlePart", part => part
+                    .WithPosition("0")
+                )
+            );
+
+            _contentDefinitionManager.AlterPartDefinition(Constants.ContentTypes.Activity, part => part
+                .WithField("Icon", field => field
+                    .OfType("TextField")
+                    .WithDisplayName("Icon")
+                    .WithPosition("0")
+                    .WithSettings(new TextFieldSettings
+                    {
+                        Hint = "Md Icon name",
+                        Required = true,
+                    })
+                )
+            );
+
+            _contentDefinitionManager.AlterTypeDefinition(Constants.ContentTypes.Trend, type => type
+                .DisplayedAs("Trend")
+                .WithSettings(new FullTextAspectSettings
+                {
+                    IncludeBodyAspect = false,
+                    IncludeDisplayText = false,
+                })
+                .WithPart(Constants.ContentTypes.Trend, part => part
+                    .WithPosition("1")
+                )
+                .WithPart("HtmlBodyPart", part => part
+                    .WithPosition("2")
+                )
+                .WithPart("LiquidPart", part => part
+                    .WithPosition("3")
+                )
+                .WithPart("TitlePart", part => part
+                    .WithPosition("0")
+                )
+            );
+
+            _contentDefinitionManager.AlterPartDefinition(Constants.ContentTypes.Trend, part => part
+                .WithField("Icon", field => field
+                    .OfType("TextField")
+                    .WithDisplayName("Icon")
+                    .WithPosition("0")
+                    .WithSettings(new TextFieldSettings
+                    {
+                        Hint = "Md Icon name",
+                        Required = true,
+                    })
+                )
+            );
+
+            _contentDefinitionManager.AlterTypeDefinition(Constants.ContentTypes.LandingPageFooterCard, type => type
+                .DisplayedAs("Landing Page Footer Card")
+                .WithSettings(new FullTextAspectSettings
+                {
+                    IncludeBodyAspect = false,
+                    IncludeDisplayText = false,
+                })
+                .WithPart(Constants.ContentTypes.LandingPageFooterCard, part => part
+                    .WithPosition("0")
+                )
+                .WithPart("HtmlBodyPart", part => part
+                    .WithPosition("1")
+                )
+            );
+
+            _contentDefinitionManager.AlterPartDefinition(Constants.ContentTypes.LandingPageFooterCard, part => part
+                .WithField("Icon", field => field
+                    .OfType("TextField")
+                    .WithDisplayName("Icon")
+                    .WithPosition("0")
+                    .WithSettings(new TextFieldSettings
+                    {
+                        Hint = "MD Icon name",
+                        Required = true,
+                    })
+                )
+                .WithField("Link", field => field
+                    .OfType("TextField")
+                    .WithDisplayName("Link")
+                    .WithPosition("1")
+                    .WithSettings(new TextFieldSettings
+                    {
+                        Hint = "A link that the card will go to",
+                    })
+                )
+            );
+
+            // Landing Page
             _contentDefinitionManager.AlterTypeDefinition(Constants.ContentTypes.LandingPage, type => type
                 .DisplayedAs("Landing Page")
                 .Creatable()
@@ -693,63 +801,45 @@ namespace StatCan.OrchardCore.Radar
                 .WithPart("TitlePart", part => part
                     .WithPosition("1")
                 )
+                .WithPart("Activities", "BagPart", part => part
+                    .WithDisplayName("Activities")
+                    .WithDescription("Add the activity cards here")
+                    .WithPosition("4")
+                    .WithSettings(new BagPartSettings
+                    {
+                        ContainedContentTypes = new[] { Constants.ContentTypes.Activity },
+                    })
+                )
+                .WithPart("Trends", "BagPart", part => part
+                    .WithDisplayName("Trends")
+                    .WithDescription("Add the trend card here")
+                    .WithPosition("5")
+                    .WithSettings(new BagPartSettings
+                    {
+                        ContainedContentTypes = new[] { Constants.ContentTypes.Trend },
+                    })
+                )
+                .WithPart("Footer", "BagPart", part => part
+                    .WithDisplayName("Footer")
+                    .WithDescription("Add cards to the landing page footer")
+                    .WithPosition("6")
+                    .WithSettings(new BagPartSettings
+                    {
+                        ContainedContentTypes = new[] { Constants.ContentTypes.LandingPageFooterCard },
+                    })
+                )
             );
 
-            _contentDefinitionManager.AlterPartDefinition(Constants.ContentTypes.LandingPage, part => part
+            _contentDefinitionManager.AlterPartDefinition("LandingPage", part => part
                 .WithField("Description", field => field
                     .OfType("TextField")
                     .WithDisplayName("Description")
-                    .WithPosition("8")
-                )
-                .WithField("Activity1", field => field
-                    .OfType("HtmlField")
-                    .WithDisplayName("Activity1")
-                    .WithPosition("2")
-                )
-                .WithField("Activity2", field => field
-                    .OfType("HtmlField")
-                    .WithDisplayName("Activity2")
-                    .WithPosition("3")
-                )
-                .WithField("Activity3", field => field
-                    .OfType("HtmlField")
-                    .WithDisplayName("Activity3")
-                    .WithPosition("4")
-                )
-                .WithField("Activity4", field => field
-                    .OfType("HtmlField")
-                    .WithDisplayName("Activity4")
-                    .WithPosition("5")
-                )
-                .WithField("Trend1", field => field
-                    .OfType("HtmlField")
-                    .WithDisplayName("Trend1")
-                    .WithPosition("7")
-                )
-                .WithField("Activities", field => field
-                    .OfType("TextField")
-                    .WithDisplayName("Activities")
-                    .WithPosition("1")
-                )
-                .WithField("Trends", field => field
-                    .OfType("TextField")
-                    .WithDisplayName("Trends")
-                    .WithPosition("6")
-                )
-                .WithField("Userguide", field => field
-                    .OfType("HtmlField")
-                    .WithDisplayName("User guide")
-                    .WithPosition("9")
-                )
-                .WithField("Contactus", field => field
-                    .OfType("HtmlField")
-                    .WithDisplayName("Contact us")
-                    .WithPosition("10")
+                    .WithPosition("0")
                 )
                 .WithField("Headerlist", field => field
                     .OfType("HtmlField")
                     .WithDisplayName("Header list")
-                    .WithPosition("0")
+                    .WithPosition("1")
                 )
             );
         }

@@ -6,8 +6,8 @@
   "website": "https://digital.statcan.gc.ca",
   "version": "1.0",
   "issetuprecipe": false,
-  "categories": [ "radar" ],
-  "tags": [ "innovation", "inno" ],
+  "categories": ["radar"],
+  "tags": ["innovation", "inno"],
   "steps": [
     {
       "name": "feature",
@@ -54,12 +54,8 @@
             "Text": "Radar"
           },
           "Logo": {
-            "Paths": [
-              "radar-icon-white.svg"
-            ],
-            "MediaTexts": [
-              ""
-            ]
+            "Paths": ["radar-icon-white.svg"],
+            "MediaTexts": [""]
           },
           "DisplayMode": {
             "Text": "light"
@@ -89,43 +85,6 @@
             "Description": {
               "Text": "Explore, manage and discover insights across your projects"
             },
-            "Section1": {
-              "Text": "Recent activity"
-            },
-            "Section2": {
-              "Text": "Recent trends"
-            },
-            "Activity1": {
-              "Text": "Projects",
-              "Html": "<div class=\"text-h5\">\n  Projects\n</div>\n<div class=\"text-h6\">\n  In-flight projects\n</div>"
-            },
-            "Activity2": {
-              "Text": "Proposals",
-              "Html": "<div class=\"text-h5\">\n  Committees\n</div>\n<div class=\"text-h6\">\n  Latest committees\n</div>"
-            },
-            "Activity3": {
-              "Text": null,
-              "Html": "<div class=\"text-h5\">\n  Events\n</div>\n<div class=\"text-h6\">\n  Upcoming events\n</div>"
-            },
-            "Activity4": {
-              "Text": null,
-              "Html": "<div class=\"text-h5\">\n  Proposals\n</div>\n<div class=\"text-h6\">\n  Current proposals\n</div>"
-            },
-            "Trend1": {
-              "Html": "<div class=\"text-h5\">\n  Topics\n</div>\n<div class=\"text-h6\">\n  Most used topics across all activities\n</div>"
-            },
-            "Activities": {
-              "Text": "Recent activities"
-            },
-            "Trends": {
-              "Text": "Recent trends"
-            },
-            "Userguide": {
-              "Html": "<div class=\"text-h4\">\n  User Guide\n</div>\n<div class=\"text-p\">\n  Learn more about the Radar\n</div>"
-            },
-            "Contactus": {
-              "Html": "<div class=\"text-h4\">\n  Contact Us\n</div>\n<div class=\"text-p\">\n  Ask questions and send feedback\n</div>"
-            },
             "Headerlist": {
               "Html": "\n  <ul>\n    <li>\n    \tDiscover pathfinding projects\n    </li>\n    <li>\n    \tExplore technologies and topics\n    </li>\n    <li>\n    \tShare your team's work\n    </li>\n  </ul>\n"
             }
@@ -143,6 +102,195 @@
           },
           "TitlePart": {
             "Title": "Digital Radar"
+          },
+          "Activities": {
+            "ContentItems": [
+              {
+                "ContentItemId": "[js: uuid()]",
+                "ContentItemVersionId": null,
+                "ContentType": "Activity",
+                "DisplayText": "Projects",
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": null,
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": "",
+                "Author": "admin",
+                "Activity": {
+                  "Icon": {
+                    "Text": "mdi-flask-outline"
+                  }
+                },
+                "HtmlBodyPart": {
+                  "Html": "<div class=\"text-h5\">Projects</div><div class=\"text-h6\">In-flight projects</div>"
+                },
+                "LiquidPart": {
+                  "Liquid": null
+                },
+                "TitlePart": {
+                  "Title": "Projects"
+                }
+              },
+              {
+                "ContentItemId": "[js: uuid()]",
+                "ContentItemVersionId": null,
+                "ContentType": "Activity",
+                "DisplayText": "Events",
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": null,
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": "",
+                "Author": "admin",
+                "Activity": {
+                  "Icon": {
+                    "Text": "mdi-calendar"
+                  }
+                },
+                "HtmlBodyPart": {
+                  "Html": "<div class=\"text-h5\">Events</div><div class=\"text-h6\">Upcoming events</div>"
+                },
+                "LiquidPart": {
+                  "Liquid": null
+                },
+                "TitlePart": {
+                  "Title": "Events"
+                }
+              },
+              {
+                "ContentItemId": "[js: uuid()]",
+                "ContentItemVersionId": null,
+                "ContentType": "Activity",
+                "DisplayText": "Committees",
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": null,
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": "",
+                "Author": "admin",
+                "Activity": {
+                  "Icon": {
+                    "Text": "mdi-account-multiple"
+                  }
+                },
+                "HtmlBodyPart": {
+                  "Html": "<div class=\"text-h5\">Committees</div><div class=\"text-h6\">Latest committees</div>"
+                },
+                "LiquidPart": {
+                  "Liquid": null
+                },
+                "TitlePart": {
+                  "Title": "Committees"
+                }
+              },
+              {
+                "ContentItemId": "[js: uuid()]",
+                "ContentItemVersionId": null,
+                "ContentType": "Activity",
+                "DisplayText": "Proposals",
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": null,
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": "",
+                "Author": "admin",
+                "Activity": {
+                  "Icon": {
+                    "Text": "mdi-alert-circle-outline"
+                  }
+                },
+                "HtmlBodyPart": {
+                  "Html": "<div class=\"text-h5\">Proposals</div><div class=\"text-h6\">Current proposals</div>"
+                },
+                "LiquidPart": {
+                  "Liquid": null
+                },
+                "TitlePart": {
+                  "Title": "Proposals"
+                }
+              }
+            ]
+          },
+          "Trends": {
+            "ContentItems": [
+              {
+                "ContentItemId": "[js: uuid()]",
+                "ContentItemVersionId": null,
+                "ContentType": "Trend",
+                "DisplayText": "Topics",
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": null,
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": "",
+                "Author": "admin",
+                "Trend": {
+                  "Icon": {
+                    "Text": "mdi-pound"
+                  }
+                },
+                "HtmlBodyPart": {
+                  "Html": "<div class=\"text-h5\">Topics</div><div class=\"text-h6\">Most used topics across all activities</div>"
+                },
+                "LiquidPart": {
+                  "Liquid": null
+                },
+                "TitlePart": {
+                  "Title": "Topics"
+                }
+              }
+            ]
+          },
+          "Footer": {
+            "ContentItems": [
+              {
+                "ContentItemId": "[js: uuid()]",
+                "ContentItemVersionId": null,
+                "ContentType": "LandingPageFooterCard",
+                "DisplayText": "",
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": null,
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": "",
+                "Author": "admin",
+                "LandingPageFooterCard": {
+                  "Icon": {
+                    "Text": "mdi-book-open-variant"
+                  }
+                },
+                "HtmlBodyPart": {
+                  "Html": "<div class=\"text-h4\">User Guide</div><div class=\"text-p\">Learn more about the Radar</div>"
+                }
+              },
+              {
+                "ContentItemId": "[js: uuid()]",
+                "ContentItemVersionId": null,
+                "ContentType": "LandingPageFooterCard",
+                "DisplayText": "",
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": null,
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": "",
+                "Author": "admin",
+                "LandingPageFooterCard": {
+                  "Icon": {
+                    "Text": "mdi-email"
+                  }
+                },
+                "HtmlBodyPart": {
+                  "Html": "<div class=\"text-h4\">Contact Us</div><div class=\"text-p\">Ask questions and send feedback</div>"
+                }
+              }
+            ]
           }
         },
         {
@@ -159,9 +307,7 @@
           "Author": "[js: parameters('AdminUsername')]",
           "VAppBar": {
             "Props": {
-              "Values": [
-                "dark"
-              ]
+              "Values": ["dark"]
             },
             "Color": {
               "Text": "#009688"
