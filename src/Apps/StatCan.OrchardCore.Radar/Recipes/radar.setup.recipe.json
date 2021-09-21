@@ -32,6 +32,22 @@
         {
           "SourcePath": "../wwwroot/images/radar-icon-white.svg",
           "TargetPath": "radar-icon-white.svg"
+        },
+        {
+          "SourcePath": "../wwwroot/images/icon_communities.svg",
+          "TargetPath": "icon_communities.svg"
+        },
+        {
+          "SourcePath": "../wwwroot/images/icon_events.svg",
+          "TargetPath": "icon_events.svg"
+        },
+        {
+          "SourcePath": "../wwwroot/images/icon_experiments.svg",
+          "TargetPath": "icon_experiments"
+        },
+        {
+          "SourcePath": "../wwwroot/images/icon_opportunities.svg",
+          "TargetPath": "icon_opportunities"
         }
       ]
     },
