@@ -1,66 +1,115 @@
 {% style src:"~/StatCan.OrchardCore.Radar/css/list-view.css" %}
 
-{% assign proposals = Queries.AllProposalsSQL | query %}
-
-{% zone "Header" %}
+{% assign proposals = Queries.AllProposalsSQL | query %} {% zone "Header" %}
 <div class="pt-12">
-    <div class="list-header">
-        <v-container >
-            <v-row justify="space-between">
-                <v-col md="4">
-                    <div class="title-container">
-                        <div class="text-h2">{{ Model.ContentItem | display_text }}</div>
-                        <div class="bubble">
-                            <div class="bubble-text">{{ proposals | size }}</div>
-                        </div>
-                    </div>
-                    <div></div>
-                </v-col>
-                <v-col md="1">
-                    <div style="width: 7rem; height: 7rem">
-                        <v-img
-                        src="{{ Model.ContentItem.Content.Proposals.HeaderImage.Paths.first | asset_url}}"
-                        >
-                        </v-img>
-                    </div>
-                </v-col>
-            </v-row>
-        </v-container>
-    </div>
-    <div class="zigzag-container">
-        <div class="zigzag zigzag-white"></div>
-    </div>
+  <div class="list-header">
+    <v-container>
+      <v-row justify="space-between">
+        <v-col md="4">
+          <div class="title-container">
+            <div class="text-h2">{{ Model.ContentItem | display_text }}</div>
+            <div class="bubble">
+              <div class="bubble-text">{{ proposals | size }}</div>
+            </div>
+          </div>
+          <div class="search-container">
+            <v-icon color="black" class="mr-5">
+              mdi-magnify
+            </v-icon>
+            <input class="search-input" type="text" id="search-input" onkeyup="search()" placeholder={{ "Search for names.." | t }}>
+            <v-btn elevation="0" icon id="search-clear-button" >
+                <v-icon>
+                    mdi-close
+                </v-icon>
+            </v-btn>
+          </div>
+        </v-col>
+        <v-col md="1">
+          <div style="width: 7rem; height: 7rem">
+            <v-img
+              src="{{ Model.ContentItem.Content.Proposals.HeaderImage.Paths.first | asset_url }}"
+            >
+            </v-img>
+          </div>
+        </v-col>
+      </v-row>
+    </v-container>
+  </div>
+  <div class="zigzag-container">
+    <div class="zigzag zigzag-white"></div>
+  </div>
 </div>
 {% endzone %}
 
 <div class="table-container">
-    <table class="table">
-        <thead class="table-header">
-            <tr>
-                <th class="name-col" >{{ "Name" | t }}</th>
-                <th>{{ "Updated" | t }}</th>
-                <th>{{ "Registrar" | t }}</th>
-                <th>{{ "Visibility" | t }}</th>
-                <th>{{ "Created" | t }}</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for proposal in proposals %}
-                <tr class="table-row">
-                    <td class="name-col">{{ proposal | display_text }}</td>
-                    <td class="table-col">{{ proposal.ModifiedUtc |  local | date: "%b %d, %Y" }}</td>
-                    <td class="table-col">{{ proposal.Owner }}</td>
-                    <td class="table-col">
-                        {% if proposal.Published %}
-                            {{ "Published" | t }}
-                        {% else %}
-                            {{ "Draft" | t }}
-                        {% endif %}
-                    </td>
-                    <td class="table-col">{{ proposal.CreatedUtc |  local | date: "%b %d, %Y" }}</td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-    
+  <table class="table" id="entity-table">
+    <thead class="table-header">
+      <tr>
+        <th class="name-col">{{ "Name" | t }}</th>
+        <th>{{ "Updated" | t }}</th>
+        <th>{{ "Registrar" | t }}</th>
+        <th>{{ "Visibility" | t }}</th>
+        <th>{{ "Created" | t }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for proposal in proposals %}
+      <tr class="table-row">
+        <td class="name-col">{{ proposal | display_text }}</td>
+        <td class="table-col">
+          {{ proposal.ModifiedUtc | local | date: "%b %d, %Y" }}
+        </td>
+        <td class="table-col">{{ proposal.Owner }}</td>
+        <td class="table-col">
+          {% if proposal.Published %}
+          {{ "Published" | t }}
+          {% else %}
+          {{ "Draft" | t }}
+          {% endif %}
+        </td>
+        <td class="table-col">
+          {{ proposal.CreatedUtc | local | date: "%b %d, %Y" }}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
 </div>
+
+<script type="application/javascript">
+
+function search() {
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("search-input");
+    filter = input.value.toLowerCase();
+    table = document.getElementById("entity-table");
+    tr = table.getElementsByTagName("tr");
+
+    for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[0]; // Filter based on the name
+        if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toLowerCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+        }
+    }
+}
+
+// Hook into the rendered button since I don't have access to the Vue instance
+window.addEventListener("DOMContentLoaded", function() {
+    document.getElementById("search-clear-button").addEventListener("click", function () {
+        document.getElementById("search-input").value = "";
+
+        table = document.getElementById("entity-table");
+        tr = table.getElementsByTagName("tr");
+        // Reset the table after input is cleared
+        for (i = 0; i < tr.length; i++) {
+            tr[i].style.display = "";
+        }
+    });
+});
+
+</script>

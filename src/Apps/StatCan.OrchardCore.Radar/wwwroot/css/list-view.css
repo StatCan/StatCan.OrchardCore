@@ -54,6 +54,26 @@
     background: #CFECE9;
 }
 
+.search-container {
+    margin: 1rem 0 1.5rem 0;
+    display: flex;
+    background: #F6FCFB;
+    align-items: center;
+    border-bottom: 2px solid #009C88;
+    display: flex;
+    height: 2.2rem;
+    padding-left: 1rem;
+    width: fit-content;
+}
+
+input:focus{
+    outline: none;
+}
+
+.search-input {
+    
+}
+
 .name-col {
     text-align: left;
     padding-left: 1rem;
