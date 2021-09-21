@@ -2,54 +2,52 @@
 
 {% zone "Header" %}
 {% assign imagePath = Model.ContentItem.Content.LandingPage.HeaderImage.Paths.first %}
-<div class="landing-page-header">
-    <div>
-        <div class="rippleFront" style="background-image: url('{{ "~/StatCan.OrchardCore.Radar/images/ripples-white.svg" | href }}')">
-            <div class="header-text">
-                <v-container style="max-width: 1200px">
-                    <v-row>
-                        <v-col md="12">
-                            <div class="name light-font text-center">
-                                {{ Model.ContentItem | display_text }}
-                            </div>
-                        </v-col>
-                    </v-row>
-                    <v-row>
-                        <v-col md="12">
-                            <div class="description light-font text-center pr-10 pl-10">
-                                {{ Model.ContentItem.Content.LandingPage.Description.Text }}
-                            </div>
-                        </v-col>
-                    </v-row>
-                    <v-row>
-                        <v-col md="12">
-                            <div class="list">
-                                {{ Model.ContentItem.Content.LandingPage.Headerlist.Html | raw }}
-                            </div>
-                        </v-col>
-                    </v-row>
-                    <v-row>
-                        <v-col md="12">
-                            <div class="header-footer mt-7">
-                                <v-img
-                                    src="{{ "~/StatCan.OrchardCore.Radar/images/goc.svg" | href }}"
-                                    max-width="293"
-                                    max-height="28"
-                                ></v-img>
-                                <v-img
-                                    src="{{ "~/StatCan.OrchardCore.Radar/images/canada.svg" | href }}"
-                                    max-width="172"
-                                    max-height="41"
-                                ></v-img>
-                            </div>
-                        </v-col>
-                    </v-row>
-                </v-container>
-            </div>
+<div>
+    <div class="rippleFront" style="background-image: url('{{ "~/StatCan.OrchardCore.Radar/images/ripples-white.svg" | href }}')">
+        <div class="header-text">
+            <v-container style="max-width: 1200px">
+                <v-row>
+                    <v-col md="12">
+                        <div class="name light-font text-center">
+                            {{ Model.ContentItem | display_text }}
+                        </div>
+                    </v-col>
+                </v-row>
+                <v-row>
+                    <v-col md="12">
+                        <div class="description light-font text-center pr-10 pl-10">
+                            {{ Model.ContentItem.Content.LandingPage.Description.Text }}
+                        </div>
+                    </v-col>
+                </v-row>
+                <v-row>
+                    <v-col md="12">
+                        <div class="list">
+                            {{ Model.ContentItem.Content.LandingPage.Headerlist.Html | raw }}
+                        </div>
+                    </v-col>
+                </v-row>
+                <v-row>
+                    <v-col md="12">
+                        <div class="header-footer mt-7">
+                            <v-img
+                                src="{{ "~/StatCan.OrchardCore.Radar/images/goc.svg" | href }}"
+                                max-width="293"
+                                max-height="28"
+                            ></v-img>
+                            <v-img
+                                src="{{ "~/StatCan.OrchardCore.Radar/images/canada.svg" | href }}"
+                                max-width="172"
+                                max-height="41"
+                            ></v-img>
+                        </div>
+                    </v-col>
+                </v-row>
+            </v-container>
         </div>
-        <div class="zigzag-container">
-            <div class="zigzag zigzag-white"></div>
-        </div>
+    </div>
+    <div class="zigzag-container">
+        <div class="zigzag zigzag-white"></div>
     </div>
 </div>
 {% endzone %}
