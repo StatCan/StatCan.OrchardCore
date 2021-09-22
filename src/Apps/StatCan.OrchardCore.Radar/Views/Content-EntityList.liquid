@@ -45,27 +45,6 @@
 
 <script type="application/javascript">
 
-function search() {
-    var input, filter, table, tr, td, i, txtValue;
-    input = document.getElementById("search-input");
-    filter = input.value.toLowerCase();
-    table = document.getElementById("entity-table");
-    tr = table.getElementsByTagName("tr");
-
-    for (i = 0; i < tr.length; i++) {
-        td = tr[i].getElementsByTagName("td")[0]; // Filter based on the name
-        if (td) {
-            txtValue = td.textContent || td.innerText;
-            if (txtValue.toLowerCase().indexOf(filter) > -1) {
-                tr[i].style.display = "";
-            } else {
-                tr[i].style.display = "none";
-            }
-        }
-    }
-}
-
-
 window.addEventListener("DOMContentLoaded", function() {
     // Hook into the rendered button since I don't have access to the Vue instance
     document.getElementById("search-clear-button").addEventListener("click", function () {

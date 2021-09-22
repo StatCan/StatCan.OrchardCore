@@ -70,8 +70,10 @@ input:focus{
     outline: none;
 }
 
-.search-input {
-    
+.icon-cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .name-col {
