@@ -5,7 +5,7 @@
   "author": "Digital Innovation Team",
   "website": "https://digital.statcan.gc.ca",
   "version": "1.0",
-  "issetuprecipe": false,
+  "issetuprecipe": true,
   "categories": ["radar"],
   "tags": ["innovation", "inno"],
   "steps": [
@@ -13,8 +13,7 @@
       "name": "feature",
       "disable": [],
       "enable": [
-        "StatCan.OrchardCore.Vuetify.Grid",
-        "StatCan.OrchardCore.Vuetify.Card"
+        "StatCan.OrchardCore.Radar"
       ]
     },
     {
@@ -43,11 +42,11 @@
         },
         {
           "SourcePath": "../wwwroot/images/icon_experiments.svg",
-          "TargetPath": "icon_experiments"
+          "TargetPath": "icon_experiments.svg"
         },
         {
           "SourcePath": "../wwwroot/images/icon_opportunities.svg",
-          "TargetPath": "icon_opportunities"
+          "TargetPath": "icon_opportunities.svg"
         }
       ]
     },
@@ -70,8 +69,8 @@
             "Text": "Radar"
           },
           "Logo": {
-            "Paths": ["radar-icon-white.svg"],
-            "MediaTexts": [""]
+            "Paths": [ "radar-icon-white.svg" ],
+            "MediaTexts": [ "" ]
           },
           "DisplayMode": {
             "Text": "light"
@@ -323,7 +322,7 @@
           "Author": "[js: parameters('AdminUsername')]",
           "VAppBar": {
             "Props": {
-              "Values": ["dark"]
+              "Values": [ "dark" ]
             },
             "Color": {
               "Text": "#009688"
@@ -353,6 +352,182 @@
             "Position": 1.0,
             "Zone": "Header",
             "Layer": "All"
+          }
+        },
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentItemVersionId": null,
+          "ContentType": "EntityList",
+          "DisplayText": "Proposals",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": null,
+          "PublishedUtc": null,
+          "CreatedUtc": null,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "EntityList": {
+            "Image": {
+              "Paths": [
+                "icon_opportunities.svg"
+              ],
+              "MediaTexts": [
+                ""
+              ]
+            }
+          },
+          "TitlePart": {
+            "Title": "Proposals"
+          },
+          "LiquidPart": {
+            "Liquid": "{% assign proposals = Queries.AllEntitiesSQL | query: contentType: \"Proposal\" %}\r\n<div class=\"table-container\">\r\n  <table class=\"table\" id=\"entity-table\">\r\n    <thead class=\"table-header\">\r\n      <tr>\r\n        <th class=\"name-col\">Name</th>\r\n        <th>Created</th>\r\n        <th>Visibility</th>\r\n      </tr>\r\n    </thead>\r\n    <tbody>\r\n      {% for proposal in proposals %}\r\n      <tr class=\"table-row\">\r\n        <td class=\"name-col\">{{ proposal | display_text }}</td>\r\n        <td class=\"table-col\">\r\n          {{ proposal.CreatedUtc | local | date: \"%b %d, %Y\" }}\r\n        </td>\r\n        <td class=\"table-col\">\r\n          {% if proposal.Published %}\r\n          \tPublished\r\n          {% else %}\r\n          \tDraft\r\n          {% endif %}\r\n        </td>\r\n      </tr>\r\n      {% endfor %}\r\n    </tbody>\r\n  </table>\r\n</div>\r\n\r\n<script type=\"application/javascript\">\r\nfunction search() {\r\n    var input, filter, table, tr, td, i, txtValue;\r\n    input = document.getElementById(\"search-input\");\r\n    filter = input.value.toLowerCase();\r\n    table = document.getElementById(\"entity-table\");\r\n    tr = table.getElementsByTagName(\"tr\");\r\n\r\n    for (i = 0; i < tr.length; i++) {\r\n        td = tr[i].getElementsByTagName(\"td\")[0]; // Filter based on the name\r\n        if (td) {\r\n            txtValue = td.textContent || td.innerText;\r\n            if (txtValue.toLowerCase().indexOf(filter) > -1) {\r\n                tr[i].style.display = \"\";\r\n            } else {\r\n                tr[i].style.display = \"none\";\r\n            }\r\n        }\r\n    }\r\n}\r\n</script>"
+          },
+          "LocalizationPart": {
+            "LocalizationSet": "4swd1468228sw2y908226nvsxd",
+            "Culture": "en"
+          },
+          "AutoroutePart": {
+            "Path": "proposals",
+            "SetHomepage": false,
+            "Disabled": false,
+            "RouteContainedItems": false,
+            "Absolute": false
+          },
+          "ContentPermissionsPart": {
+            "Enabled": false,
+            "Roles": []
+          }
+        },
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentItemVersionId": null,
+          "ContentType": "EntityList",
+          "DisplayText": "Projects",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": null,
+          "PublishedUtc": null,
+          "CreatedUtc": null,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "EntityList": {
+            "Image": {
+              "Paths": [
+                "icon_experiments.svg"
+              ],
+              "MediaTexts": [
+                ""
+              ]
+            }
+          },
+          "TitlePart": {
+            "Title": "Projects"
+          },
+          "LiquidPart": {
+            "Liquid": "{% assign projects = Queries.AllEntitiesSQL | query: contentType: \"Project\" %}\r\n<div class=\"table-container\">\r\n  <table class=\"table\" id=\"entity-table\">\r\n    <thead class=\"table-header\">\r\n      <tr>\r\n        <th class=\"name-col\">Name</th>\r\n        <th>Updated</th>\r\n        <th>Registrar</th>\r\n        <th>Visibility</th>\r\n        <th>Created</th>\r\n      </tr>\r\n    </thead>\r\n    <tbody>\r\n      {% for project in projects %}\r\n      <tr class=\"table-row\">\r\n        <td class=\"name-col\">{{ project | display_text }}</td>\r\n        <td class=\"table-col\">\r\n          {{ project.ModifiedUtc | local | date: \"%b %d, %Y\" }}\r\n        </td>\r\n        <td class=\"table-col\">{{ project.Owner }}</td>\r\n        <td class=\"table-col\">\r\n          {% if project.Published %}\r\n          \tPublished\r\n          {% else %}\r\n          \tDraft\r\n          {% endif %}\r\n        </td>\r\n        <td class=\"table-col\">\r\n          {{ project.CreatedUtc | local | date: \"%b %d, %Y\" }}\r\n        </td>\r\n      </tr>\r\n      {% endfor %}\r\n    </tbody>\r\n  </table>\r\n</div>\r\n\r\n<script type=\"application/javascript\">\r\nfunction search() {\r\n    var input, filter, table, tr, td, i, txtValue;\r\n    input = document.getElementById(\"search-input\");\r\n    filter = input.value.toLowerCase();\r\n    table = document.getElementById(\"entity-table\");\r\n    tr = table.getElementsByTagName(\"tr\");\r\n\r\n    for (i = 0; i < tr.length; i++) {\r\n        td = tr[i].getElementsByTagName(\"td\")[0]; // Filter based on the name\r\n        if (td) {\r\n            txtValue = td.textContent || td.innerText;\r\n            if (txtValue.toLowerCase().indexOf(filter) > -1) {\r\n                tr[i].style.display = \"\";\r\n            } else {\r\n                tr[i].style.display = \"none\";\r\n            }\r\n        }\r\n    }\r\n}\r\n</script>"
+          },
+          "LocalizationPart": {
+            "LocalizationSet": "48aapabjc93c43jwbrkh5c9wwj",
+            "Culture": "en"
+          },
+          "AutoroutePart": {
+            "Path": "projects",
+            "SetHomepage": false,
+            "Disabled": false,
+            "RouteContainedItems": false,
+            "Absolute": false
+          },
+          "ContentPermissionsPart": {
+            "Enabled": false,
+            "Roles": []
+          }
+        },
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentItemVersionId": null,
+          "ContentType": "EntityList",
+          "DisplayText": "Communities",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": null,
+          "PublishedUtc": null,
+          "CreatedUtc": null,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "EntityList": {
+            "Image": {
+              "Paths": [
+                "icon_communities.svg"
+              ],
+              "MediaTexts": [
+                ""
+              ]
+            }
+          },
+          "TitlePart": {
+            "Title": "Communities"
+          },
+          "LiquidPart": {
+            "Liquid": "{% assign communities = Queries.AllEntitiesSQL | query: contentType: \"Community\" %}\r\n<div class=\"table-container\">\r\n  <table class=\"table\" id=\"entity-table\">\r\n    <thead class=\"table-header\">\r\n      <tr>\r\n        <th class=\"name-col\">Name</th>\r\n        <th>Members</th>\r\n        <th>Owner</th>\r\n        <th>Type</th>\r\n      </tr>\r\n    </thead>\r\n    <tbody>\r\n      {% for community in communities %}\r\n      <tr class=\"table-row\">\r\n        <td class=\"name-col\">{{ community | display_text }}</td>\r\n        <td class=\"table-col\">\r\n          <div class=\"icon-cell\">\r\n            <v-icon color=\"black\">mdi-account</v-icon>\r\n          \t<div>{{ community.ContentItem.Content.CommunityMember.ContentItems | size }}</div>\r\n          </div>  \r\n        </td>\r\n        <td class=\"table-col\">{{ community.Owner }}</td>\r\n        <td class=\"table-col\">{{ community.ContentItem.Content.Community.Type.TagNames.first }}</td>\r\n      </tr>\r\n      {% endfor %}\r\n    </tbody>\r\n  </table>\r\n</div>\r\n\r\n<script type=\"application/javascript\">\r\nfunction search() {\r\n    var input, filter, table, tr, td, i, txtValue;\r\n    input = document.getElementById(\"search-input\");\r\n    filter = input.value.toLowerCase();\r\n    table = document.getElementById(\"entity-table\");\r\n    tr = table.getElementsByTagName(\"tr\");\r\n\r\n    for (i = 0; i < tr.length; i++) {\r\n        td = tr[i].getElementsByTagName(\"td\")[0]; // Filter based on the name\r\n        if (td) {\r\n            txtValue = td.textContent || td.innerText;\r\n            if (txtValue.toLowerCase().indexOf(filter) > -1) {\r\n                tr[i].style.display = \"\";\r\n            } else {\r\n                tr[i].style.display = \"none\";\r\n            }\r\n        }\r\n    }\r\n}\r\n</script>"
+          },
+          "LocalizationPart": {
+            "LocalizationSet": "4yhc97t6jjsq2w04xzrbe3h451",
+            "Culture": "en"
+          },
+          "AutoroutePart": {
+            "Path": "communities",
+            "SetHomepage": false,
+            "Disabled": false,
+            "RouteContainedItems": false,
+            "Absolute": false
+          },
+          "ContentPermissionsPart": {
+            "Enabled": false,
+            "Roles": []
+          }
+        },
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentItemVersionId": null,
+          "ContentType": "EntityList",
+          "DisplayText": "Events",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": null,
+          "PublishedUtc": null,
+          "CreatedUtc": null,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "EntityList": {
+            "Image": {
+              "Paths": [
+                "icon_events.svg"
+              ],
+              "MediaTexts": [
+                ""
+              ]
+            }
+          },
+          "TitlePart": {
+            "Title": "Events"
+          },
+          "LiquidPart": {
+            "Liquid": "{% assign events = Queries.AllEntitiesSQL | query: contentType: \"Event\" %}\r\n<div class=\"table-container\">\r\n  <table class=\"table\" id=\"entity-table\">\r\n    <thead class=\"table-header\">\r\n      <tr>\r\n        <th class=\"name-col\">Name</th>\r\n        <th>Date</th>\r\n        <th>Organizer</th>\r\n        <th>Visibility</th>\r\n      </tr>\r\n    </thead>\r\n    <tbody>\r\n      {% for event in events %}\r\n      <tr class=\"table-row\">\r\n        <td class=\"name-col\">{{ event | display_text }}</td>\r\n        <td class=\"table-col\">\r\n          <div>{{ event.ContentItem.Content.Event.StartDate.Value | local | date: \"%b %d, %Y\" }} - {{ event.ContentItem.Content.Event.EndDate.Value | local | date: \"%b %d, %Y\" }}</div>\r\n          <div>{{ event.ContentItem.Content.Event.StartDate.Value | local | date: \"%H:%M %p\" }} - {{ event.ContentItem.Content.Event.EndDate.Value | local | date: \"%H:%M %p\" }}</div>\r\n        </td>\r\n        <td class=\"table-col\">{{ event.ContentItem.Content.EventOrganizer.ContentItems.first.EventOrganizer.Organizer.UserNames.first }}</td>\r\n        <td class=\"table-col\">\r\n          {% if event.Published %}\r\n          \tPublished\r\n          {% else %}\r\n          \tDraft\r\n          {% endif %}\r\n        </td>\r\n      </tr>\r\n      {% endfor %}\r\n    </tbody>\r\n  </table>\r\n</div>\r\n\r\n<script type=\"application/javascript\">\r\nfunction search() {\r\n    var input, filter, table, tr, td, i, txtValue;\r\n    input = document.getElementById(\"search-input\");\r\n    filter = input.value.toLowerCase();\r\n    table = document.getElementById(\"entity-table\");\r\n    tr = table.getElementsByTagName(\"tr\");\r\n\r\n    for (i = 0; i < tr.length; i++) {\r\n        td = tr[i].getElementsByTagName(\"td\")[0]; // Filter based on the name\r\n        if (td) {\r\n            txtValue = td.textContent || td.innerText;\r\n            if (txtValue.toLowerCase().indexOf(filter) > -1) {\r\n                tr[i].style.display = \"\";\r\n            } else {\r\n                tr[i].style.display = \"none\";\r\n            }\r\n        }\r\n    }\r\n}\r\n</script>"
+          },
+          "LocalizationPart": {
+            "LocalizationSet": "45btr33t81ass3eb7n7b0gsrmj",
+            "Culture": "en"
+          },
+          "AutoroutePart": {
+            "Path": "events",
+            "SetHomepage": false,
+            "Disabled": false,
+            "RouteContainedItems": false,
+            "Absolute": false
+          },
+          "ContentPermissionsPart": {
+            "Enabled": false,
+            "Roles": []
           }
         }
       ]
