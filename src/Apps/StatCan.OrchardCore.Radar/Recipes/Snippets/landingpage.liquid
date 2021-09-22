@@ -64,9 +64,9 @@
         <v-row>
             {% for activity in Model.ContentItem.Content.Activities.ContentItems %}
                 <v-col md="6">
-                    <v-card elevation=0>
-                        <v-card-title class="card-title" style="padding: 0;">
-                            <div class="card-title ml-5 mt-5 mb-8">
+                    <div class="card">
+                        <div class="card-title">
+                            <div class="card-title-caption ml-5 mt-5 mb-8">
                                 <v-icon color="white" class="mr-5" style="font-size: 65px;">
                                     {{ activity.Activity.Icon.Text }}
                                 </v-icon>
@@ -77,11 +77,9 @@
                             <div class="zigzag-container">
                                 <div class="zigzag zigzag-light"></div>
                             </div>
-                        </v-card-title>
-                        <div class="card-background-light">
-                            
                         </div>
-                    </v-card>
+                        {{ activity.LiquidPart.Liquid | liquid }}
+                    </div>
                 </v-col>
             {% endfor %}
         </v-row>
