@@ -8,7 +8,7 @@
 
 .light-font {
   font-weight: lighter;
-  color: #000000DE;
+  color: #000000de;
   opacity: 1;
 }
 
@@ -36,7 +36,7 @@
 }
 
 .section-background {
-  background: #009C880A;
+  background: #009c880a;
 }
 
 .card-title {
@@ -44,7 +44,7 @@
 }
 
 .front-footer {
-  background: #009C88;
+  background: #009c88;
 }
 
 .header-footer {
@@ -54,15 +54,53 @@
 }
 
 .card-background-light {
-  background-color: #F6FCFB;
+  background-color: #f6fcfb;
 }
 
 .card-background-dark {
   background: #cfece9 0% 0% no-repeat;
 }
 
+.card {
+  display: flex;
+  flex-direction: column;
+  background-color: #F6FCFB;
+  height: 100%;
+}
+
 .card-title {
-  background: #009C88 0% 0% no-repeat;
+  background: #009c88 0% 0% no-repeat;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-title-caption {
+  display: flex;
+}
+
+.card-body {
+  padding: 1rem 0 0 6.1rem;
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
+}
+
+.card-button {
+  margin-bottom: 1rem;
+  margin-left: 1rem;
+}
+
+.card-button:hover {
+  background-color: #cfece9;
+  color: #227069;
+}
+
+.card-item-link {
+  color: #000000 !important;
+}
+
+.card-item-link:hover {
+  color: #009c88 !important;
+  text-decoration: underline;
 }
 
 .zigzag-container {
@@ -71,7 +109,7 @@
 }
 
 .zigzag {
-  content: ' ';
+  content: " ";
   display: block;
   position: absolute;
   bottom: 0px;
@@ -81,21 +119,24 @@
 }
 
 .zigzag-white {
-  background: linear-gradient(-40deg, #FFFFFF 16px, transparent 0), linear-gradient(40deg, #FFFFFF 16px, transparent 0);
+  background: linear-gradient(-40deg, #ffffff 16px, transparent 0),
+    linear-gradient(40deg, #ffffff 16px, transparent 0);
   background-position: left bottom;
   background-repeat: repeat-x;
   background-size: 32px 32px;
 }
 
 .zigzag-light {
-  background: linear-gradient(-40deg, #F6FCFB 16px, transparent 0), linear-gradient(40deg, #F6FCFB 16px, transparent 0);
+  background: linear-gradient(-40deg, #f6fcfb 16px, transparent 0),
+    linear-gradient(40deg, #f6fcfb 16px, transparent 0);
   background-position: left bottom;
   background-repeat: repeat-x;
   background-size: 32px 32px;
 }
 
 .zigzag-dark {
-  background: linear-gradient(-40deg, #cfece9 16px, transparent 0), linear-gradient(40deg, #cfece9 16px, transparent 0);
+  background: linear-gradient(-40deg, #cfece9 16px, transparent 0),
+    linear-gradient(40deg, #cfece9 16px, transparent 0);
   background-position: left bottom;
   background-repeat: repeat-x;
   background-size: 32px 32px;
@@ -107,4 +148,8 @@
   background-repeat: no-repeat;
   background-position: center bottom -590px;
   padding: 8rem 0rem 3rem 0rem;
+}
+
+a {
+  text-decoration: none;
 }
