@@ -540,6 +540,18 @@
           "Content": "[file:text('Snippets/landingpage.liquid')]"
         }
       }
+    },
+    {
+      "name": "Queries",
+      "Queries": [
+        {
+          "Template": "select DocumentId\r\n    from ContentItemIndex \r\n    where ContentType = @contentType",
+          "ReturnDocuments": true,
+          "Name": "AllEntitiesSQL",
+          "Source": "Sql",
+          "Schema": null
+        }
+      ]
     }
   ]
 }
