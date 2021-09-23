@@ -13,6 +13,10 @@ using OrchardCore.Taxonomies.Fields;
 using OrchardCore.Taxonomies.Settings;
 using OrchardCore.Flows.Models;
 using OrchardCore.Contents.Models;
+using OrchardCore.Autoroute.Models;
+using YesSql.Sql;
+using StatCan.OrchardCore.Radar.Indexing;
+using StatCan.OrchardCore.Radar.Models;
 
 namespace StatCan.OrchardCore.Radar
 {
@@ -68,6 +72,9 @@ namespace StatCan.OrchardCore.Radar
                         Pattern = "{{ ContentItem.Content.Topic.Name.Text }}",
                     })
                 )
+                .WithPart("AutoroutePart", part => part
+                    .WithPosition("2")
+                )
             );
 
             _contentDefinitionManager.AlterPartDefinition(Constants.ContentTypes.Topic, part => part
@@ -98,6 +105,9 @@ namespace StatCan.OrchardCore.Radar
                         Options = TitlePartOptions.GeneratedHidden,
                         Pattern = "{{ ContentItem.Content.ProposalType.Name.Text }}",
                     })
+                )
+                .WithPart("AutoroutePart", part => part
+                    .WithPosition("2")
                 )
             );
 
@@ -132,6 +142,9 @@ namespace StatCan.OrchardCore.Radar
                         Pattern = "{{ ContentItem.Content.ProjectType.Name.Text }}",
                     })
                 )
+                .WithPart("AutoroutePart", part => part
+                    .WithPosition("2")
+                )
             );
 
             _contentDefinitionManager.AlterPartDefinition(Constants.ContentTypes.ProjectType, part => part
@@ -165,6 +178,9 @@ namespace StatCan.OrchardCore.Radar
                         Pattern = "{{ ContentItem.Content.CommunityType.Name.Text }}",
                     })
                 )
+                .WithPart("AutoroutePart", part => part
+                    .WithPosition("2")
+                )
             );
 
             _contentDefinitionManager.AlterPartDefinition(Constants.ContentTypes.CommunityType, part => part
@@ -188,6 +204,11 @@ namespace StatCan.OrchardCore.Radar
             _taxonomyIds.Add("Topics", topics.ContentItemId);
 
             topics.DisplayText = "Topics"; // Instead of TitlePart.Title
+            topics.Alter<AutoroutePart>(part =>
+            {
+                part.Path = "/topics";
+                part.RouteContainedItems = true;
+            });
             topics.Alter<TaxonomyPart>(part =>
             {
                 part.TermContentType = Constants.ContentTypes.Topic;
@@ -201,6 +222,11 @@ namespace StatCan.OrchardCore.Radar
             _taxonomyIds.Add("Proposal Types", proposalTypes.ContentItemId);
 
             proposalTypes.DisplayText = "Proposal Types"; // Instead of TitlePart.Title
+            proposalTypes.Alter<AutoroutePart>(part =>
+            {
+                part.Path = "/proposal-types";
+                part.RouteContainedItems = true;
+            });
             proposalTypes.Alter<TaxonomyPart>(part =>
             {
                 part.TermContentType = Constants.ContentTypes.ProposalType;
@@ -214,6 +240,11 @@ namespace StatCan.OrchardCore.Radar
             _taxonomyIds.Add("Project Types", projectTypes.ContentItemId);
 
             projectTypes.DisplayText = "Project Types"; // Instead of TitlePart.Title
+            projectTypes.Alter<AutoroutePart>(part =>
+            {
+                part.Path = "/project-types";
+                part.RouteContainedItems = true;
+            });
             projectTypes.Alter<TaxonomyPart>(part =>
             {
                 part.TermContentType = Constants.ContentTypes.ProjectType;
@@ -227,6 +258,11 @@ namespace StatCan.OrchardCore.Radar
             _taxonomyIds.Add("Community Types", communityTypes.ContentItemId);
 
             communityTypes.DisplayText = "Community Types"; // Instead of TitlePart.Title
+            communityTypes.Alter<AutoroutePart>(part =>
+            {
+                part.Path = "/community-types";
+                part.RouteContainedItems = true;
+            });
             communityTypes.Alter<TaxonomyPart>(part =>
             {
                 part.TermContentType = Constants.ContentTypes.CommunityType;
@@ -256,7 +292,7 @@ namespace StatCan.OrchardCore.Radar
 
         private void CreateRadarEntityPart()
         {
-            _contentDefinitionManager.AlterPartDefinition(Constants.ContentTypes.RadarEntity, part => part
+            _contentDefinitionManager.AlterPartDefinition(nameof(RadarEntityPart), part => part
                 .Attachable()
                 .WithDescription("Provides fields for an entity in Radar")
                 .WithField("Name", field => field
@@ -293,6 +329,12 @@ namespace StatCan.OrchardCore.Radar
                     })
                 )
             );
+
+            SchemaBuilder.CreateMapIndexTable<RadarEntityPartIndex>(table => table
+                .Column<string>(nameof(RadarEntityPartIndex.ContentItemId), column => column.WithLength(26))
+                .Column<string>(nameof(RadarEntityPartIndex.ContentType))
+                .Column<bool>(nameof(RadarEntityPartIndex.Published))
+            );
         }
 
         private void CreateProposal()
@@ -307,7 +349,7 @@ namespace StatCan.OrchardCore.Radar
                 .WithPart(Constants.ContentTypes.Proposal, part => part
                     .WithPosition("2")
                 )
-                .WithPart(Constants.ContentTypes.RadarEntity, part => part
+                .WithPart(nameof(RadarEntityPart), part => part
                     .WithPosition("1")
                 )
                 .WithPart("TitlePart", part => part
@@ -404,7 +446,7 @@ namespace StatCan.OrchardCore.Radar
                         .WithPart(Constants.ContentTypes.Project, part => part
                             .WithPosition("4")
                         )
-                        .WithPart(Constants.ContentTypes.RadarEntity, part => part
+                        .WithPart(nameof(RadarEntityPart), part => part
                             .WithPosition("1")
                         )
                         .WithPart("TitlePart", part => part
@@ -518,7 +560,7 @@ namespace StatCan.OrchardCore.Radar
                 .WithPart("ContentPermissionsPart", part => part
                     .WithPosition("5")
                 )
-                .WithPart(Constants.ContentTypes.RadarEntity, part => part
+                .WithPart(nameof(RadarEntityPart), part => part
                     .WithPosition("2")
                 )
                 .WithPart("TitlePart", part => part
@@ -627,7 +669,7 @@ namespace StatCan.OrchardCore.Radar
                         Pattern = "{{ ContentItem.Content.RadarEntity.Name.Text }}",
                     })
                 )
-                .WithPart(Constants.ContentTypes.RadarEntity, part => part
+                .WithPart(nameof(RadarEntityPart), part => part
                     .WithPosition("1")
                 )
                 .WithPart("ContentPermissionsPart", part => part
