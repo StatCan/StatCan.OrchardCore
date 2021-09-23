@@ -27,7 +27,7 @@ namespace StatCan.OrchardCore.Radar
             public const string CommunityMember = "CommunityMember";
 
             // Parts
-            public const string RadarEntity = "RadarEntity";
+            public const string RadarEntityPart = "RadarEntityPart";
 
             // Pages
             public const string LandingPage = "LandingPage";
