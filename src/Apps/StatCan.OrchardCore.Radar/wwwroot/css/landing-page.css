@@ -39,10 +39,6 @@
   background: #009c880a;
 }
 
-.card-title {
-  display: flex;
-}
-
 .front-footer {
   background: #009c88;
 }
@@ -51,56 +47,6 @@
   display: flex;
   justify-content: space-between;
   padding: 0 10rem 0 10rem;
-}
-
-.card-background-light {
-  background-color: #f6fcfb;
-}
-
-.card-background-dark {
-  background: #cfece9 0% 0% no-repeat;
-}
-
-.card {
-  display: flex;
-  flex-direction: column;
-  background-color: #F6FCFB;
-  height: 100%;
-}
-
-.card-title {
-  background: #009c88 0% 0% no-repeat;
-  display: flex;
-  flex-direction: column;
-}
-
-.card-title-caption {
-  display: flex;
-}
-
-.card-body {
-  padding: 1rem 0 0 6.1rem;
-  margin-bottom: 1.5rem;
-  flex-grow: 1;
-}
-
-.card-button {
-  margin-bottom: 1rem;
-  margin-left: 1rem;
-}
-
-.card-button:hover {
-  background-color: #cfece9;
-  color: #227069;
-}
-
-.card-item-link {
-  color: #000000 !important;
-}
-
-.card-item-link:hover {
-  color: #009c88 !important;
-  text-decoration: underline;
 }
 
 .zigzag-container {
