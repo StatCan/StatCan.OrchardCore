@@ -1,0 +1,7 @@
+<li class="breadcrumb-item">
+  {% if Model.ContentItem.Content.BreadcrumbLink.Url.Url != blank%}
+    <a href="{{Model.ContentItem.Content.BreadcrumbLink.Url.Url | href}}">{{ Model.ContentItem.Content.BreadcrumbLink.Url.Text }}</a>
+  {%else%}
+    {{ Model.ContentItem.Content.BreadcrumbLink.Url.Text }}
+  {% endif %}
+</li>

@@ -1,0 +1,39 @@
+$primary: #1A73E8;
+$secondary: #22837C;
+$secondary-dark: #173048;
+$background: #f5f5f5;
+$light-grey: #F5F5F5;
+$dark-grey: #707070;
+$text: rgba(0, 0, 0, 0.87);
+$border: rgba(0, 0, 0, 0.12);
+$error: #E91B0C; 
+
+$red: #e33446;
+$orange: #f1663d;
+$lightorange: #fab150;
+$green: #c7db66;
+$teal: #2bada5;
+$purple: #2d2a4f;
+$black: #161616;
+$charcoal: #4d4e4e;
+$grey: #807f7f;
+$lightgrey: #e0e3e5;
+
+
+$enable-responsive-font-sizes: true;
+
+/*Bootstrap partial that include what we need for bs*/
+@import "mixins";
+@import "bootstrap";
+@import "details-summary";
+@import "feedback";
+@import "fip";
+@import "footer";
+@import "global";
+@import "hero";
+@import "login";
+@import "modal";
+@import "section-panel"; 
+@import "section";
+@import "tab-panel";
+@import "toast-message";

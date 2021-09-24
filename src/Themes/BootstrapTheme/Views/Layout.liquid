@@ -1,29 +1,56 @@
 <!DOCTYPE html>
 <html lang="{{ Culture.Name }}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    {% render_section "HeadMeta", required: false %}
+    <title>{{ "PageTitle" | shape_new | shape_stringify }}</title>
+    {% link src:"/BootstrapTheme/favicon.ico", rel:"icon", sizes:"32x32", type:"image/x-icon" %}
+    {% link src:"/BootstrapTheme/favicon.ico", rel:"icon", sizes:"16x16", type:"image/x-icon" %}
 
-  {% assign brand = "alias:brand-" | append: Culture.Name %}
-  {% assign header = "ThemeHeader" | shape_new %}
-  {% assign footer = "ThemeFooter" | shape_new %}
-
-  <head>
-    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
-
-
-    {{ "ThemeResources" | shape_new | shape_render }}
     {% resources type: "Meta" %}
-    <title>{{Content[brand]}}</title>
-    {% resources type: "HeadLink" %}    
-    {% resources type: "Stylesheet" %}
-    {% resources type: "HeadScript" %}
-  </head>
 
-  <body id="page-top">
-    {{ header | shape_render }}
-    <main class="flex-fill" id="bootstrap-main">
-      {% render_body %}
-      {% render_section "Footer", required: false %}
-      {% render_section "Modal", required: false %}
-      {{ footer | shape_render }}
+    <!-- Includes customized Bootstrap CSS -->
+    {% style name:"BootstrapTheme", version:"1" %}
+
+    <!-- Custom fonts for this template -->
+
+    {% style name:"mdi-icons", version: "5.9.55" %}
+    {% style src:"https://fonts.googleapis.com/css2?family=Fira+Sans:wght@200;300;400;500;700;800&display=swap" %}
+
+    {% resources type: "HeadScript" %}
+    {% resources type: "HeadLink" %}
+    {% resources type: "Stylesheet" %}
+
+    {% script name:"jQuery", at:"Foot", version:"3.6.0" %}
+    {% script name:"popper", at:"Foot", version:"1.16.1" %}
+    {% script name:"bootstrap", at:"Foot", version:"4.6.0" %}
+    {% script name:"details-polyfill", at:"Foot", version:"2.4.0" %}
+
+</head>
+<body id="page-top" dir="{{ Culture.Dir }}">
+    <a class="skip-navigation text-center" href="#content">{{ "Skip to main content" | t }}</a>
+    {% render_section "Header", required: false %}
+    
+    {% assign breadcrumbNotEmpty = "Breadcrumb" | section_not_empy %}
+    {% if breadcrumbNotEmpty %}
+      <nav property="breadcrumb">
+        <h2 class="sr-only">{{ "You are here:" | t }}</h2>
+        <ol class="breadcrumb">
+          {% render_section "Breadcrumb", required: false %}
+        </ol>
+      </nav>    
+    {% endif %}
+
+    {% assign messagesNotEmpty = "Messages" | section_not_empy %}
+    {% if messagesNotEmpty %}
+      <div class="container messages-wrapper">
+          {% render_section "Messages", required: false %}
+      </div>
+    {% endif %}    
+    {% render_section "Content" %}
+    {% render_section "Footer", required: false %}
+    {% render_section "Modal", required: false %}
     {% resources type: "FootScript" %}
-  </body>
+</body>
 </html>

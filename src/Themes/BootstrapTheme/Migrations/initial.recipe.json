@@ -1,0 +1,2246 @@
+{
+  "name": "",
+  "displayName": "",
+  "description": "",
+  "author": "",
+  "website": "",
+  "version": "",
+  "issetuprecipe": false,
+  "categories": [],
+  "tags": [],
+  "steps": [
+    {
+      "name": "Layers",
+      "Layers": [
+        {
+          "Name": "Anywhere",
+          "Rule": null,
+          "Description": "Widgets using this layer will display anywhere.",
+          "LayerRule": {
+            "Conditions": [
+              {
+                "$type": "OrchardCore.Rules.Models.BooleanCondition, OrchardCore.Rules",
+                "Value": true,
+                "Name": "BooleanCondition",
+                "ConditionId": "4ssghftvp1pgft2an084pdfy4a"
+              }
+            ],
+            "Name": null,
+            "ConditionId": "48b17z072xqt456ndjqzrq764a"
+          }
+        },
+        {
+          "Name": "French",
+          "Rule": null,
+          "Description": "Only show when in French.",
+          "LayerRule": {
+            "Conditions": [
+              {
+                "$type": "OrchardCore.Rules.Models.JavascriptCondition, OrchardCore.Rules",
+                "Script": "culture(\"fr\")",
+                "Name": "JavascriptCondition",
+                "ConditionId": "4th3hzbj33nwp6sm6cnrgp735e"
+              }
+            ],
+            "Name": null,
+            "ConditionId": "4knpf5cvab320tmgk1rbe304x1"
+          }
+        },
+        {
+          "Name": "English",
+          "Rule": null,
+          "Description": "Only show when in English.",
+          "LayerRule": {
+            "Conditions": [
+              {
+                "$type": "OrchardCore.Rules.Models.JavascriptCondition, OrchardCore.Rules",
+                "Script": "culture(\"en\")",
+                "Name": "JavascriptCondition",
+                "ConditionId": "43qdremm083r437hzt3sgkyfc8"
+              }
+            ],
+            "Name": null,
+            "ConditionId": "4q7mafg6eyez42kzmgktk34rdx"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Settings",
+      "LayerSettings": {
+        "Zones": ["Header", "Breadcrumb", "Footer"]
+      }
+    },
+    {
+      "name": "Placements",
+      "Placements": {
+        "TextField_Edit": [
+          {
+            "place": "Parts:0#Styles;0",
+            "displayType": null,
+            "differentiator": "Section-SectionLayout",
+            "alternates": null,
+            "wrappers": null,
+            "shape": null
+          },
+          {
+            "place": "Parts:0#Styles;1",
+            "displayType": null,
+            "differentiator": "Section-TitleLayout",
+            "alternates": null,
+            "wrappers": null,
+            "shape": null
+          },
+          {
+            "place": "Parts:1|LinkText_6",
+            "displayType": null,
+            "differentiator": "PlatformShowcase-LinkButtonText",
+            "alternates": null,
+            "wrappers": null,
+            "shape": null
+          },
+          {
+            "place": "Parts:0#Styles;2",
+            "displayType": null,
+            "differentiator": "PlatformShowcase-TextAlign",
+            "alternates": null,
+            "wrappers": null,
+            "shape": null
+          },
+          {
+            "place": "Parts:0|Url_8;1",
+            "displayType": null,
+            "differentiator": "ToolCard-Url",
+            "alternates": null,
+            "wrappers": null,
+            "shape": null
+          },
+          {
+            "place": "Parts:0#Styles;1|Left_6;0",
+            "displayType": null,
+            "differentiator": "ToolCard-IconClass",
+            "alternates": null,
+            "wrappers": null,
+            "shape": null
+          },
+          {
+            "place": "Parts:1#Styles;1|Left_6;1",
+            "displayType": null,
+            "differentiator": "ToolCard-ActionIconClass",
+            "alternates": null,
+            "wrappers": null,
+            "shape": null
+          }
+        ],
+        "MultiTextField_Edit": [
+          {
+            "place": "Parts:0#Styles;2",
+            "displayType": null,
+            "differentiator": "PlatformShowcase-Classes",
+            "alternates": null,
+            "wrappers": null,
+            "shape": null
+          },
+          {
+            "place": "Parts:0#Styles;2",
+            "displayType": null,
+            "differentiator": "Section-Classes",
+            "alternates": null,
+            "wrappers": null,
+            "shape": null
+          }
+        ],
+        "HtmlBodyPart_Edit": [
+          {
+            "place": "Parts:0|Content_12;4",
+            "displayType": null,
+            "differentiator": null,
+            "alternates": null,
+            "wrappers": null,
+            "shape": null,
+            "contentType": ["ToolCard"]
+          }
+        ],
+        "BooleanField_Edit": [
+          {
+            "place": "Parts:0|NewTab_4;2",
+            "displayType": null,
+            "differentiator": "ToolCard-OpenInNewTab",
+            "alternates": null,
+            "wrappers": null,
+            "shape": null
+          },
+          {
+            "place": "Parts:1#Styles;1|Left_6;4",
+            "displayType": null,
+            "differentiator": "ToolCard-ProminentLink",
+            "alternates": null,
+            "wrappers": null,
+            "shape": null
+          }
+        ],
+        "WidgetsListPart_Edit": [
+          {
+            "place": "Parts:0#Breadcrumbs;2",
+            "displayType": null,
+            "differentiator": null,
+            "alternates": null,
+            "wrappers": null,
+            "shape": null,
+            "contentType": ["Page"]
+          }
+        ],
+        "ContentPickerField_Edit": [
+          {
+            "place": "Parts:1|LinkContent_6",
+            "displayType": null,
+            "differentiator": "PlatformShowcase-LinkedContent",
+            "alternates": null,
+            "wrappers": null,
+            "shape": null
+          }
+        ],
+        "FlowPart_Edit": [
+          {
+            "place": "Parts:2|Flow_12",
+            "displayType": null,
+            "differentiator": null,
+            "alternates": null,
+            "wrappers": null,
+            "shape": null,
+            "contentType": ["PlatformShowcase"]
+          }
+        ],
+        "MediaField_Edit": [
+          {
+            "place": "Parts:0#Images;0|Left_6",
+            "displayType": null,
+            "differentiator": "Hero-Logo",
+            "alternates": null,
+            "wrappers": null,
+            "shape": null
+          },
+          {
+            "place": "Parts:0#Images;0|Right_6",
+            "displayType": null,
+            "differentiator": "Hero-RightImage",
+            "alternates": null,
+            "wrappers": null,
+            "shape": null
+          },
+          {
+            "place": "Parts:0#Styles;1|Right_6;1",
+            "displayType": null,
+            "differentiator": "ToolCard-IconImage",
+            "alternates": null,
+            "wrappers": null,
+            "shape": null
+          }
+        ],
+        "TitlePart_Edit": [
+          {
+            "place": "Parts:0|Content_10",
+            "displayType": null,
+            "differentiator": null,
+            "alternates": null,
+            "wrappers": null,
+            "shape": null,
+            "contentType": ["PlatformShowcase"]
+          },
+          {
+            "place": "Parts:0|Title_12;0",
+            "displayType": null,
+            "differentiator": null,
+            "alternates": null,
+            "wrappers": null,
+            "shape": null,
+            "contentType": ["ToolCard"]
+          }
+        ]
+      }
+    },
+    {
+      "name": "ShortcodeTemplates",
+      "ShortcodeTemplates": {
+        "href": {
+          "Content": "{% assign url = Content | href -%}\r\n{% if args.returnUrl -%}\r\n\t{{ url | return_url }}\r\n{% else -%}\r\n\t{{ url }}\r\n{% endif -%}",
+          "Hint": "Converts ~/ to the tenant prefix",
+          "Usage": "[href returnUrl]~/my/url[/href]",
+          "DefaultValue": "[href]~/[/href]",
+          "Categories": [
+            "HTML Content"
+          ]
+        },
+        "login_url": {
+          "Content": "{{ '~/login' | href | return_url }}",
+          "Hint": "outputs the login url with the current url as the returnUrl",
+          "Usage": "[login_url]",
+          "DefaultValue": "[login_url]",
+          "Categories": [
+            "HTML Content"
+          ]
+        },
+        "bullet_list": {
+          "Content": "<ul class=\"mb-4\">\r\n  {{Content | raw}}\r\n</ul>",
+          "Hint": "Renders a ul ",
+          "Usage": "[bullet_list]...[/bullet_list]",
+          "DefaultValue": "[bullet_list][list_item][/list_item][/bullet_list]",
+          "Categories": [
+            "HTML Content"
+          ]
+        },
+        "list_item": {
+          "Content": "<li class=\"mb-1\">{{Content | raw}}</li>",
+          "Hint": "Renders an li",
+          "Usage": "[list_item][/list_item]",
+          "DefaultValue": "[list_item][/list_item]",
+          "Categories": [
+            "HTML Content"
+          ]
+        },
+        "divider": {
+          "Content": "<hr class=\"my-5\"/>",
+          "Hint": "Renders a hr",
+          "Usage": "[divider]",
+          "DefaultValue": "[divider]",
+          "Categories": [
+            "HTML Content"
+          ]
+        },
+        "badge": {
+          "Content": "<span class=\"badge badge-light font-weight-normal p-2 mt-2\">{{Content | raw}}</span>",
+          "Hint": "Renders bootstrap badge",
+          "Usage": "[badge]...[/badge]",
+          "DefaultValue": "[badge][/badge]",
+          "Categories": [
+            "HTML Content"
+          ]
+        },
+        "col": {
+          "Content": "{%- capture col -%}{%- if Args[0] != blank %} col-{{ Args[0] }}{%- else -%}col{%- endif -%}{%- endcapture -%}\r\n{%- capture colsm -%}{%- if Args['sm'] != blank %} col-sm-{{ Args['sm'] }}{%- endif -%}{%- endcapture -%}\r\n{%- capture colmd -%}{%- if Args['md'] != blank %} col-md-{{ Args['md'] }}{%- endif -%}{%- endcapture -%}\r\n{%- capture collg -%}{%- if Args['lg'] != blank %} col-lg-{{ Args['lg'] }}{%- endif -%}{%- endcapture -%}\r\n{%- capture colxl -%}{%- if Args['xl'] != blank %} col-xl-{{ Args['xl'] }}{%- endif %}{%- endcapture -%}\r\n{%- capture class -%}{%- if Args['class'] != blank %}{{ Args['class'] }}{%- endif -%}{%- endcapture -%}\r\n\r\n<div class=\"{{ class }}{{col}}{{colsm}}{{colmd}}{{collg}}{{colxl}}\">{{ Content | raw }}</div>",
+          "Hint": "Renders a column. To be used inside a [row] shortcode. Please see the https://getbootstrap.com/docs/4.6/layout/grid/ docs for more information about available classes. By default the col class is added",
+          "Usage": "[col 6 sm=12 md=8 lg=6 xl=4][/col]",
+          "DefaultValue": "[col 12][/col]",
+          "Categories": [
+            "HTML Content"
+          ]
+        },
+        "row": {
+          "Content": "<div class=\"row {{ Args['class'] }}\">{{ Content | raw }}</div>",
+          "Hint": "Renders a row. Please see the https://getbootstrap.com/docs/4.6/layout/grid/ docs for available classes",
+          "Usage": "[row][/row]",
+          "DefaultValue": "[row][/row]",
+          "Categories": [
+            "HTML Content"
+          ]
+        },
+        "container": {
+          "Content": "<div class=\"container {{ Args['class']  | raw }}\">{{ Content | raw }}</div>",
+          "Hint": "Renders a container. Please see the https://getbootstrap.com/docs/4.6/layout/overview/#containers",
+          "Usage": "[container][/container]",
+          "DefaultValue": "[container][/container]",
+          "Categories": [
+            "HTML Content"
+          ]
+        }
+      }
+    },
+    {
+      "name": "deployment",
+      "Plans": [
+        {
+          "Name": "Setup Recipe",
+          "Steps": [
+            {
+              "Type": "RecipeFileDeploymentStep",
+              "Step": {
+                "RecipeName": "bootstrap-theme-setup",
+                "DisplayName": "Bootstrap Theme Setup",
+                "Description": "Recipe to setup the Bootstrap Theme",
+                "Author": "Bootstrap team",
+                "WebSite": "https://digital.statcan.gc.ca",
+                "Version": "1.0",
+                "IsSetupRecipe": true,
+                "Categories": "Bootstrap",
+                "Tags": null,
+                "Id": "f2328adcd0d0448e9f4e3b679fbaba52",
+                "Name": "RecipeFileDeploymentStep"
+              }
+            },
+            {
+              "Type": "AllFeaturesDeploymentStep",
+              "Step": {
+                "IgnoreDisabledFeatures": true,
+                "Id": "ba5bce2e1c2347109b11b0187e12b793",
+                "Name": "AllFeatures"
+              }
+            },
+            {
+              "Type": "ThemesDeploymentStep",
+              "Step": {
+                "Id": "800de36715b947b0936d56955fcad98d",
+                "Name": "Themes"
+              }
+            },
+            {
+              "Type": "AdminSettings_SiteSettingsPropertyDeploymentStep",
+              "Step": {
+                "Id": "e26df78afb344de4a0b0170a5ec3a442",
+                "Name": "AdminSettings_SiteSettingsPropertyDeploymentStep"
+              }
+            },
+            {
+              "Type": "LoginSettings_SiteSettingsPropertyDeploymentStep",
+              "Step": {
+                "Id": "351036eba5384de6922aaa74cdc0a802",
+                "Name": "LoginSettings_SiteSettingsPropertyDeploymentStep"
+              }
+            },
+            {
+              "Type": "RegistrationSettings_SiteSettingsPropertyDeploymentStep",
+              "Step": {
+                "Id": "de4c872b93384da2a7144b95525aebda",
+                "Name": "RegistrationSettings_SiteSettingsPropertyDeploymentStep"
+              }
+            },
+            {
+              "Type": "LocalizationSettings_SiteSettingsPropertyDeploymentStep",
+              "Step": {
+                "Id": "d5a585cc759e4fb4a7e21ed0a2e75163",
+                "Name": "LocalizationSettings_SiteSettingsPropertyDeploymentStep"
+              }
+            }
+          ]
+        },
+        {
+          "Name": "Features Migration Recipe",
+          "Steps": [
+            {
+              "Type": "AllFeaturesDeploymentStep",
+              "Step": {
+                "IgnoreDisabledFeatures": true,
+                "Id": "0864474497a8496f986f591a2ef7edf5",
+                "Name": "AllFeatures"
+              }
+            }
+          ]
+        },
+        {
+          "Name": "Shortcodes",
+          "Steps": [
+            {
+              "Type": "AllShortcodeTemplatesDeploymentStep",
+              "Step": {
+                "Id": "3ab2413d49424e9e8e36e62295e704f5",
+                "Name": "AllShortcodeTemplates"
+              }
+            }
+          ]
+        },
+        {
+          "Name": "Templates",
+          "Steps": [
+            {
+              "Type": "AllTemplatesDeploymentStep",
+              "Step": {
+                "ExportAsFiles": true,
+                "Id": "61426f03314245a29793644c8b400086",
+                "Name": "AllTemplates"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ReplaceContentDefinition",
+      "ContentTypes": [
+        {
+          "Name": "TwoColumnShowcase",
+          "DisplayName": "Two Column Showcase",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Stereotype": "Widget"
+            },
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "TwoColumnShowcase",
+              "Name": "TwoColumnShowcase",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                }
+              }
+            },
+            {
+              "PartName": "TitlePart",
+              "Name": "TitlePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                },
+                "TitlePartSettings": {
+                  "RenderTitle": false
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "ContentMenuItem",
+          "DisplayName": "Content Menu Item",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Stereotype": "MenuItem"
+            },
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "ContentMenuItemPart",
+              "Name": "ContentMenuItemPart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            },
+            {
+              "PartName": "ContentMenuItem",
+              "Name": "ContentMenuItem",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "Menu",
+          "DisplayName": "Menu",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Listable": false,
+              "Draftable": true,
+              "Versionable": true
+            },
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "TitlePart",
+              "Name": "TitlePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                }
+              }
+            },
+            {
+              "PartName": "AliasPart",
+              "Name": "AliasPart",
+              "Settings": {
+                "AliasPartSettings": {
+                  "Pattern": "{{ ContentItem | display_text | slugify }}"
+                },
+                "ContentTypePartSettings": {
+                  "Position": "2"
+                }
+              }
+            },
+            {
+              "PartName": "MenuPart",
+              "Name": "MenuPart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "3"
+                }
+              }
+            },
+            {
+              "PartName": "MenuItemsListPart",
+              "Name": "MenuItemsListPart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "4"
+                }
+              }
+            },
+            {
+              "PartName": "LocalizationPart",
+              "Name": "LocalizationPart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "LinkMenuItem",
+          "DisplayName": "Link Menu Item",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Stereotype": "MenuItem"
+            },
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "LinkMenuItemPart",
+              "Name": "LinkMenuItemPart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            },
+            {
+              "PartName": "LinkMenuItem",
+              "Name": "LinkMenuItem",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "Page",
+          "DisplayName": "Page",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Creatable": true,
+              "Listable": true,
+              "Draftable": true,
+              "Versionable": true,
+              "Securable": true
+            },
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "LocalizationPart",
+              "Name": "LocalizationPart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            },
+            {
+              "PartName": "TitlePart",
+              "Name": "TitlePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                }
+              }
+            },
+            {
+              "PartName": "AutoroutePart",
+              "Name": "AutoroutePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "2"
+                },
+                "AutoroutePartSettings": {
+                  "AllowCustomPath": true,
+                  "Pattern": "{{ ContentItem | display_text | slugify }}",
+                  "ShowHomepageOption": true
+                }
+              }
+            },
+            {
+              "PartName": "FlowPart",
+              "Name": "FlowPart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "4"
+                }
+              }
+            },
+            {
+              "PartName": "WidgetsListPart",
+              "Name": "WidgetsListPart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "3"
+                },
+                "WidgetsListPartSettings": {
+                  "Zones": ["Breadcrumb"]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "Hero",
+          "DisplayName": "Hero",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Stereotype": "Widget"
+            },
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "Hero",
+              "Name": "Hero",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                }
+              }
+            },
+            {
+              "PartName": "TitlePart",
+              "Name": "TitlePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                },
+                "TitlePartSettings": {
+                  "Options": 2,
+                  "Pattern": "{{ContentItem.Content.Hero.Header.Text}}",
+                  "RenderTitle": false
+                }
+              }
+            },
+            {
+              "PartName": "BagPart",
+              "Name": "Buttons",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "DisplayName": "Buttons",
+                  "Description": "Buttons that are displayed below the Hero",
+                  "Position": "2"
+                },
+                "BagPartSettings": {
+                  "ContainedContentTypes": [
+                    "LinkButton",
+                    "VueFormReference"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "CultureMenuItem",
+          "DisplayName": "CultureMenuItem",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Stereotype": "MenuItem"
+            },
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "CultureMenuItem",
+              "Name": "CultureMenuItem",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                }
+              }
+            },
+            {
+              "PartName": "TitlePart",
+              "Name": "TitlePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                },
+                "TitlePartSettings": {
+                  "Options": 2,
+                  "Pattern": "Culture Menu Item"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "SeparatorMenuItem",
+          "DisplayName": "SeparatorMenuItem",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Stereotype": "MenuItem"
+            },
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "SeparatorMenuItem",
+              "Name": "SeparatorMenuItem",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                }
+              }
+            },
+            {
+              "PartName": "TitlePart",
+              "Name": "TitlePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                },
+                "TitlePartSettings": {
+                  "Options": 2,
+                  "Pattern": "Separator",
+                  "RenderTitle": false
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "UserMenuItem",
+          "DisplayName": "UserMenuItem",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Stereotype": "MenuItem"
+            },
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "UserMenuItem",
+              "Name": "UserMenuItem",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                }
+              }
+            },
+            {
+              "PartName": "TitlePart",
+              "Name": "TitlePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                },
+                "TitlePartSettings": {
+                  "Options": 2,
+                  "Pattern": "UserMenu",
+                  "RenderTitle": false
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "Navbar",
+          "DisplayName": "Navbar",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Stereotype": "Widget"
+            },
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "Navbar",
+              "Name": "Navbar",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "BreadcrumbLink",
+          "DisplayName": "BreadcrumbLink",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Stereotype": "Widget"
+            },
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "BreadcrumbLink",
+              "Name": "BreadcrumbLink",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            },
+            {
+              "PartName": "TitlePart",
+              "Name": "TitlePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                },
+                "TitlePartSettings": {
+                  "Options": 2,
+                  "Pattern": "{{ContentItem.Content.BreadcrumbLink.Url.Text}}"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "BreadcrumbContentLink",
+          "DisplayName": "BreadcrumbContentLink",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Stereotype": "Widget"
+            },
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "BreadcrumbContentLink",
+              "Name": "BreadcrumbContentLink",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                }
+              }
+            },
+            {
+              "PartName": "TitlePart",
+              "Name": "TitlePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "Footer",
+          "DisplayName": "Footer",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Stereotype": "Widget"
+            },
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "Footer",
+              "Name": "Footer",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "LinkButton",
+          "DisplayName": "LinkButton",
+          "Settings": {
+            "ContentTypeSettings": {},
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "LinkButton",
+              "Name": "LinkButton",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                }
+              }
+            },
+            {
+              "PartName": "TitlePart",
+              "Name": "TitlePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                },
+                "TitlePartSettings": {
+                  "RenderTitle": false
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "Section",
+          "DisplayName": "Section",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Stereotype": "Widget"
+            },
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "Section",
+              "Name": "Section",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                }
+              }
+            },
+            {
+              "PartName": "FlowPart",
+              "Name": "FlowPart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "2"
+                }
+              }
+            },
+            {
+              "PartName": "TitlePart",
+              "Name": "TitlePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                },
+                "TitlePartSettings": {
+                  "RenderTitle": false
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "PlatformShowcase",
+          "DisplayName": "PlatformShowcase",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Stereotype": "Widget"
+            },
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "PlatformShowcase",
+              "Name": "PlatformShowcase",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                }
+              }
+            },
+            {
+              "PartName": "TitlePart",
+              "Name": "TitlePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                },
+                "TitlePartSettings": {}
+              }
+            },
+            {
+              "PartName": "FlowPart",
+              "Name": "FlowPart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "2"
+                },
+                "FlowPartSettings": {
+                  "ContainedContentTypes": []
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "Paragraph",
+          "DisplayName": "Paragraph",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Stereotype": "Widget"
+            },
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "Paragraph",
+              "Name": "Paragraph",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "DetailsSummary",
+          "DisplayName": "DetailsSummary",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Stereotype": "Widget"
+            },
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "DetailsSummary",
+              "Name": "DetailsSummary",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                }
+              }
+            },
+            {
+              "PartName": "TitlePart",
+              "Name": "TitlePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            },
+            {
+              "PartName": "BagPart",
+              "Name": "Items",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "DisplayName": "Items",
+                  "Description": "The summary items",
+                  "Position": "2"
+                },
+                "BagPartSettings": {
+                  "ContainedContentTypes": ["SimpleText"]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "SimpleText",
+          "DisplayName": "SimpleText",
+          "Settings": {
+            "ContentTypeSettings": {},
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "SimpleText",
+              "Name": "SimpleText",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                }
+              }
+            },
+            {
+              "PartName": "TitlePart",
+              "Name": "TitlePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "Notification",
+          "DisplayName": "Notification",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Stereotype": "Widget"
+            },
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "Notification",
+              "Name": "Notification",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "SectionPanel",
+          "DisplayName": "SectionPanel",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Stereotype": "Widget"
+            },
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "SectionPanel",
+              "Name": "SectionPanel",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                }
+              }
+            },
+            {
+              "PartName": "FlowPart",
+              "Name": "FlowPart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "2"
+                }
+              }
+            },
+            {
+              "PartName": "TitlePart",
+              "Name": "TitlePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "ToolCard",
+          "DisplayName": "ToolCard",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Stereotype": "Widget"
+            },
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "ToolCard",
+              "Name": "ToolCard",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                }
+              }
+            },
+            {
+              "PartName": "HtmlBodyPart",
+              "Name": "HtmlBodyPart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "2"
+                }
+              }
+            },
+            {
+              "PartName": "TitlePart",
+              "Name": "TitlePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                },
+                "TitlePartSettings": {}
+              }
+            },
+            {
+              "PartName": "BagPart",
+              "Name": "ActionLinks",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "DisplayName": "Action Links",
+                  "Description": "One or many links to attach to the action button",
+                  "Position": "3"
+                },
+                "BagPartSettings": {
+                  "ContainedContentTypes": ["SimpleLink"]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "SimpleLink",
+          "DisplayName": "SimpleLink",
+          "Settings": {
+            "ContentTypeSettings": {},
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "SimpleLink",
+              "Name": "SimpleLink",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                }
+              }
+            },
+            {
+              "PartName": "TitlePart",
+              "Name": "TitlePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "ButtonPanel",
+          "DisplayName": "ButtonPanel",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Stereotype": "Widget"
+            },
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "ButtonPanel",
+              "Name": "ButtonPanel",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                }
+              }
+            },
+            {
+              "PartName": "TitlePart",
+              "Name": "TitlePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            },
+            {
+              "PartName": "BagPart",
+              "Name": "BagPart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "DisplayName": "Buttons",
+                  "Description": "Buttons displayed in the button panel.",
+                  "Position": "2"
+                },
+                "BagPartSettings": {
+                  "ContainedContentTypes": [
+                    "LinkButton",
+                    "VueFormReference"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "DropdownBox",
+          "DisplayName": "Dropdown Box",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Stereotype": "Widget"
+            },
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "DropdownBox",
+              "Name": "DropdownBox",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                }
+              }
+            },
+            {
+              "PartName": "TitlePart",
+              "Name": "TitlePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            },
+            {
+              "PartName": "FlowPart",
+              "Name": "FlowPart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "3"
+                }
+              }
+            },
+            {
+              "PartName": "HtmlBodyPart",
+              "Name": "HtmlBodyPart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "2",
+                  "Editor": "Wysiwyg"
+                },
+                "HtmlBodyPartSettings": {},
+                "HtmlBodyPartTrumbowygEditorSettings": {
+                  "Options": "{\r\n    autogrow: true,\r\n    btns: [\r\n        [\"viewHTML\"],\r\n        [\"undo\", \"redo\"],\r\n        [\"formatting\"],\r\n        [\"strong\", \"em\", \"del\"],\r\n        [\"foreColor\", \"backColor\"],\r\n        [\"superscript\", \"subscript\"],\r\n        [\"link\"],\r\n        [\"image\"],\r\n        [\"align\"],\r\n        [\"unorderedList\", \"orderedList\"],\r\n        [\"horizontalRule\"],\r\n        [\"removeformat\"],\r\n        [\"fullscreen\"]\r\n    ],\r\n    btnsDef: {\r\n        align: {\r\n            dropdown: [\"justifyLeft\", \"justifyCenter\", \"justifyRight\", \"justifyFull\"],\r\n            ico: \"justifyLeft\"\r\n        },\r\n        image: {\r\n            dropdown: [\"insertImage\", \"base64\", \"noembed\"],\r\n            ico: \"insertImage\"\r\n        }\r\n    }\r\n}"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "ContentParts": [
+        {
+          "Name": "TwoColumnShowcase",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "HtmlField",
+              "Name": "FirstColumn",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "First Column",
+                  "Position": "2"
+                },
+                "HtmlFieldSettings": {
+                  "Hint": "Left most column"
+                }
+              }
+            },
+            {
+              "FieldName": "HtmlField",
+              "Name": "SecondColumn",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Second Column",
+                  "Position": "3"
+                }
+              }
+            },
+            {
+              "FieldName": "HtmlField",
+              "Name": "Top",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Top",
+                  "Position": "0"
+                },
+                "HtmlFieldSettings": {
+                  "Hint": "Text displayed on top of the widget"
+                }
+              }
+            },
+            {
+              "FieldName": "MediaField",
+              "Name": "Image",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Image",
+                  "Position": "4"
+                },
+                "MediaFieldSettings": {
+                  "Hint": "Image displayed on the left for large screens",
+                  "Multiple": false
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "ContentMenuItem",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "TextField",
+              "Name": "IconClass",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "IconClass",
+                  "Position": "0"
+                },
+                "TextFieldSettings": {
+                  "Hint": "The Material design icon class name. For example `mdi mdi-apps`"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "Hero",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "TextField",
+              "Name": "Header",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Header",
+                  "Position": "0"
+                }
+              }
+            },
+            {
+              "FieldName": "HtmlField",
+              "Name": "Body",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Body",
+                  "Position": "3"
+                }
+              }
+            },
+            {
+              "FieldName": "MediaField",
+              "Name": "Logo",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Logo",
+                  "Position": "4"
+                },
+                "MediaFieldSettings": {
+                  "Hint": "Displayed as a prefix of the Header and SubHeader",
+                  "Multiple": false
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "SubHeader",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "SubHeader",
+                  "Position": "1"
+                }
+              }
+            },
+            {
+              "FieldName": "HtmlField",
+              "Name": "PillBadge",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "PillBadge",
+                  "Position": "2"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "Navbar",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "TextField",
+              "Name": "BrandLinkUrl",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "BrandLinkUrl",
+                  "Editor": "Url",
+                  "Position": "1"
+                },
+                "TextFieldSettings": {}
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "BrandContent",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "BrandContent",
+                  "Editor": "Monaco",
+                  "Position": "2"
+                },
+                "TextFieldSettings": {},
+                "TextFieldMonacoEditorSettings": {
+                  "Options": "{\r\n  \"automaticLayout\": true,\r\n  \"language\": \"html\"\r\n}"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "MenuAlias",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "MenuAlias",
+                  "Position": "3"
+                },
+                "TextFieldSettings": {
+                  "Hint": "Alias of the menu to render in the NavBar"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "BrandText",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "BrandText",
+                  "Position": "0"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "LinkMenuItem",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "TextField",
+              "Name": "IconClass",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "IconClass",
+                  "Position": "0"
+                },
+                "TextFieldSettings": {
+                  "Hint": "The Material design icon class name. For example `mdi mdi-apps`"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "BreadcrumbLink",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "LinkField",
+              "Name": "Url",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Link",
+                  "Position": "0"
+                },
+                "LinkFieldSettings": {}
+              }
+            }
+          ]
+        },
+        {
+          "Name": "BreadcrumbContentLink",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "ContentPickerField",
+              "Name": "LinkedContent",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "LinkedContent",
+                  "Position": "0"
+                },
+                "ContentPickerFieldSettings": {
+                  "DisplayedContentTypes": ["Page"]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "Footer",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "TextField",
+              "Name": "MenuAlias",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "MenuAlias",
+                  "Position": "0"
+                },
+                "TextFieldSettings": {
+                  "Hint": "Alias of the menu to display in the footer"
+                }
+              }
+            },
+            {
+              "FieldName": "HtmlField",
+              "Name": "IllustrationBy",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Illustration By",
+                  "Position": "2"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "LinkButton",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "BooleanField",
+              "Name": "Primary",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Primary",
+                  "Position": "1"
+                },
+                "BooleanFieldSettings": {
+                  "Hint": "Applies the primary button styles "
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "Url",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Url",
+                  "Position": "0"
+                },
+                "TextFieldSettings": {
+                  "Hint": "Url to redirect to, supports shortcodes."
+                }
+              }
+            },
+            {
+              "FieldName": "BooleanField",
+              "Name": "Outlined",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Outlined",
+                  "Position": "2"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "Section",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "TextField",
+              "Name": "SectionLayout",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "SectionLayout",
+                  "Editor": "PredefinedGroup",
+                  "Position": "0"
+                },
+                "TextFieldSettings": {},
+                "TextFieldPredefinedGroupEditorSettings": {
+                  "Options": [
+                    {
+                      "name": "<svg width=\"61.44\" height=\"36\" viewBox=\"0 0 1024 600\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xml:space=\"preserve\" xmlns:serif=\"http://www.serif.com/\" style=\"fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;\">\n                <g transform=\"matrix(2.69463,0,0,1.0616,-39.5648,-16.0489)\">\n                    <path d=\"M394.697,72.987C394.697,41.048 384.482,15.118 371.899,15.118L37.481,15.118C24.899,15.118 14.683,41.048 14.683,72.987L14.683,522.431C14.683,554.37 24.899,580.3 37.481,580.3L371.899,580.3C384.482,580.3 394.697,554.37 394.697,522.431L394.697,72.987Z\" fill=\"#D0DEF2\"></path>\n                </g>\n                <g transform=\"matrix(1.64204,0,0,0.920057,175.89,26.091)\">\n                    <path d=\"M394.697,72.987C394.697,41.048 380.168,15.118 362.273,15.118L47.108,15.118C29.212,15.118 14.683,41.048 14.683,72.987L14.683,522.431C14.683,554.37 29.212,580.3 47.108,580.3L362.273,580.3C380.168,580.3 394.697,554.37 394.697,522.431L394.697,72.987Z\" fill=\"#8FBEE7\"></path>\n                </g>\n            </svg>",
+                      "value": "container"
+                    },
+                    {
+                      "name": "<svg width=\"61.44\" height=\"36\" viewBox=\"0 0 1024 600\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xml:space=\"preserve\" xmlns:serif=\"http://www.serif.com/\" style=\"fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;\">\n                <g transform=\"matrix(2.69463,0,0,1.0616,-39.5648,-16.0489)\">\n                    <path d=\"M394.697,72.987C394.697,41.048 384.482,15.118 371.899,15.118L37.481,15.118C24.899,15.118 14.683,41.048 14.683,72.987L14.683,522.431C14.683,554.37 24.899,580.3 37.481,580.3L371.899,580.3C384.482,580.3 394.697,554.37 394.697,522.431L394.697,72.987Z\" fill=\"#D0DEF2\"></path>\n                </g>\n                <g transform=\"matrix(2.56306,0,0,0.920057,-12.633,26.091)\">\n                    <path d=\"M394.697,72.987C394.697,41.048 385.389,15.118 373.924,15.118L35.456,15.118C23.991,15.118 14.683,41.048 14.683,72.987L14.683,522.431C14.683,554.37 23.991,580.3 35.456,580.3L373.924,580.3C385.389,580.3 394.697,554.37 394.697,522.431L394.697,72.987Z\" fill=\"#8FBEE7\"></path>\n                </g>\n            </svg>",
+                      "value": "container-full-width"
+                    }
+                  ],
+                  "DefaultValue": "container"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "TitleLayout",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "TitleLayout",
+                  "Editor": "PredefinedGroup",
+                  "Position": "1"
+                },
+                "TextFieldSettings": {},
+                "TextFieldPredefinedGroupEditorSettings": {
+                  "Options": [
+                    {
+                      "name": "<i class=\"fas fa-eye-slash\"></i>",
+                      "value": "d-none"
+                    },
+                    {
+                      "name": "<i class=\"fas fa-align-left\"></i>",
+                      "value": "text-left"
+                    },
+                    {
+                      "name": "<i class=\"fas fa-align-center\"></i>",
+                      "value": "text-center"
+                    },
+                    {
+                      "name": "<i class=\"fas fa-align-right\"></i>",
+                      "value": "text-right"
+                    }
+                  ],
+                  "DefaultValue": "text-left"
+                }
+              }
+            },
+            {
+              "FieldName": "MultiTextField",
+              "Name": "Classes",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Classes",
+                  "Editor": "Picker",
+                  "Position": "2"
+                },
+                "MultiTextFieldSettings": {
+                  "Hint": "See the bootstrap docs for more information.\r\nhttps://getbootstrap.com/docs/4.6/utilities/flex",
+                  "Options": [
+                    {
+                      "name": "d-flex",
+                      "value": "d-flex"
+                    },
+                    {
+                      "name": "d-inline-flex",
+                      "value": "d-inline-flex"
+                    },
+                    {
+                      "name": "justify-content-start",
+                      "value": "justify-content-start"
+                    },
+                    {
+                      "name": "justify-content-end",
+                      "value": "justify-content-end"
+                    },
+                    {
+                      "name": "justify-content-center",
+                      "value": "justify-content-center"
+                    },
+                    {
+                      "name": "justify-content-between",
+                      "value": "justify-content-between"
+                    },
+                    {
+                      "name": "justify-content-around",
+                      "value": "justify-content-around"
+                    },
+                    {
+                      "name": "flex-md-row",
+                      "value": "flex-md-row"
+                    },
+                    {
+                      "name": "flex-column",
+                      "value": "flex-column"
+                    },
+                    {
+                      "name": "flex-row",
+                      "value": "flex-row"
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "PlatformShowcase",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "ContentPickerField",
+              "Name": "LinkedContent",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "LinkedContent",
+                  "Position": "0"
+                },
+                "ContentPickerFieldSettings": {
+                  "DisplayedContentTypes": ["Page"]
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "LinkButtonText",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "LinkButtonText",
+                  "Position": "1"
+                },
+                "TextFieldSettings": {}
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "TextAlign",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "TextAlign",
+                  "Editor": "PredefinedGroup"
+                },
+                "TextFieldSettings": {},
+                "TextFieldPredefinedGroupEditorSettings": {
+                  "Options": [
+                    {
+                      "name": "<i class=\"fas fa-align-left\"></i>",
+                      "value": "text-left"
+                    },
+                    {
+                      "name": "<i class=\"fas fa-align-center\"></i>",
+                      "value": "text-center"
+                    },
+                    {
+                      "name": "<i class=\"fas fa-align-right\"></i>",
+                      "value": "text-right"
+                    }
+                  ],
+                  "DefaultValue": "text-left"
+                }
+              }
+            },
+            {
+              "FieldName": "MultiTextField",
+              "Name": "Classes",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Classes",
+                  "Editor": "Picker"
+                },
+                "MultiTextFieldSettings": {
+                  "Options": [
+                    {
+                      "name": "col-md-6",
+                      "value": "col-md-6"
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "Paragraph",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "TextField",
+              "Name": "Body",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Body",
+                  "Editor": "TextArea",
+                  "Position": "0"
+                },
+                "TextFieldSettings": {}
+              }
+            }
+          ]
+        },
+        {
+          "Name": "DetailsSummary",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": []
+        },
+        {
+          "Name": "SectionPanel",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "TextField",
+              "Name": "Subtitle",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Subtitle",
+                  "Position": "0"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "Notification",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "HtmlField",
+              "Name": "Body",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Body",
+                  "Position": "0"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "ToolCard",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "MediaField",
+              "Name": "IconImage",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "IconImage",
+                  "Position": "1"
+                },
+                "MediaFieldSettings": {
+                  "Hint": "The image to use as an icon, takes precedence",
+                  "Multiple": false
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "IconClass",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "IconClass",
+                  "Position": "4"
+                },
+                "TextFieldSettings": {
+                  "Hint": "The Image overwrites this icon class"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "Url",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Url",
+                  "Position": "6"
+                },
+                "TextFieldSettings": {
+                  "Hint": "Url to redirect to when clicking the title"
+                }
+              }
+            },
+            {
+              "FieldName": "BooleanField",
+              "Name": "OpenInNewTab",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "OpenInNewTab",
+                  "Position": "7"
+                },
+                "BooleanFieldSettings": {
+                  "Hint": "Opens the link in a new tab",
+                  "DefaultValue": true
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "ActionIconClass",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "ActionIconClass",
+                  "Position": "5"
+                },
+                "TextFieldSettings": {
+                  "Hint": "The action button icon class"
+                }
+              }
+            },
+            {
+              "FieldName": "BooleanField",
+              "Name": "ActionLinksAsDropdown",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "ActionLinksAsDropdown",
+                  "Position": "3"
+                }
+              }
+            },
+            {
+              "FieldName": "BooleanField",
+              "Name": "ProminentLink",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "ProminentLink",
+                  "Position": "2"
+                },
+                "BooleanFieldSettings": {
+                  "Hint": "Adds a border on the left of the card to make it look prominent"
+                }
+              }
+            },
+            {
+              "FieldName": "HtmlField",
+              "Name": "DisplayTitle",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Display Title",
+                  "Position": "0"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "SimpleLink",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "TextField",
+              "Name": "Url",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Url",
+                  "Position": "0"
+                },
+                "TextFieldSettings": {
+                  "Hint": "Suports shortcodes"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "ButtonPanel",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": []
+        },
+        {
+          "Name": "DropdownBox",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "TextField",
+              "Name": "Colour",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Colour",
+                  "Editor": "PredefinedList",
+                  "Position": "0"
+                },
+                "TextFieldSettings": {
+                  "Hint": "Defines the background colour of the header and the box border",
+                  "Required": true
+                },
+                "TextFieldPredefinedListEditorSettings": {
+                  "Options": [
+                    {
+                      "name": "Red",
+                      "value": "red"
+                    },
+                    {
+                      "name": "Orange",
+                      "value": "orange"
+                    },
+                    {
+                      "name": "Light orange",
+                      "value": "lightorange"
+                    },
+                    {
+                      "name": " Green",
+                      "value": "green"
+                    },
+                    {
+                      "name": "Teal",
+                      "value": "teal"
+                    },
+                    {
+                      "name": "Purple",
+                      "value": "purple"
+                    },
+                    {
+                      "name": "Black",
+                      "value": "black"
+                    },
+                    {
+                      "name": "Charcoal",
+                      "value": "charcoal"
+                    },
+                    {
+                      "name": "Grey",
+                      "value": "grey"
+                    },
+                    {
+                      "name": "Light Grey",
+                      "value": "lightgrey"
+                    }
+                  ],
+                  "Editor": 1,
+                  "DefaultValue": "red"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "TextColour",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Text Colour",
+                  "Editor": "PredefinedList",
+                  "Position": "1"
+                },
+                "TextFieldSettings": {
+                  "Hint": "Defines the colour of the header text",
+                  "Required": true
+                },
+                "TextFieldPredefinedListEditorSettings": {
+                  "Options": [
+                    {
+                      "name": "Light",
+                      "value": "white"
+                    },
+                    {
+                      "name": "Dark",
+                      "value": "charcoal"
+                    }
+                  ],
+                  "Editor": 1,
+                  "DefaultValue": "white"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "Expanded",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Expanded",
+                  "Editor": "PredefinedList",
+                  "Position": "2"
+                },
+                "TextFieldSettings": {
+                  "Hint": "Defines if this box is open/closed by default"
+                },
+                "TextFieldPredefinedListEditorSettings": {
+                  "Options": [
+                    {
+                      "name": "Closed",
+                      "value": ""
+                    },
+                    {
+                      "name": "Open",
+                      "value": "open"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "FieldName": "MediaField",
+              "Name": "BiographyImage",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Biography Image",
+                  "Position": "4"
+                },
+                "MediaFieldSettings": {
+                  "Hint": "Select an image here"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "BiographyName",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Biography Name",
+                  "Position": "3"
+                },
+                "TextFieldSettings": {
+                  "Hint": "This will display the person's name"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

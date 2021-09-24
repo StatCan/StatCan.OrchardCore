@@ -1,0 +1,33 @@
+<section class="hero is-fullheight portal-hud">
+  <div class="mx-4 mx-sm-5 mr-xl-0 d-flex align-items-center">
+    <div class="hero-body">
+      <div class="d-block d-sm-flex align-items-center mb-4">
+        {% if Model.ContentItem.Content.Hero.Logo.Paths != nil %}<img class="mb-3 mb-sm-0 mr-4" src="{{ Model.ContentItem.Content.Hero.Logo.Paths.first | asset_url }}" alt="" />{% endif %}
+        <div>
+          <h1 id="content" class="h2">{{ Model.ContentItem.Content.Hero.Header.Text }}</h1>
+          <div class="d-flex flex-wrap align-items-center mt-n2">
+            {% if Model.ContentItem.Content.Hero.SubHeader.Text != nil%}<h2 class="h4 mt-2 mb-0 mr-3">{{ Model.ContentItem.Content.Hero.SubHeader.Text }}</h2>{% endif %}
+            {{Model.Content.Hero-PillBadge | shape_render }}
+          </div>
+        </div>
+      </div>
+      <p>{{ Model.ContentItem.Content.Hero.Body.Html | shortcode | raw }}</p>
+      {% if Model.ContentItem.Content.Buttons.ContentItems != empty%}
+        <nav class="navbar navbar-expand-lg justify-content-start p-0 mt-5" role="navigation">   
+          <ul class="navbar-nav flex-column align-items-center">
+            {% for item in Model.ContentItem.Content.Buttons.ContentItems %}
+              <li class="nav-item {% if forloop.last == true %}mt-4{% endif %}">
+                {{ item | shape_build_display | shape_render }}
+              </li>
+            {% endfor %}
+          </ul>
+        </nav>
+      {% endif %}
+    </div>
+    {% if Model.ContentItem.Content.Hero.RightImage.Paths != nil %}
+    <div class="hero-img-container">
+      <!-- <img src="{{ Model.ContentItem.Content.Hero.RightImage.Paths.first | asset_url }}" aria-hidden="true" class="hero-img" alt="" /> -->
+    </div>
+    {% endif %}
+  </div>
+</section>

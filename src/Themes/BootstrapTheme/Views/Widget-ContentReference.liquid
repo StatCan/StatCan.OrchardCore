@@ -1,0 +1,9 @@
+{%comment%}
+This widget is used to render the referenced items
+{%endcomment%}
+
+{% assign contentItems = Model.ContentItem.Content.ContentReference.Items.ContentItemIds | content_item_id %}
+{% for contentItem in contentItems %}
+    {{ contentItem | shape_build_display | shape_render }}
+{% endfor %}
+

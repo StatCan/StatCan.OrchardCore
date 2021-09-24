@@ -1,0 +1,4 @@
+{% assign contentMenuItem = Model.ContentItem.Content.ContentMenuItemPart %}
+{% assign displayUrl = contentMenuItem.SelectedContentItem.ContentItemIds.first | display_url %}
+<a href="{{displayUrl}}" class="dropdown-item d-xl-none d-flex">{{ Model.ContentItem.DisplayText }}</a>
+<a href="{{displayUrl}}" class="btn btn-light icon-btn d-xl-flex d-none" >{% if Model.ContentItem.Content.ContentMenuItem.IconClass.Text != blank%}<i class="{{Model.ContentItem.Content.ContentMenuItem.IconClass.Text}}"></i>{% endif %}{{ Model.ContentItem.DisplayText }}</a>
