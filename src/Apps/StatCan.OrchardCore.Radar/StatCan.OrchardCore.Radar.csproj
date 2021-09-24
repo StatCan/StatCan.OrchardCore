@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Razor">
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 
   <PropertyGroup>
     <TargetFramework>$(AspNetCoreTargetFramework)</TargetFramework>
@@ -30,6 +30,8 @@
 
   <ItemGroup>
     <PackageReference Include="OrchardCore.Module.Targets" Version="$(OrchardCoreVersion)" />
+
+    <PackageReference Include="OrchardCore.Abstractions" Version="$(OrchardCoreVersion)" />
     <PackageReference Include="OrchardCore.Contents" Version="$(OrchardCoreVersion)" />
     <PackageReference Include="OrchardCore.ContentManagement" Version="$(OrchardCoreVersion)" />
     <PackageReference Include="OrchardCore.ContentTypes.Abstractions" Version="$(OrchardCoreVersion)" />
