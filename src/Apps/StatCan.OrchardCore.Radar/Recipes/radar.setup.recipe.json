@@ -47,6 +47,10 @@
         {
           "SourcePath": "../wwwroot/images/icon_opportunities.svg",
           "TargetPath": "icon_opportunities.svg"
+        },
+        {
+          "SourcePath": "../wwwroot/images/icon_topics.svg",
+          "TargetPath": "icon_topics.svg"
         }
       ]
     },
@@ -562,6 +566,13 @@
           "Template": "select DocumentId\r\n    from ContentItemIndex \r\n    where ContentType = @contentType\r\n\tlimit @num",
           "ReturnDocuments": true,
           "Name": "AllEntitiesWithLimitSQL",
+          "Source": "Sql",
+          "Schema": null
+        },
+        {
+          "Template": "select ContentType\r\n\tfrom TaxonomyIndex \r\n\twhere ContentField = @type and TermContentItemId = @id",
+          "ReturnDocuments": false,
+          "Name": "TaxonomyEntityCountSQL",
           "Source": "Sql",
           "Schema": null
         }

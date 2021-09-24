@@ -106,3 +106,8 @@ input:focus{
     background-repeat: repeat-x;
     background-size: 32px 32px;
 }
+
+a {
+    text-decoration: none;
+    color: black !important;
+}
