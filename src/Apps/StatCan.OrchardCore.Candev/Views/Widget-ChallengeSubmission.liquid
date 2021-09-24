@@ -1,26 +1,10 @@
-{% capture translations %}
-{% if Culture.Name == "en" %}
-{
-"Create":"Create a new challenge", 
-"Edit":"Edit", 
-"Url": "~/challenge-submission/submission"
-}
-{% else %}
-{
-"Create":"Créer un nouveau défi", 
-"Edit":"Modifier",
-"Url": "~/votre-defi/soumission"
-}
-{% endif %}
-{% endcapture %}
-{% assign translationJson = translations | jsonparse %}
-
 {% assign userId = User | user_id %}
 {% assign challenges = Queries.GetChallengeSubmissionsForOwner | query: owner: userId  %}
+
 <v-row justify="center">
   <v-col cols="8">
     <form  action="{{"~/challenge-submission/submission" | href}}">
-      <v-btn type="submit" color="success" depressed block>{{translationJson.Create}}</v-btn>
+      <v-btn type="submit" color="success" depressed block>{{ "Create a new challenge" | t }}</v-btn>
     </form>
   </v-col>
   {% for challenge in challenges %}
@@ -42,8 +26,8 @@
           </v-col>
           <v-col>
 		  	<v-row>
-              <form action="{{translationJson.Url | href}}" method="get">
-              	<v-btn type="submit" color="primary" depressed>{{translationJson.Edit}}</v-btn>
+              <form action="{% if Culture.Name == "en" %}{{ "~/challenge-submission/submission" | href}}{% else %}{{ "~/votre-defi/soumission" | href}}{% endif %}" method="get">
+              	<v-btn type="submit" color="primary" depressed>{{ "Edit" | t }}</v-btn>
                 <input type="hidden" name="id" value="{{challenge.ContentItemVersionId}}">
               </form>
 		  	</v-row>

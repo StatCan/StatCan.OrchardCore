@@ -61,39 +61,39 @@ Bilingue
 
 <v-row justify="center">
   <v-col cols="10">
-    <h2>{{translationJson.Profile}}</h2>
+    <h2>{{ "Profile" | t }}</h2>
     <v-card outlined>
       <v-card-title>{{user.Properties.ParticipantProfile.ParticipantProfile.FirstName.Text}} 	{{user.Properties.ParticipantProfile.ParticipantProfile.LastName.Text}}</v-card-title>
       <v-card-text>
-        <div><b>{{translationJson.Email}}</b> {{ user.Properties.ParticipantProfile.ParticipantProfile.Email.Text }}</div>
-        <div><b>{{translationJson.Language}}</b> {{language}}</div>
+        <div><b>{{ "Email" | t }}</b> {{ user.Properties.ParticipantProfile.ParticipantProfile.Email.Text }}</div>
+        <div><b>{{ "Prefered Language" | t }}</b> {{language}}</div>
       {% assign isInRole = User | is_in_role: "Volunteer" %}
       {% if isInRole %}
         <br>
-        <div><b>{{translationJson.Roles}}</b></div> 
+        <div><b>{{ "Roles" | t }}</b></div> 
         <v-row>         
         <v-col>  
-          <v-checkbox readonly name="mentor" label="{{translationJson.Mentor}}" :input-value="{{ user.Properties.Volunteer.Volunteer.Mentor.Value }}" ></v-checkbox>
-          <v-checkbox readonly name="judge" label="{{translationJson.Judge}}" :input-value="{{ user.Properties.Volunteer.Volunteer.Judge.Value }}"></v-checkbox>
+          <v-checkbox readonly name="mentor" label="{{ "Mentor" | t }}" :input-value="{{ user.Properties.Volunteer.Volunteer.Mentor.Value }}" ></v-checkbox>
+          <v-checkbox readonly name="judge" label="{{ "Judge" | t }}" :input-value="{{ user.Properties.Volunteer.Volunteer.Judge.Value }}"></v-checkbox>
         </v-col>  
         <v-col>
-          <v-checkbox readonly name="agencyRepresentative" label="{{translationJson.AgencyRep}}" :input-value="{{user.Properties.Volunteer.Volunteer.AgencyRepresentative.Value}}" ></v-checkbox>
-          <v-checkbox readonly name="workshopPresenter" label="{{translationJson.WorkshopPre}}" :input-value="{{ user.Properties.Volunteer.Volunteer.WorkshopPresenter.Value }}" ></v-checkbox>
+          <v-checkbox readonly name="agencyRepresentative" label="{{ "Agency representative" | t }}" :input-value="{{user.Properties.Volunteer.Volunteer.AgencyRepresentative.Value}}" ></v-checkbox>
+          <v-checkbox readonly name="workshopPresenter" label="{{ "Workshop presenter" | t }}" :input-value="{{ user.Properties.Volunteer.Volunteer.WorkshopPresenter.Value }}" ></v-checkbox>
         </v-col>
         <v-col>
-          <v-checkbox readonly name="technicalAdvisor" label="{{translationJson.TechnicalAdv}}" :input-value="{{ user.Properties.Volunteer.Volunteer.TechnicalAdvisor.Value }}" ></v-checkbox>
-       	  <v-checkbox readonly name="keynoteSpeaker" label="{{translationJson.KeynoteSpe}}" :input-value="{{ user.Properties.Volunteer.Volunteer.KeynoteSpeaker.Value }}" ></v-checkbox>
+          <v-checkbox readonly name="technicalAdvisor" label="{{ "Technical advisor" | t }}" :input-value="{{ user.Properties.Volunteer.Volunteer.TechnicalAdvisor.Value }}" ></v-checkbox>
+       	  <v-checkbox readonly name="keynoteSpeaker" label="{{ "Keynote speaker" | t }}" :input-value="{{ user.Properties.Volunteer.Volunteer.KeynoteSpeaker.Value }}" ></v-checkbox>
         </v-col>
         <v-col>
-          <v-checkbox readonly name="observer" label="{{translationJson.Observer}}" :input-value="{{ user.Properties.Volunteer.Volunteer.Observer.Value }}" ></v-checkbox>
-          <v-checkbox readonly name="organizer" label="{{translationJson.Organizer}}" :input-value="{{ user.Properties.Volunteer.Volunteer.Organizer.Value }}" ></v-checkbox>
+          <v-checkbox readonly name="observer" label="{{ "Observer" | t}}" :input-value="{{ user.Properties.Volunteer.Volunteer.Observer.Value }}" ></v-checkbox>
+          <v-checkbox readonly name="organizer" label="{{ "Organizer / Volunteer" | t}}" :input-value="{{ user.Properties.Volunteer.Volunteer.Organizer.Value }}" ></v-checkbox>
         </v-col>
         </v-row>
       {% endif %}
       </v-card-text>
       <v-card-actions>
-        <v-btn href="{{translationJson.Url | href}}">
-          {{translationJson.Edit}}
+        <v-btn href="{% if Culture.Name == "en" %}{{ "~/profile/edit" | href}}{% else %}{{ "~/profil/editer" | href}}{% endif %}">
+          {{ "Edit" | t }}
         </v-btn>
       </v-card-actions>
     </v-card>

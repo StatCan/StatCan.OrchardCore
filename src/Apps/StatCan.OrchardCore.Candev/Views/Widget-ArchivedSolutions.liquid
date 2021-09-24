@@ -5511,38 +5511,6 @@ Step 2: Analyse the geographical data of Canadian cities that can support the mo
 ]
 {% endcapture %}
 
-{% capture translations %}
-{% if Culture.Name == "en" %}
-{
-"Challenge":"Challenge", 
-"Solutions":"Solutions",
-"Round":"Round",
-"Presented": "Presented",
-"ViewRepo": "View repo",
-"Statement": "Statement",
-"PotentialDatasets": "Potential Datasets",
-"BackgroundInformation": "Background Information",
-"Organization": "Organization",
-"Mentors": "Mentors"
-}
-{% else %}
-{
-"Challenge":"Défi", 
-"Solutions":"Solutions",
-"Round":"Ronde",
-"Presented": "Présenté",
-"ViewRepo": "Voir le dépôt",
-"Statement": "Énoncé",
-"PotentialDatasets": "Ensembles de données potentiels",
-"BackgroundInformation": "Information de référence",
-"Organization": "Organisation",
-"Mentors": "Mentors"
-}
-{% endif %}
-{% endcapture %}
-
-{% assign translationJson = translations | jsonparse %}
-
 {% assign jsonVar = jsonData | jsonparse %}
 
 <v-tabs grow show-arrows>
@@ -5556,23 +5524,23 @@ Step 2: Analyse the geographical data of Canadian cities that can support the mo
       <v-tab-item>
         <v-row justify="center">
           <v-col cols="10">
-            <h2 class="mt-2">{{translationJson.Challenge}}</h2>
+            <h2 class="mt-2">{{ "Challenge" | t }}</h2>
         <v-card class="my-2" outlined>
           <v-card-title>{{ case.Case.Case.Name.Text }}</v-card-title>
           <v-card-text>         
-            <h3>{{translationJson.Statement}}</h3> 
+            <h3>{{ "Statement" | t }}</h3> 
           	<div>{{ case.Case.Case.Statement.Html | raw }}</div>
-            <h3>{{translationJson.PotentialDatasets}}</h3>
+            <h3>{{ "Potential Datasets" | t }}</h3>
           	<div>{{ case.Case.Case.PotentialDatasets.Html | raw }}</div>
-            <h3>{{translationJson.BackgroundInformation}}</h3>
+            <h3>{{ "Background Information" | t }}</h3>
           	<div>{{ case.Case.Case.BackgroundInformation.Html | raw }}</div>
-            <h3>{{translationJson.Organization}}</h3>
+            <h3>{{ "Organization" | t }}</h3>
          	<div>{{ case.Case.Case.OrganizationName.Text }}</div>
-            <h3>{{translationJson.Mentors}}</h3>
+            <h3>{{ "Mentors" | t }}</h3>
           	<div>{{ case.Case.Case.MentorName.Text }}</div>
           </v-card-text>
         </v-card>
-          <h2>{{translationJson.Solutions}}</h2>        
+          <h2>{{ "Solutions" | t }}</h2>        
           {% for team in case.Teams %}
           {% if team.Winner == "true" %}
             <v-card class="my-2" outlined>
@@ -5586,7 +5554,7 @@ Step 2: Analyse the geographical data of Canadian cities that can support the mo
               	  {% assign round = 0 %}
               	  {% for score in team.Scores %}
                   {% if round != score.Round %}  
-                  	<div class="mt-1 h6">{{translationJson.Round}} {{score.Round}}</div>
+                  	<div class="mt-1 h6">{{ "Round" | t }} {{score.Round}}</div>
                   	{% capture round %}{{ score.Round }}{% endcapture %}
                   {% endif %}
                 	<div class="mb-1 h6">
@@ -5603,7 +5571,7 @@ Step 2: Analyse the geographical data of Canadian cities that can support the mo
                   {{ member.FirstName }} {{ member.LastName }}                                	
                   	{% if member.AttendedPresentation == "true" %}
                 	  <v-chip pill small color="cyan" label text-color="white">
-                        {{translationJson.Presented}} 
+                        {{ "Presented" | t }} 
                       	<v-icon right>mdi-check</v-icon>
                       </v-chip>
                   	{% endif %}
@@ -5613,7 +5581,7 @@ Step 2: Analyse the geographical data of Canadian cities that can support the mo
               <v-col cols="3" class="d-flex align-end justify-end">
                 <v-btn color="error" depressed href="{{team.RepositoryUrl}}" target="_blank">
                   <v-icon left>mdi-source-branch</v-icon>
-        		  {{translationJson.ViewRepo}}
+        		  {{ "View repo" | t }}
       			</v-btn>
               </v-col>
               </v-row>
@@ -5634,7 +5602,7 @@ Step 2: Analyse the geographical data of Canadian cities that can support the mo
               	  {% assign round = 0 %}
               	  {% for score in team.Scores %}
                   {% if round != score.Round %}  
-                  	<div class="mt-1 h6">{{translationJson.Round}} {{score.Round}}</div>
+                  	<div class="mt-1 h6">{{ "Round" | t }} {{score.Round}}</div>
                   	{% capture round %}{{ score.Round }}{% endcapture %}
                   {% endif %}
                 	<div class="mb-1 h6">
@@ -5651,7 +5619,7 @@ Step 2: Analyse the geographical data of Canadian cities that can support the mo
                   {{ member.FirstName }} {{ member.LastName }}                                	
                   	{% if member.AttendedPresentation == "true" %}
                 	  <v-chip pill small color="cyan" label text-color="white">
-                        {{translationJson.Presented}} 
+                        {{ "Prensented" | t }} 
                       	<v-icon right>mdi-check</v-icon>
                       </v-chip>
                   	{% endif %}
@@ -5661,7 +5629,7 @@ Step 2: Analyse the geographical data of Canadian cities that can support the mo
               <v-col cols="3" class="d-flex align-end justify-end">
                 <v-btn color="error" depressed href="{{team.RepositoryUrl}}" target="_blank">
                   <v-icon left>mdi-source-branch</v-icon>
-        		  {{translationJson.ViewRepo}}
+        		  {{ "View repo" | t }}
       			</v-btn>
               </v-col>
               </v-row>

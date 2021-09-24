@@ -80,12 +80,6 @@ namespace StatCan.OrchardCore.Candev.Indexes
 
                     // Lazy initialization because of ISession cyclic dependency
                     _contentDefinitionManager ??= _serviceProvider.GetRequiredService<IContentDefinitionManager>();
-                    // Gets the list of field definition that have a Hackathon LocalizedContentPickerField
-                    var hackathonElementsFields = _contentDefinitionManager
-                        .GetTypeDefinition(contentItem.ContentType)
-                        .Parts.SelectMany(x => x.PartDefinition.Fields.Where(f =>
-                            (f.FieldDefinition.Name == nameof(LocalizationSetContentPickerField) && f.Name == "Hackathon")))
-                        .ToArray();
 
                     var caseElementsFields = _contentDefinitionManager
                         .GetTypeDefinition(contentItem.ContentType)
@@ -152,11 +146,6 @@ namespace StatCan.OrchardCore.Candev.Indexes
                                 indexValue.Email = email.Text;
                             }
                         }
-                    }
-
-                    if (contentItem.ContentType == "JudgingEntry")
-                    {
-                        //indexValue.JudgeId = (string)contentItem.Content.JudgingEntry.Judge?.ContentItemIds.First;
                     }
 
                     // Special case for Team, assign the TeamContentItemId.
