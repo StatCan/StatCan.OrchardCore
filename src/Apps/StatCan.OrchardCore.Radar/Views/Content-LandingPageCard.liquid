@@ -1,0 +1,20 @@
+{% style src:"~/StatCan.OrchardCore.Radar/css/landing-page-card.css" %}
+
+{{ Model | console_log }}
+
+<div class="card {{ Model.Classes[1] }}">
+  <div class="card-title">
+    <div class="card-title-caption ml-5 mt-5 mb-8">
+      <v-icon color="white" class="mr-5" style="font-size: 65px;">
+        {{ Model.ContentItem.Content.LandingPageCard.Icon.Text }}
+      </v-icon>
+      <div class="white--text">
+        {{ Model.ContentItem.Content.HtmlBodyPart.Html | raw }}
+      </div>
+    </div>
+    <div class="zigzag-container">
+      <div class="zigzag {{ Model.Classes[0] | join }}"></div>
+    </div>
+  </div>
+  {{ Model.ContentItem.Content.LiquidPart.Liquid | liquid }}
+</div>

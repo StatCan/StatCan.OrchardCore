@@ -718,15 +718,14 @@ namespace StatCan.OrchardCore.Radar
 
         private void CreateLandingPage()
         {
-            // Sections on the landing page
-            _contentDefinitionManager.AlterTypeDefinition(Constants.ContentTypes.Activity, type => type
-                .DisplayedAs("Activity")
-                .WithSettings(new FullTextAspectSettings
-                {
-                    IncludeBodyAspect = false,
-                    IncludeDisplayText = false,
-                })
-                .WithPart(Constants.ContentTypes.Activity, part => part
+            _contentDefinitionManager.AlterTypeDefinition(Constants.ContentTypes.LandingPageCard, type => type
+                .DisplayedAs(Constants.ContentTypes.LandingPageCard)
+                .Creatable()
+                .Listable()
+                .Draftable()
+                .Versionable()
+                .Securable()
+                .WithPart("LandingPageCard", part => part
                     .WithPosition("1")
                 )
                 .WithPart("HtmlBodyPart", part => part
@@ -740,52 +739,14 @@ namespace StatCan.OrchardCore.Radar
                 )
             );
 
-            _contentDefinitionManager.AlterPartDefinition(Constants.ContentTypes.Activity, part => part
+            _contentDefinitionManager.AlterPartDefinition("LandingPageCard", part => part
                 .WithField("Icon", field => field
                     .OfType("TextField")
                     .WithDisplayName("Icon")
                     .WithPosition("0")
-                    .WithSettings(new TextFieldSettings
-                    {
-                        Hint = "Md Icon name",
-                        Required = true,
-                    })
                 )
             );
 
-            _contentDefinitionManager.AlterTypeDefinition(Constants.ContentTypes.Trend, type => type
-                .DisplayedAs("Trend")
-                .WithSettings(new FullTextAspectSettings
-                {
-                    IncludeBodyAspect = false,
-                    IncludeDisplayText = false,
-                })
-                .WithPart(Constants.ContentTypes.Trend, part => part
-                    .WithPosition("1")
-                )
-                .WithPart("HtmlBodyPart", part => part
-                    .WithPosition("2")
-                )
-                .WithPart("LiquidPart", part => part
-                    .WithPosition("3")
-                )
-                .WithPart("TitlePart", part => part
-                    .WithPosition("0")
-                )
-            );
-
-            _contentDefinitionManager.AlterPartDefinition(Constants.ContentTypes.Trend, part => part
-                .WithField("Icon", field => field
-                    .OfType("TextField")
-                    .WithDisplayName("Icon")
-                    .WithPosition("0")
-                    .WithSettings(new TextFieldSettings
-                    {
-                        Hint = "Md Icon name",
-                        Required = true,
-                    })
-                )
-            );
 
             _contentDefinitionManager.AlterTypeDefinition(Constants.ContentTypes.LandingPageFooterCard, type => type
                 .DisplayedAs("Landing Page Footer Card")
@@ -850,7 +811,7 @@ namespace StatCan.OrchardCore.Radar
                     .WithPosition("4")
                     .WithSettings(new BagPartSettings
                     {
-                        ContainedContentTypes = new[] { Constants.ContentTypes.Activity },
+                        ContainedContentTypes = new[] { Constants.ContentTypes.LandingPageCard },
                     })
                 )
                 .WithPart("Trends", "BagPart", part => part
@@ -859,7 +820,7 @@ namespace StatCan.OrchardCore.Radar
                     .WithPosition("5")
                     .WithSettings(new BagPartSettings
                     {
-                        ContainedContentTypes = new[] { Constants.ContentTypes.Trend },
+                        ContainedContentTypes = new[] { Constants.ContentTypes.LandingPageCard },
                     })
                 )
                 .WithPart("Footer", "BagPart", part => part

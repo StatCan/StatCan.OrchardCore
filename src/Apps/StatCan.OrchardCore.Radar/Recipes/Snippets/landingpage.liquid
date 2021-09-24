@@ -64,22 +64,9 @@
         <v-row>
             {% for activity in Model.ContentItem.Content.Activities.ContentItems %}
                 <v-col md="6">
-                    <div class="card">
-                        <div class="card-title">
-                            <div class="card-title-caption ml-5 mt-5 mb-8">
-                                <v-icon color="white" class="mr-5" style="font-size: 65px;">
-                                    {{ activity.Activity.Icon.Text }}
-                                </v-icon>
-                                <div class="white--text">
-                                    {{ activity.HtmlBodyPart.Html | raw }}
-                                </div>
-                            </div>
-                            <div class="zigzag-container">
-                                <div class="zigzag zigzag-light"></div>
-                            </div>
-                        </div>
-                        {{ activity.LiquidPart.Liquid | liquid }}
-                    </div>
+                    {% assign activityShape = activity | shape_build_display: "Detail" %}
+                    {% shape_add_classes activityShape "zigzag-light card-background-light" %}
+                    {{ activityShape | shape_render }}
                 </v-col>
             {% endfor %}
         </v-row>
@@ -90,7 +77,7 @@
     <v-container style="max-width: 1200px">
         <v-row>
             <v-col md="12">
-                <div class="text-h4 text-center section-title">
+                <div class="text-h4 text-center section-title mt-7">
                     {{ "Recent trends" | t }}
                 </div>
             </v-col>
@@ -98,24 +85,9 @@
         <v-row>
             {% for trend in Model.ContentItem.Content.Trends.ContentItems %}
                 <v-col md="6">
-                    <v-card elevation=0>
-                        <v-card-title class="card-title" style="padding: 0;">
-                            <div class="card-title ml-5 mt-5 mb-8">
-                                <v-icon color="white" class="mr-5" style="font-size: 65px;">
-                                    {{ trend.Trend.Icon.Text }}
-                                </v-icon>
-                                <div class="white--text">
-                                    {{ trend.HtmlBodyPart.Html | raw }}
-                                </div>
-                            </div>
-                            <div class="zigzag-container">
-                                <div class="zigzag zigzag-dark"></div>
-                            </div>
-                        </v-card-title>
-                        <div class="card-background-dark">
-                            
-                        </div>
-                    </v-card>
+                    {% assign trendShape = trend | shape_build_display: "Detail" %}
+                    {% shape_add_classes trendShape "zigzag-dark card-background-dark" %}
+                    {{ trendShape | shape_render }}
                 </v-col>
             {% endfor %}
         </v-row>

@@ -1,0 +1,61 @@
+.card-background-light {
+  background-color: #f6fcfb;
+}
+
+.card-background-dark {
+    background-color: #cfece9;
+}
+
+.trend-card-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.trend-container {
+  display: flex;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.card-title {
+  background-color: #009c88;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-title-caption {
+  display: flex;
+}
+
+.card-body {
+  padding: 1rem 0 0 6.1rem;
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
+}
+
+.card-button {
+  margin-bottom: 1rem;
+  margin-left: 1rem;
+}
+
+.card-button:hover {
+  background-color: #cfece9;
+  color: #227069;
+}
+
+.card-item-link {
+  color: #000000 !important;
+}
+
+.card-item-link:hover {
+  color: #009c88 !important;
+  text-decoration: underline;
+}
+
+.card-title {
+  display: flex;
+}
