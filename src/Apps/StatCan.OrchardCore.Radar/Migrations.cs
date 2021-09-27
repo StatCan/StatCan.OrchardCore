@@ -403,7 +403,7 @@ namespace StatCan.OrchardCore.Radar
         {
             // Project Member
             _contentDefinitionManager.AlterTypeDefinition(Constants.ContentTypes.ProjectMember, type => type
-                .DisplayedAs("ProjectMember")
+                .DisplayedAs("Project Member")
                 .Creatable()
                 .Listable()
                 .Draftable()
@@ -417,10 +417,8 @@ namespace StatCan.OrchardCore.Radar
                     .WithSettings(new TitlePartSettings
                     {
                         Options = TitlePartOptions.GeneratedHidden,
-                        Pattern = @"{% assign users = ContentItem.Content.EventOrganier.UserPicker.UserIds | users_by_id %}
-                                    {% for user in users %}
-                                        {{ user.UserName }} - {{ user.Email }}
-                                    {% endfor %}",
+                        Pattern = @"{% assign user = ContentItem.Content.ProjectMember.Member.UserIds | first | users_by_id %}
+                                    {{ user.Properties.UserProfile.UserProfile.FirstName.Text }} {{ user.Properties.UserProfile.UserProfile.LastName.Text }}                                ",
                     })
                 )
             );
@@ -436,6 +434,11 @@ namespace StatCan.OrchardCore.Radar
                         DisplayAllUsers = true,
                         DisplayedRoles = Array.Empty<string>(),
                     })
+                )
+                .WithField("Role", field => field
+                    .OfType("TextField")
+                    .WithDisplayName("Role")
+                    .WithPosition("1")
                 )
             );
 
@@ -458,7 +461,7 @@ namespace StatCan.OrchardCore.Radar
                             .WithSettings(new TitlePartSettings
                             {
                                 Options = TitlePartOptions.GeneratedHidden,
-                                Pattern = "{{ ContentItem.Content.RadarEntity.Name.Text }}",
+                                Pattern = "{{ ContentItem.Content.RadarEntityPart.Name.Text }}",
                             })
                         )
                         .WithPart("ContentPermissionsPart", part => part
