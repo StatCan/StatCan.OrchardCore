@@ -1,0 +1,290 @@
+msgid ""
+msgstr "Content-Type: text/plain\n"
+
+#: StatCan.OrchardCore.Candev\Controllers\CandevController.cs:63
+#. _notifier.Success(H["Successfully created team"]);
+msgctxt "StatCan.OrchardCore.Candev.Controllers.CandevController"
+msgid "Successfully created team"
+msgstr "Équipe créée avec succès"
+
+#: StatCan.OrchardCore.Candev\Controllers\CandevController.cs:81
+#. _notifier.Error(H["Enter a team ID"]);
+msgctxt "StatCan.OrchardCore.Candev.Controllers.CandevController"
+msgid "Enter a team ID"
+msgstr "Saisissez un identifiant d'équipe"
+
+#: StatCan.OrchardCore.Candev\Controllers\CandevController.cs:96
+#. _notifier.Success(H["Successfully joined team"]);
+msgctxt "StatCan.OrchardCore.Candev.Controllers.CandevController"
+msgid "Successfully joined team"
+msgstr "A rejoint l'équipe avec succès"
+
+#: StatCan.OrchardCore.Candev\Controllers\CandevController.cs:98
+#. _notifier.Error(H["Team could not be found"]);
+msgctxt "StatCan.OrchardCore.Candev.Controllers.CandevController"
+msgid "Team could not be found"
+msgstr "L'équipe n'a pas pu être trouvée"
+
+#: StatCan.OrchardCore.Candev\Controllers\CandevController.cs:125
+#. _notifier.Success(H["Successfully left team"]);
+msgctxt "StatCan.OrchardCore.Candev.Controllers.CandevController"
+msgid "Successfully left team"
+msgstr "A quitté l'équipe avec succès"
+
+#: StatCan.OrchardCore.Candev\Controllers\CandevController.cs:151
+#. _notifier.Success(H["Member successfully removed from the team"]);
+msgctxt "StatCan.OrchardCore.Candev.Controllers.CandevController"
+msgid "Member successfully removed from the team"
+msgstr "Membre supprimé avec succès de l'équipe"
+
+#: StatCan.OrchardCore.Candev\Controllers\CandevController.cs:177
+#. _notifier.Success(H["Team info successfully updated"]);
+msgctxt "StatCan.OrchardCore.Candev.Controllers.CandevController"
+msgid "Team info successfully updated"
+msgstr "Informations sur l'équipe mises à jour avec succès"
+
+#: StatCan.OrchardCore.Candev\Services\CandevService.cs:94
+#: StatCan.OrchardCore.Candev\Services\CandevService.cs:131
+#: StatCan.OrchardCore.Candev\Services\CandevService.cs:164
+#. modelState.AddModelError("error", T["You are not a hacker"].Value);
+#. modelState.AddModelError("error", T["You are not a hacker"].Value);
+#. modelState.AddModelError("error", T["You are not a hacker"].Value);
+msgctxt "StatCan.OrchardCore.Candev.Services.CandevService"
+msgid "You are not a hacker"
+msgstr "Tu n'es pas un hacker"
+
+#: StatCan.OrchardCore.Candev\Services\CandevService.cs:100
+#. modelState.AddModelError("error", T["Already have a team"].Value);
+msgctxt "StatCan.OrchardCore.Candev.Services.CandevService"
+msgid "Already have a team"
+msgstr "Vous avez déjà une équipe"
+
+#: StatCan.OrchardCore.Candev\Services\CandevService.cs:107
+#. modelState.AddModelError("error", T["Team does not exist"].Value);
+msgctxt "StatCan.OrchardCore.Candev.Services.CandevService"
+msgid "Team does not exist"
+msgstr "L'équipe n'existe pas"
+
+#: StatCan.OrchardCore.Candev\Services\CandevService.cs:113
+#. modelState.AddModelError("error", T["Team is full"]);
+msgctxt "StatCan.OrchardCore.Candev.Services.CandevService"
+msgid "Team is full"
+msgstr "L'équipe est au complet"
+
+#: StatCan.OrchardCore.Candev\Services\CandevService.cs:137
+#. modelState.AddModelError("error", T["Already on a team"].Value);
+msgctxt "StatCan.OrchardCore.Candev.Services.CandevService"
+msgid "Already on a team"
+msgstr "Déjà dans une équipe"
+
+#: StatCan.OrchardCore.Candev\Services\CandevService.cs:170
+#: StatCan.OrchardCore.Candev\Services\CandevService.cs:395
+#: StatCan.OrchardCore.Candev\Services\CandevService.cs:427
+#. modelState.AddModelError("error", T["You are not part of a team"].Value);
+#. modelState.AddModelError("error", T["You are not part of a team"].Value);
+#. modelState.AddModelError("error", T["You are not part of a team"].Value);
+msgctxt "StatCan.OrchardCore.Candev.Services.CandevService"
+msgid "You are not part of a team"
+msgstr "Vous ne faites pas partie d'une équipe"
+
+#: StatCan.OrchardCore.Candev\Services\CandevService.cs:401
+#: StatCan.OrchardCore.Candev\Services\CandevService.cs:433
+#. modelState.AddModelError("error", T["You are not the team captain. Only the team captain can perform this action"].Value);
+#. modelState.AddModelError("error", T["You are not the team captain. Only the team captain can perform this action"].Value);
+msgctxt "StatCan.OrchardCore.Candev.Services.CandevService"
+msgid "You are not the team captain. Only the team captain can perform this action"
+msgstr ""
+"Vous n'êtes pas le capitaine de l'équipe. Seul le capitaine de l'équipe "
+"peut effectuer cette action"
+
+#: StatCan.OrchardCore.Candev\Services\CandevService.cs:421
+#. modelState.AddModelError("error", T["Team doesn't exist"].Value);
+msgctxt "StatCan.OrchardCore.Candev.Services.CandevService"
+msgid "Team doesn't exist"
+msgstr "L'équipe n'existe pas"
+
+#: StatCan.OrchardCore.Candev\Views\UserFields.cshtml:11
+#. <span class="badge badge-info" title="@T["Role"]">
+msgctxt "StatCan.OrchardCore.Candev.Views.UserFields"
+msgid "Role"
+msgstr "Rôle"
+
+#: StatCan.OrchardCore.Candev\Views\UserFields.cshtml:18
+#: StatCan.OrchardCore.Candev\Views\UserFields.cshtml:19
+#. <span class="badge badge-danger ml-2" title="@T["Disabled"]">
+#. <i class="fas fa-user-alt-slash"></i> @T["Disabled"]
+msgctxt "StatCan.OrchardCore.Candev.Views.UserFields"
+msgid "Disabled"
+msgstr "Désactivée"
+
+#: StatCan.OrchardCore.Candev\Views\Content-Team.liquid:0
+msgctxt "StatCan.OrchardCore.Candev.Views.Content-Team"
+msgid "Description"
+msgstr "La description"
+
+#: StatCan.OrchardCore.Candev\Views\Content-Team.liquid:0
+msgctxt "StatCan.OrchardCore.Candev.Views.Content-Team"
+msgid "Challenge"
+msgstr "Défi"
+
+#: StatCan.OrchardCore.Candev\Views\Content-Team.liquid:0
+msgctxt "StatCan.OrchardCore.Candev.Views.Content-Team"
+msgid "Save"
+msgstr "sauvegarder"
+
+#: StatCan.OrchardCore.Candev\Views\Content-Team.liquid:0
+msgctxt "StatCan.OrchardCore.Candev.Views.Content-Team"
+msgid "Team Members"
+msgstr "Membres de l'équipe"
+
+#: StatCan.OrchardCore.Candev\Views\Content-Team.liquid:0
+msgctxt "StatCan.OrchardCore.Candev.Views.Content-Team"
+msgid "Remove"
+msgstr "Supprimer"
+
+#: StatCan.OrchardCore.Candev\Views\Widget-ArchivedSolutions.liquid:0
+msgctxt "StatCan.OrchardCore.Candev.Views.Widget-ArchivedSolutions"
+msgid "Challenge"
+msgstr "Défi"
+
+#: StatCan.OrchardCore.Candev\Views\Widget-ArchivedSolutions.liquid:0
+msgctxt "StatCan.OrchardCore.Candev.Views.Widget-ArchivedSolutions"
+msgid "Statement"
+msgstr "Déclaration"
+
+#: StatCan.OrchardCore.Candev\Views\Widget-ArchivedSolutions.liquid:0
+msgctxt "StatCan.OrchardCore.Candev.Views.Widget-ArchivedSolutions"
+msgid "Potential Datasets"
+msgstr "Ensembles de données potentiels"
+
+#: StatCan.OrchardCore.Candev\Views\Widget-ArchivedSolutions.liquid:0
+msgctxt "StatCan.OrchardCore.Candev.Views.Widget-ArchivedSolutions"
+msgid "Background Information"
+msgstr "Informations d'arrière-plan"
+
+#: StatCan.OrchardCore.Candev\Views\Widget-ArchivedSolutions.liquid:0
+msgctxt "StatCan.OrchardCore.Candev.Views.Widget-ArchivedSolutions"
+msgid "Organization"
+msgstr "Organisation"
+
+#: StatCan.OrchardCore.Candev\Views\Widget-ArchivedSolutions.liquid:0
+msgctxt "StatCan.OrchardCore.Candev.Views.Widget-ArchivedSolutions"
+msgid "Mentors"
+msgstr "Mentors"
+
+#: StatCan.OrchardCore.Candev\Views\Widget-ArchivedSolutions.liquid:0
+msgctxt "StatCan.OrchardCore.Candev.Views.Widget-ArchivedSolutions"
+msgid "Solutions"
+msgstr "Solutions"
+
+#: StatCan.OrchardCore.Candev\Views\Widget-ArchivedSolutions.liquid:0
+#: StatCan.OrchardCore.Candev\Views\Widget-ArchivedSolutions.liquid:0
+msgctxt "StatCan.OrchardCore.Candev.Views.Widget-ArchivedSolutions"
+msgid "Round"
+msgstr "Tour"
+
+#: StatCan.OrchardCore.Candev\Views\Widget-ArchivedSolutions.liquid:0
+msgctxt "StatCan.OrchardCore.Candev.Views.Widget-ArchivedSolutions"
+msgid "Presented"
+msgstr "Présenté"
+
+#: StatCan.OrchardCore.Candev\Views\Widget-ArchivedSolutions.liquid:0
+#: StatCan.OrchardCore.Candev\Views\Widget-ArchivedSolutions.liquid:0
+msgctxt "StatCan.OrchardCore.Candev.Views.Widget-ArchivedSolutions"
+msgid "View repo"
+msgstr "Voir le dépôt"
+
+#: StatCan.OrchardCore.Candev\Views\Widget-ArchivedSolutions.liquid:0
+msgctxt "StatCan.OrchardCore.Candev.Views.Widget-ArchivedSolutions"
+msgid "Prensented"
+msgstr "princesse"
+
+#: StatCan.OrchardCore.Candev\Views\Widget-ChallengeSubmission.liquid:0
+msgctxt "StatCan.OrchardCore.Candev.Views.Widget-ChallengeSubmission"
+msgid "Create a new challenge"
+msgstr "Créer un nouveau défi"
+
+#: StatCan.OrchardCore.Candev\Views\Widget-ChallengeSubmission.liquid:0
+msgctxt "StatCan.OrchardCore.Candev.Views.Widget-ChallengeSubmission"
+msgid "Edit"
+msgstr "Éditer"
+
+#: StatCan.OrchardCore.Candev\Views\Widget-JudgingListWidget.liquid:0
+msgctxt "StatCan.OrchardCore.Candev.Views.Widget-JudgingListWidget"
+msgid "No active Judging round"
+msgstr "Pas de tour de jugement actif"
+
+#: StatCan.OrchardCore.Candev\Views\Widget-JudgingListWidget.liquid:0
+msgctxt "StatCan.OrchardCore.Candev.Views.Widget-JudgingListWidget"
+msgid "Empty"
+msgstr "Vide"
+
+#: StatCan.OrchardCore.Candev\Views\Widget-JudgingListWidget.liquid:0
+msgctxt "StatCan.OrchardCore.Candev.Views.Widget-JudgingListWidget"
+msgid "Team"
+msgstr "Équipe"
+
+#: StatCan.OrchardCore.Candev\Views\Widget-UserProfile.liquid:0
+msgctxt "StatCan.OrchardCore.Candev.Views.Widget-UserProfile"
+msgid "Profile"
+msgstr "Profil"
+
+#: StatCan.OrchardCore.Candev\Views\Widget-UserProfile.liquid:0
+msgctxt "StatCan.OrchardCore.Candev.Views.Widget-UserProfile"
+msgid "Email"
+msgstr "E-mail"
+
+#: StatCan.OrchardCore.Candev\Views\Widget-UserProfile.liquid:0
+msgctxt "StatCan.OrchardCore.Candev.Views.Widget-UserProfile"
+msgid "Prefered Language"
+msgstr "Langue préférée"
+
+#: StatCan.OrchardCore.Candev\Views\Widget-UserProfile.liquid:0
+msgctxt "StatCan.OrchardCore.Candev.Views.Widget-UserProfile"
+msgid "Roles"
+msgstr "Les rôles"
+
+#: StatCan.OrchardCore.Candev\Views\Widget-UserProfile.liquid:0
+msgctxt "StatCan.OrchardCore.Candev.Views.Widget-UserProfile"
+msgid "Mentor"
+msgstr "Mentor"
+
+#: StatCan.OrchardCore.Candev\Views\Widget-UserProfile.liquid:0
+msgctxt "StatCan.OrchardCore.Candev.Views.Widget-UserProfile"
+msgid "Judge"
+msgstr "Juge"
+
+#: StatCan.OrchardCore.Candev\Views\Widget-UserProfile.liquid:0
+msgctxt "StatCan.OrchardCore.Candev.Views.Widget-UserProfile"
+msgid "Agency representative"
+msgstr "Représentant de l'agence"
+
+#: StatCan.OrchardCore.Candev\Views\Widget-UserProfile.liquid:0
+msgctxt "StatCan.OrchardCore.Candev.Views.Widget-UserProfile"
+msgid "Workshop presenter"
+msgstr "Animateur d'atelier"
+
+#: StatCan.OrchardCore.Candev\Views\Widget-UserProfile.liquid:0
+msgctxt "StatCan.OrchardCore.Candev.Views.Widget-UserProfile"
+msgid "Technical advisor"
+msgstr "Conseiller technique"
+
+#: StatCan.OrchardCore.Candev\Views\Widget-UserProfile.liquid:0
+msgctxt "StatCan.OrchardCore.Candev.Views.Widget-UserProfile"
+msgid "Keynote speaker"
+msgstr "Conférencier principal"
+
+#: StatCan.OrchardCore.Candev\Views\Widget-UserProfile.liquid:0
+msgctxt "StatCan.OrchardCore.Candev.Views.Widget-UserProfile"
+msgid "Observer"
+msgstr "Observateur"
+
+#: StatCan.OrchardCore.Candev\Views\Widget-UserProfile.liquid:0
+msgctxt "StatCan.OrchardCore.Candev.Views.Widget-UserProfile"
+msgid "Organizer / Volunteer"
+msgstr "Organisateur / Bénévole"
+
+#: StatCan.OrchardCore.Candev\Views\Widget-UserProfile.liquid:0
+msgctxt "StatCan.OrchardCore.Candev.Views.Widget-UserProfile"
+msgid "Edit"
+msgstr "Éditer"
