@@ -22,7 +22,7 @@ namespace StatCan.OrchardCore.Radar
             public const string Event = "Event";
             public const string Community = "Community";
 
-            public const string ProjectMember = "Project Member";
+            public const string ProjectMember = "ProjectMember";
             public const string EventOrganizer = "EventOrganizer";
             public const string CommunityMember = "CommunityMember";
 
@@ -34,6 +34,9 @@ namespace StatCan.OrchardCore.Radar
             public const string LandingPageCard = "LandingPageCard";
             public const string LandingPageFooterCard = "LandingPageFooterCard";
             public const string EntityList = "EntityList";
+
+            // Custom User Settings
+            public const string UserProfile = "UserProfile";
         }
     }
 }

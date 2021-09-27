@@ -49,6 +49,8 @@ namespace StatCan.OrchardCore.Radar
             CreateLandingPage();
             CreateEntityList();
 
+            CreateUserProfile();
+
             return 1;
         }
 
@@ -896,6 +898,32 @@ namespace StatCan.OrchardCore.Radar
                     .WithPosition("0")
                 )
             );
+        }
+
+        private void CreateUserProfile()
+        {
+            _contentDefinitionManager.AlterTypeDefinition(Constants.ContentTypes.UserProfile, type => type
+                .DisplayedAs("User Profile")
+                .Versionable()
+                .Stereotype("CustomUserSettings")
+                .WithPart(Constants.ContentTypes.UserProfile, part => part
+                    .WithPosition("0")
+                )
+            );
+
+            _contentDefinitionManager.AlterPartDefinition(Constants.ContentTypes.UserProfile, part => part
+                .WithField("FirstName", field => field
+                    .OfType("TextField")
+                    .WithDisplayName("First Name")
+                    .WithPosition("0")
+                )
+                .WithField("LastName", field => field
+                    .OfType("TextField")
+                    .WithDisplayName("Last Name")
+                    .WithPosition("1")
+                )
+            );
+
         }
     }
 }
