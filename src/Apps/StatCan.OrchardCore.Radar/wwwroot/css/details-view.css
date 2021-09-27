@@ -1,12 +1,36 @@
-.list-header {
-  padding: 3rem 13rem 4rem 13rem;
+.header {
+  padding: 3rem 9rem;
   background: transparent linear-gradient(180deg, #cfece9 0%, #abded7 100%) 0%
     0% no-repeat;
 }
 
-.title-container {
+.name {
+  text-align: left;
+  font-weight: 300;
+  color: #000000de;
+  overflow-wrap: anywhere;
+}
+
+.description {
+  margin-top: 1rem;
+  color: #227069;
+}
+
+.topics-container {
+  margin-top: 2rem !important;
+}
+
+.icon-cell {
   display: flex;
   align-items: center;
+}
+
+.icon-text {
+  margin-left: 1rem;
+}
+
+.topics-list-container {
+  display: flex;
 }
 
 .bubble {
@@ -14,13 +38,13 @@
   background-color: #f6fcfb;
   border: 2px solid #009c88;
   border-radius: 50%;
-  width: 5rem;
-  height: 5rem;
+  width: 3rem;
+  height: 3rem;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 400;
-  font-size: 38px;
+  font-size: 23px;
 }
 
 .bubble-text {
@@ -28,8 +52,7 @@
 }
 
 .table-container {
-  padding: 0 2rem 0 2rem;
-  width: 80%;
+  width: 100%;
   margin: auto;
 }
 
@@ -37,6 +60,12 @@
   width: 100%;
   border-collapse: collapse;
   border-spacing: 0;
+}
+
+.table-title-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
 }
 
 .table-header {
@@ -55,40 +84,23 @@
   background: #cfece9;
 }
 
-.search-container {
-  margin: 1rem 0 1.5rem 0;
-  display: flex;
-  background: #f6fcfb;
-  align-items: center;
-  border-bottom: 2px solid #009c88;
-  display: flex;
-  height: 2.2rem;
-  padding-left: 1rem;
-  width: fit-content;
-}
-
-input:focus {
-  outline: none;
-}
-
-.icon-cell {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .name-col {
   text-align: left;
   padding-left: 1rem;
 }
 
 .table-col {
-  text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
 }
 
-.zigzag-container {
-  position: relative;
-  width: 100%;
+.sections-container {
+    padding: 0 5rem 0 5rem;
+}
+
+.section {
+    margin-bottom: 2rem;
 }
 
 .zigzag {
@@ -101,15 +113,15 @@ input:focus {
   height: 32px;
 }
 
+.zigzag-container {
+  position: relative;
+  width: 100%;
+}
+
 .zigzag-white {
   background: linear-gradient(-40deg, #ffffff 16px, transparent 0),
     linear-gradient(40deg, #ffffff 16px, transparent 0);
   background-position: left bottom;
   background-repeat: repeat-x;
   background-size: 32px 32px;
-}
-
-a {
-  text-decoration: none;
-  color: black !important;
 }

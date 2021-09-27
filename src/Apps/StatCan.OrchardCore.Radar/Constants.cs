@@ -16,7 +16,7 @@ namespace StatCan.OrchardCore.Radar
             public const string CommunityType = "CommunityType";
 
             // Entities
-            public const string Aritifact = "Aritifact";
+            public const string Artifact = "Artifact";
             public const string Proposal = "Proposal";
             public const string Project = "Project";
             public const string Event = "Event";
