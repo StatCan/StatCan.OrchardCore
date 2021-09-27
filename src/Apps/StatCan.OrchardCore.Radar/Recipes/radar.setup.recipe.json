@@ -146,7 +146,7 @@
                   "Html": "<div class=\"text-h5\">Projects</div><div class=\"text-h6\">In-flight projects</div>"
                 },
                 "LiquidPart": {
-                  "Liquid": "{% assign projects = Queries.AllEntitiesWithLimitSQL | query: contentType: \"Project\", num: 5 %}\r\n{% assign projectList = Queries.EntityListSQL | query: name: \"Projects\" | first %}\r\n\r\n<div class=\"card-body\">\r\n{% for project in projects %}\r\n<div class=\"mb-2\">\r\n  <a class=\"card-item-link\">{{ project | display_text }}</a>\r\n</div>\r\n{% endfor %}\r\n</div>\r\n<a href=\"{{ projectList | display_url }}\" class=\"black--text card-button-link\">\r\n  <v-btn elevation=\"0\" text class=\"card-button\">\r\n    All projects\r\n  </v-btn>\r\n</a>"
+                  "Liquid": "{% assign projects = Queries.AllEntitiesWithLimitSQL | query: contentType: \"Project\", num: 5 %}\r\n{% assign projectList = Queries.EntityListSQL | query: name: \"Projects\" | first %}\r\n\r\n<div class=\"card-body\">\r\n{% for project in projects %}\r\n<div class=\"mb-2\">\r\n  <a href=\"{{ project | display_url }}\" class=\"card-item-link\">{{ project | display_text }}</a>\r\n</div>\r\n{% endfor %}\r\n</div>\r\n<a href=\"{{ projectList | display_url }}\" class=\"black--text card-button-link\">\r\n  <v-btn elevation=\"0\" text class=\"card-button\">\r\n    All projects\r\n  </v-btn>\r\n</a>"
                 },
                 "TitlePart": {
                   "Title": "Projects"
@@ -173,7 +173,7 @@
                   "Html": "<div class=\"text-h5\">Events</div><div class=\"text-h6\">Upcoming events</div>"
                 },
                 "LiquidPart": {
-                  "Liquid": "{% assign events = Queries.AllEntitiesWithLimitSQL | query: contentType: \"Event\", num: 5 %}\r\n{% assign eventList = Queries.EntityListSQL | query: name: \"Events\" | first %}\r\n\r\n<div class=\"card-body\">\r\n{% for event in events %}\r\n<div class=\"mb-2\">\r\n  <a class=\"card-item-link\">{{ event | display_text }}</a>\r\n</div>\r\n{% endfor %}\r\n</div>\r\n<a href=\"{{ eventList | display_url }}\" class=\"black--text card-button-link\">\r\n  <v-btn elevation=\"0\" text class=\"card-button\">\r\n    All Events\r\n  </v-btn>\r\n</a>"
+                  "Liquid": "{% assign events = Queries.AllEntitiesWithLimitSQL | query: contentType: \"Event\", num: 5 %}\r\n{% assign eventList = Queries.EntityListSQL | query: name: \"Events\" | first %}\r\n\r\n<div class=\"card-body\">\r\n{% for event in events %}\r\n<div class=\"mb-2\">\r\n  <a href=\"{{ event | display_url }}\" class=\"card-item-link\">{{ event | display_text }}</a>\r\n</div>\r\n{% endfor %}\r\n</div>\r\n<a href=\"{{ eventList | display_url }}\" class=\"black--text card-button-link\">\r\n  <v-btn elevation=\"0\" text class=\"card-button\">\r\n    All Events\r\n  </v-btn>\r\n</a>"
                 },
                 "TitlePart": {
                   "Title": "Events"
@@ -200,7 +200,7 @@
                   "Html": "<div class=\"text-h5\">Committees</div><div class=\"text-h6\">Latest committees</div>"
                 },
                 "LiquidPart": {
-                  "Liquid": "{% assign communities = Queries.AllEntitiesWithLimitSQL | query: contentType: \"Community\", num: 5 %}\r\n{% assign communityList = Queries.EntityListSQL | query: name: \"Communities\" | first %}\r\n\r\n<div class=\"card-body\">\r\n{% for community in communities %}\r\n<div class=\"mb-2\">\r\n  <a class=\"card-item-link\">{{ community | display_text }}</a>\r\n</div>\r\n{% endfor %}\r\n</div>\r\n<a href=\"{{ communityList | display_url }}\" class=\"black--text card-button-link\">\r\n  <v-btn elevation=\"0\" text class=\"card-button\">\r\n    All Committees\r\n  </v-btn>\r\n</a>"
+                  "Liquid": "{% assign communities = Queries.AllEntitiesWithLimitSQL | query: contentType: \"Community\", num: 5 %}\r\n{% assign communityList = Queries.EntityListSQL | query: name: \"Communities\" | first %}\r\n\r\n<div class=\"card-body\">\r\n{% for community in communities %}\r\n<div class=\"mb-2\">\r\n  <a href=\"{{ community | display_url }}\" class=\"card-item-link\">{{ community | display_text }}</a>\r\n</div>\r\n{% endfor %}\r\n</div>\r\n<a href=\"{{ communityList | display_url }}\" class=\"black--text card-button-link\">\r\n  <v-btn elevation=\"0\" text class=\"card-button\">\r\n    All Committees\r\n  </v-btn>\r\n</a>"
                 },
                 "TitlePart": {
                   "Title": "Committees"
@@ -227,7 +227,7 @@
                   "Html": "<div class=\"text-h5\">Proposals</div><div class=\"text-h6\">Current proposals</div>"
                 },
                 "LiquidPart": {
-                  "Liquid": "{% assign proposals = Queries.AllEntitiesWithLimitSQL | query: contentType: \"Proposal\", num: 5 %}\r\n{% assign proposalList = Queries.EntityListSQL | query: name: \"Proposals\" | first %}\r\n\r\n<div class=\"card-body\">\r\n{% for proposal in proposals %}\r\n<div class=\"mb-2\">\r\n  <a class=\"card-item-link\">{{ proposal | display_text }}</a>\r\n</div>\r\n{% endfor %}\r\n</div>\r\n<a href=\"{{ proposalList | display_url }}\" class=\"black--text card-button-link\">\r\n  <v-btn elevation=\"0\" text class=\"card-button\">\r\n    All Proposals\r\n  </v-btn>\r\n</a>"
+                  "Liquid": "{% assign proposals = Queries.AllEntitiesWithLimitSQL | query: contentType: \"Proposal\", num: 5 %}\r\n{% assign proposalList = Queries.EntityListSQL | query: name: \"Proposals\" | first %}\r\n\r\n<div class=\"card-body\">\r\n{% for proposal in proposals %}\r\n<div class=\"mb-2\">\r\n  <a href=\"{{ proposal | display_url }}\" class=\"card-item-link\">{{ proposal | display_text }}</a>\r\n</div>\r\n{% endfor %}\r\n</div>\r\n<a href=\"{{ proposalList | display_url }}\" class=\"black--text card-button-link\">\r\n  <v-btn elevation=\"0\" text class=\"card-button\">\r\n    All Proposals\r\n  </v-btn>\r\n</a>"
                 },
                 "TitlePart": {
                   "Title": "Proposals"
@@ -554,7 +554,7 @@
           "Schema": null
         },
         {
-          "Template": "select DocumentId\r\n    from ContentItemIndex \r\n    where ContentType = @contentType\r\n\tlimit @num",
+          "Template": "select DocumentId\r\n    from ContentItemIndex \r\n    where ContentType = @contentType and Published = true and Latest = true\r\n\tlimit @num",
           "ReturnDocuments": true,
           "Name": "AllEntitiesWithLimitSQL",
           "Source": "Sql",
