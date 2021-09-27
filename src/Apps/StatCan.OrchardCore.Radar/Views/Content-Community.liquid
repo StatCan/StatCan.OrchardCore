@@ -75,7 +75,7 @@
                 {{ "Members" | t }}
             </div>
             <div class="bubble">
-                <div class="bubble-text" id="bubble-text">{{ Model.ContentItem.Content.CommunityMember.ContentItems | size }}</div>
+                <div class="bubble-text" id="bubble-text">{{ Model.ContentItem.Content.CommunityMember.ContentItems | size | plus: 1 }}</div>
             </div>
         </div>
         <div class="member-table">
