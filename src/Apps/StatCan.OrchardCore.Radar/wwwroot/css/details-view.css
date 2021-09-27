@@ -51,21 +51,20 @@
   color: #227069;
 }
 
-.table-container {
-  width: 100%;
-  margin: auto;
-}
-
 .table {
   width: 100%;
   border-collapse: collapse;
   border-spacing: 0;
 }
 
+.member-table {
+  width: 50%;
+}
+
 .table-title-container {
-    display: flex;
-    align-items: center;
-    margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
 }
 
 .table-header {
@@ -90,17 +89,17 @@
 }
 
 .table-col {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
 }
 
 .sections-container {
-    padding: 0 5rem 0 5rem;
+  padding: 0 5rem 0 5rem;
 }
 
 .section {
-    margin-bottom: 2rem;
+  margin-bottom: 2rem;
 }
 
 .zigzag {

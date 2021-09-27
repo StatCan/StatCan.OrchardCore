@@ -22,7 +22,7 @@ namespace StatCan.OrchardCore.Radar
             public const string Event = "Event";
             public const string Community = "Community";
 
-            public const string ProjectMember = "ProjectMember";
+            public const string ProjectMember = "Project Member";
             public const string EventOrganizer = "EventOrganizer";
             public const string CommunityMember = "CommunityMember";
 
