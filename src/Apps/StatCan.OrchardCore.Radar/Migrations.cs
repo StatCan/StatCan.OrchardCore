@@ -657,6 +657,11 @@ namespace StatCan.OrchardCore.Radar
                         DisplayedRoles = Array.Empty<string>(),
                     })
                 )
+                .WithField("Role", field => field
+                    .OfType("TextField")
+                    .WithDisplayName("Role")
+                    .WithPosition("1")
+                )
             );
 
             // Community
@@ -675,7 +680,7 @@ namespace StatCan.OrchardCore.Radar
                     .WithSettings(new TitlePartSettings
                     {
                         Options = TitlePartOptions.GeneratedHidden,
-                        Pattern = "{{ ContentItem.Content.RadarEntity.Name.Text }}",
+                        Pattern = "{{ ContentItem.Content.RadarEntityPart.Name.Text }}",
                     })
                 )
                 .WithPart(nameof(RadarEntityPart), part => part
