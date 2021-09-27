@@ -1,469 +1,463 @@
 msgid ""
 msgstr "Content-Type: text/plain\n"
 
-#: BootstrapTheme\Views\LoginMenu.cshtml:24
-#. <a class="dropdown-item" asp-route-area="OrchardCore.Admin" asp-controller="Admin" asp-action="Index"><i class="fa fa-desktop fa-fw"></i> @T["Dashboard"]</a>
-msgctxt "BootstrapTheme.Views.LoginMenu"
-msgid "Dashboard"
-msgstr "Tableau de bord"
+#: BootstrapTheme\Views\OrchardCore.Users\Account\LinkExternalLogin.cshtml:7
+#. <shape type="SharedLoginHeader" title="@T["Link account"]" ></shape>
+msgctxt "BootstrapTheme.Views.OrchardCore.Users.Account.LinkExternalLogin"
+msgid "Link account"
+msgstr "Lien de compte"
 
-#: BootstrapTheme\Views\LoginMenu.cshtml:26
-#. <a class="dropdown-item" asp-route-area="OrchardCore.Users" asp-controller="Account" asp-action="ChangePassword"><i class="fa fa-lock fa-fw"></i> @T["Change Password"]</a>
-msgctxt "BootstrapTheme.Views.LoginMenu"
-msgid "Change Password"
-msgstr "Changer le mot de passe"
+#: BootstrapTheme\Views\OrchardCore.Users\Account\LinkExternalLogin.cshtml:10
+#. <h4>@T["Link your account."]</h4>
+msgctxt "BootstrapTheme.Views.OrchardCore.Users.Account.LinkExternalLogin"
+msgid "Link your account."
+msgstr "Liez votre compte."
 
-#: BootstrapTheme\Views\LoginMenu.cshtml:29
-#. <a class="dropdown-item" asp-route-area="OrchardCore.Users" asp-controller="Account" asp-action="ExternalLogins"><i class="fa fa-user-lock fa-fw"></i> @T["External Logins"]</a>
-msgctxt "BootstrapTheme.Views.LoginMenu"
-msgid "External Logins"
-msgstr "Connexions externes"
-
-#: BootstrapTheme\Views\LoginMenu.cshtml:33
-#. <i class="fa fa-sign-out-alt fa-fw"></i> @T["Log off"]
-msgctxt "BootstrapTheme.Views.LoginMenu"
-msgid "Log off"
-msgstr "Se déconnecter"
-
-#: BootstrapTheme\Views\LoginMenu.cshtml:43
-#: BootstrapTheme\Views\LoginMenu.cshtml:44
-#. <i class="fa fa-sign-in-alt fa-fw" aria-label="@T["Log in"]"></i>
-#. <span class="d-lg-block d-none ml-2">@T["Log in"]</span>
-msgctxt "BootstrapTheme.Views.LoginMenu"
-msgid "Log in"
-msgstr "S'identifier"
-
-#: BootstrapTheme\Views\TemplateUserConfirmEmail.cshtml:8
-#. <p>@T["Hello {0},", Model.User.UserName]</p>
-msgctxt "BootstrapTheme.Views.TemplateUserConfirmEmail"
-msgid "Hello {0},"
-msgstr "Bonjour {0},"
-
-#: BootstrapTheme\Views\TemplateUserConfirmEmail.cshtml:10
-#. <p>@T["Please <a href=\"{0}\">click here</a> to confirm your new account.", Model.ConfirmEmailUrl]</p>
-msgctxt "BootstrapTheme.Views.TemplateUserConfirmEmail"
-msgid "Please <a href=\"{0}\">click here</a> to confirm your new account."
-msgstr ""
-"Veuillez <a href=\"{0}\">cliquer ici</a> pour confirmer votre nouveau "
-"compte."
-
-#: BootstrapTheme\Views\TemplateUserConfirmEmail.cshtml:12
-#. <p>@T["Thank you"]</p>
-msgctxt "BootstrapTheme.Views.TemplateUserConfirmEmail"
-msgid "Thank you"
-msgstr "Merci"
-
-#: BootstrapTheme\Views\TemplateUserConfirmEmail.cshtml:14
-#. <p>@T["Bonjour {0},", Model.User.UserName]</p>
-msgctxt "BootstrapTheme.Views.TemplateUserConfirmEmail"
-msgid "Bonjour {0},"
-msgstr "Bonjour {0},"
-
-#: BootstrapTheme\Views\TemplateUserConfirmEmail.cshtml:16
-#. <p>@T["Veuillez <a href=\"{0}\">cliquer ici</a> afin de confirmer votre nouveau compte.", Model.ConfirmEmailUrl]</p>
-msgctxt "BootstrapTheme.Views.TemplateUserConfirmEmail"
+#: BootstrapTheme\Views\OrchardCore.Users\Account\LinkExternalLogin.cshtml:12
+#. @T["You've successfully authenticated with <strong>{0}</strong>. You already have an account with this email address. Enter your local account password and click the Register button to link the accounts and finish logging in.", ViewData["LoginProvider"]]
+msgctxt "BootstrapTheme.Views.OrchardCore.Users.Account.LinkExternalLogin"
 msgid ""
-"Veuillez <a href=\"{0}\">cliquer ici</a> afin de confirmer votre nouveau "
-"compte."
+"You've successfully authenticated with <strong>{0}</strong>. You already "
+"have an account with this email address. Enter your local account password "
+"and click the Register button to link the accounts and finish logging in."
 msgstr ""
-"Veuillez <a href=\"{0}\">cliquer ici</a> afin de confirmer votre nouveau "
-"compte."
+"Vous vous êtes correctement authentifié avec <strong>{0}</strong> . Vous "
+"avez déjà un compte avec cette adresse e-mail. Saisissez le mot de passe de "
+"votre compte local et cliquez sur le bouton S&#39;inscrire pour lier les "
+"comptes et terminer la connexion."
 
-#: BootstrapTheme\Views\TemplateUserConfirmEmail.cshtml:18
-#. <p>@T["Merci"]</p>
-msgctxt "BootstrapTheme.Views.TemplateUserConfirmEmail"
-msgid "Merci"
-msgstr "Merci"
+#: BootstrapTheme\Views\OrchardCore.Users\Account\LinkExternalLogin.cshtml:18
+#. <label for="UserName" class="control-label">@T["Username"]</label>
+msgctxt "BootstrapTheme.Views.OrchardCore.Users.Account.LinkExternalLogin"
+msgid "Username"
+msgstr "Nom d'utilisateur"
 
-#: BootstrapTheme\Views\TemplateUserLostPassword.cshtml:8
-#. <p>@T["Hello {0},", Model.User.UserName]</p>
-msgctxt "BootstrapTheme.Views.TemplateUserLostPassword"
-msgid "Hello {0},"
-msgstr "Bonjour {0},"
+#: BootstrapTheme\Views\OrchardCore.Users\Account\LinkExternalLogin.cshtml:23
+#. <label for="Email" class="control-label">@T["Email"]</label>
+msgctxt "BootstrapTheme.Views.OrchardCore.Users.Account.LinkExternalLogin"
+msgid "Email"
+msgstr "E-mail"
 
-#: BootstrapTheme\Views\TemplateUserLostPassword.cshtml:10
-#. <p>@T["Please <a href=\"{0}\">click here</a> to change your password.", Model.LostPasswordUrl]</p>
-msgctxt "BootstrapTheme.Views.TemplateUserLostPassword"
-msgid "Please <a href=\"{0}\">click here</a> to change your password."
-msgstr "Veuillez <a href=\"{0}\">cliquer ici</a> pour changer votre mot de passe."
+#: BootstrapTheme\Views\OrchardCore.Users\Account\LinkExternalLogin.cshtml:28
+#. <label asp-for="Password" class="control-label">@T["Password"]</label>
+msgctxt "BootstrapTheme.Views.OrchardCore.Users.Account.LinkExternalLogin"
+msgid "Password"
+msgstr "Mot de passe"
 
-#: BootstrapTheme\Views\TemplateUserLostPassword.cshtml:12
-#. <p>@T["Thank you"]</p>
-msgctxt "BootstrapTheme.Views.TemplateUserLostPassword"
-msgid "Thank you"
-msgstr "Merci"
+#: BootstrapTheme\Views\OrchardCore.Users\Account\LinkExternalLogin.cshtml:36
+#. <button type="submit" class="btn btn-lg btn-primary is-rounded">@T["Register"]</button>
+msgctxt "BootstrapTheme.Views.OrchardCore.Users.Account.LinkExternalLogin"
+msgid "Register"
+msgstr "S'inscrire"
 
-#: BootstrapTheme\Views\TemplateUserLostPassword.cshtml:14
-#. <p>@T["Bonjour {0},", Model.User.UserName]</p>
-msgctxt "BootstrapTheme.Views.TemplateUserLostPassword"
-msgid "Bonjour {0},"
-msgstr "Bonjour {0},"
-
-#: BootstrapTheme\Views\TemplateUserLostPassword.cshtml:16
-#. <p>@T["Veuillez <a href=\"{0}\">cliquer ici</a> afin de changer votre mot de passe.", Model.LostPasswordUrl]</p>
-msgctxt "BootstrapTheme.Views.TemplateUserLostPassword"
-msgid "Veuillez <a href=\"{0}\">cliquer ici</a> afin de changer votre mot de passe."
-msgstr "Veuillez <a href=\"{0}\">cliquer ici</a> afin de changer votre mot de passe."
-
-#: BootstrapTheme\Views\TemplateUserLostPassword.cshtml:18
-#. <p>@T["Merci"]</p>
-msgctxt "BootstrapTheme.Views.TemplateUserLostPassword"
-msgid "Merci"
-msgstr "Merci"
-
-#: BootstrapTheme\Views\OrchardCore.Users\Account\ChangePassword.cshtml:7
-#: BootstrapTheme\Views\OrchardCore.Users\Account\ChangePassword.cshtml:27
-#. <h1>@T["Change password"]</h1>
-#. <button type="submit" class="btn btn-primary">@T["Change password"]</button>
-msgctxt "BootstrapTheme.Views.OrchardCore.Users.Account.ChangePassword"
-msgid "Change password"
-msgstr "Changer le mot de passe"
-
-#: BootstrapTheme\Views\OrchardCore.Users\Account\ChangePassword.cshtml:11
-#. <label asp-for="CurrentPassword" class="asterix control-label">@T["Current password"]</label>
-msgctxt "BootstrapTheme.Views.OrchardCore.Users.Account.ChangePassword"
-msgid "Current password"
-msgstr "Mot de passe actuel"
-
-#: BootstrapTheme\Views\OrchardCore.Users\Account\ChangePassword.cshtml:16
-#. <label asp-for="Password" class="asterix control-label">@T["New password"]</label>
-msgctxt "BootstrapTheme.Views.OrchardCore.Users.Account.ChangePassword"
-msgid "New password"
-msgstr "Nouveau mot de passe"
-
-#: BootstrapTheme\Views\OrchardCore.Users\Account\ChangePassword.cshtml:22
-#. <label asp-for="PasswordConfirmation" class="asterix control-label">@T["New password confirmation"]</label>
-msgctxt "BootstrapTheme.Views.OrchardCore.Users.Account.ChangePassword"
-msgid "New password confirmation"
-msgstr "Confirmation du nouveau mot de passe"
-
-#: BootstrapTheme\Views\OrchardCore.Users\Account\ChangePasswordConfirmation.cshtml:5
-#. <h1>@T["Change Password"]</h1>
-msgctxt "BootstrapTheme.Views.OrchardCore.Users.Account.ChangePasswordConfirmation"
-msgid "Change Password"
-msgstr "Changer le mot de passe"
-
-#: BootstrapTheme\Views\OrchardCore.Users\Account\ChangePasswordConfirmation.cshtml:6
-#. <p>@T["Your password has been changed successfully."]</p>
-msgctxt "BootstrapTheme.Views.OrchardCore.Users.Account.ChangePasswordConfirmation"
-msgid "Your password has been changed successfully."
-msgstr "Votre mot de passe a été changé avec succès."
-
-#: BootstrapTheme\Views\OrchardCore.Users\Account\Login.cshtml:18
-#. <h1>@T["Log In"]</h1>
+#: BootstrapTheme\Views\OrchardCore.Users\Account\Login.cshtml:19
+#: BootstrapTheme\Views\OrchardCore.Users\Account\Login.cshtml:75
+#. <h1 class="login">@T["Sign in"]</h1>
+#. <button type="submit" class="btn btn-lg btn-primary is-rounded"><span>@T["Sign in"]</span></button>
 msgctxt "BootstrapTheme.Views.OrchardCore.Users.Account.Login"
-msgid "Log In"
+msgid "Sign in"
 msgstr "S'identifier"
 
-#: BootstrapTheme\Views\OrchardCore.Users\Account\Login.cshtml:24
+#: BootstrapTheme\Views\OrchardCore.Users\Account\Login.cshtml:27
+#. <h2 class="text-center mb-3">@T["Sign in with"] <span class="sr-only">@T["Azure"]</span></h2>
+msgctxt "BootstrapTheme.Views.OrchardCore.Users.Account.Login"
+msgid "Sign in with"
+msgstr "Se connecter avec"
+
+#: BootstrapTheme\Views\OrchardCore.Users\Account\Login.cshtml:27
+#. <h2 class="text-center mb-3">@T["Sign in with"] <span class="sr-only">@T["Azure"]</span></h2>
+msgctxt "BootstrapTheme.Views.OrchardCore.Users.Account.Login"
+msgid "Azure"
+msgstr "Azur"
+
+#: BootstrapTheme\Views\OrchardCore.Users\Account\Login.cshtml:60
 #. <label class="asterix" asp-for="UserName">@T["Username"]</label>
 msgctxt "BootstrapTheme.Views.OrchardCore.Users.Account.Login"
 msgid "Username"
 msgstr "Nom d'utilisateur"
 
-#: BootstrapTheme\Views\OrchardCore.Users\Account\Login.cshtml:29
+#: BootstrapTheme\Views\OrchardCore.Users\Account\Login.cshtml:65
 #. <label class="asterix" asp-for="Password">@T["Password"]</label>
 msgctxt "BootstrapTheme.Views.OrchardCore.Users.Account.Login"
 msgid "Password"
 msgstr "Mot de passe"
 
-#: BootstrapTheme\Views\OrchardCore.Users\Account\Login.cshtml:35
+#: BootstrapTheme\Views\OrchardCore.Users\Account\Login.cshtml:71
 #. <label asp-for="RememberMe" class="custom-control-label">@T["Remember me"]</label>
 msgctxt "BootstrapTheme.Views.OrchardCore.Users.Account.Login"
 msgid "Remember me"
 msgstr "Souviens-toi de moi"
 
-#: BootstrapTheme\Views\OrchardCore.Users\Account\Login.cshtml:39
-#. <button type="submit" class="btn btn-primary" ><span>@T["Log in"]</span></button>
-msgctxt "BootstrapTheme.Views.OrchardCore.Users.Account.Login"
-msgid "Log in"
-msgstr "S'identifier"
-
-#: BootstrapTheme\Views\OrchardCore.Users\Account\Login.cshtml:43
-#. <a asp-controller="ResetPassword" asp-action="ForgotPassword" class="label-link">@T["Forgot your password?"]</a>
+#: BootstrapTheme\Views\OrchardCore.Users\Account\Login.cshtml:80
+#. <a class="h4" asp-controller="ResetPassword" asp-action="ForgotPassword" class="label-link">@T["Forgot your password?"]</a>
 msgctxt "BootstrapTheme.Views.OrchardCore.Users.Account.Login"
 msgid "Forgot your password?"
 msgstr "Mot de passe oublié?"
 
-#: BootstrapTheme\Views\OrchardCore.Users\Account\Login.cshtml:49
-#. <a asp-controller="Registration" asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]">@T["Register as a new user"]</a>
+#: BootstrapTheme\Views\OrchardCore.Users\Account\Login.cshtml:93
+#. <a class="btn btn-lg btn-outline-primary is-rounded" asp-controller="Registration" asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]">@T["Create an account"]</a>
 msgctxt "BootstrapTheme.Views.OrchardCore.Users.Account.Login"
-msgid "Register as a new user"
-msgstr "S'inscrire en tant que nouvel utilisateur"
+msgid "Create an account"
+msgstr "Créer un compte"
 
-#: BootstrapTheme\Views\OrchardCore.Users\Account\Login.cshtml:59
-#. <h4>@T["Use another service to log in."]</h4>
-msgctxt "BootstrapTheme.Views.OrchardCore.Users.Account.Login"
-msgid "Use another service to log in."
-msgstr "Utilisez un autre service pour vous connecter."
+#: BootstrapTheme\Views\OrchardCore.Users\Account\RegisterExternalLogin.cshtml:7
+#. <shape type="SharedLoginHeader" title="@T["Your Azure account has been linked!"]" subtitle="@T["Final step"]" prompt="@T["To receive updates and as a final step, please provide us with the email address associated with your Azure cloud account. This is a one-time request (you will not be asked again the next time you sign in)."]" ></shape>
+msgctxt "BootstrapTheme.Views.OrchardCore.Users.Account.RegisterExternalLogin"
+msgid "Your Azure account has been linked!"
+msgstr "Votre compte Azure a été lié !"
 
-#: BootstrapTheme\Views\OrchardCore.Users\Registration\ConfirmEmail.cshtml:5
-#. <h2>@T["Email confirmation"]</h2>
+#: BootstrapTheme\Views\OrchardCore.Users\Account\RegisterExternalLogin.cshtml:7
+#. <shape type="SharedLoginHeader" title="@T["Your Azure account has been linked!"]" subtitle="@T["Final step"]" prompt="@T["To receive updates and as a final step, please provide us with the email address associated with your Azure cloud account. This is a one-time request (you will not be asked again the next time you sign in)."]" ></shape>
+msgctxt "BootstrapTheme.Views.OrchardCore.Users.Account.RegisterExternalLogin"
+msgid "Final step"
+msgstr "Dernière étape"
+
+#: BootstrapTheme\Views\OrchardCore.Users\Account\RegisterExternalLogin.cshtml:7
+#. <shape type="SharedLoginHeader" title="@T["Your Azure account has been linked!"]" subtitle="@T["Final step"]" prompt="@T["To receive updates and as a final step, please provide us with the email address associated with your Azure cloud account. This is a one-time request (you will not be asked again the next time you sign in)."]" ></shape>
+msgctxt "BootstrapTheme.Views.OrchardCore.Users.Account.RegisterExternalLogin"
+msgid ""
+"To receive updates and as a final step, please provide us with the email "
+"address associated with your Azure cloud account. This is a one-time "
+"request (you will not be asked again the next time you sign in)."
+msgstr ""
+"Pour recevoir les mises à jour et comme étape finale, veuillez nous fournir "
+"l'adresse e-mail associée à votre compte cloud Azure. Il s'agit d'une "
+"demande unique (il ne vous sera plus demandé la prochaine fois que vous "
+"vous connecterez)."
+
+#: BootstrapTheme\Views\OrchardCore.Users\Account\RegisterExternalLogin.cshtml:15
+#. <label asp-for="UserName" class="d-flex justify-content-center control-label">@T["Username"]</label>
+msgctxt "BootstrapTheme.Views.OrchardCore.Users.Account.RegisterExternalLogin"
+msgid "Username"
+msgstr "Nom d'utilisateur"
+
+#: BootstrapTheme\Views\OrchardCore.Users\Account\RegisterExternalLogin.cshtml:24
+#. <label asp-for="Email" class="col-md-3 control-label">@T["Email"]</label>
+msgctxt "BootstrapTheme.Views.OrchardCore.Users.Account.RegisterExternalLogin"
+msgid "Email"
+msgstr "E-mail"
+
+#: BootstrapTheme\Views\OrchardCore.Users\Account\RegisterExternalLogin.cshtml:35
+#. <label asp-for="Password" class="control-label">@T["Password"]</label>
+msgctxt "BootstrapTheme.Views.OrchardCore.Users.Account.RegisterExternalLogin"
+msgid "Password"
+msgstr "Mot de passe"
+
+#: BootstrapTheme\Views\OrchardCore.Users\Account\RegisterExternalLogin.cshtml:40
+#. <label asp-for="ConfirmPassword" class="control-label">@T["Confirm password"]</label>
+msgctxt "BootstrapTheme.Views.OrchardCore.Users.Account.RegisterExternalLogin"
+msgid "Confirm password"
+msgstr "Confirmez le mot de passe"
+
+#: BootstrapTheme\Views\OrchardCore.Users\Account\RegisterExternalLogin.cshtml:54
+#. <button type="submit" class="btn btn-lg btn-primary is-rounded">@T["Create account"]</button>
+msgctxt "BootstrapTheme.Views.OrchardCore.Users.Account.RegisterExternalLogin"
+msgid "Create account"
+msgstr "Créer un compte"
+
+#: BootstrapTheme\Views\UserMenu.cshtml:23
+#: BootstrapTheme\Views\UserMenu.cshtml:44
+#. <button type="submit" class="dropdown-item d-xl-none d-flex">@T["Sign out"]</button>
+#. <button type="submit" class="btn btn-link navbar-btn dropdown-item"><i class="mdi mdi-logout"></i> @T["Sign out"]</button>
+msgctxt "BootstrapTheme.Views.UserMenu"
+msgid "Sign out"
+msgstr "Déconnexion"
+
+#: BootstrapTheme\Views\UserMenu.cshtml:32
+#. <a class="dropdown-item" asp-route-area="OrchardCore.Admin" asp-controller="Admin" asp-action="Index"><i class="mdi mdi-desktop-mac"></i> @T["Dashboard"]</a>
+msgctxt "BootstrapTheme.Views.UserMenu"
+msgid "Dashboard"
+msgstr "Tableau de bord"
+
+#: BootstrapTheme\Views\UserMenu.cshtml:36
+#. <a class="dropdown-item" asp-route-area="OrchardCore.Users" asp-controller="ChangeEmail" asp-action="Index"><i class="mdi mdi-email"></i> @T["Change Email"]</a>
+msgctxt "BootstrapTheme.Views.UserMenu"
+msgid "Change Email"
+msgstr "Changer l'e-mail"
+
+#: BootstrapTheme\Views\UserMenu.cshtml:42
+#. <a class="dropdown-item" href="#" data-toggle="modal" data-target="#profile-modal"><i class="mdi mdi-account"></i> @T["Profile"]</a>
+msgctxt "BootstrapTheme.Views.UserMenu"
+msgid "Profile"
+msgstr "Profil"
+
+#: BootstrapTheme\Views\UserMenu.cshtml:52
+#: BootstrapTheme\Views\UserMenu.cshtml:53
+#. <a href="@Url.Action("Login", "Account", new { Area = "OrchardCore.Users" })" class="dropdown-item d-xl-none d-flex">@T["Sign in"]</a>
+#. <a href="@Url.Action("Login", "Account", new { Area = "OrchardCore.Users" })" class="btn btn-primary icon-btn d-xl-flex align-items-center d-none"><i class="mdi mdi-account-circle"></i>@T["Sign in"]</a>
+msgctxt "BootstrapTheme.Views.UserMenu"
+msgid "Sign in"
+msgstr "S'identifier"
+
+#: BootstrapTheme\Views\Content-SimpleLink.Dropdown.liquid:0
+msgctxt "BootstrapTheme.Views.Content-SimpleLink.Dropdown"
+msgid "Open {0} in a new tab"
+msgstr "Ouvrir {0} dans un nouvel onglet"
+
+#: BootstrapTheme\Views\Content-SimpleLink.Single.liquid:0
+msgctxt "BootstrapTheme.Views.Content-SimpleLink.Single"
+msgid "Open {0} in a new tab"
+msgstr "Ouvrir {0} dans un nouvel onglet"
+
+#: BootstrapTheme\Views\Menu.liquid:0
+msgctxt "BootstrapTheme.Views.Menu"
+msgid "Menu"
+msgstr "Menu"
+
+#: BootstrapTheme\Views\ModalProfile.liquid:0
+#: BootstrapTheme\Views\ModalProfile.liquid:0
+msgctxt "BootstrapTheme.Views.ModalProfile"
+msgid "Profile"
+msgstr "Profil"
+
+#: BootstrapTheme\Views\ModalProfile.liquid:0
+msgctxt "BootstrapTheme.Views.ModalProfile"
+msgid "Close"
+msgstr "proche"
+
+#: BootstrapTheme\Views\ModalProfile.liquid:0
+msgctxt "BootstrapTheme.Views.ModalProfile"
+msgid "Contact email"
+msgstr "Email du contact"
+
+#: BootstrapTheme\Views\ModalProfile.liquid:0
+msgctxt "BootstrapTheme.Views.ModalProfile"
+msgid "Username"
+msgstr "Nom d'utilisateur"
+
+#: BootstrapTheme\Views\OrchardCore.Users\Account\ChangePassword.liquid:0
+#: BootstrapTheme\Views\OrchardCore.Users\Account\ChangePassword.liquid:0
+msgctxt "BootstrapTheme.Views.OrchardCore.Users.Account.ChangePassword"
+msgid "Change password"
+msgstr "Changer le mot de passe"
+
+#: BootstrapTheme\Views\OrchardCore.Users\Account\ChangePassword.liquid:0
+msgctxt "BootstrapTheme.Views.OrchardCore.Users.Account.ChangePassword"
+msgid "vLab account security"
+msgstr "Sécurité du compte vLab"
+
+#: BootstrapTheme\Views\OrchardCore.Users\Account\ChangePassword.liquid:0
+msgctxt "BootstrapTheme.Views.OrchardCore.Users.Account.ChangePassword"
+msgid "New password, new beginning"
+msgstr "Nouveau mot de passe, nouveau départ"
+
+#: BootstrapTheme\Views\OrchardCore.Users\Account\ChangePassword.liquid:0
+msgctxt "BootstrapTheme.Views.OrchardCore.Users.Account.ChangePassword"
+msgid "Current password"
+msgstr "Mot de passe actuel"
+
+#: BootstrapTheme\Views\OrchardCore.Users\Account\ChangePassword.liquid:0
+msgctxt "BootstrapTheme.Views.OrchardCore.Users.Account.ChangePassword"
+msgid "New password"
+msgstr "Nouveau mot de passe"
+
+#: BootstrapTheme\Views\OrchardCore.Users\Account\ChangePassword.liquid:0
+msgctxt "BootstrapTheme.Views.OrchardCore.Users.Account.ChangePassword"
+msgid "Confirm new password"
+msgstr "Confirmer le nouveau mot de passe"
+
+#: BootstrapTheme\Views\OrchardCore.Users\Account\ChangePasswordConfirmation.liquid:0
+msgctxt "BootstrapTheme.Views.OrchardCore.Users.Account.ChangePasswordConfirmation"
+msgid "Password changed"
+msgstr "Mot de passe changé"
+
+#: BootstrapTheme\Views\OrchardCore.Users\Account\ChangePasswordConfirmation.liquid:0
+msgctxt "BootstrapTheme.Views.OrchardCore.Users.Account.ChangePasswordConfirmation"
+msgid "Your password has been changed successfully."
+msgstr "Votre mot de passe a été changé avec succès."
+
+#: BootstrapTheme\Views\OrchardCore.Users\Registration\ConfirmEmail.liquid:0
 msgctxt "BootstrapTheme.Views.OrchardCore.Users.Registration.ConfirmEmail"
-msgid "Email confirmation"
-msgstr "Confirmation de l'émail"
+msgid "Email confirmed"
+msgstr "Courriel confirmé"
 
-#: BootstrapTheme\Views\OrchardCore.Users\Registration\ConfirmEmail.cshtml:8
-#. @T["Thank you for confirming your email."]
+#: BootstrapTheme\Views\OrchardCore.Users\Registration\ConfirmEmail.liquid:0
 msgctxt "BootstrapTheme.Views.OrchardCore.Users.Registration.ConfirmEmail"
 msgid "Thank you for confirming your email."
 msgstr "Merci d'avoir confirmé votre email."
 
-#: BootstrapTheme\Views\OrchardCore.Users\Registration\ConfirmEmail.cshtml:11
-#. <a href="@Url.Content("~/")">@T["Home"]</a>
+#: BootstrapTheme\Views\OrchardCore.Users\Registration\ConfirmEmail.liquid:0
 msgctxt "BootstrapTheme.Views.OrchardCore.Users.Registration.ConfirmEmail"
 msgid "Home"
 msgstr "Accueil"
 
-#: BootstrapTheme\Views\OrchardCore.Users\Registration\Register.cshtml:14
-#: BootstrapTheme\Views\OrchardCore.Users\Registration\Register.cshtml:43
-#. <h1>@T["Create a new account"]</h1>
-#. <button type="submit" class="btn btn-primary"><span>@T["Create a new account"]</span></button>
+#: BootstrapTheme\Views\OrchardCore.Users\Registration\Register.liquid:0
+#: BootstrapTheme\Views\OrchardCore.Users\Registration\Register.liquid:0
 msgctxt "BootstrapTheme.Views.OrchardCore.Users.Registration.Register"
-msgid "Create a new account"
-msgstr "Créer un nouveau compte"
+msgid "Create account"
+msgstr "Créer un compte"
 
-#: BootstrapTheme\Views\OrchardCore.Users\Registration\Register.cshtml:19
-#. <label asp-for="UserName" class="control-label asterix">@T["Username"]</label>
+#: BootstrapTheme\Views\OrchardCore.Users\Registration\Register.liquid:0
 msgctxt "BootstrapTheme.Views.OrchardCore.Users.Registration.Register"
 msgid "Username"
 msgstr "Nom d'utilisateur"
 
-#: BootstrapTheme\Views\OrchardCore.Users\Registration\Register.cshtml:24
-#. <label asp-for="Email" class="control-label asterix">@T["Email"]</label>
+#: BootstrapTheme\Views\OrchardCore.Users\Registration\Register.liquid:0
 msgctxt "BootstrapTheme.Views.OrchardCore.Users.Registration.Register"
 msgid "Email"
 msgstr "Email"
 
-#: BootstrapTheme\Views\OrchardCore.Users\Registration\Register.cshtml:29
-#. <label asp-for="Password" class="control-label asterix">@T["Password"]</label>
+#: BootstrapTheme\Views\OrchardCore.Users\Registration\Register.liquid:0
 msgctxt "BootstrapTheme.Views.OrchardCore.Users.Registration.Register"
 msgid "Password"
 msgstr "Mot de passe"
 
-#: BootstrapTheme\Views\OrchardCore.Users\Registration\Register.cshtml:33
-#. <small class="form-text text-muted">@T["Your password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, a number and a special character"]</small>
-msgctxt "BootstrapTheme.Views.OrchardCore.Users.Registration.Register"
-msgid ""
-"Your password must be at least 8 characters long and contain at least one "
-"uppercase letter, one lowercase letter, a number and a special character"
-msgstr ""
-"Votre mot de passe doit comporter au moins 8 caractères et contenir au "
-"moins une lettre majuscule, une lettre minuscule, un chiffre et un "
-"caractère spécial"
-
-#: BootstrapTheme\Views\OrchardCore.Users\Registration\Register.cshtml:37
-#. <label asp-for="ConfirmPassword" class="control-label asterix">@T["Confirm password"]</label>
+#: BootstrapTheme\Views\OrchardCore.Users\Registration\Register.liquid:0
 msgctxt "BootstrapTheme.Views.OrchardCore.Users.Registration.Register"
 msgid "Confirm password"
 msgstr "Confirmez le mot de passe"
 
-#: BootstrapTheme\Views\OrchardCore.Users\Registration\Register.cshtml:49
-#. <a asp-route-area="OrchardCore.Users" asp-controller="Account" asp-action="Login">@T["Already have an account? Login"]</a>
+#: BootstrapTheme\Views\OrchardCore.Users\Registration\Register.liquid:0
 msgctxt "BootstrapTheme.Views.OrchardCore.Users.Registration.Register"
-msgid "Already have an account? Login"
-msgstr "Vous avez déjà un compte? S'identifier"
+msgid ""
+"Passwords must have:<br>• 8 characters or more<br>• an uppercase "
+"letter<br>• a lowercase letter<br>• a number<br>• a special character"
+msgstr ""
+"Les mots de passe doivent avoir :<br> • 8 caractères ou plus<br> • une "
+"lettre majuscule<br> • une lettre minuscule<br> • un numéro<br> • un "
+"caractère spécial"
 
-#: BootstrapTheme\Views\OrchardCore.Users\ResetPassword\ForgotPassword.cshtml:7
-#. <h1>@T["Forgot your password?"]</h1>
+#: BootstrapTheme\Views\OrchardCore.Users\ResetPassword\ForgotPassword.liquid:0
 msgctxt "BootstrapTheme.Views.OrchardCore.Users.ResetPassword.ForgotPassword"
-msgid "Forgot your password?"
-msgstr "Mot de passe oublié?"
+msgid "Forgot password"
+msgstr "Mot de passe oublié"
 
-#: BootstrapTheme\Views\OrchardCore.Users\ResetPassword\ForgotPassword.cshtml:11
-#. <label asp-for="Email" class="control-label">@T["Enter your email to reset password."]</label>
+#: BootstrapTheme\Views\OrchardCore.Users\ResetPassword\ForgotPassword.liquid:0
 msgctxt "BootstrapTheme.Views.OrchardCore.Users.ResetPassword.ForgotPassword"
-msgid "Enter your email to reset password."
-msgstr "Entrez votre email pour réinitialiser le mot de passe."
+msgid "Email or username"
+msgstr "E-mail ou nom d'utilisateur"
 
-#: BootstrapTheme\Views\OrchardCore.Users\ResetPassword\ForgotPassword.cshtml:17
-#. <button type="submit" class="btn btn-primary">@T["Submit"]</button>
+#: BootstrapTheme\Views\OrchardCore.Users\ResetPassword\ForgotPassword.liquid:0
 msgctxt "BootstrapTheme.Views.OrchardCore.Users.ResetPassword.ForgotPassword"
-msgid "Submit"
-msgstr "Soumettre"
+msgid "A recovery link will be sent to the email address tied to your account."
+msgstr "Un lien de récupération sera envoyé à l'adresse e-mail liée à votre compte."
 
-#: BootstrapTheme\Views\OrchardCore.Users\ResetPassword\ForgotPasswordConfirmation.cshtml:5
-#. <h1>@T["Check your email!"]</h1>
+#: BootstrapTheme\Views\OrchardCore.Users\ResetPassword\ForgotPassword.liquid:0
+msgctxt "BootstrapTheme.Views.OrchardCore.Users.ResetPassword.ForgotPassword"
+msgid "Send recovery email"
+msgstr "Envoyer un e-mail de récupération"
+
+#: BootstrapTheme\Views\OrchardCore.Users\ResetPassword\ForgotPasswordConfirmation.liquid:0
 msgctxt ""
 "BootstrapTheme.Views.OrchardCore.Users.ResetPassword."
 "ForgotPasswordConfirmation"
-msgid "Check your email!"
-msgstr "Vérifiez votre email!"
+msgid "Password recovery sent"
+msgstr "Récupération du mot de passe envoyée"
 
-#: BootstrapTheme\Views\OrchardCore.Users\ResetPassword\ForgotPasswordConfirmation.cshtml:6
-#. <p>@T["Please check your email to reset your password."]</p>
+#: BootstrapTheme\Views\OrchardCore.Users\ResetPassword\ForgotPasswordConfirmation.liquid:0
 msgctxt ""
 "BootstrapTheme.Views.OrchardCore.Users.ResetPassword."
 "ForgotPasswordConfirmation"
-msgid "Please check your email to reset your password."
-msgstr "Veuillez vérifier votre messagerie pour réinitialiser votre mot de passe."
+msgid "Check your email"
+msgstr "Vérifiez votre e-mail"
 
-#: BootstrapTheme\Views\OrchardCore.Users\ResetPassword\ResetPassword.cshtml:7
-#: BootstrapTheme\Views\OrchardCore.Users\ResetPassword\ResetPassword.cshtml:31
-#. <h1>@T["Reset password"]</h1>
-#. <button type="submit" class="btn btn-primary">@T["Reset password"]</button>
+#: BootstrapTheme\Views\OrchardCore.Users\ResetPassword\ForgotPasswordConfirmation.liquid:0
+msgctxt ""
+"BootstrapTheme.Views.OrchardCore.Users.ResetPassword."
+"ForgotPasswordConfirmation"
+msgid "It may take a few minutes"
+msgstr "Cela peut prendre quelques minutes"
+
+#: BootstrapTheme\Views\OrchardCore.Users\ResetPassword\ForgotPasswordConfirmation.liquid:0
+msgctxt ""
+"BootstrapTheme.Views.OrchardCore.Users.ResetPassword."
+"ForgotPasswordConfirmation"
+msgid "A recovery email has been sent to the email address tied to your account. "
+msgstr ""
+"Un e-mail de récupération a été envoyé à l'adresse e-mail associée à votre "
+"compte."
+
+#: BootstrapTheme\Views\OrchardCore.Users\ResetPassword\ResetPassword.liquid:0
+#: BootstrapTheme\Views\OrchardCore.Users\ResetPassword\ResetPassword.liquid:0
 msgctxt "BootstrapTheme.Views.OrchardCore.Users.ResetPassword.ResetPassword"
 msgid "Reset password"
 msgstr "Réinitialiser le mot de passe"
 
-#: BootstrapTheme\Views\OrchardCore.Users\ResetPassword\ResetPassword.cshtml:11
-#. <label asp-for="Email" class="control-label asterix">@T["Email"]</label>
+#: BootstrapTheme\Views\OrchardCore.Users\ResetPassword\ResetPassword.liquid:0
 msgctxt "BootstrapTheme.Views.OrchardCore.Users.ResetPassword.ResetPassword"
-msgid "Email"
-msgstr "Email"
+msgid "Set a new password"
+msgstr "Définir un nouveau mot de passe"
 
-#: BootstrapTheme\Views\OrchardCore.Users\ResetPassword\ResetPassword.cshtml:16
-#. <label asp-for="NewPassword" class="asterix control-label">@T["New password"]</label>
+#: BootstrapTheme\Views\OrchardCore.Users\ResetPassword\ResetPassword.liquid:0
+msgctxt "BootstrapTheme.Views.OrchardCore.Users.ResetPassword.ResetPassword"
+msgid "Secure and memorable"
+msgstr "Sécurisé et mémorable"
+
+#: BootstrapTheme\Views\OrchardCore.Users\ResetPassword\ResetPassword.liquid:0
+msgctxt "BootstrapTheme.Views.OrchardCore.Users.ResetPassword.ResetPassword"
+msgid "Confirm email"
+msgstr "Confirmez votre email"
+
+#: BootstrapTheme\Views\OrchardCore.Users\ResetPassword\ResetPassword.liquid:0
 msgctxt "BootstrapTheme.Views.OrchardCore.Users.ResetPassword.ResetPassword"
 msgid "New password"
 msgstr "Nouveau mot de passe"
 
-#: BootstrapTheme\Views\OrchardCore.Users\ResetPassword\ResetPassword.cshtml:20
-#. <small class="form-text text-muted">@T["Your password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, a number and a special character"]</small>
+#: BootstrapTheme\Views\OrchardCore.Users\ResetPassword\ResetPassword.liquid:0
 msgctxt "BootstrapTheme.Views.OrchardCore.Users.ResetPassword.ResetPassword"
-msgid ""
-"Your password must be at least 8 characters long and contain at least one "
-"uppercase letter, one lowercase letter, a number and a special character"
-msgstr ""
-"Votre mot de passe doit comporter au moins 8 caractères et contenir au "
-"moins une lettre majuscule, une lettre minuscule, un chiffre et un "
-"caractère spécial"
+msgid "Confirm new password"
+msgstr "Confirmer le nouveau mot de passe"
 
-#: BootstrapTheme\Views\OrchardCore.Users\ResetPassword\ResetPassword.cshtml:24
-#. <label asp-for="PasswordConfirmation" class="asterix control-label">@T["New password confirmation"]</label>
-msgctxt "BootstrapTheme.Views.OrchardCore.Users.ResetPassword.ResetPassword"
-msgid "New password confirmation"
-msgstr "Confirmation du nouveau mot de passe"
-
-#: BootstrapTheme\Views\OrchardCore.Users\ResetPassword\ResetPasswordConfirmation.cshtml:5
-#. <h1>@T["Reset Password"]</h1>
+#: BootstrapTheme\Views\OrchardCore.Users\ResetPassword\ResetPasswordConfirmation.liquid:0
 msgctxt ""
 "BootstrapTheme.Views.OrchardCore.Users.ResetPassword."
 "ResetPasswordConfirmation"
-msgid "Reset Password"
-msgstr "réinitialiser le mot de passe"
+msgid "Password reset complete"
+msgstr "Réinitialisation du mot de passe terminée"
 
-#: BootstrapTheme\Views\OrchardCore.Users\ResetPassword\ResetPasswordConfirmation.cshtml:7
-#. @T["Your password has been reset."]
+#: BootstrapTheme\Views\OrchardCore.Users\ResetPassword\ResetPasswordConfirmation.liquid:0
 msgctxt ""
 "BootstrapTheme.Views.OrchardCore.Users.ResetPassword."
 "ResetPasswordConfirmation"
-msgid "Your password has been reset."
-msgstr "Votre mot de passe a été réinitialisé."
+msgid "New password is set"
+msgstr "Le nouveau mot de passe est défini"
 
-#: BootstrapTheme\Views\OrchardCore.Users\ResetPassword\ResetPasswordConfirmation.cshtml:8
-#. @T["Please "]<a asp-route-area="OrchardCore.Users" asp-controller="Account" asp-action="Login">@T["click here to log in"]</a>
+#: BootstrapTheme\Views\OrchardCore.Users\ResetPassword\ResetPasswordConfirmation.liquid:0
 msgctxt ""
 "BootstrapTheme.Views.OrchardCore.Users.ResetPassword."
 "ResetPasswordConfirmation"
-msgid "Please "
-msgstr "S'il vous plaît"
+msgid "Give it try"
+msgstr "Essayez-le"
 
-#: BootstrapTheme\Views\OrchardCore.Users\ResetPassword\ResetPasswordConfirmation.cshtml:8
-#. @T["Please "]<a asp-route-area="OrchardCore.Users" asp-controller="Account" asp-action="Login">@T["click here to log in"]</a>
+#: BootstrapTheme\Views\OrchardCore.Users\ResetPassword\ResetPasswordConfirmation.liquid:0
 msgctxt ""
 "BootstrapTheme.Views.OrchardCore.Users.ResetPassword."
 "ResetPasswordConfirmation"
-msgid "click here to log in"
-msgstr "Cliquez ici pour vous identifier"
-
-#: BootstrapTheme\Views\ArticleFeed-ListPart.liquid:0
-msgctxt "BootstrapTheme.Views.ArticleFeed-ListPart"
-msgid "← Newer Articles"
-msgstr "← Articles plus récents"
-
-#: BootstrapTheme\Views\ArticleFeed-ListPart.liquid:0
-msgctxt "BootstrapTheme.Views.ArticleFeed-ListPart"
-msgid "Older Articles →"
-msgstr "Articles plus anciens →"
-
-#: BootstrapTheme\Views\ArticleFeed-ListPart.liquid:0
-msgctxt "BootstrapTheme.Views.ArticleFeed-ListPart"
-msgid "previous"
-msgstr "précédent"
-
-#: BootstrapTheme\Views\ArticleFeed-ListPart.liquid:0
-msgctxt "BootstrapTheme.Views.ArticleFeed-ListPart"
-msgid "next"
-msgstr "prochain"
-
-#: BootstrapTheme\Views\Content-Article.liquid:0
-msgctxt "BootstrapTheme.Views.Content-Article"
-msgid "MMMM dd, yyyy"
-msgstr "MMMM jj, aaaa"
-
-#: BootstrapTheme\Views\Content-Article.liquid:0
-msgctxt "BootstrapTheme.Views.Content-Article"
-msgid "Posted by"
-msgstr "posté par"
-
-#: BootstrapTheme\Views\Content-Article.liquid:0
-msgctxt "BootstrapTheme.Views.Content-Article"
-msgid "on {0}"
-msgstr "le {0}"
-
-#: BootstrapTheme\Views\Content-Article.Summary.liquid:0
-msgctxt "BootstrapTheme.Views.Content-Article.Summary"
-msgid "MMMM dd, yyyy"
-msgstr "MMMM jj, aaaa"
-
-#: BootstrapTheme\Views\Content-Article.Summary.liquid:0
-msgctxt "BootstrapTheme.Views.Content-Article.Summary"
-msgid "Posted by"
-msgstr "posté par"
-
-#: BootstrapTheme\Views\Content-Article.Summary.liquid:0
-msgctxt "BootstrapTheme.Views.Content-Article.Summary"
-msgid "on {0}"
-msgstr "le {0}"
-
-#: BootstrapTheme\Views\Content-Brand.liquid:0
-msgctxt "BootstrapTheme.Views.Content-Brand"
-msgid "Logo"
-msgstr "Logo"
-
-#: BootstrapTheme\Views\ThemeFooter.liquid:0
-msgctxt "BootstrapTheme.Views.ThemeFooter"
-msgid "powered by"
-msgstr "Alimenté par"
-
-#: BootstrapTheme\Views\ThemeFooter.liquid:0
-#: BootstrapTheme\Views\ThemeFooter.liquid:0
-msgctxt "BootstrapTheme.Views.ThemeFooter"
-msgid "Digital Innovation"
-msgstr "Innovation numérique"
-
-#: BootstrapTheme\Views\ThemeHeader.liquid:0
-msgctxt "BootstrapTheme.Views.ThemeHeader"
-msgid "Skip to content"
-msgstr "Aller au contenu"
-
-#: BootstrapTheme\Views\Widget-AccountWidget.liquid:0
-msgctxt "BootstrapTheme.Views.Widget-AccountWidget"
-msgid "Your username"
-msgstr "Ton nom d'utilisateur"
-
-#: BootstrapTheme\Views\Widget-AccountWidget.liquid:0
-msgctxt "BootstrapTheme.Views.Widget-AccountWidget"
-msgid "Username"
-msgstr "Nom d'utilisateur"
-
-#: BootstrapTheme\Views\Widget-AccountWidget.liquid:0
-msgctxt "BootstrapTheme.Views.Widget-AccountWidget"
-msgid "Your email"
-msgstr "Votre email"
-
-#: BootstrapTheme\Views\Widget-AccountWidget.liquid:0
-msgctxt "BootstrapTheme.Views.Widget-AccountWidget"
-msgid "Email"
-msgstr "Email"
-
-#: BootstrapTheme\Views\Widget-AccountWidget.liquid:0
-msgctxt "BootstrapTheme.Views.Widget-AccountWidget"
-msgid "Change password"
-msgstr "Changer le mot de passe"
+msgid "Login"
+msgstr "Connexion"
 
 #: BootstrapTheme\Views\Shared\NotFound.liquid:0
 msgctxt "BootstrapTheme.Views.Shared.NotFound"
 msgid "We couldn't find what you're looking for"
 msgstr "Nous n'avons pas trouvé ce que vous cherchez"
+
+#: BootstrapTheme\Views\SharedPasswordRequirementText.liquid:0
+msgctxt "BootstrapTheme.Views.SharedPasswordRequirementText"
+msgid ""
+"Passwords must have:<br>• 8 characters or more<br>• an uppercase "
+"letter<br>• a lowercase letter<br>• a number<br>• a special character"
+msgstr ""
+"Les mots de passe doivent avoir :<br> • 8 caractères ou plus<br> • une "
+"lettre majuscule<br> • une lettre minuscule<br> • un numéro<br> • un "
+"caractère spécial"
+
+#: BootstrapTheme\Views\SymbolCanada.liquid:0
+msgctxt "BootstrapTheme.Views.SymbolCanada"
+msgid "Symbol of the Government of Canada"
+msgstr "Symbole du gouvernement du Canada"
+
+#: BootstrapTheme\Views\SymbolStatisticsCanada.liquid:0
+#: BootstrapTheme\Views\SymbolStatisticsCanada.liquid:0
+msgctxt "BootstrapTheme.Views.SymbolStatisticsCanada"
+msgid "Statistics Canada"
+msgstr "Statistique Canada"
+
+#: BootstrapTheme\Views\Widget-Footer.liquid:0
+msgctxt "BootstrapTheme.Views.Widget-Footer"
+msgid "Last modified on"
+msgstr "Dernière modification le"
+
+#: BootstrapTheme\Views\Widget-ToolCard.liquid:0
+msgctxt "BootstrapTheme.Views.Widget-ToolCard"
+msgid "Open {0} in a new tab"
+msgstr "Ouvrir {0} dans un nouvel onglet"
