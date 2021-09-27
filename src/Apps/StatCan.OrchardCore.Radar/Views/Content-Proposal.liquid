@@ -1,5 +1,7 @@
 {% style src:"~/StatCan.OrchardCore.Radar/css/details-view.css" %}
 
+{% assign owner = Model.ContentItem.Owner | users_by_id %}
+
 {% zone "Header" %}
 <div class="pt-12">
   <div class="header">
@@ -31,7 +33,7 @@
                             mdi-account-plus
                         </v-icon>
                         <div class="text-h6 icon-text">
-                            {{ Model.ContentItem.Owner }}
+                            {{ owner.Properties.UserProfile.UserProfile.FirstName.Text }} {{ owner.Properties.UserProfile.UserProfile.LastName.Text }}
                         </div>
                     </div>
                 </v-col>
