@@ -75,7 +75,7 @@
                 {{ "Contributors" | t }}
             </div>
             <div class="bubble">
-                <div class="bubble-text" id="bubble-text">{{ Model.ContentItem.Content.ProjectMember.ContentItems | size }}</div>
+                <div class="bubble-text" id="bubble-text">{{ Model.ContentItem.Content.ProjectMember.ContentItems | size | plus: 1 }}</div>
             </div>
         </div>
         <div class="member-table">
