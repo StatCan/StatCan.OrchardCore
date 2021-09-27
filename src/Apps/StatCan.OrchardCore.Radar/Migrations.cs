@@ -577,7 +577,7 @@ namespace StatCan.OrchardCore.Radar
                     .WithSettings(new TitlePartSettings
                     {
                         Options = TitlePartOptions.GeneratedDisabled,
-                        Pattern = "{{ ContentItem.Content.RadarEntity.Name.Text }}",
+                        Pattern = "{{ ContentItem.Content.RadarEntityPart.Name.Text }}",
                     })
                 )
                 .WithPart(Constants.ContentTypes.EventOrganizer, "BagPart", part => part
@@ -605,6 +605,12 @@ namespace StatCan.OrchardCore.Radar
                     .OfType("UserPickerField")
                     .WithDisplayName("Attendees")
                     .WithPosition("0")
+                    .WithSettings(new UserPickerFieldSettings
+                    {
+                        Multiple = true,
+                        DisplayAllUsers = true,
+                        DisplayedRoles = Array.Empty<string>(),
+                    })
                 )
                 .WithField("StartDate", field => field
                     .OfType("DateTimeField")
