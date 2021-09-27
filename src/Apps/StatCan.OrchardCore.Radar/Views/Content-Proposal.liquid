@@ -1,0 +1,93 @@
+{% style src:"~/StatCan.OrchardCore.Radar/css/details-view.css" %}
+
+{% zone "Header" %}
+<div class="pt-12">
+  <div class="header">
+    <v-container>
+      <v-row justify="space-between">
+        <v-col md="4">
+          <div class="title-container">
+            <div class="text-h3 name">{{ Model.ContentItem | display_text }}</div>
+            <div class="text-body-1 description">
+                {{ Model.ContentItem.Content.RadarEntityPart.Description.Text }}
+            </div>
+          </div>
+        </v-col>
+        <v-col md="1">
+            <div style="width: 7rem; height: 7rem">
+                <v-img
+                  src="{{ "icon_opportunities.svg" | asset_url }}"
+                >
+                </v-img>
+              </div>
+        </v-col>
+      </v-row>
+      <v-row>
+          <v-col md="12">
+            <v-row>
+                <v-col md="4">
+                    <div class="icon-cell">
+                        <v-icon color="black" style="font-size: 40px;">
+                            mdi-account-plus
+                        </v-icon>
+                        <div class="text-h6 icon-text">
+                            {{ Model.ContentItem.Owner }}
+                        </div>
+                    </div>
+                </v-col>
+            </v-row>
+          </v-col>
+      </v-row>
+      <v-row class="topics-container">
+          <v-col md="12">
+            <div class="topics-list-container">
+                {% assign topics = Model.ContentItem.Content.RadarEntityPart.Topics | taxonomy_terms %}
+                {% for topic in topics %}
+                    {{ topic | shape_build_display: "Summary" | shape_render }}
+                {% endfor %}
+            </div>
+          </v-col>
+      </v-row>
+    </v-container>
+  </div>
+  <div class="zigzag-container">
+    <div class="zigzag zigzag-white"></div>
+  </div>
+</div>
+{% endzone %}
+
+<div class="sections-container">
+    <div class="section">
+        <div class="table-title-container">
+            <div class="text-h4">
+                {{ "Affected Communities" | t }}
+            </div>
+            <div class="bubble">
+                <div class="bubble-text" id="bubble-text">{{ Model.ContentItem.Content.RadarEntityPart.RelatedEntity.ContentItemIds | size }}</div>
+            </div>
+        </div>
+        <div class="table-container">
+            <table class="table" id="entity-table">
+              <thead class="table-header">
+                <tr>
+                  <th class="name-col">{{ "Name" | t }}</th>
+                  <th class="table-col">{{ "Description" | t }}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for item in Model.ContentItem.Content.RadarEntityPart.RelatedEntity.ContentItemIds %}
+                {% assign community = item | content_item_id %}
+                <tr class="table-row">
+                  <th class="name-col">{{ community | dispay_text }}</th>
+                  <th class="table-col">{{ community.Content.RadarEntityPart.Description.Text }}</th>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="section">
+        {{ "Workspace" | shape_new: Model: Model.ContentItem.Content.Workspace | shape_render }}
+    </div>
+</div>

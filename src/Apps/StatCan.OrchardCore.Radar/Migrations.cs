@@ -274,7 +274,7 @@ namespace StatCan.OrchardCore.Radar
 
         private void CreateArtifact()
         {
-            _contentDefinitionManager.AlterTypeDefinition(Constants.ContentTypes.Aritifact, type => type
+            _contentDefinitionManager.AlterTypeDefinition(Constants.ContentTypes.Artifact, type => type
                 .DisplayedAs("Artifact")
                 .Creatable()
                 .Listable()
@@ -325,7 +325,8 @@ namespace StatCan.OrchardCore.Radar
                     .WithSettings(new ContentPickerFieldSettings
                     {
                         Multiple = true,
-                        Required = false
+                        Required = false,
+                        DisplayedContentTypes = new[] { Constants.ContentTypes.Project, Constants.ContentTypes.Proposal, Constants.ContentTypes.Community, Constants.ContentTypes.Event },
                     })
                 )
             );
@@ -346,6 +347,9 @@ namespace StatCan.OrchardCore.Radar
                 .Draftable()
                 .Versionable()
                 .Securable()
+                .WithPart("LocalizationPart", part => part
+                    .WithPosition("0")
+                )
                 .WithPart(Constants.ContentTypes.Proposal, part => part
                     .WithPosition("2")
                 )
@@ -357,7 +361,7 @@ namespace StatCan.OrchardCore.Radar
                     .WithSettings(new TitlePartSettings
                     {
                         Options = TitlePartOptions.GeneratedHidden,
-                        Pattern = "{{ ContentItem.Content.RadarEntity.Name.Text }}",
+                        Pattern = "{{ ContentItem.Content.RadarEntityPart.Name.Text }}",
                     })
                 )
                 .WithPart("ContentPermissionsPart", part => part
@@ -369,7 +373,7 @@ namespace StatCan.OrchardCore.Radar
                     .WithPosition("4")
                     .WithSettings(new BagPartSettings
                     {
-                        ContainedContentTypes = new[] { Constants.ContentTypes.Aritifact },
+                        ContainedContentTypes = new[] { Constants.ContentTypes.Artifact },
                     })
                 )
             );
@@ -466,7 +470,7 @@ namespace StatCan.OrchardCore.Radar
                             .WithPosition("2")
                             .WithSettings(new BagPartSettings
                             {
-                                ContainedContentTypes = new[] { Constants.ContentTypes.Aritifact },
+                                ContainedContentTypes = new[] { Constants.ContentTypes.Artifact },
                             })
                         )
                         .WithPart(Constants.ContentTypes.ProjectMember, "BagPart", part => part
@@ -586,7 +590,7 @@ namespace StatCan.OrchardCore.Radar
                     .WithPosition("4")
                     .WithSettings(new BagPartSettings
                     {
-                        ContainedContentTypes = new[] { Constants.ContentTypes.Aritifact },
+                        ContainedContentTypes = new[] { Constants.ContentTypes.Artifact },
                     })
                 )
             );
@@ -681,7 +685,7 @@ namespace StatCan.OrchardCore.Radar
                     .WithPosition("2")
                     .WithSettings(new BagPartSettings
                     {
-                        ContainedContentTypes = new[] { Constants.ContentTypes.Aritifact },
+                        ContainedContentTypes = new[] { Constants.ContentTypes.Artifact },
                     })
                 )
                 .WithPart(Constants.ContentTypes.CommunityMember, "BagPart", part => part

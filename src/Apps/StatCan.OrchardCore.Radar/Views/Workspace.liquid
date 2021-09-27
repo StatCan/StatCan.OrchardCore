@@ -1,0 +1,27 @@
+{% assign artifacts = Model.Properties.Model.ContentItems %}
+
+<div class="table-title-container">
+    <div class="text-h4">
+        {{ "Workspace" | t }}
+    </div>
+    <div class="bubble">
+        <div class="bubble-text" id="bubble-text">{{ Model.Properties.Model.ContentItems | size }}</div>
+    </div>
+</div>
+<div class="table-container">
+    <table class="table" id="entity-table">
+      <thead class="table-header">
+        <tr>
+          <th class="name-col">{{ "Name" | t }}</th>
+          <th class="table-col">{{ "Status" | t }}</th>
+          <th class="table-col">{{ "Created" | t }}</th>
+          <th class="table-col">{{ "Updated" | t }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for artifact in artifacts %}
+            {{ artifact | shape_build_display: "Summary" | shape_render }}
+        {% endfor %}
+      </tbody>
+    </table>
+</div>
