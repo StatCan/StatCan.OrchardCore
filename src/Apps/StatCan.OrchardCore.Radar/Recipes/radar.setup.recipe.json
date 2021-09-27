@@ -12,7 +12,10 @@
     {
       "name": "feature",
       "disable": [],
-      "enable": ["StatCan.OrchardCore.Radar"]
+      "enable": [
+        "StatCan.OrchardCore.Radar",
+        "OrchardCore.Users.CustomUserSettings"
+      ]
     },
     {
       "name": "recipes",
