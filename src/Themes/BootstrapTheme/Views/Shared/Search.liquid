@@ -1,0 +1,18 @@
+<div class="jumbotron">
+  <div class="container">
+    <h1>{{ 'Search' | t }}</h1>
+  </div>
+</div>
+<div class="container">
+  {{ Model.SearchForm | shape_render }}
+
+  {% unless Model.SearchResults %}
+    {% if Model.Terms %}
+      {% helper "span", validation_for: "Terms", class: "alert alert-danger" %}
+    {% endif %}
+  {% endunless %}
+
+  {{ Model.SearchResults | shape_render }}
+
+  {{ Model.Pager | shape_render }}
+</div>
