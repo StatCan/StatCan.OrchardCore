@@ -75,35 +75,45 @@ msgctxt "StatCan.OrchardCore.EmailTemplates.Workflows.Activities.EmailTemplateTa
 msgid "Failed"
 msgstr "Manqué"
 
-#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplatePart.cshtml:12
-#. @T["Email Templates"]
-msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplatePart"
-msgid "Email Templates"
-msgstr "Modèles de courriel"
+#: StatCan.OrchardCore.EmailTemplates\Views\Items\AllEmailTemplatesDeploymentStep.Edit.cshtml:3
+#. <h5>@T["All Email Templates"]</h5>
+msgctxt ""
+"StatCan.OrchardCore.EmailTemplates.Views.Items."
+"AllEmailTemplatesDeploymentStep.Edit"
+msgid "All Email Templates"
+msgstr "Tous les modèles de courriel"
 
-#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplatePartSettings.Edit.cshtml:46
-#. label="displayText" placeholder="@T["Select Email Templates"]"
-msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplatePartSettings.Edit"
-msgid "Select Email Templates"
-msgstr "Sélectionnez les modèles de courriel"
+#: StatCan.OrchardCore.EmailTemplates\Views\Items\AllEmailTemplatesDeploymentStep.Summary.cshtml:3
+#. <h5>@T["All Email Templates"]</h5>
+msgctxt ""
+"StatCan.OrchardCore.EmailTemplates.Views.Items."
+"AllEmailTemplatesDeploymentStep.Summary"
+msgid "All Email Templates"
+msgstr "Tous les modèles de courriel"
 
-#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplatePartSettings.Edit.cshtml:51
-#. select-label="@T["Select"]" deselect-label="@T["Remove"]">
-msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplatePartSettings.Edit"
-msgid "Select"
-msgstr "Sélectionner"
+#: StatCan.OrchardCore.EmailTemplates\Views\Items\AllEmailTemplatesDeploymentStep.Summary.cshtml:5
+#. <span class="hint">@T["Adds all email templates to the plan."]</span>
+msgctxt ""
+"StatCan.OrchardCore.EmailTemplates.Views.Items."
+"AllEmailTemplatesDeploymentStep.Summary"
+msgid "Adds all email templates to the plan."
+msgstr "Ajoute tous les modèles de courriel au plan."
 
-#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplatePartSettings.Edit.cshtml:51
-#. select-label="@T["Select"]" deselect-label="@T["Remove"]">
-msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplatePartSettings.Edit"
-msgid "Remove"
-msgstr "Supprimer"
+#: StatCan.OrchardCore.EmailTemplates\Views\Items\AllEmailTemplatesDeploymentStep.Thumbnail.cshtml:3
+#. <h4 class="card-title">@T["All Email Templates"]</h4>
+msgctxt ""
+"StatCan.OrchardCore.EmailTemplates.Views.Items."
+"AllEmailTemplatesDeploymentStep.Thumbnail"
+msgid "All Email Templates"
+msgstr "Tous les modèles de courriel"
 
-#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplatePartSettings.Edit.cshtml:56
-#. @T["No result found"]
-msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplatePartSettings.Edit"
-msgid "No result found"
-msgstr "Aucun résultat trouvé"
+#: StatCan.OrchardCore.EmailTemplates\Views\Items\AllEmailTemplatesDeploymentStep.Thumbnail.cshtml:4
+#. <p>@T["Exports Email templates."]</p>
+msgctxt ""
+"StatCan.OrchardCore.EmailTemplates.Views.Items."
+"AllEmailTemplatesDeploymentStep.Thumbnail"
+msgid "Exports Email templates."
+msgstr "Exporte des modèles de courriel."
 
 #: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\Create.cshtml:16
 #. <h1>@RenderTitleSegments(T["Create Template"])</h1>
@@ -487,6 +497,76 @@ msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.Edit"
 msgid "Cancel"
 msgstr "Annuler"
 
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplatePart.cshtml:12
+#. @T["Email Templates"]
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplatePart"
+msgid "Email Templates"
+msgstr "Modèles de courriel"
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplatePartSettings.Edit.cshtml:46
+#. label="displayText" placeholder="@T["Select Email Templates"]"
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplatePartSettings.Edit"
+msgid "Select Email Templates"
+msgstr "Sélectionnez les modèles de courriel"
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplatePartSettings.Edit.cshtml:51
+#. select-label="@T["Select"]" deselect-label="@T["Remove"]">
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplatePartSettings.Edit"
+msgid "Select"
+msgstr "Sélectionner"
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplatePartSettings.Edit.cshtml:51
+#. select-label="@T["Select"]" deselect-label="@T["Remove"]">
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplatePartSettings.Edit"
+msgid "Remove"
+msgstr "Supprimer"
+
+#: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplatePartSettings.Edit.cshtml:56
+#. @T["No result found"]
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplatePartSettings.Edit"
+msgid "No result found"
+msgstr "Aucun résultat trouvé"
+
+#: StatCan.OrchardCore.EmailTemplates\Views\Items\EmailTemplateTask.Fields.Design.cshtml:6
+#. <h4><i class="fa fa-envelope"></i>@Model.Activity.GetTitleOrDefault(() => T["Send Email With Template"])</h4>
+msgctxt ""
+"StatCan.OrchardCore.EmailTemplates.Views.Items.EmailTemplateTask.Fields."
+"Design"
+msgid "Send Email With Template"
+msgstr "Envoyer un courriel avec un modèle"
+
+#: StatCan.OrchardCore.EmailTemplates\Views\Items\EmailTemplateTask.Fields.Edit.cshtml:12
+#. <label asp-for="TemplateModelExpression">@T["Template Model Expression"]</label>
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.Items.EmailTemplateTask.Fields.Edit"
+msgid "Template Model Expression"
+msgstr "Expression du modèle de modèle"
+
+#: StatCan.OrchardCore.EmailTemplates\Views\Items\EmailTemplateTask.Fields.Edit.cshtml:15
+#. <span class="hint">@T["JavaScript expression that returns an object that will be used as the model of the template."]</span>
+msgctxt "StatCan.OrchardCore.EmailTemplates.Views.Items.EmailTemplateTask.Fields.Edit"
+msgid ""
+"JavaScript expression that returns an object that will be used as the model "
+"of the template."
+msgstr ""
+"Expression JavaScript qui renvoie un objet qui sera utilisé comme modèle du "
+"modèle."
+
+#: StatCan.OrchardCore.EmailTemplates\Views\Items\EmailTemplateTask.Fields.Thumbnail.cshtml:1
+#. <h4 class="card-title"><i class="fa fa-envelope"></i>@T["Send Email With Template"]</h4>
+msgctxt ""
+"StatCan.OrchardCore.EmailTemplates.Views.Items.EmailTemplateTask.Fields."
+"Thumbnail"
+msgid "Send Email With Template"
+msgstr "Envoyer un courriel avec un modèle"
+
+#: StatCan.OrchardCore.EmailTemplates\Views\Items\EmailTemplateTask.Fields.Thumbnail.cshtml:2
+#. <p>@T["Send an email with a template."]</p>
+msgctxt ""
+"StatCan.OrchardCore.EmailTemplates.Views.Items.EmailTemplateTask.Fields."
+"Thumbnail"
+msgid "Send an email with a template."
+msgstr "Envoyez un courriel avec un modèle."
+
 #: StatCan.OrchardCore.EmailTemplates\Views\EmailTemplate\Index.cshtml:8
 #. <h1>@RenderTitleSegments(T["Email Templates"])</h1>
 msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.Index"
@@ -734,83 +814,3 @@ msgstr "Envoyer"
 msgctxt "StatCan.OrchardCore.EmailTemplates.Views.EmailTemplate.SendEmail"
 msgid "Cancel"
 msgstr "Annuler"
-
-#: StatCan.OrchardCore.EmailTemplates\Views\Items\AllEmailTemplatesDeploymentStep.Edit.cshtml:3
-#. <h5>@T["All Email Templates"]</h5>
-msgctxt ""
-"StatCan.OrchardCore.EmailTemplates.Views.Items."
-"AllEmailTemplatesDeploymentStep.Edit"
-msgid "All Email Templates"
-msgstr "Tous les modèles de courriel"
-
-#: StatCan.OrchardCore.EmailTemplates\Views\Items\AllEmailTemplatesDeploymentStep.Summary.cshtml:3
-#. <h5>@T["All Email Templates"]</h5>
-msgctxt ""
-"StatCan.OrchardCore.EmailTemplates.Views.Items."
-"AllEmailTemplatesDeploymentStep.Summary"
-msgid "All Email Templates"
-msgstr "Tous les modèles de courriel"
-
-#: StatCan.OrchardCore.EmailTemplates\Views\Items\AllEmailTemplatesDeploymentStep.Summary.cshtml:5
-#. <span class="hint">@T["Adds all email templates to the plan."]</span>
-msgctxt ""
-"StatCan.OrchardCore.EmailTemplates.Views.Items."
-"AllEmailTemplatesDeploymentStep.Summary"
-msgid "Adds all email templates to the plan."
-msgstr "Ajoute tous les modèles de courriel au plan."
-
-#: StatCan.OrchardCore.EmailTemplates\Views\Items\AllEmailTemplatesDeploymentStep.Thumbnail.cshtml:3
-#. <h4 class="card-title">@T["All Email Templates"]</h4>
-msgctxt ""
-"StatCan.OrchardCore.EmailTemplates.Views.Items."
-"AllEmailTemplatesDeploymentStep.Thumbnail"
-msgid "All Email Templates"
-msgstr "Tous les modèles de courriel"
-
-#: StatCan.OrchardCore.EmailTemplates\Views\Items\AllEmailTemplatesDeploymentStep.Thumbnail.cshtml:4
-#. <p>@T["Exports Email templates."]</p>
-msgctxt ""
-"StatCan.OrchardCore.EmailTemplates.Views.Items."
-"AllEmailTemplatesDeploymentStep.Thumbnail"
-msgid "Exports Email templates."
-msgstr "Exporte des modèles de courriel."
-
-#: StatCan.OrchardCore.EmailTemplates\Views\Items\EmailTemplateTask.Fields.Design.cshtml:6
-#. <h4><i class="fa fa-envelope"></i>@Model.Activity.GetTitleOrDefault(() => T["Send Email With Template"])</h4>
-msgctxt ""
-"StatCan.OrchardCore.EmailTemplates.Views.Items.EmailTemplateTask.Fields."
-"Design"
-msgid "Send Email With Template"
-msgstr "Envoyer un courriel avec un modèle"
-
-#: StatCan.OrchardCore.EmailTemplates\Views\Items\EmailTemplateTask.Fields.Edit.cshtml:12
-#. <label asp-for="TemplateModelExpression">@T["Template Model Expression"]</label>
-msgctxt "StatCan.OrchardCore.EmailTemplates.Views.Items.EmailTemplateTask.Fields.Edit"
-msgid "Template Model Expression"
-msgstr "Expression du modèle de modèle"
-
-#: StatCan.OrchardCore.EmailTemplates\Views\Items\EmailTemplateTask.Fields.Edit.cshtml:15
-#. <span class="hint">@T["JavaScript expression that returns an object that will be used as the model of the template."]</span>
-msgctxt "StatCan.OrchardCore.EmailTemplates.Views.Items.EmailTemplateTask.Fields.Edit"
-msgid ""
-"JavaScript expression that returns an object that will be used as the model "
-"of the template."
-msgstr ""
-"Expression JavaScript qui renvoie un objet qui sera utilisé comme modèle du "
-"modèle."
-
-#: StatCan.OrchardCore.EmailTemplates\Views\Items\EmailTemplateTask.Fields.Thumbnail.cshtml:1
-#. <h4 class="card-title"><i class="fa fa-envelope"></i>@T["Send Email With Template"]</h4>
-msgctxt ""
-"StatCan.OrchardCore.EmailTemplates.Views.Items.EmailTemplateTask.Fields."
-"Thumbnail"
-msgid "Send Email With Template"
-msgstr "Envoyer un courriel avec un modèle"
-
-#: StatCan.OrchardCore.EmailTemplates\Views\Items\EmailTemplateTask.Fields.Thumbnail.cshtml:2
-#. <p>@T["Send an email with a template."]</p>
-msgctxt ""
-"StatCan.OrchardCore.EmailTemplates.Views.Items.EmailTemplateTask.Fields."
-"Thumbnail"
-msgid "Send an email with a template."
-msgstr "Envoyez un courriel avec un modèle."
