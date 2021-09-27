@@ -44,36 +44,6 @@ msgctxt "StatCan.OrchardCore.VueForms.Views.Content-VueForm"
 msgid "You are unauthorized to access this form"
 msgstr "Vous n'êtes pas autorisé à accéder à ce formulaire"
 
-#: StatCan.OrchardCore.VueForms\Views\VueFormWrapperTemplate.cshtml:39
-#. <h3 class="warning">@T["Your VueForm is in debug Mode"]</h3>
-msgctxt "StatCan.OrchardCore.VueForms.Views.VueFormWrapperTemplate"
-msgid "Your VueForm is in debug Mode"
-msgstr "Votre VueForm est en mode débogage"
-
-#: StatCan.OrchardCore.VueForms\Views\VueFormWrapperTemplate.cshtml:41
-#. <summary>@T["Server Error"]</summary>
-msgctxt "StatCan.OrchardCore.VueForms.Views.VueFormWrapperTemplate"
-msgid "Server Error"
-msgstr "Erreur du serveur"
-
-#: StatCan.OrchardCore.VueForms\Views\VueFormWrapperTemplate.cshtml:47
-#. <summary>@T["form object"]</summary>
-msgctxt "StatCan.OrchardCore.VueForms.Views.VueFormWrapperTemplate"
-msgid "form object"
-msgstr "objet de formulaire"
-
-#: StatCan.OrchardCore.VueForms\Views\VueFormWrapperTemplate.cshtml:53
-#. <summary>@T["VeeValidate observer data"]</summary>
-msgctxt "StatCan.OrchardCore.VueForms.Views.VueFormWrapperTemplate"
-msgid "VeeValidate observer data"
-msgstr "Données d'observateur VeeValidate"
-
-#: StatCan.OrchardCore.VueForms\Views\VueFormWrapperTemplate.cshtml:59
-#. <summary>@T["Complete component data"]</summary>
-msgctxt "StatCan.OrchardCore.VueForms.Views.VueFormWrapperTemplate"
-msgid "Complete component data"
-msgstr "Données complètes des composants"
-
 #: StatCan.OrchardCore.VueForms\Views\Items\VueFormSubmittedEvent.Fields.Design.cshtml:5
 #. <h4><i class="fa fa-bolt"></i>@Model.Activity.GetTitleOrDefault(() => T["Vue Form submitted"])</h4>
 msgctxt "StatCan.OrchardCore.VueForms.Views.Items.VueFormSubmittedEvent.Fields.Design"
@@ -112,3 +82,33 @@ msgctxt ""
 "Thumbnail"
 msgid "VueForm passed validation and is submitted."
 msgstr "VueForm a passé la validation et est soumis."
+
+#: StatCan.OrchardCore.VueForms\Views\VueFormWrapperTemplate.cshtml:39
+#. <h3 class="warning">@T["Your VueForm is in debug Mode"]</h3>
+msgctxt "StatCan.OrchardCore.VueForms.Views.VueFormWrapperTemplate"
+msgid "Your VueForm is in debug Mode"
+msgstr "Votre VueForm est en mode débogage"
+
+#: StatCan.OrchardCore.VueForms\Views\VueFormWrapperTemplate.cshtml:41
+#. <summary>@T["Server Error"]</summary>
+msgctxt "StatCan.OrchardCore.VueForms.Views.VueFormWrapperTemplate"
+msgid "Server Error"
+msgstr "Erreur du serveur"
+
+#: StatCan.OrchardCore.VueForms\Views\VueFormWrapperTemplate.cshtml:47
+#. <summary>@T["form object"]</summary>
+msgctxt "StatCan.OrchardCore.VueForms.Views.VueFormWrapperTemplate"
+msgid "form object"
+msgstr "objet de formulaire"
+
+#: StatCan.OrchardCore.VueForms\Views\VueFormWrapperTemplate.cshtml:53
+#. <summary>@T["VeeValidate observer data"]</summary>
+msgctxt "StatCan.OrchardCore.VueForms.Views.VueFormWrapperTemplate"
+msgid "VeeValidate observer data"
+msgstr "Données d'observateur VeeValidate"
+
+#: StatCan.OrchardCore.VueForms\Views\VueFormWrapperTemplate.cshtml:59
+#. <summary>@T["Complete component data"]</summary>
+msgctxt "StatCan.OrchardCore.VueForms.Views.VueFormWrapperTemplate"
+msgid "Complete component data"
+msgstr "Données complètes des composants"

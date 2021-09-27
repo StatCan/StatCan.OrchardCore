@@ -117,10 +117,30 @@ msgctxt "StatCan.OrchardCore.Hackathon.Views.UserFields"
 msgid "Disabled"
 msgstr "Désactivée"
 
-#: StatCan.OrchardCore.Hackathon\Views\Content-Team-Buttons.SummaryAdmin.liquid:0
-msgctxt "StatCan.OrchardCore.Hackathon.Views.Content-Team-Buttons.SummaryAdmin"
-msgid "Team"
-msgstr "Équipe"
+#: StatCan.OrchardCore.Hackathon\Views\Content-Team.liquid:0
+msgctxt "StatCan.OrchardCore.Hackathon.Views.Content-Team"
+msgid "Description"
+msgstr "La description"
+
+#: StatCan.OrchardCore.Hackathon\Views\Content-Team.liquid:0
+msgctxt "StatCan.OrchardCore.Hackathon.Views.Content-Team"
+msgid "Challenge"
+msgstr "Défi"
+
+#: StatCan.OrchardCore.Hackathon\Views\Content-Team.liquid:0
+msgctxt "StatCan.OrchardCore.Hackathon.Views.Content-Team"
+msgid "Save"
+msgstr "sauvegarder"
+
+#: StatCan.OrchardCore.Hackathon\Views\Content-Team.liquid:0
+msgctxt "StatCan.OrchardCore.Hackathon.Views.Content-Team"
+msgid "Team Members"
+msgstr "Membres de l'équipe"
+
+#: StatCan.OrchardCore.Hackathon\Views\Content-Team.liquid:0
+msgctxt "StatCan.OrchardCore.Hackathon.Views.Content-Team"
+msgid "Remove"
+msgstr "Supprimer"
 
 #: StatCan.OrchardCore.Hackathon\Views\Widget-JudgingListWidget.liquid:0
 msgctxt "StatCan.OrchardCore.Hackathon.Views.Widget-JudgingListWidget"
@@ -136,112 +156,3 @@ msgstr "Vide"
 msgctxt "StatCan.OrchardCore.Hackathon.Views.Widget-JudgingListWidget"
 msgid "Team"
 msgstr "Équipe"
-
-#: StatCan.OrchardCore.Hackathon\Views\Widget-TeamDashboardWidget.liquid:0
-msgctxt "StatCan.OrchardCore.Hackathon.Views.Widget-TeamDashboardWidget"
-msgid "My Team"
-msgstr "Mon équipe"
-
-#: StatCan.OrchardCore.Hackathon\Views\Widget-TeamDashboardWidget.liquid:0
-msgctxt "StatCan.OrchardCore.Hackathon.Views.Widget-TeamDashboardWidget"
-msgid "Name"
-msgstr "Nom"
-
-#: StatCan.OrchardCore.Hackathon\Views\Widget-TeamDashboardWidget.liquid:0
-msgctxt "StatCan.OrchardCore.Hackathon.Views.Widget-TeamDashboardWidget"
-msgid "Description"
-msgstr "La description"
-
-#: StatCan.OrchardCore.Hackathon\Views\Widget-TeamDashboardWidget.liquid:0
-msgctxt "StatCan.OrchardCore.Hackathon.Views.Widget-TeamDashboardWidget"
-msgid "Identifier"
-msgstr "Identifier"
-
-#: StatCan.OrchardCore.Hackathon\Views\Widget-TeamDashboardWidget.liquid:0
-msgctxt "StatCan.OrchardCore.Hackathon.Views.Widget-TeamDashboardWidget"
-msgid ""
-"You are the team captain. Select a challenge, edit your team name and "
-"description using the form at the bottom of this page."
-msgstr ""
-"Vous êtes le capitaine de l'équipe. Sélectionnez un défi, modifiez le nom "
-"et la description de votre équipe à l'aide du formulaire en bas de cette "
-"page."
-
-#: StatCan.OrchardCore.Hackathon\Views\Widget-TeamDashboardWidget.liquid:0
-msgctxt "StatCan.OrchardCore.Hackathon.Views.Widget-TeamDashboardWidget"
-msgid "My Challenge"
-msgstr "Mon défi"
-
-#: StatCan.OrchardCore.Hackathon\Views\Widget-TeamDashboardWidget.liquid:0
-msgctxt "StatCan.OrchardCore.Hackathon.Views.Widget-TeamDashboardWidget"
-msgid ""
-"You have not yet selected a challenge, please ask your team captain to "
-"choose one"
-msgstr ""
-"Vous n'avez pas encore sélectionné de défi, veuillez demander à votre "
-"capitaine d'équipe d'en choisir un"
-
-#: StatCan.OrchardCore.Hackathon\Views\Widget-TeamDashboardWidget.liquid:0
-msgctxt "StatCan.OrchardCore.Hackathon.Views.Widget-TeamDashboardWidget"
-msgid "Team Members"
-msgstr "Membres de l'équipe"
-
-#: StatCan.OrchardCore.Hackathon\Views\Widget-TeamDashboardWidget.liquid:0
-msgctxt "StatCan.OrchardCore.Hackathon.Views.Widget-TeamDashboardWidget"
-msgid "Remove"
-msgstr "Supprimer"
-
-#: StatCan.OrchardCore.Hackathon\Views\Widget-TeamDashboardWidget.liquid:0
-msgctxt "StatCan.OrchardCore.Hackathon.Views.Widget-TeamDashboardWidget"
-msgid "Danger zone"
-msgstr "Zone dangereuse"
-
-#: StatCan.OrchardCore.Hackathon\Views\Widget-TeamDashboardWidget.liquid:0
-msgctxt "StatCan.OrchardCore.Hackathon.Views.Widget-TeamDashboardWidget"
-msgid ""
-"You are the team captain. Leaving the team will assign another member as "
-"the team captain."
-msgstr ""
-"Vous êtes le capitaine de l'équipe. Quitter l'équipe désignera un autre "
-"membre comme capitaine de l'équipe."
-
-#: StatCan.OrchardCore.Hackathon\Views\Widget-TeamDashboardWidget.liquid:0
-msgctxt "StatCan.OrchardCore.Hackathon.Views.Widget-TeamDashboardWidget"
-msgid "Leave team"
-msgstr "Quitter l'équipe"
-
-#: StatCan.OrchardCore.Hackathon\Views\Widget-TeamDashboardWidget.liquid:0
-msgctxt "StatCan.OrchardCore.Hackathon.Views.Widget-TeamDashboardWidget"
-msgid "Please create or join an existing team"
-msgstr "Veuillez créer ou rejoindre une équipe existante"
-
-#: StatCan.OrchardCore.Hackathon\Views\Widget-TeamDashboardWidget.liquid:0
-msgctxt "StatCan.OrchardCore.Hackathon.Views.Widget-TeamDashboardWidget"
-msgid "Create team"
-msgstr "Créer une équipe"
-
-#: StatCan.OrchardCore.Hackathon\Views\Widget-TeamDashboardWidget.liquid:0
-msgctxt "StatCan.OrchardCore.Hackathon.Views.Widget-TeamDashboardWidget"
-msgid "Or"
-msgstr "Ou alors"
-
-#: StatCan.OrchardCore.Hackathon\Views\Widget-TeamDashboardWidget.liquid:0
-#: StatCan.OrchardCore.Hackathon\Views\Widget-TeamDashboardWidget.liquid:0
-msgctxt "StatCan.OrchardCore.Hackathon.Views.Widget-TeamDashboardWidget"
-msgid "Team Identifier"
-msgstr "Identifiant d'équipe"
-
-#: StatCan.OrchardCore.Hackathon\Views\Widget-TeamDashboardWidget.liquid:0
-msgctxt "StatCan.OrchardCore.Hackathon.Views.Widget-TeamDashboardWidget"
-msgid "Join team"
-msgstr "Rejoindre une équipe"
-
-#: StatCan.OrchardCore.Hackathon\Views\Widget-TeamJoinListWidget.liquid:0
-msgctxt "StatCan.OrchardCore.Hackathon.Views.Widget-TeamJoinListWidget"
-msgid "Join a team"
-msgstr "Rejoindre une équipe"
-
-#: StatCan.OrchardCore.Hackathon\Views\Widget-TeamJoinListWidget.liquid:0
-msgctxt "StatCan.OrchardCore.Hackathon.Views.Widget-TeamJoinListWidget"
-msgid "Join"
-msgstr "Joindre"

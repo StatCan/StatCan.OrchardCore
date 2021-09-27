@@ -1,0 +1,84 @@
+msgid ""
+msgstr "Content-Type: text/plain\n"
+
+#: StatCan.OrchardCore.Scheduling\Views\Calendar.liquid:0
+msgctxt "StatCan.OrchardCore.Scheduling.Views.Calendar"
+msgid "Print"
+msgstr "Imprimer"
+
+#: StatCan.OrchardCore.Scheduling\Views\Calendar.liquid:0
+msgctxt "StatCan.OrchardCore.Scheduling.Views.Calendar"
+msgid "Today"
+msgstr "Aujourd'hui"
+
+#: StatCan.OrchardCore.Scheduling\Views\Calendar.liquid:0
+#: StatCan.OrchardCore.Scheduling\Views\Calendar.liquid:0
+#: StatCan.OrchardCore.Scheduling\Views\Calendar.liquid:0
+msgctxt "StatCan.OrchardCore.Scheduling.Views.Calendar"
+msgid "Day"
+msgstr "Jour"
+
+#: StatCan.OrchardCore.Scheduling\Views\Calendar.liquid:0
+#: StatCan.OrchardCore.Scheduling\Views\Calendar.liquid:0
+#: StatCan.OrchardCore.Scheduling\Views\Calendar.liquid:0
+msgctxt "StatCan.OrchardCore.Scheduling.Views.Calendar"
+msgid "Week"
+msgstr "La semaine"
+
+#: StatCan.OrchardCore.Scheduling\Views\Calendar.liquid:0
+#: StatCan.OrchardCore.Scheduling\Views\Calendar.liquid:0
+#: StatCan.OrchardCore.Scheduling\Views\Calendar.liquid:0
+msgctxt "StatCan.OrchardCore.Scheduling.Views.Calendar"
+msgid "Month"
+msgstr "Mois"
+
+#: StatCan.OrchardCore.Scheduling\Views\Calendar.liquid:0
+#: StatCan.OrchardCore.Scheduling\Views\Calendar.liquid:0
+msgctxt "StatCan.OrchardCore.Scheduling.Views.Calendar"
+msgid "4 Days"
+msgstr "4 jours"
+
+#: StatCan.OrchardCore.Scheduling\Views\Calendar.liquid:0
+msgctxt "StatCan.OrchardCore.Scheduling.Views.Calendar"
+msgid "Calendar"
+msgstr "Calendrier"
+
+#: StatCan.OrchardCore.Scheduling\Views\Calendar.liquid:0
+msgctxt "StatCan.OrchardCore.Scheduling.Views.Calendar"
+msgid "Status"
+msgstr "Statut"
+
+#: StatCan.OrchardCore.Scheduling\Views\Calendar.liquid:0
+msgctxt "StatCan.OrchardCore.Scheduling.Views.Calendar"
+msgid "Notes"
+msgstr "Remarques"
+
+#: StatCan.OrchardCore.Scheduling\Views\Calendar.liquid:0
+msgctxt "StatCan.OrchardCore.Scheduling.Views.Calendar"
+msgid "Close"
+msgstr "proche"
+
+#: StatCan.OrchardCore.Scheduling\Views\Calendar.liquid:0
+msgctxt "StatCan.OrchardCore.Scheduling.Views.Calendar"
+msgid "Edit Appointment"
+msgstr "Modifier le rendez-vous"
+
+#: StatCan.OrchardCore.Scheduling\Views\Calendar.liquid:0
+msgctxt "StatCan.OrchardCore.Scheduling.Views.Calendar"
+msgid "Employees"
+msgstr "Des employés"
+
+#: StatCan.OrchardCore.Scheduling\Views\Calendar.liquid:0
+msgctxt "StatCan.OrchardCore.Scheduling.Views.Calendar"
+msgid "4 Day"
+msgstr "4 jours"
+
+#: StatCan.OrchardCore.Scheduling\Views\Content-AppointmentCalendar.liquid:0
+msgctxt "StatCan.OrchardCore.Scheduling.Views.Content-AppointmentCalendar"
+msgid "All Appointments for {0}"
+msgstr "Tous les rendez-vous pour {0}"
+
+#: StatCan.OrchardCore.Scheduling\Views\Content-Employee.liquid:0
+msgctxt "StatCan.OrchardCore.Scheduling.Views.Content-Employee"
+msgid "Consent"
+msgstr "Consentement"
