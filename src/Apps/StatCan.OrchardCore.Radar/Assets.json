@@ -12,5 +12,11 @@
       "Assets/images/*"
     ],
     "output": "wwwroot/images/@"
+  },
+  {
+    "vue": true,
+    "file": "Assets/js/RadarComponents.js",
+    "output": "wwwroot/js",
+    "name": "radar-vue-components"
   }
 ]

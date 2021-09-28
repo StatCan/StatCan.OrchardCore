@@ -8,6 +8,8 @@ using OrchardCore.ContentManagement;
 using YesSql.Indexes;
 using StatCan.OrchardCore.Radar.Indexing;
 using StatCan.OrchardCore.Radar.Models;
+using OrchardCore.ResourceManagement;
+using Microsoft.Extensions.Options;
 
 namespace StatCan.OrchardCore.Radar
 {
@@ -18,6 +20,7 @@ namespace StatCan.OrchardCore.Radar
             services.AddScoped<IDataMigration, Migrations>();
             services.AddContentPart<RadarEntityPart>();
             services.AddSingleton<IIndexProvider, RadarEntityPartIndexProvider>();
+            services.AddTransient<IConfigureOptions<ResourceManagementOptions>, ResourceManagementOptionsConfiguration>();
         }
 
         public override void Configure(IApplicationBuilder builder, IEndpointRouteBuilder routes, IServiceProvider serviceProvider)
