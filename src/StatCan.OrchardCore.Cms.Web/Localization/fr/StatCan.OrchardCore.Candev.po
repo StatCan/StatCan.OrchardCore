@@ -35,7 +35,7 @@ msgstr "A quitté l'équipe avec succès"
 #. _notifier.Success(H["Member successfully removed from the team"]);
 msgctxt "StatCan.OrchardCore.Candev.Controllers.CandevController"
 msgid "Member successfully removed from the team"
-msgstr "Membre supprimé avec succès de l'équipe"
+msgstr "Membre supprimé de l'équipe avec succès"
 
 #: StatCan.OrchardCore.Candev\Controllers\CandevController.cs:177
 #. _notifier.Success(H["Team info successfully updated"]);
@@ -69,7 +69,7 @@ msgstr "L'équipe n'existe pas"
 #. modelState.AddModelError("error", T["Team is full"]);
 msgctxt "StatCan.OrchardCore.Candev.Services.CandevService"
 msgid "Team is full"
-msgstr "L'équipe est au complet"
+msgstr "L'équipe est complète"
 
 #: StatCan.OrchardCore.Candev\Services\CandevService.cs:137
 #. modelState.AddModelError("error", T["Already on a team"].Value);
@@ -120,7 +120,7 @@ msgstr "Désactivée"
 #: StatCan.OrchardCore.Candev\Views\Content-Team.liquid:0
 msgctxt "StatCan.OrchardCore.Candev.Views.Content-Team"
 msgid "Description"
-msgstr "La description"
+msgstr "Description"
 
 #: StatCan.OrchardCore.Candev\Views\Content-Team.liquid:0
 msgctxt "StatCan.OrchardCore.Candev.Views.Content-Team"
@@ -130,7 +130,7 @@ msgstr "Défi"
 #: StatCan.OrchardCore.Candev\Views\Content-Team.liquid:0
 msgctxt "StatCan.OrchardCore.Candev.Views.Content-Team"
 msgid "Save"
-msgstr "sauvegarder"
+msgstr "Sauvegarder"
 
 #: StatCan.OrchardCore.Candev\Views\Content-Team.liquid:0
 msgctxt "StatCan.OrchardCore.Candev.Views.Content-Team"
@@ -150,7 +150,7 @@ msgstr "Défi"
 #: StatCan.OrchardCore.Candev\Views\Widget-ArchivedSolutions.liquid:0
 msgctxt "StatCan.OrchardCore.Candev.Views.Widget-ArchivedSolutions"
 msgid "Statement"
-msgstr "Déclaration"
+msgstr "Énoncé"
 
 #: StatCan.OrchardCore.Candev\Views\Widget-ArchivedSolutions.liquid:0
 msgctxt "StatCan.OrchardCore.Candev.Views.Widget-ArchivedSolutions"
@@ -160,7 +160,7 @@ msgstr "Ensembles de données potentiels"
 #: StatCan.OrchardCore.Candev\Views\Widget-ArchivedSolutions.liquid:0
 msgctxt "StatCan.OrchardCore.Candev.Views.Widget-ArchivedSolutions"
 msgid "Background Information"
-msgstr "Informations d'arrière-plan"
+msgstr "Informations de référence"
 
 #: StatCan.OrchardCore.Candev\Views\Widget-ArchivedSolutions.liquid:0
 msgctxt "StatCan.OrchardCore.Candev.Views.Widget-ArchivedSolutions"
@@ -181,7 +181,7 @@ msgstr "Solutions"
 #: StatCan.OrchardCore.Candev\Views\Widget-ArchivedSolutions.liquid:0
 msgctxt "StatCan.OrchardCore.Candev.Views.Widget-ArchivedSolutions"
 msgid "Round"
-msgstr "Tour"
+msgstr "Ronde"
 
 #: StatCan.OrchardCore.Candev\Views\Widget-ArchivedSolutions.liquid:0
 msgctxt "StatCan.OrchardCore.Candev.Views.Widget-ArchivedSolutions"
@@ -197,7 +197,7 @@ msgstr "Voir le dépôt"
 #: StatCan.OrchardCore.Candev\Views\Widget-ArchivedSolutions.liquid:0
 msgctxt "StatCan.OrchardCore.Candev.Views.Widget-ArchivedSolutions"
 msgid "Prensented"
-msgstr "princesse"
+msgstr "Présenté"
 
 #: StatCan.OrchardCore.Candev\Views\Widget-ChallengeSubmission.liquid:0
 msgctxt "StatCan.OrchardCore.Candev.Views.Widget-ChallengeSubmission"
@@ -207,12 +207,12 @@ msgstr "Créer un nouveau défi"
 #: StatCan.OrchardCore.Candev\Views\Widget-ChallengeSubmission.liquid:0
 msgctxt "StatCan.OrchardCore.Candev.Views.Widget-ChallengeSubmission"
 msgid "Edit"
-msgstr "Éditer"
+msgstr "Modifier"
 
 #: StatCan.OrchardCore.Candev\Views\Widget-JudgingListWidget.liquid:0
 msgctxt "StatCan.OrchardCore.Candev.Views.Widget-JudgingListWidget"
 msgid "No active Judging round"
-msgstr "Pas de tour de jugement actif"
+msgstr "Pas de ronde de jugement actif"
 
 #: StatCan.OrchardCore.Candev\Views\Widget-JudgingListWidget.liquid:0
 msgctxt "StatCan.OrchardCore.Candev.Views.Widget-JudgingListWidget"
@@ -237,12 +237,12 @@ msgstr "E-mail"
 #: StatCan.OrchardCore.Candev\Views\Widget-UserProfile.liquid:0
 msgctxt "StatCan.OrchardCore.Candev.Views.Widget-UserProfile"
 msgid "Prefered Language"
-msgstr "Langue préférée"
+msgstr "Langue de préférence"
 
 #: StatCan.OrchardCore.Candev\Views\Widget-UserProfile.liquid:0
 msgctxt "StatCan.OrchardCore.Candev.Views.Widget-UserProfile"
 msgid "Roles"
-msgstr "Les rôles"
+msgstr "Rôles"
 
 #: StatCan.OrchardCore.Candev\Views\Widget-UserProfile.liquid:0
 msgctxt "StatCan.OrchardCore.Candev.Views.Widget-UserProfile"
@@ -257,12 +257,12 @@ msgstr "Juge"
 #: StatCan.OrchardCore.Candev\Views\Widget-UserProfile.liquid:0
 msgctxt "StatCan.OrchardCore.Candev.Views.Widget-UserProfile"
 msgid "Agency representative"
-msgstr "Représentant de l'agence"
+msgstr "Représentant"
 
 #: StatCan.OrchardCore.Candev\Views\Widget-UserProfile.liquid:0
 msgctxt "StatCan.OrchardCore.Candev.Views.Widget-UserProfile"
 msgid "Workshop presenter"
-msgstr "Animateur d'atelier"
+msgstr "Présenteur d'atelier"
 
 #: StatCan.OrchardCore.Candev\Views\Widget-UserProfile.liquid:0
 msgctxt "StatCan.OrchardCore.Candev.Views.Widget-UserProfile"
@@ -272,7 +272,7 @@ msgstr "Conseiller technique"
 #: StatCan.OrchardCore.Candev\Views\Widget-UserProfile.liquid:0
 msgctxt "StatCan.OrchardCore.Candev.Views.Widget-UserProfile"
 msgid "Keynote speaker"
-msgstr "Conférencier principal"
+msgstr "Conférencier"
 
 #: StatCan.OrchardCore.Candev\Views\Widget-UserProfile.liquid:0
 msgctxt "StatCan.OrchardCore.Candev.Views.Widget-UserProfile"
@@ -287,4 +287,4 @@ msgstr "Organisateur / Bénévole"
 #: StatCan.OrchardCore.Candev\Views\Widget-UserProfile.liquid:0
 msgctxt "StatCan.OrchardCore.Candev.Views.Widget-UserProfile"
 msgid "Edit"
-msgstr "Éditer"
+msgstr "Modifier"
