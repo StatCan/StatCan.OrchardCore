@@ -1,0 +1,19 @@
+.topic {
+    background: #009C88 0% 0% no-repeat padding-box;
+    border-radius: 75px;
+    display: inline-block;
+    padding: 2px 10px 0px 9px;
+    margin-right: 0.9rem;
+    color: #FFFFFF;
+    max-width: 100%;
+    display: flex;
+}
+
+.topic:hover {
+    background-color: #227069;
+}
+
+.label {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
