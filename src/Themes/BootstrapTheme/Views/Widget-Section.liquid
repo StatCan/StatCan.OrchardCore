@@ -1,5 +1,5 @@
-<section class="mb-3 pb-3 {{ Model.ContentItem.Content.Section.SectionLayout.Text }}">
-    <h2 class="mt-5 mb-4 {{ Model.ContentItem.Content.Section.TitleLayout.Text }}">{{ Model.ContentItem | display_text }}</h2>
+<section class="{{ Model.ContentItem.Content.Section.SectionLayout.Text }}">
+    <h2 class="{{ Model.ContentItem.Content.Section.TitleLayout.Text }}">{{ Model.ContentItem | display_text }}</h2>
     <div class="{{ Model.ContentItem.Content.Section.Classes.Values | join: " " }}">
       {% for widget in Model.ContentItem.Content.FlowPart.Widgets %}
         {{ widget | shape_build_display | shape_render }}

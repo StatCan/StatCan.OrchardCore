@@ -72,194 +72,6 @@
       }
     },
     {
-      "name": "Placements",
-      "Placements": {
-        "TextField_Edit": [
-          {
-            "place": "Parts:0#Styles;0",
-            "displayType": null,
-            "differentiator": "Section-SectionLayout",
-            "alternates": null,
-            "wrappers": null,
-            "shape": null
-          },
-          {
-            "place": "Parts:0#Styles;1",
-            "displayType": null,
-            "differentiator": "Section-TitleLayout",
-            "alternates": null,
-            "wrappers": null,
-            "shape": null
-          },
-          {
-            "place": "Parts:1|LinkText_6",
-            "displayType": null,
-            "differentiator": "PlatformShowcase-LinkButtonText",
-            "alternates": null,
-            "wrappers": null,
-            "shape": null
-          },
-          {
-            "place": "Parts:0#Styles;2",
-            "displayType": null,
-            "differentiator": "PlatformShowcase-TextAlign",
-            "alternates": null,
-            "wrappers": null,
-            "shape": null
-          },
-          {
-            "place": "Parts:0|Url_8;1",
-            "displayType": null,
-            "differentiator": "ToolCard-Url",
-            "alternates": null,
-            "wrappers": null,
-            "shape": null
-          },
-          {
-            "place": "Parts:0#Styles;1|Left_6;0",
-            "displayType": null,
-            "differentiator": "ToolCard-IconClass",
-            "alternates": null,
-            "wrappers": null,
-            "shape": null
-          },
-          {
-            "place": "Parts:1#Styles;1|Left_6;1",
-            "displayType": null,
-            "differentiator": "ToolCard-ActionIconClass",
-            "alternates": null,
-            "wrappers": null,
-            "shape": null
-          }
-        ],
-        "MultiTextField_Edit": [
-          {
-            "place": "Parts:0#Styles;2",
-            "displayType": null,
-            "differentiator": "PlatformShowcase-Classes",
-            "alternates": null,
-            "wrappers": null,
-            "shape": null
-          },
-          {
-            "place": "Parts:0#Styles;2",
-            "displayType": null,
-            "differentiator": "Section-Classes",
-            "alternates": null,
-            "wrappers": null,
-            "shape": null
-          }
-        ],
-        "HtmlBodyPart_Edit": [
-          {
-            "place": "Parts:0|Content_12;4",
-            "displayType": null,
-            "differentiator": null,
-            "alternates": null,
-            "wrappers": null,
-            "shape": null,
-            "contentType": ["ToolCard"]
-          }
-        ],
-        "BooleanField_Edit": [
-          {
-            "place": "Parts:0|NewTab_4;2",
-            "displayType": null,
-            "differentiator": "ToolCard-OpenInNewTab",
-            "alternates": null,
-            "wrappers": null,
-            "shape": null
-          },
-          {
-            "place": "Parts:1#Styles;1|Left_6;4",
-            "displayType": null,
-            "differentiator": "ToolCard-ProminentLink",
-            "alternates": null,
-            "wrappers": null,
-            "shape": null
-          }
-        ],
-        "WidgetsListPart_Edit": [
-          {
-            "place": "Parts:0#Breadcrumbs;2",
-            "displayType": null,
-            "differentiator": null,
-            "alternates": null,
-            "wrappers": null,
-            "shape": null,
-            "contentType": ["Page"]
-          }
-        ],
-        "ContentPickerField_Edit": [
-          {
-            "place": "Parts:1|LinkContent_6",
-            "displayType": null,
-            "differentiator": "PlatformShowcase-LinkedContent",
-            "alternates": null,
-            "wrappers": null,
-            "shape": null
-          }
-        ],
-        "FlowPart_Edit": [
-          {
-            "place": "Parts:2|Flow_12",
-            "displayType": null,
-            "differentiator": null,
-            "alternates": null,
-            "wrappers": null,
-            "shape": null,
-            "contentType": ["PlatformShowcase"]
-          }
-        ],
-        "MediaField_Edit": [
-          {
-            "place": "Parts:0#Images;0|Left_6",
-            "displayType": null,
-            "differentiator": "Hero-Logo",
-            "alternates": null,
-            "wrappers": null,
-            "shape": null
-          },
-          {
-            "place": "Parts:0#Images;0|Right_6",
-            "displayType": null,
-            "differentiator": "Hero-RightImage",
-            "alternates": null,
-            "wrappers": null,
-            "shape": null
-          },
-          {
-            "place": "Parts:0#Styles;1|Right_6;1",
-            "displayType": null,
-            "differentiator": "ToolCard-IconImage",
-            "alternates": null,
-            "wrappers": null,
-            "shape": null
-          }
-        ],
-        "TitlePart_Edit": [
-          {
-            "place": "Parts:0|Content_10",
-            "displayType": null,
-            "differentiator": null,
-            "alternates": null,
-            "wrappers": null,
-            "shape": null,
-            "contentType": ["PlatformShowcase"]
-          },
-          {
-            "place": "Parts:0|Title_12;0",
-            "displayType": null,
-            "differentiator": null,
-            "alternates": null,
-            "wrappers": null,
-            "shape": null,
-            "contentType": ["ToolCard"]
-          }
-        ]
-      }
-    },
-    {
       "name": "ShortcodeTemplates",
       "ShortcodeTemplates": {
         "href": {
@@ -1391,6 +1203,147 @@
               }
             }
           ]
+        },
+        {
+          "Name": "Toolkit",
+          "DisplayName": "Toolkit",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Creatable": true,
+              "Listable": true,
+              "Draftable": true,
+              "Versionable": true,
+              "Securable": true
+            },
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "Toolkit",
+              "Name": "Toolkit",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "3"
+                }
+              }
+            },
+            {
+              "PartName": "FlowPart",
+              "Name": "FlowPart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "4"
+                }
+              }
+            },
+            {
+              "PartName": "ListPart",
+              "Name": "ListPart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "5"
+                },
+                "ListPartSettings": {
+                  "PageSize": 10,
+                  "ContainedContentTypes": [
+                    "ToolkitArticle"
+                  ]
+                }
+              }
+            },
+            {
+              "PartName": "TitlePart",
+              "Name": "TitlePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "2"
+                }
+              }
+            },
+            {
+              "PartName": "LocalizationPart",
+              "Name": "LocalizationPart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            },
+            {
+              "PartName": "AutoroutePart",
+              "Name": "AutoroutePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                },
+                "AutoroutePartSettings": {
+                  "AllowCustomPath": true,
+                  "AllowRouteContainedItems": true
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "ToolkitArticle",
+          "DisplayName": "Toolkit Article",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Draftable": true,
+              "Securable": true
+            },
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "ToolkitArticle",
+              "Name": "ToolkitArticle",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "3"
+                }
+              }
+            },
+            {
+              "PartName": "FlowPart",
+              "Name": "FlowPart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "4"
+                }
+              }
+            },
+            {
+              "PartName": "LocalizationPart",
+              "Name": "LocalizationPart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            },
+            {
+              "PartName": "TitlePart",
+              "Name": "TitlePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "2"
+                }
+              }
+            },
+            {
+              "PartName": "AutoroutePart",
+              "Name": "AutoroutePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                },
+                "AutoroutePartSettings": {
+                  "AllowCustomPath": true
+                }
+              }
+            }
+          ]
         }
       ],
       "ContentParts": [
@@ -2235,6 +2188,33 @@
                 },
                 "TextFieldSettings": {
                   "Hint": "This will display the person's name"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "ToolkitArticle",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "MediaField",
+              "Name": "Image",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Image"
+                }
+              }
+            },
+            {
+              "FieldName": "MarkdownField",
+              "Name": "ShortDescription",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Short Description"
+                },
+                "MarkdownFieldSettings": {
+                  "Hint": "Description displayed on the Toolkit page list"
                 }
               }
             }
