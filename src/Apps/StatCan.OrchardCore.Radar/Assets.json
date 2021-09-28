@@ -4,7 +4,7 @@
     "inputs": [
       "Assets/css/*"
     ],
-    "output": "wwwroot/css/index.css"
+    "output": "wwwroot/css/@"
   },
   {
     "copy": true,
