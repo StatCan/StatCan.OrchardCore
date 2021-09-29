@@ -1,0 +1,195 @@
+.hero {
+  &.is-fullheight {
+    display: flex;
+    flex-direction: column;
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      flex-shrink: 0;
+    }
+    .hero-body {
+      flex-grow: 1;
+      flex-basis: 60%;
+      padding-top: 3rem;
+      padding-bottom: 3rem;
+      @include media-breakpoint-up(lg) {
+        padding-top: 6rem;
+        padding-bottom: 6rem;
+      }
+      .header-container {
+        @include media-breakpoint-up(sm) {
+          margin-left: 2rem;
+        }
+      }
+      .btn {
+        &.btn-primary {
+          transition-property: transform, box-shadow;
+          transition-duration: 300ms;
+          transition-timing-function: ease-out;
+          &:hover {
+            box-shadow: 0 40px 25px rgba(17, 15, 15, 0.25);
+            transform: translateY(-5px);
+          }
+          &:focus {
+            box-shadow: 0 40px 25px rgba(17, 15, 15, 0.25),
+              0 0 0 0.2rem transparentize($primary, 0.5);
+            transform: translateY(-5px);
+          }
+        }
+      }
+
+      .navbar ul li {
+        perspective: 300px;
+      }
+      @include media-breakpoint-up(lg) {
+        .navbar li:first-child > .btn {
+          &:hover {
+            box-shadow: 0 40px 25px rgba(17, 15, 15, 0.25);
+          }
+          &:focus {
+            box-shadow: 0 40px 25px rgba(17, 15, 15, 0.25),
+              0 0 0 0.2rem transparentize($primary, 0.5);
+          }
+        }
+        .navbar li:last-child > .btn {
+          &:hover {
+            box-shadow: 0 40px 25px rgba(17, 15, 15, 0.25);
+          }
+          // &:focus {
+          //   box-shadow: 0 40px 25px rgba(17, 15, 15, 0.25),
+          //     0 0 0 0.2rem transparentize($primary, 0.5);
+          // }
+        }
+        .navbar li:first-child:last-child > .btn {
+          &:hover {
+            box-shadow: 0 40px 25px rgba(17, 15, 15, 0.25);
+          }
+          &:focus {
+            box-shadow: 0 40px 25px rgba(17, 15, 15, 0.25),
+              0 0 0 0.2rem transparentize($primary, 0.5);
+          }
+        }
+        .navbar li:nth-child(2):nth-last-child(2) > .btn {
+          &:hover {
+            box-shadow: 0 40px 25px rgba(17, 15, 15, 0.25);
+          }
+          &:focus {
+            box-shadow: 0 40px 25px rgba(17, 15, 15, 0.25),
+              0 0 0 0.2rem transparentize($primary, 0.5);
+          }
+        }
+      }
+    }
+    .hero-img-container {
+      align-self: normal;
+      display: flex;
+      align-items: center;
+      @include media-breakpoint-up(xl) {
+        background-image: url("../images/triangles.svg");
+        flex-basis: 40%;
+        background-repeat: repeat;
+        background-position: left;
+      }
+      // .hero-img {
+      //   height: 100%;
+      //   display: none;
+      //   padding-left: 2.5rem;
+      //   @include media-breakpoint-up(xl) {
+      //     display: block;
+      // }
+    // }
+  }
+
+    .hero-footer {
+      height: 6.5rem;
+      justify-content: center;
+    }
+  }
+  #down-arrow {
+    fill: $secondary;
+  }
+}
+
+nav.hero-menu  {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background-color: #ffffff;
+  top: 0vh;
+  right: 0vh;
+  z-index: 1000;
+  flex-wrap: wrap;
+  @include media-breakpoint-up(xl) {
+    flex-wrap: nowrap;
+  }
+
+  .user-icon {
+    display: block;
+    align-items: center;
+    align-self: center;
+    padding-right: 0;
+    max-width: 4.5rem;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    font-size: 0.875rem;
+    line-height: 1rem;
+    i {
+      display: none;
+    }
+    @include media-breakpoint-up(sm) {
+      display: flex;
+      max-width: none;
+      padding-right: 1.5rem;
+      font-size: 1rem;
+      line-height: 1.25rem;
+    }
+    @include media-breakpoint-up(lg) {
+      i {
+        display: block;
+      }
+    }
+  }
+  .nav-buttons {
+    ul {
+      align-items: center;
+      margin-bottom: 0;
+      margin-left: 0.75rem;
+      li:not(:last-child) {
+        margin-right: 0.5rem;
+      }
+    }
+  }
+  .divider {
+    border-top:none;
+    height:100%;
+    margin-right: 0.5rem;
+    border-right: 1px solid $border;
+  }
+  
+}
+
+.portal-hud {
+  background: $secondary-dark;
+  color: white;
+  h1, h2 {
+    color: white;
+  }
+  .icon {
+    @include rfs(192);
+  }
+}
+
+#hamburger-menu {
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+  @media only screen and (min-width: 355px) {
+    margin-left: 0rem;
+    margin-right: 1.5rem;
+  }
+  @include media-breakpoint-up(sm) {
+    margin-left: 0rem;
+    margin-right: 3rem;
+  }
+}

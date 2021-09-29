@@ -18,6 +18,17 @@ Output
 Hello world /" /' /" 
 ```
 
+## httpcontext_set_item filter
+
+The `httpcontext_set_item` filter is used to set a value in the `HttpContext.Items` 
+
+Usage
+
+
+```liquid
+{{ "Key" | httpcontext_set_item: "Value" }}
+```
+
 
 ## LocalizedText (`StatCan.OrchardCore.LocalizedText`) 
 

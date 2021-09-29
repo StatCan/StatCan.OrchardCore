@@ -1,0 +1,8 @@
+msgid ""
+msgstr "Content-Type: text/plain\n"
+
+#: StatCan.OrchardCore.Vuetify\Views\WidgetStylingPart.Edit.cshtml:4
+#. <label asp-for="CustomClasses" class="form-check-label">@T["Custom classes"]</label>
+msgctxt "StatCan.OrchardCore.Vuetify.Views.WidgetStylingPart.Edit"
+msgid "Custom classes"
+msgstr "Cours personnalisés"

@@ -1,13 +1,18 @@
-<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="fa-2x fas fa-hamburger text-primary"></span>
-</button>
-<div class="order-lg-last">
-    {% shape "ContentCulturePicker" %}
+{% capture renderedItems %}
+  {% for item in Model.Items %}
+    {{ item | shape_render}}
+  {% endfor %}
+{% endcapture %}
+<div class="nav-buttons d-lg-none d-flex">
+    <a class="btn btn-outline-dark" href="#" id="hamburger-menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-label="{{ 'Toggle navigation' | t }}"><i class="mdi mdi-menu"></i></a>
+    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="hamburger-menu">
+        <ul class="list-unstyled">
+          {{renderedItems}}
+        </ul>
+    </div>
 </div>
-<div class="collapse navbar-collapse justify-content-end px-3" id="navbarNav">
-    <ul class="navbar-nav">
-        {% for item in Model.Items %}
-        {{ item | shape_render }}
-        {% endfor %}
+<div class="nav-buttons d-lg-flex d-none justify-content-end w-100 pr-5">
+    <ul class="list-unstyled d-flex">
+      {{renderedItems}}
     </ul>
 </div>

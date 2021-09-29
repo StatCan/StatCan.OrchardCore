@@ -1,0 +1,23 @@
+{% assign challenges = Queries.GetItemsForHackathon | query: type: "Challenge" %}
+<v-row>
+  <v-col cols="12">
+  <v-expansion-panels multiple>
+  {% for challenge in challenges %}
+  {% assign cShape = challenge.ContentItem | shape_build_display %}
+    {% if challenge.Published == true %}
+        <v-expansion-panel>
+          <v-expansion-panel-header class="justify-start">
+            {{ challenge.ContentItem.Content.Challenge.Name.Text | shortcode }} -
+            {{ challenge.ContentItem.Content.Challenge.ShortDescription.Text | shortcode }}
+          </v-expansion-panel-header>
+          <v-expansion-panel-content>
+            <v-list-text>{{ cShape.Content.MarkdownBodyPart | shape_render }}</v-list-text>
+          </v-expansion-panel-content>
+        </v-expansion-panel>
+        
+    {% endif %}
+  {% endfor %}
+  </v-expansion-panels>
+</v-col>
+  </v-row>
+

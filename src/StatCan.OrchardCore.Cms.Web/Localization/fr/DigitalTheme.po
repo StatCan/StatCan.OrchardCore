@@ -51,11 +51,6 @@ msgctxt "DigitalTheme.Views.OrchardCore.Users.Account.Login"
 msgid "Create an account"
 msgstr "Créer un compte"
 
-#: DigitalTheme\Views\Layout.liquid:0
-msgctxt "DigitalTheme.Views.Layout"
-msgid "Skip to main content"
-msgstr "Passer au contenu principal"
-
 #: DigitalTheme\Views\MenuItemLink-FeedbackMenuItem.liquid:0
 #: DigitalTheme\Views\MenuItemLink-FeedbackMenuItem.liquid:0
 #: DigitalTheme\Views\MenuItemLink-FeedbackMenuItem.liquid:0
@@ -179,37 +174,6 @@ msgctxt "DigitalTheme.Views.ModalProfile"
 msgid "Log out"
 msgstr "Se déconnecter"
 
-#: DigitalTheme\Views\SharedPasswordRequirementText.liquid:0
-msgctxt "DigitalTheme.Views.SharedPasswordRequirementText"
-msgid ""
-"Passwords must have:<br>• 8 characters or more<br>• an uppercase "
-"letter<br>• a lowercase letter<br>• a number<br>• a special character"
-msgstr ""
-"Les mots de passe doivent avoir:<br> • 8 caractères ou plus<br> • une "
-"lettre majuscule<br> • une lettre minuscule<br> • un numéro<br> • un "
-"caractère spécial"
-
-#: DigitalTheme\Views\SymbolCanada.liquid:0
-msgctxt "DigitalTheme.Views.SymbolCanada"
-msgid "Symbol of the Government of Canada"
-msgstr "Symbole du gouvernement du Canada"
-
-#: DigitalTheme\Views\SymbolStatisticsCanada.liquid:0
-#: DigitalTheme\Views\SymbolStatisticsCanada.liquid:0
-msgctxt "DigitalTheme.Views.SymbolStatisticsCanada"
-msgid "Statistics Canada"
-msgstr "Statistique Canada"
-
-#: DigitalTheme\Views\Widget-FatFooter.liquid:0
-msgctxt "DigitalTheme.Views.Widget-FatFooter"
-msgid "Digital Innovation logo"
-msgstr "Logo de l'innovation numérique"
-
-#: DigitalTheme\Views\Shared\NotFound.liquid:0
-msgctxt "DigitalTheme.Views.Shared.NotFound"
-msgid "We couldn't find what you're looking for"
-msgstr "Nous n'avons pas trouvé ce que vous cherchez"
-
 #: DigitalTheme\Views\OrchardCore.Users\Account\ChangePassword.liquid:0
 #: DigitalTheme\Views\OrchardCore.Users\Account\ChangePassword.liquid:0
 msgctxt "DigitalTheme.Views.OrchardCore.Users.Account.ChangePassword"
@@ -225,6 +189,21 @@ msgstr "Sécurité des comptes numériques"
 msgctxt "DigitalTheme.Views.OrchardCore.Users.Account.ChangePassword"
 msgid "New password, new beginning"
 msgstr "Nouveau mot de passe, nouveau départ"
+
+#: DigitalTheme\Views\OrchardCore.Users\Account\ChangePassword.liquid:0
+msgctxt "DigitalTheme.Views.OrchardCore.Users.Account.ChangePassword"
+msgid "Current password"
+msgstr "Mot de passe actuel"
+
+#: DigitalTheme\Views\OrchardCore.Users\Account\ChangePassword.liquid:0
+msgctxt "DigitalTheme.Views.OrchardCore.Users.Account.ChangePassword"
+msgid "New password"
+msgstr "Nouveau mot de passe"
+
+#: DigitalTheme\Views\OrchardCore.Users\Account\ChangePassword.liquid:0
+msgctxt "DigitalTheme.Views.OrchardCore.Users.Account.ChangePassword"
+msgid "Confirm new password"
+msgstr "Confirmer le nouveau mot de passe"
 
 #: DigitalTheme\Views\OrchardCore.Users\Account\ChangePasswordConfirmation.liquid:0
 msgctxt "DigitalTheme.Views.OrchardCore.Users.Account.ChangePasswordConfirmation"
@@ -254,6 +233,26 @@ msgid ""
 msgstr ""
 "Votre compte Azure a été lié! Saisissez une adresse e-mail pour recevoir "
 "les mises à jour des demandes d'espace de noms."
+
+#: DigitalTheme\Views\OrchardCore.Users\Account\RegisterExternalLogin.liquid:0
+msgctxt "DigitalTheme.Views.OrchardCore.Users.Account.RegisterExternalLogin"
+msgid "Username"
+msgstr "Nom d'utilisateur"
+
+#: DigitalTheme\Views\OrchardCore.Users\Account\RegisterExternalLogin.liquid:0
+msgctxt "DigitalTheme.Views.OrchardCore.Users.Account.RegisterExternalLogin"
+msgid "Email"
+msgstr "E-mail"
+
+#: DigitalTheme\Views\OrchardCore.Users\Account\RegisterExternalLogin.liquid:0
+msgctxt "DigitalTheme.Views.OrchardCore.Users.Account.RegisterExternalLogin"
+msgid "Password"
+msgstr "Mot de passe"
+
+#: DigitalTheme\Views\OrchardCore.Users\Account\RegisterExternalLogin.liquid:0
+msgctxt "DigitalTheme.Views.OrchardCore.Users.Account.RegisterExternalLogin"
+msgid "Confirm password"
+msgstr "Confirmez le mot de passe"
 
 #: DigitalTheme\Views\OrchardCore.Users\Account\RegisterExternalLogin.liquid:0
 msgctxt "DigitalTheme.Views.OrchardCore.Users.Account.RegisterExternalLogin"
@@ -293,6 +292,26 @@ msgstr "Créez votre compte numérique ici!"
 
 #: DigitalTheme\Views\OrchardCore.Users\Registration\Register.liquid:0
 msgctxt "DigitalTheme.Views.OrchardCore.Users.Registration.Register"
+msgid "Username"
+msgstr "Nom d'utilisateur"
+
+#: DigitalTheme\Views\OrchardCore.Users\Registration\Register.liquid:0
+msgctxt "DigitalTheme.Views.OrchardCore.Users.Registration.Register"
+msgid "Email"
+msgstr "E-mail"
+
+#: DigitalTheme\Views\OrchardCore.Users\Registration\Register.liquid:0
+msgctxt "DigitalTheme.Views.OrchardCore.Users.Registration.Register"
+msgid "Password"
+msgstr "Mot de passe"
+
+#: DigitalTheme\Views\OrchardCore.Users\Registration\Register.liquid:0
+msgctxt "DigitalTheme.Views.OrchardCore.Users.Registration.Register"
+msgid "Confirm password"
+msgstr "Confirmez le mot de passe"
+
+#: DigitalTheme\Views\OrchardCore.Users\Registration\Register.liquid:0
+msgctxt "DigitalTheme.Views.OrchardCore.Users.Registration.Register"
 msgid ""
 "Passwords must have:<br>• 8 characters or more<br>• an uppercase "
 "letter<br>• a lowercase letter<br>• a number<br>• a special character"
@@ -315,6 +334,11 @@ msgstr "Récupérer un compte numérique"
 msgctxt "DigitalTheme.Views.OrchardCore.Users.ResetPassword.ForgotPassword"
 msgid "Things happen, it's ok"
 msgstr "Les choses arrivent, c'est bon"
+
+#: DigitalTheme\Views\OrchardCore.Users\ResetPassword\ForgotPassword.liquid:0
+msgctxt "DigitalTheme.Views.OrchardCore.Users.ResetPassword.ForgotPassword"
+msgid "Email"
+msgstr "E-mail"
 
 #: DigitalTheme\Views\OrchardCore.Users\ResetPassword\ForgotPassword.liquid:0
 msgctxt "DigitalTheme.Views.OrchardCore.Users.ResetPassword.ForgotPassword"
@@ -388,6 +412,21 @@ msgctxt "DigitalTheme.Views.OrchardCore.Users.ResetPassword.ResetPassword"
 msgid "Secure and memorable"
 msgstr "Sécurisé et mémorable"
 
+#: DigitalTheme\Views\OrchardCore.Users\ResetPassword\ResetPassword.liquid:0
+msgctxt "DigitalTheme.Views.OrchardCore.Users.ResetPassword.ResetPassword"
+msgid "Confirm email"
+msgstr "Confirmez votre email"
+
+#: DigitalTheme\Views\OrchardCore.Users\ResetPassword\ResetPassword.liquid:0
+msgctxt "DigitalTheme.Views.OrchardCore.Users.ResetPassword.ResetPassword"
+msgid "New password"
+msgstr "Nouveau mot de passe"
+
+#: DigitalTheme\Views\OrchardCore.Users\ResetPassword\ResetPassword.liquid:0
+msgctxt "DigitalTheme.Views.OrchardCore.Users.ResetPassword.ResetPassword"
+msgid "Confirm new password"
+msgstr "Confirmer le nouveau mot de passe"
+
 #: DigitalTheme\Views\OrchardCore.Users\ResetPassword\ResetPasswordConfirmation.liquid:0
 msgctxt "DigitalTheme.Views.OrchardCore.Users.ResetPassword.ResetPasswordConfirmation"
 msgid "Password reset complete"
@@ -407,3 +446,34 @@ msgstr "Essayez-le"
 msgctxt "DigitalTheme.Views.OrchardCore.Users.ResetPassword.ResetPasswordConfirmation"
 msgid "Login"
 msgstr "S'identifier"
+
+#: DigitalTheme\Views\Shared\NotFound.liquid:0
+msgctxt "DigitalTheme.Views.Shared.NotFound"
+msgid "We couldn't find what you're looking for"
+msgstr "Nous n'avons pas trouvé ce que vous cherchez"
+
+#: DigitalTheme\Views\SharedPasswordRequirementText.liquid:0
+msgctxt "DigitalTheme.Views.SharedPasswordRequirementText"
+msgid ""
+"Passwords must have:<br>• 8 characters or more<br>• an uppercase "
+"letter<br>• a lowercase letter<br>• a number<br>• a special character"
+msgstr ""
+"Les mots de passe doivent avoir:<br> • 8 caractères ou plus<br> • une "
+"lettre majuscule<br> • une lettre minuscule<br> • un numéro<br> • un "
+"caractère spécial"
+
+#: DigitalTheme\Views\SymbolCanada.liquid:0
+msgctxt "DigitalTheme.Views.SymbolCanada"
+msgid "Symbol of the Government of Canada"
+msgstr "Symbole du gouvernement du Canada"
+
+#: DigitalTheme\Views\SymbolStatisticsCanada.liquid:0
+#: DigitalTheme\Views\SymbolStatisticsCanada.liquid:0
+msgctxt "DigitalTheme.Views.SymbolStatisticsCanada"
+msgid "Statistics Canada"
+msgstr "Statistique Canada"
+
+#: DigitalTheme\Views\Widget-FatFooter.liquid:0
+msgctxt "DigitalTheme.Views.Widget-FatFooter"
+msgid "Digital Innovation logo"
+msgstr "Logo de l'innovation numérique"

@@ -290,6 +290,92 @@
               }
             ]
           }
+        },
+        {
+          "ContentItemId": "4hbbwjpe9ns3w19nmrm5t5vym7",
+          "ContentItemVersionId": "4wqjyst63y799rh2w26f6m5c4j",
+          "ContentType": "Navbar",
+          "DisplayText": null,
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": "2021-09-10T17:29:10.3066493Z",
+          "PublishedUtc": "2021-09-10T17:29:10.3106363Z",
+          "CreatedUtc": "2021-09-10T17:28:58.3565485Z",
+          "Owner": "4pvwfqeeszkxxx6wbh3nywwbcv",
+          "Author": "admin",
+          "Navbar": {
+            "BrandLinkUrl": {
+              "Text": null
+            },
+            "BrandContent": {
+              "Text": null
+            },
+            "MenuAlias": {
+              "Text": "main-menu"
+            },
+            "BrandText": {
+              "Text": null
+            }
+          },
+          "LayerMetadata": {
+            "RenderTitle": false,
+            "Position": 1.0,
+            "Zone": "Header",
+            "Layer": "Anywhere"
+          }
+        },
+        {
+          "ContentItemId": "4n8hpxqwg2kxfrxfe70t62a954",
+          "ContentItemVersionId": "4724xp7zcasm9wv98ssptc275z",
+          "ContentType": "Menu",
+          "DisplayText": "Main Menu",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": "2021-09-10T17:29:57.5854188Z",
+          "PublishedUtc": "2021-09-10T17:29:57.5886921Z",
+          "CreatedUtc": "2021-09-10T17:29:43.6903826Z",
+          "Owner": "4pvwfqeeszkxxx6wbh3nywwbcv",
+          "Author": "admin",
+          "TitlePart": {
+            "Title": "Main Menu"
+          },
+          "AliasPart": {
+            "Alias": "main-menu"
+          },
+          "MenuPart": {},
+          "MenuItemsListPart": {
+            "MenuItems": [
+              {
+                "ContentItemId": "4w7trexcwmxhr1kps6mcpbh343",
+                "ContentItemVersionId": null,
+                "ContentType": "CultureMenuItem",
+                "DisplayText": "Culture Menu Item",
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": "2021-09-10T17:29:54.6859208Z",
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": null,
+                "Author": "admin",
+                "CultureMenuItem": {},
+                "TitlePart": {
+                  "Title": "Culture Menu Item"
+                }
+              }
+            ]
+          },
+          "LocalizationPart": {
+            "LocalizationSet": "4ybtddade2dqywbn3ky3kmaewm",
+            "Culture": "en"
+          },
+          "@WeldedPartSettings": {
+            "MenuPart": {
+              "Position": "3"
+            },
+            "MenuItemsListPart": {
+              "Position": "4"
+            }
+          }
         }
       ]
     }

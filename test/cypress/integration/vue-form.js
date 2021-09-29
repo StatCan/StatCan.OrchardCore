@@ -77,7 +77,7 @@ describe("VueForm Tests", function() {
     cy.visitContentPage(tenant, contentId);
 
     cy.getByCy('form-field-name').closest('.v-input').find('.v-label').should('contain', "Name");
-    cy.get('#navbar-toggle-button').click();
+    cy.get('.culture-picker').first().click({force:true});
     cy.getByCy('form-field-name').closest('.v-input').find('.v-label').should('contain', "Nom");
   })
 

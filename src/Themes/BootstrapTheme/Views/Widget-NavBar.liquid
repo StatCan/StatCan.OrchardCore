@@ -1,0 +1,9 @@
+<header class="hero-header">
+  <nav class="hero-menu d-flex justify-content-between flex-lg-nowrap">
+    <div class="fip">
+      <a href="{{ Model.ContentItem.Content.Navbar.BrandLinkUrl.Text }}" title="{{ Model.ContentItem.Content.Navbar.BrandText.Text }}">{{ Model.ContentItem.Content.Navbar.BrandContent.Text | raw }}</a>
+    </div>
+    {% assign menu = "alias:" | append: Model.ContentItem.Content.Navbar.MenuAlias.Text %}
+    {% shape "menu", alias: menu %}
+  </nav>
+</header>

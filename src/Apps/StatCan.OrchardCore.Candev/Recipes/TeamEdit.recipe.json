@@ -1,0 +1,170 @@
+{
+  "name": "Candev.TeamEdit",
+  "displayName": "TeamEdit",
+  "description": "Creates a VueForm for the team dashboard",
+  "author": "StatCan Digital Innovation",
+  "website": "digital.statcan.gc.ca",
+  "version": "1.0.0",
+  "issetuprecipe": false,
+  "categories": [],
+  "tags": [],
+  "steps": [
+    {
+      "name": "Content",
+      "data": [
+        {
+          "ContentItemId": "4466xex4gkry42s4n9x4ksyywd",
+          "ContentItemVersionId": "4q2x3s1ww7sfztqz9e7y4xdtc2",
+          "ContentType": "VueForm",
+          "DisplayText": "TeamEdit",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": "2021-08-26T17:36:58.5473001Z",
+          "PublishedUtc": "2021-08-26T17:36:58.8977937Z",
+          "CreatedUtc": "2021-07-30T17:51:00.281483Z",
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "TitlePart": {
+            "Title": "TeamEdit"
+          },
+          "VueForm": {
+            "Template": {
+              "Text": "    <v-card outlined>\r\n        <v-card-title>\r\n            [locale en]Edit my team[/locale]\r\n            [locale fr]Modifier mon équipe[/locale]\r\n        </v-card-title>\r\n        <v-card-text>\r\n\r\n            <validation-provider name=\"{{ \"teamNameLabel\" | localize }}\" rules=\"required\" v-slot=\"{ errors, valid }\">\r\n                <v-text-field name=\"teamName\" v-model=\"teamName\" :success=\"valid\" :error-messages=\"errors\" filled=\"filled\" label=\"{{ \"teamNameLabel\" | localize }}\"></v-text-field>\r\n            </validation-provider>\r\n            <validation-provider name=\"{{ \"teamDescriptionLabel\" | localize }}\" rules=\"required\" v-slot=\"{ errors, valid }\">\r\n                <v-text-field name=\"teamDescription\" v-model=\"teamDescription\" :success=\"valid\" :error-messages=\"errors\" filled=\"filled\" label=\"{{ \"teamDescriptionLabel\" | localize }}\"></v-text-field>\r\n            </validation-provider>\r\n\t\t\t<sort-draggable :list=\"topics\"\r\n                            title=\"{{ \"topicsTitleLabel\" | localize }}\"\r\n                            hint=\"{{ \"topicsHintLabel\" | localize }}\">\r\n            </sort-draggable>\r\n            </br>\r\n        <v-alert type=\"success\" v-if=\"form.successMessage\">\r\n          {% raw %}{{ form.successMessage }}{% endraw %}\r\n        </v-alert>\r\n        <v-alert type=\"error\" v-if=\"form.serverValidationMessage\">\r\n          {% raw %}{{ form.serverValidationMessage[0] }}{% endraw %}\r\n        </v-alert>\r\n    \t<v-btn type=\"submit\" depressed block @click=\"formHandleSubmit\" :disabled=\"form.submitting\">[locale en]Save[/locale][locale fr]Sauvegarder[/locale]</v-btn>\r\n        </v-card-text>\r\n    </v-card>\r\n"
+            },
+            "RenderAs": {
+              "Text": null
+            },
+            "Disabled": {
+              "Value": false
+            },
+            "Debug": {
+              "Value": false
+            },
+            "DisabledHtml": {
+              "Html": "<div class=\"container text-center mt-2\">\n  [locale en]The team edit form is currently disabled.[/locale]\n  [locale fr]Le formulaire de modification d'équipe est présentement désactivé[/locale]\n</div>"
+            },
+            "SuccessMessage": {
+              "Text": "{{ \"successMessage\" | localize }}"
+            }
+          },
+          "VueFormScripts": {
+            "ClientInit": {
+              "Text": null
+            },
+            "ComponentOptions": {
+              "Text": "{% assign user = User | user_id | users_by_id %}\r\n{% assign teamContentItemId = user.Properties.Hacker.Hacker.Team.ContentItemIds | first %}\r\n{% assign team =  Content.ContentItemId[teamContentItemId] %}\r\n{% assign topicList = Queries.GetItemsForHackathon | query: type: \"Topic\" %}\r\n\r\n{\r\n  data: () => ({\r\n    teamName: \"{{ team.Content.Team.Name.Text | js_encode }}\",\r\n\tteamDescription: \"{{ team.Content.Team.Description.Text | js_encode }}\", \r\n    topics: [\r\n        {% if team.Content.Team.Topics.ContentItemIds != null %}\r\n            {% for topic in team.Content.Team.Topics.ContentItemIds %}\r\n                {% assign topicItem =  Content.ContentItemId[topic] %}\r\n                {% if Culture.Name == \"en\" %}\r\n                    { name: \"{{topicItem.Content.Topic.NameEn.Text | js_encode }}\", id: \"{{topicItem.ContentItemId}}\" },\r\n                {% else %}\r\n                    { name: \"{{topicItem.Content.Topic.NameFr.Text | js_encode }}\", id: \"{{topicItem.ContentItemId}}\" },\r\n                {% endif %}\r\n            {% endfor %}\r\n        {% else %}\r\n        {% for topic in topicList %}\r\n            {% if Culture.Name == \"en\" %}\r\n                { name: \"{{topic.Content.Topic.NameEn.Text | js_encode }}\", id: \"{{topic.ContentItemId}}\" },\r\n            {% else %}\r\n                { name: \"{{topic.Content.Topic.NameFr.Text | js_encode }}\", id: \"{{topic.ContentItemId}}\" },\r\n            {% endif %}           \r\n        {% endfor %}\r\n        {% endif %}\r\n    ],\r\n    teamId: \"{{ team.ContentItemVersionId }}\"\r\n  })\r\n}"
+            },
+            "OnValidation": {
+              "Text": "var data = requestFormAsJsonObject();\r\nvar localizedText = getLocalizedTextValues(getFormContentItem());\r\n\r\nif(!isAuthenticated() || data.teamName == \"\" || data.teamDescription == \"\") {\r\n  addError('serverValidationMessage', localizedText.serverValidationMessage);\r\n}"
+            },
+            "OnSubmitted": {
+              "Text": "var data = requestFormAsJsonObject();\r\nvar localizedText = getLocalizedTextValues(getFormContentItem());\r\n\r\nvar updateResult = updateContentItem(contentByVersionId(data.teamId), {\r\n  \"Team\" : {\r\n     \"Name\": {\r\n       \"Text\": data.teamName\r\n     },\r\n     \"Description\": {\r\n       \"Text\": data.teamDescription\r\n     },\r\n     \"Topics\": {\r\n       \"ContentItemIds\": data[\"topics[id]\"]\r\n     }\r\n  }\r\n});\r\n\r\nif(updateResult == 1 || updateResult == 2 ) \r\n{\r\n  addError(\"serverValidationMessage\", localizedText.updateSettingsError);  \r\n}"
+            }
+          },
+          "ContentPermissionsPart": {
+            "Enabled": false,
+            "Roles": []
+          },
+          "LocalizedTextPart": {
+            "Data": [
+              {
+                "Name": "teamNameLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Nom d'équipe"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Team name"
+                  }
+                ]
+              },
+              {
+                "Name": "teamDescriptionLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Description de l'équipe"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Team description"
+                  }
+                ]
+              },
+              {
+                "Name": "successMessage",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Équipe mise à jour avec succès!"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Team updated successfully!"
+                  }
+                ]
+              },
+              {
+                "Name": "serverValidationMessage",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Une erreure est survenue lors de la soumission. Veuillez nous contacter."
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "An error occurred during submission. Please contact us."
+                  }
+                ]
+              },
+              {
+                "Name": "topicsTitleLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Sujets"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Topics"
+                  }
+                ]
+              },
+              {
+                "Name": "topicsHintLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Sélectionnez et déposez les sujets dans votre ordre d'intérêt"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Drag and drop topics in your order of interest"
+                  }
+                ]
+              },
+              {
+                "Name": "updateSettingsError",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Une erreure est survenue lors de la mise à jour de votre équipe. Veuillez contacter l'administrateur"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "An error occurred while updating your team. Please contact the site admin."
+                  }
+                ]
+              }
+            ]
+          },
+          "AliasPart": {
+            "Alias": "teamedit"
+          }
+        }
+      ]
+    }
+  ]
+}
