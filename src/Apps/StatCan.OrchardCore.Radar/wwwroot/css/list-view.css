@@ -33,28 +33,6 @@
   margin: auto;
 }
 
-.table {
-  width: 100%;
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-
-.table-header {
-  border-bottom: 2px solid#009C88;
-}
-
-.table-row {
-  background: #f6fcfb;
-  height: 48px;
-  border-bottom: 1px solid #cfece9;
-  cursor: pointer;
-  overflow-wrap: anywhere;
-}
-
-.table-row:hover {
-  background: #cfece9;
-}
-
 .search-container {
   margin: 1rem 0 1.5rem 0;
   display: flex;
@@ -69,21 +47,6 @@
 
 input:focus {
   outline: none;
-}
-
-.icon-cell {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.name-col {
-  text-align: left;
-  padding-left: 1rem;
-}
-
-.table-col {
-  text-align: center;
 }
 
 .zigzag-container {
