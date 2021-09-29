@@ -61,7 +61,7 @@
                 "Text": "var data = requestFormAsJsonObject();\r\nvar localizedText = getLocalizedTextValues(getFormContentItem());\r\n\r\nif(!isAuthenticated() || data.attendance == \"\") {\r\n  addError('serverValidationMessage', localizedText.serverValidationError);\r\n}"
               },
               "OnSubmitted": {
-                "Text": "var data = requestFormAsJsonObject();\r\nvar updateHackerSettingsResult = updateCustomUserSettings(\"Hacker\", {\r\n  \"Hacker\" : {\r\n     \"Attendance\": {\r\n       \"Value\": data.attendance\r\n     }\r\n  }\r\n});\r\n\r\nif(updateHackerSettingsResult == 1 || updateHackerSettingsResult == 2) \r\n{\r\n  addError(\"serverValidationMessage\", localizedText.updateSettingsError);  \r\n}"
+                "Text": "var data = requestFormAsJsonObject();\r\nvar updateHackerSettingsResult = updateCustomUserSettings(\"Hacker\", {\r\n  \"Hacker\" : {\r\n     \"Attendance\": {\r\n       \"Value\": data.attendance\r\n     }\r\n  }\r\n});\r\n\r\nif(updateHackerSettingsResult == 1 || updateHackerSettingsResult == 2) \r\n{\r\n  addError(\"serverValidationMessage\", localizedText.serverValidationError);  \r\n}"
               }
             },
             "ContentPermissionsPart": {
@@ -168,7 +168,4 @@
     }
     ]
 }
-    
-
-
     

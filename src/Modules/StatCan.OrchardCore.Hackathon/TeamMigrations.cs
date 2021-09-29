@@ -55,7 +55,6 @@ namespace StatCan.OrchardCore.Hackathon
             _contentDefinitionManager.AlterPartDefinition("Hacker", p => p
                 .WithDisplayName("Hacker")
                 .WithTeamField("0")
-                .WithBooleanField("Attendance", "Attendance", "1")
             );
 
             _contentDefinitionManager.AlterTypeDefinition("Hacker", type => type

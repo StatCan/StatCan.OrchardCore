@@ -187,6 +187,7 @@ namespace StatCan.OrchardCore.Candev
                     .WithDisplayName("Adult")
                     .WithPosition("6")
                 )
+                .WithBooleanField("Attendance", "Attendance", "7")
             );
 
             _contentDefinitionManager.AlterTypeDefinition("Hacker", type => type
