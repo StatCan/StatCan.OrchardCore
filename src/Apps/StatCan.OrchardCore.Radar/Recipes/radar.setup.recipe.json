@@ -10,20 +10,21 @@
   "tags": ["innovation", "inno"],
   "steps": [
     {
-      "name": "feature",
-      "disable": [],
-      "enable": [
-        "StatCan.OrchardCore.Radar",
-        "OrchardCore.Users.CustomUserSettings"
-      ]
-    },
-    {
       "name": "recipes",
       "Values": [
         {
           "executionid": "ThemeSetup",
           "name": "vuetify-theme-setup"
         }
+      ]
+    },
+    {
+      "name": "feature",
+      "disable": [],
+      "enable": [
+        "OrchardCore.Users.CustomUserSettings",
+        "OrchardCore.Users.Registration",
+        "StatCan.OrchardCore.Radar"
       ]
     },
     {
