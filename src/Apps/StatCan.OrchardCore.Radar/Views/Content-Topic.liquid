@@ -46,7 +46,7 @@
 <div class="sections-container">
     <div class="section">
         <tabs>
-          <tab slot="tab" title="{{ "Projects" | t }}" icon="mdi-flask-outline">
+          <tab slot="tab" title="{{ "Projects" | t }}" icon="mdi-flask-outline" count="{{ projects | size }}">
             <table class="table" id="entity-table">
               <thead class="table-header">
                 <tr>
@@ -64,7 +64,7 @@
               </tbody>
             </table>
           </tab>
-          <tab slot="tab" title="{{ "Events" | t }}" icon="mdi-calendar">
+          <tab slot="tab" title="{{ "Events" | t }}" icon="mdi-calendar" count="{{ events | size }}">
             <table class="table" id="entity-table">
               <thead class="table-header">
                 <tr>
@@ -81,14 +81,14 @@
               </tbody>
             </table>
           </tab>
-          <tab slot="tab" title="{{ "Communities" | t }}" icon="mdi-account-multiple">
+          <tab slot="tab" title="{{ "Communities" | t }}" icon="mdi-account-multiple" count="{{ communities | size }}">
             <table class="table" id="entity-table">
               <thead class="table-header">
                 <tr>
                   <th class="name-col">{{ "Name" | t }}</th>
-                  <th>Members</th>
-                  <th>Owner</th>
-                  <th>Type</th>
+                  <th>{{ "Members" | t }}</th>
+                  <th>{{ "Owner" | t }}</th>
+                  <th>{{ "Type" | t }}</th>
                 </tr>
               </thead>
               <tbody>
@@ -98,30 +98,18 @@
               </tbody>
             </table>
           </tab>
-          <tab slot="tab" title="{{ "Proposals" | t }}" icon="mdi-alert-circle-outline">
+          <tab slot="tab" title="{{ "Proposals" | t }}" icon="mdi-alert-circle-outline" count="{{ proposals | size }}">
             <table class="table" id="entity-table">
               <thead class="table-header">
                 <tr>
-                  <th class="name-col">Name</th>
-                  <th>Created</th>
-                  <th>Visibility</th>
+                  <th class="name-col">{{ "Name" | t }}</th>
+                  <th>{{ "Created" | t }}</th>
+                  <th>{{ "Visibility" | t }}</th>
                 </tr>
               </thead>
               <tbody>
                 {% for proposal in proposals %}
-                <tr class="table-row">
-                  <td class="name-col">{{ proposal | display_text }}</td>
-                  <td class="table-col">
-                    {{ proposal.CreatedUtc | local | date: "%b %d, %Y" }}
-                  </td>
-                  <td class="table-col">
-                    {% if proposal.Published %}
-                      Published
-                    {% else %}
-                      Draft
-                    {% endif %}
-                  </td>
-                </tr>
+                  {{ proposal | shape_build_display: "Summary" | shape_render }}
                 {% endfor %}
               </tbody>
             </table>

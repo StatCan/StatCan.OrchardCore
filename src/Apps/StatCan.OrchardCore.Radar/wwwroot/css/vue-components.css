@@ -5,7 +5,7 @@
 .selected {
   color: #212121;
   background-color: #cfece9;
-  border-bottom: 2px solid #009C88;
+  border-bottom: 2px solid #009c88;
 }
 
 .selected:hover {
@@ -15,7 +15,7 @@
 .unselected {
   color: #212121;
   background-color: #f6fcfb;
-  border-bottom: 2px solid #FFFFFF;
+  border-bottom: 2px solid #ffffff;
 }
 
 .unselected:hover {
@@ -27,5 +27,36 @@
 }
 
 .tab-header-container {
-    display: flex;
+  display: flex;
+}
+
+.count {
+  border-radius: 11px;
+  display: flex;
+  height: 22px;
+  min-width: 22px;
+  margin-left: 1rem;
+  padding: 0 0.4rem 0 0.4rem;
+}
+.count-selected {
+  background: #f6fcfb;
+  border: 1px solid #009c88;
+}
+.count-unselected {
+  background-color: #eeeeee;
+  border: 1px solid #9c9c9c;
+}
+
+.count-label {
+  margin: auto;
+  text-align: center;
+  font-size: 12px;
+}
+
+.count-label-Selected {
+  color: #227069;
+}
+
+.count-label-Unselected {
+  color: #212121;
 }
