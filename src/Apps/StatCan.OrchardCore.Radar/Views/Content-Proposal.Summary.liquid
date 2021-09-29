@@ -5,13 +5,11 @@
   <td class="table-col">
     {{ Model.ContentItem.CreatedUtc | local | date: "%b %d, %Y" }}
   </td>
-  <td class="table-col">
     <td class="table-col">
-        {% if Model.ContentItem.Published %}
-          {{ "Published" | t }}
-        {% else %}
-          {{ "Draft" | t }}
-        {% endif %}
-      </td>
-  </td>
+      {% if Model.ContentItem.Published %}
+        {{ "Published" | t }}
+      {% else %}
+        {{ "Draft" | t }}
+      {% endif %}
+    </td>
 </tr>

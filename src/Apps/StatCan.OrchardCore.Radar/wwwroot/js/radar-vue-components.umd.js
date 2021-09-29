@@ -276,14 +276,19 @@ if (typeof window !== 'undefined') {
 // Indicate to webpack that this file can be concatenated
 /* harmony default export */ var setPublicPath = (null);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"b1143254-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/Apps/StatCan.OrchardCore.Radar/Assets/js/components/Tabs.vue?vue&type=template&id=53d6747d&
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('div',{staticClass:"tabs mb-10"},_vm._l((_vm.tabs),function(tab,index){return _c('button',{key:index,class:_vm.tabButtonClasses(index),on:{"click":function($event){return _vm.selectTab(index)}}},[_c('div',{staticClass:"tab-header-container"},[_c('v-icon',{staticClass:"mr-2"},[_vm._v(" "+_vm._s(tab.icon)+" ")]),_c('div',[_vm._v(_vm._s(tab.title))])],1)])}),0),_vm._t("tab")],2)}
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"b1143254-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/Apps/StatCan.OrchardCore.Radar/Assets/js/components/Tabs.vue?vue&type=template&id=06db3626&
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('div',{staticClass:"tabs mb-10"},_vm._l((_vm.tabs),function(tab,index){return _c('button',{key:index,class:_vm.tabButtonClasses(index),on:{"click":function($event){return _vm.selectTab(index)}}},[_c('div',{staticClass:"tab-header-container"},[_c('v-icon',{staticClass:"mr-2"},[_vm._v(" "+_vm._s(tab.icon)+" ")]),_c('div',[_vm._v(_vm._s(tab.title))]),_c('div',{class:_vm.tabCountClasses(index)},[_c('div',{class:_vm.tabCountLabelClasses(index)},[_c('span',[_vm._v(_vm._s(tab.count))])])])],1)])}),0),_vm._t("tab")],2)}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/Apps/StatCan.OrchardCore.Radar/Assets/js/components/Tabs.vue?vue&type=template&id=53d6747d&
+// CONCATENATED MODULE: ./src/Apps/StatCan.OrchardCore.Radar/Assets/js/components/Tabs.vue?vue&type=template&id=06db3626&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/Apps/StatCan.OrchardCore.Radar/Assets/js/components/Tabs.vue?vue&type=script&lang=js&
+//
+//
+//
+//
+//
 //
 //
 //
@@ -328,6 +333,12 @@ var staticRenderFns = []
     },
     tabButtonClasses: function tabButtonClasses(index) {
       return "".concat(index === this.selectedIndex ? "selected" : "unselected", " tab-button");
+    },
+    tabCountClasses: function tabCountClasses(index) {
+      return "".concat(index === this.selectedIndex ? "count-selected" : "count-unselected", " count");
+    },
+    tabCountLabelClasses: function tabCountLabelClasses(index) {
+      return "".concat(index === this.selectedIndex ? "count-label-selected" : "count-label-unselected", " count-label");
     }
   }
 });
@@ -3141,12 +3152,12 @@ var Tabs_component = normalizeComponent(
 
 installComponents_default()(Tabs_component, {VIcon: components_VIcon_VIcon})
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"b1143254-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/Apps/StatCan.OrchardCore.Radar/Assets/js/components/Tab.vue?vue&type=template&id=2083e0de&
-var Tabvue_type_template_id_2083e0de_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.isActive),expression:"isActive"}]},[_vm._t("default")],2)}
-var Tabvue_type_template_id_2083e0de_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"b1143254-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/Apps/StatCan.OrchardCore.Radar/Assets/js/components/Tab.vue?vue&type=template&id=47bcccc2&
+var Tabvue_type_template_id_47bcccc2_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.isActive),expression:"isActive"}]},[_vm._t("default")],2)}
+var Tabvue_type_template_id_47bcccc2_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/Apps/StatCan.OrchardCore.Radar/Assets/js/components/Tab.vue?vue&type=template&id=2083e0de&
+// CONCATENATED MODULE: ./src/Apps/StatCan.OrchardCore.Radar/Assets/js/components/Tab.vue?vue&type=template&id=47bcccc2&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/Apps/StatCan.OrchardCore.Radar/Assets/js/components/Tab.vue?vue&type=script&lang=js&
 //
@@ -3157,7 +3168,7 @@ var Tabvue_type_template_id_2083e0de_staticRenderFns = []
 //
 /* harmony default export */ var Tabvue_type_script_lang_js_ = ({
   name: "Tab",
-  props: ["title", "icon"],
+  props: ["title", "icon", "count"],
   data: function data() {
     return {
       isActive: false
@@ -3176,8 +3187,8 @@ var Tabvue_type_template_id_2083e0de_staticRenderFns = []
 
 var Tab_component = normalizeComponent(
   components_Tabvue_type_script_lang_js_,
-  Tabvue_type_template_id_2083e0de_render,
-  Tabvue_type_template_id_2083e0de_staticRenderFns,
+  Tabvue_type_template_id_47bcccc2_render,
+  Tabvue_type_template_id_47bcccc2_staticRenderFns,
   false,
   null,
   null,

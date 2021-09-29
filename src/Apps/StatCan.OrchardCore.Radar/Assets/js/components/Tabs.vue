@@ -12,6 +12,11 @@
             {{ tab.icon }}
           </v-icon>
           <div>{{ tab.title }}</div>
+          <div :class="tabCountClasses(index)">
+            <div :class="tabCountLabelClasses(index)">
+              <span>{{ tab.count }}</span>
+            </div>
+          </div>
         </div>
       </button>
     </div>
@@ -45,6 +50,18 @@ export default {
       return `${
         index === this.selectedIndex ? "selected" : "unselected"
       } tab-button`;
+    },
+    tabCountClasses(index) {
+      return `${
+        index === this.selectedIndex ? "count-selected" : "count-unselected"
+      } count`;
+    },
+    tabCountLabelClasses(index) {
+      return `${
+        index === this.selectedIndex
+          ? "count-label-selected"
+          : "count-label-unselected"
+      } count-label`;
     }
   }
 };
