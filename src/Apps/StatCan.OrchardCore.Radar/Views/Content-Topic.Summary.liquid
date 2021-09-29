@@ -1,10 +1,12 @@
 {% style src:"~/StatCan.OrchardCore.Radar/css/topic.css" %}
 
-<div class="topic">
+<a href="{{ Model.ContentItem | display_url }}">
+  <div class="topic">
     <v-icon color="white" class="mr-1" style="font-size: 20px">
-        mdi-pound
+      mdi-pound
     </v-icon>
     <div class="label">
-        {{ Model.ContentItem | display_text }}
+      {{ Model.ContentItem | display_text }}
     </div>
-</div>
+  </div>
+</a>

@@ -1,22 +1,19 @@
 [
   {
     "copy": true,
-    "inputs": [
-      "Assets/css/*"
-    ],
+    "inputs": ["Assets/css/*"],
     "output": "wwwroot/css/@"
   },
   {
     "copy": true,
-    "inputs": [
-      "Assets/images/*"
-    ],
+    "inputs": ["Assets/images/*"],
     "output": "wwwroot/images/@"
   },
   {
     "vue": true,
     "file": "Assets/js/RadarComponents.js",
     "output": "wwwroot/js",
-    "name": "radar-vue-components"
+    "name": "radar-vue-components",
+    "watch": ["Assets/js/components/*"]
   }
 ]

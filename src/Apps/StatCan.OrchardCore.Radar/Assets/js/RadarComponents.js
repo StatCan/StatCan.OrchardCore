@@ -1,3 +1,5 @@
-import RadarTable from "./components/RadarTable.vue";
+import Tabs from "./components/Tabs.vue";
+import Tab from "./components/Tab.vue";
 
-Vue.component("radar-table", RadarTable);
+Vue.component("tabs", Tabs);
+Vue.component("tab", Tab);

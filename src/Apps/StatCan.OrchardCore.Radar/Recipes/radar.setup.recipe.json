@@ -594,6 +594,13 @@
           "Name": "TopicTrendingDownSQL",
           "Source": "Sql",
           "Schema": null
+        },
+        {
+          "Template": "select DocumentId\r\n\tfrom TaxonomyIndex \r\n\twhere ContentField = @type and TermContentItemId = @id",
+          "ReturnDocuments": true,
+          "Name": "TaxonomyEntitiesSQL",
+          "Source": "Sql",
+          "Schema": null
         }
       ]
     }
