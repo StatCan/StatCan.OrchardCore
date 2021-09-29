@@ -1,0 +1,89 @@
+{
+  "name": "SurveyJSExampleForm",
+  "displayName": "SurveyJS Example Form",
+  "description": "Creates a form to exemplify the integration of SurveyJS.",
+  "author": "StatCan Digital Innovation",
+  "website": "digital.statcan.gc.ca",
+  "version": "1.0.0",
+  "issetuprecipe": false,
+  "categories": [],
+  "tags": ["SurveyJS", "Example","Form"],
+  "steps": [
+    {
+      "name": "feature",
+      "disable": [],
+      "enable": [
+        "StatCan.OrchardCore.VueForms.Localized",
+        "OrchardCore.Workflows.Http",
+        "StatCan.OrchardCore.VueForms.Survey"
+      ]
+    }, 
+    {
+      "name": "content",
+      "data": [
+        {
+          "ContentItemId": "4mvh4aphkaa6gr9bdyxxn5hk5w",
+          "ContentItemVersionId": "4n02a7018y9vpv75d46p3prbxe",
+          "ContentType": "VueForm",
+          "DisplayText": "SurveyJS Example Form",
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "TitlePart": {
+            "Title": "SurveyJS Example Form"
+          },
+          "VueForm": {
+            "Template": {
+              "Text": "<survey :survey=\"survey\"></survey>"
+            },
+            "RenderAs": {
+              "Text": null
+            },
+            "Disabled": {
+              "Value": false
+            },
+            "Debug": {
+              "Value": false
+            },
+            "DisabledHtml": {
+              "Html": ""
+            },
+            "SuccessMessage": {
+              "Text": null
+            }
+          },
+          "AliasPart": {
+            "Alias": "surveyJS-example-form"
+          },
+          "VueFormScripts": {
+            "ClientInit": {
+              "Text": null
+            },
+            "ComponentOptions": {
+              "Text": null
+            },
+            "OnValidation": {
+              "Text": null
+            },
+            "OnSubmitted": {
+              "Text": null
+            }
+          },
+          "ContentPermissionsPart": {
+            "Enabled": false,
+            "Roles": []
+          },
+          "VueFormSurvey": {
+            "SurveyJson": {
+              "Text": "{\r\n \"pages\": [\r\n  {\r\n   \"name\": \"page1\",\r\n   \"elements\": [\r\n    {\r\n     \"type\": \"text\",\r\n     \"name\": \"question1\",\r\n     \"title\": \"What is your name?\"\r\n    },\r\n    {\r\n     \"type\": \"checkbox\",\r\n     \"name\": \"test\",\r\n     \"title\": \"Select the programming languages you prefer\",\r\n     \"isRequired\": true,\r\n     \"choices\": [\r\n      \"Javascript\",\r\n      \"Java\",\r\n      \"Python\",\r\n      \"CSS\",\r\n      \"PHP\",\r\n      \"Ruby\",\r\n      \"C++\",\r\n      \"C\",\r\n      \"Shell\",\r\n      \"C#\",\r\n      \"Objective-C\",\r\n      \"R\",\r\n      \"VimL\",\r\n      \"Go\",\r\n      \"Perl\",\r\n      \"CoffeeScript\",\r\n      \"TeX\",\r\n      \"Swift\",\r\n      \"Scala\",\r\n      \"Emacs List\",\r\n      \"Haskell\",\r\n      \"Lua\",\r\n      \"Clojure\",\r\n      \"Matlab\",\r\n      \"Arduino\",\r\n      \"Makefile\",\r\n      \"Groovy\",\r\n      \"Puppet\",\r\n      \"Rust\",\r\n      \"PowerShell\"\r\n     ],\r\n     \"colCount\": 4\r\n    }\r\n   ],\r\n   \"title\": \"SurveyJS example\"\r\n  }\r\n ]\r\n}"
+            }
+          },
+          "LocalizedTextPart": {
+            "Data": []
+          }
+        }
+      ]
+    }
+  ]
+}
