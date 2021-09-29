@@ -10,6 +10,7 @@
     -->
 
     <!-- Libs -->
+    <ProjectReference Include="..\..\Apps\StatCan.OrchardCore.Candev\StatCan.OrchardCore.Candev.csproj" />
     <ProjectReference Include="..\StatCan.OrchardCore.Extensions\StatCan.OrchardCore.Extensions.csproj" PrivateAssets="none" />
     <ProjectReference Include="..\StatCan.OrchardCore.Manifest\StatCan.OrchardCore.Manifest.csproj" PrivateAssets="none" />
     <ProjectReference Include="..\StatCan.OrchardCore.Security\StatCan.OrchardCore.Security.csproj" PrivateAssets="none" />
