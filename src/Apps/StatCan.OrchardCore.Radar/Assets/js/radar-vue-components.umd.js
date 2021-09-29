@@ -96,6 +96,17 @@ return /******/ (function(modules) { // webpackBootstrap
 /************************************************************************/
 /******/ ({
 
+/***/ "0b5b":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_TabTitle_vue_vue_type_style_index_0_id_2d6d52a6_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("6704");
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_TabTitle_vue_vue_type_style_index_0_id_2d6d52a6_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_TabTitle_vue_vue_type_style_index_0_id_2d6d52a6_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* unused harmony reexport * */
+
+
+/***/ }),
+
 /***/ "4804":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -126,6 +137,13 @@ module.exports = function installComponents (component, components) {
   }
 }
 
+
+/***/ }),
+
+/***/ "6704":
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
 
 /***/ }),
 
@@ -3141,6 +3159,51 @@ var Tabs_component = normalizeComponent(
 
 installComponents_default()(Tabs_component, {VIcon: components_VIcon_VIcon})
 
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"b1143254-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/Apps/StatCan.OrchardCore.Radar/Assets/js/components/TabTitle.vue?vue&type=template&id=2d6d52a6&scoped=true&
+var TabTitlevue_type_template_id_2d6d52a6_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _vm._m(0)}
+var TabTitlevue_type_template_id_2d6d52a6_scoped_true_staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"unselected"},[_c('div',{staticClass:"label"},[_vm._v(" asfafasfasf ")])])}]
+
+
+// CONCATENATED MODULE: ./src/Apps/StatCan.OrchardCore.Radar/Assets/js/components/TabTitle.vue?vue&type=template&id=2d6d52a6&scoped=true&
+
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/Apps/StatCan.OrchardCore.Radar/Assets/js/components/TabTitle.vue?vue&type=script&lang=js&
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ var TabTitlevue_type_script_lang_js_ = ({
+  name: "TabTitle"
+});
+// CONCATENATED MODULE: ./src/Apps/StatCan.OrchardCore.Radar/Assets/js/components/TabTitle.vue?vue&type=script&lang=js&
+ /* harmony default export */ var components_TabTitlevue_type_script_lang_js_ = (TabTitlevue_type_script_lang_js_); 
+// EXTERNAL MODULE: ./src/Apps/StatCan.OrchardCore.Radar/Assets/js/components/TabTitle.vue?vue&type=style&index=0&id=2d6d52a6&scoped=true&lang=css&
+var TabTitlevue_type_style_index_0_id_2d6d52a6_scoped_true_lang_css_ = __webpack_require__("0b5b");
+
+// CONCATENATED MODULE: ./src/Apps/StatCan.OrchardCore.Radar/Assets/js/components/TabTitle.vue
+
+
+
+
+
+
+/* normalize component */
+
+var TabTitle_component = normalizeComponent(
+  components_TabTitlevue_type_script_lang_js_,
+  TabTitlevue_type_template_id_2d6d52a6_scoped_true_render,
+  TabTitlevue_type_template_id_2d6d52a6_scoped_true_staticRenderFns,
+  false,
+  null,
+  "2d6d52a6",
+  null
+  
+)
+
+/* harmony default export */ var TabTitle = (TabTitle_component.exports);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"b1143254-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/Apps/StatCan.OrchardCore.Radar/Assets/js/components/Tab.vue?vue&type=template&id=2083e0de&
 var Tabvue_type_template_id_2083e0de_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.isActive),expression:"isActive"}]},[_vm._t("default")],2)}
 var Tabvue_type_template_id_2083e0de_staticRenderFns = []
@@ -3189,7 +3252,9 @@ var Tab_component = normalizeComponent(
 // CONCATENATED MODULE: ./src/Apps/StatCan.OrchardCore.Radar/Assets/js/RadarComponents.js
 
 
+
 Vue.component("tabs", Tabs);
+Vue.component("tab-title", TabTitle);
 Vue.component("tab", Tab);
 // CONCATENATED MODULE: ./node_modules/@vue/cli-service/lib/commands/build/entry-lib-no-default.js
 

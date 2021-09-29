@@ -1,0 +1,26 @@
+.table-row {
+  background: #f6fcfb;
+  height: 48px;
+  border-bottom: 1px solid #cfece9;
+  cursor: pointer;
+  overflow-wrap: anywhere;
+}
+
+.table-row:hover {
+  background: #cfece9;
+}
+
+.name-col {
+  text-align: left;
+  padding-left: 1rem;
+}
+
+.table-col {
+  text-align: center;
+}
+
+.icon-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

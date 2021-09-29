@@ -1,0 +1,31 @@
+.tabs {
+  display: flex;
+}
+
+.selected {
+  color: #212121;
+  background-color: #cfece9;
+  border-bottom: 2px solid #009C88;
+}
+
+.selected:hover {
+  background-color: #cfece9;
+}
+
+.unselected {
+  color: #212121;
+  background-color: #f6fcfb;
+  border-bottom: 2px solid #FFFFFF;
+}
+
+.unselected:hover {
+  background-color: #cfece9;
+}
+
+.tab-button {
+  padding: 0.5rem 1rem;
+}
+
+.tab-header-container {
+    display: flex;
+}

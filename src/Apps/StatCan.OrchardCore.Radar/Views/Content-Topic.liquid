@@ -1,0 +1,131 @@
+{% style src:"~/StatCan.OrchardCore.Radar/css/topic.css" %}
+{% style src:"~/StatCan.OrchardCore.Radar/css/details-view.css" %}
+{% style src:"~/StatCan.OrchardCore.Radar/css/table.css" %}
+{% style src:"~/StatCan.OrchardCore.Radar/css/vue-components.css" %}
+{% script name:"Radar-vue-components", at: "Foot" %}
+
+{{ Model | console_log }}
+
+{% zone "Header" %}
+<div class="pt-12">
+  <div class="header">
+    <v-container>
+      <v-row justify="space-between">
+        <v-col md="4">
+          <div class="title-container">
+            <div class="text-h3 name">{{ Model.ContentItem | display_text }}</div>
+            <div class="text-body-1 description">
+                {{ Model.ContentItem.Content.Topic.Description.Text }}
+            </div>
+          </div>
+        </v-col>
+        <v-col md="1">
+            <div style="width: 7rem; height: 7rem">
+                <v-img
+                  src="{{ "icon_topics.svg" | asset_url }}"
+                >
+                </v-img>
+              </div>
+        </v-col>
+      </v-row>
+    </v-container>
+  </div>
+  <div class="zigzag-container">
+    <div class="zigzag zigzag-white"></div>
+  </div>
+</div>
+{% endzone %}
+
+{% assign entities = Queries.TaxonomyEntitiesSQL | query: type: "Topics", id: Model.ContentItem.ContentItemId %}
+
+{% assign projects = entities | where: "ContentType", "Project" %}
+{% assign communities = entities | where: "ContentType", "Community" %}
+{% assign proposals = entities | where: "ContentType", "Proposal" %}
+{% assign events = entities | where: "ContentType", "Event" %}
+
+<div class="sections-container">
+    <div class="section">
+        <tabs>
+          <tab slot="tab" title="{{ "Projects" | t }}" icon="mdi-flask-outline">
+            <table class="table" id="entity-table">
+              <thead class="table-header">
+                <tr>
+                  <th class="name-col">{{ "Name" | t }}</th>
+                  <th>{{ "Updated" | t }}</th>
+                  <th>{{ "Registrar" | t }}</th>
+                  <th>{{ "Visibility" | t }}</th>
+                  <th>{{ "Created" | t }}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for project in projects %}
+                  {{ project | shape_build_display: "Summary" | shape_render }}
+                {% endfor %}
+              </tbody>
+            </table>
+          </tab>
+          <tab slot="tab" title="{{ "Events" | t }}" icon="mdi-calendar">
+            <table class="table" id="entity-table">
+              <thead class="table-header">
+                <tr>
+                  <th class="name-col">{{ "Name" | t }}</th>
+                  <th>{{ "Date" | t }}</th>
+                  <th>{{ "Organizer" | t }}</th>
+                  <th>{{ "Visibility" | t }}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for event in events %}
+                  {{ event | shape_build_display: "Summary" | shape_render }}
+                {% endfor %}
+              </tbody>
+            </table>
+          </tab>
+          <tab slot="tab" title="{{ "Communities" | t }}" icon="mdi-account-multiple">
+            <table class="table" id="entity-table">
+              <thead class="table-header">
+                <tr>
+                  <th class="name-col">{{ "Name" | t }}</th>
+                  <th>Members</th>
+                  <th>Owner</th>
+                  <th>Type</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for community in communities %}
+                  {{ community | shape_build_display: "Summary" | shape_render }}
+                {% endfor %}
+              </tbody>
+            </table>
+          </tab>
+          <tab slot="tab" title="{{ "Proposals" | t }}" icon="mdi-alert-circle-outline">
+            <table class="table" id="entity-table">
+              <thead class="table-header">
+                <tr>
+                  <th class="name-col">Name</th>
+                  <th>Created</th>
+                  <th>Visibility</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for proposal in proposals %}
+                <tr class="table-row">
+                  <td class="name-col">{{ proposal | display_text }}</td>
+                  <td class="table-col">
+                    {{ proposal.CreatedUtc | local | date: "%b %d, %Y" }}
+                  </td>
+                  <td class="table-col">
+                    {% if proposal.Published %}
+                      Published
+                    {% else %}
+                      Draft
+                    {% endif %}
+                  </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </tab>
+        </tabs>
+    </div>
+</div>

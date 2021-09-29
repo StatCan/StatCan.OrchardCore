@@ -1,0 +1,21 @@
+{% style src:"~/StatCan.OrchardCore.Radar/css/table-row.css" %}
+
+{% assign owner = Model.ContentItem.Owner | users_by_id %}
+
+<tr class="table-row">
+    <td class="name-col">{{ Model.ContentItem | display_text }}</td>
+    <td class="table-col">
+      {{ Model.ContentItem.ModifiedUtc | local | date: "%b %d, %Y" }}
+    </td>
+    <td class="table-col">{{ owner.Properties.UserProfile.UserProfile.FirstName.Text }} {{ owner.Properties.UserProfile.UserProfile.LastName.Text }}</td>
+    <td class="table-col">
+      {% if Model.ContentItem.Published %}
+        {{ "Published" | t }}
+      {% else %}
+      {{ "Draft" | t }}
+      {% endif %}
+    </td>
+    <td class="table-col">
+      {{ Model.ContentItem.CreatedUtc | local | date: "%b %d, %Y" }}
+    </td>
+  </tr>
