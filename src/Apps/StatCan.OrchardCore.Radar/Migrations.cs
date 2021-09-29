@@ -452,8 +452,11 @@ namespace StatCan.OrchardCore.Radar
                         .Draftable()
                         .Versionable()
                         .Securable()
+                        .WithPart("LocalizationPart", part => part
+                            .WithPosition("0")
+                        )
                         .WithPart(Constants.ContentTypes.Project, part => part
-                            .WithPosition("4")
+                            .WithPosition("2")
                         )
                         .WithPart(nameof(RadarEntityPart), part => part
                             .WithPosition("1")
@@ -467,12 +470,12 @@ namespace StatCan.OrchardCore.Radar
                             })
                         )
                         .WithPart("ContentPermissionsPart", part => part
-                            .WithPosition("5")
+                            .WithPosition("3")
                         )
                         .WithPart("Workspace", "BagPart", part => part
                             .WithDisplayName("Workspace")
                             .WithDescription("Add an Artifact to your workspace of this project")
-                            .WithPosition("2")
+                            .WithPosition("5")
                             .WithSettings(new BagPartSettings
                             {
                                 ContainedContentTypes = new[] { Constants.ContentTypes.Artifact },
@@ -481,7 +484,7 @@ namespace StatCan.OrchardCore.Radar
                         .WithPart(Constants.ContentTypes.ProjectMember, "BagPart", part => part
                             .WithDisplayName("Project Member")
                             .WithDescription("Add a member to this project")
-                            .WithPosition("3")
+                            .WithPosition("4")
                             .WithSettings(new BagPartSettings
                             {
                                 ContainedContentTypes = new[] { Constants.ContentTypes.ProjectMember },
@@ -563,14 +566,17 @@ namespace StatCan.OrchardCore.Radar
                 .Draftable()
                 .Versionable()
                 .Securable()
+                .WithPart("LocalizationPart", part => part
+                    .WithPosition("0")
+                )
                 .WithPart(Constants.ContentTypes.Event, part => part
-                    .WithPosition("1")
+                    .WithPosition("2")
                 )
                 .WithPart("ContentPermissionsPart", part => part
-                    .WithPosition("5")
+                    .WithPosition("3")
                 )
                 .WithPart(nameof(RadarEntityPart), part => part
-                    .WithPosition("2")
+                    .WithPosition("1")
                 )
                 .WithPart("TitlePart", part => part
                     .WithPosition("0")
@@ -583,7 +589,7 @@ namespace StatCan.OrchardCore.Radar
                 .WithPart(Constants.ContentTypes.EventOrganizer, "BagPart", part => part
                     .WithDisplayName("Event Organizer")
                     .WithDescription("Event Organizer")
-                    .WithPosition("3")
+                    .WithPosition("4")
                     .WithSettings(new BagPartSettings
                     {
                         ContainedContentTypes = new[] { Constants.ContentTypes.EventOrganizer },
@@ -592,7 +598,7 @@ namespace StatCan.OrchardCore.Radar
                 .WithPart("Workspace", "BagPart", part => part
                     .WithDisplayName("Workspace")
                     .WithDescription("Add an Artifact to your workspace of this event")
-                    .WithPosition("4")
+                    .WithPosition("5")
                     .WithSettings(new BagPartSettings
                     {
                         ContainedContentTypes = new[] { Constants.ContentTypes.Artifact },
@@ -678,8 +684,11 @@ namespace StatCan.OrchardCore.Radar
                 .Draftable()
                 .Versionable()
                 .Securable()
+                .WithPart("LocalizationPart", part => part
+                    .WithPosition("0")
+                )
                 .WithPart(Constants.ContentTypes.Community, part => part
-                    .WithPosition("4")
+                    .WithPosition("2")
                 )
                 .WithPart("TitlePart", part => part
                     .WithPosition("0")
@@ -693,12 +702,12 @@ namespace StatCan.OrchardCore.Radar
                     .WithPosition("1")
                 )
                 .WithPart("ContentPermissionsPart", part => part
-                    .WithPosition("5")
+                    .WithPosition("3")
                 )
                 .WithPart("Workspace", "BagPart", part => part
                     .WithDisplayName("Workspace")
                     .WithDescription("Add an Artifact to your workspace of this community")
-                    .WithPosition("2")
+                    .WithPosition("5")
                     .WithSettings(new BagPartSettings
                     {
                         ContainedContentTypes = new[] { Constants.ContentTypes.Artifact },
@@ -707,7 +716,7 @@ namespace StatCan.OrchardCore.Radar
                 .WithPart(Constants.ContentTypes.CommunityMember, "BagPart", part => part
                     .WithDisplayName("Community Member")
                     .WithDescription("Add a member to this community")
-                    .WithPosition("3")
+                    .WithPosition("4")
                     .WithSettings(new BagPartSettings
                     {
                         ContainedContentTypes = new[] { Constants.ContentTypes.CommunityMember },
