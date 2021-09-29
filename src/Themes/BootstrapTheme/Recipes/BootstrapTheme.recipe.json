@@ -1,0 +1,107 @@
+{
+  "name": "bootstrap-theme-setup",
+  "displayName": "Bootstrap Theme Setup",
+  "description": "Recipe to setup the Bootstrap Theme",
+  "author": "Digital Innovation team",
+  "website": "https://digital.statcan.gc.ca",
+  "version": "1.0",
+  "issetuprecipe": true,
+  "categories": ["Bootstrap"],
+  "tags": [],
+  "steps": [
+    {
+      "name": "Feature",
+      "enable": [
+        "Application.Default",
+        "StatCan.OrchardCore.Cms.Web",
+        "OrchardCore.Liquid",
+        "OrchardCore.Resources",
+        "OrchardCore.Settings",
+        "OrchardCore.Contents",
+        "OrchardCore.ContentTypes",
+        "OrchardCore.Autoroute",
+        "OrchardCore.Widgets",
+        "OrchardCore.Flows",
+        "OrchardCore.Title",
+        "OrchardCore.Shortcodes",
+        "OrchardCore.Html",
+        "OrchardCore.Admin",
+        "OrchardCore.Templates",
+        "OrchardCore.Alias",
+        "OrchardCore.Features",
+        "OrchardCore.Scripting",
+        "OrchardCore.Recipes",
+        "OrchardCore.ContentFields",
+        "OrchardCore.Users",
+        "OrchardCore.Localization",
+        "OrchardCore.ContentLocalization",
+        "OrchardCore.ContentLocalization.ContentCulturePicker",
+        "OrchardCore.ContentPreview",
+        "OrchardCore.Deployment",
+        "OrchardCore.Contents.Deployment.Download",
+        "OrchardCore.CustomSettings",
+        "OrchardCore.Diagnostics",
+        "OrchardCore.DynamicCache",
+        "OrchardCore.Email",
+        "OrchardCore.HomeRoute",
+        "OrchardCore.Https",
+        "OrchardCore.Indexing",
+        "OrchardCore.Rules",
+        "OrchardCore.Layers",
+        "OrchardCore.Markdown",
+        "OrchardCore.Media",
+        "OrchardCore.Menu",
+        "OrchardCore.Navigation",
+        "OrchardCore.Placements",
+        "OrchardCore.Queries",
+        "OrchardCore.Roles",
+        "OrchardCore.Shortcodes.Templates",
+        "OrchardCore.Themes",
+        "OrchardCore.Users.Registration",
+        "OrchardCore.Workflows",
+        "OrchardCore.Workflows.Http",
+        "OrchardCore.Workflows.Timers",
+        "StatCan.OrchardCore.ContentPermissions",
+        "StatCan.OrchardCore.ContentFields",
+        "StatCan.OrchardCore.ContentFields.PredefinedGroup",
+        "StatCan.OrchardCore.DisplayHelpers",
+        "StatCan.OrchardCore.LocalizedText",
+        "StatCan.OrchardCore.Scripting",
+        "BootstrapTheme",
+        "TheAdmin",
+        "DigitalAdmin",
+        "SafeMode"
+      ]
+    },
+    {
+      "name": "Themes",
+      "Site": "BootstrapTheme",
+      "Admin": "DigitalAdmin"
+    },
+    {
+      "name": "Settings",
+      "AdminSettings": {
+        "DisplayDarkMode": true,
+        "DisplayMenuFilter": true,
+        "DisplayNewMenu": false,
+        "DisplayTitlesInTopbar": false
+      },
+      "LoginSettings": {
+        "UseSiteTheme": true
+      },
+      "RegistrationSettings": {
+        "UseSiteTheme": true
+      },
+      "LocalizationSettings": {
+        "DefaultCulture": "en",
+        "SupportedCultures": ["fr", "en"]
+      }
+    },
+    {
+      "name": "Settings",
+      "Calendar": "",
+      "UseCdn": false,
+      "AppendVersion": true
+    }
+  ]
+}

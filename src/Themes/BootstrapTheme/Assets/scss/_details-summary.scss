@@ -1,0 +1,153 @@
+
+.bg-red {
+  background-color: $red !important;
+}
+
+.bg-orange {
+  background-color: $orange !important;
+}
+
+.bg-lightorange {
+  background-color: $lightorange !important;
+}
+
+.bg-green {
+  background-color: $green !important;
+}
+
+.bg-teal {
+  background-color: $teal !important;
+}
+
+.bg-purple {
+  background-color: $purple !important;
+}
+
+.bg-black {
+  background-color: $black !important;
+}
+
+.bg-charcoal {
+  background-color: $charcoal !important;
+}
+
+.bg-grey {
+  background-color: $grey !important;
+}
+
+.bg-lightgrey {
+  background-color: $lightgrey !important;
+}
+
+
+///////////////// Text colors
+.text-charcoal{
+  color: $charcoal !important;
+}
+
+
+///////////////// Borders
+.border-md {
+  border-width: 2px;
+}
+
+.border-lg {
+  border-width: 4px;
+}
+
+.border-red {
+  border-color: $red !important;
+}
+
+.border-orange {
+  border-color: $orange !important;
+}
+
+.border-lightorange {
+  border-color: $lightorange !important;
+}
+
+.border-green {
+  border-color: $green !important;
+}
+
+.border-teal {
+  border-color: $teal !important;
+}
+
+.border-purple {
+  border-color: $purple !important;
+}
+
+.border-black {
+  border-color: $black !important;
+}
+
+.border-charcoal {
+  border-color: $charcoal !important;
+}
+
+.border-grey {
+  border-color: $grey !important;
+}
+
+.border-lightgrey {
+  border-color: $lightgrey !important;
+}
+
+
+
+/*****************************************
+  COMPONENTS
+******************************************/
+///////////////// Buttons
+.btn {
+  border-radius: 14px;
+  font-weight: bold;
+  padding: 0.375rem 1.5rem;
+}
+
+.btn-primary {
+  background: $teal;
+  border: $teal;
+
+  &:hover,
+  &:active {
+    background: darken($teal, 5%);
+    border: darken($teal, 5%);
+    transition: 200ms;
+  }
+
+  &:focus {
+    background: darken($teal, 10%) !important;
+  }
+}
+
+///////////////// Details/Summary
+details {
+  border: 1px solid grey;
+  margin: 6px 0px;
+  background: white;
+
+
+  div {
+    padding: 10px 20px;
+  }
+
+  summary {
+    font-weight: bold;
+    padding: 10px 20px;
+  }
+}
+details > summary {
+  list-style: none;
+}
+details > summary::-webkit-details-marker {
+  display: none;
+}
+
+#who-we-are-profiles {
+  h3 {
+    margin-top: 0;
+  }
+}
