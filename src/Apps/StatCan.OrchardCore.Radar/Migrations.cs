@@ -301,6 +301,9 @@ namespace StatCan.OrchardCore.Radar
                 .WithPart("TitlePart", part => part
                     .WithPosition("0")
                 )
+                .WithPart("HtmlBodyPart", part => part
+                    .WithPosition("2")
+                )
             );
         }
 
