@@ -1,0 +1,38 @@
+{% style src:"~/StatCan.OrchardCore.Radar/css/landing-page-card.css" %} 
+{%assign entities = Queries.AllEntitiesWithLimitSQL | query: contentType: Model.ContentItem.Content.EntityCard.Type.Text, num: Model.ContentItem.Content.EntityCard.Limit.Value %}
+
+<div class="card card-background-light">
+  <div class="card-title">
+    <div class="card-title-caption ml-5 mt-5 mb-8">
+      <v-icon color="white" class="mr-5" style="font-size: 65px;">
+        {{ Model.ContentItem.Content.EntityCard.Icon.Text }}
+      </v-icon>
+      <div class="white--text">
+        <div class="text-h5">
+            {{ Model.ContentItem | display_text }}
+        </div>
+        <div class="text-h6">
+            {{ Model.ContentItem.Content.EntityCard.Caption.Text }}
+        </div>
+      </div>
+    </div>
+    <div class="zigzag-container">
+      <div class="zigzag zigzag-light"></div>
+    </div>
+  </div>
+  {% for entity in entities %}
+  <div class="card-body">
+    <div class="mb-2">
+      <a href="{{ entity | display_url }}" class="card-item-link">{{ entity | display_text }}</a>
+    </div>
+  </div>
+  {% endfor %}
+  <a
+    href="{{ Model.ContentItem.Content.EntityCard.ButtonLink.Text }}"
+    class="black--text card-button-link"
+  >
+    <v-btn elevation="0" text class="card-button">
+      {{ Model.ContentItem.Content.EntityCard.ButtonText.Text }}
+    </v-btn>
+  </a>
+</div>

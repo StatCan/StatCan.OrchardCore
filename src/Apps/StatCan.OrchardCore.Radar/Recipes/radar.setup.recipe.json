@@ -129,25 +129,38 @@
               {
                 "ContentItemId": "[js: uuid()]",
                 "ContentItemVersionId": null,
-                "ContentType": "LandingPageCard",
+                "ContentType": "EntityCard",
                 "DisplayText": "Projects",
                 "Latest": false,
                 "Published": false,
-                "ModifiedUtc": "2021-09-24T18:52:05.0220266Z",
+                "ModifiedUtc": null,
                 "PublishedUtc": null,
                 "CreatedUtc": null,
                 "Owner": "[js: parameters('AdminUserId')]",
                 "Author": "[js: parameters('AdminUsername')]",
-                "LandingPageCard": {
+                "EntityCard": {
+                  "Type": {
+                    "Text": "Project"
+                  },
+                  "Limit": {
+                    "Value": 5.0
+                  },
+                  "Caption": {
+                    "Text": "In-flight projects"
+                  },
                   "Icon": {
                     "Text": "mdi-flask-outline"
+                  },
+                  "ButtonText": {
+                    "Text": "All Projects"
+                  },
+                  "ButtonLink": {
+                    "Text": "projects"
                   }
                 },
-                "HtmlBodyPart": {
-                  "Html": "<div class=\"text-h5\">Projects</div><div class=\"text-h6\">In-flight projects</div>"
-                },
-                "LiquidPart": {
-                  "Liquid": "{% assign projects = Queries.AllEntitiesWithLimitSQL | query: contentType: \"Project\", num: 5 %}\r\n{% assign projectList = Queries.EntityListSQL | query: name: \"Projects\" | first %}\r\n\r\n<div class=\"card-body\">\r\n{% for project in projects %}\r\n<div class=\"mb-2\">\r\n  <a href=\"{{ project | display_url }}\" class=\"card-item-link\">{{ project | display_text }}</a>\r\n</div>\r\n{% endfor %}\r\n</div>\r\n<a href=\"{{ projectList | display_url }}\" class=\"black--text card-button-link\">\r\n  <v-btn elevation=\"0\" text class=\"card-button\">\r\n    All projects\r\n  </v-btn>\r\n</a>"
+                "LocalizationPart": {
+                  "LocalizationSet": "4egqzgdmmhkcqvxb5qzbah8hdp",
+                  "Culture": "en"
                 },
                 "TitlePart": {
                   "Title": "Projects"
@@ -156,25 +169,38 @@
               {
                 "ContentItemId": "[js: uuid()]",
                 "ContentItemVersionId": null,
-                "ContentType": "LandingPageCard",
+                "ContentType": "EntityCard",
                 "DisplayText": "Events",
                 "Latest": false,
                 "Published": false,
-                "ModifiedUtc": "2021-09-24T18:52:05.0220266Z",
+                "ModifiedUtc": null,
                 "PublishedUtc": null,
                 "CreatedUtc": null,
                 "Owner": "[js: parameters('AdminUserId')]",
                 "Author": "[js: parameters('AdminUsername')]",
-                "LandingPageCard": {
+                "EntityCard": {
+                  "Type": {
+                    "Text": "Event"
+                  },
+                  "Limit": {
+                    "Value": 5.0
+                  },
+                  "Caption": {
+                    "Text": "Upcoming events"
+                  },
                   "Icon": {
                     "Text": "mdi-calendar"
+                  },
+                  "ButtonText": {
+                    "Text": "All Events"
+                  },
+                  "ButtonLink": {
+                    "Text": "events"
                   }
                 },
-                "HtmlBodyPart": {
-                  "Html": "<div class=\"text-h5\">Events</div><div class=\"text-h6\">Upcoming events</div>"
-                },
-                "LiquidPart": {
-                  "Liquid": "{% assign events = Queries.AllEntitiesWithLimitSQL | query: contentType: \"Event\", num: 5 %}\r\n{% assign eventList = Queries.EntityListSQL | query: name: \"Events\" | first %}\r\n\r\n<div class=\"card-body\">\r\n{% for event in events %}\r\n<div class=\"mb-2\">\r\n  <a href=\"{{ event | display_url }}\" class=\"card-item-link\">{{ event | display_text }}</a>\r\n</div>\r\n{% endfor %}\r\n</div>\r\n<a href=\"{{ eventList | display_url }}\" class=\"black--text card-button-link\">\r\n  <v-btn elevation=\"0\" text class=\"card-button\">\r\n    All Events\r\n  </v-btn>\r\n</a>"
+                "LocalizationPart": {
+                  "LocalizationSet": "4g33gt5aan2pdxyad05r5ergcn",
+                  "Culture": "en"
                 },
                 "TitlePart": {
                   "Title": "Events"
@@ -183,25 +209,38 @@
               {
                 "ContentItemId": "[js: uuid()]",
                 "ContentItemVersionId": null,
-                "ContentType": "LandingPageCard",
+                "ContentType": "EntityCard",
                 "DisplayText": "Committees",
                 "Latest": false,
                 "Published": false,
-                "ModifiedUtc": "2021-09-24T18:52:05.0220266Z",
+                "ModifiedUtc": null,
                 "PublishedUtc": null,
                 "CreatedUtc": null,
                 "Owner": "[js: parameters('AdminUserId')]",
                 "Author": "[js: parameters('AdminUsername')]",
-                "LandingPageCard": {
+                "EntityCard": {
+                  "Type": {
+                    "Text": "Community"
+                  },
+                  "Limit": {
+                    "Value": 5.0
+                  },
+                  "Caption": {
+                    "Text": "Latest committees"
+                  },
                   "Icon": {
                     "Text": "mdi-account-multiple"
+                  },
+                  "ButtonText": {
+                    "Text": "All Communities"
+                  },
+                  "ButtonLink": {
+                    "Text": "communities"
                   }
                 },
-                "HtmlBodyPart": {
-                  "Html": "<div class=\"text-h5\">Committees</div><div class=\"text-h6\">Latest committees</div>"
-                },
-                "LiquidPart": {
-                  "Liquid": "{% assign communities = Queries.AllEntitiesWithLimitSQL | query: contentType: \"Community\", num: 5 %}\r\n{% assign communityList = Queries.EntityListSQL | query: name: \"Communities\" | first %}\r\n\r\n<div class=\"card-body\">\r\n{% for community in communities %}\r\n<div class=\"mb-2\">\r\n  <a href=\"{{ community | display_url }}\" class=\"card-item-link\">{{ community | display_text }}</a>\r\n</div>\r\n{% endfor %}\r\n</div>\r\n<a href=\"{{ communityList | display_url }}\" class=\"black--text card-button-link\">\r\n  <v-btn elevation=\"0\" text class=\"card-button\">\r\n    All Committees\r\n  </v-btn>\r\n</a>"
+                "LocalizationPart": {
+                  "LocalizationSet": "4hj956jn7axdywb3vr7fp9pcdc",
+                  "Culture": "en"
                 },
                 "TitlePart": {
                   "Title": "Committees"
@@ -210,25 +249,38 @@
               {
                 "ContentItemId": "[js: uuid()]",
                 "ContentItemVersionId": null,
-                "ContentType": "LandingPageCard",
+                "ContentType": "EntityCard",
                 "DisplayText": "Proposals",
                 "Latest": false,
                 "Published": false,
-                "ModifiedUtc": "2021-09-24T18:52:05.0220266Z",
+                "ModifiedUtc": null,
                 "PublishedUtc": null,
                 "CreatedUtc": null,
                 "Owner": "[js: parameters('AdminUserId')]",
                 "Author": "[js: parameters('AdminUsername')]",
-                "LandingPageCard": {
+                "EntityCard": {
+                  "Type": {
+                    "Text": "Proposal"
+                  },
+                  "Limit": {
+                    "Value": 5.0
+                  },
+                  "Caption": {
+                    "Text": "Current proposals"
+                  },
                   "Icon": {
                     "Text": "mdi-alert-circle-outline"
+                  },
+                  "ButtonText": {
+                    "Text": "All Proposals"
+                  },
+                  "ButtonLink": {
+                    "Text": "proposals"
                   }
                 },
-                "HtmlBodyPart": {
-                  "Html": "<div class=\"text-h5\">Proposals</div><div class=\"text-h6\">Current proposals</div>"
-                },
-                "LiquidPart": {
-                  "Liquid": "{% assign proposals = Queries.AllEntitiesWithLimitSQL | query: contentType: \"Proposal\", num: 5 %}\r\n{% assign proposalList = Queries.EntityListSQL | query: name: \"Proposals\" | first %}\r\n\r\n<div class=\"card-body\">\r\n{% for proposal in proposals %}\r\n<div class=\"mb-2\">\r\n  <a href=\"{{ proposal | display_url }}\" class=\"card-item-link\">{{ proposal | display_text }}</a>\r\n</div>\r\n{% endfor %}\r\n</div>\r\n<a href=\"{{ proposalList | display_url }}\" class=\"black--text card-button-link\">\r\n  <v-btn elevation=\"0\" text class=\"card-button\">\r\n    All Proposals\r\n  </v-btn>\r\n</a>"
+                "LocalizationPart": {
+                  "LocalizationSet": "444sm3q8x1m6mv4cnk8b23vacc",
+                  "Culture": "en"
                 },
                 "TitlePart": {
                   "Title": "Proposals"
@@ -241,25 +293,32 @@
               {
                 "ContentItemId": "[js: uuid()]",
                 "ContentItemVersionId": null,
-                "ContentType": "LandingPageCard",
+                "ContentType": "TrendingCard",
                 "DisplayText": "Topics",
                 "Latest": false,
                 "Published": false,
-                "ModifiedUtc": "2021-09-24T18:52:05.0220266Z",
+                "ModifiedUtc": null,
                 "PublishedUtc": null,
                 "CreatedUtc": null,
                 "Owner": "[js: parameters('AdminUserId')]",
                 "Author": "[js: parameters('AdminUsername')]",
-                "LandingPageCard": {
+                "TrendingCard": {
+                  "Caption": {
+                    "Text": "Most used topics across all activities"
+                  },
+                  "Type": {
+                    "Text": "Topics"
+                  },
                   "Icon": {
                     "Text": "mdi-pound"
+                  },
+                  "ButtonText": {
+                    "Text": "All Topics"
                   }
                 },
-                "HtmlBodyPart": {
-                  "Html": "<div class=\"text-h5\">Topics</div><div class=\"text-h6\">Most used topics across all activities</div>"
-                },
-                "LiquidPart": {
-                  "Liquid": "{% assign topics = Queries.AllTaxonomiesSQL | query: type: \"Topics\" | first %}\r\n{% assign trending_up = Queries.TopicTrendingUpSQL | query %}\r\n{% assign trending_down = Queries.TopicTrendingDownSQL | query %}\r\n\r\n{% assign entities = Queries.AllTaxonomiesSQL | query: type: \"Topics\" | first %}\r\n{% assign trending_up = Queries.TopicTrendingUpSQL | query %}\r\n{% assign trending_down = Queries.TopicTrendingDownSQL | query %}\r\n\r\n<div class=\"card-body\">\r\n  <div class=\"trend-card-body mt-5\">\r\n    <div class=\"trend-container\">\r\n      <v-icon color=\"#009c88\" style=\"font-size: 145px;\">\r\n        mdi-trending-up\r\n      </v-icon>\r\n      <div class=\"ml-5\">\r\n        {% for tup in trending_up %}\r\n        {% assign e = topics.ContentItem.Content.TaxonomyPart.Terms | where: \"ContentItemId\", tup.TermContentItemId | first %}\r\n        <div class=\"mb-2\">\r\n          {{ e | shape_build_display: \"Summary\" | shape_render }}\r\n        </div>\r\n        {% endfor %}\r\n      </div>\r\n    </div>\r\n    <div class=\"trend-container\">\r\n      <v-icon color=\"#009c88\" style=\"font-size: 145px;\">\r\n        mdi-trending-down\r\n      </v-icon>\r\n      <div class=\"ml-5\">\r\n        {% for tdown in trending_down %}\r\n        {% assign e = topics.ContentItem.Content.TaxonomyPart.Terms | where: \"ContentItemId\", tdown.TermContentItemId | first %}\r\n        <div class=\"mb-2\">\r\n          {{ e | shape_build_display: \"Summary\" | shape_render }}\r\n        </div>\r\n        {% endfor %}\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n<a href=\"{{ topics | display_url }}\" class=\"black--text card-button-link\">\r\n  <v-btn elevation=\"0\" text class=\"card-button\">\r\n    All Topics\r\n  </v-btn>\r\n</a>"
+                "LocalizationPart": {
+                  "LocalizationSet": "4nmfph1ps5dd80b7n9et6dyvxn",
+                  "Culture": "en"
                 },
                 "TitlePart": {
                   "Title": "Topics"
