@@ -3,13 +3,14 @@
 {% style src:"~/StatCan.OrchardCore.Radar/css/table-row.css" %}
 
 {% assign owner = Model.ContentItem.Owner | users_by_id %}
+{% assign type = Model.ContentItem.Content.Community.Type.TagNames | first %}
 
 {% zone "Header" %}
 <div class="pt-12">
   <div class="header">
     <v-container>
       <v-row justify="space-between">
-        <v-col md="4">
+        <v-col md="7">
           <div class="title-container">
             <div class="text-h3 name">{{ Model.ContentItem | display_text }}</div>
             <div class="text-body-1 description">
@@ -42,10 +43,10 @@
                 <v-col md="4">
                     <div class="icon-cell">
                         <v-icon color="black" style="font-size: 40px;">
-                            mdi-update
+                            mdi-bookmark
                         </v-icon>
                         <div class="text-h6 icon-text">
-                            {{ Model.ContentItem.ModifiedUtc | local | date: "%b %d, %Y" }}
+                            {{ type }}
                         </div>
                     </div>
                 </v-col>
@@ -106,6 +107,28 @@
     </div>
 
     <div class="section">
-        {{ "Workspace" | shape_new: Model: Model.ContentItem.Content.Workspace | shape_render }}
+      <div class="table-title-container">
+          <div class="text-h4">
+              {{ "Events" | t }}
+          </div>
+          <div class="bubble">
+              <div class="bubble-text" id="bubble-text">{{ Model.ContentItem.Content.CommunityMember.ContentItems | size | plus: 1 }}</div>
+          </div>
+      </div>
+        <table class="table" id="entity-table">
+          <thead class="table-header">
+            <tr>
+              <th class="name-col">{{ "Name" | t }}</th>
+              <th>{{ "Date" | t }}</th>
+              <th>{{ "Organizer" | t }}</th>
+              <th>{{ "Visibility" | t }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for item in Model.ContentItem.Content.RadarEntityPart.RelatedEntity.ContentItemIds %}
+              {{ item | content_item_id | shape_build_display: "Summary" | shape_render }}
+            {% endfor %}
+          </tbody>
+        </table>
     </div>
 </div>
