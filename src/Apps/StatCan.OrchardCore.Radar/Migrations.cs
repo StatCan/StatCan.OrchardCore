@@ -846,10 +846,13 @@ namespace StatCan.OrchardCore.Radar
                 .WithPart("TitlePart", part => part
                     .WithPosition("1")
                 )
+                .WithPart("LiquidPart", part => part
+                    .WithPosition("4")
+                )
                 .WithPart("Activities", "BagPart", part => part
                     .WithDisplayName("Activities")
                     .WithDescription("Add the activity cards here")
-                    .WithPosition("4")
+                    .WithPosition("5")
                     .WithSettings(new BagPartSettings
                     {
                         ContainedContentTypes = new[] { Constants.ContentTypes.LandingPageCard },
@@ -858,7 +861,7 @@ namespace StatCan.OrchardCore.Radar
                 .WithPart("Trends", "BagPart", part => part
                     .WithDisplayName("Trends")
                     .WithDescription("Add the trend card here")
-                    .WithPosition("5")
+                    .WithPosition("6")
                     .WithSettings(new BagPartSettings
                     {
                         ContainedContentTypes = new[] { Constants.ContentTypes.LandingPageCard },
@@ -867,7 +870,7 @@ namespace StatCan.OrchardCore.Radar
                 .WithPart("Footer", "BagPart", part => part
                     .WithDisplayName("Footer")
                     .WithDescription("Add cards to the landing page footer")
-                    .WithPosition("6")
+                    .WithPosition("7")
                     .WithSettings(new BagPartSettings
                     {
                         ContainedContentTypes = new[] { Constants.ContentTypes.LandingPageFooterCard },
@@ -880,11 +883,6 @@ namespace StatCan.OrchardCore.Radar
                     .OfType("TextField")
                     .WithDisplayName("Description")
                     .WithPosition("0")
-                )
-                .WithField("Headerlist", field => field
-                    .OfType("HtmlField")
-                    .WithDisplayName("Header list")
-                    .WithPosition("1")
                 )
             );
         }

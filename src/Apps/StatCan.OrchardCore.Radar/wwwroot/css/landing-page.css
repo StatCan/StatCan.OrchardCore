@@ -2,14 +2,20 @@
   max-width: 1200px;
 }
 
-.header-text {
-  padding: 0 24rem 0 24rem;
-}
-
 .light-font {
   font-weight: lighter;
   color: #000000de;
   opacity: 1;
+}
+
+.header-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.list-item {
+  display: flex;
+  margin-bottom: 8px;
 }
 
 .name {

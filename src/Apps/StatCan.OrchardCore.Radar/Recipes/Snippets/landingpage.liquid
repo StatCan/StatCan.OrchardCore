@@ -4,7 +4,7 @@
 {% assign imagePath = Model.ContentItem.Content.LandingPage.HeaderImage.Paths.first %}
 <div>
     <div class="rippleFront" style="background-image: url('{{ "~/StatCan.OrchardCore.Radar/images/ripples-white.svg" | href }}')">
-        <div class="header-text">
+        <div>
             <v-container style="max-width: 1200px">
                 <v-row>
                     <v-col md="12">
@@ -23,7 +23,7 @@
                 <v-row>
                     <v-col md="12">
                         <div class="list">
-                            {{ Model.ContentItem.Content.LandingPage.Headerlist.Html | raw }}
+                            {{ Model.ContentItem.Content.LiqudBodyPart.Liquid | liquid }}
                         </div>
                     </v-col>
                 </v-row>
@@ -63,7 +63,7 @@
         </v-row>
         <v-row>
             {% for activity in Model.ContentItem.Content.Activities.ContentItems %}
-                <v-col md="6">
+                <v-col sm="12" md="6">
                     {% assign activityShape = activity | shape_build_display: "Detail" %}
                     {% shape_add_classes activityShape "zigzag-light card-background-light" %}
                     {{ activityShape | shape_render }}
@@ -82,9 +82,9 @@
                 </div>
             </v-col>
         </v-row>
-        <v-row>
+        <v-row justify-md="center">
             {% for trend in Model.ContentItem.Content.Trends.ContentItems %}
-                <v-col md="6">
+                <v-col sm="12" md="6">
                     {% assign trendShape = trend | shape_build_display: "Detail" %}
                     {% shape_add_classes trendShape "zigzag-dark card-background-dark" %}
                     {{ trendShape | shape_render }}

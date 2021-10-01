@@ -24,7 +24,7 @@
 
 .card-title {
   background-color: #009c88;
-  display: flex;
+  display: flex;  
   flex-direction: column;
 }
 
