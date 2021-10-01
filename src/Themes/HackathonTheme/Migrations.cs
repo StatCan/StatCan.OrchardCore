@@ -4,6 +4,8 @@ using OrchardCore.Data.Migration;
 using OrchardCore.Environment.Extensions;
 using OrchardCore.Environment.Shell;
 using OrchardCore.Themes.Services;
+using StatCan.OrchardCore.Vuetify;
+
 namespace StatCan.Themes.HackathonTheme
 {
     public class Migrations : DataMigration
@@ -64,9 +66,23 @@ namespace StatCan.Themes.HackathonTheme
 
         private async Task MigrateToVuetifyTheme()
         {
-            var vuetify = _extensionManager.GetFeatures(new []{"VuetifyTheme"});
-            await _shellFeaturesManager.EnableFeaturesAsync(vuetify);
-
+            var vuetifyModule = _extensionManager.GetFeatures(new []{
+                "VuetifyTheme",
+                "OrchardCore.ContentTypes",
+                "StatCan.OrchardCore.DisplayHelpers",
+                "StatCan.OrchardCore.Menu",
+                Constants.Features.Vuetify,
+                Constants.Features.Alert,
+                Constants.Features .Card,
+                Constants.Features .ExpansionPanel,
+                Constants.Features.Grid,
+                Constants.Features.Image,
+                Constants.Features.List,
+                Constants.Features.Schedule,
+                Constants.Features.Tabs,
+                Constants.Features.Timeline,
+            });
+            await _shellFeaturesManager.EnableFeaturesAsync(vuetifyModule, true);
             await _siteThemeService.SetSiteThemeAsync("VuetifyTheme");
         }
     }
