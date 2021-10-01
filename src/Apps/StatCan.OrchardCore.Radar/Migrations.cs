@@ -762,13 +762,11 @@ namespace StatCan.OrchardCore.Radar
         private void CreateLandingPage()
         {
             _contentDefinitionManager.AlterTypeDefinition(Constants.ContentTypes.LandingPageCard, type => type
-                .DisplayedAs(Constants.ContentTypes.LandingPageCard)
-                .Creatable()
-                .Listable()
+                .DisplayedAs("Landing Page Card")
                 .Draftable()
                 .Versionable()
                 .Securable()
-                .WithPart("LandingPageCard", part => part
+                .WithPart(Constants.ContentTypes.LandingPageCard, part => part
                     .WithPosition("1")
                 )
                 .WithPart("HtmlBodyPart", part => part
