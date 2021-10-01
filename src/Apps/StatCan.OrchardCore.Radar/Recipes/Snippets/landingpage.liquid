@@ -64,9 +64,7 @@
         <v-row>
             {% for activity in Model.ContentItem.Content.Activities.ContentItems %}
                 <v-col sm="12" md="6">
-                    {% assign activityShape = activity | shape_build_display: "Detail" %}
-                    {% shape_add_classes activityShape "zigzag-light card-background-light" %}
-                    {{ activityShape | shape_render }}
+                    {{ activity | shape_build_display: "Detail" | shape_render }}
                 </v-col>
             {% endfor %}
         </v-row>
@@ -85,9 +83,7 @@
         <v-row justify-md="center">
             {% for trend in Model.ContentItem.Content.Trends.ContentItems %}
                 <v-col sm="12" md="6">
-                    {% assign trendShape = trend | shape_build_display: "Detail" %}
-                    {% shape_add_classes trendShape "zigzag-dark card-background-dark" %}
-                    {{ trendShape | shape_render }}
+                    {{ trend| shape_build_display: "Detail" | shape_render }}
                 </v-col>
             {% endfor %}
         </v-row>

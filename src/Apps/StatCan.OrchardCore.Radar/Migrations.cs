@@ -761,34 +761,96 @@ namespace StatCan.OrchardCore.Radar
 
         private void CreateLandingPage()
         {
-            _contentDefinitionManager.AlterTypeDefinition(Constants.ContentTypes.LandingPageCard, type => type
-                .DisplayedAs("Landing Page Card")
-                .Draftable()
-                .Versionable()
-                .Securable()
-                .WithPart(Constants.ContentTypes.LandingPageCard, part => part
-                    .WithPosition("1")
-                )
-                .WithPart("HtmlBodyPart", part => part
+            // Entity Card
+            _contentDefinitionManager.AlterTypeDefinition(Constants.ContentTypes.EntityCard, type => type
+                 .DisplayedAs("Entity Card")
+                 .Versionable()
+                 .Securable()
+                 .WithPart("EntityCard", part => part
+                     .WithPosition("2")
+                 )
+                 .WithPart("LocalizationPart", part => part
+                     .WithPosition("0")
+                 )
+                 .WithPart("TitlePart", part => part
+                     .WithPosition("1")
+                 )
+             );
+
+            _contentDefinitionManager.AlterPartDefinition(Constants.ContentTypes.EntityCard, part => part
+                .WithField("Type", field => field
+                    .OfType("TextField")
+                    .WithDisplayName("Type")
                     .WithPosition("2")
                 )
-                .WithPart("LiquidPart", part => part
+                .WithField("Limit", field => field
+                    .OfType("NumericField")
+                    .WithDisplayName("Limit")
                     .WithPosition("3")
                 )
-                .WithPart("TitlePart", part => part
+                .WithField("Caption", field => field
+                    .OfType("TextField")
+                    .WithDisplayName("Caption")
                     .WithPosition("0")
                 )
-            );
-
-            _contentDefinitionManager.AlterPartDefinition("LandingPageCard", part => part
                 .WithField("Icon", field => field
                     .OfType("TextField")
                     .WithDisplayName("Icon")
-                    .WithPosition("0")
+                    .WithPosition("1")
+                )
+                .WithField("ButtonText", field => field
+                    .OfType("TextField")
+                    .WithDisplayName("Button Text")
+                    .WithPosition("5")
+                )
+                .WithField("ButtonLink", field => field
+                    .OfType("TextField")
+                    .WithDisplayName("Button Link")
+                    .WithPosition("4")
                 )
             );
 
+            // Trending Card
+            _contentDefinitionManager.AlterTypeDefinition(Constants.ContentTypes.TrendingCard, type => type
+                .DisplayedAs("Trending Card")
+                .Draftable()
+                .Versionable()
+                .Securable()
+                .WithPart("TrendingCard", part => part
+                    .WithPosition("2")
+                )
+                .WithPart("LocalizationPart", part => part
+                    .WithPosition("0")
+                )
+                .WithPart("TitlePart", part => part
+                    .WithPosition("1")
+                )
+            );
 
+            _contentDefinitionManager.AlterPartDefinition(Constants.ContentTypes.TrendingCard, part => part
+                .WithField("Caption", field => field
+                    .OfType("TextField")
+                    .WithDisplayName("Caption")
+                    .WithPosition("0")
+                )
+                .WithField("Type", field => field
+                    .OfType("TextField")
+                    .WithDisplayName("Type")
+                    .WithPosition("2")
+                )
+                .WithField("Icon", field => field
+                    .OfType("TextField")
+                    .WithDisplayName("Icon")
+                    .WithPosition("1")
+                )
+                .WithField("ButtonText", field => field
+                    .OfType("TextField")
+                    .WithDisplayName("Button Text")
+                    .WithPosition("3")
+                )
+            );
+
+            // Footer card
             _contentDefinitionManager.AlterTypeDefinition(Constants.ContentTypes.LandingPageFooterCard, type => type
                 .DisplayedAs("Landing Page Footer Card")
                 .WithSettings(new FullTextAspectSettings
@@ -855,7 +917,7 @@ namespace StatCan.OrchardCore.Radar
                     .WithPosition("5")
                     .WithSettings(new BagPartSettings
                     {
-                        ContainedContentTypes = new[] { Constants.ContentTypes.LandingPageCard },
+                        ContainedContentTypes = new[] { Constants.ContentTypes.EntityCard },
                     })
                 )
                 .WithPart("Trends", "BagPart", part => part
@@ -864,7 +926,7 @@ namespace StatCan.OrchardCore.Radar
                     .WithPosition("6")
                     .WithSettings(new BagPartSettings
                     {
-                        ContainedContentTypes = new[] { Constants.ContentTypes.LandingPageCard },
+                        ContainedContentTypes = new[] { Constants.ContentTypes.TrendingCard },
                     })
                 )
                 .WithPart("Footer", "BagPart", part => part
