@@ -2,14 +2,14 @@
 {% style src:"~/StatCan.OrchardCore.Radar/css/table.css" %}
 {% style src:"~/StatCan.OrchardCore.Radar/css/table-row.css" %}
 
-{% assign owner = Model.ContentItem.Owner | users_by_id %}
+{% assign organizer = Model.ContentItem.Content.EventOrganizer.ContentItems | first %}
 
 {% zone "Header" %}
 <div class="pt-12">
   <div class="header">
     <v-container>
       <v-row justify="space-between">
-        <v-col md="4">
+        <v-col md="7">
           <div class="title-container">
             <div class="text-h3 name">{{ Model.ContentItem | display_text }}</div>
             <div class="text-body-1 description">
@@ -35,7 +35,7 @@
                             mdi-account-plus
                         </v-icon>
                         <div class="text-h6 icon-text">
-                            {{ owner.Properties.UserProfile.UserProfile.FirstName.Text }} {{ owner.Properties.UserProfile.UserProfile.LastName.Text }}
+                            {{ organizer.DisplayText }}
                         </div>
                     </div>
                 </v-col>
@@ -90,7 +90,7 @@
                 <div class="bubble-text" id="bubble-text">{{Model.ContentItem.Content.Event.Attendees.UserIds | size | plus: 1 }}</div>
             </div>
         </div>
-        <div class="member-table">
+        <div class="attendees-table">
             <table class="table" id="entity-table">
               <thead class="table-header">
                 <tr>
@@ -99,7 +99,7 @@
               </thead>
               <tbody>
                 <tr class="table-row">
-                    <td class="name-col">{{ owner.Properties.UserProfile.UserProfile.FirstName.Text }} {{ owner.Properties.UserProfile.UserProfile.LastName.Text }}</td>
+                    <td class="name-col">{{ organizer.DisplayText }}</td>
                 </tr>
 
                 {% assign members = Model.ContentItem.Content.Event.Attendees.UserIds %}

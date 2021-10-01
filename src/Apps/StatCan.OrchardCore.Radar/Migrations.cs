@@ -421,8 +421,6 @@ namespace StatCan.OrchardCore.Radar
             // Project Member
             _contentDefinitionManager.AlterTypeDefinition(Constants.ContentTypes.ProjectMember, type => type
                 .DisplayedAs("Project Member")
-                .Creatable()
-                .Listable()
                 .Draftable()
                 .Versionable()
                 .Securable()
@@ -437,6 +435,9 @@ namespace StatCan.OrchardCore.Radar
                         Pattern = @"{% assign user = ContentItem.Content.ProjectMember.Member.UserIds | first | users_by_id %}
                                     {{ user.Properties.UserProfile.UserProfile.FirstName.Text }} {{ user.Properties.UserProfile.UserProfile.LastName.Text }}                                ",
                     })
+                )
+                .WithPart("LocalizationPart", part => part
+                    .WithPosition("0")
                 )
             );
 
@@ -533,8 +534,6 @@ namespace StatCan.OrchardCore.Radar
             // Event Organizer
             _contentDefinitionManager.AlterTypeDefinition(Constants.ContentTypes.EventOrganizer, type => type
                 .DisplayedAs("Event Organizer")
-                .Creatable()
-                .Listable()
                 .Draftable()
                 .Versionable()
                 .Securable()
@@ -546,11 +545,12 @@ namespace StatCan.OrchardCore.Radar
                     .WithSettings(new TitlePartSettings
                     {
                         Options = TitlePartOptions.GeneratedHidden,
-                        Pattern = @"{% assign users = ContentItem.Content.EventOrganier.UserPicker.UserIds | users_by_id %}
-                                    {% for user in users %}
-                                        {{ user.UserName }} - {{ user.Email }}
-                                    {% endfor %}",
+                        Pattern = @"{% assign user = ContentItem.Content.EventOrganizer.Organizer.UserIds | first | users_by_id %}
+                                    {{ user.Properties.UserProfile.UserProfile.FirstName.Text }} {{ user.Properties.UserProfile.UserProfile.LastName.Text }}",
                     })
+                )
+                .WithPart("LocalizationPart", part => part
+                    .WithPosition("1")
                 )
             );
 
@@ -651,8 +651,6 @@ namespace StatCan.OrchardCore.Radar
             // Community Member
             _contentDefinitionManager.AlterTypeDefinition(Constants.ContentTypes.CommunityMember, type => type
                 .DisplayedAs("Community Member")
-                .Creatable()
-                .Listable()
                 .Draftable()
                 .Versionable()
                 .Securable()
@@ -664,11 +662,12 @@ namespace StatCan.OrchardCore.Radar
                     .WithSettings(new TitlePartSettings
                     {
                         Options = TitlePartOptions.GeneratedHidden,
-                        Pattern = @"{% assign users = ContentItem.Content.EventOrganier.UserPicker.UserIds | users_by_id %}
-                                    {% for user in users %}
-                                        {{ user.UserName }} - {{ user.Email }}
-                                    {% endfor %}",
+                        Pattern = @"{% assign user = ContentItem.Content.CommunityMember.Member.UserIds | first | users_by_id %}
+                                    {{ user.Properties.UserProfile.UserProfile.FirstName.Text }} {{ user.Properties.UserProfile.UserProfile.LastName.Text }}",
                     })
+                )
+                .WithPart("LocalizationPart", part => part
+                    .WithPosition("0")
                 )
             );
 

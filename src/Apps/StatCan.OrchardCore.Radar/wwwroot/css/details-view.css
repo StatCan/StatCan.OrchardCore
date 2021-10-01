@@ -1,5 +1,5 @@
 .header {
-  padding: 3rem 9rem;
+  padding: 3rem 7rem;
   background: transparent linear-gradient(180deg, #cfece9 0%, #abded7 100%) 0%
     0% no-repeat;
 }
@@ -55,6 +55,10 @@
   width: 50%;
 }
 
+.attendees-table {
+  width: 20%;
+}
+
 .table-title-container {
   display: flex;
   align-items: center;
@@ -62,7 +66,7 @@
 }
 
 .sections-container {
-  padding: 0 5rem 0 5rem;
+  padding: 0 7rem 0 7rem;
 }
 
 .section {
