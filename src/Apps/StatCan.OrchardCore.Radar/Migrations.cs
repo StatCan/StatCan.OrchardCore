@@ -77,6 +77,9 @@ namespace StatCan.OrchardCore.Radar
                 .WithPart("AutoroutePart", part => part
                     .WithPosition("2")
                 )
+                .WithPart("LocalizationPart", part => part
+                    .WithPosition("0")
+                )
             );
 
             _contentDefinitionManager.AlterPartDefinition(Constants.ContentTypes.Topic, part => part
@@ -110,6 +113,9 @@ namespace StatCan.OrchardCore.Radar
                 )
                 .WithPart("AutoroutePart", part => part
                     .WithPosition("2")
+                )
+                .WithPart("LocalizationPart", part => part
+                    .WithPosition("0")
                 )
             );
 
@@ -147,6 +153,9 @@ namespace StatCan.OrchardCore.Radar
                 .WithPart("AutoroutePart", part => part
                     .WithPosition("2")
                 )
+                .WithPart("LocalizationPart", part => part
+                    .WithPosition("0")
+                )
             );
 
             _contentDefinitionManager.AlterPartDefinition(Constants.ContentTypes.ProjectType, part => part
@@ -182,6 +191,9 @@ namespace StatCan.OrchardCore.Radar
                 )
                 .WithPart("AutoroutePart", part => part
                     .WithPosition("2")
+                )
+                .WithPart("LocalizationPart", part => part
+                    .WithPosition("0")
                 )
             );
 
