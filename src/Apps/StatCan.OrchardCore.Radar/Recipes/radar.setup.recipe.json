@@ -105,9 +105,6 @@
           "LandingPage": {
             "Description": {
               "Text": "Explore, manage and discover insights across your projects"
-            },
-            "Headerlist": {
-              "Html": "\n  <ul>\n    <li>\n    \tDiscover pathfinding projects\n    </li>\n    <li>\n    \tExplore technologies and topics\n    </li>\n    <li>\n    \tShare your team's work\n    </li>\n  </ul>\n"
             }
           },
           "AutoroutePart": {
@@ -123,6 +120,9 @@
           },
           "TitlePart": {
             "Title": "Digital Radar"
+          },
+          "LiquidPart": {
+            "Liquid": "<div class=\"header-list\">\r\n  <div class=\"list-item\">\r\n    <v-icon>mdi-menu-right</v-icon>\r\n    <div>Discover pathfinding projects</div>\r\n  </div>\r\n  <div class=\"list-item\">\r\n    <v-icon>mdi-menu-right</v-icon>\r\n    <div>Explore technologies and topics</div>\r\n  </div>\r\n  <div class=\"list-item\">\r\n    <v-icon>mdi-menu-right</v-icon>\r\n    <div>Share your team's work</div>\r\n  </div>\r\n</div>\r\n"
           },
           "Activities": {
             "ContentItems": [
