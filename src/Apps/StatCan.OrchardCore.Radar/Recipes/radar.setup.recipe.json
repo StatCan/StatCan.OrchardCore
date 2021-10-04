@@ -332,7 +332,7 @@
                 "ContentItemId": "[js: uuid()]",
                 "ContentItemVersionId": null,
                 "ContentType": "LandingPageFooterCard",
-                "DisplayText": "",
+                "DisplayText": "User guide",
                 "Latest": false,
                 "Published": false,
                 "ModifiedUtc": "2021-09-24T18:52:05.0220266Z",
@@ -345,18 +345,21 @@
                     "Text": "mdi-book-open-variant"
                   },
                   "Link": {
-                    "Text": null
+                    "Text": "#"
+                  },
+                  "Caption": {
+                    "Text": "Learn more about the Radar"
                   }
                 },
-                "HtmlBodyPart": {
-                  "Html": "<div class=\"text-h4\">User Guide</div><div class=\"text-p\">Learn more about the Radar</div>"
+                "TitlePart": {
+                  "Title": "User guide"
                 }
               },
               {
                 "ContentItemId": "[js: uuid()]",
                 "ContentItemVersionId": null,
                 "ContentType": "LandingPageFooterCard",
-                "DisplayText": "",
+                "DisplayText": "Contact us",
                 "Latest": false,
                 "Published": false,
                 "ModifiedUtc": "2021-09-24T18:52:05.0220266Z",
@@ -369,11 +372,14 @@
                     "Text": "mdi-email"
                   },
                   "Link": {
-                    "Text": null
+                    "Text": "#"
+                  },
+                  "Caption": {
+                    "Text": "Ask questions and send feedback"
                   }
                 },
-                "HtmlBodyPart": {
-                  "Html": "<div class=\"text-h4\">Contact Us</div><div class=\"text-p\">Ask questions and send feedback</div>"
+                "TitlePart": {
+                  "Title": "Contact us"
                 }
               }
             ]
