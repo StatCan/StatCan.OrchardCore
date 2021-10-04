@@ -405,6 +405,9 @@ namespace StatCan.OrchardCore.Radar
                         ContainedContentTypes = new[] { Constants.ContentTypes.Artifact },
                     })
                 )
+                .WithPart("AutoroutePart", part => part
+                    .WithPosition("2")
+                )
             );
 
             _contentDefinitionManager.AlterPartDefinition(Constants.ContentTypes.Proposal, part => part
@@ -474,51 +477,54 @@ namespace StatCan.OrchardCore.Radar
 
             // Project
             _contentDefinitionManager.AlterTypeDefinition(Constants.ContentTypes.Project, type => type
-                        .DisplayedAs("Project")
-                        .Creatable()
-                        .Listable()
-                        .Draftable()
-                        .Versionable()
-                        .Securable()
-                        .WithPart("LocalizationPart", part => part
-                            .WithPosition("0")
-                        )
-                        .WithPart(Constants.ContentTypes.Project, part => part
-                            .WithPosition("2")
-                        )
-                        .WithPart(nameof(RadarEntityPart), part => part
-                            .WithPosition("1")
-                        )
-                        .WithPart("TitlePart", part => part
-                            .WithPosition("0")
-                            .WithSettings(new TitlePartSettings
-                            {
-                                Options = TitlePartOptions.GeneratedHidden,
-                                Pattern = "{{ ContentItem.Content.RadarEntityPart.Name.Text }}",
-                            })
-                        )
-                        .WithPart("ContentPermissionsPart", part => part
-                            .WithPosition("3")
-                        )
-                        .WithPart("Workspace", "BagPart", part => part
-                            .WithDisplayName("Workspace")
-                            .WithDescription("Add an Artifact to your workspace of this project")
-                            .WithPosition("5")
-                            .WithSettings(new BagPartSettings
-                            {
-                                ContainedContentTypes = new[] { Constants.ContentTypes.Artifact },
-                            })
-                        )
-                        .WithPart(Constants.ContentTypes.ProjectMember, "BagPart", part => part
-                            .WithDisplayName("Project Member")
-                            .WithDescription("Add a member to this project")
-                            .WithPosition("4")
-                            .WithSettings(new BagPartSettings
-                            {
-                                ContainedContentTypes = new[] { Constants.ContentTypes.ProjectMember },
-                            })
-                        )
-                    );
+                .DisplayedAs("Project")
+                .Creatable()
+                .Listable()
+                .Draftable()
+                .Versionable()
+                .Securable()
+                .WithPart("LocalizationPart", part => part
+                    .WithPosition("0")
+                )
+                .WithPart(Constants.ContentTypes.Project, part => part
+                    .WithPosition("2")
+                )
+                .WithPart(nameof(RadarEntityPart), part => part
+                    .WithPosition("1")
+                )
+                .WithPart("TitlePart", part => part
+                    .WithPosition("0")
+                    .WithSettings(new TitlePartSettings
+                    {
+                        Options = TitlePartOptions.GeneratedHidden,
+                        Pattern = "{{ ContentItem.Content.RadarEntityPart.Name.Text }}",
+                    })
+                )
+                .WithPart("ContentPermissionsPart", part => part
+                    .WithPosition("3")
+                )
+                .WithPart("Workspace", "BagPart", part => part
+                    .WithDisplayName("Workspace")
+                    .WithDescription("Add an Artifact to your workspace of this project")
+                    .WithPosition("5")
+                    .WithSettings(new BagPartSettings
+                    {
+                        ContainedContentTypes = new[] { Constants.ContentTypes.Artifact },
+                    })
+                )
+                .WithPart(Constants.ContentTypes.ProjectMember, "BagPart", part => part
+                    .WithDisplayName("Project Member")
+                    .WithDescription("Add a member to this project")
+                    .WithPosition("4")
+                    .WithSettings(new BagPartSettings
+                    {
+                        ContainedContentTypes = new[] { Constants.ContentTypes.ProjectMember },
+                    })
+                )
+                .WithPart("AutoroutePart", part => part
+                    .WithPosition("2")
+                )
+            );
 
             _contentDefinitionManager.AlterPartDefinition(Constants.ContentTypes.Project, part => part
                 .WithField("Type", field => field
@@ -630,6 +636,9 @@ namespace StatCan.OrchardCore.Radar
                     {
                         ContainedContentTypes = new[] { Constants.ContentTypes.Artifact },
                     })
+                )
+                .WithPart("AutoroutePart", part => part
+                    .WithPosition("2")
                 )
             );
 
@@ -747,6 +756,9 @@ namespace StatCan.OrchardCore.Radar
                     {
                         ContainedContentTypes = new[] { Constants.ContentTypes.CommunityMember },
                     })
+                )
+                .WithPart("AutoroutePart", part => part
+                    .WithPosition("2")
                 )
             );
 
