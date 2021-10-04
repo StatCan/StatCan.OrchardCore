@@ -14,9 +14,6 @@
     {% endif %}
   </td>
   <td class="table-col">
-    {{ Model.ContentItem.CreatedUtc | local | date: "%b %d, %Y" }}
-  </td>
-  <td class="table-col">
     {{ Model.ContentItem.ModifiedUtc | local | date: "%b %d, %Y" }}
   </td>
 </tr>
