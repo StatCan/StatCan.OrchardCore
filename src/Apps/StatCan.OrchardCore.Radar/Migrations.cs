@@ -407,6 +407,10 @@ namespace StatCan.OrchardCore.Radar
                 )
                 .WithPart("AutoroutePart", part => part
                     .WithPosition("2")
+                    .WithSettings(new AutoroutePartSettings
+                    {
+                        AllowRouteContainedItems = true,
+                    })
                 )
             );
 
@@ -523,6 +527,10 @@ namespace StatCan.OrchardCore.Radar
                 )
                 .WithPart("AutoroutePart", part => part
                     .WithPosition("2")
+                    .WithSettings(new AutoroutePartSettings
+                    {
+                        AllowRouteContainedItems = true,
+                    })
                 )
             );
 
@@ -639,6 +647,10 @@ namespace StatCan.OrchardCore.Radar
                 )
                 .WithPart("AutoroutePart", part => part
                     .WithPosition("2")
+                    .WithSettings(new AutoroutePartSettings
+                    {
+                        AllowRouteContainedItems = true,
+                    })
                 )
             );
 
@@ -759,6 +771,10 @@ namespace StatCan.OrchardCore.Radar
                 )
                 .WithPart("AutoroutePart", part => part
                     .WithPosition("2")
+                    .WithSettings(new AutoroutePartSettings
+                    {
+                        AllowRouteContainedItems = true,
+                    })
                 )
             );
 
