@@ -890,6 +890,24 @@ namespace StatCan.OrchardCore.Radar
                 )
             );
 
+            // Header list
+            _contentDefinitionManager.AlterTypeDefinition(Constants.ContentTypes.LandingPageHeaderList, type => type
+                .DisplayedAs("Landing Page Header List")
+                .Draftable()
+                .Versionable()
+                .WithPart("LandingPageHeaderList", part => part
+                    .WithPosition("0")
+                )
+            );
+
+            _contentDefinitionManager.AlterPartDefinition("LandingPageHeaderList", part => part
+                .WithField("Caption", field => field
+                    .OfType("TextField")
+                    .WithDisplayName("Caption")
+                    .WithPosition("0")
+                )
+            );
+
             // Footer card
             _contentDefinitionManager.AlterTypeDefinition(Constants.ContentTypes.LandingPageFooterCard, type => type
                  .DisplayedAs("Landing Page Footer Card")
@@ -954,9 +972,6 @@ namespace StatCan.OrchardCore.Radar
                 .WithPart("TitlePart", part => part
                     .WithPosition("1")
                 )
-                .WithPart("LiquidPart", part => part
-                    .WithPosition("4")
-                )
                 .WithPart("Activities", "BagPart", part => part
                     .WithDisplayName("Activities")
                     .WithDescription("Add the activity cards here")
@@ -982,6 +997,15 @@ namespace StatCan.OrchardCore.Radar
                     .WithSettings(new BagPartSettings
                     {
                         ContainedContentTypes = new[] { Constants.ContentTypes.LandingPageFooterCard },
+                    })
+                )
+                .WithPart("HeaderList", part => part
+                    .WithDisplayName("Header List")
+                    .WithDescription("Provides a collection behavior for your content item where you can place other content items.")
+                    .WithPosition("4")
+                    .WithSettings(new BagPartSettings
+                    {
+                        ContainedContentTypes = new[] { Constants.ContentTypes.LandingPageHeaderList },
                     })
                 )
             );
