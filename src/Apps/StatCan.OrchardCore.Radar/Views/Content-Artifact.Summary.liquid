@@ -1,7 +1,11 @@
 {% style src:"~/StatCan.OrchardCore.Radar/css/table-row.css" %}
 
 <tr class="table-row">
-  <td class="name-col">{{ Model.ContentItem | dispay_text }}</td>
+  <td class="name-col">
+    <a href="{{ Model.ContentItem.Content.AutoroutePart.Path }}">
+      {{ Model.ContentItem | dispay_text }}
+    </a>
+  </td>
   <td class="table-col">
     {% if Model.ContentItem.Published %}
         Published

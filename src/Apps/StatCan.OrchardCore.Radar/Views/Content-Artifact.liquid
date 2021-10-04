@@ -1,0 +1,44 @@
+{% style src:"~/StatCan.OrchardCore.Radar/css/details-view.css" %}
+
+{% zone "Header" %}
+<div class="pt-12">
+  <div class="header">
+    <v-container>
+      <v-row justify="space-between">
+        <v-col md="7">
+          <div class="title-container">
+            <div class="text-h3 name">{{ Model.ContentItem | display_text }}</div>
+            <div class="text-body-1 description">
+                {{ Model.ContentItem.Content.Artifact.URL.Text }}
+            </div>
+          </div>
+        </v-col>
+        <v-col md="1">
+          <v-icon color="#009C88" style="font-size: 143px">
+            mdi-link
+          </v-icon>
+        </v-col>
+      </v-row>
+      <v-row>
+          <v-col md="12">
+            <v-row>
+                <v-col md="4">
+                    <div class="icon-cell">
+                        <v-icon color="black" style="font-size: 40px;">
+                            mdi-update
+                        </v-icon>
+                        <div class="text-h6 icon-text">
+                            {{ Model.ContentItem.ModifiedUtc | local | date: "%b %d, %Y" }}
+                        </div>
+                    </div>
+                </v-col>
+            </v-row>
+          </v-col>
+      </v-row>
+    </v-container>
+  </div>
+  <div class="zigzag-container">
+    <div class="zigzag zigzag-white"></div>
+  </div>
+</div>
+{% endzone %}
