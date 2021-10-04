@@ -290,38 +290,50 @@ namespace StatCan.OrchardCore.Radar
         {
             _contentDefinitionManager.AlterTypeDefinition(Constants.ContentTypes.Artifact, type => type
                 .DisplayedAs("Artifact")
-                .Creatable()
-                .Listable()
                 .Draftable()
                 .Versionable()
                 .Securable()
                 .WithPart("Artifact", part => part
-                    .WithPosition("1")
+                    .WithPosition("2")
                 )
                 .WithPart("TitlePart", part => part
+                    .WithPosition("1")
+                )
+                .WithPart("LocalizationPart", part => part
                     .WithPosition("0")
                 )
-                .WithPart("HtmlBodyPart", part => part
+                .WithPart("ContentPermissionsPart", part => part
+                    .WithPosition("3")
+                )
+                .WithPart("AutoroutePart", part => part
                     .WithPosition("2")
+                )
+            );
+
+            _contentDefinitionManager.AlterPartDefinition(Constants.ContentTypes.Artifact, part => part
+                .Attachable()
+                .WithField("URL", field => field
+                    .OfType("TextField")
+                    .WithDisplayName("URL")
                 )
             );
         }
 
         private void CreateRadarEntityPart()
         {
-            _contentDefinitionManager.AlterPartDefinition(nameof(RadarEntityPart), part => part
+            _contentDefinitionManager.AlterPartDefinition(Constants.ContentTypes.RadarEntityPart, part => part
                 .Attachable()
                 .WithDescription("Provides fields for an entity in Radar")
                 .WithField("Name", field => field
-                    .OfType(nameof(TextField))
+                    .OfType("TextField")
                     .WithDisplayName("Name")
                 )
                 .WithField("Description", field => field
-                    .OfType(nameof(TextField))
+                    .OfType("TextField")
                     .WithDisplayName("Description")
                 )
                 .WithField("Topics", field => field
-                    .OfType(nameof(TaxonomyField))
+                    .OfType("TaxonomyField")
                     .WithDisplayName("Topics")
                     .WithEditor("Tags")
                     .WithDisplayMode("Tags")
@@ -337,7 +349,7 @@ namespace StatCan.OrchardCore.Radar
 
                 )
                 .WithField("RelatedEntity", field => field
-                    .OfType(nameof(ContentPickerField))
+                    .OfType("ContentPickerField")
                     .WithDisplayName("Related Entity")
                     .WithSettings(new ContentPickerFieldSettings
                     {
@@ -370,7 +382,7 @@ namespace StatCan.OrchardCore.Radar
                 .WithPart(Constants.ContentTypes.Proposal, part => part
                     .WithPosition("2")
                 )
-                .WithPart(nameof(RadarEntityPart), part => part
+                .WithPart(Constants.ContentTypes.RadarEntityPart, part => part
                     .WithPosition("1")
                 )
                 .WithPart("TitlePart", part => part
