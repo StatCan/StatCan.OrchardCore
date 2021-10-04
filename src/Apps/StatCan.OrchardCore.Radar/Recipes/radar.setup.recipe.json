@@ -121,8 +121,63 @@
           "TitlePart": {
             "Title": "Digital Radar"
           },
-          "LiquidPart": {
-            "Liquid": "<div class=\"header-list\">\r\n  <div class=\"list-item\">\r\n    <v-icon>mdi-menu-right</v-icon>\r\n    <div>Discover pathfinding projects</div>\r\n  </div>\r\n  <div class=\"list-item\">\r\n    <v-icon>mdi-menu-right</v-icon>\r\n    <div>Explore technologies and topics</div>\r\n  </div>\r\n  <div class=\"list-item\">\r\n    <v-icon>mdi-menu-right</v-icon>\r\n    <div>Share your team's work</div>\r\n  </div>\r\n</div>\r\n"
+          "HeaderList": {
+            "ContentItems": [
+              {
+                "ContentItemId": "[js: uuid()]",
+                "ContentItemVersionId": null,
+                "ContentType": "LandingPageHeaderList",
+                "DisplayText": null,
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": null,
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": "[js: parameters('AdminUserId')]",
+                "Author": "[js: parameters('AdminUsername')]",
+                "LandingPageHeaderList": {
+                  "Caption": {
+                    "Text": "Discover pathfinding projects"
+                  }
+                }
+              },
+              {
+                "ContentItemId": "[js: uuid()]",
+                "ContentItemVersionId": null,
+                "ContentType": "LandingPageHeaderList",
+                "DisplayText": null,
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": null,
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": "[js: parameters('AdminUserId')]",
+                "Author": "[js: parameters('AdminUsername')]",
+                "LandingPageHeaderList": {
+                  "Caption": {
+                    "Text": "Explore technologies and topics"
+                  }
+                }
+              },
+              {
+                "ContentItemId": "[js: uuid()]",
+                "ContentItemVersionId": null,
+                "ContentType": "LandingPageHeaderList",
+                "DisplayText": null,
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": null,
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": "[js: parameters('AdminUserId')]",
+                "Author": "[js: parameters('AdminUsername')]",
+                "LandingPageHeaderList": {
+                  "Caption": {
+                    "Text": "Share your team's work"
+                  }
+                }
+              }
+            ]
           },
           "Activities": {
             "ContentItems": [

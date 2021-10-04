@@ -33,6 +33,7 @@ namespace StatCan.OrchardCore.Radar
             public const string LandingPage = "LandingPage";
             public const string EntityCard = "EntityCard";
             public const string TrendingCard = "TrendingCard";
+            public const string LandingPageHeaderList = "LandingPageHeaderList";
             public const string LandingPageFooterCard = "LandingPageFooterCard";
             public const string EntityList = "EntityList";
 

@@ -21,9 +21,14 @@
                     </v-col>
                 </v-row>
                 <v-row>
-                    <v-col md="12">
-                        <div class="list">
-                            {{ Model.ContentItem.Content.LiqudBodyPart.Liquid | liquid }}
+                    <v-col md="12" class="list">
+                        <div class="header-list">
+                            {% for headerItem in Model.ContentItem.Content.HeaderList.ContentItems %}
+                                <div class="list-item">
+                                    <v-icon>mdi-menu-right</v-icon>
+                                    <div>{{ headerItem.LandingPageHeaderList.Caption.Text }}</div>
+                                </div>
+                            {% endfor %}
                         </div>
                     </v-col>
                 </v-row>
