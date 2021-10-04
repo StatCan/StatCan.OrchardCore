@@ -24,6 +24,7 @@
       "enable": [
         "OrchardCore.Users.CustomUserSettings",
         "OrchardCore.Users.Registration",
+        "OrchardCore.Lucene",
         "StatCan.OrchardCore.Radar"
       ]
     },
@@ -722,6 +723,33 @@
           "Name": "TaxonomyEntitiesSQL",
           "Source": "Sql",
           "Schema": null
+        },
+        {
+          "Index": "LuceneIndex",
+          "Template": "{\r\n  \"query\": {\r\n    \"bool\": {\r\n      \"must\": [\r\n        {\r\n          \"match\": {\r\n            \"Content.ContentItem.FullText\": \"{{ Term }}\"\r\n          }\r\n        },\r\n        {\r\n          \"wildcard\": {\r\n            \"Content.ContentItem.ContentType\": \"{{ Type }}\"\r\n          }\r\n        }\r\n      ]\r\n    }\r\n  }\r\n}",
+          "ReturnContentItems": true,
+          "Name": "EntitySearchLucene",
+          "Source": "Lucene",
+          "Schema": null
+        }
+      ]
+    },
+    {
+      "name": "lucene-index",
+      "Indices": [
+        {
+          "LuceneIndex": {
+            "AnalyzerName": "standardanalyzer",
+            "IndexLatest": true,
+            "IndexedContentTypes": [
+              "Community",
+              "Event",
+              "Project",
+              "Proposal",
+              "Topic"
+            ],
+            "Culture": "any"
+          }
         }
       ]
     }
