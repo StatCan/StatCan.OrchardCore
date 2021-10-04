@@ -876,19 +876,19 @@ namespace StatCan.OrchardCore.Radar
 
             // Footer card
             _contentDefinitionManager.AlterTypeDefinition(Constants.ContentTypes.LandingPageFooterCard, type => type
-                .DisplayedAs("Landing Page Footer Card")
-                .WithSettings(new FullTextAspectSettings
-                {
-                    IncludeBodyAspect = false,
-                    IncludeDisplayText = false,
-                })
-                .WithPart(Constants.ContentTypes.LandingPageFooterCard, part => part
-                    .WithPosition("0")
-                )
-                .WithPart("HtmlBodyPart", part => part
-                    .WithPosition("1")
-                )
-            );
+                 .DisplayedAs("Landing Page Footer Card")
+                 .WithSettings(new FullTextAspectSettings
+                 {
+                     IncludeBodyAspect = false,
+                     IncludeDisplayText = false,
+                 })
+                 .WithPart("LandingPageFooterCard", part => part
+                     .WithPosition("1")
+                 )
+                 .WithPart("TitlePart", part => part
+                     .WithPosition("0")
+                 )
+             );
 
             _contentDefinitionManager.AlterPartDefinition(Constants.ContentTypes.LandingPageFooterCard, part => part
                 .WithField("Icon", field => field
@@ -904,13 +904,19 @@ namespace StatCan.OrchardCore.Radar
                 .WithField("Link", field => field
                     .OfType("TextField")
                     .WithDisplayName("Link")
-                    .WithPosition("1")
+                    .WithPosition("2")
                     .WithSettings(new TextFieldSettings
                     {
                         Hint = "A link that the card will go to",
                     })
                 )
+                .WithField("Caption", field => field
+                    .OfType("TextField")
+                    .WithDisplayName("Caption")
+                    .WithPosition("1")
+                )
             );
+
 
             // Landing Page
             _contentDefinitionManager.AlterTypeDefinition(Constants.ContentTypes.LandingPage, type => type

@@ -95,16 +95,7 @@
         <v-row justify="space-around">
             {% for footerCard in Model.ContentItem.Content.Footer.ContentItems %}
                 <v-col md="4">
-                    <v-card elevation=0 to="#">
-                        <div class="white--text text-center front-footer pb-6 pt-7">
-                            <v-icon color="white" class="mb-5" style="font-size: 120px;">
-                                {{ footerCard.LandingPageFooterCard.Icon.Text }}
-                            </v-icon>
-                            <div>
-                                {{ footerCard.HtmlBodyPart.Html | raw }}
-                            </div>
-                        </div>
-                    </v-card>
+                    {{ footerCard | shape_build_display: "Detail" | shape_render }}
                 </v-col>
             {% endfor %}
         </v-row>
