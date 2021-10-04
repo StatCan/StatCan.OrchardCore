@@ -1,26 +1,6 @@
 msgid ""
 msgstr "Content-Type: text/plain\n"
 
-#: StatCan.OrchardCore.GitHub\AdminMenu.cs:27
-#. builder.Add(S["Configuration"], configuration => configuration
-msgctxt "StatCan.OrchardCore.GitHub.GitHubApiAdminMenu"
-msgid "Configuration"
-msgstr "Configuration"
-
-#: StatCan.OrchardCore.GitHub\AdminMenu.cs:28
-#. .Add(S["Settings"], settings => settings
-msgctxt "StatCan.OrchardCore.GitHub.GitHubApiAdminMenu"
-msgid "Settings"
-msgstr "Réglages"
-
-#: StatCan.OrchardCore.GitHub\AdminMenu.cs:29
-#: StatCan.OrchardCore.GitHub\AdminMenu.cs:29
-#. .Add(S["GitHub Api"], S["GitHub Api"].PrefixPosition(), settings => settings
-#. .Add(S["GitHub Api"], S["GitHub Api"].PrefixPosition(), settings => settings
-msgctxt "StatCan.OrchardCore.GitHub.GitHubApiAdminMenu"
-msgid "GitHub Api"
-msgstr "API GitHub"
-
 #: StatCan.OrchardCore.GitHub\Activities\CommitFileTask.cs:39
 #. public override LocalizedString DisplayText => S["GitHub - Commit file"];
 msgctxt "StatCan.OrchardCore.GitHub.Activities.CommitFileTask"
@@ -116,6 +96,26 @@ msgstr "Demande d'extraction créée"
 msgctxt "StatCan.OrchardCore.GitHub.Activities.CreatePullRequestTask"
 msgid "Error"
 msgstr "Erreur"
+
+#: StatCan.OrchardCore.GitHub\AdminMenu.cs:27
+#. builder.Add(S["Configuration"], configuration => configuration
+msgctxt "StatCan.OrchardCore.GitHub.GitHubApiAdminMenu"
+msgid "Configuration"
+msgstr "Configuration"
+
+#: StatCan.OrchardCore.GitHub\AdminMenu.cs:28
+#. .Add(S["Settings"], settings => settings
+msgctxt "StatCan.OrchardCore.GitHub.GitHubApiAdminMenu"
+msgid "Settings"
+msgstr "Réglages"
+
+#: StatCan.OrchardCore.GitHub\AdminMenu.cs:29
+#: StatCan.OrchardCore.GitHub\AdminMenu.cs:29
+#. .Add(S["GitHub Api"], S["GitHub Api"].PrefixPosition(), settings => settings
+#. .Add(S["GitHub Api"], S["GitHub Api"].PrefixPosition(), settings => settings
+msgctxt "StatCan.OrchardCore.GitHub.GitHubApiAdminMenu"
+msgid "GitHub Api"
+msgstr "API GitHub"
 
 #: StatCan.OrchardCore.GitHub\Drivers\GitHubApiSettingsDisplayDriver.cs:85
 #. context.Updater.ModelState.AddModelError(Prefix, S["Please use unique token names"]);
@@ -525,6 +525,12 @@ msgctxt "StatCan.OrchardCore.GitHub.Views.CreatePullRequestTask.Fields.Thumbnail
 msgid "Create a pull request"
 msgstr "Créer une pull request"
 
+#: StatCan.OrchardCore.GitHub\Views\Shared\Components\SelectToken\Default.cshtml:2
+#. <label for="@Html.Id(Model.HtmlName)">@T["Token Name"]</label>
+msgctxt "StatCan.OrchardCore.GitHub.Views.Shared.Components.SelectToken.Default"
+msgid "Token Name"
+msgstr "Nom du jeton"
+
 #: StatCan.OrchardCore.GitHub\Views\GitHubApiSettings.Edit.cshtml:3
 #. <h3>@T["GitHub Api Settings"]</h3>
 msgctxt "StatCan.OrchardCore.GitHub.Views.GitHubApiSettings.Edit"
@@ -570,9 +576,3 @@ msgstr "Ajouter un jeton"
 msgctxt "StatCan.OrchardCore.GitHub.Views.GitHubApiSettings.Edit"
 msgid "Tokens"
 msgstr "Jetons"
-
-#: StatCan.OrchardCore.GitHub\Views\Shared\Components\SelectToken\Default.cshtml:2
-#. <label for="@Html.Id(Model.HtmlName)">@T["Token Name"]</label>
-msgctxt "StatCan.OrchardCore.GitHub.Views.Shared.Components.SelectToken.Default"
-msgid "Token Name"
-msgstr "Nom du jeton"

@@ -1,0 +1,171 @@
+{
+    "name": "Hackathon.ConfirmPresenceForm",
+    "displayName": "Confirm Presence Form",
+    "description": "Creates a form to confirm a hacker's presence",
+    "author": "StatCan Digital Innovation",
+    "website": "digital.statcan.gc.ca",
+    "version": "1.0.0",
+    "issetuprecipe": false,
+    "categories": [],
+    "tags": [],
+    "steps": [
+      {
+        "name": "Content",
+        "data": [
+          {
+            "ContentItemId": "4qxg2sr9b4ywatnhjkeq90qbcv",
+            "ContentItemVersionId": "4vecfdny1765w6g5yfmaqj2fnc",
+            "ContentType": "VueForm",
+            "DisplayText": "Confirm Presence Form",
+            "Latest": true,
+            "Published": true,
+            "ModifiedUtc": "2021-09-15T12:17:05.90199Z",
+            "PublishedUtc": "2021-09-15T12:17:05.924071Z",
+            "CreatedUtc": "2021-08-19T12:38:18.884471Z",
+            "Owner": "[js: parameters('AdminUserId')]",
+            "Author": "[js: parameters('AdminUsername')]",
+            "TitlePart": {
+              "Title": "Confirm Presence Form"
+            },
+            "VueForm": {
+              "Template": {
+                "Text": "<v-container >\r\n  <v-card-text>\r\n    <v-row justify=\"center\">\r\n      <v-col cols=\"8\">\r\n        <h1>{{\"titleLabel\" | localize }}</h1>\r\n      </v-col>\r\n      <v-col cols=\"8\" class=\"pt-0 pb-0\">\r\n          <v-radio-group v-model=\"attendance\">\r\n        <v-radio label=\"{{\"yesLabel\" | localize}}\" value=\"true\"></v-radio>\r\n        <v-radio label=\"{{\"noLabel\" | localize}}\" value=\"false\"></v-radio>\r\n        </v-radio-group>\r\n      </v-col>\r\n      <v-col cols=\"8\" class=\"m-0\">\r\n          <v-alert type=\"success\" v-if=\"form.successMessage\" >\r\n            {% raw %}{{ form.successMessage }}{% endraw %}\r\n          </v-alert>\r\n          <v-alert type=\"error\" v-if=\"form.serverValidationMessage\">\r\n            {% raw %}{{ form.serverValidationMessage[0] }}{% endraw %}\r\n          </v-alert>\r\n      </v-col>\r\n      <v-col cols=\"8\" class=\"p-0\">\r\n    \t  <v-btn class=\"p-0\" type=\"submit\" depressed @click=\"formHandleSubmit\" :disabled=\"form.submitting\">{{\"confirmLabel\" | localize}}</v-btn>\r\n      </v-col>\r\n    </v-row>\r\n  </v-card-text>\r\n</v-container>\r\n\r\n"
+              },
+              "RenderAs": {
+                "Text": null
+              },
+              "Disabled": {
+                "Value": false
+              },
+              "Debug": {
+                "Value": false
+              },
+              "DisabledHtml": {
+                "Html": "<div class=\"container text-center mt-2\">\n  [locale en]The  is currently disabled.[/locale]\n  [locale fr]Le formulaire d'enreigstrement est présentement désactivé[/locale]\n</div>"
+              },
+              "SuccessMessage": {
+                "Text": "{{ \"successMessage\" | localize }}"
+              }
+            },
+            "AliasPart": {
+              "Alias": "confirm-presence"
+            },
+            "VueFormScripts": {
+              "ClientInit": {
+                "Text": "VeeValidate.setInteractionMode('passive');"
+              },
+              "ComponentOptions": {
+                "Text": "{\r\n  data: () => ({\r\n    attendance: \"\"\r\n  })\r\n}"
+              },
+              "OnValidation": {
+                "Text": "var data = requestFormAsJsonObject();\r\nvar localizedText = getLocalizedTextValues(getFormContentItem());\r\n\r\nif(!isAuthenticated() || data.attendance == \"\") {\r\n  addError('serverValidationMessage', localizedText.serverValidationError);\r\n}"
+              },
+              "OnSubmitted": {
+                "Text": "var data = requestFormAsJsonObject();\r\nvar updateHackerSettingsResult = updateCustomUserSettings(\"Hacker\", {\r\n  \"Hacker\" : {\r\n     \"Attendance\": {\r\n       \"Value\": data.attendance\r\n     }\r\n  }\r\n});\r\n\r\nif(updateHackerSettingsResult == 1 || updateHackerSettingsResult == 2) \r\n{\r\n  addError(\"serverValidationMessage\", localizedText.serverValidationError);  \r\n}"
+              }
+            },
+            "ContentPermissionsPart": {
+              "Enabled": false,
+              "Roles": []
+            },
+            "LocalizedTextPart": {
+              "Data": [
+                {
+                  "Name": "titleLabel",
+                  "LocalizedItems": [
+                    {
+                      "Culture": "fr",
+                      "Value": "Confirmer votre présence"
+                    },
+                    {
+                      "Culture": "en",
+                      "Value": "Confirm your presence"
+                    }
+                  ]
+                },
+                {
+                  "Name": "yesLabel",
+                  "LocalizedItems": [
+                    {
+                      "Culture": "fr",
+                      "Value": "Oui, je participerai"
+                    },
+                    {
+                      "Culture": "en",
+                      "Value": "Yes, I will attend"
+                    }
+                  ]
+                },
+                {
+                  "Name": "noLabel",
+                  "LocalizedItems": [
+                    {
+                      "Culture": "fr",
+                      "Value": "Non, je ne participerai pas"
+                    },
+                    {
+                      "Culture": "en",
+                      "Value": "No, I will not attend"
+                    }
+                  ]
+                },
+                {
+                  "Name": "submitLabel",
+                  "LocalizedItems": [
+                    {
+                      "Culture": "fr",
+                      "Value": "Envoyer"
+                    },
+                    {
+                      "Culture": "en",
+                      "Value": "Send"
+                    }
+                  ]
+                },
+                {
+                  "Name": "successMessage",
+                  "LocalizedItems": [
+                    {
+                      "Culture": "fr",
+                      "Value": "Votre présence est confirmée !"
+                    },
+                    {
+                      "Culture": "en",
+                      "Value": "Your presence has been confirmed!"
+                    }
+                  ]
+                },
+                {
+                  "Name": "serverValidationError",
+                  "LocalizedItems": [
+                    {
+                      "Culture": "fr",
+                      "Value": "Une erreure est survenue lors de la soumission. Veuillez nous contacter."
+                    },
+                    {
+                      "Culture": "en",
+                      "Value": "An error occurred during submission. Please contact us."
+                    }
+                  ]
+                },
+                {
+                  "Name": "confirmLabel",
+                  "LocalizedItems": [
+                    {
+                      "Culture": "fr",
+                      "Value": "Confirmer"
+                    },
+                    {
+                      "Culture": "en",
+                      "Value": "Confirm"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+    }
+    ]
+}
+    

@@ -1,0 +1,101 @@
+{% assign user = User | user_id | users_by_id %}
+{% capture translations %}
+{% if Culture.Name == "en" %}
+{
+"Profile":"Profile", 
+"Email":"Email:", 
+"Language":"Prefered Language:",
+"Edit":"Edit",
+"Url": "~/profile/edit",
+"Mentor":"Mentor",
+"Judge":"Judge",
+"AgencyRep":"Agency representative",
+"WorkshopPre":"Workshop presenter",
+"TechnicalAdv":"Technical advisor",
+"Observer":"Observer",
+"KeynoteSpe":"Keynote speaker",
+"Organizer":"Organizer / Volunteer",
+"Roles":"Roles:"
+}
+{% else %}
+{
+"Profile":"Profil", 
+"Email":"Courriel", 
+"Language":"Langue de préférence",
+"Edit":"Modifier",
+"Url": "~/profil/editer",
+"Mentor":"Mentor",
+"Judge":"Juge",
+"AgencyRep":"Représentant",
+"WorkshopPre":"Présenteur d'atelier",
+"TechnicalAdv":"Conseiller technique",
+"Observer":"Observateur",
+"KeynoteSpe":"Conférencier",
+"Organizer":"Organisateur / bénévole",
+"Roles":"Rôles:"
+}
+{% endif %}
+{% endcapture %}
+
+{% capture language %}
+{% if Culture.Name == "en" %}
+{% if user.Properties.ParticipantProfile.ParticipantProfile.Language.Text == "en" %}
+English
+{% elsif user.Properties.ParticipantProfile.ParticipantProfile.Language.Text == "fr" %}
+French
+{% else %}
+Billingual
+{% endif %}
+{% else %}
+{% if user.Properties.ParticipantProfile.ParticipantProfile.Language.Text == "en" %}
+Anglais
+{% elsif user.Properties.ParticipantProfile.ParticipantProfile.Language.Text == "fr" %}
+Français
+{% else %}
+Bilingue
+{% endif %}
+{% endif %}
+{% endcapture %}
+
+{% assign translationJson = translations | jsonparse %}
+
+<v-row justify="center">
+  <v-col cols="10">
+    <h2>{{ "Profile" | t }}</h2>
+    <v-card outlined>
+      <v-card-title>{{user.Properties.ParticipantProfile.ParticipantProfile.FirstName.Text}} 	{{user.Properties.ParticipantProfile.ParticipantProfile.LastName.Text}}</v-card-title>
+      <v-card-text>
+        <div><b>{{ "Email" | t }}</b> {{ user.Properties.ParticipantProfile.ParticipantProfile.Email.Text }}</div>
+        <div><b>{{ "Prefered Language" | t }}</b> {{language}}</div>
+      {% assign isInRole = User | is_in_role: "Volunteer" %}
+      {% if isInRole %}
+        <br>
+        <div><b>{{ "Roles" | t }}</b></div> 
+        <v-row>         
+        <v-col>  
+          <v-checkbox readonly name="mentor" label="{{ "Mentor" | t }}" :input-value="{{ user.Properties.Volunteer.Volunteer.Mentor.Value }}" ></v-checkbox>
+          <v-checkbox readonly name="judge" label="{{ "Judge" | t }}" :input-value="{{ user.Properties.Volunteer.Volunteer.Judge.Value }}"></v-checkbox>
+        </v-col>  
+        <v-col>
+          <v-checkbox readonly name="agencyRepresentative" label="{{ "Agency representative" | t }}" :input-value="{{user.Properties.Volunteer.Volunteer.AgencyRepresentative.Value}}" ></v-checkbox>
+          <v-checkbox readonly name="workshopPresenter" label="{{ "Workshop presenter" | t }}" :input-value="{{ user.Properties.Volunteer.Volunteer.WorkshopPresenter.Value }}" ></v-checkbox>
+        </v-col>
+        <v-col>
+          <v-checkbox readonly name="technicalAdvisor" label="{{ "Technical advisor" | t }}" :input-value="{{ user.Properties.Volunteer.Volunteer.TechnicalAdvisor.Value }}" ></v-checkbox>
+       	  <v-checkbox readonly name="keynoteSpeaker" label="{{ "Keynote speaker" | t }}" :input-value="{{ user.Properties.Volunteer.Volunteer.KeynoteSpeaker.Value }}" ></v-checkbox>
+        </v-col>
+        <v-col>
+          <v-checkbox readonly name="observer" label="{{ "Observer" | t}}" :input-value="{{ user.Properties.Volunteer.Volunteer.Observer.Value }}" ></v-checkbox>
+          <v-checkbox readonly name="organizer" label="{{ "Organizer / Volunteer" | t}}" :input-value="{{ user.Properties.Volunteer.Volunteer.Organizer.Value }}" ></v-checkbox>
+        </v-col>
+        </v-row>
+      {% endif %}
+      </v-card-text>
+      <v-card-actions>
+        <v-btn href="{% if Culture.Name == "en" %}{{ "~/profile/edit" | href}}{% else %}{{ "~/profil/editer" | href}}{% endif %}">
+          {{ "Edit" | t }}
+        </v-btn>
+      </v-card-actions>
+    </v-card>
+  </v-col>
+</v-row>

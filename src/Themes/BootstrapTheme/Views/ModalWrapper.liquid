@@ -1,0 +1,9 @@
+{%- comment -%}This if prevents the modal from being rendered twice{%- endcomment -%}
+{% if HttpContext.Items[Model.ModalId] != true %}
+{{ Model.ModalId | httpcontext_set_item: true }}
+  {% zone "Modal" %}
+    <div id="m{{Model.ModalId}}" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"> 
+      {{ Model.ModalId | content_item_id | shape_build_display | shape_render }}
+    </div>
+  {% endzone %}
+{% endif %}

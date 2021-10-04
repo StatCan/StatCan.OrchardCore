@@ -1,0 +1,100 @@
+.messages-wrapper {
+  position: relative;
+}
+
+.message {
+  align-items: center;
+  box-shadow: 3px 0 9px transparentize($background, 0.52);
+  display: flex;
+  @include rfs(20);
+  font-weight: 300;
+  max-width: 70vw;
+  padding: 0.5rem 1rem;
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  @include media-breakpoint-up(sm) {
+    left: 2rem;
+    top: 13vh;
+  }
+}
+
+.message-success {
+  background-color: $background;
+  background-image: radial-gradient(
+    circle at left center,
+    transparentize($secondary, 0.82) 0,
+    transparentize($secondary, 1) 40rem
+  );
+  border-radius: 2px;
+  border: solid 1px transparentize($secondary, 0.52);
+  box-shadow: 0 0 5px transparentize($secondary, 0.52);
+  &:before {
+    color: inherit;
+    content: "\f058";
+    font-family: "Font Awesome 5 Free";
+    font-size: 2rem;
+    font-weight: 900;
+    margin-right: 1rem;
+  }
+}
+
+.message-error {
+  background-color: $background;
+  background-image: radial-gradient(
+    circle at left center,
+    transparentize($danger, 0.82) 0,
+    transparentize($danger, 1) 40rem
+  );
+  border-radius: 2px;
+  border: solid 1px transparentize($danger, 0.52);
+  box-shadow: 0 0 5px transparentize($danger, 0.52);
+  &:before {
+    color: inherit;
+    content: "\f057";
+    font-family: "Font Awesome 5 Free";
+    font-size: 2rem;
+    font-weight: 900;
+    margin-right: 1rem;
+  }
+}
+
+.message-warning {
+  background-color: $background;
+  background-image: radial-gradient(
+    circle at left center,
+    transparentize($warning, 0.82) 0,
+    transparentize($warning, 1) 40rem
+  );
+  border-radius: 2px;
+  border: solid 1px transparentize($warning, 0.52);
+  box-shadow: 0 0 5px transparentize($warning, 0.52);
+  &:before {
+    color: inherit;
+    content: "\f071";
+    font-family: "Font Awesome 5 Free";
+    font-size: 2rem;
+    font-weight: 900;
+    margin-right: 1rem;
+  }
+}
+
+.message-info {
+  background-color: $background;
+  background-image: radial-gradient(
+    circle at left center,
+    transparentize($info, 0.82) 0,
+    transparentize($info, 1) 40rem
+  );
+  border-radius: 2px;
+  border: solid 1px transparentize($info, 0.52);
+  box-shadow: 0 0 5px transparentize($info, 0.52);
+  &:before {
+    color: inherit;
+    content: "\f05a";
+    font-family: "Font Awesome 5 Free";
+    font-size: 2rem;
+    font-weight: 900;
+    margin-right: 1rem;
+  }
+}

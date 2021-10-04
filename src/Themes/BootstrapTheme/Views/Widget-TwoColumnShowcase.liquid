@@ -1,0 +1,15 @@
+<article class="section-panel panel-background col-md-12 px-5 mt-4">
+	{{Model.Content.TwoColumnShowcase-Top | shape_render}}
+  <div class="row">
+    <div class="col-sm-12 col-md d-flex flex-column justify-content-between px-4">
+      {{Model.Content.TwoColumnShowcase-FirstColumn | shape_render}}
+    </div>
+    <div class="col-sm-12 col-md d-flex flex-column justify-content-between px-4 mt-5 mt-md-0">
+      {{Model.Content.TwoColumnShowcase-SecondColumn | shape_render}}
+    </div>
+    <div class="col-lg-3 d-none d-lg-flex">
+      <img src="{{ Model.ContentItem.Content.TwoColumnShowcase.Image.Paths.first | asset_url }}" class="showcase-img w-100" aria-hidden="true" alt="" />
+    </div>
+  </div>
+  <!-- <pre>{{ Model.ContentItem.Content }}</pre> -->
+</article>

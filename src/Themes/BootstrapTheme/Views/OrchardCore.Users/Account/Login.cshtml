@@ -3,6 +3,7 @@
 @using OrchardCore.Settings
 @using OrchardCore.Users
 @using OrchardCore.Users.Models
+@using OrchardCore.DisplayManagement.Razor
 @model OrchardCore.Users.ViewModels.LoginViewModel
 @inject SignInManager<IUser> SignInManager
 @inject ISiteService SiteService
@@ -15,64 +16,82 @@
     var loginProviders = (await SignInManager.GetExternalAuthenticationSchemesAsync()).ToList();
     var disableLocalLogin = (await SiteService.GetSiteSettingsAsync()).As<LoginSettings>().DisableLocalLogin;
 }
-    <h1>@T["Log In"]</h1>
-    @if (!disableLocalLogin)
-    {
-            <form asp-controller="Account" asp-action="Login" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="auth-form">
-                <div asp-validation-summary="All" class="text-danger"></div>
-                <div class="form-group">
-                    <label class="asterix" asp-for="UserName">@T["Username"]</label>
-                    <input asp-for="UserName" class="form-control" aria-describedby="UserName-described-by" />
-                    <span id="UserName-described-by" asp-validation-for="UserName" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label class="asterix" asp-for="Password">@T["Password"]</label>
-                    <input asp-for="Password" class="form-control" aria-describedby="Password-described-by" />
-                    <span id="Password-described-by" asp-validation-for="Password" class="text-danger"></span>
-                </div>
-                <div class="form-group custom-control custom-checkbox">
-                    <input asp-for="RememberMe" class="custom-control-input" >
-                    <label asp-for="RememberMe" class="custom-control-label">@T["Remember me"]</label>
-                </div>
-                @await RenderSectionAsync("AfterLogin", required: false)
-                <div></div>
-                <button type="submit" class="btn btn-primary" ><span>@T["Log in"]</span></button>
-                @if (allowResetPassword)
-                {
-                   <div class="mt-3">
-                    <a asp-controller="ResetPassword" asp-action="ForgotPassword" class="label-link">@T["Forgot your password?"]</a>
-                  </div>
-                }
-                @if (userCanRegister)
-                {
-                    <div class="mt-3">
-                        <a asp-controller="Registration" asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]">@T["Register as a new user"]</a>
-                    </div>
-                }
-              
-            </form>
-    }
-    @if (loginProviders.Count > 0)
-    {
-        <div class="col-md-6 @(disableLocalLogin ? "offset-md-3" : String.Empty)">
-            <section>
-                <h4>@T["Use another service to log in."]</h4>
-                <hr />
-                <form asp-controller="Account" asp-action="ExternalLogin" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal">
-                    <div>
-                        <p>
-                            @foreach (var provider in loginProviders)
-                            {
-                                <button type="submit" class="btn btn-primary @(disableLocalLogin ? "w-100" : String.Empty)" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
-                                @if (disableLocalLogin)
-                                {
-                                    <br />
-                                }
+    <h1 class="login">@T["Sign in"]</h1>
+    <p class="login h4"><a href="@Url.Content("~/")"><i class="icon fas fa-cubes mr-2"></i>@(Site.SiteName)</a></p>
+    <div class="login row">
+        @if (loginProviders.Count > 0 || userCanRegister)    
+        {
+        <div class="flex-fill col-lg-4 col-md-6 col-12">
+            @if (loginProviders.Count > 0) {     
+            <section class="section-panel mb-4">
+                <h2 class="text-center mb-3">@T["Sign in with"] <span class="sr-only">@T["Azure"]</span></h2>
+                <form asp-controller="Account" asp-action="ExternalLogin" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="d-flex justify-content-center">
+                    <div class="d-flex flex-column justify-content-center">
+                        @foreach (var provider in loginProviders)
+                        {
+                            <button type="submit" class="btn btn-lg btn-primary m-2 nav-link is-rounded" name="provider" value="@provider.Name" title="@provider.DisplayName">
+                                @if (provider.DisplayName == "GitHub") { <i class="fab fa-github mr-2"></i> } 
+                                @if (provider.DisplayName == "Azure") { 
+                                    <i class="mr-2" aria-hidden="true">
+                                        <svg width="24px" height="24px" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+                                            <path d="M26.23,4.85L12.07,17.12L0,38.79L10.89,38.79L26.23,4.85ZM28.11,7.72L22.07,24.74L33.65,39.29L11.19,43.15L48,43.15L28.11,7.72Z" style="fill:white;fill-rule:nonzero;"/>
+                                        </svg>
+                                    </i>
+                                } @provider.DisplayName
+                            </button>
+                            @if (disableLocalLogin)
+                            {   
+                                <br />
                             }
-                        </p>
+                        }
                     </div>
                 </form>
             </section>
+            }
         </div>
-    }
-</div>
+        }
+        @if (!disableLocalLogin)
+        {
+        <div class="flex-fill col-lg-4 col-md-6 col-12">
+            <section class="section-panel">
+                <form asp-controller="Account" asp-action="Login" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="auth-form">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group d-flex flex-column align-items-center justify-content-center py-2">
+                        <label class="asterix" asp-for="UserName">@T["Username"]</label>
+                        <input asp-for="UserName" class="form-control" aria-describedby="UserName-described-by" autocomplete="username" />
+                        <span role="alert" id="UserName-described-by" asp-validation-for="UserName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group d-flex flex-column align-items-center justify-content-center py-2">
+                        <label class="asterix" asp-for="Password">@T["Password"]</label>
+                        <input asp-for="Password" class="form-control" aria-describedby="Password-described-by" autocomplete="current-password"  />
+                        <span role="alert" id="Password-described-by" asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                    <div class="form-group custom-control custom-checkbox d-flex justify-content-center mt-4 mb-1">
+                        <input asp-for="RememberMe" class="custom-control-input" />
+                        <label asp-for="RememberMe" class="custom-control-label">@T["Remember me"]</label>
+                    </div>
+                    @await RenderSectionAsync("AfterLogin", required: false)
+                    <div class="d-flex justify-content-center py-2">
+                        <button type="submit" class="btn btn-lg btn-primary is-rounded"><span>@T["Sign in"]</span></button>
+                    </div>
+                    @if (allowResetPassword)
+                    {
+                    <div class="d-flex justify-content-center mt-4">
+                        <a class="h4" asp-controller="ResetPassword" asp-action="ForgotPassword" class="label-link">@T["Forgot your password?"]</a>
+                    </div>
+                    }
+                </form>
+            </section>
+        </div>
+        }
+    </div>
+    <div class="login row mt-4">
+        @if (userCanRegister)
+        {
+        <div class="flex-fill col-lg-8 col-md-12 col-12">
+            <section class="section-panel d-flex justify-content-center py-4">
+                <a class="btn btn-lg btn-outline-primary is-rounded" asp-controller="Registration" asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]">@T["Create an account"]</a>
+            </section>
+        </div>
+        }
+    </div>

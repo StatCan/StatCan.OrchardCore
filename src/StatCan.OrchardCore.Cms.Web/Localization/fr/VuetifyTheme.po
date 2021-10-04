@@ -1,48 +1,6 @@
 msgid ""
 msgstr "Content-Type: text/plain\n"
 
-#: VuetifyTheme\Views\UserMenu.cshtml:38
-#. <v-list-item-title>@T["Signed in as"]<span class="font-weight-bold"> @User.Identity.Name</span></v-list-item-title>
-msgctxt "VuetifyTheme.Views.UserMenu"
-msgid "Signed in as"
-msgstr "Connecté en tant que"
-
-#: VuetifyTheme\Views\UserMenu.cshtml:48
-#. <v-list-item-title>@T["Dashboard"]</v-list-item-title>
-msgctxt "VuetifyTheme.Views.UserMenu"
-msgid "Dashboard"
-msgstr "Tableau de bord"
-
-#: VuetifyTheme\Views\UserMenu.cshtml:56
-#. <v-list-item-title>@T["Change Password"]</v-list-item-title>
-msgctxt "VuetifyTheme.Views.UserMenu"
-msgid "Change Password"
-msgstr "Changer le mot de passe"
-
-#: VuetifyTheme\Views\UserMenu.cshtml:64
-#. <v-list-item-title>@T["Change Email"]</v-list-item-title>
-msgctxt "VuetifyTheme.Views.UserMenu"
-msgid "Change Email"
-msgstr "Changer le courriel"
-
-#: VuetifyTheme\Views\UserMenu.cshtml:73
-#. <v-list-item-title>@T["External Logins"]</v-list-item-title>
-msgctxt "VuetifyTheme.Views.UserMenu"
-msgid "External Logins"
-msgstr "Connexions externes"
-
-#: VuetifyTheme\Views\UserMenu.cshtml:82
-#. <v-list-item-title class="text-left">@T["Log off"]</v-list-item-title>
-msgctxt "VuetifyTheme.Views.UserMenu"
-msgid "Log off"
-msgstr "Se déconnecter"
-
-#: VuetifyTheme\Views\UserMenu.cshtml:96
-#. <span>@T["Log in"]</span>
-msgctxt "VuetifyTheme.Views.UserMenu"
-msgid "Log in"
-msgstr "Connexion"
-
 #: VuetifyTheme\Views\OrchardCore.Users\Account\ChangePassword.cshtml:12
 #: VuetifyTheme\Views\OrchardCore.Users\Account\ChangePassword.cshtml:32
 #. <v-card-title>@T["Change password"]</v-card-title>
@@ -87,6 +45,24 @@ msgctxt "VuetifyTheme.Views.OrchardCore.Users.Account.ChangePasswordConfirmation
 msgid "Home"
 msgstr "Domicile"
 
+#: VuetifyTheme\Views\OrchardCore.Users\Registration\ConfirmEmail.cshtml:5
+#. <v-card-title>@T["Email confirmed"]</v-card-title>
+msgctxt "VuetifyTheme.Views.OrchardCore.Users.Registration.ConfirmEmail"
+msgid "Email confirmed"
+msgstr "Courriel confirmé"
+
+#: VuetifyTheme\Views\OrchardCore.Users\Registration\ConfirmEmail.cshtml:8
+#. <span>@T["Thank you for confirming your email."]</span>
+msgctxt "VuetifyTheme.Views.OrchardCore.Users.Registration.ConfirmEmail"
+msgid "Thank you for confirming your email."
+msgstr "Merci d'avoir confirmé votre courriel."
+
+#: VuetifyTheme\Views\OrchardCore.Users\Registration\ConfirmEmail.cshtml:11
+#. <v-btn href="@Url.Content("~/")" x-large block color="success">@T["Home"]</v-btn>
+msgctxt "VuetifyTheme.Views.OrchardCore.Users.Registration.ConfirmEmail"
+msgid "Home"
+msgstr "Domicile"
+
 #: VuetifyTheme\Views\OrchardCore.Users\Account\ExternalLogins.cshtml:13
 #. <v-card-title>@T["Registered Logins"]</v-card-title>
 msgctxt "VuetifyTheme.Views.OrchardCore.Users.Account.ExternalLogins"
@@ -110,171 +86,6 @@ msgstr "Connectez-vous avec un autre fournisseur"
 msgctxt "VuetifyTheme.Views.OrchardCore.Users.Account.ExternalLogins"
 msgid "Log in using your {0} account"
 msgstr "Connectez-vous à l'aide de votre compte {0}"
-
-#: VuetifyTheme\Views\OrchardCore.Users\Account\Login.cshtml:22
-#. <v-card-title>@T["Log In"]</v-card-title>
-msgctxt "VuetifyTheme.Views.OrchardCore.Users.Account.Login"
-msgid "Log In"
-msgstr "Connexion"
-
-#: VuetifyTheme\Views\OrchardCore.Users\Account\Login.cshtml:38
-#. <v-text-field id="UserName" name="UserName" label="@T["Email or username"]" value="@userName?.AttemptedValue" error-messages="@(userName?.Errors.FirstOrDefault()?.ErrorMessage)"></v-text-field>
-msgctxt "VuetifyTheme.Views.OrchardCore.Users.Account.Login"
-msgid "Email or username"
-msgstr "Addresse courriel ou nom d'utilisateur"
-
-#: VuetifyTheme\Views\OrchardCore.Users\Account\Login.cshtml:39
-#. <v-text-field id="Password" type="password" name="Password" label="@T["Password"]" error-messages="@(password?.Errors.FirstOrDefault()?.ErrorMessage)"></v-text-field>
-msgctxt "VuetifyTheme.Views.OrchardCore.Users.Account.Login"
-msgid "Password"
-msgstr "Mot de passe"
-
-#: VuetifyTheme\Views\OrchardCore.Users\Account\Login.cshtml:40
-#. <v-checkbox name="RememberMe" label="@T["Remember me"]" value="true"></v-checkbox>
-msgctxt "VuetifyTheme.Views.OrchardCore.Users.Account.Login"
-msgid "Remember me"
-msgstr "Souviens-toi de moi"
-
-#: VuetifyTheme\Views\OrchardCore.Users\Account\Login.cshtml:43
-#. <a asp-controller="ResetPassword" asp-action="ForgotPassword" class="label-link">@T["Forgot your password?"]</a>
-msgctxt "VuetifyTheme.Views.OrchardCore.Users.Account.Login"
-msgid "Forgot your password?"
-msgstr "Mot de passe oublié?"
-
-#: VuetifyTheme\Views\OrchardCore.Users\Account\Login.cshtml:49
-#. <v-btn type="submit" form="LoginForm" x-large block color="success">@T["Log in"]</v-btn>
-msgctxt "VuetifyTheme.Views.OrchardCore.Users.Account.Login"
-msgid "Log in"
-msgstr "Connexion"
-
-#: VuetifyTheme\Views\OrchardCore.Users\Account\Login.cshtml:57
-#: VuetifyTheme\Views\OrchardCore.Users\Account\Login.cshtml:72
-#. <v-divider></v-divider><span class="px-2">@T["or"]</span><v-divider></v-divider>
-#. <v-divider></v-divider><span class="px-2">@T["or"]</span><v-divider></v-divider>
-msgctxt "VuetifyTheme.Views.OrchardCore.Users.Account.Login"
-msgid "or"
-msgstr "ou alors"
-
-#: VuetifyTheme\Views\OrchardCore.Users\Account\Login.cshtml:75
-#. <v-btn href="@Url.Action("Register", "Registration", new { Area = "OrchardCore.Users", returnUrl=ViewData["ReturnUrl"] })" x-large block color="secondary">@T["Create an account"]</v-btn>
-msgctxt "VuetifyTheme.Views.OrchardCore.Users.Account.Login"
-msgid "Create an account"
-msgstr "Créer un compte"
-
-#: VuetifyTheme\Views\OrchardCore.Users\Account\RegisterExternalLogin.cshtml:10
-#. <v-card-title>@T["Create a new account."]</v-card-title>
-msgctxt "VuetifyTheme.Views.OrchardCore.Users.Account.RegisterExternalLogin"
-msgid "Create a new account."
-msgstr "Créer un nouveau compte."
-
-#: VuetifyTheme\Views\OrchardCore.Users\Account\RegisterExternalLogin.cshtml:11
-#. <v-card-subtitle>@T["You've successfully authenticated with <strong>{0}</strong>. Please fill the form below and click the Register button to complete the registration.", ViewData["LoginProvider"]]</v-card-subtitle>
-msgctxt "VuetifyTheme.Views.OrchardCore.Users.Account.RegisterExternalLogin"
-msgid ""
-"You've successfully authenticated with <strong>{0}</strong>. Please fill "
-"the form below and click the Register button to complete the registration."
-msgstr ""
-"Vous vous êtes correctement connecté avec <strong>{0}</strong> . "
-"Veuillez remplir le formulaire ci-dessous et cliquez sur le bouton "
-"S&#39;inscrire pour terminer l&#39;inscription."
-
-#: VuetifyTheme\Views\OrchardCore.Users\Account\RegisterExternalLogin.cshtml:33
-#. label="@T["Username"]"
-msgctxt "VuetifyTheme.Views.OrchardCore.Users.Account.RegisterExternalLogin"
-msgid "Username"
-msgstr "Nom d'utilisateur"
-
-#: VuetifyTheme\Views\OrchardCore.Users\Account\RegisterExternalLogin.cshtml:45
-#. label="@T["Email"]"
-msgctxt "VuetifyTheme.Views.OrchardCore.Users.Account.RegisterExternalLogin"
-msgid "Email"
-msgstr "Addresse courriel"
-
-#: VuetifyTheme\Views\OrchardCore.Users\Account\RegisterExternalLogin.cshtml:58
-#. label="@T["Password"]"
-msgctxt "VuetifyTheme.Views.OrchardCore.Users.Account.RegisterExternalLogin"
-msgid "Password"
-msgstr "Mot de passe"
-
-#: VuetifyTheme\Views\OrchardCore.Users\Account\RegisterExternalLogin.cshtml:65
-#. label="@T["Confirm password"]"
-msgctxt "VuetifyTheme.Views.OrchardCore.Users.Account.RegisterExternalLogin"
-msgid "Confirm password"
-msgstr "Confirmer le mot de passe"
-
-#: VuetifyTheme\Views\OrchardCore.Users\Account\RegisterExternalLogin.cshtml:74
-#. <v-btn type="submit" x-large block color="success">@T["Create account"]</v-btn>
-msgctxt "VuetifyTheme.Views.OrchardCore.Users.Account.RegisterExternalLogin"
-msgid "Create account"
-msgstr "Créer un compte"
-
-#: VuetifyTheme\Views\OrchardCore.Users\Registration\ConfirmEmail.cshtml:5
-#. <v-card-title>@T["Email confirmed"]</v-card-title>
-msgctxt "VuetifyTheme.Views.OrchardCore.Users.Registration.ConfirmEmail"
-msgid "Email confirmed"
-msgstr "Courriel confirmé"
-
-#: VuetifyTheme\Views\OrchardCore.Users\Registration\ConfirmEmail.cshtml:8
-#. <span>@T["Thank you for confirming your email."]</span>
-msgctxt "VuetifyTheme.Views.OrchardCore.Users.Registration.ConfirmEmail"
-msgid "Thank you for confirming your email."
-msgstr "Merci d'avoir confirmé votre courriel."
-
-#: VuetifyTheme\Views\OrchardCore.Users\Registration\ConfirmEmail.cshtml:11
-#. <v-btn href="@Url.Content("~/")" x-large block color="success">@T["Home"]</v-btn>
-msgctxt "VuetifyTheme.Views.OrchardCore.Users.Registration.ConfirmEmail"
-msgid "Home"
-msgstr "Domicile"
-
-#: VuetifyTheme\Views\OrchardCore.Users\Registration\Register.cshtml:20
-#: VuetifyTheme\Views\OrchardCore.Users\Registration\Register.cshtml:51
-#. <v-card-title>@T["Create account"]</v-card-title>
-#. <v-btn type="submit" x-large block color="success">@T["Create account"]</v-btn>
-msgctxt "VuetifyTheme.Views.OrchardCore.Users.Registration.Register"
-msgid "Create account"
-msgstr "Créer un compte"
-
-#: VuetifyTheme\Views\OrchardCore.Users\Registration\Register.cshtml:21
-#. <v-card-subtitle>@T["Register for your vuetify account here"]</v-card-subtitle>
-msgctxt "VuetifyTheme.Views.OrchardCore.Users.Registration.Register"
-msgid "Register for your vuetify account here"
-msgstr "Créez votre compte vuetify ici"
-
-#: VuetifyTheme\Views\OrchardCore.Users\Registration\Register.cshtml:36
-#. <v-text-field id="UserName" name="UserName" label="@T["Username"]" value="@userName?.AttemptedValue"
-msgctxt "VuetifyTheme.Views.OrchardCore.Users.Registration.Register"
-msgid "Username"
-msgstr "Nom d'utilisateur"
-
-#: VuetifyTheme\Views\OrchardCore.Users\Registration\Register.cshtml:38
-#. <v-text-field id="Email" type="email" name="Email" label="@T["Email"]" value="@email?.AttemptedValue"
-msgctxt "VuetifyTheme.Views.OrchardCore.Users.Registration.Register"
-msgid "Email"
-msgstr "courriel"
-
-#: VuetifyTheme\Views\OrchardCore.Users\Registration\Register.cshtml:40
-#. <v-text-field id="Password" type="password" name="Password" label="@T["Password"]"
-msgctxt "VuetifyTheme.Views.OrchardCore.Users.Registration.Register"
-msgid "Password"
-msgstr "Mot de passe"
-
-#: VuetifyTheme\Views\OrchardCore.Users\Registration\Register.cshtml:43
-#. <v-text-field id="ConfirmPassword" type="password" name="ConfirmPassword" label="@T["Confirm password"]"
-msgctxt "VuetifyTheme.Views.OrchardCore.Users.Registration.Register"
-msgid "Confirm password"
-msgstr "Confirmer le mot de passe"
-
-#: VuetifyTheme\Views\OrchardCore.Users\Registration\Register.cshtml:56
-#. <v-divider></v-divider><span class="px-2">@T["or"]</span>
-msgctxt "VuetifyTheme.Views.OrchardCore.Users.Registration.Register"
-msgid "or"
-msgstr "ou alors"
-
-#: VuetifyTheme\Views\OrchardCore.Users\Registration\Register.cshtml:61
-#. <v-btn href="@Url.Action("Login", "Account", new { Area = "OrchardCore.Users", returnUrl=ViewData["ReturnUrl"] })" x-large block color="grey lighten-2">@T["Log in"]</v-btn>
-msgctxt "VuetifyTheme.Views.OrchardCore.Users.Registration.Register"
-msgid "Log in"
-msgstr "Connexion"
 
 #: VuetifyTheme\Views\OrchardCore.Users\ResetPassword\ForgotPassword.cshtml:10
 #. <v-card-title>@T["Forgot password"]</v-card-title>
@@ -327,6 +138,147 @@ msgctxt ""
 "ForgotPasswordConfirmation"
 msgid "Home"
 msgstr "Domicile"
+
+#: VuetifyTheme\Views\OrchardCore.Users\Account\Login.cshtml:22
+#. <v-card-title>@T["Log In"]</v-card-title>
+msgctxt "VuetifyTheme.Views.OrchardCore.Users.Account.Login"
+msgid "Log In"
+msgstr "Connexion"
+
+#: VuetifyTheme\Views\OrchardCore.Users\Account\Login.cshtml:38
+#. <v-text-field id="UserName" name="UserName" label="@T["Email or username"]" value="@userName?.AttemptedValue" error-messages="@(userName?.Errors.FirstOrDefault()?.ErrorMessage)"></v-text-field>
+msgctxt "VuetifyTheme.Views.OrchardCore.Users.Account.Login"
+msgid "Email or username"
+msgstr "Addresse courriel ou nom d'utilisateur"
+
+#: VuetifyTheme\Views\OrchardCore.Users\Account\Login.cshtml:39
+#. <v-text-field id="Password" type="password" name="Password" label="@T["Password"]" error-messages="@(password?.Errors.FirstOrDefault()?.ErrorMessage)"></v-text-field>
+msgctxt "VuetifyTheme.Views.OrchardCore.Users.Account.Login"
+msgid "Password"
+msgstr "Mot de passe"
+
+#: VuetifyTheme\Views\OrchardCore.Users\Account\Login.cshtml:40
+#. <v-checkbox name="RememberMe" label="@T["Remember me"]" value="true"></v-checkbox>
+msgctxt "VuetifyTheme.Views.OrchardCore.Users.Account.Login"
+msgid "Remember me"
+msgstr "Souviens-toi de moi"
+
+#: VuetifyTheme\Views\OrchardCore.Users\Account\Login.cshtml:43
+#. <a asp-controller="ResetPassword" asp-action="ForgotPassword" class="label-link">@T["Forgot your password?"]</a>
+msgctxt "VuetifyTheme.Views.OrchardCore.Users.Account.Login"
+msgid "Forgot your password?"
+msgstr "Mot de passe oublié?"
+
+#: VuetifyTheme\Views\OrchardCore.Users\Account\Login.cshtml:49
+#. <v-btn type="submit" form="LoginForm" x-large block color="success">@T["Log in"]</v-btn>
+msgctxt "VuetifyTheme.Views.OrchardCore.Users.Account.Login"
+msgid "Log in"
+msgstr "Connexion"
+
+#: VuetifyTheme\Views\OrchardCore.Users\Account\Login.cshtml:57
+#: VuetifyTheme\Views\OrchardCore.Users\Account\Login.cshtml:72
+#. <v-divider></v-divider><span class="px-2">@T["or"]</span><v-divider></v-divider>
+#. <v-divider></v-divider><span class="px-2">@T["or"]</span><v-divider></v-divider>
+msgctxt "VuetifyTheme.Views.OrchardCore.Users.Account.Login"
+msgid "or"
+msgstr "ou alors"
+
+#: VuetifyTheme\Views\OrchardCore.Users\Account\Login.cshtml:75
+#. <v-btn href="@Url.Action("Register", "Registration", new { Area = "OrchardCore.Users", returnUrl=ViewData["ReturnUrl"] })" x-large block color="secondary">@T["Create an account"]</v-btn>
+msgctxt "VuetifyTheme.Views.OrchardCore.Users.Account.Login"
+msgid "Create an account"
+msgstr "Créer un compte"
+
+#: VuetifyTheme\Views\OrchardCore.Users\Registration\Register.cshtml:20
+#: VuetifyTheme\Views\OrchardCore.Users\Registration\Register.cshtml:50
+#. <v-card-title>@T["Create account"]</v-card-title>
+#. <v-btn type="submit" x-large block color="success">@T["Create account"]</v-btn>
+msgctxt "VuetifyTheme.Views.OrchardCore.Users.Registration.Register"
+msgid "Create account"
+msgstr "Créer un compte"
+
+#: VuetifyTheme\Views\OrchardCore.Users\Registration\Register.cshtml:35
+#. <v-text-field id="UserName" name="UserName" label="@T["Username"]" value="@userName?.AttemptedValue"
+msgctxt "VuetifyTheme.Views.OrchardCore.Users.Registration.Register"
+msgid "Username"
+msgstr "Nom d'utilisateur"
+
+#: VuetifyTheme\Views\OrchardCore.Users\Registration\Register.cshtml:37
+#. <v-text-field id="Email" type="email" name="Email" label="@T["Email"]" value="@email?.AttemptedValue"
+msgctxt "VuetifyTheme.Views.OrchardCore.Users.Registration.Register"
+msgid "Email"
+msgstr "courriel"
+
+#: VuetifyTheme\Views\OrchardCore.Users\Registration\Register.cshtml:39
+#. <v-text-field id="Password" type="password" name="Password" label="@T["Password"]"
+msgctxt "VuetifyTheme.Views.OrchardCore.Users.Registration.Register"
+msgid "Password"
+msgstr "Mot de passe"
+
+#: VuetifyTheme\Views\OrchardCore.Users\Registration\Register.cshtml:42
+#. <v-text-field id="ConfirmPassword" type="password" name="ConfirmPassword" label="@T["Confirm password"]"
+msgctxt "VuetifyTheme.Views.OrchardCore.Users.Registration.Register"
+msgid "Confirm password"
+msgstr "Confirmer le mot de passe"
+
+#: VuetifyTheme\Views\OrchardCore.Users\Registration\Register.cshtml:55
+#. <v-divider></v-divider><span class="px-2">@T["or"]</span>
+msgctxt "VuetifyTheme.Views.OrchardCore.Users.Registration.Register"
+msgid "or"
+msgstr "ou alors"
+
+#: VuetifyTheme\Views\OrchardCore.Users\Registration\Register.cshtml:60
+#. <v-btn href="@Url.Action("Login", "Account", new { Area = "OrchardCore.Users", returnUrl=ViewData["ReturnUrl"] })" x-large block color="secondary">@T["Log in"]</v-btn>
+msgctxt "VuetifyTheme.Views.OrchardCore.Users.Registration.Register"
+msgid "Log in"
+msgstr "Connexion"
+
+#: VuetifyTheme\Views\OrchardCore.Users\Account\RegisterExternalLogin.cshtml:10
+#. <v-card-title>@T["Create a new account."]</v-card-title>
+msgctxt "VuetifyTheme.Views.OrchardCore.Users.Account.RegisterExternalLogin"
+msgid "Create a new account."
+msgstr "Créer un nouveau compte."
+
+#: VuetifyTheme\Views\OrchardCore.Users\Account\RegisterExternalLogin.cshtml:11
+#. <v-card-subtitle>@T["You've successfully authenticated with <strong>{0}</strong>. Please fill the form below and click the Register button to complete the registration.", ViewData["LoginProvider"]]</v-card-subtitle>
+msgctxt "VuetifyTheme.Views.OrchardCore.Users.Account.RegisterExternalLogin"
+msgid ""
+"You've successfully authenticated with <strong>{0}</strong>. Please fill "
+"the form below and click the Register button to complete the registration."
+msgstr ""
+"Vous vous êtes correctement connecté avec <strong>{0}</strong> . Veuillez "
+"remplir le formulaire ci-dessous et cliquez sur le bouton S&#39;inscrire "
+"pour terminer l&#39;inscription."
+
+#: VuetifyTheme\Views\OrchardCore.Users\Account\RegisterExternalLogin.cshtml:33
+#. label="@T["Username"]"
+msgctxt "VuetifyTheme.Views.OrchardCore.Users.Account.RegisterExternalLogin"
+msgid "Username"
+msgstr "Nom d'utilisateur"
+
+#: VuetifyTheme\Views\OrchardCore.Users\Account\RegisterExternalLogin.cshtml:45
+#. label="@T["Email"]"
+msgctxt "VuetifyTheme.Views.OrchardCore.Users.Account.RegisterExternalLogin"
+msgid "Email"
+msgstr "Addresse courriel"
+
+#: VuetifyTheme\Views\OrchardCore.Users\Account\RegisterExternalLogin.cshtml:58
+#. label="@T["Password"]"
+msgctxt "VuetifyTheme.Views.OrchardCore.Users.Account.RegisterExternalLogin"
+msgid "Password"
+msgstr "Mot de passe"
+
+#: VuetifyTheme\Views\OrchardCore.Users\Account\RegisterExternalLogin.cshtml:65
+#. label="@T["Confirm password"]"
+msgctxt "VuetifyTheme.Views.OrchardCore.Users.Account.RegisterExternalLogin"
+msgid "Confirm password"
+msgstr "Confirmer le mot de passe"
+
+#: VuetifyTheme\Views\OrchardCore.Users\Account\RegisterExternalLogin.cshtml:74
+#. <v-btn type="submit" x-large block color="success">@T["Create account"]</v-btn>
+msgctxt "VuetifyTheme.Views.OrchardCore.Users.Account.RegisterExternalLogin"
+msgid "Create account"
+msgstr "Créer un compte"
 
 #: VuetifyTheme\Views\OrchardCore.Users\ResetPassword\ResetPassword.cshtml:12
 #: VuetifyTheme\Views\OrchardCore.Users\ResetPassword\ResetPassword.cshtml:45
@@ -395,25 +347,57 @@ msgctxt "VuetifyTheme.Views.OrchardCore.Users.ResetPassword.ResetPasswordConfirm
 msgid "Home"
 msgstr "Domicile"
 
+#: VuetifyTheme\Views\UserMenu.cshtml:38
+#. <v-list-item-title>@T["Signed in as"]<span class="font-weight-bold"> @User.Identity.Name</span></v-list-item-title>
+msgctxt "VuetifyTheme.Views.UserMenu"
+msgid "Signed in as"
+msgstr "Connecté en tant que"
+
+#: VuetifyTheme\Views\UserMenu.cshtml:48
+#. <v-list-item-title>@T["Dashboard"]</v-list-item-title>
+msgctxt "VuetifyTheme.Views.UserMenu"
+msgid "Dashboard"
+msgstr "Tableau de bord"
+
+#: VuetifyTheme\Views\UserMenu.cshtml:56
+#. <v-list-item-title>@T["Change Password"]</v-list-item-title>
+msgctxt "VuetifyTheme.Views.UserMenu"
+msgid "Change Password"
+msgstr "Changer le mot de passe"
+
+#: VuetifyTheme\Views\UserMenu.cshtml:64
+#. <v-list-item-title>@T["Change Email"]</v-list-item-title>
+msgctxt "VuetifyTheme.Views.UserMenu"
+msgid "Change Email"
+msgstr "Changer le courriel"
+
+#: VuetifyTheme\Views\UserMenu.cshtml:73
+#. <v-list-item-title>@T["External Logins"]</v-list-item-title>
+msgctxt "VuetifyTheme.Views.UserMenu"
+msgid "External Logins"
+msgstr "Connexions externes"
+
+#: VuetifyTheme\Views\UserMenu.cshtml:82
+#. <v-list-item-title class="text-left">@T["Log off"]</v-list-item-title>
+msgctxt "VuetifyTheme.Views.UserMenu"
+msgid "Log off"
+msgstr "Se déconnecter"
+
+#: VuetifyTheme\Views\UserMenu.cshtml:96
+#. <span>@T["Log in"]</span>
+msgctxt "VuetifyTheme.Views.UserMenu"
+msgid "Log in"
+msgstr "Connexion"
+
 #: VuetifyTheme\Views\ContentCulturePickerContainer.liquid:0
 msgctxt "VuetifyTheme.Views.ContentCulturePickerContainer"
 msgid "Switch to"
 msgstr "Basculer vers"
 
-#: VuetifyTheme\Views\Layout-Login.liquid:0
-msgctxt "VuetifyTheme.Views.Layout-Login"
-msgid "Skip to main content"
-msgstr "Passer au contenu principal"
-
-#: VuetifyTheme\Views\Widget-VAppBar.liquid:0
-msgctxt "VuetifyTheme.Views.Widget-VAppBar"
-msgid "Dark mode"
-msgstr "Mode sombre"
-
-#: VuetifyTheme\Views\Widget-VAppBar.liquid:0
-msgctxt "VuetifyTheme.Views.Widget-VAppBar"
-msgid "Light mode"
-msgstr "Mode lumière"
+#: VuetifyTheme\Views\MenuItemLink-TaxonomyMenuItem.liquid:0
+msgctxt "VuetifyTheme.Views.MenuItemLink-TaxonomyMenuItem"
+msgid "All"
+msgstr "Tous"
 
 #: VuetifyTheme\Views\Shared\NotFound.liquid:0
 msgctxt "VuetifyTheme.Views.Shared.NotFound"
@@ -433,3 +417,28 @@ msgstr ""
 msgctxt "VuetifyTheme.Views.Shared.NotFound"
 msgid "Go Home"
 msgstr "Rentrer chez soi"
+
+#: VuetifyTheme\Views\Widget-CompatibilityBanner.liquid:0
+msgctxt "VuetifyTheme.Views.Widget-CompatibilityBanner"
+msgid "OK"
+msgstr "d'accord"
+
+#: VuetifyTheme\Views\Widget-CompatibilityBanner.liquid:0
+msgctxt "VuetifyTheme.Views.Widget-CompatibilityBanner"
+msgid ""
+"Internet Explorer is not supported because it is a legacy browser.<br>Try a "
+"modern browser instead such as HP SureClick, Edge, Chrome, or Firefox."
+msgstr ""
+"Internet Explorer n&#39;est pas pris en charge car il s&#39;agit d&#39;un "
+"navigateur hérité.<br> Essayez plutôt un navigateur moderne tel que HP "
+"SureClick, Edge, Chrome ou Firefox."
+
+#: VuetifyTheme\Views\Widget-VAppBar.liquid:0
+msgctxt "VuetifyTheme.Views.Widget-VAppBar"
+msgid "Dark mode"
+msgstr "Mode sombre"
+
+#: VuetifyTheme\Views\Widget-VAppBar.liquid:0
+msgctxt "VuetifyTheme.Views.Widget-VAppBar"
+msgid "Light mode"
+msgstr "Mode lumière"

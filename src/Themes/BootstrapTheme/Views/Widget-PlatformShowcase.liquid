@@ -1,0 +1,12 @@
+{% assign linkedId = Model.ContentItem.Content.PlatformShowcase.LinkedContent.ContentItemIds | first %}
+<article id="{{ Model.ContentItem | display_text | slugify }}" class="m-3 section-panel panel-background {{Model.ContentItem.Content.PlatformShowcase.TextAlign.Text}} {{Model.ContentItem.Content.PlatformShowcase.Classes.Values | join: " "}} ">
+  <header>
+		<h2 class="mb-4">{{ Model.ContentItem.DisplayText}}</h2>
+    {%if linkedId != blank %}
+      <a class="btn btn-lg fixed-width btn-primary mb-4" href="{{ linkedId | display_url }}">
+        {{Model.ContentItem.Content.PlatformShowcase.LinkButtonText.Text}}
+      </a>
+    {% endif %}
+  </header>
+	{{ Model.Content.FlowPart | shape_render }}
+</article>

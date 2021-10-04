@@ -1,0 +1,12 @@
+#footer-section {
+  min-height: 10rem;
+  padding: 1.5rem;
+  background-color: $secondary-dark;
+  color: white;
+  @include media-breakpoint-up(sm) {
+    padding: 3rem;
+  }
+  .fip-footer {
+    display: flex;
+  }
+}

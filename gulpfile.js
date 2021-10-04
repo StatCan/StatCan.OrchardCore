@@ -157,7 +157,7 @@ function getAllAssetGroups() {
 
 function getAssetsJsonPaths() {
   return glob.sync(
-    "./src/{Modules,Themes, Apps}/*/Assets.json",
+    "./src/{Modules,Themes,Apps}/*/Assets.json",
     {}
   );
 }

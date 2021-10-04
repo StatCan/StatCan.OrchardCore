@@ -1,0 +1,3 @@
+{% assign contentMenuItem = Model.ContentItem.Content.ContentMenuItemPart %}
+{% assign displayUrl = contentMenuItem.SelectedContentItem.ContentItemIds.first | display_url %}
+<a href="{{ displayUrl }}" class="text-white">{{ Model.ContentItem.DisplayText }}</a>
