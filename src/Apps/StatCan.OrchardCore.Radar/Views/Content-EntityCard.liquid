@@ -20,13 +20,13 @@
       <div class="zigzag zigzag-light"></div>
     </div>
   </div>
-  {% for entity in entities %}
   <div class="card-body">
-    <div class="mb-2">
-      <a href="{{ entity | display_url }}" class="card-item-link">{{ entity | display_text }}</a>
-    </div>
+    {% for entity in entities %}
+      <div class="mb-3">
+        <a href="{{ entity | display_url }}" class="card-item-link">{{ entity | display_text }}</a>
+      </div>
+    {% endfor %}
   </div>
-  {% endfor %}
   <a
     href="{{ Model.ContentItem.Content.EntityCard.ButtonLink.Text }}"
     class="black--text card-button-link"
