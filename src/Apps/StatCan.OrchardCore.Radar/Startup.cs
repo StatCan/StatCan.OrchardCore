@@ -25,12 +25,7 @@ namespace StatCan.OrchardCore.Radar
 
         public override void Configure(IApplicationBuilder builder, IEndpointRouteBuilder routes, IServiceProvider serviceProvider)
         {
-            routes.MapAreaControllerRoute(
-                name: "Home",
-                areaName: "StatCan.OrchardCore.Radar",
-                pattern: "Home/Index",
-                defaults: new { controller = "Home", action = "Index" }
-            );
+            
         }
     }
 }

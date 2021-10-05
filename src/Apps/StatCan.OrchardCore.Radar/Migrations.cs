@@ -47,7 +47,6 @@ namespace StatCan.OrchardCore.Radar
             CreateCommunity();
 
             CreateLandingPage();
-            CreateEntityList();
 
             CreateUserProfile();
 
@@ -1014,49 +1013,6 @@ namespace StatCan.OrchardCore.Radar
                 .WithField("Description", field => field
                     .OfType("TextField")
                     .WithDisplayName("Description")
-                    .WithPosition("0")
-                )
-            );
-        }
-
-        private void CreateEntityList()
-        {
-            _contentDefinitionManager.AlterTypeDefinition(Constants.ContentTypes.EntityList, type => type
-                .DisplayedAs("Entity List")
-                .Creatable()
-                .Listable()
-                .Draftable()
-                .Versionable()
-                .Securable()
-                .WithSettings(new FullTextAspectSettings
-                {
-                    IncludeBodyAspect = false,
-                    IncludeDisplayText = false,
-                })
-                .WithPart(Constants.ContentTypes.EntityList, part => part
-                    .WithPosition("3")
-                )
-                .WithPart("TitlePart", part => part
-                    .WithPosition("1")
-                )
-                .WithPart("LiquidPart", part => part
-                    .WithPosition("4")
-                )
-                .WithPart("LocalizationPart", part => part
-                    .WithPosition("0")
-                )
-                .WithPart("AutoroutePart", part => part
-                    .WithPosition("2")
-                )
-                .WithPart("ContentPermissionsPart", part => part
-                    .WithPosition("5")
-                )
-            );
-
-            _contentDefinitionManager.AlterPartDefinition(Constants.ContentTypes.EntityList, part => part
-                .WithField("Image", field => field
-                    .OfType("MediaField")
-                    .WithDisplayName("Image")
                     .WithPosition("0")
                 )
             );

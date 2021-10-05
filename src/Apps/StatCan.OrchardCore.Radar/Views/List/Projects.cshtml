@@ -1,0 +1,77 @@
+@model IEnumerable<dynamic>
+
+<style asp-src="~/StatCan.OrchardCore.Radar/css/list-view.css"></style>
+<style asp-src="~/StatCan.OrchardCore.Radar/css/table.css"></style>
+
+<zone name="Header">
+  <div class="pt-12">
+    <div class="list-header">
+      <v-container>
+        <v-row justify="space-between">
+          <v-col md="4">
+            <div class="title-container">
+              <div class="text-h2">@T["Projects"]</div>
+              <div class="bubble">
+                <div class="bubble-text" id="bubble-text">
+                  @Model.Count()
+                </div>
+              </div>
+            </div>
+            <div class="search-container">
+              <v-icon color="black" class="mr-5">
+                mdi-magnify
+              </v-icon>
+              <form id="search-form" asp-controller="List" asp-action="Search" method="post" autocomplete="off">
+                <input class="search-input" id="search-input" inputmode="search" type="search" name="searchText" value=@ViewData["searchText"]>
+                <input type="text" name="type" value="Proposals" style="display:none" />
+                <input type="submit" style="display:none" />
+              </form>
+              <v-btn elevation="0" icon id="search-clear-button">
+                <v-icon>
+                  mdi-close
+                </v-icon>
+              </v-btn>
+            </div>
+          </v-col>
+          <v-col md="1">
+            <div style="width: 7rem; height: 7rem">
+              <v-img src=@Orchard.AssetUrl("icon_experiments.svg")>
+              </v-img>
+            </div>
+          </v-col>
+        </v-row>
+      </v-container>
+    </div>
+    <div class="zigzag-container">
+      <div class="zigzag zigzag-white"></div>
+    </div>
+  </div>
+</zone>
+
+<table class="table" id="entity-table">
+  <thead class="table-header">
+    <tr>
+      <th class="name-col">@T["Name"]</th>
+      <th>@T["Updated"]</th>
+      <th>@T["Registrar"]</th>
+      <th>@T["Visibility"]</th>
+      <th>@T["Created"]</th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach (var shape in Model)
+    {
+      @await DisplayAsync(shape)
+    }
+  </tbody>
+</table>
+
+<script type="application/javascript">
+    window.addEventListener("DOMContentLoaded", function() {
+      // Hook into the rendered button
+      document.getElementById("search-clear-button").addEventListener("click", function () {
+          document.getElementById("search-input").value = "";
+          document.getElementById("search-form").submit();
+      });
+  });
+</script>
