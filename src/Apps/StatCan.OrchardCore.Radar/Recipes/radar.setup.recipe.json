@@ -587,7 +587,7 @@
           "Index": "search",
           "Template": "{\r\n  \"query\": {\r\n    \"bool\": {\r\n      \"must\": [\r\n        {\r\n          \"wildcard\": {\r\n            \"Content.ContentItem.FullText\": \"{{ Term }}\"\r\n          }\r\n        },\r\n        {\r\n          \"wildcard\": {\r\n            \"Content.ContentItem.ContentType\": \"{{ Type }}\"\r\n          }\r\n        }\r\n      ]\r\n    }\r\n  }\r\n}",
           "ReturnContentItems": true,
-          "Name": "EntitySearchLucene",
+          "Name": "EntityListLucene",
           "Source": "Lucene",
           "Schema": null
         }
