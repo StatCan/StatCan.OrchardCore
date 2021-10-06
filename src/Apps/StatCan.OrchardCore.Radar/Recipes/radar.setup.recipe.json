@@ -444,8 +444,8 @@
         {
           "ContentItemId": "[js: uuid()]",
           "ContentItemVersionId": null,
-          "ContentType": "VAppBar",
-          "DisplayText": null,
+          "ContentType": "Menu",
+          "DisplayText": "Main Menu",
           "Latest": true,
           "Published": true,
           "ModifiedUtc": null,
@@ -453,12 +453,358 @@
           "CreatedUtc": null,
           "Owner": "[js: parameters('AdminUserId')]",
           "Author": "[js: parameters('AdminUsername')]",
-          "VAppBar": {
-            "Props": {
-              "Values": ["dark"]
+          "TitlePart": {
+            "Title": "Main Menu"
+          },
+          "AliasPart": {
+            "Alias": "main-menu"
+          },
+          "MenuPart": {},
+          "MenuItemsListPart": {
+            "MenuItems": [
+              {
+                "ContentItemId": "[js: uuid()]",
+                "ContentItemVersionId": null,
+                "ContentType": "LinkMenuItem",
+                "DisplayText": "Activities",
+                "Latest": true,
+                "Published": true,
+                "ModifiedUtc": null,
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": "[js: parameters('AdminUserId')]",
+                "Author": "[js: parameters('AdminUsername')]",
+                "LinkMenuItemPart": {
+                  "Name": "Activities",
+                  "Url": null
+                },
+                "LinkMenuItem": {},
+                "CommonMenuItemPart": {
+                  "IconName": {
+                    "Text": null
+                  }
+                },
+                "ContentPermissionsPart": {
+                  "Enabled": false,
+                  "Roles": []
+                },
+                "MenuItemsListPart": {
+                  "MenuItems": [
+                    {
+                      "ContentItemId": "[js: uuid()]",
+                      "ContentItemVersionId": null,
+                      "ContentType": "LinkMenuItem",
+                      "DisplayText": "Projects",
+                      "Latest": true,
+                      "Published": true,
+                      "ModifiedUtc": null,
+                      "PublishedUtc": null,
+                      "CreatedUtc": null,
+                      "Owner": "[js: parameters('AdminUserId')]",
+                      "Author": "[js: parameters('AdminUsername')]",
+                      "LinkMenuItemPart": {
+                        "Name": "Projects",
+                        "Url": "projects"
+                      },
+                      "LinkMenuItem": {},
+                      "CommonMenuItemPart": {
+                        "IconName": {
+                          "Text": "mdi-flask-outline"
+                        }
+                      },
+                      "ContentPermissionsPart": {
+                        "Enabled": false,
+                        "Roles": []
+                      }
+                    },
+                    {
+                      "ContentItemId": "[js: uuid()]",
+                      "ContentItemVersionId": null,
+                      "ContentType": "LinkMenuItem",
+                      "DisplayText": "Proposals",
+                      "Latest": true,
+                      "Published": true,
+                      "ModifiedUtc": null,
+                      "PublishedUtc": null,
+                      "CreatedUtc": null,
+                      "Owner": "[js: parameters('AdminUserId')]",
+                      "Author": "[js: parameters('AdminUsername')]",
+
+                      "LinkMenuItemPart": {
+                        "Name": "Proposals",
+                        "Url": "proposals"
+                      },
+                      "LinkMenuItem": {},
+                      "CommonMenuItemPart": {
+                        "IconName": {
+                          "Text": "mdi-alert-circle-outline"
+                        }
+                      },
+                      "ContentPermissionsPart": {
+                        "Enabled": false,
+                        "Roles": []
+                      }
+                    },
+                    {
+                      "ContentItemId": "[js: uuid()]",
+                      "ContentItemVersionId": null,
+                      "ContentType": "LinkMenuItem",
+                      "DisplayText": "Events",
+                      "Latest": true,
+                      "Published": true,
+                      "ModifiedUtc": null,
+                      "PublishedUtc": null,
+                      "CreatedUtc": null,
+                      "Owner": "[js: parameters('AdminUserId')]",
+                      "Author": "[js: parameters('AdminUsername')]",
+                      "LinkMenuItemPart": {
+                        "Name": "Events",
+                        "Url": "events"
+                      },
+                      "LinkMenuItem": {},
+                      "CommonMenuItemPart": {
+                        "IconName": {
+                          "Text": "mdi-calendar"
+                        }
+                      },
+                      "ContentPermissionsPart": {
+                        "Enabled": false,
+                        "Roles": []
+                      }
+                    },
+                    {
+                      "ContentItemId": "[js: uuid()]",
+                      "ContentItemVersionId": null,
+                      "ContentType": "LinkMenuItem",
+                      "DisplayText": "Communities",
+                      "Latest": true,
+                      "Published": true,
+                      "ModifiedUtc": null,
+                      "PublishedUtc": null,
+                      "CreatedUtc": null,
+                      "Owner": "[js: parameters('AdminUserId')]",
+                      "Author": "[js: parameters('AdminUsername')]",
+                      "LinkMenuItemPart": {
+                        "Name": "Communities",
+                        "Url": "communities"
+                      },
+                      "LinkMenuItem": {},
+                      "CommonMenuItemPart": {
+                        "IconName": {
+                          "Text": "mdi-account-multiple"
+                        }
+                      },
+                      "ContentPermissionsPart": {
+                        "Enabled": false,
+                        "Roles": []
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "ContentItemId": "[js: uuid()]",
+                "ContentItemVersionId": null,
+                "ContentType": "LinkMenuItem",
+                "DisplayText": "Data",
+                "Latest": true,
+                "Published": true,
+                "ModifiedUtc": null,
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": "[js: parameters('AdminUserId')]",
+                "Author": "[js: parameters('AdminUsername')]",
+                "LinkMenuItemPart": {
+                  "Name": "Data",
+                  "Url": null
+                },
+                "LinkMenuItem": {},
+                "CommonMenuItemPart": {
+                  "IconName": {
+                    "Text": null
+                  }
+                },
+                "ContentPermissionsPart": {
+                  "Enabled": false,
+                  "Roles": []
+                },
+                "MenuItemsListPart": {
+                  "MenuItems": [
+                    {
+                      "ContentItemId": "[js: uuid()]",
+                      "ContentItemVersionId": null,
+                      "ContentType": "LinkMenuItem",
+                      "DisplayText": "Topics",
+                      "Latest": true,
+                      "Published": true,
+                      "ModifiedUtc": null,
+                      "PublishedUtc": null,
+                      "CreatedUtc": null,
+                      "Owner": "[js: parameters('AdminUserId')]",
+                      "Author": "[js: parameters('AdminUsername')]",
+                      "LinkMenuItemPart": {
+                        "Name": "Topics",
+                        "Url": "topics"
+                      },
+                      "LinkMenuItem": {},
+                      "CommonMenuItemPart": {
+                        "IconName": {
+                          "Text": "mdi-pound"
+                        }
+                      },
+                      "ContentPermissionsPart": {
+                        "Enabled": false,
+                        "Roles": []
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "ContentItemId": "[js: uuid()]",
+                "ContentItemVersionId": null,
+                "ContentType": "LinkMenuItem",
+                "DisplayText": "Support",
+                "Latest": true,
+                "Published": true,
+                "ModifiedUtc": null,
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": "[js: parameters('AdminUserId')]",
+                "Author": "[js: parameters('AdminUsername')]",
+                "LinkMenuItemPart": {
+                  "Name": "Support",
+                  "Url": null
+                },
+                "LinkMenuItem": {},
+                "CommonMenuItemPart": {
+                  "IconName": {
+                    "Text": null
+                  }
+                },
+                "ContentPermissionsPart": {
+                  "Enabled": false,
+                  "Roles": []
+                },
+                "MenuItemsListPart": {
+                  "MenuItems": [
+                    {
+                      "ContentItemId": "[js: uuid()]",
+                      "ContentItemVersionId": null,
+                      "ContentType": "LinkMenuItem",
+                      "DisplayText": "Documentation",
+                      "Latest": true,
+                      "Published": true,
+                      "ModifiedUtc": null,
+                      "PublishedUtc": null,
+                      "CreatedUtc": null,
+                      "Owner": "[js: parameters('AdminUserId')]",
+                      "Author": "[js: parameters('AdminUsername')]",
+                      "LinkMenuItemPart": {
+                        "Name": "Documentation",
+                        "Url": "#"
+                      },
+                      "LinkMenuItem": {},
+                      "CommonMenuItemPart": {
+                        "IconName": {
+                          "Text": "mdi-help-circle-outline"
+                        }
+                      },
+                      "ContentPermissionsPart": {
+                        "Enabled": false,
+                        "Roles": []
+                      }
+                    },
+                    {
+                      "ContentItemId": "[js: uuid()]",
+                      "ContentItemVersionId": null,
+                      "ContentType": "LinkMenuItem",
+                      "DisplayText": "Contact us",
+                      "Latest": true,
+                      "Published": true,
+                      "ModifiedUtc": null,
+                      "PublishedUtc": null,
+                      "CreatedUtc": null,
+                      "Owner": "[js: parameters('AdminUserId')]",
+                      "Author": "[js: parameters('AdminUsername')]",
+                      "LinkMenuItemPart": {
+                        "Name": "Contact us",
+                        "Url": "#"
+                      },
+                      "LinkMenuItem": {},
+                      "CommonMenuItemPart": {
+                        "IconName": {
+                          "Text": "mdi-email"
+                        }
+                      },
+                      "ContentPermissionsPart": {
+                        "Enabled": false,
+                        "Roles": []
+                      }
+                    },
+                    {
+                      "ContentItemId": "[js: uuid()]",
+                      "ContentItemVersionId": null,
+                      "ContentType": "LinkMenuItem",
+                      "DisplayText": "Community",
+                      "Latest": true,
+                      "Published": true,
+                      "ModifiedUtc": null,
+                      "PublishedUtc": null,
+                      "CreatedUtc": null,
+                      "Owner": "[js: parameters('AdminUserId')]",
+                      "Author": "[js: parameters('AdminUsername')]",
+                      "LinkMenuItemPart": {
+                        "Name": "Community",
+                        "Url": "#"
+                      },
+                      "LinkMenuItem": {},
+                      "CommonMenuItemPart": {
+                        "IconName": {
+                          "Text": "mdi-forum"
+                        }
+                      },
+                      "ContentPermissionsPart": {
+                        "Enabled": false,
+                        "Roles": []
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          "@WeldedPartSettings": {
+            "MenuPart": {
+              "Position": "3"
             },
-            "Color": {
-              "Text": "#009688"
+            "MenuItemsListPart": {
+              "Position": "4"
+            }
+          }
+        },
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentItemVersionId": null,
+          "ContentType": "AppBar",
+          "DisplayText": "Radar",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": null,
+          "PublishedUtc": null,
+          "CreatedUtc": null,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "AppBar": {
+            "Image": {
+              "Paths": ["radar-icon-white.svg"],
+              "MediaTexts": [""]
+            },
+            "Height": {
+              "Value": null
+            },
+            "Width": {
+              "Value": null
             },
             "Elevation": {
               "Value": 10.0
@@ -469,21 +815,61 @@
             "ScrollThreshold": {
               "Value": null
             },
-            "BackgroundImage": {
-              "Paths": [],
-              "MediaTexts": []
+            "Logo": {
+              "Paths": ["radar-icon-white.svg"],
+              "MediaTexts": [""]
+            }
+          },
+          "TitlePart": {
+            "Title": "Radar"
+          },
+          "LayerMetadata": {
+            "RenderTitle": false,
+            "Position": 2.0,
+            "Zone": "Header",
+            "Layer": "All"
+          }
+        },
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentItemVersionId": null,
+          "ContentType": "NavigationDrawer",
+          "DisplayText": null,
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": null,
+          "PublishedUtc": null,
+          "CreatedUtc": null,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "NavigationDrawer": {
+            "Color": {
+              "Text": "#FFFFFF"
+            },
+            "MobileBreakpoint": {
+              "Value": null
+            },
+            "OverlayColor": {
+              "Text": null
+            },
+            "OverlayOpacity": {
+              "Value": null
+            },
+            "Width": {
+              "Text": null,
+              "Value": null
             },
             "Height": {
               "Value": null
             },
-            "Width": {
+            "MiniVariantWidth": {
               "Value": null
             }
           },
           "LayerMetadata": {
             "RenderTitle": false,
             "Position": 1.0,
-            "Zone": "Header",
+            "Zone": "NavigationDrawer",
             "Layer": "All"
           }
         }

@@ -1,0 +1,3 @@
+{% for item in Model.Items %}
+    {{ "RadarMenu" | shape_new: Model: item.Properties.ContentItem | shape_render }}
+{% endfor %}
