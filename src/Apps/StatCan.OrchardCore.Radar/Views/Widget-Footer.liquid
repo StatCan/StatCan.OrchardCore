@@ -1,0 +1,49 @@
+{% style src:"~/StatCan.OrchardCore.Radar/css/footer.css" %}
+
+{% assign menu = Content["alias:main-menu"] %}
+
+<div class="zigzag-footer footer">
+    <div class="ripple-container ripple" style="background-image: url('{{ "~/StatCan.OrchardCore.Radar/images/ripples.svg" | href }}')">
+        <div class="menus-container">
+            {% for section in menu.Content.MenuItemsListPart.MenuItems %}
+                <div class="menu-container">
+                    <div class="menu-title font-weight-medium text-h5 mb-4">
+                        {{ section.DisplayText }}
+                    </div>
+                    {% for  item in section.MenuItemsListPart.MenuItems %}
+                        <a href="{{ item.LinkMenuItemPart.Url | href }}" class="white--text mb-4 menu-link">
+                            {{ item.DisplayText }}
+                        </a>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+        </div>
+        <div class="logo-container">
+            <div class="logo">
+                <v-img
+                    src="{{ "di-logo-footer.svg" | asset_url }}"
+                    max-width="40"
+                    max-height="58"
+                ></v-img>
+                <div class="white--text text-h5 ml-2">
+                    {{ "Digital Innovation" | t }}
+                </div>
+            </div>
+            <div class="white--text">
+                {{ Model.ContentItem.Content.Footer.Version.Text }}
+            </div>
+        </div>
+    </div>
+</div>
+<div class="footer-bottom">
+    <v-img
+        src="{{ "goc-light.svg" | asset_url }}"
+        max-width="293"
+        max-height="28"
+    ></v-img>
+    <v-img
+        src="{{ "canada-light.svg" | asset_url }}"
+        max-width="172"
+        max-height="41"
+    ></v-img>
+</div>

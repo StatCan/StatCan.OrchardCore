@@ -50,6 +50,7 @@ namespace StatCan.OrchardCore.Radar
             CreateLandingPage();
             CreateAppBar();
             CreateNavigationDrawer();
+            CreateFooter();
 
             CreateUserProfile();
 
@@ -1195,6 +1196,30 @@ namespace StatCan.OrchardCore.Radar
                     {
                         DefaultValue = "56",
                     })
+                )
+            );
+        }
+
+        private void CreateFooter()
+        {
+            _contentDefinitionManager.AlterTypeDefinition(Constants.ContentTypes.Footer, type => type
+                .DisplayedAs("Footer")
+                .Creatable()
+                .Listable()
+                .Draftable()
+                .Versionable()
+                .Securable()
+                .Stereotype("Widget")
+                .WithPart("Footer", part => part
+                    .WithPosition("0")
+                )
+            );
+
+            _contentDefinitionManager.AlterPartDefinition(Constants.ContentTypes.Footer, part => part
+                .WithField("Version", field => field
+                    .OfType("TextField")
+                    .WithDisplayName("Version")
+                    .WithPosition("0")
                 )
             );
         }
