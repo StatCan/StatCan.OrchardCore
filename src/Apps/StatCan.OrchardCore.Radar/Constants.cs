@@ -37,6 +37,7 @@ namespace StatCan.OrchardCore.Radar
             public const string LandingPageFooterCard = "LandingPageFooterCard";
             public const string AppBar = "AppBar";
             public const string NavigationDrawer = "NavigationDrawer";
+            public const string Footer = "Footer";
 
             // Custom User Settings
             public const string UserProfile = "UserProfile";

@@ -54,6 +54,18 @@
         {
           "SourcePath": "../wwwroot/images/icon_topics.svg",
           "TargetPath": "icon_topics.svg"
+        },
+        {
+          "SourcePath": "../wwwroot/images/goc-light.svg",
+          "TargetPath": "goc-light.svg"
+        },
+        {
+          "SourcePath": "../wwwroot/images/canada-light.svg",
+          "TargetPath": "canada-light.svg"
+        },
+        {
+          "SourcePath": "../wwwroot/images/di-logo-footer.svg",
+          "TargetPath": "di-logo-footer.svg"
         }
       ]
     },
@@ -872,6 +884,30 @@
             "Zone": "NavigationDrawer",
             "Layer": "All"
           }
+        },
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentItemVersionId": null,
+          "ContentType": "Footer",
+          "DisplayText": null,
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": null,
+          "PublishedUtc": null,
+          "CreatedUtc": null,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "Footer": {
+            "Version": {
+              "Text": "1.0.0"
+            }
+          },
+          "LayerMetadata": {
+            "RenderTitle": false,
+            "Position": 1.0,
+            "Zone": "Footer",
+            "Layer": "LandingPage"
+          }
         }
       ]
     },
@@ -976,6 +1012,45 @@
           "Name": "EntityListLucene",
           "Source": "Lucene",
           "Schema": null
+        }
+      ]
+    },
+    {
+      "name": "Layers",
+      "Layers": [
+        {
+          "Name": "All",
+          "Rule": null,
+          "Description": null,
+          "LayerRule": {
+            "Conditions": [
+              {
+                "$type": "OrchardCore.Rules.Models.BooleanCondition, OrchardCore.Rules",
+                "Value": true,
+                "Name": "BooleanCondition",
+                "ConditionId": "4wj6wnc9v6gjesch0s05qkngmb"
+              }
+            ],
+            "Name": null,
+            "ConditionId": "4vx5exkhq8nmfz701dt2qh5vn6"
+          }
+        },
+        {
+          "Name": "LandingPage",
+          "Rule": null,
+          "Description": null,
+          "LayerRule": {
+            "Conditions": [
+              {
+                "$type": "OrchardCore.Rules.Models.HomepageCondition, OrchardCore.Rules",
+                "Value": true,
+                "Name": "HomepageCondition",
+                "ConditionId": "47k3j9d6mw9y37v4d1pbx6hrws"
+              }
+            ],
+            "Name": null,
+            "ConditionId": "4tw7nhdcfck9drfdber9f3p54s"
+          }
         }
       ]
     }

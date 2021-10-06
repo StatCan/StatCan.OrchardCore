@@ -5,7 +5,7 @@
     padding: 2px 10px 0px 9px;
     margin-right: 0.9rem;
     color: #FFFFFF;
-    max-width: 100%;
+    width: fit-content;
     display: flex;
 }
 
