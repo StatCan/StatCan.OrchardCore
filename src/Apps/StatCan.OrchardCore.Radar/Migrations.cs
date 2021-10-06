@@ -17,6 +17,7 @@ using OrchardCore.Autoroute.Models;
 using YesSql.Sql;
 using StatCan.OrchardCore.Radar.Indexing;
 using StatCan.OrchardCore.Radar.Models;
+using OrchardCore.Media.Settings;
 
 namespace StatCan.OrchardCore.Radar
 {
@@ -47,6 +48,8 @@ namespace StatCan.OrchardCore.Radar
             CreateCommunity();
 
             CreateLandingPage();
+            CreateAppBar();
+            CreateNavigationDrawer();
 
             CreateUserProfile();
 
@@ -1042,6 +1045,158 @@ namespace StatCan.OrchardCore.Radar
                 )
             );
 
+        }
+
+        private void CreateAppBar()
+        {
+            _contentDefinitionManager.AlterTypeDefinition(Constants.ContentTypes.AppBar, type => type
+                .DisplayedAs("App Bar")
+                .Creatable()
+                .Listable()
+                .Draftable()
+                .Versionable()
+                .Securable()
+                .Stereotype("Widget")
+                .WithPart("AppBar", part => part
+                    .WithPosition("1")
+                )
+                .WithPart("TitlePart", part => part
+                    .WithPosition("0")
+                )
+            );
+
+            _contentDefinitionManager.AlterPartDefinition(Constants.ContentTypes.AppBar, part => part
+                .WithField("Height", field => field
+                    .OfType("NumericField")
+                    .WithDisplayName("Height")
+                    .WithPosition("1")
+                    .WithSettings(new NumericFieldSettings
+                    {
+                        Minimum = 0,
+                        Maximum = 9999,
+                    })
+                )
+                .WithField("Width", field => field
+                    .OfType("NumericField")
+                    .WithDisplayName("Width")
+                    .WithPosition("2")
+                    .WithSettings(new NumericFieldSettings
+                    {
+                        Minimum = 0,
+                        Maximum = 9999,
+                    })
+                )
+                .WithField("Elevation", field => field
+                    .OfType("NumericField")
+                    .WithDisplayName("Elevation")
+                    .WithEditor("Slider")
+                    .WithPosition("3")
+                    .WithSettings(new NumericFieldSettings
+                    {
+                        Minimum = 0,
+                        Maximum = 24,
+                    })
+                )
+                .WithField("ExtensionHeight", field => field
+                    .OfType("NumericField")
+                    .WithDisplayName("Extension Height")
+                    .WithPosition("4")
+                    .WithSettings(new NumericFieldSettings
+                    {
+                        Minimum = 0,
+                        Maximum = 9999,
+                        DefaultValue = "48",
+                    })
+                )
+                .WithField("ScrollThreshold", field => field
+                    .OfType("NumericField")
+                    .WithDisplayName("Scroll Threshold")
+                    .WithPosition("5")
+                    .WithSettings(new NumericFieldSettings
+                    {
+                        Minimum = 0,
+                        Maximum = 9999,
+                    })
+                )
+                .WithField("Logo", field => field
+                    .OfType("MediaField")
+                    .WithDisplayName("Logo")
+                    .WithSettings(new MediaFieldSettings
+                    {
+                        Multiple = false,
+                    })
+                )
+            );
+        }
+
+        private void CreateNavigationDrawer()
+        {
+            _contentDefinitionManager.AlterTypeDefinition(Constants.ContentTypes.NavigationDrawer, type => type
+                .DisplayedAs("Navigation Drawer")
+                .Creatable()
+                .Listable()
+                .Draftable()
+                .Versionable()
+                .Securable()
+                .Stereotype("Widget")
+                .WithPart("NavigationDrawer", part => part
+                    .WithPosition("0")
+                )
+            );
+
+            _contentDefinitionManager.AlterPartDefinition(Constants.ContentTypes.NavigationDrawer, part => part
+                .WithField("Color", field => field
+                    .OfType("TextField")
+                    .WithDisplayName("Color")
+                    .WithPosition("0")
+                )
+                .WithField("MobileBreakpoint", field => field
+                    .OfType("NumericField")
+                    .WithDisplayName("Mobile Breakpoint")
+                    .WithPosition("4")
+                    .WithSettings(new NumericFieldSettings
+                    {
+                        Minimum = 0,
+                        Maximum = 9999,
+                    })
+                )
+                .WithField("OverlayColor", field => field
+                    .OfType("TextField")
+                    .WithDisplayName("Overlay Color")
+                    .WithPosition("5")
+                )
+                .WithField("OverlayOpacity", field => field
+                    .OfType("NumericField")
+                    .WithDisplayName("Overlay Opacity")
+                    .WithEditor("Slider")
+                    .WithPosition("6")
+                    .WithSettings(new NumericFieldSettings
+                    {
+                        Scale = 4,
+                        Minimum = 0,
+                        Maximum = 1,
+                    })
+                )
+                .WithField("Height", field => field
+                    .OfType("NumericField")
+                    .WithDisplayName("Height")
+                    .WithPosition("3")
+                )
+                .WithField("Width", field => field
+                    .OfType("NumericField")
+                    .WithDisplayName("Width")
+                    .WithPosition("1")
+                )
+                .WithField("MiniVariantWidth", field => field
+                    .OfType("NumericField")
+                    .WithDisplayName("Mini Variant Width")
+                    .WithPosition("2")
+                    .WithSettings(new NumericFieldSettings
+                    {
+                        DefaultValue = "56",
+                    })
+                )
+            );
         }
     }
 }
