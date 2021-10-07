@@ -3,6 +3,8 @@
 <style asp-src="~/StatCan.OrchardCore.Radar/css/list-view.css"></style>
 <style asp-src="~/StatCan.OrchardCore.Radar/css/table.css"></style>
 
+<script asp-src="/StatCan.OrchardCore.Radar/js/table.js"></script>
+
 <zone name="Header">
   <div class="pt-12">
     <div class="list-header">
@@ -22,7 +24,8 @@
                 mdi-magnify
               </v-icon>
               <form id="search-form" asp-controller="List" asp-action="Search" method="post" autocomplete="off">
-                <input class="search-input" id="search-input" inputmode="search" type="search" name="searchText" value=@ViewData["searchText"]>
+                <input class="search-input" id="search-input" inputmode="search" type="search" name="searchText"
+                  value=@ViewData["searchText"]>
                 <input type="text" name="type" value="Proposals" style="display:none" />
                 <input type="submit" style="display:none" />
               </form>
@@ -52,9 +55,9 @@
   <thead class="table-header">
     <tr>
       <th class="name-col">@T["Name"]</th>
-      <th>@T["Created"]</th>
+      <th data-type="date">@T["Created"]</th>
       <th>@T["Visibility"]</th>
-      
+
     </tr>
   </thead>
   <tbody>
@@ -66,11 +69,11 @@
 </table>
 
 <script type="application/javascript">
-    window.addEventListener("DOMContentLoaded", function() {
-      // Hook into the rendered button
-      document.getElementById("search-clear-button").addEventListener("click", function () {
-          document.getElementById("search-input").value = "";
-          document.getElementById("search-form").submit();
-      });
+  window.addEventListener("DOMContentLoaded", function () {
+    // Hook into the rendered button
+    document.getElementById("search-clear-button").addEventListener("click", function () {
+      document.getElementById("search-input").value = "";
+      document.getElementById("search-form").submit();
+    });
   });
 </script>
