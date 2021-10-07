@@ -10,10 +10,15 @@
     "output": "wwwroot/images/@"
   },
   {
+    "copy": true,
+    "inputs": ["Assets/js/*.js"],
+    "output": "wwwroot/js/@"
+  },
+  {
     "vue": true,
-    "file": "Assets/js/RadarComponents.js",
-    "output": "wwwroot/js",
+    "file": "Assets/js/vue-components/RadarComponents.js",
+    "output": "wwwroot/js/vue-components",
     "name": "radar-vue-components",
-    "watch": ["Assets/js/components/*"]
+    "watch": ["Assets/js/vue-components/components/*"]
   }
 ]

@@ -1,0 +1,7 @@
+<script asp-name="Radar-vue-components" at="Foot"></script>
+
+@{
+    var searchURL = Url.Action("GlobalSearch", "List", new { area = "StatCan.OrchardCore.Radar" });
+}
+
+<global-search api-url=@searchURL project-title=@T["Projects"] event-title=@T["Events"] proposal-title=@T["Proposals"] community-title=@T["Communities"]></global-search>
