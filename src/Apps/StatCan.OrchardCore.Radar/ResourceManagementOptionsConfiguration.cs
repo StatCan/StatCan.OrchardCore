@@ -14,7 +14,7 @@ namespace StatCan.OrchardCore.Radar
             _manifest
                 .DefineScript("Radar-vue-components")
                 .SetDependencies("vuetify-theme")
-                .SetUrl("~/StatCan.OrchardCore.Radar/js/radar-vue-components.umd.min.js", "~/StatCan.OrchardCore.Radar/js/radar-vue-components.umd.js")
+                .SetUrl("~/StatCan.OrchardCore.Radar/js/vue-components/radar-vue-components.umd.min.js", "~/StatCan.OrchardCore.Radar/js/vue-components/radar-vue-components.umd.js")
                 .SetVersion("1.0.0");
         }
 

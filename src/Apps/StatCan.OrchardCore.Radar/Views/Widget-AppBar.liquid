@@ -1,37 +1,47 @@
+{% style src:"~/StatCan.OrchardCore.Radar/css/global-search.css" %} 
+
 {% assign elevation = Model.ContentItem.Content.AppBar.Elevation.Value %}
 {% assign extensionHeight = Model.ContentItem.Content.AppBar.ExtensionHeight.Value %}
 {% assign scrollThreshold = Model.ContentItem.Content.AppBar.ScrollThreshold.Value %}
 {% assign height = Model.ContentItem.Content.AppBar.Height.Value %}
 {% assign width = Model.ContentItem.Content.AppBar.Width.Value %}
 
-<v-app-bar app clipped-left
-  dark
-  color="#009688"
+<v-app-bar app clipped-left dark color="#009688"
   {% if empty !=  extensionHeight %}extension-height="{{ extensionHeight }}"{% endif %}
   {% if empty != scrollThreshold %}scroll-threshold="{{ scrollThreshold }}"{% endif %}
   {% if empty != height %}height="{{ height }}"{% endif %}
   {% if empty != width %}width="{{ width }}"{% endif %}
 >
-  <v-app-bar-nav-icon class="d-flex d-md-none" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+  <v-app-bar-nav-icon
+    class="d-flex d-md-none"
+    @click.stop="drawer = !drawer"
+  ></v-app-bar-nav-icon>
 
   <a class="d-flex" href="{{ '~/' | href }}">
-    <img src="{{ Model.ContentItem.Content.AppBar.Logo.Paths.first | asset_url }}" style="max-height:56px; width:80px;" alt="logo">
+    <img
+      src="{{ Model.ContentItem.Content.AppBar.Logo.Paths.first | asset_url }}"
+      style="max-height:56px; width:80px;"
+      alt="logo"
+    />
   </a>
 
   <div class="text-h4">
-      {{ Model.ContentItem | display_text }}
+    {{ Model.ContentItem | display_text }}
   </div>
 
   <v-spacer></v-spacer>
 
   <span class="d-none d-md-flex">
-    {% shape "menu", alias: "alias:main-menu", cache_id: "main-menu", cache_fixed_duration: "00:05:00", cache_tag: "alias:main-menu" %}
+    {% shape "menu", alias: "alias:main-menu", cache_id: "main-menu",
+    cache_fixed_duration: "00:05:00", cache_tag: "alias:main-menu" %}
   </span>
 
-  <v-spacer></v-spacer>
+  {{ "GlobalSearch" | shape_new | shape_render }}
+
   <div>
     {% assign user = User | user_id | users_by_id %}
-    {{ user.Properties.UserProfile.UserProfile.FirstName.Text }} {{ user.Properties.UserProfile.UserProfile.LastName.Text }}
+    {{ user.Properties.UserProfile.UserProfile.FirstName.Text }}
+    {{ user.Properties.UserProfile.UserProfile.LastName.Text }}
   </div>
   {{ "UserMenu" | shape_new | shape_render }}
   {{ "ContentCulturePicker" | shape_new | shape_render }}

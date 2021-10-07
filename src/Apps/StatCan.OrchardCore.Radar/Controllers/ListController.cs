@@ -64,6 +64,14 @@ namespace StatCan.OrchardCore.Radar.Controllers
             return RedirectToAction(type, new { searchText = searchText });
         }
 
+        [HttpGet]
+        public async Task<IActionResult> GlobalSearch(string searchText)
+        {
+            var results = await GetContentItems("*", searchText);
+
+            return new ObjectResult(results);
+        }
+
         private async Task<IEnumerable<dynamic>> GetShapes(IEnumerable<ContentItem> contentItems)
         {
             var shapes = await Task.WhenAll(contentItems.Select(async contentItem =>
