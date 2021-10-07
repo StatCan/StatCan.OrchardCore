@@ -3,6 +3,8 @@
 <style asp-src="~/StatCan.OrchardCore.Radar/css/list-view.css"></style>
 <style asp-src="~/StatCan.OrchardCore.Radar/css/table.css"></style>
 
+<script asp-src="/StatCan.OrchardCore.Radar/js/table.js" at="Head"></script>
+
 <zone name="Header">
   <div class="pt-12">
     <div class="list-header">
@@ -22,8 +24,9 @@
                 mdi-magnify
               </v-icon>
               <form id="search-form" asp-controller="List" asp-action="Search" method="post" autocomplete="off">
-                <input class="search-input" id="search-input" inputmode="search" type="search" name="searchText" value=@ViewData["searchText"]>
-                <input type="text" name="type" value="Proposals" style="display:none" />
+                <input class="search-input" id="search-input" inputmode="search" type="search" name="searchText"
+                  value=@ViewData["searchText"]>
+                <input type="text" name="type" value="Projects" style="display:none" />
                 <input type="submit" style="display:none" />
               </form>
               <v-btn elevation="0" icon id="search-clear-button">
@@ -48,30 +51,29 @@
   </div>
 </zone>
 
-<table class="table" id="entity-table">
-  <thead class="table-header">
-    <tr>
-      <th class="name-col">@T["Name"]</th>
-      <th data-type="date">@T["Updated"]</th>
-      <th>@T["Registrar"]</th>
-      <th>@T["Visibility"]</th>
-      <th data-type="date">@T["Created"]</th>
-    </tr>
-  </thead>
-  <tbody>
-    @foreach (var shape in Model)
-    {
-      @await DisplayAsync(shape)
-    }
-  </tbody>
-</table>
+<div class="table-container">
+  <table class="table" id="entity-table">
+    <thead class="table-header">
+      <tr>
+        <th class="name-col" data-type="name">@T["Name"]</th>
+        <th data-type="date">@T["Updated"]</th>
+        <th>@T["Registrar"]</th>
+        <th>@T["Visibility"]</th>
+        <th data-type="date">@T["Created"]</th>
+      </tr>
+    </thead>
+    <tbody>
+      @foreach (var shape in Model)
+      {
+        @await DisplayAsync(shape)
+      }
+    </tbody>
+  </table>
+</div>
 
 <script type="application/javascript">
-    window.addEventListener("DOMContentLoaded", function() {
-      // Hook into the rendered button
-      document.getElementById("search-clear-button").addEventListener("click", function () {
-          document.getElementById("search-input").value = "";
-          document.getElementById("search-form").submit();
-      });
+  window.addEventListener("DOMContentLoaded", function () {
+    attachSorter();
+    attachSearchClear();
   });
 </script>
