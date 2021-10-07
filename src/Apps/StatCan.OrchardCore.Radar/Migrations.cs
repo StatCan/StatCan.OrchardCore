@@ -413,6 +413,7 @@ namespace StatCan.OrchardCore.Radar
                     .WithSettings(new AutoroutePartSettings
                     {
                         AllowRouteContainedItems = true,
+                        Pattern = "{{ \"proposals\" | t | append: \"/\" | append: ContentItem.ContentItemId }}",
                     })
                 )
             );
@@ -533,6 +534,7 @@ namespace StatCan.OrchardCore.Radar
                     .WithSettings(new AutoroutePartSettings
                     {
                         AllowRouteContainedItems = true,
+                        Pattern = "{{ \"projects\" | t | append: \"/\" | append: ContentItem.ContentItemId }}",
                     })
                 )
             );
@@ -653,6 +655,7 @@ namespace StatCan.OrchardCore.Radar
                     .WithSettings(new AutoroutePartSettings
                     {
                         AllowRouteContainedItems = true,
+                        Pattern = "{{ \"events\" | t | append: \"/\" | append: ContentItem.ContentItemId }}",
                     })
                 )
             );
@@ -777,6 +780,7 @@ namespace StatCan.OrchardCore.Radar
                     .WithSettings(new AutoroutePartSettings
                     {
                         AllowRouteContainedItems = true,
+                        Pattern = "{{ \"communities\" | t | append: \"/\" | append: ContentItem.ContentItemId }}",
                     })
                 )
             );
