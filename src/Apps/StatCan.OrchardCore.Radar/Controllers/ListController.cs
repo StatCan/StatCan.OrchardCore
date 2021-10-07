@@ -65,7 +65,7 @@ namespace StatCan.OrchardCore.Radar.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GlobalSearch(string searchText)
+        public async Task<IActionResult> GlobalSearch(string searchText = "")
         {
             var results = await GetContentItems("*", searchText);
 
@@ -105,7 +105,7 @@ namespace StatCan.OrchardCore.Radar.Controllers
             // Prepare the parameters
             IDictionary<string, object> parameters = new Dictionary<string, object>();
             parameters.Add("Type", type);
-            parameters.Add("Term", searchText);
+            parameters.Add("Term", searchText.ToLower());
 
             var results = await _queryManager.ExecuteQueryAsync(query, parameters);
 
