@@ -223,7 +223,7 @@ namespace StatCan.OrchardCore.Radar
             topics.DisplayText = "Topics"; // Instead of TitlePart.Title
             topics.Alter<AutoroutePart>(part =>
             {
-                part.Path = "/topics";
+                part.Path = "topics";
                 part.RouteContainedItems = true;
             });
             topics.Alter<TaxonomyPart>(part =>
@@ -241,7 +241,7 @@ namespace StatCan.OrchardCore.Radar
             proposalTypes.DisplayText = "Proposal Types"; // Instead of TitlePart.Title
             proposalTypes.Alter<AutoroutePart>(part =>
             {
-                part.Path = "/proposal-types";
+                part.Path = "proposal-types";
                 part.RouteContainedItems = true;
             });
             proposalTypes.Alter<TaxonomyPart>(part =>
@@ -259,7 +259,7 @@ namespace StatCan.OrchardCore.Radar
             projectTypes.DisplayText = "Project Types"; // Instead of TitlePart.Title
             projectTypes.Alter<AutoroutePart>(part =>
             {
-                part.Path = "/project-types";
+                part.Path = "project-types";
                 part.RouteContainedItems = true;
             });
             projectTypes.Alter<TaxonomyPart>(part =>
@@ -277,7 +277,7 @@ namespace StatCan.OrchardCore.Radar
             communityTypes.DisplayText = "Community Types"; // Instead of TitlePart.Title
             communityTypes.Alter<AutoroutePart>(part =>
             {
-                part.Path = "/community-types";
+                part.Path = "community-types";
                 part.RouteContainedItems = true;
             });
             communityTypes.Alter<TaxonomyPart>(part =>
