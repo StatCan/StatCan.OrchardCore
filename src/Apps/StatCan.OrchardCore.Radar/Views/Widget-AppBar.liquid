@@ -32,8 +32,12 @@
   <v-spacer></v-spacer>
 
   <span class="d-none d-md-flex">
-    {% shape "menu", alias: "alias:main-menu", cache_id: "main-menu",
-    cache_fixed_duration: "00:05:00", cache_tag: "alias:main-menu" %}
+    {% if Culture.Name == "en" %}
+      {% shape "menu", alias: "alias:main-menu-en", cache_id: "main-menu-en", cache_fixed_duration: "00:05:00", cache_tag: "alias:main-menu-en" %}
+    {% endif %}
+    {% if Culture.Name == "fr" %}
+      {% shape "menu", alias: "alias:main-menu-ru", cache_id: "main-menu-fr", cache_fixed_duration: "00:05:00", cache_tag: "alias:main-menu-fr" %}
+    {% endif %} 
   </span>
 
   {{ "GlobalSearch" | shape_new | shape_render }}
