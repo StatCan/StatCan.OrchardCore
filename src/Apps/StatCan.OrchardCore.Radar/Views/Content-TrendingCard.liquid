@@ -1,8 +1,8 @@
 {% style src:"~/StatCan.OrchardCore.Radar/css/landing-page-card.css" %} 
 
 {% assign entities = Queries.AllTaxonomiesSQL | query: type: Model.ContentItem.Content.TrendingCard.Type.Text | first %}
-{% assign trending_up = Queries.TopicTrendingUpSQL | query %}
-{% assign trending_down = Queries.TopicTrendingDownSQL | query %}
+{% assign trending_up = Queries.TaxonomyTrendingUpSQL | query: type: Model.ContentItem.Content.TrendingCard.Type.Text %}
+{% assign trending_down = Queries.TaxonomyTrendingDownSQL | query: type: Model.ContentItem.Content.TrendingCard.Type.Text %}
 
 <div class="card card-background-dark">
   <div class="card-title">
@@ -45,9 +45,13 @@
         <div class="ml-5">
           {% for tdown in trending_down %}
           {% assign e = entities.ContentItem.Content.TaxonomyPart.Terms | where: "ContentItemId", tdown.TermContentItemId | first %}
-          <div class="mb-2">
-            {{ e | shape_build_display: "Summary" | shape_render }}
-          </div>
+            {% for tup in trending_up %}
+              {% if e.ContentItemId !=  tup.TermContentItemId %}
+                <div class="mb-2">
+                  {{ e | shape_build_display: "Summary" | shape_render }}
+                </div>
+              {% endif %}
+            {% endfor %}
           {% endfor %}
         </div>
       </div>

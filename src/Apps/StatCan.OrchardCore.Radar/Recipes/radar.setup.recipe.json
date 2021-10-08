@@ -943,20 +943,6 @@
       "name": "Queries",
       "Queries": [
         {
-          "Template": "select DocumentId\r\n    from ContentItemIndex \r\n    where ContentType = @contentType",
-          "ReturnDocuments": true,
-          "Name": "AllEntitiesSQL",
-          "Source": "Sql",
-          "Schema": null
-        },
-        {
-          "Template": "select DocumentId\r\n    from ContentItemIndex \r\n    where ContentType = 'EntityList' and DisplayText = @name",
-          "ReturnDocuments": true,
-          "Name": "EntityListSQL",
-          "Source": "Sql",
-          "Schema": null
-        },
-        {
           "Template": "select DocumentId\r\n    from ContentItemIndex \r\n    where ContentType = @contentType and Published = true and Latest = true\r\n\tlimit @num",
           "ReturnDocuments": true,
           "Name": "AllEntitiesWithLimitSQL",
@@ -971,30 +957,23 @@
           "Schema": null
         },
         {
-          "Template": "select DocumentId from ContentItemIndex where DisplayText = 'Topics' and latest = true;",
+          "Template": "select DocumentId from ContentItemIndex where DisplayText = @type and latest = true;",
           "ReturnDocuments": true,
           "Name": "AllTaxonomiesSQL",
           "Source": "Sql",
           "Schema": null
         },
         {
-          "Template": "(\r\n  select TermContentItemId, count(TermContentItemId) as popularity \r\n  \tfrom TaxonomyIndex \r\n  \twhere ContentField = 'Topics' \r\n  \tgroup by TermContentItemId \r\n  \torder by popularity desc \r\n  \tlimit 3\r\n)\r\nunion all\r\n(\r\n  select TermContentItemId, count(TermContentItemId) as popularity \r\n  \tfrom TaxonomyIndex \r\n  \twhere ContentField = 'Topics' \r\n  \tgroup by TermContentItemId \r\n  \torder by popularity asc\r\n  \tlimit 3\r\n)",
+          "Template": "select TermContentItemId, count(TermContentItemId) as popularity \r\n  \tfrom TaxonomyIndex \r\n  \twhere ContentField = @type \r\n  \tgroup by TermContentItemId \r\n  \torder by popularity desc \r\n  \tlimit 3",
           "ReturnDocuments": false,
-          "Name": "TaxonomyPopularitySQL",
+          "Name": "TaxonomyTrendingUpSQL",
           "Source": "Sql",
           "Schema": null
         },
         {
-          "Template": "select TermContentItemId, count(TermContentItemId) as popularity \r\n  \tfrom TaxonomyIndex \r\n  \twhere ContentField = 'Topics' \r\n  \tgroup by TermContentItemId \r\n  \torder by popularity desc \r\n  \tlimit 3",
+          "Template": "select TermContentItemId, count(TermContentItemId) as popularity \r\n  \tfrom TaxonomyIndex \r\n  \twhere ContentField = @type \r\n  \tgroup by TermContentItemId \r\n  \torder by popularity asc \r\n  \tlimit 3",
           "ReturnDocuments": false,
-          "Name": "TopicTrendingUpSQL",
-          "Source": "Sql",
-          "Schema": null
-        },
-        {
-          "Template": "select TermContentItemId, count(TermContentItemId) as popularity \r\n  \tfrom TaxonomyIndex \r\n  \twhere ContentField = 'Topics' \r\n  \tgroup by TermContentItemId \r\n  \torder by popularity asc \r\n  \tlimit 3",
-          "ReturnDocuments": false,
-          "Name": "TopicTrendingDownSQL",
+          "Name": "TaxonomyTrendingDownSQL",
           "Source": "Sql",
           "Schema": null
         },
