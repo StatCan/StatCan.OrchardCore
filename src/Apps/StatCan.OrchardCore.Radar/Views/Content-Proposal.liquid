@@ -82,7 +82,7 @@
                 {% for item in Model.ContentItem.Content.RadarEntityPart.RelatedEntity.ContentItemIds %}
                 {% assign community = item | content_item_id %}
                 <tr class="table-row">
-                  <td class="name-col">{{ community | dispay_text }}</th>
+                  <td class="name-col"><a href="{{ community | display_url }}">{{ community | dispay_text }}</a></th>
                   <td class="table-col">{{ community.Content.RadarEntityPart.Description.Text }}</th>
                 </tr>
                 {% endfor %}
