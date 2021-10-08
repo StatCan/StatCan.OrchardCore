@@ -1,27 +1,3 @@
-#: StatCan.OrchardCore.Radar\Views\GlobalSearch.cshtml:7
-#. <global-search api-url=@searchURL project-title=@T["Projects"] event-title=@T["Events"] proposal-title=@T["Proposals"] community-title=@T["Communities"]></global-search>
-msgctxt "StatCan.OrchardCore.Radar.Views.GlobalSearch"
-msgid "Projects"
-msgstr ""
-
-#: StatCan.OrchardCore.Radar\Views\GlobalSearch.cshtml:7
-#. <global-search api-url=@searchURL project-title=@T["Projects"] event-title=@T["Events"] proposal-title=@T["Proposals"] community-title=@T["Communities"]></global-search>
-msgctxt "StatCan.OrchardCore.Radar.Views.GlobalSearch"
-msgid "Events"
-msgstr ""
-
-#: StatCan.OrchardCore.Radar\Views\GlobalSearch.cshtml:7
-#. <global-search api-url=@searchURL project-title=@T["Projects"] event-title=@T["Events"] proposal-title=@T["Proposals"] community-title=@T["Communities"]></global-search>
-msgctxt "StatCan.OrchardCore.Radar.Views.GlobalSearch"
-msgid "Proposals"
-msgstr ""
-
-#: StatCan.OrchardCore.Radar\Views\GlobalSearch.cshtml:7
-#. <global-search api-url=@searchURL project-title=@T["Projects"] event-title=@T["Events"] proposal-title=@T["Proposals"] community-title=@T["Communities"]></global-search>
-msgctxt "StatCan.OrchardCore.Radar.Views.GlobalSearch"
-msgid "Communities"
-msgstr ""
-
 #: StatCan.OrchardCore.Radar\Views\List\Communities.cshtml:15
 #. <div class="text-h2">@T["Communities"]</div>
 msgctxt "StatCan.OrchardCore.Radar.Views.List.Communities"
@@ -82,6 +58,30 @@ msgctxt "StatCan.OrchardCore.Radar.Views.List.Events"
 msgid "Visibility"
 msgstr ""
 
+#: StatCan.OrchardCore.Radar\Views\GlobalSearch.cshtml:7
+#. <global-search api-url=@searchURL project-title=@T["Projects"] event-title=@T["Events"] proposal-title=@T["Proposals"] community-title=@T["Communities"]></global-search>
+msgctxt "StatCan.OrchardCore.Radar.Views.GlobalSearch"
+msgid "Projects"
+msgstr ""
+
+#: StatCan.OrchardCore.Radar\Views\GlobalSearch.cshtml:7
+#. <global-search api-url=@searchURL project-title=@T["Projects"] event-title=@T["Events"] proposal-title=@T["Proposals"] community-title=@T["Communities"]></global-search>
+msgctxt "StatCan.OrchardCore.Radar.Views.GlobalSearch"
+msgid "Events"
+msgstr ""
+
+#: StatCan.OrchardCore.Radar\Views\GlobalSearch.cshtml:7
+#. <global-search api-url=@searchURL project-title=@T["Projects"] event-title=@T["Events"] proposal-title=@T["Proposals"] community-title=@T["Communities"]></global-search>
+msgctxt "StatCan.OrchardCore.Radar.Views.GlobalSearch"
+msgid "Proposals"
+msgstr ""
+
+#: StatCan.OrchardCore.Radar\Views\GlobalSearch.cshtml:7
+#. <global-search api-url=@searchURL project-title=@T["Projects"] event-title=@T["Events"] proposal-title=@T["Proposals"] community-title=@T["Communities"]></global-search>
+msgctxt "StatCan.OrchardCore.Radar.Views.GlobalSearch"
+msgid "Communities"
+msgstr ""
+
 #: StatCan.OrchardCore.Radar\Views\List\Projects.cshtml:15
 #. <div class="text-h2">@T["Projects"]</div>
 msgctxt "StatCan.OrchardCore.Radar.Views.List.Projects"
@@ -140,5 +140,30 @@ msgstr ""
 #. <th>@T["Visibility"]</th>
 msgctxt "StatCan.OrchardCore.Radar.Views.List.Proposals"
 msgid "Visibility"
+msgstr ""
+
+#: StatCan.OrchardCore.Radar\Views\Widget-NavigationDrawer.liquid:0
+msgctxt "StatCan.OrchardCore.Radar.Views.Widget-NavigationDrawer"
+msgid "Home"
+msgstr ""
+
+#: StatCan.OrchardCore.Radar\Views\Workspace.liquid:0
+msgctxt "StatCan.OrchardCore.Radar.Views.Workspace"
+msgid "Workspace"
+msgstr ""
+
+#: StatCan.OrchardCore.Radar\Views\Workspace.liquid:0
+msgctxt "StatCan.OrchardCore.Radar.Views.Workspace"
+msgid "Name"
+msgstr ""
+
+#: StatCan.OrchardCore.Radar\Views\Workspace.liquid:0
+msgctxt "StatCan.OrchardCore.Radar.Views.Workspace"
+msgid "Status"
+msgstr ""
+
+#: StatCan.OrchardCore.Radar\Views\Workspace.liquid:0
+msgctxt "StatCan.OrchardCore.Radar.Views.Workspace"
+msgid "Updated"
 msgstr ""
 
