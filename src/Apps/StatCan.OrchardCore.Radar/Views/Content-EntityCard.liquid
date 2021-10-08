@@ -28,7 +28,7 @@
     {% endfor %}
   </div>
   <a
-    href="{{ Model.ContentItem.Content.EntityCard.ButtonLink.Text }}"
+    href="{{ "~/" | append: Model.ContentItem.Content.EntityCard.ButtonLink.Text | href }}"
     class="black--text card-button-link"
   >
     <v-btn elevation="0" text class="card-button">
