@@ -42,7 +42,7 @@
 
   {{ "GlobalSearch" | shape_new | shape_render }}
 
-  <div>
+  <div class="ml-4">
     {% assign user = User | user_id | users_by_id %}
     {{ user.Properties.UserProfile.UserProfile.FirstName.Text }}
     {{ user.Properties.UserProfile.UserProfile.LastName.Text }}

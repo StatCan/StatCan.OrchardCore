@@ -45,13 +45,17 @@
         <div class="ml-5">
           {% for tdown in trending_down %}
           {% assign e = entities.ContentItem.Content.TaxonomyPart.Terms | where: "ContentItemId", tdown.TermContentItemId | first %}
+            {% assign exist = false %}
             {% for tup in trending_up %}
-              {% if e.ContentItemId !=  tup.TermContentItemId %}
-                <div class="mb-2">
-                  {{ e | shape_build_display: "Summary" | shape_render }}
-                </div>
+              {% if e.ContentItemId ==  tup.TermContentItemId %}
+              {% assign exist = true %}
               {% endif %}
             {% endfor %}
+            {% if exist == false %}
+              <div class="mb-2">
+                {{ e | shape_build_display: "Summary" | shape_render }}
+              </div>
+            {% endif %}
           {% endfor %}
         </div>
       </div>
