@@ -1,5 +1,5 @@
 {% style src:"~/StatCan.OrchardCore.Radar/css/landing-page-card.css" %} 
-{%assign entities = Queries.AllEntitiesWithLimitSQL | query: contentType: Model.ContentItem.Content.EntityCard.Type.Text, num: Model.ContentItem.Content.EntityCard.Limit.Value %}
+{% assign entities = Queries.AllEntitiesWithLimitSQL | query: contentType: Model.ContentItem.Content.EntityCard.Type.Text, num: Model.ContentItem.Content.EntityCard.Limit.Value %}
 
 <div class="card card-background-light">
   <div class="card-title">
@@ -22,9 +22,11 @@
   </div>
   <div class="card-body">
     {% for entity in entities %}
-      <div class="mb-3">
-        <a href="{{ entity | display_url }}" class="card-item-link">{{ entity | display_text }}</a>
-      </div>
+      {% if entity.Content.LocalizationPart.Culture == "en" %}
+        <div class="mb-3">
+          <a href="{{ entity | display_url }}" class="card-item-link">{{ entity | display_text }}</a>
+        </div>
+      {% endif %}
     {% endfor %}
   </div>
   <a
