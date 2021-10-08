@@ -1,0 +1,144 @@
+#: StatCan.OrchardCore.Radar\Views\GlobalSearch.cshtml:7
+#. <global-search api-url=@searchURL project-title=@T["Projects"] event-title=@T["Events"] proposal-title=@T["Proposals"] community-title=@T["Communities"]></global-search>
+msgctxt "StatCan.OrchardCore.Radar.Views.GlobalSearch"
+msgid "Projects"
+msgstr ""
+
+#: StatCan.OrchardCore.Radar\Views\GlobalSearch.cshtml:7
+#. <global-search api-url=@searchURL project-title=@T["Projects"] event-title=@T["Events"] proposal-title=@T["Proposals"] community-title=@T["Communities"]></global-search>
+msgctxt "StatCan.OrchardCore.Radar.Views.GlobalSearch"
+msgid "Events"
+msgstr ""
+
+#: StatCan.OrchardCore.Radar\Views\GlobalSearch.cshtml:7
+#. <global-search api-url=@searchURL project-title=@T["Projects"] event-title=@T["Events"] proposal-title=@T["Proposals"] community-title=@T["Communities"]></global-search>
+msgctxt "StatCan.OrchardCore.Radar.Views.GlobalSearch"
+msgid "Proposals"
+msgstr ""
+
+#: StatCan.OrchardCore.Radar\Views\GlobalSearch.cshtml:7
+#. <global-search api-url=@searchURL project-title=@T["Projects"] event-title=@T["Events"] proposal-title=@T["Proposals"] community-title=@T["Communities"]></global-search>
+msgctxt "StatCan.OrchardCore.Radar.Views.GlobalSearch"
+msgid "Communities"
+msgstr ""
+
+#: StatCan.OrchardCore.Radar\Views\List\Communities.cshtml:15
+#. <div class="text-h2">@T["Communities"]</div>
+msgctxt "StatCan.OrchardCore.Radar.Views.List.Communities"
+msgid "Communities"
+msgstr ""
+
+#: StatCan.OrchardCore.Radar\Views\List\Communities.cshtml:58
+#. <th class="name-col" data-type="name">@T["Name"]</th>
+msgctxt "StatCan.OrchardCore.Radar.Views.List.Communities"
+msgid "Name"
+msgstr ""
+
+#: StatCan.OrchardCore.Radar\Views\List\Communities.cshtml:59
+#. <th data-type="number">@T["Members"]</th>
+msgctxt "StatCan.OrchardCore.Radar.Views.List.Communities"
+msgid "Members"
+msgstr ""
+
+#: StatCan.OrchardCore.Radar\Views\List\Communities.cshtml:60
+#. <th>@T["Owner"]</th>
+msgctxt "StatCan.OrchardCore.Radar.Views.List.Communities"
+msgid "Owner"
+msgstr ""
+
+#: StatCan.OrchardCore.Radar\Views\List\Communities.cshtml:61
+#. <th>@T["Type"]</th>
+msgctxt "StatCan.OrchardCore.Radar.Views.List.Communities"
+msgid "Type"
+msgstr ""
+
+#: StatCan.OrchardCore.Radar\Views\List\Events.cshtml:15
+#. <div class="text-h2">@T["Events"]</div>
+msgctxt "StatCan.OrchardCore.Radar.Views.List.Events"
+msgid "Events"
+msgstr ""
+
+#: StatCan.OrchardCore.Radar\Views\List\Events.cshtml:58
+#. <th class="name-col" data-type="name">@T["Name"]</th>
+msgctxt "StatCan.OrchardCore.Radar.Views.List.Events"
+msgid "Name"
+msgstr ""
+
+#: StatCan.OrchardCore.Radar\Views\List\Events.cshtml:59
+#. <th data-type="date-range">@T["Date"]</th>
+msgctxt "StatCan.OrchardCore.Radar.Views.List.Events"
+msgid "Date"
+msgstr ""
+
+#: StatCan.OrchardCore.Radar\Views\List\Events.cshtml:60
+#. <th>@T["Organizer"]</th>
+msgctxt "StatCan.OrchardCore.Radar.Views.List.Events"
+msgid "Organizer"
+msgstr ""
+
+#: StatCan.OrchardCore.Radar\Views\List\Events.cshtml:61
+#. <th>@T["Visibility"]</th>
+msgctxt "StatCan.OrchardCore.Radar.Views.List.Events"
+msgid "Visibility"
+msgstr ""
+
+#: StatCan.OrchardCore.Radar\Views\List\Projects.cshtml:15
+#. <div class="text-h2">@T["Projects"]</div>
+msgctxt "StatCan.OrchardCore.Radar.Views.List.Projects"
+msgid "Projects"
+msgstr ""
+
+#: StatCan.OrchardCore.Radar\Views\List\Projects.cshtml:58
+#. <th class="name-col" data-type="name">@T["Name"]</th>
+msgctxt "StatCan.OrchardCore.Radar.Views.List.Projects"
+msgid "Name"
+msgstr ""
+
+#: StatCan.OrchardCore.Radar\Views\List\Projects.cshtml:59
+#. <th data-type="date">@T["Updated"]</th>
+msgctxt "StatCan.OrchardCore.Radar.Views.List.Projects"
+msgid "Updated"
+msgstr ""
+
+#: StatCan.OrchardCore.Radar\Views\List\Projects.cshtml:60
+#. <th>@T["Registrar"]</th>
+msgctxt "StatCan.OrchardCore.Radar.Views.List.Projects"
+msgid "Registrar"
+msgstr ""
+
+#: StatCan.OrchardCore.Radar\Views\List\Projects.cshtml:61
+#. <th>@T["Visibility"]</th>
+msgctxt "StatCan.OrchardCore.Radar.Views.List.Projects"
+msgid "Visibility"
+msgstr ""
+
+#: StatCan.OrchardCore.Radar\Views\List\Projects.cshtml:62
+#. <th data-type="date">@T["Created"]</th>
+msgctxt "StatCan.OrchardCore.Radar.Views.List.Projects"
+msgid "Created"
+msgstr ""
+
+#: StatCan.OrchardCore.Radar\Views\List\Proposals.cshtml:15
+#. <div class="text-h2">@T["Proposals"]</div>
+msgctxt "StatCan.OrchardCore.Radar.Views.List.Proposals"
+msgid "Proposals"
+msgstr ""
+
+#: StatCan.OrchardCore.Radar\Views\List\Proposals.cshtml:58
+#. <th class="name-col" data-type="name">@T["Name"]</th>
+msgctxt "StatCan.OrchardCore.Radar.Views.List.Proposals"
+msgid "Name"
+msgstr ""
+
+#: StatCan.OrchardCore.Radar\Views\List\Proposals.cshtml:59
+#. <th data-type="date">@T["Created"]</th>
+msgctxt "StatCan.OrchardCore.Radar.Views.List.Proposals"
+msgid "Created"
+msgstr ""
+
+#: StatCan.OrchardCore.Radar\Views\List\Proposals.cshtml:60
+#. <th>@T["Visibility"]</th>
+msgctxt "StatCan.OrchardCore.Radar.Views.List.Proposals"
+msgid "Visibility"
+msgstr ""
+
