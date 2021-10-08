@@ -20,3 +20,7 @@
   cursor: pointer;
   overflow-wrap: anywhere;
 }
+
+th:hover {
+  cursor: pointer;
+}
