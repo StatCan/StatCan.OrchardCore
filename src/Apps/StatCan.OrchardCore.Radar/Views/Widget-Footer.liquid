@@ -1,6 +1,13 @@
 {% style src:"~/StatCan.OrchardCore.Radar/css/footer.css" %}
 
-{% assign menu = Content["alias:main-menu"] %}
+{% if Culture.Name == "en" %}
+    {% assign menu = Content["alias:main-menu-en"] %}
+{% endif %}
+{% if Culture.Name == "fr" %}
+    {% assign menu = Content["alias:main-menu-fr"] %}
+{% endif %}
+
+
 
 <div class="zigzag-footer footer">
     <div class="ripple-container ripple" style="background-image: url('{{ "~/StatCan.OrchardCore.Radar/images/ripples.svg" | href }}')">
