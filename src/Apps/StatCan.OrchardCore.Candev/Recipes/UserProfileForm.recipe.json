@@ -39,7 +39,7 @@
               "Text": "{{ \"successMessage\" | localize }}"
             },
             "Template": {
-              "Text": "<v-container >\r\n  <v-card-text>\r\n    <v-row justify=\"center\">\r\n      <v-col cols=\"10\">\r\n        <h1>[locale en]User profile[/locale][locale fr]Profil d'utilisateur[/locale]</h1>\r\n      </v-col>\r\n      <v-col cols=\"10\">\r\n        <v-text-field v-model=\"firstName\" filled=\"filled\" label=\"[locale en]First name[/locale][locale fr]Prénom[/locale]\"></v-text-field>\r\n      </v-col>\r\n      <v-col cols=\"10\">\r\n        <v-text-field v-model=\"lastName\" filled=\"filled\" label=\"[locale en]Last Name[/locale][locale fr]Nom[/locale]\"></v-text-field>\r\n      </v-col>\r\n      <v-col cols=\"10\">\r\n        <validation-provider name=\"{{ \"emailLabel\" | localize | downcase | raw }}\" rules=\"required|email\" v-slot=\"{ errors, valid }\">\r\n          <v-text-field v-model=\"email\" :success=\"valid\" :error-messages=\"errors\" filled=\"filled\" label=\"{{ \"emailLabel\" | localize }}\"></v-text-field>\r\n        </validation-provider>\r\n      </v-col>\r\n      <v-col cols=\"10\">\r\n        <p>[locale en]Language[/locale][locale fr]Langue[/locale]</p>\r\n        <v-radio-group  v-model=\"language\" row >\r\n          <v-radio label=\"[locale en]English[/locale][locale fr]Anglais[/locale]\" value=\"en\" ></v-radio>\r\n          <v-radio label=\"[locale en]French[/locale][locale fr]Français[/locale]\" value=\"fr\" ></v-radio>\r\n          <v-radio label=\"[locale en]Billingual[/locale][locale fr]Billingue[/locale]\" value=\"both\" ></v-radio>\r\n        </v-radio-group>\r\n      </v-col>\r\n      {% assign isInRole = User | is_in_role: \"Volunteer\" %}\r\n      {% if isInRole %}\r\n      <v-col cols=\"10\">\r\n        <p>[locale en]Role(s)[/locale][locale fr]Rôle(s)[/locale]</p>\r\n        <v-row>\r\n        <v-col>\r\n          <v-checkbox name=\"mentor\" v-model=\"mentor\" label=\"{{ \"mentorLabel\" | localize }}\"></v-checkbox>\r\n          <v-checkbox name=\"judge\" v-model=\"judge\" label=\"{{ \"judgeLabel\" | localize }}\"></v-checkbox>\r\n        </v-col>  \r\n        <v-col>\r\n          <v-checkbox name=\"agencyRepresentative\" v-model=\"agencyRepresentative\" label=\"{{ \"agencyRepresentativeLabel\" | localize }}\"></v-checkbox>\r\n          <v-checkbox name=\"workshopPresenter\" v-model=\"workshopPresenter\" label=\"{{ \"workshopPresenterLabel\" | localize }}\"></v-checkbox>\r\n        </v-col>\r\n        <v-col>\r\n          <v-checkbox name=\"technicalAdvisor\" v-model=\"technicalAdvisor\" label=\"{{ \"technicalAdvisorLabel\" | localize }}\"></v-checkbox>\r\n       \t  <v-checkbox name=\"keynoteSpeaker\" v-model=\"keynoteSpeaker\" label=\"{{ \"keynoteSpeakerLabel\" | localize }}\"></v-checkbox>\r\n        </v-col>\r\n        <v-col>\r\n          <v-checkbox name=\"observer\" v-model=\"observer\" label=\"{{ \"observerLabel\" | localize }}\"></v-checkbox>\r\n          <v-checkbox name=\"organizer\" v-model=\"organizer\" label=\"{{ \"organizerLabel\" | localize }}\"></v-checkbox>\r\n        </v-col>\r\n          </v-row>\r\n      </v-col>\r\n      {% endif %}\r\n        <v-col cols=\"10\">\r\n          <v-alert type=\"success\" v-if=\"form.successMessage\">\r\n            {% raw %}{{ form.successMessage }}{% endraw %}\r\n          </v-alert>\r\n          <v-alert type=\"error\" v-if=\"form.serverValidationMessage\">\r\n            {% raw %}{{ form.serverValidationMessage[0] }}{% endraw %}\r\n          </v-alert>\r\n        </v-col>\r\n        <v-col cols=\"10\">\r\n    \t  <v-btn type=\"submit\" depressed block @click=\"formHandleSubmit\" :loading=\"form.submitting\" :disabled=\"form.submitting\">[locale en]Update profile[/locale][locale fr]Mettre à jour votre profil[/locale]</v-btn>\r\n        </v-col>\r\n    </v-row>\r\n  </v-card-text>\r\n</v-container>\r\n\r\n"
+              "Text": "<v-container >\r\n  <v-card-text>\r\n    <v-row justify=\"center\">\r\n      <v-col cols=\"10\">\r\n        <h1>[locale en]User profile[/locale][locale fr]Profil d'utilisateur[/locale]</h1>\r\n      </v-col>\r\n      <v-col cols=\"10\">\r\n        <validation-provider name=\"{{ \"firstNameLabel\" | localize }}\" rules=\"required\" v-slot=\"{ errors, valid }\">\r\n          <v-text-field v-model=\"firstName\" name=\"firstName\" :success=\"valid\" :error-messages=\"errors\" filled=\"filled\" label=\"{{ \"firstNameLabel\" | localize }}\"></v-text-field>\r\n        </validation-provider>\r\n      </v-col>\r\n      <v-col cols=\"10\">\r\n        <validation-provider name=\"{{ \"lastNameLabel\" | localize }}\" rules=\"required\" v-slot=\"{ errors, valid }\">\r\n          <v-text-field v-model=\"lastName\" name=\"lastName\" :success=\"valid\" :error-messages=\"errors\" filled=\"filled\" label=\"{{ \"lastNameLabel\" | localize }}\"></v-text-field>\r\n        </validation-provider>\r\n      </v-col>\r\n      <v-col cols=\"10\">\r\n        <validation-provider name=\"{{ \"emailLabel\" | localize | downcase | raw }}\" rules=\"required|email\" v-slot=\"{ errors, valid }\">\r\n          <v-text-field v-model=\"email\" name=\"email\" :success=\"valid\" :error-messages=\"errors\" filled=\"filled\" label=\"{{ \"emailLabel\" | localize }}\"></v-text-field>\r\n        </validation-provider>\r\n      </v-col>\r\n      <v-col cols=\"10\">\r\n        <p>[locale en]Language[/locale][locale fr]Langue[/locale]</p>\r\n        <v-radio-group  v-model=\"language\" row >\r\n          <v-radio label=\"{{ \"languageEnglishLabel\" | localize }}\" value=\"en\" ></v-radio>\r\n          <v-radio label=\"{{ \"languageFrenchLabel\" | localize }}\" value=\"fr\" ></v-radio>\r\n          <v-radio label=\"{{ \"languageBothLabel\" | localize }}\" value=\"both\" ></v-radio>\r\n        </v-radio-group>\r\n      </v-col>\r\n      {% assign isInRole = User | is_in_role: \"Volunteer\" %}\r\n      {% if isInRole %}\r\n      <v-col cols=\"10\">\r\n        <p>[locale en]Role(s)[/locale][locale fr]Rôle(s)[/locale]</p>\r\n        <v-row>\r\n        <v-col>\r\n          <v-checkbox name=\"mentor\" v-model=\"mentor\" label=\"{{ \"mentorLabel\" | localize }}\"></v-checkbox>\r\n          <v-checkbox name=\"judge\" v-model=\"judge\" label=\"{{ \"judgeLabel\" | localize }}\"></v-checkbox>\r\n        </v-col>  \r\n        <v-col>\r\n          <v-checkbox name=\"agencyRepresentative\" v-model=\"agencyRepresentative\" label=\"{{ \"agencyRepresentativeLabel\" | localize }}\"></v-checkbox>\r\n          <v-checkbox name=\"workshopPresenter\" v-model=\"workshopPresenter\" label=\"{{ \"workshopPresenterLabel\" | localize }}\"></v-checkbox>\r\n        </v-col>\r\n        <v-col>\r\n          <v-checkbox name=\"technicalAdvisor\" v-model=\"technicalAdvisor\" label=\"{{ \"technicalAdvisorLabel\" | localize }}\"></v-checkbox>\r\n       \t  <v-checkbox name=\"keynoteSpeaker\" v-model=\"keynoteSpeaker\" label=\"{{ \"keynoteSpeakerLabel\" | localize }}\"></v-checkbox>\r\n        </v-col>\r\n        <v-col>\r\n          <v-checkbox name=\"observer\" v-model=\"observer\" label=\"{{ \"observerLabel\" | localize }}\"></v-checkbox>\r\n          <v-checkbox name=\"organizer\" v-model=\"organizer\" label=\"{{ \"organizerLabel\" | localize }}\"></v-checkbox>\r\n        </v-col>\r\n          </v-row>\r\n      </v-col>\r\n      {% endif %}\r\n        <v-col cols=\"10\">\r\n          <v-alert type=\"success\" v-if=\"form.successMessage\">\r\n            {% raw %}{{ form.successMessage }}{% endraw %}\r\n          </v-alert>\r\n          <v-alert type=\"error\" v-if=\"form.serverValidationMessage\">\r\n            {% raw %}{{ form.serverValidationMessage[0] }}{% endraw %}\r\n          </v-alert>\r\n        </v-col>\r\n        <v-col cols=\"10\">\r\n    \t  <v-btn type=\"submit\" depressed block @click=\"formHandleSubmit\" :loading=\"form.submitting\" :disabled=\"form.submitting\">[locale en]Update profile[/locale][locale fr]Mettre à jour votre profil[/locale]</v-btn>\r\n        </v-col>\r\n    </v-row>\r\n  </v-card-text>\r\n</v-container>\r\n\r\n"
             },
             "Disabled": {
               "Value": false
@@ -59,7 +59,7 @@
               "Text": "var data = requestFormAsJsonObject();\r\nvar localizedText = getLocalizedTextValues(getFormContentItem());\r\n\r\nif(!validateEmail(data.email)){\r\n    addError(\"email\", localizedText.invalidEmail);\r\n}\r\n"
             },
             "OnSubmitted": {
-              "Text": "var data = requestFormAsJsonObject();\r\nvar localizedText = getLocalizedTextValues(getFormContentItem());\r\n\r\nvar updateSettingsResult = updateCustomUserSettings(\"ParticipantProfile\", {\r\n  \"ParticipantProfile\" : {\r\n     \"FirstName\": {\r\n       \"Text\": data.firstName, \r\n     },\r\n     \"LastName\": {\r\n       \"Text\": data.lastName, \r\n     },\r\n     \"Email\": {\r\n       \"Text\": data.email, \r\n     },\r\n     \"Language\": {\r\n       \"Text\": data.language, \r\n     },\r\n  }\r\n});\r\n\r\nvar updateVolunteerSettingsResult = updateCustomUserSettings(\"Volunteer\", {\r\n  \"Volunteer\" : {\r\n    \"Mentor\" : {\r\n      \"Value\" : data.mentor\r\n    },\r\n    \"AgencyRepresentative\" : {\r\n      \"Value\" : data.agencyRepresentative\r\n    },\r\n    \"WorkshopPresenter\" : {\r\n      \"Value\" : data.workshopPresenter\r\n    },\r\n    \"TechnicalAdvisor\" : {\r\n      \"Value\" : data.technicalAdvisor\r\n    },\r\n    \"KeynoteSpeaker\" : {\r\n      \"Value\" : data.keynoteSpeaker\r\n    },\r\n    \"Observer\" : {\r\n      \"Value\" : data.observer\r\n    },\r\n    \"Organizer\" : {\r\n      \"Value\" : data.organizer\r\n    },\r\n    \"Judge\" : {\r\n      \"Value\" : data.judge\r\n    },\r\n    \"Department\": {\r\n      \"Text\": data.department\r\n    }\r\n  }\r\n});\r\n\r\nif(updateSettingsResult == 1 || updateSettingsResult == 2 || updateVolunteerSettingsResult == 1 || updateVolunteerSettingsResult == 2) \r\n{\r\n  addError(\"serverValidationMessage\", localizedText.updateSettingsError);\r\n  return;\r\n}\r\n\r\nnotify(\"success\", localizedText.successMessage);\r\n\r\nhttpRedirect(\"~/profile\");\r\n"
+              "Text": "var data = requestFormAsJsonObject();\r\nvar localizedText = getLocalizedTextValues(getFormContentItem());\r\n\r\nvar updateSettingsResult = updateCustomUserSettings(\"ParticipantProfile\", {\r\n  \"ParticipantProfile\" : {\r\n     \"FirstName\": {\r\n       \"Text\": data.firstName, \r\n     },\r\n     \"LastName\": {\r\n       \"Text\": data.lastName, \r\n     },\r\n     \"Email\": {\r\n       \"Text\": data.email, \r\n     },\r\n     \"Language\": {\r\n       \"Text\": data.language, \r\n     },\r\n  }\r\n});\r\n\r\nvar updateVolunteerSettingsResult = updateCustomUserSettings(\"Volunteer\", {\r\n  \"Volunteer\" : {\r\n    \"Mentor\" : {\r\n      \"Value\" : data.mentor\r\n    },\r\n    \"AgencyRepresentative\" : {\r\n      \"Value\" : data.agencyRepresentative\r\n    },\r\n    \"WorkshopPresenter\" : {\r\n      \"Value\" : data.workshopPresenter\r\n    },\r\n    \"TechnicalAdvisor\" : {\r\n      \"Value\" : data.technicalAdvisor\r\n    },\r\n    \"KeynoteSpeaker\" : {\r\n      \"Value\" : data.keynoteSpeaker\r\n    },\r\n    \"Observer\" : {\r\n      \"Value\" : data.observer\r\n    },\r\n    \"Organizer\" : {\r\n      \"Value\" : data.organizer\r\n    },\r\n    \"Judge\" : {\r\n      \"Value\" : data.judge\r\n    },\r\n    \"Department\": {\r\n      \"Text\": data.department\r\n    }\r\n  }\r\n});\r\n\r\nif(updateSettingsResult == 1 || updateSettingsResult == 2 || updateVolunteerSettingsResult == 1 || updateVolunteerSettingsResult == 2) \r\n{\r\n  addError(\"serverValidationMessage\", localizedText.updateSettingsError);\r\n  return;\r\n}\r\n\r\nnotify(\"success\", localizedText.successMessage);\r\n"
             }
           },
           "LocalizedTextPart": {
@@ -230,6 +230,71 @@
                   {
                     "Culture": "en",
                     "Value": "Organizer / Volunteer"
+                  }
+                ]
+              },
+              {
+                "Name": "firstNameLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Prénom"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "First name"
+                  }
+                ]
+              },
+              {
+                "Name": "lastNameLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Nom"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Last name"
+                  }
+                ]
+              },
+              {
+                "Name": "languageEnglishLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Anglais"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "English"
+                  }
+                ]
+              },
+              {
+                "Name": "languageFrenchLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Français"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "French"
+                  }
+                ]
+              },
+              {
+                "Name": "languageBothLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Les deux"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Both"
                   }
                 ]
               }
