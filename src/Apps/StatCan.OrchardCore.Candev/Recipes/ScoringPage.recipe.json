@@ -1,7 +1,7 @@
 {
   "name": "Candev.ScoringPage",
-  "displayName": "Scoring Page",
-  "description": "Creates a page with a scoring form that can be used by judges.",
+  "displayName": "Scoring Form",
+  "description": "Creates a scoring form that can be used by judges.",
   "author": "StatCan Digital Innovation",
   "website": "digital.statcan.gc.ca",
   "version": "1.0.0",
@@ -55,15 +55,15 @@
               "Text": null
             },
             "Template": {
-              "Text": "{% assign user = User | user_id | users_by_id %}\r\n{% assign userId = User | user_id %}\r\n{% assign scoreEntry = Queries.GetScoreEntry | query: teamContentItemId: Request.Query['teamId'], owner: userId  %}\r\n\r\n<v-container fluid>\r\n  {% if scoreEntry == null %}\r\n  <v-card-text>\r\n    <v-row justify=\"center\">\r\n        <v-col cols=\"8\">       \r\n          <v-radio-group name=\"score\" v-model=\"score\" row>\r\n                <v-radio v-for=\"n in 11\" :key=\"n\" :label=\"`${n - 1}`\" :value=\"`${n - 1}`\" />\r\n\t\t  </v-radio-group>        \r\n        </v-col>\r\n        <v-col cols=\"8\">\r\n         \t  <v-textarea name=\"comment\" v-model=\"comment\" :error-messages=\"errors\" counter=\"true\" filled=\"filled\" label=\"{{ \"commentLabel\" | localize }}\" rows=\"5\"/>\r\n        </v-col>\r\n        <v-col cols=\"8\">\r\n          <v-alert type=\"success\" v-if=\"form.successMessage\">\r\n            {% raw %}{{ form.successMessage }}{% endraw %}\r\n          </v-alert>\r\n          <v-alert type=\"error\" v-if=\"form.errorMessage\">\r\n            {% raw %}{{ form.errorMessage }}{% endraw %}\r\n          </v-alert>\r\n        </v-col>\r\n        <v-col cols=\"8\">\r\n    \t  <v-btn type=\"submit\" depressed block @click=\"formHandleSubmit\" :disabled=\"form.submitting\">{{ \"submitLabel\" | localize }}</v-btn>\r\n        </v-col>\r\n    </v-row>\r\n  </v-card-text>\r\n  {% endif %}\r\n</v-container>\r\n"
+              "Text": "{% assign user = User | user_id | users_by_id %}\r\n{% assign userId = User | user_id %}\r\n{% assign scoreEntry = Queries.GetScoreEntry | query: teamContentItemId: Request.Query['teamId'], owner: userId  %}\r\n\r\n<v-container fluid>\r\n  {% if scoreEntry == null %}\r\n  <v-card-text>\r\n    <v-row justify=\"center\">\r\n        <v-col cols=\"8\">       \r\n          <v-radio-group name=\"score\" v-model=\"score\" row>\r\n                <v-radio v-for=\"n in 11\" :key=\"n\" :label=\"`${n - 1}`\" :value=\"`${n - 1}`\" />\r\n\t\t  </v-radio-group>        \r\n        </v-col>\r\n        <v-col cols=\"8\">\r\n         \t  <v-textarea name=\"comment\" v-model=\"comment\" :error-messages=\"errors\" counter=\"true\" filled=\"filled\" label=\"{{ \"commentLabel\" | localize }}\" rows=\"5\"/>\r\n        </v-col>\r\n        <v-col cols=\"8\">\r\n          <v-alert type=\"success\" v-if=\"form.successMessage\">\r\n            {% raw %}{{ form.successMessage }}{% endraw %}\r\n          </v-alert>\r\n          <v-alert type=\"error\" v-if=\"form.serverValidationMessage\">\r\n            {% raw %}{{ form.serverValidationMessage[0] }}{% endraw %}\r\n          </v-alert>\r\n        </v-col>\r\n        <v-col cols=\"8\">\r\n    \t  <v-btn type=\"submit\" depressed block @click=\"formHandleSubmit\" :disabled=\"form.submitting\">{{ \"submitLabel\" | localize }}</v-btn>\r\n        </v-col>\r\n    </v-row>\r\n  </v-card-text>\r\n  {% endif %}\r\n</v-container>\r\n"
             }
           },
           "VueFormScripts": {
             "ClientInit": {
-              "Text": "VeeValidate.setInteractionMode('passive');\r\nVeeValidate.localize({\r\n  {{Culture.Name}}: {\r\n    fields: {\r\n      comment: {\r\n        required: '{{ \"scoreRequiredError\" | localize }}',\r\n      }\r\n    }\r\n  }\r\n});\r\n"
+              "Text": "VeeValidate.setInteractionMode('passive');"
             },
             "OnValidation": {
-              "Text": "var data = requestFormAsJsonObject();\r\nvar localizedText = getLocalizedTextValues(getFormContentItem());\r\n\r\nif(data.score == \"\" && data.comment == \"\") {\r\n  addError('score', localizedText.scoreRequiredError);\r\n}"
+              "Text": "var data = requestFormAsJsonObject();\r\nvar localizedText = getLocalizedTextValues(getFormContentItem());\r\n\r\nif(data.score == \"\") {\r\n  addError('serverValidationMessage', localizedText.scoreRequiredError);\r\n}"
             },
             "OnSubmitted": {
               "Text": "var data = requestFormAsJsonObject();\r\n\r\nvar item = createContentItem(\"ScoreEntry\", true, {\r\n  \"Score\": {\r\n    \"Score\": {\r\n      \"Value\": data.score\r\n    },\r\n    \"Judge\": {\r\n      \"ContentItemIds\": [\r\n        data.judge\r\n      ]\r\n    },\r\n    \"Team\": {\r\n      \"ContentItemIds\": [\r\n        data.team\r\n      ]\r\n    },\r\n    \"comment\": {\r\n      \"Text\": data.comment\r\n    }\r\n  }\r\n});\r\n\r\n"
@@ -79,11 +79,11 @@
                 "LocalizedItems": [
                   {
                     "Culture": "fr",
-                    "Value": "Un score ou un commentaire est requis."
+                    "Value": "Un score est requis."
                   },
                   {
                     "Culture": "en",
-                    "Value": "A score or comment is required."
+                    "Value": "A score is required."
                   }
                 ]
               },
@@ -114,6 +114,13 @@
                 ]
               }
             ]
+          },
+          "AliasPart": {
+            "Alias": "scoring"
+          },
+          "ContentPermissionsPart": {
+            "Enabled": false,
+            "Roles": []
           }
         }
       ]

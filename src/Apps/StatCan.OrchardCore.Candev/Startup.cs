@@ -30,33 +30,33 @@ namespace StatCan.OrchardCore.Candev
         {
             routes.MapAreaControllerRoute(
                name: "JoinTeam",
-               areaName: "StatCan.OrchardCore.Hackathon",
+               areaName: "StatCan.OrchardCore.Candev",
                pattern: "team/join",
-               defaults: new { controller = "Team", action = "JoinTeam" }
+               defaults: new { controller = "Candev", action = "JoinTeam" }
             );
             routes.MapAreaControllerRoute(
                name: "LeaveTeam",
-               areaName: "StatCan.OrchardCore.Hackathon",
+               areaName: "StatCan.OrchardCore.Candev",
                pattern: "team/leave",
-               defaults: new { controller = "Team", action = "LeaveTeam" }
+               defaults: new { controller = "Candev", action = "LeaveTeam" }
             );
             routes.MapAreaControllerRoute(
                name: "CreateTeam",
-               areaName: "StatCan.OrchardCore.Hackathon",
+               areaName: "StatCan.OrchardCore.Candev",
                pattern: "team/create",
-               defaults: new { controller = "Team", action = "CreateTeam" }
+               defaults: new { controller = "Candev", action = "CreateTeam" }
             );
             routes.MapAreaControllerRoute(
                name: "RemoveTeamMember",
-               areaName: "StatCan.OrchardCore.Hackathon",
+               areaName: "StatCan.OrchardCore.Candev",
                pattern: "team/remove",
-               defaults: new { controller = "Team", action = "RemoveTeamMember" }
+               defaults: new { controller = "Candev", action = "RemoveTeamMember" }
             );
             routes.MapAreaControllerRoute(
                name: "SaveTeam",
-               areaName: "StatCan.OrchardCore.Hackathon",
+               areaName: "StatCan.OrchardCore.Candev",
                pattern: "team/save",
-               defaults: new { controller = "Team", action = "SaveTeam" }
+               defaults: new { controller = "Candev", action = "SaveTeam" }
             );
         }
     }
