@@ -9,6 +9,7 @@ const contentIdNewsletterForm = "4ty56s2p8vfhmxp76p4f37b1c3";
 const contentIdScoringForm = "423fn7nvrwcdv2ksy8hww9qwdn";
 const contentIdSolutionSubmissionForm = "4fy9a011te6qx5611jv1hhtwwh";
 const contentIdUserProfileForm = "4pbmvhq49bwy1yatrapasxctnk";
+const scoringTeamId = "46p8s03jb80m037f96frfhs9mv";
 const TeamManagementPagePath = "test-page";
 const draggableContentId = "45a6j8rkq9z56xfhvxwm5hvgc7";
 const password = 'Inno111!';
@@ -293,7 +294,7 @@ describe("Candev Tests", function() {
   //#region Scoring Form
   it("Scoring Form: Client side validation prevents submit", function() {
     cy.login(tenant);
-    cy.visitContentPage(tenant, contentIdScoringForm);
+    cy.visit(`${tenant.prefix}/Contents/ContentItems/${contentIdScoringForm}?teamId=${scoringTeamId}`)
   
     cy.get('button[type=submit]').click();
   
@@ -302,7 +303,7 @@ describe("Candev Tests", function() {
   
   it("Scoring Form: Submit works and displays success message", function() {
     cy.login(tenant);
-    cy.visitContentPage(tenant, contentIdScoringForm);
+    cy.visit(`${tenant.prefix}/Contents/ContentItems/${contentIdScoringForm}?teamId=${scoringTeamId}`)
   
     cy.get('input[value=4]').click({force:true});
   
