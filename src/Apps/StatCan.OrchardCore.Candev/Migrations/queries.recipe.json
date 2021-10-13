@@ -29,7 +29,7 @@
           "ReturnDocuments": false,
           "Schema": null,
           "Source": "Sql",
-          "Template": "SELECT * FROM HackathonItemsIndex where ContentType ='ScoreEntry' and TeamContentItemId = '{{teamContentItemId}}' and Owner = '{{owner}}'"
+          "Template": "SELECT * FROM HackathonItemsIndex where ContentType ='Score' and TeamContentItemId = '{{teamContentItemId}}' and Owner = '{{owner}}'"
         },
         {
           "Name": "GetTeam",

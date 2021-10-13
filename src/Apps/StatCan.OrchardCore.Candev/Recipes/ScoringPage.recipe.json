@@ -66,10 +66,10 @@
               "Text": "var data = requestFormAsJsonObject();\r\nvar localizedText = getLocalizedTextValues(getFormContentItem());\r\n\r\nif(data.score == \"\") {\r\n  addError('serverValidationMessage', localizedText.scoreRequiredError);\r\n}"
             },
             "OnSubmitted": {
-              "Text": "var data = requestFormAsJsonObject();\r\n\r\nvar item = createContentItem(\"ScoreEntry\", true, {\r\n  \"Score\": {\r\n    \"Score\": {\r\n      \"Value\": data.score\r\n    },\r\n    \"Judge\": {\r\n      \"ContentItemIds\": [\r\n        data.judge\r\n      ]\r\n    },\r\n    \"Team\": {\r\n      \"ContentItemIds\": [\r\n        data.team\r\n      ]\r\n    },\r\n    \"comment\": {\r\n      \"Text\": data.comment\r\n    }\r\n  }\r\n});\r\n\r\n"
+              "Text": "var data = requestFormAsJsonObject();\r\n\r\nvar item = createContentItem(\"Score\", true, {\r\n  \"Score\": {\r\n    \"Score\": {\r\n      \"Value\": data.score\r\n    },\r\n    \"Judge\": {\r\n      \"UserIds\": [\r\n        data.judge\r\n      ]\r\n    },\r\n    \"Team\": {\r\n      \"ContentItemIds\": [\r\n        data.team\r\n      ]\r\n    },\r\n    \"Comment\": {\r\n      \"Text\": data.comment\r\n    }\r\n  }\r\n});\r\n\r\n"
             },
             "ComponentOptions": {
-              "Text": "{\r\n  data: () => ({\r\n    score: \"\",\r\n\tcomment: \"\", \r\n    judge: \"{{ user.Properties.ParticipantProfile.ContentItemId }}\",\r\n    team: \"{{ Request.Query['teamId'] }}\"\r\n  })\r\n}"
+              "Text": "{% assign userId = User | user_id %}\r\n\r\n{\r\n  data: () => ({\r\n    score: \"\",\r\n\tcomment: \"\", \r\n    judge: \"{{ userId }}\",\r\n    team: \"{{ Request.Query['teamId'] }}\"\r\n  })\r\n}"
             }
           },
           "LocalizedTextPart": {

@@ -438,20 +438,19 @@ namespace StatCan.OrchardCore.Candev
         {
             _contentDefinitionManager.AlterPartDefinition("Score", p => p
                 .Attachable()
-                .WithNumericField("Score", "0", new NumericFieldSettings() { Required = true, Scale = 1, Minimum = (decimal?)0.0, DefaultValue = "0" })
+                .WithNumericField("Score", "0", new NumericFieldSettings() { Required = true, DefaultValue = "0" })
                 .WithTextField("Comment", "1")
                 .WithField("Judge", f => f
-                    .OfType(nameof(ContentPickerField))
+                    .OfType(nameof(UserPickerField))
                     .WithDisplayName("Judge")
                     .WithPosition("2")
-                    .WithSettings(new ContentPickerFieldSettings() { DisplayedContentTypes = new[] { "Volunteer" }, Required = true })
+                    .WithSettings(new UserPickerFieldSettings() { DisplayedRoles = new string[] { "Volunteer" } })
                 )
                 .WithTeamField("2")
             );
 
-            _contentDefinitionManager.AlterTypeDefinition("ScoreEntry", t => t
+            _contentDefinitionManager.AlterTypeDefinition("Score", t => t
                 .WithPart("Score", p => p.WithPosition("0"))
-                .WithPart("ScoreEntry", p => p.WithPosition("1"))
             );
         }
 

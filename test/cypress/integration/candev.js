@@ -293,7 +293,7 @@ describe("Candev Tests", function() {
 
   //#region Scoring Form
   it("Scoring Form: Client side validation prevents submit", function() {
-    cy.login(tenant);
+    cy.loginAs(tenant.prefix, 'Adam', password);
     cy.visit(`${tenant.prefix}/Contents/ContentItems/${contentIdScoringForm}?teamId=${scoringTeamId}`)
   
     cy.get('button[type=submit]').click();
@@ -302,7 +302,7 @@ describe("Candev Tests", function() {
   })
   
   it("Scoring Form: Submit works and displays success message", function() {
-    cy.login(tenant);
+    cy.loginAs(tenant.prefix, 'Adam', password);
     cy.visit(`${tenant.prefix}/Contents/ContentItems/${contentIdScoringForm}?teamId=${scoringTeamId}`)
   
     cy.get('input[value=4]').click({force:true});
