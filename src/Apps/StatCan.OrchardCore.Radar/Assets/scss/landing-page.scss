@@ -1,0 +1,94 @@
+@import "colors";
+
+.max-wdith {
+  max-width: 1200px;
+}
+
+.light-font {
+  font-weight: lighter;
+  color: #000000de;
+  opacity: 1;
+}
+
+.header-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.list-item {
+  display: flex;
+  margin-bottom: 8px;
+}
+
+.name {
+  font-size: 47px;
+  color: $primary;
+  font-weight: 300;
+  white-space: nowrap;
+}
+
+.description {
+  font-size: 25px;
+  font-weight: 300;
+  margin: auto;
+  line-height: normal;
+}
+
+.list {
+  display: flex;
+  justify-content: center;
+}
+
+.section-title {
+  color: $primary;
+}
+
+.section-background {
+  background: $background-variant1;
+}
+
+.front-footer {
+  background: $primary !important;
+}
+
+.header-footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10rem 0 10rem;
+}
+
+.zigzag-container {
+  position: relative;
+  width: 100%;
+}
+
+.zigzag {
+  content: " ";
+  display: block;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+  height: 32px;
+}
+
+.zigzag-white {
+  background: linear-gradient(-40deg, #ffffff 16px, transparent 0),
+    linear-gradient(40deg, #ffffff 16px, transparent 0);
+  background-position: left bottom;
+  background-repeat: repeat-x;
+  background-size: 32px 32px;
+}
+
+.rippleFront {
+  background-color: #cfece9;
+  background-image: url("images/ripples-white.svg"), linear-gradient($primary + AA 5%, $secondary + BB);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: 12rem 0rem 3rem 0rem;
+}
+
+a {
+  text-decoration: none;
+}
