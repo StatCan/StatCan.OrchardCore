@@ -1,0 +1,20 @@
+@import "colors";
+
+.table-header {
+  border-bottom: 2px solid $primary;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.name-col {
+  text-align: left;
+  padding-left: 1rem;
+}
+
+th:hover {
+  cursor: pointer;
+}

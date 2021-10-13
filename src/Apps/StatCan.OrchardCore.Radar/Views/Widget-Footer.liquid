@@ -10,7 +10,7 @@
 
 
 <div class="zigzag-footer footer">
-    <div class="ripple-container ripple" style="background-image: url('{{ "~/StatCan.OrchardCore.Radar/images/ripples.svg" | href }}')">
+    <div class="ripple-container ripple">
         <div class="menus-container">
             {% for section in menu.Content.MenuItemsListPart.MenuItems %}
                 <div class="menu-container">
@@ -28,7 +28,7 @@
         <div class="logo-container">
             <div class="logo">
                 <v-img
-                    src="{{ "di-logo-footer.svg" | asset_url }}"
+                    src="{{ "di-logo.svg" | asset_url }}"
                     max-width="40"
                     max-height="58"
                 ></v-img>
@@ -44,12 +44,12 @@
 </div>
 <div class="footer-bottom">
     <v-img
-        src="{{ "goc-light.svg" | asset_url }}"
+        src="{{ "~/StatCan.OrchardCore.Radar/css/images/goc-light.svg" | href }}"
         max-width="293"
         max-height="28"
     ></v-img>
     <v-img
-        src="{{ "canada-light.svg" | asset_url }}"
+        src="{{ "~/StatCan.OrchardCore.Radar/css/images/canada-light.svg" | href }}"
         max-width="172"
         max-height="41"
     ></v-img>

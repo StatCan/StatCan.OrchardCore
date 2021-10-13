@@ -6,8 +6,8 @@
 	.st0{fill:url(#Icon_awesome-hashtag_1_);}
 </style>
 <linearGradient id="Icon_awesome-hashtag_1_" gradientUnits="userSpaceOnUse" x1="55.992" y1="0.0155" x2="55.992" y2="112.0155">
-	<stop  offset="0" style="stop-color:#009C88"/>
-	<stop  offset="1" style="stop-color:#227069"/>
+	<stop  offset="0" style="stop-color:#252561"/>
+	<stop  offset="1" style="stop-color:#151537"/>
 </linearGradient>
 <path id="Icon_awesome-hashtag" class="st0" d="M110.16,37.54l1.78-10c0.29-1.63-0.8-3.19-2.43-3.48c-0.17-0.03-0.35-0.05-0.53-0.05
 	h-18.7l3.66-20.47c0.29-1.63-0.8-3.19-2.43-3.48c-0.17-0.03-0.35-0.05-0.53-0.05H80.83c-1.45,0-2.7,1.04-2.95,2.47l-3.85,21.53

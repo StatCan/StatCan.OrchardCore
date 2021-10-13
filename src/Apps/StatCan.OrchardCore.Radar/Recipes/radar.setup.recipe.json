@@ -32,40 +32,28 @@
       "name": "media",
       "Files": [
         {
-          "SourcePath": "../wwwroot/images/radar-icon-white.svg",
+          "SourcePath": "../wwwroot/css/images/radar-icon-white.svg",
           "TargetPath": "radar-icon-white.svg"
         },
         {
-          "SourcePath": "../wwwroot/images/icon_communities.svg",
+          "SourcePath": "../wwwroot/css/images/icon_communities.svg",
           "TargetPath": "icon_communities.svg"
         },
         {
-          "SourcePath": "../wwwroot/images/icon_events.svg",
+          "SourcePath": "../wwwroot/css/images/icon_events.svg",
           "TargetPath": "icon_events.svg"
         },
         {
-          "SourcePath": "../wwwroot/images/icon_experiments.svg",
+          "SourcePath": "../wwwroot/css/images/icon_experiments.svg",
           "TargetPath": "icon_experiments.svg"
         },
         {
-          "SourcePath": "../wwwroot/images/icon_opportunities.svg",
+          "SourcePath": "../wwwroot/css/images/icon_opportunities.svg",
           "TargetPath": "icon_opportunities.svg"
         },
         {
-          "SourcePath": "../wwwroot/images/icon_topics.svg",
+          "SourcePath": "../wwwroot/css/images/icon_topics.svg",
           "TargetPath": "icon_topics.svg"
-        },
-        {
-          "SourcePath": "../wwwroot/images/goc-light.svg",
-          "TargetPath": "goc-light.svg"
-        },
-        {
-          "SourcePath": "../wwwroot/images/canada-light.svg",
-          "TargetPath": "canada-light.svg"
-        },
-        {
-          "SourcePath": "../wwwroot/images/di-logo-footer.svg",
-          "TargetPath": "di-logo-footer.svg"
         }
       ]
     },

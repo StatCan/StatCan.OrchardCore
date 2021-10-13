@@ -1,4 +1,6 @@
-{% style src:"~/StatCan.OrchardCore.Radar/css/global-search.css" %} 
+{% style src:"~/StatCan.OrchardCore.Radar/css/global-search.css" %}
+{% style src:"~/StatCan.OrchardCore.Radar/css/appbar.css" %}
+{% style src:"~/StatCan.OrchardCore.Radar/css/icon.css" %} 
 
 {% assign elevation = Model.ContentItem.Content.AppBar.Elevation.Value %}
 {% assign extensionHeight = Model.ContentItem.Content.AppBar.ExtensionHeight.Value %}
@@ -6,7 +8,7 @@
 {% assign height = Model.ContentItem.Content.AppBar.Height.Value %}
 {% assign width = Model.ContentItem.Content.AppBar.Width.Value %}
 
-<v-app-bar app clipped-left dark color="#009688"
+<v-app-bar app clipped-left dark class="appbar"
   {% if empty !=  extensionHeight %}extension-height="{{ extensionHeight }}"{% endif %}
   {% if empty != scrollThreshold %}scroll-threshold="{{ scrollThreshold }}"{% endif %}
   {% if empty != height %}height="{{ height }}"{% endif %}

@@ -6,8 +6,8 @@
 	.st0{fill:url(#Icon_material-people_1_);}
 </style>
 <linearGradient id="Icon_material-people_1_" gradientUnits="userSpaceOnUse" x1="-623.387" y1="437.7492" x2="-623.387" y2="436.7492" gradientTransform="matrix(112 0 0 -71.274 69875.3281 31220.5195)">
-	<stop  offset="0" style="stop-color:#009C88"/>
-	<stop  offset="1" style="stop-color:#227069"/>
+	<stop  offset="0" style="stop-color:#252561"/>
+	<stop  offset="1" style="stop-color:#151537"/>
 </linearGradient>
 <path id="Icon_material-people" class="st0" d="M76.36,50.92c8.44,0,15.27-6.84,15.27-15.27s-6.84-15.27-15.27-15.27
 	c-8.44,0-15.27,6.84-15.27,15.27c0,0,0,0,0,0c-0.03,8.4,6.75,15.24,15.15,15.27C76.27,50.92,76.31,50.92,76.36,50.92z M35.63,50.92

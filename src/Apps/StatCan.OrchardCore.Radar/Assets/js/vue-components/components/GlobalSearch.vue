@@ -13,7 +13,7 @@
     <div class="dropdown-list" ref="dropdownResult" v-show="showDropdown">
       <div v-show="projects.length > 0">
         <div class="result-caption">
-          <v-icon color="#009688" class="mr-3">mdi-flask-outline</v-icon>
+          <v-icon class="mr-3 icon-primary">mdi-flask-outline</v-icon>
           <div>{{ projectTitle }}</div>
         </div>
         <div
@@ -27,7 +27,7 @@
 
       <div v-show="communities.length > 0">
         <div class="result-caption">
-          <v-icon color="#009688" class="mr-3">mdi-account-multiple</v-icon>
+          <v-icon class="mr-3 icon-primary">mdi-account-multiple</v-icon>
           <div>{{ communityTitle }}</div>
         </div>
         <div
@@ -41,7 +41,7 @@
 
       <div v-show="events.length > 0">
         <div class="result-caption">
-          <v-icon color="#009688" class="mr-3">mdi-calendar</v-icon>
+          <v-icon class="mr-3 icon-primary">mdi-calendar</v-icon>
           <div>{{ eventTitle }}</div>
         </div>
         <div v-for="item in events" :key="item.name" class="dropdown-item">
@@ -51,7 +51,7 @@
 
       <div v-show="proposals.length > 0">
         <div class="result-caption">
-          <v-icon color="#009688" class="mr-3">mdi-alert-circle-outline</v-icon>
+          <v-icon class="mr-3 icon-primary">mdi-alert-circle-outline</v-icon>
           <div>{{ communityTitle }}</div>
         </div>
         <div

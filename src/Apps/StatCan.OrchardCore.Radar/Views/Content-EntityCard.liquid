@@ -1,10 +1,12 @@
 {% style src:"~/StatCan.OrchardCore.Radar/css/landing-page-card.css" %} 
+{% style src:"~/StatCan.OrchardCore.Radar/css/icon.css" %}
+
 {% assign entities = Queries.AllEntitiesWithLimitSQL | query: contentType: Model.ContentItem.Content.EntityCard.Type.Text, num: Model.ContentItem.Content.EntityCard.Limit.Value %}
 
-<div class="card card-background-light">
+<div class="card card-background">
   <div class="card-title">
     <div class="card-title-caption ml-5 mt-5 mb-8">
-      <v-icon color="white" class="mr-5" style="font-size: 65px;">
+      <v-icon class="mr-5 icon-secondary" style="font-size: 65px;">
         {{ Model.ContentItem.Content.EntityCard.Icon.Text }}
       </v-icon>
       <div class="white--text">
@@ -17,7 +19,7 @@
       </div>
     </div>
     <div class="zigzag-container">
-      <div class="zigzag zigzag-light"></div>
+      <div class="zigzag zigzag-dar"></div>
     </div>
   </div>
   <div class="card-body">

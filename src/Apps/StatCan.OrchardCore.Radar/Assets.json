@@ -1,18 +1,17 @@
 [
   {
-    "copy": true,
-    "inputs": ["Assets/css/*"],
-    "output": "wwwroot/css/@"
+    "inputs": ["Assets/scss/*.scss"],
+    "watch": ["Assets/scss/*"],
+    "output": "wwwroot/css/@.css"
   },
   {
     "copy": true,
     "inputs": ["Assets/images/*"],
-    "output": "wwwroot/images/@"
+    "output": "wwwroot/css/images/@"
   },
   {
-    "copy": true,
     "inputs": ["Assets/js/*.js"],
-    "output": "wwwroot/js/@"
+    "output": "wwwroot/js/@.js"
   },
   {
     "vue": true,

@@ -4,10 +4,10 @@
 {% assign trending_up = Queries.TaxonomyTrendingUpSQL | query: type: Model.ContentItem.Content.TrendingCard.Type.Text %}
 {% assign trending_down = Queries.TaxonomyTrendingDownSQL | query: type: Model.ContentItem.Content.TrendingCard.Type.Text %}
 
-<div class="card card-background-dark">
+<div class="card card-background">
   <div class="card-title">
     <div class="card-title-caption ml-5 mt-5 mb-8">
-      <v-icon color="white" class="mr-5" style="font-size: 65px;">
+      <v-icon class="mr-5 icon-secondary" style="font-size: 65px;">
         {{ Model.ContentItem.Content.TrendingCard.Icon.Text }}
       </v-icon>
       <div class="white--text">
@@ -20,13 +20,13 @@
       </div>
     </div>
     <div class="zigzag-container">
-      <div class="zigzag zigzag-dark"></div>
+      <div class="zigzag zigzag-dar"></div>
     </div>
   </div>
   <div class="card-body">
     <div class="trend-card-body mt-5">
       <div class="trend-container">
-        <v-icon color="#009c88" style="font-size: 145px;">
+        <v-icon class="icon-primary" style="font-size: 145px;">
             mdi-trending-up
         </v-icon>
         <div class="ml-5">
@@ -39,7 +39,7 @@
         </div>
       </div>
       <div class="trend-container">
-        <v-icon color="#009c88" style="font-size: 145px;">
+        <v-icon class="icon-primary" style="font-size: 145px;">
             mdi-trending-down
         </v-icon>
         <div class="ml-5">
