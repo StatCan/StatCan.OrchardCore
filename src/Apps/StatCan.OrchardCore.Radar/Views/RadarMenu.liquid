@@ -1,6 +1,6 @@
 {% assign menu = Model.Properties.Model %}
 
-<v-menu>
+<v-menu offset-y>
   <template v-slot:activator="{ on: onMenu, attrs }">
     <v-btn v-bind="attrs" text v-on="{ ...onMenu }">
       <span class="font-weight-light text-h6">{{ menu| display_text }}</span>

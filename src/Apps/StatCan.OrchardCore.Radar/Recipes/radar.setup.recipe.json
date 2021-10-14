@@ -888,6 +888,9 @@
           "Footer": {
             "Version": {
               "Text": "1.0.0"
+            },
+            "Caption": {
+              "Text": "digital@statcan"
             }
           },
           "LayerMetadata": {

@@ -1225,6 +1225,20 @@ namespace StatCan.OrchardCore.Radar
                     .WithDisplayName("Version")
                     .WithPosition("0")
                 )
+                .WithField("Caption", field => field
+                    .OfType("TextField")
+                    .WithDisplayName("Caption")
+                    .WithPosition("1")
+                )
+                .WithField("Logo", field => field
+                    .OfType("MediaField")
+                    .WithDisplayName("Logo")
+                    .WithPosition("2")
+                    .WithSettings(new MediaFieldSettings
+                    {
+                        Multiple = false,
+                    })
+                )
             );
         }
     }
