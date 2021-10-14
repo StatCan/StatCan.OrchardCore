@@ -5,8 +5,8 @@
 
 <div class="card card-background">
   <div class="card-title">
-    <div class="card-title-caption ml-5 mt-5 mb-10">
-      <v-icon class="mr-3 icon-secondary" style="font-size: 65px;">
+    <div class="card-title-caption">
+      <v-icon class="card-icon icon-secondary">
         {{ Model.ContentItem.Content.EntityCard.Icon.Text }}
       </v-icon>
       <div class="white--text">
@@ -25,7 +25,7 @@
   <div class="card-body">
     {% for entity in entities %}
       {% if entity.Content.LocalizationPart.Culture == "en" %}
-        <div class="mb-3">
+        <div class="card-item-link-container">
           <a href="{{ entity | display_url }}" class="card-item-link">{{ entity | display_text }}</a>
         </div>
       {% endif %}

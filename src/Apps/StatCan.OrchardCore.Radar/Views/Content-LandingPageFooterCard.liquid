@@ -2,12 +2,12 @@
 
 <v-card elevation=0>
     <a href="{{ Model.ContentItem.Content.LandingPageFooterCard.Link.Text }}">
-        <div class="white--text text-center front-footer pb-8 pt-7">
-            <v-icon class="mb-2 icon-secondary" style="font-size: 120px;">
+        <div class="white--text text-center front-footer">
+            <v-icon class="icon-secondary front-footer-card-icon">
                 {{ Model.ContentItem.Content.LandingPageFooterCard.Icon.Text }}
             </v-icon>
             <div>
-                <div class="text-h4 mb-1">{{ Model.ContentItem | display_text }}</div>
+                <div class="text-h4 front-footer-card-title">{{ Model.ContentItem | display_text }}</div>
                 <div class="text-p">{{ Model.ContentItem.Content.LandingPageFooterCard.Caption.Text }}</div>
             </div>
         </div>
