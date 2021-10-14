@@ -7,8 +7,6 @@
     {% assign menu = Content["alias:main-menu-fr"] %}
 {% endif %}
 
-
-
 <div class="zigzag-footer footer">
     <div class="ripple-container ripple">
         <div class="menus-container">
@@ -27,17 +25,13 @@
         </div>
         <div class="logo-container">
             <div class="logo">
-                <v-img
-                    src="{{ "di-logo.svg" | asset_url }}"
-                    max-width="40"
-                    max-height="58"
-                ></v-img>
-                <div class="white--text text-h5 ml-2">
-                    {{ "Digital Innovation" | t }}
+                <!-- <img
+                    src="{{ Model.ContentItem.Content.Footer.Logo.Paths.first| asset_url }}"
+                ><img> -->
+                <div class="white--text ml-2">
+                    <div class="text-subtitle">{{ Model.ContentItem.Content.Footer.Caption.Text }}</div>
+                    <div class="text-subtitle font-weight-thin">{{ Model.ContentItem.Content.Footer.Version.Text }}</div>
                 </div>
-            </div>
-            <div class="white--text">
-                {{ Model.ContentItem.Content.Footer.Version.Text }}
             </div>
         </div>
     </div>

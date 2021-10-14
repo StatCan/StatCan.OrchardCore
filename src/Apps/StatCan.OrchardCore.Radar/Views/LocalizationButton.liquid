@@ -1,0 +1,13 @@
+{% comment %} Assumption that we only support two cultures: EN and FR {% endcomment %}
+
+{% capture targetCultureShortName %}{% if Culture.Name contains 'en' %}FR{% else %}EN{% endif %}{% endcapture %}
+{% capture targetCultureLongName %}{% if Culture.Name contains 'en' %}Français{% else %}English{% endif %}{% endcapture %}
+{% capture targetCultureUrl %}{{ targetCultureShortName | downcase | switch_culture_url }}{% endcapture %}
+<v-tooltip bottom>
+    <template v-slot:activator="{ on }">
+    <v-btn icon href="{{ targetCultureUrl }}" lang="{{targetCultureShortName}}" aria-label="{{targetCultureLongName}}" v-on="on" class="menu-button">
+        {{ targetCultureShortName }}
+    </v-btn>
+    </template>
+    <span>{{"Switch to" | t}} {{targetCultureLongName}}</span>
+</v-tooltip>

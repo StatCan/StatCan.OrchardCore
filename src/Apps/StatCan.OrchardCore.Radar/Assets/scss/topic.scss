@@ -9,10 +9,11 @@
     color: #FFFFFF;
     width: fit-content;
     display: flex;
+    border: $secondary solid 2px;
 }
 
 .topic:hover {
-    background-color: $primary;
+    border: $primary solid 2px;
 }
 
 
