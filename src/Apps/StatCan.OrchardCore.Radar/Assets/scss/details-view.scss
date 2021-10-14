@@ -6,7 +6,7 @@
 
 .header {
   padding: 3rem 7rem;
-  background: transparent linear-gradient(180deg, rgba(37, 37, 97, 0.38), rgba(249, 102, 59, 0.38))
+  background: transparent linear-gradient(180deg, rgba($primary, 0.38), rgba($secondary, 0.38))
     0% no-repeat;
 }
 
