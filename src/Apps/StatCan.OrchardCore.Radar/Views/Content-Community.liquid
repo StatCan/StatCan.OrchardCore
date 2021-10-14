@@ -6,7 +6,7 @@
 {% assign type = Model.ContentItem.Content.Community.Type.TagNames | first %}
 
 {% zone "Header" %}
-<div class="pt-12">
+<div class="details-section">
   <div class="header">
     <v-container>
       <v-row justify="space-between">
@@ -32,7 +32,7 @@
             <v-row>
                 <v-col md="4">
                     <div class="icon-cell">
-                        <v-icon color="black" style="font-size: 40px;">
+                        <v-icon class="details-attribute-icon">
                             mdi-account-plus
                         </v-icon>
                         <div class="text-h6 icon-text">
@@ -42,7 +42,7 @@
                 </v-col>
                 <v-col md="4">
                     <div class="icon-cell">
-                        <v-icon color="black" style="font-size: 40px;">
+                        <v-icon class="details-attribute-icon">
                             mdi-bookmark
                         </v-icon>
                         <div class="text-h6 icon-text">

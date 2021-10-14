@@ -7,6 +7,19 @@
 .trend-card-body {
   display: flex;
   flex-direction: column;
+  margin-top: 1.25rem;
+}
+
+.trend-card-body-icon {
+  font-size: 9rem !important;
+}
+
+.trend-card-body-container {
+  margin-left: 0.25rem;
+}
+
+.trend-card-body-topic-container {
+  margin-bottom: 0.5rem;
 }
 
 .trend-container {
@@ -28,10 +41,16 @@
 
 .card-title-caption {
   display: flex;
+  margin: 1.25rem 0 2.5rem 1.25rem;
+}
+
+.card-icon {
+  font-size: 4rem !important;
+  margin-right: 0.75rem;
 }
 
 .card-body {
-  padding: 1rem 0 0 3rem;
+  padding: 1rem 0 0 6rem;
   margin-bottom: 1.5rem;
   flex-grow: 1;
 }
@@ -49,6 +68,10 @@
 .card-item-link:hover {
   color: $primary !important;
   text-decoration: underline;
+}
+
+.card-item-link-container {
+  margin-bottom: 0.75rem;
 }
 
 .card-title {

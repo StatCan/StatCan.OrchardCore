@@ -4,7 +4,7 @@
 {% script src:"~/StatCan.OrchardCore.Radar/js/table.js", at:"Head" %}
 
 {% zone "Header" %}
-<div class="pt-12">
+<div class="details-section">
   <div class="list-header">
     <v-container>
       <v-row justify="space-between">
@@ -16,7 +16,7 @@
             </div>
           </div>
           <div class="search-container">
-            <v-icon color="black" class="mr-5">
+            <v-icon class="search-icon">
               mdi-magnify
             </v-icon>
             <input class="search-input" type="text" id="search-input" onkeyup="search()">

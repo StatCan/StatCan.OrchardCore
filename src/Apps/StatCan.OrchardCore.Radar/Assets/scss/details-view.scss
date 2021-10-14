@@ -1,5 +1,9 @@
 @import "colors";
 
+.details-section {
+  padding-top: 3rem;
+}
+
 .header {
   padding: 3rem 7rem;
   background: transparent linear-gradient(180deg, rgba(37, 37, 97, 0.38), rgba(249, 102, 59, 0.38))
@@ -96,4 +100,14 @@
   background-position: left bottom;
   background-repeat: repeat-x;
   background-size: 32px 32px;
+}
+
+.details-main-icon {
+  font-size: 9rem !important;
+  color: $primary !important;
+}
+
+.details-attribute-icon {
+  font-size: 2.5rem !important;
+  color: #000000 !important;
 }

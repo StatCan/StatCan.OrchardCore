@@ -32,6 +32,7 @@
 
 .menu-title {
     color: $secondary;
+    margin-bottom: 1rem;
 }
 
 .zigzag-footer {
@@ -62,6 +63,10 @@
   background-image: url("images/ripples.svg");
 }
 
+.menu-link {
+  margin-bottom: 1rem;
+}
+
 .menu-link:hover {
     text-decoration: underline;
 }
@@ -77,4 +82,8 @@
     display: flex;
     align-items: end;
     flex-grow: 1
+}
+
+.logo-text {
+  margin-left: 0.5rem;
 }

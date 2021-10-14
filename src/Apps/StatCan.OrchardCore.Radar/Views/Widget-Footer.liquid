@@ -12,11 +12,11 @@
         <div class="menus-container">
             {% for section in menu.Content.MenuItemsListPart.MenuItems %}
                 <div class="menu-container">
-                    <div class="menu-title font-weight-medium text-h5 mb-4">
+                    <div class="menu-title font-weight-medium text-h5">
                         {{ section.DisplayText }}
                     </div>
                     {% for  item in section.MenuItemsListPart.MenuItems %}
-                        <a href="{{ item.LinkMenuItemPart.Url | href }}" class="white--text mb-4 menu-link">
+                        <a href="{{ item.LinkMenuItemPart.Url | href }}" class="white--text menu-link">
                             {{ item.DisplayText }}
                         </a>
                     {% endfor %}
@@ -28,7 +28,7 @@
                 <!-- <img
                     src="{{ Model.ContentItem.Content.Footer.Logo.Paths.first| asset_url }}"
                 ><img> -->
-                <div class="white--text ml-2">
+                <div class="white--text footer">
                     <div class="text-subtitle">{{ Model.ContentItem.Content.Footer.Caption.Text }}</div>
                     <div class="text-subtitle font-weight-thin">{{ Model.ContentItem.Content.Footer.Version.Text }}</div>
                 </div>

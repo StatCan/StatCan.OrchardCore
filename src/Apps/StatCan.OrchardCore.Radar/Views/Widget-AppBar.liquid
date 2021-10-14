@@ -44,7 +44,7 @@
 
   {{ "GlobalSearch" | shape_new | shape_render }}
 
-  <div class="ml-4">
+  <div class="app-bar-username-container">
     {% assign user = User | user_id | users_by_id %}
     {{ user.Properties.UserProfile.UserProfile.FirstName.Text }}
     {{ user.Properties.UserProfile.UserProfile.LastName.Text }}

@@ -6,8 +6,8 @@
 
 <div class="card card-background">
   <div class="card-title">
-    <div class="card-title-caption ml-5 mt-5 mb-10">
-      <v-icon class="mr-5 icon-secondary" style="font-size: 65px;">
+    <div class="card-title-caption">
+      <v-icon class="card-icon icon-secondary">
         {{ Model.ContentItem.Content.TrendingCard.Icon.Text }}
       </v-icon>
       <div class="white--text">
@@ -24,25 +24,25 @@
     </div>
   </div>
   <div class="card-body">
-    <div class="trend-card-body mt-5">
+    <div class="trend-card-body">
       <div class="trend-container">
-        <v-icon class="icon-primary" style="font-size: 145px;">
+        <v-icon class="icon-primary trend-card-body-icon">
             mdi-trending-up
         </v-icon>
-        <div class="ml-1">
+        <div class="trend-card-body-container">
           {% for tup in trending_up %}
           {% assign e = entities.ContentItem.Content.TaxonomyPart.Terms | where: "ContentItemId", tup.TermContentItemId | first %}
-          <div class="mb-2">
+          <div class="trend-card-body-topic-container">
             {{ e | shape_build_display: "Summary" | shape_render }}
           </div>
           {% endfor %}
         </div>
       </div>
       <div class="trend-container">
-        <v-icon class="icon-primary" style="font-size: 145px;">
+        <v-icon class="icon-primary trend-card-body-icon">
             mdi-trending-down
         </v-icon>
-        <div class="ml-1">
+        <div class="trend-card-body-container">
           {% for tdown in trending_down %}
           {% assign e = entities.ContentItem.Content.TaxonomyPart.Terms | where: "ContentItemId", tdown.TermContentItemId | first %}
             {% assign exist = false %}
@@ -52,7 +52,7 @@
               {% endif %}
             {% endfor %}
             {% if exist == false %}
-              <div class="mb-2">
+              <div class="trend-card-body-topic-container">
                 {{ e | shape_build_display: "Summary" | shape_render }}
               </div>
             {% endif %}

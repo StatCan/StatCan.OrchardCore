@@ -6,7 +6,7 @@
 <script asp-src="/StatCan.OrchardCore.Radar/js/table.js" at="Head"></script>
 
 <zone name="Header">
-  <div class="pt-12">
+  <div class="details-section">
     <div class="list-header">
       <v-container>
         <v-row justify="space-between">
@@ -20,7 +20,7 @@
               </div>
             </div>
             <div class="search-container">
-              <v-icon color="black" class="mr-5">
+              <v-icon class="search-icon">
                 mdi-magnify
               </v-icon>
               <form id="search-form" asp-controller="List" asp-action="Search" method="post" autocomplete="off">
