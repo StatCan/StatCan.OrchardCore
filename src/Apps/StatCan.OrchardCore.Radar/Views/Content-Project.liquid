@@ -2,6 +2,9 @@
 {% style src:"~/StatCan.OrchardCore.Radar/css/table.css" %}
 {% style src:"~/StatCan.OrchardCore.Radar/css/table-row.css" %}
 
+{% assign canView = Model.ContentItem | user_can_view %}
+{% if canView %}
+
 {% assign owner = Model.ContentItem.Owner | users_by_id %}
 
 {% zone "Header" %}
@@ -109,3 +112,7 @@
         {{ "Workspace" | shape_new: Model: Model.ContentItem.Content.Workspace | shape_render }}
     </div>
 </div>
+
+{% else %}
+	{{ "NotFound" | shape_new | shape_render }}
+{% endif %}

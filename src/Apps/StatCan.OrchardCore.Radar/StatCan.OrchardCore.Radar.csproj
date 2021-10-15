@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Razor">
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 
   <PropertyGroup>
     <TargetFramework>$(AspNetCoreTargetFramework)</TargetFramework>
@@ -42,6 +42,10 @@
     <PackageReference Include="OrchardCore.Media" Version="$(OrchardCoreVersion)" />
     <PackageReference Include="OrchardCore.Queries" Version="$(OrchardCoreVersion)" />
     <PackageReference Include="OrchardCore.Users" Version="$(OrchardCoreVersion)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Modules\StatCan.OrchardCore.ContentPermissions\StatCan.OrchardCore.ContentPermissions.csproj" />
   </ItemGroup>
   
   <!--Migrations-->

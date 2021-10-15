@@ -16,7 +16,7 @@
                         {{ section.DisplayText }}
                     </div>
                     {% for  item in section.MenuItemsListPart.MenuItems %}
-                        <a href="{{ item.LinkMenuItemPart.Url | href }}" class="white--text menu-link">
+                        <a href="{{ "~/" | append: item.LinkMenuItemPart.Url | href }}" class="white--text menu-link">
                             {{ item.DisplayText }}
                         </a>
                     {% endfor %}

@@ -2,16 +2,13 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using System.Collections;
 using Newtonsoft.Json.Linq;
 using OrchardCore.ContentManagement;
 using OrchardCore.Queries;
-using OrchardCore.DisplayManagement.Views;
 using OrchardCore.ContentManagement.Display;
 using OrchardCore.DisplayManagement.ModelBinding;
-using OrchardCore.DisplayManagement;
+using Etch.OrchardCore.ContentPermissions.Services;
 
 namespace StatCan.OrchardCore.Radar.Controllers
 {
@@ -20,14 +17,16 @@ namespace StatCan.OrchardCore.Radar.Controllers
         private readonly IQueryManager _queryManager;
         private readonly IContentItemDisplayManager _contentItemDisplayManager;
         private readonly IUpdateModelAccessor _updateModelAccessor;
+        private readonly IContentPermissionsService _contentPermissionsService;
 
         private const string LIST_QUERY = "EntityListLucene";
 
-        public ListController(IQueryManager queryManager, IContentItemDisplayManager contentItemDisplayManager, IUpdateModelAccessor updateModelAccessor)
+        public ListController(IQueryManager queryManager, IContentItemDisplayManager contentItemDisplayManager, IUpdateModelAccessor updateModelAccessor, IContentPermissionsService contentPermissionsService)
         {
             _queryManager = queryManager;
             _contentItemDisplayManager = contentItemDisplayManager;
             _updateModelAccessor = updateModelAccessor;
+            _contentPermissionsService = contentPermissionsService;
         }
 
         [HttpGet]
@@ -129,6 +128,11 @@ namespace StatCan.OrchardCore.Radar.Controllers
                     // If input is a 'JObject' but which not represents a 'ContentItem',
                     // a 'ContentItem' is still created but with some null properties.
                     if (contentItem?.ContentItemId == null)
+                    {
+                        continue;
+                    }
+                    // Permission check
+                    else if(!_contentPermissionsService.CanAccess(contentItem))
                     {
                         continue;
                     }

@@ -33,6 +33,7 @@
 
   <v-spacer></v-spacer>
 
+{% if User.Identity.IsAuthenticated == true %}
   <span class="d-none d-md-flex">
     {% if Culture.Name == "en" %}
       {% shape "menu", alias: "alias:main-menu-en", cache_id: "main-menu-en", cache_fixed_duration: "00:05:00", cache_tag: "alias:main-menu-en" %}
@@ -43,6 +44,7 @@
   </span>
 
   {{ "GlobalSearch" | shape_new | shape_render }}
+{% endif %}
 
   <div class="app-bar-username-container">
     {% assign user = User | user_id | users_by_id %}
