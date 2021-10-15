@@ -57,6 +57,7 @@
 </div>
 {% endzone %}
 
+{% if User.Identity.IsAuthenticated == true %}
 <div class="mb-12">
     <v-container style="max-width: 1200px">
         <v-row>
@@ -94,6 +95,7 @@
         </v-row>
     </v-container>
 </div>
+{% endif %}
 
 <div class="mb-12">
     <v-container style="max-width: 1200px">
