@@ -92,7 +92,7 @@
 
 .rippleFront {
   background-color: #cfece9;
-  background-image: url("images/ripples-white.svg"), linear-gradient($primary + AA 5%, $secondary + BB);
+  background-image: url("images/ripples-white.svg"), linear-gradient(rgba($primary, 1), rgba($secondary, 0.7));
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
