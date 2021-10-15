@@ -1,12 +1,13 @@
+{% assign canView = Model.ContentItem | user_can_view %}
+{% if canView %}
+
 {% style src:"~/StatCan.OrchardCore.Radar/css/details-view.css" %}
 {% style src:"~/StatCan.OrchardCore.Radar/css/table.css" %}
 {% style src:"~/StatCan.OrchardCore.Radar/css/table-row.css" %}
 
-{% assign canView = Model.ContentItem | user_can_view %}
-{% if canView %}
-
 {% assign owner = Model.ContentItem.Owner | users_by_id %}
 {% assign type = Model.ContentItem.Content.Community.Type.TagNames | first %}
+{% assign events =  Model.ContentItem.Content.RadarEntityPart.RelatedEntity.ContentItemIds | content_items | list_can_view %}
 
 {% zone "Header" %}
 <div class="details-section">
@@ -115,7 +116,9 @@
               {{ "Events" | t }}
           </div>
           <div class="bubble">
-              <div class="bubble-text" id="bubble-text">{{ Model.ContentItem.Content.RadarEntityPart.RelatedEntity.ContentItemIds | size }}</div>
+              <div class="bubble-text" id="bubble-text">
+                {{ events | size }}
+              </div>
           </div>
       </div>
         <table class="table" id="entity-table">
@@ -128,13 +131,13 @@
             </tr>
           </thead>
           <tbody>
-            {% for item in Model.ContentItem.Content.RadarEntityPart.RelatedEntity.ContentItemIds %}
-              {{ item | content_item_id | shape_build_display: "Summary" | shape_render }}
+            {% for item in events %}
+              {{ item | shape_build_display: "Summary" | shape_render }}
             {% endfor %}
           </tbody>
         </table>
     </div>
 </div>
 {% else %}
-	<p>Unfortunately you're not able to view this content.</p>
+  {{ "NotFound" | shape_new | shape_render }}
 {% endif %}

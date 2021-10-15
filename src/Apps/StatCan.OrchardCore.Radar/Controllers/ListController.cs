@@ -8,7 +8,9 @@ using OrchardCore.ContentManagement;
 using OrchardCore.Queries;
 using OrchardCore.ContentManagement.Display;
 using OrchardCore.DisplayManagement.ModelBinding;
+using System.Globalization;
 using Etch.OrchardCore.ContentPermissions.Services;
+using OrchardCore.ContentLocalization.Models;
 
 namespace StatCan.OrchardCore.Radar.Controllers
 {
@@ -125,6 +127,8 @@ namespace StatCan.OrchardCore.Radar.Controllers
                         }
                     }
 
+                    var part = contentItem.As<LocalizationPart>();
+
                     // If input is a 'JObject' but which not represents a 'ContentItem',
                     // a 'ContentItem' is still created but with some null properties.
                     if (contentItem?.ContentItemId == null)
@@ -133,6 +137,11 @@ namespace StatCan.OrchardCore.Radar.Controllers
                     }
                     // Permission check
                     else if(!_contentPermissionsService.CanAccess(contentItem))
+                    {
+                        continue;
+                    }
+                    // Culture check
+                    else if(part != null && part.Culture != CultureInfo.CurrentCulture.Name)
                     {
                         continue;
                     }
