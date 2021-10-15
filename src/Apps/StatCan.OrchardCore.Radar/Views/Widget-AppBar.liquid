@@ -49,6 +49,8 @@
     {{ user.Properties.UserProfile.UserProfile.FirstName.Text }}
     {{ user.Properties.UserProfile.UserProfile.LastName.Text }}
   </div>
-  {{ "UserMenuButton" | shape_new | shape_render }}
-  {{ "LocalizationButton" | shape_new | shape_render }}
+  <div class="app-bar-buttons-container">
+    {{ "UserMenuButton" | shape_new | shape_render }}
+    {{ "LocalizationButton" | shape_new | shape_render }}
+  </div>
 </v-app-bar>

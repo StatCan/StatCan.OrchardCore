@@ -903,15 +903,6 @@
       ]
     },
     {
-      "name": "Templates",
-      "Templates": {
-        "Content__LandingPage": {
-          "Description": "A template for the Landing Page content type",
-          "Content": "[file:text('Snippets/landingpage.liquid')]"
-        }
-      }
-    },
-    {
       "name": "lucene-index",
       "Indices": [
         {
