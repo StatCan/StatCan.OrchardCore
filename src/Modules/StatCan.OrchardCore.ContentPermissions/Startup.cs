@@ -1,4 +1,4 @@
-﻿using Etch.OrchardCore.ContentPermissions.Drivers;
+using Etch.OrchardCore.ContentPermissions.Drivers;
 using Etch.OrchardCore.ContentPermissions.Liquid;
 using Etch.OrchardCore.ContentPermissions.Models;
 using Etch.OrchardCore.ContentPermissions.Services;

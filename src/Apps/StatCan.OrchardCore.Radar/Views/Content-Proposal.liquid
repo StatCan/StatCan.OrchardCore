@@ -1,11 +1,12 @@
+{% assign canView = Model.ContentItem | user_can_view %}
+{% if canView %}
+
 {% style src:"~/StatCan.OrchardCore.Radar/css/details-view.css" %}
 {% style src:"~/StatCan.OrchardCore.Radar/css/table.css" %}
 {% style src:"~/StatCan.OrchardCore.Radar/css/table-row.css" %}
 
-{% assign canView = Model.ContentItem | user_can_view %}
-{% if canView %}
-
 {% assign owner = Model.ContentItem.Owner | users_by_id %}
+{% assign communities =  Model.ContentItem.Content.RadarEntityPart.RelatedEntity.ContentItemIds | content_items | list_can_view %}
 
 {% zone "Header" %}
 <div class="details-section">
@@ -70,7 +71,7 @@
                 {{ "Affected Communities" | t }}
             </div>
             <div class="bubble">
-                <div class="bubble-text" id="bubble-text">{{ Model.ContentItem.Content.RadarEntityPart.RelatedEntity.ContentItemIds | size }}</div>
+                <div class="bubble-text" id="bubble-text">{{ communities | size }}</div>
             </div>
         </div>
         <div class="table-container">
@@ -78,16 +79,14 @@
               <thead class="table-header">
                 <tr>
                   <th class="name-col">{{ "Name" | t }}</th>
-                  <th class="table-col">{{ "Description" | t }}</th>
+                  <th class="table-col">{{ "Members" | t }}</th>
+                  <th class="table-col">{{ "Owner" | t }}</th>
+                  <th class="table-col">{{ "Type" | t }}</th>
                 </tr>
               </thead>
               <tbody>
-                {% for item in Model.ContentItem.Content.RadarEntityPart.RelatedEntity.ContentItemIds %}
-                {% assign community = item | content_item_id %}
-                <tr class="table-row">
-                  <td class="name-col"><a href="{{ community | display_url }}">{{ community | dispay_text }}</a></th>
-                  <td class="table-col">{{ community.Content.RadarEntityPart.Description.Text }}</th>
-                </tr>
+                {% for item in communities %}
+                  {{ item | shape_build_display: "Summary" | shape_render }}
                 {% endfor %}
               </tbody>
             </table>
@@ -100,5 +99,5 @@
 </div>
 
 {% else %}
-	<p>Unfortunately you're not able to view this content.</p>
+  {{ "NotFound" | shape_new | shape_render }}
 {% endif %}

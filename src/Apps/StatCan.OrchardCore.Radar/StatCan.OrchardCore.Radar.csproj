@@ -37,6 +37,8 @@
     <PackageReference Include="OrchardCore.ContentManagement" Version="$(OrchardCoreVersion)" />
     <PackageReference Include="OrchardCore.ContentTypes.Abstractions" Version="$(OrchardCoreVersion)" />
     <PackageReference Include="OrchardCore.DisplayManagement" Version="$(OrchardCoreVersion)" />
+    <PackageReference Include="OrchardCore.Liquid" Version="$(OrchardCoreVersion)" />
+    <PackageReference Include="OrchardCore.Localization" Version="$(OrchardCoreVersion)" />
     <PackageReference Include="OrchardCore.Lucene" Version="$(OrchardCoreVersion)" />
     <PackageReference Include="OrchardCore.Lucene.Core" Version="$(OrchardCoreVersion)" />
     <PackageReference Include="OrchardCore.Media" Version="$(OrchardCoreVersion)" />
