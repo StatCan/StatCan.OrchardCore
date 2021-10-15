@@ -12,7 +12,7 @@
           <div class="title-container">
             <div class="text-h2">{{ Model.Properties.TaxonomyContentItem | display_text }}</div>
             <div class="bubble">
-              <div class="bubble-text" id="bubble-text">{{ Model.Items | size }}</div>
+              <div class="bubble-text" id="bubble-text">{{ Model.Properties.TaxonomyContentItem.Content.TaxonomyPart.Terms | list_can_view | size }}</div>
             </div>
           </div>
           <div class="search-container">
@@ -58,9 +58,12 @@
     </thead>
     <tbody>
       {% for item in Model.Items %}
-      <tr class="table-row">
-        {{ item | shape_render }}
-      </tr>
+      {% assign canView = item.Properties.TermContentItem | user_can_view %}
+        {% if canView %}
+        <tr class="table-row">
+          {{ item | shape_render }}
+        </tr>
+        {% endif %}
       {% endfor %}
     </tbody>
   </table>

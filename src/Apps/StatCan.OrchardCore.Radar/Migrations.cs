@@ -83,6 +83,9 @@ namespace StatCan.OrchardCore.Radar
                 .WithPart("LocalizationPart", part => part
                     .WithPosition("0")
                 )
+                .WithPart("ContentPermissionsPart", part => part
+                    .WithPosition("4")
+                )
             );
 
             _contentDefinitionManager.AlterPartDefinition(Constants.ContentTypes.Topic, part => part
