@@ -6,6 +6,7 @@ using OrchardCore.Liquid;
 using Etch.OrchardCore.ContentPermissions.Services;
 using System.Collections;
 using System.Collections.Generic;
+using Newtonsoft.Json.Linq;
 
 namespace StatCan.OrchardCore.Radar.Liquid
 {
@@ -26,6 +27,14 @@ namespace StatCan.OrchardCore.Radar.Liquid
             foreach(var item in items)
             {
                 var contentItem = item as ContentItem;
+
+                if(contentItem == null)
+                {
+                    if(item is JObject jObject)
+                    {
+                        contentItem = jObject.ToObject<ContentItem>();
+                    }
+                }
 
                 if(_contentPermissionsService.CanAccess(contentItem))
                 {
