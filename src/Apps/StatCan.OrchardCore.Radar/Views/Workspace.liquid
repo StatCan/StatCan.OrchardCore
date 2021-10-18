@@ -1,11 +1,11 @@
-{% assign artifacts = Model.Properties.Model.ContentItems %}
+{% assign artifacts = Model.Properties.Model.ContentItems | list_can_view %}
 
 <div class="table-title-container">
     <div class="text-h4">
         {{ "Workspace" | t }}
     </div>
     <div class="bubble">
-        <div class="bubble-text" id="bubble-text">{{ Model.Properties.Model.ContentItems | size }}</div>
+        <div class="bubble-text" id="bubble-text">{{ artifacts | size }}</div>
     </div>
 </div>
 <div>
