@@ -110,3 +110,8 @@ var attachSearchClear = function attachSearchClear() {
     document.getElementById("search-form").submit();
   });
 };
+
+window.addEventListener("DOMContentLoaded", function () {
+  attachSorter();
+  attachSearchClear();
+});

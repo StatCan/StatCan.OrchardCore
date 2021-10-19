@@ -91,3 +91,8 @@ const attachSearchClear = function() {
       document.getElementById("search-form").submit();
     });
 };
+
+window.addEventListener("DOMContentLoaded", function () {
+  attachSorter();
+  attachSearchClear();
+});
