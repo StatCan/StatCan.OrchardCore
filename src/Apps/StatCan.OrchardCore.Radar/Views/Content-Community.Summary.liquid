@@ -13,5 +13,5 @@
     </div>  
   </td>
   <td class="table-col">{{ owner.Properties.UserProfile.UserProfile.FirstName.Text }} {{ owner.Properties.UserProfile.UserProfile.LastName.Text }}</td>
-  <td class="table-col">{{ Model.ContentItem.Content.Community.Type.TagNames.first }}</td>
+  <td class="table-col">{{ Model.ContentItem.Content.Community.Type.TagNames.first | shortcode }}</td>
 </tr>

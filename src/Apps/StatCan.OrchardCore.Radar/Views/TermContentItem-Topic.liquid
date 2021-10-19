@@ -12,7 +12,7 @@
 
 <td class="name-col">
     <!-- <a> cannot be a child of <table> therefore only link the name as a workaround -->
-    <a href="{{ Model.Properties.TermContentItem | display_url }}" >{{ Model.Properties.TermContentItem | display_text }}</a>
+    <a href="{{ Model.Properties.TermContentItem | display_url }}" >{{ Model.Properties.TermContentItem | display_text | shortcode }}</a>
 </td>
 <td class="table-col">
     <div class="table-icon-cell">

@@ -7,9 +7,7 @@ using OrchardCore.ContentManagement.Metadata.Settings;
 using OrchardCore.Data.Migration;
 using OrchardCore.Taxonomies.Models;
 using OrchardCore.Title.Models;
-using OrchardCore.ContentFields.Fields;
 using OrchardCore.ContentFields.Settings;
-using OrchardCore.Taxonomies.Fields;
 using OrchardCore.Taxonomies.Settings;
 using OrchardCore.Flows.Models;
 using OrchardCore.Contents.Models;
@@ -80,9 +78,6 @@ namespace StatCan.OrchardCore.Radar
                 .WithPart("AutoroutePart", part => part
                     .WithPosition("2")
                 )
-                .WithPart("LocalizationPart", part => part
-                    .WithPosition("0")
-                )
                 .WithPart("ContentPermissionsPart", part => part
                     .WithPosition("4")
                 )
@@ -120,9 +115,6 @@ namespace StatCan.OrchardCore.Radar
                 .WithPart("AutoroutePart", part => part
                     .WithPosition("2")
                 )
-                .WithPart("LocalizationPart", part => part
-                    .WithPosition("0")
-                )
             );
 
             _contentDefinitionManager.AlterPartDefinition(Constants.ContentTypes.ProposalType, part => part
@@ -159,9 +151,6 @@ namespace StatCan.OrchardCore.Radar
                 .WithPart("AutoroutePart", part => part
                     .WithPosition("2")
                 )
-                .WithPart("LocalizationPart", part => part
-                    .WithPosition("0")
-                )
             );
 
             _contentDefinitionManager.AlterPartDefinition(Constants.ContentTypes.ProjectType, part => part
@@ -197,9 +186,6 @@ namespace StatCan.OrchardCore.Radar
                 )
                 .WithPart("AutoroutePart", part => part
                     .WithPosition("2")
-                )
-                .WithPart("LocalizationPart", part => part
-                    .WithPosition("0")
                 )
             );
 
@@ -355,9 +341,9 @@ namespace StatCan.OrchardCore.Radar
 
                 )
                 .WithField("RelatedEntity", field => field
-                    .OfType("ContentPickerField")
+                    .OfType("LocalizationSetContentPickerField")
                     .WithDisplayName("Related Entity")
-                    .WithSettings(new ContentPickerFieldSettings
+                    .WithSettings(new LocalizationSetContentPickerFieldSettings
                     {
                         Multiple = true,
                         Required = false,
