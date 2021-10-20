@@ -66,10 +66,7 @@
       <tbody>
       @foreach (var shape in Model)
         {
-          @if(shape.Properties["ContentItem"].Content.LocalizationPart.Culture == "en") 
-          {
-            @await DisplayAsync(shape)
-          }
+          @await DisplayAsync(shape)
         }
       </tbody>
     </table>

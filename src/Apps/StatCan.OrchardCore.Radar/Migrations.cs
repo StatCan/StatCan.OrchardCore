@@ -445,9 +445,6 @@ namespace StatCan.OrchardCore.Radar
                                     {{ user.Properties.UserProfile.UserProfile.FirstName.Text }} {{ user.Properties.UserProfile.UserProfile.LastName.Text }}                                ",
                     })
                 )
-                .WithPart("LocalizationPart", part => part
-                    .WithPosition("0")
-                )
             );
 
             _contentDefinitionManager.AlterPartDefinition(Constants.ContentTypes.ProjectMember, part => part
@@ -565,9 +562,6 @@ namespace StatCan.OrchardCore.Radar
                         Pattern = @"{% assign user = ContentItem.Content.EventOrganizer.Organizer.UserIds | first | users_by_id %}
                                     {{ user.Properties.UserProfile.UserProfile.FirstName.Text }} {{ user.Properties.UserProfile.UserProfile.LastName.Text }}",
                     })
-                )
-                .WithPart("LocalizationPart", part => part
-                    .WithPosition("1")
                 )
             );
 
@@ -690,9 +684,6 @@ namespace StatCan.OrchardCore.Radar
                         Pattern = @"{% assign user = ContentItem.Content.CommunityMember.Member.UserIds | first | users_by_id %}
                                     {{ user.Properties.UserProfile.UserProfile.FirstName.Text }} {{ user.Properties.UserProfile.UserProfile.LastName.Text }}",
                     })
-                )
-                .WithPart("LocalizationPart", part => part
-                    .WithPosition("0")
                 )
             );
 
