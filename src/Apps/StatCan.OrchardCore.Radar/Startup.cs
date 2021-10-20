@@ -28,12 +28,11 @@ namespace StatCan.OrchardCore.Radar
 
             services.AddLiquidFilter<ListCanViewFilter>("list_can_view");
             services.AddLiquidFilter<CurrentCultureFilter>("current_culture");
-            services.AddLiquidFilter<ContentItemsFilter>("content_items");
         }
 
         public override void Configure(IApplicationBuilder builder, IEndpointRouteBuilder routes, IServiceProvider serviceProvider)
         {
-            
+
         }
     }
 }
