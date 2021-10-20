@@ -9,7 +9,7 @@
       <v-row justify="space-between">
         <v-col md="7">
           <div class="title-container">
-            <div class="text-h3 name">{{ Model.ContentItem | display_text }}</div>
+            <div class="text-h3 name">{{ Model.ContentItem | display_text | shortcode }}</div>
             <div class="text-body-1 description">
                 {{ Model.ContentItem.Content.Artifact.URL.Text }}
             </div>
