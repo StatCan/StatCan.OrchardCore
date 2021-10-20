@@ -20,8 +20,12 @@
   margin-bottom: 8px;
 }
 
+.list-item-text {
+  font-size: 1.125rem;
+}
+
 .name {
-  font-size: 47px;
+  font-size: 3.5rem;
   color: $primary;
   font-weight: 300;
   white-space: nowrap;
@@ -48,8 +52,12 @@
 }
 
 .front-footer {
-  background: $primary !important;
+  background-color: $primary !important;
   padding: 1.75rem 0 2rem 0;
+}
+
+.front-footer:hover {
+  background-color: $card-hover !important;
 }
 
 .front-footer-card-icon {
@@ -65,6 +73,8 @@
   display: flex;
   justify-content: space-between;
   padding: 0 10rem 0 10rem;
+  margin-top: 1.75rem;
+  flex-wrap: wrap;
 }
 
 .zigzag-container {

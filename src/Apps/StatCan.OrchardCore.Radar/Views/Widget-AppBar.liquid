@@ -24,12 +24,14 @@
       src="{{ Model.ContentItem.Content.AppBar.Logo.Paths.first | asset_url }}"
       style="max-height:55px; width:80px;"
       alt="logo"
-    />
+    />  
   </a>
 
-  <div class="text-h4">
-    {{ Model.ContentItem | display_text }}
-  </div>
+  <a href="{{ '~/' | href }}">
+    <div class="text-h4 white--text">
+      {{ Model.ContentItem | display_text }}
+    </div>
+  </a>
 
   <v-spacer></v-spacer>
 
@@ -46,7 +48,7 @@
     {{ "GlobalSearch" | shape_new | shape_render }}
   {% endif %}
 
-  <div class="app-bar-username-container">
+  <div class="app-bar-username-container d-none d-md-flex">
     {% assign user = User | user_id | users_by_id %}
     {{ user.Properties.UserProfile.UserProfile.FirstName.Text }}
     {{ user.Properties.UserProfile.UserProfile.LastName.Text }}
