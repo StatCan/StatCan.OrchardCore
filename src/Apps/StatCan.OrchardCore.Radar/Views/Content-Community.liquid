@@ -102,7 +102,7 @@
                 {% for member in members %}
                     <tr class="table-row">
                         <td class="name-col">{{ member.DisplayText }}</th>
-                        <td class="table-col">{{ member.CommunityMember.Role.Text }}</th>
+                        <td class="table-col">{{ member.CommunityMember.Role.Text | shortcode }}</th>
                     </tr>
                 {% endfor %}
               </tbody>
