@@ -291,9 +291,6 @@ namespace StatCan.OrchardCore.Radar
                 .WithPart("TitlePart", part => part
                     .WithPosition("1")
                 )
-                .WithPart("LocalizationPart", part => part
-                    .WithPosition("0")
-                )
                 .WithPart("ContentPermissionsPart", part => part
                     .WithPosition("3")
                 )
