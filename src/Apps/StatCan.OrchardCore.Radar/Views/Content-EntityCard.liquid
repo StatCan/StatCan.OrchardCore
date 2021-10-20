@@ -5,30 +5,32 @@
 
 <div class="card card-background">
   <div class="card-title">
-    <div class="card-title-caption">
-      <v-icon class="card-icon icon-secondary">
-        {{ Model.ContentItem.Content.EntityCard.Icon.Text }}
-      </v-icon>
-      <div class="white--text">
-        <div class="text-h5">
-            {{ Model.ContentItem | display_text }}
-        </div>
-        <div class="text-h6">
-            {{ Model.ContentItem.Content.EntityCard.Caption.Text }}
+    <a href="{{ "~/" | append: Model.ContentItem.Content.EntityCard.ButtonLink.Text | href }}">
+      <div class="card-title-caption">
+        <v-icon class="card-icon icon-secondary">
+          {{ Model.ContentItem.Content.EntityCard.Icon.Text }}
+        </v-icon>
+        <div class="white--text">
+          <div class="text-h5">
+              {{ Model.ContentItem | display_text }}
+          </div>
+          <div class="text-h6">
+              {{ Model.ContentItem.Content.EntityCard.Caption.Text }}
+          </div>
         </div>
       </div>
-    </div>
-    <div class="zigzag-container">
-      <div class="zigzag zigzag-dark"></div>
-    </div>
-  </div>
-  <div class="card-body">
-    {% for entity in entities %}
-      <div class="card-item-link-container">
-        <a href="{{ entity | display_url }}" class="card-item-link">{{ entity | display_text }}</a>
+      <div class="zigzag-container">
+        <div class="zigzag zigzag-dark"></div>
       </div>
-    {% endfor %}
-  </div>
+      </div>
+      <div class="card-body">
+        {% for entity in entities %}
+          <div class="card-item-link-container">
+            <a href="{{ entity | display_url }}" class="card-item-link">{{ entity | display_text }}</a>
+          </div>
+        {% endfor %}
+      </div>
+    </a>
   <a
     href="{{ "~/" | append: Model.ContentItem.Content.EntityCard.ButtonLink.Text | href }}"
     class="black--text card-button-link"

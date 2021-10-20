@@ -80,7 +80,9 @@
 
 .logo {
     display: flex;
-    align-items: end;
+    flex-direction: column;
+    justify-content: end;
+    align-items: flex-start;
     flex-grow: 1
 }
 

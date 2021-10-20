@@ -9,7 +9,7 @@
     width: 38px !important;
     height: 38px !important;
     margin-left: 1rem;
-    color: #ffffff !important;
+    color: #ffffff;
 }
 
 .app-bar-username-container {
@@ -18,4 +18,5 @@
 
 .app-bar-buttons-container {
     margin-right: 0.5rem;
+    display: flex;
 }

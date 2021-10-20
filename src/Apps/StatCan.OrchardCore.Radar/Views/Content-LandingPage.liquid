@@ -26,7 +26,7 @@
                             {% for headerItem in Model.ContentItem.Content.HeaderList.ContentItems %}
                                 <div class="list-item">
                                     <v-icon>mdi-menu-right</v-icon>
-                                    <div>{{ headerItem.LandingPageHeaderList.Caption.Text }}</div>
+                                    <div class="list-item-text">{{ headerItem.LandingPageHeaderList.Caption.Text }}</div>
                                 </div>
                             {% endfor %}
                         </div>
@@ -34,7 +34,7 @@
                 </v-row>
                 <v-row>
                     <v-col md="12">
-                        <div class="header-footer mt-7">
+                        <div class="header-footer">
                             <v-img
                                 src="{{ "~/StatCan.OrchardCore.Radar/css/images/goc.svg" | href }}"
                                 max-width="293"

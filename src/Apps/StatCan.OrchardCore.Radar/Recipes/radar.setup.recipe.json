@@ -54,6 +54,10 @@
         {
           "SourcePath": "../wwwroot/css/images/icon_topics.svg",
           "TargetPath": "icon_topics.svg"
+        },
+        {
+          "SourcePath": "../wwwroot/css/images/di-logo.svg",
+          "TargetPath": "di-logo.svg"
         }
       ]
     },
@@ -891,6 +895,10 @@
             },
             "Caption": {
               "Text": "digital@statcan"
+            },
+            "Logo": {
+              "Paths": ["di-logo.svg"],
+              "MediaTexts": [""]
             }
           },
           "LayerMetadata": {

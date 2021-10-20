@@ -39,6 +39,10 @@
   flex-direction: column;
 }
 
+.card-title:hover {
+  background-color: $card-hover;
+}
+
 .card-title-caption {
   display: flex;
   margin: 1.25rem 0 2.5rem 1.25rem;
