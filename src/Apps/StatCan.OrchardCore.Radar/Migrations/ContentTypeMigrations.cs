@@ -12,21 +12,21 @@ using OrchardCore.Taxonomies.Settings;
 using OrchardCore.Flows.Models;
 using OrchardCore.Contents.Models;
 using OrchardCore.Autoroute.Models;
-using YesSql.Sql;
-using StatCan.OrchardCore.Radar.Indexing;
 using StatCan.OrchardCore.Radar.Models;
 using OrchardCore.Media.Settings;
 using Etch.OrchardCore.ContentPermissions.Models;
-namespace StatCan.OrchardCore.Radar
+
+namespace StatCan.OrchardCore.Radar.Migrations
 {
-    public class Migrations : DataMigration
+    public class ContentTypeMigrations : DataMigration
     {
+
         private readonly IContentDefinitionManager _contentDefinitionManager;
         private readonly IContentManager _contentManager;
 
         private readonly Dictionary<string, string> _taxonomyIds;
 
-        public Migrations(IContentDefinitionManager contentDefinitionManager, IContentManager contentManager)
+        public ContentTypeMigrations(IContentDefinitionManager contentDefinitionManager, IContentManager contentManager)
         {
             _contentDefinitionManager = contentDefinitionManager;
             _contentManager = contentManager;
@@ -366,12 +366,6 @@ namespace StatCan.OrchardCore.Radar
                         DisplayedContentTypes = new[] { Constants.ContentTypes.Project, Constants.ContentTypes.Proposal, Constants.ContentTypes.Community, Constants.ContentTypes.Event },
                     })
                 )
-            );
-
-            SchemaBuilder.CreateMapIndexTable<RadarEntityPartIndex>(table => table
-                .Column<string>(nameof(RadarEntityPartIndex.ContentItemId), column => column.WithLength(26))
-                .Column<string>(nameof(RadarEntityPartIndex.ContentType))
-                .Column<bool>(nameof(RadarEntityPartIndex.Published))
             );
         }
 
