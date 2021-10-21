@@ -3798,12 +3798,12 @@ var Tabs_component = normalizeComponent(
 
 installComponents_default()(Tabs_component, {VIcon: components_VIcon_VIcon})
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"b1143254-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/Apps/StatCan.OrchardCore.Radar/Assets/js/vue-components/components/Tab.vue?vue&type=template&id=10def257&
-var Tabvue_type_template_id_10def257_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.isActive),expression:"isActive"}]},[_vm._t("default")],2)}
-var Tabvue_type_template_id_10def257_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"b1143254-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/Apps/StatCan.OrchardCore.Radar/Assets/js/vue-components/components/Tab.vue?vue&type=template&id=7db08242&
+var Tabvue_type_template_id_7db08242_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.isActive),expression:"isActive"}]},[_vm._t("default")],2)}
+var Tabvue_type_template_id_7db08242_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/Apps/StatCan.OrchardCore.Radar/Assets/js/vue-components/components/Tab.vue?vue&type=template&id=10def257&
+// CONCATENATED MODULE: ./src/Apps/StatCan.OrchardCore.Radar/Assets/js/vue-components/components/Tab.vue?vue&type=template&id=7db08242&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/Apps/StatCan.OrchardCore.Radar/Assets/js/vue-components/components/Tab.vue?vue&type=script&lang=js&
 //
@@ -3814,7 +3814,6 @@ var Tabvue_type_template_id_10def257_staticRenderFns = []
 //
 /* harmony default export */ var Tabvue_type_script_lang_js_ = ({
   name: "Tab",
-  props: ["title", "icon", "count"],
   data: function data() {
     return {
       isActive: false
@@ -3833,8 +3832,8 @@ var Tabvue_type_template_id_10def257_staticRenderFns = []
 
 var Tab_component = normalizeComponent(
   components_Tabvue_type_script_lang_js_,
-  Tabvue_type_template_id_10def257_render,
-  Tabvue_type_template_id_10def257_staticRenderFns,
+  Tabvue_type_template_id_7db08242_render,
+  Tabvue_type_template_id_7db08242_staticRenderFns,
   false,
   null,
   null,
