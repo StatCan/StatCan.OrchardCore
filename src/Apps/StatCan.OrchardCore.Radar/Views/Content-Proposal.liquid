@@ -1,6 +1,3 @@
-{% assign canView = Model.ContentItem | user_can_view %}
-{% if canView %}
-
 {% style src:"~/StatCan.OrchardCore.Radar/css/details-view.min.css", debug_src: "~/StatCan.OrchardCore.Radar/css/details-view.css" %}
 {% style src:"~/StatCan.OrchardCore.Radar/css/table.min.css", debug_src: "~/StatCan.OrchardCore.Radar/css/table.css" %}
 {% style src:"~/StatCan.OrchardCore.Radar/css/table-row.min.css", debug_src: "~/StatCan.OrchardCore.Radar/css/table-row.css" %}
@@ -97,7 +94,3 @@
         {{ "Workspace" | shape_new: Model: Model.ContentItem.Content.Workspace | shape_render }}
     </div>
 </div>
-
-{% else %}
-  {{ "NotFound" | shape_new | shape_render }}
-{% endif %}
