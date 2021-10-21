@@ -933,9 +933,9 @@
       "name": "Queries",
       "Queries": [
         {
-          "Template": "select DocumentId\r\n    from ContentItemIndex \r\n    where ContentType = @contentType and Published = true and Latest = true\r\n\tlimit @num",
+          "Template": "select DocumentId\r\n    from ContentItemIndex \r\n    where ContentType = @contentType and Published = true and Latest = true\r\n\t order by PublishedUtc desc\r\n\t limit @num",
           "ReturnDocuments": true,
-          "Name": "AllEntitiesWithLimitSQL",
+          "Name": "RecentActivitiesSQL",
           "Source": "Sql",
           "Schema": null
         },
