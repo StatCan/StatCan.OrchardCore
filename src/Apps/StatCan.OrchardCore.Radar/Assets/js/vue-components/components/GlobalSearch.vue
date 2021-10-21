@@ -67,7 +67,7 @@
 </template>
 
 <script>
-import _ from "lodash";
+import debounce from "lodash/debounce";
 
 export default {
   props: [
@@ -90,7 +90,7 @@ export default {
     };
   },
   watch: {
-    searchText: _.debounce(function() {
+    searchText: debounce(function() {
       this.isTyping = false;
     }, 1000),
     isTyping: function(value) {
