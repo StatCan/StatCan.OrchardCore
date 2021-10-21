@@ -1,11 +1,6 @@
 {% style src:"~/StatCan.OrchardCore.Radar/css/footer.min.css", debug_src:"~/StatCan.OrchardCore.Radar/css/footer.css" %}
 
-{% if Culture.Name == "en" %}
-    {% assign menu = Content["alias:main-menu-en"] %}
-{% endif %}
-{% if Culture.Name == "fr" %}
-    {% assign menu = Content["alias:main-menu-fr"] %}
-{% endif %}
+{% assign menuAlias = "alias:main-menu-" | append Culture.Name %}
 
 <div class="zigzag-footer footer">
     <div class="ripple-container ripple">
