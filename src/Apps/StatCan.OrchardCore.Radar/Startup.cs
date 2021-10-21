@@ -14,6 +14,7 @@ using StatCan.OrchardCore.Radar.Indexing;
 using StatCan.OrchardCore.Radar.Models;
 using StatCan.OrchardCore.Radar.Liquid;
 using StatCan.OrchardCore.Radar.Filters;
+using StatCan.OrchardCore.Radar.Migrations;
 
 namespace StatCan.OrchardCore.Radar
 {
@@ -21,7 +22,8 @@ namespace StatCan.OrchardCore.Radar
     {
         public override void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<IDataMigration, Migrations>();
+            services.AddScoped<IDataMigration, ContentTypeMigrations>();
+            services.AddScoped<IDataMigration, IndexMigrations>();
 
             services.AddContentPart<RadarEntityPart>();
             services.AddSingleton<IIndexProvider, RadarEntityPartIndexProvider>();
