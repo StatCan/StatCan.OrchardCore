@@ -1,5 +1,3 @@
-{% style src:"~/StatCan.OrchardCore.Radar/css/landing-page-card.min.css", debug_src: "~/StatCan.OrchardCore.Radar/css/landing-page-card.css" %} 
-
 {% assign entities = Queries.AllTaxonomiesSQL | query: type: Model.ContentItem.Content.TrendingCard.Type.Text | first %}
 {% assign trending_up = Queries.TaxonomyTrendingUpSQL | query: type: Model.ContentItem.Content.TrendingCard.Type.Text %}
 {% assign trending_down = Queries.TaxonomyTrendingDownSQL | query: type: Model.ContentItem.Content.TrendingCard.Type.Text %}
