@@ -1,16 +1,16 @@
 using System;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Routing;
+using Microsoft.Extensions.Options;
 using Microsoft.Extensions.DependencyInjection;
 using OrchardCore.Modules;
 using OrchardCore.Data.Migration;
 using OrchardCore.ContentManagement;
 using YesSql.Indexes;
-using StatCan.OrchardCore.Radar.Indexing;
-using StatCan.OrchardCore.Radar.Models;
 using OrchardCore.ResourceManagement;
 using OrchardCore.Liquid;
-using Microsoft.Extensions.Options;
+using StatCan.OrchardCore.Radar.Indexing;
+using StatCan.OrchardCore.Radar.Models;
 using StatCan.OrchardCore.Radar.Liquid;
 
 namespace StatCan.OrchardCore.Radar

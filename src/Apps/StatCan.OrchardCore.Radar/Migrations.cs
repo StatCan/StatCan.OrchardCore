@@ -16,7 +16,7 @@ using YesSql.Sql;
 using StatCan.OrchardCore.Radar.Indexing;
 using StatCan.OrchardCore.Radar.Models;
 using OrchardCore.Media.Settings;
-
+using Etch.OrchardCore.ContentPermissions.Models;
 namespace StatCan.OrchardCore.Radar
 {
     public class Migrations : DataMigration
@@ -57,6 +57,17 @@ namespace StatCan.OrchardCore.Radar
 
         private void CreateTaxonomies()
         {
+            // Add content permission to Taxonomy
+            _contentDefinitionManager.AlterTypeDefinition("Taxonomy", type => type
+                .WithPart("ContentPermissionsPart", part => part
+                    .WithPosition("5")
+                    .WithSettings(new ContentPermissionsPartSettings
+                    {
+                        RedirectUrl = "not-found"
+                    })
+                )
+            );
+
             // Topic
             _contentDefinitionManager.AlterTypeDefinition(Constants.ContentTypes.Topic, type => type
                 .DisplayedAs("Topic")
@@ -80,6 +91,10 @@ namespace StatCan.OrchardCore.Radar
                 )
                 .WithPart("ContentPermissionsPart", part => part
                     .WithPosition("4")
+                    .WithSettings(new ContentPermissionsPartSettings
+                    {
+                        RedirectUrl = "not-found",
+                    })
                 )
             );
 
@@ -293,6 +308,10 @@ namespace StatCan.OrchardCore.Radar
                 )
                 .WithPart("ContentPermissionsPart", part => part
                     .WithPosition("3")
+                    .WithSettings(new ContentPermissionsPartSettings
+                    {
+                        RedirectUrl = "not-found",
+                    })
                 )
                 .WithPart("AutoroutePart", part => part
                     .WithPosition("2")
@@ -384,6 +403,10 @@ namespace StatCan.OrchardCore.Radar
                 )
                 .WithPart("ContentPermissionsPart", part => part
                     .WithPosition("3")
+                    .WithSettings(new ContentPermissionsPartSettings
+                    {
+                        RedirectUrl = "not-found",
+                    })
                 )
                 .WithPart("Workspace", "BagPart", part => part
                     .WithDisplayName("Workspace")
@@ -493,6 +516,10 @@ namespace StatCan.OrchardCore.Radar
                 )
                 .WithPart("ContentPermissionsPart", part => part
                     .WithPosition("3")
+                    .WithSettings(new ContentPermissionsPartSettings
+                    {
+                        RedirectUrl = "not-found",
+                    })
                 )
                 .WithPart("Workspace", "BagPart", part => part
                     .WithDisplayName("Workspace")
@@ -600,6 +627,10 @@ namespace StatCan.OrchardCore.Radar
                 )
                 .WithPart("ContentPermissionsPart", part => part
                     .WithPosition("3")
+                    .WithSettings(new ContentPermissionsPartSettings
+                    {
+                        RedirectUrl = "not-found",
+                    })
                 )
                 .WithPart(nameof(RadarEntityPart), part => part
                     .WithPosition("1")
@@ -733,6 +764,10 @@ namespace StatCan.OrchardCore.Radar
                 )
                 .WithPart("ContentPermissionsPart", part => part
                     .WithPosition("3")
+                    .WithSettings(new ContentPermissionsPartSettings
+                    {
+                        RedirectUrl = "not-found",
+                    })
                 )
                 .WithPart("Workspace", "BagPart", part => part
                     .WithDisplayName("Workspace")

@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,7 @@ using OrchardCore.DisplayManagement.ModelBinding;
 using System.Globalization;
 using Etch.OrchardCore.ContentPermissions.Services;
 using OrchardCore.ContentLocalization.Models;
+using OrchardCore.Contents;
 
 namespace StatCan.OrchardCore.Radar.Controllers
 {
@@ -21,20 +23,32 @@ namespace StatCan.OrchardCore.Radar.Controllers
         private readonly IUpdateModelAccessor _updateModelAccessor;
         private readonly IContentPermissionsService _contentPermissionsService;
 
+        private readonly IAuthorizationService _authorizationService;
+
         private const string LIST_QUERY = "EntityListLucene";
 
-        public ListController(IQueryManager queryManager, IContentItemDisplayManager contentItemDisplayManager, IUpdateModelAccessor updateModelAccessor, IContentPermissionsService contentPermissionsService)
+        public ListController(
+            IQueryManager queryManager,
+            IContentItemDisplayManager contentItemDisplayManager,
+            IUpdateModelAccessor updateModelAccessor,
+            IContentPermissionsService contentPermissionsService,
+            IAuthorizationService authorizationService)
         {
             _queryManager = queryManager;
             _contentItemDisplayManager = contentItemDisplayManager;
             _updateModelAccessor = updateModelAccessor;
             _contentPermissionsService = contentPermissionsService;
+            _authorizationService = authorizationService;
         }
 
         [HttpGet]
         [Route("/proposals")]
         public async Task<IActionResult> Proposals(string searchText = null)
         {
+            if(!await CanViewList()) {
+                return Redirect("not-found");
+            }
+
             return View(await GetContents("Proposal", searchText));
         }
 
@@ -42,6 +56,10 @@ namespace StatCan.OrchardCore.Radar.Controllers
         [Route("/projects")]
         public async Task<IActionResult> Projects(string searchText = null)
         {
+            if(!await CanViewList()) {
+                return Redirect("not-found");
+            }
+
             return View(await GetContents("Project", searchText));
         }
 
@@ -49,6 +67,10 @@ namespace StatCan.OrchardCore.Radar.Controllers
         [Route("/events")]
         public async Task<IActionResult> Events(string searchText = null)
         {
+            if(!await CanViewList()) {
+                return Redirect("not-found");
+            }
+
             return View(await GetContents("Event", searchText));
         }
 
@@ -56,6 +78,10 @@ namespace StatCan.OrchardCore.Radar.Controllers
         [Route("/communities")]
         public async Task<IActionResult> Communities(string searchText = null)
         {
+            if(!await CanViewList()) {
+                return Redirect("not-found");
+            }
+
             return View(await GetContents("Community", searchText));
         }
 
@@ -113,7 +139,7 @@ namespace StatCan.OrchardCore.Radar.Controllers
             // Convert result to content items
             var contentItems = new List<ContentItem>();
 
-            if(results != null)
+            if (results != null)
             {
                 foreach (var result in results.Items)
                 {
@@ -135,13 +161,17 @@ namespace StatCan.OrchardCore.Radar.Controllers
                     {
                         continue;
                     }
-                    // Permission check
-                    else if(!_contentPermissionsService.CanAccess(contentItem))
+                    // Orchard content permission check
+                    else if(!await _authorizationService.AuthorizeAsync(User, CommonPermissions.ViewContent, contentItem)) {
+                        continue;
+                    }
+                    // Content Permission check
+                    else if (!_contentPermissionsService.CanAccess(contentItem))
                     {
                         continue;
                     }
                     // Culture check
-                    else if(part != null && part.Culture != CultureInfo.CurrentCulture.Name)
+                    else if (part != null && part.Culture != CultureInfo.CurrentCulture.Name)
                     {
                         continue;
                     }
@@ -151,6 +181,16 @@ namespace StatCan.OrchardCore.Radar.Controllers
             }
 
             return contentItems;
+        }
+
+        private async Task<Boolean> CanViewList()
+        {
+            if (!await _authorizationService.AuthorizeAsync(User, CommonPermissions.ListContent))
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 }
