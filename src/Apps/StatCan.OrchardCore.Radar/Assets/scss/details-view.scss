@@ -10,14 +10,14 @@
     0% no-repeat;
 }
 
-.name {
+.details-name {
   text-align: left;
   font-weight: 300;
   color: $primary;
   overflow-wrap: anywhere;
 }
 
-.description {
+.details-description {
   margin-top: 1rem;
   color: $primary-variant1;
 }
@@ -39,7 +39,7 @@
   display: flex;
 }
 
-.bubble {
+.workspace-bubble {
   margin-left: 2rem;
   background-color: $background;
   border: 2px solid $primary;
@@ -53,7 +53,7 @@
   font-size: 23px;
 }
 
-.bubble-text {
+.workspace-bubble-text {
   color: $primary-variant1;
 }
 

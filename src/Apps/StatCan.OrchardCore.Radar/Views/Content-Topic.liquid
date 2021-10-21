@@ -1,8 +1,3 @@
-{% style src:"~/StatCan.OrchardCore.Radar/css/topic.css" %}
-{% style src:"~/StatCan.OrchardCore.Radar/css/details-view.min.css", debug_src: "~/StatCan.OrchardCore.Radar/css/details-view.css" %}
-{% style src:"~/StatCan.OrchardCore.Radar/css/table.min.css", debug_src: "~/StatCan.OrchardCore.Radar/css/table.css" %}
-{% style src:"~/StatCan.OrchardCore.Radar/css/vue-components.css" %}
-
 {% script src:"/StatCan.OrchardCore.Radar/js/table.js", at:"Head" %}
 {% script name:"Radar-vue-components", at:"Foot" %}
 
@@ -12,9 +7,9 @@
     <v-container>
       <v-row justify="space-between">
         <v-col md="7">
-          <div class="title-container">
-            <div class="text-h3 name">{{ Model.ContentItem | DisplayText | shortcode }}</div>
-            <div class="text-body-1 description">
+          <div>
+            <div class="text-h3 details-name">{{ Model.ContentItem | DisplayText | shortcode }}</div>
+            <div class="text-body-1 details-description">
                 {{ Model.ContentItem.Content.Topic.Description.Text | shortcode }}
             </div>
           </div>

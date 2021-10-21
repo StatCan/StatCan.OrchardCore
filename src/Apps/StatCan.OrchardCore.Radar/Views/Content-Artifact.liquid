@@ -1,14 +1,12 @@
-{% style src:"~/StatCan.OrchardCore.Radar/css/details-view.min.css", debug_src: "~/StatCan.OrchardCore.Radar/css/details-view.css" %}
-
 {% zone "Header" %}
 <div class="details-section">
   <div class="header">
     <v-container>
       <v-row justify="space-between">
         <v-col md="7">
-          <div class="title-container">
-            <div class="text-h3 name">{{ Model.ContentItem | display_text | shortcode }}</div>
-            <div class="text-body-1 description">
+          <div>
+            <div class="text-h3 details-name">{{ Model.ContentItem | display_text | shortcode }}</div>
+            <div class="text-body-1 details-description">
                 {{ Model.ContentItem.Content.Artifact.URL.Text }}
             </div>
           </div>

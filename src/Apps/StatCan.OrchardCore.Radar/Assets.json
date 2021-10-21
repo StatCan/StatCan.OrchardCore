@@ -2,7 +2,7 @@
   {
     "inputs": ["Assets/scss/*.scss"],
     "watch": ["Assets/scss/*"],
-    "output": "wwwroot/css/@.css"
+    "output": "wwwroot/css/radar.css"
   },
   {
     "copy": true,

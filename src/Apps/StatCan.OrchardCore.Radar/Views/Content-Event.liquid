@@ -1,7 +1,3 @@
-{% style src:"~/StatCan.OrchardCore.Radar/css/details-view.min.css", debug_src: "~/StatCan.OrchardCore.Radar/css/details-view.css" %}
-{% style src:"~/StatCan.OrchardCore.Radar/css/table.min.css", debug_src: "~/StatCan.OrchardCore.Radar/css/table.css" %}
-{% style src:"~/StatCan.OrchardCore.Radar/css/table-row.min.css", debug_src: "~/StatCan.OrchardCore.Radar/css/table-row.css" %}
-
 {% assign organizer = Model.ContentItem.Content.EventOrganizer.ContentItems | first %}
 
 {% zone "Header" %}
@@ -10,9 +6,9 @@
     <v-container>
       <v-row justify="space-between">
         <v-col md="7">
-          <div class="title-container">
-            <div class="text-h3 name">{{ Model.ContentItem | display_text }}</div>
-            <div class="text-body-1 description">
+          <div>
+            <div class="text-h3 details-name">{{ Model.ContentItem | display_text }}</div>
+            <div class="text-body-1 details-description">
                 {{ Model.ContentItem.Content.RadarEntityPart.Description.Text }}
             </div>
           </div>
@@ -86,8 +82,8 @@
             <div class="text-h4">
                 {{ "Attendees" | t }}
             </div>
-            <div class="bubble">
-                <div class="bubble-text" id="bubble-text">{{Model.ContentItem.Content.Event.Attendees.UserIds | size | plus: 1 }}</div>
+            <div class="workspace-bubble">
+                <div class="workspace-bubble-text">{{Model.ContentItem.Content.Event.Attendees.UserIds | size | plus: 1 }}</div>
             </div>
         </div>
         <div class="attendees-table">

@@ -12,6 +12,11 @@ namespace StatCan.OrchardCore.Radar
             _manifest = new ResourceManifest();
 
             _manifest
+                .DefineStyle("Radar-styles")
+                .SetUrl("~/StatCan.OrchardCore.Radar/css/radar.min.css", "~/StatCan.OrchardCore.Radar/css/radar.css")
+                .SetVersion("1.0.0");
+
+            _manifest
                 .DefineScript("Radar-vue-components")
                 .SetDependencies("vuetify-theme")
                 .SetUrl("~/StatCan.OrchardCore.Radar/js/vue-components/radar-vue-components.umd.min.js", "~/StatCan.OrchardCore.Radar/js/vue-components/radar-vue-components.umd.js")
