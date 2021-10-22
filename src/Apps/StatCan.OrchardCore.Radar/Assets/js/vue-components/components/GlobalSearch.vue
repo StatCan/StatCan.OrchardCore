@@ -16,12 +16,10 @@
           <v-icon class="mr-3 icon-primary">mdi-flask-outline</v-icon>
           <div>{{ projectTitle }}</div>
         </div>
-        <div
-          v-for="item in projects"
-          :key="item.name"
-          class="dropdown-item"
-        >
-          <a class="black--text" :href="item.AutoroutePart.Path">{{ item.DisplayText }}</a>
+        <div v-for="item in projects" :key="item.name" class="dropdown-item">
+          <a class="black--text" :href="item.AutoroutePart.Path">{{
+            item.DisplayText
+          }}</a>
         </div>
       </div>
 
@@ -30,12 +28,10 @@
           <v-icon class="mr-3 icon-primary">mdi-account-multiple</v-icon>
           <div>{{ communityTitle }}</div>
         </div>
-        <div
-          v-for="item in communities"
-          :key="item.name"
-          class="dropdown-item"
-        >
-          <a class="black--text" :href="item.AutoroutePart.Path">{{ item.DisplayText }}</a>
+        <div v-for="item in communities" :key="item.name" class="dropdown-item">
+          <a class="black--text" :href="item.AutoroutePart.Path">{{
+            item.DisplayText
+          }}</a>
         </div>
       </div>
 
@@ -45,7 +41,9 @@
           <div>{{ eventTitle }}</div>
         </div>
         <div v-for="item in events" :key="item.name" class="dropdown-item">
-          <a class="black--text" :href="item.AutoroutePart.Path">{{ item.DisplayText }}</a>
+          <a class="black--text" :href="item.AutoroutePart.Path">{{
+            item.DisplayText
+          }}</a>
         </div>
       </div>
 
@@ -54,12 +52,10 @@
           <v-icon class="mr-3 icon-primary">mdi-alert-circle-outline</v-icon>
           <div>{{ communityTitle }}</div>
         </div>
-        <div
-          v-for="item in proposals"
-          :key="item.name"
-          class="dropdown-item"
-        >
-          <a class="black--text" :href="item.AutoroutePart.Path">{{ item.DisplayText }}</a>
+        <div v-for="item in proposals" :key="item.name" class="dropdown-item">
+          <a class="black--text" :href="item.AutoroutePart.Path">{{
+            item.DisplayText
+          }}</a>
         </div>
       </div>
     </div>
@@ -108,9 +104,16 @@ export default {
   methods: {
     getResult(searchText) {
       fetch(this.apiUrl + `?searchText=${searchText}`, {
-        method: "GET"
+        method: "GET",
+        credentials: "include"
       })
-        .then(response => response.json())
+        .then(response => {
+          if (response.status !== 200) {
+            throw new Error(response.status);
+          }
+          
+          return response.json();
+        })
         .then(data => {
           if (data.length > 0) {
             this.showDropdown = true;
@@ -128,7 +131,8 @@ export default {
           this.proposals = data.filter(
             content => content.ContentType === "Proposal"
           );
-        });
+        })
+        .catch(() => {});
     },
     documentClick(e) {
       let el = this.$refs.dropdownResult;

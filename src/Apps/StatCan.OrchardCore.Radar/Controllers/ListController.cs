@@ -94,6 +94,11 @@ namespace StatCan.OrchardCore.Radar.Controllers
         [HttpGet]
         public async Task<IActionResult> GlobalSearch(string searchText = "")
         {
+            if(!User.Identity.IsAuthenticated)
+            {
+                return Unauthorized();
+            }
+
             var results = await GetContentItems("*", searchText);
 
             return new ObjectResult(results);
