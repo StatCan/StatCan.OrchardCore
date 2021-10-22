@@ -1,4 +1,11 @@
-{% assign entities = Queries.RecentActivitiesSQL | query: contentType: Model.ContentItem.Content.EntityCard.Type.Text, num: Model.ContentItem.Content.EntityCard.Limit.Value | list_can_view | current_culture %}
+{% assign user = User | user_id | users_by_id %}
+{% assign userRole = user.RoleNames | first %}
+{% assign entities = Queries.RecentActivitiesSQL | query: contentType: Model.ContentItem.Content.EntityCard.Type.Text, num: Model.ContentItem.Content.EntityCard.Limit.Value, role: userRole %}
+
+{% assign entitiesSize = entities | size %}
+{% if size > 0 %}
+  {% assign entities = entities | current_culture %}
+{% endif %}
 
 <div class="card card-background">
   <div class="card-title">

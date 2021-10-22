@@ -12,7 +12,6 @@ using OrchardCore.Taxonomies.Settings;
 using OrchardCore.Flows.Models;
 using OrchardCore.Contents.Models;
 using OrchardCore.Autoroute.Models;
-using StatCan.OrchardCore.Radar.Models;
 using OrchardCore.Media.Settings;
 using Etch.OrchardCore.ContentPermissions.Models;
 
@@ -497,7 +496,7 @@ namespace StatCan.OrchardCore.Radar.Migrations
                 .WithPart(Constants.ContentTypes.Project, part => part
                     .WithPosition("2")
                 )
-                .WithPart(nameof(RadarEntityPart), part => part
+                .WithPart(Constants.ContentTypes.RadarEntityPart, part => part
                     .WithPosition("1")
                 )
                 .WithPart("TitlePart", part => part
@@ -626,7 +625,7 @@ namespace StatCan.OrchardCore.Radar.Migrations
                         RedirectUrl = "not-found",
                     })
                 )
-                .WithPart(nameof(RadarEntityPart), part => part
+                .WithPart(Constants.ContentTypes.RadarEntityPart, part => part
                     .WithPosition("1")
                 )
                 .WithPart("TitlePart", part => part
@@ -753,7 +752,7 @@ namespace StatCan.OrchardCore.Radar.Migrations
                         Pattern = "{{ ContentItem.Content.RadarEntityPart.Name.Text }}",
                     })
                 )
-                .WithPart(nameof(RadarEntityPart), part => part
+                .WithPart(Constants.ContentTypes.RadarEntityPart, part => part
                     .WithPosition("1")
                 )
                 .WithPart("ContentPermissionsPart", part => part
