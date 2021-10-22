@@ -1,34 +1,34 @@
 using System;
 using OrchardCore.ContentManagement;
 using YesSql.Indexes;
-using StatCan.OrchardCore.Radar.Models;
+using Etch.OrchardCore.ContentPermissions.Models;
 
-/**
- * This index is needed for quering all radar entities. This query would provide possibily 
- * to add any radar entity and avoid hard-coding contenty types in the views.
- */
 namespace StatCan.OrchardCore.Radar.Indexing
 {
-    public class RadarEntityPartIndex : MapIndex
+    public class ContentPermissionsPartIndex : MapIndex
     {
         public string ContentItemId { get; set; }
 
         public string ContentType { get; set; }
 
         public bool Published { get; set; }
+
+        public DateTime? PublishedUtc {get; set;}
+
+        public string Roles {get; set;}
     }
 
-    public class RadarEntityPartIndexProvider : IndexProvider<ContentItem>
+    public class ContentPermissionsPartIndexProvider : IndexProvider<ContentItem>
     {
         public override void Describe(DescribeContext<ContentItem> context)
         {
-            context.For<RadarEntityPartIndex>()
+            context.For<ContentPermissionsPartIndex>()
                 .Map(contentItem =>
                 {
-                    var radarEntityPart = contentItem.As<RadarEntityPart>();
+                    var contentPermissionsPart = contentItem.As<ContentPermissionsPart>();
 
-                    // Ignore if not a radar entity
-                    if (radarEntityPart == null)
+                    // Ignore if does not use content permission
+                    if (contentPermissionsPart == null)
                     {
                         return null;
                     }
@@ -39,11 +39,13 @@ namespace StatCan.OrchardCore.Radar.Indexing
                         return null;
                     }
 
-                    return new RadarEntityPartIndex
+                    return new ContentPermissionsPartIndex
                     {
                         ContentItemId = contentItem.ContentItemId,
                         ContentType = contentItem.ContentType,
-                        Published = contentItem.Published
+                        Published = contentItem.Published,
+                        PublishedUtc = contentItem.PublishedUtc,
+                        Roles = String.Join(",", contentPermissionsPart.Roles) // Sqlite does not support strint[] as a data type
                     };
                 });
         }
