@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="@Orchard.CultureName()">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Orchard Core</title>
+</head>
+<body>
+    <h1>@T["SAFE MODE"]</h1>
+    @await RenderSectionAsync("Header", required: false)
+    @await RenderBodyAsync()
+
+    <hr />
+    <footer>
+        @await RenderSectionAsync("Footer", required: false)
+    </footer>
+</body>
+</html>
