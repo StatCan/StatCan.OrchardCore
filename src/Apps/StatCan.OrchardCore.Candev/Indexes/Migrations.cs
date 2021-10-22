@@ -67,6 +67,7 @@ namespace StatCan.OrchardCore.Candev.Indexes
                 .Column<string>("UserId", c => c.WithLength(26))
                 .Column<string>("UserName", c => c.WithLength(26))
                 .Column<string>("Email", c => c.Nullable().WithLength(255))
+                .Column<string>("Roles", c => c.Nullable().WithLength(255))
                 .Column<string>("ContactEmail", c => c.Nullable().WithLength(255))
                 .Column<string>("FirstName", c => c.WithLength(26))
                 .Column<string>("LastName", c => c.WithLength(26))

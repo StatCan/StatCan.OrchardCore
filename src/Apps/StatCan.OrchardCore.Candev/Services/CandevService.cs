@@ -77,7 +77,7 @@ namespace StatCan.OrchardCore.Candev.Services
             var members = await _session.QueryIndex<HackathonUsersIndex>(x => x.TeamContentItemId == teamContentItemId).ListAsync();
             if (members.Any())
             {
-                if (members.Count() >= hackathonCustomSettings.Content["TeamCustomSettings"]["TeamSize"].Value.Value)
+                if (members.Count() >= (int)hackathonCustomSettings.Content["TeamCustomSettings"]["TeamSize"].Value.Value)
                 {
                     return true;
                 }
@@ -221,10 +221,11 @@ namespace StatCan.OrchardCore.Candev.Services
 
         public async Task<bool> MatchTeams()
         {
-            var hackathon = await _session.Query<ContentItem, HackathonItemsIndex>(x => x.ContentType == "Hackathon").FirstOrDefaultAsync();
-            var hackersWithoutTeams = (await _session.Query<ContentItem, HackathonItemsIndex>(x => x.TeamContentItemId == null && x.ContentType == "Hacker" && x.Published).ListAsync()).ToList();
+            var site = await _siteService.GetSiteSettingsAsync();
+            var hackersWithoutTeams = (await _session.Query<User, HackathonUsersIndex>(x => (x.TeamContentItemId == null || x.TeamContentItemId == "") && x.Roles.Contains("Hacker")).ListAsync()).ToList();
 
-            int maxTeamSize = (int)hackathon.Content.Hackathon.MaxTeamSize?.Value;
+            var hackathonCustomSettings = site.As<ContentItem>("HackathonCustomSettings");
+            int maxTeamSize = (int)hackathonCustomSettings.Content["TeamCustomSettings"]["TeamSize"].Value.Value;
             await CleanupTeams();
             var unorderedTeams = await _session.QueryIndex<HackathonItemsIndex>(x => x.ContentType == "Team" && x.Published).ListAsync();
             var teams = unorderedTeams.OrderByDescending(x => (GetTeamMemberCount(x.ContentItemId).GetAwaiter().GetResult())).ToList();
@@ -249,7 +250,7 @@ namespace StatCan.OrchardCore.Candev.Services
                     }
 
                     // Move teams that are not full to a new list of teams to fill with hackers without teams.
-                    if (memberCount <= maxTeamSize)
+                    if (memberCount < maxTeamSize)
                     {
                         incompleteTeams.Add(team);
                     }
@@ -265,7 +266,7 @@ namespace StatCan.OrchardCore.Candev.Services
                 int memberCount = await GetTeamMemberCount(team.ContentItemId);
                 while (memberCount < maxTeamSize && hackersWithoutTeams.Count > 0)
                 {
-                    await AddHackerToTeam(team.ContentItemId, hackersWithoutTeams[0].ContentItemId);
+                    await AddHackerToTeam(team.ContentItemId, hackersWithoutTeams[0].UserId);
                     hackersWithoutTeams.RemoveAt(0);
                     memberCount++;
                 }
@@ -284,13 +285,13 @@ namespace StatCan.OrchardCore.Candev.Services
                 if (n == 0)
                 {
                     teamId = await CreateTeam();
-                    await AddHackerToTeam(teamId, hacker.ContentItemId);
+                    await AddHackerToTeam(teamId, hacker.UserId);
                     n++;
                     hackersWithoutTeams.RemoveAt(0);
                 }
                 else
                 {
-                    await AddHackerToTeam(teamId, hacker.ContentItemId);
+                    await AddHackerToTeam(teamId, hacker.UserId);
                     n++;
                     hackersWithoutTeams.RemoveAt(0);
                 }
@@ -328,7 +329,7 @@ namespace StatCan.OrchardCore.Candev.Services
 
             var contentItem = await GetSettings(participant, "Hacker");
 
-            contentItem.Content.Hacker.Team.ContentItemIds.Add(teamContentId);
+            contentItem.Content.Hacker.Team = JObject.FromObject(new { ContentItemIds = new string[] { teamContentId } });
             participant.Properties["Hacker"] = JObject.FromObject(contentItem);
             _session.Save(participant);
 
@@ -339,6 +340,18 @@ namespace StatCan.OrchardCore.Candev.Services
         {
             var team = await _contentManager.NewAsync("Team");
             team.DisplayText = randomName();
+            await _contentManager.CreateAsync(team, VersionOptions.Published);
+            await _contentManager.UpdateAsync(team);
+            return team.ContentItemId;
+        }
+
+        public async Task<string> CreateTeam(string teamName, string[] topics)
+        {
+            var team = await _contentManager.NewAsync("Team");
+
+            team.Content.Team.Name = JObject.FromObject(new { Text = teamName });
+            team.Content.Team.Topics = JObject.FromObject(new { ContentItemIds = topics });
+
             await _contentManager.CreateAsync(team, VersionOptions.Published);
             await _contentManager.UpdateAsync(team);
             return team.ContentItemId;
@@ -439,6 +452,111 @@ namespace StatCan.OrchardCore.Candev.Services
             await _contentManager.UpdateAsync(team);
 
             return true;
+        }
+
+        public async Task<bool> AssignCases()
+        {
+            var site = await _siteService.GetSiteSettingsAsync();
+            var teams = await _session.Query<ContentItem, HackathonItemsIndex>(x => x.ContentType == "Team" && x.Published).ListAsync();
+            var topics = await _session.Query<ContentItem, HackathonItemsIndex>(x => x.ContentType == "Topic" && x.Published).ListAsync();
+            double maxCases = Math.Ceiling(Convert.ToDouble(teams.Count()) / Convert.ToDouble(topics.Count()));
+
+            IDictionary<string, int> casesCount = new Dictionary<string, int>();
+            foreach (var topic in topics)
+            {
+                casesCount.Add(topic.ContentItemId, 0);
+            }
+
+            foreach (var team in teams)
+            {
+                if(team.Content.Team.Topics.ContentItemIds.Count == 0)
+                {
+                    foreach (var topic in topics)
+                    {
+                        if (casesCount.Where(x => x.Key == topic.ToString()).Select(x => x.Value).FirstOrDefault() < maxCases)
+                        {
+                            var challenge = topics.Where(x => x.ContentItemId == topic.ContentItemId.ToString()).Select(x => x.Content.Topic.Challenge).FirstOrDefault();
+                            team.Content.Team.Challenge = challenge;
+                            await _contentManager.UpdateAsync(team);
+                            casesCount[topic.ContentItemId.ToString()]++;
+                            break;
+                        }
+                    }
+                }
+                else
+                {
+                    foreach (var topic in team.Content.Team.Topics.ContentItemIds)
+                    {
+                        if (casesCount.Where(x => x.Key == topic.ToString()).Select(x => x.Value).FirstOrDefault() < maxCases)
+                        {
+                            var challenge = topics.Where(x => x.ContentItemId == topic.ToString()).Select(x => x.Content.Topic.Challenge).FirstOrDefault();
+                            team.Content.Team.Challenge = challenge;
+                            await _contentManager.UpdateAsync(team);
+                            casesCount[topic.ToString()]++;
+                            break;
+                        }
+                    }
+                }
+            }
+
+            return true;
+        }
+
+        public async Task<string> CreateChallenge(string challengeTitle)
+        {
+            var challenge = await _contentManager.NewAsync("Challenge");
+
+            challenge.Content.Challenge.Title = JObject.FromObject(new { Text = challengeTitle });
+
+            await _contentManager.CreateAsync(challenge, VersionOptions.Published);
+            await _contentManager.UpdateAsync(challenge);
+            return challenge.ContentItemId;
+        }
+
+        public async Task<string> CreateTopic(string topicName, string challengeId)
+        {
+            var topic = await _contentManager.NewAsync("Topic");
+
+            topic.Content.Topic.Name = JObject.FromObject(new { Text = topicName });
+            topic.Content.Topic.Challenge = JObject.FromObject(new { ContentItemIds = new string[] { challengeId } });
+
+            await _contentManager.CreateAsync(topic, VersionOptions.Published);
+            await _contentManager.UpdateAsync(topic);
+            return topic.ContentItemId;
+        }
+
+        public async Task<ContentItem> JoinTeam(string teamContentItemId, string userName)
+        {
+            var user = await _session.Query<User, HackathonUsersIndex>(x => x.UserName == userName).FirstOrDefaultAsync();
+
+            if (user == null || !user.RoleNames.Contains("Hacker"))
+            {
+                return null;
+            }
+
+            if (user.HasTeam())
+            {
+                return null;
+            }
+
+            var team = await _contentManager.GetAsync(teamContentItemId);
+            if (team == null)
+            {
+                return null;
+            }
+
+            if (await IsTeamFull(teamContentItemId))
+            {
+                return null;
+            }
+
+            var contentItem = await GetSettings(user, "Hacker");
+
+            contentItem.Content.Hacker.Team = JObject.FromObject(new { ContentItemIds = new string[] { team.ContentItemId } });
+            user.Properties["Hacker"] = JObject.FromObject(contentItem);
+            _session.Save(user);
+
+            return team;
         }
     }
 }

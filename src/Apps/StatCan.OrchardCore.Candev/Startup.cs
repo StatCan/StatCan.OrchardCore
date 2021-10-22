@@ -4,7 +4,10 @@ using Microsoft.Extensions.DependencyInjection;
 using OrchardCore.ContentManagement.Display.ContentDisplay;
 using OrchardCore.Data;
 using OrchardCore.Data.Migration;
+using OrchardCore.Environment.Commands;
 using OrchardCore.Modules;
+using OrchardCore.Navigation;
+using StatCan.OrchardCore.Candev.Commands;
 using StatCan.OrchardCore.Candev.Indexes;
 using StatCan.OrchardCore.Candev.Services;
 using System;
@@ -24,6 +27,8 @@ namespace StatCan.OrchardCore.Candev
             services.AddScoped<ICandevService, CandevService>();
             services.AddScoped<IDataMigration, Migrations>();
             services.AddScoped<IContentDisplayDriver, CandevDriver>();
+            services.AddScoped<INavigationProvider, AdminMenu>();
+            services.AddScoped<ICommandHandler, CandevCommands>();
         }
 
         public override void Configure(IApplicationBuilder builder, IEndpointRouteBuilder routes, IServiceProvider serviceProvider)
