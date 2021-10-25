@@ -3,7 +3,7 @@
 {% assign entities = Queries.RecentActivitiesSQL | query: contentType: Model.ContentItem.Content.EntityCard.Type.Text, num: Model.ContentItem.Content.EntityCard.Limit.Value, role: userRole %}
 
 {% assign entitiesSize = entities | size %}
-{% if size > 0 %}
+{% if entitiesSize > 0 %}
   {% assign entities = entities | current_culture %}
 {% endif %}
 
