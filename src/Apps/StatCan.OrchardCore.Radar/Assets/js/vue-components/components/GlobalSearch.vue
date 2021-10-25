@@ -11,53 +11,23 @@
       :placeholder="placeholder"
     />
     <div class="dropdown-list" ref="dropdownResult" v-show="showDropdown">
-      <div v-show="projects.length > 0">
-        <div class="result-caption">
-          <v-icon class="mr-3 icon-primary">mdi-flask-outline</v-icon>
-          <div>{{ projectTitle }}</div>
+      <template v-for="(section, key) in sections">
+        <div :key="section.title.Value" v-show="entities[key].length > 0">
+          <div class="result-caption">
+            <v-icon class="mr-3 icon-primary">{{ section.icon }}</v-icon>
+            <div>{{ section.title.Value }}</div>
+          </div>
+          <div
+            v-for="item in entities[key]"
+            :key="item.name"
+            class="dropdown-item"
+          >
+            <a class="black--text" :href="item.AutoroutePart.Path">{{
+              item.DisplayText
+            }}</a>
+          </div>
         </div>
-        <div v-for="item in projects" :key="item.name" class="dropdown-item">
-          <a class="black--text" :href="item.AutoroutePart.Path">{{
-            item.DisplayText
-          }}</a>
-        </div>
-      </div>
-
-      <div v-show="communities.length > 0">
-        <div class="result-caption">
-          <v-icon class="mr-3 icon-primary">mdi-account-multiple</v-icon>
-          <div>{{ communityTitle }}</div>
-        </div>
-        <div v-for="item in communities" :key="item.name" class="dropdown-item">
-          <a class="black--text" :href="item.AutoroutePart.Path">{{
-            item.DisplayText
-          }}</a>
-        </div>
-      </div>
-
-      <div v-show="events.length > 0">
-        <div class="result-caption">
-          <v-icon class="mr-3 icon-primary">mdi-calendar</v-icon>
-          <div>{{ eventTitle }}</div>
-        </div>
-        <div v-for="item in events" :key="item.name" class="dropdown-item">
-          <a class="black--text" :href="item.AutoroutePart.Path">{{
-            item.DisplayText
-          }}</a>
-        </div>
-      </div>
-
-      <div v-show="proposals.length > 0">
-        <div class="result-caption">
-          <v-icon class="mr-3 icon-primary">mdi-alert-circle-outline</v-icon>
-          <div>{{ communityTitle }}</div>
-        </div>
-        <div v-for="item in proposals" :key="item.name" class="dropdown-item">
-          <a class="black--text" :href="item.AutoroutePart.Path">{{
-            item.DisplayText
-          }}</a>
-        </div>
-      </div>
+      </template>
     </div>
   </div>
 </template>
@@ -66,23 +36,14 @@
 import debounce from "lodash/debounce";
 
 export default {
-  props: [
-    "apiUrl",
-    "placeholder",
-    "projectTitle",
-    "eventTitle",
-    "communityTitle",
-    "proposalTitle"
-  ],
+  props: ["apiUrl", "placeholder", "titles"],
   data: function() {
     return {
       searchText: "",
       isTyping: false,
-      projects: [],
-      events: [],
-      proposals: [],
-      communities: [],
-      showDropdown: false
+      showDropdown: false,
+      sections: {},
+      entities: {}
     };
   },
   watch: {
@@ -97,6 +58,8 @@ export default {
   },
   created() {
     document.addEventListener("click", this.documentClick);
+    this.sections = JSON.parse(this.titles);
+    Object.keys(this.sections).forEach(key => (this.entities[key] = []));
   },
   destroyed() {
     document.removeEventListener("click", this.documentClick);
@@ -111,7 +74,7 @@ export default {
           if (response.status !== 200) {
             throw new Error(response.status);
           }
-          
+
           return response.json();
         })
         .then(data => {
@@ -121,16 +84,11 @@ export default {
             this.showDropdown = false;
           }
 
-          this.communities = data.filter(
-            content => content.ContentType === "Community"
-          );
-          this.projects = data.filter(
-            content => content.ContentType === "Project"
-          );
-          this.events = data.filter(content => content.ContentType === "Event");
-          this.proposals = data.filter(
-            content => content.ContentType === "Proposal"
-          );
+          data.forEach(entity => {
+            if (Object.keys(this.entities).includes(entity.ContentType)) {
+              this.entities[entity.ContentType].push(entity);
+            }
+          });
         })
         .catch(() => {});
     },
@@ -140,9 +98,6 @@ export default {
       if (el !== target && !el.contains(target)) {
         this.showDropdown = false;
       }
-    },
-    isListEmpty(list) {
-      return list.length === 0;
     }
   }
 };
