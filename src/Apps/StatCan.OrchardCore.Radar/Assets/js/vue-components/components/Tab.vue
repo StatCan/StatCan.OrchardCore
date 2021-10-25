@@ -7,6 +7,7 @@
 <script>
 export default {
   name: "Tab",
+  props: ["title", "icon", "count"],
   data () {
     return {
       isActive: false,
