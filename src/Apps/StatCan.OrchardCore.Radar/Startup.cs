@@ -40,7 +40,7 @@ namespace StatCan.OrchardCore.Radar
         {
             // List view routes
             routes.MapAreaControllerRoute(
-                name: "ListView",
+                name: "ProjectListView",
                 areaName: "StatCan.OrchardCore.Radar",
                 pattern: "projects",
                 defaults: new { controller = "List", action = "List" },
@@ -48,7 +48,7 @@ namespace StatCan.OrchardCore.Radar
             );
 
             routes.MapAreaControllerRoute(
-                name: "ListView",
+                name: "ProposalListView",
                 areaName: "StatCan.OrchardCore.Radar",
                 pattern: "proposals",
                 defaults: new { controller = "List", action = "List" },
@@ -56,7 +56,7 @@ namespace StatCan.OrchardCore.Radar
             );
 
             routes.MapAreaControllerRoute(
-                name: "ListView",
+                name: "EventListView",
                 areaName: "StatCan.OrchardCore.Radar",
                 pattern: "events",
                 defaults: new { controller = "List", action = "List" },
@@ -64,11 +64,27 @@ namespace StatCan.OrchardCore.Radar
             );
 
             routes.MapAreaControllerRoute(
-                name: "ListView",
+                name: "CommunityListView",
                 areaName: "StatCan.OrchardCore.Radar",
                 pattern: "communities",
                 defaults: new { controller = "List", action = "List" },
                 dataTokens: new { type = "Community" }
+            );
+
+            // search api endpoints
+            routes.MapAreaControllerRoute(
+                name: "ListSearchAPI",
+                areaName: "StatCan.OrchardCore.Radar",
+                pattern: "api/radar/list-search",
+                defaults: new { controller = "List", action = "Search" }
+            );
+
+            // search api endpoints
+            routes.MapAreaControllerRoute(
+                name: "GlobalSearchAPI",
+                areaName: "StatCan.OrchardCore.Radar",
+                pattern: "api/radar/global-search",
+                defaults: new { controller = "List", action = "GlobalSearch" }
             );
         }
     }
