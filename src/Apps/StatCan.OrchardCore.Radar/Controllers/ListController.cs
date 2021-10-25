@@ -5,11 +5,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
+using System.Globalization;
 using OrchardCore.ContentManagement;
 using OrchardCore.Queries;
 using OrchardCore.ContentManagement.Display;
 using OrchardCore.DisplayManagement.ModelBinding;
-using System.Globalization;
 using Etch.OrchardCore.ContentPermissions.Services;
 using OrchardCore.ContentLocalization.Models;
 using OrchardCore.Contents;
@@ -57,7 +57,7 @@ namespace StatCan.OrchardCore.Radar.Controllers
         [HttpPost]
         public IActionResult Search([FromForm] string type, [FromForm] string searchText)
         {
-            return RedirectToAction(type, new { searchText = searchText });
+            return RedirectToRoute(type + "ListView", new { searchText = searchText });
         }
 
         [HttpGet]
