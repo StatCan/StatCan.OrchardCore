@@ -15,6 +15,7 @@ namespace StatCan.OrchardCore.Radar.Migrations
                 .Column<bool>(nameof(ContentPermissionsPartIndex.Published))
                 .Column<DateTime>(nameof(ContentPermissionsPartIndex.PublishedUtc))
                 .Column<string>(nameof(ContentPermissionsPartIndex.Roles))
+                .Column<bool>(nameof(ContentPermissionsPartIndex.Enabled))
             );
 
             return 1;
