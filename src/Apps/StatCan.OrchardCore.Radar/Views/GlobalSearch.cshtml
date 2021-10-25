@@ -1,7 +1,47 @@
+@using Newtonsoft.Json;
+
 <script asp-name="Radar-vue-components" at="Foot"></script>
 
 @{
     var searchURL = Url.Action("GlobalSearch", "List", new { area = "StatCan.OrchardCore.Radar" });
 }
 
-<global-search api-url=@searchURL project-title=@T["Projects"] event-title=@T["Events"] proposal-title=@T["Proposals"] community-title=@T["Communities"]></global-search>
+@* 
+  Use a json object to pass in the localized text and icon
+*@
+@{
+  var titles = new Dictionary<string, object>();
+
+  // Project
+  titles.Add("Project", new Dictionary<string, object>
+  {
+    { "title", T["Projects"] },
+    { "icon", "mdi-flask-outline" }
+  });
+
+  // Community
+  titles.Add("Community", new Dictionary<string, object>
+  {
+    { "title", T["Communities"] },
+    { "icon", "mdi-account-multiple" }
+  });
+
+  // Event
+  titles.Add("Event", new Dictionary<string, object>
+  {
+    { "title", T["Events"] },
+    { "icon", "mdi-calendar" }
+  });
+
+  // Proposal
+  titles.Add("Proposal", new Dictionary<string, object>
+  {
+    { "title", T["Proposals"] },
+    { "icon", "mdi-alert-circle-outline" }
+  });
+
+  // Convert to json
+  var titlesJson = JsonConvert.SerializeObject(titles);
+}
+
+<global-search api-url=@searchURL titles=@titlesJson></global-search>
