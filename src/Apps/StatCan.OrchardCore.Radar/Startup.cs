@@ -38,7 +38,38 @@ namespace StatCan.OrchardCore.Radar
 
         public override void Configure(IApplicationBuilder builder, IEndpointRouteBuilder routes, IServiceProvider serviceProvider)
         {
+            // List view routes
+            routes.MapAreaControllerRoute(
+                name: "ListView",
+                areaName: "StatCan.OrchardCore.Radar",
+                pattern: "projects",
+                defaults: new { controller = "List", action = "List" },
+                dataTokens: new { type = "Project" }
+            );
 
+            routes.MapAreaControllerRoute(
+                name: "ListView",
+                areaName: "StatCan.OrchardCore.Radar",
+                pattern: "proposals",
+                defaults: new { controller = "List", action = "List" },
+                dataTokens: new { type = "Proposal" }
+            );
+
+            routes.MapAreaControllerRoute(
+                name: "ListView",
+                areaName: "StatCan.OrchardCore.Radar",
+                pattern: "events",
+                defaults: new { controller = "List", action = "List" },
+                dataTokens: new { type = "Event" }
+            );
+
+            routes.MapAreaControllerRoute(
+                name: "ListView",
+                areaName: "StatCan.OrchardCore.Radar",
+                pattern: "communities",
+                defaults: new { controller = "List", action = "List" },
+                dataTokens: new { type = "Community" }
+            );
         }
     }
 }
