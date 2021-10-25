@@ -26,15 +26,15 @@
       <div class="zigzag-container">
         <div class="zigzag zigzag-dark"></div>
       </div>
-      </div>
-      <div class="card-body">
-        {% for entity in entities %}
-          <div class="card-item-link-container">
-            <a href="{{ entity | display_url }}" class="card-item-link">{{ entity | display_text }}</a>
-          </div>
-        {% endfor %}
-      </div>
     </a>
+  </div>
+  <div class="card-body">
+      {% for entity in entities %}
+        <div class="card-item-link-container">
+          <a href="{{ entity | display_url }}" class="card-item-link">{{ entity | display_text }}</a>
+        </div>
+      {% endfor %}
+  </div>
   <a
     href="{{ "~/" | append: Model.ContentItem.Content.EntityCard.ButtonLink.Text | href }}"
     class="black--text card-button-link"
