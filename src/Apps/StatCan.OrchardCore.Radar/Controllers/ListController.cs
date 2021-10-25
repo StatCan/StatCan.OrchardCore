@@ -42,47 +42,16 @@ namespace StatCan.OrchardCore.Radar.Controllers
         }
 
         [HttpGet]
-        [Route("/proposals")]
-        public async Task<IActionResult> Proposals(string searchText = null)
+        public async Task<IActionResult> List(string searchText = null)
         {
-            if(!await CanViewList()) {
+            if (!await CanViewList())
+            {
                 return Redirect("not-found");
             }
 
-            return View(await GetContents("Proposal", searchText));
-        }
+            var type = (string)RouteData.DataTokens["type"];
 
-        [HttpGet]
-        [Route("/projects")]
-        public async Task<IActionResult> Projects(string searchText = null)
-        {
-            if(!await CanViewList()) {
-                return Redirect("not-found");
-            }
-
-            return View(await GetContents("Project", searchText));
-        }
-
-        [HttpGet]
-        [Route("/events")]
-        public async Task<IActionResult> Events(string searchText = null)
-        {
-            if(!await CanViewList()) {
-                return Redirect("not-found");
-            }
-
-            return View(await GetContents("Event", searchText));
-        }
-
-        [HttpGet]
-        [Route("/communities")]
-        public async Task<IActionResult> Communities(string searchText = null)
-        {
-            if(!await CanViewList()) {
-                return Redirect("not-found");
-            }
-
-            return View(await GetContents("Community", searchText));
+            return View(type, await GetContents(type, searchText));
         }
 
         [HttpPost]
@@ -94,7 +63,7 @@ namespace StatCan.OrchardCore.Radar.Controllers
         [HttpGet]
         public async Task<IActionResult> GlobalSearch(string searchText = "")
         {
-            if(!User.Identity.IsAuthenticated)
+            if (!User.Identity.IsAuthenticated)
             {
                 return Unauthorized();
             }
@@ -167,7 +136,8 @@ namespace StatCan.OrchardCore.Radar.Controllers
                         continue;
                     }
                     // Orchard content permission check
-                    else if(!await _authorizationService.AuthorizeAsync(User, CommonPermissions.ViewContent, contentItem)) {
+                    else if (!await _authorizationService.AuthorizeAsync(User, CommonPermissions.ViewContent, contentItem))
+                    {
                         continue;
                     }
                     // Content Permission check
