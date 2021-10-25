@@ -2,6 +2,8 @@
 {% assign trending_up = Queries.TaxonomyTrendingUpSQL | query: type: Model.ContentItem.Content.TrendingCard.Type.Text %}
 {% assign trending_down = Queries.TaxonomyTrendingDownSQL | query: type: Model.ContentItem.Content.TrendingCard.Type.Text %}
 
+{% assign terms = entities.ContentItem.Content.TaxonomyPart.Terms | list_can_view %}
+
 <div class="card card-background">
   <div class="card-title">
     <a href="{{ entities | display_url }}">
@@ -30,11 +32,20 @@
             mdi-trending-up
         </v-icon>
         <div class="trend-card-body-container">
+          {% capture _ %}{% increment countTrendingUp %}{% endcapture %}
           {% for tup in trending_up %}
-          {% assign e = entities.ContentItem.Content.TaxonomyPart.Terms | where: "ContentItemId", tup.TermContentItemId | first %}
-          <div class="trend-card-body-topic-container">
-            {{ e | shape_build_display: "Summary" | shape_render }}
-          </div>
+            {% assign e = terms | where: "ContentItemId", tup.TermContentItemId | first %}
+            {% if e %}
+              {% capture count %}{% increment countTrendingUp %}{% endcapture %}
+              <div class="trend-card-body-topic-container">
+                {% assign trendUpTopics = trendUpTopics | append: e.ContentItemId %}
+                {{ e | shape_build_display: "Summary" | shape_render }}
+              </div>
+            {% endif %}
+            {% if count == "3" %}
+              {% break %}
+            {% endif %}
+
           {% endfor %}
         </div>
       </div>
@@ -43,19 +54,26 @@
             mdi-trending-down
         </v-icon>
         <div class="trend-card-body-container">
+          {% capture _ %}{% increment countTrendingDown %}{% endcapture %}
           {% for tdown in trending_down %}
-          {% assign e = entities.ContentItem.Content.TaxonomyPart.Terms | where: "ContentItemId", tdown.TermContentItemId | first %}
+            {% assign e = terms | where: "ContentItemId", tdown.TermContentItemId | first %}
+
             {% assign exist = false %}
-            {% for tup in trending_up %}
-              {% if e.ContentItemId ==  tup.TermContentItemId %}
+            {% if trendUpTopics contains e.ContentItemId %}
               {% assign exist = true %}
-              {% endif %}
-            {% endfor %}
+            {% endif %}
+
             {% if exist == false %}
+              {% capture count %}{% increment countTrendingDown %}{% endcapture %}
               <div class="trend-card-body-topic-container">
                 {{ e | shape_build_display: "Summary" | shape_render }}
               </div>
             {% endif %}
+
+            {% if count == "3" %}
+              {% break %}
+            {% endif %}
+
           {% endfor %}
         </div>
       </div>
