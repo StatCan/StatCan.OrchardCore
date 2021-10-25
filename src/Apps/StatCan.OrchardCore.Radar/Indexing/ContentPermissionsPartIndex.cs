@@ -13,9 +13,11 @@ namespace StatCan.OrchardCore.Radar.Indexing
 
         public bool Published { get; set; }
 
-        public DateTime? PublishedUtc {get; set;}
+        public DateTime? PublishedUtc { get; set; }
 
-        public string Roles {get; set;}
+        public string Roles { get; set; }
+
+        public bool Enabled { get; set; }
     }
 
     public class ContentPermissionsPartIndexProvider : IndexProvider<ContentItem>
@@ -45,7 +47,8 @@ namespace StatCan.OrchardCore.Radar.Indexing
                         ContentType = contentItem.ContentType,
                         Published = contentItem.Published,
                         PublishedUtc = contentItem.PublishedUtc,
-                        Roles = String.Join(",", contentPermissionsPart.Roles) // Sqlite does not support strint[] as a data type
+                        Roles = String.Join(",", contentPermissionsPart.Roles), // Sqlite does not support strint[] as a data type
+                        Enabled = contentPermissionsPart.Enabled
                     };
                 });
         }

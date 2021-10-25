@@ -933,7 +933,7 @@
       "name": "Queries",
       "Queries": [
         {
-          "Template": "{% assign roleText = \"%\" | append: role | append: \"%\" %}\r\n\r\nselect DocumentId\r\n    from ContentPermissionsPartIndex \r\n    where ContentType = @contentType and Published = true and Roles like '{{ roleText }}'\r\n\t order by PublishedUtc desc\r\n\t limit @num",
+          "Template": "{% assign roleText = \"%\" | append: role | append: \"%\" %}\r\n\r\nselect DocumentId\r\n    from ContentPermissionsPartIndex \r\n    where ContentType = @contentType and Published = true and (not Enabled or Roles like '{{ roleText }}')\r\n\torder by PublishedUtc desc\r\n\tlimit @num",
           "ReturnDocuments": true,
           "Name": "RecentActivitiesSQL",
           "Source": "Sql",
