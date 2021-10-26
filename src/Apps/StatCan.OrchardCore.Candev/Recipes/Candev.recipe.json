@@ -2083,7 +2083,7 @@
             {
               "$type": "OrchardCore.AdminMenu.AdminNodes.LinkAdminNode, OrchardCore.AdminMenu",
               "LinkText": "Hackathon Settings",
-              "LinkUrl": "https://candev.statcan.gc.ca/Admin/Settings/HackathonCustomSettings",
+              "LinkUrl": "~/Admin/Settings/HackathonCustomSettings",
               "IconClass": "fas fa-hammer",
               "PermissionNames": [
                 "ManageCustomSettings_HackathonCustomSettings"

@@ -15,6 +15,7 @@ namespace StatCan.OrchardCore.Candev.Indexes
         public string LastName { get; set; }
         public string Language { get; set; }
         public string TeamContentItemId { get; set; }
+        public string Roles { get; set; }
     }
 
     public class HackathonUsersIndexProvider : IndexProvider<User>
@@ -35,7 +36,8 @@ namespace StatCan.OrchardCore.Candev.Indexes
                     {
                         UserId = user.UserId,
                         UserName = user.NormalizedUserName,
-                        Email = user.NormalizedEmail
+                        Email = user.NormalizedEmail,
+                        Roles = string.Join(",", user.RoleNames)
                     };
 
                     if (user.Properties.TryGetValue("ParticipantProfile", out var property))

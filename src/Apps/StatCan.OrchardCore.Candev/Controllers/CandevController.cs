@@ -16,7 +16,7 @@ namespace StatCan.OrchardCore.Candev.Controllers
     [Authorize]
     public class CandevController : Controller, IUpdateModel
     {
-        private readonly ICandevService _hackathonService;
+        private readonly ICandevService _candevService;
         private readonly IAuthorizationService _authorizationService;
         private readonly INotifier _notifier;
         private readonly YesSql.ISession _session;
@@ -29,7 +29,7 @@ namespace StatCan.OrchardCore.Candev.Controllers
             YesSql.ISession session,
             ISiteService siteService
         ){
-            _hackathonService = hackathonService;
+            _candevService = hackathonService;
             H = htmlLocalizer;
             _authorizationService = authorizationService;
             _notifier = notifier;
@@ -57,7 +57,7 @@ namespace StatCan.OrchardCore.Candev.Controllers
                 return Unauthorized();
             }
 
-            await _hackathonService.CreateTeam(ModelState);
+            await _candevService.CreateTeam(ModelState);
             if (ModelState.IsValid)
             {
                 _notifier.Success(H["Successfully created team"]);
@@ -90,7 +90,7 @@ namespace StatCan.OrchardCore.Candev.Controllers
                 return Unauthorized();
             }
 
-            await _hackathonService.JoinTeam(teamContentItemId, ModelState);
+            await _candevService.JoinTeam(teamContentItemId, ModelState);
             if (ModelState.IsValid)
             {
                 _notifier.Success(H["Successfully joined team"]);
@@ -119,7 +119,7 @@ namespace StatCan.OrchardCore.Candev.Controllers
                 return Unauthorized();
             }
 
-            await _hackathonService.LeaveTeam(ModelState);
+            await _candevService.LeaveTeam(ModelState);
             if (ModelState.IsValid)
             {
                 _notifier.Success(H["Successfully left team"]);
@@ -145,7 +145,7 @@ namespace StatCan.OrchardCore.Candev.Controllers
                 return Unauthorized();
             }
 
-            await _hackathonService.RemoveTeamMember(hackerContentItemId, ModelState);
+            await _candevService.RemoveTeamMember(hackerContentItemId, ModelState);
             if (ModelState.IsValid)
             {
                 _notifier.Success(H["Member successfully removed from the team"]);
@@ -171,7 +171,7 @@ namespace StatCan.OrchardCore.Candev.Controllers
                 return Unauthorized();
             }
 
-            await _hackathonService.SaveTeam(teamName, teamDescription, challenge, ModelState);
+            await _candevService.SaveTeam(teamName, teamDescription, challenge, ModelState);
             if (ModelState.IsValid)
             {
                 _notifier.Success(H["Team info successfully updated"]);

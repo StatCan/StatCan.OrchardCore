@@ -1,0 +1,29 @@
+<h1>Hackathon management dashboard</h1>
+<div class="container-fluid">
+  <div class="row mt-1">
+    <div class="mr-1" id="match-teams-button">
+      <a asp-action="MatchTeams" asp-controller="Admin" asp-route-area="StatCan.OrchardCore.Candev"
+          role="button" class="btn btn-primary btn-md" 
+          data-title="@T["Match teams"]"
+          data-message="@T["Are you sure you want to run the Team matching algorithm? Running it after the hackathon has started can delete teams."]" 
+          data-ok="@T["Yes"]" 
+          data-cancel="@T["No"]" 
+          data-ok-class="btn-primary" 
+          itemprop="RemoveUrl UnsafeUrl">
+        @T["Match teams"]
+      </a>
+    </div>
+    <div id="assign-cases-button">
+        <a asp-action="AssignCases" asp-controller="Admin" asp-route-area="StatCan.OrchardCore.Candev"
+          role="button" class="btn btn-primary btn-md" 
+          data-title="@T["Assign cases"]"
+          data-message="@T["Are you sure you want to assign random cases to teams?"]" 
+          data-ok="@T["Yes"]" 
+          data-cancel="@T["No"]" 
+          data-ok-class="btn-primary" 
+          itemprop="RemoveUrl UnsafeUrl">
+       @T["Assign cases"]
+      </a>
+    </div>
+  </div>
+</div>
