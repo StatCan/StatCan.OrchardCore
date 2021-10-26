@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <PackageReference Include="OrchardCore.Themes" Version="$(OrchardCoreVersion)" />
+    <ProjectReference Include="..\..\Modules\StatCan.OrchardCore.Vuetify\StatCan.OrchardCore.Vuetify.csproj" />
   </ItemGroup>
 
 
