@@ -13,6 +13,23 @@
       <v-card outlined>
         <v-card-title>
           {{ challenge.ContentItem.Content.Challenge.Title.Text | shortcode }} 
+          {% if challenge.ContentItem.Content.Challenge.BackgroundInformation.Text == blank or
+            challenge.ContentItem.Content.Challenge.ContactPersonName.Text == blank or
+            challenge.ContentItem.Content.Challenge.ContactPersonEmail.Text == blank or
+            challenge.ContentItem.Content.Challenge.TechnicalMentorName.Text == blank or
+            challenge.ContentItem.Content.Challenge.TechnicalMentorEmail.Text == blank or
+            challenge.ContentItem.Content.Challenge.CaseSpecialistName.Text == blank or
+            challenge.ContentItem.Content.Challenge.CaseSpecialistEmail.Text == blank or
+            challenge.ContentItem.Content.Challenge.Statement.Text == blank or
+            challenge.ContentItem.Content.Challenge.Datasets.Text == blank or
+            challenge.ContentItem.Content.Challenge.OrganizationNameEn.Text == blank or
+            challenge.ContentItem.Content.Challenge.OrganizationAcronymEn.Text == blank or
+            challenge.ContentItem.Content.Challenge.Keywords.Text == blank
+          %}
+            <v-chip class="ma-2" color="red" label outlined>{{ "Incomplete" | t }}</v-chip>
+          {% else %}
+            <v-chip class="ma-2" color="green" label outlined>{{ "Complete" | t }}</v-chip>
+          {% endif %}
         </v-card-title>
         <v-card-text>
           <v-col>
