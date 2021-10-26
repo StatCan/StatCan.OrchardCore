@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
+using Microsoft.AspNetCore.Mvc.Routing;
 using OrchardCore.ResourceManagement;
 using System.Threading.Tasks;
 
@@ -13,7 +14,9 @@ namespace StatCan.OrchardCore.Radar.Filters
 
         public async Task OnResultExecutionAsync(ResultExecutingContext context, ResultExecutionDelegate next)
         {
-            if (context.Result is PartialViewResult)
+            string url =  context.HttpContext.Request.Path;
+            // Don't inject into the admin views
+            if (context.Result is PartialViewResult || url.ToLower().Contains("admin"))
             {
                 await next();
 
