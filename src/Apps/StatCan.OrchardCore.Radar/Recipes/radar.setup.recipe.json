@@ -22,9 +22,6 @@
       "name": "feature",
       "disable": [],
       "enable": [
-        "OrchardCore.Users.CustomUserSettings",
-        "OrchardCore.Users.Registration",
-        "OrchardCore.Lucene",
         "StatCan.OrchardCore.Radar"
       ]
     },
