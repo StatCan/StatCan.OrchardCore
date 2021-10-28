@@ -6,10 +6,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Mvc;
 using OrchardCore.Modules;
 using OrchardCore.Data.Migration;
-using YesSql.Indexes;
 using OrchardCore.ResourceManagement;
 using OrchardCore.Liquid;
-using StatCan.OrchardCore.Radar.Indexing;
 using StatCan.OrchardCore.Radar.Liquid;
 using StatCan.OrchardCore.Radar.Filters;
 using StatCan.OrchardCore.Radar.Migrations;
@@ -20,9 +18,6 @@ namespace StatCan.OrchardCore.Radar
     {
         public override void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<IDataMigration, IndexMigrations>();
-            services.AddSingleton<IIndexProvider, ContentPermissionsPartIndexProvider>();
-
             services.AddScoped<IDataMigration, ContentTypeMigrations>();
 
             services.AddTransient<IConfigureOptions<ResourceManagementOptions>, ResourceManagementOptionsConfiguration>();

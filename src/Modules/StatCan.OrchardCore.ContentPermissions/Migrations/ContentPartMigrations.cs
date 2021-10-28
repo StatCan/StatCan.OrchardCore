@@ -1,10 +1,10 @@
-﻿using OrchardCore.ContentManagement.Metadata;
+using OrchardCore.ContentManagement.Metadata;
 using OrchardCore.ContentManagement.Metadata.Settings;
 using OrchardCore.Data.Migration;
 
-namespace Etch.OrchardCore.ContentPermissions
+namespace Etch.OrchardCore.ContentPermissions.Migrations
 {
-    public class Migrations : DataMigration
+    public class ContentPartMigrations : DataMigration
     {
         #region Dependencies
 
@@ -14,7 +14,7 @@ namespace Etch.OrchardCore.ContentPermissions
 
         #region Constructor
 
-        public Migrations(IContentDefinitionManager contentDefinitionManager)
+        public ContentPartMigrations(IContentDefinitionManager contentDefinitionManager)
         {
             _contentDefinitionManager = contentDefinitionManager;
         }
