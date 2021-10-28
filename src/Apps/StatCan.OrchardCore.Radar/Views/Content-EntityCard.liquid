@@ -4,7 +4,7 @@
 
 {% assign entitiesSize = entities | size %}
 {% if entitiesSize > 0 %}
-  {% assign entities = entities | current_culture %}
+  {% assign entities = entities | filter_current_culture %}
 {% endif %}
 
 <div class="card card-background">

@@ -8,7 +8,6 @@ using OrchardCore.Modules;
 using OrchardCore.Data.Migration;
 using OrchardCore.ResourceManagement;
 using OrchardCore.Liquid;
-using StatCan.OrchardCore.Radar.Liquid;
 using StatCan.OrchardCore.Radar.Filters;
 using StatCan.OrchardCore.Radar.Migrations;
 
@@ -21,8 +20,6 @@ namespace StatCan.OrchardCore.Radar
             services.AddScoped<IDataMigration, ContentTypeMigrations>();
 
             services.AddTransient<IConfigureOptions<ResourceManagementOptions>, ResourceManagementOptionsConfiguration>();
-
-            services.AddLiquidFilter<CurrentCultureFilter>("current_culture");
 
             services.Configure<MvcOptions>(options =>
             {
