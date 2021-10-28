@@ -22,7 +22,6 @@ namespace StatCan.OrchardCore.Radar
 
             services.AddTransient<IConfigureOptions<ResourceManagementOptions>, ResourceManagementOptionsConfiguration>();
 
-            services.AddLiquidFilter<ListCanViewFilter>("list_can_view");
             services.AddLiquidFilter<CurrentCultureFilter>("current_culture");
 
             services.Configure<MvcOptions>(options =>

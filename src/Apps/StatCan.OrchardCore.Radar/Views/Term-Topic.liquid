@@ -9,7 +9,7 @@
           <div class="title-container">
             <div class="text-h2">{{ Model.Properties.TaxonomyContentItem | display_text }}</div>
             <div class="bubble">
-              <div class="bubble-text" id="bubble-text">{{ Model.Properties.TaxonomyContentItem.Content.TaxonomyPart.Terms | list_can_view | size }}</div>
+              <div class="bubble-text" id="bubble-text">{{ Model.Properties.TaxonomyContentItem.Content.TaxonomyPart.Terms | remove_unauthorized_items | size }}</div>
             </div>
           </div>
           <div class="search-container">

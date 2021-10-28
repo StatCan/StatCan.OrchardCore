@@ -8,13 +8,13 @@ using System.Collections;
 using System.Collections.Generic;
 using Newtonsoft.Json.Linq;
 
-namespace StatCan.OrchardCore.Radar.Liquid
+namespace Etch.OrchardCore.ContentPermissions.Liquid
 {
-    public class ListCanViewFilter: ILiquidFilter
+    public class RemoveUnauthroizedItemsFilter: ILiquidFilter
     {
         private readonly IContentPermissionsService _contentPermissionsService;
 
-        public ListCanViewFilter(IContentPermissionsService contentPermissionsService)
+        public RemoveUnauthroizedItemsFilter(IContentPermissionsService contentPermissionsService)
         {
             _contentPermissionsService = contentPermissionsService;
         }

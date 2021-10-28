@@ -2,7 +2,7 @@
 {% assign trending_up = Queries.TaxonomyTrendingUpSQL | query: type: Model.ContentItem.Content.TrendingCard.Type.Text %}
 {% assign trending_down = Queries.TaxonomyTrendingDownSQL | query: type: Model.ContentItem.Content.TrendingCard.Type.Text %}
 
-{% assign terms = entities.ContentItem.Content.TaxonomyPart.Terms | list_can_view %}
+{% assign terms = entities.ContentItem.Content.TaxonomyPart.Terms | remove_unauthorized_items %}
 
 <div class="card card-background">
   <div class="card-title">

@@ -3,7 +3,7 @@
 {% assign canView = menu | user_can_view %}
 
 {% if canView %}
-{% assign menuItems = menu.Content.MenuItemsListPart.MenuItems | list_can_view %}
+{% assign menuItems = menu.Content.MenuItemsListPart.MenuItems | remove_unauthorized_items %}
 
 <v-menu offset-y>
   <template v-slot:activator="{ on: onMenu, attrs }">
