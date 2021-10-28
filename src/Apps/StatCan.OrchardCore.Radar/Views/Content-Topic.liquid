@@ -31,7 +31,7 @@
 </div>
 {% endzone %}
 
-{% assign entities = Queries.TaxonomyEntitiesSQL | query: type: "Topics", id: Model.ContentItem.ContentItemId | list_can_view | current_culture %}
+{% assign entities = Queries.TaxonomyEntitiesSQL | query: type: "Topics", id: Model.ContentItem.ContentItemId | remove_unauthorized_items | current_culture %}
 
 {% assign projects = entities | where: "ContentType", "Project" %}
 {% assign communities = entities | where: "ContentType", "Community" %}

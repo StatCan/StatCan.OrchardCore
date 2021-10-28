@@ -1,6 +1,6 @@
 {% assign owner = Model.ContentItem.Owner | users_by_id %}
 {% assign type = Model.ContentItem.Content.Community.Type.TagNames | first | shortcode %}
-{% assign events =  Model.ContentItem.Content.RadarEntityPart.RelatedEntity.LocalizationSets | localization_set |  list_can_view %}
+{% assign events =  Model.ContentItem.Content.RadarEntityPart.RelatedEntity.LocalizationSets | localization_set |  remove_unauthorized_items %}
 
 {% zone "Header" %}
 <div class="details-section">

@@ -1,4 +1,4 @@
-{% assign artifacts = Model.Properties.Model.ContentItems | list_can_view %}
+{% assign artifacts = Model.Properties.Model.ContentItems | remove_unauthorized_items %}
 
 <div class="table-title-container">
     <div class="text-h4">

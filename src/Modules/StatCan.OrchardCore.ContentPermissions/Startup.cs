@@ -27,6 +27,7 @@ namespace Etch.OrchardCore.ContentPermissions
             services.AddScoped<IContentTypePartDefinitionDisplayDriver, ContentPermissionsPartSettingsDisplayDriver>();
 
             services.AddLiquidFilter<UserCanViewFilter>("user_can_view");
+            services.AddLiquidFilter<RemoveUnauthroizedItemsFilter>("remove_unauthorized_items");
 
             services.AddScoped<IDataMigration, ContentPartMigrations>();
         }

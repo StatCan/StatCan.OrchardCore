@@ -1,5 +1,5 @@
 {% assign owner = Model.ContentItem.Owner | users_by_id %}
-{% assign communities =  Model.ContentItem.Content.RadarEntityPart.RelatedEntity.LocalizationSets | localization_set | list_can_view %}
+{% assign communities =  Model.ContentItem.Content.RadarEntityPart.RelatedEntity.LocalizationSets | localization_set | remove_unauthorized_items %}
 
 {% zone "Header" %}
 <div class="details-section">
