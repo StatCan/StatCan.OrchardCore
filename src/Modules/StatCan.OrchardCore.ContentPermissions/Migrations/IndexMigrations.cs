@@ -1,9 +1,9 @@
 using System;
-using OrchardCore.Data.Migration;
 using YesSql.Sql;
-using StatCan.OrchardCore.Radar.Indexing;
+using OrchardCore.Data.Migration;
+using Etch.OrchardCore.ContentPermissions.Indexing;
 
-namespace StatCan.OrchardCore.Radar.Migrations
+namespace Etch.OrchardCore.ContentPermissions.Migrations
 {
     public class IndexMigrations : DataMigration
     {

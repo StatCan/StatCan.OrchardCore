@@ -3,7 +3,7 @@ using OrchardCore.ContentManagement;
 using YesSql.Indexes;
 using Etch.OrchardCore.ContentPermissions.Models;
 
-namespace StatCan.OrchardCore.Radar.Indexing
+namespace Etch.OrchardCore.ContentPermissions.Indexing
 {
     public class ContentPermissionsPartIndex : MapIndex
     {
