@@ -47,7 +47,7 @@ namespace StatCan.OrchardCore.Radar.Indexing
                         ContentType = contentItem.ContentType,
                         Published = contentItem.Published,
                         PublishedUtc = contentItem.PublishedUtc,
-                        Roles = String.Join(",", contentPermissionsPart.Roles), // Sqlite does not support strint[] as a data type
+                        Roles = String.Join(",", contentPermissionsPart.Roles), // Sqlite does not support string[] as a data type
                         Enabled = contentPermissionsPart.Enabled
                     };
                 });
