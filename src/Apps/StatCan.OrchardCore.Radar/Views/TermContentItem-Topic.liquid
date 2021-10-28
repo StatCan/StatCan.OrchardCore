@@ -1,4 +1,4 @@
-{% assign entities = Queries.TaxonomyEntitiesSQL | query: type: "Topics", id: Model.Properties.TermContentItem.ContentItemId | remove_unauthorized_items | current_culture %}
+{% assign entities = Queries.TaxonomyEntitiesSQL | query: type: "Topics", id: Model.Properties.TermContentItem.ContentItemId | remove_unauthorized_items | filter_current_culture %}
 
 {% assign projectCount = entities | where: "ContentType", "Project" | size %}
 {% assign communityCount = entities | where: "ContentType", "Community" | size %}

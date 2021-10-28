@@ -8,7 +8,7 @@ using System.Globalization;
 using OrchardCore.ContentLocalization.Models;
 using System.Collections;
 
-namespace StatCan.OrchardCore.Radar.Liquid
+namespace StatCan.OrchardCore.DisplayHelpers.Filters
 {
     public class CurrentCultureFilter: ILiquidFilter
     {

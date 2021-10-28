@@ -20,6 +20,7 @@ namespace StatCan.OrchardCore.DisplayHelpers
             services.AddLiquidFilter<B64DecodeFilter>("base64_decode");
             services.AddLiquidFilter<JavascriptEncodeFilter>("js_encode");
             services.AddLiquidFilter<SetHttpContextItemFilter>("httpcontext_set_item");
+            services.AddLiquidFilter<CurrentCultureFilter>("filter_current_culture");
         }
     }
 
