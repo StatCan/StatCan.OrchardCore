@@ -1,5 +1,5 @@
-import MultiselectAsync from './MultiselectAsync.vue';
-import VueMultiselect from 'vue-multiselect';
+import MultiselectAsync from "./MultiselectAsync.vue";
+import Multiselect from "./Multiselect.vue";
 
-Vue.component("async-multiselect", MultiselectAsync);
-Vue.component("multiselect", VueMultiselect); // The base multiselect component
+Vue.component("multiselect-async", MultiselectAsync);
+Vue.component("multiselect", Multiselect); // The base multiselect component

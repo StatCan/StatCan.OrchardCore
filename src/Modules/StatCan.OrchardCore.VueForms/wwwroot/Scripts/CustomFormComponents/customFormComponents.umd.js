@@ -865,25 +865,25 @@ if (typeof window !== 'undefined') {
 // Indicate to webpack that this file can be concatenated
 /* harmony default export */ var setPublicPath = (null);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"b1143254-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/Modules/StatCan.OrchardCore.VueForms/Assets/components/MultiselectAsync.vue?vue&type=template&id=8d54aae2&
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('multiselect',_vm._b({attrs:{"options":_vm.options,"loading":_vm.isLoading},on:{"search-change":_vm.asyncFind},model:{value:(_vm.internalValue),callback:function ($$v) {_vm.internalValue=$$v},expression:"internalValue"}},'multiselect',_vm.$attrs,false))}
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"b1143254-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/Modules/StatCan.OrchardCore.VueForms/Assets/components/MultiselectAsync.vue?vue&type=template&id=0cd77094&
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('multiselect-base',_vm._b({attrs:{"options":_vm.options,"loading":_vm.isLoading,"error-messages":_vm.errorMessages},on:{"search-change":_vm.asyncFind},model:{value:(_vm.internalValue),callback:function ($$v) {_vm.internalValue=$$v},expression:"internalValue"}},'multiselect-base',_vm.$attrs,false))}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/Modules/StatCan.OrchardCore.VueForms/Assets/components/MultiselectAsync.vue?vue&type=template&id=8d54aae2&
+// CONCATENATED MODULE: ./src/Modules/StatCan.OrchardCore.VueForms/Assets/components/MultiselectAsync.vue?vue&type=template&id=0cd77094&
+
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"b1143254-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/Modules/StatCan.OrchardCore.VueForms/Assets/components/MultiselectBase.vue?vue&type=template&id=6f81ca20&
+var MultiselectBasevue_type_template_id_6f81ca20_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('multiselect',_vm._g(_vm._b({},'multiselect',_vm.$attrs,false),_vm.$listeners)),_vm._v(" "+_vm._s(_vm.errorMessages)+" ")],1)}
+var MultiselectBasevue_type_template_id_6f81ca20_staticRenderFns = []
+
+
+// CONCATENATED MODULE: ./src/Modules/StatCan.OrchardCore.VueForms/Assets/components/MultiselectBase.vue?vue&type=template&id=6f81ca20&
 
 // EXTERNAL MODULE: ./src/Modules/StatCan.OrchardCore.VueForms/node_modules/vue-multiselect/dist/vue-multiselect.min.js
 var vue_multiselect_min = __webpack_require__("0106");
 var vue_multiselect_min_default = /*#__PURE__*/__webpack_require__.n(vue_multiselect_min);
 
-// EXTERNAL MODULE: ./src/Modules/StatCan.OrchardCore.VueForms/node_modules/lodash/debounce.js
-var debounce = __webpack_require__("697d");
-var debounce_default = /*#__PURE__*/__webpack_require__.n(debounce);
-
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/Modules/StatCan.OrchardCore.VueForms/Assets/components/MultiselectAsync.vue?vue&type=script&lang=js&
-//
-//
-//
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/Modules/StatCan.OrchardCore.VueForms/Assets/components/MultiselectBase.vue?vue&type=script&lang=js&
 //
 //
 //
@@ -892,47 +892,20 @@ var debounce_default = /*#__PURE__*/__webpack_require__.n(debounce);
 //
 //
 
-
-/* harmony default export */ var MultiselectAsyncvue_type_script_lang_js_ = ({
-  name: "MultiselectAsync",
+/* harmony default export */ var MultiselectBasevue_type_script_lang_js_ = ({
+  name: "MultiselectBase",
   components: {
-    multiselect: vue_multiselect_min_default.a
+    Multiselect: vue_multiselect_min_default.a
   },
-  props: ["value", "api"],
   data: function data() {
-    return {
-      internalValue: null,
-      options: [],
-      isLoading: false
-    };
+    return {};
   },
   created: function created() {
-    this.internalValue = this.value;
-  },
-  methods: {
-    asyncFind: debounce_default()(function (query) {
-      var _this = this;
-
-      this.isLoading = true;
-      fetch(this.api + query, {
-        method: "GET",
-        credentials: "include"
-      }).then(function (res) {
-        return res.json();
-      }).then(function (data) {
-        _this.options = data;
-        _this.isLoading = false;
-      });
-    }, 1000)
-  },
-  watch: {
-    internalValue: function internalValue(newValue, _) {
-      this.$emit("input", newValue);
-    }
+    console.log(this);
   }
 });
-// CONCATENATED MODULE: ./src/Modules/StatCan.OrchardCore.VueForms/Assets/components/MultiselectAsync.vue?vue&type=script&lang=js&
- /* harmony default export */ var components_MultiselectAsyncvue_type_script_lang_js_ = (MultiselectAsyncvue_type_script_lang_js_); 
+// CONCATENATED MODULE: ./src/Modules/StatCan.OrchardCore.VueForms/Assets/components/MultiselectBase.vue?vue&type=script&lang=js&
+ /* harmony default export */ var components_MultiselectBasevue_type_script_lang_js_ = (MultiselectBasevue_type_script_lang_js_); 
 // CONCATENATED MODULE: ./node_modules/vue-loader/lib/runtime/componentNormalizer.js
 /* globals __VUE_SSR_CONTEXT__ */
 
@@ -1033,7 +1006,7 @@ function normalizeComponent (
   }
 }
 
-// CONCATENATED MODULE: ./src/Modules/StatCan.OrchardCore.VueForms/Assets/components/MultiselectAsync.vue
+// CONCATENATED MODULE: ./src/Modules/StatCan.OrchardCore.VueForms/Assets/components/MultiselectBase.vue
 
 
 
@@ -1042,6 +1015,84 @@ function normalizeComponent (
 /* normalize component */
 
 var component = normalizeComponent(
+  components_MultiselectBasevue_type_script_lang_js_,
+  MultiselectBasevue_type_template_id_6f81ca20_render,
+  MultiselectBasevue_type_template_id_6f81ca20_staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* harmony default export */ var MultiselectBase = (component.exports);
+// EXTERNAL MODULE: ./src/Modules/StatCan.OrchardCore.VueForms/node_modules/lodash/debounce.js
+var debounce = __webpack_require__("697d");
+var debounce_default = /*#__PURE__*/__webpack_require__.n(debounce);
+
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/Modules/StatCan.OrchardCore.VueForms/Assets/components/MultiselectAsync.vue?vue&type=script&lang=js&
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ var MultiselectAsyncvue_type_script_lang_js_ = ({
+  name: "MultiselectAsync",
+  components: {
+    MultiselectBase: MultiselectBase
+  },
+  props: ["value", "api", "errorMessages"],
+  data: function data() {
+    return {
+      internalValue: null,
+      options: [],
+      isLoading: false
+    };
+  },
+  created: function created() {
+    this.internalValue = this.value;
+  },
+  methods: {
+    asyncFind: debounce_default()(function (query) {
+      var _this = this;
+
+      this.isLoading = true;
+      fetch(this.api + query, {
+        method: "GET",
+        credentials: "include"
+      }).then(function (res) {
+        return res.json();
+      }).then(function (data) {
+        _this.options = data;
+        _this.isLoading = false;
+      });
+    }, 1000)
+  },
+  watch: {
+    internalValue: function internalValue(newValue, _) {
+      this.$emit("input", newValue);
+    }
+  }
+});
+// CONCATENATED MODULE: ./src/Modules/StatCan.OrchardCore.VueForms/Assets/components/MultiselectAsync.vue?vue&type=script&lang=js&
+ /* harmony default export */ var components_MultiselectAsyncvue_type_script_lang_js_ = (MultiselectAsyncvue_type_script_lang_js_); 
+// CONCATENATED MODULE: ./src/Modules/StatCan.OrchardCore.VueForms/Assets/components/MultiselectAsync.vue
+
+
+
+
+
+/* normalize component */
+
+var MultiselectAsync_component = normalizeComponent(
   components_MultiselectAsyncvue_type_script_lang_js_,
   render,
   staticRenderFns,
@@ -1052,12 +1103,72 @@ var component = normalizeComponent(
   
 )
 
-/* harmony default export */ var MultiselectAsync = (component.exports);
+/* harmony default export */ var MultiselectAsync = (MultiselectAsync_component.exports);
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"b1143254-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/Modules/StatCan.OrchardCore.VueForms/Assets/components/Multiselect.vue?vue&type=template&id=b55a7d9c&
+var Multiselectvue_type_template_id_b55a7d9c_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('multiselect-base',_vm._b({attrs:{"error-messages":_vm.errorMessages},model:{value:(_vm.internalValue),callback:function ($$v) {_vm.internalValue=$$v},expression:"internalValue"}},'multiselect-base',_vm.$attrs,false))}
+var Multiselectvue_type_template_id_b55a7d9c_staticRenderFns = []
+
+
+// CONCATENATED MODULE: ./src/Modules/StatCan.OrchardCore.VueForms/Assets/components/Multiselect.vue?vue&type=template&id=b55a7d9c&
+
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/Modules/StatCan.OrchardCore.VueForms/Assets/components/Multiselect.vue?vue&type=script&lang=js&
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ var Multiselectvue_type_script_lang_js_ = ({
+  name: "Multiselect",
+  components: {
+    MultiselectBase: MultiselectBase
+  },
+  props: ["value", "api", "errorMessages"],
+  data: function data() {
+    return {
+      internalValue: null,
+      isLoading: false
+    };
+  },
+  created: function created() {
+    this.internalValue = this.value;
+  },
+  watch: {
+    internalValue: function internalValue(newValue, _) {
+      this.$emit("input", newValue);
+    }
+  }
+});
+// CONCATENATED MODULE: ./src/Modules/StatCan.OrchardCore.VueForms/Assets/components/Multiselect.vue?vue&type=script&lang=js&
+ /* harmony default export */ var components_Multiselectvue_type_script_lang_js_ = (Multiselectvue_type_script_lang_js_); 
+// CONCATENATED MODULE: ./src/Modules/StatCan.OrchardCore.VueForms/Assets/components/Multiselect.vue
+
+
+
+
+
+/* normalize component */
+
+var Multiselect_component = normalizeComponent(
+  components_Multiselectvue_type_script_lang_js_,
+  Multiselectvue_type_template_id_b55a7d9c_render,
+  Multiselectvue_type_template_id_b55a7d9c_staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* harmony default export */ var Multiselect = (Multiselect_component.exports);
 // CONCATENATED MODULE: ./src/Modules/StatCan.OrchardCore.VueForms/Assets/components/customFormComponents.js
 
 
-Vue.component("async-multiselect", MultiselectAsync);
-Vue.component("multiselect", vue_multiselect_min_default.a); // The base multiselect component
+Vue.component("multiselect-async", MultiselectAsync);
+Vue.component("multiselect", Multiselect); // The base multiselect component
 // CONCATENATED MODULE: ./node_modules/@vue/cli-service/lib/commands/build/entry-lib-no-default.js
 
 
