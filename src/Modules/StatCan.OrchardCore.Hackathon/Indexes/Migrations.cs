@@ -14,6 +14,7 @@ namespace StatCan.OrchardCore.Hackathon.Indexes
         {
             CreateHackathonItemsIndex();
             CreateHackathonUsersIndex();
+            CreateHackathonChallengesSolutionsIndex();
 
             return 1;
         }
@@ -84,5 +85,27 @@ namespace StatCan.OrchardCore.Hackathon.Indexes
                 }
             });
         }
+
+        private void CreateHackathonChallengesSolutionsIndex() {
+            SchemaBuilder.CreateMapIndexTable(typeof(HackathonChallengesSolutionsIndex), table => table
+                .Column<string>("ContentItemId", c => c.WithLength(26))
+                .Column<string>("ContentType", column => column.WithLength(ContentItemIndex.MaxContentTypeSize))
+                .Column<string>("TeamName", c => c.WithLength(26))
+                .Column<string>("TeamDescription", c => c.WithLength(26))
+                .Column<string>("TeamChallenge", c => c.WithLength(26))
+                .Column<string>("TeamChallengeName", c => c.WithLength(26))
+                .Column<string>("TeamChallengeShortDescription", c => c.WithLength(26))
+                .Column<string>("TeamChallengeMarkdown", c => c.WithLength(26))
+                .Column<string>("TeamCaptain", c => c.WithLength(26))
+                .Column<string>("TeamSolutionName", c => c.WithLength(26))
+                .Column<string>("TeamSolutionDescription", c => c.WithLength(26))
+                .Column<string>("TeamSolutionRepositoryUrl", c => c.WithLength(26)),
+
+
+                null
+            );
+
+        }
     }
+
 }

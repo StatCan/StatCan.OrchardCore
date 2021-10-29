@@ -17,7 +17,7 @@ namespace StatCan.OrchardCore.Hackathon
             services.AddScoped<IDataMigration, IndexMigrations>();
             services.AddScoped<IScopedIndexProvider, HackathonItemsIndexProvider>();
             services.AddSingleton<IIndexProvider, HackathonUsersIndexProvider>();
-
+            services.AddScoped<IScopedIndexProvider, HackathonChallengesSolutionsIndexProvider>();
             services.AddScoped<IHackathonService, HackathonService>();
             services.AddScoped<IDataMigration, HackathonMigrations>();
             services.AddScoped<IContentDisplayDriver, HackathonDriver>();
