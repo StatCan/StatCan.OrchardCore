@@ -13,7 +13,7 @@ import multiselect from "vue-multiselect";
 import debounce from "lodash/debounce";
 
 export default {
-  name: "Vue-Multiselect",
+  name: "MultiselectAsync",
   components: { multiselect },
   props: ["value", "api"],
   data() {

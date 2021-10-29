@@ -865,12 +865,12 @@ if (typeof window !== 'undefined') {
 // Indicate to webpack that this file can be concatenated
 /* harmony default export */ var setPublicPath = (null);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"b1143254-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/Modules/StatCan.OrchardCore.VueForms/Assets/components/Multiselect.vue?vue&type=template&id=7afdaa5e&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"b1143254-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/Modules/StatCan.OrchardCore.VueForms/Assets/components/MultiselectAsync.vue?vue&type=template&id=8d54aae2&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('multiselect',_vm._b({attrs:{"options":_vm.options,"loading":_vm.isLoading},on:{"search-change":_vm.asyncFind},model:{value:(_vm.internalValue),callback:function ($$v) {_vm.internalValue=$$v},expression:"internalValue"}},'multiselect',_vm.$attrs,false))}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/Modules/StatCan.OrchardCore.VueForms/Assets/components/Multiselect.vue?vue&type=template&id=7afdaa5e&
+// CONCATENATED MODULE: ./src/Modules/StatCan.OrchardCore.VueForms/Assets/components/MultiselectAsync.vue?vue&type=template&id=8d54aae2&
 
 // EXTERNAL MODULE: ./src/Modules/StatCan.OrchardCore.VueForms/node_modules/vue-multiselect/dist/vue-multiselect.min.js
 var vue_multiselect_min = __webpack_require__("0106");
@@ -880,7 +880,7 @@ var vue_multiselect_min_default = /*#__PURE__*/__webpack_require__.n(vue_multise
 var debounce = __webpack_require__("697d");
 var debounce_default = /*#__PURE__*/__webpack_require__.n(debounce);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/Modules/StatCan.OrchardCore.VueForms/Assets/components/Multiselect.vue?vue&type=script&lang=js&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/Modules/StatCan.OrchardCore.VueForms/Assets/components/MultiselectAsync.vue?vue&type=script&lang=js&
 //
 //
 //
@@ -893,8 +893,8 @@ var debounce_default = /*#__PURE__*/__webpack_require__.n(debounce);
 //
 
 
-/* harmony default export */ var Multiselectvue_type_script_lang_js_ = ({
-  name: "Vue-Multiselect",
+/* harmony default export */ var MultiselectAsyncvue_type_script_lang_js_ = ({
+  name: "MultiselectAsync",
   components: {
     multiselect: vue_multiselect_min_default.a
   },
@@ -931,8 +931,8 @@ var debounce_default = /*#__PURE__*/__webpack_require__.n(debounce);
     }
   }
 });
-// CONCATENATED MODULE: ./src/Modules/StatCan.OrchardCore.VueForms/Assets/components/Multiselect.vue?vue&type=script&lang=js&
- /* harmony default export */ var components_Multiselectvue_type_script_lang_js_ = (Multiselectvue_type_script_lang_js_); 
+// CONCATENATED MODULE: ./src/Modules/StatCan.OrchardCore.VueForms/Assets/components/MultiselectAsync.vue?vue&type=script&lang=js&
+ /* harmony default export */ var components_MultiselectAsyncvue_type_script_lang_js_ = (MultiselectAsyncvue_type_script_lang_js_); 
 // CONCATENATED MODULE: ./node_modules/vue-loader/lib/runtime/componentNormalizer.js
 /* globals __VUE_SSR_CONTEXT__ */
 
@@ -1033,7 +1033,7 @@ function normalizeComponent (
   }
 }
 
-// CONCATENATED MODULE: ./src/Modules/StatCan.OrchardCore.VueForms/Assets/components/Multiselect.vue
+// CONCATENATED MODULE: ./src/Modules/StatCan.OrchardCore.VueForms/Assets/components/MultiselectAsync.vue
 
 
 
@@ -1042,7 +1042,7 @@ function normalizeComponent (
 /* normalize component */
 
 var component = normalizeComponent(
-  components_Multiselectvue_type_script_lang_js_,
+  components_MultiselectAsyncvue_type_script_lang_js_,
   render,
   staticRenderFns,
   false,
@@ -1052,10 +1052,12 @@ var component = normalizeComponent(
   
 )
 
-/* harmony default export */ var Multiselect = (component.exports);
+/* harmony default export */ var MultiselectAsync = (component.exports);
 // CONCATENATED MODULE: ./src/Modules/StatCan.OrchardCore.VueForms/Assets/components/customFormComponents.js
 
-Vue.component("vue-multiselect", Multiselect);
+
+Vue.component("async-multiselect", MultiselectAsync);
+Vue.component("multiselect", vue_multiselect_min_default.a); // The base multiselect component
 // CONCATENATED MODULE: ./node_modules/@vue/cli-service/lib/commands/build/entry-lib-no-default.js
 
 
