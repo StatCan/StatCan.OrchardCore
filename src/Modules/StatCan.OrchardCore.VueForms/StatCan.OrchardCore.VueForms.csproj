@@ -8,6 +8,8 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Lib\StatCan.OrchardCore.Extensions\StatCan.OrchardCore.Extensions.csproj" />
     <ProjectReference Include="..\StatCan.OrchardCore.DisplayHelpers\StatCan.OrchardCore.DisplayHelpers.csproj" />
+    <ProjectReference Include="..\StatCan.OrchardCore.ContentPermissions\StatCan.OrchardCore.ContentPermissions.csproj" />
+    
   </ItemGroup>
 
   <ItemGroup>
@@ -22,7 +24,7 @@
     <PackageReference Include="OrchardCore.Scripting.JavaScript" Version="$(OrchardCoreVersion)" />
     <PackageReference Include="OrchardCore.Shortcodes.Abstractions" Version="$(OrchardCoreVersion)" />
     <PackageReference Include="OrchardCore.Title" Version="$(OrchardCoreVersion)" />
-    <PackageReference Include="OrchardCore.Workflows" Version="$(OrchardCoreVersion)" />
+    <PackageReference Include="OrchardCore.Workflows" Version="$(OrchardCoreVersion)" /> 
   </ItemGroup>
 
   <ItemGroup>
