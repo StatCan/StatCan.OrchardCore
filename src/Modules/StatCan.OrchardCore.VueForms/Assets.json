@@ -4,7 +4,7 @@
     "file": "Assets/components/customFormComponents.js",
     "output": "wwwroot/Scripts/CustomFormComponents",
     "name": "customFormComponents",
-    "watch": ["Assets/components/*"]
+    "watch": ["Assets/components/**"]
   },
   {
     "copy": true,

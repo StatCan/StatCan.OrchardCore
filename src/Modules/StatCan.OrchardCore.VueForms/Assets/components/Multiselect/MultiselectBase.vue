@@ -10,12 +10,6 @@ import Multiselect from "vue-multiselect";
 
 export default {
   name: "MultiselectBase",
-  components: { Multiselect },
-  data() {
-    return {};
-  },
-  created() {
-    console.log(this);
-  }
+  components: { Multiselect }
 };
 </script>
