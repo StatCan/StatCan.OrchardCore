@@ -1,28 +1,37 @@
 <template>
-  <div>
+  <div class="pa-1">
     <div v-show="false">
       <slot></slot>
     </div>
-    <button v-on:click="addRow">+</button>
-    <div v-for="(values, i) in internalValues" :key="i">
-      <button v-on:click="removeRow(i)">-</button>
-      <div v-for="(component, i) in formComponents" :key="i">
+    <div class="text-h5 mb-5">
+      {{ title }}
+    </div>
+    <div
+      class="d-flex justify-center"
+      v-for="(values, i) in internalValues"
+      :key="i"
+    >
+      <div class="m-auto" v-for="(component, i) in formComponents" :key="i">
         <component
+          class="mr-5"
           v-model="values[valueNames[i]]"
           :is="component.name"
           v-bind="component.props"
         ></component>
       </div>
+      <div class="mt-3">
+        <v-btn depressed v-on:click="removeRow(i)">-</v-btn>
+      </div>
+    </div>
+    <div class="d-flex justify-center">
+      <v-btn depressed v-on:click="addRow">+</v-btn>
     </div>
   </div>
 </template>
 <script>
-import BagRow from "./BagRow.vue";
-
 export default {
   name: "Bag",
-  components: { BagRow },
-  props: ["value", "valueNames"],
+  props: ["value", "valueNames", "title"],
   data() {
     return {
       formComponents: [],
