@@ -1,57 +1,67 @@
 <template>
-  <div class="pa-1">
+  <div class="pa-1 vue-form-bag-container">
     <div v-show="false">
       <slot name="components"></slot>
       <slot name="validations"></slot>
     </div>
-    <div class="text-h5 mb-5">
-      {{ title }}
-    </div>
 
-    <!-- Uses the same transition from: -->
-    <!-- https://github.com/vuetifyjs/vuetify/blob/aa817a453dcd625c0aec1e2305907f357666258d/packages/vuetify/src/components/VMessages/VMessages.ts#L32 -->
-    <transition name="message-transition">
-      <div v-if="!valid" class="error--text v-messages">
-        <div v-for="(message, i) in errorMessages" :key="i">
-          {{ message }}
-        </div>
-      </div>
-    </transition>
+    <slot name="title"></slot>
 
-    <div
-      class="d-flex justify-center"
-      v-for="(values, i) in internalValues"
-      :key="i"
-    >
-      <div class="m-auto" v-for="(fieldSet, i) in formComponents" :key="i">
-        <component
-          :is="fieldSet.validation.name"
-          v-bind="fieldSet.validation.props"
-          v-slot="{ errors, valid }"
-        >
-          <component
-            class="mr-5"
-            v-model="values[valueNames[i]]"
-            :is="fieldSet.component.name"
-            v-bind="fieldSet.component.props"
-            :success="valid"
-            :error-messages="errors"
-          ></component>
-        </component>
-      </div>
-      <div class="mt-3">
-        <v-btn depressed v-on:click="removeRow(i)">-</v-btn>
-      </div>
+    <error-message
+      :valid="valid"
+      :error-messages="errorMessages"
+    ></error-message>
+
+    <div v-for="(values, i) in internalValues" :key="i">
+      <v-row>
+        <v-col md="11">
+          <div class="mb-3" v-for="(fieldSet, i) in formComponents" :key="i">
+            <component
+              :is="fieldSet.validation.name"
+              v-bind="fieldSet.validation.props"
+              v-slot="{ errors, valid }"
+            >
+              <component
+                v-model="values[valueNames[i]]"
+                :is="fieldSet.component.name"
+                v-bind="fieldSet.component.props"
+                :success="valid"
+                :error-messages="errors"
+              ></component>
+            </component>
+          </div>
+        </v-col>
+        <v-col md="1" class="d-flex align-center pt-1">
+          <v-btn
+            class="vue-form-bag-remove-button"
+            depressed
+            v-on:click="removeRow(i)"
+            >{{ removeButtonLabel }}</v-btn
+          >
+        </v-col>
+      </v-row>
     </div>
     <div class="d-flex justify-center">
-      <v-btn depressed v-on:click="addRow">+</v-btn>
+      <v-btn class="vue-form-bag-add-button" depressed v-on:click="addRow">{{
+        addButtonLabel
+      }}</v-btn>
     </div>
   </div>
 </template>
 <script>
+import ErrorMessage from "../common/ErrorMessage.vue";
+
 export default {
   name: "Bag",
-  props: ["value", "valueNames", "title", "valid", "errorMessages"],
+  components: { ErrorMessage },
+  props: [
+    "value",
+    "valueNames",
+    "valid",
+    "errorMessages",
+    "addButtonLabel",
+    "removeButtonLabel"
+  ],
   data() {
     return {
       formComponents: [],

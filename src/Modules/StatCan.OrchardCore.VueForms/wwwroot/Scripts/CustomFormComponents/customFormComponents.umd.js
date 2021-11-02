@@ -327,6 +327,13 @@ module.exports = isObjectLike;
 
 /***/ }),
 
+/***/ "2c51":
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
 /***/ "367c":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -943,41 +950,50 @@ if (typeof window !== 'undefined') {
 // Indicate to webpack that this file can be concatenated
 /* harmony default export */ var setPublicPath = (null);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"b1143254-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/Modules/StatCan.OrchardCore.VueForms/Assets/components/Multiselect/MultiselectAsync.vue?vue&type=template&id=61340e30&
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('multiselect-base',_vm._b({attrs:{"options":_vm.options,"loading":_vm.isLoading,"error-messages":_vm.errorMessages},on:{"search-change":_vm.asyncFind},model:{value:(_vm.internalValue),callback:function ($$v) {_vm.internalValue=$$v},expression:"internalValue"}},'multiselect-base',_vm.$attrs,false))}
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"b1143254-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/Modules/StatCan.OrchardCore.VueForms/Assets/components/Multiselect/MultiselectAsync.vue?vue&type=template&id=c80f9850&
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('multiselect-base',_vm._b({attrs:{"options":_vm.options,"loading":_vm.isLoading,"success":_vm.success,"error-messages":_vm.errorMessages},on:{"search-change":_vm.asyncFind},model:{value:(_vm.internalValue),callback:function ($$v) {_vm.internalValue=$$v},expression:"internalValue"}},'multiselect-base',_vm.$attrs,false))}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/Modules/StatCan.OrchardCore.VueForms/Assets/components/Multiselect/MultiselectAsync.vue?vue&type=template&id=61340e30&
+// CONCATENATED MODULE: ./src/Modules/StatCan.OrchardCore.VueForms/Assets/components/Multiselect/MultiselectAsync.vue?vue&type=template&id=c80f9850&
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"b1143254-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/Modules/StatCan.OrchardCore.VueForms/Assets/components/Multiselect/MultiselectBase.vue?vue&type=template&id=563ad99c&
-var MultiselectBasevue_type_template_id_563ad99c_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('multiselect',_vm._g(_vm._b({},'multiselect',_vm.$attrs,false),_vm.$listeners)),_vm._v(" "+_vm._s(_vm.errorMessages)+" ")],1)}
-var MultiselectBasevue_type_template_id_563ad99c_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"b1143254-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/Modules/StatCan.OrchardCore.VueForms/Assets/components/Multiselect/MultiselectBase.vue?vue&type=template&id=9df49b68&
+var MultiselectBasevue_type_template_id_9df49b68_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('multiselect',_vm._g(_vm._b({},'multiselect',_vm.$attrs,false),_vm.$listeners)),_c('div',{staticClass:"px-3"},[_c('error-message',{attrs:{"valid":_vm.success,"error-messages":_vm.errorMessages}})],1)],1)}
+var MultiselectBasevue_type_template_id_9df49b68_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/Modules/StatCan.OrchardCore.VueForms/Assets/components/Multiselect/MultiselectBase.vue?vue&type=template&id=563ad99c&
+// CONCATENATED MODULE: ./src/Modules/StatCan.OrchardCore.VueForms/Assets/components/Multiselect/MultiselectBase.vue?vue&type=template&id=9df49b68&
 
 // EXTERNAL MODULE: ./src/Modules/StatCan.OrchardCore.VueForms/node_modules/vue-multiselect/dist/vue-multiselect.min.js
 var vue_multiselect_min = __webpack_require__("0106");
 var vue_multiselect_min_default = /*#__PURE__*/__webpack_require__.n(vue_multiselect_min);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/Modules/StatCan.OrchardCore.VueForms/Assets/components/Multiselect/MultiselectBase.vue?vue&type=script&lang=js&
-//
-//
-//
-//
-//
-//
-//
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"b1143254-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/Modules/StatCan.OrchardCore.VueForms/Assets/components/common/ErrorMessage.vue?vue&type=template&id=6bbca041&
+var ErrorMessagevue_type_template_id_6bbca041_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('transition',{attrs:{"name":"message-transition"}},[(!_vm.valid)?_c('div',{staticClass:"error--text v-messages"},_vm._l((_vm.errorMessages),function(message,i){return _c('div',{key:i},[_vm._v(" "+_vm._s(message)+" ")])}),0):_vm._e()])}
+var ErrorMessagevue_type_template_id_6bbca041_staticRenderFns = []
 
-/* harmony default export */ var MultiselectBasevue_type_script_lang_js_ = ({
-  name: "MultiselectBase",
-  components: {
-    Multiselect: vue_multiselect_min_default.a
-  }
+
+// CONCATENATED MODULE: ./src/Modules/StatCan.OrchardCore.VueForms/Assets/components/common/ErrorMessage.vue?vue&type=template&id=6bbca041&
+
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/Modules/StatCan.OrchardCore.VueForms/Assets/components/common/ErrorMessage.vue?vue&type=script&lang=js&
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ var ErrorMessagevue_type_script_lang_js_ = ({
+  name: "ErrorMessage",
+  props: ["valid", "errorMessages"]
 });
-// CONCATENATED MODULE: ./src/Modules/StatCan.OrchardCore.VueForms/Assets/components/Multiselect/MultiselectBase.vue?vue&type=script&lang=js&
- /* harmony default export */ var Multiselect_MultiselectBasevue_type_script_lang_js_ = (MultiselectBasevue_type_script_lang_js_); 
+// CONCATENATED MODULE: ./src/Modules/StatCan.OrchardCore.VueForms/Assets/components/common/ErrorMessage.vue?vue&type=script&lang=js&
+ /* harmony default export */ var common_ErrorMessagevue_type_script_lang_js_ = (ErrorMessagevue_type_script_lang_js_); 
 // CONCATENATED MODULE: ./node_modules/vue-loader/lib/runtime/componentNormalizer.js
 /* globals __VUE_SSR_CONTEXT__ */
 
@@ -1078,6 +1094,52 @@ function normalizeComponent (
   }
 }
 
+// CONCATENATED MODULE: ./src/Modules/StatCan.OrchardCore.VueForms/Assets/components/common/ErrorMessage.vue
+
+
+
+
+
+/* normalize component */
+
+var ErrorMessage_component = normalizeComponent(
+  common_ErrorMessagevue_type_script_lang_js_,
+  ErrorMessagevue_type_template_id_6bbca041_render,
+  ErrorMessagevue_type_template_id_6bbca041_staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* harmony default export */ var ErrorMessage = (ErrorMessage_component.exports);
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/Modules/StatCan.OrchardCore.VueForms/Assets/components/Multiselect/MultiselectBase.vue?vue&type=script&lang=js&
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ var MultiselectBasevue_type_script_lang_js_ = ({
+  name: "MultiselectBase",
+  components: {
+    Multiselect: vue_multiselect_min_default.a,
+    ErrorMessage: ErrorMessage
+  },
+  props: ["success", "errorMessages"]
+});
+// CONCATENATED MODULE: ./src/Modules/StatCan.OrchardCore.VueForms/Assets/components/Multiselect/MultiselectBase.vue?vue&type=script&lang=js&
+ /* harmony default export */ var Multiselect_MultiselectBasevue_type_script_lang_js_ = (MultiselectBasevue_type_script_lang_js_); 
 // CONCATENATED MODULE: ./src/Modules/StatCan.OrchardCore.VueForms/Assets/components/Multiselect/MultiselectBase.vue
 
 
@@ -1088,8 +1150,8 @@ function normalizeComponent (
 
 var MultiselectBase_component = normalizeComponent(
   Multiselect_MultiselectBasevue_type_script_lang_js_,
-  MultiselectBasevue_type_template_id_563ad99c_render,
-  MultiselectBasevue_type_template_id_563ad99c_staticRenderFns,
+  MultiselectBasevue_type_template_id_9df49b68_render,
+  MultiselectBasevue_type_template_id_9df49b68_staticRenderFns,
   false,
   null,
   null,
@@ -1114,6 +1176,7 @@ var debounce_default = /*#__PURE__*/__webpack_require__.n(debounce);
 //
 //
 //
+//
 
 
 /* harmony default export */ var MultiselectAsyncvue_type_script_lang_js_ = ({
@@ -1121,7 +1184,7 @@ var debounce_default = /*#__PURE__*/__webpack_require__.n(debounce);
   components: {
     MultiselectBase: MultiselectBase
   },
-  props: ["value", "api", "errorMessages"],
+  props: ["value", "api", "success", "errorMessages"],
   data: function data() {
     return {
       internalValue: null,
@@ -1176,15 +1239,14 @@ var MultiselectAsync_component = normalizeComponent(
 )
 
 /* harmony default export */ var MultiselectAsync = (MultiselectAsync_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"b1143254-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/Modules/StatCan.OrchardCore.VueForms/Assets/components/Multiselect/Multiselect.vue?vue&type=template&id=3c545c86&
-var Multiselectvue_type_template_id_3c545c86_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('multiselect-base',_vm._b({attrs:{"options":_vm.options,"error-messages":_vm.errorMessages},model:{value:(_vm.internalValue),callback:function ($$v) {_vm.internalValue=$$v},expression:"internalValue"}},'multiselect-base',_vm.$attrs,false))}
-var Multiselectvue_type_template_id_3c545c86_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"b1143254-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/Modules/StatCan.OrchardCore.VueForms/Assets/components/Multiselect/Multiselect.vue?vue&type=template&id=15cf47e4&
+var Multiselectvue_type_template_id_15cf47e4_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('multiselect-base',_vm._b({attrs:{"error-messages":_vm.errorMessages},model:{value:(_vm.internalValue),callback:function ($$v) {_vm.internalValue=$$v},expression:"internalValue"}},'multiselect-base',_vm.$attrs,false))}
+var Multiselectvue_type_template_id_15cf47e4_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/Modules/StatCan.OrchardCore.VueForms/Assets/components/Multiselect/Multiselect.vue?vue&type=template&id=3c545c86&
+// CONCATENATED MODULE: ./src/Modules/StatCan.OrchardCore.VueForms/Assets/components/Multiselect/Multiselect.vue?vue&type=template&id=15cf47e4&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/Modules/StatCan.OrchardCore.VueForms/Assets/components/Multiselect/Multiselect.vue?vue&type=script&lang=js&
-//
 //
 //
 //
@@ -1199,7 +1261,7 @@ var Multiselectvue_type_template_id_3c545c86_staticRenderFns = []
   components: {
     MultiselectBase: MultiselectBase
   },
-  props: ["value",, "options", "errorMessages"],
+  props: ["value", "errorMessages"],
   data: function data() {
     return {
       internalValue: null,
@@ -1227,8 +1289,8 @@ var Multiselectvue_type_template_id_3c545c86_staticRenderFns = []
 
 var Multiselect_component = normalizeComponent(
   Multiselect_Multiselectvue_type_script_lang_js_,
-  Multiselectvue_type_template_id_3c545c86_render,
-  Multiselectvue_type_template_id_3c545c86_staticRenderFns,
+  Multiselectvue_type_template_id_15cf47e4_render,
+  Multiselectvue_type_template_id_15cf47e4_staticRenderFns,
   false,
   null,
   null,
@@ -1237,15 +1299,15 @@ var Multiselect_component = normalizeComponent(
 )
 
 /* harmony default export */ var Multiselect = (Multiselect_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"b1143254-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/Modules/StatCan.OrchardCore.VueForms/Assets/components/Bag/Bag.vue?vue&type=template&id=26daea40&
-var Bagvue_type_template_id_26daea40_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"pa-1"},[_c('div',{directives:[{name:"show",rawName:"v-show",value:(false),expression:"false"}]},[_vm._t("components"),_vm._t("validations")],2),_c('div',{staticClass:"text-h5 mb-5"},[_vm._v(" "+_vm._s(_vm.title)+" ")]),_c('transition',{attrs:{"name":"message-transition"}},[(!_vm.valid)?_c('div',{staticClass:"error--text v-messages"},_vm._l((_vm.errorMessages),function(message,i){return _c('div',{key:i},[_vm._v(" "+_vm._s(message)+" ")])}),0):_vm._e()]),_vm._l((_vm.internalValues),function(values,i){return _c('div',{key:i,staticClass:"d-flex justify-center"},[_vm._l((_vm.formComponents),function(fieldSet,i){return _c('div',{key:i,staticClass:"m-auto"},[_c(fieldSet.validation.name,_vm._b({tag:"component",scopedSlots:_vm._u([{key:"default",fn:function(ref){
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"b1143254-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/Modules/StatCan.OrchardCore.VueForms/Assets/components/Bag/Bag.vue?vue&type=template&id=11e09942&
+var Bagvue_type_template_id_11e09942_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"pa-1 vue-form-bag-container"},[_c('div',{directives:[{name:"show",rawName:"v-show",value:(false),expression:"false"}]},[_vm._t("components"),_vm._t("validations")],2),_vm._t("title"),_c('error-message',{attrs:{"valid":_vm.valid,"error-messages":_vm.errorMessages}}),_vm._l((_vm.internalValues),function(values,i){return _c('div',{key:i},[_c('v-row',[_c('v-col',{attrs:{"md":"11"}},_vm._l((_vm.formComponents),function(fieldSet,i){return _c('div',{key:i,staticClass:"mb-3"},[_c(fieldSet.validation.name,_vm._b({tag:"component",scopedSlots:_vm._u([{key:"default",fn:function(ref){
 var errors = ref.errors;
 var valid = ref.valid;
-return [_c(fieldSet.component.name,_vm._b({tag:"component",staticClass:"mr-5",attrs:{"success":valid,"error-messages":errors},model:{value:(values[_vm.valueNames[i]]),callback:function ($$v) {_vm.$set(values, _vm.valueNames[i], $$v)},expression:"values[valueNames[i]]"}},'component',fieldSet.component.props,false))]}}],null,true)},'component',fieldSet.validation.props,false))],1)}),_c('div',{staticClass:"mt-3"},[_c('v-btn',{attrs:{"depressed":""},on:{"click":function($event){return _vm.removeRow(i)}}},[_vm._v("-")])],1)],2)}),_c('div',{staticClass:"d-flex justify-center"},[_c('v-btn',{attrs:{"depressed":""},on:{"click":_vm.addRow}},[_vm._v("+")])],1)],2)}
-var Bagvue_type_template_id_26daea40_staticRenderFns = []
+return [_c(fieldSet.component.name,_vm._b({tag:"component",attrs:{"success":valid,"error-messages":errors},model:{value:(values[_vm.valueNames[i]]),callback:function ($$v) {_vm.$set(values, _vm.valueNames[i], $$v)},expression:"values[valueNames[i]]"}},'component',fieldSet.component.props,false))]}}],null,true)},'component',fieldSet.validation.props,false))],1)}),0),_c('v-col',{staticClass:"d-flex align-center pt-1",attrs:{"md":"1"}},[_c('v-btn',{staticClass:"vue-form-bag-remove-button",attrs:{"depressed":""},on:{"click":function($event){return _vm.removeRow(i)}}},[_vm._v(_vm._s(_vm.removeButtonLabel))])],1)],1)],1)}),_c('div',{staticClass:"d-flex justify-center"},[_c('v-btn',{staticClass:"vue-form-bag-add-button",attrs:{"depressed":""},on:{"click":_vm.addRow}},[_vm._v(_vm._s(_vm.addButtonLabel))])],1)],2)}
+var Bagvue_type_template_id_11e09942_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/Modules/StatCan.OrchardCore.VueForms/Assets/components/Bag/Bag.vue?vue&type=template&id=26daea40&
+// CONCATENATED MODULE: ./src/Modules/StatCan.OrchardCore.VueForms/Assets/components/Bag/Bag.vue?vue&type=template&id=11e09942&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/Modules/StatCan.OrchardCore.VueForms/Assets/components/Bag/Bag.vue?vue&type=script&lang=js&
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
@@ -1304,9 +1366,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+
 /* harmony default export */ var Bagvue_type_script_lang_js_ = ({
   name: "Bag",
-  props: ["value", "valueNames", "title", "valid", "errorMessages"],
+  components: {
+    ErrorMessage: ErrorMessage
+  },
+  props: ["value", "valueNames", "valid", "errorMessages", "addButtonLabel", "removeButtonLabel"],
   data: function data() {
     return {
       formComponents: [],
@@ -5018,6 +5084,456 @@ const baseMixins = mixins(components_VSheet, routable, positionable, sizeable, f
 
 }));
 //# sourceMappingURL=VBtn.js.map
+// EXTERNAL MODULE: ./src/Modules/StatCan.OrchardCore.VueForms/node_modules/vuetify/src/components/VGrid/VGrid.sass
+var VGrid = __webpack_require__("2c51");
+
+// CONCATENATED MODULE: ./src/Modules/StatCan.OrchardCore.VueForms/node_modules/vuetify/lib/util/mergeData.js
+
+const pattern = {
+  styleList: /;(?![^(]*\))/g,
+  styleProp: /:(.*)/
+};
+
+function parseStyle(style) {
+  const styleMap = {};
+
+  for (const s of style.split(pattern.styleList)) {
+    let [key, val] = s.split(pattern.styleProp);
+    key = key.trim();
+
+    if (!key) {
+      continue;
+    } // May be undefined if the `key: value` pair is incomplete.
+
+
+    if (typeof val === 'string') {
+      val = val.trim();
+    }
+
+    styleMap[camelize(key)] = val;
+  }
+
+  return styleMap;
+}
+
+function mergeData() {
+  const mergeTarget = {};
+  let i = arguments.length;
+  let prop; // Allow for variadic argument length.
+
+  while (i--) {
+    // Iterate through the data properties and execute merge strategies
+    // Object.keys eliminates need for hasOwnProperty call
+    for (prop of Object.keys(arguments[i])) {
+      switch (prop) {
+        // Array merge strategy (array concatenation)
+        case 'class':
+        case 'directives':
+          if (arguments[i][prop]) {
+            mergeTarget[prop] = mergeClasses(mergeTarget[prop], arguments[i][prop]);
+          }
+
+          break;
+
+        case 'style':
+          if (arguments[i][prop]) {
+            mergeTarget[prop] = mergeStyles(mergeTarget[prop], arguments[i][prop]);
+          }
+
+          break;
+        // Space delimited string concatenation strategy
+
+        case 'staticClass':
+          if (!arguments[i][prop]) {
+            break;
+          }
+
+          if (mergeTarget[prop] === undefined) {
+            mergeTarget[prop] = '';
+          }
+
+          if (mergeTarget[prop]) {
+            // Not an empty string, so concatenate
+            mergeTarget[prop] += ' ';
+          }
+
+          mergeTarget[prop] += arguments[i][prop].trim();
+          break;
+        // Object, the properties of which to merge via array merge strategy (array concatenation).
+        // Callback merge strategy merges callbacks to the beginning of the array,
+        // so that the last defined callback will be invoked first.
+        // This is done since to mimic how Object.assign merging
+        // uses the last given value to assign.
+
+        case 'on':
+        case 'nativeOn':
+          if (arguments[i][prop]) {
+            mergeTarget[prop] = mergeListeners(mergeTarget[prop], arguments[i][prop]);
+          }
+
+          break;
+        // Object merge strategy
+
+        case 'attrs':
+        case 'props':
+        case 'domProps':
+        case 'scopedSlots':
+        case 'staticStyle':
+        case 'hook':
+        case 'transition':
+          if (!arguments[i][prop]) {
+            break;
+          }
+
+          if (!mergeTarget[prop]) {
+            mergeTarget[prop] = {};
+          }
+
+          mergeTarget[prop] = { ...arguments[i][prop],
+            ...mergeTarget[prop]
+          };
+          break;
+        // Reassignment strategy (no merge)
+
+        default:
+          // slot, key, ref, tag, show, keepAlive
+          if (!mergeTarget[prop]) {
+            mergeTarget[prop] = arguments[i][prop];
+          }
+
+      }
+    }
+  }
+
+  return mergeTarget;
+}
+function mergeStyles(target, source) {
+  if (!target) return source;
+  if (!source) return target;
+  target = wrapInArray(typeof target === 'string' ? parseStyle(target) : target);
+  return target.concat(typeof source === 'string' ? parseStyle(source) : source);
+}
+function mergeClasses(target, source) {
+  if (!source) return target;
+  if (!target) return source;
+  return target ? wrapInArray(target).concat(source) : source;
+}
+function mergeListeners(...args) {
+  if (!args[0]) return args[1];
+  if (!args[1]) return args[0];
+  const dest = {};
+
+  for (let i = 2; i--;) {
+    const arg = args[i];
+
+    for (const event in arg) {
+      if (!arg[event]) continue;
+
+      if (dest[event]) {
+        // Merge current listeners before (because we are iterating backwards).
+        // Note that neither "target" or "source" must be altered.
+        dest[event] = [].concat(arg[event], dest[event]);
+      } else {
+        // Straight assign.
+        dest[event] = arg[event];
+      }
+    }
+  }
+
+  return dest;
+}
+//# sourceMappingURL=mergeData.js.map
+// CONCATENATED MODULE: ./src/Modules/StatCan.OrchardCore.VueForms/node_modules/vuetify/lib/components/VGrid/VCol.js
+
+
+
+ // no xs
+
+const breakpoints = ['sm', 'md', 'lg', 'xl'];
+
+const breakpointProps = (() => {
+  return breakpoints.reduce((props, val) => {
+    props[val] = {
+      type: [Boolean, String, Number],
+      default: false
+    };
+    return props;
+  }, {});
+})();
+
+const offsetProps = (() => {
+  return breakpoints.reduce((props, val) => {
+    props['offset' + upperFirst(val)] = {
+      type: [String, Number],
+      default: null
+    };
+    return props;
+  }, {});
+})();
+
+const orderProps = (() => {
+  return breakpoints.reduce((props, val) => {
+    props['order' + upperFirst(val)] = {
+      type: [String, Number],
+      default: null
+    };
+    return props;
+  }, {});
+})();
+
+const propMap = {
+  col: Object.keys(breakpointProps),
+  offset: Object.keys(offsetProps),
+  order: Object.keys(orderProps)
+};
+
+function breakpointClass(type, prop, val) {
+  let className = type;
+
+  if (val == null || val === false) {
+    return undefined;
+  }
+
+  if (prop) {
+    const breakpoint = prop.replace(type, '');
+    className += `-${breakpoint}`;
+  } // Handling the boolean style prop when accepting [Boolean, String, Number]
+  // means Vue will not convert <v-col sm></v-col> to sm: true for us.
+  // Since the default is false, an empty string indicates the prop's presence.
+
+
+  if (type === 'col' && (val === '' || val === true)) {
+    // .col-md
+    return className.toLowerCase();
+  } // .order-md-6
+
+
+  className += `-${val}`;
+  return className.toLowerCase();
+}
+
+const cache = new Map();
+/* harmony default export */ var VCol = (external_commonjs_vue_commonjs2_vue_root_Vue_default.a.extend({
+  name: 'v-col',
+  functional: true,
+  props: {
+    cols: {
+      type: [Boolean, String, Number],
+      default: false
+    },
+    ...breakpointProps,
+    offset: {
+      type: [String, Number],
+      default: null
+    },
+    ...offsetProps,
+    order: {
+      type: [String, Number],
+      default: null
+    },
+    ...orderProps,
+    alignSelf: {
+      type: String,
+      default: null,
+      validator: str => ['auto', 'start', 'end', 'center', 'baseline', 'stretch'].includes(str)
+    },
+    tag: {
+      type: String,
+      default: 'div'
+    }
+  },
+
+  render(h, {
+    props,
+    data,
+    children,
+    parent
+  }) {
+    // Super-fast memoization based on props, 5x faster than JSON.stringify
+    let cacheKey = '';
+
+    for (const prop in props) {
+      cacheKey += String(props[prop]);
+    }
+
+    let classList = cache.get(cacheKey);
+
+    if (!classList) {
+      classList = []; // Loop through `col`, `offset`, `order` breakpoint props
+
+      let type;
+
+      for (type in propMap) {
+        propMap[type].forEach(prop => {
+          const value = props[prop];
+          const className = breakpointClass(type, prop, value);
+          if (className) classList.push(className);
+        });
+      }
+
+      const hasColClasses = classList.some(className => className.startsWith('col-'));
+      classList.push({
+        // Default to .col if no other col-{bp}-* classes generated nor `cols` specified.
+        col: !hasColClasses || !props.cols,
+        [`col-${props.cols}`]: props.cols,
+        [`offset-${props.offset}`]: props.offset,
+        [`order-${props.order}`]: props.order,
+        [`align-self-${props.alignSelf}`]: props.alignSelf
+      });
+      cache.set(cacheKey, classList);
+    }
+
+    return h(props.tag, mergeData(data, {
+      class: classList
+    }), children);
+  }
+
+}));
+//# sourceMappingURL=VCol.js.map
+// CONCATENATED MODULE: ./src/Modules/StatCan.OrchardCore.VueForms/node_modules/vuetify/lib/components/VGrid/VRow.js
+
+
+
+ // no xs
+
+const VRow_breakpoints = ['sm', 'md', 'lg', 'xl'];
+const ALIGNMENT = ['start', 'end', 'center'];
+
+function makeProps(prefix, def) {
+  return VRow_breakpoints.reduce((props, val) => {
+    props[prefix + upperFirst(val)] = def();
+    return props;
+  }, {});
+}
+
+const alignValidator = str => [...ALIGNMENT, 'baseline', 'stretch'].includes(str);
+
+const alignProps = makeProps('align', () => ({
+  type: String,
+  default: null,
+  validator: alignValidator
+}));
+
+const justifyValidator = str => [...ALIGNMENT, 'space-between', 'space-around'].includes(str);
+
+const justifyProps = makeProps('justify', () => ({
+  type: String,
+  default: null,
+  validator: justifyValidator
+}));
+
+const alignContentValidator = str => [...ALIGNMENT, 'space-between', 'space-around', 'stretch'].includes(str);
+
+const alignContentProps = makeProps('alignContent', () => ({
+  type: String,
+  default: null,
+  validator: alignContentValidator
+}));
+const VRow_propMap = {
+  align: Object.keys(alignProps),
+  justify: Object.keys(justifyProps),
+  alignContent: Object.keys(alignContentProps)
+};
+const classMap = {
+  align: 'align',
+  justify: 'justify',
+  alignContent: 'align-content'
+};
+
+function VRow_breakpointClass(type, prop, val) {
+  let className = classMap[type];
+
+  if (val == null) {
+    return undefined;
+  }
+
+  if (prop) {
+    // alignSm -> Sm
+    const breakpoint = prop.replace(type, '');
+    className += `-${breakpoint}`;
+  } // .align-items-sm-center
+
+
+  className += `-${val}`;
+  return className.toLowerCase();
+}
+
+const VRow_cache = new Map();
+/* harmony default export */ var VRow = (external_commonjs_vue_commonjs2_vue_root_Vue_default.a.extend({
+  name: 'v-row',
+  functional: true,
+  props: {
+    tag: {
+      type: String,
+      default: 'div'
+    },
+    dense: Boolean,
+    noGutters: Boolean,
+    align: {
+      type: String,
+      default: null,
+      validator: alignValidator
+    },
+    ...alignProps,
+    justify: {
+      type: String,
+      default: null,
+      validator: justifyValidator
+    },
+    ...justifyProps,
+    alignContent: {
+      type: String,
+      default: null,
+      validator: alignContentValidator
+    },
+    ...alignContentProps
+  },
+
+  render(h, {
+    props,
+    data,
+    children
+  }) {
+    // Super-fast memoization based on props, 5x faster than JSON.stringify
+    let cacheKey = '';
+
+    for (const prop in props) {
+      cacheKey += String(props[prop]);
+    }
+
+    let classList = VRow_cache.get(cacheKey);
+
+    if (!classList) {
+      classList = []; // Loop through `align`, `justify`, `alignContent` breakpoint props
+
+      let type;
+
+      for (type in VRow_propMap) {
+        VRow_propMap[type].forEach(prop => {
+          const value = props[prop];
+          const className = VRow_breakpointClass(type, prop, value);
+          if (className) classList.push(className);
+        });
+      }
+
+      classList.push({
+        'no-gutters': props.noGutters,
+        'row--dense': props.dense,
+        [`align-${props.align}`]: props.align,
+        [`justify-${props.justify}`]: props.justify,
+        [`align-content-${props.alignContent}`]: props.alignContent
+      });
+      VRow_cache.set(cacheKey, classList);
+    }
+
+    return h(props.tag, mergeData(data, {
+      staticClass: 'row',
+      class: classList
+    }), children);
+  }
+
+}));
+//# sourceMappingURL=VRow.js.map
 // CONCATENATED MODULE: ./src/Modules/StatCan.OrchardCore.VueForms/Assets/components/Bag/Bag.vue
 
 
@@ -5028,8 +5544,8 @@ const baseMixins = mixins(components_VSheet, routable, positionable, sizeable, f
 
 var Bag_component = normalizeComponent(
   Bag_Bagvue_type_script_lang_js_,
-  Bagvue_type_template_id_26daea40_render,
-  Bagvue_type_template_id_26daea40_staticRenderFns,
+  Bagvue_type_template_id_11e09942_render,
+  Bagvue_type_template_id_11e09942_staticRenderFns,
   false,
   null,
   null,
@@ -5042,7 +5558,9 @@ var Bag_component = normalizeComponent(
 /* vuetify-loader */
 
 
-installComponents_default()(Bag_component, {VBtn: VBtn_VBtn})
+
+
+installComponents_default()(Bag_component, {VBtn: VBtn_VBtn,VCol: VCol,VRow: VRow})
 
 // CONCATENATED MODULE: ./src/Modules/StatCan.OrchardCore.VueForms/Assets/components/customFormComponents.js
 

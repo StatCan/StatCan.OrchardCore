@@ -5,6 +5,7 @@
     :loading="isLoading"
     @search-change="asyncFind"
     v-bind="$attrs"
+    :success="success"
     :error-messages="errorMessages"
   ></multiselect-base>
 </template>
@@ -16,7 +17,7 @@ import debounce from "lodash/debounce";
 export default {
   name: "MultiselectAsync",
   components: { MultiselectBase },
-  props: ["value", "api", "errorMessages"],
+  props: ["value", "api", "success", "errorMessages"],
   data() {
     return {
       internalValue: null,
