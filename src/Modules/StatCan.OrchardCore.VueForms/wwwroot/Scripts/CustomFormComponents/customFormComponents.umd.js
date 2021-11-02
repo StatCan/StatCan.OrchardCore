@@ -1237,12 +1237,15 @@ var Multiselect_component = normalizeComponent(
 )
 
 /* harmony default export */ var Multiselect = (Multiselect_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"b1143254-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/Modules/StatCan.OrchardCore.VueForms/Assets/components/Bag/Bag.vue?vue&type=template&id=c561f0dc&
-var Bagvue_type_template_id_c561f0dc_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"pa-1"},[_c('div',{directives:[{name:"show",rawName:"v-show",value:(false),expression:"false"}]},[_vm._t("default")],2),_c('div',{staticClass:"text-h5 mb-5"},[_vm._v(" "+_vm._s(_vm.title)+" ")]),_vm._l((_vm.internalValues),function(values,i){return _c('div',{key:i,staticClass:"d-flex justify-center"},[_vm._l((_vm.formComponents),function(component,i){return _c('div',{key:i,staticClass:"m-auto"},[_c(component.name,_vm._b({tag:"component",staticClass:"mr-5",model:{value:(values[_vm.valueNames[i]]),callback:function ($$v) {_vm.$set(values, _vm.valueNames[i], $$v)},expression:"values[valueNames[i]]"}},'component',component.props,false))],1)}),_c('div',{staticClass:"mt-3"},[_c('v-btn',{attrs:{"depressed":""},on:{"click":function($event){return _vm.removeRow(i)}}},[_vm._v("-")])],1)],2)}),_c('div',{staticClass:"d-flex justify-center"},[_c('v-btn',{attrs:{"depressed":""},on:{"click":_vm.addRow}},[_vm._v("+")])],1)],2)}
-var Bagvue_type_template_id_c561f0dc_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"b1143254-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/Modules/StatCan.OrchardCore.VueForms/Assets/components/Bag/Bag.vue?vue&type=template&id=26daea40&
+var Bagvue_type_template_id_26daea40_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"pa-1"},[_c('div',{directives:[{name:"show",rawName:"v-show",value:(false),expression:"false"}]},[_vm._t("components"),_vm._t("validations")],2),_c('div',{staticClass:"text-h5 mb-5"},[_vm._v(" "+_vm._s(_vm.title)+" ")]),_c('transition',{attrs:{"name":"message-transition"}},[(!_vm.valid)?_c('div',{staticClass:"error--text v-messages"},_vm._l((_vm.errorMessages),function(message,i){return _c('div',{key:i},[_vm._v(" "+_vm._s(message)+" ")])}),0):_vm._e()]),_vm._l((_vm.internalValues),function(values,i){return _c('div',{key:i,staticClass:"d-flex justify-center"},[_vm._l((_vm.formComponents),function(fieldSet,i){return _c('div',{key:i,staticClass:"m-auto"},[_c(fieldSet.validation.name,_vm._b({tag:"component",scopedSlots:_vm._u([{key:"default",fn:function(ref){
+var errors = ref.errors;
+var valid = ref.valid;
+return [_c(fieldSet.component.name,_vm._b({tag:"component",staticClass:"mr-5",attrs:{"success":valid,"error-messages":errors},model:{value:(values[_vm.valueNames[i]]),callback:function ($$v) {_vm.$set(values, _vm.valueNames[i], $$v)},expression:"values[valueNames[i]]"}},'component',fieldSet.component.props,false))]}}],null,true)},'component',fieldSet.validation.props,false))],1)}),_c('div',{staticClass:"mt-3"},[_c('v-btn',{attrs:{"depressed":""},on:{"click":function($event){return _vm.removeRow(i)}}},[_vm._v("-")])],1)],2)}),_c('div',{staticClass:"d-flex justify-center"},[_c('v-btn',{attrs:{"depressed":""},on:{"click":_vm.addRow}},[_vm._v("+")])],1)],2)}
+var Bagvue_type_template_id_26daea40_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/Modules/StatCan.OrchardCore.VueForms/Assets/components/Bag/Bag.vue?vue&type=template&id=c561f0dc&
+// CONCATENATED MODULE: ./src/Modules/StatCan.OrchardCore.VueForms/Assets/components/Bag/Bag.vue?vue&type=template&id=26daea40&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/Modules/StatCan.OrchardCore.VueForms/Assets/components/Bag/Bag.vue?vue&type=script&lang=js&
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
@@ -1281,9 +1284,29 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ var Bagvue_type_script_lang_js_ = ({
   name: "Bag",
-  props: ["value", "valueNames", "title"],
+  props: ["value", "valueNames", "title", "valid", "errorMessages"],
   data: function data() {
     return {
       formComponents: [],
@@ -1295,14 +1318,19 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   mounted: function mounted() {
     // Create the "component prototypes"
-    this.formComponents = this.$slots.default.filter(function (component) {
-      return component.componentOptions;
-    }).map(function (component) {
-      return {
-        name: component.componentOptions.tag,
-        props: _objectSpread(_objectSpread({}, component.data.attrs), component.componentOptions.propsData)
-      };
-    });
+    var components = this.getComponentsFromSlot("components");
+    var validations = this.getComponentsFromSlot("validations"); // Each field must have a validator
+
+    if (components.length !== validations.length) {
+      throw new Error("Each field must have a validator");
+    }
+
+    for (var i = 0; i < components.length; i++) {
+      var obj = {};
+      obj.component = _objectSpread({}, components[i]);
+      obj.validation = _objectSpread({}, validations[i]);
+      this.formComponents.push(obj);
+    }
   },
   methods: {
     addRow: function addRow() {
@@ -1314,12 +1342,22 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.internalValues = this.internalValues.filter(function (_, i) {
         return i !== rowIndex;
       });
+    },
+    // Helper methods
+    getComponentsFromSlot: function getComponentsFromSlot(slotName) {
+      return this.$slots[slotName].filter(function (component) {
+        return component.componentOptions;
+      }).map(function (component) {
+        return {
+          name: component.componentOptions.tag,
+          props: _objectSpread(_objectSpread({}, component.data.attrs), component.componentOptions.propsData)
+        };
+      });
     }
   },
   watch: {
     internalValues: {
       handler: function handler(newValue, _) {
-        console.log(newValue);
         this.$emit("input", newValue);
       },
       deep: true
@@ -4990,8 +5028,8 @@ const baseMixins = mixins(components_VSheet, routable, positionable, sizeable, f
 
 var Bag_component = normalizeComponent(
   Bag_Bagvue_type_script_lang_js_,
-  Bagvue_type_template_id_c561f0dc_render,
-  Bagvue_type_template_id_c561f0dc_staticRenderFns,
+  Bagvue_type_template_id_26daea40_render,
+  Bagvue_type_template_id_26daea40_staticRenderFns,
   false,
   null,
   null,
