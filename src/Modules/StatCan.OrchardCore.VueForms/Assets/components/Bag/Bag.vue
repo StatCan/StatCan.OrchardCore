@@ -36,15 +36,20 @@
             class="vue-form-bag-remove-button"
             depressed
             v-on:click="removeRow(i)"
+            data-cy="vue-form-bag-remove-button"
             >{{ removeButtonLabel }}</v-btn
           >
         </v-col>
       </v-row>
     </div>
     <div class="d-flex justify-center">
-      <v-btn class="vue-form-bag-add-button" depressed v-on:click="addRow">{{
-        addButtonLabel
-      }}</v-btn>
+      <v-btn
+        class="vue-form-bag-add-button"
+        depressed
+        v-on:click="addRow"
+        data-cy="vue-form-bag-add-button"
+        >{{ addButtonLabel }}</v-btn
+      >
     </div>
   </div>
 </template>

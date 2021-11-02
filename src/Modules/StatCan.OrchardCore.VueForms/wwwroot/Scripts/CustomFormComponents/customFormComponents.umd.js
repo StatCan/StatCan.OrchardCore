@@ -1299,15 +1299,15 @@ var Multiselect_component = normalizeComponent(
 )
 
 /* harmony default export */ var Multiselect = (Multiselect_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"b1143254-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/Modules/StatCan.OrchardCore.VueForms/Assets/components/Bag/Bag.vue?vue&type=template&id=11e09942&
-var Bagvue_type_template_id_11e09942_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"pa-1 vue-form-bag-container"},[_c('div',{directives:[{name:"show",rawName:"v-show",value:(false),expression:"false"}]},[_vm._t("components"),_vm._t("validations")],2),_vm._t("title"),_c('error-message',{attrs:{"valid":_vm.valid,"error-messages":_vm.errorMessages}}),_vm._l((_vm.internalValues),function(values,i){return _c('div',{key:i},[_c('v-row',[_c('v-col',{attrs:{"md":"11"}},_vm._l((_vm.formComponents),function(fieldSet,i){return _c('div',{key:i,staticClass:"mb-3"},[_c(fieldSet.validation.name,_vm._b({tag:"component",scopedSlots:_vm._u([{key:"default",fn:function(ref){
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"b1143254-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/Modules/StatCan.OrchardCore.VueForms/Assets/components/Bag/Bag.vue?vue&type=template&id=259447ca&
+var Bagvue_type_template_id_259447ca_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"pa-1 vue-form-bag-container"},[_c('div',{directives:[{name:"show",rawName:"v-show",value:(false),expression:"false"}]},[_vm._t("components"),_vm._t("validations")],2),_vm._t("title"),_c('error-message',{attrs:{"valid":_vm.valid,"error-messages":_vm.errorMessages}}),_vm._l((_vm.internalValues),function(values,i){return _c('div',{key:i},[_c('v-row',[_c('v-col',{attrs:{"md":"11"}},_vm._l((_vm.formComponents),function(fieldSet,i){return _c('div',{key:i,staticClass:"mb-3"},[_c(fieldSet.validation.name,_vm._b({tag:"component",scopedSlots:_vm._u([{key:"default",fn:function(ref){
 var errors = ref.errors;
 var valid = ref.valid;
-return [_c(fieldSet.component.name,_vm._b({tag:"component",attrs:{"success":valid,"error-messages":errors},model:{value:(values[_vm.valueNames[i]]),callback:function ($$v) {_vm.$set(values, _vm.valueNames[i], $$v)},expression:"values[valueNames[i]]"}},'component',fieldSet.component.props,false))]}}],null,true)},'component',fieldSet.validation.props,false))],1)}),0),_c('v-col',{staticClass:"d-flex align-center pt-1",attrs:{"md":"1"}},[_c('v-btn',{staticClass:"vue-form-bag-remove-button",attrs:{"depressed":""},on:{"click":function($event){return _vm.removeRow(i)}}},[_vm._v(_vm._s(_vm.removeButtonLabel))])],1)],1)],1)}),_c('div',{staticClass:"d-flex justify-center"},[_c('v-btn',{staticClass:"vue-form-bag-add-button",attrs:{"depressed":""},on:{"click":_vm.addRow}},[_vm._v(_vm._s(_vm.addButtonLabel))])],1)],2)}
-var Bagvue_type_template_id_11e09942_staticRenderFns = []
+return [_c(fieldSet.component.name,_vm._b({tag:"component",attrs:{"success":valid,"error-messages":errors},model:{value:(values[_vm.valueNames[i]]),callback:function ($$v) {_vm.$set(values, _vm.valueNames[i], $$v)},expression:"values[valueNames[i]]"}},'component',fieldSet.component.props,false))]}}],null,true)},'component',fieldSet.validation.props,false))],1)}),0),_c('v-col',{staticClass:"d-flex align-center pt-1",attrs:{"md":"1"}},[_c('v-btn',{staticClass:"vue-form-bag-remove-button",attrs:{"depressed":"","data-cy":"vue-form-bag-remove-button"},on:{"click":function($event){return _vm.removeRow(i)}}},[_vm._v(_vm._s(_vm.removeButtonLabel))])],1)],1)],1)}),_c('div',{staticClass:"d-flex justify-center"},[_c('v-btn',{staticClass:"vue-form-bag-add-button",attrs:{"depressed":"","data-cy":"vue-form-bag-add-button"},on:{"click":_vm.addRow}},[_vm._v(_vm._s(_vm.addButtonLabel))])],1)],2)}
+var Bagvue_type_template_id_259447ca_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/Modules/StatCan.OrchardCore.VueForms/Assets/components/Bag/Bag.vue?vue&type=template&id=11e09942&
+// CONCATENATED MODULE: ./src/Modules/StatCan.OrchardCore.VueForms/Assets/components/Bag/Bag.vue?vue&type=template&id=259447ca&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/Modules/StatCan.OrchardCore.VueForms/Assets/components/Bag/Bag.vue?vue&type=script&lang=js&
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
@@ -1316,6 +1316,11 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
+//
+//
+//
 //
 //
 //
@@ -5544,8 +5549,8 @@ const VRow_cache = new Map();
 
 var Bag_component = normalizeComponent(
   Bag_Bagvue_type_script_lang_js_,
-  Bagvue_type_template_id_11e09942_render,
-  Bagvue_type_template_id_11e09942_staticRenderFns,
+  Bagvue_type_template_id_259447ca_render,
+  Bagvue_type_template_id_259447ca_staticRenderFns,
   false,
   null,
   null,
