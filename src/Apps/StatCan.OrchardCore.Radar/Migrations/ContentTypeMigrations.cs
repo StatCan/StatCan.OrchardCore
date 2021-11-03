@@ -87,6 +87,10 @@ namespace StatCan.OrchardCore.Radar.Migrations
                 )
                 .WithPart("AutoroutePart", part => part
                     .WithPosition("2")
+                    .WithSettings(new AutoroutePartSettings
+                    {
+                        Pattern = "{{ ContentItem.ContentItemId }}",
+                    })
                 )
                 .WithPart("ContentPermissionsPart", part => part
                     .WithPosition("4")
@@ -314,6 +318,10 @@ namespace StatCan.OrchardCore.Radar.Migrations
                 )
                 .WithPart("AutoroutePart", part => part
                     .WithPosition("2")
+                    .WithSettings(new AutoroutePartSettings
+                    {
+                        Pattern = "{{ ContentItem.ContentItemId }}",
+                    })
                 )
             );
 
