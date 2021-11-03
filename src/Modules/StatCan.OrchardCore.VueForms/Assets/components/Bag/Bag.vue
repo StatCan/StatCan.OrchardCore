@@ -15,7 +15,7 @@
     <div v-for="(values, i) in internalValues" :key="i">
       <v-row>
         <v-col md="11">
-          <div class="mb-3" v-for="(fieldSet, i) in formComponents" :key="i">
+          <div class="mb-3 vue-form-bag-fields-container" v-for="(fieldSet, i) in formComponents" :key="i">
             <component
               :is="fieldSet.validation.name"
               v-bind="fieldSet.validation.props"
