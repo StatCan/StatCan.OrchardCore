@@ -376,6 +376,28 @@ namespace StatCan.OrchardCore.Candev
                 )
             );
 
+            _contentDefinitionManager.AlterPartDefinition("JudgeType", part => part
+                .Attachable()
+                .WithDisplayName("Judge Type")
+                .WithDescription("Provides a picker to choose a type of judge")
+                .WithField("Type", field => field
+                    .OfType("MultiTextField")
+                    .WithDisplayName("Type")
+                    .WithEditor("Picker")
+                    .WithPosition("0")
+                    .WithSettings(new MultiTextFieldSettings
+                    {
+                        Options = new MultiTextFieldValueOption[] { new MultiTextFieldValueOption() {
+                            Name = "Technical",
+                            Value = "Technical"
+                        }, new MultiTextFieldValueOption() {
+                            Name = "Subject Matter",
+                            Value = "SubjectMatter"
+                        } },
+                    })
+                )
+            );
+
             _contentDefinitionManager.AlterPartDefinition("Judge", part => part
                 .WithField("Challenge", field => field
                     .OfType("ContentPickerField")
@@ -394,6 +416,9 @@ namespace StatCan.OrchardCore.Candev
                 .WithPart("Judge", part => part
                     .WithPosition("0")
                 )
+                .WithPart("JudgeType", part => part
+                    .WithPosition("1")
+                )
             );
         }
 
@@ -411,16 +436,26 @@ namespace StatCan.OrchardCore.Candev
             _contentDefinitionManager.AlterPartDefinition("Team", p => p
                 .WithTextField("Name", "Team Name", "0")
                 .WithTextField("Description", "Team Description", "TextArea", "1")
-                .WithChallengeField("2")
-                .WithTeamCaptainField("3")
+                .WithChallengeField("3")
+                .WithTeamCaptainField("4")
                 .WithField("Topics", field => field
                     .OfType("ContentPickerField")
                     .WithDisplayName("Topics")
-                    .WithPosition("1")
+                    .WithPosition("2")
                     .WithSettings(new ContentPickerFieldSettings
                     {
                         Multiple = true,
                         DisplayedContentTypes = new[] { "Topic" },
+                    })
+                )
+                .WithField("InTheRunning", field => field
+                    .OfType("BooleanField")
+                    .WithDisplayName("In The Running")
+                    .WithEditor("Switch")
+                    .WithPosition("1")
+                    .WithSettings(new BooleanFieldSettings
+                    {
+                        DefaultValue = true,
                     })
                 )
             );
@@ -439,18 +474,19 @@ namespace StatCan.OrchardCore.Candev
             _contentDefinitionManager.AlterPartDefinition("Score", p => p
                 .Attachable()
                 .WithNumericField("Score", "0", new NumericFieldSettings() { Required = true, DefaultValue = "0" })
-                .WithTextField("Comment", "1")
+                .WithNumericField("Round", "1", new NumericFieldSettings() { Required = true, DefaultValue = "0" })
                 .WithField("Judge", f => f
                     .OfType(nameof(UserPickerField))
                     .WithDisplayName("Judge")
                     .WithPosition("2")
                     .WithSettings(new UserPickerFieldSettings() { DisplayedRoles = new string[] { "Volunteer" } })
                 )
-                .WithTeamField("2")
+                .WithTeamField("3")
             );
 
             _contentDefinitionManager.AlterTypeDefinition("Score", t => t
                 .WithPart("Score", p => p.WithPosition("0"))
+                .WithPart("JudgeType", p => p.WithPosition("1"))
             );
         }
 
