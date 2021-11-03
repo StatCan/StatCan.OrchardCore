@@ -160,10 +160,16 @@ describe("VueForm Tests", function() {
     cy.getByCy("form-field-email").should("be.empty");
   });
 
+  it("Bag is displayed", function() {
+    cy.visitContentPage(tenant, bagFormId);
+
+    cy.get(".vue-form-bag-container").should("exist");
+  });
+
   it("Bag fields can be added", function() {
     cy.visitContentPage(tenant, bagFormId);
 
-    cy.getByCy("vue-form-bag-add-button").click();
+    cy.get(".vue-form-bag-add-button").click();
 
     cy.get(".v-text-field__slot").should("have.length", 6); // There are two prototypes that are hidden
   });
@@ -171,7 +177,7 @@ describe("VueForm Tests", function() {
   it("Bag fields can be removed", function() {
     cy.visitContentPage(tenant, bagFormId);
 
-    cy.getByCy("vue-form-bag-remove-button").click();
+    cy.get(".vue-form-bag-remove-button").click();
 
     cy.get(".v-text-field__slot").should("have.length", 2); // There are two prototypes that are hidden
   });
