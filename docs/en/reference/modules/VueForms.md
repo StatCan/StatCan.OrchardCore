@@ -262,7 +262,7 @@ Here is an example of using the `bag` component
   <bag
     v-model="bagValues"
     :valueNames="valueNames"
-    :valid="valid"
+    :success="valid"
     :error-messages="errors"
     add-button-label="Add"
     remove-button-label="-"

@@ -2,6 +2,7 @@
   <multiselect-base
     v-model="internalValue"
     v-bind="$attrs"
+    :success="success"
     :error-messages="errorMessages"
   ></multiselect-base>
 </template>
@@ -12,7 +13,7 @@ import MultiselectBase from "./MultiselectBase.vue";
 export default {
   name: "Multiselect",
   components: { MultiselectBase },
-  props: ["value", "errorMessages"],
+  props: ["value", "success", "errorMessages"],
   data() {
     return {
       internalValue: null,

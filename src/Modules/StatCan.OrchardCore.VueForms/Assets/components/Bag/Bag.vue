@@ -8,7 +8,7 @@
     <slot name="title"></slot>
 
     <error-message
-      :valid="valid"
+      :valid="success"
       :error-messages="errorMessages"
     ></error-message>
 
@@ -62,7 +62,7 @@ export default {
   props: [
     "value",
     "valueNames",
-    "valid",
+    "success",
     "errorMessages",
     "addButtonLabel",
     "removeButtonLabel"
