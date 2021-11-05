@@ -100,8 +100,6 @@ namespace StatCan.OrchardCore.Hackathon.Indexes
                 .Column<string>("TeamSolutionName", c => c.WithLength(26))
                 .Column<string>("TeamSolutionDescription", c => c.WithLength(26))
                 .Column<string>("TeamSolutionRepositoryUrl", c => c.WithLength(26)),
-
-
                 null
             );
 
