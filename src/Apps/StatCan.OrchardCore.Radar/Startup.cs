@@ -4,12 +4,16 @@ using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Options;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Mvc;
+using YesSql.Indexes;
 using OrchardCore.Modules;
 using OrchardCore.Data.Migration;
 using OrchardCore.ResourceManagement;
 using OrchardCore.Liquid;
+using OrchardCore.ContentManagement;
 using StatCan.OrchardCore.Radar.Filters;
 using StatCan.OrchardCore.Radar.Migrations;
+using StatCan.OrchardCore.Radar.Models;
+using StatCan.OrchardCore.Radar.Indexes;
 
 namespace StatCan.OrchardCore.Radar
 {
@@ -25,6 +29,10 @@ namespace StatCan.OrchardCore.Radar
             {
                 options.Filters.Add(typeof(ResourceInjectionFilter));
             });
+
+            services.AddContentPart<RadarFormPart>();
+            services.AddSingleton<IIndexProvider, RadarFormPartIndexProvider>();
+            services.AddScoped<IDataMigration, IndexMigrations>();
         }
 
         public override void Configure(IApplicationBuilder builder, IEndpointRouteBuilder routes, IServiceProvider serviceProvider)
@@ -60,6 +68,21 @@ namespace StatCan.OrchardCore.Radar
                 pattern: "communities",
                 defaults: new { controller = "List", action = "List" },
                 dataTokens: new { type = "Community" }
+            );
+
+            // Form view routes
+            routes.MapAreaControllerRoute(
+                name: "TopicFormCreateView",
+                areaName: "StatCan.OrchardCore.Radar",
+                pattern: "topics/create",
+                defaults: new { controller = "Form", action = "TopicForm" }
+            );
+
+            routes.MapAreaControllerRoute(
+                name: "TopicFormUpdateView",
+                areaName: "StatCan.OrchardCore.Radar",
+                pattern: "topics/update/{id}",
+                defaults: new { controller = "Form", action = "TopicForm" }
             );
 
             // search api endpoints

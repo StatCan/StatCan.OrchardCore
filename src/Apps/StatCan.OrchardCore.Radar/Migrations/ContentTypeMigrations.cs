@@ -39,6 +39,7 @@ namespace StatCan.OrchardCore.Radar.Migrations
             await CreateTaxonomyItems();
             CreateArtifact();
             CreateRadarEntityPart();
+            CreateRadarFormPart();
             CreateProposal();
             CreateProject();
             CreateEvent();
@@ -373,6 +374,14 @@ namespace StatCan.OrchardCore.Radar.Migrations
                         DisplayedContentTypes = new[] { Constants.ContentTypes.Project, Constants.ContentTypes.Proposal, Constants.ContentTypes.Community, Constants.ContentTypes.Event },
                     })
                 )
+            );
+        }
+
+        private void CreateRadarFormPart()
+        {
+            _contentDefinitionManager.AlterPartDefinition(Constants.ContentTypes.RadarFormPart, part => part
+                .Attachable()
+                .WithDescription("Holds the initial value for a form")
             );
         }
 
