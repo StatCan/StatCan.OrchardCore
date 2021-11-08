@@ -1,0 +1,1330 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="canonical" href="https://statcan.github.io/StatCan.OrchardCore/reference/modules/Configuration/">
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.3.6">
+    
+    
+      
+        <title>Configuration - StatCan Orchard Core Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.a57b2b03.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#7e56c2">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="deep-purple" data-md-color-accent="">
+  
+    
+    <script>function __prefix(e){return new URL("../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#deployment-configuration" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="StatCan Orchard Core Documentation" class="md-header__button md-logo" aria-label="StatCan Orchard Core Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            StatCan Orchard Core Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Configuration
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/statcan/statcan.orchardcore/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    StatCan/StatCan.OrchardCore
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../development/getting-started/" class="md-tabs__link">
+        Development
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../applications/" class="md-tabs__link md-tabs__link--active">
+        Reference
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../contact/" class="md-tabs__link">
+        Support
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="StatCan Orchard Core Documentation" class="md-nav__button md-logo" aria-label="StatCan Orchard Core Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    StatCan Orchard Core Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/statcan/statcan.orchardcore/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    StatCan/StatCan.OrchardCore
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Development
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Development" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Development
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../development/getting-started/" class="md-nav__link">
+        Getting Started
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../development/solution-templates/" class="md-nav__link">
+        Solution Templates
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../development/localization/" class="md-nav__link">
+        Localization
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../development/assets/" class="md-nav__link">
+        Assets
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5" type="checkbox" id="__nav_2_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_5">
+          Contributing
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Contributing" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_5">
+          <span class="md-nav__icon md-icon"></span>
+          Contributing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../development/committing/" class="md-nav__link">
+        Committing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../development/testing/" class="md-nav__link">
+        Testing
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Reference
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Reference" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Reference
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/" class="md-nav__link">
+        Applications
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_2">
+          Application Modules
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Application Modules" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Application Modules
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Hackathon/" class="md-nav__link">
+        Hackathon App
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Scheduling/" class="md-nav__link">
+        Scheduling App
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Liquid/" class="md-nav__link">
+        Liquid
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Logging/" class="md-nav__link">
+        Logging
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Scripting/" class="md-nav__link">
+        Scripting
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Workflows/" class="md-nav__link">
+        Workflows
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_7" type="checkbox" id="__nav_3_7" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_7">
+          Modules
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Modules" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_7">
+          <span class="md-nav__icon md-icon"></span>
+          Modules
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Configuration
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Configuration
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#example-appsettingsjson" class="md-nav__link">
+    Example appsettings.json
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sections" class="md-nav__link">
+    Sections
+  </a>
+  
+    <nav class="md-nav" aria-label="Sections">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#statcan_configuration" class="md-nav__link">
+    StatCan_Configuration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#statcan_smtp" class="md-nav__link">
+    StatCan_Smtp
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#statcan_https" class="md-nav__link">
+    StatCan_Https
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#statcan_reverseproxy" class="md-nav__link">
+    StatCan_ReverseProxy
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#environment-variables" class="md-nav__link">
+    Environment variables
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ContentFields/" class="md-nav__link">
+        ContentFields
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EmailTemplates/" class="md-nav__link">
+        EmailTemplates
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../GCCollab/" class="md-nav__link">
+        GCCollab
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../GitHub/" class="md-nav__link">
+        GitHub
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../GraphQL/" class="md-nav__link">
+        GraphQL
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../LocalizedText/" class="md-nav__link">
+        LocalizedText
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Matomo/" class="md-nav__link">
+        Matomo
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../VueForms/" class="md-nav__link">
+        VueForms
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_8" type="checkbox" id="__nav_3_8" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_8">
+          Themes
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Themes" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_8">
+          <span class="md-nav__icon md-icon"></span>
+          Themes
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../themes/DigitalAdmin/" class="md-nav__link">
+        DigitalAdmin
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../themes/PortalTheme/" class="md-nav__link">
+        PortalTheme
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../themes/VuetifyTheme/" class="md-nav__link">
+        VuetifyTheme
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Support
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Support" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Support
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../contact/" class="md-nav__link">
+        Contact
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#example-appsettingsjson" class="md-nav__link">
+    Example appsettings.json
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sections" class="md-nav__link">
+    Sections
+  </a>
+  
+    <nav class="md-nav" aria-label="Sections">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#statcan_configuration" class="md-nav__link">
+    StatCan_Configuration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#statcan_smtp" class="md-nav__link">
+    StatCan_Smtp
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#statcan_https" class="md-nav__link">
+    StatCan_Https
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#statcan_reverseproxy" class="md-nav__link">
+    StatCan_ReverseProxy
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#environment-variables" class="md-nav__link">
+    Environment variables
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/statcan/statcan.orchardcore/edit/master/docs/en/reference/modules/Configuration.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="deployment-configuration">Deployment configuration<a class="headerlink" href="#deployment-configuration" title="Permanent link">&para;</a></h1>
+<p>The <code>StatCan.OrchardCore.Configuration</code> library adds support for configuring persistent modules, smtp settings, reverse proxy setting and https settings with orchard's <a href="https://docs.orchardcore.net/en/dev/docs/reference/core/Configuration/">configuration</a>.</p>
+<h2 id="example-appsettingsjson">Example appsettings.json<a class="headerlink" href="#example-appsettingsjson" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+  <span class="nt">&quot;OrchardCore&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;Features&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="s2">&quot;StatCan.OrchardCore.Configuration&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;OrchardCore.Email&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;OrchardCore.ReverseProxy&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;OrchardCore.Https&quot;</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;StatCan_Configuration&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;OverwriteSmtpSettings&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="nt">&quot;OverwriteReverseProxySettings&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="nt">&quot;OverwriteHttpsSettings&quot;</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;StatCan_Smtp&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;DefaultSender&quot;</span><span class="p">:</span> <span class="s2">&quot;no-reply@statcan.ca&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;DeliveryMethod&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="nt">&quot;Host&quot;</span><span class="p">:</span> <span class="s2">&quot;smtp.statcan.ca&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;PickupDirectoryLocation&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+      <span class="nt">&quot;AutoSelectEncryption&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+      <span class="nt">&quot;EncryptionMethod&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+      <span class="nt">&quot;Port&quot;</span><span class="p">:</span> <span class="mi">25</span><span class="p">,</span>
+      <span class="nt">&quot;RequireCredentials&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="nt">&quot;UseDefaultCredentials&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+      <span class="nt">&quot;UserName&quot;</span><span class="p">:</span> <span class="s2">&quot;test&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;Password&quot;</span><span class="p">:</span> <span class="s2">&quot;mysmtppassword&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;StatCan_Https&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;RequireHttps&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="nt">&quot;EnableStrictTransportSecurity&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+      <span class="nt">&quot;RequireHttpsPermanent&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+      <span class="nt">&quot;SslPort&quot;</span><span class="p">:</span> <span class="kc">null</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;StatCan_ReverseProxy&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;EnableXForwardedFor&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="nt">&quot;EnableXForwardedHost&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="nt">&quot;EnableXForwardedProto&quot;</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="sections">Sections<a class="headerlink" href="#sections" title="Permanent link">&para;</a></h2>
+<h3 id="statcan_configuration">StatCan_Configuration<a class="headerlink" href="#statcan_configuration" title="Permanent link">&para;</a></h3>
+<p>The variables in this section define if the related settings will be overwritten when the tenant activates. For example, if someone modifies the smtp settings from the Admin interface and the <code>OverwriteSmtpSettings</code> is set to true, the settings will be reset to those specified via configuration the next time the tenant activates.</p>
+<h3 id="statcan_smtp">StatCan_Smtp<a class="headerlink" href="#statcan_smtp" title="Permanent link">&para;</a></h3>
+<p>This section will update Orchard's <a href="https://docs.orchardcore.net/en/dev/docs/reference/modules/Email">email module configuration</a>. </p>
+<h3 id="statcan_https">StatCan_Https<a class="headerlink" href="#statcan_https" title="Permanent link">&para;</a></h3>
+<p>This section will update Orchard's <a href="https://docs.orchardcore.net/en/dev/docs/reference/modules/Https">https module configuration</a>. </p>
+<h3 id="statcan_reverseproxy">StatCan_ReverseProxy<a class="headerlink" href="#statcan_reverseproxy" title="Permanent link">&para;</a></h3>
+<p>This section will update Orchard's <a href="https://docs.orchardcore.net/en/dev/docs/reference/modules/ReverseProxy">reverse proxy module configuration</a>. </p>
+<h2 id="environment-variables">Environment variables<a class="headerlink" href="#environment-variables" title="Permanent link">&para;</a></h2>
+<p>It is recommended to use <a href="https://docs.orchardcore.net/en/dev/docs/reference/core/Configuration/index.html#ishellconfiguration-via-environment-variables">environment variables</a> to configure these settings in a production environment.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Configuration</span>
+OrchardCore__StatCan_Configuration__OverwriteSmtpSettings: bool
+OrchardCore__StatCan_Configuration__OverwriteReverseProxySettings: bool
+OrchardCore__StatCan_Configuration__OverwriteHttpsSettings: bool
+
+<span class="c1"># Smtp</span>
+OrchardCore__StatCan_Smtp__DefaultSender: string
+OrchardCore__StatCan_Smtp__DeliveryMethod: <span class="nv">0</span><span class="o">=</span>Network<span class="p">;</span><span class="nv">1</span><span class="o">=</span>SpecifiedPickupDirectory
+OrchardCore__StatCan_Smtp__Host: string
+OrchardCore__StatCan_Smtp__PickupDirectoryLocation: string
+OrchardCore__StatCan_Smtp__AutoSelectEncryption: bool
+OrchardCore__StatCan_Smtp__EncryptionMethod: <span class="nv">0</span><span class="o">=</span>none<span class="p">;</span><span class="nv">1</span><span class="o">=</span>SSLTLS<span class="p">;</span><span class="nv">2</span><span class="o">=</span>STARTTLS
+OrchardCore__StatCan_Smtp__Port: int
+OrchardCore__StatCan_Smtp__RequireCredentials: bool
+OrchardCore__StatCan_Smtp__UseDefaultCredentials: bool
+OrchardCore__StatCan_Smtp__UserName: string
+OrchardCore__StatCan_Smtp__Password: string <span class="o">(</span>unencrypted<span class="o">)</span>
+
+<span class="c1"># Https</span>
+OrchardCore__StatCan_Https__RequireHttps: bool
+OrchardCore__StatCan_Https__EnableStrictTransportSecurity: bool
+OrchardCore__StatCan_Https__RequireHttpsPermanent: bool
+OrchardCore__StatCan_Https__SslPort: int
+
+<span class="c1"># ReverseProxy</span>
+OrchardCore__StatCan_ReverseProxy__EnableXForwardedFor: bool
+OrchardCore__StatCan_ReverseProxy__EnableXForwardedHost: bool
+OrchardCore__StatCan_ReverseProxy__EnableXForwardedProto: bool
+
+<span class="c1"># Features</span>
+OrchardCore__Features__0: string
+OrchardCore__Features__1: string
+</code></pre></div>
+<p>Here is an example on how to set these environment variables with powershell
+<div class="highlight"><pre><span></span><code><span class="nv">$env:OrchardCore__Features__0</span><span class="p">=</span><span class="s2">&quot;StatCan.OrchardCore.Configuration&quot;</span>
+<span class="nv">$env:OrchardCore__Features__1</span><span class="p">=</span><span class="s2">&quot;OrchardCore.ReverseProxy&quot;</span>
+<span class="nv">$env:OrchardCore__Features__2</span><span class="p">=</span><span class="s2">&quot;OrchardCore.Https&quot;</span>
+
+<span class="nv">$env:OrchardCore__StatCan_Configuration__OverwriteReverseProxySettings</span><span class="p">=</span><span class="s2">&quot;true&quot;</span>
+<span class="nv">$env:OrchardCore__StatCan_ReverseProxy__EnableXForwardedFor</span><span class="p">=</span><span class="s2">&quot;true&quot;</span>
+<span class="nv">$env:OrchardCore__StatCan_ReverseProxy__EnableXForwardedHost</span><span class="p">=</span><span class="s2">&quot;true&quot;</span>
+<span class="nv">$env:OrchardCore__StatCan_ReverseProxy__EnableXForwardedProto</span><span class="p">=</span><span class="s2">&quot;true&quot;</span>
+
+<span class="nv">$env:OrchardCore__StatCan_Configuration__OverwriteHttpsSettings</span><span class="p">=</span><span class="s2">&quot;true&quot;</span>
+<span class="nv">$env:OrchardCore__StatCan_Https__RequireHttps</span><span class="p">=</span><span class="s2">&quot;true&quot;</span>
+
+
+<span class="nv">$env:OrchardCore__StatCan_Configuration__OverwriteSmtpSettings</span><span class="p">=</span><span class="s2">&quot;true&quot;</span>
+<span class="nv">$env:OrchardCore__StatCan_Smtp__DefaultSender</span><span class="p">=</span><span class="s2">&quot;no-reply@statcan.ca&quot;</span>
+<span class="nv">$env:OrchardCore__StatCan_Smtp__DeliveryMethod</span><span class="p">=</span><span class="s2">&quot;0&quot;</span>
+<span class="nv">$env:OrchardCore__StatCan_Smtp__Host</span><span class="p">=</span><span class="s2">&quot;smtp.jp.com&quot;</span>
+<span class="nv">$env:OrchardCore__StatCan_Smtp__AutoSelectEncryption</span><span class="p">=</span><span class="s2">&quot;false&quot;</span>
+<span class="nv">$env:OrchardCore__StatCan_Smtp__EncryptionMethod</span><span class="p">=</span><span class="s2">&quot;2&quot;</span>
+<span class="nv">$env:OrchardCore__StatCan_Smtp__Port</span><span class="p">=</span><span class="s2">&quot;25&quot;</span>
+<span class="nv">$env:OrchardCore__StatCan_Smtp__RequireCredentials</span><span class="p">=</span><span class="s2">&quot;true&quot;</span>
+<span class="nv">$env:OrchardCore__StatCan_Smtp__UseDefaultCredentials</span><span class="p">=</span><span class="s2">&quot;false&quot;</span>
+<span class="nv">$env:OrchardCore__StatCan_Smtp__UserName</span><span class="p">=</span><span class="s2">&quot;myusername&quot;</span>
+<span class="nv">$env:OrchardCore__StatCan_Smtp__Password</span><span class="p">=</span><span class="s2">&quot;mysmtppassword&quot;</span>
+</code></pre></div></p>
+<h1 id="other-configuration">Other Configuration<a class="headerlink" href="#other-configuration" title="Permanent link">&para;</a></h1>
+<p>This is how you can configure environment variables for the AllowedFileExtensions of media files</p>
+<div class="highlight"><pre><span></span><code><span class="nv">$env:OrchardCore__OrchardCore_Media__AllowedFileExtensions__1</span><span class="p">=</span><span class="s2">&quot;.jpeg&quot;</span>
+<span class="nv">$env:OrchardCore__OrchardCore_Media__AllowedFileExtensions__2</span><span class="p">=</span><span class="s2">&quot;.png&quot;</span>
+<span class="nv">$env:OrchardCore__OrchardCore_Media__AllowedFileExtensions__3</span><span class="p">=</span><span class="s2">&quot;.gif&quot;</span>
+<span class="nv">$env:OrchardCore__OrchardCore_Media__AllowedFileExtensions__4</span><span class="p">=</span><span class="s2">&quot;.ico&quot;</span>
+<span class="nv">$env:OrchardCore__OrchardCore_Media__AllowedFileExtensions__5</span><span class="p">=</span><span class="s2">&quot;.svg&quot;</span>
+<span class="nv">$env:OrchardCore__OrchardCore_Media__AllowedFileExtensions__6</span><span class="p">=</span><span class="s2">&quot;.pdf&quot;</span>
+<span class="nv">$env:OrchardCore__OrchardCore_Media__AllowedFileExtensions__7</span><span class="p">=</span><span class="s2">&quot;.doc&quot;</span>
+<span class="nv">$env:OrchardCore__OrchardCore_Media__AllowedFileExtensions__8</span><span class="p">=</span><span class="s2">&quot;.docx&quot;</span>
+<span class="nv">$env:OrchardCore__OrchardCore_Media__AllowedFileExtensions__9</span><span class="p">=</span><span class="s2">&quot;.ppt&quot;</span>
+<span class="nv">$env:OrchardCore__OrchardCore_Media__AllowedFileExtensions__10</span><span class="p">=</span><span class="s2">&quot;.pptx&quot;</span>
+<span class="nv">$env:OrchardCore__OrchardCore_Media__AllowedFileExtensions__11</span><span class="p">=</span><span class="s2">&quot;.pps&quot;</span>
+<span class="nv">$env:OrchardCore__OrchardCore_Media__AllowedFileExtensions__12</span><span class="p">=</span><span class="s2">&quot;.ppsx&quot;</span>
+<span class="nv">$env:OrchardCore__OrchardCore_Media__AllowedFileExtensions__13</span><span class="p">=</span><span class="s2">&quot;.odt&quot;</span>
+<span class="nv">$env:OrchardCore__OrchardCore_Media__AllowedFileExtensions__14</span><span class="p">=</span><span class="s2">&quot;.xls&quot;</span>
+<span class="nv">$env:OrchardCore__OrchardCore_Media__AllowedFileExtensions__15</span><span class="p">=</span><span class="s2">&quot;.xlsx&quot;</span>
+<span class="nv">$env:OrchardCore__OrchardCore_Media__AllowedFileExtensions__16</span><span class="p">=</span><span class="s2">&quot;.psd&quot;</span>
+<span class="nv">$env:OrchardCore__OrchardCore_Media__AllowedFileExtensions__17</span><span class="p">=</span><span class="s2">&quot;.mp3&quot;</span>
+<span class="nv">$env:OrchardCore__OrchardCore_Media__AllowedFileExtensions__18</span><span class="p">=</span><span class="s2">&quot;.m4a&quot;</span>
+<span class="nv">$env:OrchardCore__OrchardCore_Media__AllowedFileExtensions__19</span><span class="p">=</span><span class="s2">&quot;.ogg&quot;</span>
+<span class="nv">$env:OrchardCore__OrchardCore_Media__AllowedFileExtensions__20</span><span class="p">=</span><span class="s2">&quot;.wav&quot;</span>
+<span class="nv">$env:OrchardCore__OrchardCore_Media__AllowedFileExtensions__21</span><span class="p">=</span><span class="s2">&quot;.mp4&quot;</span>
+<span class="nv">$env:OrchardCore__OrchardCore_Media__AllowedFileExtensions__22</span><span class="p">=</span><span class="s2">&quot;.m4v&quot;</span>
+<span class="nv">$env:OrchardCore__OrchardCore_Media__AllowedFileExtensions__23</span><span class="p">=</span><span class="s2">&quot;.mov&quot;</span>
+<span class="nv">$env:OrchardCore__OrchardCore_Media__AllowedFileExtensions__24</span><span class="p">=</span><span class="s2">&quot;.wmv&quot;</span>
+<span class="nv">$env:OrchardCore__OrchardCore_Media__AllowedFileExtensions__25</span><span class="p">=</span><span class="s2">&quot;.avi&quot;</span>
+<span class="nv">$env:OrchardCore__OrchardCore_Media__AllowedFileExtensions__26</span><span class="p">=</span><span class="s2">&quot;.mpg&quot;</span>
+<span class="nv">$env:OrchardCore__OrchardCore_Media__AllowedFileExtensions__27</span><span class="p">=</span><span class="s2">&quot;.ogv&quot;</span>
+<span class="nv">$env:OrchardCore__OrchardCore_Media__AllowedFileExtensions__28</span><span class="p">=</span><span class="s2">&quot;.3gp&quot;</span>
+
+<span class="nv">$env:OrchardCore__OrchardCore_Media__AllowedFileExtensions__29</span><span class="p">=</span><span class="s2">&quot;.csv&quot;</span>
+<span class="nv">$env:OrchardCore__OrchardCore_Media__AllowedFileExtensions__30</span><span class="p">=</span><span class="s2">&quot;.msg&quot;</span>
+</code></pre></div>
+                
+                  
+                    
+
+<hr>
+<div class="md-source-date">
+  <small>
+    
+      Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 30, 2021</span>
+      
+    
+  </small>
+</div>
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../../Workflows/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Workflows" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Workflows
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../ContentFields/" class="md-footer__link md-footer__link--next" aria-label="Next: ContentFields" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              ContentFields
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy Her Majesty the Queen in Right of Canada, as represented by the Minister of Statistics Canada, 2020
+          </div>
+        
+        
+          Made with
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs
+          </a>
+        
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.tabs"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.fcfe8b6d.min.js", "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.b1047164.min.js"></script>
+      
+    
+  </body>
+</html>

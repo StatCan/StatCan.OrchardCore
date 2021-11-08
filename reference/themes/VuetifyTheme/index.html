@@ -1,0 +1,2231 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="canonical" href="https://statcan.github.io/StatCan.OrchardCore/reference/themes/VuetifyTheme/">
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.3.6">
+    
+    
+      
+        <title>VuetifyTheme - StatCan Orchard Core Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.a57b2b03.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#7e56c2">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="deep-purple" data-md-color-accent="">
+  
+    
+    <script>function __prefix(e){return new URL("../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#vuetify-theme" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="StatCan Orchard Core Documentation" class="md-header__button md-logo" aria-label="StatCan Orchard Core Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            StatCan Orchard Core Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              VuetifyTheme
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/statcan/statcan.orchardcore/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    StatCan/StatCan.OrchardCore
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../development/getting-started/" class="md-tabs__link">
+        Development
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../applications/" class="md-tabs__link md-tabs__link--active">
+        Reference
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../contact/" class="md-tabs__link">
+        Support
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="StatCan Orchard Core Documentation" class="md-nav__button md-logo" aria-label="StatCan Orchard Core Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    StatCan Orchard Core Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/statcan/statcan.orchardcore/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    StatCan/StatCan.OrchardCore
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Development
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Development" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Development
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../development/getting-started/" class="md-nav__link">
+        Getting Started
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../development/solution-templates/" class="md-nav__link">
+        Solution Templates
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../development/localization/" class="md-nav__link">
+        Localization
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../development/assets/" class="md-nav__link">
+        Assets
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5" type="checkbox" id="__nav_2_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_5">
+          Contributing
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Contributing" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_5">
+          <span class="md-nav__icon md-icon"></span>
+          Contributing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../development/committing/" class="md-nav__link">
+        Committing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../development/testing/" class="md-nav__link">
+        Testing
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Reference
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Reference" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Reference
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/" class="md-nav__link">
+        Applications
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_2">
+          Application Modules
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Application Modules" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Application Modules
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/Hackathon/" class="md-nav__link">
+        Hackathon App
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/Scheduling/" class="md-nav__link">
+        Scheduling App
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Liquid/" class="md-nav__link">
+        Liquid
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Logging/" class="md-nav__link">
+        Logging
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Scripting/" class="md-nav__link">
+        Scripting
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Workflows/" class="md-nav__link">
+        Workflows
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_7" type="checkbox" id="__nav_3_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_7">
+          Modules
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Modules" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_7">
+          <span class="md-nav__icon md-icon"></span>
+          Modules
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/Configuration/" class="md-nav__link">
+        Configuration
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/ContentFields/" class="md-nav__link">
+        ContentFields
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/EmailTemplates/" class="md-nav__link">
+        EmailTemplates
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/GCCollab/" class="md-nav__link">
+        GCCollab
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/GitHub/" class="md-nav__link">
+        GitHub
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/GraphQL/" class="md-nav__link">
+        GraphQL
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/LocalizedText/" class="md-nav__link">
+        LocalizedText
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/Matomo/" class="md-nav__link">
+        Matomo
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/VueForms/" class="md-nav__link">
+        VueForms
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_8" type="checkbox" id="__nav_3_8" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_8">
+          Themes
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Themes" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_8">
+          <span class="md-nav__icon md-icon"></span>
+          Themes
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DigitalAdmin/" class="md-nav__link">
+        DigitalAdmin
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PortalTheme/" class="md-nav__link">
+        PortalTheme
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          VuetifyTheme
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        VuetifyTheme
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#widgets" class="md-nav__link">
+    Widgets
+  </a>
+  
+    <nav class="md-nav" aria-label="Widgets">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#valert" class="md-nav__link">
+    VAlert
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vappbar" class="md-nav__link">
+    VAppBar
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vcard" class="md-nav__link">
+    VCard
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vcol" class="md-nav__link">
+    VCol
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vcontainer" class="md-nav__link">
+    VContainer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vdivider" class="md-nav__link">
+    VDivider
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vexpansionpanel" class="md-nav__link">
+    VExpansionPanel
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vexpansionpanels" class="md-nav__link">
+    VExpansionPanels
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vfooter" class="md-nav__link">
+    VFooter
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vimg" class="md-nav__link">
+    VImg
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vlist" class="md-nav__link">
+    VList
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vlistitem" class="md-nav__link">
+    VListItem
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vnavigationdrawer" class="md-nav__link">
+    VNavigationDrawer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vrow" class="md-nav__link">
+    VRow
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vsubheader" class="md-nav__link">
+    VSubheader
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vtimeline" class="md-nav__link">
+    VTimeLine
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vtimelineitem" class="md-nav__link">
+    VTimeLineItem
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shortcodes" class="md-nav__link">
+    Shortcodes
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Support
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Support" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Support
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../contact/" class="md-nav__link">
+        Contact
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#widgets" class="md-nav__link">
+    Widgets
+  </a>
+  
+    <nav class="md-nav" aria-label="Widgets">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#valert" class="md-nav__link">
+    VAlert
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vappbar" class="md-nav__link">
+    VAppBar
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vcard" class="md-nav__link">
+    VCard
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vcol" class="md-nav__link">
+    VCol
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vcontainer" class="md-nav__link">
+    VContainer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vdivider" class="md-nav__link">
+    VDivider
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vexpansionpanel" class="md-nav__link">
+    VExpansionPanel
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vexpansionpanels" class="md-nav__link">
+    VExpansionPanels
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vfooter" class="md-nav__link">
+    VFooter
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vimg" class="md-nav__link">
+    VImg
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vlist" class="md-nav__link">
+    VList
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vlistitem" class="md-nav__link">
+    VListItem
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vnavigationdrawer" class="md-nav__link">
+    VNavigationDrawer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vrow" class="md-nav__link">
+    VRow
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vsubheader" class="md-nav__link">
+    VSubheader
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vtimeline" class="md-nav__link">
+    VTimeLine
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vtimelineitem" class="md-nav__link">
+    VTimeLineItem
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shortcodes" class="md-nav__link">
+    Shortcodes
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/statcan/statcan.orchardcore/edit/master/docs/en/reference/themes/VuetifyTheme.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="vuetify-theme">Vuetify Theme<a class="headerlink" href="#vuetify-theme" title="Permanent link">&para;</a></h1>
+<p>The Vuetify Theme aims to simplify the creation of client side apps in OrchardCore. Offering vuetify components as widgets, the Vuetify Theme makes it easy to compose rich Material Design pages from the Admin UI.</p>
+<h2 id="widgets">Widgets<a class="headerlink" href="#widgets" title="Permanent link">&para;</a></h2>
+<h3 id="valert">VAlert<a class="headerlink" href="#valert" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Border</td>
+<td>Puts a border on the alert. Accepts <strong>top</strong>, <strong>right</strong>, <strong>bottom</strong>, <strong>left</strong>.</td>
+</tr>
+<tr>
+<td>Color</td>
+<td>Applies specified color to the control - it can be the name of material color (for example success or purple) or css color (#033 or rgba(255, 0, 0, 0.5)). You can find list of built in classes on the <a href="https://dev.vuetifyjs.com/en/styles/colors/#material-colors">colors page</a>.</td>
+</tr>
+<tr>
+<td>Colored Border</td>
+<td>Applies the defined color to the alert’s border.</td>
+</tr>
+<tr>
+<td>Dark</td>
+<td>Applies the dark theme variant to the component.</td>
+</tr>
+<tr>
+<td>Dense</td>
+<td>Hides the alert icon and decreases component’s height.</td>
+</tr>
+<tr>
+<td>Dismissible</td>
+<td>Adds a close icon that can hide the alert.</td>
+</tr>
+<tr>
+<td>Elevation</td>
+<td>Designates an elevation applied to the component between 0 and 24. You can find more information on the <a href="https://dev.vuetifyjs.com/en/styles/elevation/">elevation page</a>.</td>
+</tr>
+<tr>
+<td>Icon</td>
+<td>Designates a specific icon.</td>
+</tr>
+<tr>
+<td>Light</td>
+<td>Applies the light theme variant to the component.</td>
+</tr>
+<tr>
+<td>Outlined</td>
+<td>Makes the background transparent and applies a thin border.</td>
+</tr>
+<tr>
+<td>Prominent</td>
+<td>Displays a larger vertically centered icon to draw more attention.</td>
+</tr>
+<tr>
+<td>Shaped</td>
+<td>Applies a large border radius on the top left and bottom right of the card.</td>
+</tr>
+<tr>
+<td>Text</td>
+<td>Applies the defined color to text and a low opacity background of the same.</td>
+</tr>
+<tr>
+<td>Tile</td>
+<td>Removes the component’s border-radius.</td>
+</tr>
+<tr>
+<td>Type</td>
+<td>Specify a <strong>success</strong>, <strong>info</strong>, <strong>warning</strong> or <strong>error</strong> alert. Uses the contextual color and has a pre-defined icon.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="vappbar">VAppBar<a class="headerlink" href="#vappbar" title="Permanent link">&para;</a></h3>
+<p>This widget is best used in the <strong>Header</strong> zone.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Absolute</td>
+<td>Applies <strong>position: absolute</strong> to the component.</td>
+</tr>
+<tr>
+<td>Background Image</td>
+<td>Adds an image to the app-bar background</td>
+</tr>
+<tr>
+<td>Bottom</td>
+<td>Aligns the component towards the bottom.</td>
+</tr>
+<tr>
+<td>Collapse</td>
+<td>Puts the toolbar into a collapsed state reducing its maximum width.</td>
+</tr>
+<tr>
+<td>Collapse On Scroll</td>
+<td>Puts the app-bar into a collapsed state when scrolling.</td>
+</tr>
+<tr>
+<td>Color</td>
+<td>Applies specified color to the control - it can be the name of material color (for example success or purple) or css color (#033 or rgba(255, 0, 0, 0.5)). You can find list of built in classes on the <a href="https://dev.vuetifyjs.com/en/styles/colors/#material-colors">colors page</a>.</td>
+</tr>
+<tr>
+<td>Dark</td>
+<td>Applies the dark theme variant to the component.</td>
+</tr>
+<tr>
+<td>Dense</td>
+<td>Reduces the height of the toolbar content to 48px (96px when using the <strong>prominent</strong> prop).</td>
+</tr>
+<tr>
+<td>Elevate On Scroll</td>
+<td>Elevates the app-bar when scrolling.</td>
+</tr>
+<tr>
+<td>Elevation</td>
+<td>Designates an elevation applied to the component between 0 and 24. You can find more information on the <a href="https://dev.vuetifyjs.com/en/styles/elevation/">elevation page</a>.</td>
+</tr>
+<tr>
+<td>Extended</td>
+<td>Use this prop to increase the height of the toolbar <em>without</em> using the <code>extension</code> slot for adding content. May be used in conjunction with the <strong>extension-height</strong> prop, and any of the other props that affect the height of the toolbar, e.g. <strong>prominent</strong>, <strong>dense</strong>, etc., WITH THE EXCEPTION of <strong>height</strong>.</td>
+</tr>
+<tr>
+<td>Extension Height</td>
+<td>Specify an explicit height for the <code>extension</code> slot.</td>
+</tr>
+<tr>
+<td>Fade Image On Scroll</td>
+<td>When using the <em>src</em> prop or <code>img</code> slot, will fade the image when scrolling.</td>
+</tr>
+<tr>
+<td>Fixed</td>
+<td>Applies <strong>position: fixed</strong> to the component.</td>
+</tr>
+<tr>
+<td>Flat</td>
+<td>Removes the toolbar’s box-shadow.</td>
+</tr>
+<tr>
+<td>Floating</td>
+<td>Applies <strong>display: inline-flex</strong> to the component.</td>
+</tr>
+<tr>
+<td>Height</td>
+<td>Designates a specific height for the toolbar. Overrides the heights imposed by other props, e.g. <strong>prominent</strong>, <strong>dense</strong>, <strong>extended</strong>, etc.</td>
+</tr>
+<tr>
+<td>Hide On Scroll</td>
+<td>Hides the app-bar when scrolling. Will still show the <code>extension</code> slot.</td>
+</tr>
+<tr>
+<td>Inverted Scroll</td>
+<td>Hides the app-bar when scrolling down and displays it when scrolling up.</td>
+</tr>
+<tr>
+<td>Light</td>
+<td>Applies the light theme variant to the component.</td>
+</tr>
+<tr>
+<td>Outlined</td>
+<td>Makes the background transparent and applies a thin border.</td>
+</tr>
+<tr>
+<td>Prominent</td>
+<td>Increases the height of the toolbar content to 128px.</td>
+</tr>
+<tr>
+<td>Scroll Off Screen</td>
+<td>Hides the app-bar when scrolling. Will <strong>NOT</strong> show the <code>extension</code> slot.</td>
+</tr>
+<tr>
+<td>Scroll Threshold</td>
+<td>The amount of scroll distance down before <strong>hide-on-scroll</strong> activates.</td>
+</tr>
+<tr>
+<td>Shaped</td>
+<td>Applies a large border radius on the top left and bottom right of the app-bar.</td>
+</tr>
+<tr>
+<td>Short</td>
+<td>Reduce the height of the toolbar content to 56px (112px when using the prominent prop).</td>
+</tr>
+<tr>
+<td>Shrink On Scroll</td>
+<td>Shrinks a <strong>prominent</strong> toolbar to a <strong>dense</strong> or <strong>short</strong> (default) one when scrolling.</td>
+</tr>
+<tr>
+<td>Tile</td>
+<td>Removes the component’s border-radius.</td>
+</tr>
+<tr>
+<td>Width</td>
+<td>Sets the width for the component.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="vcard">VCard<a class="headerlink" href="#vcard" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Title</td>
+<td>Applies a header to the card.</td>
+</tr>
+<tr>
+<td>Subtitle</td>
+<td>Applies a subheader to the card.</td>
+</tr>
+<tr>
+<td>Content</td>
+<td>Allows free-form HTML.</td>
+</tr>
+<tr>
+<td>Actions</td>
+<td>Call-to-action buttons for the card.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="vcol">VCol<a class="headerlink" href="#vcol" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Align Self</td>
+<td>Applies the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/align-items">align-items</a> css property. Available options are <strong>start</strong>, <strong>center</strong>, <strong>end</strong>, <strong>auto</strong>, <strong>baseline</strong> and <strong>stretch</strong>.</td>
+</tr>
+<tr>
+<td>Cols [Breakpoint]</td>
+<td>Sets the default number of columns the component extends. Available options are <strong>1 -&gt; 12</strong> and <strong>auto</strong>.</td>
+</tr>
+<tr>
+<td>Offset [Breakpoint]</td>
+<td>Sets the default offset for the column.</td>
+</tr>
+<tr>
+<td>Order [Breakpoint]</td>
+<td>Sets the default <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/order">order</a> for the column.</td>
+</tr>
+<tr>
+<td>Flow</td>
+<td>Any number of widgets can be added to the component.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="vcontainer">VContainer<a class="headerlink" href="#vcontainer" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fluid</td>
+<td>Removes viewport maximum-width size breakpoints.</td>
+</tr>
+<tr>
+<td>Flow</td>
+<td>Any number of <code>VRow</code>s can be added to the component</td>
+</tr>
+</tbody>
+</table>
+<h3 id="vdivider">VDivider<a class="headerlink" href="#vdivider" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dark</td>
+<td>Applies the dark theme variant to the component.</td>
+</tr>
+<tr>
+<td>Inset</td>
+<td>Adds indentation (72px) for normal dividers, reduces max height for vertical.</td>
+</tr>
+<tr>
+<td>Light</td>
+<td>Applies the light theme variant to the component.</td>
+</tr>
+<tr>
+<td>Vertical</td>
+<td>Displays dividers vertically</td>
+</tr>
+</tbody>
+</table>
+<h3 id="vexpansionpanel">VExpansionPanel<a class="headerlink" href="#vexpansionpanel" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Header</td>
+<td>Sets the expansion-panel header.</td>
+</tr>
+<tr>
+<td>Flow</td>
+<td>Any number of widgets can be added to the component.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="vexpansionpanels">VExpansionPanels<a class="headerlink" href="#vexpansionpanels" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Accordion</td>
+<td>Removes the margin around open panels.</td>
+</tr>
+<tr>
+<td>Dark</td>
+<td>Applies the dark theme variant to the component.</td>
+</tr>
+<tr>
+<td>Disabled</td>
+<td>Disables the entire expansion-panel.</td>
+</tr>
+<tr>
+<td>Flat</td>
+<td>Removes the expansion-panel’s elevation and borders.</td>
+</tr>
+<tr>
+<td>Focusable</td>
+<td>Makes the expansion-panel headers focusable.</td>
+</tr>
+<tr>
+<td>Inset</td>
+<td>Makes the expansion-panel open with a inset style.</td>
+</tr>
+<tr>
+<td>Light</td>
+<td>Applies the light theme variant to the component.</td>
+</tr>
+<tr>
+<td>Mandatory</td>
+<td>Forces a value to always be selected (if available).</td>
+</tr>
+<tr>
+<td>Multiple</td>
+<td>Allow multiple selections.</td>
+</tr>
+<tr>
+<td>Popout</td>
+<td>Makes the expansion-panel open with an popout style.</td>
+</tr>
+<tr>
+<td>Read-Only</td>
+<td>Makes the entire expansion-panel read only.</td>
+</tr>
+<tr>
+<td>Tile</td>
+<td>Removes the border-radius.</td>
+</tr>
+<tr>
+<td>Flow</td>
+<td>Any number of <code>VExpansionPanel</code>s can be added to the component</td>
+</tr>
+</tbody>
+</table>
+<h3 id="vfooter">VFooter<a class="headerlink" href="#vfooter" title="Permanent link">&para;</a></h3>
+<p>This widget is best used in the <strong>Footer</strong> zone.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Absolute</td>
+<td>Applies <strong>position: absolute</strong> to the component.</td>
+</tr>
+<tr>
+<td>App</td>
+<td>Designates the component as part of the application layout. Used for dynamically adjusting content sizing. Components using this prop should reside <strong>outside</strong> of <code>v-main</code> component to function properly. You can find more information about layouts on the application page. <strong>Note:</strong> this prop automatically applies position: fixed to the layout element.</td>
+</tr>
+<tr>
+<td>Color</td>
+<td>Applies specified color to the control - it can be the name of material color (for example success or purple) or css color (#033 or rgba(255, 0, 0, 0.5)). You can find list of built in classes on the <a href="https://dev.vuetifyjs.com/en/styles/colors/#material-colors">colors page</a>.</td>
+</tr>
+<tr>
+<td>Dark</td>
+<td>Applies the dark theme variant to the component.</td>
+</tr>
+<tr>
+<td>Elevation</td>
+<td>Designates an elevation applied to the component between 0 and 24. You can find more information on the <a href="https://dev.vuetifyjs.com/en/styles/elevation/">elevation page</a>.</td>
+</tr>
+<tr>
+<td>Fixed</td>
+<td>Applies <strong>position: fixed</strong> to the component.</td>
+</tr>
+<tr>
+<td>Height</td>
+<td>Designates a specific height for the component.</td>
+</tr>
+<tr>
+<td>Light</td>
+<td>Applies the light theme variant to the component.</td>
+</tr>
+<tr>
+<td>Outlined</td>
+<td>Makes the background transparent and applies a thin border.</td>
+</tr>
+<tr>
+<td>Rounded</td>
+<td>Designates the border-radius applied to the component. You can find more information on the <a href="https://vuetifyjs.com/en/styles/border-radius/">Border Radius page</a>.</td>
+</tr>
+<tr>
+<td>Padless</td>
+<td>Remove all padding from the footer.</td>
+</tr>
+<tr>
+<td>Shaped</td>
+<td>Applies a large border radius on the top left and bottom right of the footer.</td>
+</tr>
+<tr>
+<td>Tile</td>
+<td>Removes the component’s border-radius.</td>
+</tr>
+<tr>
+<td>Width</td>
+<td>Sets the width for the component.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="vimg">VImg<a class="headerlink" href="#vimg" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Alternate Text</td>
+<td>Alternate text for screen readers. Leave empty for decorative images.</td>
+</tr>
+<tr>
+<td>Aspect Ratio</td>
+<td>Calculated as <code>width/height</code>, so for a 1920x1080px image this will be <code>1.7778</code>. Will be calculated automatically if omitted.</td>
+</tr>
+<tr>
+<td>Contain</td>
+<td>Prevents the image from being cropped if it doesn’t fit.</td>
+</tr>
+<tr>
+<td>Dark</td>
+<td>Applies the dark theme variant to the component.</td>
+</tr>
+<tr>
+<td>Eager</td>
+<td>Will force the components content to render on mounted. This is useful if you have content that will not be rendered in the DOM that you want crawled for SEO.</td>
+</tr>
+<tr>
+<td>Gradient</td>
+<td>Overlays a gradient onto the image. Only supports <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/linear-gradient()">linear-gradient</a> syntax, anything else should be done with classes (see examples).</td>
+</tr>
+<tr>
+<td>Height</td>
+<td>Sets the height for the component.</td>
+</tr>
+<tr>
+<td>Light</td>
+<td>Applies the light theme variant to the component.</td>
+</tr>
+<tr>
+<td>Source</td>
+<td>The image. This field is mandatory.</td>
+</tr>
+<tr>
+<td>Width</td>
+<td>Sets the width for the component.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="vlist">VList<a class="headerlink" href="#vlist" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Color</td>
+<td>Applies specified color to the control - it can be the name of material color (for example success or purple) or css color (#033 or rgba(255, 0, 0, 0.5)).</td>
+</tr>
+<tr>
+<td>Dark</td>
+<td>Applies the dark theme variant to the component.</td>
+</tr>
+<tr>
+<td>Dense</td>
+<td>Lowers max height of list tiles.</td>
+</tr>
+<tr>
+<td>Disabled</td>
+<td>Disables all children <strong>v-list-item</strong> components</td>
+</tr>
+<tr>
+<td>Elevation</td>
+<td>Designates an elevation applied to the component between 0 and 24.</td>
+</tr>
+<tr>
+<td>Expand</td>
+<td>Will only collapse when explicitly closed</td>
+</tr>
+<tr>
+<td>Flat</td>
+<td>Remove the highlighted background on active <strong>v-list-items</strong></td>
+</tr>
+<tr>
+<td>Height</td>
+<td>Sets the height for the component.</td>
+</tr>
+<tr>
+<td>Light</td>
+<td>Applies the light theme variant to the component.</td>
+</tr>
+<tr>
+<td>Nav</td>
+<td>An alternative styling that reduces v-list-item width and rounds the corners.</td>
+</tr>
+<tr>
+<td>Outlines</td>
+<td>Removes elevation (box-shadow) and adds a thin border.</td>
+</tr>
+<tr>
+<td>Rounded</td>
+<td>Rounds the v-list-item edges.</td>
+</tr>
+<tr>
+<td>Shaped</td>
+<td>Provides an alternative active style for v-list-item.</td>
+</tr>
+<tr>
+<td>Subheader</td>
+<td>Removes top padding. Used when previous sibling is a header.</td>
+</tr>
+<tr>
+<td>Tag</td>
+<td>Specify a custom tag used on the root element.</td>
+</tr>
+<tr>
+<td>Tile</td>
+<td>Removes the component’s border-radius.</td>
+</tr>
+<tr>
+<td>Width</td>
+<td>Sets the width for the component.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="vlistitem">VListItem<a class="headerlink" href="#vlistitem" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Active-Class</td>
+<td>Configure the active CSS class applied when the link is active.</td>
+</tr>
+<tr>
+<td>Color</td>
+<td>Applies specified color to the control when in an active state or input-value is true - it can be the name of material color (for example success or purple) or css color (#033 or rgba(255, 0, 0, 0.5))</td>
+</tr>
+<tr>
+<td>Exact-Active-Class</td>
+<td>Configure the active CSS class applied when the link is active with exact match.</td>
+</tr>
+<tr>
+<td>Href</td>
+<td>Designates the component as anchor and applies the href attribute.</td>
+</tr>
+<tr>
+<td>Icon Name</td>
+<td>Designates a specific icon.</td>
+</tr>
+<tr>
+<td>Input-Value</td>
+<td>Controls the active state of the item. This is typically used to highlight the component.</td>
+</tr>
+<tr>
+<td>Target</td>
+<td>Designates the target attribute. This should only be applied when using the href prop.</td>
+</tr>
+<tr>
+<td>To</td>
+<td>Denotes the target route of the link.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="vnavigationdrawer">VNavigationDrawer<a class="headerlink" href="#vnavigationdrawer" title="Permanent link">&para;</a></h3>
+<p>This widget is best used in the <strong>Navigation Drawer</strong> zone.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Absolute</td>
+<td>Applies <strong>position: absolute</strong> to the component.</td>
+</tr>
+<tr>
+<td>Background Image</td>
+<td>Adds an image to the navigation-drawer background</td>
+</tr>
+<tr>
+<td>Bottom</td>
+<td>Expands from the bottom of the screen on mobile devices.</td>
+</tr>
+<tr>
+<td>Clipped</td>
+<td>A clipped drawer rests under the application toolbar.</td>
+</tr>
+<tr>
+<td>Color</td>
+<td>Applies specified color to the control - it can be the name of material color (for example success or purple) or css color (#033 or rgba(255, 0, 0, 0.5)). You can find list of built in classes on the <a href="https://dev.vuetifyjs.com/en/styles/colors/#material-colors">colors page</a>.</td>
+</tr>
+<tr>
+<td>Disable Resize Watcher</td>
+<td>Will automatically open/close drawer when resized depending if mobile or desktop.</td>
+</tr>
+<tr>
+<td>Disable Route Watcher</td>
+<td>Disables opening of navigation drawer when route changes.</td>
+</tr>
+<tr>
+<td>Expand On Hover</td>
+<td>Collapses the drawer to a <strong>mini-variant</strong> until hovering with the mouse.</td>
+</tr>
+<tr>
+<td>Floating</td>
+<td>A floating drawer has no visible container (no border-right).</td>
+</tr>
+<tr>
+<td>Height</td>
+<td>Sets the height of the navigation drawer.</td>
+</tr>
+<tr>
+<td>Hide Overlay</td>
+<td>Hides the display of the overlay.</td>
+</tr>
+<tr>
+<td>Light</td>
+<td>Applies the light theme variant to the component.</td>
+</tr>
+<tr>
+<td>Mini</td>
+<td>Condenses navigation drawer width, also accepts the <strong>.sync</strong> modifier. With this, the drawer will re-open when clicking it.</td>
+</tr>
+<tr>
+<td>Mini Variant Width</td>
+<td>Designates the width assigned when the <strong>mini</strong> prop is turned on.</td>
+</tr>
+<tr>
+<td>Mobile Breakpoint</td>
+<td>Sets the designated mobile breakpoint for the component. This will apply alternate styles for mobile devices such as the <strong>temporary</strong> prop, or activate the <strong>bottom</strong> prop when the breakpoint value is met. Setting the value to 0 will disable this functionality.</td>
+</tr>
+<tr>
+<td>Overlay Color</td>
+<td>Sets the overlay color.</td>
+</tr>
+<tr>
+<td>Overlay Opacity</td>
+<td>Sets the overlay opacity.</td>
+</tr>
+<tr>
+<td>Permanent</td>
+<td>The drawer remains visible regardless of screen size.</td>
+</tr>
+<tr>
+<td>Right</td>
+<td>Places the navigation drawer on the right.</td>
+</tr>
+<tr>
+<td>Stateless</td>
+<td>Remove all automated state functionality (resize, mobile, route) and manually control the drawer state.</td>
+</tr>
+<tr>
+<td>Temporary</td>
+<td>A temporary drawer sits above its application and uses a scrim (overlay) to darken the background.</td>
+</tr>
+<tr>
+<td>Touchless</td>
+<td>Disable mobile touch functionality.</td>
+</tr>
+<tr>
+<td>Width</td>
+<td>Sets the width for the component.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="vrow">VRow<a class="headerlink" href="#vrow" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Align [Breakpoint]</td>
+<td>Applies the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/align-items">align-items</a> css property. Available options are <strong>start</strong>, <strong>center</strong>, <strong>end</strong>, <strong>baseline</strong> and <strong>stretch</strong>.</td>
+</tr>
+<tr>
+<td>Align Content [Breakpoint]</td>
+<td>Applies the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/align-content">align-content</a> css property. Available options are <strong>start</strong>, <strong>center</strong>, <strong>end</strong>, <strong>space-between</strong>, <strong>space-around</strong> and <strong>stretch</strong>.</td>
+</tr>
+<tr>
+<td>Dense</td>
+<td>Reduces the gutter between <code>VCol</code>s.</td>
+</tr>
+<tr>
+<td>Justify [Breakpoint]</td>
+<td>Applies the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content">justify-content</a> css property. Available options are <strong>start</strong>, <strong>center</strong>, <strong>end</strong>, <strong>space-between</strong> and <strong>space-around</strong>.</td>
+</tr>
+<tr>
+<td>No Gutter</td>
+<td>Removes the gutter between <code>VCol</code>s.</td>
+</tr>
+<tr>
+<td>Flow</td>
+<td>Any number of <code>VCol</code>s can be added to the component.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="vsubheader">VSubheader<a class="headerlink" href="#vsubheader" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dark</td>
+<td>Applies the dark theme variant to the component.</td>
+</tr>
+<tr>
+<td>Inset</td>
+<td>Adds indentation (72px)</td>
+</tr>
+<tr>
+<td>Light</td>
+<td>Applies the light theme variant to the component.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="vtimeline">VTimeLine<a class="headerlink" href="#vtimeline" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Align-Top</td>
+<td>Align caret and dot of timeline items to the top.</td>
+</tr>
+<tr>
+<td>Dark</td>
+<td>Applies the dark theme variant to the component.</td>
+</tr>
+<tr>
+<td>Dense</td>
+<td>Hide opposite slot content, and position all items to one side of timeline.</td>
+</tr>
+<tr>
+<td>Light</td>
+<td>Applies the light theme variant to the component.</td>
+</tr>
+<tr>
+<td>Reverse</td>
+<td>Reverse direction of timeline items.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="vtimelineitem">VTimeLineItem<a class="headerlink" href="#vtimelineitem" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Color</td>
+<td>Applies specified color to the control - it can be the name of material color (for example success or purple) or css color (#033 or rgba(255, 0, 0, 0.5)).</td>
+</tr>
+<tr>
+<td>Dark</td>
+<td>Applies the dark theme variant to the component.</td>
+</tr>
+<tr>
+<td>Icon</td>
+<td>Specify icon for dot container</td>
+</tr>
+<tr>
+<td>Icon-Color</td>
+<td>Applies specified color to the control - it can be the name of material color (for example success or purple) or css color (#033 or rgba(255, 0, 0, 0.5)).</td>
+</tr>
+<tr>
+<td>Fill-Dot</td>
+<td>Remove padding from dot container</td>
+</tr>
+<tr>
+<td>Hide-Dot</td>
+<td>Hide display of timeline dot</td>
+</tr>
+<tr>
+<td>Large</td>
+<td>Large size dot</td>
+</tr>
+<tr>
+<td>Left</td>
+<td>Explicitly set the item to a left orientation</td>
+</tr>
+<tr>
+<td>Light</td>
+<td>Applies the light theme variant to the component.</td>
+</tr>
+<tr>
+<td>Right</td>
+<td>Explicitly set the item to a right orientation.</td>
+</tr>
+<tr>
+<td>Small</td>
+<td>Small size dot.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="shortcodes">Shortcodes<a class="headerlink" href="#shortcodes" title="Permanent link">&para;</a></h2>
+<p>A collection of shortcodes are available as a recipe for the vuetify theme. </p>
+<p>The container, row, col and divider shortcodes are available if you execute the <code>Vuetify Grid System Shortcodes</code> recipe.</p>
+                
+                  
+                    
+
+<hr>
+<div class="md-source-date">
+  <small>
+    
+      Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 5, 2021</span>
+      
+    
+  </small>
+</div>
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../PortalTheme/" class="md-footer__link md-footer__link--prev" aria-label="Previous: PortalTheme" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              PortalTheme
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../../contact/" class="md-footer__link md-footer__link--next" aria-label="Next: Contact" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Contact
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy Her Majesty the Queen in Right of Canada, as represented by the Minister of Statistics Canada, 2020
+          </div>
+        
+        
+          Made with
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs
+          </a>
+        
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.tabs"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.fcfe8b6d.min.js", "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.b1047164.min.js"></script>
+      
+    
+  </body>
+</html>

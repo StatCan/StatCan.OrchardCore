@@ -1,0 +1,1929 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="canonical" href="https://statcan.github.io/StatCan.OrchardCore/reference/modules/VueForms/">
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.3.6">
+    
+    
+      
+        <title>VueForms - StatCan Orchard Core Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.a57b2b03.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#7e56c2">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="deep-purple" data-md-color-accent="">
+  
+    
+    <script>function __prefix(e){return new URL("../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#vueforms-statcanorchardcorevueforms" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="StatCan Orchard Core Documentation" class="md-header__button md-logo" aria-label="StatCan Orchard Core Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            StatCan Orchard Core Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              VueForms
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/statcan/statcan.orchardcore/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    StatCan/StatCan.OrchardCore
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../development/getting-started/" class="md-tabs__link">
+        Development
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../applications/" class="md-tabs__link md-tabs__link--active">
+        Reference
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../contact/" class="md-tabs__link">
+        Support
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="StatCan Orchard Core Documentation" class="md-nav__button md-logo" aria-label="StatCan Orchard Core Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    StatCan Orchard Core Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/statcan/statcan.orchardcore/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    StatCan/StatCan.OrchardCore
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Development
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Development" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Development
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../development/getting-started/" class="md-nav__link">
+        Getting Started
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../development/solution-templates/" class="md-nav__link">
+        Solution Templates
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../development/localization/" class="md-nav__link">
+        Localization
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../development/assets/" class="md-nav__link">
+        Assets
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5" type="checkbox" id="__nav_2_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_5">
+          Contributing
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Contributing" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_5">
+          <span class="md-nav__icon md-icon"></span>
+          Contributing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../development/committing/" class="md-nav__link">
+        Committing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../development/testing/" class="md-nav__link">
+        Testing
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Reference
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Reference" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Reference
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/" class="md-nav__link">
+        Applications
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_2">
+          Application Modules
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Application Modules" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Application Modules
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Hackathon/" class="md-nav__link">
+        Hackathon App
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Scheduling/" class="md-nav__link">
+        Scheduling App
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Liquid/" class="md-nav__link">
+        Liquid
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Logging/" class="md-nav__link">
+        Logging
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Scripting/" class="md-nav__link">
+        Scripting
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Workflows/" class="md-nav__link">
+        Workflows
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_7" type="checkbox" id="__nav_3_7" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_7">
+          Modules
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Modules" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_7">
+          <span class="md-nav__icon md-icon"></span>
+          Modules
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Configuration/" class="md-nav__link">
+        Configuration
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ContentFields/" class="md-nav__link">
+        ContentFields
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EmailTemplates/" class="md-nav__link">
+        EmailTemplates
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../GCCollab/" class="md-nav__link">
+        GCCollab
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../GitHub/" class="md-nav__link">
+        GitHub
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../GraphQL/" class="md-nav__link">
+        GraphQL
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../LocalizedText/" class="md-nav__link">
+        LocalizedText
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Matomo/" class="md-nav__link">
+        Matomo
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          VueForms
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        VueForms
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#content-definitions" class="md-nav__link">
+    Content definitions
+  </a>
+  
+    <nav class="md-nav" aria-label="Content definitions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vueform" class="md-nav__link">
+    VueForm
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vueform-part" class="md-nav__link">
+    VueForm Part
+  </a>
+  
+    <nav class="md-nav" aria-label="VueForm Part">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#template" class="md-nav__link">
+    Template
+  </a>
+  
+    <nav class="md-nav" aria-label="Template">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#available-props" class="md-nav__link">
+    Available Props
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debug-mode" class="md-nav__link">
+    Debug mode
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vueformscripts-part" class="md-nav__link">
+    VueFormScripts Part
+  </a>
+  
+    <nav class="md-nav" aria-label="VueFormScripts Part">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#clientinit-script" class="md-nav__link">
+    ClientInit script
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#onvalidation-script" class="md-nav__link">
+    OnValidation script
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#onsubmitted-script" class="md-nav__link">
+    OnSubmitted script
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#component-options-object" class="md-nav__link">
+    Component Options object
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#custom-form-components" class="md-nav__link">
+    Custom Form Components
+  </a>
+  
+    <nav class="md-nav" aria-label="Custom Form Components">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#multiselect-components" class="md-nav__link">
+    Multiselect components
+  </a>
+  
+    <nav class="md-nav" aria-label="Multiselect components">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#multiselect-async-component" class="md-nav__link">
+    multiselect-async component
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multiselect-component" class="md-nav__link">
+    multiselect component
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bag-component" class="md-nav__link">
+    Bag component
+  </a>
+  
+    <nav class="md-nav" aria-label="Bag component">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bag-component-example" class="md-nav__link">
+    Bag component example
+  </a>
+  
+    <nav class="md-nav" aria-label="Bag component example">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#some-notes-on-using-the-bag-component" class="md-nav__link">
+    Some notes on using the bag component
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scripting" class="md-nav__link">
+    Scripting
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#workflow-integration" class="md-nav__link">
+    Workflow integration
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#localization-statcanorchardcorevueformslocalized" class="md-nav__link">
+    Localization (StatCan.OrchardCore.VueForms.Localized)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#survey-statcanorchardcorevueformssurvey" class="md-nav__link">
+    Survey (StatCan.OrchardCore.VueForms.Survey)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    Examples
+  </a>
+  
+    <nav class="md-nav" aria-label="Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#userprofile-form" class="md-nav__link">
+    UserProfile Form
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_8" type="checkbox" id="__nav_3_8" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_8">
+          Themes
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Themes" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_8">
+          <span class="md-nav__icon md-icon"></span>
+          Themes
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../themes/DigitalAdmin/" class="md-nav__link">
+        DigitalAdmin
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../themes/PortalTheme/" class="md-nav__link">
+        PortalTheme
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../themes/VuetifyTheme/" class="md-nav__link">
+        VuetifyTheme
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Support
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Support" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Support
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../contact/" class="md-nav__link">
+        Contact
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#content-definitions" class="md-nav__link">
+    Content definitions
+  </a>
+  
+    <nav class="md-nav" aria-label="Content definitions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vueform" class="md-nav__link">
+    VueForm
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vueform-part" class="md-nav__link">
+    VueForm Part
+  </a>
+  
+    <nav class="md-nav" aria-label="VueForm Part">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#template" class="md-nav__link">
+    Template
+  </a>
+  
+    <nav class="md-nav" aria-label="Template">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#available-props" class="md-nav__link">
+    Available Props
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debug-mode" class="md-nav__link">
+    Debug mode
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vueformscripts-part" class="md-nav__link">
+    VueFormScripts Part
+  </a>
+  
+    <nav class="md-nav" aria-label="VueFormScripts Part">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#clientinit-script" class="md-nav__link">
+    ClientInit script
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#onvalidation-script" class="md-nav__link">
+    OnValidation script
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#onsubmitted-script" class="md-nav__link">
+    OnSubmitted script
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#component-options-object" class="md-nav__link">
+    Component Options object
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#custom-form-components" class="md-nav__link">
+    Custom Form Components
+  </a>
+  
+    <nav class="md-nav" aria-label="Custom Form Components">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#multiselect-components" class="md-nav__link">
+    Multiselect components
+  </a>
+  
+    <nav class="md-nav" aria-label="Multiselect components">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#multiselect-async-component" class="md-nav__link">
+    multiselect-async component
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multiselect-component" class="md-nav__link">
+    multiselect component
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bag-component" class="md-nav__link">
+    Bag component
+  </a>
+  
+    <nav class="md-nav" aria-label="Bag component">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bag-component-example" class="md-nav__link">
+    Bag component example
+  </a>
+  
+    <nav class="md-nav" aria-label="Bag component example">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#some-notes-on-using-the-bag-component" class="md-nav__link">
+    Some notes on using the bag component
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scripting" class="md-nav__link">
+    Scripting
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#workflow-integration" class="md-nav__link">
+    Workflow integration
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#localization-statcanorchardcorevueformslocalized" class="md-nav__link">
+    Localization (StatCan.OrchardCore.VueForms.Localized)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#survey-statcanorchardcorevueformssurvey" class="md-nav__link">
+    Survey (StatCan.OrchardCore.VueForms.Survey)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    Examples
+  </a>
+  
+    <nav class="md-nav" aria-label="Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#userprofile-form" class="md-nav__link">
+    UserProfile Form
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/statcan/statcan.orchardcore/edit/master/docs/en/reference/modules/VueForms.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="vueforms-statcanorchardcorevueforms">VueForms (<code>StatCan.OrchardCore.VueForms</code>)<a class="headerlink" href="#vueforms-statcanorchardcorevueforms" title="Permanent link">&para;</a></h1>
+<p>The VueForms module aims to simplify the creation of client side forms in OrchardCore.</p>
+<h2 id="content-definitions">Content definitions<a class="headerlink" href="#content-definitions" title="Permanent link">&para;</a></h2>
+<h3 id="vueform">VueForm<a class="headerlink" href="#vueform" title="Permanent link">&para;</a></h3>
+<p>The VueForm content type is used to create forms that use <a href="https://vuejs.org/">VueJs</a> and <a href="https://logaretm.github.io/vee-validate/">VeeValidate</a> client side libraries.
+The form submission is handled via an ajax call to a generic controller that returns json to the client for seamless server side validation.</p>
+<h3 id="vueform-part">VueForm Part<a class="headerlink" href="#vueform-part" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Disabled</td>
+<td>If disabled, the <code>DisabledHtml</code> field value will be displayed instead of the form</td>
+</tr>
+<tr>
+<td>RenderAs</td>
+<td>Render the Form as a Vue Component, a Vue App or Vuetify app</td>
+</tr>
+<tr>
+<td>DisabledHtml</td>
+<td>Html displayed when the form is disabled.</td>
+</tr>
+<tr>
+<td>SuccessMessage</td>
+<td>The success message returned to the client when the form is valid and no redirect is specified after submission. With Liquid support.</td>
+</tr>
+<tr>
+<td>Template</td>
+<td>The component template. With Liquid support.</td>
+</tr>
+<tr>
+<td>Debug mode</td>
+<td>Enables debug mode on the form.</td>
+</tr>
+</tbody>
+</table>
+<p><em>Note about RenderAs</em>: When rendering the Form as a <code>VueComponent</code>, you need to define a Zone in your layout called <code>DynamicComponentZone</code>. This zone must be rendered anywhere before the <code>FootScript</code> resource zone.
+This is required because the div that defines the VueForm component needs to be defined outside of the Vue App. Please look at our open source <a href="https://github.com/StatCan/StatCan.OrchardCore/blob/master/src/Themes/VuetifyTheme/Views/Layout.liquid">VuetifyTheme</a> layout for an example.</p>
+<div class="highlight"><pre><span></span><code>{% render_section &quot;DynamicComponentZone&quot;, required: false %}
+{% resources type: &quot;FootScript&quot; %}
+</code></pre></div>
+<h4 id="template">Template<a class="headerlink" href="#template" title="Permanent link">&para;</a></h4>
+<p>The template of the vue component</p>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">v-container</span> <span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">v-card-text</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">v-row</span> <span class="na">justify</span><span class="o">=</span><span class="s">&quot;center&quot;</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">v-col</span> <span class="na">cols</span><span class="o">=</span><span class="s">&quot;8&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">validation-provider</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;{{ &quot;</span><span class="na">nameLabel</span><span class="err">&quot;</span> <span class="err">|</span> <span class="na">localize</span> <span class="err">|</span> <span class="na">downcase</span> <span class="err">}}&quot;</span> <span class="na">rules</span><span class="o">=</span><span class="s">&quot;required&quot;</span> <span class="na">v-slot</span><span class="o">=</span><span class="s">&quot;{ errors }&quot;</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">v-text-field</span> <span class="na">v-model</span><span class="o">=</span><span class="s">&quot;name&quot;</span> <span class="na">:error-messages</span><span class="o">=</span><span class="s">&quot;errors&quot;</span> <span class="na">filled</span><span class="o">=</span><span class="s">&quot;filled&quot;</span> <span class="na">label</span><span class="o">=</span><span class="s">&quot;{{ &quot;</span><span class="na">nameLabel</span><span class="err">&quot;</span> <span class="err">|</span> <span class="na">localize</span> <span class="err">}}&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">v-text-field</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">validation-provider</span><span class="p">&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">v-col</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">v-col</span> <span class="na">cols</span><span class="o">=</span><span class="s">&quot;8&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">validation-provider</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;{{ &quot;</span><span class="na">emailLabel</span><span class="err">&quot;</span> <span class="err">|</span> <span class="na">localize</span> <span class="err">|</span> <span class="na">downcase</span> <span class="err">}}&quot;</span> <span class="na">rules</span><span class="o">=</span><span class="s">&quot;required|email&quot;</span> <span class="na">v-slot</span><span class="o">=</span><span class="s">&quot;{ errors }&quot;</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">v-text-field</span> <span class="na">v-model</span><span class="o">=</span><span class="s">&quot;email&quot;</span> <span class="na">:error-messages</span><span class="o">=</span><span class="s">&quot;errors&quot;</span> <span class="na">filled</span><span class="o">=</span><span class="s">&quot;filled&quot;</span> <span class="na">label</span><span class="o">=</span><span class="s">&quot;{{ &quot;</span><span class="na">emailLabel</span><span class="err">&quot;</span> <span class="err">|</span> <span class="na">localize</span> <span class="err">}}&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">v-text-field</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">validation-provider</span><span class="p">&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">v-col</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">v-col</span> <span class="na">cols</span><span class="o">=</span><span class="s">&quot;8&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">validation-provider</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;{{ &quot;</span><span class="na">messageLabel</span><span class="err">&quot;</span> <span class="err">|</span> <span class="na">localize</span> <span class="err">|</span> <span class="na">downcase</span> <span class="err">}}&quot;</span> <span class="na">rules</span><span class="o">=</span><span class="s">&quot;required&quot;</span> <span class="na">v-slot</span><span class="o">=</span><span class="s">&quot;{ errors }&quot;</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">v-textarea</span> <span class="na">v-model</span><span class="o">=</span><span class="s">&quot;message&quot;</span> <span class="na">:error-messages</span><span class="o">=</span><span class="s">&quot;errors&quot;</span> <span class="na">counter</span><span class="o">=</span><span class="s">&quot;true&quot;</span> <span class="na">filled</span><span class="o">=</span><span class="s">&quot;filled&quot;</span> <span class="na">label</span><span class="o">=</span><span class="s">&quot;{{ &quot;</span><span class="na">messageLabel</span><span class="err">&quot;</span> <span class="err">|</span> <span class="na">localize</span> <span class="err">}}&quot;</span> <span class="na">rows</span><span class="o">=</span><span class="s">&quot;5&quot;</span><span class="p">&gt;</span>
+          <span class="p">&lt;/</span><span class="nt">v-textarea</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">validation-provider</span><span class="p">&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">v-col</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">v-col</span> <span class="na">cols</span><span class="o">=</span><span class="s">&quot;8&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">v-alert</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;success&quot;</span> <span class="na">v-if</span><span class="o">=</span><span class="s">&quot;form.successMessage&quot;</span><span class="p">&gt;</span>
+          {% raw %}{{ form.successMessage }}{% endraw %}
+        <span class="p">&lt;/</span><span class="nt">v-alert</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">v-alert</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;error&quot;</span> <span class="na">v-if</span><span class="o">=</span><span class="s">&quot;form.errorMessage&quot;</span><span class="p">&gt;</span>
+          {% raw %}{{ form.errorMessage }}{% endraw %}
+        <span class="p">&lt;/</span><span class="nt">v-alert</span><span class="p">&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">v-col</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">v-col</span> <span class="na">cols</span><span class="o">=</span><span class="s">&quot;8&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">v-btn</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;submit&quot;</span> <span class="na">depressed</span> <span class="na">block</span> <span class="err">@</span><span class="na">click</span><span class="o">=</span><span class="s">&quot;formHandleSubmit&quot;</span> <span class="na">:disabled</span><span class="o">=</span><span class="s">&quot;form.submitting&quot;</span><span class="p">&gt;</span>{{ &quot;submitLabel&quot; | localize }}<span class="p">&lt;/</span><span class="nt">v-btn</span><span class="p">&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">v-col</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">v-row</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">v-card-text</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">v-container</span><span class="p">&gt;</span>
+</code></pre></div>
+<h5 id="available-props">Available Props<a class="headerlink" href="#available-props" title="Permanent link">&para;</a></h5>
+<p>The VueForm component has some default properties and methods.</p>
+<p>You can access these properties in your templates or in the component options object.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>obs.*</td>
+<td>All props available on the v-slot of the <a href="https://logaretm.github.io/vee-validate/api/validation-observer.html#scoped-slot-props">ValidationObserver</a> are available.</td>
+</tr>
+<tr>
+<td>formReset</td>
+<td>A method that resets the form.* properties to the initial state. Does not reset your component's data. <code>() =&gt; void</code></td>
+</tr>
+<tr>
+<td>formHandleSubmit</td>
+<td>A method that calls the <code>validate()</code> method and then, if valid, sends an ajax request to our controller <code>() =&gt; void</code></td>
+</tr>
+<tr>
+<td>form.submitting</td>
+<td>Set to true when the form is being submitted.</td>
+</tr>
+<tr>
+<td>form.submitSuccess</td>
+<td>Set to true when no redirect is specified and the submission was a success.</td>
+</tr>
+<tr>
+<td>form.successMessage</td>
+<td>The success message returned from the server as specified in the <a href="#vueform-part">VueForm</a></td>
+</tr>
+<tr>
+<td>form.submitValidationError</td>
+<td>Set to true when a server validation error occus.</td>
+</tr>
+<tr>
+<td>form.serverValidationMessage</td>
+<td>Array of errors set by the server with the <code>addError('serverValidationMessage', 'Message')</code> scripting method.</td>
+</tr>
+<tr>
+<td>form.responseData</td>
+<td>The raw response data recieved from the server. Useful if you want to return additional data to the form via a workflow.</td>
+</tr>
+<tr>
+<td>form.submitError</td>
+<td>Set to true when a server error, ajax error or unhandled error occurs.</td>
+</tr>
+<tr>
+<td>form.serverErrorMessage</td>
+<td>An error message set with the ajax error status code and text. Only set when a server errors occur.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="debug-mode">Debug mode<a class="headerlink" href="#debug-mode" title="Permanent link">&para;</a></h4>
+<p>Debug mode is typically used when developping a form. Additional information is returned by the server and any data output by the <code>debug()</code> scripting method is also output and returned with the HttpResponse. This mode does not work when previewing the form.</p>
+<h3 id="vueformscripts-part">VueFormScripts Part<a class="headerlink" href="#vueformscripts-part" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ClientInit</td>
+<td>A client side script that is executed prior to instanciating the VueJs app.</td>
+</tr>
+<tr>
+<td>ComponentOptions</td>
+<td>The VueJS component options object for your VueForm component.</td>
+</tr>
+<tr>
+<td>OnValidation</td>
+<td>Server side validation script that allows us to validate the form.</td>
+</tr>
+<tr>
+<td>OnSubmitted</td>
+<td>Server side script that runs if the form is valid</td>
+</tr>
+</tbody>
+</table>
+<h4 id="clientinit-script">ClientInit script<a class="headerlink" href="#clientinit-script" title="Permanent link">&para;</a></h4>
+<p>The ClientInit script is executed client side prior to instanciating the form component. This script has access to the client's global scope variables.</p>
+<p>This was added to support hooking into some global options for VeeValidate.</p>
+<p>For example, setting the <a href="https://logaretm.github.io/vee-validate/guide/interaction-and-ux.html">VeeValidate.setInteractionMode('passive')</a> option
+or the <a href="https://logaretm.github.io/vee-validate/guide/localization.html">Localization</a> option.</p>
+<div class="highlight"><pre><span></span><code><span class="nx">VeeValidate</span><span class="p">.</span><span class="nx">setInteractionMode</span><span class="p">(</span><span class="s2">&quot;passive&quot;</span><span class="p">);</span>
+</code></pre></div>
+<h4 id="onvalidation-script">OnValidation script<a class="headerlink" href="#onvalidation-script" title="Permanent link">&para;</a></h4>
+<p>The OnValidation script is used to specify the server side validation script. We are planning to implement components with integrated validation in the future.
+This module adds some <a href="../../Scripting/#vueforms-module-statcanorchardcorevueforms">scripting methods</a> to facilitate handling form data and errors.</p>
+<p>Here is an example OnValidation script that validates that the name is required.</p>
+<p><strong>Note</strong>: the first parameter of addError must be your input name that must also match the VeeValidate ValidationProvider name.</p>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">requestFormAsJsonObject</span><span class="p">();</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">name</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">addError</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;The name is required&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>All errors are also available to the client Vue component via the <code>form.responseData.errors</code> property</p>
+<h4 id="onsubmitted-script">OnSubmitted script<a class="headerlink" href="#onsubmitted-script" title="Permanent link">&para;</a></h4>
+<p>The OnSubmitted script is executed after the OnValidation script, only if the form is valid.
+This is where you would typically create a contentItem from the form data or redirect the user to another page.</p>
+<p>Here is an example OnSubmitted script that redirects the user to a success page after having created the PersonInfo content item.</p>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">requestFormAsJsonObject</span><span class="p">();</span>
+
+<span class="nx">createContentItem</span><span class="p">(</span><span class="s2">&quot;PersonInfo&quot;</span><span class="p">,</span> <span class="kc">true</span><span class="p">,</span> <span class="p">{</span>
+  <span class="nx">PersonInfo</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">Name</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">Text</span><span class="o">:</span> <span class="nx">data</span><span class="p">.</span><span class="nx">name</span>
+    <span class="p">},</span>
+    <span class="nx">Email</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">Text</span><span class="o">:</span> <span class="nx">data</span><span class="p">.</span><span class="nx">email</span>
+    <span class="p">},</span>
+    <span class="nx">Gender</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">Text</span><span class="o">:</span> <span class="nx">data</span><span class="p">.</span><span class="nx">gender</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+<span class="c1">// redirects to the success page</span>
+<span class="nx">httpRedirect</span><span class="p">(</span><span class="s2">&quot;~/success&quot;</span><span class="p">);</span>
+</code></pre></div>
+<h4 id="component-options-object">Component Options object<a class="headerlink" href="#component-options-object" title="Permanent link">&para;</a></h4>
+<p>This is where you write the<a href="https://012.vuejs.org/api/options.html">VueJS component options object</a> for the form component. At a minimum, you must define the data object. By default, the entire data object is serialized and sent to the server when the form is submitted.</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+  <span class="nx">data</span><span class="o">:</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">({</span>
+    <span class="nx">items</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;Female&quot;</span><span class="p">,</span> <span class="s2">&quot;Male&quot;</span><span class="p">,</span> <span class="s2">&quot;Other&quot;</span><span class="p">],</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="nx">email</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="nx">gender</span><span class="o">:</span> <span class="kc">undefined</span>
+  <span class="p">});</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>You can also overwrite the <code>submitData()</code> method to customize what is sent to the server. This can be very useful when your <code>data</code> object contains list of items for a dropdown.</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+  <span class="nx">data</span><span class="o">:</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">({</span>
+    <span class="nx">items</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;Female&quot;</span><span class="p">,</span> <span class="s2">&quot;Male&quot;</span><span class="p">,</span> <span class="s2">&quot;Other&quot;</span><span class="p">],</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="nx">email</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="nx">gender</span><span class="o">:</span> <span class="kc">undefined</span>
+  <span class="p">}),</span>
+  <span class="nx">submitData</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">,</span> <span class="nx">email</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">email</span><span class="p">,</span> <span class="nx">gender</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">gender</span> <span class="p">};</span>
+  <span class="p">},</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="custom-form-components">Custom Form Components<a class="headerlink" href="#custom-form-components" title="Permanent link">&para;</a></h2>
+<p>The sections below decribes the custom form components provided by this module.</p>
+<h3 id="multiselect-components">Multiselect components<a class="headerlink" href="#multiselect-components" title="Permanent link">&para;</a></h3>
+<p>The module exposes two multiselect components: <code>multiselect-async</code> and <code>multiselect</code>. These components are wrappers of the multiselect component from the <a href="https://vue-multiselect.js.org/">vue-multiselect</a> library. The api of the base <code>vue-multiselect</code> component can be found <a href="https://vue-multiselect.js.org/#sub-getting-started">here</a>.</p>
+<h4 id="multiselect-async-component">multiselect-async component<a class="headerlink" href="#multiselect-async-component" title="Permanent link">&para;</a></h4>
+<p>The <code>multiselect-async</code> component allows async loading of options from an api.</p>
+<table>
+<thead>
+<tr>
+<th>Props</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>value</td>
+<td>The holder of the selected options</td>
+</tr>
+<tr>
+<td>api</td>
+<td>The url of the api that the options are coming from</td>
+</tr>
+<tr>
+<td>success</td>
+<td>A boolean representing the validation result</td>
+</tr>
+<tr>
+<td>error-messages</td>
+<td>Messages to show when validation fails</td>
+</tr>
+</tbody>
+</table>
+<p>All the other props are the same as the base multiselect component.</p>
+<h4 id="multiselect-component">multiselect component<a class="headerlink" href="#multiselect-component" title="Permanent link">&para;</a></h4>
+<p>The <code>multiselect</code> component provides a multiselect feature without async loading of options.</p>
+<table>
+<thead>
+<tr>
+<th>Props</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>value</td>
+<td>The holder of the selected options</td>
+</tr>
+<tr>
+<td>success</td>
+<td>A boolean representing the validation result</td>
+</tr>
+<tr>
+<td>error-messages</td>
+<td>Messages to show when validation fails</td>
+</tr>
+</tbody>
+</table>
+<p>All the other props are the same as the base multiselect component.</p>
+<h3 id="bag-component">Bag component<a class="headerlink" href="#bag-component" title="Permanent link">&para;</a></h3>
+<p>The <code>bag</code> component provides a bag behaviour to the form. A bag is a collection of field groups. The bag component behaves similar to the BagPart in Orchard Core.</p>
+<table>
+<thead>
+<tr>
+<th>Props</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>value</td>
+<td>The holder of the selected options over the entire bag</td>
+</tr>
+<tr>
+<td>valueNames</td>
+<td>The name of the value object of each individual field in a field group</td>
+</tr>
+<tr>
+<td>add-button-label</td>
+<td>The label of the add button</td>
+</tr>
+<tr>
+<td>remove-button-label</td>
+<td>The label of the remove button</td>
+</tr>
+<tr>
+<td>success</td>
+<td>A boolean representing the validation result.</td>
+</tr>
+<tr>
+<td>errorMessages</td>
+<td>Messages to show when validation fails</td>
+</tr>
+</tbody>
+</table>
+<p>Below is an example of the <code>value</code> object:</p>
+<div class="highlight"><pre><span></span><code><span class="nx">value</span><span class="o">:</span> <span class="p">[{</span> <span class="nx">field1</span><span class="o">:</span> <span class="s2">&quot;field1Value&quot;</span><span class="p">,</span> <span class="nx">field2</span><span class="o">:</span> <span class="s2">&quot;field2Value&quot;</span> <span class="p">}];</span>
+</code></pre></div>
+<p>The general form of the <code>value</code> object is an array of objects. Each object represents a group of fields. Each proprety represents the value of a specific field.</p>
+<p>The <code>valueNames</code> prop is a string array of the proprety name used in the field group objects in the <code>value</code> object. For example, the <code>valueNames</code> array corresponding to the <code>value</code> object given above is</p>
+<div class="highlight"><pre><span></span><code><span class="nx">valueNames</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;field1&quot;</span><span class="p">,</span> <span class="s2">&quot;field2&quot;</span><span class="p">];</span>
+</code></pre></div>
+<h4 id="bag-component-example">Bag component example<a class="headerlink" href="#bag-component-example" title="Permanent link">&para;</a></h4>
+<p>Here is an example of using the <code>bag</code> component</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">validation-provider</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;Bag&quot;</span> <span class="na">rules</span><span class="o">=</span><span class="s">&quot;required&quot;</span> <span class="na">v-slot</span><span class="o">=</span><span class="s">&quot;{ errors, valid }&quot;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">bag</span>
+    <span class="na">v-model</span><span class="o">=</span><span class="s">&quot;bagValues&quot;</span>
+    <span class="na">:valueNames</span><span class="o">=</span><span class="s">&quot;valueNames&quot;</span>
+    <span class="na">:success</span><span class="o">=</span><span class="s">&quot;valid&quot;</span>
+    <span class="na">:error-messages</span><span class="o">=</span><span class="s">&quot;errors&quot;</span>
+    <span class="na">add-button-label</span><span class="o">=</span><span class="s">&quot;Add&quot;</span>
+    <span class="na">remove-button-label</span><span class="o">=</span><span class="s">&quot;-&quot;</span>
+  <span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">template</span> <span class="err">#</span><span class="na">validations</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">validation-provider</span>
+        <span class="na">rules</span><span class="o">=</span><span class="s">&quot;required&quot;</span>
+        <span class="na">name</span><span class="o">=</span><span class="s">&quot;Field 1&quot;</span>
+      <span class="p">&gt;&lt;/</span><span class="nt">validation-provider</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">validation-provider</span>
+        <span class="na">rules</span><span class="o">=</span><span class="s">&quot;required&quot;</span>
+        <span class="na">name</span><span class="o">=</span><span class="s">&quot;Field 2&quot;</span>
+      <span class="p">&gt;&lt;/</span><span class="nt">validation-provider</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
+
+    <span class="p">&lt;</span><span class="nt">template</span> <span class="err">#</span><span class="na">components</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">v-text-field</span> <span class="na">filled</span><span class="o">=</span><span class="s">&quot;filled&quot;</span> <span class="na">label</span><span class="o">=</span><span class="s">&quot;label&quot;</span><span class="p">&gt;</span> <span class="p">&lt;/</span><span class="nt">v-text-field</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">v-text-field</span> <span class="na">filled</span><span class="o">=</span><span class="s">&quot;filled&quot;</span> <span class="na">label</span><span class="o">=</span><span class="s">&quot;label&quot;</span><span class="p">&gt;</span> <span class="p">&lt;/</span><span class="nt">v-text-field</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
+
+    <span class="p">&lt;</span><span class="nt">template</span> <span class="err">#</span><span class="na">title</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;text-h5 mb-5&quot;</span><span class="p">&gt;</span>
+        Bag
+      <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">bag</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">validation-provider</span><span class="p">&gt;</span>
+</code></pre></div>
+<p>The data object is:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+    <span class="nx">data</span><span class="o">:</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">({</span>
+        <span class="nx">bagValues</span><span class="o">:</span> <span class="p">[{</span> <span class="nx">field1</span><span class="o">:</span> <span class="s2">&quot;field1&quot;</span><span class="p">,</span> <span class="nx">field2</span><span class="o">:</span> <span class="s2">&quot;field2&quot;</span> <span class="p">}],</span>
+        <span class="nx">valueNames</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;field1&quot;</span><span class="p">,</span> <span class="s2">&quot;field2&quot;</span><span class="p">]</span>
+    <span class="p">})</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>The <code>bag</code> component can be wrapped in a <code>validation-provider</code> just like any other field components. </p>
+<p>The <code>bag</code> component has three slots. The <code>validations</code> slots contains the <code>validation-provider</code> for each field in the field groups. The <code>components</code> slot contains the actual field components. The <code>title</code> slot contains components representing the title of the <code>bag</code> component.   </p>
+<p>The components in the <code>validations</code> and <code>components</code> slots are prototypes. For example, whenever the add button is clicked, the components defined in those two slots will be "instantiated". </p>
+<h5 id="some-notes-on-using-the-bag-component">Some notes on using the bag component<a class="headerlink" href="#some-notes-on-using-the-bag-component" title="Permanent link">&para;</a></h5>
+<p>Components defined in the <code>validations</code> and <code>components</code> slots should not contain any children.</p>
+<p>Ignore <code>v-slot="{ errors, valid }"</code> when defining <code>validation-provider</code> components in the <code>validations</code> slot because it is handled by the <code>bag</code> component. </p>
+<p>Ignore <code>v-model</code>, <code>:success</code>, and <code>:error-messages</code> when defining components in the <code>components</code> slots because they are handled by the <code>bag</code> component. </p>
+<h2 id="scripting">Scripting<a class="headerlink" href="#scripting" title="Permanent link">&para;</a></h2>
+<p>Please see the <a href="../../Scripting/#vueforms-module-statcanorchardcorevueforms">scripting</a> documentation.</p>
+<h2 id="workflow-integration">Workflow integration<a class="headerlink" href="#workflow-integration" title="Permanent link">&para;</a></h2>
+<p>Although this module does not require a workflow to handle the form submissions, we still provide a workflow hook to support performing some additional actions.</p>
+<p>Please see the <a href="../../Workflows/#vueforms-statcanorchardcorevueforms">workflow</a> documentation.</p>
+<p>If you do use a workflow, you can use the <code>addError("name", "message");</code> script to add form errors. You can also use the <code>HttpRedirect</code> or <code>HttpResponse</code> workflow tasks to redirect or return a custom set of data to the client. All data returned by the HttpResponse task is available via the <code>form.responseData</code> object. You should also be able to use the <code>debug()</code> scripting method to return debugging data to the client.</p>
+<h2 id="localization-statcanorchardcorevueformslocalized">Localization (<code>StatCan.OrchardCore.VueForms.Localized</code>)<a class="headerlink" href="#localization-statcanorchardcorevueformslocalized" title="Permanent link">&para;</a></h2>
+<p>While you can use Orchard's <a href="https://docs.orchardcore.net/en/dev/docs/reference/modules/ContentLocalization/#localizationpart">LocalizationPart</a> to localize your forms. We suggest you use the <a href="../LocalizedText/">LocalizedText</a> feature to implement i18n in your forms. This part is what we weld to your VueForm content type when you enable this feature.</p>
+<p>The <code>[locale]</code> shortcode is also useful to use in your views to localize simple text fields.</p>
+<h2 id="survey-statcanorchardcorevueformssurvey">Survey (<code>StatCan.OrchardCore.VueForms.Survey</code>)<a class="headerlink" href="#survey-statcanorchardcorevueformssurvey" title="Permanent link">&para;</a></h2>
+<p>Adds <a href="https://surveyjs.io/">SurveyJS</a> support to VueForms.
+This adds a part to the VueForm where you can specify the <a href="https://surveyjs.io/create-survey">SurveyJS creator</a> json object.</p>
+<p>In the Template, simply write this to output a Survey that uses the SurveyJS json object</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">survey</span> <span class="na">:survey</span><span class="o">=</span><span class="s">&quot;survey&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">survey</span><span class="p">&gt;</span>
+</code></pre></div>
+<p>To get the json output of the survey on your server side scripts, simply use the <code>getSurveyData()</code> method.</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="nx">surveyData</span> <span class="o">=</span> <span class="nx">getSurveyData</span><span class="p">();</span>
+<span class="nx">debug</span><span class="p">(</span><span class="s2">&quot;surveyData&quot;</span><span class="p">,</span> <span class="nx">surveyData</span><span class="p">);</span>
+</code></pre></div>
+<h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h2>
+<p>The following example forms are provided with the VueForms module as recipes:</p>
+<ul>
+<li>Contact Form</li>
+<li>UserProfile Form</li>
+</ul>
+<h3 id="userprofile-form">UserProfile Form<a class="headerlink" href="#userprofile-form" title="Permanent link">&para;</a></h3>
+<p>This form allows you to edit a <code>UserProfile</code> Content Type with the <code>CustomUserSettings</code> stereotype. For this form to work, you must enable the <code>Users Change Email</code> feature along with allowing users to update their email in the settings.</p>
+                
+                  
+                    
+
+<hr>
+<div class="md-source-date">
+  <small>
+    
+      Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">November 8, 2021</span>
+      
+    
+  </small>
+</div>
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../Matomo/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Matomo" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Matomo
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../themes/DigitalAdmin/" class="md-footer__link md-footer__link--next" aria-label="Next: DigitalAdmin" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              DigitalAdmin
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy Her Majesty the Queen in Right of Canada, as represented by the Minister of Statistics Canada, 2020
+          </div>
+        
+        
+          Made with
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs
+          </a>
+        
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.tabs"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.fcfe8b6d.min.js", "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.b1047164.min.js"></script>
+      
+    
+  </body>
+</html>
