@@ -66,6 +66,17 @@ namespace StatCan.OrchardCore.VueForms
                .SetDependencies("jQuery", "vuejs", "vee-validate")
                .SetUrl("~/StatCan.OrchardCore.VueForms/Scripts/vue-forms.js", "~/StatCan.OrchardCore.VueForms/Scripts/vue-forms.js")
                .SetVersion("1.0.0");
+
+            _manifest
+               .DefineScript("vue-custom-form-components")
+               .SetDependencies("vuejs")
+               .SetUrl("~/StatCan.OrchardCore.VueForms/Scripts/CustomFormComponents/customFormComponents.umd.min.js", "~/StatCan.OrchardCore.VueForms/Scripts/CustomFormComponents/customFormComponents.umd.js")
+               .SetVersion("1.0.0");
+
+            _manifest
+                .DefineStyle("vue-multiselect")
+                .SetUrl("~/StatCan.OrchardCore.VueForms/Styles/vue-multiselect.min.css", "~/StatCan.OrchardCore.VueForms/Styles/vue-multiselect.min.css")
+                .SetVersion("1.0.0");
         }
 
         public void Configure(ResourceManagementOptions options)
