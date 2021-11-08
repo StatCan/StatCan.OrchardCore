@@ -28,6 +28,7 @@ namespace StatCan.OrchardCore.Radar
 
             // Parts
             public const string RadarEntityPart = "RadarEntityPart";
+            public const string RadarFormPart = "RadarFormPart";
 
             // Pages
             public const string LandingPage = "LandingPage";

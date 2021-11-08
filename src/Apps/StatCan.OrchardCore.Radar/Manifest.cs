@@ -51,6 +51,7 @@ using static StatCan.OrchardCore.Manifest.StatCanManifestConstants;
         "OrchardCore.Widgets",
         "StatCan.OrchardCore.ContentPermissions.Indexing",
         "StatCan.OrchardCore.DisplayHelpers",
-        "StatCan.OrchardCore.Menu"
+        "StatCan.OrchardCore.Menu",
+        "StatCan.OrchardCore.VueForms.Localized"
     }
 )]
