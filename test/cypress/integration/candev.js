@@ -53,24 +53,6 @@ describe("Candev Tests", function() {
     cy.get('button[type=submit]').click();
 
     cy.get('input[name=title]').closest('.v-input').find('.v-messages__message').should('contain', 'The title field is required');
-    cy.get('button[type=button]').eq(2).click({force:true});
-    cy.get('textarea[name=statement]').closest('.v-input').find('.v-messages__message').should('contain', 'The statement field is required');
-    cy.get('button[type=button]').eq(3).click({force:true});
-    cy.get('textarea[name=datasets]').closest('.v-input').find('.v-messages__message').should('contain', 'The datasets field is required');
-    cy.get('button[type=button]').eq(4).click({force:true});
-    cy.get('textarea[name=backgroundInfo]').closest('.v-input').find('.v-messages__message').should('contain', 'The backgroundInfo field is required');
-    cy.get('button[type=button]').eq(5).click({force:true});
-    cy.get('input[name=keywords]').closest('.v-input').find('.v-messages__message').should('contain', 'The keywords field is required');
-    cy.get('button[type=button]').eq(6).click({force:true});
-    cy.get('input[name=organizationNameEn]').closest('.v-input').find('.v-messages__message').should('contain', 'The organizationNameEn field is required');
-    cy.get('input[name=organizationAcronymEn]').closest('.v-input').find('.v-messages__message').should('contain', 'The organizationAcronymEn field is required');
-    cy.get('button[type=button]').eq(7).click({force:true});
-    cy.get('input[name=contactPersonName]').closest('.v-input').find('.v-messages__message').should('contain', 'The contactPersonName field is required');
-    cy.get('input[name=contactPersonEmail]').closest('.v-input').find('.v-messages__message').should('contain', 'The contactPersonEmail field is required');
-    cy.get('input[name=technicalMentorName]').closest('.v-input').find('.v-messages__message').should('contain', 'The technicalMentorName field is required');
-    cy.get('input[name=technicalMentorEmail]').closest('.v-input').find('.v-messages__message').should('contain', 'The technicalMentorEmail field is required');
-    cy.get('input[name=caseSpecialistMentorName]').closest('.v-input').find('.v-messages__message').should('contain', 'The caseSpecialistMentorName field is required');
-    cy.get('input[name=caseSpecialistMentorEmail]').closest('.v-input').find('.v-messages__message').should('contain', 'The caseSpecialistMentorEmail field is required');
   })
 
   it("Challenge Submission: Submit works and displays success message", function() {
