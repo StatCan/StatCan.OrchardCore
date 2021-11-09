@@ -21,9 +21,7 @@
     {
       "name": "feature",
       "disable": [],
-      "enable": [
-        "StatCan.OrchardCore.Radar"
-      ]
+      "enable": ["StatCan.OrchardCore.Radar"]
     },
     {
       "name": "media",
@@ -976,6 +974,13 @@
           "ReturnContentItems": true,
           "Name": "EntityListLucene",
           "Source": "Lucene",
+          "Schema": null
+        },
+        {
+          "Template": "select ContentItemId from RadarFormPartIndex where DisplayText = @type;",
+          "ReturnDocuments": false,
+          "Name": "FormQuerySQL",
+          "Source": "Sql",
           "Schema": null
         }
       ]
