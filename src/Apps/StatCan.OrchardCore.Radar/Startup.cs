@@ -1,4 +1,5 @@
 using System;
+using Fluid;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Options;
@@ -10,10 +11,12 @@ using OrchardCore.Data.Migration;
 using OrchardCore.ResourceManagement;
 using OrchardCore.Liquid;
 using OrchardCore.ContentManagement;
+using OrchardCore.ContentManagement.Display.ContentDisplay;
 using StatCan.OrchardCore.Radar.Filters;
 using StatCan.OrchardCore.Radar.Migrations;
 using StatCan.OrchardCore.Radar.Models;
 using StatCan.OrchardCore.Radar.Indexes;
+using StatCan.OrchardCore.Radar.Drivers;
 
 namespace StatCan.OrchardCore.Radar
 {
@@ -30,7 +33,13 @@ namespace StatCan.OrchardCore.Radar
                 options.Filters.Add(typeof(ResourceInjectionFilter));
             });
 
-            services.AddContentPart<RadarFormPart>();
+            services.Configure<TemplateOptions>(options =>
+            {
+                options.MemberAccessStrategy.Register<RadarFormPart>();
+            });
+
+            services.AddContentPart<RadarFormPart>()
+                        .UseDisplayDriver<RadarFormPartDisplayDriver>();
             services.AddSingleton<IIndexProvider, RadarFormPartIndexProvider>();
             services.AddScoped<IDataMigration, IndexMigrations>();
         }
