@@ -17,6 +17,7 @@ using StatCan.OrchardCore.Radar.Migrations;
 using StatCan.OrchardCore.Radar.Models;
 using StatCan.OrchardCore.Radar.Indexes;
 using StatCan.OrchardCore.Radar.Drivers;
+using StatCan.OrchardCore.Radar.Services;
 
 namespace StatCan.OrchardCore.Radar
 {
@@ -42,6 +43,8 @@ namespace StatCan.OrchardCore.Radar
                         .UseDisplayDriver<RadarFormPartDisplayDriver>();
             services.AddSingleton<IIndexProvider, RadarFormPartIndexProvider>();
             services.AddScoped<IDataMigration, IndexMigrations>();
+
+            services.AddScoped<FormValueProvider>();
         }
 
         public override void Configure(IApplicationBuilder builder, IEndpointRouteBuilder routes, IServiceProvider serviceProvider)

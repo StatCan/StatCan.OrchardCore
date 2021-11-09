@@ -8,6 +8,7 @@ using OrchardCore.DisplayManagement.ModelBinding;
 using OrchardCore.ContentManagement;
 using OrchardCore.DisplayManagement.Views;
 using StatCan.OrchardCore.Radar.Models;
+using StatCan.OrchardCore.Radar.Services;
 
 namespace StatCan.OrchardCore.Radar.Drivers
 {
@@ -15,14 +16,16 @@ namespace StatCan.OrchardCore.Radar.Drivers
     {
         private readonly IHttpContextAccessor _httpContextAccessor;
         private IContentManager _contentManager;
+        private FormValueProvider _formValueProvider;
 
-        public RadarFormPartDisplayDriver(IHttpContextAccessor httpContextAccessor, IContentManager contentManager)
+        public RadarFormPartDisplayDriver(IHttpContextAccessor httpContextAccessor, IContentManager contentManager, FormValueProvider formValueProvider)
         {
             _httpContextAccessor = httpContextAccessor;
             _contentManager = contentManager;
+            _formValueProvider = formValueProvider;
         }
 
-        public override async Task<IDisplayResult> DisplayAsync(RadarFormPart part, BuildPartDisplayContext context)
+        public override IDisplayResult Display(RadarFormPart part, BuildPartDisplayContext context)
         {
             var requestPath = _httpContextAccessor.HttpContext.Request.Path;
 
@@ -34,26 +37,14 @@ namespace StatCan.OrchardCore.Radar.Drivers
                 return null;
             }
 
-            var initialValues = "";
-
-            if (!TryExtractIdFromPath(requestPath, out id))
+            return Initialize<RadarFormPart>(GetDisplayShapeType(context), async model =>
             {
-                // This means the form is for create
-            }
-            else
-            {
-                // This means update
-                var contentItem = await _contentManager.GetAsync(id);
+                TryExtractIdFromPath(requestPath, out id);
 
-                if (contentItem == null)
-                {
-                    _httpContextAccessor.HttpContext.Response.Redirect($"{_httpContextAccessor.HttpContext.Request.PathBase}/not-found", false);
-                }
+                var initialValues = await _formValueProvider.GetInitialValues(entityType, id);
 
-                initialValues = JsonConvert.SerializeObject(contentItem).ToString();
-            }
-
-            return Initialize<RadarFormPart>(GetDisplayShapeType(context), viewModel => viewModel.InitialValues = initialValues).Location("Detail", "Content:10");
+                model.InitialValues = JsonConvert.SerializeObject(initialValues).ToString();
+            }).Location("Detail", "Content:10");
         }
 
         // Tries to extract the type of entity. The path is expected to have the form /{entity}/{create,update}/{id}
