@@ -5,7 +5,7 @@ using YesSql.Indexes;
 
 namespace StatCan.OrchardCore.Candev.Indexes
 {
-    public class HackathonUsersIndex : MapIndex
+    public class CandevUsersIndex : MapIndex
     {
         public string UserId { get; set; }
         public string UserName { get; set; }
@@ -18,21 +18,21 @@ namespace StatCan.OrchardCore.Candev.Indexes
         public string Roles { get; set; }
     }
 
-    public class HackathonUsersIndexProvider : IndexProvider<User>
+    public class CandevUsersIndexProvider : IndexProvider<User>
     {
         private readonly IServiceProvider _serviceProvider;
 
-        public HackathonUsersIndexProvider(IServiceProvider serviceProvider)
+        public CandevUsersIndexProvider(IServiceProvider serviceProvider)
         {
             _serviceProvider = serviceProvider;
         }
 
         public override void Describe(DescribeContext<User> context)
         {
-            context.For<HackathonUsersIndex>()
+            context.For<CandevUsersIndex>()
                 .Map(user =>
                 {
-                    var hackathonUsersIndex = new HackathonUsersIndex
+                    var hackathonUsersIndex = new CandevUsersIndex
                     {
                         UserId = user.UserId,
                         UserName = user.NormalizedUserName,

@@ -21,8 +21,8 @@ namespace StatCan.OrchardCore.Candev
         public override void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<IDataMigration, IndexMigrations>();
-            services.AddScoped<IScopedIndexProvider, HackathonItemsIndexProvider>();
-            services.AddSingleton<IIndexProvider, HackathonUsersIndexProvider>();
+            services.AddScoped<IScopedIndexProvider, CandevItemsIndexProvider>();
+            services.AddSingleton<IIndexProvider, CandevUsersIndexProvider>();
 
             services.AddScoped<ICandevService, CandevService>();
             services.AddScoped<IDataMigration, Migrations>();

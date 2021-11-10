@@ -10,7 +10,7 @@ using YesSql.Indexes;
 
 namespace StatCan.OrchardCore.Candev.Indexes
 {
-    public class HackathonItemsIndex : MapIndex
+    public class CandevItemsIndex : MapIndex
     {
         public string ContentItemId { get; set; }
         public string ContentItemVersionId { get; set; }
@@ -30,26 +30,26 @@ namespace StatCan.OrchardCore.Candev.Indexes
         public string CaseLocalizationSet { get; set; }
     }
 
-    public class HackathonItemsIndexProvider : IndexProvider<ContentItem>, IScopedIndexProvider
+    public class CandevItemsIndexProvider : IndexProvider<ContentItem>, IScopedIndexProvider
     {
         private readonly IServiceProvider _serviceProvider;
         private IContentDefinitionManager _contentDefinitionManager;
 
-        public HackathonItemsIndexProvider(IServiceProvider serviceProvider)
+        public CandevItemsIndexProvider(IServiceProvider serviceProvider)
         {
             _serviceProvider = serviceProvider;
         }
 
         public override void Describe(DescribeContext<ContentItem> context)
         {
-            context.For<HackathonItemsIndex>()
+            context.For<CandevItemsIndex>()
                 .Map(contentItem =>
                 {
                     if (!contentItem.Published && !contentItem.Latest)
                     {
                         return null;
                     }
-                    var indexValue = new HackathonItemsIndex
+                    var indexValue = new CandevItemsIndex
                     {
                         ContentType = contentItem.ContentType,
                         ContentItemId = contentItem.ContentItemId,

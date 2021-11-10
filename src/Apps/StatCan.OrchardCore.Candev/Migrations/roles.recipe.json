@@ -5,12 +5,12 @@
       "Roles": [
         {
           "Name": "Hacker",
-          "Description": "Hackathon Hacker",
+          "Description": "Candev Hacker",
           "Permissions": []
         },
         {
           "Name": "Volunteer",
-          "Description": "Hackathon Volunteer",
+          "Description": "Candev Volunteer",
           "Permissions": []
         },
         {

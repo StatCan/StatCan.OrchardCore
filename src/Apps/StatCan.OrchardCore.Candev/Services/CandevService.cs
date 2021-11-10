@@ -50,22 +50,22 @@ namespace StatCan.OrchardCore.Candev.Services
             {
                 return Task.FromResult<User>(null);
             }
-            return _session.Query<User, HackathonUsersIndex>(x => x.UserId == user.FindFirst(ClaimTypes.NameIdentifier).Value).FirstOrDefaultAsync();
+            return _session.Query<User, CandevUsersIndex>(x => x.UserId == user.FindFirst(ClaimTypes.NameIdentifier).Value).FirstOrDefaultAsync();
         }
 
         public Task<int> GetTeamMemberCount(string teamContentItemId)
         {
-            return _session.QueryIndex<HackathonUsersIndex>(x => x.TeamContentItemId == teamContentItemId).CountAsync();
+            return _session.QueryIndex<CandevUsersIndex>(x => x.TeamContentItemId == teamContentItemId).CountAsync();
         }
 
         public Task<IEnumerable<User>> GetTeamMembers(string teamContentItemId)
         {
-            return _session.Query<User, HackathonUsersIndex>(x => x.TeamContentItemId == teamContentItemId).ListAsync();
+            return _session.Query<User, CandevUsersIndex>(x => x.TeamContentItemId == teamContentItemId).ListAsync();
         }
 
         public async Task<bool> TeamExists(string teamContentItemId)
         {
-            var teamCount = await _session.QueryIndex<HackathonItemsIndex>(x => x.ContentItemId == teamContentItemId && x.ContentType == "Team" && x.Published).CountAsync();
+            var teamCount = await _session.QueryIndex<CandevItemsIndex>(x => x.ContentItemId == teamContentItemId && x.ContentType == "Team" && x.Published).CountAsync();
             return teamCount > 0;
         }
 
@@ -74,7 +74,7 @@ namespace StatCan.OrchardCore.Candev.Services
             var site = await _siteService.GetSiteSettingsAsync();
             var hackathonCustomSettings = site.As<ContentItem>("HackathonCustomSettings");
 
-            var members = await _session.QueryIndex<HackathonUsersIndex>(x => x.TeamContentItemId == teamContentItemId).ListAsync();
+            var members = await _session.QueryIndex<CandevUsersIndex>(x => x.TeamContentItemId == teamContentItemId).ListAsync();
             if (members.Any())
             {
                 if (members.Count() >= (int)hackathonCustomSettings.Content["TeamCustomSettings"]["TeamSize"].Value.Value)
@@ -156,7 +156,7 @@ namespace StatCan.OrchardCore.Candev.Services
         public async Task<bool> LeaveTeam(ModelStateDictionary modelState)
         {
             var user = await GetParticipantAsync();
-            var team = await _session.Query<ContentItem, HackathonItemsIndex>(x => x.ContentItemId == user.GetTeamId() && x.ContentType == "Team" && x.Published).FirstOrDefaultAsync();
+            var team = await _session.Query<ContentItem, CandevItemsIndex>(x => x.ContentItemId == user.GetTeamId() && x.ContentType == "Team" && x.Published).FirstOrDefaultAsync();
             var teamContentItemId = user.GetTeamId();
 
             if (user == null || !user.RoleNames.Contains("Hacker"))
@@ -183,7 +183,7 @@ namespace StatCan.OrchardCore.Candev.Services
                 //if the user was the team captain, make another hacker the team captain
                 if (team.Content.Team?.TeamCaptain?.UserIds?.First == user.UserId)
                 {
-                    var hacker = await _session.Query<User, HackathonUsersIndex>(x => x.TeamContentItemId == teamContentItemId).FirstOrDefaultAsync();
+                    var hacker = await _session.Query<User, CandevUsersIndex>(x => x.TeamContentItemId == teamContentItemId).FirstOrDefaultAsync();
                     team.Content.Team.TeamCaptain = JObject.FromObject(new { UserIds = new string[] { hacker.UserId } });
                     await _contentManager.UpdateAsync(team);
                 }
@@ -222,15 +222,15 @@ namespace StatCan.OrchardCore.Candev.Services
         public async Task<bool> MatchTeams()
         {
             var site = await _siteService.GetSiteSettingsAsync();
-            var hackersWithoutTeams = (await _session.Query<User, HackathonUsersIndex>(x => (x.TeamContentItemId == null || x.TeamContentItemId == "") && x.Roles.Contains("Hacker")).ListAsync()).ToList();
+            var hackersWithoutTeams = (await _session.Query<User, CandevUsersIndex>(x => (x.TeamContentItemId == null || x.TeamContentItemId == "") && x.Roles.Contains("Hacker")).ListAsync()).ToList();
 
             var hackathonCustomSettings = site.As<ContentItem>("HackathonCustomSettings");
             int maxTeamSize = (int)hackathonCustomSettings.Content["TeamCustomSettings"]["TeamSize"].Value.Value;
             await CleanupTeams();
-            var unorderedTeams = await _session.QueryIndex<HackathonItemsIndex>(x => x.ContentType == "Team" && x.Published).ListAsync();
+            var unorderedTeams = await _session.QueryIndex<CandevItemsIndex>(x => x.ContentType == "Team" && x.Published).ListAsync();
             var teams = unorderedTeams.OrderByDescending(x => (GetTeamMemberCount(x.ContentItemId).GetAwaiter().GetResult())).ToList();
 
-            var incompleteTeams = Array.Empty<HackathonItemsIndex>().ToList();
+            var incompleteTeams = Array.Empty<CandevItemsIndex>().ToList();
             int smallestTeamCount = (teams.Count > 0) ? await GetTeamMemberCount(teams.Last().ContentItemId) : 0;
             while (teams.Count > 0)
             {
@@ -306,7 +306,7 @@ namespace StatCan.OrchardCore.Candev.Services
             return true;
         }
 
-        private async Task<bool> CombineTeams(string teamContentId1, HackathonItemsIndex team2)
+        private async Task<bool> CombineTeams(string teamContentId1, CandevItemsIndex team2)
         {
             var team2Members = await GetTeamMembers(team2.ContentItemId);
             var team1 = JObject.FromObject(new { ContentItemIds = new string[] { teamContentId1 } });
@@ -325,7 +325,7 @@ namespace StatCan.OrchardCore.Candev.Services
 
         private async Task<bool> AddHackerToTeam(string teamContentId, string participantContentId)
         {
-            var participant = await _session.Query<User, HackathonUsersIndex>(x => x.UserId == participantContentId).FirstOrDefaultAsync();
+            var participant = await _session.Query<User, CandevUsersIndex>(x => x.UserId == participantContentId).FirstOrDefaultAsync();
 
             var contentItem = await GetSettings(participant, "Hacker");
 
@@ -359,7 +359,7 @@ namespace StatCan.OrchardCore.Candev.Services
 
         private async Task<bool> CleanupTeams()
         {
-            foreach (var team in await _session.Query<ContentItem, HackathonItemsIndex>(x => x.ContentType == "Team").ListAsync())
+            foreach (var team in await _session.Query<ContentItem, CandevItemsIndex>(x => x.ContentType == "Team").ListAsync())
             {
                 var count = await GetTeamMemberCount(team.ContentItemId);
                 if (count == 0)
@@ -372,7 +372,7 @@ namespace StatCan.OrchardCore.Candev.Services
 
         public async Task<bool> RunUpdateHandlers()
         {
-            var allItems = await _session.Query<ContentItem, HackathonItemsIndex>(x => x.Published).ListAsync();
+            var allItems = await _session.Query<ContentItem, CandevItemsIndex>(x => x.Published).ListAsync();
             foreach (var item in allItems)
             {
                 await _contentManager.UpdateAsync(item);
@@ -399,9 +399,9 @@ namespace StatCan.OrchardCore.Candev.Services
 
         public async Task<bool> RemoveTeamMember(string hackerContentItemId, ModelStateDictionary modelState)
         {
-            var participant = await _session.Query<User, HackathonUsersIndex>(x => x.UserId == hackerContentItemId).FirstOrDefaultAsync();
+            var participant = await _session.Query<User, CandevUsersIndex>(x => x.UserId == hackerContentItemId).FirstOrDefaultAsync();
             var user = await GetParticipantAsync();
-            var team = await _session.Query<ContentItem, HackathonItemsIndex>(x => x.ContentItemId == participant.GetTeamId() && x.ContentType == "Team" && x.Published).FirstOrDefaultAsync();
+            var team = await _session.Query<ContentItem, CandevItemsIndex>(x => x.ContentItemId == participant.GetTeamId() && x.ContentType == "Team" && x.Published).FirstOrDefaultAsync();
 
             if (!participant.HasTeam())
             {
@@ -428,7 +428,7 @@ namespace StatCan.OrchardCore.Candev.Services
         {
             var user = await GetParticipantAsync();
 
-            var team = await _session.Query<ContentItem, HackathonItemsIndex>(x => x.ContentItemId == user.GetTeamId() && x.ContentType == "Team" && x.Published).FirstOrDefaultAsync();
+            var team = await _session.Query<ContentItem, CandevItemsIndex>(x => x.ContentItemId == user.GetTeamId() && x.ContentType == "Team" && x.Published).FirstOrDefaultAsync();
             if (team == null || team.ContentType != "Team")
             {
                 modelState.AddModelError("error", T["Team doesn't exist"].Value);
@@ -457,8 +457,8 @@ namespace StatCan.OrchardCore.Candev.Services
         public async Task<bool> AssignCases()
         {
             var site = await _siteService.GetSiteSettingsAsync();
-            var teams = await _session.Query<ContentItem, HackathonItemsIndex>(x => x.ContentType == "Team" && x.Published).ListAsync();
-            var topics = await _session.Query<ContentItem, HackathonItemsIndex>(x => x.ContentType == "Topic" && x.Published).ListAsync();
+            var teams = await _session.Query<ContentItem, CandevItemsIndex>(x => x.ContentType == "Team" && x.Published).ListAsync();
+            var topics = await _session.Query<ContentItem, CandevItemsIndex>(x => x.ContentType == "Topic" && x.Published).ListAsync();
             double maxCases = Math.Ceiling(Convert.ToDouble(teams.Count()) / Convert.ToDouble(topics.Count()));
 
             IDictionary<string, int> casesCount = new Dictionary<string, int>();
@@ -527,7 +527,7 @@ namespace StatCan.OrchardCore.Candev.Services
 
         public async Task<ContentItem> JoinTeam(string teamContentItemId, string userName)
         {
-            var user = await _session.Query<User, HackathonUsersIndex>(x => x.UserName == userName).FirstOrDefaultAsync();
+            var user = await _session.Query<User, CandevUsersIndex>(x => x.UserName == userName).FirstOrDefaultAsync();
 
             if (user == null || !user.RoleNames.Contains("Hacker"))
             {

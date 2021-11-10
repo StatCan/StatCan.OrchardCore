@@ -12,15 +12,15 @@ namespace StatCan.OrchardCore.Candev.Indexes
     {
         public int Create()
         {
-            CreateHackathonItemsIndex();
-            CreateHackathonUsersIndex();
+            CreateCandevItemsIndex();
+            CreateCandevUsersIndex();
 
             return 1;
         }
 
-        private void CreateHackathonItemsIndex()
+        private void CreateCandevItemsIndex()
         {
-            SchemaBuilder.CreateMapIndexTable(typeof(HackathonItemsIndex), table => table
+            SchemaBuilder.CreateMapIndexTable(typeof(CandevItemsIndex), table => table
                 .Column<string>("ContentItemId", c => c.WithLength(26))
                 .Column<string>("ContentItemVersionId", c => c.WithLength(26))
                 .Column<string>("LocalizationSet", c => c.WithLength(26))
@@ -40,30 +40,30 @@ namespace StatCan.OrchardCore.Candev.Indexes
                 null
             );
 
-            SchemaBuilder.AlterTable(nameof(HackathonItemsIndex), table => table
+            SchemaBuilder.AlterTable(nameof(CandevItemsIndex), table => table
                  .CreateIndex("IDX_HackathonItemsIndex_ContentItemId", "ContentItemId", "Latest", "Published", "CreatedUtc")
              );
 
-            SchemaBuilder.AlterTable(nameof(HackathonItemsIndex), table => table
+            SchemaBuilder.AlterTable(nameof(CandevItemsIndex), table => table
                 .CreateIndex("IDX_HackathonItemsIndex_ContentItemVersionId", "ContentItemVersionId")
             );
 
-            SchemaBuilder.AlterTable(nameof(HackathonItemsIndex), table => table
+            SchemaBuilder.AlterTable(nameof(CandevItemsIndex), table => table
                 .CreateIndex("IDX_HackathonItemsIndex_DisplayText", "DisplayText")
             );
 
-            SchemaBuilder.AlterTable(nameof(HackathonItemsIndex), table => table
+            SchemaBuilder.AlterTable(nameof(CandevItemsIndex), table => table
                 .CreateIndex("IDX_HackathonItemsIndex_TeamContentItemId", "TeamContentItemId")
             );
 
-            SchemaBuilder.AlterTable(nameof(HackathonItemsIndex), table => table
+            SchemaBuilder.AlterTable(nameof(CandevItemsIndex), table => table
                 .CreateIndex("IDX_HackathonItemsIndex_CaseLocalizationSet", "CaseLocalizationSet")
             );
         }
 
-        private void CreateHackathonUsersIndex()
+        private void CreateCandevUsersIndex()
         {
-            SchemaBuilder.CreateMapIndexTable(typeof(HackathonUsersIndex), table => table
+            SchemaBuilder.CreateMapIndexTable(typeof(CandevUsersIndex), table => table
                 .Column<string>("UserId", c => c.WithLength(26))
                 .Column<string>("UserName", c => c.WithLength(26))
                 .Column<string>("Email", c => c.Nullable().WithLength(255))

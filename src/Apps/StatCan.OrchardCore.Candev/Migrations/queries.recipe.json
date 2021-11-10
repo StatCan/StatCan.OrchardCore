@@ -8,42 +8,42 @@
           "ReturnDocuments": false,
           "Schema": null,
           "Source": "Sql",
-          "Template": "SELECT * FROM HackathonItemsIndex where Owner = '{{owner}}'"
+          "Template": "SELECT * FROM CandevItemsIndex where Owner = '{{owner}}'"
         },
         {
           "Name": "GetItemsForHackathon",
           "ReturnDocuments": true,
           "Schema": null,
           "Source": "Sql",
-          "Template": "SELECT DocumentId FROM HackathonItemsIndex where ContentType ='{{type}}'"
+          "Template": "SELECT DocumentId FROM CandevItemsIndex where ContentType ='{{type}}'"
         },
         {
           "Name": "GetHackersForTeam",
           "ReturnDocuments": false,
           "Schema": "null",
           "Source": "Sql",
-          "Template": "SELECT * FROM HackathonUsersIndex where TeamContentItemId = '{{teamContentItemId}}'"
+          "Template": "SELECT * FROM CandevUsersIndex where TeamContentItemId = '{{teamContentItemId}}'"
         },
         {
           "Name": "GetScoreEntry",
           "ReturnDocuments": false,
           "Schema": null,
           "Source": "Sql",
-          "Template": "SELECT * FROM HackathonItemsIndex where ContentType ='Score' and TeamContentItemId = '{{teamContentItemId}}' and Owner = '{{owner}}'"
+          "Template": "SELECT * FROM CandevItemsIndex where ContentType ='Score' and TeamContentItemId = '{{teamContentItemId}}' and Owner = '{{owner}}'"
         },
         {
           "Name": "GetTeam",
           "ReturnDocuments": true,
           "Schema": null,
           "Source": "Sql",
-          "Template": "SELECT DocumentId FROM HackathonItemsIndex where ContentType ='Team' and ContentItemId = '{{teamContentItemId}}'"
+          "Template": "SELECT DocumentId FROM CandevItemsIndex where ContentType ='Team' and ContentItemId = '{{teamContentItemId}}'"
         },
         {
           "Name": "GetChallengeSubmissionsForOwner",
           "ReturnDocuments": true,
           "Schema": null,
           "Source": "Sql",
-          "Template": "SELECT DocumentId FROM HackathonItemsIndex WHERE ContentType ='Challenge' AND Owner = '{{owner}}'"
+          "Template": "SELECT DocumentId FROM CandevItemsIndex WHERE ContentType ='Challenge' AND Owner = '{{owner}}'"
         }
       ]
     }
