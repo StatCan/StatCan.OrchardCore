@@ -34,6 +34,22 @@ namespace StatCan.OrchardCore.Radar.Services
             {
                 return await GetTopicInitialValues(id);
             }
+            else if (entityType == "projects")
+            {
+                return await GetProjectInitialValues(id);
+            }
+            else if (entityType == "communities")
+            {
+                return await GetCommunityInitialValues(id);
+            }
+            else if (entityType == "events")
+            {
+                return await GetEventInitialValues(id);
+            }
+            else if (entityType == "proposals")
+            {
+                return await GetProposalInitialValues(id);
+            }
 
             return null;
         }
@@ -75,6 +91,70 @@ namespace StatCan.OrchardCore.Radar.Services
             }
 
             return topicFormModel;
+        }
+
+        private async Task<ProjectFormModel> GetProjectInitialValues(string id)
+        {
+            var projectFormModel = new ProjectFormModel
+            {
+                Name = "",
+                Description = "",
+                Roles = Array.Empty<string>(),
+                Topics = Array.Empty<string>(),
+                Type = "",
+                ProjectMembers = new Dictionary<string, string>()
+            };
+
+            // Retrive existing content based on localization
+
+            return projectFormModel;
+        }
+
+        private async Task<CommunityFormModel> GetCommunityInitialValues(string id)
+        {
+            var communityFormModel = new CommunityFormModel
+            {
+                Name = "",
+                Description = "",
+                Roles = Array.Empty<string>(),
+                Topics = Array.Empty<string>(),
+                Type = "",
+                CommunityMembers = new Dictionary<string, string>()
+            };
+
+            return communityFormModel;
+        }
+
+        private async Task<EventFormModel> GetEventInitialValues(string id)
+        {
+            var EventFormModel = new EventFormModel
+            {
+                Name = "",
+                Description = "",
+                Roles = Array.Empty<string>(),
+                Topics = Array.Empty<string>(),
+                StartDate = DateTime.Today,
+                EndDate = DateTime.Today,
+                EventOrganizer = new Dictionary<string, string>()
+            };
+
+            return EventFormModel;
+        }
+
+        private async Task<ProposalFormModel> GetProposalInitialValues(string id)
+        {
+            var proposalFormModel = new ProposalFormModel
+            {
+                Name = "",
+                Description = "",
+                Roles = Array.Empty<string>(),
+                Topics = Array.Empty<string>(),
+                Type = "",
+            };
+
+            // Retrive existing content based on localization
+
+            return proposalFormModel;
         }
     }
 }
