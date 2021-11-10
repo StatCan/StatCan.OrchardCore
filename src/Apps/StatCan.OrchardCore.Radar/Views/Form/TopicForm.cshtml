@@ -1,3 +1,7 @@
 @model dynamic
 
-@await DisplayAsync(Model)
+@await DisplayAsync(Model.FormValue)
+
+@await DisplayAsync(await New.InitialValueLoader())
+
+@await DisplayAsync(Model.Content)
