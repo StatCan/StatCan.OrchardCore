@@ -44,7 +44,7 @@ namespace StatCan.OrchardCore.Radar.Drivers
                 var initialValues = await _formValueProvider.GetInitialValues(entityType, id);
 
                 model.InitialValues = JsonConvert.SerializeObject(initialValues).ToString();
-            }).Location("Detail", "Content:10");
+            }).Location("Detail", "FormValue:1");
         }
 
         // Tries to extract the type of entity. The path is expected to have the form /{entity}/{create,update}/{id}
