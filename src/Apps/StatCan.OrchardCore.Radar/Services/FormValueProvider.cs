@@ -12,6 +12,9 @@ using OrchardCore.Contents;
 using OrchardCore.Taxonomies.Models;
 using StatCan.OrchardCore.Radar.FormModels;
 
+/*
+    Note: use LocalizationEntries to retrive localized content for form values
+*/
 namespace StatCan.OrchardCore.Radar.Services
 {
     public class FormValueProvider

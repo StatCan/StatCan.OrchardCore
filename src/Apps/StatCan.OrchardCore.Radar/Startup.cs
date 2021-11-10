@@ -84,17 +84,17 @@ namespace StatCan.OrchardCore.Radar
 
             // Form view routes
             routes.MapAreaControllerRoute(
-                name: "TopicFormCreateView",
+                name: "FormCreateView",
                 areaName: "StatCan.OrchardCore.Radar",
-                pattern: "topics/create",
-                defaults: new { controller = "Form", action = "TopicForm" }
+                pattern: "{entityType:regex(^(topics|projects|events|communities)$)}/create",
+                defaults: new { controller = "Form", action = "Form" }
             );
 
             routes.MapAreaControllerRoute(
-                name: "TopicFormUpdateView",
+                name: "FormUpdateView",
                 areaName: "StatCan.OrchardCore.Radar",
-                pattern: "topics/update/{id}",
-                defaults: new { controller = "Form", action = "TopicForm" }
+                pattern: "{entityType:regex(^(topics|projects|events|communities)$)}/update/{id}",
+                defaults: new { controller = "Form", action = "Form" }
             );
 
             // search api endpoints

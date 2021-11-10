@@ -36,11 +36,11 @@ namespace StatCan.OrchardCore.Radar.Controllers
             _updateModelAccessor = updateModelAccessor;
         }
 
-        public async Task<IActionResult> TopicForm(string id)
+        public async Task<IActionResult> Form(string entityType, string id)
         {
             // Builds the form shape. It is assumed that there
             // will ever be 1 form content item
-            var form = await GetFormAsync("Topic Form");
+            var form = await GetFormAsync(GetFormNameFromType(entityType));
 
             if (form == null)
             {
@@ -68,6 +68,32 @@ namespace StatCan.OrchardCore.Radar.Controllers
             var contentItem = await _contentManager.GetAsync(id);
 
             return contentItem;
+        }
+
+        private string GetFormNameFromType(string type)
+        {
+            if(type == "topics")
+            {
+                return "Topic Form";
+            }
+            else if(type == "projects")
+            {
+                return "Project Form";
+            }
+            else if(type == "communities")
+            {
+                return "Community Form";
+            }
+            else if(type == "events")
+            {
+                return "Event Form";
+            }
+            else if(type == "proposals")
+            {
+                return "Proposal Form";
+            }
+
+            return "";
         }
     }
 }
