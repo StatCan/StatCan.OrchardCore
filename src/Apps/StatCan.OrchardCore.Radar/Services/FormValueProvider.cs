@@ -38,33 +38,76 @@ namespace StatCan.OrchardCore.Radar.Services
             _shortcodeService = shortcodeService;
         }
 
-        public async Task<FormModel> GetInitialValues(string entityType, string id)
+        public async Task<FormModel> GetInitialValuesAsync(string entityType, string id)
         {
             if (entityType == "topics")
             {
-                return await GetTopicInitialValues(id);
+                return await GetTopicInitialValuesAsync(id);
             }
             else if (entityType == "projects")
             {
-                return await GetProjectInitialValues(id);
+                return await GetProjectInitialValuesAsync(id);
             }
             else if (entityType == "communities")
             {
-                return await GetCommunityInitialValues(id);
+                return await GetCommunityInitialValuesAsync(id);
             }
             else if (entityType == "events")
             {
-                return await GetEventInitialValues(id);
+                return await GetEventInitialValuesAsync(id);
             }
             else if (entityType == "proposals")
             {
-                return await GetProposalInitialValues(id);
+                return await GetProposalInitialValuesAsync(id);
             }
 
             return null;
         }
 
-        private async Task<TopicFormModel> GetTopicInitialValues(string id)
+        public async Task<FormModel> GetInitialValuesAsync(string entityType, string parentId, string childId)
+        {
+            if(entityType == "artifacts")
+            {
+                return await GetArtifactInitialValuesAsync(parentId, childId);
+            }
+
+            return null;
+        }
+
+        public async Task<ArtifactModel> GetArtifactInitialValuesAsync(string parentId, string childId)
+        {
+            var artifactModel = new ArtifactModel();
+
+            artifactModel = new ArtifactModel()
+            {
+                Name = "",
+                Url = "",
+            };
+
+            if(!(string.IsNullOrEmpty(parentId) || string.IsNullOrEmpty(childId)))
+            {
+                var parentContentItem = await GetLocalizedContentAsync(parentId);
+
+                var artifacts = parentContentItem.Content.Workspace.ContentItems;
+
+                foreach(var artifact in artifacts)
+                {
+                    if (childId == artifact.ContentItemId.ToString())
+                    {
+                        artifactModel.Name = artifact.DisplayText.ToString();
+                        artifactModel.Url = artifact.Artifact.URL.Text.ToString();
+
+                        return artifactModel;
+                    }
+                }
+
+                return null;
+            }
+
+            return artifactModel;
+        }
+
+        private async Task<TopicFormModel> GetTopicInitialValuesAsync(string id)
         {
             // Initialize a new form model
             var topicFormModel = new TopicFormModel();
@@ -94,18 +137,18 @@ namespace StatCan.OrchardCore.Radar.Services
                             topicFormModel.Description = await _shortcodeService.ProcessAsync(topic.Content.Topic.Description.Text.ToString());
                             topicFormModel.Roles = topic.Content.ContentPermissionsPart.Roles.ToObject<string[]>();
 
-                            break;
+                            return topicFormModel;
                         }
                     }
                 }
 
-                return null; /// Here means that a topic with the given id does not exist
+                return null; // Here means that a topic with the given id does not exist
             }
 
             return topicFormModel; // Lack of id means the form is for creation
         }
 
-        private async Task<ProjectFormModel> GetProjectInitialValues(string id)
+        private async Task<ProjectFormModel> GetProjectInitialValuesAsync(string id)
         {
             var projectFormModel = new ProjectFormModel
             {
@@ -147,7 +190,7 @@ namespace StatCan.OrchardCore.Radar.Services
             return projectFormModel;
         }
 
-        private async Task<CommunityFormModel> GetCommunityInitialValues(string id)
+        private async Task<CommunityFormModel> GetCommunityInitialValuesAsync(string id)
         {
             var communityFormModel = new CommunityFormModel
             {
@@ -189,7 +232,7 @@ namespace StatCan.OrchardCore.Radar.Services
             return communityFormModel;
         }
 
-        private async Task<EventFormModel> GetEventInitialValues(string id)
+        private async Task<EventFormModel> GetEventInitialValuesAsync(string id)
         {
             var eventFormModel = new EventFormModel
             {
@@ -235,7 +278,7 @@ namespace StatCan.OrchardCore.Radar.Services
             return eventFormModel;
         }
 
-        private async Task<ProposalFormModel> GetProposalInitialValues(string id)
+        private async Task<ProposalFormModel> GetProposalInitialValuesAsync(string id)
         {
             var proposalFormModel = new ProposalFormModel
             {

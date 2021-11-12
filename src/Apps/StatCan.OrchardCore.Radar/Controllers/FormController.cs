@@ -53,6 +53,24 @@ namespace StatCan.OrchardCore.Radar.Controllers
             return View(formShape);
         }
 
+        // For handling contents that are contained by other contents
+        public async Task<IActionResult> FormContained(string parentType, string childType, string id)
+        {
+            // Builds the form shape. It is assumed that there
+            // will ever be 1 form content item
+            var form = await GetFormAsync(GetFormNameFromType(childType));
+
+            if (form == null)
+            {
+                return Redirect($"{_httpContextAccessor.HttpContext.Request.PathBase}/not-found");
+            }
+
+
+            var formShape = await _contentItemDisplayManager.BuildDisplayAsync(form, _updateModelAccessor.ModelUpdater, "Detail");
+
+            return View("Form", formShape);
+        }
+
         private async Task<ContentItem> GetFormAsync(string formName)
         {
             var query = await _queryManager.GetQueryAsync("FormQuerySQL");
@@ -72,23 +90,27 @@ namespace StatCan.OrchardCore.Radar.Controllers
 
         private string GetFormNameFromType(string type)
         {
-            if(type == "topics")
+            if (type == "topics")
             {
                 return "Topic Form";
             }
-            else if(type == "projects")
+            else if (type == "artifacts")
+            {
+                return "Artifact Form";
+            }
+            else if (type == "projects")
             {
                 return "Project Form";
             }
-            else if(type == "communities")
+            else if (type == "communities")
             {
                 return "Community Form";
             }
-            else if(type == "events")
+            else if (type == "events")
             {
                 return "Event Form";
             }
-            else if(type == "proposals")
+            else if (type == "proposals")
             {
                 return "Proposal Form";
             }

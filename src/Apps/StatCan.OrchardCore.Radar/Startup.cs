@@ -97,6 +97,21 @@ namespace StatCan.OrchardCore.Radar
                 defaults: new { controller = "Form", action = "Form" }
             );
 
+            // Special Cases
+            routes.MapAreaControllerRoute(
+                name: "FormContainedCreateView",
+                areaName: "StatCan.OrchardCore.Radar",
+                pattern: "{parentType:regex(^(projects|events|communities|proposals)$)}/{parentId}/{childType:regex(^(artifacts)$)}/create",
+                defaults: new { controller = "Form", action = "FormContained" }
+            );
+
+            routes.MapAreaControllerRoute(
+                name: "FormContainedUpdateView",
+                areaName: "StatCan.OrchardCore.Radar",
+                pattern: "{parentType:regex(^(projects|events|communities|proposals)$)}/{parentId}/{childType:regex(^(artifacts)$)}/update/{id}",
+                defaults: new { controller = "Form", action = "FormContained" }
+            );
+
             // search api endpoints
             routes.MapAreaControllerRoute(
                 name: "ListSearchAPI",
