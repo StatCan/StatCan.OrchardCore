@@ -41,23 +41,23 @@ namespace StatCan.OrchardCore.Candev.Indexes
             );
 
             SchemaBuilder.AlterTable(nameof(CandevItemsIndex), table => table
-                 .CreateIndex("IDX_HackathonItemsIndex_ContentItemId", "ContentItemId", "Latest", "Published", "CreatedUtc")
+                 .CreateIndex("IDX_CandevItemsIndex_ContentItemId", "ContentItemId", "Latest", "Published", "CreatedUtc")
              );
 
             SchemaBuilder.AlterTable(nameof(CandevItemsIndex), table => table
-                .CreateIndex("IDX_HackathonItemsIndex_ContentItemVersionId", "ContentItemVersionId")
+                .CreateIndex("IDXCandevItemsIndex_ContentItemVersionId", "ContentItemVersionId")
             );
 
             SchemaBuilder.AlterTable(nameof(CandevItemsIndex), table => table
-                .CreateIndex("IDX_HackathonItemsIndex_DisplayText", "DisplayText")
+                .CreateIndex("IDX_CandevItemsIndex_DisplayText", "DisplayText")
             );
 
             SchemaBuilder.AlterTable(nameof(CandevItemsIndex), table => table
-                .CreateIndex("IDX_HackathonItemsIndex_TeamContentItemId", "TeamContentItemId")
+                .CreateIndex("IDX_CandevItemsIndex_TeamContentItemId", "TeamContentItemId")
             );
 
             SchemaBuilder.AlterTable(nameof(CandevItemsIndex), table => table
-                .CreateIndex("IDX_HackathonItemsIndex_CaseLocalizationSet", "CaseLocalizationSet")
+                .CreateIndex("IDX_CandevItemsIndex_CaseLocalizationSet", "CaseLocalizationSet")
             );
         }
 
