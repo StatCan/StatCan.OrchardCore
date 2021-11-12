@@ -20,7 +20,7 @@ namespace StatCan.OrchardCore.Radar.Controllers
 {
     public class FormController : Controller
     {
-        private IContentManager _contentManager;
+        private readonly IContentManager _contentManager;
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly IQueryManager _queryManager;
         private readonly IUpdateModelAccessor _updateModelAccessor;

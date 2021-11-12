@@ -6,7 +6,7 @@ namespace StatCan.OrchardCore.Radar.FormModels
     {
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
-        public Dictionary<string, string> Attendees { get; set; }
-        public Dictionary<string, string> EventOrganizer { get; set; }
+        public ICollection<string> Attendees { get; set; }
+        public ICollection<IDictionary<string, string>> EventOrganizers { get; set; }
     }
 }

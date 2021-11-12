@@ -30,7 +30,6 @@ namespace StatCan.OrchardCore.Radar.Drivers
             var requestPath = _httpContextAccessor.HttpContext.Request.Path;
 
             var entityType = "";
-            var id = "";
 
             if (!IsFormPath(requestPath) || !TryExtractTypeFromPath(requestPath, out entityType))
             {
@@ -39,9 +38,15 @@ namespace StatCan.OrchardCore.Radar.Drivers
 
             return Initialize<RadarFormPart>(GetDisplayShapeType(context), async model =>
             {
-                TryExtractIdFromPath(requestPath, out id);
+                var id = ExtractIdFromPath(requestPath);
 
                 var initialValues = await _formValueProvider.GetInitialValues(entityType, id);
+
+                if (initialValues == null)
+                {
+                    _httpContextAccessor.HttpContext.Response.StatusCode = 404;
+                    _httpContextAccessor.HttpContext.Response.Redirect($"{_httpContextAccessor.HttpContext.Request.PathBase}/not-found", false);
+                }
 
                 model.InitialValues = JsonConvert.SerializeObject(initialValues).ToString();
             }).Location("Detail", "FormValue:1");
@@ -64,20 +69,17 @@ namespace StatCan.OrchardCore.Radar.Drivers
             return true;
         }
 
-        private bool TryExtractIdFromPath(string path, out string id)
+        private string ExtractIdFromPath(string path)
         {
             var values = path.Substring(1).Split("/");
 
             // < 3 means some values are missing
             if (values.Length < 3)
             {
-                id = "";
-                return false;
+                return null;
             }
 
-            id = values[values.Length - 1];
-
-            return true;
+            return values[values.Length - 1];
         }
 
         private bool IsFormPath(string path)
