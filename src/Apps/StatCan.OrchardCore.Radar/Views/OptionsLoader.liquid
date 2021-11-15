@@ -1,0 +1,12 @@
+<script type="application/javascript">
+  function toLowerCaseKey(obj) {
+    return Object.keys(obj).reduce((prev, current) => 
+            ({ ...prev, [current[0].toLowerCase() + current.slice(1)]: obj[current]}), {})
+  }
+
+  const optionHolder = document.querySelector("#option-holder");
+
+  const options = toLowerCaseKey(JSON.parse(optionHolder.dataset.options));
+
+  window.formOptions = options;
+</script>

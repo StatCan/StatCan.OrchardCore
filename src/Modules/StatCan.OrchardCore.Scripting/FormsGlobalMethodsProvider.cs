@@ -49,7 +49,7 @@ namespace StatCan.OrchardCore.Scripting
                     var httpContextAccessor = serviceProvider.GetRequiredService<IHttpContextAccessor>();
                     var sanitizer = serviceProvider.GetRequiredService<IHtmlSanitizerService>();
 
-                    return new JObject(httpContextAccessor.HttpContext.Request.Form.Select(
+                    var obj = new JObject(httpContextAccessor.HttpContext.Request.Form.Select(
                       field =>
                       {
                           var arr = field.Value.ToArray();
@@ -60,6 +60,8 @@ namespace StatCan.OrchardCore.Scripting
                           return new JProperty(field.Key, JArray.FromObject(arr.Select(o => sanitizer.Sanitize(o))));
                       }
                     ).ToArray());
+
+                    return obj;
                 }
                 )
             };

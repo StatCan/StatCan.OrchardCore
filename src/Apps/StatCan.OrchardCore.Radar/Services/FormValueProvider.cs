@@ -7,17 +7,9 @@ using OrchardCore.ContentManagement;
 using OrchardCore.ContentLocalization;
 using OrchardCore.Queries;
 using OrchardCore.Shortcodes.Services;
-using OrchardCore.ContentManagement.Display;
-using OrchardCore.DisplayManagement.ModelBinding;
-using Etch.OrchardCore.ContentPermissions.Services;
-using OrchardCore.ContentLocalization.Models;
-using OrchardCore.Contents;
 using OrchardCore.Taxonomies.Models;
 using StatCan.OrchardCore.Radar.FormModels;
 
-/*
-    Note: use LocalizationEntries to retrive localized content for form values
-*/
 namespace StatCan.OrchardCore.Radar.Services
 {
     public class FormValueProvider
@@ -80,6 +72,7 @@ namespace StatCan.OrchardCore.Radar.Services
 
             artifactModel = new ArtifactModel()
             {
+                Id ="",
                 Name = "",
                 Url = "",
             };
@@ -94,6 +87,7 @@ namespace StatCan.OrchardCore.Radar.Services
                 {
                     if (childId == artifact.ContentItemId.ToString())
                     {
+                        artifactModel.Id = artifact.ContentItemId.ToString();
                         artifactModel.Name = artifact.DisplayText.ToString();
                         artifactModel.Url = artifact.Artifact.URL.Text.ToString();
 
@@ -114,6 +108,7 @@ namespace StatCan.OrchardCore.Radar.Services
 
             topicFormModel = new TopicFormModel()
             {
+                Id = "",
                 Name = "",
                 Description = "",
                 Roles = Array.Empty<string>()
@@ -133,6 +128,7 @@ namespace StatCan.OrchardCore.Radar.Services
                     {
                         if (id.Equals(topic.ContentItemId))
                         {
+                            topicFormModel.Id = topic.ContentItemId;
                             topicFormModel.Name = await _shortcodeService.ProcessAsync(topic.DisplayText);
                             topicFormModel.Description = await _shortcodeService.ProcessAsync(topic.Content.Topic.Description.Text.ToString());
                             topicFormModel.Roles = topic.Content.ContentPermissionsPart.Roles.ToObject<string[]>();
@@ -152,6 +148,7 @@ namespace StatCan.OrchardCore.Radar.Services
         {
             var projectFormModel = new ProjectFormModel
             {
+                Id = "",
                 Name = "",
                 Description = "",
                 Roles = Array.Empty<string>(),
@@ -194,6 +191,7 @@ namespace StatCan.OrchardCore.Radar.Services
         {
             var communityFormModel = new CommunityFormModel
             {
+                Id = "",
                 Name = "",
                 Description = "",
                 Roles = Array.Empty<string>(),
@@ -236,6 +234,7 @@ namespace StatCan.OrchardCore.Radar.Services
         {
             var eventFormModel = new EventFormModel
             {
+                Id = "",
                 Name = "",
                 Description = "",
                 Roles = Array.Empty<string>(),
@@ -282,6 +281,7 @@ namespace StatCan.OrchardCore.Radar.Services
         {
             var proposalFormModel = new ProposalFormModel
             {
+                Id = "",
                 Name = "",
                 Description = "",
                 Roles = Array.Empty<string>(),
@@ -324,6 +324,7 @@ namespace StatCan.OrchardCore.Radar.Services
         // Hepler method to get the values from RadarEntityPart
         private async Task GetValuesFromRadarEntityPartAsync(EntityFormModel entityFormModel, ContentItem contentItem)
         {
+            entityFormModel.Id = contentItem.ContentItemId;
             entityFormModel.Name = contentItem.DisplayText;
             entityFormModel.Description = contentItem.Content.RadarEntityPart.Description.Text.ToString();
             entityFormModel.Roles = contentItem.Content.ContentPermissionsPart.Roles.ToObject<string[]>();

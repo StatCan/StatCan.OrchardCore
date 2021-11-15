@@ -9,7 +9,7 @@ using YesSql.Indexes;
 using OrchardCore.Modules;
 using OrchardCore.Data.Migration;
 using OrchardCore.ResourceManagement;
-using OrchardCore.Liquid;
+using OrchardCore.Scripting;
 using OrchardCore.ContentManagement;
 using OrchardCore.ContentManagement.Display.ContentDisplay;
 using StatCan.OrchardCore.Radar.Filters;
@@ -18,6 +18,7 @@ using StatCan.OrchardCore.Radar.Models;
 using StatCan.OrchardCore.Radar.Indexes;
 using StatCan.OrchardCore.Radar.Drivers;
 using StatCan.OrchardCore.Radar.Services;
+using StatCan.OrchardCore.Radar.Scripting;
 
 namespace StatCan.OrchardCore.Radar
 {
@@ -45,6 +46,9 @@ namespace StatCan.OrchardCore.Radar
             services.AddScoped<IDataMigration, IndexMigrations>();
 
             services.AddScoped<FormValueProvider>();
+            services.AddScoped<FormOptionsProvider>();
+
+            services.AddSingleton<IGlobalMethodProvider, RadarFormMethodsProvider>();
         }
 
         public override void Configure(IApplicationBuilder builder, IEndpointRouteBuilder routes, IServiceProvider serviceProvider)

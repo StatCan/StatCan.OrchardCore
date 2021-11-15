@@ -3,7 +3,6 @@ using Newtonsoft.Json;
 using Microsoft.AspNetCore.Http;
 using OrchardCore.ContentManagement.Display.ContentDisplay;
 using OrchardCore.ContentManagement.Display.Models;
-using OrchardCore.ContentManagement;
 using OrchardCore.DisplayManagement.Views;
 using StatCan.OrchardCore.Radar.Models;
 using StatCan.OrchardCore.Radar.Services;
@@ -14,14 +13,14 @@ namespace StatCan.OrchardCore.Radar.Drivers
     public class RadarFormPartDisplayDriver : ContentPartDisplayDriver<RadarFormPart>
     {
         private readonly IHttpContextAccessor _httpContextAccessor;
-        private IContentManager _contentManager;
-        private FormValueProvider _formValueProvider;
+        private readonly FormValueProvider _formValueProvider;
+        private readonly FormOptionsProvider _formOptionsProvider;
 
-        public RadarFormPartDisplayDriver(IHttpContextAccessor httpContextAccessor, IContentManager contentManager, FormValueProvider formValueProvider)
+        public RadarFormPartDisplayDriver(IHttpContextAccessor httpContextAccessor, FormValueProvider formValueProvider, FormOptionsProvider formOptionsProvider)
         {
             _httpContextAccessor = httpContextAccessor;
-            _contentManager = contentManager;
             _formValueProvider = formValueProvider;
+            _formOptionsProvider = formOptionsProvider;
         }
 
         public override IDisplayResult Display(RadarFormPart part, BuildPartDisplayContext context)
@@ -35,7 +34,7 @@ namespace StatCan.OrchardCore.Radar.Drivers
             {
                 bool pathResolved = TryExtractParentAndChildTypeFromPath(requestPath, out parentType, out entityType) || TryExtractTypeFromPath(requestPath, out entityType);
 
-                if(!pathResolved)
+                if (!pathResolved)
                 {
                     return null;
                 }
@@ -68,7 +67,10 @@ namespace StatCan.OrchardCore.Radar.Drivers
                     _httpContextAccessor.HttpContext.Response.Redirect($"{_httpContextAccessor.HttpContext.Request.PathBase}/not-found", false);
                 }
 
+                var options = await _formOptionsProvider.GetOptionsAsync(entityType);
+
                 model.InitialValues = JsonConvert.SerializeObject(initialValues).ToString();
+                model.Options = JsonConvert.SerializeObject(options).ToString();
             }).Location("Detail", "FormValue:1");
         }
 
