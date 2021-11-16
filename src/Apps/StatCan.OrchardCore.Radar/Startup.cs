@@ -124,12 +124,25 @@ namespace StatCan.OrchardCore.Radar
                 defaults: new { controller = "List", action = "Search" }
             );
 
-            // search api endpoints
             routes.MapAreaControllerRoute(
                 name: "GlobalSearchAPI",
                 areaName: "StatCan.OrchardCore.Radar",
                 pattern: "api/radar/global-search",
                 defaults: new { controller = "List", action = "GlobalSearch" }
+            );
+
+            routes.MapAreaControllerRoute(
+                name: "FormTopicSearchAPI",
+                areaName: "StatCan.OrchardCore.Radar",
+                pattern: "api/radar/topic-search",
+                defaults: new { controller = "Form", action = "TopicSearch" }
+            );
+
+            routes.MapAreaControllerRoute(
+                name: "FormUserSearchAPI",
+                areaName: "StatCan.OrchardCore.Radar",
+                pattern: "api/radar/user-search",
+                defaults: new { controller = "Form", action = "UserSearch" }
             );
         }
     }

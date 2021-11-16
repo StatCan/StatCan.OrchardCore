@@ -58,7 +58,7 @@ namespace StatCan.OrchardCore.Radar.Services
 
         public async Task<FormModel> GetInitialValuesAsync(string entityType, string parentId, string childId)
         {
-            if(entityType == "artifacts")
+            if (entityType == "artifacts")
             {
                 return await GetArtifactInitialValuesAsync(parentId, childId);
             }
@@ -72,18 +72,18 @@ namespace StatCan.OrchardCore.Radar.Services
 
             artifactModel = new ArtifactModel()
             {
-                Id ="",
+                Id = "",
                 Name = "",
                 Url = "",
             };
 
-            if(!(string.IsNullOrEmpty(parentId) || string.IsNullOrEmpty(childId)))
+            if (!(string.IsNullOrEmpty(parentId) || string.IsNullOrEmpty(childId)))
             {
                 var parentContentItem = await GetLocalizedContentAsync(parentId);
 
                 var artifacts = parentContentItem.Content.Workspace.ContentItems;
 
-                foreach(var artifact in artifacts)
+                foreach (var artifact in artifacts)
                 {
                     if (childId == artifact.ContentItemId.ToString())
                     {
@@ -153,8 +153,8 @@ namespace StatCan.OrchardCore.Radar.Services
                 Description = "",
                 Roles = Array.Empty<string>(),
                 Topics = Array.Empty<string>(),
-                Type = "",
-                ProjectMembers = new LinkedList<IDictionary<string, string>>(),
+                Type = new Dictionary<string, string>(),
+                ProjectMembers = new LinkedList<IDictionary<string, object>>(),
                 RelatedEntities = new LinkedList<string>(),
             };
 
@@ -168,15 +168,23 @@ namespace StatCan.OrchardCore.Radar.Services
                 }
 
                 await GetValuesFromRadarEntityPartAsync(projectFormModel, contentItem);
-                projectFormModel.Type = contentItem.Content.Project.Type.TermContentItemIds.ToObject<string[]>()[0];
+                projectFormModel.Type = new Dictionary<string, string>()
+                {
+                    {"value", contentItem.Content.Project.Type.TermContentItemIds.ToObject<string[]>()[0]},
+                    {"label", contentItem.Content.Project.Type.TagNames.ToObject<string[]>()[0]}
+                };
 
                 var projectMembers = contentItem.Content.ProjectMember.ContentItems;
 
                 foreach (var member in projectMembers)
                 {
-                    var user = new Dictionary<string, string>()
+                    var user = new Dictionary<string, object>()
                     {
-                        {"userId", member.ProjectMember.Member.UserIds.ToObject<string[]>()[0]},
+                        {"user", new Dictionary<string, string>()
+                        {
+                            {"value", member.ProjectMember.Member.UserIds.ToObject<string[]>()[0]},
+                            {"label", member.ProjectMember.Member.UserNames.ToObject<string[]>()[0]}
+                        }},
                         {"role", await _shortcodeService.ProcessAsync(member.ProjectMember.Role.Text.ToString())}
                     };
 

@@ -30,16 +30,18 @@ export default {
   },
   methods: {
     asyncFind: debounce(function(query) {
-      this.isLoading = true;
-      fetch(this.api + query, {
-        method: "GET",
-        credentials: "include"
-      })
-        .then(res => res.json())
-        .then(data => {
-          this.options = data;
-          this.isLoading = false;
-        });
+      if (query.length > 0) {
+        this.isLoading = true;
+        fetch(this.api + query, {
+          method: "GET",
+          credentials: "include"
+        })
+          .then(res => res.json())
+          .then(data => {
+            this.options = data;
+            this.isLoading = false;
+          });
+      }
     }, 1000)
   },
   watch: {

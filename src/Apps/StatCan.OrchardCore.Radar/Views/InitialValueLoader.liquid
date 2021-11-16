@@ -1,7 +1,7 @@
 <script type="application/javascript">
   function toLowerCaseKey(obj) {
     return Object.keys(obj).reduce((prev, current) => 
-            ({ ...prev, [current.toLowerCase()]: obj[current]}), {})
+            ({ ...prev, [current[0].toLowerCase() + current.slice(1)]: obj[current]}), {})
   }
 
   const valueHolder = document.querySelector("#value-holder");

@@ -950,12 +950,12 @@ if (typeof window !== 'undefined') {
 // Indicate to webpack that this file can be concatenated
 /* harmony default export */ var setPublicPath = (null);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"b1143254-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/Modules/StatCan.OrchardCore.VueForms/Assets/components/Multiselect/MultiselectAsync.vue?vue&type=template&id=c80f9850&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"b1143254-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/Modules/StatCan.OrchardCore.VueForms/Assets/components/Multiselect/MultiselectAsync.vue?vue&type=template&id=5d45142a&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('multiselect-base',_vm._b({attrs:{"options":_vm.options,"loading":_vm.isLoading,"success":_vm.success,"error-messages":_vm.errorMessages},on:{"search-change":_vm.asyncFind},model:{value:(_vm.internalValue),callback:function ($$v) {_vm.internalValue=$$v},expression:"internalValue"}},'multiselect-base',_vm.$attrs,false))}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/Modules/StatCan.OrchardCore.VueForms/Assets/components/Multiselect/MultiselectAsync.vue?vue&type=template&id=c80f9850&
+// CONCATENATED MODULE: ./src/Modules/StatCan.OrchardCore.VueForms/Assets/components/Multiselect/MultiselectAsync.vue?vue&type=template&id=5d45142a&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"b1143254-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/Modules/StatCan.OrchardCore.VueForms/Assets/components/Multiselect/MultiselectBase.vue?vue&type=template&id=9df49b68&
 var MultiselectBasevue_type_template_id_9df49b68_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('multiselect',_vm._g(_vm._b({},'multiselect',_vm.$attrs,false),_vm.$listeners)),_c('div',{staticClass:"px-3"},[_c('error-message',{attrs:{"valid":_vm.success,"error-messages":_vm.errorMessages}})],1)],1)}
@@ -1199,16 +1199,18 @@ var debounce_default = /*#__PURE__*/__webpack_require__.n(debounce);
     asyncFind: debounce_default()(function (query) {
       var _this = this;
 
-      this.isLoading = true;
-      fetch(this.api + query, {
-        method: "GET",
-        credentials: "include"
-      }).then(function (res) {
-        return res.json();
-      }).then(function (data) {
-        _this.options = data;
-        _this.isLoading = false;
-      });
+      if (query.length > 0) {
+        this.isLoading = true;
+        fetch(this.api + query, {
+          method: "GET",
+          credentials: "include"
+        }).then(function (res) {
+          return res.json();
+        }).then(function (data) {
+          _this.options = data;
+          _this.isLoading = false;
+        });
+      }
     }, 1000)
   },
   watch: {
