@@ -91,6 +91,7 @@ namespace StatCan.OrchardCore.Radar.Migrations
                     .WithSettings(new AutoroutePartSettings
                     {
                         Pattern = "{{ ContentItem.ContentItemId }}",
+                        ManageContainedItemRoutes = true,
                     })
                 )
                 .WithPart("ContentPermissionsPart", part => part

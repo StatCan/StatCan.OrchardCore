@@ -902,6 +902,192 @@
             "Zone": "Footer",
             "Layer": "LandingPage"
           }
+        },
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentItemVersionId": null,
+          "ContentType": "Form",
+          "DisplayText": "Topic Form",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": null,
+          "PublishedUtc": null,
+          "CreatedUtc": null,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "Form": {},
+          "RadarFormPart": {
+            "InitialValues": null,
+            "Options": null
+          },
+          "TitlePart": {
+            "Title": "Topic Form"
+          },
+          "FlowPart": {
+            "Widgets": [
+              {
+                "ContentItemId": "4e4vrxqn8zphz70091ckbd45x0",
+                "ContentItemVersionId": null,
+                "ContentType": "VueFormReference",
+                "DisplayText": null,
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": "2021-11-15T15:14:07.4591744Z",
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": null,
+                "Author": "admin",
+                "VueFormReference": {
+                  "FormReference": {
+                    "ContentItemIds": ["4g0wbrpyppkqd3z1kjbv5jbdnj"]
+                  }
+                },
+                "FlowMetadata": {
+                  "Alignment": 3,
+                  "Size": 100
+                }
+              }
+            ]
+          }
+        },
+        {
+          "ContentItemId": "4g0wbrpyppkqd3z1kjbv5jbdnj",
+          "ContentItemVersionId": "4wrr2teh4b9rq04aaf5d6r19dw",
+          "ContentType": "VueForm",
+          "DisplayText": "Topic Form",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": "2021-11-16T16:54:44.1082409Z",
+          "PublishedUtc": "2021-11-16T16:54:44.1156195Z",
+          "CreatedUtc": "2021-11-15T15:11:55.7612707Z",
+          "Owner": "4v9jzfvgjv0mt544es6jmd85dc",
+          "Author": "admin",
+          "TitlePart": {
+            "Title": "Topic Form"
+          },
+          "VueForm": {
+            "Template": {
+              "Text": "<v-container>\r\n    <v-card-text>\r\n        <v-row justify=\"center\">\r\n            <v-col cols=\"8\">\r\n                <validation-provider name=\"{{ \"nameLabel\" | localize | downcase }}\" rules=\"required\"\r\n                    v-slot=\"{ errors, valid }\">\r\n                    <v-text-field v-model=\"name\" :success=\"valid\" :error-messages=\"errors\" filled=\"filled\" label=\"{{ \"nameLabel\" | localize }}\"></v-text-field>\r\n                </validation-provider>\r\n            </v-col>\r\n            <v-col cols=\"8\">\r\n                <validation-provider name=\"{{ \"descriptionLabel\" | localize | downcase }}\" rules=\"required\"\r\n                    v-slot=\"{ errors, valid }\">\r\n                    <v-textarea v-model=\"description\" :success=\"valid\" :error-messages=\"errors\" counter=\"true\"\r\n                        filled=\"filled\" label=\"{{ \"descriptionLabel\" | localize }}\" rows=\"5\">\r\n                    </v-textarea>\r\n                </validation-provider>\r\n            </v-col>\r\n            <v-col cols=\"8\">\r\n                <h4>{{ \"permissionsLabel\" | localize }}</h5>\r\n                <validation-provider name=\"{{ \"permissionsLabel\" | localize | downcase }}\" rules=\"required\"\r\n                    v-slot=\"{ errors, valid }\">\r\n                    <multiselect v-model=\"roles\" :options=\"roleOptions\" :success=\"valid\" :error-messages=\"errors\"\r\n                        :multiple=\"true\" />\r\n                </validation-provider>\r\n            </v-col>\r\n            <v-col cols=\"8\">\r\n                <v-alert type=\"success\" v-if=\"form.successMessage\">\r\n                    {% raw %}{{ form.successMessage }}{% endraw %}\r\n                </v-alert>\r\n                <v-alert type=\"error\" v-if=\"form.serverValidationMessage\">\r\n                    {% raw %}{{ form.serverValidationMessage[0] }}{% endraw %}\r\n                </v-alert>\r\n            </v-col>\r\n            <v-col cols=\"8\">\r\n                <v-btn type=\"submit\" depressed block @click=\"formHandleSubmit\" :disabled=\"form.submitting\">{{\r\n                    \"submitLabel\" | localize }}</v-btn>\r\n            </v-col>\r\n        </v-row>\r\n    </v-card-text>\r\n</v-container>"
+            },
+            "RenderAs": {
+              "Text": null
+            },
+            "Disabled": {
+              "Value": false
+            },
+            "Debug": {
+              "Value": true
+            },
+            "DisabledHtml": {
+              "Html": ""
+            },
+            "SuccessMessage": {
+              "Text": null
+            }
+          },
+          "AliasPart": {
+            "Alias": "topic-form"
+          },
+          "VueFormScripts": {
+            "ClientInit": {
+              "Text": null
+            },
+            "ComponentOptions": {
+              "Text": "{\r\n  data: () => ({\r\n    ...window.formValues,\r\n    ...window.formOptions\r\n  })\r\n}"
+            },
+            "OnValidation": {
+              "Text": null
+            },
+            "OnSubmitted": {
+              "Text": "var data = requestFormAsJsonObject();\r\n\r\nvar id = createOrUpdateTopic(data.id, data);\r\n\r\nif(id !== null)\r\n{\r\n    httpRedirect(`~/topics/${id}`);\r\n}"
+            }
+          },
+          "ContentPermissionsPart": {
+            "Enabled": false,
+            "Roles": []
+          },
+          "LocalizedTextPart": {
+            "Data": [
+              {
+                "Name": "nameLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Nom"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Name"
+                  }
+                ]
+              },
+              {
+                "Name": "descriptionLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Description"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Description"
+                  }
+                ]
+              },
+              {
+                "Name": "permissionsLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Autorisations"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Permissions"
+                  }
+                ]
+              },
+              {
+                "Name": "submitLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Soumettre"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Submit"
+                  }
+                ]
+              },
+              {
+                "Name": "successMessage",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Vôtre message a été reçu avec succès"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Your contact request was successfully received"
+                  }
+                ]
+              },
+              {
+                "Name": "serverValidationError",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Une erreure est survenue."
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "An error occured."
+                  }
+                ]
+              }
+            ]
+          }
         }
       ]
     },

@@ -1,5 +1,7 @@
 @model dynamic
 
+<h1 class="text-center">@Model.Properties["ContentItem"]</h3>>
+
 @await DisplayAsync(Model.FormValue)
 
 @await DisplayAsync(await New.InitialValueLoader())
