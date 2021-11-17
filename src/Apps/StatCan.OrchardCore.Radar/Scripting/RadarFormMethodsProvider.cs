@@ -19,6 +19,7 @@ namespace StatCan.OrchardCore.Radar.Scripting
     public class RadarFormMethodsProvider : IGlobalMethodProvider
     {
         private readonly GlobalMethod _createOrUpdateTopic;
+        private readonly GlobalMethod _convertProjectToContent;
         // private readonly GlobalMethod _createProject;
         // private readonly GlobalMethod _createEvent;
         // private readonly GlobalMethod _createProposal;
@@ -37,7 +38,7 @@ namespace StatCan.OrchardCore.Radar.Scripting
                     rawValues.Remove("__RequestVerificationToken");
 
                     // Array having a single value gets converted to JValue instead of JArray so we need to convert it back
-                    if(rawValues["roles"] is JValue)
+                    if (rawValues["roles"] is JValue)
                     {
                         var roleArray = new JArray();
                         roleArray.Add(rawValues["roles"]);
@@ -145,11 +146,23 @@ namespace StatCan.OrchardCore.Radar.Scripting
                     return null;
                 })
             };
+
+            _convertProjectToContent = new GlobalMethod()
+            {
+                Name = "convertProjectToContent",
+                Method = serviceProvider => (Func<string, JObject, JObject>)((id, values) =>
+                {
+
+                    ProjectFormModel projectFormModel = ConvertRawFormValues(values);
+
+                    return null;
+                })
+            };
         }
 
         public IEnumerable<GlobalMethod> GetMethods()
         {
-            return new[] { _createOrUpdateTopic };
+            return new[] { _createOrUpdateTopic, _convertProjectToContent };
         }
 
         private string CreateLocalizedString(string content, string currentCulture)
@@ -165,6 +178,70 @@ namespace StatCan.OrchardCore.Radar.Scripting
             }
 
             return sb.ToString();
+        }
+
+        private ProjectFormModel ConvertRawFormValues(JObject rawValues)
+        {
+            rawValues.Remove("roleOptions");
+            rawValues.Remove("__RequestVerificationToken");
+            rawValues.Remove("visibilityOptions");
+            rawValues.Remove("typeOptions[label]");
+            rawValues.Remove("typeOptions[value]");
+            rawValues.Remove("valueNames");
+
+            // Convert to project form model
+            // Normalize project member
+            JArray projectMembers = new JArray();
+            for (var i = 0; i < rawValues["projectMembers[role]"].Count(); i++)
+            {
+                var memberObject = JObject.FromObject(
+                     new
+                     {
+                         role = rawValues["projectMembers[role]"][i],
+                         user = new
+                         {
+                             label = rawValues["projectMembers[user][label]"][i],
+                             value = rawValues["projectMembers[user][value]"][i]
+                         }
+                     }
+                );
+
+                projectMembers.Add(memberObject);
+            }
+            rawValues.Remove("projectMembers[role]");
+            rawValues.Remove("projectMembers[user][label]");
+            rawValues.Remove("projectMembers[user][value]");
+            rawValues["projectMembers"] = projectMembers;
+
+            JArray topics = new JArray();
+            for (var i = 0; i < rawValues["topics[label]"].Count(); i++)
+            {
+                var topicObject = JObject.FromObject(
+                    new
+                    {
+                        value = rawValues["topics[value]"][i],
+                        label = rawValues["topics[label]"][i]
+                    }
+                );
+
+                topics.Add(topicObject);
+            }
+            rawValues.Remove("topics[label]");
+            rawValues.Remove("topics[value]");
+            rawValues["topics"] = topics;
+
+            var type = JObject.FromObject(
+                new
+                {
+                    label = rawValues["type[label]"],
+                    value = rawValues["type[value"]
+                }
+            );
+            rawValues.Remove("type[label]");
+            rawValues.Remove("type[value]");
+            rawValues["type"] = type;
+
+            return JsonConvert.DeserializeObject<ProjectFormModel>(rawValues.ToString());
         }
 
         private IDictionary<string, string> ExtractLocalizedString(string localizedString)

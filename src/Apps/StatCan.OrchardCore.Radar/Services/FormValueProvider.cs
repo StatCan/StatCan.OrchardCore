@@ -152,10 +152,11 @@ namespace StatCan.OrchardCore.Radar.Services
                 Name = "",
                 Description = "",
                 Roles = Array.Empty<string>(),
-                Topics = Array.Empty<string>(),
+                Topics = new LinkedList<IDictionary<string, string>>(),
                 Type = new Dictionary<string, string>(),
                 ProjectMembers = new LinkedList<IDictionary<string, object>>(),
                 RelatedEntities = new LinkedList<string>(),
+                Visibility = "",
             };
 
             if (!string.IsNullOrEmpty(id))
@@ -203,10 +204,11 @@ namespace StatCan.OrchardCore.Radar.Services
                 Name = "",
                 Description = "",
                 Roles = Array.Empty<string>(),
-                Topics = Array.Empty<string>(),
+                Topics = new LinkedList<IDictionary<string, string>>(),
                 Type = "",
                 RelatedEntities = new LinkedList<string>(),
                 CommunityMembers = new LinkedList<IDictionary<string, string>>(),
+                Visibility = "",
             };
 
             if (!string.IsNullOrEmpty(id))
@@ -246,12 +248,13 @@ namespace StatCan.OrchardCore.Radar.Services
                 Name = "",
                 Description = "",
                 Roles = Array.Empty<string>(),
-                Topics = Array.Empty<string>(),
+                Topics = new LinkedList<IDictionary<string, string>>(),
                 StartDate = DateTime.Today,
                 EndDate = DateTime.Today,
                 Attendees = new LinkedList<string>(),
                 EventOrganizers = new LinkedList<IDictionary<string, string>>(),
                 RelatedEntities = new LinkedList<string>(),
+                Visibility = "",
             };
 
             if (!string.IsNullOrEmpty(id))
@@ -293,9 +296,10 @@ namespace StatCan.OrchardCore.Radar.Services
                 Name = "",
                 Description = "",
                 Roles = Array.Empty<string>(),
-                Topics = Array.Empty<string>(),
+                Topics = new LinkedList<IDictionary<string, string>>(),
                 Type = "",
                 RelatedEntities = new LinkedList<string>(),
+                Visibility = "",
             };
 
             if (!string.IsNullOrEmpty(id))
@@ -336,7 +340,21 @@ namespace StatCan.OrchardCore.Radar.Services
             entityFormModel.Name = contentItem.DisplayText;
             entityFormModel.Description = contentItem.Content.RadarEntityPart.Description.Text.ToString();
             entityFormModel.Roles = contentItem.Content.ContentPermissionsPart.Roles.ToObject<string[]>();
-            entityFormModel.Topics = contentItem.Content.RadarEntityPart.Topics.TermContentItemIds.ToObject<string[]>();
+            entityFormModel.Visibility = await GetVisibilityStringAsync(contentItem.Published);
+
+            var topicIds = contentItem.Content.RadarEntityPart.Topics.TermContentItemIds.ToObject<string[]>();
+            var topicNames = contentItem.Content.RadarEntityPart.Topics.TagNames.ToObject<string[]>();
+
+            for (var i = 0; i < topicIds.Length; i++)
+            {
+                var optionPair = new Dictionary<string, string>()
+                {
+                    {"value", topicIds[i]},
+                    {"label", await _shortcodeService.ProcessAsync(topicNames[i])}
+                };
+
+                entityFormModel.Topics.Add(optionPair);
+            }
 
             var localizationSets = contentItem.Content.RadarEntityPart.RelatedEntity.LocalizationSets.ToObject<string[]>();
 
@@ -345,6 +363,17 @@ namespace StatCan.OrchardCore.Radar.Services
                 contentItem = await _contentLocalizationManager.GetContentItemAsync(localizationSet, CultureInfo.CurrentCulture.Name);
 
                 entityFormModel.RelatedEntities.Add(contentItem.ContentItemId);
+            }
+        }
+
+        private async Task<string> GetVisibilityStringAsync(bool isPublished)
+        {
+            if(isPublished)
+            {
+                return await _shortcodeService.ProcessAsync("[locale en]Publish[/locale][locale fr]Publier[/locale]");;
+            } else
+            {
+                return await _shortcodeService.ProcessAsync("[locale en]Draft[/locale]Brouillon[/locale]");
             }
         }
     }
