@@ -1,8 +1,10 @@
+using System.Collections;
 using System.Text;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Globalization;
+using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
@@ -13,6 +15,8 @@ using OrchardCore.Scripting;
 using OrchardCore.Taxonomies.Models;
 using OrchardCore.Autoroute.Models;
 using StatCan.OrchardCore.Radar.FormModels;
+using StatCan.OrchardCore.Radar.Helpers.ValueConverters;
+using StatCan.OrchardCore.Radar.Services;
 
 namespace StatCan.OrchardCore.Radar.Scripting
 {
@@ -32,20 +36,10 @@ namespace StatCan.OrchardCore.Radar.Scripting
                 Name = "createOrUpdateTopic",
                 Method = serviceProvider => (Func<string, JObject, string>)((id, values) =>
                 {
-                    var rawValues = values;
+                    var rawValueConverterProvider = serviceProvider.GetRequiredService<RawValueConverterProvider>();
+                    var converter = rawValueConverterProvider.GetRawValueConverter<TopicRawValueConverter>();
 
-                    rawValues.Remove("roleOptions");
-                    rawValues.Remove("__RequestVerificationToken");
-
-                    // Array having a single value gets converted to JValue instead of JArray so we need to convert it back
-                    if (rawValues["roles"] is JValue)
-                    {
-                        var roleArray = new JArray();
-                        roleArray.Add(rawValues["roles"]);
-                        rawValues["roles"] = roleArray;
-                    }
-
-                    var topicFormModel = JsonConvert.DeserializeObject<TopicFormModel>(rawValues.ToString());
+                    var topicFormModel = (TopicFormModel)converter.ConvertFromRawValues(values);
 
                     var queryManager = serviceProvider.GetRequiredService<IQueryManager>();
                     var shortcodeService = serviceProvider.GetRequiredService<IShortcodeService>();
@@ -152,8 +146,49 @@ namespace StatCan.OrchardCore.Radar.Scripting
                 Name = "convertProjectToContent",
                 Method = serviceProvider => (Func<string, JObject, JObject>)((id, values) =>
                 {
+                    var rawValueConverterProvider = serviceProvider.GetRequiredService<RawValueConverterProvider>();
+                    var converter = rawValueConverterProvider.GetRawValueConverter<ProjectRawValueConverter>();
 
-                    ProjectFormModel projectFormModel = ConvertRawFormValues(values);
+                    ProjectFormModel projectFormModel = (ProjectFormModel)converter.ConvertFromRawValues(values);
+
+                    var projectContentObject = new
+                    {
+                        Project = new
+                        {
+                            Type = new
+                            {
+                                TaxonomyContentItemId = GetTaxonomyIdAsync(serviceProvider, "Project Types"),
+                                TermContentItemIds = new string[] { projectFormModel.Type["value"] },
+                                TagNames = new string[] { projectFormModel.Type["label"] }
+                            }
+                        },
+                        RadarEntityPart = new
+                        {
+                            Name = new
+                            {
+                                Text = projectFormModel.Name
+                            },
+                            Description = new
+                            {
+                                Text = projectFormModel.Description
+                            },
+                            Topics = new
+                            {
+                                TaxonomyContentItemId = GetTaxonomyIdAsync(serviceProvider, "Topics"),
+                                TermContentItemIds = MapStringDictListToStringList(projectFormModel.Topics, topic => topic["value"]),
+                                TagNames = MapStringDictListToStringList(projectFormModel.Topics, topic => topic["label"])
+                            }
+                        },
+                        ContentPermissionsPart = new
+                        {
+                            Enabled = true,
+                            Roles = projectFormModel.Roles
+                        },
+                        ProjectMembers = new
+                        {
+                            // ContentItems =
+                        }
+                    };
 
                     return null;
                 })
@@ -163,6 +198,36 @@ namespace StatCan.OrchardCore.Radar.Scripting
         public IEnumerable<GlobalMethod> GetMethods()
         {
             return new[] { _createOrUpdateTopic, _convertProjectToContent };
+        }
+
+        private async Task<string> GetTaxonomyIdAsync(IServiceProvider serviceProvider, string type)
+        {
+            var queryManager = serviceProvider.GetRequiredService<IQueryManager>();
+            var topicQuery = await queryManager.GetQueryAsync("AllTaxonomiesSQL");
+            var topicResult = await queryManager.ExecuteQueryAsync(topicQuery, new Dictionary<string, object> { { "type", type } });
+
+            if (topicResult == null)
+            {
+                return null;
+            }
+
+            var topicTaxonomy = topicResult.Items.First() as ContentItem;
+
+            return topicTaxonomy.ContentItemId;
+        }
+
+        // Maps object with all string properties to string list
+        private ICollection<string> MapStringDictListToStringList(ICollection<IDictionary<string, string>> list, Func<IDictionary<string, string>, string> func)
+        {
+            ICollection<string> stringList = new LinkedList<string>();
+
+            foreach (var item in list)
+            {
+                string value = func(item);
+                stringList.Add(value);
+            }
+
+            return stringList;
         }
 
         private string CreateLocalizedString(string content, string currentCulture)
@@ -178,70 +243,6 @@ namespace StatCan.OrchardCore.Radar.Scripting
             }
 
             return sb.ToString();
-        }
-
-        private ProjectFormModel ConvertRawFormValues(JObject rawValues)
-        {
-            rawValues.Remove("roleOptions");
-            rawValues.Remove("__RequestVerificationToken");
-            rawValues.Remove("visibilityOptions");
-            rawValues.Remove("typeOptions[label]");
-            rawValues.Remove("typeOptions[value]");
-            rawValues.Remove("valueNames");
-
-            // Convert to project form model
-            // Normalize project member
-            JArray projectMembers = new JArray();
-            for (var i = 0; i < rawValues["projectMembers[role]"].Count(); i++)
-            {
-                var memberObject = JObject.FromObject(
-                     new
-                     {
-                         role = rawValues["projectMembers[role]"][i],
-                         user = new
-                         {
-                             label = rawValues["projectMembers[user][label]"][i],
-                             value = rawValues["projectMembers[user][value]"][i]
-                         }
-                     }
-                );
-
-                projectMembers.Add(memberObject);
-            }
-            rawValues.Remove("projectMembers[role]");
-            rawValues.Remove("projectMembers[user][label]");
-            rawValues.Remove("projectMembers[user][value]");
-            rawValues["projectMembers"] = projectMembers;
-
-            JArray topics = new JArray();
-            for (var i = 0; i < rawValues["topics[label]"].Count(); i++)
-            {
-                var topicObject = JObject.FromObject(
-                    new
-                    {
-                        value = rawValues["topics[value]"][i],
-                        label = rawValues["topics[label]"][i]
-                    }
-                );
-
-                topics.Add(topicObject);
-            }
-            rawValues.Remove("topics[label]");
-            rawValues.Remove("topics[value]");
-            rawValues["topics"] = topics;
-
-            var type = JObject.FromObject(
-                new
-                {
-                    label = rawValues["type[label]"],
-                    value = rawValues["type[value"]
-                }
-            );
-            rawValues.Remove("type[label]");
-            rawValues.Remove("type[value]");
-            rawValues["type"] = type;
-
-            return JsonConvert.DeserializeObject<ProjectFormModel>(rawValues.ToString());
         }
 
         private IDictionary<string, string> ExtractLocalizedString(string localizedString)

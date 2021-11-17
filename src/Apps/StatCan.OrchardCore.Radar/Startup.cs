@@ -47,8 +47,10 @@ namespace StatCan.OrchardCore.Radar
 
             services.AddScoped<FormValueProvider>();
             services.AddScoped<FormOptionsProvider>();
+            services.AddScoped<RawValueConverterProvider>();
 
             services.AddSingleton<IGlobalMethodProvider, RadarFormMethodsProvider>();
+            services.AddSingleton<IGlobalMethodProvider, LocalizedContentMethodsProvider>();
         }
 
         public override void Configure(IApplicationBuilder builder, IEndpointRouteBuilder routes, IServiceProvider serviceProvider)
