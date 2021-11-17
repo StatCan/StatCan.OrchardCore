@@ -18,6 +18,8 @@ using StatCan.OrchardCore.Radar.Models;
 using StatCan.OrchardCore.Radar.Indexes;
 using StatCan.OrchardCore.Radar.Drivers;
 using StatCan.OrchardCore.Radar.Services;
+using StatCan.OrchardCore.Radar.Services.ValueConverters;
+using StatCan.OrchardCore.Radar.Services.ContentConverters;
 using StatCan.OrchardCore.Radar.Scripting;
 
 namespace StatCan.OrchardCore.Radar
@@ -47,7 +49,14 @@ namespace StatCan.OrchardCore.Radar
 
             services.AddScoped<FormValueProvider>();
             services.AddScoped<FormOptionsProvider>();
-            services.AddScoped<RawValueConverterProvider>();
+
+            // Value converters
+            services.AddScoped<TopicRawValueConverter>();
+            services.AddScoped<ProjectRawValueConverter>();
+
+            // Content converters
+            services.AddScoped<TopicContentConverter>();
+            services.AddScoped<ProjectContentConverter>();
 
             services.AddSingleton<IGlobalMethodProvider, RadarFormMethodsProvider>();
             services.AddSingleton<IGlobalMethodProvider, LocalizedContentMethodsProvider>();

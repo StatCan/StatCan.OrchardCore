@@ -4,9 +4,9 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using StatCan.OrchardCore.Radar.FormModels;
 
-namespace StatCan.OrchardCore.Radar.Helpers.ValueConverters
+namespace StatCan.OrchardCore.Radar.Services.ValueConverters
 {
-    public class ProposalRawValueConverter : IRawValueConverter
+    public class CommunityRawValueConverter : IRawValueConverter
     {
         public FormModel ConvertFromRawValues(JObject rawValues)
         {

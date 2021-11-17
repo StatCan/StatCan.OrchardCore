@@ -15,8 +15,8 @@ using OrchardCore.Scripting;
 using OrchardCore.Taxonomies.Models;
 using OrchardCore.Autoroute.Models;
 using StatCan.OrchardCore.Radar.FormModels;
-using StatCan.OrchardCore.Radar.Helpers.ValueConverters;
-using StatCan.OrchardCore.Radar.Services;
+using StatCan.OrchardCore.Radar.Services.ValueConverters;
+using StatCan.OrchardCore.Radar.Services.ContentConverters;
 
 namespace StatCan.OrchardCore.Radar.Scripting
 {
@@ -36,10 +36,10 @@ namespace StatCan.OrchardCore.Radar.Scripting
                 Name = "createOrUpdateTopic",
                 Method = serviceProvider => (Func<string, JObject, string>)((id, values) =>
                 {
-                    var rawValueConverterProvider = serviceProvider.GetRequiredService<RawValueConverterProvider>();
-                    var converter = rawValueConverterProvider.GetRawValueConverter<TopicRawValueConverter>();
+                    var rawValueConverter = serviceProvider.GetRequiredService<TopicRawValueConverter>();
+                    var topicFormModel = (TopicFormModel)rawValueConverter.ConvertFromRawValues(values);
 
-                    var topicFormModel = (TopicFormModel)converter.ConvertFromRawValues(values);
+                    var contentConverter = serviceProvider.GetRequiredService<TopicContentConverter>();
 
                     var queryManager = serviceProvider.GetRequiredService<IQueryManager>();
                     var shortcodeService = serviceProvider.GetRequiredService<IShortcodeService>();
@@ -63,19 +63,7 @@ namespace StatCan.OrchardCore.Radar.Scripting
                                 var existing = existingTopic.ToObject<ContentItem>();
 
                                 // Converts form model into content item document
-                                var topicUpdateObject = new
-                                {
-                                    Topic = new
-                                    {
-                                        Name = new { Text = UpdateLocalizedString(existing.Content.Topic.Name.Text.ToString(), topicFormModel.Name, CultureInfo.CurrentCulture.Name) },
-                                        Description = new { Text = UpdateLocalizedString(existing.Content.Topic.Description.Text.ToString(), topicFormModel.Description, CultureInfo.CurrentCulture.Name) }
-                                    },
-                                    ContentPermissionsPart = new
-                                    {
-                                        Enabled = true,
-                                        Roles = topicFormModel.Roles,
-                                    }
-                                };
+                                var topicUpdateObject = contentConverter.ConvertFromFormModel(topicFormModel, new { isUpdate = true, existing = existing });
 
                                 topic.ContentItemId = existing.ContentItemId;
                                 topic.Merge(existing);
@@ -93,7 +81,7 @@ namespace StatCan.OrchardCore.Radar.Scripting
                                     MergeNullValueHandling = MergeNullValueHandling.Merge
                                 });
 
-                                existingTopic["DisplayText"] = topicUpdateObject.Topic.Name.Text;
+                                existingTopic["DisplayText"] = topicUpdateObject["Topic"]["Name"]["Text"].Value<string>();
 
                                 contentManager.UpdateAsync(topicTaxonomy).GetAwaiter().GetResult();
 
@@ -111,22 +99,10 @@ namespace StatCan.OrchardCore.Radar.Scripting
                         });
 
                         // Converts form model into content item document
-                        var topicCreateObject = new
-                        {
-                            Topic = new
-                            {
-                                Name = new { Text = CreateLocalizedString(topicFormModel.Name, CultureInfo.CurrentCulture.Name) },
-                                Description = new { Text = CreateLocalizedString(topicFormModel.Description, CultureInfo.CurrentCulture.Name) }
-                            },
-                            ContentPermissionsPart = new
-                            {
-                                Enabled = true,
-                                Roles = topicFormModel.Roles,
-                            }
-                        };
+                        var topicCreateObject = contentConverter.ConvertFromFormModel(topicFormModel, null);
 
                         newTopic.Merge(topicCreateObject);
-                        newTopic.DisplayText = topicCreateObject.Topic.Name.Text;
+                        newTopic.DisplayText = topicCreateObject["Topic"]["Name"]["Text"].Value<string>();
 
                         topicTaxonomy.Alter<TaxonomyPart>(part => part.Terms.Add(newTopic));
 
@@ -146,49 +122,12 @@ namespace StatCan.OrchardCore.Radar.Scripting
                 Name = "convertProjectToContent",
                 Method = serviceProvider => (Func<string, JObject, JObject>)((id, values) =>
                 {
-                    var rawValueConverterProvider = serviceProvider.GetRequiredService<RawValueConverterProvider>();
-                    var converter = rawValueConverterProvider.GetRawValueConverter<ProjectRawValueConverter>();
+                    var rawValueConverter = serviceProvider.GetRequiredService<ProjectRawValueConverter>();
+                    ProjectFormModel projectFormModel = (ProjectFormModel)rawValueConverter.ConvertFromRawValues(values);
 
-                    ProjectFormModel projectFormModel = (ProjectFormModel)converter.ConvertFromRawValues(values);
+                    var projectContentConverter = serviceProvider.GetRequiredService<ProjectContentConverter>();
 
-                    var projectContentObject = new
-                    {
-                        Project = new
-                        {
-                            Type = new
-                            {
-                                TaxonomyContentItemId = GetTaxonomyIdAsync(serviceProvider, "Project Types"),
-                                TermContentItemIds = new string[] { projectFormModel.Type["value"] },
-                                TagNames = new string[] { projectFormModel.Type["label"] }
-                            }
-                        },
-                        RadarEntityPart = new
-                        {
-                            Name = new
-                            {
-                                Text = projectFormModel.Name
-                            },
-                            Description = new
-                            {
-                                Text = projectFormModel.Description
-                            },
-                            Topics = new
-                            {
-                                TaxonomyContentItemId = GetTaxonomyIdAsync(serviceProvider, "Topics"),
-                                TermContentItemIds = MapStringDictListToStringList(projectFormModel.Topics, topic => topic["value"]),
-                                TagNames = MapStringDictListToStringList(projectFormModel.Topics, topic => topic["label"])
-                            }
-                        },
-                        ContentPermissionsPart = new
-                        {
-                            Enabled = true,
-                            Roles = projectFormModel.Roles
-                        },
-                        ProjectMembers = new
-                        {
-                            // ContentItems =
-                        }
-                    };
+                    var projectContentObject = projectContentConverter.ConvertFromFormModel(projectFormModel, null);
 
                     return null;
                 })
@@ -198,95 +137,6 @@ namespace StatCan.OrchardCore.Radar.Scripting
         public IEnumerable<GlobalMethod> GetMethods()
         {
             return new[] { _createOrUpdateTopic, _convertProjectToContent };
-        }
-
-        private async Task<string> GetTaxonomyIdAsync(IServiceProvider serviceProvider, string type)
-        {
-            var queryManager = serviceProvider.GetRequiredService<IQueryManager>();
-            var topicQuery = await queryManager.GetQueryAsync("AllTaxonomiesSQL");
-            var topicResult = await queryManager.ExecuteQueryAsync(topicQuery, new Dictionary<string, object> { { "type", type } });
-
-            if (topicResult == null)
-            {
-                return null;
-            }
-
-            var topicTaxonomy = topicResult.Items.First() as ContentItem;
-
-            return topicTaxonomy.ContentItemId;
-        }
-
-        // Maps object with all string properties to string list
-        private ICollection<string> MapStringDictListToStringList(ICollection<IDictionary<string, string>> list, Func<IDictionary<string, string>, string> func)
-        {
-            ICollection<string> stringList = new LinkedList<string>();
-
-            foreach (var item in list)
-            {
-                string value = func(item);
-                stringList.Add(value);
-            }
-
-            return stringList;
-        }
-
-        private string CreateLocalizedString(string content, string currentCulture)
-        {
-            var supportedCultures = new string[] { "en", "fr" }; // Assumming only en and fr
-            StringBuilder sb = new StringBuilder();
-
-            foreach (var supportedCulture in supportedCultures)
-            {
-                sb.Append($"[locale {supportedCulture}]");
-                sb.Append(content);
-                sb.Append("[/locale]");
-            }
-
-            return sb.ToString();
-        }
-
-        private IDictionary<string, string> ExtractLocalizedString(string localizedString)
-        {
-            var supportedCultures = new string[] { "en", "fr" }; // Assumming only en and fr
-            var localizedStrings = new Dictionary<string, string>();
-
-            foreach (var supportedCulture in supportedCultures)
-            {
-                var leftTag = $"[locale {supportedCulture}]";
-                var rightTag = "[/locale]";
-
-                var startingIndex = localizedString.IndexOf(leftTag) + leftTag.Length;
-                var endingIndex = localizedString.IndexOf(rightTag, startingIndex);
-
-                var content = localizedString.Substring(startingIndex, endingIndex - startingIndex);
-
-                localizedStrings.Add(supportedCulture, content);
-            }
-
-            return localizedStrings;
-        }
-
-        private string UpdateLocalizedString(string orginal, string insert, string currentCulture)
-        {
-            IDictionary<string, string> localizedStrings = ExtractLocalizedString(orginal);
-            var supportedCultures = new string[] { "en", "fr" }; // Assumming only en and fr
-            StringBuilder sb = new StringBuilder();
-
-            foreach (var supportedCulture in supportedCultures)
-            {
-                sb.Append($"[locale {supportedCulture}]");
-                if (currentCulture == supportedCulture)
-                {
-                    sb.Append(insert);
-                }
-                else
-                {
-                    sb.Append(localizedStrings[supportedCulture]);
-                }
-                sb.Append("[/locale]");
-            }
-
-            return sb.ToString();
         }
     }
 }
