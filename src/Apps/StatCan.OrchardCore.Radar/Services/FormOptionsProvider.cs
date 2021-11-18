@@ -33,6 +33,10 @@ namespace StatCan.OrchardCore.Radar.Services
             {
                 return await GetProjectFormOptionsAsync();
             }
+            else if(entityType == "proposals")
+            {
+                return await GetProposalFormOptionsAsync();
+            }
 
             return null;
         }
@@ -64,6 +68,21 @@ namespace StatCan.OrchardCore.Radar.Services
             await FillVisibilityOptionsAsync(projectFormModel);
 
             return projectFormModel;
+        }
+
+        private async Task<FormOptionModel> GetProposalFormOptionsAsync()
+        {
+            var proposalFormModel = new EntityFormOptionModel()
+            {
+                RoleOptions = new LinkedList<string>(),
+                TypeOptions = new LinkedList<IDictionary<string, string>>(),
+            };
+
+            await FillRoleOptionsAsync(proposalFormModel);
+            await FillTypeOptionsAsync(proposalFormModel, "Proposal Types");
+            await FillVisibilityOptionsAsync(proposalFormModel);
+
+            return proposalFormModel;
         }
 
         private async Task FillVisibilityOptionsAsync(EntityFormOptionModel formOptionModel)

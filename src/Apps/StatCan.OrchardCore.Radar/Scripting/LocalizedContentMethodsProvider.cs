@@ -39,6 +39,7 @@ namespace StatCan.OrchardCore.Radar.Scripting
                     var localizationService = serviceProvider.GetRequiredService<ILocalizationService>();
 
                     var supportedCultures = localizationService.GetSupportedCulturesAsync().GetAwaiter().GetResult();
+                    ContentItem resultItem = null;
 
                     foreach (var culture in supportedCultures)
                     {
@@ -50,9 +51,14 @@ namespace StatCan.OrchardCore.Radar.Scripting
                         {
                             contentManager.PublishAsync(localizedContent).GetAwaiter().GetResult();
                         }
+
+                        if(CultureInfo.CurrentCulture.Name == culture)
+                        {
+                            resultItem = localizedContent;
+                        }
                     }
 
-                    return contentItem;
+                    return resultItem;
                 })
             };
 

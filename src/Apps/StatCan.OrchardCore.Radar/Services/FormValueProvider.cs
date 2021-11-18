@@ -8,6 +8,7 @@ using OrchardCore.ContentLocalization;
 using OrchardCore.Queries;
 using OrchardCore.Shortcodes.Services;
 using OrchardCore.Taxonomies.Models;
+using OrchardCore.ContentLocalization.Models;
 using StatCan.OrchardCore.Radar.FormModels;
 
 namespace StatCan.OrchardCore.Radar.Services
@@ -155,7 +156,7 @@ namespace StatCan.OrchardCore.Radar.Services
                 Topics = new LinkedList<IDictionary<string, string>>(),
                 Type = new Dictionary<string, string>(),
                 ProjectMembers = new LinkedList<IDictionary<string, object>>(),
-                RelatedEntities = new LinkedList<string>(),
+                RelatedEntities = new LinkedList<IDictionary<string, string>>(),
                 PublishStatus = "",
             };
 
@@ -206,7 +207,7 @@ namespace StatCan.OrchardCore.Radar.Services
                 Roles = Array.Empty<string>(),
                 Topics = new LinkedList<IDictionary<string, string>>(),
                 Type = "",
-                RelatedEntities = new LinkedList<string>(),
+                RelatedEntities = new LinkedList<IDictionary<string, string>>(),
                 CommunityMembers = new LinkedList<IDictionary<string, string>>(),
                 PublishStatus = "",
             };
@@ -253,7 +254,7 @@ namespace StatCan.OrchardCore.Radar.Services
                 EndDate = DateTime.Today,
                 Attendees = new LinkedList<string>(),
                 EventOrganizers = new LinkedList<IDictionary<string, string>>(),
-                RelatedEntities = new LinkedList<string>(),
+                RelatedEntities = new LinkedList<IDictionary<string, string>>(),
                 PublishStatus = "",
             };
 
@@ -297,8 +298,8 @@ namespace StatCan.OrchardCore.Radar.Services
                 Description = "",
                 Roles = Array.Empty<string>(),
                 Topics = new LinkedList<IDictionary<string, string>>(),
-                Type = "",
-                RelatedEntities = new LinkedList<string>(),
+                Type = new Dictionary<string, string>(),
+                RelatedEntities = new LinkedList<IDictionary<string, string>>(),
                 PublishStatus = "",
             };
 
@@ -312,7 +313,11 @@ namespace StatCan.OrchardCore.Radar.Services
                 }
 
                 await GetValuesFromRadarEntityPartAsync(proposalFormModel, contentItem);
-                proposalFormModel.Type = contentItem.Content.Proposal.Type.TermContentItemIds.ToObject<string[]>()[0];
+                proposalFormModel.Type = new Dictionary<string, string>()
+                {
+                    {"value", contentItem.Content.Proposal.Type.TermContentItemIds.ToObject<string[]>()[0]},
+                    {"label", contentItem.Content.Proposal.Type.TagNames.ToObject<string[]>()[0]}
+                };
             }
 
             return proposalFormModel;
@@ -361,8 +366,14 @@ namespace StatCan.OrchardCore.Radar.Services
             foreach (var localizationSet in localizationSets)
             {
                 contentItem = await _contentLocalizationManager.GetContentItemAsync(localizationSet, CultureInfo.CurrentCulture.Name);
+                var part = contentItem.As<LocalizationPart>();
 
-                entityFormModel.RelatedEntities.Add(contentItem.ContentItemId);
+                var optionPair = new Dictionary<string, string>(){
+                    {"value", part.LocalizationSet},
+                    {"label", contentItem.DisplayText}
+                };
+
+                entityFormModel.RelatedEntities.Add(optionPair);
             }
         }
 

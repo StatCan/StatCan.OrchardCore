@@ -39,7 +39,7 @@ namespace StatCan.OrchardCore.Radar.Scripting
                     Method = serviceProvider => (Func<string, JObject, string>)((id, values) =>
                     {
                         var rawValueConverter = serviceProvider.GetRequiredService<TopicRawValueConverter>();
-                        var topicFormModel = (TopicFormModel)rawValueConverter.ConvertFromRawValues(values);
+                        var topicFormModel = (TopicFormModel)rawValueConverter.ConvertAsync(values).GetAwaiter().GetResult();
 
                         var contentConverter = serviceProvider.GetRequiredService<TopicContentConverter>();
 
@@ -129,10 +129,13 @@ namespace StatCan.OrchardCore.Radar.Scripting
                         if (type == "Project")
                         {
                             converter = serviceProvider.GetRequiredService<ProjectRawValueConverter>();
-                            return converter.ConvertFromRawValues(rawValues);
+                        }
+                        else if (type == "Proposal")
+                        {
+                            converter = serviceProvider.GetRequiredService<ProposalRawValueConverter>();
                         }
 
-                        return null;
+                        return converter.ConvertAsync(rawValues).GetAwaiter().GetResult();
                     })
                 };
 
@@ -146,10 +149,13 @@ namespace StatCan.OrchardCore.Radar.Scripting
                         if (type == "Project")
                         {
                             converter = serviceProvider.GetRequiredService<ProjectContentConverter>();
-                            return converter.ConvertAsync(formModel, null).GetAwaiter().GetResult();
+                        }
+                        else if (type == "Proposal")
+                        {
+                            converter = serviceProvider.GetRequiredService<ProposalContentConverter>();
                         }
 
-                        return null;
+                        return converter.ConvertAsync(formModel, null).GetAwaiter().GetResult();
                     })
                 };
             }

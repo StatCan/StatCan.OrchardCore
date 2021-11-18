@@ -4,9 +4,9 @@ using StatCan.OrchardCore.Radar.FormModels;
 
 namespace StatCan.OrchardCore.Radar.Services.ValueConverters
 {
-    public class TopicRawValueConverter : IRawValueConverter
+    public class TopicRawValueConverter : BaseRawValueConverter
     {
-        public FormModel ConvertFromRawValues(JObject rawValues)
+        public override FormModel ConvertFromRawValues(JObject rawValues)
         {
             rawValues.Remove("roleOptions");
             rawValues.Remove("__RequestVerificationToken");

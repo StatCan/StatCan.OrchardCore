@@ -22,7 +22,6 @@ namespace StatCan.OrchardCore.Radar.Controllers
         private readonly IContentItemDisplayManager _contentItemDisplayManager;
         private readonly IUpdateModelAccessor _updateModelAccessor;
         private readonly IContentPermissionsService _contentPermissionsService;
-
         private readonly IAuthorizationService _authorizationService;
 
         private const string LIST_QUERY = "EntityListLucene";

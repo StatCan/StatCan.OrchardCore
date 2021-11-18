@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
 using StatCan.OrchardCore.Radar.FormModels;
 
@@ -8,6 +9,6 @@ namespace StatCan.OrchardCore.Radar.Services.ValueConverters
     */
     public interface IRawValueConverter
     {
-        FormModel ConvertFromRawValues(JObject rawValues);
+        Task<FormModel> ConvertAsync(JObject rawValues);
     }
 }

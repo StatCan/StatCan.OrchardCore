@@ -27,10 +27,13 @@ namespace StatCan.OrchardCore.Radar.Controllers
         private readonly IUpdateModelAccessor _updateModelAccessor;
         private readonly IShortcodeService _shortcodeService;
         private IContentItemDisplayManager _contentItemDisplayManager;
+        private readonly IAuthorizationService _authorizationService;
+        private readonly IContentPermissionsService _contentPermissionsService;
 
         public FormController(IContentManager contentManager, IHttpContextAccessor httpContextAccessor,
             IQueryManager queryManager, IContentItemDisplayManager contentItemDisplayManager,
-            IUpdateModelAccessor updateModelAccessor, IShortcodeService shortcodeService)
+            IUpdateModelAccessor updateModelAccessor, IShortcodeService shortcodeService, IAuthorizationService authorizationService,
+            IContentPermissionsService contentPermissionsService)
         {
             _contentManager = contentManager;
             _httpContextAccessor = httpContextAccessor;
@@ -38,6 +41,8 @@ namespace StatCan.OrchardCore.Radar.Controllers
             _contentItemDisplayManager = contentItemDisplayManager;
             _updateModelAccessor = updateModelAccessor;
             _shortcodeService = shortcodeService;
+            _authorizationService = authorizationService;
+            _contentPermissionsService = contentPermissionsService;
         }
 
         public async Task<IActionResult> Form(string entityType, string id)
@@ -124,7 +129,7 @@ namespace StatCan.OrchardCore.Radar.Controllers
             {
                 if (userResult != null)
                 {
-                    foreach(JObject user in userResult.Items)
+                    foreach (JObject user in userResult.Items)
                     {
                         var userName = user["NormalizedUserName"].Value<string>().ToLower();
 
@@ -143,6 +148,72 @@ namespace StatCan.OrchardCore.Radar.Controllers
             }
 
             return users;
+        }
+
+        public async Task<ICollection<IDictionary<string, string>>> EntitySearch(string type, string term)
+        {
+            // Get the lucene query
+            var query = await _queryManager.GetQueryAsync("EntityListLucene");
+
+            // Prepare the parameters
+            IDictionary<string, object> parameters = new Dictionary<string, object>();
+            parameters.Add("Type", type);
+            parameters.Add("Term", term != null ? term.ToLower() : "");
+
+            var results = await _queryManager.ExecuteQueryAsync(query, parameters);
+
+            // Convert result to content items
+            ICollection<IDictionary<string, string>> entities = new LinkedList<IDictionary<string,string>>();
+
+            if (results != null)
+            {
+                foreach (var result in results.Items)
+                {
+                    if (!(result is ContentItem contentItem))
+                    {
+                        contentItem = null;
+
+                        if (result is JObject jObject)
+                        {
+                            contentItem = jObject.ToObject<ContentItem>();
+                        }
+                    }
+
+                    var part = contentItem.As<LocalizationPart>();
+
+                    // If input is a 'JObject' but which not represents a 'ContentItem',
+                    // a 'ContentItem' is still created but with some null properties.
+                    if (contentItem?.ContentItemId == null)
+                    {
+                        continue;
+                    }
+                    // Orchard content permission check
+                    else if (!await _authorizationService.AuthorizeAsync(User, CommonPermissions.ViewContent, contentItem))
+                    {
+                        continue;
+                    }
+                    // Content Permission check
+                    else if (!_contentPermissionsService.CanAccess(contentItem))
+                    {
+                        continue;
+                    }
+                    // Culture check
+                    else if (part == null && part.Culture != CultureInfo.CurrentCulture.Name)
+                    {
+                        continue;
+                    }
+
+                    var optionPair = new Dictionary<string, string>()
+                    {
+                        {"value", part.LocalizationSet},
+                        {"label", contentItem.DisplayText}
+                    };
+
+                    entities.Add(optionPair);
+                }
+            }
+
+            return entities;
         }
 
         private async Task<ContentItem> GetFormAsync(string formName)

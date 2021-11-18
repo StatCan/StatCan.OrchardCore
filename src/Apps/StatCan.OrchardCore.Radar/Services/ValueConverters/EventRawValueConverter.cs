@@ -6,11 +6,11 @@ using StatCan.OrchardCore.Radar.FormModels;
 
 namespace StatCan.OrchardCore.Radar.Services.ValueConverters
 {
-    public class EventRawValueConverter : IRawValueConverter
+    public class EventRawValueConverter : BaseRawValueConverter
     {
-        public FormModel ConvertFromRawValues(JObject rawValues)
+        public override FormModel ConvertFromRawValues(JObject rawValues)
         {
-            throw new NotImplementedException();
+            return null;
         }
     }
 }

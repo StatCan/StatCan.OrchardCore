@@ -53,12 +53,14 @@ namespace StatCan.OrchardCore.Radar
             // Value converters
             services.AddScoped<TopicRawValueConverter>();
             services.AddScoped<ProjectRawValueConverter>();
+            services.AddScoped<ProposalRawValueConverter>();
 
             // Content converters
             services.AddScoped<BaseContentConverterDependency>();
 
             services.AddScoped<TopicContentConverter>();
             services.AddScoped<ProjectContentConverter>();
+            services.AddScoped<ProposalContentConverter>();
 
             services.AddSingleton<IGlobalMethodProvider, RadarFormMethodsProvider>();
             services.AddSingleton<IGlobalMethodProvider, LocalizedContentMethodsProvider>();
@@ -156,6 +158,13 @@ namespace StatCan.OrchardCore.Radar
                 areaName: "StatCan.OrchardCore.Radar",
                 pattern: "api/radar/user-search",
                 defaults: new { controller = "Form", action = "UserSearch" }
+            );
+
+            routes.MapAreaControllerRoute(
+                name: "FormEntitySearchAPI",
+                areaName: "StatCan.OrchardCore.Radar",
+                pattern: "api/radar/entity-search",
+                defaults: new { controller = "Form", action = "EntitySearch" }
             );
         }
     }
