@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc.Localization;
 using OrchardCore.Settings;
 using OrchardCore.Entities;
 using StatCan.OrchardCore.Candev.Services;
+using OrchardCore.DisplayManagement.Notify;
 
 namespace StatCan.OrchardCore.Candev.Controllers
 {
@@ -16,18 +17,21 @@ namespace StatCan.OrchardCore.Candev.Controllers
         private readonly ISiteService _siteService;
         private readonly ISession _session;
         private readonly ICandevService _candevService;
+        private readonly INotifier _notifier;
 
         public dynamic New { get; set; }
 
         public AdminController(ISiteService siteService, ISession session, IShapeFactory shapeFactory,
           ICandevService hackathonService,
-          IHtmlLocalizer<AdminController> localizer)
+          IHtmlLocalizer<AdminController> localizer,
+          INotifier notifier)
         {
             _siteService = siteService;
             _session = session;
             New = shapeFactory;
             _candevService = hackathonService;
             H = localizer;
+            _notifier = notifier;
         }
 
         public IHtmlLocalizer H {get;}
@@ -62,6 +66,7 @@ namespace StatCan.OrchardCore.Candev.Controllers
             await _candevService.AssignCases();
 
             await _session.SaveChangesAsync();
+            _notifier.Success(H["Cases have been assigned."]);
             return RedirectToAction("Index");
         }
 
@@ -84,7 +89,23 @@ namespace StatCan.OrchardCore.Candev.Controllers
             await _candevService.MatchTeams();
 
             await _session.SaveChangesAsync();
+            _notifier.Success(H["Teams have been matched."]);
             return RedirectToAction("Index");
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> SelectNHackers(int n)
+        {
+            if (!HttpContext.User.IsInRole("Administrator"))
+            {
+                return Unauthorized();
+            }
+
+            await _candevService.SelectNHackers(n);
+            _notifier.Success(H["Participants have been selected."]);
+            return RedirectToAction("Index");
+        }
+
     }
 }

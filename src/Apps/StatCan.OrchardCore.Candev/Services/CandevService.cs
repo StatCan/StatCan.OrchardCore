@@ -14,6 +14,8 @@ using YesSql;
 using OrchardCore.Settings;
 using OrchardCore.Entities;
 using OrchardCore.Users.Models;
+using OrchardCore.Users;
+using Microsoft.AspNetCore.Identity;
 
 namespace StatCan.OrchardCore.Candev.Services
 {
@@ -24,13 +26,15 @@ namespace StatCan.OrchardCore.Candev.Services
         private readonly IQueryManager _queryManager;
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly ISiteService _siteService;
+        private readonly UserManager<IUser> _userManager;
 
         public CandevService(YesSql.ISession session,
             IStringLocalizer<CandevService> localizer,
             IContentManager contentManager,
             IQueryManager queryManager,
             IHttpContextAccessor httpContextAccessor,
-            ISiteService siteService
+            ISiteService siteService,
+            UserManager<IUser> userManager
         )
         {
             _session = session;
@@ -39,6 +43,7 @@ namespace StatCan.OrchardCore.Candev.Services
             _httpContextAccessor = httpContextAccessor;
             T = localizer;
             _siteService = siteService;
+            _userManager = userManager;
         }
 
         public IStringLocalizer T { get; }
@@ -326,7 +331,7 @@ namespace StatCan.OrchardCore.Candev.Services
         private async Task<bool> AddHackerToTeam(string teamContentId, string participantContentId)
         {
             var participant = await _session.Query<User, CandevUsersIndex>(x => x.UserId == participantContentId).FirstOrDefaultAsync();
-
+            
             var contentItem = await GetSettings(participant, "Hacker");
 
             contentItem.Content.Hacker.Team = JObject.FromObject(new { ContentItemIds = new string[] { teamContentId } });
@@ -557,6 +562,20 @@ namespace StatCan.OrchardCore.Candev.Services
             _session.Save(user);
 
             return team;
+        }
+
+        public async Task<bool> SelectNHackers(int n)
+        {
+            var participants = await _session.Query<User, CandevUsersIndex>(x => x.Roles.Contains("Hacker")).ListAsync();
+            var participantList = participants.ToList();
+            participantList.RemoveRange(0, n);
+
+            foreach (var participant in participantList)
+            {
+                _userManager.RemoveFromRoleAsync(participant, "Hacker").GetAwaiter();
+            }
+
+            return true;
         }
     }
 }

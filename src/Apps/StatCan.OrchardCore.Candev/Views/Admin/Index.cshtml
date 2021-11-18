@@ -25,5 +25,14 @@
        @T["Assign cases"]
       </a>
     </div>
+    <div>
+      <form class="form-inline" asp-action="SelectNHackers" asp-controller="Admin"  asp-route-area="StatCan.OrchardCore.Candev" method="post">
+        <label for="n">@T["Select this many participants: "]</label>
+        <input type="number" name="n" value="0">
+          <button type="submit" class="btn btn-primary btn-md">
+            @T["Select"]
+          </button>
+        </form>
+    </div>
   </div>
 </div>
