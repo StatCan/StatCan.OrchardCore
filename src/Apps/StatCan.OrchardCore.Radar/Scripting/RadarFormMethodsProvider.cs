@@ -63,7 +63,7 @@ namespace StatCan.OrchardCore.Radar.Scripting
                                 var existing = existingTopic.ToObject<ContentItem>();
 
                                 // Converts form model into content item document
-                                var topicUpdateObject = contentConverter.ConvertFromFormModel(topicFormModel, new { isUpdate = true, existing = existing });
+                                var topicUpdateObject = contentConverter.ConvertAsync(topicFormModel, new { Existing = existing }).GetAwaiter().GetResult();
 
                                 topic.ContentItemId = existing.ContentItemId;
                                 topic.Merge(existing);
@@ -99,7 +99,7 @@ namespace StatCan.OrchardCore.Radar.Scripting
                         });
 
                         // Converts form model into content item document
-                        var topicCreateObject = contentConverter.ConvertFromFormModel(topicFormModel, null);
+                        var topicCreateObject = contentConverter.ConvertAsync(topicFormModel, null).GetAwaiter().GetResult();
 
                         newTopic.Merge(topicCreateObject);
                         newTopic.DisplayText = topicCreateObject["Topic"]["Name"]["Text"].Value<string>();
@@ -127,9 +127,9 @@ namespace StatCan.OrchardCore.Radar.Scripting
 
                     var projectContentConverter = serviceProvider.GetRequiredService<ProjectContentConverter>();
 
-                    var projectContentObject = projectContentConverter.ConvertFromFormModel(projectFormModel, null);
+                    var projectContentObject = projectContentConverter.ConvertAsync(projectFormModel, null).GetAwaiter().GetResult();
 
-                    return null;
+                    return projectContentObject;
                 })
             };
         }

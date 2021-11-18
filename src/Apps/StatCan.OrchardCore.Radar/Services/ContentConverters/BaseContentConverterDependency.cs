@@ -2,11 +2,11 @@ using OrchardCore.Queries;
 
 namespace StatCan.OrchardCore.Radar.Services
 {
-    public class BaseContentConverterDenpency
+    public class BaseContentConverterDependency
     {
         private readonly IQueryManager _queryManager;
 
-        public BaseContentConverterDenpency(IQueryManager queryManager)
+        public BaseContentConverterDependency(IQueryManager queryManager)
         {
             _queryManager = queryManager;
         }

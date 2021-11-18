@@ -55,6 +55,8 @@ namespace StatCan.OrchardCore.Radar
             services.AddScoped<ProjectRawValueConverter>();
 
             // Content converters
+            services.AddScoped<BaseContentConverterDependency>();
+
             services.AddScoped<TopicContentConverter>();
             services.AddScoped<ProjectContentConverter>();
 

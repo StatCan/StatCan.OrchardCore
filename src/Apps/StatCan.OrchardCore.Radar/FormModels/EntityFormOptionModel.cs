@@ -6,6 +6,6 @@ namespace StatCan.OrchardCore.Radar.FormModels
     {
         public ICollection<IDictionary<string, string>> TypeOptions { get; set; }
 
-        public string[] VisibilityOptions { get; set; }
+        public string[] PublishOptions { get; set; }
     }
 }

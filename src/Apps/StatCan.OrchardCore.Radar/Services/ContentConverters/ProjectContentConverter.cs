@@ -11,22 +11,24 @@ namespace StatCan.OrchardCore.Radar.Services.ContentConverters
 {
     public class ProjectContentConverter : BaseContentConverter
     {
-        public ProjectContentConverter(BaseContentConverterDenpency baseContentConverterDenpency) : base(baseContentConverterDenpency)
+        private readonly IContentManager _contentManager;
+        public ProjectContentConverter(IContentManager contentManager, BaseContentConverterDependency baseContentConverterDependency) : base(baseContentConverterDependency)
         {
-
+            _contentManager = contentManager;
         }
 
-        public override JObject ConvertFromFormModel(FormModel formModel, object context)
+        public override async Task<JObject> ConvertFromFormModelAsync(FormModel formModel, object context)
         {
             ProjectFormModel projectFormModel = (ProjectFormModel)formModel;
 
             var projectContentObject = new
             {
+                Published = GetPublishStatus(projectFormModel.PublishStatus),
                 Project = new
                 {
                     Type = new
                     {
-                        TaxonomyContentItemId = GetTaxonomyIdAsync("Project Types"),
+                        TaxonomyContentItemId = await GetTaxonomyIdAsync("Project Types"),
                         TermContentItemIds = new string[] { projectFormModel.Type["value"] },
                         TagNames = new string[] { projectFormModel.Type["label"] }
                     }
@@ -43,7 +45,7 @@ namespace StatCan.OrchardCore.Radar.Services.ContentConverters
                     },
                     Topics = new
                     {
-                        TaxonomyContentItemId = GetTaxonomyIdAsync("Topics"),
+                        TaxonomyContentItemId = await GetTaxonomyIdAsync("Topics"),
                         TermContentItemIds = MapStringDictListToStringList(projectFormModel.Topics, topic => topic["value"]),
                         TagNames = MapStringDictListToStringList(projectFormModel.Topics, topic => topic["label"])
                     }
@@ -53,13 +55,47 @@ namespace StatCan.OrchardCore.Radar.Services.ContentConverters
                     Enabled = true,
                     Roles = projectFormModel.Roles
                 },
-                ProjectMembers = new
+                ProjectMember = new
                 {
-                    // ContentItems =
+                    ContentItems = await GetProjectMembersContent(projectFormModel.ProjectMembers)
                 }
             };
 
             return JObject.FromObject(projectContentObject);
+        }
+
+        private async Task<ICollection<ContentItem>> GetProjectMembersContent(ICollection<IDictionary<string, object>> projectMembers)
+        {
+            // Contents in bag parts has to be ContentItem
+
+            ICollection<ContentItem> projectMembersContent = new LinkedList<ContentItem>();
+
+            foreach (var projectMember in projectMembers)
+            {
+                var userObject = (JObject)projectMember["user"];
+                var member = new
+                {
+                    ProjectMember = new
+                    {
+                        Member = new
+                        {
+                            UserIds = new string[] { userObject["value"].Value<string>() },
+                            UserNames = new string[] { userObject["label"].Value<string>() }
+                        },
+                        Role = new
+                        {
+                            Text = projectMember["role"]
+                        }
+                    }
+                };
+
+                var contentItem = await _contentManager.NewAsync("ProjectMember");
+                contentItem.Merge(member);
+
+                projectMembersContent.Add(contentItem);
+            }
+
+            return projectMembersContent;
         }
     }
 }

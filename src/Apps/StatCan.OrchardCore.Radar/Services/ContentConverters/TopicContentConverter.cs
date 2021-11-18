@@ -6,7 +6,7 @@ namespace StatCan.OrchardCore.Radar.Services.ContentConverters
 {
     public class TopicContentConverter : BaseContentConverter
     {
-        public TopicContentConverter(BaseContentConverterDenpency baseContentConverterDenpency) : base(baseContentConverterDenpency)
+        public TopicContentConverter(BaseContentConverterDependency baseContentConverterDependency) : base(baseContentConverterDependency)
         {
 
         }
@@ -14,14 +14,14 @@ namespace StatCan.OrchardCore.Radar.Services.ContentConverters
         {
             var topicFormModel = (TopicFormModel)formModel;
 
-            if (context.IsUpdate)
+            if (context != null)
             {
                 var topicUpdateObject = new
                 {
                     Topic = new
                     {
-                        Name = new { Text = UpdateLocalizedString(context.existing.Content.Topic.Name.Text.ToString(), topicFormModel.Name, CultureInfo.CurrentCulture.Name) },
-                        Description = new { Text = UpdateLocalizedString(context.existing.Content.Topic.Description.Text.ToString(), topicFormModel.Description, CultureInfo.CurrentCulture.Name) }
+                        Name = new { Text = UpdateLocalizedString(context.Existing.Content.Topic.Name.Text.ToString(), topicFormModel.Name, CultureInfo.CurrentCulture.Name) },
+                        Description = new { Text = UpdateLocalizedString(context.Existing.Content.Topic.Description.Text.ToString(), topicFormModel.Description, CultureInfo.CurrentCulture.Name) }
                     },
                     ContentPermissionsPart = new
                     {

@@ -156,7 +156,7 @@ namespace StatCan.OrchardCore.Radar.Services
                 Type = new Dictionary<string, string>(),
                 ProjectMembers = new LinkedList<IDictionary<string, object>>(),
                 RelatedEntities = new LinkedList<string>(),
-                Visibility = "",
+                PublishStatus = "",
             };
 
             if (!string.IsNullOrEmpty(id))
@@ -208,7 +208,7 @@ namespace StatCan.OrchardCore.Radar.Services
                 Type = "",
                 RelatedEntities = new LinkedList<string>(),
                 CommunityMembers = new LinkedList<IDictionary<string, string>>(),
-                Visibility = "",
+                PublishStatus = "",
             };
 
             if (!string.IsNullOrEmpty(id))
@@ -254,7 +254,7 @@ namespace StatCan.OrchardCore.Radar.Services
                 Attendees = new LinkedList<string>(),
                 EventOrganizers = new LinkedList<IDictionary<string, string>>(),
                 RelatedEntities = new LinkedList<string>(),
-                Visibility = "",
+                PublishStatus = "",
             };
 
             if (!string.IsNullOrEmpty(id))
@@ -299,7 +299,7 @@ namespace StatCan.OrchardCore.Radar.Services
                 Topics = new LinkedList<IDictionary<string, string>>(),
                 Type = "",
                 RelatedEntities = new LinkedList<string>(),
-                Visibility = "",
+                PublishStatus = "",
             };
 
             if (!string.IsNullOrEmpty(id))
@@ -340,7 +340,7 @@ namespace StatCan.OrchardCore.Radar.Services
             entityFormModel.Name = contentItem.DisplayText;
             entityFormModel.Description = contentItem.Content.RadarEntityPart.Description.Text.ToString();
             entityFormModel.Roles = contentItem.Content.ContentPermissionsPart.Roles.ToObject<string[]>();
-            entityFormModel.Visibility = await GetVisibilityStringAsync(contentItem.Published);
+            entityFormModel.PublishStatus = await GetPublishStatusAsync(contentItem.Published);
 
             var topicIds = contentItem.Content.RadarEntityPart.Topics.TermContentItemIds.ToObject<string[]>();
             var topicNames = contentItem.Content.RadarEntityPart.Topics.TagNames.ToObject<string[]>();
@@ -366,12 +366,13 @@ namespace StatCan.OrchardCore.Radar.Services
             }
         }
 
-        private async Task<string> GetVisibilityStringAsync(bool isPublished)
+        private async Task<string> GetPublishStatusAsync(bool isPublished)
         {
-            if(isPublished)
+            if (isPublished)
             {
-                return await _shortcodeService.ProcessAsync("[locale en]Publish[/locale][locale fr]Publier[/locale]");;
-            } else
+                return await _shortcodeService.ProcessAsync("[locale en]Publish[/locale][locale fr]Publier[/locale]"); ;
+            }
+            else
             {
                 return await _shortcodeService.ProcessAsync("[locale en]Draft[/locale]Brouillon[/locale]");
             }

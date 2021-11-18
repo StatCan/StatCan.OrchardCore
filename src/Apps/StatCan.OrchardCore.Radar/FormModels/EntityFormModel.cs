@@ -7,6 +7,6 @@ namespace StatCan.OrchardCore.Radar.FormModels
         public ICollection<IDictionary<string, string>> Topics { get; set; }
         public ICollection<string> RelatedEntities { get; set; }
 
-        public string Visibility { get; set; }
+        public string PublishStatus { get; set; }
     }
 }

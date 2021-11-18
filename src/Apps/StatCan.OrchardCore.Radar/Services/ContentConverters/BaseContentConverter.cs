@@ -15,12 +15,25 @@ namespace StatCan.OrchardCore.Radar.Services.ContentConverters
     {
         private readonly IQueryManager _queryManager;
 
-        public BaseContentConverter(BaseContentConverterDenpency baseContentConverterDenpency)
+        public BaseContentConverter(BaseContentConverterDependency baseContentConverterDependency)
         {
-            _queryManager = baseContentConverterDenpency.GetQueryManager();
+            _queryManager = baseContentConverterDependency.GetQueryManager();
         }
 
-        public abstract JObject ConvertFromFormModel(FormModel formModel, dynamic context);
+        public Task<JObject> ConvertAsync(FormModel formModel, dynamic context)
+        {
+            return ConvertFromFormModelAsync(formModel, context);
+        }
+
+        public virtual JObject ConvertFromFormModel(FormModel formModel, dynamic context)
+        {
+            return null;
+        }
+
+        public virtual Task<JObject> ConvertFromFormModelAsync(FormModel formModel, dynamic context)
+        {
+            return Task.FromResult(ConvertFromFormModel(formModel, context));
+        }
 
         protected async Task<string> GetTaxonomyIdAsync(string type)
         {
@@ -35,6 +48,17 @@ namespace StatCan.OrchardCore.Radar.Services.ContentConverters
             var topicTaxonomy = topicResult.Items.First() as ContentItem;
 
             return topicTaxonomy.ContentItemId;
+        }
+
+        protected bool GetPublishStatus(string statusString)
+        {
+            if(statusString == "Publish" || statusString == "Publier")
+            {
+                return true;
+            } else
+            {
+                return false;
+            }
         }
 
         // Maps object with all string properties to string list

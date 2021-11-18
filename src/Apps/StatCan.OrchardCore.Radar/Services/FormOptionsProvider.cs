@@ -69,9 +69,9 @@ namespace StatCan.OrchardCore.Radar.Services
         private async Task FillVisibilityOptionsAsync(EntityFormOptionModel formOptionModel)
         {
             var localizedPublishOption = await _shortcodeService.ProcessAsync("[locale en]Publish[/locale][locale fr]Publier[/locale]");
-            var localizedDraftOption = await _shortcodeService.ProcessAsync("[locale en]Draft[/locale]Brouillon[/locale]");
+            var localizedDraftOption = await _shortcodeService.ProcessAsync("[locale en]Draft[/locale][locale fr]Brouillon[/locale]");
 
-            formOptionModel.VisibilityOptions = new string[] { localizedPublishOption, localizedDraftOption };
+            formOptionModel.PublishOptions = new string[] { localizedPublishOption, localizedDraftOption };
         }
         private async Task FillRoleOptionsAsync(FormOptionModel formOptionModel)
         {

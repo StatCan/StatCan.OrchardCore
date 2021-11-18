@@ -16,6 +16,13 @@ namespace StatCan.OrchardCore.Radar.Services.ValueConverters
             rawValues.Remove("typeOptions[value]");
             rawValues.Remove("valueNames");
 
+            FixSingleArrayValue(rawValues, "roles");
+            FixSingleArrayValue(rawValues, "topics[label]");
+            FixSingleArrayValue(rawValues, "topics[value]");
+            FixSingleArrayValue(rawValues, "projectMembers[role]");
+            FixSingleArrayValue(rawValues, "projectMembers[user][label]");
+            FixSingleArrayValue(rawValues, "projectMembers[user][value]");
+
             // Convert to project form model
             // Normalize project member
             var projectMembers = new JArray();
@@ -62,7 +69,7 @@ namespace StatCan.OrchardCore.Radar.Services.ValueConverters
                 new
                 {
                     label = rawValues["type[label]"],
-                    value = rawValues["type[value"]
+                    value = rawValues["type[value]"]
                 }
             );
             rawValues.Remove("type[label]");
@@ -70,6 +77,19 @@ namespace StatCan.OrchardCore.Radar.Services.ValueConverters
             rawValues["type"] = type;
 
             return JsonConvert.DeserializeObject<ProjectFormModel>(rawValues.ToString());
+        }
+
+        private void FixSingleArrayValue(JObject rawValues, string key)
+        {
+            // Array having a single value gets converted to JValue instead of JArray so we need to convert it back
+            if (rawValues[key] is JValue)
+            {
+                var roleArray = new JArray
+                {
+                    rawValues[key]
+                };
+                rawValues[key] = roleArray;
+            }
         }
     }
 }
