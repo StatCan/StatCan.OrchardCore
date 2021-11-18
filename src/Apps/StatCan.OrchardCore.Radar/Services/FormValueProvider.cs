@@ -320,7 +320,7 @@ namespace StatCan.OrchardCore.Radar.Services
 
         private async Task<ContentItem> GetLocalizedContentAsync(string id)
         {
-            var contentItem = await _contentManager.GetAsync(id);
+            var contentItem = await _contentManager.GetAsync(id, VersionOptions.Latest);
 
             if (contentItem == null)
             {
@@ -374,7 +374,7 @@ namespace StatCan.OrchardCore.Radar.Services
             }
             else
             {
-                return await _shortcodeService.ProcessAsync("[locale en]Draft[/locale]Brouillon[/locale]");
+                return await _shortcodeService.ProcessAsync("[locale en]Draft[/locale][locale fr]Brouillon[/locale]");
             }
         }
     }

@@ -23,7 +23,8 @@ namespace StatCan.OrchardCore.Radar.Scripting
     public class RadarFormMethodsProvider : IGlobalMethodProvider
     {
         private readonly GlobalMethod _createOrUpdateTopic;
-        private readonly GlobalMethod _convertProjectToContent;
+        private readonly GlobalMethod _convertToFormModel;
+        private readonly GlobalMethod _convertToContentDocument;
         // private readonly GlobalMethod _createProject;
         // private readonly GlobalMethod _createEvent;
         // private readonly GlobalMethod _createProposal;
@@ -31,112 +32,133 @@ namespace StatCan.OrchardCore.Radar.Scripting
 
         public RadarFormMethodsProvider()
         {
-            _createOrUpdateTopic = new GlobalMethod
             {
-                Name = "createOrUpdateTopic",
-                Method = serviceProvider => (Func<string, JObject, string>)((id, values) =>
+                _createOrUpdateTopic = new GlobalMethod
                 {
-                    var rawValueConverter = serviceProvider.GetRequiredService<TopicRawValueConverter>();
-                    var topicFormModel = (TopicFormModel)rawValueConverter.ConvertFromRawValues(values);
-
-                    var contentConverter = serviceProvider.GetRequiredService<TopicContentConverter>();
-
-                    var queryManager = serviceProvider.GetRequiredService<IQueryManager>();
-                    var shortcodeService = serviceProvider.GetRequiredService<IShortcodeService>();
-                    var contentManager = serviceProvider.GetRequiredService<IContentManager>();
-
-                    // Each topic needs to be retrived from the taxonomy term
-                    var topicQuery = queryManager.GetQueryAsync("AllTaxonomiesSQL").GetAwaiter().GetResult();
-                    var topicResult = queryManager.ExecuteQueryAsync(topicQuery, new Dictionary<string, object> { { "type", "Topics" } }).GetAwaiter().GetResult();
-
-                    // Updating existing topic
-                    if (topicResult != null)
+                    Name = "createOrUpdateTopic",
+                    Method = serviceProvider => (Func<string, JObject, string>)((id, values) =>
                     {
-                        var topicTaxonomy = topicResult.Items.First() as ContentItem;
-                        var topicPart = topicTaxonomy.As<TaxonomyPart>().Content;
+                        var rawValueConverter = serviceProvider.GetRequiredService<TopicRawValueConverter>();
+                        var topicFormModel = (TopicFormModel)rawValueConverter.ConvertFromRawValues(values);
 
-                        foreach (JObject existingTopic in (JArray)topicPart.Terms)
+                        var contentConverter = serviceProvider.GetRequiredService<TopicContentConverter>();
+
+                        var queryManager = serviceProvider.GetRequiredService<IQueryManager>();
+                        var shortcodeService = serviceProvider.GetRequiredService<IShortcodeService>();
+                        var contentManager = serviceProvider.GetRequiredService<IContentManager>();
+
+                        // Each topic needs to be retrived from the taxonomy term
+                        var topicQuery = queryManager.GetQueryAsync("AllTaxonomiesSQL").GetAwaiter().GetResult();
+                        var topicResult = queryManager.ExecuteQueryAsync(topicQuery, new Dictionary<string, object> { { "type", "Topics" } }).GetAwaiter().GetResult();
+
+                        // Updating existing topic
+                        if (topicResult != null)
                         {
-                            if (id.Equals(existingTopic["ContentItemId"].Value<string>()))
+                            var topicTaxonomy = topicResult.Items.First() as ContentItem;
+                            var topicPart = topicTaxonomy.As<TaxonomyPart>().Content;
+
+                            foreach (JObject existingTopic in (JArray)topicPart.Terms)
                             {
-                                var topic = contentManager.NewAsync("Topic").GetAwaiter().GetResult();
-                                var existing = existingTopic.ToObject<ContentItem>();
-
-                                // Converts form model into content item document
-                                var topicUpdateObject = contentConverter.ConvertAsync(topicFormModel, new { Existing = existing }).GetAwaiter().GetResult();
-
-                                topic.ContentItemId = existing.ContentItemId;
-                                topic.Merge(existing);
-                                topic.Merge(topicUpdateObject, new JsonMergeSettings
+                                if (id.Equals(existingTopic["ContentItemId"].Value<string>()))
                                 {
-                                    MergeArrayHandling = MergeArrayHandling.Replace,
-                                    MergeNullValueHandling = MergeNullValueHandling.Merge
-                                });
-                                topic.Weld<TermPart>();
-                                topic.Alter<TermPart>(t => t.TaxonomyContentItemId = topicTaxonomy.ContentItemId);
+                                    var topic = contentManager.NewAsync("Topic").GetAwaiter().GetResult();
+                                    var existing = existingTopic.ToObject<ContentItem>();
 
-                                existingTopic.Merge(topic.Content, new JsonMergeSettings
-                                {
-                                    MergeArrayHandling = MergeArrayHandling.Replace,
-                                    MergeNullValueHandling = MergeNullValueHandling.Merge
-                                });
+                                    // Converts form model into content item document
+                                    var topicUpdateObject = contentConverter.ConvertAsync(topicFormModel, new { Existing = existing }).GetAwaiter().GetResult();
 
-                                existingTopic["DisplayText"] = topicUpdateObject["Topic"]["Name"]["Text"].Value<string>();
+                                    topic.ContentItemId = existing.ContentItemId;
+                                    topic.Merge(existing);
+                                    topic.Merge(topicUpdateObject, new JsonMergeSettings
+                                    {
+                                        MergeArrayHandling = MergeArrayHandling.Replace,
+                                        MergeNullValueHandling = MergeNullValueHandling.Merge
+                                    });
+                                    topic.Weld<TermPart>();
+                                    topic.Alter<TermPart>(t => t.TaxonomyContentItemId = topicTaxonomy.ContentItemId);
 
-                                contentManager.UpdateAsync(topicTaxonomy).GetAwaiter().GetResult();
+                                    existingTopic.Merge(topic.Content, new JsonMergeSettings
+                                    {
+                                        MergeArrayHandling = MergeArrayHandling.Replace,
+                                        MergeNullValueHandling = MergeNullValueHandling.Merge
+                                    });
 
-                                return existing.ContentItemId;
+                                    existingTopic["DisplayText"] = topicUpdateObject["Topic"]["Name"]["Text"].Value<string>();
+
+                                    contentManager.UpdateAsync(topicTaxonomy).GetAwaiter().GetResult();
+
+                                    return existing.ContentItemId;
+                                }
                             }
+
+                            // Creating new topic
+                            var newTopic = contentManager.NewAsync("Topic").GetAwaiter().GetResult();
+                            newTopic.Weld<TermPart>();
+                            newTopic.Alter<TermPart>(t => t.TaxonomyContentItemId = topicTaxonomy.ContentItemId);
+                            newTopic.Alter<AutoroutePart>(part =>
+                            {
+                                part.Path = newTopic.ContentItemId;
+                            });
+
+                            // Converts form model into content item document
+                            var topicCreateObject = contentConverter.ConvertAsync(topicFormModel, null).GetAwaiter().GetResult();
+
+                            newTopic.Merge(topicCreateObject);
+                            newTopic.DisplayText = topicCreateObject["Topic"]["Name"]["Text"].Value<string>();
+
+                            topicTaxonomy.Alter<TaxonomyPart>(part => part.Terms.Add(newTopic));
+
+                            contentManager.UpdateAsync(topicTaxonomy).GetAwaiter().GetResult();
+                            contentManager.UnpublishAsync(topicTaxonomy).GetAwaiter().GetResult(); // Needs to unpublish it first otherwise publish has no effect
+                            contentManager.PublishAsync(topicTaxonomy).GetAwaiter().GetResult();
+
+                            return newTopic.ContentItemId;
                         }
 
-                        // Creating new topic
-                        var newTopic = contentManager.NewAsync("Topic").GetAwaiter().GetResult();
-                        newTopic.Weld<TermPart>();
-                        newTopic.Alter<TermPart>(t => t.TaxonomyContentItemId = topicTaxonomy.ContentItemId);
-                        newTopic.Alter<AutoroutePart>(part =>
-                        {
-                            part.Path = newTopic.ContentItemId;
-                        });
+                        return null;
+                    })
+                };
 
-                        // Converts form model into content item document
-                        var topicCreateObject = contentConverter.ConvertAsync(topicFormModel, null).GetAwaiter().GetResult();
-
-                        newTopic.Merge(topicCreateObject);
-                        newTopic.DisplayText = topicCreateObject["Topic"]["Name"]["Text"].Value<string>();
-
-                        topicTaxonomy.Alter<TaxonomyPart>(part => part.Terms.Add(newTopic));
-
-                        contentManager.UpdateAsync(topicTaxonomy).GetAwaiter().GetResult();
-                        contentManager.UnpublishAsync(topicTaxonomy).GetAwaiter().GetResult(); // Needs to unpublish it first otherwise publish has no effect
-                        contentManager.PublishAsync(topicTaxonomy).GetAwaiter().GetResult();
-
-                        return newTopic.ContentItemId;
-                    }
-
-                    return null;
-                })
-            };
-
-            _convertProjectToContent = new GlobalMethod()
-            {
-                Name = "convertProjectToContent",
-                Method = serviceProvider => (Func<string, JObject, JObject>)((id, values) =>
+                _convertToFormModel = new GlobalMethod()
                 {
-                    var rawValueConverter = serviceProvider.GetRequiredService<ProjectRawValueConverter>();
-                    ProjectFormModel projectFormModel = (ProjectFormModel)rawValueConverter.ConvertFromRawValues(values);
+                    Name = "convertToFormModel",
+                    Method = serviceProvider => (Func<string, JObject, FormModel>)((type, rawValues) =>
+                    {
+                        IRawValueConverter converter = null;
 
-                    var projectContentConverter = serviceProvider.GetRequiredService<ProjectContentConverter>();
+                        if (type == "Project")
+                        {
+                            converter = serviceProvider.GetRequiredService<ProjectRawValueConverter>();
+                            return converter.ConvertFromRawValues(rawValues);
+                        }
 
-                    var projectContentObject = projectContentConverter.ConvertAsync(projectFormModel, null).GetAwaiter().GetResult();
+                        return null;
+                    })
+                };
 
-                    return projectContentObject;
-                })
-            };
+                _convertToContentDocument = new GlobalMethod()
+                {
+                    Name = "convertToContentDocument",
+                    Method = serviceProvider => (Func<string, FormModel, JObject>)((type, formModel) =>
+                    {
+                        IContentConverter converter = null;
+
+                        if (type == "Project")
+                        {
+                            converter = serviceProvider.GetRequiredService<ProjectContentConverter>();
+                            return converter.ConvertAsync(formModel, null).GetAwaiter().GetResult();
+                        }
+
+                        return null;
+                    })
+                };
+            }
         }
 
         public IEnumerable<GlobalMethod> GetMethods()
         {
-            return new[] { _createOrUpdateTopic, _convertProjectToContent };
+            return new[] { _createOrUpdateTopic, _convertToFormModel, _convertToContentDocument };
         }
     }
 }
+
