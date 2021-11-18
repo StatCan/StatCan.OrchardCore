@@ -206,9 +206,9 @@ namespace StatCan.OrchardCore.Radar.Services
                 Description = "",
                 Roles = Array.Empty<string>(),
                 Topics = new LinkedList<IDictionary<string, string>>(),
-                Type = "",
+                Type = new Dictionary<string, string>(),
                 RelatedEntities = new LinkedList<IDictionary<string, string>>(),
-                CommunityMembers = new LinkedList<IDictionary<string, string>>(),
+                CommunityMembers = new LinkedList<IDictionary<string, object>>(),
                 PublishStatus = "",
             };
 
@@ -222,15 +222,23 @@ namespace StatCan.OrchardCore.Radar.Services
                 }
 
                 await GetValuesFromRadarEntityPartAsync(communityFormModel, contentItem);
-                communityFormModel.Type = contentItem.Content.Community.Type.TermContentItemIds.ToObject<string[]>()[0];
+                communityFormModel.Type = new Dictionary<string, string>()
+                {
+                    {"value", contentItem.Content.Community.Type.TermContentItemIds.ToObject<string[]>()[0]},
+                    {"label", contentItem.Content.Community.Type.TagNames.ToObject<string[]>()[0]}
+                };
 
                 var communityMembers = contentItem.Content.CommunityMember.ContentItems;
 
                 foreach (var member in communityMembers)
                 {
-                    var user = new Dictionary<string, string>()
+                    var user = new Dictionary<string, object>()
                     {
-                        {"userId", member.CommunityMember.Member.UserIds.ToObject<string[]>()[0]},
+                        {"user", new Dictionary<string, string>()
+                        {
+                            {"value", member.CommunityMember.Member.UserIds.ToObject<string[]>()[0]},
+                            {"label", member.CommunityMember.Member.UserNames.ToObject<string[]>()[0]}
+                        }},
                         {"role", await _shortcodeService.ProcessAsync(member.CommunityMember.Role.Text.ToString())}
                     };
 

@@ -3,8 +3,8 @@ namespace StatCan.OrchardCore.Radar.FormModels
 {
     public class CommunityFormModel : EntityFormModel
     {
-        public ICollection<IDictionary<string, string>> CommunityMembers { get; set; }
+        public ICollection<IDictionary<string, object>> CommunityMembers { get; set; }
 
-        public string Type { get; set; }
+        public IDictionary<string, string> Type { get; set; }
     }
 }

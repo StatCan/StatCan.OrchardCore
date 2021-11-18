@@ -54,6 +54,7 @@ namespace StatCan.OrchardCore.Radar
             services.AddScoped<TopicRawValueConverter>();
             services.AddScoped<ProjectRawValueConverter>();
             services.AddScoped<ProposalRawValueConverter>();
+            services.AddScoped<CommunityRawValueConverter>();
 
             // Content converters
             services.AddScoped<BaseContentConverterDependency>();
@@ -61,6 +62,7 @@ namespace StatCan.OrchardCore.Radar
             services.AddScoped<TopicContentConverter>();
             services.AddScoped<ProjectContentConverter>();
             services.AddScoped<ProposalContentConverter>();
+            services.AddScoped<CommunityContentConverter>();
 
             services.AddSingleton<IGlobalMethodProvider, RadarFormMethodsProvider>();
             services.AddSingleton<IGlobalMethodProvider, LocalizedContentMethodsProvider>();

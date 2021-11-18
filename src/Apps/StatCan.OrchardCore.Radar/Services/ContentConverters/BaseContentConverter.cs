@@ -8,16 +8,17 @@ using OrchardCore.ContentManagement;
 using OrchardCore.Queries;
 using StatCan.OrchardCore.Radar.FormModels;
 
-
 namespace StatCan.OrchardCore.Radar.Services.ContentConverters
 {
     public abstract class BaseContentConverter : IContentConverter
     {
         private readonly IQueryManager _queryManager;
+        private readonly IContentManager _contentManager;
 
         public BaseContentConverter(BaseContentConverterDependency baseContentConverterDependency)
         {
             _queryManager = baseContentConverterDependency.GetQueryManager();
+            _contentManager = baseContentConverterDependency.GetContentManager();
         }
 
         public Task<JObject> ConvertAsync(FormModel formModel, dynamic context)
@@ -33,6 +34,25 @@ namespace StatCan.OrchardCore.Radar.Services.ContentConverters
         public virtual Task<JObject> ConvertFromFormModelAsync(FormModel formModel, dynamic context)
         {
             return Task.FromResult(ConvertFromFormModel(formModel, context));
+        }
+
+        protected async Task<ICollection<ContentItem>> GetMembersContentWithRole(ICollection<IDictionary<string, object>> members, string type, Func<IDictionary<string,object>, object> func)
+        {
+            // Contents in bag parts has to be ContentItem
+
+            ICollection<ContentItem> membersContent = new LinkedList<ContentItem>();
+
+            foreach (var member in members)
+            {
+                var memberObject = func(member);
+
+                var contentItem = await _contentManager.NewAsync(type);
+                contentItem.Merge(memberObject);
+
+                membersContent.Add(contentItem);
+            }
+
+            return membersContent;
         }
 
         protected async Task<string> GetTaxonomyIdAsync(string type)

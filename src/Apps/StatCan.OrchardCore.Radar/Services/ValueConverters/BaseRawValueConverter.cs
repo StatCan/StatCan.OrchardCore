@@ -38,20 +38,23 @@ namespace StatCan.OrchardCore.Radar.Services.ValueConverters
         protected void FillTopics(JObject rawValues)
         {
             var topics = new JArray();
-            for (var i = 0; i < rawValues["topics[label]"].Count(); i++)
+            if(rawValues["topics[label]"] != null && rawValues["topics[label]"] != null)
             {
-                var topicObject = JObject.FromObject(
-                    new
-                    {
-                        value = rawValues["topics[value]"][i],
-                        label = rawValues["topics[label]"][i]
-                    }
-                );
+                for (var i = 0; i < rawValues["topics[label]"].Count(); i++)
+                {
+                    var topicObject = JObject.FromObject(
+                        new
+                        {
+                            value = rawValues["topics[value]"][i],
+                            label = rawValues["topics[label]"][i]
+                        }
+                    );
 
-                topics.Add(topicObject);
+                    topics.Add(topicObject);
+                }
+                rawValues.Remove("topics[label]");
+                rawValues.Remove("topics[value]");
             }
-            rawValues.Remove("topics[label]");
-            rawValues.Remove("topics[value]");
             rawValues["topics"] = topics;
         }
 
@@ -72,17 +75,20 @@ namespace StatCan.OrchardCore.Radar.Services.ValueConverters
         protected void FillRelatedEntities(JObject rawValues)
         {
             var relatedEntities = new JArray();
-            for (var i = 0; i < rawValues["relatedEntities[label]"].Count(); i++)
+            if(rawValues["relatedEntities[label]"] != null && rawValues["relatedEntities[label]"] != null)
             {
-                var topicObject = JObject.FromObject(
-                    new
-                    {
-                        value = rawValues["relatedEntities[value]"][i],
-                        label = rawValues["relatedEntities[label]"][i]
-                    }
-                );
+                for (var i = 0; i < rawValues["relatedEntities[label]"].Count(); i++)
+                {
+                    var topicObject = JObject.FromObject(
+                        new
+                        {
+                            value = rawValues["relatedEntities[value]"][i],
+                            label = rawValues["relatedEntities[label]"][i]
+                        }
+                    );
 
-                relatedEntities.Add(topicObject);
+                    relatedEntities.Add(topicObject);
+                }
             }
             rawValues.Remove("relatedEntities[label]");
             rawValues.Remove("relatedEntities[value]");

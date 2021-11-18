@@ -1,68 +1,61 @@
-using System.Collections.Generic;
-using System.Linq;
-using System;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
-using OrchardCore.ContentManagement;
-using OrchardCore.Queries;
 using StatCan.OrchardCore.Radar.FormModels;
 
 namespace StatCan.OrchardCore.Radar.Services.ContentConverters
 {
-    public class ProjectContentConverter : BaseContentConverter
+    public class CommunityContentConverter : BaseContentConverter
     {
-        private readonly IContentManager _contentManager;
-        public ProjectContentConverter(IContentManager contentManager, BaseContentConverterDependency baseContentConverterDependency) : base(baseContentConverterDependency)
+        public CommunityContentConverter(BaseContentConverterDependency baseContentConverterDependency) : base(baseContentConverterDependency)
         {
-            _contentManager = contentManager;
-        }
 
+        }
         public override async Task<JObject> ConvertFromFormModelAsync(FormModel formModel, object context)
         {
-            ProjectFormModel projectFormModel = (ProjectFormModel)formModel;
+            CommunityFormModel communityFormModel = (CommunityFormModel)formModel;
 
-            var projectContentObject = new
+            var communityContentObject = new
             {
-                Published = GetPublishStatus(projectFormModel.PublishStatus),
-                Project = new
+                Published = GetPublishStatus(communityFormModel.PublishStatus),
+                Community = new
                 {
                     Type = new
                     {
-                        TaxonomyContentItemId = await GetTaxonomyIdAsync("Project Types"),
-                        TermContentItemIds = new string[] { projectFormModel.Type["value"] },
-                        TagNames = new string[] { projectFormModel.Type["label"] }
+                        TaxonomyContentItemId = await GetTaxonomyIdAsync("Community Types"),
+                        TermContentItemIds = new string[] { communityFormModel.Type["value"] },
+                        TagNames = new string[] { communityFormModel.Type["label"] }
                     }
                 },
                 RadarEntityPart = new
                 {
                     Name = new
                     {
-                        Text = projectFormModel.Name
+                        Text = communityFormModel.Name
                     },
                     Description = new
                     {
-                        Text = projectFormModel.Description
+                        Text = communityFormModel.Description
                     },
                     Topics = new
                     {
                         TaxonomyContentItemId = await GetTaxonomyIdAsync("Topics"),
-                        TermContentItemIds = MapStringDictListToStringList(projectFormModel.Topics, topic => topic["value"]),
-                        TagNames = MapStringDictListToStringList(projectFormModel.Topics, topic => topic["label"])
+                        TermContentItemIds = MapStringDictListToStringList(communityFormModel.Topics, topic => topic["value"]),
+                        TagNames = MapStringDictListToStringList(communityFormModel.Topics, topic => topic["label"])
                     }
                 },
                 ContentPermissionsPart = new
                 {
                     Enabled = true,
-                    Roles = projectFormModel.Roles
+                    Roles = communityFormModel.Roles
                 },
-                ProjectMember = new
+                CommunityMember = new
                 {
-                    ContentItems = await GetMembersContentWithRole(projectFormModel.ProjectMembers, "ProjectMember", member =>
+                    ContentItems = await GetMembersContentWithRole(communityFormModel.CommunityMembers, "CommunityMember", member =>
                     {
                         var userObject = (JObject)member["user"];
                         var memberObject = new
                         {
-                            ProjectMember = new
+                            CommunityMember = new
                             {
                                 Member = new
                                 {
@@ -81,7 +74,7 @@ namespace StatCan.OrchardCore.Radar.Services.ContentConverters
                 }
             };
 
-            return JObject.FromObject(projectContentObject);
+            return JObject.FromObject(communityContentObject);
         }
     }
 }
