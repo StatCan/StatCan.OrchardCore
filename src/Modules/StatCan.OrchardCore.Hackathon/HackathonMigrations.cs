@@ -27,6 +27,7 @@ namespace StatCan.OrchardCore.Hackathon
             CreateUserProfiles();
             CreateWidgets();
             CreateChallenge();
+            CreateAnnouncement();
 
             await _recipeMigrator.ExecuteAsync("queries.recipe.json", this);
             await _recipeMigrator.ExecuteAsync("roles.recipe.json", this);
@@ -89,6 +90,7 @@ namespace StatCan.OrchardCore.Hackathon
         {
             _contentDefinitionManager.CreateBasicWidget("HackathonCalendar");
             _contentDefinitionManager.CreateBasicWidget("ChallengeListWidget");
+            _contentDefinitionManager.CreateBasicWidget("AnnouncementListWidget");
         }
 
         private void CreateChallenge()
@@ -102,6 +104,32 @@ namespace StatCan.OrchardCore.Hackathon
                 .WithTitlePart("0", TitlePartOptions.GeneratedDisabled, "{{ContentItem.Content.Challenge.Name.Text}}")
                 .WithPart("Challenge", p => p.WithPosition("1"))
                 .WithMarkdownBody("2")
+            );
+        }
+
+        private void CreateAnnouncement()
+        {
+            _contentDefinitionManager.AlterTypeDefinition("Announcement", type => type
+                .DisplayedAs("Announcement")
+                .Creatable()
+                .Listable()
+                .Draftable()
+                .Securable()
+                .WithPart("Announcement", part => part
+                    .WithPosition("0")
+                )
+                .WithPart("MarkdownBodyPart", part => part
+                    .WithPosition("1")
+                    .WithEditor("Wysiwyg")
+                )
+            );
+
+            _contentDefinitionManager.AlterPartDefinition("Announcement", part => part
+                .WithField("Title", field => field
+                    .OfType("TextField")
+                    .WithDisplayName("Title")
+                    .WithPosition("0")
+                )
             );
         }
     }

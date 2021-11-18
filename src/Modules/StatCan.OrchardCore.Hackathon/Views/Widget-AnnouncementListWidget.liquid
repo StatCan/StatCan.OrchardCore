@@ -1,0 +1,33 @@
+{% assign announcements = Queries.GetItemsForHackathon  | query: type: "Announcement" | sort: "ModifiedUtc" | reverse %}
+
+<div class="text-h3 font-weight-black pb-3 ">Team Announcements</div>
+<v-container>
+    <v-col cols="10">
+        <v-expansion-panels multiple >
+            {% for announcement in announcements %}
+            {% assign dateTime = "DateTime" | shape_new: utc: announcement.ModifiedUtc, format: format | shape_stringify  %}
+            {% assign aShape = announcement.ContentItem | shape_build_display %}
+                {% if announcement.Published == true %}
+                    <v-expansion-panel>
+                    <v-expansion-panel-header class="justify-start">
+                        <div>
+                            <div class="pb-2" >
+                            <span class="d-flex align-center text-caption "> 
+                                <v-icon small class="px-1 grey--text darken-4--text">mdi-clock</v-icon>
+                                {{dateTime}}
+                                <v-icon small class="px-1 grey--text darken-4--text">mdi-account</v-icon>
+                                {{ Model.ContentItem.Author }}
+                            </span>
+                            </div>
+                            <div class="text-h5">
+                                {{ announcement.ContentItem.Content.Announcement.Title.Text | shortcode }}
+                            </div>
+                        </div>
+                    </v-expansion-panel-header>
+                    <v-expansion-panel-content><v-list-text>{{ aShape.Content.MarkdownBodyPart | shape_render }}</v-list-text></v-expansion-panel-content>
+                    </v-expansion-panel>
+                {% endif %}
+            {% endfor %}
+        </v-expansion-panels>
+    </v-col>
+</v-container>
