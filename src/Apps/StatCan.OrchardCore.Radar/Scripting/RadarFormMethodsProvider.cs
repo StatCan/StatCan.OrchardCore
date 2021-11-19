@@ -11,6 +11,7 @@ using Newtonsoft.Json;
 using OrchardCore.ContentManagement;
 using OrchardCore.Queries;
 using OrchardCore.Shortcodes.Services;
+using OrchardCore.Flows.Models;
 using OrchardCore.Scripting;
 using OrchardCore.Taxonomies.Models;
 using OrchardCore.Autoroute.Models;
@@ -25,6 +26,7 @@ namespace StatCan.OrchardCore.Radar.Scripting
         private readonly GlobalMethod _createOrUpdateTopic;
         private readonly GlobalMethod _convertToFormModel;
         private readonly GlobalMethod _convertToContentDocument;
+        private readonly GlobalMethod _createOrUpdateArtifact;
         // private readonly GlobalMethod _createProject;
         // private readonly GlobalMethod _createEvent;
         // private readonly GlobalMethod _createProposal;
@@ -119,6 +121,71 @@ namespace StatCan.OrchardCore.Radar.Scripting
                     })
                 };
 
+                _createOrUpdateArtifact = new GlobalMethod()
+                {
+                    Name = "createOrUpdateArtifact",
+                    Method = serviceProvider => (Func<string, string, FormModel, string>)((parentId, id, formModel) =>
+                    {
+                        var shortcodeService = serviceProvider.GetRequiredService<IShortcodeService>();
+                        var contentManager = serviceProvider.GetRequiredService<IContentManager>();
+                        var contentConverter = serviceProvider.GetRequiredService<ArtifactContentConverter>();
+
+                        var parentContentItem = contentManager.GetAsync(parentId).GetAwaiter().GetResult();
+
+                        if (parentContentItem != null)
+                        {
+                            var workspace = parentContentItem.Get<BagPart>("Workspace");
+
+                            foreach (var artifact in workspace.ContentItems)
+                            {
+                                if (id.Equals(artifact.ContentItemId))
+                                {
+                                    var tempArtifact = contentManager.NewAsync("Artifact").GetAwaiter().GetResult();
+                                    tempArtifact.Merge(artifact);
+
+                                    // Converts form model into content item document
+                                    var artifactUpdateObject = contentConverter.ConvertAsync(formModel, new { Existing = artifact }).GetAwaiter().GetResult();
+                                    tempArtifact.Merge(artifactUpdateObject, new JsonMergeSettings
+                                    {
+                                        MergeArrayHandling = MergeArrayHandling.Replace,
+                                        MergeNullValueHandling = MergeNullValueHandling.Merge
+                                    });
+
+                                    artifact.Merge(tempArtifact, new JsonMergeSettings
+                                    {
+                                        MergeArrayHandling = MergeArrayHandling.Replace,
+                                        MergeNullValueHandling = MergeNullValueHandling.Merge
+                                    });
+
+                                    artifact.DisplayText = artifactUpdateObject["TitlePart"]["Title"].Value<string>();
+                                    parentContentItem.Apply("Workspace", workspace);
+
+                                    contentManager.UpdateAsync(parentContentItem).GetAwaiter().GetResult();
+
+                                    return artifact.ContentItemId;
+                                }
+                            }
+
+                            var newArtifact = contentManager.NewAsync("Artifact").GetAwaiter().GetResult();
+                            var artifactCreateObject = contentConverter.ConvertAsync(formModel, null).GetAwaiter().GetResult();
+
+                            newArtifact.Merge(artifactCreateObject);
+                            newArtifact.DisplayText = artifactCreateObject["TitlePart"]["Title"].Value<string>();
+                            newArtifact.Alter<AutoroutePart>(part => part.Path = "artifacts/" + newArtifact.ContentItemId);
+                            workspace.ContentItems.Add(newArtifact);
+                            parentContentItem.Apply("Workspace", workspace);
+
+                            contentManager.UpdateAsync(parentContentItem).GetAwaiter().GetResult();
+                            contentManager.UnpublishAsync(parentContentItem).GetAwaiter().GetResult();
+                            contentManager.PublishAsync(parentContentItem).GetAwaiter().GetResult();
+
+                            return newArtifact.ContentItemId;
+                        }
+
+                        return null;
+                    })
+                };
+
                 _convertToFormModel = new GlobalMethod()
                 {
                     Name = "convertToFormModel",
@@ -134,13 +201,21 @@ namespace StatCan.OrchardCore.Radar.Scripting
                         {
                             converter = serviceProvider.GetRequiredService<ProposalRawValueConverter>();
                         }
-                        else if(type == "Community")
+                        else if (type == "Community")
                         {
                             converter = serviceProvider.GetRequiredService<CommunityRawValueConverter>();
                         }
-                        else if(type == "Event")
+                        else if (type == "Event")
                         {
                             converter = serviceProvider.GetRequiredService<EventRawValueConverter>();
+                        }
+                        else if (type == "Artifact")
+                        {
+                            converter = serviceProvider.GetRequiredService<ArtifactRawValueConverter>();
+                        }
+                        else if (type == "Topic")
+                        {
+                            converter = serviceProvider.GetRequiredService<TopicRawValueConverter>();
                         }
 
                         return converter.ConvertAsync(rawValues).GetAwaiter().GetResult();
@@ -162,13 +237,21 @@ namespace StatCan.OrchardCore.Radar.Scripting
                         {
                             converter = serviceProvider.GetRequiredService<ProposalContentConverter>();
                         }
-                        else if(type == "Community")
+                        else if (type == "Community")
                         {
                             converter = serviceProvider.GetRequiredService<CommunityContentConverter>();
                         }
-                        else if(type == "Event")
+                        else if (type == "Event")
                         {
                             converter = serviceProvider.GetRequiredService<EventContentConverter>();
+                        }
+                        else if (type == "Artifact")
+                        {
+                            converter = serviceProvider.GetRequiredService<ArtifactContentConverter>();
+                        }
+                        else if (type == "Topic")
+                        {
+                            converter = serviceProvider.GetRequiredService<TopicContentConverter>();
                         }
 
                         return converter.ConvertAsync(formModel, null).GetAwaiter().GetResult();
@@ -179,7 +262,7 @@ namespace StatCan.OrchardCore.Radar.Scripting
 
         public IEnumerable<GlobalMethod> GetMethods()
         {
-            return new[] { _createOrUpdateTopic, _convertToFormModel, _convertToContentDocument };
+            return new[] { _createOrUpdateTopic, _convertToFormModel, _convertToContentDocument, _createOrUpdateArtifact };
         }
     }
 }

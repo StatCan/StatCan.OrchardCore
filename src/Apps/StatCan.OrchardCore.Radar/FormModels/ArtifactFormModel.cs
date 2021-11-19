@@ -1,7 +1,8 @@
 namespace StatCan.OrchardCore.Radar.FormModels
 {
-    public class ArtifactModel : FormModel
+    public class ArtifactFormModel : FormModel
     {
+        public string ParentId { get; set; }
         public string Url { get; set; }
     }
 }

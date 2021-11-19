@@ -129,9 +129,13 @@ namespace StatCan.OrchardCore.Radar.Drivers
             var values = path.Substring(1).Split("/");
 
             // < 5 means some values are missing
-            if (values.Length < 5)
+            if (values.Length < 4)
             {
                 return (null, null);
+            }
+            else if(values.Length < 5)
+            {
+                return (values[1], null);
             }
 
             return (values[1], values[values.Length - 1]);

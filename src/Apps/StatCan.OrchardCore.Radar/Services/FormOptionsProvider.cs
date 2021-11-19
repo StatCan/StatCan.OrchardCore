@@ -45,6 +45,10 @@ namespace StatCan.OrchardCore.Radar.Services
             {
                 return await GetEventFormOptionsAsync();
             }
+            else if(entityType == "artifacts")
+            {
+                return await GetArtifactFormOptionsAsync();
+            }
 
             return null;
         }
@@ -120,6 +124,20 @@ namespace StatCan.OrchardCore.Radar.Services
             await FillVisibilityOptionsAsync(eventFormModel);
 
             return eventFormModel;
+        }
+
+        private async Task<FormOptionModel> GetArtifactFormOptionsAsync()
+        {
+            var roles = await _roleService.GetRoleNamesAsync();
+
+            var formOptionModel = new FormOptionModel()
+            {
+                RoleOptions = new LinkedList<string>(),
+            };
+
+            await FillRoleOptionsAsync(formOptionModel);
+
+            return formOptionModel;
         }
 
         private async Task FillVisibilityOptionsAsync(EntityFormOptionModel formOptionModel)

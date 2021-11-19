@@ -67,39 +67,47 @@ namespace StatCan.OrchardCore.Radar.Services
             return null;
         }
 
-        public async Task<ArtifactModel> GetArtifactInitialValuesAsync(string parentId, string childId)
+        public async Task<ArtifactFormModel> GetArtifactInitialValuesAsync(string parentId, string childId)
         {
-            var artifactModel = new ArtifactModel();
+            var artifactModel = new ArtifactFormModel();
 
-            artifactModel = new ArtifactModel()
+            artifactModel = new ArtifactFormModel()
             {
                 Id = "",
+                ParentId = "",
                 Name = "",
                 Url = "",
+                Roles = Array.Empty<string>(),
             };
 
-            if (!(string.IsNullOrEmpty(parentId) || string.IsNullOrEmpty(childId)))
+            if (!string.IsNullOrEmpty(parentId))
             {
                 var parentContentItem = await GetLocalizedContentAsync(parentId);
 
-                var artifacts = parentContentItem.Content.Workspace.ContentItems;
+                artifactModel.ParentId = parentContentItem.ContentItemId;
 
-                foreach (var artifact in artifacts)
+                if(!string.IsNullOrEmpty(childId))
                 {
-                    if (childId == artifact.ContentItemId.ToString())
-                    {
-                        artifactModel.Id = artifact.ContentItemId.ToString();
-                        artifactModel.Name = artifact.DisplayText.ToString();
-                        artifactModel.Url = artifact.Artifact.URL.Text.ToString();
+                    var artifacts = parentContentItem.Content.Workspace.ContentItems;
 
-                        return artifactModel;
+                    foreach (var artifact in artifacts)
+                    {
+                        if (childId == artifact.ContentItemId.ToString())
+                        {
+                            artifactModel.Id = artifact.ContentItemId.ToString();
+                            artifactModel.Name = await _shortcodeService.ProcessAsync(artifact.DisplayText.ToString());
+                            artifactModel.Url = artifact.Artifact.URL.Text.ToString();
+                            artifactModel.Roles = artifact.ContentPermissionsPart.Roles.ToObject<string[]>();
+
+                            return artifactModel;
+                        }
                     }
                 }
 
-                return null;
+                return artifactModel;
             }
 
-            return artifactModel;
+            return null;
         }
 
         private async Task<TopicFormModel> GetTopicInitialValuesAsync(string id)

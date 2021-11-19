@@ -11,13 +11,7 @@ namespace StatCan.OrchardCore.Radar.Services.ValueConverters
             rawValues.Remove("roleOptions");
             rawValues.Remove("__RequestVerificationToken");
 
-            // Array having a single value gets converted to JValue instead of JArray so we need to convert it back
-            if (rawValues["roles"] is JValue)
-            {
-                var roleArray = new JArray();
-                roleArray.Add(rawValues["roles"]);
-                rawValues["roles"] = roleArray;
-            }
+           FixSingleArrayValue(rawValues, "roles");
 
             return JsonConvert.DeserializeObject<TopicFormModel>(rawValues.ToString());
         }

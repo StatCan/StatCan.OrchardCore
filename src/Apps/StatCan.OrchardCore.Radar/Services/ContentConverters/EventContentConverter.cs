@@ -76,6 +76,10 @@ namespace StatCan.OrchardCore.Radar.Services.ContentConverters
 
                         return organizerObject;
                     })
+                },
+                AutoroutePart = new
+                {
+                    RouteContainedItems = true,
                 }
             };
 

@@ -53,6 +53,10 @@ namespace StatCan.OrchardCore.Radar.Services.ContentConverters
                     Enabled = true,
                     Roles = proposalFormModel.Roles
                 },
+                AutoroutePart = new
+                {
+                    RouteContainedItems = true,
+                }
             };
 
             return JObject.FromObject(proposalContentObject);

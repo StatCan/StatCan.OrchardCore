@@ -7,6 +7,7 @@ using OrchardCore.Scripting;
 using OrchardCore.ContentManagement;
 using OrchardCore.ContentLocalization;
 using OrchardCore.Localization;
+using OrchardCore.Autoroute.Models;
 
 namespace StatCan.OrchardCore.Radar.Scripting
 {
@@ -45,9 +46,12 @@ namespace StatCan.OrchardCore.Radar.Scripting
                     {
                         var localizedContent = contentLocalizationManager.LocalizeAsync(contentItem, culture).GetAwaiter().GetResult();
                         contentManager.CreateAsync(localizedContent).GetAwaiter().GetResult();
-                        contentManager.UpdateAsync(localizedContent).GetAwaiter().GetResult(); // This is needed to set the display text
+                        contentManager.UpdateAsync(localizedContent).GetAwaiter().GetResult(); // This is needed to to generate the routes
 
-                        if(publish)
+                        localizedContent.Alter<AutoroutePart>(part => part.RouteContainedItems = true);
+                        contentManager.UpdateAsync(localizedContent).GetAwaiter().GetResult(); // This is needed to enable the rounte contained option
+
+                        if (publish)
                         {
                             contentManager.PublishAsync(localizedContent).GetAwaiter().GetResult();
                         }
