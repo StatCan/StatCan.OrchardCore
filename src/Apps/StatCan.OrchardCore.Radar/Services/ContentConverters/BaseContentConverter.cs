@@ -36,7 +36,7 @@ namespace StatCan.OrchardCore.Radar.Services.ContentConverters
             return Task.FromResult(ConvertFromFormModel(formModel, context));
         }
 
-        protected async Task<ICollection<ContentItem>> GetMembersContentWithRole(ICollection<IDictionary<string, object>> members, string type, Func<IDictionary<string,object>, object> func)
+        protected async Task<ICollection<ContentItem>> GetMembersContentAsync<T>(ICollection<IDictionary<string, T>> members, string type, Func<IDictionary<string,T>, object> func)
         {
             // Contents in bag parts has to be ContentItem
 
@@ -82,7 +82,7 @@ namespace StatCan.OrchardCore.Radar.Services.ContentConverters
         }
 
         // Maps object with all string properties to string list
-        protected ICollection<string> MapStringDictListToStringList(ICollection<IDictionary<string, string>> list, Func<IDictionary<string, string>, string> func)
+        protected ICollection<string> MapDictListToStringList<T>(ICollection<IDictionary<string, T>> list, Func<IDictionary<string, T>, string> func)
         {
             ICollection<string> stringList = new LinkedList<string>();
 

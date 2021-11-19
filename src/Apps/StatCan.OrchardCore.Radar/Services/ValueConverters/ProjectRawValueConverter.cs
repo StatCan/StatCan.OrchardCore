@@ -29,21 +29,24 @@ namespace StatCan.OrchardCore.Radar.Services.ValueConverters
             // Convert to project form model
             // Normalize project member
             var projectMembers = new JArray();
-            for (var i = 0; i < rawValues["projectMembers[role]"].Count(); i++)
+            if (rawValues["projectMembers[role]"] != null && rawValues["projectMembers[user][label]"] != null && rawValues["projectMembers[user][value]"] != null)
             {
-                var memberObject = JObject.FromObject(
-                     new
-                     {
-                         role = rawValues["projectMembers[role]"][i],
-                         user = new
+                for (var i = 0; i < rawValues["projectMembers[role]"].Count(); i++)
+                {
+                    var memberObject = JObject.FromObject(
+                         new
                          {
-                             label = rawValues["projectMembers[user][label]"][i],
-                             value = rawValues["projectMembers[user][value]"][i]
+                             role = rawValues["projectMembers[role]"][i],
+                             user = new
+                             {
+                                 label = rawValues["projectMembers[user][label]"][i],
+                                 value = rawValues["projectMembers[user][value]"][i]
+                             }
                          }
-                     }
-                );
+                    );
 
-                projectMembers.Add(memberObject);
+                    projectMembers.Add(memberObject);
+                }
             }
             rawValues.Remove("projectMembers[role]");
             rawValues.Remove("projectMembers[user][label]");

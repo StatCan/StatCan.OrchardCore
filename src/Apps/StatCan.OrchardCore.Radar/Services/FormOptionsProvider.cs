@@ -41,6 +41,10 @@ namespace StatCan.OrchardCore.Radar.Services
             {
                 return await GetCommunityFormOptionsAsync();
             }
+            else if(entityType == "events")
+            {
+                return await GetEventFormOptionsAsync();
+            }
 
             return null;
         }
@@ -102,6 +106,20 @@ namespace StatCan.OrchardCore.Radar.Services
             await FillVisibilityOptionsAsync(communityFormModel);
 
             return communityFormModel;
+        }
+
+        private async Task<FormOptionModel> GetEventFormOptionsAsync()
+        {
+            var eventFormModel = new EntityFormOptionModel()
+            {
+                RoleOptions = new LinkedList<string>(),
+                TypeOptions = new LinkedList<IDictionary<string, string>>(),
+            };
+
+            await FillRoleOptionsAsync(eventFormModel);
+            await FillVisibilityOptionsAsync(eventFormModel);
+
+            return eventFormModel;
         }
 
         private async Task FillVisibilityOptionsAsync(EntityFormOptionModel formOptionModel)

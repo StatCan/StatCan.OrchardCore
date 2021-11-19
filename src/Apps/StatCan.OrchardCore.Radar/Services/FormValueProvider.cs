@@ -258,9 +258,11 @@ namespace StatCan.OrchardCore.Radar.Services
                 Description = "",
                 Roles = Array.Empty<string>(),
                 Topics = new LinkedList<IDictionary<string, string>>(),
-                StartDate = DateTime.Today,
-                EndDate = DateTime.Today,
-                Attendees = new LinkedList<string>(),
+                StartDate = GetDateFromDateTime(DateTime.Now),
+                EndDate = GetDateFromDateTime(DateTime.Now),
+                StartTime = GetTimeFromDateTime(DateTime.Now),
+                EndTime = GetTimeFromDateTime(DateTime.Now),
+                Attendees = new LinkedList<IDictionary<string, string>>(),
                 EventOrganizers = new LinkedList<IDictionary<string, string>>(),
                 RelatedEntities = new LinkedList<IDictionary<string, string>>(),
                 PublishStatus = "",
@@ -276,9 +278,24 @@ namespace StatCan.OrchardCore.Radar.Services
                 }
 
                 await GetValuesFromRadarEntityPartAsync(eventFormModel, contentItem);
-                eventFormModel.StartDate = DateTime.Parse(contentItem.Content.Event.StartDate.Value.ToString(), CultureInfo.CurrentCulture);
-                eventFormModel.EndDate = DateTime.Parse(contentItem.Content.Event.StartDate.Value.ToString(), CultureInfo.CurrentCulture);
-                eventFormModel.Attendees = contentItem.Content.Event.Attendees.UserIds.ToObject<string[]>();
+                eventFormModel.StartDate = GetDateFromDateTime(DateTime.Parse(contentItem.Content.Event.StartDate.Value.ToString()));
+                eventFormModel.StartTime = GetTimeFromDateTime(DateTime.Parse(contentItem.Content.Event.StartDate.Value.ToString()));
+                eventFormModel.EndDate = GetDateFromDateTime(DateTime.Parse(contentItem.Content.Event.EndDate.Value.ToString()));
+                eventFormModel.EndTime = GetTimeFromDateTime(DateTime.Parse(contentItem.Content.Event.EndDate.Value.ToString()));
+
+                string[] attendeeIds = contentItem.Content.Event.Attendees.UserIds.ToObject<string[]>();
+                string[] attendeeNames = contentItem.Content.Event.Attendees.UserNames.ToObject<string[]>();
+
+                for (var i = 0; i < attendeeIds.Length; i++)
+                {
+                    var user = new Dictionary<string, string>()
+                    {
+                        {"value", attendeeIds[i]},
+                         {"label", attendeeNames[i]}
+                    };
+
+                    eventFormModel.Attendees.Add(user);
+                }
 
                 var eventOrganizers = contentItem.Content.EventOrganizer.ContentItems;
 
@@ -286,8 +303,8 @@ namespace StatCan.OrchardCore.Radar.Services
                 {
                     var user = new Dictionary<string, string>()
                     {
-                        {"userId", organizer.EventOrganizer.Organizer.UserIds.ToObject<string[]>()[0]},
-                        {"role", await _shortcodeService.ProcessAsync(organizer.EventOrganizer.Role.Text.ToString())}
+                        {"value", organizer.EventOrganizer.Organizer.UserIds.ToObject<string[]>()[0]},
+                        {"label", organizer.EventOrganizer.Organizer.UserNames.ToObject<string[]>()[0]}
                     };
 
                     eventFormModel.EventOrganizers.Add(user);
@@ -329,6 +346,16 @@ namespace StatCan.OrchardCore.Radar.Services
             }
 
             return proposalFormModel;
+        }
+
+        private string GetDateFromDateTime(DateTime dt)
+        {
+            return dt.ToString("yyyy-MM-dd");
+        }
+
+        private string GetTimeFromDateTime(DateTime dt)
+        {
+            return dt.ToString("hh:mm");
         }
 
         private async Task<ContentItem> GetLocalizedContentAsync(string id)

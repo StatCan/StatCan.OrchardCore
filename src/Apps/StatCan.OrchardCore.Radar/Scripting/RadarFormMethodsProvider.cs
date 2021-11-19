@@ -138,6 +138,10 @@ namespace StatCan.OrchardCore.Radar.Scripting
                         {
                             converter = serviceProvider.GetRequiredService<CommunityRawValueConverter>();
                         }
+                        else if(type == "Event")
+                        {
+                            converter = serviceProvider.GetRequiredService<EventRawValueConverter>();
+                        }
 
                         return converter.ConvertAsync(rawValues).GetAwaiter().GetResult();
                     })
@@ -161,6 +165,10 @@ namespace StatCan.OrchardCore.Radar.Scripting
                         else if(type == "Community")
                         {
                             converter = serviceProvider.GetRequiredService<CommunityContentConverter>();
+                        }
+                        else if(type == "Event")
+                        {
+                            converter = serviceProvider.GetRequiredService<EventContentConverter>();
                         }
 
                         return converter.ConvertAsync(formModel, null).GetAwaiter().GetResult();

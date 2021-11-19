@@ -40,12 +40,12 @@ namespace StatCan.OrchardCore.Radar.Services.ContentConverters
                     Topics = new
                     {
                         TaxonomyContentItemId = await GetTaxonomyIdAsync("Topics"),
-                        TermContentItemIds = MapStringDictListToStringList(proposalFormModel.Topics, topic => topic["value"]),
-                        TagNames = MapStringDictListToStringList(proposalFormModel.Topics, topic => topic["label"])
+                        TermContentItemIds = MapDictListToStringList(proposalFormModel.Topics, topic => topic["value"]),
+                        TagNames = MapDictListToStringList(proposalFormModel.Topics, topic => topic["label"])
                     },
                     RelatedEntity = new
                     {
-                        LocalizationSets = MapStringDictListToStringList(proposalFormModel.RelatedEntities, entity => entity["value"])
+                        LocalizationSets = MapDictListToStringList(proposalFormModel.RelatedEntities, entity => entity["value"])
                     }
                 },
                 ContentPermissionsPart = new

@@ -39,8 +39,8 @@ namespace StatCan.OrchardCore.Radar.Services.ContentConverters
                     Topics = new
                     {
                         TaxonomyContentItemId = await GetTaxonomyIdAsync("Topics"),
-                        TermContentItemIds = MapStringDictListToStringList(communityFormModel.Topics, topic => topic["value"]),
-                        TagNames = MapStringDictListToStringList(communityFormModel.Topics, topic => topic["label"])
+                        TermContentItemIds = MapDictListToStringList(communityFormModel.Topics, topic => topic["value"]),
+                        TagNames = MapDictListToStringList(communityFormModel.Topics, topic => topic["label"])
                     }
                 },
                 ContentPermissionsPart = new
@@ -50,7 +50,7 @@ namespace StatCan.OrchardCore.Radar.Services.ContentConverters
                 },
                 CommunityMember = new
                 {
-                    ContentItems = await GetMembersContentWithRole(communityFormModel.CommunityMembers, "CommunityMember", member =>
+                    ContentItems = await GetMembersContentAsync(communityFormModel.CommunityMembers, "CommunityMember", member =>
                     {
                         var userObject = (JObject)member["user"];
                         var memberObject = new

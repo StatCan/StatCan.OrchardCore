@@ -1,20 +1,14 @@
-using System.Collections.Generic;
-using System.Linq;
-using System;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
-using OrchardCore.ContentManagement;
-using OrchardCore.Queries;
 using StatCan.OrchardCore.Radar.FormModels;
 
 namespace StatCan.OrchardCore.Radar.Services.ContentConverters
 {
     public class ProjectContentConverter : BaseContentConverter
     {
-        private readonly IContentManager _contentManager;
-        public ProjectContentConverter(IContentManager contentManager, BaseContentConverterDependency baseContentConverterDependency) : base(baseContentConverterDependency)
+        public ProjectContentConverter(BaseContentConverterDependency baseContentConverterDependency) : base(baseContentConverterDependency)
         {
-            _contentManager = contentManager;
+
         }
 
         public override async Task<JObject> ConvertFromFormModelAsync(FormModel formModel, object context)
@@ -46,8 +40,8 @@ namespace StatCan.OrchardCore.Radar.Services.ContentConverters
                     Topics = new
                     {
                         TaxonomyContentItemId = await GetTaxonomyIdAsync("Topics"),
-                        TermContentItemIds = MapStringDictListToStringList(projectFormModel.Topics, topic => topic["value"]),
-                        TagNames = MapStringDictListToStringList(projectFormModel.Topics, topic => topic["label"])
+                        TermContentItemIds = MapDictListToStringList(projectFormModel.Topics, topic => topic["value"]),
+                        TagNames = MapDictListToStringList(projectFormModel.Topics, topic => topic["label"])
                     }
                 },
                 ContentPermissionsPart = new
@@ -57,7 +51,7 @@ namespace StatCan.OrchardCore.Radar.Services.ContentConverters
                 },
                 ProjectMember = new
                 {
-                    ContentItems = await GetMembersContentWithRole(projectFormModel.ProjectMembers, "ProjectMember", member =>
+                    ContentItems = await GetMembersContentAsync(projectFormModel.ProjectMembers, "ProjectMember", member =>
                     {
                         var userObject = (JObject)member["user"];
                         var memberObject = new
