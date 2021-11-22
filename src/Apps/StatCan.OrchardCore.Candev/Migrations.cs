@@ -521,15 +521,20 @@ namespace StatCan.OrchardCore.Candev
         private void CreateTopic()
         {
             _contentDefinitionManager.AlterPartDefinition("Topic", part => part
-                .WithField("Name", field => field
+                .WithField("NameEn", field => field
                     .OfType("TextField")
                     .WithDisplayName("Name")
                     .WithPosition("0")
                 )
+                .WithField("NameFr", field => field
+                    .OfType("TextField")
+                    .WithDisplayName("Name")
+                    .WithPosition("1")
+                )
                 .WithField("Challenge", field => field
                     .OfType("ContentPickerField")
                     .WithDisplayName("Challenge")
-                    .WithPosition("1")
+                    .WithPosition("2")
                     .WithSettings(new ContentPickerFieldSettings
                     {
                         DisplayedContentTypes = new[] { "Challenge" },
@@ -551,11 +556,8 @@ namespace StatCan.OrchardCore.Candev
                     .WithSettings(new TitlePartSettings
                     {
                         Options = TitlePartOptions.GeneratedDisabled,
-                        Pattern = "{{ContentItem.Content.Topic.Name.Text}}"
+                        Pattern = "{{ContentItem.Content.Topic.NameEn.Text}}"
                     })
-                )
-                .WithPart("LocalizationPart", part => part
-                    .WithPosition("2")
                 )
             );
         }
