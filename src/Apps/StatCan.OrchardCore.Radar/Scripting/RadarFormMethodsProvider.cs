@@ -15,6 +15,8 @@ using OrchardCore.Flows.Models;
 using OrchardCore.Scripting;
 using OrchardCore.Taxonomies.Models;
 using OrchardCore.Autoroute.Models;
+using OrchardCore.ContentLocalization;
+using OrchardCore.Localization;
 using StatCan.OrchardCore.Radar.FormModels;
 using StatCan.OrchardCore.Radar.Services.ValueConverters;
 using StatCan.OrchardCore.Radar.Services.ContentConverters;
@@ -130,11 +132,21 @@ namespace StatCan.OrchardCore.Radar.Scripting
                         var contentManager = serviceProvider.GetRequiredService<IContentManager>();
                         var contentConverter = serviceProvider.GetRequiredService<ArtifactContentConverter>();
 
+                        var contentLocalizationManager = serviceProvider.GetRequiredService<IContentLocalizationManager>();
+                        var localizationService = serviceProvider.GetRequiredService<ILocalizationService>();
+
                         var parentContentItem = contentManager.GetAsync(parentId).GetAwaiter().GetResult();
+
+                        var supportedCultures = localizationService.GetSupportedCulturesAsync().GetAwaiter().GetResult();
 
                         if (parentContentItem != null)
                         {
+                            var localizationSet = parentContentItem.Content.LocalizationPart.LocalizationSet.ToString();
+                            var isUpdate = false;
+                            var artifactId = "";
+
                             var workspace = parentContentItem.Get<BagPart>("Workspace");
+                            var artifactLocalizationSet = "";
 
                             foreach (var artifact in workspace.ContentItems)
                             {
@@ -162,24 +174,80 @@ namespace StatCan.OrchardCore.Radar.Scripting
 
                                     contentManager.UpdateAsync(parentContentItem).GetAwaiter().GetResult();
 
-                                    return artifact.ContentItemId;
+                                    isUpdate = true;
+                                    artifactId = artifact.ContentItemId;
+                                    artifactLocalizationSet = artifact.Content.Artifact.LocalizationSet.Text.ToObject<string>();
                                 }
                             }
 
-                            var newArtifact = contentManager.NewAsync("Artifact").GetAwaiter().GetResult();
+                            if (isUpdate)
+                            {
+                                // Update the artifact in other localized version of parent content items
+                                foreach (var supportedCulture in supportedCultures)
+                                {
+                                    var localizedVersion = contentLocalizationManager.GetContentItemAsync(localizationSet, supportedCulture).GetAwaiter().GetResult() as ContentItem;
+
+                                    var localizedWorkspace = localizedVersion.Get<BagPart>("Workspace");
+
+                                    foreach (var artifact in localizedWorkspace.ContentItems)
+                                    {
+                                        if (artifact.Content.Artifact.LocalizationSet.Text.ToObject<string>() == artifactLocalizationSet)
+                                        {
+                                            var tempArtifact = contentManager.NewAsync("Artifact").GetAwaiter().GetResult();
+                                            tempArtifact.Merge(artifact);
+
+                                            // Converts form model into content item document
+                                            var artifactUpdateObject = contentConverter.ConvertAsync(formModel, new { Existing = artifact }).GetAwaiter().GetResult();
+                                            tempArtifact.Merge(artifactUpdateObject, new JsonMergeSettings
+                                            {
+                                                MergeArrayHandling = MergeArrayHandling.Replace,
+                                                MergeNullValueHandling = MergeNullValueHandling.Merge
+                                            });
+
+                                            artifact.Merge(tempArtifact, new JsonMergeSettings
+                                            {
+                                                MergeArrayHandling = MergeArrayHandling.Replace,
+                                                MergeNullValueHandling = MergeNullValueHandling.Merge
+                                            });
+
+                                            artifact.DisplayText = artifactUpdateObject["TitlePart"]["Title"].Value<string>();
+                                            localizedVersion.Apply("Workspace", localizedWorkspace);
+
+                                            contentManager.UpdateAsync(localizedVersion).GetAwaiter().GetResult();
+                                        }
+                                    }
+                                }
+
+                                return artifactId;
+                            }
+
                             var artifactCreateObject = contentConverter.ConvertAsync(formModel, null).GetAwaiter().GetResult();
 
-                            newArtifact.Merge(artifactCreateObject);
-                            newArtifact.DisplayText = artifactCreateObject["TitlePart"]["Title"].Value<string>();
-                            newArtifact.Alter<AutoroutePart>(part => part.Path = "artifacts/" + newArtifact.ContentItemId);
-                            workspace.ContentItems.Add(newArtifact);
-                            parentContentItem.Apply("Workspace", workspace);
+                            // Create the artifact in all localized version also
+                            foreach (var supportedCulture in supportedCultures)
+                            {
+                                var localizedVersion = contentLocalizationManager.GetContentItemAsync(localizationSet, supportedCulture).GetAwaiter().GetResult() as ContentItem;
 
-                            contentManager.UpdateAsync(parentContentItem).GetAwaiter().GetResult();
-                            contentManager.UnpublishAsync(parentContentItem).GetAwaiter().GetResult();
-                            contentManager.PublishAsync(parentContentItem).GetAwaiter().GetResult();
+                                var newArtifact = contentManager.NewAsync("Artifact").GetAwaiter().GetResult();
+                                newArtifact.Merge(artifactCreateObject);
+                                newArtifact.DisplayText = artifactCreateObject["TitlePart"]["Title"].Value<string>();
+                                newArtifact.Alter<AutoroutePart>(part => part.Path = "artifacts/" + newArtifact.ContentItemId);
 
-                            return newArtifact.ContentItemId;
+                                var localizedWorkspace = localizedVersion.Get<BagPart>("Workspace");
+                                localizedWorkspace.ContentItems.Add(JObject.FromObject(newArtifact).ToObject<ContentItem>());
+                                localizedVersion.Apply("Workspace", localizedWorkspace);
+
+                                contentManager.UpdateAsync(localizedVersion).GetAwaiter().GetResult();
+                                contentManager.UnpublishAsync(localizedVersion).GetAwaiter().GetResult();
+                                contentManager.PublishAsync(localizedVersion).GetAwaiter().GetResult();
+
+                                if (CultureInfo.CurrentCulture.Name == supportedCulture)
+                                {
+                                    artifactId = newArtifact.ContentItemId;
+                                }
+                            }
+
+                            return artifactId;
                         }
 
                         return null;

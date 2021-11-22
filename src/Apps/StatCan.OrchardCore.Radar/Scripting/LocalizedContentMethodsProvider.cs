@@ -56,7 +56,7 @@ namespace StatCan.OrchardCore.Radar.Scripting
                             contentManager.PublishAsync(localizedContent).GetAwaiter().GetResult();
                         }
 
-                        if(CultureInfo.CurrentCulture.Name == culture)
+                        if (CultureInfo.CurrentCulture.Name == culture)
                         {
                             resultItem = localizedContent;
                         }
@@ -73,9 +73,12 @@ namespace StatCan.OrchardCore.Radar.Scripting
                 {
                     bool publish = properties["Published"].Value<bool>();
 
-                    // Creating content in the default culture
+                    var contentLocalizationManager = serviceProvider.GetRequiredService<IContentLocalizationManager>();
+                    var localizationService = serviceProvider.GetRequiredService<ILocalizationService>();
                     var contentManager = serviceProvider.GetRequiredService<IContentManager>();
+
                     contentItem.Merge(properties, new JsonMergeSettings { MergeArrayHandling = MergeArrayHandling.Replace });
+
                     contentManager.UpdateAsync(contentItem).GetAwaiter().GetResult();
 
                     if (publish)
@@ -85,6 +88,33 @@ namespace StatCan.OrchardCore.Radar.Scripting
                     else
                     {
                         contentManager.UnpublishAsync(contentItem).GetAwaiter().GetResult();
+                    }
+
+                    var supportedCultures = localizationService.GetSupportedCulturesAsync().GetAwaiter().GetResult();
+                    var localizationSet = contentItem.Content.LocalizationPart.LocalizationSet.ToString();
+
+                    properties["RadarEntityPart"]["Name"]["Text"].Parent.Remove();
+                    properties["RadarEntityPart"]["Description"]["Text"].Parent.Remove();
+
+                    // Update non-text related field
+                    foreach (var culture in supportedCultures)
+                    {
+                        if (CultureInfo.CurrentCulture.Name != culture)
+                        {
+                            var localizedVersion = contentLocalizationManager.GetContentItemAsync(localizationSet, culture).GetAwaiter().GetResult() as ContentItem;
+                            localizedVersion.Merge(properties, new JsonMergeSettings { MergeArrayHandling = MergeArrayHandling.Replace });
+
+                            contentManager.UpdateAsync(localizedVersion).GetAwaiter().GetResult();
+
+                            if (publish)
+                            {
+                                contentManager.PublishAsync(localizedVersion).GetAwaiter().GetResult();
+                            }
+                            else
+                            {
+                                contentManager.UnpublishAsync(localizedVersion).GetAwaiter().GetResult();
+                            }
+                        }
                     }
                 })
             };

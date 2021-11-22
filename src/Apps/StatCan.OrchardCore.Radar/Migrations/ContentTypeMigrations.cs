@@ -323,6 +323,7 @@ namespace StatCan.OrchardCore.Radar.Migrations
                     .WithSettings(new AutoroutePartSettings
                     {
                         Pattern = "{{ ContentItem.ContentItemId }}",
+                        ManageContainedItemRoutes = true,
                     })
                 )
             );
@@ -332,6 +333,11 @@ namespace StatCan.OrchardCore.Radar.Migrations
                 .WithField("URL", field => field
                     .OfType("TextField")
                     .WithDisplayName("URL")
+                )
+                .WithField("LocalizationSet", field => field
+                    .OfType("TextField")
+                    .WithDisplayName("LocalizationSet")
+                    .WithPosition("1")
                 )
             );
         }

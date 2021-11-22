@@ -1,3 +1,4 @@
+using System;
 using System.Globalization;
 using Newtonsoft.Json.Linq;
 using StatCan.OrchardCore.Radar.FormModels;
@@ -42,6 +43,7 @@ namespace StatCan.OrchardCore.Radar.Services.ContentConverters
                     Artifact = new
                     {
                         URL = new { Text = artifactFormModel.Url },
+                        LocalizationSet = new { Text = Guid.NewGuid().ToString() }
                     },
                     ContentPermissionsPart = new
                     {
