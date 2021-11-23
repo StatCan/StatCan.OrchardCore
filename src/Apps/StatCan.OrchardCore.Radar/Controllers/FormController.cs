@@ -1,12 +1,13 @@
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Authorization;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Newtonsoft.Json.Linq;
+using System.Security.Claims;
 using System.Globalization;
+using Newtonsoft.Json.Linq;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using OrchardCore.ContentManagement;
 using OrchardCore.Queries;
 using OrchardCore.ContentManagement.Display;
@@ -47,6 +48,11 @@ namespace StatCan.OrchardCore.Radar.Controllers
 
         public async Task<IActionResult> Form(string entityType, string id)
         {
+            if (!await CanEditContent(id))
+            {
+                return Redirect("not-found");
+            }
+
             // Builds the form shape. It is assumed that there
             // will ever be 1 form content item
             var form = await GetFormAsync(GetFormNameFromType(entityType));
@@ -63,8 +69,13 @@ namespace StatCan.OrchardCore.Radar.Controllers
         }
 
         // For handling contents that are contained by other contents
-        public async Task<IActionResult> FormContained(string parentType, string childType, string id)
+        public async Task<IActionResult> FormContained(string parentType, string parentId, string childType, string id)
         {
+            if (!await CanEditContent(parentId))
+            {
+                return Redirect("not-found");
+            }
+
             // Builds the form shape. It is assumed that there
             // will ever be 1 form content item
             var form = await GetFormAsync(GetFormNameFromType(childType));
@@ -81,8 +92,13 @@ namespace StatCan.OrchardCore.Radar.Controllers
         }
 
         // Api actions for forms
-        public async Task<ICollection<IDictionary<string, string>>> TopicSearch(string term)
+        public async Task<IActionResult> TopicSearch(string term)
         {
+            if (!User.Identity.IsAuthenticated)
+            {
+                return Unauthorized();
+            }
+
             ICollection<IDictionary<string, string>> topics = new LinkedList<IDictionary<string, string>>();
 
             if (term != null)
@@ -97,6 +113,11 @@ namespace StatCan.OrchardCore.Radar.Controllers
 
                     foreach (var topic in topicPart.Terms)
                     {
+                        if (!_contentPermissionsService.CanAccess(topic))
+                        {
+                            continue;
+                        }
+
                         // Delocalize the topic name
                         var topicName = await _shortcodeService.ProcessAsync(topic.DisplayText);
 
@@ -114,11 +135,16 @@ namespace StatCan.OrchardCore.Radar.Controllers
                 }
             }
 
-            return topics;
+            return new ObjectResult(topics);
         }
 
-        public async Task<ICollection<IDictionary<string, string>>> UserSearch(string term)
+        public async Task<IActionResult> UserSearch(string term)
         {
+            if (!User.Identity.IsAuthenticated)
+            {
+                return Unauthorized();
+            }
+
             ICollection<IDictionary<string, string>> users = new LinkedList<IDictionary<string, string>>();
 
             // Each topic needs to be retrived from the taxonomy term
@@ -147,11 +173,16 @@ namespace StatCan.OrchardCore.Radar.Controllers
                 }
             }
 
-            return users;
+            return new ObjectResult(users);
         }
 
-        public async Task<ICollection<IDictionary<string, string>>> EntitySearch(string type, string term)
+        public async Task<IActionResult> EntitySearch(string type, string term)
         {
+            if (!User.Identity.IsAuthenticated)
+            {
+                return Unauthorized();
+            }
+
             // Get the lucene query
             var query = await _queryManager.GetQueryAsync("EntityListLucene");
 
@@ -163,7 +194,7 @@ namespace StatCan.OrchardCore.Radar.Controllers
             var results = await _queryManager.ExecuteQueryAsync(query, parameters);
 
             // Convert result to content items
-            ICollection<IDictionary<string, string>> entities = new LinkedList<IDictionary<string,string>>();
+            ICollection<IDictionary<string, string>> entities = new LinkedList<IDictionary<string, string>>();
 
             if (results != null)
             {
@@ -213,7 +244,28 @@ namespace StatCan.OrchardCore.Radar.Controllers
                 }
             }
 
-            return entities;
+            return new ObjectResult(entities);
+        }
+
+        private async Task<bool> CanEditContent(string id)
+        {
+            var user = _httpContextAccessor.HttpContext.User;
+
+            if (user == null)
+            {
+                return false;
+            }
+
+            if (user.IsInRole("Administrator"))
+            {
+                return true;
+            }
+
+            var contentItem = await _contentManager.GetAsync(id);
+
+            var userId = user.FindFirstValue(ClaimTypes.NameIdentifier).ToString();
+
+            return contentItem.Owner == userId;
         }
 
         private async Task<ContentItem> GetFormAsync(string formName)
