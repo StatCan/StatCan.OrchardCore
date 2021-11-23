@@ -1168,6 +1168,34 @@
           "Name": "FormQuerySQL",
           "Source": "Sql",
           "Schema": null
+        },
+        {
+          "Template": "select * from UserIndex;",
+          "ReturnDocuments": false,
+          "Name": "AllUsersSQL",
+          "Source": "Sql",
+          "Schema": null
+        },
+        {
+          "Template": "select DocumentId from ContentItemIndex where ContentType = @type and DisplayText = @name;",
+          "ReturnDocuments": true,
+          "Name": "EntityByTypeAndNameSQL",
+          "Source": "Sql",
+          "Schema": null
+        },
+        {
+          "Template": "select UserId from UserIndex where UserId = @userId;",
+          "ReturnDocuments": false,
+          "Name": "UserByIdSQL",
+          "Source": "Sql",
+          "Schema": null
+        },
+        {
+          "Template": "select ContentItemId from LocalizedContentItemIndex where LocalizationSet = @localizationSet;",
+          "ReturnDocuments": false,
+          "Name": "EntityByLocalizationSetSQL",
+          "Source": "Sql",
+          "Schema": null
         }
       ]
     },

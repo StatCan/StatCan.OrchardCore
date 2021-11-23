@@ -20,6 +20,7 @@ using OrchardCore.Localization;
 using StatCan.OrchardCore.Radar.FormModels;
 using StatCan.OrchardCore.Radar.Services.ValueConverters;
 using StatCan.OrchardCore.Radar.Services.ContentConverters;
+using StatCan.OrchardCore.Radar.Services;
 
 namespace StatCan.OrchardCore.Radar.Scripting
 {
@@ -29,10 +30,7 @@ namespace StatCan.OrchardCore.Radar.Scripting
         private readonly GlobalMethod _convertToFormModel;
         private readonly GlobalMethod _convertToContentDocument;
         private readonly GlobalMethod _createOrUpdateArtifact;
-        // private readonly GlobalMethod _createProject;
-        // private readonly GlobalMethod _createEvent;
-        // private readonly GlobalMethod _createProposal;
-        // private readonly GlobalMethod _createCommunity;
+        private readonly GlobalMethod _getTaxonomyByTypeAndId;
 
         public RadarFormMethodsProvider()
         {
@@ -325,12 +323,28 @@ namespace StatCan.OrchardCore.Radar.Scripting
                         return converter.ConvertAsync(formModel, null).GetAwaiter().GetResult();
                     })
                 };
+
+                _getTaxonomyByTypeAndId = new GlobalMethod()
+                {
+                    Name = "getTaxonomyByTypeAndId",
+                    Method = serviceProvider => (Func<string, string, ContentItem>)((type, id) =>
+                    {
+                        if (string.IsNullOrEmpty(id))
+                        {
+                            return null;
+                        }
+
+                        var taxonomyManager = serviceProvider.GetRequiredService<TaxonomyManager>();
+
+                        return taxonomyManager.GetTaxonomyTermByIdAsync(type, id).GetAwaiter().GetResult();
+                    })
+                };
             }
         }
 
         public IEnumerable<GlobalMethod> GetMethods()
         {
-            return new[] { _createOrUpdateTopic, _convertToFormModel, _convertToContentDocument, _createOrUpdateArtifact };
+            return new[] { _createOrUpdateTopic, _convertToFormModel, _convertToContentDocument, _createOrUpdateArtifact, _getTaxonomyByTypeAndId };
         }
     }
 }
