@@ -110,6 +110,6 @@
     </div>
 
     <div class="section">
-        {{ "Workspace" | shape_new: Model: Model.ContentItem.Content.Workspace | shape_render }}
+        {{ "Workspace" | shape_new: Model: Model.ContentItem.Content.Workspace, ParentItem: Model.ContentItem | shape_render }}
     </div>
 </div>

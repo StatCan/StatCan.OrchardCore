@@ -1,4 +1,5 @@
 {% assign artifacts = Model.Properties.Model.ContentItems | remove_unauthorized_items %}
+{% assign parentLink = Model.Properties.ParentItem | display_url %}
 
 <div class="table-title-container">
     <div class="text-h4">
@@ -7,6 +8,11 @@
     <div class="workspace-bubble">
         <div class="workspace-bubble-text">{{ artifacts | size }}</div>
     </div>
+    <a href="{{ parentLink }}/artifacts/create">
+      <v-btn elevation="0" fab class="workspace-add-button">
+        <v-icon class="workspace-button-icon">mdi-plus-thick</v-icon>
+      </v-btn>
+    </a>
 </div>
 <div>
     <table class="table" id="entity-table">

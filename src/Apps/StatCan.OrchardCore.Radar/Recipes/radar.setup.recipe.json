@@ -462,6 +462,172 @@
           "MenuItemsListPart": {
             "MenuItems": [
               {
+                "ContentItemId": "49gq0283mmxpf61ttqjzahsync",
+                "ContentItemVersionId": null,
+                "ContentType": "LinkMenuItem",
+                "DisplayText": "Register",
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": "2021-11-24T16:05:42.5116274Z",
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": null,
+                "Author": "admin",
+                "LinkMenuItemPart": {
+                  "Name": "Register",
+                  "Url": null
+                },
+                "LinkMenuItem": {},
+                "CommonMenuItemPart": {
+                  "IconName": {
+                    "Text": null
+                  }
+                },
+                "ContentPermissionsPart": {
+                  "Enabled": false,
+                  "Roles": []
+                },
+                "MenuItemsListPart": {
+                  "MenuItems": [
+                    {
+                      "ContentItemId": "4vnwcz06x74wsxfa0tgs4rzrm8",
+                      "ContentItemVersionId": null,
+                      "ContentType": "LinkMenuItem",
+                      "DisplayText": "Projects",
+                      "Latest": false,
+                      "Published": false,
+                      "ModifiedUtc": "2021-11-24T16:06:36.1670259Z",
+                      "PublishedUtc": null,
+                      "CreatedUtc": null,
+                      "Owner": null,
+                      "Author": "admin",
+                      "LinkMenuItemPart": {
+                        "Name": "Projects",
+                        "Url": "projects/create"
+                      },
+                      "LinkMenuItem": {},
+                      "CommonMenuItemPart": {
+                        "IconName": {
+                          "Text": "mdi-flask-outline"
+                        }
+                      },
+                      "ContentPermissionsPart": {
+                        "Enabled": false,
+                        "Roles": []
+                      }
+                    },
+                    {
+                      "ContentItemId": "4z3hw920rrgc415c1bz3t79smh",
+                      "ContentItemVersionId": null,
+                      "ContentType": "LinkMenuItem",
+                      "DisplayText": "Proposals",
+                      "Latest": false,
+                      "Published": false,
+                      "ModifiedUtc": "2021-11-24T16:08:24.5654821Z",
+                      "PublishedUtc": null,
+                      "CreatedUtc": null,
+                      "Owner": null,
+                      "Author": "admin",
+                      "LinkMenuItemPart": {
+                        "Name": "Proposals",
+                        "Url": "proposals/create"
+                      },
+                      "LinkMenuItem": {},
+                      "CommonMenuItemPart": {
+                        "IconName": {
+                          "Text": "mdi-alert-circle-outline"
+                        }
+                      },
+                      "ContentPermissionsPart": {
+                        "Enabled": false,
+                        "Roles": []
+                      }
+                    },
+                    {
+                      "ContentItemId": "4hmjn2fy1r107tftspm4vpeqw0",
+                      "ContentItemVersionId": null,
+                      "ContentType": "LinkMenuItem",
+                      "DisplayText": "Events",
+                      "Latest": false,
+                      "Published": false,
+                      "ModifiedUtc": "2021-11-24T16:08:43.8403153Z",
+                      "PublishedUtc": null,
+                      "CreatedUtc": null,
+                      "Owner": null,
+                      "Author": "admin",
+                      "LinkMenuItemPart": {
+                        "Name": "Events",
+                        "Url": "events/create"
+                      },
+                      "LinkMenuItem": {},
+                      "CommonMenuItemPart": {
+                        "IconName": {
+                          "Text": "mdi-calendar"
+                        }
+                      },
+                      "ContentPermissionsPart": {
+                        "Enabled": false,
+                        "Roles": []
+                      }
+                    },
+                    {
+                      "ContentItemId": "4h0yqqe4jbn010xdjakffmcdnm",
+                      "ContentItemVersionId": null,
+                      "ContentType": "LinkMenuItem",
+                      "DisplayText": "Communities",
+                      "Latest": false,
+                      "Published": false,
+                      "ModifiedUtc": "2021-11-24T16:09:11.8078551Z",
+                      "PublishedUtc": null,
+                      "CreatedUtc": null,
+                      "Owner": null,
+                      "Author": "admin",
+                      "LinkMenuItemPart": {
+                        "Name": "Communities",
+                        "Url": "communities/create"
+                      },
+                      "LinkMenuItem": {},
+                      "CommonMenuItemPart": {
+                        "IconName": {
+                          "Text": "mdi-account-multiple"
+                        }
+                      },
+                      "ContentPermissionsPart": {
+                        "Enabled": false,
+                        "Roles": []
+                      }
+                    },
+                    {
+                      "ContentItemId": "4adxycardc78229ahq6s118rwe",
+                      "ContentItemVersionId": null,
+                      "ContentType": "LinkMenuItem",
+                      "DisplayText": "Topics",
+                      "Latest": false,
+                      "Published": false,
+                      "ModifiedUtc": "2021-11-24T16:09:39.6793362Z",
+                      "PublishedUtc": null,
+                      "CreatedUtc": null,
+                      "Owner": null,
+                      "Author": "admin",
+                      "LinkMenuItemPart": {
+                        "Name": "Topics",
+                        "Url": "topics/create"
+                      },
+                      "LinkMenuItem": {},
+                      "CommonMenuItemPart": {
+                        "IconName": {
+                          "Text": "mdi-pound"
+                        }
+                      },
+                      "ContentPermissionsPart": {
+                        "Enabled": false,
+                        "Roles": []
+                      }
+                    }
+                  ]
+                }
+              },
+              {
                 "ContentItemId": "[js: uuid()]",
                 "ContentItemVersionId": null,
                 "ContentType": "LinkMenuItem",
@@ -2594,7 +2760,7 @@
           },
           "VueForm": {
             "Template": {
-              "Text": "<v-container>\r\n    <v-card-text>\r\n        <v-row justify=\"center\">\r\n            <v-col cols=\"8\">\r\n                <validation-provider name=\"{{ \"nameLabel\" | localize | downcase }}\" rules=\"required\"\r\n                    v-slot=\"{ errors, valid }\">\r\n                    <v-text-field v-model=\"name\" :success=\"valid\" :error-messages=\"errors\" filled=\"filled\" label=\"{{ \"nameLabel\" | localize }}\"></v-text-field>\r\n                </validation-provider>\r\n            </v-col>\r\n            <v-col cols=\"8\">\r\n                <validation-provider name=\"{{ \"descriptionLabel\" | localize | downcase }}\" rules=\"required\"\r\n                    v-slot=\"{ errors, valid }\">\r\n                    <v-textarea v-model=\"url\" :success=\"valid\" :error-messages=\"errors\" counter=\"true\"\r\n                        filled=\"filled\" label=\"{{ \"descriptionLabel\" | localize }}\" rows=\"5\">\r\n                    </v-textarea>\r\n                </validation-provider>\r\n            </v-col>\r\n            <v-col cols=\"8\">\r\n                <h4>{{ \"permissionsLabel\" | localize }}</h4>\r\n                <validation-provider name=\"{{ \"permissionsLabel\" | localize | downcase }}\" rules=\"required\"\r\n                    v-slot=\"{ errors, valid }\">\r\n                    <multiselect v-model=\"roles\" :options=\"roleOptions\" :success=\"valid\" :error-messages=\"errors\"\r\n                        :multiple=\"true\" placeholder=\"{{ \"placeholderLabel\" | localize }} />\r\n                </validation-provider>\r\n            </v-col>\r\n            <v-col cols=\"8\">\r\n                <v-alert type=\"error\" v-for=\"(message, i) in form.serverValidationMessage\" :key=\"i\">\r\n                    {% raw %}{{ message }}{% endraw %}\r\n                </v-alert>\r\n            </v-col>\r\n            <v-col cols=\"8\">\r\n                <v-btn type=\"submit\" depressed block @click=\"formHandleSubmit\" :disabled=\"form.submitting\">{{\r\n                    \"submitLabel\" | localize }}</v-btn>\r\n            </v-col>\r\n        </v-row>\r\n    </v-card-text>\r\n</v-container>"
+              "Text": "<v-container>\r\n    <v-card-text>\r\n        <v-row justify=\"center\">\r\n            <v-col cols=\"8\">\r\n                <validation-provider name=\"{{ \"nameLabel\" | localize | downcase }}\" rules=\"required\"\r\n                    v-slot=\"{ errors, valid }\">\r\n                    <v-text-field v-model=\"name\" :success=\"valid\" :error-messages=\"errors\" filled=\"filled\" label=\"{{ \"nameLabel\" | localize }}\"></v-text-field>\r\n                </validation-provider>\r\n            </v-col>\r\n            <v-col cols=\"8\">\r\n                <validation-provider name=\"{{ \"descriptionLabel\" | localize | downcase }}\" rules=\"required\"\r\n                    v-slot=\"{ errors, valid }\">\r\n                    <v-textarea v-model=\"url\" :success=\"valid\" :error-messages=\"errors\" counter=\"true\"\r\n                        filled=\"filled\" label=\"{{ \"descriptionLabel\" | localize }}\" rows=\"5\">\r\n                    </v-textarea>\r\n                </validation-provider>\r\n            </v-col>\r\n            <v-col cols=\"8\">\r\n                <h4>{{ \"permissionsLabel\" | localize }}</h4>\r\n                <validation-provider name=\"{{ \"permissionsLabel\" | localize | downcase }}\" rules=\"required\"\r\n                    v-slot=\"{ errors, valid }\">\r\n                    <multiselect v-model=\"roles\" :options=\"roleOptions\" :success=\"valid\" :error-messages=\"errors\"\r\n                        :multiple=\"true\" placeholder=\"{{ \"placeholderLabel\" | localize }}\" />\r\n                </validation-provider>\r\n            </v-col>\r\n            <v-col cols=\"8\">\r\n                <v-alert type=\"error\" v-for=\"(message, i) in form.serverValidationMessage\" :key=\"i\">\r\n                    {% raw %}{{ message }}{% endraw %}\r\n                </v-alert>\r\n            </v-col>\r\n            <v-col cols=\"8\">\r\n                <v-btn type=\"submit\" depressed block @click=\"formHandleSubmit\" :disabled=\"form.submitting\">{{\r\n                    \"submitLabel\" | localize }}</v-btn>\r\n            </v-col>\r\n        </v-row>\r\n    </v-card-text>\r\n</v-container>"
             },
             "RenderAs": {
               "Text": null

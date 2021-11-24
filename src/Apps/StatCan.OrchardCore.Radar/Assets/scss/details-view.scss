@@ -6,8 +6,9 @@
 
 .header {
   padding: 3rem 7rem;
-  background: transparent linear-gradient(180deg, rgba($primary, 0.38), rgba($secondary, 0.38))
-    0% no-repeat;
+  background: transparent
+    linear-gradient(180deg, rgba($primary, 0.38), rgba($secondary, 0.38)) 0%
+    no-repeat;
 }
 
 .details-name {
@@ -55,6 +56,21 @@
 
 .workspace-bubble-text {
   color: $primary-variant1;
+}
+
+.workspace-add-button {
+  width: 3rem !important;
+  height: 3rem !important;
+  margin-left: 1rem;
+  background-color: #ffffff !important;
+}
+
+.workspace-button-icon {
+  font-size: 40px !important;
+}
+
+.workspace-add-button:hover {
+  background-color: $secondary-variant1 !important;
 }
 
 .member-table {
