@@ -16,6 +16,8 @@ namespace StatCan.OrchardCore.Candev.Indexes
         public string Language { get; set; }
         public string TeamContentItemId { get; set; }
         public string Roles { get; set; }
+        public bool WillAttend { get; set; }
+        public bool CheckIn { get; set; }
     }
 
     public class CandevUsersIndexProvider : IndexProvider<User>
@@ -56,6 +58,8 @@ namespace StatCan.OrchardCore.Candev.Indexes
                             hackathonUsersIndex.TeamContentItemId = hacker.Content.Hacker.Team.ContentItemIds[0];
                         else
                             hackathonUsersIndex.TeamContentItemId = string.Empty;
+                        hackathonUsersIndex.WillAttend = hacker.Content.Hacker.Attendance.Value;
+                        hackathonUsersIndex.CheckIn = hacker.Content.Hacker.CheckIn.Value;
                     }
 
                     return hackathonUsersIndex;

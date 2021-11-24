@@ -7,6 +7,9 @@
       <h3>Datasets</h3>
 	  <div>{{ Model.ContentItem.Content.Challenge.Datasets.Text | shortcode }}</div> 
       <div>{{ Model.ContentItem.Content.Challenge.DatasetsFiles.Paths | shortcode }}</div> 
+      {% for dataset in Model.ContentItem.Content.Challenge.DatasetsFiles.Paths %}
+        <div class="pt-2"><v-btn href="{{ dataset | asset_url }}" target="_blank">{{ dataset }}</v-btn></div>
+      {% endfor %}
       <br>
       <h3>Background Information</h3>
 	  <div>{{ Model.ContentItem.Content.Challenge.BackgroundInformation.Text | shortcode }}</div>

@@ -72,7 +72,9 @@ namespace StatCan.OrchardCore.Candev.Indexes
                 .Column<string>("FirstName", c => c.WithLength(26))
                 .Column<string>("LastName", c => c.WithLength(26))
                 .Column<string>("Language", c => c.WithLength(4))
-                .Column<string>("TeamContentItemId", c => c.WithLength(26)),
+                .Column<string>("TeamContentItemId", c => c.WithLength(26))
+                .Column<bool>("WillAttend")
+                .Column<bool>("CheckIn"),
                 null
             );
 
@@ -84,6 +86,14 @@ namespace StatCan.OrchardCore.Candev.Indexes
                     session.Save(user);
                 }
             });
+        }
+
+        public int UpdateFrom1()
+        {
+            SchemaBuilder.AlterTable(nameof(CandevUsersIndex), table => table.AddColumn<bool>("WillAttend"));
+            SchemaBuilder.AlterTable(nameof(CandevUsersIndex), table => table.AddColumn<bool>("CheckIn"));
+
+            return 2;
         }
     }
 }

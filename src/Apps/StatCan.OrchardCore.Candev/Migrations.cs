@@ -188,6 +188,7 @@ namespace StatCan.OrchardCore.Candev
                     .WithPosition("6")
                 )
                 .WithBooleanField("Attendance", "Attendance", "7")
+                .WithBooleanField("CheckIn", "Check-in", "8")
             );
 
             _contentDefinitionManager.AlterTypeDefinition("Hacker", type => type
@@ -560,6 +561,15 @@ namespace StatCan.OrchardCore.Candev
                     })
                 )
             );
+        }
+
+        public int UpdateFrom1()
+        {
+            _contentDefinitionManager.AlterPartDefinition("Hacker", part => part
+                .WithBooleanField("CheckIn", "Check-in", "8")
+            );
+
+            return 2;
         }
     }
 }

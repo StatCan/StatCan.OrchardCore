@@ -331,7 +331,7 @@ namespace StatCan.OrchardCore.Candev.Services
         private async Task<bool> AddHackerToTeam(string teamContentId, string participantContentId)
         {
             var participant = await _session.Query<User, CandevUsersIndex>(x => x.UserId == participantContentId).FirstOrDefaultAsync();
-            
+
             var contentItem = await GetSettings(participant, "Hacker");
 
             contentItem.Content.Hacker.Team = JObject.FromObject(new { ContentItemIds = new string[] { teamContentId } });
@@ -474,7 +474,7 @@ namespace StatCan.OrchardCore.Candev.Services
 
             foreach (var team in teams)
             {
-                if(team.Content.Team.Topics.ContentItemIds.Count == 0)
+                if (team.Content.Team.Topics.ContentItemIds.Count == 0)
                 {
                     foreach (var topic in topics)
                     {
@@ -566,16 +566,65 @@ namespace StatCan.OrchardCore.Candev.Services
 
         public async Task<bool> SelectNHackers(int n)
         {
-            var participants = await _session.Query<User, CandevUsersIndex>(x => x.Roles.Contains("Hacker")).ListAsync();
-            var participantList = participants.ToList();
-            participantList.RemoveRange(0, n);
+            var users = await _session.Query<User, CandevUsersIndex>(x => x.Roles.Contains("Hacker")).ListAsync();
+            var participants = await _session.QueryIndex<CandevUsersIndex>(x => x.Roles.Contains("Hacker")).ListAsync();
+            var attendingParticipantList = participants.Where(x => x.WillAttend).ToList();
+            var notAttendingParticipantList = participants.Where(x => !x.WillAttend).ToList();
 
-            foreach (var participant in participantList)
+            foreach (var participant in notAttendingParticipantList)
             {
-                _userManager.RemoveFromRoleAsync(participant, "Hacker").GetAwaiter();
+                var user = users.Where(x => x.UserId == participant.UserId).FirstOrDefault();
+                if (user.HasTeam())
+                {
+                    RemoveFromTeam(user);
+                }
+                _userManager.RemoveFromRoleAsync(user, "Hacker").GetAwaiter();
+            }
+
+            if (n < attendingParticipantList.Count)
+            {
+                attendingParticipantList.RemoveRange(0, n);
+
+                foreach (var participant in attendingParticipantList)
+                {
+                    var user = users.Where(x => x.UserId == participant.UserId).FirstOrDefault();
+                    if (user.HasTeam())
+                    {
+                        RemoveFromTeam(user);
+                    }
+                    _userManager.RemoveFromRoleAsync(user, "Hacker").GetAwaiter();
+                }
             }
 
             return true;
+        }
+
+        private async void RemoveFromTeam(User user)
+        {
+            var team = await _session.Query<ContentItem, CandevItemsIndex>(x => x.ContentItemId == user.GetTeamId() && x.ContentType == "Team" && x.Published).FirstOrDefaultAsync();
+            var teamContentItemId = user.GetTeamId();
+
+            //Remove user from team
+            var contentItem = await GetSettings(user, "Hacker");
+            contentItem.Content.Hacker.Team?.ContentItemIds.Clear();
+            user.Properties["Hacker"] = JObject.FromObject(contentItem);
+            _session.Save(user);
+
+            //if the team has no member left, delete it
+            if (await GetTeamMemberCount(teamContentItemId) > 0)
+            {
+                //if the user was the team captain, make another hacker the team captain
+                if (team.Content.Team?.TeamCaptain?.UserIds?.First == user.UserId)
+                {
+                    var hacker = await _session.Query<User, CandevUsersIndex>(x => x.TeamContentItemId == teamContentItemId).FirstOrDefaultAsync();
+                    team.Content.Team.TeamCaptain = JObject.FromObject(new { UserIds = new string[] { hacker.UserId } });
+                    await _contentManager.UpdateAsync(team);
+                }
+            }
+            else
+            {
+                await _contentManager.RemoveAsync(team);
+            }
         }
     }
 }
