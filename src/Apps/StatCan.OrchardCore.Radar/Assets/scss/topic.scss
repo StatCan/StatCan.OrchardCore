@@ -29,3 +29,19 @@
 a {
     text-decoration: none;
 }
+
+.form-topic-field {
+  margin-bottom: 1rem;
+}
+
+.form-topic-field-remove-button:hover {
+  cursor: pointer;
+}
+
+.multiselect__option--highlight {
+  background-color: $primary !important;
+}
+
+.multiselect__option--highlight::after {
+  background-color: $primary !important;
+}

@@ -950,19 +950,22 @@ if (typeof window !== 'undefined') {
 // Indicate to webpack that this file can be concatenated
 /* harmony default export */ var setPublicPath = (null);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"b1143254-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/Modules/StatCan.OrchardCore.VueForms/Assets/components/Multiselect/MultiselectAsync.vue?vue&type=template&id=5d45142a&
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('multiselect-base',_vm._b({attrs:{"options":_vm.options,"loading":_vm.isLoading,"success":_vm.success,"error-messages":_vm.errorMessages},on:{"search-change":_vm.asyncFind},model:{value:(_vm.internalValue),callback:function ($$v) {_vm.internalValue=$$v},expression:"internalValue"}},'multiselect-base',_vm.$attrs,false))}
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"b1143254-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/Modules/StatCan.OrchardCore.VueForms/Assets/components/Multiselect/MultiselectAsync.vue?vue&type=template&id=2625affc&
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('multiselect-base',_vm._b({attrs:{"options":_vm.options,"loading":_vm.isLoading,"success":_vm.success,"error-messages":_vm.errorMessages},on:{"search-change":_vm.asyncFind},scopedSlots:_vm._u([_vm._l((_vm.$scopedSlots),function(_,slot){return {key:slot,fn:function(scope){return [_vm._t(slot,null,null,scope)]}}})],null,true),model:{value:(_vm.internalValue),callback:function ($$v) {_vm.internalValue=$$v},expression:"internalValue"}},'multiselect-base',_vm.$attrs,false))}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/Modules/StatCan.OrchardCore.VueForms/Assets/components/Multiselect/MultiselectAsync.vue?vue&type=template&id=5d45142a&
+// CONCATENATED MODULE: ./src/Modules/StatCan.OrchardCore.VueForms/Assets/components/Multiselect/MultiselectAsync.vue?vue&type=template&id=2625affc&
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"b1143254-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/Modules/StatCan.OrchardCore.VueForms/Assets/components/Multiselect/MultiselectBase.vue?vue&type=template&id=9df49b68&
-var MultiselectBasevue_type_template_id_9df49b68_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('multiselect',_vm._g(_vm._b({},'multiselect',_vm.$attrs,false),_vm.$listeners)),_c('div',{staticClass:"px-3"},[_c('error-message',{attrs:{"valid":_vm.success,"error-messages":_vm.errorMessages}})],1)],1)}
-var MultiselectBasevue_type_template_id_9df49b68_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"b1143254-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/Modules/StatCan.OrchardCore.VueForms/Assets/components/Multiselect/MultiselectBase.vue?vue&type=template&id=8504163a&
+var MultiselectBasevue_type_template_id_8504163a_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('multiselect',_vm._g(_vm._b({scopedSlots:_vm._u([{key:"tag",fn:function(ref){
+var option = ref.option;
+var remove = ref.remove;
+return [_vm._t("custom-tag",null,{"option":option,"remove":remove})]}},{key:"option",fn:function(props){return [_vm._t("custom-option",null,{"props":props})]}}],null,true)},'multiselect',_vm.$attrs,false),_vm.$listeners)),(_vm.success && _vm.error-_vm.messages)?_c('div',{staticClass:"px-3"},[_c('error-message',{attrs:{"valid":_vm.success,"error-messages":_vm.errorMessages}})],1):_vm._e()],1)}
+var MultiselectBasevue_type_template_id_8504163a_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/Modules/StatCan.OrchardCore.VueForms/Assets/components/Multiselect/MultiselectBase.vue?vue&type=template&id=9df49b68&
+// CONCATENATED MODULE: ./src/Modules/StatCan.OrchardCore.VueForms/Assets/components/Multiselect/MultiselectBase.vue?vue&type=template&id=8504163a&
 
 // EXTERNAL MODULE: ./src/Modules/StatCan.OrchardCore.VueForms/node_modules/vue-multiselect/dist/vue-multiselect.min.js
 var vue_multiselect_min = __webpack_require__("0106");
@@ -1128,6 +1131,13 @@ var ErrorMessage_component = normalizeComponent(
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ var MultiselectBasevue_type_script_lang_js_ = ({
@@ -1150,8 +1160,8 @@ var ErrorMessage_component = normalizeComponent(
 
 var MultiselectBase_component = normalizeComponent(
   Multiselect_MultiselectBasevue_type_script_lang_js_,
-  MultiselectBasevue_type_template_id_9df49b68_render,
-  MultiselectBasevue_type_template_id_9df49b68_staticRenderFns,
+  MultiselectBasevue_type_template_id_8504163a_render,
+  MultiselectBasevue_type_template_id_8504163a_staticRenderFns,
   false,
   null,
   null,
@@ -1165,6 +1175,8 @@ var debounce = __webpack_require__("697d");
 var debounce_default = /*#__PURE__*/__webpack_require__.n(debounce);
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/Modules/StatCan.OrchardCore.VueForms/Assets/components/Multiselect/MultiselectAsync.vue?vue&type=script&lang=js&
+//
+//
 //
 //
 //
