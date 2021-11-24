@@ -12,9 +12,12 @@
           </div>
         </v-col>
         <v-col md="1">
-          <v-icon class="details-main-icon">
-            mdi-link
-          </v-icon>
+          <div class="d-flex">
+            <v-icon class="details-main-icon">
+              mdi-link
+            </v-icon>
+            {{ "OptionsButton" | shape_new: ContentItem: Model.ContentItem, Relative: true, DisplayMode: "Detail" | shape_render}}
+          </div>
         </v-col>
       </v-row>
       <v-row>

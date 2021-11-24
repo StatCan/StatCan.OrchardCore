@@ -2,8 +2,9 @@
 
 .list-header {
   padding: 3rem 13rem 4rem 13rem;
-  background: transparent linear-gradient(180deg, rgba($primary, 0.38), rgba($secondary, 0.38))
-    0% no-repeat;
+  background: transparent
+    linear-gradient(180deg, rgba($primary, 0.38), rgba($secondary, 0.38)) 0%
+    no-repeat;
 }
 
 .details-section {
@@ -90,4 +91,8 @@ input:focus {
 a {
   text-decoration: none;
   color: black !important;
+}
+
+.list-view-options-button {
+  background-color: rgba(255, 255, 255, 0);
 }

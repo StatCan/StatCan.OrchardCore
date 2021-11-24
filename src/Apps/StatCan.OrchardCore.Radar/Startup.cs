@@ -12,6 +12,7 @@ using OrchardCore.ResourceManagement;
 using OrchardCore.Scripting;
 using OrchardCore.ContentManagement;
 using OrchardCore.ContentManagement.Display.ContentDisplay;
+using OrchardCore.Liquid;
 using StatCan.OrchardCore.Radar.Filters;
 using StatCan.OrchardCore.Radar.Migrations;
 using StatCan.OrchardCore.Radar.Models;
@@ -21,6 +22,7 @@ using StatCan.OrchardCore.Radar.Services;
 using StatCan.OrchardCore.Radar.Services.ValueConverters;
 using StatCan.OrchardCore.Radar.Services.ContentConverters;
 using StatCan.OrchardCore.Radar.Scripting;
+using StatCan.OrchardCore.Radar.Liquid;
 
 namespace StatCan.OrchardCore.Radar
 {
@@ -50,6 +52,9 @@ namespace StatCan.OrchardCore.Radar
             services.AddScoped<FormValueProvider>();
             services.AddScoped<FormOptionsProvider>();
             services.AddScoped<TaxonomyManager>();
+
+            services.AddLiquidFilter<ContentOwnershipFilter>("is_owner");
+            services.AddLiquidFilter<ContentUpdateUrlFilter>("content_update_url");
 
             // Value converters
             services.AddScoped<TopicRawValueConverter>();

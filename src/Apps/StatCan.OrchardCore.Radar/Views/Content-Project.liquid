@@ -14,11 +14,14 @@
           </div>
         </v-col>
         <v-col md="1">
-          <v-img
+          <div class="d-flex">
+            <v-img
             src="{{ "icon_experiments.svg" | asset_url }}"
             width="112" height="112"
-          >
-          </v-img>
+            >
+            </v-img>
+            {{ "OptionsButton" | shape_new: ContentItem: Model.ContentItem, Relative: false, DisplayMode: "Detail" | shape_render}}
+          </div>
         </v-col>
       </v-row>
       <v-row>

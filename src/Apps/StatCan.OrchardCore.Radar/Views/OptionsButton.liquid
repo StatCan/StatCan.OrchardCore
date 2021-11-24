@@ -1,0 +1,37 @@
+{% assign contentItem = Model.Properties.ContentItem %}
+{% assign isOwner = contentItem | is_owner %}
+
+{% capture mode %}
+  {% if Model.Properties.DisplayMode == "Detail" %}
+    details-view-options-button
+  {% elsif Model.Properties.DisplayMode == "Summary" %}
+    list-view-options-button
+  {% endif %}
+{% endcapture %}
+{% if isOwner == true %}
+<v-menu offset-y>
+  <template v-slot:activator="{ on: onMenu, attrs }">
+    <v-btn v-bind="attrs" text v-on="{ ...onMenu }" fab class="options-button {{ mode }}">
+      <v-icon>mdi-dots-vertical</v-icon>
+    </v-btn>
+  </template>
+  <v-list>
+    <v-divider></v-divider>
+    <v-list-item-content>
+      <v-list-item-title class="text-h6">
+        <a class="pl-4 pr-4" href="{{ contentItem | content_update_url: relative: Model.Properties.Relative }}">
+          {{ "Update" | t }}
+        </a>
+      </v-list-item-title>
+    </v-list-item-content>
+      
+    <v-divider></v-divider>
+    <v-list-item-content>
+      <v-list-item-title class="text-h6">
+        <a class="pl-4 pr-4">{{ "Delete" | t }}</a>
+      </v-list-item-title>
+    </v-list-item-content>
+    <v-divider></v-divider>
+  </v-list>
+</v-menu>
+{% endif %}

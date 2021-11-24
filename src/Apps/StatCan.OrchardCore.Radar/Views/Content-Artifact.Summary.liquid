@@ -14,4 +14,5 @@
   <td class="table-col">
     {{ Model.ContentItem.ModifiedUtc | local | date: "%b %d, %Y" }}
   </td>
+  <td class="table-col">{{ "OptionsButton" | shape_new: ContentItem: Model.ContentItem, Relative: true, DisplayMode: "Summary" | shape_render}}</td>
 </tr>

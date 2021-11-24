@@ -40,6 +40,15 @@
   display: flex;
 }
 
+.options-button {
+  width: 3rem !important;
+  height: 3rem !important;
+}
+
+.details-view-options-button {
+  background-color: #ffffff !important;
+}
+
 .workspace-bubble {
   margin-left: 2rem;
   background-color: $background;
