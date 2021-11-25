@@ -17,6 +17,9 @@ using OrchardCore.ContentLocalization.Models;
 using OrchardCore.Contents;
 using OrchardCore.Shortcodes.Services;
 using OrchardCore.Taxonomies.Models;
+using StatCan.OrchardCore.Radar.Services;
+
+using Permissions = OrchardCore.Contents.Permissions;
 
 namespace StatCan.OrchardCore.Radar.Controllers
 {
@@ -30,11 +33,14 @@ namespace StatCan.OrchardCore.Radar.Controllers
         private IContentItemDisplayManager _contentItemDisplayManager;
         private readonly IAuthorizationService _authorizationService;
         private readonly IContentPermissionsService _contentPermissionsService;
+        private readonly TaxonomyManager _taxonomyManager;
+
+        private readonly BagItemManager _bagItemManager;
 
         public FormController(IContentManager contentManager, IHttpContextAccessor httpContextAccessor,
             IQueryManager queryManager, IContentItemDisplayManager contentItemDisplayManager,
             IUpdateModelAccessor updateModelAccessor, IShortcodeService shortcodeService, IAuthorizationService authorizationService,
-            IContentPermissionsService contentPermissionsService)
+            IContentPermissionsService contentPermissionsService, TaxonomyManager taxonomyManager, BagItemManager bagItemManager)
         {
             _contentManager = contentManager;
             _httpContextAccessor = httpContextAccessor;
@@ -44,6 +50,8 @@ namespace StatCan.OrchardCore.Radar.Controllers
             _shortcodeService = shortcodeService;
             _authorizationService = authorizationService;
             _contentPermissionsService = contentPermissionsService;
+            _taxonomyManager = taxonomyManager;
+            _bagItemManager = bagItemManager;
         }
 
         public async Task<IActionResult> Form(string entityType, string id)
@@ -247,7 +255,50 @@ namespace StatCan.OrchardCore.Radar.Controllers
             return new ObjectResult(entities);
         }
 
+
+        [HttpPost]
+        public async Task<IActionResult> ContentDelete([FromForm] string entityType, [FromForm] string id, [FromForm] string parentId, [FromForm] string successUrl, [FromForm] string failUrl)
+        {
+            if (entityType == "Topic")
+            {
+                if (!IsUserAdmin())
+                {
+                    return Redirect(failUrl);
+                }
+
+                await _taxonomyManager.DeleteTaxonomyAsync("Topics", id);
+
+                return Redirect(successUrl);
+            }
+
+            if (entityType == "Artifact")
+            {
+                if (!await CanEditContent(parentId) || !await _authorizationService.AuthorizeAsync(User, Permissions.DeleteContent))
+                {
+                    return Redirect(failUrl);
+                }
+
+                await _bagItemManager.DeleteBagItemAsync("Workspace", parentId, id);
+            }
+
+            if (!await CanEditContent(id) || !await _authorizationService.AuthorizeAsync(User, Permissions.DeleteContent))
+            {
+                return Redirect(failUrl);
+            }
+
+            var contentItem = await _contentManager.GetAsync(id);
+
+            await _contentManager.RemoveAsync(contentItem);
+
+            return Redirect(successUrl);
+        }
+
         private async Task<bool> CanEditContent(string id)
+        {
+            return IsUserAdmin() || await IsOwner(id);
+        }
+
+        private bool IsUserAdmin()
         {
             var user = _httpContextAccessor.HttpContext.User;
 
@@ -261,7 +312,24 @@ namespace StatCan.OrchardCore.Radar.Controllers
                 return true;
             }
 
+            return false;
+        }
+
+        private async Task<bool> IsOwner(string id)
+        {
+            var user = _httpContextAccessor.HttpContext.User;
+
+            if (user == null)
+            {
+                return false;
+            }
+
             var contentItem = await _contentManager.GetAsync(id);
+
+            if (contentItem == null)
+            {
+                return false;
+            }
 
             var userId = user.FindFirstValue(ClaimTypes.NameIdentifier).ToString();
 

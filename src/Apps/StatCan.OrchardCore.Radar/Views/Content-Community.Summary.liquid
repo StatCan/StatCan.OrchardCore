@@ -1,4 +1,5 @@
 {% assign owner = Model.ContentItem.Owner | users_by_id %}
+{% capture failUrl %}~{{ Request.Path }}{% endcapture %}
 
 <tr class="table-row">
   <td class="name-col">
@@ -12,5 +13,5 @@
   </td>
   <td class="table-col">{{ owner.Properties.UserProfile.UserProfile.FirstName.Text }} {{ owner.Properties.UserProfile.UserProfile.LastName.Text }}</td>
   <td class="table-col">{{ Model.ContentItem.Content.Community.Type.TagNames.first | shortcode }}</td>
-  <td class="table-col">{{ "OptionsButton" | shape_new: ContentItem: Model.ContentItem, Relative: false, DisplayMode: "Summary" | shape_render}}</td>
+  <td class="table-col">{{ "OptionsButton" | shape_new: ContentItem: Model.ContentItem, Relative: false, DisplayMode: "Summary", SuccessUrl: "~/communities", FailUrl: failUrl | shape_render}}</td>
 </tr>

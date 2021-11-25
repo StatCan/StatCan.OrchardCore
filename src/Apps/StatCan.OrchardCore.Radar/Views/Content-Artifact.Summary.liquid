@@ -1,3 +1,6 @@
+{% assign parentId = Request.Path | parent_contentitem_id %}
+{% capture failUrl %}~{{ Request.Path }}{% endcapture %}
+
 <tr class="table-row">
   <td class="name-col">
     <a href="{{ Model.ContentItem | display_url }}">
@@ -14,5 +17,5 @@
   <td class="table-col">
     {{ Model.ContentItem.ModifiedUtc | local | date: "%b %d, %Y" }}
   </td>
-  <td class="table-col">{{ "OptionsButton" | shape_new: ContentItem: Model.ContentItem, Relative: true, DisplayMode: "Summary" | shape_render}}</td>
+  <td class="table-col">{{ "OptionsButton" | shape_new: ContentItem: Model.ContentItem, Relative: true, DisplayMode: "Summary", SuccessUrl: failUrl, FailUrl: failUrl, ParentId: parentId | shape_render}}</td>
 </tr>

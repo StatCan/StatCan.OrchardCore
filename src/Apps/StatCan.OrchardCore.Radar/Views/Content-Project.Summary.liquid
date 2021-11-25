@@ -1,4 +1,5 @@
 {% assign owner = Model.ContentItem.Owner | users_by_id %}
+{% capture failUrl %}~{{ Request.Path }}{% endcapture %}
 
 <tr class="table-row">
   <td class="name-col">
@@ -18,5 +19,5 @@
   <td class="table-col">
     {{ Model.ContentItem.CreatedUtc | local | date: "%b %d, %Y" }}
   </td>
-  <td class="table-col">{{ "OptionsButton" | shape_new: ContentItem: Model.ContentItem, Relative: false, DisplayMode: "Summary" | shape_render}}</td>
+  <td class="table-col">{{ "OptionsButton" | shape_new: ContentItem: Model.ContentItem, Relative: false, DisplayMode: "Summary", SuccessUrl: "~/projects", FailUrl: failUrl | shape_render}}</td>
 </tr>

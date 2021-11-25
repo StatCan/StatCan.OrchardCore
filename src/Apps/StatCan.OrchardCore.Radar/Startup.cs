@@ -52,9 +52,11 @@ namespace StatCan.OrchardCore.Radar
             services.AddScoped<FormValueProvider>();
             services.AddScoped<FormOptionsProvider>();
             services.AddScoped<TaxonomyManager>();
+            services.AddScoped<BagItemManager>();
 
             services.AddLiquidFilter<ContentOwnershipFilter>("is_owner");
             services.AddLiquidFilter<ContentUpdateUrlFilter>("content_update_url");
+            services.AddLiquidFilter<ParentContentItemIdFilter>("parent_contentitem_id");
 
             // Value converters
             services.AddScoped<TopicRawValueConverter>();
@@ -127,6 +129,14 @@ namespace StatCan.OrchardCore.Radar
                 areaName: "StatCan.OrchardCore.Radar",
                 pattern: "{entityType:regex(^(topics|projects|events|communities|proposals)$)}/update/{id}",
                 defaults: new { controller = "Form", action = "Form" }
+            );
+
+            // Speical case for delete. Logically it's part the form views.
+            routes.MapAreaControllerRoute(
+                name: "ContentDelete",
+                areaName: "StatCan.OrchardCore.Radar",
+                pattern: "contents/delete",
+                defaults: new { controller = "Form", action = "ContentDelete" }
             );
 
             // Special Cases

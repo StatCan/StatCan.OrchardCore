@@ -1,6 +1,9 @@
 {% assign contentItem = Model.Properties.ContentItem %}
 {% assign isOwner = contentItem | is_owner %}
 
+{% assign successUrl =  Model.Properties.SuccessUrl | href %}
+{% assign failUrl =  Model.Properties.FailUrl | href %}
+
 {% capture mode %}
   {% if Model.Properties.DisplayMode == "Detail" %}
     details-view-options-button
@@ -18,17 +21,17 @@
   <v-list>
     <v-divider></v-divider>
     <v-list-item-content>
-      <v-list-item-title class="text-h6">
-        <a class="pl-4 pr-4" href="{{ contentItem | content_update_url: relative: Model.Properties.Relative }}">
-          {{ "Update" | t }}
+      <v-list-item-title>
+        <a href="{{ contentItem | content_update_url: relative: Model.Properties.Relative }}">
+          <h3 class="pl-4 pr-4">{{ "Update" | t }}</h3>
         </a>
       </v-list-item-title>
     </v-list-item-content>
       
     <v-divider></v-divider>
     <v-list-item-content>
-      <v-list-item-title class="text-h6">
-        <a class="pl-4 pr-4">{{ "Delete" | t }}</a>
+      <v-list-item-title>
+        {{ "DeleteButton" | shape_new: ContentItem: contentItem, SuccessUrl: successUrl, FailUrl: failUrl, ParentId: Model.Properties.ParentId | shape_render }}
       </v-list-item-title>
     </v-list-item-content>
     <v-divider></v-divider>

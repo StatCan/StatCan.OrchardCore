@@ -1,4 +1,5 @@
 {% assign organizer = Model.ContentItem.Content.EventOrganizer.ContentItems | first %}
+{% capture failUrl %}~{{ Request.Path }}{% endcapture %}
 
 <tr class="table-row">
   <td class="name-col">
@@ -16,5 +17,5 @@
       {{ "Draft" | t }}
     {% endif %}
   </td>
-  <td class="table-col">{{ "OptionsButton" | shape_new: ContentItem: Model.ContentItem, Relative: false, DisplayMode: "Summary" | shape_render}}</td>
+  <td class="table-col">{{ "OptionsButton" | shape_new: ContentItem: Model.ContentItem, Relative: false, DisplayMode: "Summary", SuccessUrl: "~/events", FailUrl: failUrl | shape_render}}</td>
 </tr>

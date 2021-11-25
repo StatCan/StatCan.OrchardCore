@@ -1,3 +1,8 @@
+{% assign parentId = Request.Path | parent_contentitem_id %}
+{% capture artifactPath %}/{{ Model.ContentItem.Content.AutoroutePart.Path }}{% endcapture %}
+{% capture successUrl %}~{{ Request.Path | remove:  artifactPath }}{% endcapture %}
+{% capture failUrl %}~{{ Request.Path }}{% endcapture %}
+
 {% zone "Header" %}
 <div class="details-section">
   <div class="header">
@@ -16,7 +21,7 @@
             <v-icon class="details-main-icon">
               mdi-link
             </v-icon>
-            {{ "OptionsButton" | shape_new: ContentItem: Model.ContentItem, Relative: true, DisplayMode: "Detail" | shape_render}}
+            {{ "OptionsButton" | shape_new: ContentItem: Model.ContentItem, Relative: true, DisplayMode: "Detail", SuccessUrl: successUrl, FailUrl: failUrl, ParentId: parentId | shape_render}}
           </div>
         </v-col>
       </v-row>

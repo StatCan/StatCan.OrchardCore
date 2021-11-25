@@ -8,6 +8,8 @@
 {% assign popularity = projectCount | plus: communityCount | plus: proposalCount | plus: eventCount %}
 
 
+{% capture failUrl %}~{{ Request.Path }}{% endcapture %}
+
 <td class="name-col">
     <!-- <a> cannot be a child of <table> therefore only link the name as a workaround -->
     <a href="{{ Model.Properties.TermContentItem | display_url }}" >{{ Model.Properties.TermContentItem | display_text | shortcode }}</a>
@@ -42,7 +44,7 @@
         <div>{{ proposalCount }}</div>
     </div>
 </td>
-<td class="table-col">{{ "OptionsButton" | shape_new: ContentItem: Model.Properties.TermContentItem, Relative: false, DisplayMode: "Summary" | shape_render}}</td>
+<td class="table-col">{{ "OptionsButton" | shape_new: ContentItem: Model.Properties.TermContentItem, Relative: false, DisplayMode: "Summary", SuccessUrl: "~/topics", FailUrl: failUrl | shape_render}}</td>
 
 <script type="application/javascript">
 function search() {

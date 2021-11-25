@@ -1,6 +1,8 @@
 {% script src:"/StatCan.OrchardCore.Radar/js/table.js", at:"Head" %}
 {% script name:"Radar-vue-components", at:"Foot" %}
 
+{% capture failUrl %}~{{ Request.Path }}{% endcapture %}
+
 {% zone "Header" %}
 <div class="details-section">
   <div class="header">
@@ -21,7 +23,7 @@
             width="112" height="112"
             >
             </v-img>
-            {{ "OptionsButton" | shape_new: ContentItem: Model.ContentItem, Relative: false, DisplayMode: "Detail" | shape_render}}
+            {{ "OptionsButton" | shape_new: ContentItem: Model.ContentItem, Relative: false, DisplayMode: "Detail", SuccessUrl: "~/topics", FailUrl: failUrl | shape_render}}
           </div>
         </v-col>
       </v-row>

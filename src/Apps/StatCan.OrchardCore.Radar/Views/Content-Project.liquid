@@ -1,4 +1,5 @@
 {% assign owner = Model.ContentItem.Owner | users_by_id %}
+{% capture failUrl %}~{{ Request.Path }}{% endcapture %}
 
 {% zone "Header" %}
 <div class="details-section">
@@ -20,7 +21,7 @@
             width="112" height="112"
             >
             </v-img>
-            {{ "OptionsButton" | shape_new: ContentItem: Model.ContentItem, Relative: false, DisplayMode: "Detail" | shape_render}}
+            {{ "OptionsButton" | shape_new: ContentItem: Model.ContentItem, Relative: false, DisplayMode: "Detail", SuccessUrl: "~/projects", FailUrl: failUrl | shape_render}}
           </div>
         </v-col>
       </v-row>

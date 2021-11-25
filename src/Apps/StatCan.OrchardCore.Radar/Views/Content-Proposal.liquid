@@ -1,5 +1,6 @@
 {% assign owner = Model.ContentItem.Owner | users_by_id %}
 {% assign communities =  Model.ContentItem.Content.RadarEntityPart.RelatedEntity.LocalizationSets | localization_set | remove_unauthorized_items %}
+{% capture failUrl %}~{{ Request.Path }}{% endcapture %}
 
 {% zone "Header" %}
 <div class="details-section">
@@ -21,7 +22,7 @@
             width="112" height="112"
             >
             </v-img>
-            {{ "OptionsButton" | shape_new: ContentItem: Model.ContentItem, Relative: false, DisplayMode: "Detail" | shape_render}}
+            {{ "OptionsButton" | shape_new: ContentItem: Model.ContentItem, Relative: false, DisplayMode: "Detail", SuccessUrl: "~/proposals", FailUrl: failUrl | shape_render}}
           </div>
         </v-col>
       </v-row>

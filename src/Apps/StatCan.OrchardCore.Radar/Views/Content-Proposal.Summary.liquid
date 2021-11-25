@@ -1,3 +1,5 @@
+{% capture failUrl %}~{{ Request.Path }}{% endcapture %}
+
 <tr class="table-row">
   <td class="name-col">
     <a href="{{ Model.ContentItem | display_url }}">{{ Model.ContentItem | display_text }}</a>
@@ -12,5 +14,5 @@
       {{ "Draft" | t }}
     {% endif %}
   </td>
-  <td class="table-col">{{ "OptionsButton" | shape_new: ContentItem: Model.ContentItem, Relative: false, DisplayMode: "Summary" | shape_render}}</td>
+  <td class="table-col">{{ "OptionsButton" | shape_new: ContentItem: Model.ContentItem, Relative: false, DisplayMode: "Summary", SuccessUrl: "~/proposals", FailUrl: failUrl | shape_render}}</td>
 </tr>
