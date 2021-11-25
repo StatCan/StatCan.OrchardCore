@@ -150,28 +150,6 @@ namespace StatCan.OrchardCore.Radar.Scripting
                             {
                                 if (id.Equals(artifact.ContentItemId))
                                 {
-                                    var tempArtifact = contentManager.NewAsync("Artifact").GetAwaiter().GetResult();
-                                    tempArtifact.Merge(artifact);
-
-                                    // Converts form model into content item document
-                                    var artifactUpdateObject = contentConverter.ConvertAsync(formModel, new { Existing = artifact }).GetAwaiter().GetResult();
-                                    tempArtifact.Merge(artifactUpdateObject, new JsonMergeSettings
-                                    {
-                                        MergeArrayHandling = MergeArrayHandling.Replace,
-                                        MergeNullValueHandling = MergeNullValueHandling.Merge
-                                    });
-
-                                    artifact.Merge(tempArtifact, new JsonMergeSettings
-                                    {
-                                        MergeArrayHandling = MergeArrayHandling.Replace,
-                                        MergeNullValueHandling = MergeNullValueHandling.Merge
-                                    });
-
-                                    artifact.DisplayText = artifactUpdateObject["TitlePart"]["Title"].Value<string>();
-                                    parentContentItem.Apply("Workspace", workspace);
-
-                                    contentManager.UpdateAsync(parentContentItem).GetAwaiter().GetResult();
-
                                     isUpdate = true;
                                     artifactId = artifact.ContentItemId;
                                     artifactLocalizationSet = artifact.Content.Artifact.LocalizationSet.Text.ToObject<string>();
@@ -209,6 +187,18 @@ namespace StatCan.OrchardCore.Radar.Scripting
                                             });
 
                                             artifact.DisplayText = artifactUpdateObject["TitlePart"]["Title"].Value<string>();
+
+                                            if (artifactUpdateObject["Published"].Value<bool>())
+                                            {
+                                                contentManager.PublishAsync(artifact).GetAwaiter().GetResult();
+                                            }
+                                            else
+                                            {
+                                                contentManager.UnpublishAsync(artifact).GetAwaiter().GetResult();
+                                            }
+
+                                            contentManager.UpdateAsync(artifact).GetAwaiter().GetResult();
+
                                             localizedVersion.Apply("Workspace", localizedWorkspace);
 
                                             contentManager.UpdateAsync(localizedVersion).GetAwaiter().GetResult();
@@ -230,6 +220,15 @@ namespace StatCan.OrchardCore.Radar.Scripting
                                 newArtifact.Merge(artifactCreateObject);
                                 newArtifact.DisplayText = artifactCreateObject["TitlePart"]["Title"].Value<string>();
                                 newArtifact.Alter<AutoroutePart>(part => part.Path = "artifacts/" + newArtifact.ContentItemId);
+
+                                if(artifactCreateObject["Published"].Value<bool>())
+                                {
+                                    contentManager.PublishAsync(newArtifact).GetAwaiter().GetResult();
+                                }
+
+                                contentManager.UpdateAsync(newArtifact).GetAwaiter().GetResult();
+
+                                newArtifact.Latest = true;
 
                                 var localizedWorkspace = localizedVersion.Get<BagPart>("Workspace");
                                 localizedWorkspace.ContentItems.Add(JObject.FromObject(newArtifact).ToObject<ContentItem>());

@@ -9,6 +9,7 @@ using OrchardCore.Queries;
 using OrchardCore.Shortcodes.Services;
 using OrchardCore.Taxonomies.Models;
 using OrchardCore.ContentLocalization.Models;
+using OrchardCore.Flows.Models;
 using StatCan.OrchardCore.Radar.FormModels;
 
 namespace StatCan.OrchardCore.Radar.Services
@@ -78,6 +79,7 @@ namespace StatCan.OrchardCore.Radar.Services
                 Name = "",
                 Url = "",
                 Roles = Array.Empty<string>(),
+                PublishStatus = "",
             };
 
             if (!string.IsNullOrEmpty(parentId))
@@ -88,16 +90,17 @@ namespace StatCan.OrchardCore.Radar.Services
 
                 if(!string.IsNullOrEmpty(childId))
                 {
-                    var artifacts = parentContentItem.Content.Workspace.ContentItems;
+                    var artifacts = parentContentItem.Get<BagPart>("Workspace").ContentItems;
 
                     foreach (var artifact in artifacts)
                     {
-                        if (childId == artifact.ContentItemId.ToString())
+                        if (childId == artifact.ContentItemId)
                         {
-                            artifactModel.Id = artifact.ContentItemId.ToString();
-                            artifactModel.Name = await _shortcodeService.ProcessAsync(artifact.DisplayText.ToString());
-                            artifactModel.Url = artifact.Artifact.URL.Text.ToString();
-                            artifactModel.Roles = artifact.ContentPermissionsPart.Roles.ToObject<string[]>();
+                            artifactModel.Id = artifact.ContentItemId;
+                            artifactModel.Name = await _shortcodeService.ProcessAsync(artifact.DisplayText);
+                            artifactModel.Url = artifact.Content.Artifact.URL.Text.ToObject<string>();
+                            artifactModel.Roles = artifact.Content.ContentPermissionsPart.Roles.ToObject<string[]>();
+                            artifactModel.PublishStatus = await GetPublishStatusAsync(artifact.Published);
 
                             return artifactModel;
                         }

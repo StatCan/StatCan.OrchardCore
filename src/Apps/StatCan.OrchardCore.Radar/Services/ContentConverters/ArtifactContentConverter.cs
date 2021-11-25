@@ -19,6 +19,7 @@ namespace StatCan.OrchardCore.Radar.Services.ContentConverters
             {
                 var artifactUpdateObject = new
                 {
+                    Published = GetPublishStatus(artifactFormModel.PublishStatus),
                     Artifact = new
                     {
                         URL = new { Text = artifactFormModel.Url },
@@ -40,6 +41,7 @@ namespace StatCan.OrchardCore.Radar.Services.ContentConverters
             {
                 var artifactCreateObject = new
                 {
+                    Published = GetPublishStatus(artifactFormModel.PublishStatus),
                     Artifact = new
                     {
                         URL = new { Text = artifactFormModel.Url },

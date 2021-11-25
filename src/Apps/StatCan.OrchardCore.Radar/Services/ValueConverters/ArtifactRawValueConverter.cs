@@ -11,6 +11,7 @@ namespace StatCan.OrchardCore.Radar.Services.ValueConverters
         public override FormModel ConvertFromRawValues(JObject rawValues)
         {
             rawValues.Remove("roleOptions");
+            rawValues.Remove("publishOptions");
             rawValues.Remove("__RequestVerificationToken");
 
             FixSingleArrayValue(rawValues, "roles");

@@ -12,7 +12,7 @@ namespace StatCan.OrchardCore.Radar.Services.ValueConverters
         {
             rawValues.Remove("roleOptions");
             rawValues.Remove("__RequestVerificationToken");
-            rawValues.Remove("visibilityOptions");
+            rawValues.Remove("publishOptions");
             rawValues.Remove("typeOptions[label]");
             rawValues.Remove("typeOptions[value]");
             rawValues.Remove("valueNames");

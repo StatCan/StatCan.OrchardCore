@@ -41,11 +41,11 @@ namespace StatCan.OrchardCore.Radar.Services
             {
                 return await GetCommunityFormOptionsAsync();
             }
-            else if(entityType == "events")
+            else if (entityType == "events")
             {
                 return await GetEventFormOptionsAsync();
             }
-            else if(entityType == "artifacts")
+            else if (entityType == "artifacts")
             {
                 return await GetArtifactFormOptionsAsync();
             }
@@ -130,12 +130,13 @@ namespace StatCan.OrchardCore.Radar.Services
         {
             var roles = await _roleService.GetRoleNamesAsync();
 
-            var formOptionModel = new FormOptionModel()
+            var formOptionModel = new EntityFormOptionModel()
             {
                 RoleOptions = new LinkedList<string>(),
             };
 
             await FillRoleOptionsAsync(formOptionModel);
+            await FillVisibilityOptionsAsync(formOptionModel);
 
             return formOptionModel;
         }
