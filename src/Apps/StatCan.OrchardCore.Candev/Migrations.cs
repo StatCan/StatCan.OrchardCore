@@ -77,6 +77,16 @@ namespace StatCan.OrchardCore.Candev
                         Label = "Can hackers create / join / leave teams?",
                     })
                 )
+                .WithField("PartialChallenge", field => field
+                    .OfType("BooleanField")
+                    .WithDisplayName("Show partial challenge")
+                    .WithEditor("Switch")
+                    .WithPosition("2")
+                    .WithSettings(new BooleanFieldSettings
+                    {
+                        Label = "Show partial challenge to teams (no background information)",
+                    })
+                )
             );
 
             _contentDefinitionManager.AlterPartDefinition("JudgingCustomSettings", part => part
@@ -567,6 +577,19 @@ namespace StatCan.OrchardCore.Candev
         {
             _contentDefinitionManager.AlterPartDefinition("Hacker", part => part
                 .WithBooleanField("CheckIn", "Check-in", "8")
+            );
+
+            _contentDefinitionManager.AlterPartDefinition("TeamCustomSettings", part => part
+                .WithField("PartialChallenge", field => field
+                    .OfType("BooleanField")
+                    .WithDisplayName("Show partial challenge")
+                    .WithEditor("Switch")
+                    .WithPosition("2")
+                    .WithSettings(new BooleanFieldSettings
+                    {
+                        Label = "Show partial challenge to teams (no background information)",
+                    })
+                )
             );
 
             return 2;
