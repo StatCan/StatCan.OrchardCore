@@ -15,7 +15,7 @@ namespace StatCan.OrchardCore.Candev.Indexes
             CreateCandevItemsIndex();
             CreateCandevUsersIndex();
 
-            return 1;
+            return 2;
         }
 
         private void CreateCandevItemsIndex()

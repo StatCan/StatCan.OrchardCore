@@ -36,7 +36,7 @@ namespace StatCan.OrchardCore.Candev
             await _recipeMigrator.ExecuteAsync("roles.recipe.json", this);
             await _recipeMigrator.ExecuteAsync("role-judge.recipe.json", this);
 
-            return 1;
+            return 2;
         }
 
         private void CreateHackathonCustomSetings()
