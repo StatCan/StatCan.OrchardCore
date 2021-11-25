@@ -26,10 +26,6 @@ namespace StatCan.OrchardCore.Radar.Scripting
                 {
                     // The behaviour is that a content will be created in the default culture. Then the content will be localized across all supported localizations
 
-                    bool publish = properties["Published"].Value<bool>();
-
-                    properties.Remove("Published");
-
                     // Creating content in the default culture
                     var contentManager = serviceProvider.GetRequiredService<IContentManager>();
                     var contentItem = contentManager.NewAsync(contentType).GetAwaiter().GetResult();
@@ -50,11 +46,7 @@ namespace StatCan.OrchardCore.Radar.Scripting
 
                         localizedContent.Alter<AutoroutePart>(part => part.RouteContainedItems = true);
                         contentManager.UpdateAsync(localizedContent).GetAwaiter().GetResult(); // This is needed to enable the rounte contained option
-
-                        if (publish)
-                        {
-                            contentManager.PublishAsync(localizedContent).GetAwaiter().GetResult();
-                        }
+                        contentManager.PublishAsync(localizedContent).GetAwaiter().GetResult();
 
                         if (CultureInfo.CurrentCulture.Name == culture)
                         {
@@ -71,8 +63,6 @@ namespace StatCan.OrchardCore.Radar.Scripting
                 Name = "updateLocalizedContentItem",
                 Method = serviceProvider => (Action<ContentItem, JObject>)((contentItem, properties) =>
                 {
-                    bool publish = properties["Published"].Value<bool>();
-
                     var contentLocalizationManager = serviceProvider.GetRequiredService<IContentLocalizationManager>();
                     var localizationService = serviceProvider.GetRequiredService<ILocalizationService>();
                     var contentManager = serviceProvider.GetRequiredService<IContentManager>();
@@ -80,15 +70,6 @@ namespace StatCan.OrchardCore.Radar.Scripting
                     contentItem.Merge(properties, new JsonMergeSettings { MergeArrayHandling = MergeArrayHandling.Replace });
 
                     contentManager.UpdateAsync(contentItem).GetAwaiter().GetResult();
-
-                    if (publish)
-                    {
-                        contentManager.PublishAsync(contentItem).GetAwaiter().GetResult();
-                    }
-                    else
-                    {
-                        contentManager.UnpublishAsync(contentItem).GetAwaiter().GetResult();
-                    }
 
                     var supportedCultures = localizationService.GetSupportedCulturesAsync().GetAwaiter().GetResult();
                     var localizationSet = contentItem.Content.LocalizationPart.LocalizationSet.ToString();
@@ -105,15 +86,6 @@ namespace StatCan.OrchardCore.Radar.Scripting
                             localizedVersion.Merge(properties, new JsonMergeSettings { MergeArrayHandling = MergeArrayHandling.Replace });
 
                             contentManager.UpdateAsync(localizedVersion).GetAwaiter().GetResult();
-
-                            if (publish)
-                            {
-                                contentManager.PublishAsync(localizedVersion).GetAwaiter().GetResult();
-                            }
-                            else
-                            {
-                                contentManager.UnpublishAsync(localizedVersion).GetAwaiter().GetResult();
-                            }
                         }
                     }
                 })

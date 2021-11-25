@@ -391,7 +391,7 @@ namespace StatCan.OrchardCore.Radar.Services
             entityFormModel.Name = contentItem.DisplayText;
             entityFormModel.Description = contentItem.Content.RadarEntityPart.Description.Text.ToString();
             entityFormModel.Roles = contentItem.Content.ContentPermissionsPart.Roles.ToObject<string[]>();
-            entityFormModel.PublishStatus = await GetPublishStatusAsync(contentItem.Published);
+            entityFormModel.PublishStatus = await GetPublishStatusAsync(contentItem.Content.RadarEntityPart.Publish.Value.ToObject<bool>());
 
             var topicIds = contentItem.Content.RadarEntityPart.Topics.TermContentItemIds.ToObject<string[]>();
             var topicNames = contentItem.Content.RadarEntityPart.Topics.TagNames.ToObject<string[]>();

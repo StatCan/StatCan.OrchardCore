@@ -41,6 +41,10 @@ namespace StatCan.OrchardCore.Radar.Services.ContentConverters
                         TaxonomyContentItemId = await GetTaxonomyIdAsync("Topics"),
                         TermContentItemIds = MapDictListToStringList(communityFormModel.Topics, topic => topic["value"]),
                         TagNames = MapDictListToStringList(communityFormModel.Topics, topic => topic["label"])
+                    },
+                    Publish = new
+                    {
+                        Value = GetPublishStatus(communityFormModel.PublishStatus),
                     }
                 },
                 ContentPermissionsPart = new

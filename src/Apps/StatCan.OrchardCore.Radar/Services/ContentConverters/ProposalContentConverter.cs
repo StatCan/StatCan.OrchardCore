@@ -17,7 +17,6 @@ namespace StatCan.OrchardCore.Radar.Services.ContentConverters
 
             var proposalContentObject = new
             {
-                Published = GetPublishStatus(proposalFormModel.PublishStatus),
                 Proposal = new
                 {
                     Type = new
@@ -46,6 +45,10 @@ namespace StatCan.OrchardCore.Radar.Services.ContentConverters
                     RelatedEntity = new
                     {
                         LocalizationSets = MapDictListToStringList(proposalFormModel.RelatedEntities, entity => entity["value"])
+                    },
+                    Publish = new
+                    {
+                        Value = GetPublishStatus(proposalFormModel.PublishStatus),
                     }
                 },
                 ContentPermissionsPart = new

@@ -21,14 +21,17 @@ namespace StatCan.OrchardCore.Radar.Services.ContentConverters
                 Published = GetPublishStatus(eventFormModel.PublishStatus),
                 Event = new
                 {
-                    Attendees = new {
+                    Attendees = new
+                    {
                         UserIds = MapDictListToStringList(eventFormModel.Attendees, attendee => attendee["value"].ToString()),
                         UserNames = MapDictListToStringList(eventFormModel.Attendees, attendee => attendee["label"].ToString()),
                     },
-                    StartDate = new {
+                    StartDate = new
+                    {
                         Value = DateTime.Parse($"{eventFormModel.StartDate} {eventFormModel.StartTime}")
                     },
-                    EndDate = new {
+                    EndDate = new
+                    {
                         Value = DateTime.Parse($"{eventFormModel.EndDate} {eventFormModel.EndTime}")
                     }
                 },
@@ -47,6 +50,10 @@ namespace StatCan.OrchardCore.Radar.Services.ContentConverters
                         TaxonomyContentItemId = await GetTaxonomyIdAsync("Topics"),
                         TermContentItemIds = MapDictListToStringList(eventFormModel.Topics, topic => topic["value"]),
                         TagNames = MapDictListToStringList(eventFormModel.Topics, topic => topic["label"])
+                    },
+                    Publish = new
+                    {
+                        Value = GetPublishStatus(eventFormModel.PublishStatus),
                     }
                 },
                 ContentPermissionsPart = new

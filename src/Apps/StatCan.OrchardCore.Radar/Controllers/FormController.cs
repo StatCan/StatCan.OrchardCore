@@ -56,11 +56,6 @@ namespace StatCan.OrchardCore.Radar.Controllers
 
         public async Task<IActionResult> Form(string entityType, string id)
         {
-            if (!await CanEditContent(id))
-            {
-                return Redirect("not-found");
-            }
-
             // Builds the form shape. It is assumed that there
             // will ever be 1 form content item
             var form = await GetFormAsync(GetFormNameFromType(entityType));

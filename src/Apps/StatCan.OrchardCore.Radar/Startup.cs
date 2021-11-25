@@ -23,6 +23,7 @@ using StatCan.OrchardCore.Radar.Services.ValueConverters;
 using StatCan.OrchardCore.Radar.Services.ContentConverters;
 using StatCan.OrchardCore.Radar.Scripting;
 using StatCan.OrchardCore.Radar.Liquid;
+using StatCan.OrchardCore.Radar.Handlers;
 
 namespace StatCan.OrchardCore.Radar
 {
@@ -48,6 +49,10 @@ namespace StatCan.OrchardCore.Radar
                         .UseDisplayDriver<RadarFormPartDisplayDriver>();
             services.AddSingleton<IIndexProvider, RadarFormPartIndexProvider>();
             services.AddScoped<IDataMigration, IndexMigrations>();
+
+            services.AddContentPart<RadarPermissionPart>()
+                        .UseDisplayDriver<RadarPermissionPartDisplayDriver>()
+                        .AddHandler<RadarPermissionPartHandler>();
 
             services.AddScoped<FormValueProvider>();
             services.AddScoped<FormOptionsProvider>();

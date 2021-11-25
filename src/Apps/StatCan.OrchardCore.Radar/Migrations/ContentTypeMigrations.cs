@@ -40,6 +40,7 @@ namespace StatCan.OrchardCore.Radar.Migrations
             CreateArtifact();
             CreateRadarEntityPart();
             CreateRadarFormPart();
+            CreateRadarPermissionPart();
             CreateProposal();
             CreateProject();
             CreateEvent();
@@ -55,6 +56,14 @@ namespace StatCan.OrchardCore.Radar.Migrations
             CreateUserProfile();
 
             return 1;
+        }
+
+        private void CreateRadarPermissionPart()
+        {
+            _contentDefinitionManager.AlterPartDefinition(Constants.ContentTypes.RadarPermissionPart, part => part
+                .Attachable()
+                .WithDescription("Draft/publish status check")
+            );
         }
 
         private void CreateForm()
@@ -406,6 +415,11 @@ namespace StatCan.OrchardCore.Radar.Migrations
                         Required = false,
                         DisplayedContentTypes = new[] { Constants.ContentTypes.Project, Constants.ContentTypes.Proposal, Constants.ContentTypes.Community, Constants.ContentTypes.Event },
                     })
+                )
+                .WithField("Publish", field => field
+                    .OfType("BooleanField")
+                    .WithDisplayName("Publish")
+                    .WithPosition("4")
                 )
             );
         }
