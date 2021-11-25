@@ -45,6 +45,8 @@ namespace StatCan.OrchardCore.Radar.Migrations
             CreateEvent();
             CreateCommunity();
 
+            CreateForm();
+
             CreateLandingPage();
             CreateAppBar();
             CreateNavigationDrawer();
@@ -53,6 +55,30 @@ namespace StatCan.OrchardCore.Radar.Migrations
             CreateUserProfile();
 
             return 1;
+        }
+
+        private void CreateForm()
+        {
+            _contentDefinitionManager.AlterTypeDefinition(Constants.ContentTypes.Form, type => type
+                .DisplayedAs("Form")
+                .Creatable()
+                .Listable()
+                .Draftable()
+                .Versionable()
+                .Securable()
+                .WithPart("Form", part => part
+                    .WithPosition("1")
+                )
+                .WithPart("RadarFormPart", part => part
+                    .WithPosition("2")
+                )
+                .WithPart("TitlePart", part => part
+                    .WithPosition("0")
+                )
+                .WithPart("FlowPart", part => part
+                    .WithPosition("3")
+                )
+            );
         }
 
         private void CreateTaxonomies()
