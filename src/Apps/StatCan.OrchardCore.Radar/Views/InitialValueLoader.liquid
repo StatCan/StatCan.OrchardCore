@@ -8,5 +8,11 @@
 
   const values = toLowerCaseKey(JSON.parse(valueHolder.dataset.initialValues));
 
+  // This is to fix placeholder not being displayed for empty object
+  if(Object.keys(values.type).length == 0)
+  {
+    values.type = null;
+  }
+
   window.formValues = values;
 </script>
