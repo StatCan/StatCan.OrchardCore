@@ -1,6 +1,6 @@
 <template>
   <div class="pa-1 vue-form-bag-container">
-    <div v-show="false">
+    <div v-if="!loaded">
       <slot name="components"></slot>
       <slot name="validations"></slot>
     </div>
@@ -70,7 +70,8 @@ export default {
   data() {
     return {
       formComponents: [],
-      internalValues: []
+      internalValues: [],
+      loaded: false,
     };
   },
   created() {
@@ -93,6 +94,7 @@ export default {
       obj.validation = { ...validations[i] };
 
       this.formComponents.push(obj);
+      this.loaded = true;
     }
   },
   methods: {
