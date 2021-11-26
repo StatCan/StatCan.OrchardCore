@@ -48,6 +48,7 @@ namespace StatCan.OrchardCore.Radar.Services.ContentConverters
 
                 var contentItem = await _contentManager.NewAsync(type);
                 contentItem.Merge(memberObject);
+                await _contentManager.UpdateAsync(contentItem);
 
                 membersContent.Add(contentItem);
             }
