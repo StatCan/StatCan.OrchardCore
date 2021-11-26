@@ -59,7 +59,7 @@
               <v-flex class="pt-2"><span class="subtitle-2">{{ challengeSelected.ContentItem.Content.Challenge.Statement.Text | shortcode }}</span></v-flex>
               <h3>{{ "Potential Datasets" | t }}</h3>
               <v-flex class="pt-2"><span class="subtitle-2">{{ challengeSelected.ContentItem.Content.Challenge.Datasets.Text | shortcode }}</span></v-flex>
-              {% if !Site.Properties.HackathonCustomSettings.TeamCustomSettings.PartialChallenge.Value %}
+              {% if Site.Properties.HackathonCustomSettings.TeamCustomSettings.PartialChallenge.Value == false %}
                 <h3>{{ "Background Information" | t }}</h3>
                 <v-flex class="pt-2"><span class="subtitle-2">{{ challengeSelected.ContentItem.Content.Challenge.BackgroundInformation.Text | shortcode }}</span></v-flex>
               {% endif %}

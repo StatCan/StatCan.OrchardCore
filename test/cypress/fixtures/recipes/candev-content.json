@@ -175,6 +175,9 @@
             },
             "TeamEditable": {
               "Value": true
+            },
+            "PartialChallenge": {
+              "Value": true
             }
           },
           "JudgingCustomSettings": {
