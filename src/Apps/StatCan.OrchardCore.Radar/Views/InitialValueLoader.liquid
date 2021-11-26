@@ -9,9 +9,20 @@
   const values = toLowerCaseKey(JSON.parse(valueHolder.dataset.initialValues));
 
   // This is to fix placeholder not being displayed for empty object
-  if(Object.keys(values.type).length == 0)
+  if(values.type !== undefined && Object.keys(values.type).length === 0)
   {
     values.type = null;
+  }
+
+  // The below are to fix validation message always being displayed
+  if(values.roles && values.roles.length === 0)
+  {
+    values.roles = null;
+  }
+
+  if(values.publishStatus !== undefined && values.publishStatus.length === 0)
+  {
+    values.publishStatus = null;
   }
 
   window.formValues = values;

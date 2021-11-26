@@ -9,7 +9,7 @@
       </template>
     </multiselect>
 
-    <div class="px-3" v-if="success && error-messages">
+    <div class="px-3" v-if="success !== undefined && error-messages !== undefined">
       <error-message
         :valid="success"
         :error-messages="errorMessages"
