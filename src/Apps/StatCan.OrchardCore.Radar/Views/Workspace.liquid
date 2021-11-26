@@ -1,4 +1,4 @@
-{% assign artifacts = Model.Properties.Model.ContentItems | remove_unauthorized_items %}
+{% assign artifacts = Model.Properties.Model.ContentItems | remove_unauthorized_items | remove_unviewable_items %}
 {% assign parentLink = Model.Properties.ParentItem | display_url %}
 
 <div class="table-title-container">

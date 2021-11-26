@@ -25,19 +25,43 @@ namespace StatCan.OrchardCore.Radar.Drivers
 
         public override async Task<IDisplayResult> DisplayAsync(RadarPermissionPart part, BuildPartDisplayContext context)
         {
-            var contentItem = await _contentManager.GetAsync(part.ContentItemId);
-
-            if (contentItem.Content.RadarEntityPart.Publish.Value.ToObject<bool>())
+            var user = _httpContextAccessor.HttpContext.User;
+            if (user == null)
             {
-               return null;
+                _httpContextAccessor.HttpContext.Response.StatusCode = 404;
+                _httpContextAccessor.HttpContext.Response.Redirect($"{_httpContextAccessor.HttpContext.Request.PathBase}/not-found", false);
             }
 
-            var user = _httpContextAccessor.HttpContext.User;
+            var userId = user.FindFirstValue(ClaimTypes.NameIdentifier).ToString();
 
-            if (!Ownership.IsOwner(contentItem, user))
+            if (!string.IsNullOrEmpty(part.ParentContentItemId))
             {
-               _httpContextAccessor.HttpContext.Response.StatusCode = 404;
-               _httpContextAccessor.HttpContext.Response.Redirect($"{_httpContextAccessor.HttpContext.Request.PathBase}/not-found", false);
+                var parent = await _contentManager.GetAsync(part.ParentContentItemId);
+
+                var parentPermission = parent.As<RadarPermissionPart>();
+
+                if (!parentPermission.Published && !(userId == parentPermission.Owner) && !user.IsInRole("Administrator"))
+                {
+                    _httpContextAccessor.HttpContext.Response.StatusCode = 404;
+                    _httpContextAccessor.HttpContext.Response.Redirect($"{_httpContextAccessor.HttpContext.Request.PathBase}/not-found", false);
+                }
+            }
+
+            if (part.Published)
+            {
+                return null;
+            }
+
+            // Assume admin owns everything
+            if (user.IsInRole("Administrator"))
+            {
+                return null;
+            }
+
+            if (!(userId == part.Owner))
+            {
+                _httpContextAccessor.HttpContext.Response.StatusCode = 404;
+                _httpContextAccessor.HttpContext.Response.Redirect($"{_httpContextAccessor.HttpContext.Request.PathBase}/not-found", false);
             }
 
             return null;

@@ -202,6 +202,8 @@ namespace StatCan.OrchardCore.Radar.Scripting
                                             localizedVersion.Apply("Workspace", localizedWorkspace);
 
                                             contentManager.UpdateAsync(localizedVersion).GetAwaiter().GetResult();
+                                            contentManager.UnpublishAsync(localizedVersion).GetAwaiter().GetResult();
+                                            contentManager.PublishAsync(localizedVersion).GetAwaiter().GetResult();
                                         }
                                     }
                                 }

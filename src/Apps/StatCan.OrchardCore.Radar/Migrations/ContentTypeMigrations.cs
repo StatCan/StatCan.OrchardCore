@@ -361,6 +361,9 @@ namespace StatCan.OrchardCore.Radar.Migrations
                         ManageContainedItemRoutes = true,
                     })
                 )
+                .WithPart(Constants.ContentTypes.RadarPermissionPart, part => part
+                    .WithPosition("4")
+                )
             );
 
             _contentDefinitionManager.AlterPartDefinition(Constants.ContentTypes.Artifact, part => part

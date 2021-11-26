@@ -62,6 +62,7 @@ namespace StatCan.OrchardCore.Radar
             services.AddLiquidFilter<ContentOwnershipFilter>("is_owner");
             services.AddLiquidFilter<ContentUpdateUrlFilter>("content_update_url");
             services.AddLiquidFilter<ParentContentItemIdFilter>("parent_contentitem_id");
+            services.AddLiquidFilter<RemoveUnviewableContentFilter>("remove_unviewable_items");
 
             // Value converters
             services.AddScoped<TopicRawValueConverter>();

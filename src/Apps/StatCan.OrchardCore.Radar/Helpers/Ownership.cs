@@ -20,7 +20,7 @@ namespace StatCan.OrchardCore.Radar.Helpers
 
             var userId = user.FindFirstValue(ClaimTypes.NameIdentifier).ToString();
 
-            return userId == contentItem.ContentItemId;
+            return userId == contentItem.Owner;
         }
     }
 }
