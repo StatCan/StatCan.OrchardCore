@@ -1,43 +1,38 @@
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Authorization;
+using System.Collections;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Newtonsoft.Json.Linq;
-using System.Globalization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using OrchardCore.ContentManagement;
 using OrchardCore.Queries;
 using OrchardCore.ContentManagement.Display;
 using OrchardCore.DisplayManagement.ModelBinding;
 using Etch.OrchardCore.ContentPermissions.Services;
-using OrchardCore.ContentLocalization.Models;
 using OrchardCore.Contents;
+using StatCan.OrchardCore.Radar.Services;
 
 namespace StatCan.OrchardCore.Radar.Controllers
 {
     public class ListController : Controller
     {
-        private readonly IQueryManager _queryManager;
         private readonly IContentItemDisplayManager _contentItemDisplayManager;
         private readonly IUpdateModelAccessor _updateModelAccessor;
-        private readonly IContentPermissionsService _contentPermissionsService;
         private readonly IAuthorizationService _authorizationService;
-
-        private const string LIST_QUERY = "EntityListLucene";
+        private readonly EntitySearcher _entitySearcher;
 
         public ListController(
-            IQueryManager queryManager,
             IContentItemDisplayManager contentItemDisplayManager,
             IUpdateModelAccessor updateModelAccessor,
-            IContentPermissionsService contentPermissionsService,
-            IAuthorizationService authorizationService)
+            IAuthorizationService authorizationService,
+            EntitySearcher entitySearcher)
         {
-            _queryManager = queryManager;
             _contentItemDisplayManager = contentItemDisplayManager;
             _updateModelAccessor = updateModelAccessor;
-            _contentPermissionsService = contentPermissionsService;
             _authorizationService = authorizationService;
+            _entitySearcher = entitySearcher;
         }
 
         [HttpGet]
@@ -67,7 +62,7 @@ namespace StatCan.OrchardCore.Radar.Controllers
                 return Unauthorized();
             }
 
-            var results = await GetContentItems("*", searchText);
+            var results = await _entitySearcher.SearchContentItemsAsync("*", searchText);
 
             return new ObjectResult(results);
         }
@@ -94,67 +89,8 @@ namespace StatCan.OrchardCore.Radar.Controllers
                 ViewData["searchText"] = searchText;
             }
 
-            var contentItems = await GetContentItems(type, searchText);
+            var contentItems = await _entitySearcher.SearchContentItemsAsync(type, searchText);
             return await GetShapes(contentItems);
-        }
-        private async Task<IEnumerable<ContentItem>> GetContentItems(string type, string searchText)
-        {
-            // Get the lucene query
-            var query = await _queryManager.GetQueryAsync(LIST_QUERY);
-
-            // Prepare the parameters
-            IDictionary<string, object> parameters = new Dictionary<string, object>();
-            parameters.Add("Type", type);
-            parameters.Add("Term", searchText != null ? searchText.ToLower() : "");
-
-            var results = await _queryManager.ExecuteQueryAsync(query, parameters);
-
-            // Convert result to content items
-            var contentItems = new List<ContentItem>();
-
-            if (results != null)
-            {
-                foreach (var result in results.Items)
-                {
-                    if (!(result is ContentItem contentItem))
-                    {
-                        contentItem = null;
-
-                        if (result is JObject jObject)
-                        {
-                            contentItem = jObject.ToObject<ContentItem>();
-                        }
-                    }
-
-                    var part = contentItem.As<LocalizationPart>();
-
-                    // If input is a 'JObject' but which not represents a 'ContentItem',
-                    // a 'ContentItem' is still created but with some null properties.
-                    if (contentItem?.ContentItemId == null)
-                    {
-                        continue;
-                    }
-                    // Orchard content permission check
-                    else if (!await _authorizationService.AuthorizeAsync(User, CommonPermissions.ViewContent, contentItem))
-                    {
-                        continue;
-                    }
-                    // Content Permission check
-                    else if (!_contentPermissionsService.CanAccess(contentItem))
-                    {
-                        continue;
-                    }
-                    // Culture check
-                    else if (part != null && part.Culture != CultureInfo.CurrentCulture.Name)
-                    {
-                        continue;
-                    }
-
-                    contentItems.Add(contentItem);
-                }
-            }
-
-            return contentItems;
         }
 
         private async Task<Boolean> CanViewList()

@@ -39,12 +39,13 @@ namespace StatCan.OrchardCore.Radar.Controllers
         private readonly IContentLocalizationManager _contentLocalizationManager;
         private readonly TaxonomyManager _taxonomyManager;
         private readonly BagItemManager _bagItemManager;
+        private readonly EntitySearcher _entitySearcher;
 
         public FormController(IContentManager contentManager, IHttpContextAccessor httpContextAccessor,
             IQueryManager queryManager, IContentItemDisplayManager contentItemDisplayManager,
             IUpdateModelAccessor updateModelAccessor, IShortcodeService shortcodeService, IAuthorizationService authorizationService,
             IContentPermissionsService contentPermissionsService, TaxonomyManager taxonomyManager, BagItemManager bagItemManager,
-            ILocalizationService localizationService, IContentLocalizationManager contentLocalizationManager)
+            ILocalizationService localizationService, IContentLocalizationManager contentLocalizationManager, EntitySearcher entitySearcher)
         {
             _contentManager = contentManager;
             _httpContextAccessor = httpContextAccessor;
@@ -58,6 +59,7 @@ namespace StatCan.OrchardCore.Radar.Controllers
             _contentLocalizationManager = contentLocalizationManager;
             _taxonomyManager = taxonomyManager;
             _bagItemManager = bagItemManager;
+            _entitySearcher = entitySearcher;
         }
 
         public async Task<IActionResult> Form(string entityType, string id)
@@ -109,39 +111,20 @@ namespace StatCan.OrchardCore.Radar.Controllers
             }
 
             ICollection<IDictionary<string, string>> topics = new LinkedList<IDictionary<string, string>>();
+            var terms = await _entitySearcher.SearchTaxonomyAsync("Topics", term);
 
-            if (term != null)
+            foreach (var topic in terms)
             {
-                // Each topic needs to be retrived from the taxonomy term
-                var topicQuery = await _queryManager.GetQueryAsync("AllTaxonomiesSQL");
-                var topicResult = await _queryManager.ExecuteQueryAsync(topicQuery, new Dictionary<string, object> { { "type", "Topics" } });
+                // Delocalize the topic name
+                var topicName = await _shortcodeService.ProcessAsync(topic.DisplayText);
 
-                if (topicResult != null)
+                var valuePair = new Dictionary<string, string>()
                 {
-                    var topicPart = (topicResult.Items.First() as ContentItem).As<TaxonomyPart>();
+                    {"value", topic.ContentItemId},
+                    {"label", topicName}
+                };
 
-                    foreach (var topic in topicPart.Terms)
-                    {
-                        if (!_contentPermissionsService.CanAccess(topic))
-                        {
-                            continue;
-                        }
-
-                        // Delocalize the topic name
-                        var topicName = await _shortcodeService.ProcessAsync(topic.DisplayText);
-
-                        if (topicName.Contains(term, StringComparison.OrdinalIgnoreCase))
-                        {
-                            var valuePair = new Dictionary<string, string>()
-                        {
-                            {"value", topic.ContentItemId},
-                            {"label", topicName}
-                        };
-
-                            topics.Add(valuePair);
-                        }
-                    }
-                }
+                topics.Add(valuePair);
             }
 
             return new ObjectResult(topics);
@@ -192,65 +175,23 @@ namespace StatCan.OrchardCore.Radar.Controllers
                 return Unauthorized();
             }
 
-            // Get the lucene query
-            var query = await _queryManager.GetQueryAsync("EntityListLucene");
+            var contentItems = await _entitySearcher.SearchContentItemsAsync(type, term);
 
-            // Prepare the parameters
-            IDictionary<string, object> parameters = new Dictionary<string, object>();
-            parameters.Add("Type", type);
-            parameters.Add("Term", term != null ? term.ToLower() : "");
-
-            var results = await _queryManager.ExecuteQueryAsync(query, parameters);
-
-            // Convert result to content items
+            // Convert result to form format
             ICollection<IDictionary<string, string>> entities = new LinkedList<IDictionary<string, string>>();
 
-            if (results != null)
+            foreach (var contentItem in contentItems)
             {
-                foreach (var result in results.Items)
-                {
-                    if (!(result is ContentItem contentItem))
-                    {
-                        contentItem = null;
 
-                        if (result is JObject jObject)
-                        {
-                            contentItem = jObject.ToObject<ContentItem>();
-                        }
-                    }
+                var localizationPart = contentItem.As<LocalizationPart>();
 
-                    var part = contentItem.As<LocalizationPart>();
-
-                    // If input is a 'JObject' but which not represents a 'ContentItem',
-                    // a 'ContentItem' is still created but with some null properties.
-                    if (contentItem?.ContentItemId == null)
+                var optionPair = new Dictionary<string, string>()
                     {
-                        continue;
-                    }
-                    // Orchard content permission check
-                    else if (!await _authorizationService.AuthorizeAsync(User, CommonPermissions.ViewContent, contentItem))
-                    {
-                        continue;
-                    }
-                    // Content Permission check
-                    else if (!_contentPermissionsService.CanAccess(contentItem))
-                    {
-                        continue;
-                    }
-                    // Culture check
-                    else if (part == null && part.Culture != CultureInfo.CurrentCulture.Name)
-                    {
-                        continue;
-                    }
-
-                    var optionPair = new Dictionary<string, string>()
-                    {
-                        {"value", part.LocalizationSet},
+                        {"value", localizationPart.LocalizationSet},
                         {"label", contentItem.DisplayText}
                     };
 
-                    entities.Add(optionPair);
-                }
+                entities.Add(optionPair);
             }
 
             return new ObjectResult(entities);

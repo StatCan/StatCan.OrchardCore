@@ -58,6 +58,7 @@ namespace StatCan.OrchardCore.Radar
             services.AddScoped<FormOptionsProvider>();
             services.AddScoped<TaxonomyManager>();
             services.AddScoped<BagItemManager>();
+            services.AddScoped<EntitySearcher>();
 
             services.AddLiquidFilter<ContentOwnershipFilter>("is_owner");
             services.AddLiquidFilter<ContentUpdateUrlFilter>("content_update_url");
