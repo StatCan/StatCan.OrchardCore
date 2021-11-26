@@ -54,7 +54,7 @@
                             mdi-calendar
                         </v-icon>
                         <div class="text-h6 icon-text">
-                            {{ Model.ContentItem.Content.Event.StartDate.Value | local | date: "%b %d %H:%M %p, %Y" }} - {{ Model.ContentItem.Content.Event.EndDate.Value | local | date: "%b %d %H:%M %p, %Y" }}
+                            {{ Model.ContentItem.Content.Event.StartDate.Value | date: "%b %d %H:%M %p, %Y" }} - {{ Model.ContentItem.Content.Event.EndDate.Value | date: "%b %d %H:%M %p, %Y" }}
                         </div>
                     </div>
                 </v-col>

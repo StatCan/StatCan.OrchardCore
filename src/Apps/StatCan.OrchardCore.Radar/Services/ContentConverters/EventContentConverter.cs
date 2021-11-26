@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using System.Globalization;
 using Newtonsoft.Json.Linq;
 using StatCan.OrchardCore.Radar.FormModels;
 
@@ -28,11 +29,11 @@ namespace StatCan.OrchardCore.Radar.Services.ContentConverters
                     },
                     StartDate = new
                     {
-                        Value = DateTime.Parse($"{eventFormModel.StartDate} {eventFormModel.StartTime}")
+                        Value = DateTime.Parse($"{eventFormModel.StartDate} {eventFormModel.StartTime}", CultureInfo.CurrentCulture)
                     },
                     EndDate = new
                     {
-                        Value = DateTime.Parse($"{eventFormModel.EndDate} {eventFormModel.EndTime}")
+                        Value = DateTime.Parse($"{eventFormModel.EndDate} {eventFormModel.EndTime}", CultureInfo.CurrentCulture)
                     }
                 },
                 RadarEntityPart = new
