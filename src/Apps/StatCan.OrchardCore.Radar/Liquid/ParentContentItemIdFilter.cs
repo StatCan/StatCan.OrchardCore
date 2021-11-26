@@ -1,8 +1,6 @@
 using Fluid;
 using Fluid.Values;
 using Microsoft.AspNetCore.Http;
-using System.Security.Claims;
-using OrchardCore.ContentManagement;
 using OrchardCore.Liquid;
 using System;
 using System.Threading.Tasks;

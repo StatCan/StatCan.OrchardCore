@@ -63,6 +63,7 @@ namespace StatCan.OrchardCore.Radar
             services.AddLiquidFilter<ContentUpdateUrlFilter>("content_update_url");
             services.AddLiquidFilter<ParentContentItemIdFilter>("parent_contentitem_id");
             services.AddLiquidFilter<RemoveUnviewableContentFilter>("remove_unviewable_items");
+            services.AddLiquidFilter<ListOnlyFilter>("list_only");
 
             // Value converters
             services.AddScoped<TopicRawValueConverter>();

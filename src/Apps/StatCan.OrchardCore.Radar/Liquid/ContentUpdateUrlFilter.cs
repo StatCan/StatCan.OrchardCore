@@ -1,8 +1,6 @@
-using System.Linq;
 using Fluid;
 using Fluid.Values;
 using Microsoft.AspNetCore.Http;
-using System.Security.Claims;
 using Microsoft.AspNetCore.Mvc.Routing;
 using OrchardCore.ContentManagement;
 using OrchardCore.Liquid;
@@ -67,7 +65,7 @@ namespace StatCan.OrchardCore.Radar.Liquid
             return FluidValue.Create(url, context.Options);
         }
 
-        // The logic here is purely based on the structure of the url. 
+        // The logic here is purely based on the structure of the url.
         private string GetArtifactPath(string path, ContentItem artifact)
         {
             string[] pathValues = path.Substring(1).Split("/");

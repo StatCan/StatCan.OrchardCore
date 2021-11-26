@@ -17,6 +17,8 @@ using OrchardCore.ContentLocalization.Models;
 using OrchardCore.Contents;
 using OrchardCore.Shortcodes.Services;
 using OrchardCore.Taxonomies.Models;
+using OrchardCore.ContentLocalization;
+using OrchardCore.Localization;
 using StatCan.OrchardCore.Radar.Services;
 
 using Permissions = OrchardCore.Contents.Permissions;
@@ -33,14 +35,16 @@ namespace StatCan.OrchardCore.Radar.Controllers
         private IContentItemDisplayManager _contentItemDisplayManager;
         private readonly IAuthorizationService _authorizationService;
         private readonly IContentPermissionsService _contentPermissionsService;
+        private readonly ILocalizationService _localizationService;
+        private readonly IContentLocalizationManager _contentLocalizationManager;
         private readonly TaxonomyManager _taxonomyManager;
-
         private readonly BagItemManager _bagItemManager;
 
         public FormController(IContentManager contentManager, IHttpContextAccessor httpContextAccessor,
             IQueryManager queryManager, IContentItemDisplayManager contentItemDisplayManager,
             IUpdateModelAccessor updateModelAccessor, IShortcodeService shortcodeService, IAuthorizationService authorizationService,
-            IContentPermissionsService contentPermissionsService, TaxonomyManager taxonomyManager, BagItemManager bagItemManager)
+            IContentPermissionsService contentPermissionsService, TaxonomyManager taxonomyManager, BagItemManager bagItemManager,
+            ILocalizationService localizationService, IContentLocalizationManager contentLocalizationManager)
         {
             _contentManager = contentManager;
             _httpContextAccessor = httpContextAccessor;
@@ -50,6 +54,8 @@ namespace StatCan.OrchardCore.Radar.Controllers
             _shortcodeService = shortcodeService;
             _authorizationService = authorizationService;
             _contentPermissionsService = contentPermissionsService;
+            _localizationService = localizationService;
+            _contentLocalizationManager = contentLocalizationManager;
             _taxonomyManager = taxonomyManager;
             _bagItemManager = bagItemManager;
         }
@@ -283,7 +289,16 @@ namespace StatCan.OrchardCore.Radar.Controllers
 
             var contentItem = await _contentManager.GetAsync(id);
 
-            await _contentManager.RemoveAsync(contentItem);
+            var supportedCultures = await _localizationService.GetSupportedCulturesAsync();
+            var localizationSet = contentItem.As<LocalizationPart>().LocalizationSet;
+
+            foreach (var supportedCulture in supportedCultures)
+            {
+                var localizedContent = await _contentLocalizationManager.GetContentItemAsync(localizationSet, supportedCulture);
+
+                await _contentManager.RemoveAsync(localizedContent);
+
+            }
 
             return Redirect(successUrl);
         }

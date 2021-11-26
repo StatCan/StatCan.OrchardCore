@@ -10,11 +10,7 @@
   </td>
   <td class="table-col">{{ owner.Properties.UserProfile.UserProfile.FirstName.Text }} {{ owner.Properties.UserProfile.UserProfile.LastName.Text }}</td>
   <td class="table-col">
-    {% if Model.ContentItem.Published %}
-      {{ "Published" | t }}
-    {% else %}
-    {{ "Draft" | t }}
-    {% endif %}
+    {{ "StatusLabel" | shape_new: Published: Model.ContentItem.Content.RadarEntityPart.Publish.Value | shape_render }}
   </td>
   <td class="table-col">
     {{ Model.ContentItem.CreatedUtc | local | date: "%b %d, %Y" }}

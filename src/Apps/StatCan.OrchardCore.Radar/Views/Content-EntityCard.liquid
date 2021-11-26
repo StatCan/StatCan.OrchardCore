@@ -1,10 +1,10 @@
 {% assign user = User | user_id | users_by_id %}
 {% assign userRole = user.RoleNames | first %}
-{% assign entities = Queries.RecentActivitiesSQL | query: contentType: Model.ContentItem.Content.EntityCard.Type.Text, num: Model.ContentItem.Content.EntityCard.Limit.Value, role: userRole %}
+{% assign entities = Queries.RecentActivitiesSQL | query: contentType: Model.ContentItem.Content.EntityCard.Type.Text, role: userRole %}
 
 {% assign entitiesSize = entities | size %}
 {% if entitiesSize > 0 %}
-  {% assign entities = entities | filter_current_culture %}
+  {% assign entities = entities | filter_current_culture | remove_unviewable_items | list_only: limit: 5 %}
 {% endif %}
 
 <div class="card card-background">

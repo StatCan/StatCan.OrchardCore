@@ -58,6 +58,16 @@
                         </div>
                     </div>
                 </v-col>
+                <v-col md="4">
+                  <div class="icon-cell">
+                      <v-icon class="details-attribute-icon">
+                          mdi-eye
+                      </v-icon>
+                      <div class="text-h6 icon-text">
+                          {{ "StatusLabel" | shape_new: Published: Model.ContentItem.Content.RadarEntityPart.Publish.Value | shape_render }}
+                      </div>
+                  </div>
+              </v-col>
             </v-row>
           </v-col>
       </v-row>
