@@ -482,6 +482,9 @@ namespace StatCan.OrchardCore.Radar.Migrations
                         Pattern = "{{ \"proposals\" | t | append: \"/\" | append: ContentItem.ContentItemId }}",
                     })
                 )
+                .WithPart(Constants.ContentTypes.RadarPermissionPart, part => part
+                    .WithPosition("8")
+                )
             );
 
             _contentDefinitionManager.AlterPartDefinition(Constants.ContentTypes.Proposal, part => part
@@ -604,6 +607,9 @@ namespace StatCan.OrchardCore.Radar.Migrations
                         Pattern = "{{ \"projects\" | t | append: \"/\" | append: ContentItem.ContentItemId }}",
                     })
                 )
+                .WithPart(Constants.ContentTypes.RadarPermissionPart, part => part
+                    .WithPosition("8")
+                )
             );
 
             _contentDefinitionManager.AlterPartDefinition(Constants.ContentTypes.Project, part => part
@@ -725,6 +731,9 @@ namespace StatCan.OrchardCore.Radar.Migrations
                         AllowRouteContainedItems = true,
                         Pattern = "{{ \"events\" | t | append: \"/\" | append: ContentItem.ContentItemId }}",
                     })
+                )
+                .WithPart(Constants.ContentTypes.RadarPermissionPart, part => part
+                    .WithPosition("8")
                 )
             );
 
@@ -851,6 +860,9 @@ namespace StatCan.OrchardCore.Radar.Migrations
                         AllowRouteContainedItems = true,
                         Pattern = "{{ \"communities\" | t | append: \"/\" | append: ContentItem.ContentItemId }}",
                     })
+                )
+                .WithPart(Constants.ContentTypes.RadarPermissionPart, part => part
+                    .WithPosition("8")
                 )
             );
 
