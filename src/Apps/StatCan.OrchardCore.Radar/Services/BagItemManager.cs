@@ -33,23 +33,5 @@ namespace StatCan.OrchardCore.Radar.Services
 
             await _contentManager.UpdateAsync(parentContentItem);
         }
-
-        // public async Task<ICollection<ContentItem>> GetBagItemsAsync(string bagName, string parentId)
-        // {
-        //     var parentContentItem = await _contentManager.GetAsync(parentId);
-
-        //     if(parentContentItem == null)
-        //     {
-        //         throw new Exception("Parent Content Item does not exist");
-        //     }
-
-        //     var bag = parentContentItem.Get<BagPart>(bagName);
-
-        //     bag.ContentItems = bag.ContentItems.Where(contentItem => contentItem.ContentItemId != id).ToList();
-
-        //     parentContentItem.Apply(bagName, bag);
-
-        //     await _contentManager.UpdateAsync(parentContentItem);
-        // }
     }
 }

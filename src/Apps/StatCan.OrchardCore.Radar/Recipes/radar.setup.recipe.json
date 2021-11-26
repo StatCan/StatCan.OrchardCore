@@ -3175,7 +3175,7 @@
       "name": "Queries",
       "Queries": [
         {
-          "Template": "{% assign roleText = \"%\" | append: role | append: \"%\" %}\r\n\r\nselect DocumentId\r\n    from ContentPermissionsPartIndex \r\n    where ContentType = @contentType and Published = true and (not Enabled or Roles like '{{ roleText }}')\r\n\torder by PublishedUtc desc\r\n\tlimit @num",
+          "Template": "{% assign roleText = \"%\" | append: role | append: \"%\" %}\r\n\r\nselect DocumentId\r\n    from ContentPermissionsPartIndex \r\n    where ContentType = @contentType and Published = true and (not Enabled or Roles like '{{ roleText }}')\r\n\torder by PublishedUtc desc",
           "ReturnDocuments": true,
           "Name": "RecentActivitiesSQL",
           "Source": "Sql",
@@ -3239,7 +3239,7 @@
           "Schema": null
         },
         {
-          "Template": "select DocumentId from ContentItemIndex where ContentType = @type and DisplayText = @name;",
+          "Template": "select DocumentId from ContentItemIndex where ContentType = @type and DisplayText = @name and Published = true;",
           "ReturnDocuments": true,
           "Name": "EntityByTypeAndNameSQL",
           "Source": "Sql",
