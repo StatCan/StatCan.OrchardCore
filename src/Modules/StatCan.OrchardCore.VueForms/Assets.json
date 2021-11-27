@@ -1,5 +1,19 @@
 [
   {
+    "vue": true,
+    "file": "Assets/components/customFormComponents.js",
+    "output": "wwwroot/Scripts/CustomFormComponents",
+    "name": "customFormComponents",
+    "watch": ["Assets/components/**"]
+  },
+  {
+    "copy": true,
+    "inputs": [
+      "node_modules/vue-multiselect/dist/vue-multiselect.min.css"
+    ],
+    "output": "wwwroot/Styles/vue-multiselect.min.css"
+  },
+  {
     "generateSourceMaps": false,
     "inputs": [ "Assets/vue-forms.scss" ],
     "output": "wwwroot/Styles/vue-forms.css"
