@@ -15,6 +15,10 @@ namespace StatCan.OrchardCore.Radar.Services.ValueConverters
             rawValues.Remove("publishOptions");
             rawValues.Remove("typeOptions[label]");
             rawValues.Remove("typeOptions[value]");
+            rawValues.Remove("menu1");
+            rawValues.Remove("menu2");
+            rawValues.Remove("menu3");
+            rawValues.Remove("menu4");
 
             FixSingleArrayValue(rawValues, "roles");
             FixSingleArrayValue(rawValues, "topics[label]");
