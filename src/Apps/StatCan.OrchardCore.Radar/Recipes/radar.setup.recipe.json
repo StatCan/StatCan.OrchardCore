@@ -3352,7 +3352,7 @@
           "Schema": null
         },
         {
-          "Template": "select DocumentId from ContentItemIndex where DisplayText = @type and latest = true;",
+          "Template": "select DocumentId from ContentItemIndex where DisplayText = @type and Latest = true;",
           "ReturnDocuments": true,
           "Name": "AllTaxonomiesSQL",
           "Source": "Sql",
