@@ -166,6 +166,12 @@ msgctxt "StatCan.OrchardCore.Radar.Views.UserMenuButton"
 msgid "Log in"
 msgstr ""
 
+#: StatCan.OrchardCore.Radar\Views\DeleteButton.cshtml:7
+#. <button type="submit"><h3 class="pl-4 pr-4">@T["Delete"]</h3></button>
+msgctxt "StatCan.OrchardCore.Radar.Views.DeleteButton"
+msgid "Delete"
+msgstr ""
+
 #: StatCan.OrchardCore.Radar\Views\LocalizationButton.liquid:0
 msgctxt "StatCan.OrchardCore.Radar.Views.LocalizationButton"
 msgid "Switch to"
@@ -224,4 +230,9 @@ msgstr ""
 #: StatCan.OrchardCore.Radar\Views\Content-LandingPage.liquid:0
 msgctxt "StatCan.OrchardCore.Radar.Views.Content-LandingPage"
 msgid 'Recent trends'
+msgstr ""
+
+#: StatCan.OrchardCore.Radar\Views\OptionsButton.liquid:0
+msgctxt "StatCan.OrchardCore.Radar.Views.OptionsButton"
+msgid "Update"
 msgstr ""
