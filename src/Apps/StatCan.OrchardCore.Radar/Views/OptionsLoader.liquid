@@ -4,9 +4,13 @@
             ({ ...prev, [current[0].toLowerCase() + current.slice(1)]: obj[current]}), {})
   }
 
-  const optionHolder = document.querySelector("#option-holder");
+  function loadOptions() {
+    const optionHolder = document.querySelector("#option-holder");
 
-  const options = toLowerCaseKey(JSON.parse(optionHolder.dataset.options));
+    const options = toLowerCaseKey(JSON.parse(optionHolder.dataset.options));
 
-  window.formOptions = options;
+    window.formOptions = options;
+  }
+
+  loadOptions();
 </script>

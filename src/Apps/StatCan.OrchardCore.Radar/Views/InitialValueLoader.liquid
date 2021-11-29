@@ -4,26 +4,30 @@
             ({ ...prev, [current[0].toLowerCase() + current.slice(1)]: obj[current]}), {})
   }
 
-  const valueHolder = document.querySelector("#value-holder");
+  function loadValues() {
+    const valueHolder = document.querySelector("#value-holder");
 
-  const values = toLowerCaseKey(JSON.parse(valueHolder.dataset.initialValues));
+    const values = toLowerCaseKey(JSON.parse(valueHolder.dataset.initialValues));
 
-  // This is to fix placeholder not being displayed for empty object
-  if(values.type !== undefined && Object.keys(values.type).length === 0)
-  {
-    values.type = null;
+    // This is to fix placeholder not being displayed for empty object
+    if(values.type !== undefined && Object.keys(values.type).length === 0)
+    {
+      values.type = null;
+    }
+
+    // The below are to fix validation message always being displayed
+    if(values.roles && values.roles.length === 0)
+    {
+      values.roles = null;
+    }
+
+    if(values.publishStatus !== undefined && values.publishStatus.length === 0)
+    {
+      values.publishStatus = null;
+    }
+
+    window.formValues = values;
   }
 
-  // The below are to fix validation message always being displayed
-  if(values.roles && values.roles.length === 0)
-  {
-    values.roles = null;
-  }
-
-  if(values.publishStatus !== undefined && values.publishStatus.length === 0)
-  {
-    values.publishStatus = null;
-  }
-
-  window.formValues = values;
+  loadValues();
 </script>
