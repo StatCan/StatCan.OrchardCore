@@ -29,7 +29,7 @@ namespace StatCan.OrchardCore.Radar.Liquid
 
             var user = _httpContextAccessor.HttpContext.User;
 
-            if (user == null)
+            if (!user.Identity.IsAuthenticated)
             {
                 return new ValueTask<FluidValue>(BooleanValue.False);
             }

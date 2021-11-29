@@ -61,6 +61,11 @@ namespace StatCan.OrchardCore.Radar.Controllers
 
         public async Task<IActionResult> Form(string entityType, string id)
         {
+            if (!await CanEditContent(id))
+            {
+                return Redirect("not-found");
+            }
+
             // Builds the form shape. It is assumed that there
             // will ever be 1 form content item
             var form = await GetFormAsync(GetFormNameFromType(entityType));
@@ -250,7 +255,7 @@ namespace StatCan.OrchardCore.Radar.Controllers
         {
             var user = _httpContextAccessor.HttpContext.User;
 
-            if (user == null)
+            if (!user.Identity.IsAuthenticated)
             {
                 return false;
             }
@@ -267,7 +272,7 @@ namespace StatCan.OrchardCore.Radar.Controllers
         {
             var user = _httpContextAccessor.HttpContext.User;
 
-            if (user == null)
+            if (!user.Identity.IsAuthenticated)
             {
                 return false;
             }
