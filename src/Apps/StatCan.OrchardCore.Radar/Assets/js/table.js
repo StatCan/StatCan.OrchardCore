@@ -84,15 +84,16 @@ const attachSorter = function() {
 
 const attachSearchClear = function() {
   // Hook into the rendered button
-  document
-    .getElementById("search-clear-button")
-    .addEventListener("click", function() {
+  const clearButton = document.getElementById("search-clear-button");
+  if (clearButton) {
+    clearButton.addEventListener("click", function() {
       document.getElementById("search-input").value = "";
       document.getElementById("search-form").submit();
     });
+  }
 };
 
-window.addEventListener("DOMContentLoaded", function () {
+window.addEventListener("DOMContentLoaded", function() {
   attachSorter();
   attachSearchClear();
 });

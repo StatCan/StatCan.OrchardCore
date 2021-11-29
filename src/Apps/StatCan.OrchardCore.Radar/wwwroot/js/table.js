@@ -105,10 +105,14 @@ var attachSorter = function attachSorter() {
 
 var attachSearchClear = function attachSearchClear() {
   // Hook into the rendered button
-  document.getElementById("search-clear-button").addEventListener("click", function () {
-    document.getElementById("search-input").value = "";
-    document.getElementById("search-form").submit();
-  });
+  var clearButton = document.getElementById("search-clear-button");
+
+  if (clearButton) {
+    clearButton.addEventListener("click", function () {
+      document.getElementById("search-input").value = "";
+      document.getElementById("search-form").submit();
+    });
+  }
 };
 
 window.addEventListener("DOMContentLoaded", function () {
