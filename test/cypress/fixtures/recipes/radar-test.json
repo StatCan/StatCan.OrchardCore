@@ -1,0 +1,259 @@
+{
+  "steps": [
+    {
+      "name": "content",
+      "data": [
+        {
+          "ContentItemId": "4mybr8kwj6cn541v2yktz44t5c",
+          "ContentItemVersionId": "4edtyhfte9hk1w6rgw1p6x8j4n",
+          "ContentType": "Taxonomy",
+          "DisplayText": "Topics",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": "2021-11-29T19:21:46.0918804Z",
+          "PublishedUtc": "2021-11-29T19:21:46.0940436Z",
+          "CreatedUtc": "2021-11-29T19:21:46.0918804Z",
+          "Owner": null,
+          "Author": null,
+          "TitlePart": {
+            "Title": null
+          },
+          "AliasPart": {
+            "Alias": null
+          },
+          "AutoroutePart": {
+            "Path": "topics",
+            "SetHomepage": false,
+            "Disabled": false,
+            "RouteContainedItems": true,
+            "Absolute": false
+          },
+          "TaxonomyPart": {
+            "TermContentType": "Topic",
+            "Terms": []
+          },
+          "ContentPermissionsPart": {
+            "Enabled": false,
+            "Roles": []
+          }
+        },
+        {
+          "ContentItemId": "4s1qtbtz9m7634cqp2pg9k6gmf",
+          "ContentItemVersionId": "43ymjrewx82tsv8265hdm0jynv",
+          "ContentType": "Taxonomy",
+          "DisplayText": "Project Types",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": "2021-11-29T19:35:01.73312Z",
+          "PublishedUtc": "2021-11-29T19:35:01.7386893Z",
+          "CreatedUtc": "2021-11-29T19:21:46.0979991Z",
+          "Owner": null,
+          "Author": "admin",
+          "TitlePart": {
+            "Title": "Project Types"
+          },
+          "AliasPart": {
+            "Alias": "project-types"
+          },
+          "AutoroutePart": {
+            "Path": "project-types",
+            "SetHomepage": false,
+            "Disabled": false,
+            "RouteContainedItems": true,
+            "Absolute": false
+          },
+          "TaxonomyPart": {
+            "TermContentType": "ProjectType",
+            "Terms": [
+              {
+                "ContentItemId": "43jzyy35wqgs1sah2w1539vrmd",
+                "ContentItemVersionId": null,
+                "ContentType": "ProjectType",
+                "DisplayText": "ProjectType",
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": "2021-11-29T19:35:00.4580821Z",
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": null,
+                "Author": "admin",
+                "ProjectType": {
+                  "Name": {
+                    "Text": "ProjectType"
+                  },
+                  "Description": {
+                    "Text": "ProjectType"
+                  }
+                },
+                "TitlePart": {
+                  "Title": "ProjectType"
+                },
+                "AutoroutePart": {
+                  "Path": "projecttype",
+                  "SetHomepage": false,
+                  "Disabled": false,
+                  "RouteContainedItems": false,
+                  "Absolute": false
+                },
+                "TermPart": {
+                  "TaxonomyContentItemId": "4s1qtbtz9m7634cqp2pg9k6gmf"
+                },
+                "@WeldedPartSettings": {
+                  "TermPart": {}
+                }
+              }
+            ]
+          },
+          "ContentPermissionsPart": {
+            "Enabled": false,
+            "Roles": []
+          }
+        },
+        {
+          "ContentItemId": "44b27fsfqm5cdxm47c21r4ywn9",
+          "ContentItemVersionId": "4s9mcq51g607q0asdn4wyy5v56",
+          "ContentType": "Taxonomy",
+          "DisplayText": "Community Types",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": "2021-11-29T19:35:12.5830872Z",
+          "PublishedUtc": "2021-11-29T19:35:12.588026Z",
+          "CreatedUtc": "2021-11-29T19:21:46.0981101Z",
+          "Owner": null,
+          "Author": "admin",
+          "TitlePart": {
+            "Title": "Community Types"
+          },
+          "AliasPart": {
+            "Alias": "community-types"
+          },
+          "AutoroutePart": {
+            "Path": "community-types",
+            "SetHomepage": false,
+            "Disabled": false,
+            "RouteContainedItems": true,
+            "Absolute": false
+          },
+          "TaxonomyPart": {
+            "TermContentType": "CommunityType",
+            "Terms": [
+              {
+                "ContentItemId": "4e2yajtsdj0a3wzt4p72sd8j4v",
+                "ContentItemVersionId": null,
+                "ContentType": "CommunityType",
+                "DisplayText": "CommunityType",
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": "2021-11-29T19:35:11.5636378Z",
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": null,
+                "Author": "admin",
+                "CommunityType": {
+                  "Name": {
+                    "Text": "CommunityType"
+                  },
+                  "Description": {
+                    "Text": "CommunityType"
+                  }
+                },
+                "TitlePart": {
+                  "Title": "CommunityType"
+                },
+                "AutoroutePart": {
+                  "Path": "communitytype",
+                  "SetHomepage": false,
+                  "Disabled": false,
+                  "RouteContainedItems": false,
+                  "Absolute": false
+                },
+                "TermPart": {
+                  "TaxonomyContentItemId": "44b27fsfqm5cdxm47c21r4ywn9"
+                },
+                "@WeldedPartSettings": {
+                  "TermPart": {}
+                }
+              }
+            ]
+          },
+          "ContentPermissionsPart": {
+            "Enabled": false,
+            "Roles": []
+          }
+        },
+        {
+          "ContentItemId": "43h0218am73wn0jrm1mms51hce",
+          "ContentItemVersionId": "4fa6pdv3k11837v4w97e2hywch",
+          "ContentType": "Taxonomy",
+          "DisplayText": "Proposal Types",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": "2021-11-29T19:35:21.8721756Z",
+          "PublishedUtc": "2021-11-29T19:35:21.8798705Z",
+          "CreatedUtc": "2021-11-29T19:21:46.0977848Z",
+          "Owner": null,
+          "Author": "admin",
+          "TitlePart": {
+            "Title": "Proposal Types"
+          },
+          "AliasPart": {
+            "Alias": "proposal-types"
+          },
+          "AutoroutePart": {
+            "Path": "proposal-types",
+            "SetHomepage": false,
+            "Disabled": false,
+            "RouteContainedItems": true,
+            "Absolute": false
+          },
+          "TaxonomyPart": {
+            "TermContentType": "ProposalType",
+            "Terms": [
+              {
+                "ContentItemId": "437xmfg7776qzy4fx1922fxxn3",
+                "ContentItemVersionId": null,
+                "ContentType": "ProposalType",
+                "DisplayText": "ProposalType",
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": "2021-11-29T19:35:21.038124Z",
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": null,
+                "Author": "admin",
+                "ProposalType": {
+                  "Name": {
+                    "Text": "ProposalType"
+                  },
+                  "Description": {
+                    "Text": "ProposalType"
+                  }
+                },
+                "TitlePart": {
+                  "Title": "ProposalType"
+                },
+                "AutoroutePart": {
+                  "Path": "proposaltype",
+                  "SetHomepage": false,
+                  "Disabled": false,
+                  "RouteContainedItems": false,
+                  "Absolute": false
+                },
+                "TermPart": {
+                  "TaxonomyContentItemId": "43h0218am73wn0jrm1mms51hce"
+                },
+                "@WeldedPartSettings": {
+                  "TermPart": {}
+                }
+              }
+            ]
+          },
+          "ContentPermissionsPart": {
+            "Enabled": false,
+            "Roles": []
+          }
+        }
+      ]
+    }
+  ]
+}

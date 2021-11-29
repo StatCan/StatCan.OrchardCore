@@ -241,7 +241,7 @@ namespace StatCan.OrchardCore.Radar.Scripting
                         DateTime startDateTime = DateTime.Parse($"{startDate} {startTime}");
                         DateTime endDateTime = DateTime.Parse($"{endDate} {endTime}");
 
-                        return startDateTime < endDateTime;
+                        return startDateTime <= endDateTime;
                     }
                     catch (FormatException)
                     {

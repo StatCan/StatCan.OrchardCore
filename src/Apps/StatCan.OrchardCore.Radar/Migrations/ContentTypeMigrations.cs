@@ -33,10 +33,9 @@ namespace StatCan.OrchardCore.Radar.Migrations
             _taxonomyIds = new Dictionary<string, string>();
         }
 
-        public async Task<int> CreateAsync()
+        public int Create()
         {
             CreateTaxonomies();
-            await CreateTaxonomyItems();
             CreateArtifact();
             CreateRadarEntityPart();
             CreateRadarFormPart();
@@ -256,81 +255,6 @@ namespace StatCan.OrchardCore.Radar.Migrations
                     .WithPosition("1")
                 )
             );
-        }
-
-        private async Task CreateTaxonomyItems()
-        {
-            // Topics
-            var topics = await _contentManager.NewAsync("Taxonomy");
-            _taxonomyIds.Add("Topics", topics.ContentItemId);
-
-            topics.DisplayText = "Topics"; // Instead of TitlePart.Title
-            topics.Alter<AutoroutePart>(part =>
-            {
-                part.Path = "topics";
-                part.RouteContainedItems = true;
-            });
-            topics.Alter<TaxonomyPart>(part =>
-            {
-                part.TermContentType = Constants.ContentTypes.Topic;
-            });
-
-            await _contentManager.CreateAsync(topics, VersionOptions.Published);
-            await _contentManager.PublishAsync(topics);
-
-            // Proposal Type
-            var proposalTypes = await _contentManager.NewAsync("Taxonomy");
-            _taxonomyIds.Add("Proposal Types", proposalTypes.ContentItemId);
-
-            proposalTypes.DisplayText = "Proposal Types"; // Instead of TitlePart.Title
-            proposalTypes.Alter<AutoroutePart>(part =>
-            {
-                part.Path = "proposal-types";
-                part.RouteContainedItems = true;
-            });
-            proposalTypes.Alter<TaxonomyPart>(part =>
-            {
-                part.TermContentType = Constants.ContentTypes.ProposalType;
-            });
-
-            await _contentManager.CreateAsync(proposalTypes, VersionOptions.Published);
-            await _contentManager.PublishAsync(proposalTypes);
-
-            // Project Type
-            var projectTypes = await _contentManager.NewAsync("Taxonomy");
-            _taxonomyIds.Add("Project Types", projectTypes.ContentItemId);
-
-            projectTypes.DisplayText = "Project Types"; // Instead of TitlePart.Title
-            projectTypes.Alter<AutoroutePart>(part =>
-            {
-                part.Path = "project-types";
-                part.RouteContainedItems = true;
-            });
-            projectTypes.Alter<TaxonomyPart>(part =>
-            {
-                part.TermContentType = Constants.ContentTypes.ProjectType;
-            });
-
-            await _contentManager.CreateAsync(projectTypes, VersionOptions.Published);
-            await _contentManager.PublishAsync(projectTypes);
-
-            // Community Type
-            var communityTypes = await _contentManager.NewAsync("Taxonomy");
-            _taxonomyIds.Add("Community Types", communityTypes.ContentItemId);
-
-            communityTypes.DisplayText = "Community Types"; // Instead of TitlePart.Title
-            communityTypes.Alter<AutoroutePart>(part =>
-            {
-                part.Path = "community-types";
-                part.RouteContainedItems = true;
-            });
-            communityTypes.Alter<TaxonomyPart>(part =>
-            {
-                part.TermContentType = Constants.ContentTypes.CommunityType;
-            });
-
-            await _contentManager.CreateAsync(communityTypes, VersionOptions.Published);
-            await _contentManager.PublishAsync(communityTypes);
         }
 
         private void CreateArtifact()

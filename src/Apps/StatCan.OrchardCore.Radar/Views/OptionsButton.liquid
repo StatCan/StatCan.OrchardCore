@@ -22,7 +22,7 @@
     <v-divider></v-divider>
     <v-list-item-content>
       <v-list-item-title>
-        <a href="{{ contentItem | content_update_url: relative: Model.Properties.Relative }}">
+        <a class="options-button-update-link" href="{{ contentItem | content_update_url: relative: Model.Properties.Relative }}">
           <h3 class="pl-4 pr-4">{{ "Update" | t }}</h3>
         </a>
       </v-list-item-title>
