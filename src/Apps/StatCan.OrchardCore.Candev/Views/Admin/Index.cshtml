@@ -34,5 +34,17 @@
           </button>
         </form>
     </div>
+    <div class="mr-1" id="CheckIn-button">
+      <a asp-action="CheckIn" asp-controller="Admin" asp-route-area="StatCan.OrchardCore.Candev"
+          role="button" class="btn btn-primary btn-md" 
+          data-title="@T["Check-In"]"
+          data-message="@T["Are you sure you want to run the Check-in process? Running it after the hackathon has started can delete teams."]" 
+          data-ok="@T["Yes"]" 
+          data-cancel="@T["No"]" 
+          data-ok-class="btn-primary" 
+          itemprop="RemoveUrl UnsafeUrl">
+        @T["Check-in"]
+      </a>
+    </div>
   </div>
 </div>

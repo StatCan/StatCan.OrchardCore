@@ -599,6 +599,24 @@ namespace StatCan.OrchardCore.Candev.Services
             return true;
         }
 
+        public async Task<bool> CheckIn()
+        {
+            var users = await _session.Query<User, CandevUsersIndex>(x => x.Roles.Contains("Hacker") && !x.CheckIn).ListAsync();
+            var participants = await _session.QueryIndex<CandevUsersIndex>(x => x.Roles.Contains("Hacker") && !x.CheckIn).ListAsync();
+
+            foreach (var participant in participants)
+            {
+                var user = users.Where(x => x.UserId == participant.UserId).FirstOrDefault();
+                if (user.HasTeam())
+                {
+                    RemoveFromTeam(user);
+                }
+                _userManager.RemoveFromRoleAsync(user, "Hacker").GetAwaiter();
+            }
+
+            return true;
+        }
+
         private async void RemoveFromTeam(User user)
         {
             var team = await _session.Query<ContentItem, CandevItemsIndex>(x => x.ContentItemId == user.GetTeamId() && x.ContentType == "Team" && x.Published).FirstOrDefaultAsync();

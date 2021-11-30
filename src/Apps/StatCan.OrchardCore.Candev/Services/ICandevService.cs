@@ -28,5 +28,6 @@ namespace StatCan.OrchardCore.Candev.Services
         Task<string> CreateChallenge(string challengeTitle);
         Task<string> CreateTopic(string topicName, string challengeId);
         Task<bool> SelectNHackers(int n);
+        Task<bool> CheckIn();
     }
 }

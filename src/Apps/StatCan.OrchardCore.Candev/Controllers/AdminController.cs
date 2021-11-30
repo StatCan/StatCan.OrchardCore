@@ -107,5 +107,18 @@ namespace StatCan.OrchardCore.Candev.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> CheckIn()
+        {
+            if (!HttpContext.User.IsInRole("Administrator"))
+            {
+                return Unauthorized();
+            }
+
+            await _candevService.CheckIn();
+            _notifier.Success(H["Checked-In participants have been selected."]);
+            return RedirectToAction("Index");
+        }
     }
 }
