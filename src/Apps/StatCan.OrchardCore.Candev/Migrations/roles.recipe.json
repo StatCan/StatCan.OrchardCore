@@ -1,0 +1,24 @@
+{
+  "steps": [
+    {
+      "name": "roles",
+      "Roles": [
+        {
+          "Name": "Hacker",
+          "Description": "Candev Hacker",
+          "Permissions": []
+        },
+        {
+          "Name": "Volunteer",
+          "Description": "Candev Volunteer",
+          "Permissions": []
+        },
+        {
+          "Name": "Authenticated",
+          "Description": "Authenticated role",
+          "Permissions": ["ManageOwnCustomUserSettings_ParticipantProfile", "ManageOwnCustomUserSettings_Hacker"]
+        }
+      ]
+    }
+  ]
+}

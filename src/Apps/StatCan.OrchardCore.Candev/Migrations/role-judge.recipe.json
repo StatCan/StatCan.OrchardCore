@@ -1,0 +1,14 @@
+{
+  "steps": [
+    {
+      "name": "roles",
+      "Roles": [
+        {
+          "Name": "Judge",
+          "Description": "Candev Judge",
+          "Permissions": []
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,157 @@
+{
+  "name": "Candev.SolutionForm",
+  "displayName": "Solution Submission Form",
+  "description": "Creates a form that can be used by hackers to submit their solution",
+  "author": "StatCan Digital Innovation",
+  "website": "digital.statcan.gc.ca",
+  "version": "1.0.0",
+  "issetuprecipe": false,
+  "categories": [],
+  "tags": [],
+  "steps": [
+    {
+      "name": "Content",
+      "data":[
+        {
+          "ContentItemId": "4fy9a011te6qx5611jv1hhtwwh",
+          "ContentItemVersionId": "4dpvctn6fbvpf2weejebbdypdw",
+          "ContentType": "VueForm",
+          "DisplayText": "Solution Submission",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": "2021-09-29T18:24:49.9316005Z",
+          "PublishedUtc": "2021-09-29T18:24:49.9448608Z",
+          "CreatedUtc": "2021-08-16T17:04:30.808582Z",
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "TitlePart": {
+            "Title": "Solution Submission"
+          },
+          "VueForm": {
+            "Template": {
+              "Text": "<v-container >\r\n  <v-card-text>\r\n    <v-row justify=\"center\">\r\n      <v-col cols=\"8\">\r\n        <h1>[locale en]Solution submission[/locale][locale fr]Soumission de solution[/locale]</h1>\r\n      </v-col>\r\n{% if User.Identity.Name == null %}\r\n      <v-col cols=\"8\">\r\n        [locale en]Please <a href=\"{{ '~/login' | return_url }}\">login</a> before submitting a solution[/locale]\r\n        [locale fr]Veuillez vous <a href=\"{{ '~/login' | return_url }}\">connecter</a> avant de soumettre un solution[/locale]\r\n      </v-col>\r\n{% else %}\r\n      <v-col cols=\"8\">\r\n        <validation-provider name=\"{{ \"solutionNameLabel\" | localize }}\" rules=\"required\" v-slot=\"{ errors, valid }\">\r\n          <v-text-field name=\"solutionName\" v-model=\"solutionName\" :error-messages=\"errors\" filled=\"filled\" label=\"{{ \"solutionNameLabel\" | localize }}\"></v-text-field>\r\n        </validation-provider>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n        <validation-provider name=\"{{ \"solutionDescriptionLabel\" | localize }}\" rules=\"required\" v-slot=\"{ errors, valid }\">\r\n          <v-textarea name=\"solutionDescription\" v-model=\"solutionDescription\" :error-messages=\"errors\" filled=\"filled\" label=\"{{ \"solutionDescriptionLabel\" | localize }}\" rows=\"5\"></v-textarea>\r\n        </validation-provider>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n        <validation-provider name=\"{{ \"repositoryURLLabel\" | localize }}\" rules=\"required\" v-slot=\"{ errors, valid }\">\r\n       \t  <v-text-field name=\"repositoryUrl\" v-model=\"repositoryUrl\" :error-messages=\"errors\" filled=\"filled\" label=\"{{ \"repositoryURLLabel\" | localize }}\" rows=\"2\"></v-text-field>\r\n    \t</validation-provider>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n        <v-alert type=\"success\" v-if=\"form.successMessage\">\r\n          {% raw %}{{ form.successMessage }}{% endraw %}\r\n        </v-alert>\r\n        <v-alert type=\"error\" v-if=\"form.serverValidationMessage\">\r\n          {% raw %}{{ form.errorMessage }}{% endraw %}\r\n        </v-alert>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n    \t<v-btn type=\"submit\" depressed block @click=\"formHandleSubmit\" :disabled=\"form.submitting\">{{ \"submitLabel\" | localize }}</v-btn>\r\n      </v-col>\r\n{% endif %}\r\n    </v-row>\r\n  </v-card-text>\r\n</v-container>"
+            },
+            "RenderAs": {
+              "Text": null
+            },
+            "Disabled": {
+              "Value": false
+            },
+            "Debug": {
+              "Value": false
+            },
+            "DisabledHtml": {
+              "Html": "<div class=\"container text-center mt-2\">\n  [locale en]The solution submission form is currently disabled.[/locale]\n  [locale fr]Le formulaire de soumission de solution est présentement désactivé[/locale]\n</div>"
+            },
+            "SuccessMessage": {
+              "Text": "{{ \"successMessage\" | localize }}"
+            }
+          },
+          "AliasPart": {
+            "Alias": "solution-submission"
+          },
+          "VueFormScripts": {
+            "ClientInit": {
+              "Text": "VeeValidate.setInteractionMode('passive');"
+            },
+            "ComponentOptions": {
+              "Text": "{% assign user = User | user_id | users_by_id %}\r\n{% assign team = user.Properties.Hacker.Hacker.Team.ContentItemIds.first | content_item_id %}\r\n\r\n{\r\n  data: () => ({\r\n    solutionName: \"\",\r\n\tsolutionDescription: \"\", \r\n    repositoryUrl: \"\",\r\n    teamId: \"{{ team.ContentItemVersionId }}\"\r\n  })\r\n}"
+            },
+            "OnValidation": {
+              "Text": "var data = requestFormAsJsonObject();\r\nvar localizedText = getLocalizedTextValues(getFormContentItem());\r\n\r\nif(!isAuthenticated() || data.solutionName == \"\" || data.solutionDescription == \"\" || data.repositoryUrl == \"\") {\r\n  addError('serverValidationMessage', localizedText.serverValidationError);\r\n}"
+            },
+            "OnSubmitted": {
+              "Text": "var data = requestFormAsJsonObject();\r\n\r\nvar updateResult = updateContentItem(contentByVersionId(data.teamId), {\r\n  \"TeamSolutionPart\": {\r\n    \"Name\": {\r\n      \"Text\": data.solutionName\r\n    },\r\n    \"Description\": {\r\n      \"Text\": data.solutionDescription\r\n    },\r\n    \"RepositoryUrl\": {\r\n        \"Text\": data.repositoryUrl\r\n    }\r\n  }\r\n});\r\n\r\nif(updateResult == 1 || updateResult == 2 ) {\r\n    addError(\"serverValidationMessage\", localizedText.serverValidationError); \r\n}\r\n\r\n"
+            }
+          },
+          "ContentPermissionsPart": {
+            "Enabled": false,
+            "Roles": []
+          },
+          "LocalizedTextPart": {
+            "Data": [
+              {
+                "Name": "solutionNameLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Nom de la solution"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Solution Name"
+                  }
+                ]
+              },
+              {
+                "Name": "solutionDescriptionLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Description"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Description"
+                  }
+                ]
+              },
+              {
+                "Name": "repositoryURLLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "URL du dépot de la solution"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Solution repository URL"
+                  }
+                ]
+              },
+              {
+                "Name": "submitLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Envoyer"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Send"
+                  }
+                ]
+              },
+              {
+                "Name": "successMessage",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Votre solution a été envoyée avec succès!"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Your solution was submitted successfully!"
+                  }
+                ]
+              },
+              {
+                "Name": "serverValidationError",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Une erreure est survenue lors de la soumission. Veuillez nous contacter."
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "An error occurred during submission. Please contact us."
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2172 @@
+{
+  "name": "candev-app",
+  "displayName": "Candev app setup recipe",
+  "description": "Candev app setup recipe",
+  "author": "Digital Innovation Team",
+  "website": "https://digital.statcan.gc.ca",
+  "version": "0.1.0",
+  "issetuprecipe": true,
+  "categories": [],
+  "tags": [],
+  "steps": [
+    {
+      "name": "Feature",
+      "enable": [
+        "Application.Default",
+        "StatCan.OrchardCore.Cms.Web",
+        "OrchardCore.Resources",
+        "Lombiq.HelpfulExtensions.CodeGeneration",
+        "OrchardCore.Liquid",
+        "OrchardCore.Settings",
+        "OrchardCore.Contents",
+        "OrchardCore.ContentTypes",
+        "OrchardCore.Autoroute",
+        "OrchardCore.Widgets",
+        "OrchardCore.Flows",
+        "OrchardCore.Title",
+        "OrchardCore.Shortcodes",
+        "OrchardCore.Html",
+        "OrchardCore.Admin",
+        "OrchardCore.AdminDashboard",
+        "OrchardCore.AdminMenu",
+        "OrchardCore.Templates",
+        "OrchardCore.Alias",
+        "OrchardCore.AuditTrail",
+        "OrchardCore.Features",
+        "OrchardCore.Scripting",
+        "OrchardCore.Recipes",
+        "OrchardCore.ContentFields",
+        "OrchardCore.Users",
+        "OrchardCore.Localization",
+        "OrchardCore.ContentLocalization",
+        "OrchardCore.ContentLocalization.ContentCulturePicker",
+        "OrchardCore.ContentPreview",
+        "OrchardCore.Deployment",
+        "OrchardCore.Contents.Deployment.Download",
+        "OrchardCore.CustomSettings",
+        "OrchardCore.Diagnostics",
+        "OrchardCore.DynamicCache",
+        "OrchardCore.Email",
+        "OrchardCore.Feeds",
+        "OrchardCore.GitHub.Authentication",
+        "OrchardCore.HomeRoute",
+        "OrchardCore.Https",
+        "OrchardCore.Indexing",
+        "OrchardCore.Rules",
+        "OrchardCore.Layers",
+        "OrchardCore.Lists",
+        "OrchardCore.Markdown",
+        "OrchardCore.Media",
+        "OrchardCore.Menu",
+        "OrchardCore.Navigation",
+        "OrchardCore.Queries",
+        "OrchardCore.Queries.Sql",
+        "OrchardCore.ReverseProxy",
+        "OrchardCore.Roles",
+        "OrchardCore.Shortcodes.Templates",
+        "OrchardCore.Themes",
+        "OrchardCore.Users.AuditTrail",
+        "OrchardCore.Users.CustomUserSettings",
+        "OrchardCore.Users.Registration",
+        "OrchardCore.Users.ResetPassword",
+        "OrchardCore.Workflows",
+        "OrchardCore.Workflows.Http",
+        "StatCan.OrchardCore.Candev",
+        "StatCan.OrchardCore.ContentPermissions",
+        "StatCan.OrchardCore.CommonTypes.Page",
+        "StatCan.OrchardCore.CommonTypes.SecurePage",
+        "StatCan.OrchardCore.Configuration",
+        "StatCan.OrchardCore.ContentFields",
+        "StatCan.OrchardCore.DisplayHelpers",
+        "StatCan.OrchardCore.EmailTemplates",
+        "StatCan.OrchardCore.FIP",
+        "StatCan.OrchardCore.LocalizedText",
+        "StatCan.OrchardCore.Scripting",
+        "StatCan.OrchardCore.VueForms",
+        "StatCan.OrchardCore.VueForms.Localized",
+        "StatCan.OrchardCore.Menu",
+        "StatCan.OrchardCore.Vuetify",
+        "StatCan.OrchardCore.Vuetify.Alert",
+        "StatCan.OrchardCore.Vuetify.Card",
+        "StatCan.OrchardCore.Vuetify.ExpansionPanel",
+        "StatCan.OrchardCore.Vuetify.Grid",
+        "StatCan.OrchardCore.Vuetify.Image",
+        "StatCan.OrchardCore.Vuetify.List",
+        "StatCan.OrchardCore.Vuetify.Schedule",
+        "StatCan.OrchardCore.Vuetify.Tabs",
+        "StatCan.OrchardCore.Vuetify.Timeline",
+        "TheAdmin",
+        "DigitalAdmin",
+        "VuetifyTheme"
+      ],
+      "disable": [
+        "Lombiq.HelpfulExtensions.ContentTypes",
+        "Lombiq.HelpfulExtensions.Flows",
+        "Lombiq.HelpfulExtensions.Widgets",
+        "OrchardCore.AdminTemplates",
+        "OrchardCore.Apis.GraphQL",
+        "OrchardCore.Setup",
+        "OrchardCore.AutoSetup",
+        "OrchardCore.BackgroundTasks",
+        "OrchardCore.ContentFields.Indexing.SQL",
+        "OrchardCore.ContentFields.Indexing.SQL.UserPicker",
+        "OrchardCore.Sitemaps",
+        "OrchardCore.ContentLocalization.Sitemaps",
+        "OrchardCore.Contents.Deployment.AddToDeploymentPlan",
+        "OrchardCore.Contents.Deployment.ExportContentToDeploymentTarget",
+        "OrchardCore.Contents.FileContentDefinition",
+        "OrchardCore.Cors",
+        "OrchardCore.DataProtection.Azure",
+        "OrchardCore.Deployment.Remote",
+        "OrchardCore.Facebook",
+        "OrchardCore.Facebook.Login",
+        "OrchardCore.Facebook.Widgets",
+        "OrchardCore.Forms",
+        "OrchardCore.Google.Analytics",
+        "OrchardCore.Google.GoogleAuthentication",
+        "OrchardCore.Google.TagManager",
+        "OrchardCore.HealthChecks",
+        "OrchardCore.Lucene",
+        "OrchardCore.Lucene.ContentPicker",
+        "OrchardCore.Lucene.Worker",
+        "OrchardCore.Media.Cache",
+        "OrchardCore.Media.Azure.Storage",
+        "OrchardCore.Media.Slugify",
+        "OrchardCore.Microsoft.Authentication.AzureAD",
+        "OrchardCore.Microsoft.Authentication.MicrosoftAccount",
+        "OrchardCore.MiniProfiler",
+        "OrchardCore.OpenId",
+        "OrchardCore.OpenId.Client",
+        "OrchardCore.OpenId.Management",
+        "OrchardCore.OpenId.Server",
+        "OrchardCore.OpenId.Validation",
+        "OrchardCore.Placements",
+        "OrchardCore.Placements.FileStorage",
+        "OrchardCore.PublishLater",
+        "OrchardCore.ReCaptcha",
+        "OrchardCore.ReCaptcha.Users",
+        "OrchardCore.Redis",
+        "OrchardCore.Redis.Bus",
+        "OrchardCore.Redis.Cache",
+        "OrchardCore.Redis.DataProtection",
+        "OrchardCore.Redis.Lock",
+        "OrchardCore.XmlRpc",
+        "OrchardCore.RemotePublishing",
+        "OrchardCore.ResponseCompression",
+        "OrchardCore.Seo",
+        "OrchardCore.Sitemaps.Cleanup",
+        "OrchardCore.Sitemaps.RazorPages",
+        "OrchardCore.Spatial",
+        "OrchardCore.Taxonomies",
+        "OrchardCore.Taxonomies.ContentsAdminList",
+        "OrchardCore.Tenants",
+        "OrchardCore.Tenants.Distributed",
+        "OrchardCore.Tenants.FileProvider",
+        "OrchardCore.Twitter",
+        "OrchardCore.Twitter.Signin",
+        "OrchardCore.Users.ChangeEmail",
+        "OrchardCore.Users.TimeZone",
+        "OrchardCore.Workflows.Session",
+        "OrchardCore.Workflows.Timers",
+        "StatCan.OrchardCore.CommonTypes.AdditionalPages",
+        "StatCan.OrchardCore.CommonTypes.HtmlWidget",
+        "StatCan.OrchardCore.CommonTypes.LiquidWidget",
+        "StatCan.OrchardCore.CommonTypes.MarkdownWidget",
+        "StatCan.OrchardCore.ContentFields.MultiValueTextField",
+        "StatCan.OrchardCore.ContentFields.PredefinedGroup",
+        "StatCan.OrchardCore.GCCollab.Authentication",
+        "StatCan.OrchardCore.GitHub",
+        "StatCan.OrchardCore.Matomo",
+        "StatCan.OrchardCore.OpenAPI",
+        "StatCan.OrchardCore.Queries.GraphQL",
+        "StatCan.OrchardCore.Scheduling",
+        "StatCan.OrchardCore.VueForms.Survey",
+        "BootstrapTheme",
+        "DigitalTheme",
+        "HackathonTheme",
+        "PortalTheme",
+        "SafeMode",
+        "TheTheme"
+      ]
+    },
+    {
+      "name": "recipes",
+      "Values": [
+        {
+          "executionid": "VuetifyTheme",
+          "name": "vuetify-theme-setup"
+        }
+      ]
+    },
+    {
+      "name": "Queries",
+      "Queries": [
+        {
+          "Template": "SELECT * FROM CandevItemsIndex where Owner = '{{owner}}'",
+          "ReturnDocuments": false,
+          "Name": "GetOwner",
+          "Source": "Sql",
+          "Schema": null
+        },
+        {
+          "Template": "SELECT DocumentId FROM CandevItemsIndex where ContentType ='{{type}}'",
+          "ReturnDocuments": true,
+          "Name": "GetItemsForHackathon",
+          "Source": "Sql",
+          "Schema": null
+        },
+        {
+          "Template": "SELECT * FROM CandevUsersIndex where TeamContentItemId = '{{teamContentItemId}}'",
+          "ReturnDocuments": false,
+          "Name": "GetHackersForTeam",
+          "Source": "Sql",
+          "Schema": "null"
+        },
+        {
+          "Template": "SELECT * FROM CandevItemsIndex where ContentType ='ScoreEntry' and TeamContentItemId = '{{teamContentItemId}}' and Owner = '{{owner}}'",
+          "ReturnDocuments": false,
+          "Name": "GetScoreEntry",
+          "Source": "Sql",
+          "Schema": null
+        },
+        {
+          "Template": "SELECT DocumentId FROM CandevItemsIndex where ContentType ='Team' and ContentItemId = '{{teamContentItemId}}'",
+          "ReturnDocuments": true,
+          "Name": "GetTeam",
+          "Source": "Sql",
+          "Schema": null
+        },
+        {
+          "Template": "SELECT DocumentId FROM CandevItemsIndex WHERE ContentType ='Challenge' AND Owner = '{{owner}}'",
+          "ReturnDocuments": true,
+          "Name": "GetChallengeSubmissionsForOwner",
+          "Source": "Sql",
+          "Schema": "null"
+        }
+      ]
+    },
+    {
+      "name": "Layers",
+      "Layers": [
+        {
+          "Name": "All",
+          "Rule": null,
+          "Description": null,
+          "LayerRule": {
+            "Conditions": [
+              {
+                "$type": "OrchardCore.Rules.Models.BooleanCondition, OrchardCore.Rules",
+                "Value": true,
+                "Name": "BooleanCondition",
+                "ConditionId": "4e84art6jgnj44kyh32e0wtmw0"
+              }
+            ],
+            "Name": null,
+            "ConditionId": "4cagqqka6yyjrstw5q9zcy0ncv"
+          }
+        },
+        {
+          "Name": "RegistrationAlert",
+          "Rule": null,
+          "Description": null,
+          "LayerRule": {
+            "Conditions": [
+              {
+                "$type": "OrchardCore.Rules.Models.AllConditionGroup, OrchardCore.Rules",
+                "DisplayText": "all",
+                "Conditions": [
+                  {
+                    "$type": "OrchardCore.Rules.Models.RoleCondition, OrchardCore.Rules",
+                    "Value": "Volunteer",
+                    "Operation": {
+                      "$type": "OrchardCore.Rules.Models.StringNotEqualsOperator, OrchardCore.Rules",
+                      "CaseSensitive": false
+                    },
+                    "Name": "RoleCondition",
+                    "ConditionId": "43eaa7s3j6rfzvpn2p3ksq0cc1"
+                  },
+                  {
+                    "$type": "OrchardCore.Rules.Models.RoleCondition, OrchardCore.Rules",
+                    "Value": "Hacker",
+                    "Operation": {
+                      "$type": "OrchardCore.Rules.Models.StringNotEqualsOperator, OrchardCore.Rules",
+                      "CaseSensitive": false
+                    },
+                    "Name": "RoleCondition",
+                    "ConditionId": "4g32446mmsmw8vcvksz3zjffdc"
+                  },
+                  {
+                    "$type": "OrchardCore.Rules.Models.RoleCondition, OrchardCore.Rules",
+                    "Value": "Administrator",
+                    "Operation": {
+                      "$type": "OrchardCore.Rules.Models.StringNotEqualsOperator, OrchardCore.Rules",
+                      "CaseSensitive": false
+                    },
+                    "Name": "RoleCondition",
+                    "ConditionId": "4x7gadwcp0h91wm70mrtjwspd5"
+                  },
+                  {
+                    "$type": "OrchardCore.Rules.Models.RoleCondition, OrchardCore.Rules",
+                    "Value": "Editor",
+                    "Operation": {
+                      "$type": "OrchardCore.Rules.Models.StringNotEqualsOperator, OrchardCore.Rules",
+                      "CaseSensitive": false
+                    },
+                    "Name": "RoleCondition",
+                    "ConditionId": "4g8fw65f7c7c9w96w8c45p3vdx"
+                  },
+                  {
+                    "$type": "OrchardCore.Rules.Models.IsAuthenticatedCondition, OrchardCore.Rules",
+                    "Name": "IsAuthenticatedCondition",
+                    "ConditionId": "4fsk93ggj90g2sqta4y8fjhgmq"
+                  },
+                  {
+                    "$type": "OrchardCore.Rules.Models.UrlCondition, OrchardCore.Rules",
+                    "Value": "volunteer-registration",
+                    "Operation": {
+                      "$type": "OrchardCore.Rules.Models.StringNotContainsOperator, OrchardCore.Rules",
+                      "CaseSensitive": false
+                    },
+                    "Name": "UrlCondition",
+                    "ConditionId": "4wqbc9zfx9q474x27qvkysxvwz"
+                  },
+                  {
+                    "$type": "OrchardCore.Rules.Models.UrlCondition, OrchardCore.Rules",
+                    "Value": "hacker-registration",
+                    "Operation": {
+                      "$type": "OrchardCore.Rules.Models.StringNotContainsOperator, OrchardCore.Rules",
+                      "CaseSensitive": false
+                    },
+                    "Name": "UrlCondition",
+                    "ConditionId": "40vwjxw1krp8e5yk07ttxgqj5t"
+                  }
+                ],
+                "Name": "AllConditionGroup",
+                "ConditionId": "40hb7kh6mwhhp1pj7qr1spkjc9"
+              }
+            ],
+            "Name": null,
+            "ConditionId": "472zcq4ve79417y1e4hcrbp7xw"
+          }
+        },
+        {
+          "Name": "Culture en",
+          "Rule": null,
+          "Description": null,
+          "LayerRule": {
+            "Conditions": [
+              {
+                "$type": "OrchardCore.Rules.Models.CultureCondition, OrchardCore.Rules",
+                "Value": "en",
+                "Operation": {
+                  "$type": "OrchardCore.Rules.Models.StringEqualsOperator, OrchardCore.Rules",
+                  "CaseSensitive": false
+                },
+                "Name": "CultureCondition",
+                "ConditionId": "44h0cnh3vbwg76aq3xrhz68555"
+              }
+            ],
+            "Name": null,
+            "ConditionId": "4nm9a9hjkeaa01tehxyqsfsjn1"
+          }
+        },
+        {
+          "Name": "Culture fr",
+          "Rule": null,
+          "Description": null,
+          "LayerRule": {
+            "Conditions": [
+              {
+                "$type": "OrchardCore.Rules.Models.CultureCondition, OrchardCore.Rules",
+                "Value": "fr",
+                "Operation": {
+                  "$type": "OrchardCore.Rules.Models.StringEqualsOperator, OrchardCore.Rules",
+                  "CaseSensitive": false
+                },
+                "Name": "CultureCondition",
+                "ConditionId": "47n4c0d8abyby5ff7yn4crwtdr"
+              }
+            ],
+            "Name": null,
+            "ConditionId": "45612yd8w0jr04nvrp09qbtbwh"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Settings",
+      "LayerSettings": {
+        "Zones": [
+          "Header",
+          "Messages",
+          "Breadcrumb",
+          "NavigationDrawer",
+          "Footer",
+          "IEBanner"
+        ]
+      },
+      "RegistrationSettings": {
+        "UsersCanRegister": 1,
+        "UsersMustValidateEmail": false,
+        "UsersAreModerated": false,
+        "UseSiteTheme": true,
+        "NoPasswordForExternalUsers": true,
+        "NoUsernameForExternalUsers": true,
+        "NoEmailForExternalUsers": true,
+        "UseScriptToGenerateUsername": true,
+        "GenerateUsernameScript": "//log(\"warning\", JSON.stringify(context));\r\n//log(\"warning\", context.loginProvider);\r\n\r\nif(context.loginProvider === \"GitHub\") \r\n{\r\n  var claim = context.externalClaims.find(c => c.type == \"name\");\r\n  if(claim.value)\r\n  {\r\n    let generatedUsername = claim.value;\r\n    if (generatedUsername.includes(\"@\");\r\n\t{\r\n\t\tgeneratedUsername = generatedUsername.split(\"@\")[0];\r\n    }\r\n    context.userName = generatedUsername.toLowerCase();\r\n    return;\r\n  }\r\n}\r\nlog(\"warning\", \"Provider \" + context.loginProvider + \" was not handled\");\r\n"
+      },
+      "LoginSettings": {
+        "UseSiteTheme": true,
+        "UseExternalProviderIfOnlyOneDefined": false,
+        "DisableLocalLogin": false,
+        "UseScriptToSyncRoles": false,
+        "SyncRolesScript": null
+      },
+      "ResetPasswordSettings": {
+        "AllowResetPassword": true,
+        "UseSiteTheme": true
+      }
+    },
+    {
+      "name": "Roles",
+      "Roles": [
+        {
+          "Name": "Anonymous",
+          "Description": "Anonymous role",
+          "Permissions": [
+            "ViewContent"
+          ]
+        },
+        {
+          "Name": "Moderator",
+          "Description": "Moderator role",
+          "Permissions": [
+            "AccessAdminPanel",
+            "ManageOwnUserInformation",
+            "AccessAdminDashboard"
+          ]
+        },
+        {
+          "Name": "Hacker",
+          "Description": "Hackathon Hacker",
+          "Permissions": []
+        },
+        {
+          "Name": "Volunteer",
+          "Description": "Hackathon Volunteer",
+          "Permissions": []
+        },
+        {
+          "Name": "Judge",
+          "Description": "Hackathon Judge",
+          "Permissions": []
+        },
+        {
+          "Name": "Author",
+          "Description": "Author role",
+          "Permissions": [
+            "AccessAdminPanel",
+            "AccessAdminDashboard",
+            "ManageOwnUserInformation",
+            "LocalizeOwnContent",
+            "ManageMediaContent"
+          ]
+        },
+        {
+          "Name": "Contributor",
+          "Description": "Contributor role",
+          "Permissions": [
+            "PreviewOwnContent",
+            "CloneOwnContent",
+            "AccessAdminPanel",
+            "AccessAdminDashboard",
+            "ManageOwnUserInformation",
+            "LocalizeOwnContent",
+            "ManageMediaContent"
+          ]
+        },
+        {
+          "Name": "Authenticated",
+          "Description": "Authenticated role",
+          "Permissions": [
+            "ManageOwnCustomUserSettings_ParticipantProfile",
+            "ManageOwnCustomUserSettings_Hacker",
+            "ManageOwnCustomUserSettings_Volunteer"
+          ]
+        },
+        {
+          "Name": "Administrator",
+          "Description": "Administrator role",
+          "Permissions": [
+            "ManageSettings",
+            "PublishContent",
+            "EditContent",
+            "DeleteContent",
+            "PreviewContent",
+            "CloneContent",
+            "AccessContentApi",
+            "ListContent",
+            "ViewContentTypes",
+            "EditContentTypes",
+            "SetHomepage",
+            "AccessAdminPanel",
+            "ManageAdminSettings",
+            "ManageTemplates",
+            "ManageAdminTemplates",
+            "ManageUsers",
+            "ManageCultures",
+            "LocalizeContent",
+            "LocalizeOwnContent",
+            "ManageContentCulturePicker",
+            "Import",
+            "Export",
+            "ManageEmailSettings",
+            "ManageLayers",
+            "ManageMediaContent",
+            "ManageAttachedMediaFieldsFolder",
+            "ManageMediaProfiles",
+            "ViewMediaOptions",
+            "ManageMenu",
+            "ManageQueries",
+            "ManageSqlQueries",
+            "ManageRoles",
+            "SiteOwner",
+            "ApplyTheme",
+            "ManageRemoteInstances",
+            "ManageRemoteClients",
+            "ExportRemoteInstances",
+            "AccessAdminDashboard",
+            "ManageAdminDashboard",
+            "ManageAdminMenu",
+            "ManageWorkflows",
+            "ExecuteWorkflows",
+            "ManageEmailTemplates",
+            "ViewAuditTrail",
+            "ManageAuditTrailSettings"
+          ]
+        },
+        {
+          "Name": "Editor",
+          "Description": "Editor role",
+          "Permissions": [
+            "EditOwnContent",
+            "EditContent",
+            "PublishOwnContent",
+            "PublishContent",
+            "DeleteOwnContent",
+            "DeleteContent",
+            "ViewContent",
+            "ViewOwnContent",
+            "PreviewOwnContent",
+            "PreviewContent",
+            "ListContent",
+            "Publish_Page",
+            "PublishOwn_Page",
+            "Edit_Page",
+            "EditOwn_Page",
+            "Delete_Page",
+            "DeleteOwn_Page",
+            "View_Page",
+            "ViewOwn_Page",
+            "Preview_Page",
+            "PreviewOwn_Page",
+            "Clone_Page",
+            "CloneOwn_Page",
+            "ListContent_Page",
+            "Publish_SecurePage",
+            "PublishOwn_SecurePage",
+            "Edit_SecurePage",
+            "EditOwn_SecurePage",
+            "Delete_SecurePage",
+            "DeleteOwn_SecurePage",
+            "View_SecurePage",
+            "ViewOwn_SecurePage",
+            "Preview_SecurePage",
+            "PreviewOwn_SecurePage",
+            "Clone_SecurePage",
+            "CloneOwn_SecurePage",
+            "ListContent_SecurePage",
+            "Publish_HtmlDashboardWidget",
+            "PublishOwn_HtmlDashboardWidget",
+            "Edit_HtmlDashboardWidget",
+            "EditOwn_HtmlDashboardWidget",
+            "Delete_HtmlDashboardWidget",
+            "DeleteOwn_HtmlDashboardWidget",
+            "View_HtmlDashboardWidget",
+            "ViewOwn_HtmlDashboardWidget",
+            "Preview_HtmlDashboardWidget",
+            "PreviewOwn_HtmlDashboardWidget",
+            "Clone_HtmlDashboardWidget",
+            "CloneOwn_HtmlDashboardWidget",
+            "ListContent_HtmlDashboardWidget",
+            "View_VueForm",
+            "ViewOwn_VueForm",
+            "Preview_VueForm",
+            "PreviewOwn_VueForm",
+            "Publish_Challenge",
+            "PublishOwn_Challenge",
+            "Edit_Challenge",
+            "EditOwn_Challenge",
+            "Delete_Challenge",
+            "DeleteOwn_Challenge",
+            "View_Challenge",
+            "ViewOwn_Challenge",
+            "Preview_Challenge",
+            "PreviewOwn_Challenge",
+            "Clone_Challenge",
+            "CloneOwn_Challenge",
+            "ListContent_Challenge",
+            "Publish_Team",
+            "PublishOwn_Team",
+            "Edit_Team",
+            "EditOwn_Team",
+            "Delete_Team",
+            "DeleteOwn_Team",
+            "View_Team",
+            "ViewOwn_Team",
+            "Preview_Team",
+            "PreviewOwn_Team",
+            "Clone_Team",
+            "CloneOwn_Team",
+            "ListContent_Team",
+            "AccessAdminPanel",
+            "AccessAdminDashboard",
+            "ManageTemplates",
+            "ManageOwnUserInformation",
+            "View Users",
+            "ManageUsersInRole_Moderator",
+            "ManageUsersInRole_Hacker",
+            "ManageUsersInRole_Volunteer",
+            "ManageUsersInRole_Judge",
+            "ManageUsersInRole_Author",
+            "ManageUsersInRole_Contributor",
+            "ManageUsersInRole_Editor",
+            "ManageCultures",
+            "LocalizeContent",
+            "LocalizeOwnContent",
+            "ManageContentCulturePicker",
+            "ManageCustomSettings_HackathonCustomSettings",
+            "ManageLayers",
+            "ManageMediaContent",
+            "ManageMenu",
+            "AssignRole_Moderator",
+            "AssignRole_Hacker",
+            "AssignRole_Volunteer",
+            "AssignRole_Judge",
+            "AssignRole_Author",
+            "AssignRole_Contributor",
+            "AssignRole_Editor",
+            "ManageEmailTemplates"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ContentDefinition",
+      "ContentTypes": [
+        {
+          "Name": "HtmlWidget",
+          "DisplayName": "Html Widget",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Stereotype": "Widget"
+            }
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "HtmlBodyPart",
+              "Name": "HtmlBodyPart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "DisplayName": "Html Body",
+                  "Position": "1",
+                  "Editor": "Wysiwyg"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "HackathonCustomSettings",
+          "DisplayName": "Hackathon Custom Settings",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Stereotype": "CustomSettings"
+            },
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "HackathonCustomSettings",
+              "Name": "HackathonCustomSettings",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            },
+            {
+              "PartName": "TeamCustomSettings",
+              "Name": "TeamCustomSettings",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                }
+              }
+            },
+            {
+              "PartName": "JudgingCustomSettings",
+              "Name": "JudgingCustomSettings",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "2"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "ParticipantProfile",
+          "DisplayName": "Participant Profile",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Stereotype": "CustomUserSettings"
+            },
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "ParticipantProfile",
+              "Name": "ParticipantProfile",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "ChallengeListWidget",
+          "DisplayName": "Challenge List Widget",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Stereotype": "Widget"
+            }
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "ChallengeListWidget",
+              "Name": "ChallengeListWidget",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "Challenge",
+          "DisplayName": "Challenge",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Creatable": true,
+              "Listable": true,
+              "Draftable": true,
+              "Securable": true
+            },
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "TitlePart",
+              "Name": "TitlePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                },
+                "TitlePartSettings": {
+                  "Options": 2,
+                  "Pattern": "{{ContentItem.Content.Challenge.Title.Text}}"
+                }
+              }
+            },
+            {
+              "PartName": "Challenge",
+              "Name": "Challenge",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                }
+              }
+            },
+            {
+              "PartName": "MarkdownBodyPart",
+              "Name": "MarkdownBodyPart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "DisplayName": "Markdown Body",
+                  "Position": "2",
+                  "Editor": "Wysiwyg"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "Team",
+          "DisplayName": "Team",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Creatable": true,
+              "Listable": true,
+              "Securable": true
+            }
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "TitlePart",
+              "Name": "TitlePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                },
+                "TitlePartSettings": {
+                  "Options": 1,
+                  "Pattern": "{% assign case = ContentItem.Content.Team.Case.LocalizationSets | localization_set: 'en' | first %}\r\n{{ case | display_text | slugify }}-{{ContentItem.Content.Team.Name.Text}}-{{ ContentItem.Id }}"
+                }
+              }
+            },
+            {
+              "PartName": "Team",
+              "Name": "Team",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                }
+              }
+            },
+            {
+              "PartName": "TeamSolutionPart",
+              "Name": "TeamSolutionPart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "2"
+                }
+              }
+            },
+            {
+              "PartName": "EmailTemplatePart",
+              "Name": "EmailTemplatePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "3"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "Hacker",
+          "DisplayName": "Hacker",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Stereotype": "CustomUserSettings"
+            },
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "Hacker",
+              "Name": "Hacker",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "NewsletterSubscriber",
+          "DisplayName": "Newsletter Subscriber",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Creatable": true,
+              "Draftable": true,
+              "Versionable": true,
+              "Securable": true
+            },
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "NewsletterSubscriber",
+              "Name": "NewsletterSubscriber",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "HtmlPage",
+          "DisplayName": "Html Page",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Creatable": true,
+              "Listable": true,
+              "Draftable": true,
+              "Versionable": true,
+              "Securable": true
+            },
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "HtmlPage",
+              "Name": "HtmlPage",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "4"
+                }
+              }
+            },
+            {
+              "PartName": "AutoroutePart",
+              "Name": "AutoroutePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "2"
+                },
+                "AutoroutePartSettings": {
+                  "AllowCustomPath": true,
+                  "ShowHomepageOption": true
+                }
+              }
+            },
+            {
+              "PartName": "HtmlBodyPart",
+              "Name": "HtmlBodyPart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "3",
+                  "Editor": "Monaco"
+                },
+                "HtmlBodyPartSettings": {},
+                "HtmlBodyPartMonacoEditorSettings": {
+                  "Options": "{\r\n  \"tabSize\": 2,\r\n  \"automaticLayout\": true,\r\n  \"language\": \"html\"\r\n}"
+                }
+              }
+            },
+            {
+              "PartName": "TitlePart",
+              "Name": "TitlePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                }
+              }
+            },
+            {
+              "PartName": "LocalizationPart",
+              "Name": "LocalizationPart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "HtmlCode",
+          "DisplayName": "HtmlCode",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Stereotype": "Widget"
+            },
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "HtmlCode",
+              "Name": "HtmlCode",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            },
+            {
+              "PartName": "HtmlBodyPart",
+              "Name": "HtmlBodyPart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1",
+                  "Editor": "Monaco"
+                },
+                "HtmlBodyPartSettings": {
+                  "SanitizeHtml": false
+                },
+                "HtmlBodyPartMonacoEditorSettings": {
+                  "Options": "{\r\n  \"tabSize\": 2,\r\n  \"automaticLayout\": true,\r\n  \"language\": \"html\"\r\n}"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "ContentParts": [
+        {
+          "Name": "HackathonCustomSettings",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "DateField",
+              "Name": "StartDate",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Start Date",
+                  "Position": "1"
+                }
+              }
+            },
+            {
+              "FieldName": "DateField",
+              "Name": "EndDate",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "End Date",
+                  "Position": "2"
+                }
+              }
+            },
+            {
+              "FieldName": "NumericField",
+              "Name": "Capacity",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Capacity",
+                  "Position": "3"
+                },
+                "NumericFieldSettings": {
+                  "Hint": "The maximum number of participants. Set to 0 for unlimited",
+                  "DefaultValue": "0"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "Where",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Where",
+                  "Position": "0"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "ParticipantProfile",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "TextField",
+              "Name": "FirstName",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "First Name",
+                  "Position": "0"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "LastName",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Last Name",
+                  "Position": "1"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "Email",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Contact Email",
+                  "Editor": "Email",
+                  "Position": "2"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "Language",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Language",
+                  "Editor": "PredefinedList",
+                  "Position": "3"
+                },
+                "TextFieldPredefinedListEditorSettings": {
+                  "Options": [
+                    {
+                      "name": "English",
+                      "value": "en"
+                    },
+                    {
+                      "name": "French",
+                      "value": "fr"
+                    },
+                    {
+                      "name": "Billingual",
+                      "value": "both"
+                    }
+                  ],
+                  "DefaultValue": "en"
+                }
+              }
+            },
+            {
+              "FieldName": "BooleanField",
+              "Name": "TermsAndConditions",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Terms And Conditions",
+                  "Position": "4"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "Comments",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Comments",
+                  "Position": "5"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "ChallengeListWidget",
+          "Settings": {
+            "ContentPartSettings": {
+              "DisplayName": "ChallengeListWidget"
+            }
+          },
+          "ContentPartFieldDefinitionRecords": []
+        },
+        {
+          "Name": "Challenge",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "TextField",
+              "Name": "Title",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Title",
+                  "Position": "0"
+                }
+              }
+            },
+            {
+              "FieldName": "MediaField",
+              "Name": "DatasetsFiles",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Datasets Files",
+                  "Position": "6"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "BackgroundInformation",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Background Information",
+                  "Position": "7"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "ContactPersonName",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Contact Person Name",
+                  "Position": "8"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "ContactPersonEmail",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Contact Person Email",
+                  "Position": "9"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "TechnicalMentorName",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Technical Mentor Name",
+                  "Position": "10"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "TechnicalMentorEmail",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Technical Mentor Email",
+                  "Position": "11"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "CaseSpecialistName",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Case Specialist Name",
+                  "Position": "12"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "CaseSpecialistEmail",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Case Specialist Email",
+                  "Position": "13"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "Comments",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Comments",
+                  "Position": "14"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "Statement",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Statement",
+                  "Editor": "TextArea",
+                  "Position": "15"
+                },
+                "TextFieldSettings": {}
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "Datasets",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Datasets",
+                  "Editor": "TextArea",
+                  "Position": "16"
+                },
+                "TextFieldSettings": {}
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "OrganizationNameEn",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Organization Name En",
+                  "Position": "2"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "OrganizationAcronymEn",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Organization Acronym En",
+                  "Position": "3"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "OrganizationNameFr",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Organization Name Fr",
+                  "Position": "4"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "OrganizationAcronymFr",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Organization Acronym Fr",
+                  "Position": "5"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "Keywords",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Keywords",
+                  "Position": "1"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "Team",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "TextField",
+              "Name": "Name",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Team Name",
+                  "Position": "0"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "Description",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Team Description",
+                  "Editor": "TextArea",
+                  "Position": "1"
+                }
+              }
+            },
+            {
+              "FieldName": "ContentPickerField",
+              "Name": "Challenge",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Challenge",
+                  "Position": "2"
+                },
+                "ContentPickerFieldSettings": {
+                  "DisplayedContentTypes": [
+                    "Challenge"
+                  ]
+                }
+              }
+            },
+            {
+              "FieldName": "UserPickerField",
+              "Name": "TeamCaptain",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Team Captain",
+                  "Position": "3"
+                },
+                "UserPickerFieldSettings": {
+                  "DisplayedRoles": [
+                    "Hacker"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "Hacker",
+          "Settings": {
+            "ContentPartSettings": {
+              "DisplayName": "Hacker"
+            }
+          },
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "ContentPickerField",
+              "Name": "Team",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Team",
+                  "Position": "0"
+                },
+                "ContentPickerFieldSettings": {
+                  "DisplayedContentTypes": [
+                    "Team"
+                  ]
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "School",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "School",
+                  "Position": "1"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "FieldOfStudy",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Field of Study",
+                  "Position": "2"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "ProgramName",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Program Name",
+                  "Position": "3"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "ProgramLevel",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "ProgramLevel",
+                  "Position": "4"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "ProgramYears",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "ProgramYears",
+                  "Position": "5"
+                }
+              }
+            },
+            {
+              "FieldName": "BooleanField",
+              "Name": "Adult",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Adult",
+                  "Position": "6"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "NewsletterSubscriber",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "TextField",
+              "Name": "Email",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Email",
+                  "Editor": "Email",
+                  "Position": "0"
+                },
+                "TextFieldSettings": {}
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "Name",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Name",
+                  "Position": "1"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Content",
+      "data": [
+        {
+          "ContentItemId": "4p0tnav2bd74gxb78t6ka5h7mt",
+          "ContentItemVersionId": "4bkyd0w5h5a3jz07mtkv12zhdf",
+          "ContentType": "VAppBar",
+          "DisplayText": "App Bar",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": "2021-07-12T20:17:33.5328933Z",
+          "PublishedUtc": "2021-07-12T20:17:33.5574603Z",
+          "CreatedUtc": "2021-07-12T20:17:33.5155676Z",
+          "Owner": "4131s49tp1mde1k2djp405v4c2",
+          "Author": "candev_adm",
+          "VAppBar": {
+            "Props": {
+              "Values": []
+            },
+            "Color": {
+              "Text": null
+            },
+            "Elevation": {
+              "Value": null
+            },
+            "ExtensionHeight": {
+              "Value": null
+            },
+            "ScrollThreshold": {
+              "Value": null
+            },
+            "BackgroundImage": {
+              "Paths": [],
+              "MediaTexts": []
+            },
+            "Height": {
+              "Value": null
+            },
+            "Width": {
+              "Value": null
+            }
+          },
+          "LayerMetadata": {
+            "Position": 1.0,
+            "Zone": "Header",
+            "RenderTitle": false,
+            "Layer": "All"
+          }
+        },
+        {
+          "ContentItemId": "4svs8ansz1p6p0kzxmk54y6pm8",
+          "ContentItemVersionId": "4ds6vnw6cdcv35asmqvxv4h9dz",
+          "ContentType": "VNavigationDrawer",
+          "DisplayText": "Navigation Drawer",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": "2021-07-12T20:17:33.5817536Z",
+          "PublishedUtc": "2021-07-12T20:17:33.5820276Z",
+          "CreatedUtc": "2021-07-12T20:17:33.5815139Z",
+          "Owner": "4131s49tp1mde1k2djp405v4c2",
+          "Author": "candev_adm",
+          "VNavigationDrawer": {
+            "Props": {
+              "Values": [
+                "clipped"
+              ]
+            },
+            "BackgroundImage": {
+              "Paths": [],
+              "MediaTexts": []
+            },
+            "Color": {
+              "Text": null
+            },
+            "MiniVariantWidth": {
+              "Value": null
+            },
+            "MobileBreakpoint": {
+              "Value": null
+            },
+            "OverlayColor": {
+              "Text": null
+            },
+            "OverlayOpacity": {
+              "Value": null
+            },
+            "Height": {
+              "Value": null
+            },
+            "Width": {
+              "Value": null
+            }
+          },
+          "LayerMetadata": {
+            "Position": 1.0,
+            "Zone": "NavigationDrawer",
+            "RenderTitle": false,
+            "Layer": "All"
+          }
+        },
+        {
+          "ContentItemId": "4r2p7x8f1z775xww8na4q9g4ng",
+          "ContentItemVersionId": "48ejed9pbfnhh2wfw0agt5hp53",
+          "ContentType": "VFooter",
+          "DisplayText": "VFooter en",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": "2021-07-30T19:29:31.2293734Z",
+          "PublishedUtc": "2021-07-30T19:29:31.2703198Z",
+          "CreatedUtc": "2021-05-27T14:22:03.6374771Z",
+          "Owner": "4yzqdjmaxdfed4c0v9vwjhw0c6",
+          "Author": "OG",
+          "VFooter": {
+            "Height": {
+              "Value": null
+            },
+            "Width": {
+              "Value": null
+            },
+            "Color": {
+              "Text": null
+            },
+            "Props": {
+              "Values": [
+                "absolute",
+                "app",
+                "inset"
+              ]
+            }
+          },
+          "FlowPart": {
+            "Widgets": [
+              {
+                "ContentItemId": "4tjzzem2bhmgcysh728casasny",
+                "ContentItemVersionId": null,
+                "ContentType": "HtmlCode",
+                "DisplayText": "",
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": "2021-07-30T19:29:31.2414701Z",
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": "",
+                "Author": "OG",
+                "HtmlCode": {},
+                "HtmlBodyPart": {
+                  "Html": "<v-container fluid>\r\n  <div class=\"d-flex justify-space-between\">\r\n    <div class=\"ml-2\">\r\n      <span>Follow us using <code>#CANDEV</code></span>\r\n      <v-btn\r\n        class=\"mx-4\"\r\n        icon\r\n        href=\"https://www.linkedin.com/company/statcan/\" target=\"_blank\"\r\n      >\r\n        <v-icon size=\"24px\">mdi-linkedin</v-icon>\r\n      </v-btn>\r\n      <v-btn\r\n        class=\"mx-2\"\r\n        icon\r\n        href=\"https://twitter.com/statcan_eng/\" target=\"_blank\"\r\n      >\r\n        <v-icon size=\"24px\">mdi-twitter</v-icon>\r\n      </v-btn>\r\n      <v-btn\r\n        class=\"mx-2\"\r\n        icon\r\n        href=\"https://www.facebook.com/StatisticsCanada\" target=\"_blank\">\r\n        <v-icon size=\"24px\">mdi-facebook</v-icon>\r\n      </v-btn>\r\n      <v-btn\r\n        class=\"mx-2\"\r\n        icon\r\n        href=\"https://www.instagram.com/statcan_eng\" target=\"_blank\">\r\n        <v-icon size=\"24px\">mdi-instagram</v-icon>\r\n      </v-btn>\r\n      <v-btn\r\n        class=\"mx-2\"\r\n        icon\r\n        href=\"https://www.youtube.com/statisticscanada\" target=\"_blank\">\r\n        <v-icon size=\"24px\">mdi-youtube</v-icon>\r\n      </v-btn>\r\n    </div>\r\n  </div>\r\n</v-container>\r\n<v-sheet height=\"58\"></v-sheet>\r\n"
+                },
+                "WidgetStylingPart": {
+                  "CustomClasses": null
+                },
+                "@WeldedPartSettings": {
+                  "WidgetStylingPart": {}
+                },
+                "FlowMetadata": {
+                  "Alignment": 3,
+                  "Size": 100
+                }
+              },
+              {
+                "ContentItemId": "44tbqvktm4pkxxavghysdhfr51",
+                "ContentItemVersionId": null,
+                "ContentType": "FIP",
+                "DisplayText": "",
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": "2021-07-30T19:29:31.2526522Z",
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": "",
+                "Author": "OG",
+                "FIP": {
+                  "Props": {
+                    "Values": [
+                      "fixed"
+                    ]
+                  }
+                },
+                "WidgetStylingPart": {
+                  "CustomClasses": null
+                },
+                "@WeldedPartSettings": {
+                  "WidgetStylingPart": {}
+                },
+                "FlowMetadata": {
+                  "Alignment": 3,
+                  "Size": 100
+                }
+              }
+            ]
+          },
+          "LayerMetadata": {
+            "RenderTitle": false,
+            "Position": 0.5,
+            "Zone": "Footer",
+            "Layer": "Culture en"
+          }
+        },
+        {
+          "ContentItemId": "48f3d048f5fm02cdncaxs6715x",
+          "ContentItemVersionId": "4ye093jjxh5tj72nbdhz46t5mq",
+          "ContentType": "VFooter",
+          "DisplayText": "VFooter fr",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": "2021-07-30T19:08:34.271533Z",
+          "PublishedUtc": "2021-07-30T19:08:34.3027376Z",
+          "CreatedUtc": "2021-07-19T18:17:52.7241871Z",
+          "Owner": "4kqzqqj2zvb5c2z69mxscca9nj",
+          "Author": "OG",
+          "VFooter": {
+            "Height": {
+              "Value": null
+            },
+            "Width": {
+              "Value": null
+            },
+            "Color": {
+              "Text": null
+            },
+            "Props": {
+              "Values": [
+                "absolute",
+                "app",
+                "inset"
+              ]
+            }
+          },
+          "FlowPart": {
+            "Widgets": [
+              {
+                "ContentItemId": "4tjzzem2bhmgcysh728casasny",
+                "ContentItemVersionId": null,
+                "ContentType": "HtmlCode",
+                "DisplayText": "",
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": "2021-07-30T19:08:34.2825303Z",
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": "",
+                "Author": "OG",
+                "HtmlCode": {},
+                "HtmlBodyPart": {
+                  "Html": "<v-container fluid>\r\n  <div class=\"d-flex justify-content-between\">\r\n    <div class=\"ml-2\">\r\n      <span>Suivez-nous avec <code>#CANDEV</code></span>\r\n      <v-btn\r\n        class=\"mx-4\"\r\n        icon\r\n        href=\"https://www.linkedin.com/company/statcan/\" target=\"_blank\"\r\n      >\r\n        <v-icon size=\"24px\">mdi-linkedin</v-icon>\r\n      </v-btn>\r\n      <v-btn\r\n        class=\"mx-2\"\r\n        icon\r\n        href=\"https://twitter.com/statcan_eng/\" target=\"_blank\"\r\n      >\r\n        <v-icon size=\"24px\">mdi-twitter</v-icon>\r\n      </v-btn>\r\n      <v-btn\r\n        class=\"mx-2\"\r\n        icon\r\n        href=\"https://www.facebook.com/StatisticsCanada\" target=\"_blank\">\r\n        <v-icon size=\"24px\">mdi-facebook</v-icon>\r\n      </v-btn>\r\n      <v-btn\r\n        class=\"mx-2\"\r\n        icon\r\n        href=\"https://www.instagram.com/statcan_eng\" target=\"_blank\">\r\n        <v-icon size=\"24px\">mdi-instagram</v-icon>\r\n      </v-btn>\r\n      <v-btn\r\n        class=\"mx-2\"\r\n        icon\r\n        href=\"https://www.youtube.com/statisticscanada\" target=\"_blank\">\r\n        <v-icon size=\"24px\">mdi-youtube</v-icon>\r\n      </v-btn>    \r\n    </div>\r\n  </div>\r\n</v-container>\r\n<v-sheet height=\"58\"></v-sheet>"
+                },
+                "WidgetStylingPart": {
+                  "CustomClasses": null
+                },
+                "@WeldedPartSettings": {
+                  "WidgetStylingPart": {}
+                },
+                "FlowMetadata": {
+                  "Alignment": 3,
+                  "Size": 100
+                }
+              },
+              {
+                "ContentItemId": "44tbqvktm4pkxxavghysdhfr51",
+                "ContentItemVersionId": null,
+                "ContentType": "FIP",
+                "DisplayText": "",
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": "2021-07-30T19:08:34.2893608Z",
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": "",
+                "Author": "OG",
+                "FIP": {
+                  "Props": {
+                    "Values": [
+                      "fixed"
+                    ]
+                  }
+                },
+                "WidgetStylingPart": {
+                  "CustomClasses": null
+                },
+                "@WeldedPartSettings": {
+                  "WidgetStylingPart": {}
+                },
+                "FlowMetadata": {
+                  "Alignment": 3,
+                  "Size": 100
+                }
+              }
+            ]
+          },
+          "LayerMetadata": {
+            "RenderTitle": false,
+            "Position": 1.0,
+            "Zone": "Footer",
+            "Layer": "Culture fr"
+          }
+        },
+        {
+          "ContentItemId": "4dh7v2kwrt28m07ra0rzewedm1",
+          "ContentItemVersionId": "4y1cp4eavt22nyrgtft9pn13wb",
+          "ContentType": "HtmlCode",
+          "DisplayText": "Padding",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": "2021-07-28T01:48:03.9405064Z",
+          "PublishedUtc": "2021-07-28T01:48:03.9593977Z",
+          "CreatedUtc": "2021-07-28T01:14:53.3788932Z",
+          "Owner": "4131s49tp1mde1k2djp405v4c2",
+          "Author": "candev_adm",
+          "HtmlCode": {},
+          "HtmlBodyPart": {
+            "Html": "<v-sheet height=\"50\"></v-sheet>"
+          },
+          "LayerMetadata": {
+            "RenderTitle": false,
+            "Position": 0.0,
+            "Zone": "Footer",
+            "Layer": "All"
+          }
+        }
+      ]
+    },
+    {
+      "name": "deployment",
+      "Plans": [
+        {
+          "Name": "Complete Export",
+          "Steps": [
+            {
+              "Type": "AllFeaturesDeploymentStep",
+              "Step": {
+                "IgnoreDisabledFeatures": false,
+                "Id": "9e25ba96e6ea422cb6fd7e898a41f1ab",
+                "Name": "AllFeatures"
+              }
+            },
+            {
+              "Type": "AllQueriesDeploymentStep",
+              "Step": {
+                "Id": "1102d2d05dbe42dcae657456f3901273",
+                "Name": "AllQueries"
+              }
+            },
+            {
+              "Type": "AllLayersDeploymentStep",
+              "Step": {
+                "Id": "a70b516976024453a8b6d39231f77dbc",
+                "Name": "AllLayers"
+              }
+            },
+            {
+              "Type": "AllRolesDeploymentStep",
+              "Step": {
+                "Id": "d68e4e2edc6b431d9b8ec04772847452",
+                "Name": "AllRoles"
+              }
+            },
+            {
+              "Type": "AllWorkflowTypeDeploymentStep",
+              "Step": {
+                "Id": "8542c401341546b5b7845578c121930d",
+                "Name": "AllWorkflowType"
+              }
+            },
+            {
+              "Type": "ContentDefinitionDeploymentStep",
+              "Step": {
+                "IncludeAll": false,
+                "ContentTypes": [
+                  "Challenge",
+                  "ChallengeListWidget",
+                  "HackathonCustomSettings",
+                  "Hacker",
+                  "HtmlCode",
+                  "HtmlPage",
+                  "HtmlWidget",
+                  "NewsletterSubscriber",
+                  "ParticipantProfile",
+                  "Team"
+                ],
+                "ContentParts": [
+                  "Challenge",
+                  "ChallengeListWidget",
+                  "HackathonCustomSettings",
+                  "Hacker",
+                  "HtmlCode",
+                  "HtmlPage",
+                  "NewsletterSubscriber",
+                  "ParticipantProfile",
+                  "Team"
+                ],
+                "Id": "179a50fd6e7b4cb28589cd32c407909c",
+                "Name": "ContentDefinition"
+              }
+            },
+            {
+              "Type": "AllContentDeploymentStep",
+              "Step": {
+                "ExportAsSetupRecipe": false,
+                "Id": "3cf5982dc5f14e14ae586691a28f8ac0",
+                "Name": "AllContent"
+              }
+            },
+            {
+              "Type": "DeploymentPlanDeploymentStep",
+              "Step": {
+                "IncludeAll": true,
+                "DeploymentPlanNames": [],
+                "Id": "25bb7ed20e6c4a17a3b0e5fb9e634844",
+                "Name": "DeploymentPlan"
+              }
+            },
+            {
+              "Type": "AllTemplatesDeploymentStep",
+              "Step": {
+                "ExportAsFiles": true,
+                "Id": "c728c35777f44eeaa16ac3e1d3b7b79b",
+                "Name": "AllTemplates"
+              }
+            },
+            {
+              "Type": "AllEmailTemplatesDeploymentStep",
+              "Step": {
+                "Id": "91385070e6224e1e80135218072f7351",
+                "Name": "AllEmailTemplates"
+              }
+            },
+            {
+              "Type": "RegistrationSettings_SiteSettingsPropertyDeploymentStep",
+              "Step": {
+                "Id": "87ece5cb54b647b08c0d1728a6f09680",
+                "Name": "RegistrationSettings_SiteSettingsPropertyDeploymentStep"
+              }
+            },
+            {
+              "Type": "LoginSettings_SiteSettingsPropertyDeploymentStep",
+              "Step": {
+                "Id": "5100802f45644a16b1e615403093e10a",
+                "Name": "LoginSettings_SiteSettingsPropertyDeploymentStep"
+              }
+            },
+            {
+              "Type": "SiteSettingsDeploymentStep",
+              "Step": {
+                "Settings": [
+                  "HomeRoute"
+                ],
+                "Id": "77f5b6d18f7a4ccfa64ec11e95e27d83",
+                "Name": "SiteSettings"
+              }
+            },
+            {
+              "Type": "ResetPasswordSettings_SiteSettingsPropertyDeploymentStep",
+              "Step": {
+                "Id": "9009eac8fe854348acd3871361c28db0",
+                "Name": "ResetPasswordSettings_SiteSettingsPropertyDeploymentStep"
+              }
+            },
+            {
+              "Type": "AllShortcodeTemplatesDeploymentStep",
+              "Step": {
+                "Id": "559237a7789943448b0ba1b9994f542f",
+                "Name": "AllShortcodeTemplates"
+              }
+            },
+            {
+              "Type": "AdminMenuDeploymentStep",
+              "Step": {
+                "Id": "04cb826d5910436db163b451785e12c4",
+                "Name": "AdminMenu"
+              }
+            },
+            {
+              "Type": "CustomSettingsDeploymentStep",
+              "Step": {
+                "IncludeAll": false,
+                "SettingsTypeNames": [
+                  "VuetifyThemeSettings",
+                  "HackathonCustomSettings"
+                ],
+                "Id": "1849fcc75dc84947bea99c03e1e99ad0",
+                "Name": "CustomSettings"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Settings",
+      "HomeRoute": {
+        "Area": "OrchardCore.Contents",
+        "Controller": "Item",
+        "Action": "Display",
+        "contentItemId": "475f0691gd0yq11bs110ez4q5s",
+        "jsonPath": ""
+      }
+    },
+    {
+      "name": "ShortcodeTemplates",
+      "ShortcodeTemplates": {
+        "col": {
+          "Content": "{% capture cols -%}\r\n{%- if Args['cols'] != blank -%}\r\ncols=\"{{ Args['cols'] }}\"\r\n{% elsif Args[0] != blank %}\r\ncols=\"{{ Args[0] }}\"\r\n{% endif %}\r\n{% endcapture -%}\r\n{% capture class -%}\r\n{%- if Args['class'] != blank -%}\r\nclass=\"{{ Args['class'] }}\"\r\n{%- endif -%}\r\n{% endcapture -%}\r\n<v-col {{ cols | raw }} {{ class | raw }} {{ Args | to_html_attributes: \"align-self,lg,md,offset,offset-lg,offset-md,offset-sm,offset-xl,order,order-lg,order-md,order-sm,order-xl,sm,tag,xl\" | raw }}>{{ Content | raw }}</v-col>",
+          "Hint": "Renders a column. to be used inside a [row] shortcode. Please see the https://vuetifyjs.com/en/api/v-col/#api-props docs for available properties. The cols property can be passed as the first argument",
+          "Usage": "[col 12 md=8 lg=6][/col]",
+          "DefaultValue": "[col][/col]",
+          "Categories": [
+            "HTML Content"
+          ]
+        },
+        "row": {
+          "Content": "{% capture class -%}\r\n{%- if Args['class'] != blank -%}\r\nclass=\"{{ Args['class'] }}\"\r\n{%- endif -%}\r\n{% endcapture -%}\r\n<v-row {{ class | raw }} {{ Args | to_html_attributes: \"align,align-content,align-content-lg,align-content-md,align-content-sm,align-content-xl,align-lg,align-md,align-sm,align-xl,dense,justify,justify-lg,justify-md,justify-sm,justify-xl,no-gutters,tag\" | raw }}>{{ Content | raw }}</v-row>",
+          "Hint": "Renders a row. Please see the https://vuetifyjs.com/en/api/v-row/#api-props docs for available properties.",
+          "Usage": "[row][/row]",
+          "DefaultValue": "[row][/row]",
+          "Categories": [
+            "HTML Content"
+          ]
+        },
+        "container": {
+          "Content": "{% capture class -%}\r\n{%- if Args['class'] != blank -%}\r\nclass=\"{{ Args['class'] }}\"\r\n{%- endif -%}\r\n{% endcapture -%}\r\n<v-container {{ class | raw }} {{ Args | to_html_attributes: \"id,fluid,tag\" | raw }}>{{ Content | raw }}</v-container>",
+          "Hint": "Renders a container. Please see the https://vuetifyjs.com/en/api/v-container/#api-props docs for available properties.",
+          "Usage": "[container][/container]",
+          "DefaultValue": "[container][/container]",
+          "Categories": [
+            "HTML Content"
+          ]
+        },
+        "spacer": {
+          "Content": "<v-spacer></v-spacer>",
+          "Hint": "renders a v-spacer. See https://vuetifyjs.com/en/components/grids/#v-spacer for docs.",
+          "Usage": "[spacer]",
+          "DefaultValue": "[spacer]",
+          "Categories": []
+        },
+        "alias": {
+          "Content": "{% assign my_content = Content.Alias[Args[0]] %}\r\n\r\n{{ my_content | shape_build_display | shape_render }}",
+          "Hint": "Renders an item with the alias",
+          "Usage": "[alias 'item-alias']",
+          "DefaultValue": "[alias '']",
+          "Categories": [
+            "HTML Content"
+          ]
+        },
+        "hackathon_calendar": {
+          "Content": "<div class=\"d-flex flex-column mt-5 mb-5\">\r\n  <div class=\"d-flex flex-row text-center align-center\">\r\n    <div class=\"d-flex text-uppercase mb-4\">\r\n      <v-sheet\r\n        color=\"rgba(39, 39, 39, 1)\"\r\n        dark\r\n        elevation=\"1\"\r\n        flat\r\n        rounded=\"xl\"\r\n        width=\"125\"\r\n        shaped\r\n      >\r\n        <v-app-bar\r\n          color=\"rgba(237, 28, 37, 1)\"\r\n          flat\r\n          shaped\r\n        >\r\n          <v-spacer></v-spacer>\r\n          <v-toolbar-title class=\"font-weight-bold\">\r\n            {% if Culture.Name == 'en' %}\r\n              {{ Site.Properties.HackathonCustomSettings.HackathonCustomSettings.StartDate.Value | date:\"%b %e\"  }}\r\n            {% else %}\r\n              {{ Site.Properties.HackathonCustomSettings.HackathonCustomSettings.StartDate.Value | date:\"%e %b\"  }}\r\n            {% endif %}\r\n          </v-toolbar-title>\r\n          <v-spacer></v-spacer>\r\n        </v-app-bar>\r\n        <v-row>\r\n          <v-spacer></v-spacer>\r\n          <v-card-subtitle>\r\n            {{ Site.Properties.HackathonCustomSettings.HackathonCustomSettings.StartDate.Value | date:\"%Y\" }}\r\n          </v-card-subtitle>\r\n          <v-spacer></v-spacer>\r\n        </v-row>\r\n      </v-sheet>\r\n\r\n      <v-icon x-large>mdi-chevron-right</v-icon>\r\n      \r\n      <v-sheet\r\n        color=\"rgba(39, 39, 39, 1)\"\r\n        dark\r\n        elevation=\"1\"\r\n        flat\r\n        rounded=\"xl\"\r\n        width=\"125\"\r\n        shaped\r\n      >\r\n        <v-app-bar\r\n          color=\"rgba(237, 28, 37, 1)\"\r\n          flat\r\n          shaped\r\n        >\r\n          <v-spacer></v-spacer>\r\n          <v-toolbar-title class=\"font-weight-bold\">\r\n                     {% if Culture.Name == 'en' %}\r\n              {{ Site.Properties.HackathonCustomSettings.HackathonCustomSettings.EndDate.Value | date:\"%b %e\"  }}\r\n            {% else %}\r\n              {{ Site.Properties.HackathonCustomSettings.HackathonCustomSettings.EndDate.Value | date:\"%e %b\"  }}\r\n            {% endif %}\r\n          </v-toolbar-title>\r\n          <v-spacer></v-spacer>\r\n        </v-app-bar>\r\n        <v-row>\r\n          <v-spacer></v-spacer>\r\n          <v-card-subtitle>\r\n            {{ Site.Properties.HackathonCustomSettings.HackathonCustomSettings.EndDate.Value | date:\"%Y\" }}\r\n          </v-card-subtitle>\r\n          <v-spacer></v-spacer>\r\n        </v-row>\r\n      </v-sheet>\r\n    </div>\r\n  </div>\r\n  <span>\r\n      <v-icon>mdi-map-marker</v-icon>{{Site.Properties.HackathonCustomSettings.HackathonCustomSettings.Where.Text | shortcode}}\r\n  </span>\r\n</div>",
+          "Hint": "Renders a calendar that used the HackathonCustomSettings dates ",
+          "Usage": "[hackathon_calendar]",
+          "DefaultValue": "[hackathon_calendar]",
+          "Categories": [
+            "HTML Content"
+          ]
+        }
+      }
+    },
+    {
+      "name": "AdminMenu",
+      "data": [
+        {
+          "Id": "18826493df934cf997f2fe985aca0f17",
+          "Name": "Editor Menu",
+          "Enabled": true,
+          "MenuItems": [
+            {
+              "$type": "OrchardCore.AdminMenu.AdminNodes.LinkAdminNode, OrchardCore.AdminMenu",
+              "LinkText": "Hackathon Settings",
+              "LinkUrl": "~/Admin/Settings/HackathonCustomSettings",
+              "IconClass": "fas fa-hammer",
+              "PermissionNames": [
+                "ManageCustomSettings_HackathonCustomSettings"
+              ],
+              "UniqueId": "622ffad08e1f468293f2a1ee71f70fcb",
+              "Enabled": true,
+              "Text": null,
+              "Id": null,
+              "Href": null,
+              "Url": null,
+              "Position": null,
+              "Priority": 0,
+              "LinkToFirstChild": true,
+              "LocalNav": false,
+              "Culture": null,
+              "Items": [],
+              "Classes": []
+            },
+            {
+              "$type": "OrchardCore.AdminMenu.AdminNodes.PlaceholderAdminNode, OrchardCore.AdminMenu",
+              "LinkText": "Content",
+              "IconClass": null,
+              "PermissionNames": [
+                "EditOwnContent"
+              ],
+              "UniqueId": "5ae465832b09468496ff09c3a39af8fb",
+              "Enabled": true,
+              "Text": null,
+              "Id": null,
+              "Href": null,
+              "Url": null,
+              "Position": null,
+              "Priority": 0,
+              "LinkToFirstChild": true,
+              "LocalNav": false,
+              "Culture": null,
+              "Items": [
+                {
+                  "$type": "OrchardCore.Contents.AdminNodes.ContentTypesAdminNode, OrchardCore.Contents",
+                  "ShowAll": false,
+                  "IconClass": null,
+                  "ContentTypes": [
+                    {
+                      "ContentTypeId": "Challenge",
+                      "IconClass": null
+                    },
+                    {
+                      "ContentTypeId": "HtmlPage",
+                      "IconClass": null
+                    },
+                    {
+                      "ContentTypeId": "Page",
+                      "IconClass": null
+                    },
+                    {
+                      "ContentTypeId": "SecurePage",
+                      "IconClass": null
+                    },
+                    {
+                      "ContentTypeId": "Team",
+                      "IconClass": null
+                    }
+                  ],
+                  "UniqueId": "2e126b0cb9f74f43ab77d907b9fcb146",
+                  "Enabled": true,
+                  "Text": null,
+                  "Id": null,
+                  "Href": null,
+                  "Url": null,
+                  "Position": null,
+                  "Priority": 0,
+                  "LinkToFirstChild": true,
+                  "LocalNav": false,
+                  "Culture": null,
+                  "Items": [],
+                  "Classes": []
+                }
+              ],
+              "Classes": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

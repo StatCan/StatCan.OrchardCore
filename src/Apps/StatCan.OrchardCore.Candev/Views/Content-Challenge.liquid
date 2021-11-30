@@ -1,0 +1,41 @@
+<v-card class="my-2" outlined>
+	<v-card-title>{{ Model.ContentItem.Content.Challenge.Title.Text | shortcode }}</v-card-title>
+	<v-card-text>    
+      <h3>Statement</h3>
+	  <div>{{ Model.ContentItem.Content.Challenge.Statement.Text | shortcode }}</div> 
+      <br>
+      <h3>Datasets</h3>
+	  <div>{{ Model.ContentItem.Content.Challenge.Datasets.Text | shortcode }}</div> 
+      <div>{{ Model.ContentItem.Content.Challenge.DatasetsFiles.Paths | shortcode }}</div> 
+      {% for dataset in Model.ContentItem.Content.Challenge.DatasetsFiles.Paths %}
+        <div class="pt-2"><v-btn href="{{ dataset | asset_url }}" target="_blank">{{ dataset }}</v-btn></div>
+      {% endfor %}
+      <br>
+      <h3>Background Information</h3>
+	  <div>{{ Model.ContentItem.Content.Challenge.BackgroundInformation.Text | shortcode }}</div>
+      <br>
+      <h3>Keywords</h3>
+	  <div>{{ Model.ContentItem.Content.Challenge.Keywords.Text | shortcode }}</div> 
+      <br>
+      <h3>Organization Name</h3>
+	  <div>{{ Model.ContentItem.Content.Challenge.OrganizationNameEn.Text | shortcode }}</div> 
+      <br>
+      <h3>Organization Acronym</h3>
+	  <div>{{ Model.ContentItem.Content.Challenge.OrganizationAcronymEn.Text | shortcode }}</div> 
+      <br>
+      <h3>Contact Person</h3>
+	  <div>{{ Model.ContentItem.Content.Challenge.ContactPersonName.Text | shortcode }}</div> 
+      <div>{{ Model.ContentItem.Content.Challenge.ContactPersonEmail.Text | shortcode }}</div> 
+      <br>
+      <h3>Technical Mentor</h3>
+	  <div>{{ Model.ContentItem.Content.Challenge.TechnicalMentorName.Text | shortcode }}</div> 
+      <div>{{ Model.ContentItem.Content.Challenge.TechnicalMentorEmail.Text | shortcode }}</div>
+      <br>
+      <h3>Case Specialist</h3>
+      <div>{{ Model.ContentItem.Content.Challenge.CaseSpecialistName.Text | shortcode }}</div>
+	  <div>{{ Model.ContentItem.Content.Challenge.CaseSpecialistEmail.Text | shortcode }}</div> 
+      <br>
+      <h3>Comments</h3>
+	  <div>{{ Model.ContentItem.Content.Challenge.Comments.Text | shortcode }}</div> 
+	</v-card-text>
+</v-card>

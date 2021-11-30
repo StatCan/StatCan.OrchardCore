@@ -1,0 +1,154 @@
+{
+  "name": "Candev.Newsletter",
+  "displayName": "Newsletter",
+  "description": "Creates a newsletter form for users to subscribe to the newsletters.",
+  "author": "StatCan Digital Innovation",
+  "website": "digital.statcan.gc.ca",
+  "version": "1.0.0",
+  "issetuprecipe": false,
+  "categories": [],
+  "tags": [],
+  "steps": [
+    {
+      "name": "Content",
+      "data": [
+        {
+          "ContentItemId": "4ty56s2p8vfhmxp76p4f37b1c3",
+          "ContentItemVersionId": "4mk8wcbkywwqay8pp6arvtt5mj",
+          "ContentType": "VueForm",
+          "DisplayText": "Newsletter",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": "2021-07-19T14:36:25.0528596Z",
+          "PublishedUtc": "2021-07-19T14:36:25.0829317Z",
+          "CreatedUtc": "2021-04-23T14:48:37.4919743Z",
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "TitlePart": {
+            "Title": "Newsletter"
+          },
+          "VueForm": {
+            "Enabled": null,
+            "RenderAs": {
+              "Text": null
+            },
+            "DisabledHtml": {
+              "Html": "<div class=\"container text-center mt-2\">\nThe contact form is currently disabled.\n</div>"
+            },
+            "SuccessMessage": {
+              "Text": "{{ \"successMessage\" | localize }}"
+            },
+            "ErrorMessage": {
+              "Text": "Please correct the errors above."
+            },
+            "Template": {
+              "Text": "<div class=\"d-block d-flex flex-column flex-md-row align-md-center\">    \r\n    <validation-provider name=\"{{ \"emailLabel\" | localize | downcase }}\" rules=\"required|email\" v-slot=\"{ errors, valid }\" slim>\r\n        <v-text-field name=\"email\" v-model=\"email\" :success=\"valid\" :error-messages=\"errors\" label=\"{{ \"emailLabel\" | localize }}\"></v-text-field>\r\n    </validation-provider>\r\n    <v-btn class=\"mt-2 ml-md-2\" type=\"submit\" @click=\"formHandleSubmit\" :disabled=\"form.submitting\">{{ \"submitLabel\" | localize }}</v-btn>\r\n    <v-alert type=\"success\" v-if=\"form.successMessage\">\r\n        {% raw %}{{ form.successMessage }}{% endraw %}\r\n    </v-alert>\r\n    <v-alert type=\"error\" v-if=\"form.serverValidationMessage\">\r\n        {% raw %}{{ form.serverValidationMessage[0] }}{% endraw %}\r\n    </v-alert>\r\n</div>"
+            },
+            "Disabled": {
+              "Value": false
+            },
+            "Debug": {
+              "Value": false
+            }
+          },
+          "VueFormScripts": {
+            "ClientInit": {
+              "Text": null
+            },
+            "ComponentOptions": {
+              "Text": "{\r\n  data: () => ({\r\n\temail: \"\",\r\n  })\r\n}"
+            },
+            "OnValidation": {
+              "Text": "var data = requestFormAsJsonObject();\r\nvar localizedText = getLocalizedTextValues(getFormContentItem());\r\n\r\nif(data.email == \"\" || !validateEmail(data.email)) {\r\n  addError('serverValidationMessage', localizedText.serverValidationError);\r\n}"
+            },
+            "OnSubmitted": {
+              "Text": "var data = requestFormAsJsonObject();\r\n\r\nvar item = createContentItem(\"NewsletterSubscriber\", true, {\r\n  \"NewsletterSubscriber\": {\r\n    \"Email\": {\r\n      \"Text\": data.email\r\n    }\r\n  }\r\n});"
+            }
+          },
+          "LocalizedText": {},
+          "LocalizedTextPart": {
+            "Data": [
+              {
+                "Name": "nameLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Nom"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Name"
+                  }
+                ]
+              },
+              {
+                "Name": "emailLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Adresse courriel"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Email address"
+                  }
+                ]
+              },
+              {
+                "Name": "submitLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "S'abonner"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Subscribe"
+                  }
+                ]
+              },
+              {
+                "Name": "successMessage",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Merci, vous serez tenu au courant des nouvelles concernant l'événement!"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Thank you, you will be kept up to date with news about the event!"
+                  }
+                ]
+              },
+              {
+                "Name": "serverValidationError",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Une erreur est survenue."
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "An error occured."
+                  }
+                ]
+              }
+            ]
+          },
+          "ContentPermissionsPart": {
+            "Roles": [],
+            "Enabled": false
+          },
+          "AliasPart": {
+            "Alias": "form-newsletter"
+          },
+          "VueFormSurvey": {
+            "SurveyJson": {
+              "Text": null
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

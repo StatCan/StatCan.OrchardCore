@@ -1,0 +1,110 @@
+{% assign userId = User | user_id %}
+{% assign user = User | user_id | users_by_id %}
+{% assign challenges = Queries.GetChallengeSubmissionsForOwner | query: owner: userId  %}
+
+<v-row justify="center">
+  {% if user.Properties.Judge.Judge.Challenge.ContentItemIds.first != null %}
+  {% assign challengeSelected = user.Properties.Judge.Judge.Challenge.ContentItemIds | content_item_id | first %}
+  <v-col cols="12">
+    <v-card style="min-height: 208px">
+      {% if Culture.Name == "fr" %}
+        {% assign challengeSelected = challengeSelected.ContentItem.Content.LocalizationPart.LocalizationSet | localization_set: "fr" %}
+      {% endif %}
+      <v-card-title class="text-h5 lighten-2">{{'Your challenge' | t}}: {{ challengeSelected.ContentItem.Content.Challenge.Title.Text | shortcode }}</v-card-title>
+      <v-divider></v-divider>
+      <v-card-text>
+        <h3>{{ "Statement" | t }}</h3> 
+        <v-flex class="pt-2"><span class="subtitle-2">{{ challengeSelected.ContentItem.Content.Challenge.Statement.Text | shortcode }}</span></v-flex>
+        <h3>{{ "Potential Datasets" | t }}</h3>
+        <v-flex class="pt-2"><span class="subtitle-2">{{ challengeSelected.ContentItem.Content.Challenge.Datasets.Text | shortcode }}</span></v-flex>
+        <h3>{{ "Background Information" | t }}</h3>
+        <v-flex class="pt-2"><span class="subtitle-2">{{ challengeSelected.ContentItem.Content.Challenge.BackgroundInformation.Text | shortcode }}</span></v-flex>
+        <h3>{{ "Organization" | t }}</h3>
+        <v-flex class="pt-2"><span class="subtitle-2">{{ challengeSelected.ContentItem.Content.Challenge.OrganizationNameEn.Text | shortcode }}</span></v-flex>
+        <h3>{{ "Mentors" | t }}</h3>
+        <v-flex class="pt-2"><span class="subtitle-2">{{ challengeSelected.ContentItem.Content.Challenge.TechnicalMentorName.Text | shortcode }}</span></v-flex>
+        {% for dataset in challengeSelected.ContentItem.Content.Challenge.DatasetsFiles.Paths %}
+          <v-flex class="pt-2"><v-btn href="{{ dataset | asset_url }}" target="_blank">{{ dataset }}</v-btn></v-flex>
+        {% endfor %}
+      </v-card-text>
+    </v-card>  
+  </v-col>
+  {% else %}
+  <v-col cols="8">
+    <form  action="{{"~/challenge-submission/submission" | href}}">
+      <v-btn type="submit" color="success" depressed block>{{ "Create a new challenge" | t }}</v-btn>
+    </form>
+  </v-col>
+  {% for challenge in challenges %}
+    {% if challenge.Published == true %}
+    <v-col cols="8">
+      <v-card outlined>
+        <v-card-title>
+          {{ challenge.ContentItem.Content.Challenge.Title.Text | shortcode }} 
+          <v-chip class="ma-2" color="green" label outlined>{{ "Submission accepted" | t }}</v-chip>
+        </v-card-title>
+        <v-card-text>
+          <v-col>
+ 		        {{ challenge.ContentItem.Content.Challenge.Statement.Text | shortcode }}
+          </v-col>
+          <v-col>
+            {{ challenge.ContentItem.Content.Challenge.BackgroundInformation.Text | shortcode }}
+          </v-col>
+          <v-col>
+            {{ challenge.ContentItem.Content.Challenge.Datasets.Text | shortcode }}
+          </v-col>
+        </v-card-text>
+      </v-card>
+    </v-col>
+    {% endif %}
+  {% endfor %}
+
+  {% for challenge in challenges %}
+  	{% if challenge.Published == false %}
+    <v-col cols="8">
+      <v-card outlined>
+        <v-card-title>
+          {{ challenge.ContentItem.Content.Challenge.Title.Text | shortcode }} 
+          {% if challenge.ContentItem.Content.Challenge.BackgroundInformation.Text == blank or
+            challenge.ContentItem.Content.Challenge.ContactPersonName.Text == blank or
+            challenge.ContentItem.Content.Challenge.ContactPersonEmail.Text == blank or
+            challenge.ContentItem.Content.Challenge.TechnicalMentorName.Text == blank or
+            challenge.ContentItem.Content.Challenge.TechnicalMentorEmail.Text == blank or
+            challenge.ContentItem.Content.Challenge.CaseSpecialistName.Text == blank or
+            challenge.ContentItem.Content.Challenge.CaseSpecialistEmail.Text == blank or
+            challenge.ContentItem.Content.Challenge.Statement.Text == blank or
+            challenge.ContentItem.Content.Challenge.Datasets.Text == blank or
+            challenge.ContentItem.Content.Challenge.OrganizationNameEn.Text == blank or
+            challenge.ContentItem.Content.Challenge.OrganizationAcronymEn.Text == blank or
+            challenge.ContentItem.Content.Challenge.Keywords.Text == blank
+          %}
+            <v-chip class="ma-2" color="red" label outlined>{{ "Incomplete" | t }}</v-chip>
+          {% else %}
+            <v-chip class="ma-2" color="green" label outlined>{{ "Complete" | t }}</v-chip>
+          {% endif %}
+        </v-card-title>
+        <v-card-text>
+          <v-col>
+ 		        {{ challenge.ContentItem.Content.Challenge.Statement.Text | shortcode }}
+          </v-col>
+          <v-col>
+            {{ challenge.ContentItem.Content.Challenge.BackgroundInformation.Text | shortcode }}
+          </v-col>
+          <v-col>
+            {{ challenge.ContentItem.Content.Challenge.Datasets.Text | shortcode }}
+          </v-col>
+          <v-col>
+		  	<v-row>
+              <form action="{% if Culture.Name == "en" %}{{ "~/challenge-submission/submission" | href}}{% else %}{{ "~/votre-defi/soumission" | href}}{% endif %}" method="get">
+              	<v-btn type="submit" color="primary" depressed>{{ "Edit" | t }}</v-btn>
+                <input type="hidden" name="id" value="{{challenge.ContentItemVersionId}}">
+              </form>
+		  	</v-row>
+          </v-col>
+        </v-card-text>
+      </v-card>
+    </v-col>
+  	{% endif %}
+  {% endfor %}
+  {% endif %}
+</v-row>

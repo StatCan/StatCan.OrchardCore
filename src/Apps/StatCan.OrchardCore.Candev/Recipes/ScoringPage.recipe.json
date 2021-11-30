@@ -1,0 +1,129 @@
+{
+  "name": "Candev.ScoringPage",
+  "displayName": "Scoring Form",
+  "description": "Creates a scoring form that can be used by judges.",
+  "author": "StatCan Digital Innovation",
+  "website": "digital.statcan.gc.ca",
+  "version": "1.0.0",
+  "issetuprecipe": false,
+  "categories": [],
+  "tags": [],
+  "steps": [
+    {
+      "name": "feature",
+      "disable": [],
+      "enable": [
+        "StatCan.OrchardCore.VueForms.Localized",
+        "OrchardCore.Workflows.Http"
+      ]
+    },
+    {
+      "name": "Content",
+      "data": [
+        {
+          "ContentItemId": "423fn7nvrwcdv2ksy8hww9qwdn",
+          "ContentItemVersionId": "447chqav6sw0d7bhf9fzmjqkmy",
+          "ContentType": "VueForm",
+          "DisplayText": "Scoring",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": "2020-12-08T16:46:33.0288821Z",
+          "PublishedUtc": "2020-12-08T16:46:33.0415421Z",
+          "CreatedUtc": "2020-10-30T15:39:26.8575804Z",
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "TitlePart": {
+            "Title": "Scoring"
+          },
+          "VueForm": {
+            "Disabled": {
+              "Value": false
+            },
+            "Debug": {
+              "Value": false
+            },
+            "DisabledHtml": {
+              "Html": "<div class=\"container text-center mt-2\">\nThe Scoring form is currently disabled.\n</div>"
+            },
+            "SuccessMessage": {
+              "Text": "Your submission was successful"
+            },
+            "ErrorMessage": {
+              "Text": "Please correct the errors above."
+            },
+            "RenderAs": {
+              "Text": null
+            },
+            "Template": {
+              "Text": "{% assign user = User | user_id | users_by_id %}\r\n{% assign userId = User | user_id %}\r\n\r\n<v-container fluid>\r\n  <v-card-text>\r\n    <v-row justify=\"center\">\r\n        <v-col cols=\"8\">       \r\n          <v-radio-group name=\"score\" v-model=\"score\" row>\r\n                <v-radio v-for=\"n in 11\" :key=\"n\" :label=\"`${n - 1}`\" :value=\"`${n - 1}`\" />\r\n\t\t  </v-radio-group>        \r\n        </v-col>\r\n        <v-col cols=\"8\">\r\n         \t  <v-textarea name=\"comment\" v-model=\"comment\" filled=\"filled\" label=\"{{ \"commentLabel\" | localize }}\" rows=\"5\"/>\r\n        </v-col>\r\n        <v-col cols=\"8\">\r\n          <v-alert type=\"success\" v-if=\"form.successMessage\">\r\n            {% raw %}{{ form.successMessage }}{% endraw %}\r\n          </v-alert>\r\n          <v-alert type=\"error\" v-if=\"form.serverValidationMessage\">\r\n            {% raw %}{{ form.serverValidationMessage[0] }}{% endraw %}\r\n          </v-alert>\r\n        </v-col>\r\n        <v-col cols=\"8\">\r\n    \t  <v-btn type=\"submit\" depressed block @click=\"formHandleSubmit\" :disabled=\"form.submitting\">{{ \"submitLabel\" | localize }}</v-btn>\r\n        </v-col>\r\n    </v-row>\r\n  </v-card-text>\r\n  </v-container>\r\n"
+            }
+          },
+          "VueFormScripts": {
+            "ClientInit": {
+              "Text": "VeeValidate.setInteractionMode('passive');"
+            },
+            "OnValidation": {
+              "Text": "var data = requestFormAsJsonObject();\r\nvar localizedText = getLocalizedTextValues(getFormContentItem());\r\n\r\nif(data.score == \"\") {\r\n  addError('serverValidationMessage', localizedText.scoreRequiredError);\r\n}"
+            },
+            "OnSubmitted": {
+              "Text": "var data = requestFormAsJsonObject();\r\n\r\nvar item = createContentItem(\"Score\", true, {\r\n  \"Score\": {\r\n    \"Score\": {\r\n      \"Value\": data.score\r\n    },\r\n    \"Judge\": {\r\n      \"UserIds\": [\r\n        data.judge\r\n      ]\r\n    },\r\n    \"Team\": {\r\n      \"ContentItemIds\": [\r\n        data.team\r\n      ]\r\n    },\r\n    \"Comment\": {\r\n      \"Text\": data.comment\r\n    }\r\n  }\r\n});\r\n\r\n"
+            },
+            "ComponentOptions": {
+              "Text": "{% assign userId = User | user_id %}\r\n\r\n{\r\n  data: () => ({\r\n    score: \"\",\r\n\tcomment: \"\", \r\n    judge: \"{{ userId }}\",\r\n    team: \"{{ Request.Query['teamId'] }}\"\r\n  })\r\n}"
+            }
+          },
+          "LocalizedTextPart": {
+            "Data": [
+              {
+                "Name": "scoreRequiredError",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Un score est requis."
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "A score is required."
+                  }
+                ]
+              },
+              {
+                "Name": "commentLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Commentaires"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Comments"
+                  }
+                ]
+              },
+              {
+                "Name": "submitLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Envoyer"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Send"
+                  }
+                ]
+              }
+            ]
+          },
+          "AliasPart": {
+            "Alias": "scoring"
+          },
+          "ContentPermissionsPart": {
+            "Enabled": false,
+            "Roles": []
+          }
+        }
+      ]
+    }
+  ]
+}
