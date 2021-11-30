@@ -92,16 +92,16 @@
       "data": [
         {
           "ContentItemId": "4mybr8kwj6cn541v2yktz44t5c",
-          "ContentItemVersionId": "4edtyhfte9hk1w6rgw1p6x8j4n",
+          "ContentItemVersionId": null,
           "ContentType": "Taxonomy",
           "DisplayText": "Topics",
           "Latest": true,
           "Published": true,
-          "ModifiedUtc": "2021-11-29T19:21:46.0918804Z",
-          "PublishedUtc": "2021-11-29T19:21:46.0940436Z",
-          "CreatedUtc": "2021-11-29T19:21:46.0918804Z",
-          "Owner": null,
-          "Author": null,
+          "ModifiedUtc": null,
+          "PublishedUtc": null,
+          "CreatedUtc": null,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
           "TitlePart": {
             "Title": null
           },
@@ -126,16 +126,16 @@
         },
         {
           "ContentItemId": "43h0218am73wn0jrm1mms51hce",
-          "ContentItemVersionId": "4etvww78zn7ea1wvkqqz2mav4n",
+          "ContentItemVersionId": null,
           "ContentType": "Taxonomy",
           "DisplayText": "Proposal Types",
           "Latest": true,
           "Published": true,
-          "ModifiedUtc": "2021-11-29T19:21:46.0977848Z",
-          "PublishedUtc": "2021-11-29T19:21:46.0978323Z",
-          "CreatedUtc": "2021-11-29T19:21:46.0977848Z",
-          "Owner": null,
-          "Author": null,
+          "ModifiedUtc": null,
+          "PublishedUtc": null,
+          "CreatedUtc": null,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
           "TitlePart": {
             "Title": null
           },
@@ -160,16 +160,16 @@
         },
         {
           "ContentItemId": "4s1qtbtz9m7634cqp2pg9k6gmf",
-          "ContentItemVersionId": "4etwqf3ycab7zrw86na8j2tjdd",
+          "ContentItemVersionId": null,
           "ContentType": "Taxonomy",
           "DisplayText": "Project Types",
           "Latest": true,
           "Published": true,
-          "ModifiedUtc": "2021-11-29T19:21:46.0979991Z",
-          "PublishedUtc": "2021-11-29T19:21:46.0980271Z",
-          "CreatedUtc": "2021-11-29T19:21:46.0979991Z",
-          "Owner": null,
-          "Author": null,
+          "ModifiedUtc": null,
+          "PublishedUtc": null,
+          "CreatedUtc": null,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
           "TitlePart": {
             "Title": null
           },
@@ -194,16 +194,16 @@
         },
         {
           "ContentItemId": "44b27fsfqm5cdxm47c21r4ywn9",
-          "ContentItemVersionId": "4k9gnb5jehzzyzd6zfye0ffen3",
+          "ContentItemVersionId": null,
           "ContentType": "Taxonomy",
           "DisplayText": "Community Types",
           "Latest": true,
           "Published": true,
-          "ModifiedUtc": "2021-11-29T19:21:46.0981101Z",
-          "PublishedUtc": "2021-11-29T19:21:46.0981299Z",
-          "CreatedUtc": "2021-11-29T19:21:46.0981101Z",
-          "Owner": null,
-          "Author": null,
+          "ModifiedUtc": null,
+          "PublishedUtc": null,
+          "CreatedUtc": null,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
           "TitlePart": {
             "Title": null
           },
@@ -639,7 +639,7 @@
                       "Author": "admin",
                       "LinkMenuItemPart": {
                         "Name": "Projects",
-                        "Url": "projects/create"
+                        "Url": "~/projects/create"
                       },
                       "LinkMenuItem": {},
                       "CommonMenuItemPart": {
@@ -666,7 +666,7 @@
                       "Author": "admin",
                       "LinkMenuItemPart": {
                         "Name": "Proposals",
-                        "Url": "proposals/create"
+                        "Url": "~/proposals/create"
                       },
                       "LinkMenuItem": {},
                       "CommonMenuItemPart": {
@@ -693,7 +693,7 @@
                       "Author": "admin",
                       "LinkMenuItemPart": {
                         "Name": "Events",
-                        "Url": "events/create"
+                        "Url": "~/events/create"
                       },
                       "LinkMenuItem": {},
                       "CommonMenuItemPart": {
@@ -720,7 +720,7 @@
                       "Author": "admin",
                       "LinkMenuItemPart": {
                         "Name": "Communities",
-                        "Url": "communities/create"
+                        "Url": "~/communities/create"
                       },
                       "LinkMenuItem": {},
                       "CommonMenuItemPart": {
@@ -747,7 +747,7 @@
                       "Author": "admin",
                       "LinkMenuItemPart": {
                         "Name": "Topics",
-                        "Url": "topics/create"
+                        "Url": "~/topics/create"
                       },
                       "LinkMenuItem": {},
                       "CommonMenuItemPart": {
@@ -805,7 +805,7 @@
                       "Author": "[js: parameters('AdminUsername')]",
                       "LinkMenuItemPart": {
                         "Name": "Projects",
-                        "Url": "projects"
+                        "Url": "~/projects"
                       },
                       "LinkMenuItem": {},
                       "CommonMenuItemPart": {
@@ -833,7 +833,7 @@
 
                       "LinkMenuItemPart": {
                         "Name": "Proposals",
-                        "Url": "proposals"
+                        "Url": "~/proposals"
                       },
                       "LinkMenuItem": {},
                       "CommonMenuItemPart": {
@@ -860,7 +860,7 @@
                       "Author": "[js: parameters('AdminUsername')]",
                       "LinkMenuItemPart": {
                         "Name": "Events",
-                        "Url": "events"
+                        "Url": "~/events"
                       },
                       "LinkMenuItem": {},
                       "CommonMenuItemPart": {
@@ -887,7 +887,7 @@
                       "Author": "[js: parameters('AdminUsername')]",
                       "LinkMenuItemPart": {
                         "Name": "Communities",
-                        "Url": "communities"
+                        "Url": "~/communities"
                       },
                       "LinkMenuItem": {},
                       "CommonMenuItemPart": {
@@ -945,7 +945,7 @@
                       "Author": "[js: parameters('AdminUsername')]",
                       "LinkMenuItemPart": {
                         "Name": "Topics",
-                        "Url": "topics"
+                        "Url": "~/topics"
                       },
                       "LinkMenuItem": {},
                       "CommonMenuItemPart": {
@@ -1207,16 +1207,16 @@
         },
         {
           "ContentItemId": "4w1g1ehv6fbvtsfhtdtqmqj7wv",
-          "ContentItemVersionId": "4gts4ys7dmdgwsfpb8nktacyxp",
+          "ContentItemVersionId": null,
           "ContentType": "Form",
           "DisplayText": "Topic Form",
           "Latest": true,
           "Published": true,
-          "ModifiedUtc": "2021-11-15T15:14:07.4697942Z",
-          "PublishedUtc": "2021-11-15T15:14:07.4742265Z",
-          "CreatedUtc": "2021-11-15T15:14:07.4697942Z",
-          "Owner": "4v9jzfvgjv0mt544es6jmd85dc",
-          "Author": "admin",
+          "ModifiedUtc": null,
+          "PublishedUtc": null,
+          "CreatedUtc": null,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
           "Form": {},
           "RadarFormPart": {
             "InitialValues": null,
@@ -1254,16 +1254,16 @@
         },
         {
           "ContentItemId": "4k1ex2mpprg6csqsmz2f0dm3cr",
-          "ContentItemVersionId": "4fb821q40ga6y3nnbbddqvzdw5",
+          "ContentItemVersionId": null,
           "ContentType": "Form",
           "DisplayText": "Event Form",
           "Latest": true,
           "Published": true,
-          "ModifiedUtc": "2021-11-19T13:17:37.1106608Z",
-          "PublishedUtc": "2021-11-19T13:17:37.1183419Z",
-          "CreatedUtc": "2021-11-19T13:17:37.1106608Z",
-          "Owner": "4v9jzfvgjv0mt544es6jmd85dc",
-          "Author": "admin",
+          "ModifiedUtc": null,
+          "PublishedUtc": null,
+          "CreatedUtc": null,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
           "Form": {},
           "RadarFormPart": {
             "Id": null,
@@ -1302,16 +1302,16 @@
         },
         {
           "ContentItemId": "4m3x6bk94sjgerz76ve9fzc3dm",
-          "ContentItemVersionId": "4fvr43zbrvn9w5h4kb82qkwr5d",
+          "ContentItemVersionId": null,
           "ContentType": "Form",
           "DisplayText": "Artifact Form",
           "Latest": true,
           "Published": true,
-          "ModifiedUtc": "2021-11-19T16:42:17.8427676Z",
-          "PublishedUtc": "2021-11-19T16:42:17.8490225Z",
-          "CreatedUtc": "2021-11-19T16:42:17.8427676Z",
-          "Owner": "4v9jzfvgjv0mt544es6jmd85dc",
-          "Author": "admin",
+          "ModifiedUtc": null,
+          "PublishedUtc": null,
+          "CreatedUtc": null,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
           "Form": {},
           "RadarFormPart": {
             "Id": null,
@@ -1350,16 +1350,16 @@
         },
         {
           "ContentItemId": "48g1mk0np1jes448xwzrcwb54t",
-          "ContentItemVersionId": "453t4n8cq09zsywb07asetk6wk",
+          "ContentItemVersionId": null,
           "ContentType": "Form",
           "DisplayText": "Community Form",
           "Latest": true,
           "Published": true,
-          "ModifiedUtc": "2021-11-23T17:12:50.3531766Z",
-          "PublishedUtc": "2021-11-23T17:12:50.3769671Z",
-          "CreatedUtc": "2021-11-18T20:06:26.9297099Z",
-          "Owner": "4v9jzfvgjv0mt544es6jmd85dc",
-          "Author": "admin",
+          "ModifiedUtc": null,
+          "PublishedUtc": null,
+          "CreatedUtc": null,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
           "Form": {},
           "RadarFormPart": {
             "Id": null,
@@ -1398,16 +1398,16 @@
         },
         {
           "ContentItemId": "4m040838spwxq376q0sb7crm49",
-          "ContentItemVersionId": "4grmnymz7af966cdm7t2228hw2",
+          "ContentItemVersionId": null,
           "ContentType": "Form",
           "DisplayText": "Proposal Form",
           "Latest": true,
           "Published": true,
-          "ModifiedUtc": "2021-11-23T18:23:31.4642531Z",
-          "PublishedUtc": "2021-11-23T18:23:31.4710431Z",
-          "CreatedUtc": "2021-11-18T17:11:27.5051683Z",
-          "Owner": "4v9jzfvgjv0mt544es6jmd85dc",
-          "Author": "admin",
+          "ModifiedUtc": null,
+          "PublishedUtc": null,
+          "CreatedUtc": null,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
           "Form": {},
           "RadarFormPart": {
             "Id": null,
@@ -1446,16 +1446,16 @@
         },
         {
           "ContentItemId": "4ebx0pggyy1h2x5f19gfcnx1nc",
-          "ContentItemVersionId": "4b71z1k9m2m85v7tyc91sf5k4v",
+          "ContentItemVersionId": null,
           "ContentType": "Form",
           "DisplayText": "Project Form",
           "Latest": true,
           "Published": true,
-          "ModifiedUtc": "2021-11-24T13:03:32.9264888Z",
-          "PublishedUtc": "2021-11-24T13:03:32.9501966Z",
-          "CreatedUtc": "2021-11-16T17:09:11.1125301Z",
-          "Owner": "4v9jzfvgjv0mt544es6jmd85dc",
-          "Author": "admin",
+          "ModifiedUtc": null,
+          "PublishedUtc": null,
+          "CreatedUtc": null,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
           "Form": {},
           "RadarFormPart": {
             "Id": null,
@@ -1494,16 +1494,16 @@
         },
         {
           "ContentItemId": "4qmtfht0t4v7fsf0pkbsc0bzda",
-          "ContentItemVersionId": "4pdhh3bvsarm5793hze7xqf9n6",
+          "ContentItemVersionId": null,
           "ContentType": "VueForm",
           "DisplayText": "Proposal Form",
           "Latest": true,
           "Published": true,
-          "ModifiedUtc": "2021-11-29T15:36:55.5032441Z",
-          "PublishedUtc": "2021-11-29T15:36:55.5160492Z",
-          "CreatedUtc": "2021-11-23T17:33:17.9347373Z",
-          "Owner": "4v9jzfvgjv0mt544es6jmd85dc",
-          "Author": "admin",
+          "ModifiedUtc": null,
+          "PublishedUtc": null,
+          "CreatedUtc": null,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
           "TitlePart": {
             "Title": "Proposal Form"
           },
@@ -1518,7 +1518,7 @@
               "Value": false
             },
             "Debug": {
-              "Value": true
+              "Value": false
             },
             "DisabledHtml": {
               "Html": ""
@@ -1815,16 +1815,16 @@
         },
         {
           "ContentItemId": "4db4f2rx87mdbtts4414ybcn4m",
-          "ContentItemVersionId": "46vtz7gn48c12y29gcgd5tng4h",
+          "ContentItemVersionId": null,
           "ContentType": "VueForm",
           "DisplayText": "Community Form",
           "Latest": true,
           "Published": true,
-          "ModifiedUtc": "2021-11-29T15:38:17.7524413Z",
-          "PublishedUtc": "2021-11-29T15:38:17.7622949Z",
-          "CreatedUtc": "2021-11-16T17:07:14.8079178Z",
-          "Owner": "4v9jzfvgjv0mt544es6jmd85dc",
-          "Author": "admin",
+          "ModifiedUtc": null,
+          "PublishedUtc": null,
+          "CreatedUtc": null,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
           "TitlePart": {
             "Title": "Community Form"
           },
@@ -1839,7 +1839,7 @@
               "Value": false
             },
             "Debug": {
-              "Value": true
+              "Value": false
             },
             "DisabledHtml": {
               "Html": ""
@@ -2188,16 +2188,16 @@
         },
         {
           "ContentItemId": "4wrjjj5400ecftxxv82b2vqcxe",
-          "ContentItemVersionId": "4pqh7cpyy4r420xzesdc8ccmnz",
+          "ContentItemVersionId": null,
           "ContentType": "VueForm",
           "DisplayText": "Project Form",
           "Latest": true,
           "Published": true,
-          "ModifiedUtc": "2021-11-29T15:38:48.1269902Z",
-          "PublishedUtc": "2021-11-29T15:38:48.1357826Z",
-          "CreatedUtc": "2021-11-23T16:53:03.4768447Z",
-          "Owner": "4v9jzfvgjv0mt544es6jmd85dc",
-          "Author": "admin",
+          "ModifiedUtc": null,
+          "PublishedUtc": null,
+          "CreatedUtc": null,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
           "TitlePart": {
             "Title": "Project Form"
           },
@@ -2212,7 +2212,7 @@
               "Value": false
             },
             "Debug": {
-              "Value": true
+              "Value": false
             },
             "DisabledHtml": {
               "Html": ""
@@ -2522,16 +2522,16 @@
         },
         {
           "ContentItemId": "41ewd04a6rabq7f16d69zsfsnv",
-          "ContentItemVersionId": "4fksyp5ephhxaxz5b3ap87av45",
+          "ContentItemVersionId": null,
           "ContentType": "VueForm",
           "DisplayText": "Event Form",
           "Latest": true,
           "Published": true,
-          "ModifiedUtc": "2021-11-29T15:41:13.4604901Z",
-          "PublishedUtc": "2021-11-29T15:41:13.4689734Z",
-          "CreatedUtc": "2021-11-19T13:10:39.9863114Z",
-          "Owner": "4v9jzfvgjv0mt544es6jmd85dc",
-          "Author": "admin",
+          "ModifiedUtc": null,
+          "PublishedUtc": null,
+          "CreatedUtc": null,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
           "TitlePart": {
             "Title": "Event Form"
           },
@@ -2546,7 +2546,7 @@
               "Value": false
             },
             "Debug": {
-              "Value": true
+              "Value": false
             },
             "DisabledHtml": {
               "Html": ""
@@ -2934,16 +2934,16 @@
         },
         {
           "ContentItemId": "4g0wbrpyppkqd3z1kjbv5jbdnj",
-          "ContentItemVersionId": "4q05787rhbhrzxtayvbkjw1j47",
+          "ContentItemVersionId": null,
           "ContentType": "VueForm",
           "DisplayText": "Topic Form",
           "Latest": true,
           "Published": true,
-          "ModifiedUtc": "2021-11-29T15:41:39.7125342Z",
-          "PublishedUtc": "2021-11-29T15:41:39.7190104Z",
-          "CreatedUtc": "2021-11-15T15:11:55.7612707Z",
-          "Owner": "4v9jzfvgjv0mt544es6jmd85dc",
-          "Author": "admin",
+          "ModifiedUtc": null,
+          "PublishedUtc": null,
+          "CreatedUtc": null,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
           "TitlePart": {
             "Title": "Topic Form"
           },
@@ -3138,16 +3138,16 @@
         },
         {
           "ContentItemId": "4kv0zcjsw40a61nbhasd4tkkc8",
-          "ContentItemVersionId": "43ypd3fe3j9gx4hpsgtkfkfech",
+          "ContentItemVersionId": null,
           "ContentType": "VueForm",
           "DisplayText": "Artifact Form",
           "Latest": true,
           "Published": true,
-          "ModifiedUtc": "2021-11-29T15:41:41.1530193Z",
-          "PublishedUtc": "2021-11-29T15:41:41.1625246Z",
-          "CreatedUtc": "2021-11-19T16:41:01.9781079Z",
-          "Owner": "4v9jzfvgjv0mt544es6jmd85dc",
-          "Author": "admin",
+          "ModifiedUtc": null,
+          "PublishedUtc": null,
+          "CreatedUtc": null,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
           "TitlePart": {
             "Title": "Artifact Form"
           },
@@ -3162,7 +3162,7 @@
               "Value": false
             },
             "Debug": {
-              "Value": true
+              "Value": false
             },
             "DisabledHtml": {
               "Html": ""

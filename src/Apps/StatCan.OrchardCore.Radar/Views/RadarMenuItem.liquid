@@ -1,12 +1,6 @@
 {% assign menuItem = Model.Properties.Model %}
-{% assign isExternal =  menuItem.Content.LinkMenuItemPart.Url contains "http" %}
-{% if isExternal == false %}
-  {% assign menuUrl = "~/" | append: menuItem.Content.LinkMenuItemPart.Url | href %}
-{% else %}
-{% assign menuUrl = menuItem.Content.LinkMenuItemPart.Url | href %}
-{% endif %}
 
-<v-list-item href="{{ menuUrl }}">
+<v-list-item href="{{ menuItem.Content.LinkMenuItemPart.Url | href  }}">
   <v-list-item-icon>
     <v-icon color="black">{{ menuItem.Content.CommonMenuItemPart.IconName.Text }}</v-icon>
   </v-list-item-icon>
