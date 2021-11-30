@@ -14,7 +14,7 @@ namespace StatCan.OrchardCore.Hackathon.Indexes
         {
             CreateHackathonItemsIndex();
             CreateHackathonUsersIndex();
-
+            CreateHackathonAvgScoresIndex();
             return 1;
         }
 
@@ -83,6 +83,15 @@ namespace StatCan.OrchardCore.Hackathon.Indexes
                     session.Save(user);
                 }
             });
+        }
+
+        private void CreateHackathonAvgScoresIndex() {
+            SchemaBuilder.CreateMapIndexTable(typeof(HackathonAvgScoresIndex), table => table
+                .Column<string>("ContentItemId", c => c.WithLength(26))
+                .Column<int>("Score", c => c.Nullable())
+                .Column<int>("AvgScore", c => c.Nullable()),
+                null
+            );
         }
     }
 }
