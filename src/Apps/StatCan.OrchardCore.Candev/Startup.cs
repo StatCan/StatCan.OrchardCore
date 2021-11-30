@@ -23,6 +23,7 @@ namespace StatCan.OrchardCore.Candev
             services.AddScoped<IDataMigration, IndexMigrations>();
             services.AddScoped<IScopedIndexProvider, CandevItemsIndexProvider>();
             services.AddSingleton<IIndexProvider, CandevUsersIndexProvider>();
+            services.AddSingleton<IIndexProvider, HackathonAvgScoresIndexProvider>();
 
             services.AddScoped<ICandevService, CandevService>();
             services.AddScoped<IDataMigration, Migrations>();
