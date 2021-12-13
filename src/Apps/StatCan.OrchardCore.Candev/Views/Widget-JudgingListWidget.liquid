@@ -16,7 +16,7 @@
           {% for team in teams %}
             <v-container class="pt-5 pl-5">
               <v-row align="center">
-                <v-btn class="m-5" outlined text href="{{ '~/ScoringPage' | href }}?teamId={{team.ContentItemId}}">Score</v-btn> 
+                <v-btn class="m-5" outlined text href="score">Score</v-btn> 
                 <v-subheader >{{ "Team" | t }} {{ team.DisplayText }}</v-subheader> 
               </v-row>
             </v-container>

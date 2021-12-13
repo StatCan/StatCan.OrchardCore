@@ -10,6 +10,8 @@ namespace StatCan.OrchardCore.Candev.Indexes
     {
         public string TeamContentItemId { get; set; }
         public double Score { get; set; }
+        public double Count { get; set; }
+        public double Average { get; set; }
     }
     public class HackathonAvgScoresIndexProvider : IndexProvider<ContentItem>
     {
@@ -22,26 +24,34 @@ namespace StatCan.OrchardCore.Candev.Indexes
                     {
                         return new HackathonAvgScoresIndex()
                         {
-                            TeamContentItemId = ""
+                            TeamContentItemId = "",
                         };
                     }
 
                     return new HackathonAvgScoresIndex()
                     {
                         TeamContentItemId = contentItem.Content.Score.Team.ContentItemIds.First,
-                        Score = Convert.ToDouble(contentItem.Content.Score.Score.Value)
+                        Score = contentItem.Content.Score.Score.Value,
+                        Count = 1,
+                        Average = 1
                     };
                 })
                 .Group(index => index.TeamContentItemId)
+                
                 .Reduce(group => new HackathonAvgScoresIndex()
                 {
                     TeamContentItemId = group.Key,
-                    Score = group.Average(x => x.Score)
+                    Score = group.Sum(x => x.Score),
+                    Count = group.Sum(x => x.Count),
+                    Average = group.Average(x => x.Score),
                 })
                 .Delete((index, map) =>
                 {
-                    index.Score = map.Average(x => x.Score);
+                    index.Score -= map.Sum(x => x.Score);
+                    index.Count -= map.Sum(x => x.Count);
+                    index.Average -= map.Average(x => x.Score);
                     return index.Score > 0 ? index : null;
+                    
                 });
         }
     }
