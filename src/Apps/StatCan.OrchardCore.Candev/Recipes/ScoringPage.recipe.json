@@ -55,7 +55,7 @@
               "Text": null
             },
             "Template": {
-              "Text": "{% assign user = User | user_id | users_by_id %}\r\n{% assign userId = User | user_id %}\r\n\r\n<v-container fluid>\r\n  <v-card-text>\r\n    <v-row justify=\"center\">\r\n        <v-col cols=\"8\">       \r\n          <v-radio-group name=\"score\" v-model=\"score\" row>\r\n                <v-radio v-for=\"n in 11\" :key=\"n\" :label=\"`${n - 1}`\" :value=\"`${n - 1}`\" />\r\n\t\t  </v-radio-group>        \r\n        </v-col>\r\n        <v-col cols=\"8\">\r\n         \t  <v-textarea name=\"comment\" v-model=\"comment\" filled=\"filled\" label=\"{{ \"commentLabel\" | localize }}\" rows=\"5\"/>\r\n        </v-col>\r\n        <v-col cols=\"8\">\r\n          <v-alert type=\"success\" v-if=\"form.successMessage\">\r\n            {% raw %}{{ form.successMessage }}{% endraw %}\r\n          </v-alert>\r\n          <v-alert type=\"error\" v-if=\"form.serverValidationMessage\">\r\n            {% raw %}{{ form.serverValidationMessage[0] }}{% endraw %}\r\n          </v-alert>\r\n        </v-col>\r\n        <v-col cols=\"8\">\r\n    \t  <v-btn type=\"submit\" depressed block @click=\"formHandleSubmit\" :disabled=\"form.submitting\">{{ \"submitLabel\" | localize }}</v-btn>\r\n        </v-col>\r\n    </v-row>\r\n  </v-card-text>\r\n  </v-container>\r\n"
+              "Text": "{% assign user = User | user_id | users_by_id %}\r\n{% assign userId = User | user_id %}\r\n{% assign team = Request.Query['teamId'] | content_item_id %}\r\n\r\n<v-container fluid>\r\n  <v-row justify=\"center\">\r\n    <v-col cols=\"8\">\r\n      <v-card>\r\n        <v-card-title>\r\n          {{ team }}\r\n        </v-card-title>\r\n        <v-card-text>\r\n          <v-row justify=\"center\">                 \r\n            <v-radio-group name=\"score\" v-model=\"score\" row>\r\n              <v-radio v-for=\"n in 11\" :key=\"n\" :label=\"`${n - 1}`\" :value=\"`${n - 1}`\" />\r\n  \t\t    </v-radio-group>                 \r\n          </v-row>\r\n          <v-col>\r\n            <v-alert type=\"success\" v-if=\"form.successMessage\">\r\n              {% raw %}{{ form.successMessage }}{% endraw %}\r\n            </v-alert>\r\n            <v-alert type=\"error\" v-if=\"form.serverValidationMessage\">\r\n              {% raw %}{{ form.serverValidationMessage[0] }}{% endraw %}\r\n            </v-alert>\r\n          </v-col>\r\n        </v-card-text>\r\n        <v-card-actions>\r\n      \t  <v-btn type=\"submit\" depressed block @click=\"formHandleSubmit\" :disabled=\"form.submitting\">{{ \"submitLabel\" | localize }}</v-btn>\r\n        </v-card-actions>\r\n      </v-card>\r\n    </v-col>\r\n  </v-row>\r\n</v-container>\r\n"
             }
           },
           "VueFormScripts": {
@@ -66,10 +66,10 @@
               "Text": "var data = requestFormAsJsonObject();\r\nvar localizedText = getLocalizedTextValues(getFormContentItem());\r\n\r\nif(data.score == \"\") {\r\n  addError('serverValidationMessage', localizedText.scoreRequiredError);\r\n}"
             },
             "OnSubmitted": {
-              "Text": "var data = requestFormAsJsonObject();\r\n\r\nvar item = createContentItem(\"Score\", true, {\r\n  \"Score\": {\r\n    \"Score\": {\r\n      \"Value\": data.score\r\n    },\r\n    \"Judge\": {\r\n      \"UserIds\": [\r\n        data.judge\r\n      ]\r\n    },\r\n    \"Team\": {\r\n      \"ContentItemIds\": [\r\n        data.team\r\n      ]\r\n    },\r\n    \"Comment\": {\r\n      \"Text\": data.comment\r\n    }\r\n  }\r\n});\r\n\r\n"
+              "Text": "var data = requestFormAsJsonObject();\r\n\r\nvar item = createContentItem(\"Score\", true, {\r\n  \"Score\": {\r\n    \"Score\": {\r\n      \"Value\": data.score\r\n    },\r\n    \"Round\": {\r\n      \"Value\": data.round\r\n    },\r\n    \"Judge\": {\r\n      \"UserIds\": [\r\n        data.judge\r\n      ]\r\n    },\r\n    \"Team\": {\r\n      \"ContentItemIds\": [\r\n        data.team\r\n      ]\r\n    },\r\n  },\r\n  \"JudgeType\": {\r\n    \"Type\": {\r\n      \"Values\": [\r\n        data.judgeType\r\n      ]\r\n    }\r\n  }\r\n});\r\n\r\n"
             },
             "ComponentOptions": {
-              "Text": "{% assign userId = User | user_id %}\r\n\r\n{\r\n  data: () => ({\r\n    score: \"\",\r\n\tcomment: \"\", \r\n    judge: \"{{ userId }}\",\r\n    team: \"{{ Request.Query['teamId'] }}\"\r\n  })\r\n}"
+              "Text": "{% assign userId = User | user_id %}\r\n{% assign user = User | user_id | users_by_id %}\r\n{% assign round = Site.Properties.HackathonCustomSettings.JudgingCustomSettings.IsFinalRound.Value %}\r\n{% assign judgeType = user.Properties.Judge.JudgeType.Type.Values | first %}\r\n\r\n{\r\n  data: () => ({\r\n    score: \"\",\r\n    judge: \"{{ userId }}\",\r\n    team: \"{{ Request.Query['teamId'] }}\",\r\n    round: {% if round %}\"2\"{% else %}\"1\"{% endif %},\r\n    judgeType: \"{{ judgeType }}\"\r\n  })\r\n}"
             }
           },
           "LocalizedTextPart": {
@@ -105,11 +105,11 @@
                 "LocalizedItems": [
                   {
                     "Culture": "fr",
-                    "Value": "Envoyer"
+                    "Value": "Soumettre"
                   },
                   {
                     "Culture": "en",
-                    "Value": "Send"
+                    "Value": "Submit"
                   }
                 ]
               }

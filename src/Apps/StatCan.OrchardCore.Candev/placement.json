@@ -22,6 +22,20 @@
           "contentType": [
               "HackathonCustomSettings"
           ]
+      },
+      {
+          "differentiator": "JudgingCustomSettings-IsFinalRound",
+          "place" : "Parts:1#Judging;3",
+          "contentType": [
+              "HackathonCustomSettings"
+          ]
+      },
+      {
+          "differentiator": "TeamCustomSettings-PartialChallenge",
+          "place" : "Parts:2#Team;4",
+          "contentType": [
+              "HackathonCustomSettings"
+          ]
       }
     ]
 }
