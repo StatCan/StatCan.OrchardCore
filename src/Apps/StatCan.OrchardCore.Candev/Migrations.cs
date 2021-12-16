@@ -90,6 +90,16 @@ namespace StatCan.OrchardCore.Candev
             );
 
             _contentDefinitionManager.AlterPartDefinition("JudgingCustomSettings", part => part
+                .WithField("IsFinalRound", field => field
+                    .OfType("BooleanField")
+                    .WithDisplayName("Is final round")
+                    .WithEditor("Switch")
+                    .WithPosition("0")
+                    .WithSettings(new BooleanFieldSettings
+                    {
+                        Label = "True when it's the final round of judging",
+                    })
+                )
                 .WithField("JudgingInProgress", field => field
                     .OfType("BooleanField")
                     .WithDisplayName("Judging in progress")
@@ -588,6 +598,19 @@ namespace StatCan.OrchardCore.Candev
                     .WithSettings(new BooleanFieldSettings
                     {
                         Label = "Show partial challenge to teams (no background information)",
+                    })
+                )
+            );
+
+            _contentDefinitionManager.AlterPartDefinition("TeamCustomSettings", part => part
+                .WithField("IsFinalRound", field => field
+                    .OfType("BooleanField")
+                    .WithDisplayName("Is final round")
+                    .WithEditor("Switch")
+                    .WithPosition("0")
+                    .WithSettings(new BooleanFieldSettings
+                    {
+                        Label = "True when it's the final round of judging",
                     })
                 )
             );
