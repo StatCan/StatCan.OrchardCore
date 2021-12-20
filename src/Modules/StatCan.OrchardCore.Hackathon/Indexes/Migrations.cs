@@ -13,7 +13,7 @@ namespace StatCan.OrchardCore.Hackathon.Indexes
         public int Create()
         {
             CreateHackathonItemsIndex();
-            CreateHackathonUsersIndex();
+            CreateHackathonUsersIndex();          
 
             return 1;
         }
