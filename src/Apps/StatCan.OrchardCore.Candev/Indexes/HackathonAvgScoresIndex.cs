@@ -8,10 +8,9 @@ namespace StatCan.OrchardCore.Candev.Indexes
 {
     public class HackathonAvgScoresIndex : ReduceIndex
     {
-        public string TeamContentItemId { get; set; }
+        public string ScoreIndexId { get; set; }
         public double Score { get; set; }
         public double Count { get; set; }
-        public double Average { get; set; }
     }
     public class HackathonAvgScoresIndexProvider : IndexProvider<ContentItem>
     {
@@ -20,38 +19,36 @@ namespace StatCan.OrchardCore.Candev.Indexes
             context.For<HackathonAvgScoresIndex>()
                 .Map(contentItem =>
                 {
-                    if (contentItem.ContentType != "Score")
+                    if (contentItem.ContentType == "Score")
                     {
-                        return new HackathonAvgScoresIndex()
+                        if (contentItem.Content.Score.Round.Value != 1)
                         {
-                            TeamContentItemId = "",
-                        };
+                            return new HackathonAvgScoresIndex()
+                            {
+                                ScoreIndexId = contentItem.Content.Score.Team.ContentItemIds.First.ToString() + "_" + contentItem.Content.JudgeType.Type.Values.First.ToString(),
+                                Score = contentItem.Content.Score.Score.Value,
+                                Count = 1
+                            };
+                        }
                     }
 
                     return new HackathonAvgScoresIndex()
                     {
-                        TeamContentItemId = contentItem.Content.Score.Team.ContentItemIds.First,
-                        Score = contentItem.Content.Score.Score.Value,
-                        Count = 1,
-                        Average = 1
+                        ScoreIndexId = "",
                     };
                 })
-                .Group(index => index.TeamContentItemId)
-                
+                .Group(index => index.ScoreIndexId)           
                 .Reduce(group => new HackathonAvgScoresIndex()
                 {
-                    TeamContentItemId = group.Key,
+                    ScoreIndexId = group.Key,
                     Score = group.Sum(x => x.Score),
                     Count = group.Sum(x => x.Count),
-                    Average = group.Average(x => x.Score),
                 })
                 .Delete((index, map) =>
                 {
                     index.Score -= map.Sum(x => x.Score);
                     index.Count -= map.Sum(x => x.Count);
-                    index.Average -= map.Average(x => x.Score);
-                    return index.Score > 0 ? index : null;
-                    
+                    return index.Score > 0 ? index : null;                 
                 });
         }
     }

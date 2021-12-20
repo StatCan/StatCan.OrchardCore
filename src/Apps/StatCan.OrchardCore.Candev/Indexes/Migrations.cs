@@ -92,10 +92,9 @@ namespace StatCan.OrchardCore.Candev.Indexes
         private void CreateHackathonAvgScoresIndex()
         {
             SchemaBuilder.CreateReduceIndexTable(typeof(HackathonAvgScoresIndex), table => table
-                .Column<string>("TeamContentItemId", c => c.WithLength(26))
+                .Column<string>("ScoreIndexId", c => c.WithLength(26))
                 .Column<double>("Score")
-                .Column<double>("Count")
-                .Column<double>("Average"),
+                .Column<double>("Count"),
                 null
             );
         }
