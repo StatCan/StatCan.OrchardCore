@@ -287,7 +287,8 @@ describe("Candev Tests", function() {
     cy.loginAs(tenant.prefix, 'Adam', password);
     cy.visit(`${tenant.prefix}/Contents/ContentItems/${contentIdScoringForm}?teamId=${scoringTeamId}`)
   
-    cy.get('input[value=4]').click({force:true});
+    cy.get('input[value=4]').click({force:true, multiple:true});
+  
   
     cy.get('button[type=submit]').click();
     
