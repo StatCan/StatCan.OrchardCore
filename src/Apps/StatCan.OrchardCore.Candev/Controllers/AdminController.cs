@@ -120,5 +120,19 @@ namespace StatCan.OrchardCore.Candev.Controllers
             _notifier.Success(H["Checked-In participants have been selected."]);
             return RedirectToAction("Index");
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EliminateTeams()
+        {
+            if (!HttpContext.User.IsInRole("Administrator"))
+            {
+                return Unauthorized();
+            }
+
+            await _candevService.EliminateTeams();
+            _notifier.Success(H["Teams have been eliminated (In the running set to false)"]);
+            return RedirectToAction("Index");
+        }
     }
 }

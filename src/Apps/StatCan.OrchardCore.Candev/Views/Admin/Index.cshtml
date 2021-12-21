@@ -46,5 +46,17 @@
         @T["Check-in"]
       </a>
     </div>
+    <div class="mr-1" id="EliminateTeams-button">
+      <a asp-action="EliminateTeams" asp-controller="Admin" asp-route-area="StatCan.OrchardCore.Candev"
+          role="button" class="btn btn-primary btn-md"
+          data-title="@T["Eliminate Teams"]"
+          data-message="@T["Are you sure you want to run the Eliminate Teams process?"]"
+          data-ok="@T["Yes"]" 
+          data-cancel="@T["No="]" 
+          data-ok-class="btn-primary"
+          itemprop="RemoveUrl UnsafeUrl">
+        @T["Eliminate Teams"]
+      </a>
+    </div>
   </div>
 </div>
