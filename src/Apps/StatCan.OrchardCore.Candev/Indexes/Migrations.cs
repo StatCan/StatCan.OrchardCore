@@ -16,7 +16,7 @@ namespace StatCan.OrchardCore.Candev.Indexes
             CreateCandevUsersIndex();
             CreateHackathonAvgScoresIndex();
 
-            return 2;
+            return 3;
         }
 
         private void CreateCandevItemsIndex()
@@ -106,6 +106,13 @@ namespace StatCan.OrchardCore.Candev.Indexes
             CreateHackathonAvgScoresIndex();
 
             return 2;
+        }
+
+        public int UpdateFrom2()
+        {
+            CreateHackathonAvgScoresIndex();
+
+            return 3;
         }
     }
 }
