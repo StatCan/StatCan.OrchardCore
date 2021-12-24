@@ -57,9 +57,12 @@
             <v-card-text>
               <h3>{{ "Statement" | t }}</h3> 
               <v-flex class="pt-2"><span class="subtitle-2">{{ challengeSelected.ContentItem.Content.Challenge.Statement.Text | shortcode }}</span></v-flex>
-              <h3>{{ "Potential Datasets" | t }}</h3>
-              <v-flex class="pt-2"><span class="subtitle-2">{{ challengeSelected.ContentItem.Content.Challenge.Datasets.Text | shortcode }}</span></v-flex>
               {% if Site.Properties.HackathonCustomSettings.TeamCustomSettings.PartialChallenge.Value == false %}
+                <h3>{{ "Potential Datasets" | t }}</h3>
+                <v-flex class="pt-2"><span class="subtitle-2">{{ challengeSelected.ContentItem.Content.Challenge.Datasets.Text | shortcode }}</span></v-flex>
+                {% for dataset in challengeSelected.ContentItem.Content.Challenge.DatasetsFiles.Paths %}
+                  <v-flex class="pt-2"><v-btn href="{{ dataset | asset_url }}" target="_blank">{{ dataset }}</v-btn></v-flex>
+                {% endfor %}
                 <h3>{{ "Background Information" | t }}</h3>
                 <v-flex class="pt-2"><span class="subtitle-2">{{ challengeSelected.ContentItem.Content.Challenge.BackgroundInformation.Text | shortcode }}</span></v-flex>
               {% endif %}
@@ -67,9 +70,6 @@
               <v-flex class="pt-2"><span class="subtitle-2">{{ challengeSelected.ContentItem.Content.Challenge.OrganizationNameEn.Text | shortcode }}</span></v-flex>
               <h3>{{ "Mentors" | t }}</h3>
               <v-flex class="pt-2"><span class="subtitle-2">{{ challengeSelected.ContentItem.Content.Challenge.TechnicalMentorName.Text | shortcode }}</span></v-flex>
-              {% for dataset in challengeSelected.ContentItem.Content.Challenge.DatasetsFiles.Paths %}
-                <v-flex class="pt-2"><v-btn href="{{ dataset | asset_url }}" target="_blank">{{ dataset }}</v-btn></v-flex>
-              {% endfor %}
             </v-card-text>
           </v-card>  
         </v-col>
@@ -133,7 +133,7 @@
       </v-row>      
 
     </v-container>
-    {% if isTeamCaptain and isTeamEditable %}
+    {% if isTeamCaptain %}
       <v-col cols="12">
 		{% assign teamEditForm = Content.ContentItemId["4466xex4gkry42s4n9x4ksyywd"] %}
         {{ teamEditForm | shape_build_display | shape_render }}

@@ -223,8 +223,8 @@
           "Schema": "null"
         },
         {
-          "Template": "SELECT * FROM CandevItemsIndex where ContentType ='Score' and TeamContentItemId = '{{teamContentItemId}}' and Owner = '{{owner}}'",
-          "ReturnDocuments": false,
+          "Template": "SELECT DocumentId FROM CandevItemsIndex where ContentType ='Score' and TeamContentItemId = '{{teamContentItemId}}' and Owner = '{{owner}}'",
+          "ReturnDocuments": true,
           "Name": "GetScoreEntry",
           "Source": "Sql",
           "Schema": null

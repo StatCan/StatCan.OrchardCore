@@ -289,7 +289,7 @@ namespace StatCan.OrchardCore.Candev.Services
                 var hacker = hackersWithoutTeams[0];
                 if (n == 0)
                 {
-                    teamId = await CreateTeam();
+                    teamId = await CreateTeam(hacker.UserId);
                     await AddHackerToTeam(teamId, hacker.UserId);
                     n++;
                     hackersWithoutTeams.RemoveAt(0);
@@ -341,11 +341,12 @@ namespace StatCan.OrchardCore.Candev.Services
             return true;
         }
 
-        private async Task<string> CreateTeam()
+        private async Task<string> CreateTeam(string UserId)
         {
             var team = await _contentManager.NewAsync("Team");
             team.DisplayText = randomName();
             await _contentManager.CreateAsync(team, VersionOptions.Published);
+            team.Content.Team.TeamCaptain = JObject.FromObject(new { UserIds = new string[] { UserId } });
             await _contentManager.UpdateAsync(team);
             return team.ContentItemId;
         }
@@ -478,7 +479,7 @@ namespace StatCan.OrchardCore.Candev.Services
                 {
                     foreach (var topic in topics)
                     {
-                        if (casesCount.Where(x => x.Key == topic.ToString()).Select(x => x.Value).FirstOrDefault() < maxCases)
+                        if (casesCount.Where(x => x.Key == topic.ContentItemId).Select(x => x.Value).FirstOrDefault() < maxCases)
                         {
                             var challenge = topics.Where(x => x.ContentItemId == topic.ContentItemId.ToString()).Select(x => x.Content.Topic.Challenge).FirstOrDefault();
                             team.Content.Team.Challenge = challenge;
@@ -642,10 +643,10 @@ namespace StatCan.OrchardCore.Candev.Services
 
                 foreach(var teamScore in teamsScores)
                 {
-                    if(teamScore.Value < highestScore)
+                    if(teamScore.Value == highestScore)
                     {
                         var team = teams.Where(x => x.ContentItemId == teamScore.Key).FirstOrDefault();
-                        team.Content.Team.InTheRunning = JObject.FromObject(new { Value = false });
+                        team.Content.Team.InTheRunning = JObject.FromObject(new { Value = true });
                         await _contentManager.UpdateAsync(team);
                     }
                 }            

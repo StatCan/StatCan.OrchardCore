@@ -351,9 +351,9 @@ namespace StatCan.OrchardCore.Candev
                     .WithDisplayName("Judge")
                     .WithPosition("7")
                 )
-                .WithField("WorshopPresenter", field => field
+                .WithField("WorkshopPresenter", field => field
                     .OfType("BooleanField")
-                    .WithDisplayName("Worshop Presenter")
+                    .WithDisplayName("Workshop Presenter")
                     .WithPosition("2")
                 )
                 .WithField("TechnicalAdvisor", field => field
@@ -544,12 +544,12 @@ namespace StatCan.OrchardCore.Candev
             _contentDefinitionManager.AlterPartDefinition("Topic", part => part
                 .WithField("NameEn", field => field
                     .OfType("TextField")
-                    .WithDisplayName("Name")
+                    .WithDisplayName("NameEn")
                     .WithPosition("0")
                 )
                 .WithField("NameFr", field => field
                     .OfType("TextField")
-                    .WithDisplayName("Name")
+                    .WithDisplayName("NameFr")
                     .WithPosition("1")
                 )
                 .WithField("Challenge", field => field
@@ -618,9 +618,9 @@ namespace StatCan.OrchardCore.Candev
             return 2;
         }
 
-        public int UpdateFrom2()
+        public int UpdateFrom3()
         {
-            _contentDefinitionManager.AlterPartDefinition("TeamCustomSettings", part => part
+            _contentDefinitionManager.AlterPartDefinition("JudgingCustomSettings", part => part
                 .WithField("IsFinalRound", field => field
                     .OfType("BooleanField")
                     .WithDisplayName("Is final round")
@@ -633,7 +633,7 @@ namespace StatCan.OrchardCore.Candev
                 )
             );
 
-            return 3;
+            return 4;
         }
     }
 }
