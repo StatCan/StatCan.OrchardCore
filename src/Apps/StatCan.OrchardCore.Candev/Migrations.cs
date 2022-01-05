@@ -36,7 +36,7 @@ namespace StatCan.OrchardCore.Candev
             await _recipeMigrator.ExecuteAsync("roles.recipe.json", this);
             await _recipeMigrator.ExecuteAsync("role-judge.recipe.json", this);
 
-            return 3;
+            return 2;
         }
 
         private void CreateHackathonCustomSetings()
@@ -602,24 +602,6 @@ namespace StatCan.OrchardCore.Candev
                 )
             );
 
-            _contentDefinitionManager.AlterPartDefinition("TeamCustomSettings", part => part
-                .WithField("IsFinalRound", field => field
-                    .OfType("BooleanField")
-                    .WithDisplayName("Is final round")
-                    .WithEditor("Switch")
-                    .WithPosition("0")
-                    .WithSettings(new BooleanFieldSettings
-                    {
-                        Label = "True when it's the final round of judging",
-                    })
-                )
-            );
-
-            return 2;
-        }
-
-        public int UpdateFrom3()
-        {
             _contentDefinitionManager.AlterPartDefinition("JudgingCustomSettings", part => part
                 .WithField("IsFinalRound", field => field
                     .OfType("BooleanField")
@@ -633,7 +615,7 @@ namespace StatCan.OrchardCore.Candev
                 )
             );
 
-            return 4;
+            return 2;
         }
     }
 }
