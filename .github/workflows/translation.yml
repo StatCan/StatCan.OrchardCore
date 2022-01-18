@@ -43,7 +43,7 @@ jobs:
       run: |
         cd ./translation_script
         npm install
-        node po-gtranslator.js --project_id=oc-translation --po_source="/tmp/translation_workdir/extract/StatCan.OrchardCore.Candev.po" --po_dest="${{github.workspace}}/src/StatCan.OrchardCore.Cms.Web/Localization/fr" --lang=fr
+        node po-gtranslator.js --project_id=oc-translation --po_source="/tmp/translation_workdir/extract" --po_dest="${{github.workspace}}/src/StatCan.OrchardCore.Cms.Web/Localization/fr" --lang=fr
     - name: Create Pull Request
       id: cpr
       uses: peter-evans/create-pull-request@v3
