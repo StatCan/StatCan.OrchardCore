@@ -10,6 +10,7 @@
   {% assign isTeamCaptain = team.ContentItem.Content.Team.TeamCaptain.UserIds.first != null and team.ContentItem.Content.Team.TeamCaptain.UserIds.first == user.UserId %}
   {% assign isTeamEditable = Site.Properties.HackathonCustomSettings.TeamCustomSettings.TeamEditable.Value == true %}
   {% assign challengeSelected =  team.ContentItem.Content.Team.Challenge.ContentItemIds | content_item_id | first %}
+  {% assign topicList = Queries.GetItemsForHackathon | query: type: "Topic" %}
   {% assign teamCaptain = team.ContentItem.Content.Team.TeamCaptain.UserIds.first %}
 
   {% if user.Properties.Hacker.Hacker.Team.ContentItemIds.first != null %}
@@ -133,12 +134,37 @@
       </v-row>      
 
     </v-container>
-    {% if isTeamCaptain %}
       <v-col cols="12">
+      {% if isTeamCaptain %}
 		{% assign teamEditForm = Content.ContentItemId["4466xex4gkry42s4n9x4ksyywd"] %}
         {{ teamEditForm | shape_build_display | shape_render }}
+      {% else %}
+        <v-card>
+        <v-card-title>
+          {{ "Topics in your order of interest (only the team captain can order)" | t }} 
+        </v-card-title>
+          <v-card-text>
+            {% if team.Content.Team.Topics.ContentItemIds != null %}
+              {% for topic in team.Content.Team.Topics.ContentItemIds %}
+                {% if Culture.Name == "en" %}
+                  {{topic.Content.Topic.NameEn.Text}}<br>
+                {% else %}
+                  {{topic.Content.Topic.NameFr.Text}}<br>
+                {% endif %}
+              {% endfor %}
+            {% else %}
+              {% for topic in topicList %}
+                  {% if Culture.Name == "en" %}
+                      {{topic.Content.Topic.NameEn.Text}}<br>
+                  {% else %}
+                      {{topic.Content.Topic.NameFr.Text}}<br>
+                  {% endif %}           
+              {% endfor %}
+            {% endif %}
+          </v-card-text>
+        </v-card>
+      {% endif %}
       </v-col>
-    {% endif %}
   {% else %}
     <v-container>
       <v-row justify="center">

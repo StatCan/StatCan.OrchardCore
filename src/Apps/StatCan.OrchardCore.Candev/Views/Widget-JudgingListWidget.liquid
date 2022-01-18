@@ -17,23 +17,25 @@
             <i class="fas fa-signature fa-3x text-muted pt-5 pl-5">{{ 'There are no teams.' | t }}</i>
           {% else %}
             {% for team in teams %}
-              {% assign score = Queries.GetScoreEntry | query: teamContentItemId: team.ContentItemId, owner: userId %}
-              {% if team.ContentItem.Content.Team.Challenge.ContentItemIds.first == user.Properties.Judge.Judge.Challenge.ContentItemIds.first
-                and score.size < 1 %}
-              <v-container class="pt-5 pl-5">
-                <v-row align="center">
-                  <v-btn class="m-5" outlined text href="{{ '~/ScoringPage' | href }}?teamId={{team.ContentItemId}}">Score</v-btn> 
-                  <v-subheader >{{ "Team" | t }} {{ team.DisplayText }}</v-subheader> 
-                </v-row>
-              </v-container>
-              {% elsif team.ContentItem.Content.Team.Challenge.ContentItemIds.first == user.Properties.Judge.Judge.Challenge.ContentItemIds.first
-                and score.size == 1 %}
-              <v-container class="pt-5 pl-5">
-                <v-row align="center">
-                  <v-subheader >{{ "Score: " | t }} {{ score.first.ContentItem.Content.Score.Score.Value }}</v-subheader> 
-                  <v-subheader >{{ "Team" | t }} {{ team.DisplayText }}</v-subheader> 
-                </v-row>
-              </v-container>
+              {% if team.ContentItem.Content.Team.InTheRunning.Value %}
+                {% assign score = Queries.GetScoreEntry | query: teamContentItemId: team.ContentItemId, owner: userId %}
+                {% if team.ContentItem.Content.Team.Challenge.ContentItemIds.first == user.Properties.Judge.Judge.Challenge.ContentItemIds.first
+                  and score.size < 1 %}
+                <v-container class="pt-5 pl-5">
+                  <v-row align="center">
+                    <v-btn class="m-5" outlined text href="{{ '~/ScoringPage' | href }}?teamId={{team.ContentItemId}}">Score</v-btn> 
+                    <v-subheader >{{ "Team" | t }} {{ team.DisplayText }}</v-subheader> 
+                  </v-row>
+                </v-container>
+                {% elsif team.ContentItem.Content.Team.Challenge.ContentItemIds.first == user.Properties.Judge.Judge.Challenge.ContentItemIds.first
+                  and score.size == 1 %}
+                <v-container class="pt-5 pl-5">
+                  <v-row align="center">
+                    <v-subheader >{{ "Score: " | t }} {{ score.ContentItem.Content.Score.Score.Value }}</v-subheader> 
+                    <v-subheader >{{ "Team" | t }} {{ team.DisplayText }}</v-subheader> 
+                  </v-row>
+                </v-container>
+                {% endif %}
               {% endif %}
             {% endfor %}
           {% endif %}
@@ -44,25 +46,27 @@
         <div class="col-6 d-flex flex-column">
           <h2>Team List</h2>
             {% for team in teams %}
-              {% assign score = Queries.GetScoreEntry | query: teamContentItemId: team.ContentItemId, owner: userId %}
-              {% if team.ContentItem.Content.Team.Challenge.ContentItemIds.first == user.Properties.Judge.Judge.Challenge.ContentItemIds.first
-                and team.ContentItem.Content.Team.InTheRunning.Value == true
-                and score.size < 2 %}
-              <v-container class="pt-5 pl-5">
-                <v-row align="center">
-                  <v-btn class="m-5" outlined text href="{{ '~/ScoringPage' | href }}?teamId={{team.ContentItemId}}">Score</v-btn> 
-                  <v-subheader >{{ "Team" | t }} {{ team.DisplayText }}</v-subheader> 
-                </v-row>
-              </v-container>
-              {% elsif team.ContentItem.Content.Team.Challenge.ContentItemIds.first != user.Properties.Judge.Judge.Challenge.ContentItemIds.first
-                and team.ContentItem.Content.Team.InTheRunning.Value == true 
-                and score.size < 1 %}
-              <v-container class="pt-5 pl-5">
-                <v-row align="center">
-                  <v-btn class="m-5" outlined text href="{{ '~/ScoringPage' | href }}?teamId={{team.ContentItemId}}">Score</v-btn> 
-                  <v-subheader >{{ "Team" | t }} {{ team.DisplayText }}</v-subheader> 
-                </v-row>
-              </v-container>
+              {% if team.ContentItem.Content.Team.InTheRunning.Value %}
+                {% assign score = Queries.GetScoreEntry | query: teamContentItemId: team.ContentItemId, owner: userId %}
+                <v-container class="pt-5 pl-5">
+                  <v-row align="center">
+                {% if team.ContentItem.Content.Team.Challenge.ContentItemIds.first == user.Properties.Judge.Judge.Challenge.ContentItemIds.first
+                  and team.ContentItem.Content.Team.InTheRunning.Value == true
+                  and score.size < 2 %}
+                    <v-btn class="m-5" outlined text href="{{ '~/ScoringPage' | href }}?teamId={{team.ContentItemId}}">Score</v-btn> 
+                {% elsif team.ContentItem.Content.Team.Challenge.ContentItemIds.first != user.Properties.Judge.Judge.Challenge.ContentItemIds.first
+                  and team.ContentItem.Content.Team.InTheRunning.Value == true 
+                  and score.size < 1 %}
+                    <v-btn class="m-5" outlined text href="{{ '~/ScoringPage' | href }}?teamId={{team.ContentItemId}}">Score</v-btn> 
+                {% endif %}
+                    {% for result in score %}
+                      {% if result.ContentItem.Content.Score.Round.Value == "2" %}
+                      <v-subheader >{{ "Score: " | t }} {{ result.ContentItem.Content.Score.Score.Value }}</v-subheader> 
+                      {% endif %}
+                    {% endfor %}
+                    <v-subheader >{{ "Team" | t }} {{ team.DisplayText }}</v-subheader> 
+                  </v-row>
+                </v-container>
               {% endif %}
             {% endfor %}
         </div>

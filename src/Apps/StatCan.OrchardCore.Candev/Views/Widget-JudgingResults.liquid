@@ -1,0 +1,179 @@
+{% assign challenges = Queries.GetItemsForHackathon | query: type: "Challenge" %}
+{% assign teams = Queries.GetItemsForHackathon | query: type: "Team" %}
+
+<v-tabs grow show-arrows>
+  {% for challenge in challenges %}
+  	{% if challenge.ContentItem.Content.LocalizationPart.Culture == Culture.Name %}
+      {% if Culture.Name == "fr" %}
+		<v-tab>{{ challenge.ContentItem.Content.Challenge.OrganizationAcronymFr.Text }}</v-tab>
+      {% else %}
+        <v-tab>{{ challenge.ContentItem.Content.Challenge.OrganizationAcronymEn.Text }}</v-tab>
+      {% endif %}
+  	{% endif %}
+  {% endfor %}
+  {% assign challenges = Queries.GetItemsForHackathon | query: type: "Challenge" %}
+
+  {% for challenge in challenges %}
+  	{% if challenge.ContentItem.Content.LocalizationPart.Culture == Culture.Name %}
+      <v-tab-item>
+        <v-row justify="center">
+          <v-col cols="10">
+            <h2 class="mt-2">{{ "Challenge" | t }}</h2>
+              <v-card class="my-2" outlined>
+                <v-card-title>{{ challenge.ContentItem.Content.TitlePart.Title }}</v-card-title>
+                <v-card-text>         
+                  <h3>{{ "Statement" | t }}</h3> 
+                	<div>{{ challenge.ContentItem.Content.Challenge.Statement.Text | raw }}</div>
+                  <h3>{{ "Potential Datasets" | t }}</h3>
+                	<div>{{ challenge.ContentItem.Content.Challenge.Datasets.Text | raw }}</div>
+                  <h3>{{ "Background Information" | t }}</h3>
+                	<div>{{ challenge.ContentItem.Content.Challenge.BackgroundInformation.Text | raw }}</div>
+                  <h3>{{ "Organization" | t }}</h3>
+                  {% if Culture.Name == "fr" %}
+	            	<div>{{ challenge.ContentItem.Content.Challenge.OrganizationNameFr.Text | raw }}</div>
+                  {% else %}
+                    <div>{{ challenge.ContentItem.Content.Challenge.OrganizationNameEn.Text | raw }}</div>
+                  {% endif %}
+                  <h3>{{ "Technical mentor" | t }}</h3>
+                	<div>{{ challenge.ContentItem.Content.Challenge.TechnicalMentorName.Text | raw }}</div>
+                  <h3>{{ "Case specialist" | t }}</h3>
+                	<div>{{ challenge.ContentItem.Content.Challenge.CaseSpecialistName.Text | raw }}</div>
+                </v-card-text>            
+              </v-card>
+
+            <h2>{{ "Solutions" | t }}</h2>
+          {% capture highestScore %}
+          {
+            "teamContentId": "",
+            "score": 0
+          }
+          {% endcapture %}
+          {% for team in teams %}
+            {% if team.ContentItem.Content.Team.Challenge.ContentItemIds.first == challenge.ContentItemId %}
+              {% assign scores = Queries.GetScoresForTeam | query: teamContentItemId: team.ContentItemId %}
+              {% assign highestScorejson = highestScore | jsonparse %}
+              {% capture total %}{{scores[0].ContentItem.Content.Score.Score.Value | plus: scores[1].ContentItem.Content.Score.Score.Value}}{% endcapture %}
+              {% if highestScorejson.score < total %}
+                {% capture highestScore %}
+                {
+                  "teamContentId": "{{team.ContentItemId}}",
+                  "score": {{scores[0].ContentItem.Content.Score.Score.Value | plus: scores[1].ContentItem.Content.Score.Score.Value}}
+                }
+                {% endcapture %}
+              {% endif %}
+            {% endif %}
+          {% endfor %}
+          {% assign highestScorejson = highestScore | jsonparse %}
+          {% for team in teams %}
+            {% if team.ContentItem.Content.Team.Challenge.ContentItemIds.first == challenge.ContentItemId %}
+              {% if highestScorejson.teamContentId == team.ContentItemId %}
+                <v-card class="my-2" outlined>
+                  <v-card-title>{{ team.ContentItem.Content.Team.Name.Text }}<v-icon color="yellow" right>mdi-trophy</v-icon></v-card-title>
+                  <v-card-text>
+                    <v-row>
+                      <v-col cols="9">
+                    	  <div class="mb-2 h6">{{ team.ContentItem.Content.Team.Description.Text }}</div>
+                        <h3>{{ team.ContentItem.Content.TeamSolutionPart.Name.Text }}</h3>
+            	          <div>{{ team.ContentItem.Content.TeamSolutionPart.Description.Text | raw }}</div>
+                      </v-col>
+                      <v-col cols="3" class="text-right">
+                        {% assign scores = Queries.GetScoresForTeam | query: teamContentItemId: team.ContentItemId %}
+                        {% assign scoreAvgTech = Queries.GetAvgScoresForTeam | query: scoreIndexId: team.ContentItemId, type: "Technical" | first %}
+                        {% assign scoreAvgSubMat = Queries.GetAvgScoresForTeam | query: scoreIndexId: team.ContentItemId, type: "SubjectMatter" | first %}
+                        {% if scoreAvgTech != null and scoreAvgSubMat != null %}  
+                          {% assign scoreAvgTechCount = scoreAvgTech.Count | times: 1.0 %}
+                          {% assign scoreAvgSubMatCount = scoreAvgSubMat.Count | times: 1.0 %}
+                          <div class="mt-1 h6">{{ "Round 2" | t }}</div>
+                          <div class="mb-1 h6">
+                            {{ "Technical" | t }}
+                            <v-chip pill small color="green" label text-color="white">{{ scoreAvgTech.Score | divided_by: scoreAvgTechCount | round: 2 }}</v-chip>
+                      	</div>
+                          <div class="mb-1 h6">
+                            {{ "Subject Matter" | t }}
+                            <v-chip pill small color="green" label text-color="white">{{ scoreAvgSubMat.Score | divided_by: scoreAvgSubMatCount | round: 2 }}</v-chip>
+                      	</div>
+                        {% endif %}
+                        <div class="mt-1 h6">{{ "Round 1" | t }}</div>
+                        {% for score in scores %}
+                          {% if score.ContentItem.Content.Score.Round.Value == "1" %}  
+                      	  <div class="mb-1 h6">
+                        	    {{ score.ContentItem.Content.JudgeType.Type.Values.first }}
+                        	    <v-chip pill small color="green" label text-color="white">{{ score.ContentItem.Content.Score.Score.Value }}</v-chip>
+                      	  </div>
+                          {% endif %}
+                    	  {% endfor %}
+                      </v-col>
+                    </v-row>
+                    <v-row>
+                      <v-col cols="9">
+                        {% assign teamMembers = Queries.GetHackersForTeam | query: teamContentItemId: team.ContentItemId %}
+                        {% for member in teamMembers %}
+                       	  <div class="mt-1 h6">
+                          {{ member.FirstName }} {{ member.LastName }}                              	
+                          </div>
+                        {% endfor %}
+                      </v-col>
+                      <v-col cols="3" class="d-flex align-end justify-end">
+                        <v-btn color="error" depressed href="{{ team.ContentItem.Content.TeamSolutionPart.RepositoryUrl.Text }}" target="_blank">
+                          <v-icon left>mdi-source-branch</v-icon>
+        	    	      {{ "View repo" | t }}
+      		    	    </v-btn>
+                      </v-col>
+                    </v-row>
+                  </v-card-text>
+                </v-card>   
+              {% endif %}
+            {% endif %}
+          {% endfor %}
+          {% for team in teams %}
+            {% if team.ContentItem.Content.Team.Challenge.ContentItemIds.first == challenge.ContentItemId %}
+              {% if highestScorejson.teamContentId != team.ContentItemId %}
+                <v-card class="my-2" outlined>
+                  <v-card-title>{{ team.ContentItem.Content.Team.Name.Text }}</v-card-title>
+                  <v-card-text>
+                    <v-row>
+                      <v-col cols="9">
+                    	  <div class="mb-2 h6">{{ team.ContentItem.Content.Team.Description.Text }}</div>
+                        <h3>{{ team.ContentItem.Content.TeamSolutionPart.Name.Text }}</h3>
+              	        <div>{{ team.ContentItem.Content.TeamSolutionPart.Description.Text | raw }}</div>
+                      </v-col>
+                      <v-col cols="3" class="text-right">
+                        {% assign scores = Queries.GetScoresForTeam | query: teamContentItemId: team.ContentItemId %}
+                        <div class="mt-1 h6">{{ "Round 1" | t }}</div>
+                        {% for score in scores %}
+                          {% if score.ContentItem.Content.Score.Round.Value == "1" %}  
+                    	    <div class="mb-1 h6">
+                        	    {{ score.ContentItem.Content.JudgeType.Type.Values.first }}
+                        	    <v-chip pill small color="green" label text-color="white">{{ score.ContentItem.Content.Score.Score.Value }}</v-chip>
+                    	    </div>
+                          {% endif %}
+                	      {% endfor %}
+                      </v-col>
+                    </v-row>
+                    <v-row>
+                      <v-col cols="9">
+                        {% assign teamMembers = Queries.GetHackersForTeam | query: teamContentItemId: team.ContentItemId %}
+                        {% for member in teamMembers %}
+                       	  <div class="mt-1 h6">
+                          {{ member.FirstName }} {{ member.LastName }}                        	
+                          </div>
+                        {% endfor %}
+                      </v-col>
+                      <v-col cols="3" class="d-flex align-end justify-end">
+                        <v-btn color="error" depressed href="{{ team.ContentItem.Content.TeamSolutionPart.RepositoryUrl.Text }}" target="_blank">
+                          <v-icon left>mdi-source-branch</v-icon>
+        	    	      {{ "View repo" | t }}
+      		    	    </v-btn>
+                      </v-col>
+                    </v-row>
+                  </v-card-text>
+                </v-card>     
+              {% endif %}
+            {% endif %}
+          {% endfor %}       
+          </v-col>
+        </v-row>
+      </v-tab-item>
+    {% endif %}
+  {% endfor %}
+</v-tabs>

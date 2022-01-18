@@ -44,6 +44,20 @@
           "Schema": null,
           "Source": "Sql",
           "Template": "SELECT DocumentId FROM CandevItemsIndex WHERE ContentType ='Challenge' AND Owner = '{{owner}}'"
+        },
+        {
+          "Name": "GetScoresForTeam",
+          "ReturnDocuments": true,
+          "Schema": null,
+          "Source": "Sql",
+          "Template": "SELECT DocumentId FROM CandevItemsIndex where ContentType ='Score' and TeamContentItemId = '{{teamContentItemId}}'"
+        },
+        {
+          "Name": "GetAvgScoresForTeam",
+          "ReturnDocuments": false,
+          "Schema": null,
+          "Source": "Sql",
+          "Template": "SELECT * FROM HackathonAvgScoresIndex where ScoreIndexId = '{{scoreIndexId}}_{{type}}'"
         }
       ]
     }

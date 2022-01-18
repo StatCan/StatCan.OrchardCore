@@ -54,6 +54,7 @@ namespace StatCan.OrchardCore.Candev.Controllers
 
             if (hackathonCustomSettings.Content["TeamCustomSettings"]["TeamEditable"].Value == false)
             {
+                _notifier.Error(H["You cannot create, join or leave teams at this time"]);
                 return Unauthorized();
             }
 
@@ -87,6 +88,7 @@ namespace StatCan.OrchardCore.Candev.Controllers
 
             if (hackathonCustomSettings.Content["TeamCustomSettings"]["TeamEditable"].Value == false)
             {
+                _notifier.Error(H["You cannot create, join or leave teams at this time"]);
                 return Unauthorized();
             }
 
@@ -116,6 +118,7 @@ namespace StatCan.OrchardCore.Candev.Controllers
 
             if (hackathonCustomSettings.Content["TeamCustomSettings"]["TeamEditable"].Value == false)
             {
+                _notifier.Error(H["You cannot create, join or leave teams at this time"]);
                 return Unauthorized();
             }
 
@@ -142,6 +145,7 @@ namespace StatCan.OrchardCore.Candev.Controllers
             var hackathonCustomSettings = site.As<ContentItem>("HackathonCustomSettings");
             if (hackathonCustomSettings.Content["TeamCustomSettings"]["TeamEditable"].Value == false)
             {
+                _notifier.Error(H["You cannot create, join or leave teams at this time"]);
                 return Unauthorized();
             }
 
@@ -168,6 +172,7 @@ namespace StatCan.OrchardCore.Candev.Controllers
             var hackathonCustomSettings = site.As<ContentItem>("HackathonCustomSettings");
             if (hackathonCustomSettings.Content["TeamCustomSettings"]["TeamEditable"].Value == false)
             {
+                _notifier.Error(H["You cannot create, join or leave teams at this time"]);
                 return Unauthorized();
             }
 

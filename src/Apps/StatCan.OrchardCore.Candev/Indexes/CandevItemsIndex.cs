@@ -153,6 +153,11 @@ namespace StatCan.OrchardCore.Candev.Indexes
                     {
                         indexValue.TeamContentItemId = contentItem.ContentItemId;
                     }
+                    else if (contentItem.ContentType == "Score")
+                    {
+                        indexValue.TeamContentItemId = contentItem.Content.Score.Team.ContentItemIds.First;
+                    }
+
                     return indexValue;
                 });
         }

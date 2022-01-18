@@ -621,7 +621,7 @@ namespace StatCan.OrchardCore.Candev.Services
         public async Task<bool> EliminateTeams()
         {
             var teams = await _session.Query<ContentItem, CandevItemsIndex>(x => x.ContentType == "Team" && x.Published).ListAsync();
-            var challenges = await _session.Query<ContentItem, CandevItemsIndex>(x => x.ContentType == "Challenge" && x.Published).ListAsync();
+            var challenges = await _session.Query<ContentItem, CandevItemsIndex>(x => x.ContentType == "Challenge" && x.Published && x.Culture == "en" ).ListAsync();
             var scores = await _session.Query<ContentItem, CandevItemsIndex>(x => x.ContentType == "Score" && x.Published).ListAsync();
             var teamsScores = new Dictionary<string, int>();
             var highestScore = 0;
@@ -631,25 +631,31 @@ namespace StatCan.OrchardCore.Candev.Services
                 var teamlist = teams.Where(x => x.Content.Team.Challenge.ContentItemIds.First == challenge.ContentItemId).ToList();
                 teamsScores.Clear();
 
-                foreach (var team in teamlist)
+                if (teamlist.Count != 0)
                 {
-                    var scoreList = scores.Where(x => x.Content.Score.Team.ContentItemIds.First == team.ContentItemId).ToList();
-                    var score = scoreList.Sum(x => x.Content.Score.Score.Value);
-
-                    teamsScores.Add(team.ContentItemId, score);
-                }
-
-                highestScore = teamsScores.Max(x => x.Value);
-
-                foreach(var teamScore in teamsScores)
-                {
-                    if(teamScore.Value == highestScore)
+                    foreach (var team in teamlist)
                     {
-                        var team = teams.Where(x => x.ContentItemId == teamScore.Key).FirstOrDefault();
-                        team.Content.Team.InTheRunning = JObject.FromObject(new { Value = true });
-                        await _contentManager.UpdateAsync(team);
+                        var scoreList = scores.Where(x => x.Content.Score.Team.ContentItemIds.First == team.ContentItemId).ToList();
+                        var score = scoreList.Sum(x => x.Content.Score.Score.Value);
+
+                        if (scoreList.Count != 0)
+                        {
+                            teamsScores.Add(team.ContentItemId, score);
+                        }
                     }
-                }            
+
+                    highestScore = teamsScores.Max(x => x.Value);
+
+                    foreach (var teamScore in teamsScores)
+                    {
+                        if (teamScore.Value == highestScore)
+                        {
+                            var team = teams.Where(x => x.ContentItemId == teamScore.Key).FirstOrDefault();
+                            team.Content.Team.InTheRunning = JObject.FromObject(new { Value = true });
+                            await _contentManager.UpdateAsync(team);
+                        }
+                    }
+                }
             }
 
             return true;

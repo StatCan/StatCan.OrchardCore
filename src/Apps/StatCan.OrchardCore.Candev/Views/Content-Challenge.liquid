@@ -37,5 +37,8 @@
       <br>
       <h3>Comments</h3>
 	  <div>{{ Model.ContentItem.Content.Challenge.Comments.Text | shortcode }}</div> 
+      <br>
+      <h3>Markdown</h3>
+	  <div>{{ Model.ContentItem.Content.MarkdownBodyPart.Markdown | markdownify | raw }}</div> 
 	</v-card-text>
 </v-card>

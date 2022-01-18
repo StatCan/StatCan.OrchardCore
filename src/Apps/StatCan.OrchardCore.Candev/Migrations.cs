@@ -36,7 +36,7 @@ namespace StatCan.OrchardCore.Candev
             await _recipeMigrator.ExecuteAsync("roles.recipe.json", this);
             await _recipeMigrator.ExecuteAsync("role-judge.recipe.json", this);
 
-            return 2;
+            return 3;
         }
 
         private void CreateHackathonCustomSetings()
@@ -229,6 +229,7 @@ namespace StatCan.OrchardCore.Candev
             _contentDefinitionManager.CreateBasicWidget("JudgingListWidget");
             _contentDefinitionManager.CreateBasicWidget("ArchivedSolutions");
             _contentDefinitionManager.CreateBasicWidget("UserProfile");
+            _contentDefinitionManager.CreateBasicWidget("JudgingResults");
         }
 
         private void CreateChallenge()
@@ -616,6 +617,13 @@ namespace StatCan.OrchardCore.Candev
             );
 
             return 2;
+        }
+
+        public int UpdateFrom2()
+        {
+            _contentDefinitionManager.CreateBasicWidget("JudgingResults");
+
+            return 3;
         }
     }
 }
