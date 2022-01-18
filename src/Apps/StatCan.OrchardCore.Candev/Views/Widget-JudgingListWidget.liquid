@@ -14,7 +14,7 @@
         <div class="col-6 d-flex flex-column">
           <h2>Team List</h2>
           {% if teams == blank %}
-            <i class="fas fa-signature fa-3x text-muted pt-5 pl-5">{{ 'There are no teams.' | t }}</i>
+            <i class="fas fa-signature fa-3x text-muted pt-5 pl-5">{{ "There are no teams." | t }}</i>
           {% else %}
             {% for team in teams %}
               {% if team.ContentItem.Content.Team.InTheRunning.Value %}

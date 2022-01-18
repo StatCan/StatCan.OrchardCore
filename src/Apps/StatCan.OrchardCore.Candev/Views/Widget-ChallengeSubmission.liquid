@@ -10,15 +10,13 @@
       {% if Culture.Name == "fr" %}
         {% assign challengeSelected = challengeSelected.ContentItem.Content.LocalizationPart.LocalizationSet | localization_set: "fr" %}
       {% endif %}
-      <v-card-title class="text-h5 lighten-2">{{'Your challenge' | t}}: {{ challengeSelected.ContentItem.Content.Challenge.Title.Text | shortcode }}</v-card-title>
+      <v-card-title class="text-h5 lighten-2">{{ "Your challenge" | t}}: {{ challengeSelected.ContentItem.Content.Challenge.Title.Text | shortcode }}</v-card-title>
       <v-divider></v-divider>
       <v-card-text>
         <h3>{{ "Statement" | t }}</h3> 
         <v-flex class="pt-2"><span class="subtitle-2">{{ challengeSelected.ContentItem.Content.Challenge.Statement.Text | shortcode }}</span></v-flex>
-        <h3>{{ "Potential Datasets" | t }}</h3>
-        <v-flex class="pt-2"><span class="subtitle-2">{{ challengeSelected.ContentItem.Content.Challenge.Datasets.Text | shortcode }}</span></v-flex>
-        <h3>{{ "Background Information" | t }}</h3>
-        <v-flex class="pt-2"><span class="subtitle-2">{{ challengeSelected.ContentItem.Content.Challenge.BackgroundInformation.Text | shortcode }}</span></v-flex>
+        <h3>{{ "Background Information & Potential Datasets" | t }}</h3>
+        <v-flex class="pt-2"><span class="subtitle-2">{{ challengeSelected.ContentItem.Content.MarkdownBodyPart.Markdown | markdownify | raw }}</span></v-flex>
         <h3>{{ "Organization" | t }}</h3>
         <v-flex class="pt-2"><span class="subtitle-2">{{ challengeSelected.ContentItem.Content.Challenge.OrganizationNameEn.Text | shortcode }}</span></v-flex>
         <h3>{{ "Mentors" | t }}</h3>

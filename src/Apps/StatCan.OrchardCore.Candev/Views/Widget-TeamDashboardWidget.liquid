@@ -53,19 +53,14 @@
             {% if Culture.Name == "fr" %}
               {% assign challengeSelected = challengeSelected.ContentItem.Content.LocalizationPart.LocalizationSet | localization_set: "fr" %}
             {% endif %}
-            <v-card-title class="text-h5 lighten-2">{{'Challenge' | t}}: {{ challengeSelected.ContentItem.Content.Challenge.Title.Text | shortcode }}</v-card-title>
+            <v-card-title class="text-h5 lighten-2">{{"Challenge" | t}}: {{ challengeSelected.ContentItem.Content.Challenge.Title.Text | shortcode }}</v-card-title>
             <v-divider></v-divider>
             <v-card-text>
               <h3>{{ "Statement" | t }}</h3> 
               <v-flex class="pt-2"><span class="subtitle-2">{{ challengeSelected.ContentItem.Content.Challenge.Statement.Text | shortcode }}</span></v-flex>
               {% if Site.Properties.HackathonCustomSettings.TeamCustomSettings.PartialChallenge.Value == false %}
-                <h3>{{ "Potential Datasets" | t }}</h3>
-                <v-flex class="pt-2"><span class="subtitle-2">{{ challengeSelected.ContentItem.Content.Challenge.Datasets.Text | shortcode }}</span></v-flex>
-                {% for dataset in challengeSelected.ContentItem.Content.Challenge.DatasetsFiles.Paths %}
-                  <v-flex class="pt-2"><v-btn href="{{ dataset | asset_url }}" target="_blank">{{ dataset }}</v-btn></v-flex>
-                {% endfor %}
-                <h3>{{ "Background Information" | t }}</h3>
-                <v-flex class="pt-2"><span class="subtitle-2">{{ challengeSelected.ContentItem.Content.Challenge.BackgroundInformation.Text | shortcode }}</span></v-flex>
+                <h3>{{ "Background Information & Potential Datasets" | t }}</h3>
+                <v-flex class="pt-2"><span class="subtitle-2">{{ challengeSelected.ContentItem.Content.MarkdownBodyPart.Markdown | markdownify | raw }}</span></v-flex>
               {% endif %}
               <h3>{{ "Organization" | t }}</h3>
               <v-flex class="pt-2"><span class="subtitle-2">{{ challengeSelected.ContentItem.Content.Challenge.OrganizationNameEn.Text | shortcode }}</span></v-flex>
@@ -104,7 +99,7 @@
               	  </template>
               	  <v-card>
                 	<v-card-title class="text-h5">
-                  	  {{ 'Warning' | t }}
+                  	  {{ "Warning" | t }}
                 	</v-card-title>
                     <v-card-text class="py-5"> 
                 	{% if isTeamCaptain and isTeamEditable %}    	
@@ -141,7 +136,7 @@
       {% else %}
         <v-card>
         <v-card-title>
-          {{ "Topics in your order of interest (only the team captain can order)" | t }} 
+          {{ "Topics in your order of interest (only the team captain can reorder)" | t }} 
         </v-card-title>
           <v-card-text>
             {% if team.Content.Team.Topics.ContentItemIds != null %}
@@ -186,7 +181,7 @@
               <form class="my-2" method="post" action="{{ '~/team/join' | href }}">
                 {% antiforgerytoken%}
                 <input type="hidden" name="returnUrl" value="{{ '' | return_url }}">
-                <v-text-field class="d-inline-block" type="text" required name="teamContentItemId" class="form-control" placeholder="{{ 'Team Identifier' | t }}" aria-label="{{ 'Team Identifier' | t }}"></v-text-field>
+                <v-text-field class="d-inline-block" type="text" required name="teamContentItemId" class="form-control" placeholder="{{ "Team Identifier" | t }}" aria-label="{{ "Team Identifier" | t }}"></v-text-field>
                 <v-btn class="d-inline-block ml-3" type="submit" id="team-submit-addon">{{ "Join team" | t }}</v-btn>
               </form>
             </v-card-actions>

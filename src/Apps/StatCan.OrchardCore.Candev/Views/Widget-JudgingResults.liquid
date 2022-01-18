@@ -24,10 +24,8 @@
                 <v-card-text>         
                   <h3>{{ "Statement" | t }}</h3> 
                 	<div>{{ challenge.ContentItem.Content.Challenge.Statement.Text | raw }}</div>
-                  <h3>{{ "Potential Datasets" | t }}</h3>
-                	<div>{{ challenge.ContentItem.Content.Challenge.Datasets.Text | raw }}</div>
-                  <h3>{{ "Background Information" | t }}</h3>
-                	<div>{{ challenge.ContentItem.Content.Challenge.BackgroundInformation.Text | raw }}</div>
+                  <h3>{{ "Background Information & Potential Datasets" | t }}</h3>
+                	<div>{{ challenge.ContentItem.Content.MarkdownBodyPart.Markdown | markdownify | raw }}</div>
                   <h3>{{ "Organization" | t }}</h3>
                   {% if Culture.Name == "fr" %}
 	            	<div>{{ challenge.ContentItem.Content.Challenge.OrganizationNameFr.Text | raw }}</div>
@@ -39,9 +37,10 @@
                   <h3>{{ "Case specialist" | t }}</h3>
                 	<div>{{ challenge.ContentItem.Content.Challenge.CaseSpecialistName.Text | raw }}</div>
                 </v-card-text>            
-              </v-card>
+              </v-card>       
 
             <h2>{{ "Solutions" | t }}</h2>
+          {% assign challengeSelected = challenge.ContentItem.Content.LocalizationPart.LocalizationSet | localization_set: "en" %}
           {% capture highestScore %}
           {
             "teamContentId": "",
@@ -49,7 +48,7 @@
           }
           {% endcapture %}
           {% for team in teams %}
-            {% if team.ContentItem.Content.Team.Challenge.ContentItemIds.first == challenge.ContentItemId %}
+            {% if team.ContentItem.Content.Team.Challenge.ContentItemIds.first == challengeSelected.ContentItemId %}
               {% assign scores = Queries.GetScoresForTeam | query: teamContentItemId: team.ContentItemId %}
               {% assign highestScorejson = highestScore | jsonparse %}
               {% capture total %}{{scores[0].ContentItem.Content.Score.Score.Value | plus: scores[1].ContentItem.Content.Score.Score.Value}}{% endcapture %}
@@ -65,7 +64,7 @@
           {% endfor %}
           {% assign highestScorejson = highestScore | jsonparse %}
           {% for team in teams %}
-            {% if team.ContentItem.Content.Team.Challenge.ContentItemIds.first == challenge.ContentItemId %}
+            {% if team.ContentItem.Content.Team.Challenge.ContentItemIds.first == challengeSelected.ContentItemId %}
               {% if highestScorejson.teamContentId == team.ContentItemId %}
                 <v-card class="my-2" outlined>
                   <v-card-title>{{ team.ContentItem.Content.Team.Name.Text }}<v-icon color="yellow" right>mdi-trophy</v-icon></v-card-title>
@@ -126,7 +125,7 @@
             {% endif %}
           {% endfor %}
           {% for team in teams %}
-            {% if team.ContentItem.Content.Team.Challenge.ContentItemIds.first == challenge.ContentItemId %}
+            {% if team.ContentItem.Content.Team.Challenge.ContentItemIds.first == challengeSelected.ContentItemId %}
               {% if highestScorejson.teamContentId != team.ContentItemId %}
                 <v-card class="my-2" outlined>
                   <v-card-title>{{ team.ContentItem.Content.Team.Name.Text }}</v-card-title>
