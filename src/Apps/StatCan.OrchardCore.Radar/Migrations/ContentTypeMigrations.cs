@@ -1,11 +1,9 @@
 using System;
-using System.Threading.Tasks;
 using System.Collections.Generic;
 using OrchardCore.ContentManagement;
 using OrchardCore.ContentManagement.Metadata;
 using OrchardCore.ContentManagement.Metadata.Settings;
 using OrchardCore.Data.Migration;
-using OrchardCore.Taxonomies.Models;
 using OrchardCore.Title.Models;
 using OrchardCore.ContentFields.Settings;
 using OrchardCore.Taxonomies.Settings;

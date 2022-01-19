@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+
 namespace StatCan.OrchardCore.Radar.FormModels
 {
     public class CommunityFormModel : EntityFormModel

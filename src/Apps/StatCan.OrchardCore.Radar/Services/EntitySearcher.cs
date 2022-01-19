@@ -13,7 +13,6 @@ using OrchardCore.Contents;
 using OrchardCore.Shortcodes.Services;
 using StatCan.OrchardCore.Radar.Models;
 using StatCan.OrchardCore.Radar.Helpers;
-using StatCan.OrchardCore.Radar.Services;
 
 namespace StatCan.OrchardCore.Radar.Services
 {
