@@ -18,7 +18,7 @@
       <v-row justify="center" >
         <v-col cols="12">
           <v-card>
-            <v-card-title class="text-h5 outlined">{{team.ContentItem.Content.Team.Name.Text}}</v-card-title>
+            <v-card-title class="text-h5 outlined">{{team.DisplayText}}</v-card-title>
             <v-divider></v-divider>
             <v-card-text class="pb-2 pt-2">{{team.ContentItem.Content.Team.Description.Text}}</v-card-text>
             <v-flex>
@@ -95,7 +95,7 @@
               <v-flex class="pt-6">
                 <v-dialog width="500">
               	  <template v-slot:activator="{ on, attrs }" >        
-                  	<v-btn name="btnLeaveModal" color="red" v-bind="attrs" v-on="on" {% if Site.Properties.HackathonCustomSettings.TeamCustomSettings.TeamEditable.Value != true %}disabled{%endif%}>{{ "Leave Team" | t }}</v-btn>                
+                  	<v-btn name="btnLeaveModal" color="red" v-bind="attrs" v-on="on" {% if Site.Properties.HackathonCustomSettings.TeamCustomSettings.TeamEditable.Value != true %}disabled{%endif%}>{{ "Leave team" | t }}</v-btn>                
               	  </template>
               	  <v-card>
                 	<v-card-title class="text-h5">
@@ -133,14 +133,15 @@
       {% if isTeamCaptain %}
 		{% assign teamEditForm = Content.ContentItemId["4466xex4gkry42s4n9x4ksyywd"] %}
         {{ teamEditForm | shape_build_display | shape_render }}
-      {% else %}
+      {% elsif challengeSelected == null %}
         <v-card>
         <v-card-title>
           {{ "Topics in your order of interest (only the team captain can reorder)" | t }} 
         </v-card-title>
           <v-card-text>
             {% if team.Content.Team.Topics.ContentItemIds != null %}
-              {% for topic in team.Content.Team.Topics.ContentItemIds %}
+              {% for topicId in team.Content.Team.Topics.ContentItemIds %}
+                {% assign topic = topicId | content_item_id %}
                 {% if Culture.Name == "en" %}
                   {{topic.Content.Topic.NameEn.Text}}<br>
                 {% else %}
