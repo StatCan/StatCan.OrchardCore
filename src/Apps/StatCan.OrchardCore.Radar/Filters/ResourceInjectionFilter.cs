@@ -1,11 +1,15 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
-using Microsoft.AspNetCore.Mvc.Routing;
 using OrchardCore.ResourceManagement;
 using System.Threading.Tasks;
 
 namespace StatCan.OrchardCore.Radar.Filters
 {
+    /*
+        Because Radar is implemented as a module and uses the Vuetify theme therefore Radar related
+        stylesheets must be injected in the every view. In order to avoid redundancy, this filter 
+        is used to inject Radar stylesheets on every view except admin.
+    */
     public class ResourceInjectionFilter : IAsyncResultFilter
     {
         private readonly IResourceManager _resourceManager;

@@ -1,21 +1,21 @@
-using System.Collections;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using OrchardCore.ContentManagement;
-using OrchardCore.Queries;
 using OrchardCore.ContentManagement.Display;
 using OrchardCore.DisplayManagement.ModelBinding;
-using Etch.OrchardCore.ContentPermissions.Services;
 using OrchardCore.Contents;
 using StatCan.OrchardCore.Radar.Services;
 
 namespace StatCan.OrchardCore.Radar.Controllers
 {
+    
+        /*
+            Builds list views and handles list search.
+        */
     public class ListController : Controller
     {
         private readonly IContentItemDisplayManager _contentItemDisplayManager;

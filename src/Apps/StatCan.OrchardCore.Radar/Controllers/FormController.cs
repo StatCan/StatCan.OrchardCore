@@ -22,6 +22,15 @@ using Permissions = OrchardCore.Contents.Permissions;
 
 namespace StatCan.OrchardCore.Radar.Controllers
 {
+    /*
+        The Controller contains two types of endpoints. The first type are the 
+        view endpoints for the edit form of the contents. These endpoints builds 
+        and return the form shape. The second type are the api endpoints that are 
+        related to searching. For instance, the TopicSearch action is responsible 
+        for search. Note that permission checking must be done in each of the 
+        endpoints. The ContentDelete api endpoint is a special case since it 
+        performs mutation. 
+    */
     public class FormController : Controller
     {
         private readonly IContentManager _contentManager;
@@ -84,6 +93,7 @@ namespace StatCan.OrchardCore.Radar.Controllers
         // For handling contents that are contained by other contents
         public async Task<IActionResult> FormContained(string parentType, string parentId, string childType, string id)
         {
+            // Contained items following the same permission as the parent
             if (!await CanEditContent(parentId))
             {
                 return Redirect("not-found");
@@ -230,6 +240,7 @@ namespace StatCan.OrchardCore.Radar.Controllers
                 return Redirect(failUrl);
             }
 
+            // If a content gets deleted then all of its localized version are deleted
             var contentItem = await _contentManager.GetAsync(id);
 
             var supportedCultures = await _localizationService.GetSupportedCulturesAsync();
