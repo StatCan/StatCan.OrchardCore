@@ -27,6 +27,7 @@ namespace StatCan.OrchardCore.Hackathon
             CreateUserProfiles();
             CreateWidgets();
             CreateChallenge();
+            CreateStudentDashboard();
 
             await _recipeMigrator.ExecuteAsync("queries.recipe.json", this);
             await _recipeMigrator.ExecuteAsync("roles.recipe.json", this);
@@ -104,5 +105,29 @@ namespace StatCan.OrchardCore.Hackathon
                 .WithMarkdownBody("2")
             );
         }
+
+        private void CreateStudentDashboard()
+        {
+            _contentDefinitionManager.AlterTypeDefinition("StudentDashboard", type => type
+                .DisplayedAs("StudentDashboard")
+                .Stereotype("Widget")
+                .WithPart("StudentDashboard", part => part
+                    .WithPosition("0")
+                )
+            );
+
+            _contentDefinitionManager.AlterPartDefinition("StudentDashboard", part => part
+                .WithField("Hacker", field => field
+                    .OfType("UserPickerField")
+                    .WithDisplayName("Hacker")
+                    .WithPosition("0")
+                    .WithSettings(new UserPickerFieldSettings
+                    {
+                        DisplayedRoles = new[] { "Hacker" },
+                    })
+                )
+            );
+        }
+
     }
 }

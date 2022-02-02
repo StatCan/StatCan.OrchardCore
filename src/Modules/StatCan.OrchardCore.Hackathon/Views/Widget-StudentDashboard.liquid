@@ -1,0 +1,34 @@
+{% assign hackers = Queries.GetHackersForTeam | query %}
+
+ <v-container justify="center" >
+   <h1>Student Dashboard</h1>
+   <v-row justify="center">
+     <v-col cols="12" class="d-flex my-5 xs-12 flex-wrap" >
+       {% for hacker in hackers %}
+         {% assign user = hacker.UserId | users_by_id %}
+         {% assign phoneNumber = user.Properties.SkillsInterest.SkillsInterest.PhoneNumber.Text %}
+         {% capture studentName %} {{hacker.FirstName}} {{hacker.LastName}} {% endcapture %}
+         {% assign fieldOfStudy = user.Properties.Hacker.Hacker.FieldOfStudy.Text %}
+         {% assign programLevel = user.Properties.Hacker.Hacker.ProgramLevel.Text %}
+
+         {% if fieldOfStudy and programLevel != null %}
+ 
+          <v-card class="pa-2 ma-3" width="30%" >
+            <v-card-title>{{studentName}}</v-card-title>
+            <v-card-subtitle>{{hacker.Email}}</v-card-subtitle>
+            <v-card-subtitle>{{phoneNumber}}</v-card-subtitle>
+            <v-card-text>
+              <div class="text-body-2">Field of Study:
+                <span class="font-weight-bold"> {{fieldOfStudy}} </span>
+              </div>
+              <div class="text-body-2">Program Level:
+                <span class="font-weight-bold"> {{programLevel}} </span>
+              </div>
+            <v-card-text>
+          </v-card>
+ 
+         {% endif %}
+       {% endfor %}
+     </v-col>
+   </v-row>
+ </v-container>
