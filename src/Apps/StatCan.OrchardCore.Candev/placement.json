@@ -1,0 +1,41 @@
+{
+    "NumericField_Edit" : [
+      {
+          "differentiator": "TeamCustomSettings-TeamSize",
+          "place" : "Parts:0#Team;1",
+          "contentType": [
+              "HackathonCustomSettings"
+          ]
+      }
+    ],
+    "BooleanField_Edit" : [
+      {
+          "differentiator": "TeamCustomSettings-TeamEditable",
+          "place" : "Parts:1#Team;1",
+          "contentType": [
+              "HackathonCustomSettings"
+          ]
+      },
+      {
+          "differentiator": "JudgingCustomSettings-JudgingInProgress",
+          "place" : "Parts:0#Judging;2",
+          "contentType": [
+              "HackathonCustomSettings"
+          ]
+      },
+      {
+          "differentiator": "JudgingCustomSettings-IsFinalRound",
+          "place" : "Parts:1#Judging;3",
+          "contentType": [
+              "HackathonCustomSettings"
+          ]
+      },
+      {
+          "differentiator": "TeamCustomSettings-PartialChallenge",
+          "place" : "Parts:2#Team;4",
+          "contentType": [
+              "HackathonCustomSettings"
+          ]
+      }
+    ]
+}

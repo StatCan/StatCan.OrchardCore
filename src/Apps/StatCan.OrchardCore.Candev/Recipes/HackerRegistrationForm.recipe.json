@@ -1,0 +1,327 @@
+{
+  "name": "Candev.HackerRegistrationForm",
+  "displayName": "Hacker Registration Form",
+  "description": "Creates a registration form for hackers.",
+  "author": "StatCan Digital Innovation",
+  "website": "digital.statcan.gc.ca",
+  "version": "1.0.0",
+  "issetuprecipe": false,
+  "categories": [],
+  "tags": [],
+  "steps": [
+    {
+      "name": "Content",
+      "data": [
+        {
+          "ContentItemId": "4dj03mdaztzf8wg12gw56xkg43",
+          "ContentItemVersionId": "4b0f99cqhwpepwm70xk0nha4ma",
+          "ContentType": "VueForm",
+          "DisplayText": "HackerRegistrationForm",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": "2021-07-15T00:07:50.2772891Z",
+          "PublishedUtc": "2021-07-15T00:07:50.3099919Z",
+          "CreatedUtc": "2020-12-02T20:48:00.9867066Z",
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "TitlePart": {
+            "Title": "HackerRegistrationForm"
+          },
+          "VueForm": {
+            "Enabled": null,
+            "DisabledHtml": {
+              "Html": "<div class=\"container text-center mt-2\">\n  [locale en]The Hacker registration form is currently disabled.[/locale]\n  [locale fr]Le formulaire d'enreigstrement est présentement désactivé[/locale]\n</div>"
+            },
+            "SuccessMessage": {
+              "Text": "{{ \"successMessage\" | localize }}"
+            },
+            "RenderAs": {
+              "Text": null
+            },
+            "Template": {
+              "Text": "<v-container >\r\n  <v-card-text>\r\n    <v-row justify=\"center\">\r\n      <v-col cols=\"8\">\r\n        <h1>[locale en]Participant registration form[/locale][locale fr]Formulaire de participation[/locale]</h1>\r\n      </v-col>\r\n{% assign isInRole = User | is_in_role: \"Hacker\" %}\r\n{% if User.Identity.Name == null %}\r\n      <v-col cols=\"8\">\r\n        [locale en]Please <a href=\"{{ '~/login' | return_url }}\">login</a> before registering to this event[/locale]\r\n        [locale fr]Veuillez vous <a href=\"{{ '~/login' | return_url }}\">connecter</a> avant de vous enregistrer a cet événement[/locale]\r\n      </v-col>\r\n{% elsif isInRole %}\r\n      <v-col cols=\"8\">\r\n        [locale en]You are already registered to this event[/locale]\r\n        [locale fr]Vous êtes déjà enregistré a cet événement[/locale]\r\n      </v-col>\r\n{% else %}\r\n      <v-col cols=\"8\">\r\n        <validation-provider name=\"{{ \"firstNameLabel\" | localize }}\" rules=\"required\" v-slot=\"{ errors, valid }\">\r\n          <v-text-field name=\"firstName\" v-model=\"firstName\" :success=\"valid\" :error-messages=\"errors\" filled=\"filled\" label=\"{{ \"firstNameLabel\" | localize }}\" ></v-text-field>\r\n        </validation-provider>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n        <validation-provider name=\"{{ \"lastNameLabel\" | localize  }}\" rules=\"required\" v-slot=\"{ errors, valid }\">\r\n          <v-text-field name=\"lastName\" v-model=\"lastName\" :success=\"valid\" :error-messages=\"errors\" filled=\"filled\" label=\"{{ \"lastNameLabel\" | localize }}\" ></v-text-field>\r\n        </validation-provider>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n        <validation-provider name=\"{{ \"emailLabel\" | localize }}\" rules=\"required|email\" v-slot=\"{ errors, valid }\">\r\n          <v-text-field name=\"email\" v-model=\"email\" :success=\"valid\" :error-messages=\"errors\" filled=\"filled\" label=\"{{ \"emailLabel\" | localize }}\"></v-text-field>\r\n        </validation-provider>\r\n      </v-col>\r\n      <v-col cols=\"8\">      \r\n        <p>{{ \"languageLabel\" | localize }}</p>\r\n        <v-radio-group name=\"language\" v-model=\"language\" row >\r\n          <v-radio label=\"{{ \"languageEnglishLabel\" | localize }}\" value=\"en\" ></v-radio>\r\n          <v-radio label=\"{{ \"languageFrenchLabel\" | localize }}\" value=\"fr\" ></v-radio>\r\n          <v-radio label=\"{{ \"languageBothLabel\" | localize }}\" value=\"both\" ></v-radio>\r\n        </v-radio-group>    \r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n        <validation-provider name=\"{{ \"schoolLabel\" | localize }}\" rules=\"required\" v-slot=\"{ errors, valid }\">\r\n          <v-text-field name=\"school\" v-model=\"school\" :success=\"valid\" :error-messages=\"errors\" filled=\"filled\" label=\"{{ \"schoolLabel\" | localize }}\"></v-text-field>\r\n        </validation-provider>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n        <validation-provider name=\"{{ \"fieldOfStudyLabel\" | localize }}\" rules=\"required\" v-slot=\"{ errors, valid }\">\r\n          <v-text-field name=\"fieldOfStudy\" v-model=\"fieldOfStudy\" :success=\"valid\" :error-messages=\"errors\" filled=\"filled\" label=\"{{ \"fieldOfStudyLabel\" | localize }}\"></v-text-field>\r\n        </validation-provider>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n        <validation-provider name=\"{{ \"programNameLabel\" | localize }}\" rules=\"required\" v-slot=\"{ errors, valid }\">\r\n          <v-text-field name=\"programName\" v-model=\"programName\" :success=\"valid\" :error-messages=\"errors\" filled=\"filled\" label=\"{{ \"programNameLabel\" | localize }}\"></v-text-field>\r\n        </validation-provider>\r\n      </v-col>\r\n\t  <v-col cols=\"8\">\r\n        <validation-provider name=\"{{ \"programLevelLabel\" | localize }}\" rules=\"required\" v-slot=\"{ errors, valid }\">\r\n          <v-select :items=\"listProgramLevel\" name=\"programLevel\" v-model=\"programLevel\" :success=\"valid\" :error-messages=\"errors\" filled=\"filled\" label=\"{{ \"programLevelLabel\" | localize }}\"></v-select>\r\n        </validation-provider>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n        <validation-provider name=\"{{ \"programYearsLabel\" | localize }}\" rules=\"required\" v-slot=\"{ errors, valid }\">\r\n          <v-select :items=\"listProgramYears\" name=\"programYears\" v-model=\"programYears\" :success=\"valid\" :error-messages=\"errors\" filled=\"filled\" label=\"{{ \"programYearsLabel\" | localize }}\"></v-select>\r\n        </validation-provider>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n        <validation-provider name=\"{{ \"adultLabel\" | localize }}\" rules=\"required\" v-slot=\"{ errors, valid }\">\r\n          <v-checkbox name=\"adult\" v-model=\"adult\" :success=\"valid\" :error-messages=\"errors\" filled=\"filled\" label=\"{{ \"adultLabel\" | localize }}\"></v-checkbox>\r\n        </validation-provider>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n        <a href=\"/terms-and-conditions/\" target=\"_blank\">[locale en]Terms and conditions[/locale][locale fr]Termes et conditions[/locale]</a>\r\n        <validation-provider name=\"{{ \"termsAndConditionsLabel\" | localize }}\" rules=\"required\" v-slot=\"{ errors, valid }\">\r\n          <v-checkbox name=\"termsAndConditions\" v-model=\"termsAndConditions\" :success=\"valid\" :error-messages=\"errors\" filled=\"filled\" label=\"{{ \"termsAndConditionsLabel\" | localize }}\"></v-checkbox>\r\n        </validation-provider>\r\n      </v-col>\r\n      <v-col cols=\"8\">\r\n          <v-text-field name=\"comments\" v-model=\"comments\" filled=\"filled\" label=\"{{ \"commentsLabel\" | localize }}\"></v-text-field>\r\n      </v-col>\r\n        <v-col cols=\"8\">\r\n          <v-alert type=\"success\" v-if=\"form.successMessage\">\r\n            {% raw %}{{ form.successMessage }}{% endraw %}\r\n          </v-alert>\r\n          <v-alert type=\"error\" v-if=\"form.serverValidationMessage\">\r\n            {% raw %}{{ form.serverValidationMessage[0] }}{% endraw %}\r\n          </v-alert>\r\n        </v-col>\r\n        <v-col cols=\"8\">\r\n    \t  <v-btn type=\"submit\" depressed block @click=\"formHandleSubmit\" :disabled=\"form.submitting\">[locale en]Register[/locale][locale fr]S'enregistrer[/locale]</v-btn>\r\n        </v-col>\r\n{% endif %}\r\n    </v-row>\r\n  </v-card-text>\r\n</v-container>\r\n"
+            },
+            "Disabled": {
+              "Value": false
+            },
+            "Debug": {
+              "Value": false
+            }
+          },
+          "VueFormScripts": {
+            "ClientInit": {
+              "Text": "VeeValidate.setInteractionMode('passive');"
+            },
+            "OnValidation": {
+              "Text": "var data = requestFormAsJsonObject();\r\nvar localizedText = getLocalizedTextValues(getFormContentItem());\r\n\r\nif(!isAuthenticated() || \r\n   data.firstName == \"\" || \r\n   data.lastName == \"\" || \r\n   data.email == \"\" || \r\n   data.language == \"\" || \r\n   !validateEmail(data.email) ||\r\n   data.school == \"\" ||\r\n   data.fieldOfStudy == \"\" ||\r\n   data.programName == \"\" ||\r\n   data.programLevel == \"\" ||\r\n   data.programYears == \"\" ||\r\n   data.adult == false ||\r\n   data.termsAndConditions == false\r\n  ) {\r\n  addError('serverValidationMessage', localizedText.serverValidationError);\r\n  return;\r\n}\r\nif(isInRole(httpContext().User.Identity.Name, \"Hacker\")){\r\n  addError('serverValidationMessage', localizedText.alreadyRegisteredError); \r\n}\r\n"
+            },
+            "OnSubmitted": {
+              "Text": "var data = requestFormAsJsonObject();\r\nvar localizedText = getLocalizedTextValues(getFormContentItem());\r\n\r\nvar updateSettingsResult = updateCustomUserSettings(\"ParticipantProfile\", {\r\n  \"ParticipantProfile\" : {\r\n     \"FirstName\": {\r\n       \"Text\": data.firstName\r\n     },\r\n     \"LastName\": {\r\n       \"Text\": data.lastName\r\n     },\r\n     \"Email\": {\r\n       \"Text\": data.email\r\n     },\r\n     \"Language\": {\r\n       \"Text\": data.language\r\n     },\r\n     \"TermsAndConditions\": {\r\n       \"Value\": data.termsAndConditions\r\n     },\r\n     \"Comments\": {\r\n       \"Text\": data.comments\r\n     },\r\n  }\r\n});\r\n\r\nvar updateHackerSettingsResult = updateCustomUserSettings(\"Hacker\", {\r\n  \"Hacker\" : {\r\n     \"School\": {\r\n       \"Text\": data.school\r\n     },\r\n     \"FieldOfStudy\": {\r\n       \"Text\": data.fieldOfStudy\r\n     },\r\n     \"ProgramName\": {\r\n       \"Text\": data.programName\r\n     },\r\n     \"ProgramLevel\": {\r\n       \"Text\": data.programLevel\r\n     },\r\n     \"ProgramYears\": {\r\n       \"Text\": data.programYears\r\n     },\r\n     \"Adult\": {\r\n       \"Value\": data.adult\r\n     }\r\n  }\r\n});\r\n\r\nvar httpContext = httpContext();\r\nvar setUserRoleResult = setUserRole(httpContext.User.Identity.Name, \"Hacker\");\r\n\r\nif(updateSettingsResult == 1 || updateSettingsResult == 2 || !setUserRoleResult || updateHackerSettingsResult == 1 || updateHackerSettingsResult == 2) \r\n{\r\n  addError(\"serverValidationMessage\", localizedText.updateSettingsError);  \r\n}\r\n// success message displayed\r\n"
+            },
+            "ComponentOptions": {
+              "Text": "{\r\n  {% assign user = User | user_id | users_by_id %}\r\n  data: () => ({\r\n    firstName: \"{{ user.Properties.ParticipantProfile.ParticipantProfile.FirstName.Text }}\",\r\n\tlastName: \"{{ user.Properties.ParticipantProfile.ParticipantProfile.LastName.Text }}\", \r\n    email: \"{{ user.Properties.ParticipantProfile.ParticipantProfile.Email.Text }}\",\r\n    language: \"{{ user.Properties.ParticipantProfile.ParticipantProfile.Language.Text }}\",\r\n    school: \"\",\r\n    fieldOfStudy: \"\",\r\n    programName: \"\",\r\n    programLevel: \"\",\r\n    programYears: \"\",\r\n    adult: null,\r\n    termsAndConditions: null,\r\n    comments: \"\",\r\n    listProgramLevel: [\r\n      '[locale en]Certificate[/locale][locale fr]Certificat[/locale]',\r\n      '[locale en]College or university diploma[/locale][locale fr]Diplôme collégial ou universitaire[/locale]',\r\n      '[locale en]Associate\\'s degree[/locale][locale fr]Diplôme d\\'associés[/locale]',\r\n      '[locale en]Bachelor\\'s degree[/locale][locale fr]Baccalauréat[/locale]',\r\n      '[locale en]Postgraduate diploma or certificate[/locale][locale fr]Diplôme ou certificat de cycle supérieur[/locale]',\r\n      '[locale en]Master\\'s degree[/locale][locale fr]Maîtrise[/locale]',\r\n      '[locale en]Doctorate\\'s degree[/locale][locale fr]Doctorat[/locale]',\r\n      '[locale en]Post doctorate\\'s degree[/locale][locale fr]Post-doctorat[/locale]'\r\n    ],\r\n    listProgramYears: ['0', '1', '2', '3', '4', '5+']\r\n  })\r\n}"
+            }
+          },
+          "LocalizedTextPart": {
+            "Data": [
+              {
+                "Name": "firstNameLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Prénom"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "First name"
+                  }
+                ]
+              },
+              {
+                "Name": "lastNameLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Nom"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Last name"
+                  }
+                ]
+              },
+              {
+                "Name": "emailLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Adresse courriel de contact"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Contact email address"
+                  }
+                ]
+              },
+              {
+                "Name": "languageLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Langue"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Language"
+                  }
+                ]
+              },
+              {
+                "Name": "languageEnglishLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Anglais"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "English"
+                  }
+                ]
+              },
+              {
+                "Name": "languageFrenchLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Français"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "French"
+                  }
+                ]
+              },
+              {
+                "Name": "languageBothLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Les deux"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Both"
+                  }
+                ]
+              },
+              {
+                "Name": "schoolLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Nom de l'université ou du collège"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "University or college name"
+                  }
+                ]
+              },
+              {
+                "Name": "alreadyRegisteredError",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Vous êtes déjà enregistré à cet événement."
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "You are already registered to this event."
+                  }
+                ]
+              },
+              {
+                "Name": "successMessage",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Votre enregistrement a été reçu avec succès!"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "You have successfully registered!"
+                  }
+                ]
+              },
+              {
+                "Name": "updateSettingsError",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Une erreure est survenue lors de la mise à jour de votre profile. Veuillez contacter l'administrateur"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "An error occurred while updating your profile. Please contact the site admin."
+                  }
+                ]
+              },
+              {
+                "Name": "fieldOfStudyLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Domaine d'études"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Field of study"
+                  }
+                ]
+              },
+              {
+                "Name": "programNameLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Nom du programme"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Program name"
+                  }
+                ]
+              },
+              {
+                "Name": "programLevelLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Niveau du programme"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Program level"
+                  }
+                ]
+              },
+              {
+                "Name": "programYearsLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Nombre d'années complétées à votre programme"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Number of years completed in your program"
+                  }
+                ]
+              },
+              {
+                "Name": "adultLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "J'ai 18 ans ou plus"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "I am 18 years or older"
+                  }
+                ]
+              },
+              {
+                "Name": "termsAndConditionsLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "J'ai lu et j'accepte les termes et conditions"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "I have read and I agree to the terms and conditions"
+                  }
+                ]
+              },
+              {
+                "Name": "commentsLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Commentaires (optionnel)"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Comments (optional)"
+                  }
+                ]
+              },
+              {
+                "Name": "serverValidationError",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Une erreur est survenue lors de la soumission. Veuillez nous contacter."
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "An error occurred during submission. Please contact us."
+                  }
+                ]
+              }
+            ]
+          },
+          "ContentPermissionsPart": {
+            "Roles": [],
+            "Enabled": false
+          },
+          "AliasPart": {
+            "Alias": "hackerregistrationform"
+          }
+        }
+      ]
+    }
+  ]
+}

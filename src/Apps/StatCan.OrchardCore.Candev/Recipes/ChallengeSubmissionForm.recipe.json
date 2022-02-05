@@ -1,0 +1,348 @@
+{
+  "name": "Candev.ChallengeSubmissionForm",
+  "displayName": "Challenge Submission Form",
+  "description": "Creates a form that can be used by users to submit a challenge",
+  "author": "StatCan Digital Innovation",
+  "website": "digital.statcan.gc.ca",
+  "version": "1.0.0",
+  "issetuprecipe": false,
+  "categories": [],
+  "tags": [],
+  "steps": [
+    {
+      "name": "Content",
+      "data": [
+        {
+          "ContentItemId": "4kpgcnkaydrkb5hfxy10261qmb",
+          "ContentItemVersionId": "42k5f77wkg134vrt0ka0agetx6",
+          "ContentType": "VueForm",
+          "DisplayText": "Challenge Submission",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": "2021-07-30T15:13:34.1968979Z",
+          "PublishedUtc": "2021-07-30T15:13:34.2293109Z",
+          "CreatedUtc": "2021-04-23T16:36:01.9117576Z",
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "TitlePart": {
+            "Title": "Challenge Submission"
+          },
+          "VueForm": {
+            "Enabled": {
+              "Value": true
+            },
+            "DisabledHtml": {
+              "Html": "<div class=\"container text-center mt-2\">\n  [locale en]The challenge submission form is currently disabled.[/locale]\n  [locale fr]Le formulaire de soumission de défi est présentement désactivé[/locale]\n</div>"
+            },
+            "SuccessMessage": {
+              "Text": "{{ \"successMessage\" | localize }}"
+            },
+            "ErrorMessage": {
+              "Text": "Please correct the errors above"
+            },
+            "RenderAs": {
+              "Text": null
+            },
+            "Template": {
+              "Text": "{% assign challengeId = Request.Query['id'] %}\r\n{% assign challenge =  Content.ContentItemVersionId[challengeId] %}\r\n\r\n<v-container >\r\n  <v-card-text>\r\n    <v-row justify=\"center\">\r\n{% if User.Identity.Name == null %}\r\n      <v-col cols=\"8\">\r\n        [locale en]Please <a href=\"{{ '~/login' | return_url }}\">login</a> before submitting a challenge[/locale]\r\n        [locale fr]Veuillez vous <a href=\"{{ '~/login' | return_url }}\">connecter</a> avant de soumettre un défi[/locale]\r\n      </v-col>\r\n{% else %}\r\n      <v-col cols=\"10\">             \r\n\t\t<v-stepper v-model=\"counter\" vertical non-linear>    \r\n          <v-divider></v-divider>\r\n          \r\n          <!-- TITLE -->\r\n          <v-stepper-step editable step=\"1\" :rules=\"[() => !obs.errors.title.length != 0]\">\r\n            [locale en]Title[/locale][locale fr]Titre[/locale]\r\n          </v-stepper-step>\r\n    \t  <v-stepper-content step=\"1\">\r\n      \t\t<v-col>\r\n      \t\t  <div class=\"title\">[locale en]Choose a title for your user case[/locale][locale fr]Choisissez un titre pour votre défi[/locale]</div>\r\n   \t  \t\t</v-col>\r\n      \t\t<v-col>\r\n      \t\t  <v-alert type=\"info\" border=\"left\" colored-border color=\"primary\" elevation=\"2\">\r\n\t\t\t\t<div class=\"title\">\r\n        \t\t  [locale en]Tips and examples[/locale]\r\n                  [locale fr]Trucs et exemples[/locale]                  \r\n      \t\t\t</div>\r\n                <br>\r\n\t\t\t\t<div>\r\n                  [locale en]\r\n                  Select a catchy title that aligns with the subject matter to refer to your data challenge. The title, along with your organization name,\r\n                  will be used after the event to promote the solutions developed by the students.<br>\r\n                  <br>\r\n                  Examples (taken from previous events):<br>\r\n\t\t\t\t  - Government points of service finder for new immigrants <br>\r\n\t\t\t\t  - Boosting Northern Lights beauty <br>\r\n\t\t\t\t  - Analyzing trends in data experts labour market\r\n                  [/locale]\r\n                  [locale fr]\r\n                  Choisissez un titre accrocheur en rapport avec le sujet pour faire référence à votre défi des données.\r\n                  Le titre, ainsi que le nom de votre organisation, seront utilisés après l'événement pour promouvoir les solutions développées par les étudiants.<br>\r\n                  <br>\r\n                  Exemples (tirés d'événements précédents):<br>\r\n                  - Recherche de points de service gouvernementaux pour les nouveaux immigrants<br> \r\n                  - Améliorer la beauté des aurores boréales <br>\r\n                  - Analyser les tendances du marché du travail des experts en données\r\n                  [/locale]\r\n                </div>\r\n  \t  \t\t  </v-alert>\r\n      \t\t</v-col> \r\n      \t\t<v-col>  \r\n      \t\t  <validation-provider name=\"title\" rules=\"required\" v-slot=\"{ errors, valid }\">       \r\n          \t\t<v-text-field name=\"title\" v-model=\"title\" :error-messages=\"errors\" filled=\"filled\" label=\"{{ \"titleLabel\" | localize }}\"></v-text-field>\r\n        \t  </validation-provider>\r\n      \t\t</v-col>\r\n      \t\t<v-col>  \r\n      \t\t  <v-btn color=\"primary\" @click=\"counter = 2\">[locale en]Continue[/locale][locale fr]Continuer[/locale]</v-btn>\r\n      \t\t</v-col>\r\n    \t  </v-stepper-content>\r\n          \r\n          <!-- STATEMENT -->\r\n    \t  <v-stepper-step editable step=\"2\">\r\n      \t\t[locale en]Statement[/locale][locale fr]Énoncé[/locale]\r\n    \t  </v-stepper-step>         \r\n    \t  <v-stepper-content step=\"2\">\r\n            <v-divider></v-divider>\r\n\t\t\t<v-col>\r\n      \t\t  <div class=\"title\">\r\n                [locale en]In 1-2 sentences, briefly explain the business case that needs to be solved and the desired outcomes[/locale]\r\n                [locale fr]En une ou deux phrases, expliquez brièvement l’étude de cas qui doit être résolu, ainsi que les résultats souhaités.[/locale]              \r\n              </div>\r\n   \t  \t\t</v-col>\r\n            <v-col>\r\n      \t\t  <v-alert type=\"info\" border=\"left\" colored-border color=\"primary\" elevation=\"2\">\r\n\t\t\t\t<div class=\"title\">\r\n        \t\t  [locale en]Tips and examples[/locale]\r\n                  [locale fr]Trucs et exemples[/locale]\r\n      \t\t\t</div>\r\n                <br>\r\n                <div>\r\n                  [locale en]             \r\n\t\t\t\t  The challenge statement can be written like a \"user story\" to emulate an IT project requirement. Here is a generic template:<br>\r\n\t\t\t\t  - As a ˂role˃, I can ˂goal/need˃, so that ˂why˃; or<br>\r\n\t\t\t\t  - As a ˂particular class of user˃, I want to ˂be able to perform/do something˃, so that ˂I get some form of value or benefit˃.<br>\r\n\t\t\t\t  <br>\r\n                  Examples:<br>\r\n\t\t\t\t  - As a new immigrant, I want to be able to find in one tool all the governmental points of service, as well as how to get there and other useful information.<br>\r\n\t\t\t\t  - As a scientist, I want to be able to identify the Northern Lights with greater precision, so that I can improve the forecasting of this phenomenon.<br>\r\n\t\t\t\t  - As a senior manager for Innovation, Science and Economic Development Canada (ISED), I want to analyze trends in the private sector for hiring data scientists (e.g. starting salary, employment status, etc.) compared with the Government of Canada's practices in order to better align ISED's recruitment strategies. \r\n                  [/locale]\r\n                  [locale fr]\r\n                  L'énoncé du défi des données peut être écrit comme une \"histoire d'utilisateur\" pour émuler une exigence de projet informatique. Voici un modèle générique :<br>\r\n                  - En tant que ˂rôle˃, je peux ˂but/besoin˃, de sorte que ˂quoi˃ ; ou.<br>\r\n                  - En tant qu’˂utilisateurs˃, je veux ˂être capable d'effectuer/faire quelque chose˃, de sorte que ˂je reçoive une certaine forme de valeur ou de bénéfice˃.<br>\r\n                  <br>\r\n                  Exemples :<br>\r\n                  - En tant que nouvel immigrant, je veux pouvoir trouver dans un seul outil tous les points de service gouvernementaux, ainsi que la manière de s'y rendre et d'autres informations utiles.<br>\r\n                  - En tant que scientifique, je veux pouvoir identifier les aurores boréales avec plus de précision, afin d'améliorer la prévision de ce phénomène.<br>\r\n                  - En tant que cadre supérieur pour Innovation, Sciences et Développement économique Canada (ISDE), je veux analyser les tendances du secteur privé en matière d'embauche de scientifiques des données (p. ex. salaire de départ, statut d'emploi, etc.) par rapport aux pratiques du gouvernement du Canada, afin de mieux harmoniser les stratégies de recrutement de l'ISDE.\r\n                  [/locale] \r\n                </div>\r\n              </v-alert>\r\n      \t\t</v-col> \r\n            <v-col> \r\n          \t\t<v-textarea name=\"statement\" v-model=\"statement\" filled=\"filled\" label=\"{{ \"statementLabel\" | localize }}\" rows=\"3\"></v-textarea>\r\n\t\t\t</v-col> \r\n            <v-col> \r\n      \t\t  <v-btn color=\"primary\" @click=\"counter = 3\">[locale en]Continue[/locale][locale fr]Continuer[/locale]</v-btn>\r\n            </v-col> \r\n    \t  </v-stepper-content>\r\n          \r\n          <!-- DATASETS -->\r\n    \t  <v-stepper-step editable step=\"3\">\r\n      \t\t[locale en]Datasets[/locale][locale fr]Données[/locale]\r\n    \t  </v-stepper-step>        \r\n    \t  <v-stepper-content step=\"3\">\r\n            <v-divider></v-divider>\r\n            <v-col>\r\n      \t\t  <div class=\"title\">\r\n                [locale en]Provide hyperlinked datasets and complementary documentation that students will use to develop their solutions. Alternatively, you can attach the files.[/locale]\r\n                [locale fr]Fournissez des hyperliens vers les ensembles de données et la documentation complémentaire que les élèves utiliseront pour développer une solution. Au besoin, vous pouvez également joindre les fichiers.[/locale]           \r\n              </div>\r\n   \t  \t\t</v-col>\r\n            <v-col>\r\n      \t\t  <v-alert border=\"left\" colored-border type=\"warning\" elevation=\"2\">\r\n                [locale en]\r\n                ONLY open source data can be used throughout the Challenge and NO confidential information can be included in the datasets that your organization provides.\r\n\t\t\t    [/locale en]\r\n                [locale fr]\r\n                Aucune information confidentielle ne doit être fournie.\r\n                [/locale fr]\r\n              </v-alert>\r\n      \t\t</v-col> \r\n            <v-col>\r\n      \t\t  <v-alert type=\"info\" border=\"left\" colored-border color=\"primary\" elevation=\"2\">\r\n\t\t\t\t<div class=\"title\">\r\n        \t\t  [locale en]Tips and examples[/locale]\r\n                  [locale fr]Trucs et exemples[/locale]\r\n      \t\t\t</div>\r\n                <br>\r\n                <div>\r\n                  [locale en]\r\n                  Examples:<br>\r\n\t\t\t\t  - Links to websites providing information on government services to be included in the solution, such as the Living in Canada application for new immigrants, how to get a Social Insurance Number, how to apply for a driver's license, etc.<br>\r\n\t\t\t\t  - Specific datasets on space weather, satellite imagery, extraordinary meteorological phenomenon, etc. from government and academic sources.<br>\r\n\t\t\t\t  - Demographic datasets such as reports from the Employee Exit Survey for ISED and the Public Service Employee Survey for ISED.\r\n  \t  \t\t  \t  [/locale]\r\n                  [locale fr]\r\n                  Exemples:<br>\r\n                  - Liens vers des sites Web fournissant des informations sur les services gouvernementaux à inclure dans la solution, tels que le formulaire Vivre au Canada pour les nouveaux immigrants, comment obtenir un numéro d'assurance sociale, comment demander un permis de conduire, etc.<br>\r\n                  - Des ensembles de données spécifiques sur la météo spatiale, l'imagerie satellite, les phénomènes météorologiques extraordinaires, etc. provenant de sources gouvernementales et universitaires.<br>\r\n                  - Des ensembles de données démographiques tels que les rapports de l'enquête sur les départs des employés de l'ISDE et de l'enquête sur les employés de la fonction publique de l'ISDE.\r\n                  [/locale]\r\n\t\t\t\t</div>\r\n           \t  </v-alert>\r\n      \t\t</v-col> \r\n            <v-col>\r\n       \t  \t  \t<v-textarea name=\"datasets\" v-model=\"datasets\" filled=\"filled\" label=\"{{ \"datasetsLabel\" | localize }}\" rows=\"5\"></v-textarea>\r\n            </v-col>\r\n            <v-col>\r\n      \t\t  <v-alert border=\"left\" colored-border type=\"warning\" elevation=\"2\">\r\n                [locale en]\r\n                Please select all files at once.\r\n\t\t\t    [/locale en]\r\n                [locale fr]\r\n                Veuillez sélectionner tous les fichiers d'un seul coup.\r\n                [/locale fr]\r\n              </v-alert>\r\n      \t\t</v-col> \r\n            <v-col>\t\t\t\t\r\n              <v-file-input show-size counter multiple label=\"{{ \"datasetsFilesLabel\" | localize }}\"></v-file-input>\r\n            </v-col>\r\n            <v-col>\r\n                {% for file in challenge.ContentItem.Content.Challenge.DatasetsFiles.Paths %}\r\n\t\t            {{ file | remove: \"challenge/\" }}<br>\r\n\t            {% endfor %}\r\n            </v-col>\r\n            <v-col>\r\n      \t  \t  <v-btn color=\"primary\" @click=\"counter = 4\">[locale en]Continue[/locale][locale fr]Continuer[/locale]</v-btn>\r\n            </v-col>\r\n    \t  </v-stepper-content>\r\n          \r\n          <!-- BACKGROUND INFORMATION -->\r\n    \t  <v-stepper-step editable step=\"4\">\r\n      \t\t[locale en]Background Information[/locale][locale fr]Information de référence[/locale]\r\n    \t  </v-stepper-step>\r\n    \t  <v-stepper-content step=\"4\">\r\n\t\t\t<v-divider></v-divider>\r\n            <v-col>\r\n      \t\t  <div class=\"title\">\r\n                [locale en]                \r\n                This information will be kept from students until the mentorship session,\r\n                where the mentor that represents your department will be introducing the case and all of the support material to students.                      \r\n                [/locale]\r\n                [locale fr]\r\n                Ces informations ne seront pas communiquées aux étudiants jusqu'à la session de mentorat, au cours de laquelle le mentor représentant votre organisation présentera le cas et tout le matériel pertinent aux étudiants.\r\n                [/locale]\r\n              </div>\r\n   \t  \t\t</v-col>\r\n            <v-col>\r\n      \t\t  <v-alert type=\"info\" border=\"left\" colored-border color=\"primary\" elevation=\"2\">\r\n\t\t\t\t<div class=\"title\">\r\n        \t\t  [locale en]Tips and examples[/locale]\r\n                  [locale fr]Trucs et exemples[/locale]\r\n      \t\t\t</div>\r\n                <br>\r\n                <div>\r\n                  [locale en]\r\n                    Describe the current state in which the problem or opportunity exists, considering:<br>\r\n\t\t\t\t\t- Stakeholders and users<br>\r\n\t\t\t\t\t- Business processes<br>\r\n\t\t\t\t\t- Paths already explored<br>\r\n\t\t\t\t\t- Technological limitations<br>\r\n                  <br>\r\n\t\t\t\t  Examples:<br>\r\n\t\t\t\t\t- Specific information to be included about each point of service such as the types of services offered, GPS coordinates and useful links.<br>\r\n\t\t\t\t\t- Description of how the provided technical datasets are created by satellite imaging, description of current problems with analysis of these datasets, adequate scientific context so that the problem can be understood by someone without background knowledge of space science.<br>\r\n\t\t\t\t\t- Background on ISED's mandate and activities, desired use of tool in context of strategic planning.  \t\r\n                  [/locale]\r\n                  [locale fr]\r\n                  Décrire l'état actuel dans lequel se trouve le problème ou l'opportunité, en tenant compte des éléments suivants:<br>\r\n                  - Les parties prenantes et les utilisateurs<br>\r\n                  - Les processus d'affaires<br>\r\n                  - Les voies déjà explorées<br>\r\n                  - Les limites technologiques<br>\r\n                  <br>\r\n                  Exemples :<br>\r\n                  - Informations spécifiques à inclure sur chaque point de service, telles que les types de services offerts, les coordonnées GPS et les liens utiles.<br>\r\n                  - Description de la manière dont les ensembles de données techniques fournis sont créés par l'imagerie satellitaire, description des problèmes actuels d'analyse de ces ensembles de données, contexte scientifique adéquat pour que le problème puisse être compris par une personne n'ayant pas de connaissances préalables en sciences spatiales.<br>\r\n                  - Contexte du mandat et des activités de l'ISDE, et utilisation souhaitée de l'outil dans le contexte de la planification stratégique.\r\n                  [/locale]\r\n                </div>\r\n           \t  </v-alert>\r\n      \t\t</v-col>\r\n            <v-col>\r\n       \t  \t  \t<v-textarea name=\"backgroundInfo\" v-model=\"backgroundInfo\" filled=\"filled\" label=\"{{ \"backgroundInfoLabel\" | localize }}\" rows=\"5\"></v-textarea>\r\n            </v-col>\r\n            <v-col>\r\n      \t\t  <v-btn color=\"primary\" @click=\"counter = 5\">[locale en]Continue[/locale][locale fr]Continuer[/locale]</v-btn>\r\n            </v-col> \r\n    \t  </v-stepper-content>\r\n          \r\n          <!-- KEYWORDS -->\r\n    \t  <v-stepper-step editable step=\"5\">\r\n      \t\t[locale en]Keywords[/locale][locale fr]Mots clés[/locale]\r\n    \t  </v-stepper-step>\r\n    \t  <v-stepper-content step=\"5\">\r\n\t\t\t<v-divider></v-divider>\r\n            <v-col>\r\n      \t\t  <div class=\"title\">\r\n                [locale en]Keywords[/locale][locale fr]Mots clés[/locale]            \r\n              </div>\r\n   \t  \t\t</v-col>\r\n            <v-col>\r\n      \t\t  <v-alert type=\"info\" border=\"left\" colored-border color=\"primary\" elevation=\"2\">\r\n\t\t\t\t<div class=\"title\">\r\n        \t\t  [locale en]Tips and examples[/locale]\r\n                  [locale fr]Trucs et exemples[/locale]\r\n      \t\t\t</div>\r\n                <br>\r\n                <div>\r\n                  [locale en]\r\n                  The keywords will help the CANDEV team assign a topic to your challenge. Participating students will be asked to rank all topics, determining which case they will solve. Our case assignment process ensures that an equal number of teams will solve your challenge. Keywords can be related to the theme of your challenge (e.g. agriculture, energy, space, etc.) or to an area of expertise (e.g. text classification, database architecture, data analysis, etc.). \t\r\n                  [/locale]\r\n                  [locale fr]\r\n                  Les mots-clés aideront l'équipe CANDEV à assigner un sujet à votre défi. Les étudiants participants seront invités à classer tous les sujets, déterminant ainsi le cas qu'ils auront à résoudre. Notre processus d'attribution des cas assure qu'un nombre égal d'équipes résoudra votre défi.\r\nLes mots-clés peuvent être liés au thème de votre défi (par exemple : agriculture, énergie, espace, etc.) ou à un domaine d'expertise (par exemple, classification de texte, architecture de base de données, analyse de données, etc.).\r\n                  [/locale]\r\n                </div>\r\n           \t  </v-alert>\r\n      \t\t</v-col>\r\n            <v-col>  \r\n         \t\t<v-text-field name=\"keywords\" v-model=\"keywords\" filled=\"filled\" label=\"{{ \"keywordsLabel\" | localize }}\"></v-text-field>\r\n      \t\t</v-col>\r\n            <v-col>\r\n      \t\t  <v-btn color=\"primary\" @click=\"counter = 6\">[locale en]Continue[/locale][locale fr]Continuer[/locale]</v-btn>\r\n            </v-col> \r\n    \t  </v-stepper-content>\r\n          \r\n          <!-- ORGANIZATION -->\r\n    \t  <v-stepper-step editable step=\"6\">\r\n      \t\t[locale en]Organization[/locale][locale fr]Organisation[/locale]\r\n    \t  </v-stepper-step>\r\n    \t  <v-stepper-content step=\"6\">\r\n\t\t\t<v-divider></v-divider>\r\n            <v-col>\r\n      \t\t  <div class=\"title\">\r\n                [locale en]Organization[/locale][locale fr]Organisation[/locale]            \r\n              </div>\r\n   \t  \t\t</v-col> \r\n            <v-col>  \r\n          \t\t<v-text-field name=\"organizationNameEn\" v-model=\"organizationNameEn\" filled=\"filled\" label=\"{{ \"organizationNameEnLabel\" | localize }}\"></v-text-field>\r\n      \t\t</v-col>\r\n      \t\t<v-col>  \r\n           \t\t<v-text-field name=\"organizationAcronymEn\" v-model=\"organizationAcronymEn\" filled=\"filled\" label=\"{{ \"organizationAcronymEnLabel\" | localize }}\"></v-text-field>\r\n      \t\t</v-col>\r\n            <v-col>\r\n      \t\t  <v-btn color=\"primary\" @click=\"counter = 7\">[locale en]Continue[/locale][locale fr]Continuer[/locale]</v-btn>\r\n            </v-col> \r\n    \t  </v-stepper-content>\r\n          \r\n          <!-- CONTACT INFO AND MENTOR -->\r\n    \t  <v-stepper-step editable step=\"7\" :rules=\"[() => !obs.errors.contactPersonEmail.length != 0 &&\r\n                                                    !obs.errors.technicalMentorEmail.length != 0 &&\r\n                                                    !obs.errors.caseSpecialistMentorEmail.length != 0]\">\r\n      \t\t[locale en]Contact information & mentor  [/locale][locale fr]Informations de contact et mentor[/locale]\r\n    \t  </v-stepper-step>\r\n    \t  <v-stepper-content step=\"7\">\r\n\t\t\t<v-divider></v-divider>\r\n            <v-col>\r\n      \t\t  <div class=\"title\">\r\n      \t\t    [locale en]Contact information & mentor[/locale][locale fr]Informations de contact et mentor[/locale]\r\n              </div>\r\n   \t  \t\t</v-col> \r\n            <v-col>  \r\n          \t\t<v-text-field name=\"contactPersonName\" v-model=\"contactPersonName\" filled=\"filled\" label=\"{{ \"contactPersonNameLabel\" | localize }}\"></v-text-field>\r\n      \t\t</v-col>\r\n      \t\t<v-col>  \r\n              <validation-provider name=\"contactPersonEmail\" rules=\"email\" v-slot=\"{ errors, valid }\">      \r\n          \t\t<v-text-field name=\"contactPersonEmail\" v-model=\"contactPersonEmail\" :error-messages=\"errors\" filled=\"filled\" label=\"{{ \"contactPersonEmailLabel\" | localize }}\"></v-text-field>\r\n      \t\t  </validation-provider>\r\n            </v-col>\r\n            <v-col>  \r\n          \t\t<v-text-field name=\"technicalMentorName\" v-model=\"technicalMentorName\" filled=\"filled\" label=\"{{ \"technicalMentorNameLabel\" | localize }}\"></v-text-field>\r\n      \t\t</v-col>\r\n            <v-col>\r\n              <validation-provider name=\"technicalMentorEmail\" rules=\"email\" v-slot=\"{ errors, valid }\">     \r\n          \t\t<v-text-field name=\"technicalMentorEmail\" v-model=\"technicalMentorEmail\" :error-messages=\"errors\" filled=\"filled\" label=\"{{ \"technicalMentorEmailLabel\" | localize }}\"></v-text-field>\r\n      \t\t  </validation-provider>\r\n            </v-col>\r\n            <v-col>  \r\n          \t\t<v-text-field name=\"caseSpecialistMentorName\" v-model=\"caseSpecialistMentorName\" filled=\"filled\" label=\"{{ \"caseSpecialistMentorNameLabel\" | localize }}\"></v-text-field>\r\n      \t\t</v-col>\r\n            <v-col>  \r\n              <validation-provider name=\"caseSpecialistMentorEmail\" rules=\"email\" v-slot=\"{ errors, valid }\">   \r\n          \t\t<v-text-field name=\"caseSpecialistMentorEmail\" v-model=\"caseSpecialistMentorEmail\" :error-messages=\"errors\" filled=\"filled\" label=\"{{ \"caseSpecialistMentorEmailLabel\" | localize }}\"></v-text-field>\r\n      \t\t  </validation-provider>\r\n            </v-col>\r\n            <v-col>\r\n      \t\t  <v-btn color=\"primary\" @click=\"counter = 8\">[locale en]Continue[/locale][locale fr]Continuer[/locale]</v-btn>\r\n            </v-col> \r\n    \t  </v-stepper-content>\r\n          \r\n          <!-- COMMENTS -->\r\n    \t  <v-stepper-step editable step=\"8\">\r\n      \t\t[locale en]Comments[/locale][locale fr]Commentaires[/locale]\r\n            <small>[locale en]Optional[/locale][locale fr]Optionnel[/locale]</small>\r\n    \t  </v-stepper-step>\r\n    \t  <v-stepper-content step=\"8\">\r\n\t\t\t<v-divider></v-divider>\r\n            <v-col>\r\n      \t\t  <div class=\"title\">\r\n                [locale en]Comments[/locale][locale fr]Commentaires[/locale]      \r\n              </div>\r\n   \t  \t\t</v-col>\r\n            <v-col> \r\n          \t  <v-textarea name=\"comments\" v-model=\"comments\" filled=\"filled\" label=\"{{ \"commentsLabel\" | localize }}\" rows=\"5\"></v-textarea>\r\n\t\t\t</v-col> \r\n    \t  </v-stepper-content>\r\n          <v-col>\r\n          \t<v-alert type=\"success\" v-if=\"form.successMessage\">\r\n          \t  {% raw %}{{ form.successMessage }}{% endraw %}\r\n          \t</v-alert>\r\n          \t<v-alert type=\"error\" v-if=\"form.serverValidationMessage\">\r\n          \t  {% raw %}{{ form.serverValidationMessage[0] }}{% endraw %}\r\n          \t</v-alert>\r\n      \t  </v-col>\r\n      \t  <v-col>\r\n    \t  \t<v-btn type=\"submit\" color=\"primary\" depressed block @click=\"formHandleSubmit\" :disabled=\"form.submitting\">{{ \"submitLabel\" | localize }}</v-btn>\r\n          </v-col>\r\n  \t\t</v-stepper>\r\n      </v-col>\r\n{% endif %}\r\n    </v-row>\r\n  </v-card-text>\r\n</v-container>\r\n\r\n"
+            },
+            "Disabled": {
+              "Value": false
+            },
+            "Debug": {
+              "Value": false
+            }
+          },
+          "VueFormScripts": {
+            "ClientInit": {
+              "Text": "VeeValidate.setInteractionMode('passive');"
+            },
+            "OnValidation": {
+              "Text": "var data = requestFormAsJsonObject();\r\nvar localizedText = getLocalizedTextValues(getFormContentItem());\r\n\r\nif(!isAuthenticated() || data.title == \"\") {\r\n  addError('serverValidationMessage', localizedText.serverValidationError);\r\n}"
+            },
+            "OnSubmitted": {
+              "Text": "var data = requestFormAsJsonObject();\r\nvar localizedText = getLocalizedTextValues(getFormContentItem());\r\nvar saveMediaResults = saveMedia(\"challenge\", true);\r\nvar datasetsFiles = getMediaPaths(saveMediaResults);\r\n\r\nif(saveMediaResults[0]?.hasError == true){\r\n    addError(\"serverValidationMessage\", localizedText.mediaUploadError);\r\n    return;\r\n}\r\n\r\nif(data.datasetsFilesOld != null){\r\n\tif(Object.keys(data.datasetsFilesOld).length > 10){\r\n    \tfor(var path of data.datasetsFilesOld){\r\n        \tdatasetsFiles.push(path[1]);\r\n    \t}\r\n\t} else {\r\n    \tdatasetsFiles.push(data.datasetsFilesOld);\r\n\t}\r\n}\r\n  \r\nif (data.challengeId == \"\"){\r\nvar item = createContentItem(\"Challenge\", false, { \r\n  \"Challenge\": {\r\n    \"Title\": {\r\n      \"Text\": data.title\r\n    },\r\n    \"Statement\": {\r\n      \"Text\": data.statement\r\n    },\r\n    \"Datasets\": {\r\n      \"Text\": data.datasets\r\n    },\r\n    \"DatasetsFiles\": {\r\n      \"Paths\": datasetsFiles\r\n    },\r\n    \"BackgroundInformation\": {\r\n      \"Text\": data.backgroundInfo\r\n    },\r\n    \"Keywords\": {\r\n      \"Text\": data.keywords\r\n    },\r\n    \"OrganizationNameEn\": {\r\n      \"Text\": data.organizationNameEn\r\n    },\r\n    \"OrganizationAcronymEn\": {\r\n      \"Text\": data.organizationAcronymEn\r\n    },\r\n    \"ContactPersonName\": {\r\n      \"Text\": data.contactPersonName\r\n    },\r\n    \"ContactPersonEmail\": {\r\n      \"Text\": data.contactPersonEmail\r\n    },\r\n    \"TechnicalMentorName\": {\r\n      \"Text\": data.technicalMentorName\r\n    },\r\n    \"TechnicalMentorEmail\": {\r\n      \"Text\": data.technicalMentorEmail\r\n    },\r\n    \"CaseSpecialistName\": {\r\n      \"Text\": data.caseSpecialistMentorName\r\n    },\r\n    \"CaseSpecialistEmail\": {\r\n      \"Text\": data.caseSpecialistMentorEmail\r\n    },\r\n    \"Comments\": {\r\n      \"Text\": data.comments\r\n    }\r\n  }\r\n});\r\n} else {\r\n var update = updateContentItem(contentByVersionId(data.challengeId), {\r\n  \"Challenge\": {\r\n    \"Title\": {\r\n      \"Text\": data.title\r\n    },\r\n    \"Statement\": {\r\n      \"Text\": data.statement\r\n    },\r\n    \"Datasets\": {\r\n      \"Text\": data.datasets\r\n    },\r\n    \"DatasetsFiles\": {\r\n      \"Paths\": datasetsFiles\r\n    },\r\n    \"BackgroundInformation\": {\r\n      \"Text\": data.backgroundInfo\r\n    },\r\n    \"Keywords\": {\r\n      \"Text\": data.keywords\r\n    },\r\n    \"OrganizationNameEn\": {\r\n      \"Text\": data.organizationNameEn\r\n    },\r\n    \"OrganizationAcronymEn\": {\r\n      \"Text\": data.organizationAcronymEn\r\n    },\r\n    \"ContactPersonName\": {\r\n      \"Text\": data.contactPersonName\r\n    },\r\n    \"ContactPersonEmail\": {\r\n      \"Text\": data.contactPersonEmail\r\n    },\r\n    \"TechnicalMentorName\": {\r\n      \"Text\": data.technicalMentorName\r\n    },\r\n    \"TechnicalMentorEmail\": {\r\n      \"Text\": data.technicalMentorEmail\r\n    },\r\n    \"CaseSpecialistName\": {\r\n      \"Text\": data.caseSpecialistMentorName\r\n    },\r\n    \"CaseSpecialistEmail\": {\r\n      \"Text\": data.caseSpecialistMentorEmail\r\n    },\r\n    \"Comments\": {\r\n      \"Text\": data.comments\r\n    }\r\n  }\r\n}); \r\n}\r\n  "
+            },
+            "ComponentOptions": {
+              "Text": "{% assign challengeId = Request.Query['id'] %}\r\n{% assign challenge =  Content.ContentItemVersionId[challengeId] %}\r\n\r\n{\r\n  data: () => ({\r\n    title: \"{{ challenge.ContentItem.Content.Challenge.Title.Text | js_encode }}\",\r\n\tstatement: \"{{ challenge.ContentItem.Content.Challenge.Statement.Text | js_encode }}\", \r\n    datasets: \"{{ challenge.ContentItem.Content.Challenge.Datasets.Text | js_encode }}\",\r\n    datasetsFilesOld: [ \r\n  \t  {%- for file in challenge.ContentItem.Content.Challenge.DatasetsFiles.Paths -%}\r\n\t\t'{{ file }}',\r\n\t  {%- endfor -%}\r\n \t],\r\n    backgroundInfo: \"{{ challenge.ContentItem.Content.Challenge.BackgroundInformation.Text | js_encode }}\",\r\n    keywords: \"{{ challenge.ContentItem.Content.Challenge.Keywords.Text | js_encode }}\",\r\n    organizationNameEn: \"{{ challenge.ContentItem.Content.Challenge.OrganizationNameEn.Text | js_encode }}\",\r\n    organizationAcronymEn: \"{{ challenge.ContentItem.Content.Challenge.OrganizationAcronymEn.Text | js_encode }}\",\r\n    contactPersonName: \"{{ challenge.ContentItem.Content.Challenge.ContactPersonName.Text | js_encode }}\",\r\n    contactPersonEmail: \"{{ challenge.ContentItem.Content.Challenge.ContactPersonEmail.Text | js_encode }}\",\r\n    technicalMentorName: \"{{ challenge.ContentItem.Content.Challenge.TechnicalMentorName.Text | js_encode }}\",\r\n    technicalMentorEmail: \"{{ challenge.ContentItem.Content.Challenge.TechnicalMentorEmail.Text | js_encode }}\",\r\n    caseSpecialistMentorName: \"{{ challenge.ContentItem.Content.Challenge.CaseSpecialistName.Text | js_encode }}\",\r\n    caseSpecialistMentorEmail: \"{{ challenge.ContentItem.Content.Challenge.CaseSpecialistEmail.Text | js_encode }}\",\r\n    comments: \"{{ challenge.ContentItem.Content.Challenge.Comments.Text | js_encode }}\",\r\n    counter: 1,\r\n    challengeId: \"{{ challengeId }}\"\r\n  })\r\n}"
+            }
+          },
+          "LocalizedTextPart": {
+            "Data": [
+              {
+                "Name": "titleLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Titre"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Title"
+                  }
+                ]
+              },
+              {
+                "Name": "statementLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Énoncé"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Statement"
+                  }
+                ]
+              },
+              {
+                "Name": "datasetsLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Ensembles de données potentiels"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Potential datasets"
+                  }
+                ]
+              },
+              {
+                "Name": "descriptionHint",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Prise en charge la syntaxe markdown"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Supports markdown syntax"
+                  }
+                ]
+              },
+              {
+                "Name": "submitLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Soumettre"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Submit"
+                  }
+                ]
+              },
+              {
+                "Name": "successMessage",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Votre défi a été enregistré avec succès! Retournez à la page Défi pour voir et modifier votre défi."
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Your challenge was submitted successfully! Return to the Challenge page to view and modify your challenge."
+                  }
+                ]
+              },
+              {
+                "Name": "serverValidationError",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Une erreure est survenue lors de la soumission. Veuillez nous contacter."
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "An error occurred during submission. Please contact us."
+                  }
+                ]
+              },
+              {
+                "Name": "backgroundInfoLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Information de référence"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Background information"
+                  }
+                ]
+              },
+              {
+                "Name": "organizationNameEnLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Nom de votre organisation"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Your organization name"
+                  }
+                ]
+              },
+              {
+                "Name": "organizationAcronymEnLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Acronyme de votre organisation"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Your organization acronym"
+                  }
+                ]
+              },
+              {
+                "Name": "contactPersonNameLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Nom de la personne ressource"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Name of the contact person"
+                  }
+                ]
+              },
+              {
+                "Name": "contactPersonEmailLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Courriel de la personne ressource"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Contact person email"
+                  }
+                ]
+              },
+              {
+                "Name": "technicalMentorNameLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Nom du mentor technique"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Technical mentor name"
+                  }
+                ]
+              },
+              {
+                "Name": "technicalMentorEmailLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Courriel du mentor technique"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Technical mentor email"
+                  }
+                ]
+              },
+              {
+                "Name": "caseSpecialistMentorNameLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Nom du mentor spécialiste du cas"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Case specialist mentor name"
+                  }
+                ]
+              },
+              {
+                "Name": "caseSpecialistMentorEmailLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Courriel du mentor spécialiste du cas"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Case specialist mentor email"
+                  }
+                ]
+              },
+              {
+                "Name": "commentsLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Commentaires"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Comments"
+                  }
+                ]
+              },
+              {
+                "Name": "datasetsFilesLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Choisissez un ou plusieurs fichiers"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Select one or multiple files"
+                  }
+                ]
+              },
+              {
+                "Name": "keywordsLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Mots clés"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Keywords"
+                  }
+                ]
+              },
+              {
+                "Name": "mediaUploadError",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Le(s) fichier(s) que vous tentez de télécharger ont une extension non autorisée ou sont trop gros."
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "The file(s) you are trying to upload have an extension that is not allowed or is too big."
+                  }
+                ]
+              }
+            ]
+          },
+          "ContentPermissionsPart": {
+            "Roles": [
+              "Volunteer",
+              "Administrator"
+            ],
+            "Enabled": true
+          },
+          "AliasPart": {
+            "Alias": "challenge-submission"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -81,6 +81,52 @@
             "MarkdownBodyPart": {
               "Markdown": "Lorem ipsum dolor sit amet, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
             }
+          },
+          {
+            "ContentItemId": "46p8s03jb80m037f96frfhs9mv",
+            "ContentItemVersionId": "4xtk7tnv39zf1vrfsxq1f8tgcg",
+            "ContentType": "Team",
+            "DisplayText": "-Awesome Team-0",
+            "Latest": true,
+            "Published": true,
+            "ModifiedUtc": "2021-10-13T13:43:55.003077Z",
+            "PublishedUtc": "2021-10-13T13:43:55.0459006Z",
+            "CreatedUtc": "2021-10-13T13:43:55.003077Z",
+            "Owner": "[js: parameters('AdminUserId')]",
+            "Author": "[js: parameters('AdminUsername')]",
+            "TitlePart": {
+              "Title": "-Awesome Team-0"
+            },
+            "Team": {
+              "Name": {
+                "Text": "Awesome Team"
+              },
+              "Description": {
+                "Text": "awesome Team"
+              },
+              "Challenge": {
+                "ContentItemIds": []
+              },
+              "TeamCaptain": {
+                "UserIds": [],
+                "UserNames": []
+              },
+              "Topics": {
+                "ContentItemIds": []
+              }
+            },
+            "TeamSolutionPart": {
+              "Name": {
+                "Text": null
+              },
+              "Description": {
+                "Text": null
+              },
+              "RepositoryUrl": {
+                "Text": null
+              }
+            },
+            "EmailTemplatePart": {}
           }
         ]
       },
@@ -125,7 +171,7 @@
           },
           "TeamCustomSettings": {
             "TeamSize": {
-              "Value": null
+              "Value": 4
             },
             "TeamEditable": {
               "Value": true

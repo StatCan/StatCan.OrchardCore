@@ -6,21 +6,22 @@ using OrchardCore.Users.Models;
 using System;
 using YesSql;
 
-namespace StatCan.OrchardCore.Hackathon.Indexes
+namespace StatCan.OrchardCore.Candev.Indexes
 {
     public class IndexMigrations : DataMigration
     {
         public int Create()
         {
-            CreateHackathonItemsIndex();
-            CreateHackathonUsersIndex();          
+            CreateCandevItemsIndex();
+            CreateCandevUsersIndex();
+            CreateHackathonAvgScoresIndex();
 
-            return 1;
+            return 2;
         }
 
-        private void CreateHackathonItemsIndex()
+        private void CreateCandevItemsIndex()
         {
-            SchemaBuilder.CreateMapIndexTable(typeof(HackathonItemsIndex), table => table
+            SchemaBuilder.CreateMapIndexTable(typeof(CandevItemsIndex), table => table
                 .Column<string>("ContentItemId", c => c.WithLength(26))
                 .Column<string>("ContentItemVersionId", c => c.WithLength(26))
                 .Column<string>("LocalizationSet", c => c.WithLength(26))
@@ -40,38 +41,41 @@ namespace StatCan.OrchardCore.Hackathon.Indexes
                 null
             );
 
-            SchemaBuilder.AlterTable(nameof(HackathonItemsIndex), table => table
-                 .CreateIndex("IDX_HackathonItemsIndex_ContentItemId", "ContentItemId", "Latest", "Published", "CreatedUtc")
+            SchemaBuilder.AlterTable(nameof(CandevItemsIndex), table => table
+                 .CreateIndex("IDX_CandevItemsIndex_ContentItemId", "ContentItemId", "Latest", "Published", "CreatedUtc")
              );
 
-            SchemaBuilder.AlterTable(nameof(HackathonItemsIndex), table => table
-                .CreateIndex("IDX_HackathonItemsIndex_ContentItemVersionId", "ContentItemVersionId")
+            SchemaBuilder.AlterTable(nameof(CandevItemsIndex), table => table
+                .CreateIndex("IDXCandevItemsIndex_ContentItemVersionId", "ContentItemVersionId")
             );
 
-            SchemaBuilder.AlterTable(nameof(HackathonItemsIndex), table => table
-                .CreateIndex("IDX_HackathonItemsIndex_DisplayText", "DisplayText")
+            SchemaBuilder.AlterTable(nameof(CandevItemsIndex), table => table
+                .CreateIndex("IDX_CandevItemsIndex_DisplayText", "DisplayText")
             );
 
-            SchemaBuilder.AlterTable(nameof(HackathonItemsIndex), table => table
-                .CreateIndex("IDX_HackathonItemsIndex_TeamContentItemId", "TeamContentItemId")
+            SchemaBuilder.AlterTable(nameof(CandevItemsIndex), table => table
+                .CreateIndex("IDX_CandevItemsIndex_TeamContentItemId", "TeamContentItemId")
             );
 
-            SchemaBuilder.AlterTable(nameof(HackathonItemsIndex), table => table
-                .CreateIndex("IDX_HackathonItemsIndex_CaseLocalizationSet", "CaseLocalizationSet")
+            SchemaBuilder.AlterTable(nameof(CandevItemsIndex), table => table
+                .CreateIndex("IDX_CandevItemsIndex_CaseLocalizationSet", "CaseLocalizationSet")
             );
         }
 
-        private void CreateHackathonUsersIndex()
+        private void CreateCandevUsersIndex()
         {
-            SchemaBuilder.CreateMapIndexTable(typeof(HackathonUsersIndex), table => table
+            SchemaBuilder.CreateMapIndexTable(typeof(CandevUsersIndex), table => table
                 .Column<string>("UserId", c => c.WithLength(26))
                 .Column<string>("UserName", c => c.WithLength(26))
                 .Column<string>("Email", c => c.Nullable().WithLength(255))
+                .Column<string>("Roles", c => c.Nullable().WithLength(255))
                 .Column<string>("ContactEmail", c => c.Nullable().WithLength(255))
                 .Column<string>("FirstName", c => c.WithLength(26))
                 .Column<string>("LastName", c => c.WithLength(26))
                 .Column<string>("Language", c => c.WithLength(4))
-                .Column<string>("TeamContentItemId", c => c.WithLength(26)),
+                .Column<string>("TeamContentItemId", c => c.WithLength(26))
+                .Column<bool>("WillAttend")
+                .Column<bool>("CheckIn"),
                 null
             );
 
@@ -83,6 +87,25 @@ namespace StatCan.OrchardCore.Hackathon.Indexes
                     session.Save(user);
                 }
             });
+        }
+
+        private void CreateHackathonAvgScoresIndex()
+        {
+            SchemaBuilder.CreateReduceIndexTable(typeof(HackathonAvgScoresIndex), table => table
+                .Column<string>("ScoreIndexId", c => c.WithLength(255))
+                .Column<double>("Score")
+                .Column<double>("Count"),
+                null
+            );
+        }
+
+        public int UpdateFrom1()
+        {
+            SchemaBuilder.AlterTable(nameof(CandevUsersIndex), table => table.AddColumn<bool>("WillAttend"));
+            SchemaBuilder.AlterTable(nameof(CandevUsersIndex), table => table.AddColumn<bool>("CheckIn"));
+            CreateHackathonAvgScoresIndex();
+
+            return 2;
         }
     }
 }

@@ -9,6 +9,7 @@
                 "createUser /UserName:Laura /Password:Inno111! /Email:Laura@inno.com /Roles:Authenticated,Hacker",
                 "createUser /UserName:Mike /Password:Inno111! /Email:Mike@inno.com /Roles:Authenticated,Hacker",
                 "createUser /UserName:Frank /Password:Inno111! /Email:Frank@inno.com /Roles:Authenticated,Hacker",
+                "createUser /UserName:Adam /Password:Inno111! /Email:adam@inno.com /Roles:Authenticated,Volunteer",
                 "createUser /UserName:Challenger /Password:Inno111! /Email:Challenger@inno.com /Roles:Authenticated",
                 "createUser /UserName:Hacker /Password:Inno111! /Email:hacker@inno.com /Roles:Authenticated",
                 "createUser /UserName:Volunteer /Password:Inno111! /Email:volunteer@inno.com /Roles:Authenticated"
