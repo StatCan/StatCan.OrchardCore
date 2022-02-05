@@ -77,8 +77,9 @@
                       </v-col>
                       <v-col cols="3" class="text-right">
                         {% assign scores = Queries.GetScoresForTeam | query: teamContentItemId: team.ContentItemId %}
-                        {% assign scoreAvgTech = Queries.GetAvgScoresForTeam | query: scoreIndexId: team.ContentItemId, type: "Technical" | first %}
-                        {% assign scoreAvgSubMat = Queries.GetAvgScoresForTeam | query: scoreIndexId: team.ContentItemId, type: "SubjectMatter" | first %}
+                        {% assign teamContentItemId = team.ContentItemId | slice: 0, 25 %}
+                        {% assign scoreAvgTech = Queries.GetAvgScoresForTeam | query: scoreIndexId: teamContentItemId, type: "T" | first %}
+                        {% assign scoreAvgSubMat = Queries.GetAvgScoresForTeam | query: scoreIndexId: teamContentItemId, type: "S" | first %}
                         {% if scoreAvgTech != null and scoreAvgSubMat != null %}  
                           {% assign scoreAvgTechCount = scoreAvgTech.Count | times: 1.0 %}
                           {% assign scoreAvgSubMatCount = scoreAvgSubMat.Count | times: 1.0 %}
