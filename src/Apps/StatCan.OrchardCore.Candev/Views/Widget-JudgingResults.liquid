@@ -24,7 +24,7 @@
                 <v-card-text>         
                   <h3>{{ "Statement" | t }}</h3> 
                 	<div>{{ challenge.ContentItem.Content.Challenge.Statement.Text | raw }}</div>
-                  <h3>{{ "Background Information & Potential Datasets" | t }}</h3>
+                  <br>
                 	<div>{{ challenge.ContentItem.Content.MarkdownBodyPart.Markdown | markdownify | raw }}</div>
                   <h3>{{ "Organization" | t }}</h3>
                   {% if Culture.Name == "fr" %}

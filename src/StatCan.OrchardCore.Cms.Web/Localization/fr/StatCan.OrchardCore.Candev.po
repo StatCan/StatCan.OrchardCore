@@ -65,7 +65,7 @@ msgstr "L'équipe n'a pas pu être trouvée"
 #. _notifier.Success(H["Successfully left team"]);
 msgctxt "StatCan.OrchardCore.Candev.Controllers.CandevController"
 msgid "Successfully left team"
-msgstr "A quitté l'équipe avec succès"
+msgstr "À quitté l'équipe avec succès"
 
 #: StatCan.OrchardCore.Candev\Controllers\CandevController.cs:151
 #. _notifier.Success(H["Member successfully removed from the team"]);
@@ -472,8 +472,13 @@ msgstr "Organisation"
 
 #: StatCan.OrchardCore.Candev\Views\Widget-TeamDashboardWidget.liquid:0
 msgctxt "StatCan.OrchardCore.Candev.Views.Widget-TeamDashboardWidget"
-msgid "Mentors"
-msgstr "Mentors"
+msgid "Technical mentor"
+msgstr "Mentor technique"
+
+#: StatCan.OrchardCore.Candev\Views\Widget-TeamDashboardWidget.liquid:0
+msgctxt "StatCan.OrchardCore.Candev.Views.Widget-TeamDashboardWidget"
+msgid "Case specialist"
+msgstr "Spécialiste de cas"
 
 #: StatCan.OrchardCore.Candev\Views\Widget-TeamDashboardWidget.liquid:0
 msgctxt "StatCan.OrchardCore.Candev.Views.Widget-TeamDashboardWidget"

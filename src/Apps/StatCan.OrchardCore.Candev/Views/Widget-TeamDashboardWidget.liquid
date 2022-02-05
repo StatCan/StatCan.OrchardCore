@@ -59,13 +59,19 @@
               <h3>{{ "Statement" | t }}</h3> 
               <v-flex class="pt-2"><span class="subtitle-2">{{ challengeSelected.ContentItem.Content.Challenge.Statement.Text | shortcode }}</span></v-flex>
               {% if Site.Properties.HackathonCustomSettings.TeamCustomSettings.PartialChallenge.Value == false %}
-                <h3>{{ "Background Information & Potential Datasets" | t }}</h3>
+                <br>
                 <v-flex class="pt-2"><span class="subtitle-2">{{ challengeSelected.ContentItem.Content.MarkdownBodyPart.Markdown | markdownify | raw }}</span></v-flex>
               {% endif %}
               <h3>{{ "Organization" | t }}</h3>
-              <v-flex class="pt-2"><span class="subtitle-2">{{ challengeSelected.ContentItem.Content.Challenge.OrganizationNameEn.Text | shortcode }}</span></v-flex>
-              <h3>{{ "Mentors" | t }}</h3>
+              {% if Culture.Name == "fr" %}
+		        <v-tab>{{ challenge.ContentItem.Content.Challenge.OrganizationAcronymFr.Text }}</v-tab>
+              {% else %}
+                <v-tab>{{ challenge.ContentItem.Content.Challenge.OrganizationAcronymEn.Text }}</v-tab>
+              {% endif %}
+              <h3>{{ "Technical mentor" | t }}</h3>
               <v-flex class="pt-2"><span class="subtitle-2">{{ challengeSelected.ContentItem.Content.Challenge.TechnicalMentorName.Text | shortcode }}</span></v-flex>
+              <h3>{{ "Case specialist" | t }}</h3>
+              <v-flex class="pt-2"><span class="subtitle-2">{{ challengeSelected.ContentItem.Content.Challenge.CaseSpecialistName.Text | shortcode }}</span></v-flex>
             </v-card-text>
           </v-card>  
         </v-col>

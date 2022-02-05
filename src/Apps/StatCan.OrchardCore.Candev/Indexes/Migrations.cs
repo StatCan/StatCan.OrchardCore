@@ -16,7 +16,7 @@ namespace StatCan.OrchardCore.Candev.Indexes
             CreateCandevUsersIndex();
             CreateHackathonAvgScoresIndex();
 
-            return 2;
+            return 3;
         }
 
         private void CreateCandevItemsIndex()
@@ -92,7 +92,7 @@ namespace StatCan.OrchardCore.Candev.Indexes
         private void CreateHackathonAvgScoresIndex()
         {
             SchemaBuilder.CreateReduceIndexTable(typeof(HackathonAvgScoresIndex), table => table
-                .Column<string>("ScoreIndexId", c => c.WithLength(26))
+                .Column<string>("ScoreIndexId", c => c.WithLength(255))
                 .Column<double>("Score")
                 .Column<double>("Count"),
                 null
@@ -106,6 +106,13 @@ namespace StatCan.OrchardCore.Candev.Indexes
             CreateHackathonAvgScoresIndex();
 
             return 2;
+        }
+
+        public int UpdateFrom2()
+        {
+            SchemaBuilder.AlterTable(nameof(HackathonAvgScoresIndex), table => table.AlterColumn("ScoreIndexId", c => c.WithLength(255)));
+
+            return 3;
         }
     }
 }
