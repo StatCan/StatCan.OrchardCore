@@ -25,7 +25,7 @@ namespace StatCan.OrchardCore.Candev.Indexes
                         {
                             return new HackathonAvgScoresIndex()
                             {
-                                ScoreIndexId = contentItem.Content.Score.Team.ContentItemIds.First.ToString() + "_" + contentItem.Content.JudgeType.Type.Values.First.ToString(),
+                                ScoreIndexId = contentItem.Content.Score.Team.ContentItemIds.First.ToString().Remove(25, 1) + contentItem.Content.JudgeType.Type.Values.First.ToString().Remove(1),
                                 Score = contentItem.Content.Score.Score.Value,
                                 Count = 1
                             };
