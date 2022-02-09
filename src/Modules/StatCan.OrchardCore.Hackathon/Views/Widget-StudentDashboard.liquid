@@ -1,33 +1,44 @@
 {% assign hackers = Queries.GetHackersForTeam | query %}
+{% assign skillsInterest = Queries.GetItemsForHackathon | query: type: "SkillsInterest" %}
 
  <v-container justify="center" >
    <h1>Student Dashboard</h1>
    <v-row justify="center">
      <v-col cols="12" class="d-flex my-5 xs-12 flex-wrap" >
+
        {% for hacker in hackers %}
+
          {% assign user = hacker.UserId | users_by_id %}
-         {% assign phoneNumber = user.Properties.SkillsInterest.SkillsInterest.PhoneNumber.Text %}
+            {% assign phoneNumber = i.ContentItem.Content.SkillsInterest.PhoneNumber.Text %}
          {% capture studentName %} {{hacker.FirstName}} {{hacker.LastName}} {% endcapture %}
          {% assign fieldOfStudy = user.Properties.Hacker.Hacker.FieldOfStudy.Text %}
          {% assign programLevel = user.Properties.Hacker.Hacker.ProgramLevel.Text %}
-
-         {% if fieldOfStudy and programLevel != null %}
- 
-          <v-card class="pa-2 ma-3" width="30%" >
-            <v-card-title>{{studentName}}</v-card-title>
-            <v-card-subtitle>{{hacker.Email}}</v-card-subtitle>
-            <v-card-subtitle>{{phoneNumber}}</v-card-subtitle>
-            <v-card-text>
-              <div class="text-body-2">Field of Study:
-                <span class="font-weight-bold"> {{fieldOfStudy}} </span>
-              </div>
-              <div class="text-body-2">Program Level:
-                <span class="font-weight-bold"> {{programLevel}} </span>
-              </div>
-            <v-card-text>
-          </v-card>
- 
-         {% endif %}
+            {% assign isHired = i.ContentItem.Content.SkillsInterest.Hired.Value %}
+          
+            {% if fieldOfStudy and programLevel != null %}
+              <v-card class="pa-2 ma-3" width="30%">
+                <span class="d-flex justify-space-between align-center">
+                  <v-card-title class="pb-0">{{studentName}}</v-card-title>
+                  {% if isHired == "true" %}
+                    <v-btn color="success" class="ma-3">
+                      Hired
+                      <v-icon right>mdi-checkbox-marked-circle</v-icon>
+                    </v-btn>
+                  {% endif %}
+                </span>
+                <v-card-subtitle class="py-0">{{hacker.Email}}</v-card-subtitle>
+                <v-card-subtitle class="pt-0" >{{ i.ContentItem.Content.SkillsInterest.PhoneNumber.Text}}</v-card-subtitle>
+                <v-card-text>
+                  <div class="text-body-2">Field of Study:
+                    <span class="font-weight-bold"> {{fieldOfStudy}} </span>
+                  </div>
+                  <div class="text-body-2">Program Level:
+                    <span class="font-weight-bold"> {{programLevel}} </span>
+                  </div>
+                <v-card-text>
+              </v-card>
+            {% endif %}
+     
        {% endfor %}
      </v-col>
    </v-row>
