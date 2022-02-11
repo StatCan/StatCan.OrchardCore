@@ -1,7 +1,5 @@
 {% assign interest = Model.ContentItem.Content.SkillsInterest.FieldsOfInterest.Text | remove: '"' |remove: '[' | remove: ']' %}
 {% assign expertise = Model.ContentItem.Content.SkillsInterest.FieldsOfExpertise.Text | remove: '"' |remove: '[' | remove: ']' %}
-{% assign userInRole = User | is_in_role: "Volunteer"%}
-
 
 <v-container>
     <v-row justify="center">
@@ -88,13 +86,7 @@
 
                 </v-list-item-content>
             </v-list-item>
-
-            {% if userInRole %}
-                <div class="d-flex mb-1">
-                    <a class="btn btn-primary col-12" > HIRE </a>
-                </div>
-            {% endif %}
             
         </v-col>
     </v-row>
-</v-container>
+</v-container>                                                                                                                                                                                                                                    
