@@ -1,0 +1,83 @@
+{
+    "name": "Hackathon.HireButtonForm",
+    "displayName": "Hire Button",
+    "description": "Creates a button used to hire students.",
+    "author": "StatCan Digital Innovation",
+    "website": "digital.statcan.gc.ca",
+    "version": "1.0.0",
+    "issetuprecipe": false,
+    "categories": [],
+    "tags": [],
+    "steps": [
+      {
+        "name": "feature"
+      },
+      {
+        "name": "Content",
+        "data": [
+            {
+                "ContentItemId": "46898hhea99ya5z465kd29czwk",
+                "ContentItemVersionId": "40fcyjebzg0eh08cfv0kqfxjxk",
+                "ContentType": "VueForm",
+                "DisplayText": "Hire Button",
+                "Latest": true,
+                "Published": true,
+                "ModifiedUtc": "2022-02-11T15:43:18.270931Z",
+                "PublishedUtc": "2022-02-11T15:43:18.290062Z",
+                "CreatedUtc": "2022-02-11T15:00:06.553129Z",
+                "Owner": "[js: parameters('AdminUserId')]",
+                "Author": "[js: parameters('AdminUsername')]",
+                "TitlePart": {
+                  "Title": "Hire Button"
+                },
+                "VueForm": {
+                  "Template": {
+                    "Text": "<v-container>\r\n    <v-btn type=\"submit\" depressed block @click=\"formHandleSubmit\" :disabled=\"form.submitting\">Hire</v-btn>\r\n</v-container>"
+                  },
+                  "RenderAs": {
+                    "Text": null
+                  },
+                  "Disabled": {
+                    "Value": false
+                  },
+                  "Debug": {
+                    "Value": false
+                  },
+                  "DisabledHtml": {
+                    "Html": ""
+                  },
+                  "SuccessMessage": {
+                    "Text": "You have hired this student."
+                  }
+                },
+                "AliasPart": {
+                  "Alias": "hire-button"
+                },
+                "VueFormScripts": {
+                  "ClientInit": {
+                    "Text": null
+                  },
+                  "ComponentOptions": {
+                    "Text": "{\r\n  data: () => ({\r\n    hired: \"\",\r\n\thiredBy: \"\",\r\n  })\r\n}"
+                  },
+                  "OnValidation": {
+                    "Text": null
+                  },
+                  "OnSubmitted": {
+                    "Text": "var data = requestFormAsJsonObject();\r\n\r\nvar updateSettingsResult = updateContentItem(\"SkillsInterest\", {\r\n  \"SkillsInterest\" : {\r\n     \"Hired\": {\r\n       \"Text\": data.hired\r\n     },\r\n     \"HiredBy\": {\r\n       \"Text\": data.hiredBy\r\n     }\r\n  }\r\n});"
+                  }
+                },
+                "ContentPermissionsPart": {
+                  "Enabled": true,
+                  "Roles": [
+                    "Volunteer"
+                  ]
+                },
+                "LocalizedTextPart": {
+                  "Data": []
+                }
+              }
+            ]
+        }
+      ]
+  }

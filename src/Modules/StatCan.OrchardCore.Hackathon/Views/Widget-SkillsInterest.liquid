@@ -1,0 +1,92 @@
+{% assign interest = Model.ContentItem.Content.SkillsInterest.FieldsOfInterest.Text | remove: '"' |remove: '[' | remove: ']' %}
+{% assign expertise = Model.ContentItem.Content.SkillsInterest.FieldsOfExpertise.Text | remove: '"' |remove: '[' | remove: ']' %}
+
+<v-container>
+    <v-row justify="center">
+        <v-col cols="10">
+            <v-app-bar color="indigo" dark row="2">
+                <v-toolbar-title>HR Form (Part 2 -Skills and interests)</v-toolbar-title>
+            </v-app-bar>
+            <v-list-item two-line>
+                <v-list-item-content >
+                    <v-list-item-subtitle>Consent:</v-list-item-subtitle>
+                    <v-list-item-title class="pl-4" >{{Model.ContentItem.Content.SkillsInterest.Consent.Text}}</v-list-item-title>
+                    <v-list-item-subtitle>Degrees Completed:</v-list-item-subtitle>
+                    <v-list-item-title class="pl-4" >{{Model.ContentItem.Content.SkillsInterest.DegreesCompleted.Text}}</v-list-item-title>
+                    <v-list-item-subtitle>Phone Number:</v-list-item-subtitle>
+                    <v-list-item-title class="pl-4" >{{Model.ContentItem.Content.SkillsInterest.PhoneNumber.Text}}</v-list-item-title>
+                    <v-list-item-subtitle>GC Job Interest:</v-list-item-subtitle>
+                    <v-list-item-title class="pl-4" >{{Model.ContentItem.Content.SkillsInterest.GcJobInterest.Text}}</v-list-item-title>
+                    <v-list-item-subtitle>Job Type:</v-list-item-subtitle>
+                    <v-list-item-title class="pl-4" >{{Model.ContentItem.Content.SkillsInterest.JobType.Text}}</v-list-item-title>
+                    <v-list-item-subtitle>Enrolled in a COOP program:</v-list-item-subtitle>
+                    <v-list-item-title class="pl-4" >{{Model.ContentItem.Content.SkillsInterest.Coop.Text}}</v-list-item-title>
+                    <v-list-item-subtitle>FWSEP</v-list-item-subtitle>
+                    <v-list-item-title class="pl-4" >{{Model.ContentItem.Content.SkillsInterest.Fswep.Text}}</v-list-item-title>
+                    <v-list-item-subtitle>Language</v-list-item-subtitle>
+                    <v-list-item-title class="pl-4" >{{Model.ContentItem.Content.SkillsInterest.Language.Text}}</v-list-item-title>
+                    <v-list-item-subtitle>Fields of Interest</v-list-item-subtitle>
+                    <v-list-item-title class="pl-4" >{{interest}}</v-list-item-title>
+                    <v-list-item-subtitle>Other Fields of interest</v-list-item-subtitle>
+                    <v-list-item-title class="pl-4" >{{Model.ContentItem.Content.SkillsInterest.OtherInterest.Text}}</v-list-item-title>
+                    <v-list-item-subtitle>Fields of Expertise</v-list-item-subtitle>
+                    <v-list-item-title class="pl-4" >{{expertise}}</v-list-item-title>
+                    <v-list-item-subtitle>Other Fields of Expertise</v-list-item-subtitle>
+                    <v-list-item-title class="pl-4" >{{Model.ContentItem.Content.SkillsInterest.OtherExpertise.Text}}</v-list-item-title>
+                    <v-list-item-subtitle>SQL</v-list-item-subtitle>
+                    <v-list-item-title class="pl-4" >{{Model.ContentItem.Content.SkillsInterest.Sql.Value}}</v-list-item-title>
+                    <v-list-item-subtitle>SAS</v-list-item-subtitle>
+                    <v-list-item-title class="pl-4" >{{Model.ContentItem.Content.SkillsInterest.Sas.Value}}</v-list-item-title>
+                    <v-list-item-subtitle>R</v-list-item-subtitle>
+                    <v-list-item-title class="pl-4" >{{Model.ContentItem.Content.SkillsInterest.R.Value}}</v-list-item-title>
+                    <v-list-item-subtitle>Python</v-list-item-subtitle>
+                    <v-list-item-title class="pl-4" >{{Model.ContentItem.Content.SkillsInterest.Python.Value}}</v-list-item-title>
+                    <v-list-item-subtitle>Java</v-list-item-subtitle>
+                    <v-list-item-title class="pl-4" >{{Model.ContentItem.Content.SkillsInterest.Java.Value}}</v-list-item-title>
+                    <v-list-item-subtitle>Perl</v-list-item-subtitle>
+                    <v-list-item-title class="pl-4" >{{Model.ContentItem.Content.SkillsInterest.Perl.Value}}</v-list-item-title>
+                    <v-list-item-subtitle>Scala</v-list-item-subtitle>
+                    <v-list-item-title class="pl-4" >{{Model.ContentItem.Content.SkillsInterest.Scala.Value}}</v-list-item-title>
+                    <v-list-item-subtitle>Julia</v-list-item-subtitle>
+                    <v-list-item-title class="pl-4" >{{Model.ContentItem.Content.SkillsInterest.Julia.Value}}</v-list-item-title>
+                    <v-list-item-subtitle>MATLAB</v-list-item-subtitle>
+                    <v-list-item-title class="pl-4" >{{Model.ContentItem.Content.SkillsInterest.Matlab.Value}}</v-list-item-title>
+                    <v-list-item-subtitle>STATA</v-list-item-subtitle>
+                    <v-list-item-title class="pl-4" >{{Model.ContentItem.Content.SkillsInterest.Stata.Value}}</v-list-item-title>
+                    <v-list-item-subtitle>Power BI (M, DAX, ...)</v-list-item-subtitle>
+                    <v-list-item-title class="pl-4" >{{Model.ContentItem.Content.SkillsInterest.PowerBi.Value}}</v-list-item-title>
+                    <v-list-item-subtitle>QGIS</v-list-item-subtitle>
+                    <v-list-item-title class="pl-4" >{{Model.ContentItem.Content.SkillsInterest.Qgis.Value}}</v-list-item-title>
+                    <v-list-item-subtitle>ArcGIS</v-list-item-subtitle>
+                    <v-list-item-title class="pl-4" >{{Model.ContentItem.Content.SkillsInterest.Arcgis.Value}}</v-list-item-title>
+                    <v-list-item-subtitle>Grass</v-list-item-subtitle>
+                    <v-list-item-title class="pl-4" >{{Model.ContentItem.Content.SkillsInterest.Grass.Value}}</v-list-item-title>
+                    <v-list-item-subtitle>C++</v-list-item-subtitle>
+                    <v-list-item-title class="pl-4" >{{Model.ContentItem.Content.SkillsInterest.CPlusPlus.Value}}</v-list-item-title>
+                    <v-list-item-subtitle>CSharp</v-list-item-subtitle>
+                    <v-list-item-title class="pl-4" >{{Model.ContentItem.Content.SkillsInterest.CSharp.Value}}</v-list-item-title>
+                    <v-list-item-subtitle>JavaScript</v-list-item-subtitle>
+                    <v-list-item-title class="pl-4" >{{Model.ContentItem.Content.SkillsInterest.Javascript.Value}}</v-list-item-title>
+                    <v-list-item-subtitle>HTML</v-list-item-subtitle>
+                    <v-list-item-title class="pl-4" >{{Model.ContentItem.Content.SkillsInterest.Html.Value}}</v-list-item-title>
+                    <v-list-item-subtitle>CSS</v-list-item-subtitle>
+                    <v-list-item-title class="pl-4" >{{Model.ContentItem.Content.SkillsInterest.Css.Value}}</v-list-item-title>
+                    <v-list-item-subtitle>Other Language</v-list-item-subtitle>
+                    <v-list-item-title class="pl-4" >{{Model.ContentItem.Content.SkillsInterest.OtherLanguage.Text}}</v-list-item-title>
+                    <v-list-item-subtitle>Other Language Rating</v-list-item-subtitle>
+                    <v-list-item-title class="pl-4" >{{Model.ContentItem.Content.SkillsInterest.OtherLanguageRating.Value}}</v-list-item-title>
+                    <v-list-item-subtitle>Link to public profiles</v-list-item-subtitle>
+                    <v-list-item-title class="pl-4" >{{Model.ContentItem.Content.SkillsInterest.PublicProfilesLink.Text}}</v-list-item-title>
+                    <v-list-item-subtitle>Link to GitHub Account</v-list-item-subtitle>
+                    <v-list-item-title class="pl-4" >{{Model.ContentItem.Content.SkillsInterest.GitHubLink.Text}}</v-list-item-title>
+                    <v-list-item-subtitle>Experience</v-list-item-subtitle>
+                    <v-list-item-title class="pl-4" >{{Model.ContentItem.Content.SkillsInterest.Experience.Text}}</v-list-item-title>
+                    <v-list-item-subtitle>CV</v-list-item-subtitle>
+                    <!-- <v-item class="pl-4" >{{Model.ContentItem.Content.SkillsInterest.Cv.Text | raw }}</v-item> -->
+
+                </v-list-item-content>
+            </v-list-item>
+            
+        </v-col>
+    </v-row>
+</v-container>                                                                                                                                                                                                                                    
