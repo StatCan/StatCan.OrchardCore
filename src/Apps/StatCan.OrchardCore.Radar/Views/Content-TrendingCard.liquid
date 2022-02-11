@@ -1,0 +1,87 @@
+{% assign entities = Queries.AllTaxonomiesSQL | query: type: Model.ContentItem.Content.TrendingCard.Type.Text | first %}
+{% assign trending_up = Queries.TaxonomyTrendingUpSQL | query: type: Model.ContentItem.Content.TrendingCard.Type.Text %}
+{% assign trending_down = Queries.TaxonomyTrendingDownSQL | query: type: Model.ContentItem.Content.TrendingCard.Type.Text %}
+
+{% assign terms = entities.ContentItem.Content.TaxonomyPart.Terms | remove_unauthorized_items %}
+
+<div class="card card-background">
+  <div class="card-title">
+    <a href="{{ entities | display_url }}">
+      <div class="card-title-caption">
+        <v-icon class="card-icon icon-secondary">
+          {{ Model.ContentItem.Content.TrendingCard.Icon.Text }}
+        </v-icon>
+        <div class="white--text">
+          <div class="text-h5">
+            {{ Model.ContentItem | display_text }}
+          </div>
+          <div class="text-h6">
+            {{ Model.ContentItem.Content.TrendingCard.Caption.Text }}
+          </div>
+        </div>
+      </div>
+    </a>
+    <div class="zigzag-container">
+      <div class="zigzag zigzag-dark"></div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="trend-card-body">
+      <div class="trend-container">
+        <v-icon class="icon-primary trend-card-body-icon">
+            mdi-trending-up
+        </v-icon>
+        <div class="trend-card-body-container">
+          {% capture _ %}{% increment countTrendingUp %}{% endcapture %}
+          {% for tup in trending_up %}
+            {% assign e = terms | where: "ContentItemId", tup.TermContentItemId | first %}
+            {% if e %}
+              {% capture count %}{% increment countTrendingUp %}{% endcapture %}
+              <div class="trend-card-body-topic-container">
+                {% assign trendUpTopics = trendUpTopics | append: e.ContentItemId %}
+                {{ e | shape_build_display: "Summary" | shape_render }}
+              </div>
+            {% endif %}
+            {% if count == "3" %}
+              {% break %}
+            {% endif %}
+
+          {% endfor %}
+        </div>
+      </div>
+      <div class="trend-container">
+        <v-icon class="icon-primary trend-card-body-icon">
+            mdi-trending-down
+        </v-icon>
+        <div class="trend-card-body-container">
+          {% capture _ %}{% increment countTrendingDown %}{% endcapture %}
+          {% for tdown in trending_down %}
+            {% assign e = terms | where: "ContentItemId", tdown.TermContentItemId | first %}
+
+            {% assign exist = false %}
+            {% if trendUpTopics contains e.ContentItemId %}
+              {% assign exist = true %}
+            {% endif %}
+
+            {% if exist == false %}
+              {% capture count %}{% increment countTrendingDown %}{% endcapture %}
+              <div class="trend-card-body-topic-container">
+                {{ e | shape_build_display: "Summary" | shape_render }}
+              </div>
+            {% endif %}
+
+            {% if count == "3" %}
+              {% break %}
+            {% endif %}
+
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+  <a href="{{ entities | display_url }}" class="black--text card-button-link">
+    <v-btn elevation="0" text class="card-button">
+      {{ Model.ContentItem.Content.TrendingCard.ButtonText.Text }}
+    </v-btn>
+  </a>
+</div>

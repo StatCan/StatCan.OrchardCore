@@ -1,0 +1,21 @@
+{% assign organizer = Model.ContentItem.Content.EventOrganizer.ContentItems | first %}
+{% capture failUrl %}~{{ Request.Path }}{% endcapture %}
+
+<tr class="table-row">
+  <td class="name-col">
+    <a href="{{ Model.ContentItem | display_url }}">{{ Model.ContentItem | display_text }}</a>
+  </td>
+  <td class="table-col">
+      <div>{{ Model.ContentItem.Content.Event.StartDate.Value | local | date: "%b %d, %Y" }} - {{ Model.ContentItem.Content.Event.EndDate.Value | local | date: "%b %d, %Y" }}</div>
+      <div>{{ Model.ContentItem.Content.Event.StartDate.Value | local | date: "%H:%M %p" }} - {{ Model.ContentItem.Content.Event.EndDate.Value | local | date: "%H:%M %p" }}</div>
+  </td>
+  <td class="table-col">{{ organizer.DisplayText }}</td>
+  <td class="table-col">
+    {% if Model.ContentItem.Published %}
+      {{ "Published" | t }}
+    {% else %}
+      {{ "Draft" | t }}
+    {% endif %}
+  </td>
+  <td class="table-col">{{ "OptionsButton" | shape_new: ContentItem: Model.ContentItem, Relative: false, DisplayMode: "Summary", SuccessUrl: "~/events", FailUrl: failUrl | shape_render}}</td>
+</tr>

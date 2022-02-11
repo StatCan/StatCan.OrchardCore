@@ -1,0 +1,3467 @@
+{
+  "name": "radar-setup",
+  "displayName": "Radar Setup",
+  "description": "Recipe used to setup the Radar application.",
+  "author": "Digital Innovation Team",
+  "website": "https://digital.statcan.gc.ca",
+  "version": "1.0",
+  "issetuprecipe": true,
+  "categories": ["radar"],
+  "tags": ["innovation", "inno"],
+  "steps": [
+    {
+      "name": "recipes",
+      "Values": [
+        {
+          "executionid": "ThemeSetup",
+          "name": "vuetify-theme-setup"
+        }
+      ]
+    },
+    {
+      "name": "feature",
+      "disable": [],
+      "enable": ["StatCan.OrchardCore.Radar"]
+    },
+    {
+      "name": "media",
+      "Files": [
+        {
+          "SourcePath": "../wwwroot/css/images/radar-icon-white.svg",
+          "TargetPath": "radar-icon-white.svg"
+        },
+        {
+          "SourcePath": "../wwwroot/css/images/icon_communities.svg",
+          "TargetPath": "icon_communities.svg"
+        },
+        {
+          "SourcePath": "../wwwroot/css/images/icon_events.svg",
+          "TargetPath": "icon_events.svg"
+        },
+        {
+          "SourcePath": "../wwwroot/css/images/icon_experiments.svg",
+          "TargetPath": "icon_experiments.svg"
+        },
+        {
+          "SourcePath": "../wwwroot/css/images/icon_opportunities.svg",
+          "TargetPath": "icon_opportunities.svg"
+        },
+        {
+          "SourcePath": "../wwwroot/css/images/icon_topics.svg",
+          "TargetPath": "icon_topics.svg"
+        },
+        {
+          "SourcePath": "../wwwroot/css/images/di-logo.svg",
+          "TargetPath": "di-logo.svg"
+        }
+      ]
+    },
+    {
+      "name": "custom-settings",
+      "VuetifyThemeSettings": {
+        "ContentItemId": "[js: uuid()]",
+        "ContentItemVersionId": null,
+        "ContentType": "VuetifyThemeSettings",
+        "DisplayText": "",
+        "Latest": false,
+        "Published": false,
+        "ModifiedUtc": null,
+        "PublishedUtc": null,
+        "CreatedUtc": null,
+        "Owner": "[js: parameters('AdminUserId')]",
+        "Author": "[js: parameters('AdminUsername')]",
+        "VuetifyThemeSettings": {
+          "DisplayName": {
+            "Text": "Radar"
+          },
+          "Logo": {
+            "Paths": ["radar-icon-white.svg"],
+            "MediaTexts": [""]
+          },
+          "DisplayMode": {
+            "Text": "light"
+          },
+          "ThemeOptions": {
+            "Text": null
+          }
+        }
+      }
+    },
+    {
+      "name": "content",
+      "data": [
+        {
+          "ContentItemId": "4mybr8kwj6cn541v2yktz44t5c",
+          "ContentItemVersionId": null,
+          "ContentType": "Taxonomy",
+          "DisplayText": "Topics",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": null,
+          "PublishedUtc": null,
+          "CreatedUtc": null,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "TitlePart": {
+            "Title": null
+          },
+          "AliasPart": {
+            "Alias": null
+          },
+          "AutoroutePart": {
+            "Path": "topics",
+            "SetHomepage": false,
+            "Disabled": false,
+            "RouteContainedItems": true,
+            "Absolute": false
+          },
+          "TaxonomyPart": {
+            "TermContentType": "Topic",
+            "Terms": []
+          },
+          "ContentPermissionsPart": {
+            "Enabled": false,
+            "Roles": []
+          }
+        },
+        {
+          "ContentItemId": "43h0218am73wn0jrm1mms51hce",
+          "ContentItemVersionId": null,
+          "ContentType": "Taxonomy",
+          "DisplayText": "Proposal Types",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": null,
+          "PublishedUtc": null,
+          "CreatedUtc": null,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "TitlePart": {
+            "Title": null
+          },
+          "AliasPart": {
+            "Alias": null
+          },
+          "AutoroutePart": {
+            "Path": "proposal-types",
+            "SetHomepage": false,
+            "Disabled": false,
+            "RouteContainedItems": true,
+            "Absolute": false
+          },
+          "TaxonomyPart": {
+            "TermContentType": "ProposalType",
+            "Terms": []
+          },
+          "ContentPermissionsPart": {
+            "Enabled": false,
+            "Roles": []
+          }
+        },
+        {
+          "ContentItemId": "4s1qtbtz9m7634cqp2pg9k6gmf",
+          "ContentItemVersionId": null,
+          "ContentType": "Taxonomy",
+          "DisplayText": "Project Types",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": null,
+          "PublishedUtc": null,
+          "CreatedUtc": null,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "TitlePart": {
+            "Title": null
+          },
+          "AliasPart": {
+            "Alias": null
+          },
+          "AutoroutePart": {
+            "Path": "project-types",
+            "SetHomepage": false,
+            "Disabled": false,
+            "RouteContainedItems": true,
+            "Absolute": false
+          },
+          "TaxonomyPart": {
+            "TermContentType": "ProjectType",
+            "Terms": []
+          },
+          "ContentPermissionsPart": {
+            "Enabled": false,
+            "Roles": []
+          }
+        },
+        {
+          "ContentItemId": "44b27fsfqm5cdxm47c21r4ywn9",
+          "ContentItemVersionId": null,
+          "ContentType": "Taxonomy",
+          "DisplayText": "Community Types",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": null,
+          "PublishedUtc": null,
+          "CreatedUtc": null,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "TitlePart": {
+            "Title": null
+          },
+          "AliasPart": {
+            "Alias": null
+          },
+          "AutoroutePart": {
+            "Path": "community-types",
+            "SetHomepage": false,
+            "Disabled": false,
+            "RouteContainedItems": true,
+            "Absolute": false
+          },
+          "TaxonomyPart": {
+            "TermContentType": "CommunityType",
+            "Terms": []
+          },
+          "ContentPermissionsPart": {
+            "Enabled": false,
+            "Roles": []
+          }
+        },
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentItemVersionId": null,
+          "ContentType": "LandingPage",
+          "DisplayText": "Digital Radar",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": null,
+          "PublishedUtc": null,
+          "CreatedUtc": null,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "LandingPage": {
+            "Description": {
+              "Text": "Explore, manage and discover insights across your projects"
+            }
+          },
+          "AutoroutePart": {
+            "Path": "digital-radar",
+            "SetHomepage": true,
+            "Disabled": false,
+            "RouteContainedItems": false,
+            "Absolute": false
+          },
+          "LocalizationPart": {
+            "LocalizationSet": "4xwnrm19d4119rg6szffxkfpwt",
+            "Culture": "en"
+          },
+          "TitlePart": {
+            "Title": "Digital Radar"
+          },
+          "HeaderList": {
+            "ContentItems": [
+              {
+                "ContentItemId": "[js: uuid()]",
+                "ContentItemVersionId": null,
+                "ContentType": "LandingPageHeaderList",
+                "DisplayText": null,
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": null,
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": "[js: parameters('AdminUserId')]",
+                "Author": "[js: parameters('AdminUsername')]",
+                "LandingPageHeaderList": {
+                  "Caption": {
+                    "Text": "Discover pathfinding projects"
+                  }
+                }
+              },
+              {
+                "ContentItemId": "[js: uuid()]",
+                "ContentItemVersionId": null,
+                "ContentType": "LandingPageHeaderList",
+                "DisplayText": null,
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": null,
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": "[js: parameters('AdminUserId')]",
+                "Author": "[js: parameters('AdminUsername')]",
+                "LandingPageHeaderList": {
+                  "Caption": {
+                    "Text": "Explore technologies and topics"
+                  }
+                }
+              },
+              {
+                "ContentItemId": "[js: uuid()]",
+                "ContentItemVersionId": null,
+                "ContentType": "LandingPageHeaderList",
+                "DisplayText": null,
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": null,
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": "[js: parameters('AdminUserId')]",
+                "Author": "[js: parameters('AdminUsername')]",
+                "LandingPageHeaderList": {
+                  "Caption": {
+                    "Text": "Share your team's work"
+                  }
+                }
+              }
+            ]
+          },
+          "Activities": {
+            "ContentItems": [
+              {
+                "ContentItemId": "[js: uuid()]",
+                "ContentItemVersionId": null,
+                "ContentType": "EntityCard",
+                "DisplayText": "Projects",
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": null,
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": "[js: parameters('AdminUserId')]",
+                "Author": "[js: parameters('AdminUsername')]",
+                "EntityCard": {
+                  "Type": {
+                    "Text": "Project"
+                  },
+                  "Limit": {
+                    "Value": 5.0
+                  },
+                  "Caption": {
+                    "Text": "In-flight projects"
+                  },
+                  "Icon": {
+                    "Text": "mdi-flask-outline"
+                  },
+                  "ButtonText": {
+                    "Text": "All Projects"
+                  },
+                  "ButtonLink": {
+                    "Text": "projects"
+                  }
+                },
+                "LocalizationPart": {
+                  "LocalizationSet": "4egqzgdmmhkcqvxb5qzbah8hdp",
+                  "Culture": "en"
+                },
+                "TitlePart": {
+                  "Title": "Projects"
+                }
+              },
+              {
+                "ContentItemId": "[js: uuid()]",
+                "ContentItemVersionId": null,
+                "ContentType": "EntityCard",
+                "DisplayText": "Events",
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": null,
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": "[js: parameters('AdminUserId')]",
+                "Author": "[js: parameters('AdminUsername')]",
+                "EntityCard": {
+                  "Type": {
+                    "Text": "Event"
+                  },
+                  "Limit": {
+                    "Value": 5.0
+                  },
+                  "Caption": {
+                    "Text": "Upcoming events"
+                  },
+                  "Icon": {
+                    "Text": "mdi-calendar"
+                  },
+                  "ButtonText": {
+                    "Text": "All Events"
+                  },
+                  "ButtonLink": {
+                    "Text": "events"
+                  }
+                },
+                "LocalizationPart": {
+                  "LocalizationSet": "4g33gt5aan2pdxyad05r5ergcn",
+                  "Culture": "en"
+                },
+                "TitlePart": {
+                  "Title": "Events"
+                }
+              },
+              {
+                "ContentItemId": "[js: uuid()]",
+                "ContentItemVersionId": null,
+                "ContentType": "EntityCard",
+                "DisplayText": "Committees",
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": null,
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": "[js: parameters('AdminUserId')]",
+                "Author": "[js: parameters('AdminUsername')]",
+                "EntityCard": {
+                  "Type": {
+                    "Text": "Community"
+                  },
+                  "Limit": {
+                    "Value": 5.0
+                  },
+                  "Caption": {
+                    "Text": "Latest committees"
+                  },
+                  "Icon": {
+                    "Text": "mdi-account-multiple"
+                  },
+                  "ButtonText": {
+                    "Text": "All Communities"
+                  },
+                  "ButtonLink": {
+                    "Text": "communities"
+                  }
+                },
+                "LocalizationPart": {
+                  "LocalizationSet": "4hj956jn7axdywb3vr7fp9pcdc",
+                  "Culture": "en"
+                },
+                "TitlePart": {
+                  "Title": "Committees"
+                }
+              },
+              {
+                "ContentItemId": "[js: uuid()]",
+                "ContentItemVersionId": null,
+                "ContentType": "EntityCard",
+                "DisplayText": "Proposals",
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": null,
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": "[js: parameters('AdminUserId')]",
+                "Author": "[js: parameters('AdminUsername')]",
+                "EntityCard": {
+                  "Type": {
+                    "Text": "Proposal"
+                  },
+                  "Limit": {
+                    "Value": 5.0
+                  },
+                  "Caption": {
+                    "Text": "Current proposals"
+                  },
+                  "Icon": {
+                    "Text": "mdi-alert-circle-outline"
+                  },
+                  "ButtonText": {
+                    "Text": "All Proposals"
+                  },
+                  "ButtonLink": {
+                    "Text": "proposals"
+                  }
+                },
+                "LocalizationPart": {
+                  "LocalizationSet": "444sm3q8x1m6mv4cnk8b23vacc",
+                  "Culture": "en"
+                },
+                "TitlePart": {
+                  "Title": "Proposals"
+                }
+              }
+            ]
+          },
+          "Trends": {
+            "ContentItems": [
+              {
+                "ContentItemId": "[js: uuid()]",
+                "ContentItemVersionId": null,
+                "ContentType": "TrendingCard",
+                "DisplayText": "Topics",
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": null,
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": "[js: parameters('AdminUserId')]",
+                "Author": "[js: parameters('AdminUsername')]",
+                "TrendingCard": {
+                  "Caption": {
+                    "Text": "Most used topics across all activities"
+                  },
+                  "Type": {
+                    "Text": "Topics"
+                  },
+                  "Icon": {
+                    "Text": "mdi-pound"
+                  },
+                  "ButtonText": {
+                    "Text": "All Topics"
+                  }
+                },
+                "LocalizationPart": {
+                  "LocalizationSet": "4nmfph1ps5dd80b7n9et6dyvxn",
+                  "Culture": "en"
+                },
+                "TitlePart": {
+                  "Title": "Topics"
+                }
+              }
+            ]
+          },
+          "Footer": {
+            "ContentItems": [
+              {
+                "ContentItemId": "[js: uuid()]",
+                "ContentItemVersionId": null,
+                "ContentType": "LandingPageFooterCard",
+                "DisplayText": "User guide",
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": "2021-09-24T18:52:05.0220266Z",
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": "[js: parameters('AdminUserId')]",
+                "Author": "[js: parameters('AdminUsername')]",
+                "LandingPageFooterCard": {
+                  "Icon": {
+                    "Text": "mdi-book-open-variant"
+                  },
+                  "Link": {
+                    "Text": "#"
+                  },
+                  "Caption": {
+                    "Text": "Learn more about the Radar"
+                  }
+                },
+                "TitlePart": {
+                  "Title": "User guide"
+                }
+              },
+              {
+                "ContentItemId": "[js: uuid()]",
+                "ContentItemVersionId": null,
+                "ContentType": "LandingPageFooterCard",
+                "DisplayText": "Contact us",
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": "2021-09-24T18:52:05.0220266Z",
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": "[js: parameters('AdminUserId')]",
+                "Author": "[js: parameters('AdminUsername')]",
+                "LandingPageFooterCard": {
+                  "Icon": {
+                    "Text": "mdi-email"
+                  },
+                  "Link": {
+                    "Text": "#"
+                  },
+                  "Caption": {
+                    "Text": "Ask questions and send feedback"
+                  }
+                },
+                "TitlePart": {
+                  "Title": "Contact us"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentItemVersionId": null,
+          "ContentType": "Menu",
+          "DisplayText": "Main Menu",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": null,
+          "PublishedUtc": null,
+          "CreatedUtc": null,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "TitlePart": {
+            "Title": "Main Menu"
+          },
+          "AliasPart": {
+            "Alias": "main-menu-en"
+          },
+          "MenuPart": {},
+          "MenuItemsListPart": {
+            "MenuItems": [
+              {
+                "ContentItemId": "49gq0283mmxpf61ttqjzahsync",
+                "ContentItemVersionId": null,
+                "ContentType": "LinkMenuItem",
+                "DisplayText": "Register",
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": "2021-11-24T16:05:42.5116274Z",
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": null,
+                "Author": "admin",
+                "LinkMenuItemPart": {
+                  "Name": "Register",
+                  "Url": null
+                },
+                "LinkMenuItem": {},
+                "CommonMenuItemPart": {
+                  "IconName": {
+                    "Text": null
+                  }
+                },
+                "ContentPermissionsPart": {
+                  "Enabled": false,
+                  "Roles": []
+                },
+                "MenuItemsListPart": {
+                  "MenuItems": [
+                    {
+                      "ContentItemId": "4vnwcz06x74wsxfa0tgs4rzrm8",
+                      "ContentItemVersionId": null,
+                      "ContentType": "LinkMenuItem",
+                      "DisplayText": "Projects",
+                      "Latest": false,
+                      "Published": false,
+                      "ModifiedUtc": "2021-11-24T16:06:36.1670259Z",
+                      "PublishedUtc": null,
+                      "CreatedUtc": null,
+                      "Owner": null,
+                      "Author": "admin",
+                      "LinkMenuItemPart": {
+                        "Name": "Projects",
+                        "Url": "~/projects/create"
+                      },
+                      "LinkMenuItem": {},
+                      "CommonMenuItemPart": {
+                        "IconName": {
+                          "Text": "mdi-flask-outline"
+                        }
+                      },
+                      "ContentPermissionsPart": {
+                        "Enabled": false,
+                        "Roles": []
+                      }
+                    },
+                    {
+                      "ContentItemId": "4z3hw920rrgc415c1bz3t79smh",
+                      "ContentItemVersionId": null,
+                      "ContentType": "LinkMenuItem",
+                      "DisplayText": "Proposals",
+                      "Latest": false,
+                      "Published": false,
+                      "ModifiedUtc": "2021-11-24T16:08:24.5654821Z",
+                      "PublishedUtc": null,
+                      "CreatedUtc": null,
+                      "Owner": null,
+                      "Author": "admin",
+                      "LinkMenuItemPart": {
+                        "Name": "Proposals",
+                        "Url": "~/proposals/create"
+                      },
+                      "LinkMenuItem": {},
+                      "CommonMenuItemPart": {
+                        "IconName": {
+                          "Text": "mdi-alert-circle-outline"
+                        }
+                      },
+                      "ContentPermissionsPart": {
+                        "Enabled": false,
+                        "Roles": []
+                      }
+                    },
+                    {
+                      "ContentItemId": "4hmjn2fy1r107tftspm4vpeqw0",
+                      "ContentItemVersionId": null,
+                      "ContentType": "LinkMenuItem",
+                      "DisplayText": "Events",
+                      "Latest": false,
+                      "Published": false,
+                      "ModifiedUtc": "2021-11-24T16:08:43.8403153Z",
+                      "PublishedUtc": null,
+                      "CreatedUtc": null,
+                      "Owner": null,
+                      "Author": "admin",
+                      "LinkMenuItemPart": {
+                        "Name": "Events",
+                        "Url": "~/events/create"
+                      },
+                      "LinkMenuItem": {},
+                      "CommonMenuItemPart": {
+                        "IconName": {
+                          "Text": "mdi-calendar"
+                        }
+                      },
+                      "ContentPermissionsPart": {
+                        "Enabled": false,
+                        "Roles": []
+                      }
+                    },
+                    {
+                      "ContentItemId": "4h0yqqe4jbn010xdjakffmcdnm",
+                      "ContentItemVersionId": null,
+                      "ContentType": "LinkMenuItem",
+                      "DisplayText": "Communities",
+                      "Latest": false,
+                      "Published": false,
+                      "ModifiedUtc": "2021-11-24T16:09:11.8078551Z",
+                      "PublishedUtc": null,
+                      "CreatedUtc": null,
+                      "Owner": null,
+                      "Author": "admin",
+                      "LinkMenuItemPart": {
+                        "Name": "Communities",
+                        "Url": "~/communities/create"
+                      },
+                      "LinkMenuItem": {},
+                      "CommonMenuItemPart": {
+                        "IconName": {
+                          "Text": "mdi-account-multiple"
+                        }
+                      },
+                      "ContentPermissionsPart": {
+                        "Enabled": false,
+                        "Roles": []
+                      }
+                    },
+                    {
+                      "ContentItemId": "4adxycardc78229ahq6s118rwe",
+                      "ContentItemVersionId": null,
+                      "ContentType": "LinkMenuItem",
+                      "DisplayText": "Topics",
+                      "Latest": false,
+                      "Published": false,
+                      "ModifiedUtc": "2021-11-24T16:09:39.6793362Z",
+                      "PublishedUtc": null,
+                      "CreatedUtc": null,
+                      "Owner": null,
+                      "Author": "admin",
+                      "LinkMenuItemPart": {
+                        "Name": "Topics",
+                        "Url": "~/topics/create"
+                      },
+                      "LinkMenuItem": {},
+                      "CommonMenuItemPart": {
+                        "IconName": {
+                          "Text": "mdi-pound"
+                        }
+                      },
+                      "ContentPermissionsPart": {
+                        "Enabled": false,
+                        "Roles": []
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "ContentItemId": "[js: uuid()]",
+                "ContentItemVersionId": null,
+                "ContentType": "LinkMenuItem",
+                "DisplayText": "Activities",
+                "Latest": true,
+                "Published": true,
+                "ModifiedUtc": null,
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": "[js: parameters('AdminUserId')]",
+                "Author": "[js: parameters('AdminUsername')]",
+                "LinkMenuItemPart": {
+                  "Name": "Activities",
+                  "Url": null
+                },
+                "LinkMenuItem": {},
+                "CommonMenuItemPart": {
+                  "IconName": {
+                    "Text": null
+                  }
+                },
+                "ContentPermissionsPart": {
+                  "Enabled": false,
+                  "Roles": []
+                },
+                "MenuItemsListPart": {
+                  "MenuItems": [
+                    {
+                      "ContentItemId": "[js: uuid()]",
+                      "ContentItemVersionId": null,
+                      "ContentType": "LinkMenuItem",
+                      "DisplayText": "Projects",
+                      "Latest": true,
+                      "Published": true,
+                      "ModifiedUtc": null,
+                      "PublishedUtc": null,
+                      "CreatedUtc": null,
+                      "Owner": "[js: parameters('AdminUserId')]",
+                      "Author": "[js: parameters('AdminUsername')]",
+                      "LinkMenuItemPart": {
+                        "Name": "Projects",
+                        "Url": "~/projects"
+                      },
+                      "LinkMenuItem": {},
+                      "CommonMenuItemPart": {
+                        "IconName": {
+                          "Text": "mdi-flask-outline"
+                        }
+                      },
+                      "ContentPermissionsPart": {
+                        "Enabled": false,
+                        "Roles": []
+                      }
+                    },
+                    {
+                      "ContentItemId": "[js: uuid()]",
+                      "ContentItemVersionId": null,
+                      "ContentType": "LinkMenuItem",
+                      "DisplayText": "Proposals",
+                      "Latest": true,
+                      "Published": true,
+                      "ModifiedUtc": null,
+                      "PublishedUtc": null,
+                      "CreatedUtc": null,
+                      "Owner": "[js: parameters('AdminUserId')]",
+                      "Author": "[js: parameters('AdminUsername')]",
+
+                      "LinkMenuItemPart": {
+                        "Name": "Proposals",
+                        "Url": "~/proposals"
+                      },
+                      "LinkMenuItem": {},
+                      "CommonMenuItemPart": {
+                        "IconName": {
+                          "Text": "mdi-alert-circle-outline"
+                        }
+                      },
+                      "ContentPermissionsPart": {
+                        "Enabled": false,
+                        "Roles": []
+                      }
+                    },
+                    {
+                      "ContentItemId": "[js: uuid()]",
+                      "ContentItemVersionId": null,
+                      "ContentType": "LinkMenuItem",
+                      "DisplayText": "Events",
+                      "Latest": true,
+                      "Published": true,
+                      "ModifiedUtc": null,
+                      "PublishedUtc": null,
+                      "CreatedUtc": null,
+                      "Owner": "[js: parameters('AdminUserId')]",
+                      "Author": "[js: parameters('AdminUsername')]",
+                      "LinkMenuItemPart": {
+                        "Name": "Events",
+                        "Url": "~/events"
+                      },
+                      "LinkMenuItem": {},
+                      "CommonMenuItemPart": {
+                        "IconName": {
+                          "Text": "mdi-calendar"
+                        }
+                      },
+                      "ContentPermissionsPart": {
+                        "Enabled": false,
+                        "Roles": []
+                      }
+                    },
+                    {
+                      "ContentItemId": "[js: uuid()]",
+                      "ContentItemVersionId": null,
+                      "ContentType": "LinkMenuItem",
+                      "DisplayText": "Communities",
+                      "Latest": true,
+                      "Published": true,
+                      "ModifiedUtc": null,
+                      "PublishedUtc": null,
+                      "CreatedUtc": null,
+                      "Owner": "[js: parameters('AdminUserId')]",
+                      "Author": "[js: parameters('AdminUsername')]",
+                      "LinkMenuItemPart": {
+                        "Name": "Communities",
+                        "Url": "~/communities"
+                      },
+                      "LinkMenuItem": {},
+                      "CommonMenuItemPart": {
+                        "IconName": {
+                          "Text": "mdi-account-multiple"
+                        }
+                      },
+                      "ContentPermissionsPart": {
+                        "Enabled": false,
+                        "Roles": []
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "ContentItemId": "[js: uuid()]",
+                "ContentItemVersionId": null,
+                "ContentType": "LinkMenuItem",
+                "DisplayText": "Data",
+                "Latest": true,
+                "Published": true,
+                "ModifiedUtc": null,
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": "[js: parameters('AdminUserId')]",
+                "Author": "[js: parameters('AdminUsername')]",
+                "LinkMenuItemPart": {
+                  "Name": "Data",
+                  "Url": null
+                },
+                "LinkMenuItem": {},
+                "CommonMenuItemPart": {
+                  "IconName": {
+                    "Text": null
+                  }
+                },
+                "ContentPermissionsPart": {
+                  "Enabled": false,
+                  "Roles": []
+                },
+                "MenuItemsListPart": {
+                  "MenuItems": [
+                    {
+                      "ContentItemId": "[js: uuid()]",
+                      "ContentItemVersionId": null,
+                      "ContentType": "LinkMenuItem",
+                      "DisplayText": "Topics",
+                      "Latest": true,
+                      "Published": true,
+                      "ModifiedUtc": null,
+                      "PublishedUtc": null,
+                      "CreatedUtc": null,
+                      "Owner": "[js: parameters('AdminUserId')]",
+                      "Author": "[js: parameters('AdminUsername')]",
+                      "LinkMenuItemPart": {
+                        "Name": "Topics",
+                        "Url": "~/topics"
+                      },
+                      "LinkMenuItem": {},
+                      "CommonMenuItemPart": {
+                        "IconName": {
+                          "Text": "mdi-pound"
+                        }
+                      },
+                      "ContentPermissionsPart": {
+                        "Enabled": false,
+                        "Roles": []
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "ContentItemId": "[js: uuid()]",
+                "ContentItemVersionId": null,
+                "ContentType": "LinkMenuItem",
+                "DisplayText": "Support",
+                "Latest": true,
+                "Published": true,
+                "ModifiedUtc": null,
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": "[js: parameters('AdminUserId')]",
+                "Author": "[js: parameters('AdminUsername')]",
+                "LinkMenuItemPart": {
+                  "Name": "Support",
+                  "Url": null
+                },
+                "LinkMenuItem": {},
+                "CommonMenuItemPart": {
+                  "IconName": {
+                    "Text": null
+                  }
+                },
+                "ContentPermissionsPart": {
+                  "Enabled": false,
+                  "Roles": []
+                },
+                "MenuItemsListPart": {
+                  "MenuItems": [
+                    {
+                      "ContentItemId": "[js: uuid()]",
+                      "ContentItemVersionId": null,
+                      "ContentType": "LinkMenuItem",
+                      "DisplayText": "Documentation",
+                      "Latest": true,
+                      "Published": true,
+                      "ModifiedUtc": null,
+                      "PublishedUtc": null,
+                      "CreatedUtc": null,
+                      "Owner": "[js: parameters('AdminUserId')]",
+                      "Author": "[js: parameters('AdminUsername')]",
+                      "LinkMenuItemPart": {
+                        "Name": "Documentation",
+                        "Url": "#"
+                      },
+                      "LinkMenuItem": {},
+                      "CommonMenuItemPart": {
+                        "IconName": {
+                          "Text": "mdi-help-circle-outline"
+                        }
+                      },
+                      "ContentPermissionsPart": {
+                        "Enabled": false,
+                        "Roles": []
+                      }
+                    },
+                    {
+                      "ContentItemId": "[js: uuid()]",
+                      "ContentItemVersionId": null,
+                      "ContentType": "LinkMenuItem",
+                      "DisplayText": "Contact us",
+                      "Latest": true,
+                      "Published": true,
+                      "ModifiedUtc": null,
+                      "PublishedUtc": null,
+                      "CreatedUtc": null,
+                      "Owner": "[js: parameters('AdminUserId')]",
+                      "Author": "[js: parameters('AdminUsername')]",
+                      "LinkMenuItemPart": {
+                        "Name": "Contact us",
+                        "Url": "#"
+                      },
+                      "LinkMenuItem": {},
+                      "CommonMenuItemPart": {
+                        "IconName": {
+                          "Text": "mdi-email"
+                        }
+                      },
+                      "ContentPermissionsPart": {
+                        "Enabled": false,
+                        "Roles": []
+                      }
+                    },
+                    {
+                      "ContentItemId": "[js: uuid()]",
+                      "ContentItemVersionId": null,
+                      "ContentType": "LinkMenuItem",
+                      "DisplayText": "Community",
+                      "Latest": true,
+                      "Published": true,
+                      "ModifiedUtc": null,
+                      "PublishedUtc": null,
+                      "CreatedUtc": null,
+                      "Owner": "[js: parameters('AdminUserId')]",
+                      "Author": "[js: parameters('AdminUsername')]",
+                      "LinkMenuItemPart": {
+                        "Name": "Community",
+                        "Url": "#"
+                      },
+                      "LinkMenuItem": {},
+                      "CommonMenuItemPart": {
+                        "IconName": {
+                          "Text": "mdi-forum"
+                        }
+                      },
+                      "ContentPermissionsPart": {
+                        "Enabled": false,
+                        "Roles": []
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          "@WeldedPartSettings": {
+            "MenuPart": {
+              "Position": "3"
+            },
+            "MenuItemsListPart": {
+              "Position": "4"
+            }
+          }
+        },
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentItemVersionId": null,
+          "ContentType": "AppBar",
+          "DisplayText": "Radar",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": null,
+          "PublishedUtc": null,
+          "CreatedUtc": null,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "AppBar": {
+            "Image": {
+              "Paths": ["radar-icon-white.svg"],
+              "MediaTexts": [""]
+            },
+            "Height": {
+              "Value": null
+            },
+            "Width": {
+              "Value": null
+            },
+            "Elevation": {
+              "Value": 10.0
+            },
+            "ExtensionHeight": {
+              "Value": 48.0
+            },
+            "ScrollThreshold": {
+              "Value": null
+            },
+            "Logo": {
+              "Paths": ["radar-icon-white.svg"],
+              "MediaTexts": [""]
+            }
+          },
+          "TitlePart": {
+            "Title": "Radar"
+          },
+          "LayerMetadata": {
+            "RenderTitle": false,
+            "Position": 2.0,
+            "Zone": "Header",
+            "Layer": "All"
+          }
+        },
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentItemVersionId": null,
+          "ContentType": "NavigationDrawer",
+          "DisplayText": null,
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": null,
+          "PublishedUtc": null,
+          "CreatedUtc": null,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "NavigationDrawer": {
+            "Color": {
+              "Text": "#FFFFFF"
+            },
+            "MobileBreakpoint": {
+              "Value": null
+            },
+            "OverlayColor": {
+              "Text": null
+            },
+            "OverlayOpacity": {
+              "Value": null
+            },
+            "Width": {
+              "Text": null,
+              "Value": null
+            },
+            "Height": {
+              "Value": null
+            },
+            "MiniVariantWidth": {
+              "Value": null
+            }
+          },
+          "LayerMetadata": {
+            "RenderTitle": false,
+            "Position": 1.0,
+            "Zone": "NavigationDrawer",
+            "Layer": "All"
+          }
+        },
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentItemVersionId": null,
+          "ContentType": "Footer",
+          "DisplayText": null,
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": null,
+          "PublishedUtc": null,
+          "CreatedUtc": null,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "Footer": {
+            "Version": {
+              "Text": "1.0.0"
+            },
+            "Caption": {
+              "Text": "digital@statcan"
+            },
+            "Logo": {
+              "Paths": ["di-logo.svg"],
+              "MediaTexts": [""]
+            }
+          },
+          "LayerMetadata": {
+            "RenderTitle": false,
+            "Position": 1.0,
+            "Zone": "Footer",
+            "Layer": "LandingPage"
+          }
+        },
+        {
+          "ContentItemId": "4w1g1ehv6fbvtsfhtdtqmqj7wv",
+          "ContentItemVersionId": null,
+          "ContentType": "Form",
+          "DisplayText": "Topic Form",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": null,
+          "PublishedUtc": null,
+          "CreatedUtc": null,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "Form": {},
+          "RadarFormPart": {
+            "InitialValues": null,
+            "Options": null
+          },
+          "TitlePart": {
+            "Title": "Topic Form"
+          },
+          "FlowPart": {
+            "Widgets": [
+              {
+                "ContentItemId": "4e4vrxqn8zphz70091ckbd45x0",
+                "ContentItemVersionId": null,
+                "ContentType": "VueFormReference",
+                "DisplayText": null,
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": "2021-11-15T15:14:07.4591744Z",
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": null,
+                "Author": "admin",
+                "VueFormReference": {
+                  "FormReference": {
+                    "ContentItemIds": ["4g0wbrpyppkqd3z1kjbv5jbdnj"]
+                  }
+                },
+                "FlowMetadata": {
+                  "Alignment": 3,
+                  "Size": 100
+                }
+              }
+            ]
+          }
+        },
+        {
+          "ContentItemId": "4k1ex2mpprg6csqsmz2f0dm3cr",
+          "ContentItemVersionId": null,
+          "ContentType": "Form",
+          "DisplayText": "Event Form",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": null,
+          "PublishedUtc": null,
+          "CreatedUtc": null,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "Form": {},
+          "RadarFormPart": {
+            "Id": null,
+            "InitialValues": null,
+            "Options": null
+          },
+          "TitlePart": {
+            "Title": "Event Form"
+          },
+          "FlowPart": {
+            "Widgets": [
+              {
+                "ContentItemId": "443w0p6kp3zvmw0cymq315xa4e",
+                "ContentItemVersionId": null,
+                "ContentType": "VueFormReference",
+                "DisplayText": null,
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": "2021-11-19T13:17:37.1031947Z",
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": null,
+                "Author": "admin",
+                "VueFormReference": {
+                  "FormReference": {
+                    "ContentItemIds": ["41ewd04a6rabq7f16d69zsfsnv"]
+                  }
+                },
+                "FlowMetadata": {
+                  "Alignment": 3,
+                  "Size": 100
+                }
+              }
+            ]
+          }
+        },
+        {
+          "ContentItemId": "4m3x6bk94sjgerz76ve9fzc3dm",
+          "ContentItemVersionId": null,
+          "ContentType": "Form",
+          "DisplayText": "Artifact Form",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": null,
+          "PublishedUtc": null,
+          "CreatedUtc": null,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "Form": {},
+          "RadarFormPart": {
+            "Id": null,
+            "InitialValues": null,
+            "Options": null
+          },
+          "TitlePart": {
+            "Title": "Artifact Form"
+          },
+          "FlowPart": {
+            "Widgets": [
+              {
+                "ContentItemId": "4agsw4eq25ccavq98qbym6sx5w",
+                "ContentItemVersionId": null,
+                "ContentType": "VueFormReference",
+                "DisplayText": null,
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": "2021-11-19T16:42:17.8329591Z",
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": null,
+                "Author": "admin",
+                "VueFormReference": {
+                  "FormReference": {
+                    "ContentItemIds": ["4kv0zcjsw40a61nbhasd4tkkc8"]
+                  }
+                },
+                "FlowMetadata": {
+                  "Alignment": 3,
+                  "Size": 100
+                }
+              }
+            ]
+          }
+        },
+        {
+          "ContentItemId": "48g1mk0np1jes448xwzrcwb54t",
+          "ContentItemVersionId": null,
+          "ContentType": "Form",
+          "DisplayText": "Community Form",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": null,
+          "PublishedUtc": null,
+          "CreatedUtc": null,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "Form": {},
+          "RadarFormPart": {
+            "Id": null,
+            "InitialValues": null,
+            "Options": null
+          },
+          "TitlePart": {
+            "Title": "Community Form"
+          },
+          "FlowPart": {
+            "Widgets": [
+              {
+                "ContentItemId": "41rs3p7cs7ge7x1bs5xre1w04r",
+                "ContentItemVersionId": null,
+                "ContentType": "VueFormReference",
+                "DisplayText": "",
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": "2021-11-23T17:12:50.3687249Z",
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": "",
+                "Author": "admin",
+                "VueFormReference": {
+                  "FormReference": {
+                    "ContentItemIds": ["4db4f2rx87mdbtts4414ybcn4m"]
+                  }
+                },
+                "FlowMetadata": {
+                  "Alignment": 3,
+                  "Size": 100
+                }
+              }
+            ]
+          }
+        },
+        {
+          "ContentItemId": "4m040838spwxq376q0sb7crm49",
+          "ContentItemVersionId": null,
+          "ContentType": "Form",
+          "DisplayText": "Proposal Form",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": null,
+          "PublishedUtc": null,
+          "CreatedUtc": null,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "Form": {},
+          "RadarFormPart": {
+            "Id": null,
+            "InitialValues": null,
+            "Options": null
+          },
+          "TitlePart": {
+            "Title": "Proposal Form"
+          },
+          "FlowPart": {
+            "Widgets": [
+              {
+                "ContentItemId": "453284axrmvmwsvgd6vdapcxxy",
+                "ContentItemVersionId": null,
+                "ContentType": "VueFormReference",
+                "DisplayText": "",
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": "2021-11-23T18:23:31.4670746Z",
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": "",
+                "Author": "admin",
+                "VueFormReference": {
+                  "FormReference": {
+                    "ContentItemIds": ["4qmtfht0t4v7fsf0pkbsc0bzda"]
+                  }
+                },
+                "FlowMetadata": {
+                  "Alignment": 3,
+                  "Size": 100
+                }
+              }
+            ]
+          }
+        },
+        {
+          "ContentItemId": "4ebx0pggyy1h2x5f19gfcnx1nc",
+          "ContentItemVersionId": null,
+          "ContentType": "Form",
+          "DisplayText": "Project Form",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": null,
+          "PublishedUtc": null,
+          "CreatedUtc": null,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "Form": {},
+          "RadarFormPart": {
+            "Id": null,
+            "InitialValues": null,
+            "Options": null
+          },
+          "TitlePart": {
+            "Title": "Project Form"
+          },
+          "FlowPart": {
+            "Widgets": [
+              {
+                "ContentItemId": "4ww0ry5c18z505w6tsh662x1nz",
+                "ContentItemVersionId": null,
+                "ContentType": "VueFormReference",
+                "DisplayText": "",
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": "2021-11-24T13:03:32.9385778Z",
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": "",
+                "Author": "admin",
+                "VueFormReference": {
+                  "FormReference": {
+                    "ContentItemIds": ["4wrjjj5400ecftxxv82b2vqcxe"]
+                  }
+                },
+                "FlowMetadata": {
+                  "Alignment": 3,
+                  "Size": 100
+                }
+              }
+            ]
+          }
+        },
+        {
+          "ContentItemId": "4qmtfht0t4v7fsf0pkbsc0bzda",
+          "ContentItemVersionId": null,
+          "ContentType": "VueForm",
+          "DisplayText": "Proposal Form",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": null,
+          "PublishedUtc": null,
+          "CreatedUtc": null,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "TitlePart": {
+            "Title": "Proposal Form"
+          },
+          "VueForm": {
+            "Template": {
+              "Text": "<v-container>\r\n    <v-card-text>\r\n        <v-row justify=\"center\">\r\n\r\n            <v-col cols=\"6\">\r\n                <v-col cols=\"12\">\r\n                    <validation-provider name=\"{{ \"nameLabel\" | localize | downcase }}\" rules=\"required|max:100\"\r\n                        v-slot=\"{ errors, valid }\">\r\n                        <v-text-field v-model=\"name\" :success=\"valid\" :error-messages=\"errors\" filled=\"filled\"\r\n                            label=\"{{ \"nameLabel\" | localize }}\"></v-text-field>\r\n                    </validation-provider>\r\n                </v-col>\r\n                <v-col cols=\"12\">\r\n                    <validation-provider name=\"{{ \"descriptionLabel\" | localize | downcase }}\" rules=\"required|max:512\"\r\n                        v-slot=\"{ errors, valid }\">\r\n                        <v-textarea v-model=\"description\" :success=\"valid\" :error-messages=\"errors\" counter=\"true\"\r\n                            filled=\"filled\" label=\"{{ \"descriptionLabel\" | localize }}\" rows=\"5\">\r\n                        </v-textarea>\r\n                    </validation-provider>\r\n                </v-col>\r\n                <v-col cols=\"12\">\r\n                    <h4>{{ \"proposalTypeLabel\" | localize }}</h4>\r\n                    <validation-provider name=\"{{ \"proposalTypeLabel\" | localize | downcase }}\" rules=\"required\"\r\n                        v-slot=\"{ errors, valid }\">\r\n                        <multiselect v-model=\"type\" :options=\"typeOptions\" track-by=\"value\" label=\"label\"\r\n                            :success=\"valid\" :error-messages=\"errors\"placeholder=\"{{ \"placeholderLabel\" | localize }}\" />\r\n                    </validation-provider>\r\n                </v-col>\r\n                <v-col cols=\"12\">\r\n                    <h4>{{ \"topicsLabel\" | localize }}</h4>\r\n                    <multiselect-async v-model=\"topics\" api=\"{{ \"~/api/radar/topic-search?term=\" | href }}\"\r\n                        :internal-search=\"false\" track-by=\"value\" label=\"label\" :multiple=\"true\" :searchable=\"true\"\r\n                        :hide-selected=\"true\" placeholder=\"{{ \"placeholderLabel\" | localize }}\">\r\n                        <template slot=\"custom-tag\" slot-scope=\"{option, remove}\">\r\n                            <div class=\"topic form-topic-field\">\r\n                                <v-icon color=\"white\" class=\"topic-tag-icon\">mdi-pound</v-icon>\r\n                                <div class=\"label\">\r\n                                    {% raw %}{{ option.label }}{% endraw %}\r\n                                </div>\r\n                                <span class=\"ml-3 form-topic-field-remove-button\" @click=\"remove(option)\">X</span>\r\n                            </div>\r\n                        </template>\r\n                    </multiselect-async>\r\n                </v-col>\r\n                <v-col cols=\"12\">\r\n                    <h4>{{ \"communitiesLabel\" | localize }}</h4>\r\n                    <multiselect-async v-model=\"relatedEntities\" api=\"{{ \"~/api/radar/entity-search?type=Community&term=\" | href }}\" :internal-search=\"false\" track-by=\"value\" label=\"label\" :multiple=\"true\" :searchable=\"true\" :hide-selected=\"true\" placeholder=\"{{ \"placeholderLabel\" | localize }}\">\r\n                        <template slot=\"custom-tag\" slot-scope=\"{option, remove}\">\r\n                            <div class=\"topic form-topic-field\">\r\n                                <div class=\"label\">\r\n                                    {% raw %}{{ option.label }}{% endraw %}\r\n                                </div>\r\n                                <span class=\"ml-3 form-topic-field-remove-button\" @click=\"remove(option)\">X</span>\r\n                            </div>\r\n                        </template>\r\n                    </multiselect-async> \r\n                </v-col>\r\n            </v-col>\r\n\r\n            <v-col cols=\"6\">\r\n                <v-col cols=\"12\">\r\n                    <h4>{{ \"permissionsLabel\" | localize }}</h4>\r\n                    <validation-provider name=\"{{ \"permissionsLabel\" | localize | downcase }}\" rules=\"required\"\r\n                        v-slot=\"{ errors, valid }\">\r\n                        <multiselect v-model=\"roles\" :options=\"roleOptions\" :success=\"valid\" :error-messages=\"errors\"\r\n                            :multiple=\"true\">\r\n                            <template slot=\"custom-tag\" slot-scope=\"{option, remove}\">\r\n                                <div class=\"topic form-topic-field\">\r\n                                    <div class=\"label\">\r\n                                        {% raw %}{{ option }}{% endraw %}\r\n                                    </div>\r\n                                    <span class=\"ml-3 form-topic-field-remove-button\" @click=\"remove(option)\">X</span>\r\n                                </div>\r\n                            </template>\r\n                        </multiselect>\r\n                    </validation-provider>\r\n                </v-col>\r\n                <v-col cols=\"12\">\r\n                    <h4>{{ \"visibilityLabel\" | localize }}</h4>\r\n                    <validation-provider name=\"{{ \"visibilityLabel\" | localize | downcase }}\" rules=\"required\"\r\n                        v-slot=\"{ errors, valid }\">\r\n                        <multiselect v-model=\"publishStatus\" :options=\"publishOptions\" track-by=\"\" :success=\"valid\"\r\n                            :error-messages=\"errors\" placeholder=\"{{ \"placeholderLabel\" | localize }}\" />\r\n                    </validation-provider>\r\n                </v-col>\r\n            </v-col>\r\n\r\n\r\n            <v-col cols=\"8\">\r\n                <v-alert type=\"error\" v-for=\"(message, i) in form.serverValidationMessage\" :key=\"i\">\r\n                    {% raw %}{{ message }}{% endraw %}\r\n                </v-alert>\r\n            </v-col>\r\n            <v-col cols=\"8\">\r\n                <v-btn type=\"submit\" depressed block @click=\"formHandleSubmit\" :disabled=\"form.submitting\">{{\r\n                    \"submitLabel\" | localize }}</v-btn>\r\n            </v-col>\r\n\r\n\r\n        </v-row>\r\n    </v-card-text>\r\n</v-container>"
+            },
+            "RenderAs": {
+              "Text": null
+            },
+            "Disabled": {
+              "Value": false
+            },
+            "Debug": {
+              "Value": false
+            },
+            "DisabledHtml": {
+              "Html": ""
+            },
+            "SuccessMessage": {
+              "Text": null
+            }
+          },
+          "AliasPart": {
+            "Alias": "proposal-form"
+          },
+          "VueFormScripts": {
+            "ClientInit": {
+              "Text": null
+            },
+            "ComponentOptions": {
+              "Text": "{\r\n  data: () => ({\r\n    ...window.formValues,\r\n    ...window.formOptions,\r\n    valueNames: [\"user\", \"role\"]\r\n  })\r\n}"
+            },
+            "OnValidation": {
+              "Text": "var data = requestFormAsJsonObject();\r\nvar localizedText = getLocalizedTextValues(getFormContentItem());\r\n\r\nvar contentItem = getLocalizedContentItemById(data.id);\r\nvar contentFormModel = convertToFormModel(\"Proposal\", data);\r\n\r\nif(!validateRadarEntityName(\"Proposal\", contentFormModel.Name, contentItem))\r\n{\r\n    addError('serverValidationMessage', localizedText.nameNonUniqueError);\r\n}\r\n\r\nif(!validateMaxStringLength(contentFormModel.Name, 100))\r\n{\r\n    addError('serverValidationMessage', localizedText.nameLengthError);\r\n}\r\n\r\nif(!validateMaxStringLength(contentFormModel.Description, 100))\r\n{\r\n    addError('serverValidationMessage', localizedText.descriptionLengthError);\r\n}\r\n\r\nif(!validateString(contentFormModel.Name) || !validateString(contentFormModel.Description))\r\n{\r\n    addError('serverValidationMessage', localizedText.emptyTextError);\r\n}\r\n\r\nif(!validateString(contentFormModel.Name))\r\n{\r\n    addError('serverValidationMessage', localizedText.nameEmptyError);\r\n}\r\n\r\nif(!validateString(contentFormModel.Description))\r\n{\r\n    addError('serverValidationMessage', localizedText.descriptionEmptyError);\r\n}\r\n\r\nif(!validateTopics(contentFormModel.Topics))\r\n{\r\n    addError('serverValidationMessage', localizedText.topicError);\r\n}\r\n\r\nif(!validateRelatedEntities(contentFormModel.RelatedEntities, \"Community\"))\r\n{\r\n    addError('serverValidationMessage', localizedText.communityError);\r\n}\r\n\r\nif(!validateEntityType(\"Proposal Types\", contentFormModel.Type))\r\n{\r\n    addError('serverValidateMessage', localizedText.typeError);\r\n}"
+            },
+            "OnSubmitted": {
+              "Text": "var data = requestFormAsJsonObject();\r\n\r\nvar contentFormModel = convertToFormModel(\"Proposal\", data);\r\nvar contentDocument = convertToContentDocument(\"Proposal\", contentFormModel);\r\n\r\n// If existing content can't be found then default to create\r\nvar contentItem = getLocalizedContentItemById(data.id);\r\n\r\nif (contentItem == null) {\r\n    contentItem = createLocalizedContentItem(\"Proposal\", contentDocument);\r\n} else {\r\n    updateLocalizedContentItem(contentItem, contentDocument);\r\n}\r\n\r\nhttpRedirect(`~/proposals/${contentItem.ContentItemId}`);"
+            }
+          },
+          "ContentPermissionsPart": {
+            "Enabled": false,
+            "Roles": []
+          },
+          "LocalizedTextPart": {
+            "Data": [
+              {
+                "Name": "nameLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Nom"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Name"
+                  }
+                ]
+              },
+              {
+                "Name": "descriptionLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Description"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Description"
+                  }
+                ]
+              },
+              {
+                "Name": "permissionsLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Autorisations"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Permissions"
+                  }
+                ]
+              },
+              {
+                "Name": "topicsLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Sujets"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Topics"
+                  }
+                ]
+              },
+              {
+                "Name": "proposalTypeLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Type de projet"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Proposal Type"
+                  }
+                ]
+              },
+              {
+                "Name": "visibilityLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Visibilité"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Visibility"
+                  }
+                ]
+              },
+              {
+                "Name": "submitLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Soumettre"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Submit"
+                  }
+                ]
+              },
+              {
+                "Name": "serverValidationError",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Une erreure est survenue."
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "An error occured."
+                  }
+                ]
+              },
+              {
+                "Name": "nameNonUniqueError",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Le nom doit être unique"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Name must be unique"
+                  }
+                ]
+              },
+              {
+                "Name": "nameLengthError",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Le nom doit comporter moins de 100 caractères"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Name must be less than 100 characters"
+                  }
+                ]
+              },
+              {
+                "Name": "descriptionLengthError",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "La description doit comporter moins de 512 caractères"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Description must be less than 512 characters"
+                  }
+                ]
+              },
+              {
+                "Name": "nameEmptyError",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Le nom ne peut pas être vide"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Name cannot be empty"
+                  }
+                ]
+              },
+              {
+                "Name": "descriptionEmptyError",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "La description ne peut pas être vide"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Description cannot be empty"
+                  }
+                ]
+              },
+              {
+                "Name": "topicError",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Il y a des sujets en double ou certains sujets n'existent pas"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "There are duplicated topics or some topics does not exist"
+                  }
+                ]
+              },
+              {
+                "Name": "typeError",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Le type sélectionné n'existe pas"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "The selected type does not exist"
+                  }
+                ]
+              },
+              {
+                "Name": "emptyTextError",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Le nom et la description ne peuvent pas être vides"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Name and Description cannot be empty"
+                  }
+                ]
+              },
+              {
+                "Name": "communitiesLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Communautés"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Communities"
+                  }
+                ]
+              },
+              {
+                "Name": "communityError",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Il y a des communautés dupliquées ou certaines communautés n'existent pas"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "There are duplicated communities or some communities does not exist"
+                  }
+                ]
+              },
+              {
+                "Name": "addButtonLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Ajouter"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Add"
+                  }
+                ]
+              },
+              {
+                "Name": "placeholderLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Sélectionnez l'option"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Select option"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "ContentItemId": "4db4f2rx87mdbtts4414ybcn4m",
+          "ContentItemVersionId": null,
+          "ContentType": "VueForm",
+          "DisplayText": "Community Form",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": null,
+          "PublishedUtc": null,
+          "CreatedUtc": null,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "TitlePart": {
+            "Title": "Community Form"
+          },
+          "VueForm": {
+            "Template": {
+              "Text": "<v-container>\r\n    <v-card-text>\r\n        <v-row justify=\"center\">\r\n\r\n            <v-col cols=\"6\">\r\n                <v-col cols=\"12\">\r\n                    <validation-provider name=\"{{ \"nameLabel\" | localize | downcase }}\" rules=\"required|max:100\"\r\n                        v-slot=\"{ errors, valid }\">\r\n                        <v-text-field v-model=\"name\" :success=\"valid\" :error-messages=\"errors\" filled=\"filled\"\r\n                            label=\"{{ \"nameLabel\" | localize }}\"></v-text-field>\r\n                    </validation-provider>\r\n                </v-col>\r\n                <v-col cols=\"12\">\r\n                    <validation-provider name=\"{{ \"descriptionLabel\" | localize | downcase }}\" rules=\"required|max:512\"\r\n                        v-slot=\"{ errors, valid }\">\r\n                        <v-textarea v-model=\"description\" :success=\"valid\" :error-messages=\"errors\" counter=\"true\"\r\n                            filled=\"filled\" label=\"{{ \"descriptionLabel\" | localize }}\" rows=\"5\">\r\n                        </v-textarea>\r\n                    </validation-provider>\r\n                </v-col>\r\n                <v-col cols=\"12\">\r\n                    <h4>{{ \"communityTypeLabel\" | localize }}</h4>\r\n                    <validation-provider name=\"{{ \"communityTypeLabel\" | localize | downcase }}\" rules=\"required\"\r\n                        v-slot=\"{ errors, valid }\">\r\n                        <multiselect v-model=\"type\" :options=\"typeOptions\" track-by=\"value\" label=\"label\"\r\n                            :success=\"valid\" :error-messages=\"errors\" placeholder=\"{{ \"placeholderLabel\" | localize }}\" :searchable=\"true\"/>\r\n                    </validation-provider>\r\n                </v-col>\r\n                <v-col cols=\"12\">\r\n                    <h4>{{ \"topicsLabel\" | localize }}</h4>\r\n                    <multiselect-async v-model=\"topics\" api=\"{{ \"~/api/radar/topic-search?term=\" | href }}\"\r\n                        :internal-search=\"false\" track-by=\"value\" label=\"label\" :multiple=\"true\" :searchable=\"true\"\r\n                        :hide-selected=\"true\" placeholder=\"{{ \"placeholderLabel\" | localize }}\">\r\n                        <template slot=\"custom-tag\" slot-scope=\"{option, remove}\">\r\n                            <div class=\"topic form-topic-field\">\r\n                                <v-icon color=\"white\" class=\"topic-tag-icon\">mdi-pound</v-icon>\r\n                                <div class=\"label\">\r\n                                    {% raw %}{{ option.label }}{% endraw %}\r\n                                </div>\r\n                                <span class=\"ml-3 form-topic-field-remove-button\" @click=\"remove(option)\">X</span>\r\n                            </div>\r\n                        </template>    \r\n                    </multiselect-async>\r\n                </v-col>\r\n                <v-col cols=\"12\">\r\n                    <h4>{{ \"eventsLabel\" | localize }}</h4>\r\n                    <multiselect-async v-model=\"relatedEntities\" api=\"{{ \"~/api/radar/entity-search?type=Community&term=\" | href }}\" :internal-search=\"false\" track-by=\"value\" label=\"label\" :multiple=\"true\" :searchable=\"true\" :hide-selected=\"true\" placeholder=\"{{ \"placeholderLabel\" | localize }}\">\r\n                        <template slot=\"custom-tag\" slot-scope=\"{option, remove}\">\r\n                            <div class=\"topic form-topic-field\">\r\n                                <div class=\"label\">\r\n                                    {% raw %}{{ option.label }}{% endraw %}\r\n                                </div>\r\n                                <span class=\"ml-3 form-topic-field-remove-button\" @click=\"remove(option)\">X</span>\r\n                            </div>\r\n                        </template>\r\n                    </multiselect-async> \r\n                </v-col>\r\n            </v-col>\r\n\r\n            <v-col cols=\"6\">\r\n                <v-col cols=\"12\">\r\n                    <h4>{{ \"permissionsLabel\" | localize }}</h4>\r\n                    <validation-provider name=\"{{ \"permissionsLabel\" | localize | downcase }}\" rules=\"required\"\r\n                        v-slot=\"{ errors, valid }\">\r\n                        <multiselect v-model=\"roles\" :options=\"roleOptions\" :success=\"valid\" :error-messages=\"errors\"\r\n                            :multiple=\"true\">\r\n                            <template slot=\"custom-tag\" slot-scope=\"{option, remove}\">\r\n                                <div class=\"topic form-topic-field\">\r\n                                    <div class=\"label\">\r\n                                        {% raw %}{{ option }}{% endraw %}\r\n                                    </div>\r\n                                    <span class=\"ml-3 form-topic-field-remove-button\" @click=\"remove(option)\">X</span>\r\n                                </div>\r\n                            </template>\r\n                        </multiselect>\r\n                    </validation-provider>\r\n                </v-col>\r\n                <v-col cols=\"12\">\r\n                    <h4>{{ \"visibilityLabel\" | localize }}</h4>\r\n                    <validation-provider name=\"{{ \"visibilityLabel\" | localize | downcase }}\" rules=\"required\"\r\n                        v-slot=\"{ errors, valid }\">\r\n                        <multiselect v-model=\"publishStatus\" :options=\"publishOptions\" track-by=\"\" :success=\"valid\"\r\n                            :error-messages=\"errors\" placeholder=\"{{ \"placeholderLabel\" | localize }}\" />\r\n                    </validation-provider>\r\n                </v-col>\r\n\r\n                <v-col cols=\"12\">\r\n                    <bag v-model=\"communityMembers\" :valueNames=\"valueNames\"\r\n                        add-button-label=\"{{ \"addButtonLabel\" | localize | downcase }}\" remove-button-label=\"-\">\r\n                        <template #validations>\r\n                            <validation-provider rules=\"required\" name=\"{{ \"memberLabel\" | localize | downcase }}\"></validation-provider>\r\n                            <validation-provider rules=\"required\" name=\"{{ \"roleLabel\" | localize | downcase }}\"></validation-provider>\r\n                        </template>\r\n\r\n                        <template #components>\r\n                            <multiselect-async api=\"{{ \"~/api/radar/user-search?term=\" | href }}\"\r\n                                :internal-search=\"false\" track-by=\"value\" label=\"label\" :searchable=\"true\"\r\n                                :hide-selected=\"true\" placeholder=\"{{ \"placeholderLabel\" | localize }}\">\r\n                            </multiselect-async>\r\n                            <v-text-field filled=\"filled\" label=\"{{ \"roleLabel\" | localize }}\"> </v-text-field>\r\n                        </template>\r\n\r\n                        <template #title>\r\n                            <div class=\"text-h5 mb-5\">\r\n                                {{ \"communityMembersLabel\" | localize }}\r\n                            </div>\r\n                        </template>\r\n                    </bag>\r\n                </v-col>\r\n            </v-col>\r\n\r\n\r\n            <v-col cols=\"8\">\r\n                <v-alert type=\"error\" v-for=\"(message, i) in form.serverValidationMessage\" :key=\"i\">\r\n                    {% raw %}{{ message }}{% endraw %}\r\n                </v-alert>\r\n            </v-col>\r\n            <v-col cols=\"8\">\r\n                <v-btn type=\"submit\" depressed block @click=\"formHandleSubmit\" :disabled=\"form.submitting\">{{\r\n                    \"submitLabel\" | localize }}</v-btn>\r\n            </v-col>\r\n\r\n\r\n        </v-row>\r\n    </v-card-text>\r\n</v-container>"
+            },
+            "RenderAs": {
+              "Text": null
+            },
+            "Disabled": {
+              "Value": false
+            },
+            "Debug": {
+              "Value": false
+            },
+            "DisabledHtml": {
+              "Html": ""
+            },
+            "SuccessMessage": {
+              "Text": null
+            }
+          },
+          "AliasPart": {
+            "Alias": "community-form"
+          },
+          "VueFormScripts": {
+            "ClientInit": {
+              "Text": null
+            },
+            "ComponentOptions": {
+              "Text": "{\r\n  data: () => ({\r\n    ...window.formValues,\r\n    ...window.formOptions,\r\n    valueNames: [\"user\", \"role\"]\r\n  })\r\n}"
+            },
+            "OnValidation": {
+              "Text": "var data = requestFormAsJsonObject();\r\nvar localizedText = getLocalizedTextValues(getFormContentItem());\r\n\r\nvar contentItem = getLocalizedContentItemById(data.id);\r\nvar contentFormModel = convertToFormModel(\"Community\", data);\r\n\r\nif(!validateRadarEntityName(\"Community\", contentFormModel.Name, contentItem))\r\n{\r\n    addError('serverValidationMessage', localizedText.nameNonUniqueError);\r\n}\r\n\r\nif(!validateMaxStringLength(contentFormModel.Name, 100))\r\n{\r\n    addError('serverValidationMessage', localizedText.nameLengthError);\r\n}\r\n\r\nif(!validateMaxStringLength(contentFormModel.Description, 100))\r\n{\r\n    addError('serverValidationMessage', localizedText.descriptionLengthError);\r\n}\r\n\r\nif(!validateString(contentFormModel.Name) || !validateString(contentFormModel.Description))\r\n{\r\n    addError('serverValidationMessage', localizedText.emptyTextError);\r\n}\r\n\r\nif(!validateString(contentFormModel.Name))\r\n{\r\n    addError('serverValidationMessage', localizedText.nameEmptyError);\r\n}\r\n\r\nif(!validateString(contentFormModel.Description))\r\n{\r\n    addError('serverValidationMessage', localizedText.descriptionEmptyError);\r\n}\r\n\r\nif(!validateTopics(contentFormModel.Topics))\r\n{\r\n    addError('serverValidationMessage', localizedText.topicError);\r\n}\r\n\r\nif(!validateEntityType(\"Community Types\", contentFormModel.Type))\r\n{\r\n    addError('serverValidationMessage', localizedText.typeError);\r\n}\r\n\r\nif(!validateMemberWithRole(contentFormModel.CommunityMembers))\r\n{\r\n    addError('serverValidationMessage', localizedText.memberError);\r\n}\r\n\r\nif(!validateRelatedEntities(contentFormModel.RelatedEntities, \"Event\"))\r\n{\r\n    addError('serverValidationMessage', localizedText.eventError);\r\n}"
+            },
+            "OnSubmitted": {
+              "Text": "var data = requestFormAsJsonObject();\r\n\r\nvar contentFormModel = convertToFormModel(\"Community\", data);\r\nvar contentDocument = convertToContentDocument(\"Community\", contentFormModel);\r\n\r\n// If existing content can't be found then default to create\r\nvar contentItem = getLocalizedContentItemById(data.id);\r\n\r\nif (contentItem == null) {\r\n    contentItem = createLocalizedContentItem(\"Community\", contentDocument);\r\n} else {\r\n    updateLocalizedContentItem(contentItem, contentDocument);\r\n}\r\n\r\nhttpRedirect(`~/communities/${contentItem.ContentItemId}`);"
+            }
+          },
+          "ContentPermissionsPart": {
+            "Enabled": false,
+            "Roles": []
+          },
+          "LocalizedTextPart": {
+            "Data": [
+              {
+                "Name": "nameLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Nom"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Name"
+                  }
+                ]
+              },
+              {
+                "Name": "descriptionLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Description"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Description"
+                  }
+                ]
+              },
+              {
+                "Name": "permissionsLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Autorisations"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Permissions"
+                  }
+                ]
+              },
+              {
+                "Name": "topicsLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Sujets"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Topics"
+                  }
+                ]
+              },
+              {
+                "Name": "communityTypeLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Type de projet"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Community Type"
+                  }
+                ]
+              },
+              {
+                "Name": "visibilityLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Visibilité"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Visibility"
+                  }
+                ]
+              },
+              {
+                "Name": "communityMembersLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Membres du projet"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Community Members"
+                  }
+                ]
+              },
+              {
+                "Name": "submitLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Soumettre"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Submit"
+                  }
+                ]
+              },
+              {
+                "Name": "serverValidationError",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Une erreure est survenue."
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "An error occured."
+                  }
+                ]
+              },
+              {
+                "Name": "nameNonUniqueError",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Le nom doit être unique"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Name must be unique"
+                  }
+                ]
+              },
+              {
+                "Name": "nameLengthError",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Le nom doit comporter moins de 100 caractères"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Name must be less than 100 characters"
+                  }
+                ]
+              },
+              {
+                "Name": "descriptionLengthError",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "La description doit comporter moins de 512 caractères"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Description must be less than 512 characters"
+                  }
+                ]
+              },
+              {
+                "Name": "nameEmptyError",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Le nom ne peut pas être vide"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Name cannot be empty"
+                  }
+                ]
+              },
+              {
+                "Name": "descriptionEmptyError",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "La description ne peut pas être vide"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Description cannot be empty"
+                  }
+                ]
+              },
+              {
+                "Name": "topicError",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Il y a des sujets en double ou certains sujets n'existent pas"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "There are duplicated topics or some topics does not exist"
+                  }
+                ]
+              },
+              {
+                "Name": "typeError",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Le type sélectionné n'existe pas"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "The selected type does not exist"
+                  }
+                ]
+              },
+              {
+                "Name": "emptyTextError",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Le nom et la description ne peuvent pas être vides"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Name and Description cannot be empty"
+                  }
+                ]
+              },
+              {
+                "Name": "memberError",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Il y a des membres en double ou certains membres n'existent pas"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "There are duplicated members or some member does not exist"
+                  }
+                ]
+              },
+              {
+                "Name": "eventsLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Événements"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Events"
+                  }
+                ]
+              },
+              {
+                "Name": "eventError",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Il y a des événements dupliqués et certains événements n'existent pas"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "There are duplicated events are some events does not exist"
+                  }
+                ]
+              },
+              {
+                "Name": "addButtonLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Ajouter"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Add"
+                  }
+                ]
+              },
+              {
+                "Name": "placeholderLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Sélectionnez l'option"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Select option"
+                  }
+                ]
+              },
+              {
+                "Name": "memberLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Membre"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Member"
+                  }
+                ]
+              },
+              {
+                "Name": "roleLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Rôle"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Role"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "ContentItemId": "4wrjjj5400ecftxxv82b2vqcxe",
+          "ContentItemVersionId": null,
+          "ContentType": "VueForm",
+          "DisplayText": "Project Form",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": null,
+          "PublishedUtc": null,
+          "CreatedUtc": null,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "TitlePart": {
+            "Title": "Project Form"
+          },
+          "VueForm": {
+            "Template": {
+              "Text": "<v-container>\r\n    <v-card-text>\r\n        <v-row justify=\"center\">\r\n            <v-col cols=\"6\">\r\n                <v-col cols=\"12\">\r\n                    <validation-provider name=\"{{ \"nameLabel\" | localize | downcase }}\" rules=\"required|max:100\"\r\n                        v-slot=\"{ errors, valid }\">\r\n                        <v-text-field v-model=\"name\" :success=\"valid\" :error-messages=\"errors\" filled=\"filled\"\r\n                            label=\"{{ \"nameLabel\" | localize }}\"></v-text-field>\r\n                    </validation-provider>\r\n                </v-col>\r\n                <v-col cols=\"12\">\r\n                    <validation-provider name=\"{{ \"descriptionLabel\" | localize | downcase }}\" rules=\"required|max:512\"\r\n                        v-slot=\"{ errors, valid }\">\r\n                        <v-textarea v-model=\"description\" :success=\"valid\" :error-messages=\"errors\" counter=\"true\"\r\n                            filled=\"filled\" label=\"{{ \"descriptionLabel\" | localize }}\" rows=\"5\">\r\n                        </v-textarea>\r\n                    </validation-provider>\r\n                </v-col>\r\n                <v-col cols=\"12\">\r\n                    <h4>{{ \"projectTypeLabel\" | localize }}</h4>\r\n                    <validation-provider name=\"{{ \"projectTypeLabel\" | localize | downcase }}\" rules=\"required\"\r\n                        v-slot=\"{ errors, valid }\">\r\n                        <multiselect v-model=\"type\" :options=\"typeOptions\" track-by=\"value\" label=\"label\"\r\n                            :success=\"valid\" :error-messages=\"errors\" />\r\n                    </validation-provider>\r\n                </v-col>\r\n                <v-col cols=\"12\">\r\n                    <h4>{{ \"topicsLabel\" | localize }}</h4>\r\n                    <multiselect-async v-model=\"topics\" api=\"{{ \"~/api/radar/topic-search?term=\" | href }}\"\r\n                        :internal-search=\"false\" track-by=\"value\" label=\"label\" :multiple=\"true\" :searchable=\"true\"\r\n                        :hide-selected=\"true\">\r\n                        <template slot=\"custom-tag\" slot-scope=\"{option, remove}\">\r\n                            <div class=\"topic form-topic-field\">\r\n                                <v-icon color=\"white\" class=\"topic-tag-icon\">mdi-pound</v-icon>\r\n                                <div class=\"label\">\r\n                                    {% raw %}{{ option.label }}{% endraw %}\r\n                                </div>\r\n                                <span class=\"ml-3 form-topic-field-remove-button\" @click=\"remove(option)\">X</span>\r\n                            </div>\r\n                        </template>\r\n                    </multiselect-async>\r\n                </v-col>\r\n            </v-col>\r\n\r\n            <v-col cols=\"6\">\r\n                <v-col cols=\"12\">\r\n                    <h4>{{ \"permissionsLabel\" | localize }}</h4>\r\n                    <validation-provider name=\"{{ \"permissionsLabel\" | localize | downcase }}\" rules=\"required\"\r\n                        v-slot=\"{ errors, valid }\">\r\n                        <multiselect v-model=\"roles\" :options=\"roleOptions\" :success=\"valid\" :error-messages=\"errors\"\r\n                            :multiple=\"true\">\r\n                            <template slot=\"custom-tag\" slot-scope=\"{option, remove}\">\r\n                                <div class=\"topic form-topic-field\">\r\n                                    <div class=\"label\">\r\n                                        {% raw %}{{ option }}{% endraw %}\r\n                                    </div>\r\n                                    <span class=\"ml-3 form-topic-field-remove-button\" @click=\"remove(option)\">X</span>\r\n                                </div>\r\n                            </template>\r\n                        </multiselect>\r\n                    </validation-provider>\r\n                </v-col>\r\n                <v-col cols=\"12\">\r\n                    <h4>{{ \"visibilityLabel\" | localize }}</h4>\r\n                    <validation-provider name=\"{{ \"visibilityLabel\" | localize | downcase }}\" rules=\"required\"\r\n                        v-slot=\"{ errors, valid }\">\r\n                        <multiselect v-model=\"publishStatus\" :options=\"publishOptions\" track-by=\"\" :success=\"valid\"\r\n                            :error-messages=\"errors\" />\r\n                    </validation-provider>\r\n                </v-col>\r\n\r\n                <v-col cols=\"12\">\r\n                    <bag v-model=\"projectMembers\" :valueNames=\"valueNames\"\r\n                        add-button-label=\"{{ \"addButtonLabel\" | localize | downcase }}\" remove-button-label=\"-\">\r\n                        <template #validations>\r\n                            <validation-provider rules=\"required\" name=\"{{ \"memberLabel\" | localize | downcase }}\"></validation-provider>\r\n                            <validation-provider rules=\"required\" name=\"{{ \"roleLabel\" | localize | downcase }}\"></validation-provider>\r\n                        </template>\r\n\r\n                        <template #components>\r\n                            <multiselect-async api=\"{{ \"~/api/radar/user-search?term=\" | href }}\"\r\n                                :internal-search=\"false\" track-by=\"value\" label=\"label\" :searchable=\"true\"\r\n                                :hide-selected=\"true\">\r\n                            </multiselect-async>\r\n                            <v-text-field filled=\"filled\" label=\"{{ \"roleLabel\" | localize }}\"> </v-text-field>\r\n                        </template>\r\n\r\n                        <template #title>\r\n                            <div class=\"text-h5 mb-5\">\r\n                                {{ \"projectMembersLabel\" | localize }}\r\n                            </div>\r\n                        </template>\r\n                    </bag>\r\n                </v-col>\r\n            </v-col>\r\n\r\n\r\n            <v-col cols=\"8\">\r\n                <v-alert type=\"error\" v-for=\"(message, i) in form.serverValidationMessage\" :key=\"i\">\r\n                    {% raw %}{{ message }}{% endraw %}\r\n                </v-alert>\r\n            </v-col>\r\n            <v-col cols=\"8\">\r\n                <v-btn type=\"submit\" depressed block @click=\"formHandleSubmit\" :disabled=\"form.submitting\">{{\r\n                    \"submitLabel\" | localize }}</v-btn>\r\n            </v-col>\r\n\r\n\r\n        </v-row>\r\n    </v-card-text>\r\n</v-container>"
+            },
+            "RenderAs": {
+              "Text": null
+            },
+            "Disabled": {
+              "Value": false
+            },
+            "Debug": {
+              "Value": false
+            },
+            "DisabledHtml": {
+              "Html": ""
+            },
+            "SuccessMessage": {
+              "Text": null
+            }
+          },
+          "AliasPart": {
+            "Alias": "project-0"
+          },
+          "VueFormScripts": {
+            "ClientInit": {
+              "Text": null
+            },
+            "ComponentOptions": {
+              "Text": "{\r\n  data: () => ({\r\n    ...window.formValues,\r\n    ...window.formOptions,\r\n    valueNames: [\"user\", \"role\"]\r\n  })\r\n}"
+            },
+            "OnValidation": {
+              "Text": "var data = requestFormAsJsonObject();\r\nvar localizedText = getLocalizedTextValues(getFormContentItem());\r\n\r\nvar contentItem = getLocalizedContentItemById(data.id);\r\nvar contentFormModel = convertToFormModel(\"Project\", data);\r\n\r\nif(!validateRadarEntityName(\"Project\", contentFormModel.Name, contentItem))\r\n{\r\n    addError('serverValidationMessage', localizedText.nameNonUniqueError);\r\n}\r\n\r\nif(!validateMaxStringLength(contentFormModel.Name, 100))\r\n{\r\n    addError('serverValidationMessage', localizedText.nameLengthError);\r\n}\r\n\r\nif(!validateMaxStringLength(contentFormModel.Description, 100))\r\n{\r\n    addError('serverValidationMessage', localizedText.descriptionLengthError);\r\n}\r\n\r\nif(!validateString(contentFormModel.Name) || !validateString(contentFormModel.Description))\r\n{\r\n    addError('serverValidationMessage', localizedText.emptyTextError);\r\n}\r\n\r\nif(!validateString(contentFormModel.Name))\r\n{\r\n    addError('serverValidationMessage', localizedText.nameEmptyError);\r\n}\r\n\r\nif(!validateString(contentFormModel.Description))\r\n{\r\n    addError('serverValidationMessage', localizedText.descriptionEmptyError);\r\n}\r\n\r\nif(!validateTopics(contentFormModel.Topics))\r\n{\r\n    addError('serverValidationMessage', localizedText.topicError);\r\n}\r\n\r\nif(!validateEntityType(\"Project Types\", contentFormModel.Type))\r\n{\r\n    addError('serverValidationMessage', localizedText.typeError);\r\n}\r\n\r\nif(!validateMemberWithRole(contentFormModel.ProjectMembers))\r\n{\r\n    addError('serverValidationMessage', localizedText.memberError);\r\n}"
+            },
+            "OnSubmitted": {
+              "Text": "var data = requestFormAsJsonObject();\r\n\r\nvar contentFormModel = convertToFormModel(\"Project\", data);\r\nvar contentDocument = convertToContentDocument(\"Project\", contentFormModel);\r\n\r\n// If existing content can't be found then default to create\r\nvar contentItem = getLocalizedContentItemById(data.id);\r\n\r\nif (contentItem == null) {\r\n    contentItem = createLocalizedContentItem(\"Project\", contentDocument);\r\n} else {\r\n    updateLocalizedContentItem(contentItem, contentDocument);\r\n}\r\n\r\nhttpRedirect(`~/projects/${contentItem.ContentItemId}`);"
+            }
+          },
+          "ContentPermissionsPart": {
+            "Enabled": false,
+            "Roles": []
+          },
+          "LocalizedTextPart": {
+            "Data": [
+              {
+                "Name": "nameLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Nom"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Name"
+                  }
+                ]
+              },
+              {
+                "Name": "descriptionLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Description"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Description"
+                  }
+                ]
+              },
+              {
+                "Name": "permissionsLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Autorisations"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Permissions"
+                  }
+                ]
+              },
+              {
+                "Name": "topicsLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Sujets"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Topics"
+                  }
+                ]
+              },
+              {
+                "Name": "projectTypeLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Type de projet"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Project Type"
+                  }
+                ]
+              },
+              {
+                "Name": "visibilityLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Visibilité"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Visibility"
+                  }
+                ]
+              },
+              {
+                "Name": "projectMembersLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Membres du projet"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Project Members"
+                  }
+                ]
+              },
+              {
+                "Name": "submitLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Soumettre"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Submit"
+                  }
+                ]
+              },
+              {
+                "Name": "serverValidationError",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Une erreure est survenue."
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "An error occured."
+                  }
+                ]
+              },
+              {
+                "Name": "nameNonUniqueError",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Le nom doit être unique"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Name must be unique"
+                  }
+                ]
+              },
+              {
+                "Name": "nameLengthError",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Le nom doit comporter moins de 100 caractères"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Name must be less than 100 characters"
+                  }
+                ]
+              },
+              {
+                "Name": "descriptionLengthError",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "La description doit comporter moins de 512 caractères"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Description must be less than 512 characters"
+                  }
+                ]
+              },
+              {
+                "Name": "nameEmptyError",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Le nom ne peut pas être vide"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Name cannot be empty"
+                  }
+                ]
+              },
+              {
+                "Name": "descriptionEmptyError",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "La description ne peut pas être vide"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Description cannot be empty"
+                  }
+                ]
+              },
+              {
+                "Name": "topicError",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Il y a des sujets en double ou certains sujets n'existent pas"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "There are duplicated topics or some topics does not exist"
+                  }
+                ]
+              },
+              {
+                "Name": "typeError",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Le type sélectionné n'existe pas"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "The selected type does not exist"
+                  }
+                ]
+              },
+              {
+                "Name": "emptyTextError",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Le nom et la description ne peuvent pas être vides"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Name and Description cannot be empty"
+                  }
+                ]
+              },
+              {
+                "Name": "memberError",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Il y a des membres en double ou certains membres n'existent pas"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "There are duplicated members or some member does not exist"
+                  }
+                ]
+              },
+              {
+                "Name": "addButtonLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Ajouter"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Add"
+                  }
+                ]
+              },
+              {
+                "Name": "memberLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Membre"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Member"
+                  }
+                ]
+              },
+              {
+                "Name": "roleLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Rôle"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Role"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "ContentItemId": "41ewd04a6rabq7f16d69zsfsnv",
+          "ContentItemVersionId": null,
+          "ContentType": "VueForm",
+          "DisplayText": "Event Form",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": null,
+          "PublishedUtc": null,
+          "CreatedUtc": null,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "TitlePart": {
+            "Title": "Event Form"
+          },
+          "VueForm": {
+            "Template": {
+              "Text": "<v-container >\r\n  <v-card-text>\r\n    <v-row justify=\"center\">\r\n        <v-col cols=\"6\">\r\n            <v-col cols=\"12\">\r\n                <validation-provider name=\"{{ \"nameLabel\" | localize | downcase }}\" rules=\"required|max:100\"\r\n                    v-slot=\"{ errors, valid }\">\r\n                    <v-text-field v-model=\"name\" :success=\"valid\" :error-messages=\"errors\" filled=\"filled\"\r\n                        label=\"{{ \"nameLabel\" | localize }}\"></v-text-field>\r\n                </validation-provider>\r\n            </v-col>\r\n            <v-col cols=\"12\">\r\n                <validation-provider name=\"{{ \"descriptionLabel\" | localize | downcase }}\" rules=\"required|max:512\"\r\n                    v-slot=\"{ errors, valid }\">\r\n                    <v-textarea v-model=\"description\" :success=\"valid\" :error-messages=\"errors\" counter=\"true\"\r\n                        filled=\"filled\" label=\"{{ \"descriptionLabel\" | localize }}\" rows=\"5\">\r\n                    </v-textarea>\r\n                </validation-provider>\r\n            </v-col>\r\n            <v-col cols=\"12\">\r\n                <h4>{{ \"topicsLabel\" | localize }}</h4>\r\n                <multiselect-async v-model=\"topics\" placeholder=\"{{ \"placeholderLabel\" | localize }}\" api=\"{{ \"~/api/radar/topic-search?term=\" | href }}\" :internal-search=\"false\" track-by=\"value\" label=\"label\" :multiple=\"true\" :searchable=\"true\" :hide-selected=\"true\">\r\n                    <template slot=\"custom-tag\" slot-scope=\"{option, remove}\">\r\n                        <div class=\"topic form-topic-field\">\r\n                            <v-icon color=\"white\" class=\"topic-tag-icon\">mdi-pound</v-icon>\r\n                            <div class=\"label\">\r\n                                {% raw %}{{ option.label }}{% endraw %}\r\n                            </div>\r\n                            <span class=\"ml-3 form-topic-field-remove-button\" @click=\"remove(option)\">X</span>\r\n                        </div>\r\n                    </template>\r\n                </multiselect-async> \r\n            </v-col>\r\n\r\n            <v-col cols=\"12\">\r\n                <h4>{{ \"organizersLabel\" | localize }}</h4>\r\n                <multiselect-async v-model=\"eventOrganizers\" placeholder=\"{{ \"placeholderLabel\" | localize }}\" api=\"{{ \"~/api/radar/user-search?term=\" | href }}\" :internal-search=\"false\" track-by=\"value\" label=\"label\" :multiple=\"true\" :searchable=\"true\" :hide-selected=\"true\" > \r\n                    <template slot=\"custom-tag\" slot-scope=\"{option, remove}\">\r\n                        <div class=\"topic form-topic-field\">\r\n                            <div class=\"label\">\r\n                                {% raw %}{{ option.label }}{% endraw %}\r\n                            </div>\r\n                            <span class=\"ml-3 form-topic-field-remove-button\" @click=\"remove(option)\">X</span>\r\n                        </div>\r\n                    </template>\r\n                </multiselect-async>\r\n            </v-col>\r\n\r\n            <v-col cols=\"12\">\r\n                <h4>{{ \"attendeesLabel\" | localize }}</h4>\r\n                <multiselect-async v-model=\"attendees\" placeholder=\"{{ \"placeholderLabel\" | localize }}\" api=\"{{ \"~/api/radar/user-search?term=\" | href }}\" :internal-search=\"false\" track-by=\"value\" label=\"label\" :multiple=\"true\" :searchable=\"true\" :hide-selected=\"true\" > \r\n                    <template slot=\"custom-tag\" slot-scope=\"{option, remove}\">\r\n                        <div class=\"topic form-topic-field\">\r\n                            <div class=\"label\">\r\n                                {% raw %}{{ option.label }}{% endraw %}\r\n                            </div>\r\n                            <span class=\"ml-3 form-topic-field-remove-button\" @click=\"remove(option)\">X</span>\r\n                        </div>\r\n                    </template>\r\n                </multiselect-async>\r\n            </v-col>\r\n        </v-col>\r\n        \r\n        <v-col cols=\"6\">\r\n\r\n            <v-col cols=\"12\">\r\n                <v-row>\r\n                    <v-col cols=\"6\">\r\n                        <v-menu\r\n                            ref=\"menu1\"\r\n                            v-model=\"menu1\"\r\n                            :close-on-content-click=\"false\"\r\n                            :return-value.sync=\"startDate\"\r\n                            transition=\"scale-transition\"\r\n                            offset-y\r\n                            min-width=\"auto\"\r\n                        >\r\n                            <template v-slot:activator=\"{ on, attrs }\">\r\n                            <v-text-field\r\n                                v-model=\"startDate\"\r\n                                label=\"{{ \"startDateLabel\" | localize }}\"\r\n                                readonly\r\n                                v-bind=\"attrs\"\r\n                                v-on=\"on\"\r\n                            ></v-text-field>\r\n                            </template>\r\n                            <v-date-picker\r\n                            color=\"#252561\"\r\n                            v-model=\"startDate\"\r\n                            no-title\r\n                            scrollable\r\n                            >\r\n                            <v-spacer></v-spacer>\r\n                            <v-btn\r\n                                text\r\n                                color=\"#252561\"\r\n                                @click=\"menu1 = false\"\r\n                            >\r\n                                {{ \"cancelButtonLabel\" | localize }}\r\n                            </v-btn>\r\n                            <v-btn\r\n                                text\r\n                                color=\"#252561\"\r\n                                @click=\"$refs.menu1.save(startDate)\"\r\n                            >\r\n                                {{ \"okButtonLabel\" | localize }}\r\n                            </v-btn>\r\n                            </v-date-picker>\r\n                        </v-menu>\r\n                    </v-col>\r\n                    <v-col cols=\"6\">\r\n                        <v-menu\r\n                            ref=\"menu2\"\r\n                            v-model=\"menu2\"\r\n                            :close-on-content-click=\"false\"\r\n                            :return-value.sync=\"startTime\"\r\n                            transition=\"scale-transition\"\r\n                            offset-y\r\n                            min-width=\"auto\"\r\n                        >\r\n                            <template v-slot:activator=\"{ on, attrs }\">\r\n                            <v-text-field\r\n                                v-model=\"startTime\"\r\n                                label=\"{{ \"startTimeLabel\" | localize }}\"\r\n                                readonly\r\n                                v-bind=\"attrs\"\r\n                                v-on=\"on\"\r\n                            ></v-text-field>\r\n                            </template>\r\n                            <v-time-picker\r\n                            color=\"#252561\"\r\n                            v-model=\"startTime\"\r\n                            format=\"ampm\"\r\n                            >\r\n                            <v-spacer></v-spacer>\r\n                            <v-btn\r\n                                text\r\n                                color=\"#252561\"\r\n                                @click=\"menu2 = false\"\r\n                            >\r\n                                {{ \"cancelButtonLabel\" | localize }}\r\n                            </v-btn>\r\n                            <v-btn\r\n                                text\r\n                                color=\"#252561\"\r\n                                @click=\"$refs.menu2.save(startTime)\"\r\n                            >\r\n                                {{ \"okButtonLabel\" | localize }}\r\n                            </v-btn>\r\n                            </v-time-picker>\r\n                        </v-menu>\r\n                    </v-col>\r\n                </v-row>\r\n                <v-row>\r\n                    <v-col cols=\"6\">\r\n                        <v-menu\r\n                            ref=\"menu3\"\r\n                            v-model=\"menu3\"\r\n                            :close-on-content-click=\"false\"\r\n                            :return-value.sync=\"endDate\"\r\n                            transition=\"scale-transition\"\r\n                            offset-y\r\n                            min-width=\"auto\"\r\n                        >\r\n                            <template v-slot:activator=\"{ on, attrs }\">\r\n                            <v-text-field\r\n                                v-model=\"endDate\"\r\n                                label=\"{{ \"endDateLabel\" | localize }}\"\r\n                                readonly\r\n                                v-bind=\"attrs\"\r\n                                v-on=\"on\"\r\n                            ></v-text-field>\r\n                            </template>\r\n                            <v-date-picker\r\n                            color=\"#252561\"\r\n                            v-model=\"endDate\"\r\n                            no-title\r\n                            scrollable\r\n                            >\r\n                            <v-spacer></v-spacer>\r\n                            <v-btn\r\n                                text\r\n                                color=\"#252561\"\r\n                                @click=\"menu3 = false\"\r\n                            >\r\n                                {{ \"cancelButtonLabel\" | localize }}\r\n                            </v-btn>\r\n                            <v-btn\r\n                                text\r\n                                color=\"#252561\"\r\n                                @click=\"$refs.menu3.save(endDate)\"\r\n                            >\r\n                                {{ \"okButtonLabel\" | localize }}\r\n                            </v-btn>\r\n                            </v-date-picker>\r\n                        </v-menu>\r\n                    </v-col>\r\n                    <v-col cols=\"6\">\r\n                        <v-menu\r\n                            ref=\"menu4\"\r\n                            v-model=\"menu4\"\r\n                            :close-on-content-click=\"false\"\r\n                            :return-value.sync=\"endTime\"\r\n                            transition=\"scale-transition\"\r\n                            offset-y\r\n                            min-width=\"auto\"\r\n                        >\r\n                            <template v-slot:activator=\"{ on, attrs }\">\r\n                            <v-text-field\r\n                                v-model=\"endTime\"\r\n                                label=\"{{ \"endTimeLabel\" | localize }}\"\r\n                                readonly\r\n                                v-bind=\"attrs\"\r\n                                v-on=\"on\"\r\n                            ></v-text-field>\r\n                            </template>\r\n                            <v-time-picker\r\n                            color=\"#252561\"\r\n                            v-model=\"endTime\"\r\n                            format=\"ampm\"\r\n                            >\r\n                            <v-spacer></v-spacer>\r\n                            <v-btn\r\n                                text\r\n                                color=\"#252561\"\r\n                                @click=\"menu4 = false\"\r\n                            >\r\n                                {{ \"cancelButtonLabel\" | localize }}\r\n                            </v-btn>\r\n                            <v-btn\r\n                                text\r\n                                color=\"#252561\"\r\n                                @click=\"$refs.menu4.save(endTime)\"\r\n                            >\r\n                                {{ \"okButtonLabel\" | localize }}\r\n                            </v-btn>\r\n                            </v-time-picker>\r\n                        </v-menu>\r\n                    </v-col>\r\n                </v-row>\r\n                \r\n            </v-col>\r\n            <v-col cols=\"12\">\r\n                <h4>{{ \"permissionsLabel\" | localize }}</h4>\r\n                <validation-provider name=\"{{ \"permissionsLabel\" | localize | downcase }}\" rules=\"required\" v-slot=\"{ errors, valid }\">\r\n                    <multiselect v-model=\"roles\" :options=\"roleOptions\" :success=\"valid\" :error-messages=\"errors\"\r\n                        :multiple=\"true\">\r\n                        <template slot=\"custom-tag\" slot-scope=\"{option, remove}\">\r\n                            <div class=\"topic form-topic-field\">\r\n                                <div class=\"label\">\r\n                                    {% raw %}{{ option }}{% endraw %}\r\n                                </div>\r\n                                <span class=\"ml-3 form-topic-field-remove-button\" @click=\"remove(option)\">X</span>\r\n                            </div>\r\n                        </template>\r\n                    </multiselect>\r\n                </validation-provider>\r\n            </v-col>\r\n\r\n            <v-col cols=\"12\">\r\n                <h4>{{ \"visibilityLabel\" | localize }}</h4>\r\n                <validation-provider name=\"{{ \"visibilityLabel\" | localize | downcase }}\" rules=\"required\" v-slot=\"{ errors, valid }\">\r\n                    <multiselect placeholder=\"{{ \"placeholderLabel\" | localize }}\" v-model=\"publishStatus\" :options=\"publishOptions\" track-by=\"\":success=\"valid\" :error-messages=\"errors\" />\r\n                </validation-provider>\r\n            </v-col>\r\n        </v-col>\r\n\r\n        <v-col cols=\"8\">\r\n            <v-alert type=\"error\" v-for=\"(message, i) in form.serverValidationMessage\" :key=\"i\">\r\n                {% raw %}{{ message }}{% endraw %}\r\n            </v-alert>\r\n        </v-col>\r\n      <v-col cols=\"8\">\r\n    \t<v-btn type=\"submit\" depressed block @click=\"formHandleSubmit\" :disabled=\"form.submitting\">{{ \"submitLabel\" | localize }}</v-btn>\r\n      </v-col>\r\n    </v-row>\r\n  </v-card-text>\r\n</v-container>"
+            },
+            "RenderAs": {
+              "Text": null
+            },
+            "Disabled": {
+              "Value": false
+            },
+            "Debug": {
+              "Value": false
+            },
+            "DisabledHtml": {
+              "Html": ""
+            },
+            "SuccessMessage": {
+              "Text": null
+            }
+          },
+          "AliasPart": {
+            "Alias": "event-form"
+          },
+          "VueFormScripts": {
+            "ClientInit": {
+              "Text": null
+            },
+            "ComponentOptions": {
+              "Text": "{\r\n  data: () => ({\r\n    ...window.formValues,\r\n    ...window.formOptions,\r\n    menu1: null,\r\n    menu2: null,\r\n    menu3: null,\r\n    menu4: null,\r\n  })\r\n}"
+            },
+            "OnValidation": {
+              "Text": "var data = requestFormAsJsonObject();\r\nvar localizedText = getLocalizedTextValues(getFormContentItem());\r\n\r\nvar contentItem = getLocalizedContentItemById(data.id);\r\nvar contentFormModel = convertToFormModel(\"Event\", data);\r\n\r\nif(!validateRadarEntityName(\"Event\", contentFormModel.Name, contentItem))\r\n{\r\n    addError('serverValidationMessage', localizedText.nameNonUniqueError);\r\n}\r\n\r\nif(!validateMaxStringLength(contentFormModel.Name, 100))\r\n{\r\n    addError('serverValidationMessage', localizedText.nameLengthError);\r\n}\r\n\r\nif(!validateMaxStringLength(contentFormModel.Description, 100))\r\n{\r\n    addError('serverValidationMessage', localizedText.descriptionLengthError);\r\n}\r\n\r\nif(!validateString(contentFormModel.Name) || !validateString(contentFormModel.Description))\r\n{\r\n    addError('serverValidationMessage', localizedText.emptyTextError);\r\n}\r\n\r\nif(!validateString(contentFormModel.Name))\r\n{\r\n    addError('serverValidationMessage', localizedText.nameEmptyError);\r\n}\r\n\r\nif(!validateString(contentFormModel.Description))\r\n{\r\n    addError('serverValidationMessage', localizedText.descriptionEmptyError);\r\n}\r\n\r\nif(!validateTopics(contentFormModel.Topics))\r\n{\r\n    addError('serverValidationMessage', localizedText.topicError);\r\n}\r\n\r\nif(!validateEventDateTime(contentFormModel.StartDate, contentFormModel.startTime, contentFormModel.EndDate, contentFormModel.EndTime))\r\n{\r\n    addError('serverValidationMessage', localizedText.dateTimeError);\r\n}\r\n\r\nif(!validateMemberWithoutRole(contentFormModel.Attendees))\r\n{\r\n    addError('serverValidationMessage', localizedText.attendeesError);\r\n}\r\n\r\nif(!validateMemberWithoutRole(contentFormModel.EventOrganizers))\r\n{\r\n    addError('serverValidationMessage', localizedText.organizerError);\r\n}"
+            },
+            "OnSubmitted": {
+              "Text": "var data = requestFormAsJsonObject();\r\n\r\nvar contentFormModel = convertToFormModel(\"Event\", data);\r\nvar contentDocument = convertToContentDocument(\"Event\", contentFormModel);\r\n\r\n// If existing content can't be found then default to create\r\nvar contentItem = getLocalizedContentItemById(data.id);\r\n\r\nif (contentItem == null) {\r\n    contentItem = createLocalizedContentItem(\"Event\", contentDocument);\r\n} else {\r\n    updateLocalizedContentItem(contentItem, contentDocument);\r\n}\r\n\r\nhttpRedirect(`~/events/${contentItem.ContentItemId}`);"
+            }
+          },
+          "ContentPermissionsPart": {
+            "Enabled": false,
+            "Roles": []
+          },
+          "LocalizedTextPart": {
+            "Data": [
+              {
+                "Name": "nameLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Nom"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Name"
+                  }
+                ]
+              },
+              {
+                "Name": "descriptionLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Description"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Description"
+                  }
+                ]
+              },
+              {
+                "Name": "permissionsLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Autorisations"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Permissions"
+                  }
+                ]
+              },
+              {
+                "Name": "topicsLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Sujets"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Topics"
+                  }
+                ]
+              },
+              {
+                "Name": "visibilityLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Visibilité"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Visibility"
+                  }
+                ]
+              },
+              {
+                "Name": "serverValidationError",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Une erreure est survenue."
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "An error occured."
+                  }
+                ]
+              },
+              {
+                "Name": "dateTimeError",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "La date de début ne peut pas être postérieure à la date de fin"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Start date cannot be after end date"
+                  }
+                ]
+              },
+              {
+                "Name": "nameLengthError",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Le nom doit comporter moins de 100 caractères"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Name must be less than 100 characters"
+                  }
+                ]
+              },
+              {
+                "Name": "descriptionLengthError",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "La description doit comporter moins de 512 caractères"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Description must be less than 512 characters"
+                  }
+                ]
+              },
+              {
+                "Name": "nameEmptyError",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Le nom ne peut pas être vide"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Name cannot be empty"
+                  }
+                ]
+              },
+              {
+                "Name": "descriptionEmptyError",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "La description ne peut pas être vide"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Description cannot be empty"
+                  }
+                ]
+              },
+              {
+                "Name": "topicError",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Il y a des sujets en double ou certains sujets n'existent pas"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "There are duplicated topics or some topics does not exist"
+                  }
+                ]
+              },
+              {
+                "Name": "emptyTextError",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Le nom et la description ne peuvent pas être vides"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Name and Description cannot be empty"
+                  }
+                ]
+              },
+              {
+                "Name": "addButtonLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Ajouter"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Add"
+                  }
+                ]
+              },
+              {
+                "Name": "placeholderLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Sélectionnez l'option"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Select option"
+                  }
+                ]
+              },
+              {
+                "Name": "organizersLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Organisateurs d'événements"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Event Organizers"
+                  }
+                ]
+              },
+              {
+                "Name": "attendeesLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Participants/es"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Attendees"
+                  }
+                ]
+              },
+              {
+                "Name": "submitLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Soumettre"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Submit"
+                  }
+                ]
+              },
+              {
+                "Name": "startDateLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Date de début"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Start Date"
+                  }
+                ]
+              },
+              {
+                "Name": "startTimeLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Heure de début"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Start Time"
+                  }
+                ]
+              },
+              {
+                "Name": "endDateLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Date de fin"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "End Date"
+                  }
+                ]
+              },
+              {
+                "Name": "endTimeLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Heure de fin"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "End Time"
+                  }
+                ]
+              },
+              {
+                "Name": "attendeesError",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Il y a des participants en double ou certains participants n'existent pas"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "There are duplicated attendees or some attendees does not exist"
+                  }
+                ]
+              },
+              {
+                "Name": "organizerError",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Il y a des organisateurs en double ou certains organisateurs n'existent pas"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "There are duplicated organizers or some organizers does not exist"
+                  }
+                ]
+              },
+              {
+                "Name": "nameNonUniqueError",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Le nom doit être unique"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Name must be unique"
+                  }
+                ]
+              },
+              {
+                "Name": "okButtonLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "OK"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "OK"
+                  }
+                ]
+              },
+              {
+                "Name": "cancelButtonLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Annuler"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Cancel"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "ContentItemId": "4g0wbrpyppkqd3z1kjbv5jbdnj",
+          "ContentItemVersionId": null,
+          "ContentType": "VueForm",
+          "DisplayText": "Topic Form",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": null,
+          "PublishedUtc": null,
+          "CreatedUtc": null,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "TitlePart": {
+            "Title": "Topic Form"
+          },
+          "VueForm": {
+            "Template": {
+              "Text": "<v-container>\r\n    <v-card-text>\r\n        <v-row justify=\"center\">\r\n            <v-col cols=\"8\">\r\n                <validation-provider name=\"{{ \"nameLabel\" | localize | downcase }}\" rules=\"required\"\r\n                    v-slot=\"{ errors, valid }\">\r\n                    <v-text-field v-model=\"name\" :success=\"valid\" :error-messages=\"errors\" filled=\"filled\" label=\"{{ \"nameLabel\" | localize }}\"></v-text-field>\r\n                </validation-provider>\r\n            </v-col>\r\n            <v-col cols=\"8\">\r\n                <validation-provider name=\"{{ \"descriptionLabel\" | localize | downcase }}\" rules=\"required\"\r\n                    v-slot=\"{ errors, valid }\">\r\n                    <v-textarea v-model=\"description\" :success=\"valid\" :error-messages=\"errors\" counter=\"true\"\r\n                        filled=\"filled\" label=\"{{ \"descriptionLabel\" | localize }}\" rows=\"5\">\r\n                    </v-textarea>\r\n                </validation-provider>\r\n            </v-col>\r\n            <v-col cols=\"8\">\r\n                <h4>{{ \"permissionsLabel\" | localize }}</h4>\r\n                <validation-provider name=\"{{ \"permissionsLabel\" | localize | downcase }}\" rules=\"required\"\r\n                    v-slot=\"{ errors, valid }\">\r\n                    <multiselect v-model=\"roles\" :options=\"roleOptions\" :success=\"valid\" :error-messages=\"errors\"\r\n                        :multiple=\"true\">\r\n                        <template slot=\"custom-tag\" slot-scope=\"{option, remove}\">\r\n                            <div class=\"topic form-topic-field\">\r\n                                <div class=\"label\">\r\n                                    {% raw %}{{ option }}{% endraw %}\r\n                                </div>\r\n                                <span class=\"ml-3 form-topic-field-remove-button\" @click=\"remove(option)\">X</span>\r\n                            </div>\r\n                        </template>\r\n                    </multiselect>\r\n                </validation-provider>\r\n            </v-col>\r\n            <v-col cols=\"8\">\r\n                <v-alert type=\"error\" v-for=\"(message, i) in form.serverValidationMessage\" :key=\"i\">\r\n                    {% raw %}{{ message }}{% endraw %}\r\n                </v-alert>\r\n            </v-col>\r\n            <v-col cols=\"8\">\r\n                <v-btn type=\"submit\" depressed block @click=\"formHandleSubmit\" :disabled=\"form.submitting\">{{\r\n                    \"submitLabel\" | localize }}</v-btn>\r\n            </v-col>\r\n        </v-row>\r\n    </v-card-text>\r\n</v-container>"
+            },
+            "RenderAs": {
+              "Text": null
+            },
+            "Disabled": {
+              "Value": false
+            },
+            "Debug": {
+              "Value": false
+            },
+            "DisabledHtml": {
+              "Html": ""
+            },
+            "SuccessMessage": {
+              "Text": null
+            }
+          },
+          "AliasPart": {
+            "Alias": "topic-form"
+          },
+          "VueFormScripts": {
+            "ClientInit": {
+              "Text": null
+            },
+            "ComponentOptions": {
+              "Text": "{\r\n  data: () => ({\r\n    ...window.formValues,\r\n    ...window.formOptions\r\n  })\r\n}"
+            },
+            "OnValidation": {
+              "Text": "var data = requestFormAsJsonObject();\r\nvar localizedText = getLocalizedTextValues(getFormContentItem());\r\n\r\nvar topic = getTaxonomyByTypeAndId(\"Topics\", data.id);\r\nvar contentFormModel = convertToFormModel(\"Topic\", data);\r\n\r\nif(!validateTaxonomyName(\"Topics\", contentFormModel.Name, topic))\r\n{\r\n    addError('serverValidationMessage', localizedText.nameNonUniqueError);\r\n}\r\n\r\nif(!validateMaxStringLength(contentFormModel.Name, 100))\r\n{\r\n    addError('serverValidationMessage', localizedText.nameLengthError);\r\n}\r\n\r\nif(!validateMaxStringLength(contentFormModel.Description, 100))\r\n{\r\n    addError('serverValidationMessage', localizedText.descriptionLengthError);\r\n}\r\n\r\nif(!validateString(contentFormModel.Name) || !validateString(contentFormModel.Description))\r\n{\r\n    addError('serverValidationMessage', localizedText.emptyTextError);\r\n}\r\n\r\nif(!validateString(contentFormModel.Name))\r\n{\r\n    addError('serverValidationMessage', localizedText.nameEmptyError);\r\n}\r\n\r\nif(!validateString(contentFormModel.Description))\r\n{\r\n    addError('serverValidationMessage', localizedText.descriptionEmptyError);\r\n}"
+            },
+            "OnSubmitted": {
+              "Text": "var data = requestFormAsJsonObject();\r\n\r\nvar id = createOrUpdateTopic(data.id, data);\r\n\r\nif(id !== null)\r\n{\r\n    httpRedirect(`~/topics/${id}`);\r\n}"
+            }
+          },
+          "ContentPermissionsPart": {
+            "Enabled": false,
+            "Roles": []
+          },
+          "LocalizedTextPart": {
+            "Data": [
+              {
+                "Name": "nameLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Nom"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Name"
+                  }
+                ]
+              },
+              {
+                "Name": "descriptionLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Description"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Description"
+                  }
+                ]
+              },
+              {
+                "Name": "permissionsLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Autorisations"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Permissions"
+                  }
+                ]
+              },
+              {
+                "Name": "submitLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Soumettre"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Submit"
+                  }
+                ]
+              },
+              {
+                "Name": "serverValidationError",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Une erreure est survenue."
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "An error occured."
+                  }
+                ]
+              },
+              {
+                "Name": "nameNonUniqueError",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": ""
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Name must be unique"
+                  }
+                ]
+              },
+              {
+                "Name": "nameLengthError",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": ""
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "nameLengthError"
+                  }
+                ]
+              },
+              {
+                "Name": "descriptionLengthError",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": ""
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Description must be less than 512 characters"
+                  }
+                ]
+              },
+              {
+                "Name": "nameEmptyError",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": ""
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Name cannot be empty"
+                  }
+                ]
+              },
+              {
+                "Name": "descriptionEmptyError",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": ""
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Description cannot be empty"
+                  }
+                ]
+              },
+              {
+                "Name": "placeholderLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Sélectionnez l'option"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Select option"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "ContentItemId": "4kv0zcjsw40a61nbhasd4tkkc8",
+          "ContentItemVersionId": null,
+          "ContentType": "VueForm",
+          "DisplayText": "Artifact Form",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": null,
+          "PublishedUtc": null,
+          "CreatedUtc": null,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "TitlePart": {
+            "Title": "Artifact Form"
+          },
+          "VueForm": {
+            "Template": {
+              "Text": "<v-container>\r\n    <v-card-text>\r\n        <v-row justify=\"center\">\r\n            <v-col cols=\"8\">\r\n                <validation-provider name=\"{{ \"nameLabel\" | localize | downcase }}\" rules=\"required\"\r\n                    v-slot=\"{ errors, valid }\">\r\n                    <v-text-field v-model=\"name\" :success=\"valid\" :error-messages=\"errors\" filled=\"filled\" label=\"{{ \"nameLabel\" | localize }}\"></v-text-field>\r\n                </validation-provider>\r\n            </v-col>\r\n            <v-col cols=\"8\">\r\n                <validation-provider name=\"{{ \"urlLabel\" | localize | downcase }}\" rules=\"required\"\r\n                    v-slot=\"{ errors, valid }\">\r\n                    <v-text-field v-model=\"url\" :success=\"valid\" :error-messages=\"errors\"\r\n                        filled=\"filled\" label=\"{{ \"urlLabel\" | localize }}\">\r\n                    </v-text-field>\r\n                </validation-provider>\r\n            </v-col>\r\n            <v-col cols=\"8\">\r\n                <h4>{{ \"visibilityLabel\" | localize }}</h4>\r\n                <validation-provider name=\"{{ \"visibilityLabel\" | localize | downcase }}\" rules=\"required\"\r\n                    v-slot=\"{ errors, valid }\">\r\n                    <multiselect v-model=\"publishStatus\" :options=\"publishOptions\" track-by=\"\" :success=\"valid\"\r\n                        :error-messages=\"errors\" />\r\n                </validation-provider>\r\n            </v-col>\r\n            <v-col cols=\"8\">\r\n                <h4>{{ \"permissionsLabel\" | localize }}</h4>\r\n                <validation-provider name=\"{{ \"permissionsLabel\" | localize | downcase }}\" rules=\"required\"\r\n                    v-slot=\"{ errors, valid }\">\r\n                    <multiselect v-model=\"roles\" :options=\"roleOptions\" :success=\"valid\" :error-messages=\"errors\"\r\n                            :multiple=\"true\">\r\n                        <template slot=\"custom-tag\" slot-scope=\"{option, remove}\">\r\n                            <div class=\"topic form-topic-field\">\r\n                                <div class=\"label\">\r\n                                    {% raw %}{{ option }}{% endraw %}\r\n                                </div>\r\n                                <span class=\"ml-3 form-topic-field-remove-button\" @click=\"remove(option)\">X</span>\r\n                            </div>\r\n                        </template>\r\n                    </multiselect>\r\n                </validation-provider>\r\n            </v-col>\r\n            <v-col cols=\"8\">\r\n                <v-alert type=\"error\" v-for=\"(message, i) in form.serverValidationMessage\" :key=\"i\">\r\n                    {% raw %}{{ message }}{% endraw %}\r\n                </v-alert>\r\n            </v-col>\r\n            <v-col cols=\"8\">\r\n                <v-btn type=\"submit\" depressed block @click=\"formHandleSubmit\" :disabled=\"form.submitting\">{{\r\n                    \"submitLabel\" | localize }}</v-btn>\r\n            </v-col>\r\n        </v-row>\r\n    </v-card-text>\r\n</v-container>"
+            },
+            "RenderAs": {
+              "Text": null
+            },
+            "Disabled": {
+              "Value": false
+            },
+            "Debug": {
+              "Value": false
+            },
+            "DisabledHtml": {
+              "Html": ""
+            },
+            "SuccessMessage": {
+              "Text": null
+            }
+          },
+          "AliasPart": {
+            "Alias": "artifact-form"
+          },
+          "VueFormScripts": {
+            "ClientInit": {
+              "Text": null
+            },
+            "ComponentOptions": {
+              "Text": "{\r\n  data: () => ({\r\n    ...window.formValues,\r\n    ...window.formOptions\r\n  })\r\n}"
+            },
+            "OnValidation": {
+              "Text": "var data = requestFormAsJsonObject();\r\nvar localizedText = getLocalizedTextValues(getFormContentItem());\r\n\r\nvar contentFormModel = convertToFormModel(\"Artifact\", data);\r\n\r\nvar parentContentItem = getLocalizedContentItemById(data.parentId);\r\n\r\nif(parentContentItem == null)\r\n{\r\n    addError('serverValidationMessage', localizedText.noParentError);\r\n}\r\n\r\nif(!validateUrl(contentFormModel.Url, \"www.github.com\"))\r\n{\r\n    addError('serverValidationMessage', localizedText.urlError);\r\n}"
+            },
+            "OnSubmitted": {
+              "Text": "var data = requestFormAsJsonObject();\r\n\r\nvar contentFormModel = convertToFormModel(\"Artifact\", data);\r\n\r\nvar id = createOrUpdateArtifact(data.parentId, data.id, contentFormModel);\r\n\r\nif(id !== null)\r\n{\r\n    var parentContentItem = getLocalizedContentItemById(data.parentId);\r\n\r\n    if(parentContentItem != null)\r\n    {\r\n        if(parentContentItem.ContentType == \"Project\")\r\n        {\r\n            httpRedirect(`~/projects/${parentContentItem.ContentItemId}/artifacts/${id}`);\r\n        } else if(parentContentItem.ContentType == \"Event\")\r\n        {\r\n            httpRedirect(`~/events/${parentContentItem.ContentItemId}/artifacts/${id}`);\r\n        } else if(parentContentItem.ContentType == \"Proposal\")\r\n        {\r\n            httpRedirect(`~/prosals/${parentContentItem.ContentItemId}/artifacts/${id}`);\r\n        }\r\n    }\r\n}"
+            }
+          },
+          "ContentPermissionsPart": {
+            "Enabled": false,
+            "Roles": []
+          },
+          "LocalizedTextPart": {
+            "Data": [
+              {
+                "Name": "nameLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Nom"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Name"
+                  }
+                ]
+              },
+              {
+                "Name": "urlLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Url"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Url"
+                  }
+                ]
+              },
+              {
+                "Name": "permissionsLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Autorisations"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Permissions"
+                  }
+                ]
+              },
+              {
+                "Name": "submitLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Soumettre"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Submit"
+                  }
+                ]
+              },
+              {
+                "Name": "serverValidationError",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Une erreure est survenue."
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "An error occured."
+                  }
+                ]
+              },
+              {
+                "Name": "noParentError",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": ""
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Cannot create artifact on unknown entity"
+                  }
+                ]
+              },
+              {
+                "Name": "urlError",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": ""
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Malformed url"
+                  }
+                ]
+              },
+              {
+                "Name": "placeholderLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Sélectionnez l'option"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Select option"
+                  }
+                ]
+              },
+              {
+                "Name": "visibilityLabel",
+                "LocalizedItems": [
+                  {
+                    "Culture": "fr",
+                    "Value": "Visibilité"
+                  },
+                  {
+                    "Culture": "en",
+                    "Value": "Visibility"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "lucene-index",
+      "Indices": [
+        {
+          "search": {
+            "AnalyzerName": "standardanalyzer",
+            "IndexLatest": true,
+            "IndexedContentTypes": [
+              "Community",
+              "Event",
+              "Project",
+              "Proposal"
+            ],
+            "Culture": "any"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Queries",
+      "Queries": [
+        {
+          "Template": "{% assign roleText = \"%\" | append: role | append: \"%\" %}\r\n\r\nselect DocumentId\r\n    from ContentPermissionsPartIndex \r\n    where ContentType = @contentType and Published = true and (not Enabled or Roles like '{{ roleText }}')\r\n\torder by PublishedUtc desc",
+          "ReturnDocuments": true,
+          "Name": "RecentActivitiesSQL",
+          "Source": "Sql",
+          "Schema": null
+        },
+        {
+          "Template": "select ContentType\r\n\tfrom TaxonomyIndex \r\n\twhere ContentField = @type and TermContentItemId = @id",
+          "ReturnDocuments": false,
+          "Name": "TaxonomyEntityCountSQL",
+          "Source": "Sql",
+          "Schema": null
+        },
+        {
+          "Template": "select DocumentId from ContentItemIndex where DisplayText = @type and Latest = true;",
+          "ReturnDocuments": true,
+          "Name": "AllTaxonomiesSQL",
+          "Source": "Sql",
+          "Schema": null
+        },
+        {
+          "Template": "select TermContentItemId, count(TermContentItemId) as popularity \r\n  \tfrom TaxonomyIndex \r\n  \twhere ContentField = @type \r\n  \tgroup by TermContentItemId \r\n  \torder by popularity desc",
+          "ReturnDocuments": false,
+          "Name": "TaxonomyTrendingUpSQL",
+          "Source": "Sql",
+          "Schema": null
+        },
+        {
+          "Template": "select TermContentItemId, count(TermContentItemId) as popularity \r\n  \tfrom TaxonomyIndex \r\n  \twhere ContentField = @type \r\n  \tgroup by TermContentItemId \r\n  \torder by popularity asc",
+          "ReturnDocuments": false,
+          "Name": "TaxonomyTrendingDownSQL",
+          "Source": "Sql",
+          "Schema": null
+        },
+        {
+          "Template": "select DocumentId\r\n\tfrom TaxonomyIndex \r\n\twhere ContentField = @type and TermContentItemId = @id",
+          "ReturnDocuments": true,
+          "Name": "TaxonomyEntitiesSQL",
+          "Source": "Sql",
+          "Schema": null
+        },
+        {
+          "Index": "search",
+          "Template": "{\r\n  \"query\": {\r\n    \"bool\": {\r\n      \"must\": [\r\n        {\r\n          \"wildcard\": {\r\n            \"Content.ContentItem.FullText\": \"{{ Term }}\"\r\n          }\r\n        },\r\n        {\r\n          \"wildcard\": {\r\n            \"Content.ContentItem.ContentType\": \"{{ Type }}\"\r\n          }\r\n        }\r\n      ]\r\n    }\r\n  }\r\n}",
+          "ReturnContentItems": true,
+          "Name": "EntityListLucene",
+          "Source": "Lucene",
+          "Schema": null
+        },
+        {
+          "Template": "select ContentItemId from RadarFormPartIndex where DisplayText = @type;",
+          "ReturnDocuments": false,
+          "Name": "FormQuerySQL",
+          "Source": "Sql",
+          "Schema": null
+        },
+        {
+          "Template": "select * from UserIndex;",
+          "ReturnDocuments": false,
+          "Name": "AllUsersSQL",
+          "Source": "Sql",
+          "Schema": null
+        },
+        {
+          "Template": "select DocumentId from ContentItemIndex where ContentType = @type and DisplayText = @name and Published = true;",
+          "ReturnDocuments": true,
+          "Name": "EntityByTypeAndNameSQL",
+          "Source": "Sql",
+          "Schema": null
+        },
+        {
+          "Template": "select UserId from UserIndex where UserId = @userId;",
+          "ReturnDocuments": false,
+          "Name": "UserByIdSQL",
+          "Source": "Sql",
+          "Schema": null
+        },
+        {
+          "Template": "select ContentItemId from LocalizedContentItemIndex where LocalizationSet = @localizationSet;",
+          "ReturnDocuments": false,
+          "Name": "EntityByLocalizationSetSQL",
+          "Source": "Sql",
+          "Schema": null
+        }
+      ]
+    },
+    {
+      "name": "Layers",
+      "Layers": [
+        {
+          "Name": "All",
+          "Rule": null,
+          "Description": null,
+          "LayerRule": {
+            "Conditions": [
+              {
+                "$type": "OrchardCore.Rules.Models.BooleanCondition, OrchardCore.Rules",
+                "Value": true,
+                "Name": "BooleanCondition",
+                "ConditionId": "4wj6wnc9v6gjesch0s05qkngmb"
+              }
+            ],
+            "Name": null,
+            "ConditionId": "4vx5exkhq8nmfz701dt2qh5vn6"
+          }
+        },
+        {
+          "Name": "LandingPage",
+          "Rule": null,
+          "Description": null,
+          "LayerRule": {
+            "Conditions": [
+              {
+                "$type": "OrchardCore.Rules.Models.HomepageCondition, OrchardCore.Rules",
+                "Value": true,
+                "Name": "HomepageCondition",
+                "ConditionId": "47k3j9d6mw9y37v4d1pbx6hrws"
+              }
+            ],
+            "Name": null,
+            "ConditionId": "4tw7nhdcfck9drfdber9f3p54s"
+          }
+        }
+      ]
+    }
+  ]
+}

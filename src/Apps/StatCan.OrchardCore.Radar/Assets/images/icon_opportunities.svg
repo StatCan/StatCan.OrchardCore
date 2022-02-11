@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 24.1.2, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 112 112" style="enable-background:new 0 0 112 112;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:url(#Icon_material-error-outline_1_);}
+</style>
+<linearGradient id="Icon_material-error-outline_1_" gradientUnits="userSpaceOnUse" x1="-623.3869" y1="439.0237" x2="-623.3869" y2="438.0237" gradientTransform="matrix(112 0 0 -112 69875.3359 49170.6641)">
+	<stop  offset="0" style="stop-color:#252561"/>
+	<stop  offset="1" style="stop-color:#151537"/>
+</linearGradient>
+<path id="Icon_material-error-outline" class="st0" d="M50.4,72.8h11.2V84H50.4V72.8z M50.4,28h11.2v33.6H50.4V28z M55.94,0
+	C25.02,0.03-0.03,25.13,0,56.06C0.03,86.98,25.13,112.03,56.06,112C86.96,111.97,112,86.91,112,56c0.01-30.91-25.03-55.99-55.95-56
+	C56.02,0,55.98,0,55.94,0z M56,100.8c-24.74,0-44.8-20.06-44.8-44.8S31.26,11.2,56,11.2s44.8,20.06,44.8,44.8
+	c0.01,24.74-20.04,44.79-44.78,44.8C56.02,100.8,56.01,100.8,56,100.8z"/>
+</svg>

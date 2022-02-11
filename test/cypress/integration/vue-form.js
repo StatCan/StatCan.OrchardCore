@@ -171,7 +171,7 @@ describe("VueForm Tests", function() {
 
     cy.get(".vue-form-bag-add-button").click();
 
-    cy.get(".v-text-field__slot").should("have.length", 6); // There are two prototypes that are hidden
+    cy.get(".v-text-field__slot").should("have.length", 4);
   });
 
   it("Bag fields can be removed", function() {
@@ -179,6 +179,6 @@ describe("VueForm Tests", function() {
 
     cy.get(".vue-form-bag-remove-button").click();
 
-    cy.get(".v-text-field__slot").should("have.length", 2); // There are two prototypes that are hidden
+    cy.get(".v-text-field__slot").should("have.length", 0);
   });
 });

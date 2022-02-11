@@ -4,7 +4,9 @@
     v-bind="$attrs"
     :success="success"
     :error-messages="errorMessages"
-  ></multiselect-base>
+  >
+    <template v-for="(_, slot) of $scopedSlots" v-slot:[slot]="scope"><slot :name="slot" v-bind="scope"/></template>
+  </multiselect-base>
 </template>
 
 <script>

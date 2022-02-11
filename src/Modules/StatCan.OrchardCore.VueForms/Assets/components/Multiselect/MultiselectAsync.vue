@@ -7,7 +7,9 @@
     v-bind="$attrs"
     :success="success"
     :error-messages="errorMessages"
-  ></multiselect-base>
+  >
+    <template v-for="(_, slot) of $scopedSlots" v-slot:[slot]="scope"><slot :name="slot" v-bind="scope"/></template>
+  </multiselect-base>
 </template>
 
 <script>
@@ -30,16 +32,18 @@ export default {
   },
   methods: {
     asyncFind: debounce(function(query) {
-      this.isLoading = true;
-      fetch(this.api + query, {
-        method: "GET",
-        credentials: "include"
-      })
-        .then(res => res.json())
-        .then(data => {
-          this.options = data;
-          this.isLoading = false;
-        });
+      if (query.length > 0) {
+        this.isLoading = true;
+        fetch(this.api + query, {
+          method: "GET",
+          credentials: "include"
+        })
+          .then(res => res.json())
+          .then(data => {
+            this.options = data;
+            this.isLoading = false;
+          });
+      }
     }, 1000)
   },
   watch: {

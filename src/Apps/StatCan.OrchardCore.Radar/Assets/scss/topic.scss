@@ -1,0 +1,47 @@
+@import "colors";
+
+.topic {
+    background: $secondary 0% 0% no-repeat padding-box;
+    border-radius: 75px;
+    display: inline-block;
+    padding: 2px 10px 0px 9px;
+    margin-right: 0.9rem;
+    color: #FFFFFF;
+    width: fit-content;
+    display: flex;
+    border: $secondary solid 2px;
+}
+
+.topic:hover {
+    border: $primary solid 2px;
+}
+
+.topic-tag-icon {
+    margin-right: 0.25rem;
+    font-size: 1.25rem;
+}
+
+.label {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+a {
+    text-decoration: none;
+}
+
+.form-topic-field {
+  margin-bottom: 0.6rem;
+}
+
+.form-topic-field-remove-button:hover {
+  cursor: pointer;
+}
+
+.multiselect__option--highlight {
+  background-color: $primary !important;
+}
+
+.multiselect__option--highlight::after {
+  background-color: $primary !important;
+}

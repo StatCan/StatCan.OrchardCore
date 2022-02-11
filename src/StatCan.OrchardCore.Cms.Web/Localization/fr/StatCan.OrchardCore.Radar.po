@@ -1,0 +1,238 @@
+#: StatCan.OrchardCore.Radar\Views\List\Communities.cshtml:17
+#. <div class="text-h2 list-title">@T["Communities"]</div>
+msgctxt "StatCan.OrchardCore.Radar.Views.List.Communities"
+msgid "Communities"
+msgstr ""
+
+#: StatCan.OrchardCore.Radar\Views\List\Communities.cshtml:60
+#. <th class="name-col" data-type="name">@T["Name"]</th>
+msgctxt "StatCan.OrchardCore.Radar.Views.List.Communities"
+msgid "Name"
+msgstr ""
+
+#: StatCan.OrchardCore.Radar\Views\List\Communities.cshtml:61
+#. <th data-type="number">@T["Members"]</th>
+msgctxt "StatCan.OrchardCore.Radar.Views.List.Communities"
+msgid "Members"
+msgstr ""
+
+#: StatCan.OrchardCore.Radar\Views\List\Communities.cshtml:62
+#. <th>@T["Owner"]</th>
+msgctxt "StatCan.OrchardCore.Radar.Views.List.Communities"
+msgid "Owner"
+msgstr ""
+
+#: StatCan.OrchardCore.Radar\Views\List\Communities.cshtml:63
+#. <th>@T["Type"]</th>
+msgctxt "StatCan.OrchardCore.Radar.Views.List.Communities"
+msgid "Type"
+msgstr ""
+
+#: StatCan.OrchardCore.Radar\Views\List\Events.cshtml:17
+#. <div class="text-h2 list-title">@T["Events"]</div>
+msgctxt "StatCan.OrchardCore.Radar.Views.List.Events"
+msgid "Events"
+msgstr ""
+
+#: StatCan.OrchardCore.Radar\Views\List\Events.cshtml:60
+#. <th class="name-col" data-type="name">@T["Name"]</th>
+msgctxt "StatCan.OrchardCore.Radar.Views.List.Events"
+msgid "Name"
+msgstr ""
+
+#: StatCan.OrchardCore.Radar\Views\List\Events.cshtml:61
+#. <th data-type="date-range">@T["Date"]</th>
+msgctxt "StatCan.OrchardCore.Radar.Views.List.Events"
+msgid "Date"
+msgstr ""
+
+#: StatCan.OrchardCore.Radar\Views\List\Events.cshtml:62
+#. <th>@T["Organizer"]</th>
+msgctxt "StatCan.OrchardCore.Radar.Views.List.Events"
+msgid "Organizer"
+msgstr ""
+
+#: StatCan.OrchardCore.Radar\Views\List\Events.cshtml:63
+#. <th>@T["Visibility"]</th>
+msgctxt "StatCan.OrchardCore.Radar.Views.List.Events"
+msgid "Visibility"
+msgstr ""
+
+#: StatCan.OrchardCore.Radar\Views\GlobalSearch.cshtml:7
+#. <global-search api-url=@searchURL project-title=@T["Projects"] event-title=@T["Events"] proposal-title=@T["Proposals"] community-title=@T["Communities"]></global-search>
+msgctxt "StatCan.OrchardCore.Radar.Views.GlobalSearch"
+msgid "Projects"
+msgstr ""
+
+#: StatCan.OrchardCore.Radar\Views\GlobalSearch.cshtml:7
+#. <global-search api-url=@searchURL project-title=@T["Projects"] event-title=@T["Events"] proposal-title=@T["Proposals"] community-title=@T["Communities"]></global-search>
+msgctxt "StatCan.OrchardCore.Radar.Views.GlobalSearch"
+msgid "Events"
+msgstr ""
+
+#: StatCan.OrchardCore.Radar\Views\GlobalSearch.cshtml:7
+#. <global-search api-url=@searchURL project-title=@T["Projects"] event-title=@T["Events"] proposal-title=@T["Proposals"] community-title=@T["Communities"]></global-search>
+msgctxt "StatCan.OrchardCore.Radar.Views.GlobalSearch"
+msgid "Proposals"
+msgstr ""
+
+#: StatCan.OrchardCore.Radar\Views\GlobalSearch.cshtml:7
+#. <global-search api-url=@searchURL project-title=@T["Projects"] event-title=@T["Events"] proposal-title=@T["Proposals"] community-title=@T["Communities"]></global-search>
+msgctxt "StatCan.OrchardCore.Radar.Views.GlobalSearch"
+msgid "Communities"
+msgstr ""
+
+#: StatCan.OrchardCore.Radar\Views\List\Projects.cshtml:17
+#. <div class="text-h2 list-title">@T["Projects"]</div>
+msgctxt "StatCan.OrchardCore.Radar.Views.List.Projects"
+msgid "Projects"
+msgstr ""
+
+#: StatCan.OrchardCore.Radar\Views\List\Projects.cshtml:60
+#. <th class="name-col" data-type="name">@T["Name"]</th>
+msgctxt "StatCan.OrchardCore.Radar.Views.List.Projects"
+msgid "Name"
+msgstr ""
+
+#: StatCan.OrchardCore.Radar\Views\List\Projects.cshtml:61
+#. <th data-type="date">@T["Updated"]</th>
+msgctxt "StatCan.OrchardCore.Radar.Views.List.Projects"
+msgid "Updated"
+msgstr ""
+
+#: StatCan.OrchardCore.Radar\Views\List\Projects.cshtml:62
+#. <th>@T["Registrar"]</th>
+msgctxt "StatCan.OrchardCore.Radar.Views.List.Projects"
+msgid "Registrar"
+msgstr ""
+
+#: StatCan.OrchardCore.Radar\Views\List\Projects.cshtml:63
+#. <th>@T["Visibility"]</th>
+msgctxt "StatCan.OrchardCore.Radar.Views.List.Projects"
+msgid "Visibility"
+msgstr ""
+
+#: StatCan.OrchardCore.Radar\Views\List\Projects.cshtml:64
+#. <th data-type="date">@T["Created"]</th>
+msgctxt "StatCan.OrchardCore.Radar.Views.List.Projects"
+msgid "Created"
+msgstr ""
+
+#: StatCan.OrchardCore.Radar\Views\List\Proposals.cshtml:17
+#. <div class="text-h2 list-title">@T["Proposals"]</div>
+msgctxt "StatCan.OrchardCore.Radar.Views.List.Proposals"
+msgid "Proposals"
+msgstr ""
+
+#: StatCan.OrchardCore.Radar\Views\List\Proposals.cshtml:60
+#. <th class="name-col" data-type="name">@T["Name"]</th>
+msgctxt "StatCan.OrchardCore.Radar.Views.List.Proposals"
+msgid "Name"
+msgstr ""
+
+#: StatCan.OrchardCore.Radar\Views\List\Proposals.cshtml:61
+#. <th data-type="date">@T["Created"]</th>
+msgctxt "StatCan.OrchardCore.Radar.Views.List.Proposals"
+msgid "Created"
+msgstr ""
+
+#: StatCan.OrchardCore.Radar\Views\List\Proposals.cshtml:62
+#. <th>@T["Visibility"]</th>
+msgctxt "StatCan.OrchardCore.Radar.Views.List.Proposals"
+msgid "Visibility"
+msgstr ""
+
+#: StatCan.OrchardCore.Radar\Views\UserMenuButton.cshtml:38
+#. <v-list-item-title>@T["Signed in as"]<span class="font-weight-bold"> @User.Identity.Name</span></v-list-item-title>
+msgctxt "StatCan.OrchardCore.Radar.Views.UserMenuButton"
+msgid "Signed in as"
+msgstr ""
+
+#: StatCan.OrchardCore.Radar\Views\UserMenuButton.cshtml:48
+#. <v-list-item-title>@T["Dashboard"]</v-list-item-title>
+msgctxt "StatCan.OrchardCore.Radar.Views.UserMenuButton"
+msgid "Dashboard"
+msgstr ""
+
+#: StatCan.OrchardCore.Radar\Views\UserMenuButton.cshtml:58
+#. <v-list-item-title class="text-left">@T["Log off"]</v-list-item-title>
+msgctxt "StatCan.OrchardCore.Radar.Views.UserMenuButton"
+msgid "Log off"
+msgstr ""
+
+#: StatCan.OrchardCore.Radar\Views\UserMenuButton.cshtml:72
+#. <span>@T["Log in"]</span>
+msgctxt "StatCan.OrchardCore.Radar.Views.UserMenuButton"
+msgid "Log in"
+msgstr ""
+
+#: StatCan.OrchardCore.Radar\Views\DeleteButton.cshtml:7
+#. <button type="submit"><h3 class="pl-4 pr-4">@T["Delete"]</h3></button>
+msgctxt "StatCan.OrchardCore.Radar.Views.DeleteButton"
+msgid "Delete"
+msgstr ""
+
+#: StatCan.OrchardCore.Radar\Views\LocalizationButton.liquid:0
+msgctxt "StatCan.OrchardCore.Radar.Views.LocalizationButton"
+msgid "Switch to"
+msgstr ""
+
+#: StatCan.OrchardCore.Radar\Views\NotFound.liquid:0
+msgctxt "StatCan.OrchardCore.Radar.Views.NotFound"
+msgid "The page you are looking for is not found"
+msgstr ""
+
+#: StatCan.OrchardCore.Radar\Views\Widget-NavigationDrawer.liquid:0
+msgctxt "StatCan.OrchardCore.Radar.Views.Widget-NavigationDrawer"
+msgid "Home"
+msgstr ""
+
+#: StatCan.OrchardCore.Radar\Views\Workspace.liquid:0
+msgctxt "StatCan.OrchardCore.Radar.Views.Workspace"
+msgid "Workspace"
+msgstr ""
+
+#: StatCan.OrchardCore.Radar\Views\Workspace.liquid:0
+msgctxt "StatCan.OrchardCore.Radar.Views.Workspace"
+msgid "Name"
+msgstr ""
+
+#: StatCan.OrchardCore.Radar\Views\Workspace.liquid:0
+msgctxt "StatCan.OrchardCore.Radar.Views.Workspace"
+msgid "Status"
+msgstr ""
+
+#: StatCan.OrchardCore.Radar\Views\Workspace.liquid:0
+msgctxt "StatCan.OrchardCore.Radar.Views.Workspace"
+msgid "Updated"
+msgstr ""
+
+#: StatCan.OrchardCore.Radar\Views\Content-Proposal.liquid:0
+msgctxt "StatCan.OrchardCore.Radar.Views.Content-Proposal"
+msgid "Affected Communities"
+msgstr ""
+
+#: StatCan.OrchardCore.Radar\Views\Content-Project.liquid:0
+msgctxt "StatCan.OrchardCore.Radar.Views.Content-Project"
+msgid "Contributors"
+msgstr ""
+
+#: StatCan.OrchardCore.Radar\Views\Content-Event.liquid:0
+msgctxt "StatCan.OrchardCore.Radar.Views.Content-Event"
+msgid "Attendees"
+msgstr ""
+
+#: StatCan.OrchardCore.Radar\Views\Content-LandingPage.liquid:0
+msgctxt "StatCan.OrchardCore.Radar.Views.Content-LandingPage"
+msgid 'Recent activities'
+msgstr ""
+
+#: StatCan.OrchardCore.Radar\Views\Content-LandingPage.liquid:0
+msgctxt "StatCan.OrchardCore.Radar.Views.Content-LandingPage"
+msgid 'Recent trends'
+msgstr ""
+
+#: StatCan.OrchardCore.Radar\Views\OptionsButton.liquid:0
+msgctxt "StatCan.OrchardCore.Radar.Views.OptionsButton"
+msgid "Update"
+msgstr ""

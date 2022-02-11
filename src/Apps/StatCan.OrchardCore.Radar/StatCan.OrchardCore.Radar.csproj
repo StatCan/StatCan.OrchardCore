@@ -1,0 +1,70 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+  <PropertyGroup>
+    <TargetFramework>$(AspNetCoreTargetFramework)</TargetFramework>
+    <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
+    <CodeAnalysisRuleSet>..\..\..\roslynator.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Assets\images\canada.svg" />
+    <None Remove="Assets\images\goc.svg" />
+    <None Remove="Assets\images\radar-icon-white.svg" />
+    <None Remove="Assets\images\ripples-white.svg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\images\canada.svg">
+      <CopyToPublishDirectory>Never</CopyToPublishDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\images\goc.svg">
+      <CopyToPublishDirectory>Never</CopyToPublishDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\images\radar-icon-white.svg">
+      <CopyToPublishDirectory>Never</CopyToPublishDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\images\ripples-white.svg">
+      <CopyToPublishDirectory>Never</CopyToPublishDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="OrchardCore.Module.Targets" Version="$(OrchardCoreVersion)" />
+
+    <PackageReference Include="OrchardCore.Abstractions" Version="$(OrchardCoreVersion)" />
+    <PackageReference Include="OrchardCore.Admin" Version="$(OrchardCoreVersion)" />
+    <PackageReference Include="OrchardCore.Contents" Version="$(OrchardCoreVersion)" />
+    <PackageReference Include="OrchardCore.ContentManagement" Version="$(OrchardCoreVersion)" />
+    <PackageReference Include="OrchardCore.ContentLocalization" Version="$(OrchardCoreVersion)" />
+    <PackageReference Include="OrchardCore.ContentTypes.Abstractions" Version="$(OrchardCoreVersion)" />
+    <PackageReference Include="OrchardCore.DisplayManagement" Version="$(OrchardCoreVersion)" />
+    <PackageReference Include="OrchardCore.Liquid" Version="$(OrchardCoreVersion)" />
+    <PackageReference Include="OrchardCore.Localization" Version="$(OrchardCoreVersion)" />
+    <PackageReference Include="OrchardCore.Lucene" Version="$(OrchardCoreVersion)" />
+    <PackageReference Include="OrchardCore.Lucene.Core" Version="$(OrchardCoreVersion)" />
+    <PackageReference Include="OrchardCore.Media" Version="$(OrchardCoreVersion)" />
+    <PackageReference Include="OrchardCore.Queries" Version="$(OrchardCoreVersion)" />
+    <PackageReference Include="OrchardCore.Shortcodes" Version="$(OrchardCoreVersion)" />
+    <PackageReference Include="OrchardCore.Users" Version="$(OrchardCoreVersion)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Modules\StatCan.OrchardCore.ContentPermissions\StatCan.OrchardCore.ContentPermissions.csproj" />
+  </ItemGroup>
+  
+  <!--Migrations-->
+  <ItemGroup>
+    <PackageReference Include="OrchardCore.Autoroute" Version="$(OrchardCoreVersion)" />
+    <PackageReference Include="OrchardCore.ContentFields" Version="$(OrchardCoreVersion)" />
+    <PackageReference Include="OrchardCore.Flows" Version="$(OrchardCoreVersion)" />
+    <PackageReference Include="OrchardCore.Recipes" Version="$(OrchardCoreVersion)" />
+    <PackageReference Include="OrchardCore.Resources" Version="$(OrchardCoreVersion)" />
+    <PackageReference Include="OrchardCore.Taxonomies" Version="$(OrchardCoreVersion)" />
+    <PackageReference Include="OrchardCore.Title" Version="$(OrchardCoreVersion)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+  
+</Project>

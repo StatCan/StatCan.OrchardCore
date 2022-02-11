@@ -1,0 +1,26 @@
+@import "colors";
+
+.appbar {
+    background-color: $primary !important;
+}
+
+.menu-button {
+    background-color: $secondary !important;
+    width: 38px !important;
+    height: 38px !important;
+    margin-left: 1rem;
+    color: #ffffff !important;
+}
+
+.app-bar-username-container {
+    margin-left: 1rem;
+}
+
+.app-bar-buttons-container {
+    margin-right: 0.5rem;
+    display: flex;
+}
+
+a {
+  text-decoration: none;
+}

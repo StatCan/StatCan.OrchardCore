@@ -1,0 +1,8 @@
+<form asp-route-area="StatCan.OrchardCore.Radar" asp-controller="Form" asp-action="ContentDelete" method="post">
+  <input type="text" name="entityType" value=@Model.ContentItem.ContentType style="display:none" />
+  <input type="text" name="id" value=@Model.ContentItem.ContentItemId style="display:none" />
+  <input type="text" name="parentId" value=@Model.ParentId style="display:none" />
+  <input type="text" name="successUrl" value=@Model.SuccessUrl style="display:none" />
+  <input type="text" name="failUrl" value=@Model.FailUrl style="display:none" />
+  <button type="submit"><h3 class="pl-4 pr-4">@T["Delete"]</h3></button>
+</form>

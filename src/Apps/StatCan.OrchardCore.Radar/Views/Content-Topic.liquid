@@ -1,0 +1,118 @@
+{% script src:"/StatCan.OrchardCore.Radar/js/table.js", at:"Head" %}
+{% script name:"Radar-vue-components", at:"Foot" %}
+
+{% capture failUrl %}~{{ Request.Path }}{% endcapture %}
+
+{% zone "Header" %}
+<div class="details-section">
+  <div class="header">
+    <v-container>
+      <v-row justify="space-between">
+        <v-col md="7">
+          <div>
+            <div class="text-h3 details-name">{{ Model.ContentItem | DisplayText | shortcode }}</div>
+            <div class="text-body-1 details-description">
+                {{ Model.ContentItem.Content.Topic.Description.Text | shortcode }}
+            </div>
+          </div>
+        </v-col>
+        <v-col md="1">
+          <div class="d-flex">
+            <v-img
+            src="{{ "icon_topics.svg" | asset_url }}"
+            width="112" height="112"
+            >
+            </v-img>
+            {{ "OptionsButton" | shape_new: ContentItem: Model.ContentItem, Relative: false, DisplayMode: "Detail", SuccessUrl: "~/topics", FailUrl: failUrl | shape_render}}
+          </div>
+        </v-col>
+      </v-row>
+    </v-container>
+  </div>
+  <div class="zigzag-container">
+    <div class="zigzag zigzag-white"></div>
+  </div>
+</div>
+{% endzone %}
+
+{% assign entities = Queries.TaxonomyEntitiesSQL | query: type: "Topics", id: Model.ContentItem.ContentItemId | remove_unauthorized_items | filter_current_culture %}
+
+{% assign projects = entities | where: "ContentType", "Project" %}
+{% assign communities = entities | where: "ContentType", "Community" %}
+{% assign proposals = entities | where: "ContentType", "Proposal" %}
+{% assign events = entities | where: "ContentType", "Event" %}
+
+<div class="sections-container">
+    <div class="section">
+        <tabs>
+          <tab slot="tab" title="{{ "Projects" | t }}" icon="mdi-flask-outline" count="{{ projects | size }}">
+            <table class="table" id="entity-table">
+              <thead class="table-header">
+                <tr>
+                  <th class="name-col" data-type="name">{{ "Name" | t }}</th>
+                  <th data-type="date">{{ "Updated" | t }}</th>
+                  <th>{{ "Registrar" | t }}</th>
+                  <th>{{ "Visibility" | t }}</th>
+                  <th data-type="date">{{ "Created" | t }}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for project in projects %}
+                  {{ project | shape_build_display: "Summary" | shape_render }}
+                {% endfor %}
+              </tbody>
+            </table>
+          </tab>
+          <tab slot="tab" title="{{ "Events" | t }}" icon="mdi-calendar" count="{{ events | size }}">
+            <table class="table" id="entity-table">
+              <thead class="table-header">
+                <tr>
+                  <th class="name-col" data-type="name">{{ "Name" | t }}</th>
+                  <th data-type="date-range">{{ "Date" | t }}</th>
+                  <th>{{ "Organizer" | t }}</th>
+                  <th>{{ "Visibility" | t }}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for event in events %}
+                  {{ event | shape_build_display: "Summary" | shape_render }}
+                {% endfor %}
+              </tbody>
+            </table>
+          </tab>
+          <tab slot="tab" title="{{ "Communities" | t }}" icon="mdi-account-multiple" count="{{ communities | size }}">
+            <table class="table" id="entity-table">
+              <thead class="table-header">
+                <tr>
+                  <th class="name-col" data-type="name">{{ "Name" | t }}</th>
+                  <th data-type="number">{{ "Members" | t }}</th>
+                  <th>{{ "Owner" | t }}</th>
+                  <th>{{ "Type" | t }}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for community in communities %}
+                  {{ community | shape_build_display: "Summary" | shape_render }}
+                {% endfor %}
+              </tbody>
+            </table>
+          </tab>
+          <tab slot="tab" title="{{ "Proposals" | t }}" icon="mdi-alert-circle-outline" count="{{ proposals | size }}">
+            <table class="table" id="entity-table">
+              <thead class="table-header">
+                <tr>
+                  <th class="name-col" data-type="name">{{ "Name" | t }}</th>
+                  <th data-type="date">{{ "Created" | t }}</th>
+                  <th>{{ "Visibility" | t }}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for proposal in proposals %}
+                  {{ proposal | shape_build_display: "Summary" | shape_render }}
+                {% endfor %}
+              </tbody>
+            </table>
+          </tab>
+        </tabs>
+    </div>
+</div>

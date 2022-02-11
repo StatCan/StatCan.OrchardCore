@@ -1,0 +1,129 @@
+{% assign organizer = Model.ContentItem.Content.EventOrganizer.ContentItems | first %}
+{% capture failUrl %}~{{ Request.Path }}{% endcapture %}
+
+{% zone "Header" %}
+<div class="details-section">
+  <div class="header">
+    <v-container>
+      <v-row justify="space-between">
+        <v-col md="7">
+          <div>
+            <div class="text-h3 details-name">{{ Model.ContentItem | display_text }}</div>
+            <div class="text-body-1 details-description">
+                {{ Model.ContentItem.Content.RadarEntityPart.Description.Text }}
+            </div>
+          </div>
+        </v-col>
+        <v-col md="1">
+          <div class="d-flex">
+            <v-img
+            src="{{ "icon_events.svg" | asset_url }}"
+            width="112" height="112"
+            >
+            </v-img>
+            {{ "OptionsButton" | shape_new: ContentItem: Model.ContentItem, Relative: false, DisplayMode: "Detail", SuccessUrl: "~/events", FailUrl: failUrl | shape_render}}
+          </div>
+        </v-col>
+      </v-row>
+      <v-row>
+          <v-col md="12">
+            <v-row>
+                <v-col md="4">
+                    <div class="icon-cell">
+                        <v-icon class="details-attribute-icon">
+                            mdi-account-plus
+                        </v-icon>
+                        <div class="text-h6 icon-text">
+                            {{ organizer.DisplayText }}
+                        </div>
+                    </div>
+                </v-col>
+                <v-col md="4">
+                    <div class="icon-cell">
+                        <v-icon class="details-attribute-icon">
+                            mdi-update
+                        </v-icon>
+                        <div class="text-h6 icon-text">
+                            {{ Model.ContentItem.ModifiedUtc | local | date: "%b %d, %Y" }}
+                        </div>
+                    </div>
+                </v-col>
+                <v-col md="4">
+                    <div class="icon-cell">
+                        <v-icon class="details-attribute-icon">
+                            mdi-calendar
+                        </v-icon>
+                        <div class="text-h6 icon-text">
+                            {{ Model.ContentItem.Content.Event.StartDate.Value | date: "%b %d %H:%M %p, %Y" }} - {{ Model.ContentItem.Content.Event.EndDate.Value | date: "%b %d %H:%M %p, %Y" }}
+                        </div>
+                    </div>
+                </v-col>
+                <v-col md="4">
+                  <div class="icon-cell">
+                      <v-icon class="details-attribute-icon">
+                          mdi-eye
+                      </v-icon>
+                      <div class="text-h6 icon-text">
+                          {{ "StatusLabel" | shape_new: Published: Model.ContentItem.Content.RadarEntityPart.Publish.Value | shape_render }}
+                      </div>
+                  </div>
+              </v-col>
+            </v-row>
+          </v-col>
+      </v-row>
+      <v-row class="topics-container">
+          <v-col md="12">
+            <div class="topics-list-container">
+                {% assign topics = Model.ContentItem.Content.RadarEntityPart.Topics | taxonomy_terms %}
+                {% for topic in topics %}
+                    {{ topic | shape_build_display: "Summary" | shape_render }}
+                {% endfor %}
+            </div>
+          </v-col>
+      </v-row>
+    </v-container>
+  </div>
+  <div class="zigzag-container">
+    <div class="zigzag zigzag-white"></div>
+  </div>
+</div>
+{% endzone %}
+
+<div class="sections-container">
+    <div class="section">
+        <div class="table-title-container">
+            <div class="text-h4">
+                {{ "Attendees" | t }}
+            </div>
+            <div class="workspace-bubble">
+                <div class="workspace-bubble-text">{{Model.ContentItem.Content.Event.Attendees.UserIds | size | plus: 1 }}</div>
+            </div>
+        </div>
+        <div class="attendees-table">
+            <table class="table" id="entity-table">
+              <thead class="table-header">
+                <tr>
+                  <th class="name-col">{{ "Name" | t }}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="table-row">
+                    <td class="name-col">{{ organizer.DisplayText }}</td>
+                </tr>
+
+                {% assign members = Model.ContentItem.Content.Event.Attendees.UserIds %}
+                {% for member in members %}
+                    {% assign user = member | users_by_id %}
+                    <tr class="table-row">
+                        <td class="name-col">{{ user.Properties.UserProfile.UserProfile.FirstName.Text }} {{ user.Properties.UserProfile.UserProfile.LastName.Text }}</th>
+                    </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="section">
+        {{ "Workspace" | shape_new: Model: Model.ContentItem.Content.Workspace, ParentItem: Model.ContentItem | shape_render }}
+    </div>
+</div>

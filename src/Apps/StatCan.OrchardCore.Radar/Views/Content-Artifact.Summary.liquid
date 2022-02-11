@@ -1,0 +1,21 @@
+{% assign parentId = Request.Path | parent_contentitem_id %}
+{% capture failUrl %}~{{ Request.Path }}{% endcapture %}
+
+<tr class="table-row">
+  <td class="name-col">
+    <a href="{{ Model.ContentItem | display_url }}">
+      {{ Model.ContentItem | dispay_text | shortcode }}
+    </a>
+  </td>
+  <td class="table-col">
+    {% if Model.ContentItem.Published %}
+        Published
+    {% else %}
+        Draft
+    {% endif %}
+  </td>
+  <td class="table-col">
+    {{ Model.ContentItem.ModifiedUtc | local | date: "%b %d, %Y" }}
+  </td>
+  <td class="table-col">{{ "OptionsButton" | shape_new: ContentItem: Model.ContentItem, Relative: true, DisplayMode: "Summary", SuccessUrl: failUrl, FailUrl: failUrl, ParentId: parentId | shape_render}}</td>
+</tr>

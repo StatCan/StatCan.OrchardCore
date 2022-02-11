@@ -1,0 +1,35 @@
+{% assign artifacts = Model.Properties.Model.ContentItems | remove_unauthorized_items | remove_unviewable_items %}
+{% assign parentLink = Model.Properties.ParentItem | display_url %}
+{% assign canAddArtifact = Model.Properties.ParentItem | is_owner %}
+
+<div class="table-title-container">
+    <div class="text-h4">
+        {{ "Workspace" | t }}
+    </div>
+    <div class="workspace-bubble">
+        <div class="workspace-bubble-text">{{ artifacts | size }}</div>
+    </div>
+    {% if canAddArtifact %}
+      <a href="{{ parentLink }}/artifacts/create">
+        <v-btn elevation="0" fab class="workspace-add-button">
+          <v-icon class="workspace-button-icon">mdi-plus-thick</v-icon>
+        </v-btn>
+      </a>
+    {% endif %}
+</div>
+<div>
+    <table class="table" id="entity-table">
+      <thead class="table-header">
+        <tr>
+          <th class="name-col">{{ "Name" | t }}</th>
+          <th class="table-col">{{ "Status" | t }}</th>
+          <th class="table-col">{{ "Updated" | t }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for artifact in artifacts %}
+            {{ artifact | shape_build_display: "Summary" | shape_render }}
+        {% endfor %}
+      </tbody>
+    </table>
+</div>

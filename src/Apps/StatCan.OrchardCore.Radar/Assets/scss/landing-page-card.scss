@@ -1,0 +1,110 @@
+@import "colors";
+
+.card-background {
+  background-color: $background;
+}
+
+.trend-card-body {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1.25rem;
+}
+
+.trend-card-body-icon {
+  font-size: 9rem !important;
+}
+
+.trend-card-body-container {
+  margin-left: 0.25rem;
+}
+
+.trend-card-body-topic-container {
+  margin-bottom: 0.5rem;
+}
+
+.trend-container {
+  display: flex;
+  align-items: center;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.card-title {
+  background-color: $primary;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-title:hover {
+  background-color: $card-hover;
+}
+
+.card-title-caption {
+  display: flex;
+  margin: 1.25rem 0 2.5rem 1.25rem;
+}
+
+.card-icon {
+  font-size: 4rem !important;
+  margin-right: 0.75rem;
+}
+
+.card-body {
+  padding: 1rem 0 0 6rem;
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
+}
+
+.card-button {
+  margin-bottom: 1rem;
+  margin-left: 1rem;
+  color: $secondary !important;
+}
+
+.card-item-link {
+  color: #000000 !important;
+}
+
+.card-item-link:hover {
+  color: $primary !important;
+  text-decoration: underline;
+}
+
+.card-item-link-container {
+  margin-bottom: 0.75rem;
+}
+
+.card-button-link {
+  width: fit-content;
+}
+
+.card-title {
+  display: flex;
+}
+
+.zigzag-container {
+  position: relative;
+  width: 100%;
+}
+
+.zigzag {
+  content: " ";
+  display: block;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+  height: 32px;
+}
+
+.zigzag-dark {
+  background: linear-gradient(-40deg, $background 16px, transparent 0),
+    linear-gradient(40deg, $background 16px, transparent 0);
+  background-position: left bottom;
+  background-repeat: repeat-x;
+  background-size: 32px 32px;
+}

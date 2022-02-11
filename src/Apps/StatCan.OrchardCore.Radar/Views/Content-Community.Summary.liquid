@@ -1,0 +1,17 @@
+{% assign owner = Model.ContentItem.Owner | users_by_id %}
+{% capture failUrl %}~{{ Request.Path }}{% endcapture %}
+
+<tr class="table-row">
+  <td class="name-col">
+    <a href="{{ Model.ContentItem | display_url }}">{{ Model.ContentItem | display_text }}</a>
+  </td>
+  <td class="table-col">
+    <div class="table-icon-cell">
+      <v-icon color="black">mdi-account</v-icon>
+      <div>{{ Model.ContentItem.Content.CommunityMember.ContentItems | size | plus: 1 }}</div>
+    </div>  
+  </td>
+  <td class="table-col">{{ owner.Properties.UserProfile.UserProfile.FirstName.Text }} {{ owner.Properties.UserProfile.UserProfile.LastName.Text }}</td>
+  <td class="table-col">{{ Model.ContentItem.Content.Community.Type.TagNames.first | shortcode }}</td>
+  <td class="table-col">{{ "OptionsButton" | shape_new: ContentItem: Model.ContentItem, Relative: false, DisplayMode: "Summary", SuccessUrl: "~/communities", FailUrl: failUrl | shape_render}}</td>
+</tr>

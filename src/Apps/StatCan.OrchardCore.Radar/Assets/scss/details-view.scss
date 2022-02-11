@@ -1,0 +1,138 @@
+@import "colors";
+
+.details-section {
+  padding-top: 3rem;
+}
+
+.header {
+  padding: 3rem 7rem;
+  background: transparent
+    linear-gradient(180deg, rgba($primary, 0.38), rgba($secondary, 0.38)) 0%
+    no-repeat;
+}
+
+.details-name {
+  text-align: left;
+  font-weight: 300;
+  color: $primary;
+  overflow-wrap: anywhere;
+}
+
+.details-description {
+  margin-top: 1rem;
+  color: $primary-variant1;
+}
+
+.topics-container {
+  margin-top: 2rem !important;
+}
+
+.icon-cell {
+  display: flex;
+  align-items: center;
+}
+
+.icon-text {
+  margin-left: 1rem;
+}
+
+.topics-list-container {
+  display: flex;
+}
+
+.options-button {
+  width: 3rem !important;
+  height: 3rem !important;
+}
+
+.details-view-options-button {
+  background-color: #ffffff !important;
+}
+
+.workspace-bubble {
+  margin-left: 2rem;
+  background-color: $background;
+  border: 2px solid $primary;
+  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 400;
+  font-size: 23px;
+}
+
+.workspace-bubble-text {
+  color: $primary-variant1;
+}
+
+.workspace-add-button {
+  width: 3rem !important;
+  height: 3rem !important;
+  margin-left: 1rem;
+  background-color: #ffffff !important;
+}
+
+.workspace-button-icon {
+  font-size: 40px !important;
+}
+
+.workspace-add-button:hover {
+  background-color: $secondary-variant1 !important;
+}
+
+.member-table {
+  width: 50%;
+}
+
+.attendees-table {
+  width: 20%;
+}
+
+.table-title-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.sections-container {
+  padding: 0 7rem 0 7rem;
+}
+
+.section {
+  margin-bottom: 2rem;
+}
+
+.zigzag {
+  content: " ";
+  display: block;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+  height: 32px;
+}
+
+.zigzag-container {
+  position: relative;
+  width: 100%;
+}
+
+.zigzag-white {
+  background: linear-gradient(-40deg, #ffffff 16px, transparent 0),
+    linear-gradient(40deg, #ffffff 16px, transparent 0);
+  background-position: left bottom;
+  background-repeat: repeat-x;
+  background-size: 32px 32px;
+}
+
+.details-main-icon {
+  font-size: 9rem !important;
+  color: $primary !important;
+}
+
+.details-attribute-icon {
+  font-size: 2.5rem !important;
+  color: #000000 !important;
+}

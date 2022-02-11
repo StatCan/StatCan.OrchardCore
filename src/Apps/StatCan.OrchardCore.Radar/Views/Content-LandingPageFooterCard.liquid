@@ -1,0 +1,13 @@
+<v-card elevation=0 class="front-footer">
+    <a href="{{ Model.ContentItem.Content.LandingPageFooterCard.Link.Text }}">
+        <div class="white--text text-center">
+            <v-icon class="icon-secondary front-footer-card-icon">
+                {{ Model.ContentItem.Content.LandingPageFooterCard.Icon.Text }}
+            </v-icon>
+            <div>
+                <div class="text-h4 front-footer-card-title">{{ Model.ContentItem | display_text }}</div>
+                <div class="text-p">{{ Model.ContentItem.Content.LandingPageFooterCard.Caption.Text }}</div>
+            </div>
+        </div>
+    </a>
+</v-card>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 24.1.2, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 112 112" style="enable-background:new 0 0 112 112;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:url(#Icon_material-people_1_);}
+</style>
+<linearGradient id="Icon_material-people_1_" gradientUnits="userSpaceOnUse" x1="-623.387" y1="437.7492" x2="-623.387" y2="436.7492" gradientTransform="matrix(112 0 0 -71.274 69875.3281 31220.5195)">
+	<stop  offset="0" style="stop-color:#252561"/>
+	<stop  offset="1" style="stop-color:#151537"/>
+</linearGradient>
+<path id="Icon_material-people" class="st0" d="M76.36,50.92c8.44,0,15.27-6.84,15.27-15.27s-6.84-15.27-15.27-15.27
+	c-8.44,0-15.27,6.84-15.27,15.27c0,0,0,0,0,0c-0.03,8.4,6.75,15.24,15.15,15.27C76.27,50.92,76.31,50.92,76.36,50.92z M35.63,50.92
+	c8.44,0,15.27-6.84,15.27-15.27s-6.84-15.27-15.27-15.27s-15.27,6.84-15.27,15.27c0,0,0,0,0,0c-0.03,8.4,6.75,15.24,15.15,15.27
+	C35.54,50.92,35.59,50.92,35.63,50.92L35.63,50.92z M35.63,61.11c-11.86,0-35.64,5.96-35.64,17.82v12.73h71.27V78.92
+	C71.27,67.06,47.49,61.11,35.63,61.11L35.63,61.11z M76.36,61.11c-1.48,0-3.16,0.1-4.94,0.26c5.9,4.28,10.03,10.03,10.03,17.56
+	v12.73h30.55V78.92C111.99,67.06,88.22,61.11,76.36,61.11z"/>
+</svg>

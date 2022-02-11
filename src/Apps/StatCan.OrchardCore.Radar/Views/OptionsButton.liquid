@@ -1,0 +1,40 @@
+{% assign contentItem = Model.Properties.ContentItem %}
+{% assign isOwner = contentItem | is_owner %}
+
+{% assign successUrl =  Model.Properties.SuccessUrl | href %}
+{% assign failUrl =  Model.Properties.FailUrl | href %}
+
+{% capture mode %}
+  {% if Model.Properties.DisplayMode == "Detail" %}
+    details-view-options-button
+  {% elsif Model.Properties.DisplayMode == "Summary" %}
+    list-view-options-button
+  {% endif %}
+{% endcapture %}
+{% if isOwner == true %}
+<v-menu offset-y>
+  <template v-slot:activator="{ on: onMenu, attrs }">
+    <v-btn v-bind="attrs" text v-on="{ ...onMenu }" fab class="options-button {{ mode }}">
+      <v-icon>mdi-dots-vertical</v-icon>
+    </v-btn>
+  </template>
+  <v-list>
+    <v-divider></v-divider>
+    <v-list-item-content>
+      <v-list-item-title>
+        <a class="options-button-update-link" href="{{ contentItem | content_update_url: relative: Model.Properties.Relative }}">
+          <h3 class="pl-4 pr-4">{{ "Update" | t }}</h3>
+        </a>
+      </v-list-item-title>
+    </v-list-item-content>
+      
+    <v-divider></v-divider>
+    <v-list-item-content>
+      <v-list-item-title>
+        {{ "DeleteButton" | shape_new: ContentItem: contentItem, SuccessUrl: successUrl, FailUrl: failUrl, ParentId: Model.Properties.ParentId | shape_render }}
+      </v-list-item-title>
+    </v-list-item-content>
+    <v-divider></v-divider>
+  </v-list>
+</v-menu>
+{% endif %}

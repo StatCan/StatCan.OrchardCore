@@ -1,0 +1,108 @@
+{% zone "Header" %}
+{% assign imagePath = Model.ContentItem.Content.LandingPage.HeaderImage.Paths.first %}
+<div>
+    <div class="rippleFront">
+        <div>
+            <v-container style="max-width: 1200px">
+                <v-row>
+                    <v-col md="12">
+                        <div class="name light-font text-center">
+                            {{ Model.ContentItem | display_text }}
+                        </div>
+                    </v-col>
+                </v-row>
+                <v-row>
+                    <v-col md="12">
+                        <div class="description light-font text-center pr-10 pl-10">
+                            {{ Model.ContentItem.Content.LandingPage.Description.Text }}
+                        </div>
+                    </v-col>
+                </v-row>
+                <v-row>
+                    <v-col md="12" class="list">
+                        <div class="header-list">
+                            {% for headerItem in Model.ContentItem.Content.HeaderList.ContentItems %}
+                                <div class="list-item">
+                                    <v-icon>mdi-menu-right</v-icon>
+                                    <div class="list-item-text">{{ headerItem.LandingPageHeaderList.Caption.Text }}</div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </v-col>
+                </v-row>
+                <v-row>
+                    <v-col md="12">
+                        <div class="header-footer">
+                            <v-img
+                                src="{{ "~/StatCan.OrchardCore.Radar/css/images/goc.svg" | href }}"
+                                max-width="293"
+                                max-height="28"
+                            ></v-img>
+                            <v-img
+                                src="{{ "~/StatCan.OrchardCore.Radar/css/images/canada.svg" | href }}"
+                                max-width="172"
+                                max-height="41"
+                            ></v-img>
+                        </div>
+                    </v-col>
+                </v-row>
+            </v-container>
+        </div>
+    </div>
+    <div class="zigzag-container">
+        <div class="zigzag zigzag-white"></div>
+    </div>
+</div>
+{% endzone %}
+
+{% if User.Identity.IsAuthenticated == true %}
+<div class="mb-12">
+    <v-container style="max-width: 1200px">
+        <v-row>
+            <v-col md="12">
+                <div class="text-h4 text-center section-title">
+                    {{ "Recent activities" | t }}
+                </div>
+            </v-col>
+        </v-row>
+        <v-row>
+            {% for activity in Model.ContentItem.Content.Activities.ContentItems %}
+                <v-col sm="12" md="6">
+                    {{ activity | shape_build_display: "Detail" | shape_render }}
+                </v-col>
+            {% endfor %}
+        </v-row>
+    </v-container>
+</div>
+
+<div class="section-background pb-12 mb-12">
+    <v-container style="max-width: 1200px">
+        <v-row>
+            <v-col md="12">
+                <div class="text-h4 text-center section-title mt-7">
+                    {{ "Recent trends" | t }}
+                </div>
+            </v-col>
+        </v-row>
+        <v-row justify-md="center">
+            {% for trend in Model.ContentItem.Content.Trends.ContentItems %}
+                <v-col sm="12" md="6">
+                    {{ trend| shape_build_display: "Detail" | shape_render }}
+                </v-col>
+            {% endfor %}
+        </v-row>
+    </v-container>
+</div>
+{% endif %}
+
+<div class="mb-12">
+    <v-container style="max-width: 1200px">
+        <v-row justify="space-around">
+            {% for footerCard in Model.ContentItem.Content.Footer.ContentItems %}
+                <v-col md="4">
+                    {{ footerCard | shape_build_display: "Detail" | shape_render }}
+                </v-col>
+            {% endfor %}
+        </v-row>
+    </v-container>
+</div>

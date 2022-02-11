@@ -1,0 +1,33 @@
+@import "colors";
+
+.table-row {
+  background-color: $secondary-variant2;
+  height: 48px;
+  border-bottom: 1px solid $secondary-variant1;
+  cursor: pointer;
+  overflow-wrap: anywhere;
+}
+
+.table-row:hover {
+  background: $secondary-variant1;
+}
+
+.name-col {
+  text-align: left;
+  padding-left: 1rem;
+}
+
+.table-col {
+  text-align: center;
+}
+
+.table-icon-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+a {
+  text-decoration: none;
+  color: #000000 !important;
+}

@@ -1,0 +1,83 @@
+{% assign entities = Queries.TaxonomyEntitiesSQL | query: type: "Topics", id: Model.Properties.TermContentItem.ContentItemId | remove_unauthorized_items | filter_current_culture %}
+
+{% assign projectCount = entities | where: "ContentType", "Project" | size %}
+{% assign communityCount = entities | where: "ContentType", "Community" | size %}
+{% assign proposalCount = entities | where: "ContentType", "Proposal" | size %}
+{% assign eventCount = entities | where: "ContentType", "Event" | size %}
+
+{% assign popularity = projectCount | plus: communityCount | plus: proposalCount | plus: eventCount %}
+
+
+{% capture failUrl %}~{{ Request.Path }}{% endcapture %}
+
+<td class="name-col">
+    <!-- <a> cannot be a child of <table> therefore only link the name as a workaround -->
+    <a href="{{ Model.Properties.TermContentItem | display_url }}" >{{ Model.Properties.TermContentItem | display_text | shortcode }}</a>
+</td>
+<td class="table-col">
+    <div class="table-icon-cell">
+        <v-icon color="black">mdi-star-outline</v-icon>
+        <div>{{ popularity }}</div>
+    </div>
+</td>
+<td class="table-col">
+    <div class="table-icon-cell">
+        <v-icon color="black">mdi-flask-outline</v-icon>
+        <div>{{ projectCount }}</div>
+    </div>
+</td>
+<td class="table-col">
+    <div class="table-icon-cell">
+        <v-icon color="black">mdi-account-multiple</v-icon>
+        <div>{{ communityCount }}</div>
+    </div>
+</td>
+<td class="table-col">
+    <div class="table-icon-cell">
+        <v-icon color="black">mdi-calendar</v-icon>
+        <div>{{ eventCount }}</div>
+    </div>
+</td>
+<td class="table-col">
+    <div class="table-icon-cell">
+        <v-icon color="black">mdi-alert-circle-outline</v-icon>
+        <div>{{ proposalCount }}</div>
+    </div>
+</td>
+<td class="table-col">{{ "OptionsButton" | shape_new: ContentItem: Model.Properties.TermContentItem, Relative: false, DisplayMode: "Summary", SuccessUrl: "~/topics", FailUrl: failUrl | shape_render}}</td>
+
+<script type="application/javascript">
+function search() {
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("search-input");
+    filter = input.value.toLowerCase();
+    table = document.getElementById("entity-table");
+    tr = table.getElementsByTagName("tr");
+
+    for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[0]; // Filter based on the name
+        if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toLowerCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+        }
+    }
+}
+
+window.addEventListener("DOMContentLoaded", function() {
+    // Hook into the rendered button since I don't have access to the Vue instance
+    document.getElementById("search-clear-button").addEventListener("click", function () {
+        document.getElementById("search-input").value = "";
+
+        table = document.getElementById("entity-table");
+        tr = table.getElementsByTagName("tr");
+        // Reset the table after input is cleared
+        for (i = 0; i < tr.length; i++) {
+            tr[i].style.display = "";
+        }
+    });
+});
+</script>

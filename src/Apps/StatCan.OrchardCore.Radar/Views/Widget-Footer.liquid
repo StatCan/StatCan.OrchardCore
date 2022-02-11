@@ -1,0 +1,45 @@
+{% assign menuAlias = "alias:main-menu-" | append: Culture.Name %}
+{% assign menu = Content["alias:main-menu-en"] %}
+
+<div class="zigzag-footer footer">
+    <div class="ripple-container ripple">
+        <div class="menus-container">
+            {% for section in menu.Content.MenuItemsListPart.MenuItems %}
+                <div class="menu-container">
+                    <div class="menu-title font-weight-medium text-h5">
+                        {{ section.DisplayText }}
+                    </div>
+                    {% for  item in section.MenuItemsListPart.MenuItems %}
+                        <a href="{{ "~/" | append: item.LinkMenuItemPart.Url | href }}" class="white--text menu-link">
+                            {{ item.DisplayText }}
+                        </a>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+        </div>
+        <div class="logo-container">
+            <div class="logo">
+                <img
+                    src="{{ Model.ContentItem.Content.Footer.Logo.Paths.first| asset_url }}"
+                    style="height: 5rem"
+                ><img>
+                <div class="white--text">
+                    <div class="text-subtitle">{{ Model.ContentItem.Content.Footer.Caption.Text }}</div>
+                    <div class="text-subtitle font-weight-thin">{{ Model.ContentItem.Content.Footer.Version.Text }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="footer-bottom">
+    <v-img
+        src="{{ "~/StatCan.OrchardCore.Radar/css/images/goc-light.svg" | href }}"
+        max-width="293"
+        max-height="28"
+    ></v-img>
+    <v-img
+        src="{{ "~/StatCan.OrchardCore.Radar/css/images/canada-light.svg" | href }}"
+        max-width="172"
+        max-height="41"
+    ></v-img>
+</div>

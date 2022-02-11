@@ -1,0 +1,89 @@
+{% script src:"~/StatCan.OrchardCore.Radar/js/table.min.js", debug_src:"~/StatCan.OrchardCore.Radar/js/table.js", at:"Head" %}
+
+{% zone "Header" %}
+<div class="details-section">
+  <div class="list-header">
+    <v-container>
+      <v-row justify="space-between">
+        <v-col md="4">
+          <div class="title-container">
+            <div class="text-h2">{{ Model.Properties.TaxonomyContentItem | display_text }}</div>
+            <div class="bubble">
+              <div class="bubble-text" id="bubble-text">{{ Model.Properties.TaxonomyContentItem.Content.TaxonomyPart.Terms | remove_unauthorized_items | size }}</div>
+            </div>
+          </div>
+          <div class="search-container">
+            <v-icon class="search-icon">
+              mdi-magnify
+            </v-icon>
+            <input class="search-input" type="text" id="search-input" onkeyup="search()">
+            <v-btn elevation="0" icon id="search-clear-button" >
+                <v-icon>
+                    mdi-close
+                </v-icon>
+            </v-btn>
+          </div>
+        </v-col>
+        <v-col md="1">
+          <v-img
+            src="{{ "icon_topics.svg" | asset_url }}"
+            width="112" height="112"
+          >
+          </v-img>
+        </v-col>
+      </v-row>
+    </v-container>
+  </div>
+  <div class="zigzag-container">
+    <div class="zigzag zigzag-white"></div>
+  </div>
+</div>
+{% endzone %}
+
+<div class="table-container">
+  <table class="table" id="entity-table">
+    <thead class="table-header">
+      <tr>
+        <th class="name-col" data-type="name">{{ "Name" | t }}</th>
+        <th data-type="number">{{ "Popularity" | t }}</th>
+        <th data-type="number">{{ "Project" | t }}</th>
+        <th data-type="number">{{ "Community" | t }}</th>
+        <th data-type="number">{{ "Event" | t }}</th>
+        <th data-type="number">{{ "Proposal" | t }}</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in Model.Items %}
+      {% assign canView = item.Properties.TermContentItem | user_can_view %}
+        {% if canView %}
+        <tr class="table-row">
+          {{ item | shape_render }}
+        </tr>
+        {% endif %}
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<script type="application/javascript">
+  function search() {
+      var input, filter, table, tr, td, i, txtValue;
+      input = document.getElementById("search-input");
+      filter = input.value.toLowerCase();
+      table = document.getElementById("entity-table");
+      tr = table.getElementsByTagName("tr");
+  
+      for (i = 0; i < tr.length; i++) {
+          td = tr[i].getElementsByTagName("td")[0]; // Filter based on the name
+          if (td) {
+              txtValue = td.textContent || td.innerText;
+              if (txtValue.toLowerCase().indexOf(filter) > -1) {
+                  tr[i].style.display = "";
+              } else {
+                  tr[i].style.display = "none";
+              }
+          }
+      }
+  }
+</script>

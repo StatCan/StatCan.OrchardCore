@@ -1,0 +1,50 @@
+{% assign parentId = Request.Path | parent_contentitem_id %}
+{% capture artifactPath %}/{{ Model.ContentItem.Content.AutoroutePart.Path }}{% endcapture %}
+{% capture successUrl %}~{{ Request.Path | remove:  artifactPath }}{% endcapture %}
+{% capture failUrl %}~{{ Request.Path }}{% endcapture %}
+
+{% zone "Header" %}
+<div class="details-section">
+  <div class="header">
+    <v-container>
+      <v-row justify="space-between">
+        <v-col md="7">
+          <div>
+            <div class="text-h3 details-name">{{ Model.ContentItem | display_text | shortcode }}</div>
+            <div class="text-body-1 details-description">
+                {{ Model.ContentItem.Content.Artifact.URL.Text }}
+            </div>
+          </div>
+        </v-col>
+        <v-col md="1">
+          <div class="d-flex">
+            <v-icon class="details-main-icon">
+              mdi-link
+            </v-icon>
+            {{ "OptionsButton" | shape_new: ContentItem: Model.ContentItem, Relative: true, DisplayMode: "Detail", SuccessUrl: successUrl, FailUrl: failUrl, ParentId: parentId | shape_render}}
+          </div>
+        </v-col>
+      </v-row>
+      <v-row>
+          <v-col md="12">
+            <v-row>
+                <v-col md="4">
+                    <div class="icon-cell">
+                        <v-icon class="details-attribute-icon">
+                            mdi-update
+                        </v-icon>
+                        <div class="text-h6 icon-text">
+                            {{ Model.ContentItem.ModifiedUtc | local | date: "%b %d, %Y" }}
+                        </div>
+                    </div>
+                </v-col>
+            </v-row>
+          </v-col>
+      </v-row>
+    </v-container>
+  </div>
+  <div class="zigzag-container">
+    <div class="zigzag zigzag-white"></div>
+  </div>
+</div>
+{% endzone %}

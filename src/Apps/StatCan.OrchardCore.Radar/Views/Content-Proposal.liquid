@@ -1,0 +1,105 @@
+{% assign owner = Model.ContentItem.Owner | users_by_id %}
+{% assign communities =  Model.ContentItem.Content.RadarEntityPart.RelatedEntity.LocalizationSets | localization_set | remove_unauthorized_items %}
+{% capture failUrl %}~{{ Request.Path }}{% endcapture %}
+
+{% zone "Header" %}
+<div class="details-section">
+  <div class="header">
+    <v-container>
+      <v-row justify="space-between">
+        <v-col md="7">
+          <div>
+            <div class="text-h3 details-name">{{ Model.ContentItem | display_text }}</div>
+            <div class="text-body-1 details-description">
+                {{ Model.ContentItem.Content.RadarEntityPart.Description.Text }}
+            </div>
+          </div>
+        </v-col>
+        <v-col md="1">
+          <div class="d-flex">
+            <v-img
+            src="{{ "icon_opportunities.svg" | asset_url }}"
+            width="112" height="112"
+            >
+            </v-img>
+            {{ "OptionsButton" | shape_new: ContentItem: Model.ContentItem, Relative: false, DisplayMode: "Detail", SuccessUrl: "~/proposals", FailUrl: failUrl | shape_render}}
+          </div>
+        </v-col>
+      </v-row>
+      <v-row>
+          <v-col md="12">
+            <v-row>
+                <v-col md="4">
+                    <div class="icon-cell">
+                        <v-icon class="details-attribute-icon">
+                            mdi-account-plus
+                        </v-icon>
+                        <div class="text-h6 icon-text">
+                            {{ owner.Properties.UserProfile.UserProfile.FirstName.Text }} {{ owner.Properties.UserProfile.UserProfile.LastName.Text }}
+                        </div>
+                    </div>
+                </v-col>
+                <v-col md="4">
+                  <div class="icon-cell">
+                      <v-icon class="details-attribute-icon">
+                          mdi-eye
+                      </v-icon>
+                      <div class="text-h6 icon-text">
+                          {{ "StatusLabel" | shape_new: Published: Model.ContentItem.Content.RadarEntityPart.Publish.Value | shape_render }}
+                      </div>
+                  </div>
+              </v-col>
+            </v-row>
+          </v-col>
+      </v-row>
+      <v-row class="topics-container">
+          <v-col md="12">
+            <div class="topics-list-container">
+                {% assign topics = Model.ContentItem.Content.RadarEntityPart.Topics | taxonomy_terms %}
+                {% for topic in topics %}
+                    {{ topic | shape_build_display: "Summary" | shape_render }}
+                {% endfor %}
+            </div>
+          </v-col>
+      </v-row>
+    </v-container>
+  </div>
+  <div class="zigzag-container">
+    <div class="zigzag zigzag-white"></div>
+  </div>
+</div>
+{% endzone %}
+
+<div class="sections-container">
+    <div class="section">
+        <div class="table-title-container">
+            <div class="text-h4">
+                {{ "Affected Communities" | t }}
+            </div>
+            <div class="workspace-bubble">
+                <div class="workspace-bubble-text">{{ communities | size }}</div>
+            </div>
+        </div>
+        <div>
+            <table class="table" id="entity-table">
+              <thead class="table-header">
+                <tr>
+                  <th class="name-col">{{ "Name" | t }}</th>
+                  <th class="table-col">{{ "Members" | t }}</th>
+                  <th class="table-col">{{ "Owner" | t }}</th>
+                  <th class="table-col">{{ "Type" | t }}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for item in communities %}
+                  {{ item | shape_build_display: "Summary" | shape_render }}
+                {% endfor %}
+              </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="section">
+        {{ "Workspace" | shape_new: Model: Model.ContentItem.Content.Workspace, ParentItem: Model.ContentItem | shape_render }}
+    </div>
+</div>

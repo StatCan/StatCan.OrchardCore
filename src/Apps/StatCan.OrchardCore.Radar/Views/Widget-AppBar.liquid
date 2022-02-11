@@ -1,0 +1,56 @@
+{% assign elevation = Model.ContentItem.Content.AppBar.Elevation.Value %}
+{% assign extensionHeight = Model.ContentItem.Content.AppBar.ExtensionHeight.Value %}
+{% assign scrollThreshold = Model.ContentItem.Content.AppBar.ScrollThreshold.Value %}
+{% assign height = Model.ContentItem.Content.AppBar.Height.Value %}
+{% assign width = Model.ContentItem.Content.AppBar.Width.Value %}
+
+<v-app-bar app clipped-left dark class="appbar"
+  {% if empty !=  extensionHeight %}extension-height="{{ extensionHeight }}"{% endif %}
+  {% if empty != scrollThreshold %}scroll-threshold="{{ scrollThreshold }}"{% endif %}
+  {% if empty != height %}height="{{ height }}"{% endif %}
+  {% if empty != width %}width="{{ width }}"{% endif %}
+>
+  <v-app-bar-nav-icon
+    class="d-flex d-md-none"
+    @click.stop="drawer = !drawer"
+  ></v-app-bar-nav-icon>
+
+  <a class="d-flex" href="{{ '~/' | href }}">
+    <img
+      src="{{ Model.ContentItem.Content.AppBar.Logo.Paths.first | asset_url }}"
+      style="max-height:40px; width:50px; margin-left: 2rem"
+      alt="logo"
+    />  
+  </a>
+
+  <a href="{{ '~/' | href }}">
+    <div class="text-h4 white--text">
+      {{ Model.ContentItem | display_text | shortcode }}
+    </div>
+  </a>
+
+  <v-spacer></v-spacer>
+
+  <span class="d-none d-md-flex">
+    {% if Culture.Name == "en" %}
+      {% shape "menu", alias: "alias:main-menu-en", cache_id: "main-menu-en", cache_fixed_duration: "00:05:00", cache_tag: "alias:main-menu-en" %}
+    {% endif %}
+    {% if Culture.Name == "fr" %}
+      {% shape "menu", alias: "alias:main-menu-fr", cache_id: "main-menu-fr", cache_fixed_duration: "00:05:00", cache_tag: "alias:main-menu-fr" %}
+    {% endif %} 
+  </span>
+
+  {% if User.Identity.IsAuthenticated == true %}
+    {{ "GlobalSearch" | shape_new | shape_render }}
+  {% endif %}
+
+  <div class="app-bar-username-container d-none d-md-flex">
+    {% assign user = User | user_id | users_by_id %}
+    {{ user.Properties.UserProfile.UserProfile.FirstName.Text }}
+    {{ user.Properties.UserProfile.UserProfile.LastName.Text }}
+  </div>
+  <div class="app-bar-buttons-container">
+    {{ "UserMenuButton" | shape_new | shape_render }}
+    {{ "LocalizationButton" | shape_new | shape_render }}
+  </div>
+</v-app-bar>

@@ -1,0 +1,5 @@
+{% if Model.Properties.Published %}
+    {{ "Published" | t }}
+  {% else %}
+  {{ "Draft" | t }}
+  {% endif %}
