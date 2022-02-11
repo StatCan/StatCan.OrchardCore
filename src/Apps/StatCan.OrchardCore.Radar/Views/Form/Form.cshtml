@@ -2,8 +2,8 @@
 
 @await DisplayAsync(Model.FormValue)
 
-@await DisplayAsync(await New.InitialValueLoader())
+@await DisplayAsync(await New.InitialValueLoader()) // This to make sure that the values are ready before the form gets rendered
 
-@await DisplayAsync(await New.OptionsLoader())
+@await DisplayAsync(await New.OptionsLoader()) // Same idea this is to make sure the options are ready
 
-@await DisplayAsync(Model.Content)
+@await DisplayAsync(Model.Content) // values and options can then be loaded correctly into the form

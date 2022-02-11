@@ -23,6 +23,7 @@ namespace StatCan.OrchardCore.Radar.Drivers
             _contentManager = contentManager;
         }
 
+        // General idea is that only owner can see own draft item and admin can see everything
         public override async Task<IDisplayResult> DisplayAsync(RadarPermissionPart part, BuildPartDisplayContext context)
         {
             var user = _httpContextAccessor.HttpContext.User;

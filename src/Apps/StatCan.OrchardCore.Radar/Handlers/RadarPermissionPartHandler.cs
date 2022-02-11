@@ -8,6 +8,7 @@ namespace StatCan.OrchardCore.Radar.Handlers
 {
     public class RadarPermissionPartHandler : ContentPartHandler<RadarPermissionPart>
     {
+        // Adds a back reference to the parent on the child. Used for permission checking since child inherits parent permission.
         public override Task UpdatedAsync(UpdateContentContext context, RadarPermissionPart instance)
         {
             context.ContentItem.Content.RadarPermissionPart.ContentItemId = context.ContentItem.ContentItemId;
