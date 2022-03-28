@@ -20,7 +20,7 @@
             </div>
             <div class="w-70 h-full w-full border-r-2 border-t-2 border-b-2 shadow-md rounded-r-lg overflow-scroll pl-3 py-3">
                 {% for text in json.stakeholder[0].text %}
-                <ul class="list-disc px-3 text-sm">
+                <ul class="list-disc p-3 text-sm">
                     <li class="text-sm">
                         {{ text }}
                     </li>
@@ -44,7 +44,7 @@
             </div>
             <div class="w-70 h-full w-full border-r-2 border-t-2 border-b-2 shadow-md rounded-r-lg overflow-scroll pl-3 py-3">
                 {% for text in json.goal[0].text %}
-                <ul class="list-disc px-3 text-sm">
+                <ul class="list-disc p-3 text-sm">
                     <li class="text-sm">
                         {{ text }}
                     </li>
@@ -67,7 +67,7 @@
                     <div style="background-color: {{colour}}" class="h-24 w-1/6 text-gray-200 w-full rounded-t-lg flex justify-center items-center  text-center text-2xl font-semibold flex-col ">{{text.title}}</div>
                     <div class=" h-96 w-full  shadow-md border-r-2 border-l-2  px-2 pt-3 pb-2 text-gray-700 rounded-t-none overflow-scroll text-sm ">{{text.text}}</div>
                     <div style="background-color: {{colour}}" class=" -mt-2 text-gray-200 w-7/12 flex h-10 rounded-lg items-center justify-center text-xl font-semibold flex-col">Opportunity</div>
-                    <div class="-mt-8 h-48 w-full border-r-2 border-l-2 border-b-2 rounded-b-lg px-3 pt-5 pb-2 text-sm text-gray-700 rounded-t-none overflow-scroll">{{text.opportunity[0].text}}</div>
+                    <div class="-mt-8 h-48 w-full border-r-2 border-l-2 border-b-2 rounded-b-lg px-3 pt-10 pb-2 text-sm text-gray-700 rounded-t-none overflow-scroll">{{text.opportunity[0].text}}</div>
                 </div>
             {% endfor %}
         </div>
